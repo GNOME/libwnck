@@ -45,7 +45,7 @@ struct _WnckScreenPrivate
   GList *stacked_windows;
   /* in 0-to-N order */
   GList *workspaces;
-
+  
   WnckWindow *active_window;
   WnckWorkspace *active_workspace;
 
@@ -585,6 +585,38 @@ wnck_screen_get_workspace_count (WnckScreen *screen)
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
 
   return g_list_length (screen->priv->workspaces);
+}
+
+/**
+ * wnck_screen_change_workspace_count:
+ * @screen: a #WnckScreen
+ * @count: requested count
+ * 
+ * Asks the window manager to change the number of workspaces.
+ **/
+void
+wnck_screen_change_workspace_count (WnckScreen *screen,
+                                    int         count)
+{
+  XEvent xev;
+  
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+  g_return_if_fail (count >= 1);
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.window = screen->priv->xroot;
+  xev.xclient.send_event = True;
+  xev.xclient.display = DisplayOfScreen (screen->priv->xscreen);
+  xev.xclient.message_type = _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = count;
+  
+  XSendEvent (DisplayOfScreen (screen->priv->xscreen),
+              screen->priv->xroot,
+              False,
+              SubstructureRedirectMask | SubstructureNotifyMask,
+              &xev);
 }
 
 void
@@ -1192,6 +1224,7 @@ update_workspace_names (WnckScreen *screen)
     }
 
   g_strfreev (names);
+
   g_list_free (copy);
 }
 
@@ -1485,3 +1518,41 @@ _wnck_screen_get_sn_display (WnckScreen *screen)
   return screen->priv->sn_display;
 }
 #endif /* HAVE_STARTUP_NOTIFICATION */
+
+void
+_wnck_screen_change_workspace_name (WnckScreen *screen,
+                                    int         number,
+                                    const char *name)
+{
+  int n_spaces;
+  char **names;
+  int i;
+  
+  n_spaces = wnck_screen_get_workspace_count (screen);
+
+  names = g_new0 (char*, n_spaces + 1);
+
+  i = 0;
+  while (i < n_spaces)
+    {
+      if (i == number)
+        names[i] = (char*) name;
+      else
+        {
+          WnckWorkspace *workspace;
+          workspace = wnck_screen_get_workspace (screen, i);
+          if (workspace)
+            names[i] = (char*) wnck_workspace_get_name (workspace);
+          else
+            names[i] = (char*) ""; /* maybe this should be a g_warning() */
+        }
+      
+      ++i;
+    }
+
+  _wnck_set_utf8_list (screen->priv->xroot,
+                       _wnck_atom_get ("_NET_DESKTOP_NAMES"),
+                       names);
+
+  g_free (names);
+}

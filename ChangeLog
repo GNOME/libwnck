@@ -1,3 +1,20 @@
+2002-11-03  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/window.c (wnck_window_activate_transient): don't pass 
+	WnckWindow when expecting an X window
+
+	* configure.in: 2.1.3, and bump libtool versioning for new API
+
+	* libwnck/xutils.c (_wnck_set_utf8_list): new function
+
+	* libwnck/screen.c (_wnck_screen_change_workspace_name): new
+	function
+
+	* libwnck/workspace.c (wnck_workspace_change_name): new function
+
+	* libwnck/screen.c (wnck_screen_change_workspace_count): new
+	function
+
 2002-11-03  Dmitry G. Mastrukov  <dmitry@taurussoft.org>
 
 	* configure.in: Added Belarusian to ALL_LINGUAS

@@ -596,6 +596,40 @@ _wnck_get_utf8_list (Window   xwindow,
 }
 
 void
+_wnck_set_utf8_list (Window   xwindow,
+                     Atom     atom,
+                     char   **list)
+{
+  Atom utf8_string;
+  GString *flattened;
+  int i;
+  
+  utf8_string = _wnck_atom_get ("UTF8_STRING");  
+
+  /* flatten to nul-separated list */
+  flattened = g_string_new ("");
+  i = 0;
+  while (list[i] != NULL)
+    {
+      g_string_append_len (flattened, list[i],
+                           strlen (list[i]) + 1);
+      ++i;
+    }
+
+  _wnck_error_trap_push ();
+  
+  XChangeProperty (gdk_display,
+		   xwindow,
+                   atom,
+		   utf8_string, 8, PropModeReplace,
+		   flattened->str, flattened->len);
+  
+  _wnck_error_trap_pop ();
+
+  g_string_free (flattened, TRUE);
+}
+
+void
 _wnck_error_trap_push (void)
 {
   gdk_error_trap_push ();

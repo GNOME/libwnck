@@ -1003,7 +1003,7 @@ wnck_window_activate_transient (WnckWindow *window)
 
       transient = next;
       
-      next = find_last_transient_for (windows, transient);
+      next = find_last_transient_for (windows, transient->priv->xwindow);
     }
 
   if (transient != NULL)

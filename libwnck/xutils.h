@@ -68,6 +68,10 @@ gboolean _wnck_get_cardinal_list (Window   xwindow,
 char**   _wnck_get_utf8_list     (Window   xwindow,
                                   Atom     atom);
 
+void     _wnck_set_utf8_list     (Window   xwindow,
+                                  Atom     atom,
+                                  char   **list);
+
 void _wnck_error_trap_push (void);
 int  _wnck_error_trap_pop  (void);
 

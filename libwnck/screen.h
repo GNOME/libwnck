@@ -116,7 +116,9 @@ GList*         wnck_screen_get_windows_stacked  (WnckScreen *screen);
 
 void wnck_screen_force_update (WnckScreen *screen);
 
-int wnck_screen_get_workspace_count (WnckScreen *screen);
+int  wnck_screen_get_workspace_count    (WnckScreen *screen);
+void wnck_screen_change_workspace_count (WnckScreen *screen,
+                                         int         count);
 
 gboolean wnck_screen_net_wm_supports (WnckScreen *screen,
                                       const char *atom);
@@ -136,6 +138,8 @@ int  wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                            int         columns);
 void wnck_screen_release_workspace_layout (WnckScreen *screen,
                                            int         current_token);
+
+
 
 
 G_END_DECLS

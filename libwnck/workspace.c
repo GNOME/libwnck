@@ -158,6 +158,26 @@ wnck_workspace_get_name (WnckWorkspace *space)
 }
 
 /**
+ * wnck_workspace_change_name:
+ * @space: a #WnckWorkspace
+ * @name: new workspace name
+ *
+ * Try changing the name of the workspace.
+ * 
+ **/
+void
+wnck_workspace_change_name (WnckWorkspace *space,
+                            const char    *name)
+{
+  g_return_if_fail (WNCK_IS_WORKSPACE (space));
+  g_return_if_fail (name != NULL);
+
+  _wnck_screen_change_workspace_name (space->priv->screen,
+                                      space->priv->number,
+                                      name);
+}
+
+/**
  * wnck_workspace_activate:
  * @space: a #WnckWorkspace
  * 

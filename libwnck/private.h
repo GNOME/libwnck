@@ -68,6 +68,9 @@ void             _wnck_application_destroy (WnckApplication *app);
 
 void _wnck_workspace_update_name (WnckWorkspace *workspace,
                                   const char    *name);
+void _wnck_screen_change_workspace_name (WnckScreen *screen,
+                                         int         number,
+                                         const char *name);
 
 void _wnck_init (void);
 

@@ -55,7 +55,9 @@ GType wnck_workspace_get_type (void) G_GNUC_CONST;
 
 int wnck_workspace_get_number (WnckWorkspace *space);
 
-const char* wnck_workspace_get_name (WnckWorkspace *space);
+const char* wnck_workspace_get_name    (WnckWorkspace *space);
+void        wnck_workspace_change_name (WnckWorkspace *space,
+                                        const char    *name);
 
 void wnck_workspace_activate (WnckWorkspace *space);
 
