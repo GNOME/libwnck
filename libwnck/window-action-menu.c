@@ -342,6 +342,9 @@ wnck_create_window_action_menu (WnckWindow *window)
   amd->window = window;
   
   menu = gtk_menu_new ();
+  g_object_ref (menu);
+  gtk_object_sink (GTK_OBJECT (menu));
+
   amd->menu = menu;
   
   g_object_set_data_full (G_OBJECT (menu), "wnck-action-data",

@@ -361,7 +361,7 @@ wnck_task_finalize (GObject *object)
 
   if (task->action_menu)
     {
-      gtk_widget_destroy (task->action_menu);
+      g_object_unref (task->action_menu);
       task->action_menu = NULL;
     }
 
