@@ -1,3 +1,10 @@
+Wed, 28 Nov 2001 00:32:42 -0500  Frank Belew  <frb@ximian.com>
+
+        * autogen.sh: remove AM_GNOME_GETTEXT check
+                      replace AM_GNU_GETTEXT check with AM_GLIB_GNU_GETTEXT
+                      replace gettextize with glib-gettextize
+
+
 2001-11-28  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/pager.c (workspace_at_point):
