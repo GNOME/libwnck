@@ -1,14 +1,14 @@
 # libwnck's Portuguese Translation
-# Copyright © 2001, 2004 libwnck
+# Copyright © 2001, 2002, 2003, 2004, 2005 libwnck
 # Distributed under the same licence as libwnck
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2004.
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003, 2004, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.6\n"
+"Project-Id-Version: 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2004-02-03 02:15+0000\n"
+"POT-Creation-Date: 2005-01-26 01:09+0000\n"
+"PO-Revision-Date: 2005-01-26 01:15+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Clique para ir para a área de trabalho %s"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
-msgstr "Desmi_nimizar"
+msgstr "Resta_urar"
 
 #: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
@@ -112,16 +112,13 @@ msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para alternar entre janelas visíveis"
 
 #: libwnck/tasklist.c:2096
-#, fuzzy
 msgid "_Close All"
-msgstr "_Fechar"
+msgstr "_Fechar Todas"
 
 #: libwnck/tasklist.c:2111
-#, fuzzy
 msgid "_Minimize All"
-msgstr "Mi_nimizar"
+msgstr "_Minimizar Todas"
 
 #: libwnck/tasklist.c:2122
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Desmi_nimizar"
+msgstr "_Restaurar Todas"
