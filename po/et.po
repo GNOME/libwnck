@@ -2,13 +2,13 @@
 # Copyright (C) 2002 The Free Software Foundation
 # This file is distributed under the same license as the libwnck package.
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
-# Tõivo Leedjärv <toivo@linux.ee>, 2002.
+# Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2002-06-06 16:10+0300\n"
+"POT-Creation-Date: 2003-08-22 22:28+0300\n"
+"PO-Revision-Date: 2003-07-14 19:48+0300\n"
 "Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -33,17 +33,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klõpsa siin, et liikuda töötsoonile %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "_Taasta"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimeeri"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "T_aasta suurus"
 
@@ -53,22 +50,21 @@ msgstr "Ma_ksimeeri"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "K_eri lahti"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "K_eri kokku"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Ainult _selles töötsoonis"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Pane kõikidesse t_öötsoonidesse"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Liiguta"
 
@@ -84,7 +80,7 @@ msgstr "_Sulge"
 msgid "untitled window"
 msgstr "pealkirjata aken"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Töötsoon %d"
