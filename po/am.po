@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "POT-Creation-Date: 2002-12-13 05:58+0100\n"
-"PO-Revision-Date: 2002-12-13 23:47+EDT\n"
+"PO-Revision-Date: 2002-12-20 14:47+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,11 +58,11 @@ msgstr "ማውጣት (_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "በዚህ የመስሪያ ቦታ ላይ ብቻ (_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "ሁሉም መስሪይ ቦታዎች ላይ አድርግ (_A)"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
