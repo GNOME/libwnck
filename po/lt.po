@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2004-01-10 10:09+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -31,69 +31,69 @@ msgstr "Įrankis leidžiantis persijungti tarp darbalaukių"
 msgid "Click this to switch to workspace %s"
 msgstr "Paspausk, kad persijungtum į darbalaukį %s"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
 msgstr "G_rąžinti sumažintą"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
 msgstr "_Sumažinti"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
 msgstr "_Grąžinti išdidintą"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "Iš_didinti"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr "_Išvynioti"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr "Su_vynioti"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "_Tik šiame darbalaukyje"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "_Visuose darbalaukiuose"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Darbalaukis %d"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 msgid "Workspace 1_0"
 msgstr "1_0-as darbalaukis"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d darbalaukis"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
 msgstr "_Perkelti"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "_Keisti dydį"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "_Uždaryti"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr "Pereiti į Kitą _Darbalaukį"
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr "%s"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2004-04-16 12:43+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -35,69 +35,69 @@ msgstr "Laneko area batetik bestera aldatzeko tresna"
 msgid "Click this to switch to workspace %s"
 msgstr "Egin klik hemen %s laneko areara aldatzeko"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
 msgstr "Le_heneratu"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
 msgstr "_Ikonotu"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
 msgstr "Leh_eneratu"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "Ma_ximizatu"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr "_Zabaldu"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr "Bil_du"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "Laneko a_rea honetan bakarrik"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "_Jarri laneko area guztietan"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "%d laneko area"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 msgid "Workspace 1_0"
 msgstr "1_0 laneko area"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d laneko area"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
 msgstr "_Mugitu"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "_Aldatu tamaina"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "It_xi"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr "Aldatu beste _laneko areara"
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr "%s"

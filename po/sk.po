@@ -12,13 +12,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-05-28 20:23+0200\n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2004-05-28 21:29+0200\n"
 "Last-Translator: Ivan Noris <vix@vazka.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -115,4 +115,3 @@ msgstr "Zoznam okien"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Nástroj pre prepínanie medzi viditeľnými oknami"
-

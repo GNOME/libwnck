@@ -10,7 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -35,74 +36,74 @@ msgstr "Ferramenta para seleccionar os escritorios"
 msgid "Click this to switch to workspace %s"
 msgstr "Prema isto para activar o escritorio %s"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 #, fuzzy
 msgid "Unmi_nimize"
 msgstr "Des_minimizar"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 #, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimizar"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 #, fuzzy
 msgid "Unma_ximize"
 msgstr "Desma_ximizar"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr ""
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr ""
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr ""
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Escritorio %d"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "Escritorio %d"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "Escritorio %d"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 #, fuzzy
 msgid "_Move"
 msgstr "Mo_ver"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "_Pechar"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr ""

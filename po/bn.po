@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2004-03-18 11:31+0530\n"
 "Last-Translator: Sayamindu Dasgupta <unmadindu@bengalinux.org>\n"
 "Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
@@ -32,69 +32,69 @@ msgstr "কর্মক্ষেত্র বদলানোর জন্য প
 msgid "Click this to switch to workspace %s"
 msgstr "কর্মক্ষেত্র %s বদলাতে এখানে ক্লিক্‌ করুন"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
 msgstr "ছোট থেকে বড় করো (_ব)"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
 msgstr "ছোট করো (_ছ)"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
 msgstr "মাঝারি আয়তনের করো"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "বড় করো (_ড়)"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr "খোলো (_ল)"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr "গোটাও (_গ)"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "শুধুমাত্র এই কর্মক্ষেত্রে (_শ)"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "সকল কর্মক্ষেত্রে রাখুন (_স)"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "কর্মক্ষেত্র %d"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 msgid "Workspace 1_0"
 msgstr "কর্মক্ষেত্র ১_০"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, c-format
 msgid "Workspace %s%d"
 msgstr "কর্মক্ষেত্র %s%d"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
 msgstr "সরাও  (_ও)"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "আকার বদলাও (_আ)"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "বন্ধ কর (_ধ)"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr "%s"

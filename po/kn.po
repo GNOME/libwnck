@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2002-05-29 14:58+0530\n"
 "Last-Translator: Pramod.R <rpramod@postmasterr.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -31,70 +32,70 @@ msgstr "ಕಾರ್ಯಾಸ್ಥಳಗಳ ನಡುವೆ ಬದಲಾಯಿ�
 msgid "Click this to switch to workspace %s"
 msgstr "ಇದ್ದನ್ನು ಕಾರ್ಯಾಸ್ಥಳಕ್ಕೆ  ಬದಲಾಯಿಸಲು ಒತ್ತಿ %s  "
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
 msgstr "Unmi_nimize"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
 msgstr "Mi_nimize"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
 msgstr "ವಿಸ್ತೀರ್ಣ ಕಮ್ಮಿಮಾಡು"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "ವಿಸ್ತೀರ್ಣ ಹೆಚ್ಚಿಸು"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr "ಚಪ್ಪಟೆಯನ್ನು ಇಳಿಸು"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr "ಚಪ್ಪಟೆಗೊಲಿಸು"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "ಈ ಕಾರ್ಯಾಸ್ಥಳದಲ್ಲಿ ಮಾತ್ರ ಹಾಕು"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "ಎಲ್ಲಾ ಕಾರ್ಯಾಸ್ಥಳಗಳ ಮೇಳೆ ಹಾಕು"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
 msgstr "ಜರಗಿಸು"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "ಗಾತ್ರ ಬದಲಾಯಿಸು"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "ಮುಚ್ಚು"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr ""

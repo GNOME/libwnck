@@ -1,3 +1,19 @@
+2.6.2
+===
+
+ Fixes
+
+ - Don't show multi-workspace related menu items if there is only
+   a single workspace (Johan Persson)
+
+ Translators
+
+ - Vladimir Petkov (bg)
+ - Gil Osher (he)
+ - Kjartan Maraas (no)
+ - Mişu Moldovan (ro)
+ - Ivan Noris (sk)
+
 2.6.1
 ===
 

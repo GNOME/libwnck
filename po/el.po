@@ -10,7 +10,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-14 18:04+0100\n"
 "PO-Revision-Date: 2004-03-01 15:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -35,69 +36,69 @@ msgstr "Εργαλείο για εναλλαγή μεταξύ χώρων εργ�
 msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
 msgstr "Απελαχιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
 msgstr "Ελα_χιστοποίηση"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
 msgstr "Απομεγιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
 msgstr "_Αναδίπλωση"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
 msgstr "Δίπλωμα _Πάνω"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "Μόνο σε Αυ_τό το Χώρο Εργασίας"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "Τοποθέτηση σε Ό_λους τους Χώρους Εργασίας"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
 
-#: libwnck/window-action-menu.c:368
+#: libwnck/window-action-menu.c:383
 msgid "Workspace 1_0"
 msgstr "Χώρος Εργασίας  1_0"
 
-#: libwnck/window-action-menu.c:370
+#: libwnck/window-action-menu.c:385
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Χώρος Εργασίας %s%d"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
 msgstr "_Μετακίνηση"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
 msgstr "Αλλαγή με_γέθους"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
 msgstr "Μετακίνηση σε Άλλο Χώρο Ερ_γασίας"
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
 msgstr "%s"
