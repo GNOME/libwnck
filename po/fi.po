@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-02-01 02:01+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -79,23 +79,23 @@ msgstr "Työtila 1_0"
 msgid "Workspace %s%d"
 msgstr "Työtila %s%d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "S_iirrä"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_Muuta kokoa"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Sulje"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "Siirrä toiseen t_yötilaan"
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -104,10 +104,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "nimetön ikkuna"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr "Ikkunaluettelo"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "Työkalu, jolla voi siirtyä näkyvien ikkunoiden välillä"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -81,23 +81,23 @@ msgstr "סביבת עבודה 1_0"
 msgid "Workspace %s%d"
 msgstr "סביבת עבודה %s%d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "_הזז"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "ש_נה גודל"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_סגור"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "הזז לסביבת _עבודה אחרת"
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -106,10 +106,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "חלון ללא-שם"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr "רשימת חלונות"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "כלי להחלפה בין חלונות נראים"

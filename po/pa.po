@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: punlinux\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-01-29 18:58+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanlinux@netscape.net>\n"
 "Language-Team: KBST Punjab <kbstpunjab@netscape.net>\n"
@@ -78,23 +78,23 @@ msgstr "ਵਰਕਸਪੇਸ 1_0"
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ  %s%d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "ਹਲਾਉ"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "ਅਕਾਰ ਬਦਲਾਉ"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ  ਵਿਚ ਭੇਜੋ"
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -103,10 +103,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਝਰੋਖਾ"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "ਵਿਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"

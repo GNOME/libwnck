@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2003-06-15 09:41+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <mk@li.org>\n"
@@ -84,23 +84,23 @@ msgstr "Работно место %d"
 msgid "Workspace %s%d"
 msgstr "Работно место %d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "По_мести"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_Промени големина"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Затвори"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr ""
@@ -109,11 +109,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "прозорец без наслов"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Алатка за менување на работно место"

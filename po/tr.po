@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-02-26 13:31+0200\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -79,23 +79,23 @@ msgstr "Çalışma Alanı 1_0"
 msgid "Workspace %s%d"
 msgstr "Çalışma Alanı %s%d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "_Taşı"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_Yeniden boyutlandır"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Kapat"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "_Başka bir Çalışma Alanına Taşı"
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -104,10 +104,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "isimsiz pencere"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr "Pencere Listesi"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "Görünen pencereler arasında geçiş yapmak için araç"

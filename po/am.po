@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -83,24 +83,24 @@ msgstr "መሥሪያ ቦታ %d"
 msgid "Workspace %s%d"
 msgstr "መሥሪያ ቦታ %d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 #, fuzzy
 msgid "_Move"
 msgstr "መንቀሳቅስ (_V)"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "እንደገና መጧን ማስተሥከል (_R)"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "ዝጋ (_C)"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr ""
@@ -109,11 +109,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "ያልተሰየመ መስኮት"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "መሥሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"

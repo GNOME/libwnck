@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-28 04:03+0200\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-02-23 14:46+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -85,7 +85,6 @@ msgstr "_Lëvize"
 msgid "_Resize"
 msgstr "_Ridimensiono"
 
-#. GRUT modified this item
 #: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Mbyll"
@@ -110,4 +109,3 @@ msgstr "Lista e dritareve"
 #: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "Instrument për të lëvizur nga një dritare e dukshme tek tjetra"
-

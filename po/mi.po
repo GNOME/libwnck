@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2004-06-26 19:14+1200\n"
 "Last-Translator: John C Barstow <jbowtie@amathaine.com>\n"
 "Language-Team: Maori <maori@nzlinux.org.nz>\n"
@@ -81,24 +81,24 @@ msgstr "0"
 msgid "Workspace %s%d"
 msgstr ""
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr ""
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 #, fuzzy
 msgid "_Close"
 msgstr "_Kati"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr ""
@@ -107,11 +107,11 @@ msgstr ""
 msgid "untitled window"
 msgstr ""
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 #, fuzzy
 msgid "Window List"
 msgstr "Matapihi Rārangi"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr ""

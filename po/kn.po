@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2002-05-29 14:58+0530\n"
 "Last-Translator: Pramod.R <rpramod@postmasterr.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -79,23 +79,23 @@ msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
 msgid "Workspace %s%d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "ಜರಗಿಸು"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "ಗಾತ್ರ ಬದಲಾಯಿಸು"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "ಮುಚ್ಚು"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr ""
@@ -104,11 +104,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಕಿಟಕಿ"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳಗಳ ನಡುವೆ ಬದಲಾಯಿಸುವವ ಸಲಕರಣೆ"

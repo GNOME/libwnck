@@ -1,3 +1,17 @@
+2.7.90
+===
+
+ Fixes
+
+  - Add support for the _NET_WM_STATE_DEMANDS_ATTENTION hint (Rob Adams)
+  - Display shaded windows as "= <name> =" instead of "[ <name> ]" (James M. Cape)
+  - Desensitize "Move To Workspace" items for sticky windows (Arvind Samptur)
+
+ Translators
+
+  - Vladimir Petkov (bg)
+  - Laurent Dhima (sq)
+
 2.6.2.1
 ===
 

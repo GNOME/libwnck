@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-08-03 15:29+0100\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -86,24 +86,24 @@ msgstr "Escritorio %d"
 msgid "Workspace %s%d"
 msgstr "Escritorio %d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 #, fuzzy
 msgid "_Move"
 msgstr "Mo_ver"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:502
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Pechar"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr ""
@@ -112,11 +112,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "fiestra sen título"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para seleccionar os escritorios"
