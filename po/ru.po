@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-01-28 21:17-0500\n"
+"POT-Creation-Date: 2002-03-08 17:02+0300\n"
 "PO-Revision-Date: 2002-03-01 00:23+03:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
@@ -34,11 +34,11 @@ msgstr "Во весь экран"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr ""
+msgstr "Убрать тень"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr ""
+msgstr "Затенить"
 
 #: libwnck/window-action-menu.c:297
 msgid "Close"
