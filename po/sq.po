@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
+"POT-Creation-Date: 2004-07-28 04:03+0200\n"
 "PO-Revision-Date: 2004-02-23 14:46+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -77,23 +77,24 @@ msgstr "Hapësira e punës 1_0"
 msgid "Workspace %s%d"
 msgstr "Hapësira e punës %s%d"
 
-#: libwnck/window-action-menu.c:482
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "_Lëvize"
 
-#: libwnck/window-action-menu.c:489
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_Ridimensiono"
 
-#: libwnck/window-action-menu.c:502
+#. GRUT modified this item
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
-msgstr "_Mbylle"
+msgstr "_Mbyll"
 
-#: libwnck/window-action-menu.c:515
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "Lëvize tek një tjetër hapësirë pune"
 
-#: libwnck/window-action-menu.c:534
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -102,10 +103,11 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "dritare pa emër"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:507
 msgid "Window List"
 msgstr "Lista e dritareve"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
 msgstr "Instrument për të lëvizur nga një dritare e dukshme tek tjetra"
+
