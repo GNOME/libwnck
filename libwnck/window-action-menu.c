@@ -49,6 +49,7 @@ struct _ActionMenuData
   GtkWidget *move_item;
   GtkWidget *resize_item;
   GtkWidget *close_item;
+  GtkWidget *workspace_separator;
   GtkWidget *pin_item;
   GtkWidget *workspace_item;
   guint idle_handler;
@@ -194,11 +195,13 @@ set_item_stock (GtkWidget  *mi,
 static gboolean
 update_menu_state (ActionMenuData *amd)
 {
-  WnckWindowActions actions;  
+  WnckWindowActions  actions;  
+  WnckScreen        *screen;
 
   amd->idle_handler = 0;
   
   actions = wnck_window_get_actions (amd->window);
+  screen  = wnck_window_get_screen  (amd->window);
   
   if (wnck_window_is_minimized (amd->window))
     {
@@ -272,6 +275,18 @@ update_menu_state (ActionMenuData *amd)
   gtk_widget_set_sensitive (amd->workspace_item,
                             (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
 
+  if (wnck_screen_get_workspace_count (screen) > 1)
+    {
+      gtk_widget_show (amd->workspace_separator);
+      gtk_widget_show (amd->pin_item);
+      gtk_widget_show (amd->workspace_item);
+    }
+  else
+    {
+      gtk_widget_hide (amd->workspace_separator);
+      gtk_widget_hide (amd->pin_item);
+      gtk_widget_hide (amd->workspace_item);
+    }
   
   return FALSE;
 }
@@ -486,7 +501,7 @@ wnck_create_window_action_menu (WnckWindow *window)
   set_item_text (amd->close_item, _("_Close"));
   set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
 
-  separator = gtk_separator_menu_item_new ();
+  amd->workspace_separator = separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          separator);
@@ -509,26 +524,27 @@ wnck_create_window_action_menu (WnckWindow *window)
   num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (amd->window));
   present_workspace = wnck_workspace_get_number (wnck_window_get_workspace (amd->window));
  
-  for (i = 0; i < num_workspaces; i++) {
-    char *name,*label;
-    GtkWidget *mi;
+  for (i = 0; i < num_workspaces; i++)
+    {
+      char *name, *label;
+      GtkWidget *item;
 	
-    name = get_workspace_name_with_accel (amd->window, i);
-    label = g_strdup_printf (_("%s"), name);
+      name = get_workspace_name_with_accel (amd->window, i);
+      label = g_strdup_printf (_("%s"), name);
 
-    mi = make_menu_item (amd, MOVE_TO_WORKSPACE);
-    g_object_set_data (G_OBJECT (mi), "workspace", GINT_TO_POINTER (i));
+      item = make_menu_item (amd, MOVE_TO_WORKSPACE);
+      g_object_set_data (G_OBJECT (item), "workspace", GINT_TO_POINTER (i));
 
-    if (i == present_workspace)
-	gtk_widget_set_sensitive (mi, FALSE);
+      if (i == present_workspace)
+	gtk_widget_set_sensitive (item, FALSE);
 
-    gtk_menu_shell_append (GTK_MENU_SHELL (submenu), mi);
-    set_item_text (mi, label);
-    set_item_stock (mi, NULL);
+      gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);
+      set_item_text (item, label);
+      set_item_stock (item, NULL);
 
-    g_free (name);
-    g_free (label);	
-  }	
+      g_free (name);
+      g_free (label);	
+    }
 		 
   g_signal_connect_object (G_OBJECT (amd->window), 
                            "state_changed",
