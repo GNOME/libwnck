@@ -1,15 +1,15 @@
-# libwnck Brazilian Portuguese Translation
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2002.
+# Brazilian Portuguese translation of libwnck.
+# Copyright (C) 2002-2005 Free Software Foundation, Inc.
+# Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2002-2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0\n"
+"Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2004-03-12 15:21-0300\n"
+"POT-Creation-Date: 2005-02-20 06:24+0100\n"
+"PO-Revision-Date: 2005-02-20 15:21-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
-"Language-Team: GNOME-BR <gnome-br@listas.cipsga.org.br>\n"
+"Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,21 +33,19 @@ msgstr "Clicar para ir para a área de trabalho %s"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Janela Desconhecida"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr ""
+msgstr "Nenhuma Janela Aberta"
 
 #: libwnck/selector.c:741
-#, fuzzy
 msgid "Window Selector"
-msgstr "Lista de Janelas"
+msgstr "Seletor de Janelas"
 
 #: libwnck/selector.c:742
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Ferramenta para alternar entre janelas visíveis"
+msgstr "Ferramenta para alternar entre janelas"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
@@ -58,19 +56,16 @@ msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para alternar entre janelas visíveis"
 
 #: libwnck/tasklist.c:2102
-#, fuzzy
 msgid "_Close All"
-msgstr "Fe_char"
+msgstr "_Fechar Todas"
 
 #: libwnck/tasklist.c:2117
-#, fuzzy
 msgid "_Minimize All"
-msgstr "Mi_nimizar"
+msgstr "_Minimizar Todas"
 
 #: libwnck/tasklist.c:2128
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Desfazer Mi_nimizar"
+msgstr "_Desfazer Minimizar Todas"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -97,14 +92,12 @@ msgid "Roll _Up"
 msgstr "Rolar para cim_a"
 
 #: libwnck/window-action-menu.c:254
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Apenas nes_ta Área de Trabalho"
+msgstr "_Apenas nesta Área de Trabalho"
 
 #: libwnck/window-action-menu.c:261
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Apenas nes_ta Área de Trabalho"
+msgstr "_Sempre na Área de Trabalho visível"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
