@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.2.x\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2003-03-05 10:29+0530\n"
+"Project-Id-Version:libwnck.HEAD\n"
+"POT-Creation-Date: 2003-06-06 04:55+0200\n"
+"PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
 "MIME-Version: 1.0\n"
@@ -32,17 +32,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇവിടെ അമ‍ര്ത്തുക"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "ചെറുതാക്കിയതൊഴിവാക്കുക"
+msgstr ""
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "ചെറുതാക്കുക"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
 
@@ -67,9 +64,8 @@ msgid "Put on _All Workspaces"
 msgstr "എല്ലാ പണിയറയിലും ഇടുക"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "നീക്കുക"
+msgstr "മാറ്റുക"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
