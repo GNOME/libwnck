@@ -601,7 +601,8 @@ static void
 draw_window (GdkDrawable        *drawable,
              GtkWidget          *widget,
              WnckWindow         *win,
-             const GdkRectangle *winrect)
+             const GdkRectangle *winrect,
+             gboolean            on_current_workspace)
 {
   GdkPixbuf *icon;
   int icon_x, icon_y, icon_w, icon_h;
@@ -610,7 +611,7 @@ draw_window (GdkDrawable        *drawable,
   is_active = wnck_window_is_active (win);
           
   gdk_draw_rectangle (drawable,
-                      is_active ?
+                      is_active && on_current_workspace ?
                       widget->style->bg_gc[GTK_STATE_SELECTED] :
                       widget->style->bg_gc[GTK_STATE_NORMAL],
                       TRUE,
@@ -863,7 +864,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 	  draw_window (GTK_WIDGET (pager)->window,
 		       GTK_WIDGET (pager),
 		       win,
-		       &winrect);
+		       &winrect,
+                       is_current);
 	  
 	  tmp = tmp->next;
 	}
@@ -990,6 +992,13 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       GdkRectangle rect;
       GdkRectangle winrect;
       int dx, dy;
+      WnckWorkspace *active_space;
+      gboolean is_current;
+  
+      active_space = wnck_screen_get_active_workspace (pager->priv->screen);
+
+      is_current = active_space &&
+        drag_space == wnck_workspace_get_number (active_space);
       
       get_workspace_rect (pager, drag_space, &rect);          
       get_window_rect (pager->priv->drag_window, &rect, &winrect);
@@ -1005,7 +1014,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       draw_window (widget->window,
                    widget,
                    pager->priv->drag_window,
-                   &winrect);
+                   &winrect,
+                   is_current);
     }
   
   return FALSE;

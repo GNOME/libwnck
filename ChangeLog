@@ -1,3 +1,16 @@
+2004-10-03  Elijah Newren  <newren@math.utah.edu>
+
+	Don't highlight a sticky window on all workspaces when it has
+	focus; only highlight it for the current workspace.  (fixes
+	#104486)
+
+	* src/pager.c (draw_window): take an on_current_workspace
+	parameter and use it to determine whether to highlight the given
+	window as being focused, (wnck_pager_draw_workspace): pass whether
+	the workspace to be drawn is the current one to draw_window,
+	(wnck_pager_expose_event): determine whether the the workspace to
+	be drawn is the current one and pass the info along
+
 2004-09-28  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: post-release bump to 2.8.0.1.
