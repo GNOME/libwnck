@@ -1,6 +1,15 @@
 2005-02-20  Elijah Newren  <newren@gmail.com>
 
 	Backport of fix in the development branch; patch from Juerg
+	Billeter to fix #163343.
+
+	* libwnck/tasklist.c (wnck_tasklist_window_changed_geometry): If
+	there's only one monitor then skip the monitor-change checking
+	code to avoid use of uninitialized variables causing craziness.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Backport of fix in the development branch; patch from Juerg
 	Billeter to fix windows from all screen being shown when tasklist
 	is first created.
 
