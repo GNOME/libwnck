@@ -492,37 +492,15 @@ workspace_at_point (WnckPager *pager,
       
       get_workspace_rect (pager, i, &rect);
 
-      /* Extend rect outside the widget itself */
-      if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
-        {
-          if (i == 0)
-            rect.y = REALLY_SMALL;
-
-          if (i == (n_spaces - 1))
-            rect.height = REALLY_BIG;
-          
-          rect.x = REALLY_SMALL;
-          rect.width = REALLY_BIG * 3;
-        }
-      else
-        {
-          if (i == 0)
-            rect.x = REALLY_SMALL;
-
-          if (i == (n_spaces - 1))
-            rect.width = REALLY_BIG;
-          
-          rect.y = REALLY_SMALL;
-          rect.height = REALLY_BIG * 3;
-        }
-      
       if (POINT_IN_RECT (x, y, rect))
         return i;
 
       ++i;
     }
-  
-  return 0;
+
+  /* If it wasn't in any workspace it was probably in the unused area
+   * after the last workspace */
+  return n_spaces - 1;
 }
 
 static gboolean

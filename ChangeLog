@@ -1,3 +1,9 @@
+2001-11-28  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/pager.c (workspace_at_point):
+	Remove "Extend rect outside the widget itself" code, it was
+	totally broken.
+
 2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/pager.c:
