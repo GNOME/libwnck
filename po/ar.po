@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-04-23 15:57-0400\n"
-"PO-Revision-Date: 2002-05-31 19:20-0300\n"
+"POT-Creation-Date: 2002-08-18 06:35-0500\n"
+"PO-Revision-Date: 2002-06-07 18:38-0300\n"
 "Last-Translator: Isam Bayazidi <bayazidi@arabeyes.org>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,50 +16,62 @@ msgstr ""
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "نافذة بدون عنوان"
+msgstr "برنامج بدون عنوان"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "ناقل بين مساحات العمل"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "أداة التحويل بين مساحات العمل"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "أضغط هذه للتحويل لمساحة العمل %s"
+
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
-msgstr "ازل التصغير"
+msgstr "ازل الت_صغير"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
-msgstr "صغر"
+msgstr "ص_غر"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
-msgstr "ازل التكبير"
+msgstr "ازل الت_كبير"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
-msgstr "كبر"
+msgstr "ك_بر"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
-msgstr "ازل التظليل"
+msgstr "ازل ال_تظليل"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
-msgstr "ظلل"
+msgstr "_ظلل"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
-msgstr "اغلق"
+msgstr "ا_غلق"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
-msgstr "انقل"
+msgstr "ا_نقل"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
-msgstr "اعادة تحجيم"
+msgstr "ا_عادة تحجيم"
 
 #: libwnck/window.c:29
 msgid "untitled window"
 msgstr "نافذة بدون عنوان"
 
-#: libwnck/workspace.c:248
+#: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
 msgstr "مساحة عمل %d"
-
