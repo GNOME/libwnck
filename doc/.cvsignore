@@ -1,0 +1,16 @@
+Makefile
+Makefile.in
+html
+xml
+*.stamp
+libwnck.args
+libwnck.hierarchy
+libwnck.signals
+libwnck-decl.txt
+libwnck-decl-list.txt
+libwnck-undocumented.txt
+libwnck-unused.txt
+libwnck.interfaces
+libwnck.prerequisites
+libwnck-sections.txt
+*.lo
