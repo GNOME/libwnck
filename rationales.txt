@@ -3,6 +3,10 @@ Bugs explaining chosen behavior:
 Don't activate windows clicked in the pager:
   http://bugzilla.gnome.org/show_bug.cgi?id=100470
 
+Sticky/Pinned/whatever-its-called windows only appear in one workspace:
+  http://bugzilla.gnome.org/show_bug.cgi?id=156182
+  http://bugzilla.gnome.org/show_bug.cgi?id=87531
+
 <We need to fill this in more...>
 
 

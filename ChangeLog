@@ -2,10 +2,12 @@
 
 	* MAINTAINERS:
 	* HACKING:
-
 	New files.  Clarify the rules on patches and such, and add some
 	getting started information for anyone that may want to try their
 	hand at hacking libwnck.
+
+	* rationales.txt:
+	Add the sticky/pinned/whatever_its_called windows bug.
 
 2005-01-28  Elijah Newren  <newren@gmail.com>
 
