@@ -27,6 +27,17 @@
 
 G_BEGIN_DECLS
 
+typedef enum
+{
+  WNCK_WINDOW_STATE_MINIMIZED              = 1 << 0,
+  WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY = 1 << 1,
+  WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY   = 1 << 2,
+  WNCK_WINDOW_STATE_SHADED                 = 1 << 3,
+  WNCK_WINDOW_STATE_SKIP_PAGER             = 1 << 4,
+  WNCK_WINDOW_STATE_SKIP_TASKLIST          = 1 << 5,
+  WNCK_WINDOW_STATE_STICKY                 = 1 << 6
+} WnckWindowState;
+
 #define WNCK_TYPE_WINDOW              (wnck_window_get_type ())
 #define WNCK_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_WINDOW, WnckWindow))
 #define WNCK_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), WNCK_TYPE_WINDOW, WnckWindowClass))
@@ -54,7 +65,9 @@ struct _WnckWindowClass
   /* minimized, maximized, sticky, skip pager, skip task, shaded
    * may have changed
    */
-  void (* state_changed) (WnckWindow *window);
+  void (* state_changed) (WnckWindow     *window,
+                          WnckWindowState changed_mask,
+                          WnckWindowState new_state);
 
   /* Changed workspace or pinned/unpinned state */
   void (* workspace_changed) (WnckWindow *window);
@@ -106,7 +119,6 @@ void           wnck_window_move_to_workspace (WnckWindow    *window,
 gboolean wnck_window_is_pinned (WnckWindow *window);
 void     wnck_window_pin       (WnckWindow *window);
 void     wnck_window_unpin     (WnckWindow *window);
-
 
 G_END_DECLS
 

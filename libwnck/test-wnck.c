@@ -26,6 +26,8 @@ static void application_closed_callback       (WnckScreen      *screen,
 static void window_name_changed_callback      (WnckWindow      *window,
                                                gpointer         data);
 static void window_state_changed_callback     (WnckWindow      *window,
+                                               WnckWindowState  changed,
+                                               WnckWindowState  new,
                                                gpointer         data);
 static void window_workspace_changed_callback (WnckWindow      *window,
                                                gpointer         data);
@@ -165,11 +167,49 @@ window_name_changed_callback (WnckWindow    *window,
 }
 
 static void
-window_state_changed_callback (WnckWindow    *window,
-                               gpointer       data)
+window_state_changed_callback (WnckWindow     *window,
+                               WnckWindowState changed,
+                               WnckWindowState new,
+                               gpointer        data)
 {
   g_print ("State changed on window '%s'\n",
            wnck_window_get_name (window));
+
+  if (changed & WNCK_WINDOW_STATE_MINIMIZED)
+    g_print (" minimized = %d\n", wnck_window_is_minimized (window));
+
+  if (changed & WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY)
+    g_print (" maximized horiz = %d\n", wnck_window_is_maximized_horizontally (window));
+
+  if (changed & WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY)
+    g_print (" maximized vert = %d\n", wnck_window_is_maximized_vertically (window));
+
+  if (changed & WNCK_WINDOW_STATE_SHADED)
+    g_print (" shaded = %d\n", wnck_window_is_shaded (window));
+
+  if (changed & WNCK_WINDOW_STATE_SKIP_PAGER)
+    g_print (" skip pager = %d\n", wnck_window_is_skip_pager (window));
+
+  if (changed & WNCK_WINDOW_STATE_SKIP_TASKLIST)
+    g_print (" skip tasklist = %d\n", wnck_window_is_skip_tasklist (window));
+
+  if (changed & WNCK_WINDOW_STATE_STICKY)
+    g_print (" sticky = %d\n", wnck_window_is_sticky (window));
+
+  g_assert ( ((new & WNCK_WINDOW_STATE_MINIMIZED) != 0) ==
+             wnck_window_is_minimized (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY) != 0) ==
+             wnck_window_is_maximized_horizontally (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY) != 0) ==
+             wnck_window_is_maximized_vertically (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_SHADED) != 0) ==
+             wnck_window_is_shaded (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_SKIP_PAGER) != 0) ==
+             wnck_window_is_skip_pager (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_SKIP_TASKLIST) != 0) ==
+             wnck_window_is_skip_tasklist (window) );
+  g_assert ( ((new & WNCK_WINDOW_STATE_STICKY) != 0) ==
+             wnck_window_is_sticky (window) );
 }
 
 static void

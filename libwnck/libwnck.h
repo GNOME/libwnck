@@ -26,6 +26,7 @@
 #include <libwnck/screen.h>
 #include <libwnck/window.h>
 #include <libwnck/workspace.h>
+#include <libwnck/wnck-enum-types.h>
 
 #endif /* WNCK_LIB_H */
 

@@ -25,6 +25,8 @@
 #include "window.h"
 #include "xutils.h"
 #include "private.h"
+#include "wnck-enum-types.h"
+#include "wnck-marshal.h"
 
 #define _(x) dgettext (GETTEXT_PACKAGE, x)
 #define FALLBACK_NAME _("untitled window")
@@ -32,7 +34,9 @@
 
 static GHashTable *window_hash = NULL;
 
-/* Used to see if we should emit state_changed */
+/* Keep 0-6 in sync with the numbers in the WindowState enum. Yeah I'm
+ * a loser.
+ */
 #define COMPRESS_STATE(window)                        \
   ( ((window)->priv->is_minimized      << 0) |        \
     ((window)->priv->is_maximized_horz << 1) |        \
@@ -85,9 +89,11 @@ static void wnck_window_init        (WnckWindow      *window);
 static void wnck_window_class_init  (WnckWindowClass *klass);
 static void wnck_window_finalize    (GObject        *object);
 
-static void emit_name_changed      (WnckWindow *window);
-static void emit_state_changed     (WnckWindow *window);
-static void emit_workspace_changed (WnckWindow *window);
+static void emit_name_changed      (WnckWindow      *window);
+static void emit_state_changed     (WnckWindow      *window,
+                                    WnckWindowState  changed_mask,
+                                    WnckWindowState  new_state);
+static void emit_workspace_changed (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -166,8 +172,9 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, state_changed),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+                  _wnck_marshal_VOID__FLAGS_FLAGS,
+                  G_TYPE_NONE, 2,
+                  WNCK_TYPE_WINDOW_STATE, WNCK_TYPE_WINDOW_STATE);
 
   signals[WORKSPACE_CHANGED] =
     g_signal_new ("workspace_changed",
@@ -925,7 +932,8 @@ update_workspace (WnckWindow *window)
 static void
 force_update_now (WnckWindow *window)
 {
-  int old_state;
+  WnckWindowState old_state;
+  WnckWindowState new_state;
   char *old_name;
   char *old_icon_name;
  
@@ -968,9 +976,11 @@ force_update_now (WnckWindow *window)
   update_state (window);
   update_minimized (window);
   update_workspace (window); /* emits signals */
+
+  new_state = COMPRESS_STATE (window);
   
-  if (old_state != COMPRESS_STATE (window))
-    emit_state_changed (window);
+  if (old_state != new_state)      
+    emit_state_changed (window, old_state ^ new_state, new_state);
 }
 
 
@@ -1012,11 +1022,13 @@ emit_name_changed (WnckWindow *window)
 }
 
 static void
-emit_state_changed (WnckWindow *window)
+emit_state_changed (WnckWindow     *window,
+                    WnckWindowState changed_mask,
+                    WnckWindowState new_state)
 {
   g_signal_emit (G_OBJECT (window),
                  signals[STATE_CHANGED],
-                 0);
+                 0, changed_mask, new_state);
 }
 
 static void

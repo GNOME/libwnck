@@ -62,6 +62,9 @@ PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 1.3.9)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 
+GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`  
+AC_SUBST(GLIB_GENMARSHAL)
+
 AC_OUTPUT([
 Makefile
 libwnck/Makefile

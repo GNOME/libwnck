@@ -1,5 +1,8 @@
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
+        * libwnck/window.c: add more info to state_changed signal, 
+	set up generated enum/marshaller files to support it.
+	
 	* libwnck/window.c: add support for getting session ID, pid
 
 	* libwnck/application.c: implement creation/destruction of the
