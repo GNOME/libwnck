@@ -1,0 +1,64 @@
+# Norwegian/Nynorsk translation of libwnck
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Roy-Magne Mo <rmo@sunnmore.net>, 2002.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 0.1\n"
+"POT-Creation-Date: 2002-01-25 05:27+0100\n"
+"PO-Revision-Date: 2002-01-25 05:35+0100\n"
+"Last-Translator:  <>\n"
+"Language-Team: Norwegian/Nynorsk <nn@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "program utan namn"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "Ikkje _maksimér"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "_Minimér"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "_Ikkje maksimér"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "Ma_ksimér"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "Fjern _skugge"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "_Skuggelegg"
+
+#: libwnck/window-action-menu.c:297
+msgid "Close"
+msgstr "Lukk"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "Fl_ytt"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "Gje_r om storleik"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "vindauge utan tittel"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Arbeidsområde %d"
+
