@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-09-27 21:35-0400\n"
+"POT-Creation-Date: 2002-10-31 11:58-0500\n"
 "PO-Revision-Date: 2002-06-03 19:15+0200\n"
 "Last-Translator: Yanko Kaneti <yaneti@declera.com>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
