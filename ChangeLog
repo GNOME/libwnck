@@ -1,3 +1,10 @@
+2004-10-19  Elijah Newren  <newren@math.utah.edu>
+
+	* rationales.txt: New file (modelled after the metacity one with
+	the same name) that will include links to discussion on why
+	certain behaviors were chosen, and keep a list of tracker bugs.
+	(Think of this file as an aid in finding duplicates)
+
 2004-10-12  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: post-release bump to 2.8.2.
