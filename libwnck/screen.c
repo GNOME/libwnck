@@ -1,4 +1,4 @@
-/* application object */
+/* screen object */
 
 /*
  * Copyright (C) 2001 Havoc Pennington
@@ -19,9 +19,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "application.h"
+#include "screen.h"
 
-struct _WnckApplicationPrivate
+struct _WnckScreenPrivate
 {
 
 };
@@ -31,16 +31,16 @@ enum {
   LAST_SIGNAL
 };
 
-static void wnck_application_init        (WnckApplication      *application);
-static void wnck_application_class_init  (WnckApplicationClass *klass);
-static void wnck_application_finalize    (GObject        *object);
+static void wnck_screen_init        (WnckScreen      *screen);
+static void wnck_screen_class_init  (WnckScreenClass *klass);
+static void wnck_screen_finalize    (GObject        *object);
 
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
 
 GType
-wnck_application_get_type (void)
+wnck_screen_get_type (void)
 {
   static GType object_type = 0;
 
@@ -50,19 +50,19 @@ wnck_application_get_type (void)
     {
       static const GTypeInfo object_info =
       {
-        sizeof (WnckApplicationClass),
+        sizeof (WnckScreenClass),
         (GBaseInitFunc) NULL,
         (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_application_class_init,
+        (GClassInitFunc) wnck_screen_class_init,
         NULL,           /* class_finalize */
         NULL,           /* class_data */
-        sizeof (WnckApplication),
+        sizeof (WnckScreen),
         0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_application_init,
+        (GInstanceInitFunc) wnck_screen_init,
       };
       
       object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckApplication",
+                                            "WnckScreen",
                                             &object_info, 0);
     }
   
@@ -70,32 +70,32 @@ wnck_application_get_type (void)
 }
 
 static void
-wnck_application_init (WnckApplication *application)
+wnck_screen_init (WnckScreen *screen)
 {  
-  application->priv = g_new (WnckApplicationPrivate, 1);
+  screen->priv = g_new (WnckScreenPrivate, 1);
 
 }
 
 static void
-wnck_application_class_init (WnckApplicationClass *klass)
+wnck_screen_class_init (WnckScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   
   parent_class = g_type_class_peek_parent (klass);
   
-  object_class->finalize = wnck_application_finalize;
+  object_class->finalize = wnck_screen_finalize;
 
 }
 
 static void
-wnck_application_finalize (GObject *object)
+wnck_screen_finalize (GObject *object)
 {
-  WnckApplication *application;
+  WnckScreen *screen;
 
-  application = WNCK_APPLICATION (object);
+  screen = WNCK_SCREEN (object);
 
   
-  g_free (application->priv);
+  g_free (screen->priv);
   
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
