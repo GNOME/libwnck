@@ -1,142 +1,138 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# translation of libwnck.HEAD.gu.po to Gujarati
+# Copyright (C) 2005 Free Software Foundation, Inc.
 # MagNet <magnet@magnet-i.com>, 2004.
+# Ankit Patel <ankit@redhat.com>, 2005.
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck-2.6\n"
+"Project-Id-Version: libwnck.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2004-02-29 20:47+0530\n"
-"Last-Translator: Nirav, Ankit, Ankur, Atit, Bhavin, Kartik, Khushbu, Sweta. "
+"POT-Creation-Date: 2005-02-22 07:44+0100\n"
+"PO-Revision-Date: 2005-02-24 18:15+0530\n"
+"Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "<magnet@magnet-i.com>\n"
-"Language-Team: MagNet <magnet@magnet-i.com>\n"
+"Language-Team: Gujarati <gu@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: Plural-Forms: Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
 msgstr "નામ વગરનો કાર્યક્રમ"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "કામ કરવાની જગ્યા બદલનાર"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "કામ કરવાની જગ્યા %s માં બદલવા માટે અહિં ક્લિક કરો"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "અજ્ઞાત વિન્ડો"
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "કોઈ વિન્ડો ખૂલેલી નથી"
 
-#: libwnck/selector.c:741
-#, fuzzy
+#: libwnck/selector.c:734
 msgid "Window Selector"
-msgstr "વિન્ડોની યાદી"
+msgstr "વિન્ડો પસંદ કરનાર"
 
-#: libwnck/selector.c:742
-#, fuzzy
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
-msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
+msgstr "વિન્ડો વચ્ચે ફેરબદલી કરવાનું સાધન"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:526
 msgid "Window List"
 msgstr "વિન્ડોની યાદી"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:527
 msgid "Tool to switch between visible windows"
 msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
 
-#: libwnck/tasklist.c:2102
-#, fuzzy
+#: libwnck/tasklist.c:2106
 msgid "_Close All"
-msgstr "બંધ કરો (_C)"
+msgstr "બધુ બંધ કરો (_C)"
 
-#: libwnck/tasklist.c:2117
-#, fuzzy
+#: libwnck/tasklist.c:2121
 msgid "_Minimize All"
-msgstr "નાનું કરો (_M)"
+msgstr "બધુ નાનું કરો (_M)"
 
-#: libwnck/tasklist.c:2128
-#, fuzzy
+#: libwnck/tasklist.c:2132
 msgid "_Unminimize All"
-msgstr "નાનાં માંથી મોટું કરો (_m)"
+msgstr "બધુ નાનામાંથી પાછુ લાવો (_U)"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "નાનાં માંથી મોટું કરો (_m)"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "નાનું કરો (_M)"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "મોટા માંથી નાનું કરો (_U)"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "મોટું કરો (_x)"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "ઊલટું ઘુમાવો (_U)"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "ઊપર ઘુમાવો (_U)"
 
-#: libwnck/window-action-menu.c:254
-#, fuzzy
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
-msgstr "ફક્ત આ કામ કરવાની જગ્યા ઊપર (_T)"
+msgstr "માત્ર આ કામ કરવાની જગ્યા પર (_O)"
 
-#: libwnck/window-action-menu.c:261
-#, fuzzy
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
-msgstr "ફક્ત આ કામ કરવાની જગ્યા ઊપર (_T)"
+msgstr "હંમેશા દ્રશ્ય કામ કરવાની જગ્યા પર (_A)"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "કામ કરવાની જગ્યા ૧_૦"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "કામ કરવાની જગ્યા %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "ખસેડો (_v)"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "માપ બદલો (_R)"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "બંધ કરો (_C)"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "બીજી કામ કરવાની જગ્યામાં ખસેડો (_W)"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -145,11 +141,3 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "શીર્ષક વગરની વિન્ડો"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "બધી કામ કરવાની જગ્યાઓમાં મુકો (_A)"
-
-#~ msgid "U_nshade"
-#~ msgstr "છાયા દૂર કરો (_n)"
-
-#~ msgid "_Shade"
-#~ msgstr "છાયા (_S)"
