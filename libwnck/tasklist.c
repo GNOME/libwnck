@@ -834,18 +834,18 @@ wnck_tasklist_new (WnckScreen *screen)
 
   wnck_tasklist_update_lists (tasklist);
   
-  g_signal_connect (G_OBJECT (screen), "active_window_changed",
-		    G_CALLBACK (wnck_tasklist_active_window_changed),
-		    tasklist);
-  g_signal_connect (G_OBJECT (screen), "active_workspace_changed",
-		    G_CALLBACK (wnck_tasklist_active_workspace_changed),
-		    tasklist);
-  g_signal_connect (G_OBJECT (screen), "window_opened",
-		    G_CALLBACK (wnck_tasklist_window_added_or_removed),
-		    tasklist);
-  g_signal_connect (G_OBJECT (screen), "window_closed",
-		    G_CALLBACK (wnck_tasklist_window_added_or_removed),
-		    tasklist);
+  g_signal_connect_object (G_OBJECT (screen), "active_window_changed",
+			   G_CALLBACK (wnck_tasklist_active_window_changed),
+			   tasklist, 0);
+  g_signal_connect_object (G_OBJECT (screen), "active_workspace_changed",
+			   G_CALLBACK (wnck_tasklist_active_workspace_changed),
+			   tasklist, 0);
+  g_signal_connect_object (G_OBJECT (screen), "window_opened",
+			   G_CALLBACK (wnck_tasklist_window_added_or_removed),
+			   tasklist, 0);
+  g_signal_connect_object (G_OBJECT (screen), "window_closed",
+			   G_CALLBACK (wnck_tasklist_window_added_or_removed),
+			   tasklist, 0);
   
   return GTK_WIDGET (tasklist);
 }

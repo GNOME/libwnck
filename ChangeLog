@@ -1,3 +1,9 @@
+2002-02-23  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/tasklist.c (wnck_tasklist_new):
+	Use g_signal_connect_object so that we don't get signals
+	after the tasklist has been destroyed.
+
 2002-02-17  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/tasklist.[ch]:
