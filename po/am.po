@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "POT-Creation-Date: 2002-11-26 05:42+0100\n"
-"PO-Revision-Date: 2002-12-27 22:19+EDT\n"
+"PO-Revision-Date: 2002-12-29 19:37+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,32 +21,32 @@ msgstr "ያልተሰየሙ መጠቀሚያ ፕሮግራሜ"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "የመስሪያ ቦታ መቀያየሪያ"
+msgstr "የመሥሪያ ቦታ መቀያየሪያ"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "መስሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
+msgstr "መሥሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "ወደ መስሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
+msgstr "ወደ መሥሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
 
 #: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
-msgstr "ምታሳንስ (_m)"
+msgstr "መታሳንስ (_m)"
 
 #: libwnck/window-action-menu.c:161
 msgid "_Minimize"
-msgstr "ምሳንስ (_M)"
+msgstr "መሳንስ (_M)"
 
 #: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
-msgstr "ምታስተልቅ (_U)"
+msgstr "መታስተልቅ (_U)"
 
 #: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
-msgstr "ምተልቅ (_x)"
+msgstr "መተልቅ (_x)"
 
 #: libwnck/window-action-menu.c:181
 msgid "U_nshade"
