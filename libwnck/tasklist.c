@@ -36,6 +36,7 @@ struct _WnckTasklistPrivate
 {
   GList *tasks;
   int button_height;
+  int all_button_widths;
   guint layout_pending : 1;
 };
 
@@ -56,6 +57,10 @@ static gboolean wnck_tasklist_expose_event  (GtkWidget        *widget,
                                              GdkEventExpose   *event);
 static gboolean wnck_tasklist_focus         (GtkWidget        *widget,
                                              GtkDirectionType  direction);
+static void     wnck_tasklist_forall        (GtkContainer     *container,
+                                             gboolean	       include_internals,
+                                             GtkCallback       callback,
+                                             gpointer          callback_data);
 
 static void wnck_tasklist_ensure_layout     (WnckTasklist *tasklist);
 static void wnck_tasklist_invalidate_layout (WnckTasklist *tasklist);
@@ -106,6 +111,7 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
+  GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
   
   parent_class = g_type_class_peek_parent (klass);
   
@@ -114,6 +120,8 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   widget_class->size_request = wnck_tasklist_size_request;
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->expose_event = wnck_tasklist_expose_event;
+
+  container_class->forall = wnck_tasklist_forall;
 }
 
 static void
@@ -138,6 +146,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   tasklist = WNCK_TASKLIST (widget);
 
   tasklist->priv->button_height = 1;
+  tasklist->priv->all_button_widths = 0;
   
   tmp = tasklist->priv->tasks;
   while (tmp != NULL)
@@ -149,6 +158,8 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 
       tasklist->priv->button_height = MAX (child_req.height,
                                            tasklist->priv->button_height);
+
+      tasklist->priv->all_button_widths += child_req.width;
       
       tmp = tmp->next;
     }
@@ -164,10 +175,12 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   WnckTasklist *tasklist;
 
   tasklist = WNCK_TASKLIST (widget);
-  
-  wnck_tasklist_invalidate_layout (tasklist);
 
   GTK_WIDGET_CLASS (parent_class)->size_allocate (widget, allocation);
+
+  /* don't use invalidate_layout here because it queues a resize */
+  tasklist->priv->layout_pending = TRUE;
+  wnck_tasklist_ensure_layout (tasklist);
 }
 
 static gboolean
@@ -177,8 +190,9 @@ wnck_tasklist_expose_event  (GtkWidget      *widget,
   WnckTasklist *tasklist;
 
   tasklist = WNCK_TASKLIST (widget);
-  
-  
+
+  /* default impl OK? we may want a frame or something later */
+  return GTK_WIDGET_CLASS (parent_class)->expose_event (widget, event);
 }
 
 static gboolean
@@ -189,15 +203,71 @@ wnck_tasklist_focus (GtkWidget        *widget,
 
   tasklist = WNCK_TASKLIST (widget);
 
+  /* Hmm, maybe the default impl. works if it's in forall order */
+  return GTK_WIDGET_CLASS (parent_class)->focus (widget, direction);
+}
 
+static void
+wnck_tasklist_forall (GtkContainer *container,
+                      gboolean      include_internals,
+                      GtkCallback   callback,
+                      gpointer      callback_data)
+{
+  WnckTasklist *tasklist;
+  GList *tmp;
+  
+  tasklist = WNCK_TASKLIST (container);
+
+  tmp = tasklist->priv->tasks;
+  while (tmp != NULL)
+    {
+      WnckTask *task = tmp->data;
+      
+      (* callback) (task->button, callback_data);
+      
+      tmp = tmp->next;
+    }
 }
 
 static void
 wnck_tasklist_ensure_layout (WnckTasklist *tasklist)
 {
+  int rows;
+  GtkWidget *widget;
+  int row_height;
+  int extra_height;
+  int width_shortage;
+  int n_buttons;
+  int avg_width;
+  
   if (!tasklist->priv->layout_pending)
     return;
 
+#define ROW_SPACING 1
+  
+  widget = GTK_WIDGET (tasklist);
+
+  /* this is slightly wrong, since we have (rows - 1) ROW_SPACING, but
+   * (rows) button_height, and here we consider (rows) ROW_SPACING
+   */
+  rows = widget->allocation.height / (tasklist->priv->button_height + ROW_SPACING);
+  if (rows == 0)
+    rows = 1;
+  
+  row_height = widget->allocation.height / rows;
+  extra_height = widget->allocation.height % rows;
+
+  n_buttons = g_list_length (tasklist->priv->tasks);
+  avg_width = tasklist->priv->all_button_widths / n_buttons;
+  
+  /* This is also slightly wrong, because you "lose" some width
+   * at the end of each row, because buttons don't perfectly fit
+   * into rows.
+   */
+  width_shortage = tasklist->priv->all_button_widths -
+    (widget->allocation.width * rows);
+
+  
 }
 
 static void
@@ -210,7 +280,11 @@ wnck_tasklist_invalidate_layout (WnckTasklist *tasklist)
 GtkWidget*
 wnck_tasklist_new (void)
 {
-  
+  WnckTasklist *tasklist;
+
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+
+  return GTK_WIDGET (tasklist);
 }
 
 WnckTask*

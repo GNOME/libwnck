@@ -21,14 +21,17 @@
 
 #include "pager.h"
 #include "workspace.h"
+#include "window.h"
 
-#define MIN_WORKSPACE_SIZE 8
+#define N_SCREEN_CONNECTIONS 9
 
 struct _WnckPagerPrivate
 {
   WnckScreen *screen;
   int n_rows; /* really columns for vertical orientation */
   GtkOrientation orientation;
+  int workspace_size;
+  guint screen_connections[N_SCREEN_CONNECTIONS];
 };
 
 enum
@@ -52,6 +55,13 @@ static gboolean wnck_pager_button_press  (GtkWidget        *widget,
                                           GdkEventButton   *event);
 static gboolean wnck_pager_focus         (GtkWidget        *widget,
                                           GtkDirectionType  direction);
+
+static void wnck_pager_connect_screen    (WnckPager  *pager,
+                                          WnckScreen *screen);
+static void wnck_pager_connect_window    (WnckPager  *pager,
+                                          WnckWindow *window);
+static void wnck_pager_disconnect_screen (WnckPager  *pager);
+
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -93,6 +103,7 @@ wnck_pager_init (WnckPager *pager)
 
   pager->priv->n_rows = 1;
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  pager->priv->workspace_size = 48;
 }
 
 static void
@@ -120,6 +131,8 @@ wnck_pager_finalize (GObject *object)
   WnckPager *pager;
 
   pager = WNCK_PAGER (object);
+
+  wnck_pager_disconnect_screen (pager);
   
   g_free (pager->priv);
   
@@ -181,16 +194,14 @@ wnck_pager_size_request  (GtkWidget      *widget,
   
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {
-      requisition->width = MIN_WORKSPACE_SIZE * pager->priv->n_rows;
-      requisition->height = MIN_WORKSPACE_SIZE * spaces_per_row;
+      requisition->width = pager->priv->workspace_size * pager->priv->n_rows;
+      requisition->height = pager->priv->workspace_size * spaces_per_row;
     }
   else
     {
-      requisition->width = MIN_WORKSPACE_SIZE * spaces_per_row;
-      requisition->height = MIN_WORKSPACE_SIZE * pager->priv->n_rows;
+      requisition->width = pager->priv->workspace_size * spaces_per_row;
+      requisition->height = pager->priv->workspace_size * pager->priv->n_rows;
     }
-
-  g_print ("Requesting %d x %d\n", requisition->width, requisition->height);
 }
 
 static void
@@ -261,7 +272,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       gdk_draw_rectangle (widget->window,
                           widget->style->black_gc,
                           FALSE,
-                          rect.x, rect.y, rect.width, rect.height);
+                          rect.x, rect.y, rect.width - 1, rect.height - 1);
 
       if (active_space &&
           i == wnck_workspace_get_number (active_space))
@@ -336,7 +347,7 @@ wnck_pager_new (WnckScreen *screen)
   
   pager = g_object_new (WNCK_TYPE_PAGER, NULL);
 
-  pager->priv->screen = screen;
+  wnck_pager_connect_screen (pager, screen);
 
   return GTK_WIDGET (pager);
 }
@@ -352,4 +363,231 @@ wnck_pager_set_orientation (WnckPager     *pager,
 
   pager->priv->orientation = orientation;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+static void
+active_window_changed_callback    (WnckScreen      *screen,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+active_workspace_changed_callback (WnckScreen      *screen,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_stacking_changed_callback  (WnckScreen      *screen,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_opened_callback            (WnckScreen      *screen,
+                                   WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+
+  wnck_pager_connect_window (pager, window);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_closed_callback            (WnckScreen      *screen,
+                                   WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+workspace_created_callback        (WnckScreen      *screen,
+                                   WnckWorkspace   *space,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+static void
+workspace_destroyed_callback      (WnckScreen      *screen,
+                                   WnckWorkspace   *space,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+static void
+application_opened_callback       (WnckScreen      *screen,
+                                   WnckApplication *app,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+}
+
+static void
+application_closed_callback       (WnckScreen      *screen,
+                                   WnckApplication *app,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+}
+
+static void
+window_name_changed_callback      (WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_state_changed_callback     (WnckWindow      *window,
+                                   WnckWindowState  changed,
+                                   WnckWindowState  new,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_workspace_changed_callback (WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_icon_changed_callback      (WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+window_geometry_changed_callback  (WnckWindow      *window,
+                                   gpointer         data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
+wnck_pager_connect_screen (WnckPager  *pager,
+                           WnckScreen *screen)
+{
+  int i;
+  guint *c;
+
+  g_return_if_fail (pager->priv->screen == NULL);
+  
+  pager->priv->screen = screen;
+  
+  i = 0;
+  c = pager->priv->screen_connections;
+  
+  c[i] = g_signal_connect (G_OBJECT (screen), "active_window_changed",
+                           G_CALLBACK (active_window_changed_callback),
+                           pager);
+  ++i;
+  
+  c[i] = g_signal_connect (G_OBJECT (screen), "active_workspace_changed",
+                           G_CALLBACK (active_workspace_changed_callback),
+                           pager);
+  ++i;  
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "window_stacking_changed",
+                           G_CALLBACK (window_stacking_changed_callback),
+                           pager);
+  ++i;
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "window_opened",
+                           G_CALLBACK (window_opened_callback),
+                           pager);
+  ++i;
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "window_closed",
+                           G_CALLBACK (window_closed_callback),
+                           pager);
+  ++i;
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "workspace_created",
+                           G_CALLBACK (workspace_created_callback),
+                           pager);
+  ++i;
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "workspace_destroyed",
+                           G_CALLBACK (workspace_destroyed_callback),
+                           pager);
+  ++i;
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "application_opened",
+                           G_CALLBACK (application_opened_callback),
+                           pager);
+  ++i;  
+
+  c[i] = g_signal_connect (G_OBJECT (screen), "application_closed",
+                           G_CALLBACK (application_closed_callback),
+                           pager);
+  ++i;
+
+  g_assert (i == N_SCREEN_CONNECTIONS);
+}
+
+static void
+wnck_pager_connect_window (WnckPager  *pager,
+                           WnckWindow *window)
+{  
+  g_signal_connect_object (G_OBJECT (window), "name_changed",
+                           G_CALLBACK (window_name_changed_callback),
+                           pager, 0);
+  g_signal_connect_object (G_OBJECT (window), "state_changed",
+                           G_CALLBACK (window_state_changed_callback),
+                           pager, 0);
+  g_signal_connect_object (G_OBJECT (window), "workspace_changed",
+                           G_CALLBACK (window_workspace_changed_callback),
+                           pager, 0);
+  g_signal_connect_object (G_OBJECT (window), "icon_changed",
+                           G_CALLBACK (window_icon_changed_callback),
+                           pager, 0);
+  g_signal_connect_object (G_OBJECT (window), "geometry_changed",
+                           G_CALLBACK (window_geometry_changed_callback),
+                           pager, 0);
+}
+
+static void
+wnck_pager_disconnect_screen (WnckPager  *pager)
+{
+  int i;
+
+  if (pager->priv->screen == NULL)
+    return;
+  
+  i = 0;
+  while (i < N_SCREEN_CONNECTIONS)
+    {
+      if (pager->priv->screen_connections[i] != 0)
+        g_signal_handler_disconnect (G_OBJECT (pager->priv->screen),
+                                     pager->priv->screen_connections[i]);
+
+      pager->priv->screen_connections[i] = 0;
+      
+      ++i;
+    }
+
+  pager->priv->screen = NULL;
 }

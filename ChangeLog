@@ -1,3 +1,7 @@
+2001-10-24  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/pager.c: hacking
+
 2001-10-24  Havoc Pennington  <hp@redhat.com>
 
 	* configure.in: hack to work with slightly older GTK as well as
