@@ -1,3 +1,8 @@
+2004-09-21  Ross Burton  <ross@burtonini.com>
+
+	* libwnck/window.h: Add prototypes for wnck_window_set_fullscreen
+	and wnck_window_is_fullscreen() (fixes bug #153201)
+
 2004-09-17  Juerg Billeter  <j@bitron.ch>
 
 	* libwnck/tasklist.c: only show windows which are on the same
