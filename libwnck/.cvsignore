@@ -1,0 +1,7 @@
+Makefile
+Makefile.in
+inlinepixbufs.h
+test-pager
+test-tasklist
+test-wnck
+*~
