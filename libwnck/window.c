@@ -31,17 +31,18 @@
 
 static GHashTable *window_hash = NULL;
 
-/* Keep 0-6 in sync with the numbers in the WindowState enum. Yeah I'm
+/* Keep 0-7 in sync with the numbers in the WindowState enum. Yeah I'm
  * a loser.
  */
-#define COMPRESS_STATE(window)                        \
-  ( ((window)->priv->is_minimized      << 0) |        \
-    ((window)->priv->is_maximized_horz << 1) |        \
-    ((window)->priv->is_maximized_vert << 2) |        \
-    ((window)->priv->is_shaded         << 3) |        \
-    ((window)->priv->skip_pager        << 4) |        \
-    ((window)->priv->skip_taskbar      << 5) |        \
-    ((window)->priv->is_sticky         << 6) )
+#define COMPRESS_STATE(window)                          \
+  ( ((window)->priv->is_minimized        << 0) |        \
+    ((window)->priv->is_maximized_horz   << 1) |        \
+    ((window)->priv->is_maximized_vert   << 2) |        \
+    ((window)->priv->is_shaded           << 3) |        \
+    ((window)->priv->skip_pager          << 4) |        \
+    ((window)->priv->skip_taskbar        << 5) |        \
+    ((window)->priv->is_sticky           << 6) |        \
+    ((window)->priv->is_hidden           << 7) )
 
 struct _WnckWindowPrivate
 {
@@ -84,12 +85,13 @@ struct _WnckWindowPrivate
   guint skip_pager : 1;
   guint skip_taskbar : 1;
   guint is_sticky : 1;
-  
+  guint is_hidden : 1;
+
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
    * interpretation)
    */
-  guint net_wm_state_hidden : 1;
+  guint net_wm_state_hidden : 1;  
   guint wm_state_iconic : 1;
   
   /* idle handler for updates */
@@ -1103,8 +1105,7 @@ wnck_window_is_visible_on_workspace (WnckWindow    *window,
   
   state = wnck_window_get_state (window);
 
-  if (state & (WNCK_WINDOW_STATE_MINIMIZED |
-               WNCK_WINDOW_STATE_SHADED))
+  if (state & WNCK_WINDOW_STATE_HIDDEN)
     return FALSE; /* not visible */
 
   return wnck_window_is_on_workspace (window, workspace);
@@ -1127,8 +1128,8 @@ wnck_window_set_icon_geometry (WnckWindow *window,
 			       int         width,
 			       int         height)
 {
-	_wnck_set_icon_geometry (window->priv->xwindow,
-				 x, y, width, height);
+  _wnck_set_icon_geometry (window->priv->xwindow,
+                           x, y, width, height);
 }
 
 /**
@@ -1380,13 +1381,25 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_UTILITY:
       break;
     }
-
+  
   /* FIXME we need to recompute this if the window manager changes */
   if (wnck_screen_net_wm_supports (window->priv->screen,
                                    "_NET_WM_STATE_HIDDEN"))
-    window->priv->is_minimized = window->priv->net_wm_state_hidden;
+    {
+      window->priv->is_hidden = window->priv->net_wm_state_hidden;
+
+      /* FIXME this is really broken; need to bring it up on
+       * wm-spec-list. It results in showing an "Unminimize" menu
+       * item on task list, for shaded windows.
+       */
+      window->priv->is_minimized = window->priv->is_hidden;
+    }
   else
-    window->priv->is_minimized = window->priv->wm_state_iconic;
+    {
+      window->priv->is_minimized = window->priv->wm_state_iconic;
+      
+      window->priv->is_hidden = window->priv->is_minimized || window->priv->is_shaded;
+    }
 }
 
 static void

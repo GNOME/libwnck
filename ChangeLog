@@ -1,5 +1,12 @@
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
+	* libwnck/window.c (update_state): rework to update HIDDEN state
+	(wnck_window_is_visible_on_workspace): use state HIDDEN
+
+	* libwnck/window.h (WnckWindowState): add WNCK_WINDOW_STATE_HIDDEN
+
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
 	* libwnck/window-action-menu.c (wnck_create_window_action_menu):
 	use stock icons, and reorder menu to match metacity
 	
