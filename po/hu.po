@@ -1,17 +1,18 @@
 # Hungarian translation of libwnck.
-# Copyright (C) 2002, 2003, 2004 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 # Peter Doma <zelin@pointernet.hu>, 2002.
 # Andras Timar <timar@gnome.hu>, 2003, 2004.
 # Laszlo Dvornik <dvornik@gnome.hu>, 2004.
+# Gabor Kelemen <kelemeng@gnome.hu>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-28 18:44+0100\n"
-"PO-Revision-Date: 2004-08-27 13:13+0200\n"
-"Last-Translator: Laszlo Dvornik <dvornik@gnome.hu>\n"
+"POT-Creation-Date: 2005-03-04 06:29+0100\n"
+"PO-Revision-Date: 2005-03-04 14:54+0100\n"
+"Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -36,21 +37,19 @@ msgstr "Kattintson ide a(z) %s. munkaterületre váltáshoz"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Ismeretlen ablak"
 
 #: libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "Nincsenek nyitott ablakok"
 
 #: libwnck/selector.c:734
-#, fuzzy
 msgid "Window Selector"
-msgstr "Ablaklista"
+msgstr "Ablakválasztó"
 
 #: libwnck/selector.c:735
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "A látható ablakok közötti váltást segítő eszköz"
+msgstr "Ablakok közötti váltást segítő eszköz"
 
 #: libwnck/tasklist.c:528
 msgid "Window List"
@@ -61,19 +60,16 @@ msgid "Tool to switch between visible windows"
 msgstr "A látható ablakok közötti váltást segítő eszköz"
 
 #: libwnck/tasklist.c:2108
-#, fuzzy
 msgid "_Close All"
-msgstr "_Bezárás"
+msgstr "_Mindent bezár"
 
 #: libwnck/tasklist.c:2123
-#, fuzzy
 msgid "_Minimize All"
-msgstr "Mi_nimalizálás"
+msgstr "Összes mi_nimalizálása"
 
 #: libwnck/tasklist.c:2134
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "_Eredeti méret"
+msgstr "Összes _eredeti méretű"
 
 #: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
@@ -100,14 +96,12 @@ msgid "Roll _Up"
 msgstr "_Felgördítés"
 
 #: libwnck/window-action-menu.c:256
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "M_unkaterületre korlátozás"
+msgstr "_Csak ezen a munkaterületen"
 
 #: libwnck/window-action-menu.c:263
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "M_unkaterületre korlátozás"
+msgstr "Mindig a látható m_unkaterületen"
 
 #: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
@@ -147,6 +141,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "névtelen ablak"
-
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "_Megjelenítés minden munkaterületen"
