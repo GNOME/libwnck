@@ -1,3 +1,8 @@
+2004-03-16  Alexander Winston  <alexander.winston@comcast.net>
+
+	* configure.in (GETTEXT_PACKAGE): Added "en_CA" (Canadian English)
+	ALL_LINGUAS.
+
 2004-03-04  Guntupalli Karunakar  <karunakar@freedomink.org>
 
         * configure.in: Added "pa" (Punjabi) to ALL_LINGUAS.
