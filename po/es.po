@@ -1,12 +1,12 @@
 # Spanish translation of libwnck.
 # Copyright (C) 2001, 2002 Free Software Foundation, Inc
-# This file is distributed under the same license as the libwnck package.
+# This file is distributed under the same license as the  libwnck package.
 # Germán Poo Caamaño <gpoo@ubiobio.cl>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
+"POT-Creation-Date: 2003-05-14 13:12+0200\n"
 "PO-Revision-Date: 2002-06-03 16:48GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "Aplicación sin título"
 
@@ -33,17 +33,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Seleccionar aquí para conmutar espacio de trabajo %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "_Restaurar"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "M_inimizar"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Restaurar"
 
@@ -68,7 +65,6 @@ msgid "Put on _All Workspaces"
 msgstr "Poner en _todos los espacios de trabajo"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Mover"
 
@@ -80,11 +76,12 @@ msgstr "_Redimensionar"
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "Ventana sín título"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Espacio de trabajo %d"
+
