@@ -1,3 +1,13 @@
+2005-01-18  Elijah Newren  <newren@gmail.com>
+
+	Patch from Jaap Haitsma to show close all and (un)minimize all
+	options in the right click menu for grouped windows.  Fixes
+	#131568.
+
+	* libwnck/tasklist.c: (wnck_task_close_all,
+	wnck_task_unminimize_all, wnck_task_minimize_all): new functions,
+	(wnck_task_popup_menu): add the *all options for groups windows
+
 2005-01-15  Elijah Newren  <newren@gmail.com>
 
 	Patch from Juerg Billeter to fix #163343.

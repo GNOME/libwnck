@@ -1913,7 +1913,7 @@ wnck_task_menu_activated (GtkMenuItem *menu_item,
 }
 
 static void
-wnck_tasklist_activate_task_window     (WnckTask *task)
+wnck_tasklist_activate_task_window (WnckTask *task)
 {
   WnckTasklist *tasklist;
   WnckWindowState state;
@@ -1969,6 +1969,53 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
   wnck_tasklist_change_active_task (tasklist, task);
 }
 
+static void 
+wnck_task_close_all (GtkMenuItem *menu_item,
+ 		     gpointer     data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  GList *l;
+
+  l = task->windows;
+  while (l)
+    {
+      WnckTask *child = WNCK_TASK (l->data);
+      wnck_window_close (child->window, gtk_get_current_event_time ());
+      l = l->next;
+    }
+}
+
+static void
+wnck_task_unminimize_all (GtkMenuItem *menu_item,
+		          gpointer     data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  GList *l;
+
+  l = task->windows;
+  while (l)
+    {
+      WnckTask *child = WNCK_TASK (l->data);
+      wnck_window_unminimize (child->window);
+      l = l->next;
+    }
+}
+
+static void 
+wnck_task_minimize_all (GtkMenuItem *menu_item,
+  		        gpointer     data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  GList *l;
+
+  l = task->windows;
+  while (l)
+    {
+      WnckTask *child = WNCK_TASK (l->data);
+      wnck_window_minimize (child->window);
+      l = l->next;
+    }
+}
 
 static void
 wnck_task_popup_menu (WnckTask *task,
@@ -2022,20 +2069,64 @@ wnck_task_popup_menu (WnckTask *task,
       
       gtk_widget_show (menu_item);
 
-       if (action_submenu)
-         gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
-                                    wnck_create_window_action_menu (win_task->window));
-       else
-         g_signal_connect_object (G_OBJECT (menu_item), "activate",
-                                  G_CALLBACK (wnck_task_menu_activated),
-                                  G_OBJECT (win_task),
-                                  0);
+      if (action_submenu)
+        gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
+                                   wnck_create_window_action_menu (win_task->window));
+      else
+        g_signal_connect_object (G_OBJECT (menu_item), "activate",
+                                 G_CALLBACK (wnck_task_menu_activated),
+                                 G_OBJECT (win_task),
+                                 0);
       
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       
       l = l->next;
     }
 
+  /* In case of Right click, show Close All, Minimize All, Unminimize All*/
+  if (action_submenu) 
+    {
+      GtkWidget *separator;
+      GtkWidget *image;
+		
+      separator = gtk_separator_menu_item_new ();
+      gtk_widget_show (separator);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), separator);
+
+      menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Close All"));
+      image = gtk_image_new_from_stock (WNCK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
+      gtk_widget_show (image);
+      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);    
+      gtk_widget_show (menu_item);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+      g_signal_connect_object (G_OBJECT (menu_item), "activate",
+			       G_CALLBACK (wnck_task_close_all),
+			       G_OBJECT (task),
+			       0);
+
+      separator = gtk_separator_menu_item_new ();
+      gtk_widget_show (separator);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), separator);
+	    
+      menu_item = gtk_image_menu_item_new_with_mnemonic (_("_Minimize All"));
+      image = gtk_image_new_from_stock (WNCK_STOCK_MINIMIZE, GTK_ICON_SIZE_MENU);
+      gtk_widget_show (image);
+      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);  	
+      gtk_widget_show (menu_item);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+      g_signal_connect_object (G_OBJECT (menu_item), "activate",
+	    		       G_CALLBACK (wnck_task_minimize_all),
+			       G_OBJECT (task),
+			       0);
+		
+      menu_item =  gtk_image_menu_item_new_with_mnemonic (_("_Unminimize All"));
+      gtk_widget_show (menu_item);
+      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);			
+      g_signal_connect_object (G_OBJECT (menu_item), "activate",
+  			       G_CALLBACK (wnck_task_unminimize_all),
+			       G_OBJECT (task),
+			       0);							
+    }
   gtk_menu_set_screen (GTK_MENU (menu),
 		       _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
   
