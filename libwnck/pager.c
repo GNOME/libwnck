@@ -98,6 +98,8 @@ static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
 
+static void wnck_pager_set_layout_hint   (WnckPager  *pager);
+
 static void wnck_pager_clear_drag (WnckPager *pager);
 
 static GdkPixbuf* wnck_pager_get_background (WnckPager *pager,
@@ -227,11 +229,7 @@ wnck_pager_realize (GtkWidget *widget)
   widget->style = gtk_style_attach (widget->style, widget->window);
   gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
 
-  pager->priv->layout_manager_token =
-    wnck_screen_try_set_workspace_layout (pager->priv->screen,
-                                          pager->priv->layout_manager_token,
-                                          pager->priv->n_rows,
-                                          0);
+  wnck_pager_set_layout_hint (pager);
 }
 
 static void
@@ -998,6 +996,30 @@ wnck_pager_new (WnckScreen *screen)
   return GTK_WIDGET (pager);
 }
 
+static void
+wnck_pager_set_layout_hint (WnckPager *pager)
+{
+  int layout_rows;
+  int layout_cols;
+
+  if (pager->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      layout_rows = pager->priv->n_rows;
+      layout_cols = 0;
+    }
+  else
+    {
+      layout_rows = 0;
+      layout_cols = pager->priv->n_rows;
+    }
+
+  pager->priv->layout_manager_token =
+    wnck_screen_try_set_workspace_layout (pager->priv->screen,
+                                          pager->priv->layout_manager_token,
+                                          layout_rows,
+                                          layout_cols);
+}
+
 void
 wnck_pager_set_orientation (WnckPager     *pager,
                             GtkOrientation orientation)
@@ -1009,6 +1031,8 @@ wnck_pager_set_orientation (WnckPager     *pager,
 
   pager->priv->orientation = orientation;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
+
+  wnck_pager_set_layout_hint (pager);
 }
 
 void
@@ -1022,12 +1046,8 @@ wnck_pager_set_n_rows (WnckPager *pager,
 
   pager->priv->n_rows = n_rows;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
-  
-  pager->priv->layout_manager_token =
-    wnck_screen_try_set_workspace_layout (pager->priv->screen,
-                                          pager->priv->layout_manager_token,
-                                          pager->priv->n_rows,
-                                          0);
+
+  wnck_pager_set_layout_hint (pager);
 }
 
 void

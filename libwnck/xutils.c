@@ -2121,7 +2121,15 @@ _wnck_set_desktop_layout (Screen *xscreen,
 {
   gulong data[3];
 
-  data[0] = _NET_WM_ORIENTATION_HORZ;
+  /* FIXME: hack, hack, hack so as not
+   * to have to add a orientation param
+   * to wnck_screen_try_set_workspace_layout.
+   *
+   * Remove this crack asap.
+   */
+  g_assert ((rows == 0) || (columns == 0));
+
+  data[0] = (columns == 0) ? _NET_WM_ORIENTATION_HORZ : _NET_WM_ORIENTATION_VERT;
   data[1] = rows;
   data[2] = columns;
   
