@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-08-05 21:30+0530\n"
 "Last-Translator: G Karunakar <karunakar@freedomink.org>\n"
 "Language-Team: Gnome Hindi Team <indlinux-hindi-gnome@lists.sourceforge."
@@ -65,19 +65,19 @@ msgstr "केवल यही कार्यक्षेत्र (_T)"
 msgid "Put on _All Workspaces"
 msgstr "सभी कार्यक्षेत्रों मे रखें (_A)"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 msgid "_Move"
 msgstr "चलाएं (_M)"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "आकार बदलें (_R)"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "बंद करें (_C)"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "अनामित विंडो"
 

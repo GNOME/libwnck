@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-06-08 01:21+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -63,19 +63,19 @@ msgstr "仅在此工作区(_T)"
 msgid "Put on _All Workspaces"
 msgstr "在所有工作区(_A)"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 msgid "_Move"
 msgstr "移动(_M)"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "改变大小(_R)"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "关闭(_C)"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "未命名窗口"
 

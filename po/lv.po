@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2002-12-20 21:59+0200\n"
 "Last-Translator: Artis Trops <hornet@navigators.lv>\n"
 "Language-Team: Latvian <ll10nt@inbox.lv>\n"
@@ -65,20 +65,20 @@ msgstr "Tikai uz Šī_s Darba vietas"
 msgid "Put on _All Workspaces"
 msgstr "Novietot uz _Visām Darba vietām"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 #, fuzzy
 msgid "_Move"
 msgstr "Pār_vietot"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "_Izmainīt"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "_Aizvērt"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "nonosaukts logs"
 

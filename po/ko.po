@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.3.0\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-05-03 02:03+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
@@ -62,19 +62,19 @@ msgstr "이 작업공간에만 두기(_T)"
 msgid "Put on _All Workspaces"
 msgstr "모든 작업공간에 두기(_A)"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 msgid "_Move"
 msgstr "옮기기(_M)"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "크기 조정(_R)"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "제목없는 창"
 

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.4\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-05-13 01:35+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
@@ -63,19 +63,19 @@ msgstr "Apenas _Neste Ambiente de Trabalho"
 msgid "Put on _All Workspaces"
 msgstr "Em _Todos os Ambientes de Trabalho"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 msgid "_Move"
 msgstr "_Mover"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "Fe_char"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "janela sem título"
 

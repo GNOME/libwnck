@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-06-14 01:38+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -66,19 +66,19 @@ msgstr "Alleen op dit _werkblad"
 msgid "Put on _All Workspaces"
 msgstr "Op _alle werkbladen tonen"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 msgid "_Move"
 msgstr "_Verplaatsen"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "Afmetingen _wijzigen"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "Sl_uiten"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "naamloos venster"
 

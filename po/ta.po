@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck Tamil 2.2.0\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-03-27 23:37+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -66,20 +66,20 @@ msgstr "இவ்வேலையிடத்தில் மட்டும்"
 msgid "Put on _All Workspaces"
 msgstr "அனைத்து வேலையிடங்களிலும் போடுக"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 #, fuzzy
 msgid "_Move"
 msgstr "நகர்த்து"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "அளவு மாற்று"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "_மூடு"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "பெயரற்ற சாளரம்"
 

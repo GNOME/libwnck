@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -66,20 +66,20 @@ msgstr "Ar an Binse-Oibre _Seo"
 msgid "Put on _All Workspaces"
 msgstr "Chuir ar _gach Binse-Oibre"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 #, fuzzy
 msgid "_Move"
 msgstr "_Bogadh"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "_Athrú an méide"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "_Dúnann"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "fuinneog gan aninm"
 

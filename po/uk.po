@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-09-10 14:56-0400\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2002-12-09 07:22--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -65,20 +65,20 @@ msgstr "Лише на _це робоче місце"
 msgid "Put on _All Workspaces"
 msgstr "На _всі робочі місця"
 
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:375
 #, fuzzy
 msgid "_Move"
 msgstr "Пере_нести"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "Змінити _розмір"
 
-#: libwnck/window-action-menu.c:392
+#: libwnck/window-action-menu.c:395
 msgid "_Close"
 msgstr "_Закрити"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "неназване вікно"
 

@@ -1,5 +1,9 @@
 2003-12-10  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: Version 2.5.1.
+
+2003-12-10  Mark McLoughlin  <mark@skynet.ie>
+
 	Fixes bug #124148 - minimize animation goes to wrong place
 	with grouped windows.
 

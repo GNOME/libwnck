@@ -1,11 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) 2003 Jitendra Shah
 # Swapnil Hajare <dreamil1000a@yahoo.com> , 2003
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-26 19:52+0100\n"
+"POT-Creation-Date: 2003-12-10 11:44+0000\n"
 "PO-Revision-Date: 2003-01-10 16:30+0530\n"
 "Last-Translator: Jitendra Shah<jitendras@vsnl.com>\n"
 "Language-Team: Marathi <www.indictrans.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "अनामित अर्ज "
 
@@ -30,59 +30,65 @@ msgstr "कार्यक्षेत्र बदलण्याचे  उप
 msgid "Click this to switch to workspace %s"
 msgstr "कार्यक्षेत्र %s मध्ये  बदल करीता इकडे  क्लिक करा "
 
-#: libwnck/window-action-menu.c:155
-msgid "Un_minimize"
+#: libwnck/window-action-menu.c:191
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "मोठे करा  (_m)"
 
-#: libwnck/window-action-menu.c:161
-msgid "_Minimize"
+#: libwnck/window-action-menu.c:198
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "छोटे करा  (_M)"
 
-#: libwnck/window-action-menu.c:168
-msgid "_Unmaximize"
+#: libwnck/window-action-menu.c:206
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "मोठे पासून  छोटे करा (_U)"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "मोठे  करा  (_x)"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "छाया हटवा  (_n)"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "उलट घुमवा  (_U)"
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "छाया (_S)"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "वर घुमवा (_U)"
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "बंद करा  (_C)"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "फक्त हे  कार्यक्षेत्र (_T)"
 
-#: libwnck/window-action-menu.c:319
-msgid "Mo_ve"
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "सर्व  कार्यक्षेत्रां वर ठेवा  (_A)"
+
+#: libwnck/window-action-menu.c:375
+#, fuzzy
+msgid "_Move"
 msgstr "चालवा  (_v)"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:382
 msgid "_Resize"
 msgstr "आकार बदला  (_R)"
 
-#: libwnck/window.c:29
+#: libwnck/window-action-menu.c:395
+msgid "_Close"
+msgstr "बंद करा  (_C)"
+
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "अनामित विंडो"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "कार्यक्षेत्र %d"
 
-#~ msgid "_Unroll"
-#~ msgstr "उलट घुमवा  (_U)"
+#~ msgid "U_nshade"
+#~ msgstr "छाया हटवा  (_n)"
 
-#~ msgid "Roll _Up"
-#~ msgstr "वर घुमवा (_U)"
-
-#~ msgid "Only on _This Workspace"
-#~ msgstr "फक्त हे  कार्यक्षेत्र (_T)"
-
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "सर्व  कार्यक्षेत्रां वर ठेवा  (_A)"
+#~ msgid "_Shade"
+#~ msgstr "छाया (_S)"
