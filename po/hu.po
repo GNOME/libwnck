@@ -1,19 +1,20 @@
 # Hungarian translation of libwnck.
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# DOMA Peter <zelin@pointernet.hu>, 2002.
+# Copyright (C) 2002-2004 Free Software Foundation, Inc.
+# Peter Doma <zelin@pointernet.hu>, 2002.
 # Andras Timar <timar@gnome.hu>, 2003.
+# Laszlo Dvornik <dvornikl@mailbox.hu>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2004-01-23 12:05+0100\n"
-"Last-Translator: Andras Timar <timar@fsf.hu>\n"
-"Language-Team: Hungarian <hu@gnome.hu>\n"
+"Project-Id-Version: libwnck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-19 04:15+0100\n"
+"PO-Revision-Date: 2004-03-19 19:54+0100\n"
+"Last-Translator: Laszlo Dvornik <dvornikl@mailbox.hu>\n"
+"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.2\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -30,7 +31,7 @@ msgstr "Munkaterületek közötti váltást segítő eszköz"
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Kattints ide a %s. munkaterületre váltáshoz"
+msgstr "Kattintson ide a %s. munkaterületre váltáshoz"
 
 #: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
