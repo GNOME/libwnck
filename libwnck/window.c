@@ -599,12 +599,36 @@ wnck_window_is_skip_pager             (WnckWindow *window)
   return window->priv->skip_pager;
 }
 
+void
+wnck_window_set_skip_pager (WnckWindow *window,
+                            gboolean skip)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
+                      skip,
+                      _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"),
+                      0);
+}
+
 gboolean
 wnck_window_is_skip_tasklist          (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   return window->priv->skip_taskbar;
+}
+
+void
+wnck_window_set_skip_tasklist (WnckWindow *window,
+                               gboolean skip)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
+                      skip,
+                      _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"),
+                      0);
 }
 
 /**

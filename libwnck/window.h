@@ -150,6 +150,11 @@ gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
 gboolean wnck_window_is_sticky                 (WnckWindow *window);
 
+void wnck_window_set_skip_pager    (WnckWindow *window,
+                                    gboolean skip);
+void wnck_window_set_skip_tasklist (WnckWindow *window,
+                                    gboolean skip);
+
 void wnck_window_close                   (WnckWindow *window);
 void wnck_window_minimize                (WnckWindow *window);
 void wnck_window_unminimize              (WnckWindow *window);
