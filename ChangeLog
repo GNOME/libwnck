@@ -1,3 +1,7 @@
+2002-03-01  Pauli Virtanen  <pauli.virtanen@hut.fi>
+
+	* configure.in (ALL_LINGUAS): Added "fi" (Finnish).
+
 2002-02-23  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/tasklist.c (wnck_tasklist_new):
