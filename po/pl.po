@@ -1,151 +1,144 @@
-# Copyright (C) 2001-2003 Free Software Foundation, Inc.
+# Copyright (C) 2001-2005 Free Software Foundation, Inc.
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aktualną wersję tego pliku możesz odnaleźć w repozytorium cvs.gnome.pl
-# (:pserver:anonymous@cvs.gnome.pl:/gnomepl, puste hasło)
+# Aktualną wersję tego pliku możesz odnaleźć w repozytorium cvs.gnomepl.org
+# (:pserver:anonymous@cvs.gnomepl.org:/gnomepl, puste hasło)
 # Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas na adres:
-# translators@gnome.pl
+# translators@gnomepl.org
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-24 21:11+0100\n"
 "PO-Revision-Date: 2003-06-27 01:25+0100\n"
-"Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
+"Last-Translator: GNOME PL Team <translators@gnomepl.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:26
 msgid "untitled application"
 msgstr "aplikacja bez nazwy"
 
-#: libwnck/pager-accessible.c:317
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Przełącznik obszarów roboczych"
 
-#: libwnck/pager-accessible.c:328
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Narzędzie do przełączania obszarów roboczych"
 
-#: libwnck/pager-accessible.c:432
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknij tutaj, aby przełączyć na obszar roboczy %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Nieznane okno"
 
-#: libwnck/selector.c:639
+#: ../libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "Brak otwartych okien"
 
-#: libwnck/selector.c:741
-#, fuzzy
+#: ../libwnck/selector.c:734
 msgid "Window Selector"
-msgstr "Lista okien"
+msgstr "Wybór okien"
 
-#: libwnck/selector.c:742
-#, fuzzy
+#: ../libwnck/selector.c:735
 msgid "Tool to switch between windows"
-msgstr "Narzędzie do przełączania pomiędzy widocznymi oknami"
+msgstr "Narzędzie do przełączania pomiędzy oknami"
 
-#: libwnck/tasklist.c:523
+#: ../libwnck/tasklist.c:526
 msgid "Window List"
 msgstr "Lista okien"
 
-#: libwnck/tasklist.c:524
+#: ../libwnck/tasklist.c:527
 msgid "Tool to switch between visible windows"
 msgstr "Narzędzie do przełączania pomiędzy widocznymi oknami"
 
-#: libwnck/tasklist.c:2102
-#, fuzzy
+#: ../libwnck/tasklist.c:2106
 msgid "_Close All"
-msgstr "Za_mknij"
+msgstr "Zamknij _wszystkie"
 
-#: libwnck/tasklist.c:2117
-#, fuzzy
+#: ../libwnck/tasklist.c:2121
 msgid "_Minimize All"
-msgstr "Zm_inimalizuj"
+msgstr "Zminimalizuj wszys_tkie"
 
-#: libwnck/tasklist.c:2128
-#, fuzzy
+#: ../libwnck/tasklist.c:2132
 msgid "_Unminimize All"
-msgstr "Cofnij m_inimalizację"
+msgstr "Cofnij minimalizację wszystkic_h"
 
-#: libwnck/window-action-menu.c:209
+#: ../libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "Cofnij m_inimalizację"
 
-#: libwnck/window-action-menu.c:216
+#: ../libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "Zm_inimalizuj"
 
-#: libwnck/window-action-menu.c:224
+#: ../libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Cofnij m_aksymalizację"
 
-#: libwnck/window-action-menu.c:231
+#: ../libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Zm_aksymalizuj"
 
-#: libwnck/window-action-menu.c:239
+#: ../libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "Roz_wiń"
 
-#: libwnck/window-action-menu.c:246
+#: ../libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "Z_wiń"
 
-#: libwnck/window-action-menu.c:254
-#, fuzzy
+#: ../libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "Tylko na tym _obszarze roboczym"
 
-#: libwnck/window-action-menu.c:261
-#, fuzzy
+#: ../libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
-msgstr "Tylko na tym _obszarze roboczym"
+msgstr "_Zawsze na na widocznym obszarze roboczym"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar %d"
 
-#: libwnck/window-action-menu.c:384
+#: ../libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Obszar 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Obszar %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: ../libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "Prze_nieś"
 
-#: libwnck/window-action-menu.c:490
+#: ../libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "Zmień _rozmiar"
 
-#: libwnck/window-action-menu.c:503
+#: ../libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: libwnck/window-action-menu.c:516
+#: ../libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Przenieś do innego _obszaru"
 
-#: libwnck/window-action-menu.c:540
+#: ../libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "okno bez tytułu"
 
