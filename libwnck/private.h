@@ -51,6 +51,8 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   WnckScreen *screen);
 void        _wnck_window_destroy (WnckWindow *window);
 
+const char* _wnck_window_get_startup_id (WnckWindow *window);
+
 WnckWorkspace* _wnck_workspace_create  (int            number,
 					WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);

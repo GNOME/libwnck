@@ -76,6 +76,7 @@ int         wnck_application_get_pid       (WnckApplication *app);
 GdkPixbuf*  wnck_application_get_icon      (WnckApplication *app);
 GdkPixbuf*  wnck_application_get_mini_icon (WnckApplication *app);
 gboolean    wnck_application_get_icon_is_fallback (WnckApplication *app);
+const char* wnck_application_get_startup_id (WnckApplication *app);
 
 G_END_DECLS
 

@@ -71,6 +71,8 @@ struct _WnckWindowPrivate
   int y;
   int width;
   int height;
+
+  char *startup_id;
   
   /* true if transient_for points to root window,
    * not another app window
@@ -108,7 +110,8 @@ struct _WnckWindowPrivate
   guint need_emit_icon_changed : 1;
   guint need_update_actions : 1;
   guint need_update_wintype : 1;
-  guint need_update_transient_for : 1;  
+  guint need_update_transient_for : 1;
+  guint need_update_startup_id : 1;
 };
 
 enum {
@@ -144,6 +147,7 @@ static void update_workspace (WnckWindow *window);
 static void update_actions   (WnckWindow *window);
 static void update_wintype   (WnckWindow *window);
 static void update_transient_for (WnckWindow *window);
+static void update_startup_id (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -280,7 +284,8 @@ wnck_window_finalize (GObject *object)
   g_free (window->priv->name);
   g_free (window->priv->icon_name);
   g_free (window->priv->session_id);
-
+  g_free (window->priv->startup_id);
+  
   if (window->priv->app)
     g_object_unref (G_OBJECT (window->priv->app));
 
@@ -375,6 +380,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_actions = TRUE;
   window->priv->need_update_wintype = TRUE;
   window->priv->need_update_transient_for = TRUE;
+  window->priv->need_update_startup_id = TRUE;
   force_update_now (window);
 
   return window;
@@ -569,6 +575,29 @@ wnck_window_is_maximized_vertically   (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   return window->priv->is_maximized_vert;
+}
+
+const char*
+_wnck_window_get_startup_id (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+  
+  if (window->priv->startup_id == NULL &&
+      window->priv->group_leader != None)
+    {
+      WnckApplication *app;
+
+      /* Fall back to group leader property */
+      
+      app = wnck_application_get (window->priv->group_leader);
+      
+      if (app != NULL)
+        return wnck_application_get_startup_id (app);
+      else
+        return NULL;
+    }
+
+  return window->priv->startup_id;
 }
 
 /**
@@ -1307,6 +1336,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_STARTUP_ID"))
+    {
+      window->priv->need_update_startup_id = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
            _wnck_atom_get ("KWM_WIN_ICON") ||
@@ -1684,7 +1719,7 @@ update_wintype (WnckWindow *window)
             type = WNCK_WINDOW_MODAL_DIALOG;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_UTILITY"))
             type = WNCK_WINDOW_UTILITY;
-          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASHSCREEN"))
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASH"))
             type = WNCK_WINDOW_SPLASHSCREEN;
           else
             found_type = FALSE;
@@ -1740,6 +1775,20 @@ update_transient_for (WnckWindow *window)
 }
 
 static void
+update_startup_id (WnckWindow *window)
+{
+  if (!window->priv->need_update_startup_id)
+    return;
+
+  window->priv->need_update_startup_id = FALSE;
+
+  g_free (window->priv->startup_id);
+  window->priv->startup_id = 
+    _wnck_get_utf8_property (window->priv->xwindow,
+                             _wnck_atom_get ("_NET_STARTUP_ID"));
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -1786,6 +1835,7 @@ force_update_now (WnckWindow *window)
   old_state = COMPRESS_STATE (window);
   old_actions = window->priv->actions;
 
+  update_startup_id (window);    /* no side effects */
   update_transient_for (window); /* wintype needs this to be first */
   update_wintype (window);
   update_wm_state (window);

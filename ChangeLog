@@ -1,3 +1,32 @@
+2002-11-30  Havoc Pennington  <hp@pobox.com>
+
+	* configure.in: require startup notification 0.4
+
+        * libwnck/application.c (_wnck_application_create): fill in
+	startup_id field
+	(wnck_application_get_startup_id): new function
+
+	* libwnck/tasklist.c (wnck_task_new_from_window): remove any
+	startup sequence buttons as soon as we add a window for that
+	sequence to the tasklist.
+	(wnck_task_get_text): prefer "description" over name if we have 
+	a description.
+
+	* libwnck/window.c (_wnck_window_get_startup_id): new function
+
+	* libwnck/xutils.c (_wnck_get_fallback_icons): allow getting only
+	one of the default icons
+
+	* configure.in: increment to 2.1.5 and bump libtool stuff
+
+	* libwnck/window.c (update_wintype): type SPLASH not SPLASHSCREEN 
+	for the X atom
+
+	* libwnck/tasklist.c (wnck_task_get_icon): load an icon for the
+	task being started up.
+	(wnck_tasklist_set_icon_loader): new function to set an icon load
+	function
+
 Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 
 	* configure.in: version 2.1.4, and increment libtool versioning

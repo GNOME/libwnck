@@ -2140,15 +2140,17 @@ _wnck_get_fallback_icons (GdkPixbuf **iconp,
                           int         ideal_mini_width,
                           int         ideal_mini_height)
 {
-  *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
-                                 DEFAULT_ICON_WIDTH,
-                                 ideal_height > 0 ? ideal_height :
-                                 DEFAULT_ICON_HEIGHT);
+  if (iconp)
+    *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
+                                   DEFAULT_ICON_WIDTH,
+                                   ideal_height > 0 ? ideal_height :
+                                   DEFAULT_ICON_HEIGHT);
 
-  *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
-                                      DEFAULT_MINI_ICON_WIDTH,
-                                      ideal_mini_height > 0 ? ideal_mini_height :
-                                      DEFAULT_MINI_ICON_HEIGHT);
+  if (mini_iconp)
+    *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
+                                        DEFAULT_MINI_ICON_WIDTH,
+                                        ideal_mini_height > 0 ? ideal_mini_height :
+                                        DEFAULT_MINI_ICON_HEIGHT);
 }
 
 

@@ -76,7 +76,19 @@ void wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size);
 gint wnck_tasklist_get_minimum_width (WnckTasklist *tasklist);
 void wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size);
 gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
-    
+
+typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
+                                            int           size,
+                                            unsigned int  flags,
+                                            void         *data);
+
+void wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
+                                    WnckLoadIconFunction  load_icon_func,
+                                    void                 *data,
+                                    GDestroyNotify        free_data_func);
+
+
+
 G_END_DECLS
 
 #endif /* WNCK_TASKLIST_H */

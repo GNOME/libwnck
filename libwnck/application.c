@@ -42,6 +42,8 @@ struct _WnckApplicationPrivate
   WnckIconCache *icon_cache;
 
   WnckWindow *icon_window;
+
+  char *startup_id;
   
   guint name_from_leader : 1; /* name is from group leader */
   guint icon_from_leader : 1;
@@ -354,6 +356,14 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
   return _wnck_icon_cache_get_is_fallback (app->priv->icon_cache);
 }
 
+const char*
+wnck_application_get_startup_id (WnckApplication *app)
+{
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
+
+  return app->priv->startup_id;
+}
+
 /* xwindow is a group leader */
 WnckApplication*
 _wnck_application_create (Window      xwindow,
@@ -380,6 +390,9 @@ _wnck_application_create (Window      xwindow,
     application->priv->name_from_leader = TRUE;
   
   application->priv->pid = _wnck_get_pid (application->priv->xwindow);
+
+  application->priv->startup_id = _wnck_get_utf8_property (application->priv->xwindow,
+                                                           _wnck_atom_get ("_NET_STARTUP_ID"));
   
   g_hash_table_insert (app_hash, &application->priv->xwindow, application);
   
@@ -491,6 +504,11 @@ _wnck_application_process_property_notify (WnckApplication *app,
       _wnck_icon_cache_property_changed (app->priv->icon_cache,
                                          xevent->xproperty.atom);
       emit_icon_changed (app);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_STARTUP_ID"))
+    {
+      /* FIXME update startup id */
     }
 }
 

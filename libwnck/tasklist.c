@@ -98,7 +98,7 @@ struct _WnckTask
   gulong icon_changed_tag;
   gulong name_changed_tag;
   gulong app_name_changed_tag;
-
+  
   /* task menu */
   GtkWidget *menu;
   /* ops menu */
@@ -155,6 +155,10 @@ struct _WnckTasklistPrivate
   gint minimum_width;
   gint minimum_height;
 
+  WnckLoadIconFunction icon_loader;
+  void *icon_loader_data;
+  GDestroyNotify free_icon_loader_data;
+  
 #ifdef HAVE_STARTUP_NOTIFICATION
   SnMonitorContext *sn_context;
 #endif
@@ -457,6 +461,9 @@ wnck_tasklist_finalize (GObject *object)
 
   tasklist = WNCK_TASKLIST (object);
 
+  if (tasklist->priv->free_icon_loader_data != NULL)
+    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
+  
   wnck_tasklist_disconnect_screen (tasklist);
 
   /* Tasks should have gone away due to removing their
@@ -591,6 +598,33 @@ wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
   g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
 	
   return tasklist->priv->minimum_height;
+}
+
+/**
+ * wnck_tasklist_set_icon_loader:
+ * @tasklist: a #WnckTasklist
+ * @load_icon_func: icon loader function
+ * @data: data for icon loader function
+ * @free_data_func: function to free the data
+ *
+ * Sets a function to be used for loading icons. The icon
+ * loader function takes an icon name as in the Icon field
+ * in a .desktop file. The "flags" field for the function
+ * is not defined to do anything yet.
+ * 
+ **/
+void
+wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
+                               WnckLoadIconFunction  load_icon_func,
+                               void                 *data,
+                               GDestroyNotify        free_data_func)
+{
+  if (tasklist->priv->free_icon_loader_data != NULL)
+    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
+
+  tasklist->priv->icon_loader = load_icon_func;
+  tasklist->priv->icon_loader_data = data;
+  tasklist->priv->free_icon_loader_data = free_data_func;  
 }
 
 /* returns the maximal possible button width (i.e. if you
@@ -1807,8 +1841,9 @@ wnck_task_get_text (WnckTask *task)
 
     case WNCK_TASK_STARTUP_SEQUENCE:
 #ifdef HAVE_STARTUP_NOTIFICATION
-      /* this may return NULL, but probably won't */
-      name = sn_startup_sequence_get_name (task->startup_sequence);
+      name = sn_startup_sequence_get_description (task->startup_sequence);
+      if (name == NULL)
+        name = sn_startup_sequence_get_name (task->startup_sequence);
       if (name == NULL)
         name = sn_startup_sequence_get_binary_name (task->startup_sequence);
       
@@ -1924,10 +1959,35 @@ wnck_task_get_icon (WnckTask *task)
 				      state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
-      /* FIXME we have to load an icon from the icon loader,
-       * and before that we need to just use a generic hourglass
-       * or something
-       */
+#ifdef HAVE_STARTUP_NOTIFICATION
+      if (task->tasklist->priv->icon_loader != NULL)
+        {
+          const char *icon;
+          
+          icon = sn_startup_sequence_get_icon_name (task->startup_sequence);
+          if (icon != NULL)
+            {
+              GdkPixbuf *loaded;
+              
+              loaded =  (* task->tasklist->priv->icon_loader) (icon,
+                                                               MINI_ICON_SIZE,
+                                                               0,
+                                                               task->tasklist->priv->icon_loader_data);
+
+              if (loaded != NULL)
+                {
+                  pixbuf = wnck_task_scale_icon (loaded, FALSE);
+                  g_object_unref (G_OBJECT (loaded));
+                }
+            }
+        }
+
+      if (pixbuf == NULL)
+        {
+          _wnck_get_fallback_icons (NULL, 0, 0,
+                                    &pixbuf, MINI_ICON_SIZE, MINI_ICON_SIZE);
+        }
+#endif
       break;
     }
 
@@ -2313,6 +2373,39 @@ wnck_task_compare (gconstpointer  a,
     return 1;
 }
 
+static void
+remove_startup_sequences_for_window (WnckTasklist *tasklist,
+                                     WnckWindow   *window)
+{
+#ifdef HAVE_STARTUP_NOTIFICATION
+  const char *win_id;
+  GList *tmp;
+  
+  win_id = _wnck_window_get_startup_id (window);
+  if (win_id == NULL)
+    return;
+
+  tmp = tasklist->priv->startup_sequences;
+  while (tmp != NULL)
+    {
+      WnckTask *task = tmp->data;
+      GList *next = tmp->next;
+      const char *task_id;
+      
+      g_assert (task->type == WNCK_TASK_STARTUP_SEQUENCE);
+
+      task_id = sn_startup_sequence_get_id (task->startup_sequence);
+
+      if (task_id && strcmp (task_id, win_id) == 0)
+        gtk_widget_destroy (task->button);
+      
+      tmp = next;
+    }
+#else
+  ; /* nothing */
+#endif
+}
+
 static WnckTask *
 wnck_task_new_from_window (WnckTasklist *tasklist,
 			   WnckWindow   *window)
@@ -2328,6 +2421,8 @@ wnck_task_new_from_window (WnckTasklist *tasklist,
   
   wnck_task_create_widgets (task);
 
+  remove_startup_sequences_for_window (tasklist, window);
+  
   return task;
 }
 
