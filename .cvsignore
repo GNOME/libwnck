@@ -13,3 +13,4 @@ libwnck-1.0.pc
 ltmain.sh
 stamp-h
 stamp-h.in
+autom4te.cache
