@@ -127,7 +127,6 @@ static AtkObject* wnck_pager_get_accessible (GtkWidget *widget);
 
 
 static gpointer parent_class;
-static guint signals[LAST_SIGNAL] = { 0 };
 
 GType
 wnck_pager_get_type (void)

@@ -1207,7 +1207,7 @@ wnck_window_transient_is_active (WnckWindow *window)
   windows = wnck_screen_get_windows_stacked (window->priv->screen);
 
   transient = window;
-  while (transient = find_last_transient_for (windows, transient->priv->xwindow))
+  while ((transient = find_last_transient_for (windows, transient->priv->xwindow)))
     {
       /* catch transient cycles */
       if (transient == window)

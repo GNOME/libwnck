@@ -195,7 +195,7 @@ wnck_pager_ref_selection (AtkSelection *selection,
       /*
        * State is defunct
        */
-      return FALSE;
+      return NULL;
     }
   pager = WNCK_PAGER (widget);
 
