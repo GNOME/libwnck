@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2002-11-03 14:09-0500\n"
-"PO-Revision-Date: 2002-08-16 13:31-0300\n"
+"POT-Creation-Date: 2002-11-29 13:23-0200\n"
+"PO-Revision-Date: 2002-11-29 13:23-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Ma_ximizar"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Desenrolar"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Rolar para cim_a"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Apenas nes_ta Área de Trabalho"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Colocar em tod_as Áreas de Trabalho"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -83,8 +83,3 @@ msgstr "janela sem título"
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
 
-#~ msgid "U_nshade"
-#~ msgstr "Desfazer _Sombrear"
-
-#~ msgid "_Shade"
-#~ msgstr "_Sombrear"
