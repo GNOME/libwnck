@@ -1343,6 +1343,12 @@ get_cmap (GdkPixmap *pixmap)
         }
     }
 
+  /* Be sure we aren't going to blow up due to visual mismatch */
+  if (cmap &&
+      (gdk_colormap_get_visual (cmap)->depth !=
+       gdk_drawable_get_depth (pixmap)))
+    cmap = NULL;
+  
   return cmap;
 }
 
