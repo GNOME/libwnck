@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck cvs\n"
-"POT-Creation-Date: 2002-05-17 18:35-0400\n"
+"POT-Creation-Date: 2002-06-02 02:02+0200\n"
 "PO-Revision-Date: 2002-03-05 22:45-0300\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -44,9 +44,8 @@ msgid "_Shade"
 msgstr "_Enrollar"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
 msgid "_Close"
-msgstr "Cerrar"
+msgstr "_Cerrar"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
