@@ -362,6 +362,8 @@ _wnck_application_create (Window      xwindow,
   application->priv->name = _wnck_get_name (xwindow);
   if (application->priv->name)
     application->priv->name_from_leader = TRUE;
+    
+  application->priv->pid = _wnck_get_pid (application->priv->xwindow);
   
   g_hash_table_insert (app_hash, &application->priv->xwindow, application);
   
