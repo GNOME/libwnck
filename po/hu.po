@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2003-07-06 22:55+0200\n"
-"PO-Revision-Date: 2003-07-06 23:01+0200\n"
+"POT-Creation-Date: 2003-07-07 17:58+0200\n"
+"PO-Revision-Date: 2003-07-07 17:58+0200\n"
 "Last-Translator: Andras Timar <timar@gnome.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -69,7 +69,7 @@ msgstr "_Áthelyezés"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "_Méretezés"
+msgstr "Át_méretezés"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
