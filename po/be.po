@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-10-27 22:49GMT+2\n"
+"POT-Creation-Date: 2002-11-04 09:32+0100\n"
+"PO-Revision-Date: 2002-11-05 01:50GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,39 +16,52 @@ msgstr ""
 msgid "untitled application"
 msgstr "дастасаваньне бяз назвы"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Пераключальнік прастораў"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Дастасаваньне для пераключэньня між працоўных прастораў"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Клікніце сюды каб пераключыцца на прастору %s "
+
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "_Разгарнуць"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "Н_айменьшыць"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "Вярнуць _памер"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "На_йбольшыць"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "Вярнуць з _ценю"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "Схаваць у _цень"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Зачыніць"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "Пера_мясьціць"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Зьмяніць _памер"
 
@@ -60,4 +73,3 @@ msgstr "акно бяз назвы"
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
-
