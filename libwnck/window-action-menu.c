@@ -442,7 +442,8 @@ wnck_create_window_action_menu (WnckWindow *window)
   ActionMenuData *amd;
   GtkWidget *separator;
   int num_workspaces, present_workspace, i;
- 
+  WnckWorkspace *workspace;
+
   _wnck_stock_icons_init ();
   
   amd = g_new0 (ActionMenuData, 1);
@@ -523,8 +524,13 @@ wnck_create_window_action_menu (WnckWindow *window)
                          amd->workspace_item);
 
   num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (amd->window));
-  present_workspace = wnck_workspace_get_number (wnck_window_get_workspace (amd->window));
- 
+  workspace = wnck_window_get_workspace (amd->window);
+
+  if (workspace)
+    present_workspace = wnck_workspace_get_number (workspace);
+  else 
+    present_workspace = -1;
+
   for (i = 0; i < num_workspaces; i++)
     {
       char *name, *label;
