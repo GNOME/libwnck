@@ -32,17 +32,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "কর্মক্ষেত্র %s বদলাতে এখানে ক্লিক করুন"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Un_minimize"
 msgstr "ছোট করো না"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "_Minimize"
 msgstr "ছোট করো"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "_Unmaximize"
 msgstr "বড় করো না"
 
@@ -68,7 +65,6 @@ msgstr "সকল কর্মক্ষেত্রে রাখুন"
 
 # msgstr "সকল কর্মক্ষেত্র রাখো"
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "Mo_ve"
 msgstr "সরাও"
 
