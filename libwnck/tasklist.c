@@ -1968,7 +1968,9 @@ wnck_task_get_text (WnckTask *task)
       state = wnck_window_get_state (task->window);
       name = wnck_window_get_name (task->window);
       
-      if (state & WNCK_WINDOW_STATE_MINIMIZED)
+      if (state & WNCK_WINDOW_STATE_SHADED)
+	return g_strdup_printf ("=%s=", name);
+      else if (state & WNCK_WINDOW_STATE_MINIMIZED)
 	return g_strdup_printf ("[%s]", name);
       else
 	return g_strdup (name);

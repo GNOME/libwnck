@@ -1,3 +1,8 @@
+2004-07-22  James M. Cape  <jcape@ignore-your.tv>
+
+	* libwnck/tasklist.c: (wnck_task_get_text):
+	Display shaded windows as "= <name> =" instead of "[ <name> ]".
+
 2004-07-20  Arvind Samptur  <arvind.samptur@wipro.com>
 
 	* window-action-menu.c: (wnck_create_window_action_menu):
