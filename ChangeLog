@@ -1,3 +1,8 @@
+2003-10-28  Padraig O'Briain  <padraigobriain@sun.com>
+
+	* libwnck/tasklist.c (wnck_tasklist_init): Set accessible name and 
+	description. Fixes bug #123953.
+
 2003-10-22  Vincent Untz  <vincent@vuntz.net>
 
 	* libwnck/tasklist.c: (wnck_task_create_widgets) left align the button

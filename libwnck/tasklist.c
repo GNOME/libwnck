@@ -427,7 +427,12 @@ wnck_tasklist_get_type (void)
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
-  GTK_WIDGET_SET_FLAGS (GTK_WIDGET (tasklist), GTK_NO_WINDOW);
+  GtkWidget *widget;
+  AtkObject *atk_obj;
+
+  widget = GTK_WIDGET (tasklist);
+
+  GTK_WIDGET_SET_FLAGS (widget, GTK_NO_WINDOW);
   
   tasklist->priv = g_new0 (WnckTasklistPrivate, 1);
 
@@ -443,6 +448,10 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->minimum_height = DEFAULT_HEIGHT;
 
   tasklist->priv->idle_callback_tag = 0;
+
+  atk_obj = gtk_widget_get_accessible (widget);
+  atk_object_set_name (atk_obj, _("Window List"));
+  atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
 }
 
 static void
