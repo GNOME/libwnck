@@ -40,6 +40,7 @@ typedef struct _ActionMenuData ActionMenuData;
 struct _ActionMenuData
 {
   WnckWindow *window;
+  GtkWidget *menu;
   GtkWidget *close_item;
   GtkWidget *minimize_item;
   GtkWidget *maximize_item;
@@ -49,11 +50,29 @@ struct _ActionMenuData
   guint idle_handler;
 };
 
+static void object_weak_notify (gpointer data,
+                                GObject *obj);
+static void window_weak_notify (gpointer data,
+                                GObject *window);
+
 static void
 window_weak_notify (gpointer data,
                     GObject *window)
 {
   g_object_set_data (G_OBJECT (data), "wnck-action-data", NULL);
+  g_object_weak_unref (G_OBJECT (data),
+                       object_weak_notify,
+                       window);
+}
+
+
+static void
+object_weak_notify (gpointer data,
+                    GObject *obj)
+{
+  g_object_weak_unref (G_OBJECT (data),
+                       window_weak_notify,
+                       obj);
 }
 
 static void
@@ -62,7 +81,10 @@ set_data (GObject        *obj,
 {
   g_object_set_data (obj, "wnck-action-data", amd);
   if (amd && amd->window)
-    g_object_weak_ref (G_OBJECT (amd->window), window_weak_notify, obj);
+    {
+      g_object_weak_ref (G_OBJECT (amd->window), window_weak_notify, obj);
+      g_object_weak_ref (obj, object_weak_notify, amd->window);
+    }
 }
 
 static ActionMenuData*
@@ -244,6 +266,14 @@ amd_free (ActionMenuData *amd)
   g_free (amd);
 }
 
+/**
+ * wnck_create_window_action_menu:
+ * @window: a #WnckWindow
+ * 
+ * Creates a menu of window operations for @window.
+ * 
+ * Return value: a new menu of window operations
+ **/
 GtkWidget*
 wnck_create_window_action_menu (WnckWindow *window)
 {
@@ -254,11 +284,13 @@ wnck_create_window_action_menu (WnckWindow *window)
   amd->window = window;
   
   menu = gtk_menu_new ();
-
+  amd->menu = menu;
+  
   g_object_set_data_full (G_OBJECT (menu), "wnck-action-data",
                           amd, (GDestroyNotify) amd_free);
 
-  g_object_weak_ref (G_OBJECT (menu), window_weak_notify, menu);
+  g_object_weak_ref (G_OBJECT (window), window_weak_notify, menu);
+  g_object_weak_ref (G_OBJECT (menu), object_weak_notify, window);
   
   amd->close_item = make_menu_item (amd, CLOSE);
   

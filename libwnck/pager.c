@@ -22,6 +22,7 @@
 #include "pager.h"
 #include "workspace.h"
 #include "window.h"
+#include "window-action-menu.h"
 
 #define N_SCREEN_CONNECTIONS 9
 
@@ -32,6 +33,10 @@ struct _WnckPagerPrivate
   GtkOrientation orientation;
   int workspace_size;
   guint screen_connections[N_SCREEN_CONNECTIONS];
+  GtkWidget *action_menu;
+  WnckWindow *action_window;
+  int action_click_x;
+  int action_click_y;
 };
 
 enum
@@ -61,6 +66,14 @@ static void wnck_pager_connect_screen    (WnckPager  *pager,
 static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
+
+static void wnck_pager_popup_action_menu (WnckPager  *pager,
+                                          WnckWindow *window,
+                                          int         button,
+                                          int         x,
+                                          int         y,
+                                          guint32     timestamp);
+static void wnck_pager_clear_action_menu (WnckPager  *pager);
 
 
 static gpointer parent_class;
@@ -132,6 +145,8 @@ wnck_pager_finalize (GObject *object)
 
   pager = WNCK_PAGER (object);
 
+  wnck_pager_clear_action_menu (pager);
+  
   wnck_pager_disconnect_screen (pager);
   
   g_free (pager->priv);
@@ -275,6 +290,38 @@ get_windows_for_workspace_in_bottom_to_top (WnckScreen    *screen,
   return result;
 }
 
+static void
+get_window_rect (WnckWindow         *window,
+                 const GdkRectangle *workspace_rect,
+                 GdkRectangle       *rect)
+{
+  double width_ratio, height_ratio;
+  int x, y, width, height;
+  
+  width_ratio = (double) workspace_rect->width / (double) gdk_screen_width ();
+  height_ratio = (double) workspace_rect->height / (double) gdk_screen_height ();
+  
+  wnck_window_get_geometry (window, &x, &y, &width, &height);
+  
+  x *= width_ratio;
+  y *= height_ratio;
+  width *= width_ratio;
+  height *= height_ratio;
+  
+  x += workspace_rect->x;
+  y += workspace_rect->y;
+  
+  if (width < 3)
+    width = 3;
+  if (height < 3)
+    height = 3;
+
+  rect->x = x;
+  rect->y = y;
+  rect->width = width;
+  rect->height = height;
+}
+
 static gboolean
 wnck_pager_expose_event  (GtkWidget      *widget,
                           GdkEventExpose *event)
@@ -296,12 +343,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       GList *windows;
       GList *tmp;
       gboolean is_current;
-      double width_ratio, height_ratio;
       
       get_workspace_rect (pager, i, &rect);
-
-      width_ratio = (double) rect.width / (double) gdk_screen_width ();
-      height_ratio = (double) rect.height / (double) gdk_screen_height ();
       
       is_current = active_space &&
         i == wnck_workspace_get_number (active_space);
@@ -319,31 +362,19 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       while (tmp != NULL)
         {
           WnckWindow *win = tmp->data;
-          int x, y, width, height;
           GdkPixbuf *icon;
           int icon_x, icon_y, icon_w, icon_h;
-          
-          wnck_window_get_geometry (win, &x, &y, &width, &height);
+          GdkRectangle winrect;
 
-          x *= width_ratio;
-          y *= height_ratio;
-          width *= width_ratio;
-          height *= height_ratio;
-
-          x += rect.x;
-          y += rect.y;
-
-          if (width < 3)
-            width = 3;
-          if (height < 3)
-            height = 3;
+          get_window_rect (win, &rect, &winrect);
           
           gdk_draw_rectangle (widget->window,
                               is_current ?
                               widget->style->bg_gc[GTK_STATE_SELECTED] :
                               widget->style->bg_gc[GTK_STATE_NORMAL],
                               TRUE,
-                              x + 1, y + 1, width - 2, height - 2);
+                              winrect.x + 1, winrect.y + 1,
+                              winrect.width - 2, winrect.height - 2);
 
           icon = wnck_window_get_icon (win);
 
@@ -358,8 +389,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
                * We don't arbitrarily scale the icon, because it's
                * just too slow on my Athlon 850.
                */
-              if (icon_w > (width - 2) ||
-                  icon_h > (height - 2))
+              if (icon_w > (winrect.width - 2) ||
+                  icon_h > (winrect.height - 2))
                 {
                   icon = wnck_window_get_mini_icon (win);
                   if (icon)
@@ -368,8 +399,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
                       icon_h = gdk_pixbuf_get_height (icon);
 
                       /* Give up. */
-                      if (icon_w > (width - 2) ||
-                          icon_h > (height - 2))
+                      if (icon_w > (winrect.width - 2) ||
+                          icon_h > (winrect.height - 2))
                         icon = NULL;
                     }
                 }
@@ -377,8 +408,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
 
           if (icon)
             {
-              icon_x = x + (width - icon_w) / 2;
-              icon_y = y + (height - icon_h) / 2;
+              icon_x = winrect.x + (winrect.width - icon_w) / 2;
+              icon_y = winrect.y + (winrect.height - icon_h) / 2;
                 
               {
                 /* render_to_drawable should take a clip rect to save
@@ -386,19 +417,14 @@ wnck_pager_expose_event  (GtkWidget      *widget,
                  */
                 GdkRectangle pixbuf_rect;
                 GdkRectangle draw_rect;
-                GdkRectangle clip;
-
-                clip.x = x;
-                clip.y = y;
-                clip.width = width;
-                clip.height = height;
                 
                 pixbuf_rect.x = icon_x;
                 pixbuf_rect.y = icon_y;
                 pixbuf_rect.width = icon_w;
                 pixbuf_rect.height = icon_h;
                 
-                if (gdk_rectangle_intersect (&clip, &pixbuf_rect, &draw_rect))
+                if (gdk_rectangle_intersect (&winrect, &pixbuf_rect,
+                                             &draw_rect))
                   {
                     gdk_pixbuf_render_to_drawable_alpha (icon,
                                                          widget->window,
@@ -420,7 +446,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
                               widget->style->fg_gc[GTK_STATE_SELECTED] :
                               widget->style->fg_gc[GTK_STATE_NORMAL],
                               FALSE,
-                              x, y, width - 1, height - 1);
+                              winrect.x, winrect.y,
+                              winrect.width - 1, winrect.height - 1);
           
           tmp = tmp->next;
         }
@@ -464,20 +491,67 @@ wnck_pager_button_press  (GtkWidget      *widget,
       GdkRectangle rect;
 
       get_workspace_rect (pager, i, &rect);
-      
 
       if (POINT_IN_RECT (event->x, event->y, rect))
         {
           WnckWorkspace *space = wnck_workspace_get (i);
 
-          if (space)
-            wnck_workspace_activate (space);
+          if (space &&
+              space != wnck_screen_get_active_workspace (pager->priv->screen))
+            {
+              if (event->button == 1)
+                wnck_workspace_activate (space);
+              goto workspace_search_out;
+            }
+          else if (space)
+            {
+              GList *windows;
+              GList *tmp;
+              
+              windows =
+                get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
+                                                            space);
 
-          break;
+              /* clicks on top windows first */
+              windows = g_list_reverse (windows);
+
+              tmp = windows;
+              while (tmp != NULL)
+                {
+                  WnckWindow *win = WNCK_WINDOW (tmp->data);
+                  GdkRectangle winrect;
+
+                  get_window_rect (win, &rect, &winrect);
+
+                  if (POINT_IN_RECT (event->x, event->y, winrect))
+                    {
+                      if (event->button == 1) 
+                        wnck_window_activate (win);
+                      else if (event->button == 3)
+                        wnck_pager_popup_action_menu (pager,
+                                                      win,
+                                                      event->button,
+                                                      event->x,
+                                                      event->y,
+                                                      event->time);
+
+                      goto window_search_out;
+                    }
+                  
+                  tmp = tmp->next;
+                }
+
+            window_search_out:
+              
+              g_list_free (windows);
+              goto workspace_search_out;
+            }
         }
       
       ++i;
     }
+
+ workspace_search_out:
 
   return TRUE;
 }
@@ -560,6 +634,9 @@ window_closed_callback            (WnckScreen      *screen,
 {
   WnckPager *pager = WNCK_PAGER (data);
 
+  if (pager->priv->action_window == window)
+    wnck_pager_clear_action_menu (pager);
+  
   gtk_widget_queue_draw (GTK_WIDGET (pager));
 }
 
@@ -744,4 +821,65 @@ wnck_pager_disconnect_screen (WnckPager  *pager)
     }
 
   pager->priv->screen = NULL;
+}
+
+static void
+popup_position_func (GtkMenu   *menu,
+                     gint      *x,
+                     gint      *y,
+                     gboolean  *push_in,
+                     gpointer	user_data)
+{
+  WnckPager *pager;
+  GtkWidget *widget;
+  gint root_x, root_y;
+  GtkRequisition req;
+  
+  pager = WNCK_PAGER (user_data);
+  widget = GTK_WIDGET (pager);
+  
+  gtk_widget_size_request (pager->priv->action_menu, &req);
+
+  gdk_window_get_origin (widget->window, &root_x, &root_y);
+  root_x += pager->priv->action_click_x;
+  root_y += pager->priv->action_click_y;
+  
+  /* Ensure sanity */
+  *x = CLAMP (*x, root_x, (root_x + widget->allocation.width));
+  *y = CLAMP (*y, root_y, (root_y + widget->allocation.height));
+
+  *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
+  *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
+}
+
+static void
+wnck_pager_popup_action_menu (WnckPager  *pager,
+                              WnckWindow *window,
+                              int         button,
+                              int         x,
+                              int         y,
+                              guint32     timestamp)
+{
+  wnck_pager_clear_action_menu (pager);
+
+  pager->priv->action_window = window;
+  pager->priv->action_menu = wnck_create_window_action_menu (window);
+  pager->priv->action_click_x = x;
+  pager->priv->action_click_y = y;
+  
+  gtk_menu_popup (GTK_MENU (pager->priv->action_menu),
+                  NULL, NULL,
+                  popup_position_func, pager,
+                  button, timestamp);
+}
+
+static void
+wnck_pager_clear_action_menu (WnckPager  *pager)
+{
+  if (pager->priv->action_menu)
+    {
+      gtk_widget_destroy (pager->priv->action_menu);
+      pager->priv->action_menu = NULL;
+      pager->priv->action_window = NULL;
+    }
 }

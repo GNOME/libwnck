@@ -21,12 +21,19 @@
 
 #include "window-menu.h"
 
+static void object_weak_notify (gpointer data,
+                                GObject *obj);
+static void window_weak_notify (gpointer data,
+                                GObject *window);
 
 static void
 window_weak_notify (gpointer data,
                     GObject *window)
 {
   g_object_set_data (G_OBJECT (data), "wnck-window-data", NULL);
+  g_object_weak_unref (G_OBJECT (data),
+                       object_weak_notify,
+                       window);
 }
 
 static void
@@ -35,7 +42,19 @@ set_window (GObject    *obj,
 {
   g_object_set_data (obj, "wnck-window-data", win);
   if (win)
-    g_object_weak_ref (G_OBJECT (win), window_weak_notify, obj);
+    {
+      g_object_weak_ref (G_OBJECT (win), window_weak_notify, obj);
+      g_object_weak_ref (obj, object_weak_notify, win);
+    }
+}
+
+static void
+object_weak_notify (gpointer data,
+                    GObject *obj)
+{
+  g_object_weak_unref (G_OBJECT (data),
+                       window_weak_notify,
+                       obj);
 }
 
 static WnckWindow*

@@ -1,3 +1,14 @@
+2001-10-25  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/pager.c: right-click menu
+
+	* libwnck/window-menu.c: fix weak ref stuff
+
+	* libwnck/window-action-menu.c (wnck_create_window_action_menu):
+	fix a weak ref
+
+	* libwnck/window.c (_wnck_window_create): initially update actions
+
 2001-10-24  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c: make it all bloated

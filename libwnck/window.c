@@ -368,6 +368,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_icon_name = TRUE;
   window->priv->need_update_minimized = TRUE;
   window->priv->need_update_workspace = TRUE;
+  window->priv->need_update_actions = TRUE;
   force_update_now (window);
 
   return window;
@@ -1318,7 +1319,11 @@ update_actions (WnckWindow *window)
     WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY |
     WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   |
     WNCK_WINDOW_ACTION_UNSHADE                 |
-    WNCK_WINDOW_ACTION_UNSTICK;
+    WNCK_WINDOW_ACTION_UNSTICK                 |
+    WNCK_WINDOW_ACTION_MAXIMIZE                |
+    WNCK_WINDOW_ACTION_UNMAXIMIZE              |
+    WNCK_WINDOW_ACTION_MINIMIZE                |
+    WNCK_WINDOW_ACTION_UNMINIMIZE;
 }
 
 static void
