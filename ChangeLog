@@ -1,5 +1,10 @@
 2001-10-25  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/pager.c (wnck_pager_expose_event): tinker with
+	appearance more
+
+2001-10-25  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/pager.c (wnck_pager_expose_event): only draw active
 	window as selected, not whole workspace
 

@@ -349,13 +349,11 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       is_current = active_space &&
         i == wnck_workspace_get_number (active_space);
 
-#if 0
       if (is_current)
-        gdk_draw_rectangle (widget->window,
-                            widget->style->bg_gc[GTK_STATE_SELECTED],
+        gdk_draw_rectangle (widget->window,                            
+                            widget->style->dark_gc[GTK_STATE_NORMAL],
                             TRUE,
                             rect.x + 1, rect.y + 1, rect.width - 2, rect.height - 2);
-#endif
       
       windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
                                                             wnck_workspace_get (i));
@@ -460,8 +458,6 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       g_list_free (windows);
       
       gdk_draw_rectangle (widget->window,
-                          is_current ?
-                          widget->style->fg_gc[GTK_STATE_SELECTED] :
                           widget->style->fg_gc[GTK_STATE_NORMAL],
                           FALSE,
                           rect.x, rect.y, rect.width - 1, rect.height - 1);
