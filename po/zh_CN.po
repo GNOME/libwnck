@@ -57,11 +57,11 @@ msgstr "卷起(_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "仅在此工作区(_T)"
+msgstr "只在此工作区上(_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "置于所有工作区(_A)"
+msgstr "放在所有工作区上(_A)"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
