@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2005-01-19 20:52-0500\n"
+"POT-Creation-Date: 2005-01-29 00:10-0500\n"
+"PO-Revision-Date: 2005-01-29 20:52-0500\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -58,12 +58,12 @@ msgid "Roll _Up"
 msgstr "Roll _Up"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
-msgstr "Only on _This Workspace"
+msgid "_Only on This Workspace"
+msgstr "_Only on This Workspace"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Put on _All Workspaces"
+msgid "_Always on Current Workspace"
+msgstr "_Always on Current Workspace"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -112,14 +112,14 @@ msgstr "Window List"
 msgid "Tool to switch between visible windows"
 msgstr "Tool to switch between visible windows"
 
-#: libwnck/tasklist.c:2096
+#: libwnck/tasklist.c:2102
 msgid "_Close All"
 msgstr "_Close All"
 
-#: libwnck/tasklist.c:2111
+#: libwnck/tasklist.c:2117
 msgid "_Minimize All"
 msgstr "_Minimize All"
 
-#: libwnck/tasklist.c:2122
+#: libwnck/tasklist.c:2128
 msgid "_Unminimize All"
 msgstr "_Unminimize All"
