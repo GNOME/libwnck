@@ -755,6 +755,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
+      _wnck_atom_get ("WM_STATE"))
+    {
+      window->priv->need_update_minimized = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
            XA_WM_NAME ||
            xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_NAME") ||

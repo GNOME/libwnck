@@ -1,5 +1,8 @@
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/window.c (_wnck_window_process_property_notify): fix 
+	to handle WM_STATE changes
+	
 	* libwnck/test-wnck.c: add GUI to test program. exposes various
 	GTK bugs...
 
