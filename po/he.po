@@ -7,14 +7,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2003-01-03 16:50+0200\n"
+"POT-Creation-Date: 2003-04-29 13:35+0200\n"
+"PO-Revision-Date: 2003-04-29 17:19+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0\n"
+"X-Generator: KBabel 1.0.1\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
@@ -34,17 +34,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "ב_טל מזעור"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_מזער"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_שחזר"
 
@@ -58,7 +55,7 @@ msgstr "גלול _חזרה"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr "גלול _מעלה"
+msgstr "גלול מ_עלה"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
@@ -69,23 +66,22 @@ msgid "Put on _All Workspaces"
 msgstr "שים ב_כל סביבות העבודה"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_הזז"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "_שנה גודל"
+msgstr "ש_נה גודל"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
 msgstr "_סגור"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "חלון ללא-שם"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
@@ -95,3 +91,4 @@ msgstr "סביבת עבודה %d"
 
 #~ msgid "_Shade"
 #~ msgstr "ה_צלל"
+
