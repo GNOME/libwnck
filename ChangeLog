@@ -1,3 +1,12 @@
+2004-06-21  Anders Carlsson  <andersca@gnome.org>
+
+	* libwnck/window-action-menu.c: (item_activated_callback):
+	* libwnck/window.c: (wnck_window_close):
+	* libwnck/window.h:
+	* libwnck/xutils.c: (_wnck_close):
+	* libwnck/xutils.h:
+	Add timestamp argument to wnck_window_close.
+	
 2004-06-14  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: post-release bump to 2.6.3

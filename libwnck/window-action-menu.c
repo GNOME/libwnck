@@ -111,7 +111,8 @@ item_activated_callback (GtkWidget *menu_item,
   switch (action)
     {
     case CLOSE:
-      wnck_window_close (amd->window);
+      wnck_window_close (amd->window,
+			 gtk_get_current_event_time ());
       break;
     case MINIMIZE:
       if (wnck_window_is_minimized (amd->window))

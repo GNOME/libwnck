@@ -88,7 +88,8 @@ void _wnck_iconify   (Window xwindow);
 void _wnck_deiconify (Window xwindow);
 
 void _wnck_close     (Screen *screen,
-		      Window  xwindow);
+		      Window  xwindow,
+		      Time    timestamp);
 
 void _wnck_change_state     (Screen  *screen,
 			     Window   xwindow,

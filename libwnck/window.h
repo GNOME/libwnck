@@ -159,7 +159,8 @@ void wnck_window_set_skip_pager    (WnckWindow *window,
 void wnck_window_set_skip_tasklist (WnckWindow *window,
                                     gboolean skip);
 
-void wnck_window_close                   (WnckWindow *window);
+void wnck_window_close                   (WnckWindow *window,
+					  guint32     timestamp);
 void wnck_window_minimize                (WnckWindow *window);
 void wnck_window_unminimize              (WnckWindow *window);
 void wnck_window_maximize                (WnckWindow *window);

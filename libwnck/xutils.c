@@ -829,7 +829,8 @@ _wnck_deiconify (Window xwindow)
 
 void
 _wnck_close (Screen *screen,
-	     Window  xwindow)
+	     Window  xwindow,
+	     Time    timestamp)
 {
   XEvent xev;
   
@@ -840,7 +841,7 @@ _wnck_close (Screen *screen,
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
   xev.xclient.format = 32;
-  xev.xclient.data.l[0] = 0;
+  xev.xclient.data.l[0] = timestamp;
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
 
