@@ -1,5 +1,11 @@
 2003-10-22  Vincent Untz  <vincent@vuntz.net>
 
+	* libwnck/pager.c: (wnck_pager_button_press) don't begin a drag if the
+	pager is in NAME mode because we can't see the window.
+	Fix bug #119031.
+
+2003-10-22  Vincent Untz  <vincent@vuntz.net>
+
 	* libwnck/pager.c: (get_window_rect): clip the window rectangle so it
 	doesn't get out of the workspace rectangle.
 	Fix bug #104700.

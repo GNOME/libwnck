@@ -1034,7 +1034,7 @@ wnck_pager_button_press (GtkWidget      *widget,
       space = wnck_screen_get_workspace (pager->priv->screen, space_number);
     }
 
-  if (space)
+  if (space && (pager->priv->display_mode != WNCK_PAGER_DISPLAY_NAME))
     {
       GList *windows;
       GList *tmp;
