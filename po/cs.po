@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-31 06:03+0100\n"
-"PO-Revision-Date: 2005-01-31 10:55+0100\n"
+"POT-Creation-Date: 2005-02-02 14:08+0100\n"
+"PO-Revision-Date: 2005-02-02 21:32+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,42 @@ msgstr "Nástroj pro přepínání mezi pracovními plochami"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknutím sem se přepnete na pracovní plochu %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "Neznámé okno"
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr "Neotevřeno žádné okno"
+
+#: libwnck/selector.c:741
+msgid "Window Selector"
+msgstr "Výběr oken"
+
+#: libwnck/selector.c:742
+msgid "Tool to switch between windows"
+msgstr "Nástroj pro přepínání mezi okny"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Seznam oken"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Nástroj pro přepínání mezi viditelnými okny"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Zavřít vše"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "Mi_nimalizovat vše"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "Demi_nimalizovat vše"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -61,8 +97,8 @@ msgid "_Only on This Workspace"
 msgstr "_Jen na této pracovní ploše"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "_Vždy na aktuální pracovní ploše"
+msgid "_Always on Visible Workspace"
+msgstr "_Vždy na viditelné pracovní ploše"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -102,26 +138,6 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "nepojmenované okno"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Seznam oken"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Nástroj pro přepínání mezi viditelnými okny"
-
-#: libwnck/tasklist.c:2102
-msgid "_Close All"
-msgstr "_Zavřít vše"
-
-#: libwnck/tasklist.c:2117
-msgid "_Minimize All"
-msgstr "Mi_nimalizovat vše"
-
-#: libwnck/tasklist.c:2128
-msgid "_Unminimize All"
-msgstr "Demi_nimalizovat vše"
 
 #~ msgid "Put on _All Workspaces"
 #~ msgstr "Dát na _všechny pracovní plochy"
