@@ -106,7 +106,7 @@ VARIABLES=default_icon_data $(srcdir)/default_icon.png 		\
 	stock_minimize_data $(srcdir)/stock_minimize.png
 
 noinst_DATA = inlinepixbufs.h
-CLEANFILES += $(noinst_DATA)
+CLEANFILES = $(noinst_DATA)
 
 inlinepixbufs.h: $(IMAGES)
 	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h

@@ -1,3 +1,9 @@
+2004-02-18  Laszlo Peter  <laca@sun.com>
+
+	* libwnck-1.0-uninstalled.pc.in: new
+	* Makefile.am: add the new .pc file to EXTRA_DIST
+	* configure.in: add the new .pc file to AC_OUTPUT
+
 2004-01-06  Leena Gunda  <leena.gunda@wipro.com>
 
 	* libwnck/window-action-menu.c:

@@ -146,4 +146,5 @@ Makefile
 po/Makefile.in
 libwnck/Makefile
 libwnck-1.0.pc
+libwnck-1.0-uninstalled.pc
 ])
