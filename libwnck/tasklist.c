@@ -26,6 +26,7 @@
 #include "workspace.h"
 #include "application.h"
 #include "xutils.h"
+#include "private.h"
 
 /* TODO:
  * 
@@ -1601,6 +1602,9 @@ wnck_task_popup_menu (WnckTask *task,
       
       l = l->next;
     }
+
+  gtk_menu_set_screen (GTK_MENU (menu),
+		       _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
   
   gtk_widget_show (menu);
   gtk_menu_popup (GTK_MENU (menu),
@@ -1931,6 +1935,9 @@ wnck_task_button_press_event (GtkWidget	      *widget,
       g_object_add_weak_pointer (G_OBJECT (task->action_menu),
                                  (void**) &task->action_menu);
       
+      gtk_menu_set_screen (GTK_MENU (task->action_menu),
+                           _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
+
       gtk_widget_show (task->action_menu);
       gtk_menu_popup (GTK_MENU (task->action_menu),
                       NULL, NULL,

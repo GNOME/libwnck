@@ -474,6 +474,24 @@ wnck_screen_get_windows_stacked (WnckScreen *screen)
 }
 
 /**
+ * _wnck_screen_get_gdk_screen:
+ * @screen: a #WnckScreen
+ * 
+ * Obtains the #GdkScreen referring to the same screen
+ * as @screen.
+ * 
+ * Return value: a #GdkScreen
+ **/
+GdkScreen *
+_wnck_screen_get_gdk_screen (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return gdk_display_get_screen (gdk_display_get_default (),
+				 screen->priv->number);
+}
+
+/**
  * wnck_screen_force_update:
  * @screen: a #WnckScreen
  * 

@@ -64,7 +64,7 @@ wncklocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(wncklocaledir)
 
 
-PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.0.0)
+PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.1.0)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 

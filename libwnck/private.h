@@ -75,7 +75,8 @@ void _wnck_init (void);
 
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 
-Screen *_wnck_screen_get_xscreen (WnckScreen *screen);
+Screen    *_wnck_screen_get_xscreen    (WnckScreen *screen);
+GdkScreen *_wnck_screen_get_gdk_screen (WnckScreen *screen);
 
 
 void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace);

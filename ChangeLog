@@ -1,5 +1,20 @@
 2002-09-16  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: require gtk+ 2.1.0.
+
+	* libwnck/screen.c, libwnck/private.h:
+	(_wnck_screen_get_gdk_screen): impl.
+
+	* libwnck/tasklist.c:
+	(wnck_task_popup_menu), (wnck_task_button_press_event):
+	realise the menu on the correct screen.
+
+2002-09-16  Mark McLoughlin  <mark@skynet.ie>
+
+	* configure.in: LIBWNCK_CURRENT++, LIBWNCK_AGE++.
+
+2002-09-16  Mark McLoughlin  <mark@skynet.ie>
+
 	* libwnck/pager.[ch]: (wnck_pager_set_screen): impl.
 
 	* libwnck/tasklist.[ch]: (wnck_tasklist_connect_screen),
