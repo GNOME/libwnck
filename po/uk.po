@@ -5,13 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-01-18 19:39+0200\n"
+"POT-Creation-Date: 2002-01-28 21:17-0500\n"
 "PO-Revision-Date: 2002-01-18 18:39+0200\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr ""
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -49,8 +53,11 @@ msgstr "Пере_нести"
 msgid "_Resize"
 msgstr "Змінити _розмір"
 
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr ""
+
 #: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
 msgstr "Робоче місце %d"
-

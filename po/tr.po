@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-01-06 07:52-0500\n"
+"POT-Creation-Date: 2002-01-28 21:17-0500\n"
 "PO-Revision-Date: 2002-01-06 07:52-0500\n"
 "Last-Translator: Görkem Çetin <gorkem@gelecek.com.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -13,42 +13,52 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-9\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/window-action-menu.c:157
+#: libwnck/application.c:25
+#, fuzzy
+msgid "untitled application"
+msgstr "isimsiz pencere"
+
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "Küçü_ltmeyi geri al"
 
-#: libwnck/window-action-menu.c:163
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "_Küçült"
 
-#: libwnck/window-action-menu.c:170
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "_Büyütmeyi geri al"
 
-#: libwnck/window-action-menu.c:176
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Bü_yüt"
 
-#: libwnck/window-action-menu.c:183
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "T_oplamayý geri al"
 
-#: libwnck/window-action-menu.c:189
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "_Topla"
 
-#: libwnck/window-action-menu.c:300
+#: libwnck/window-action-menu.c:297
 msgid "Close"
 msgstr "Kapat"
 
-#: libwnck/window-action-menu.c:321
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "_Taþý"
 
-#: libwnck/window-action-menu.c:327
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "_Yeniden boyutlandýr"
 
-#: libwnck/window.c:32
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "isimsiz pencere"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr ""

@@ -2,7 +2,7 @@ AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(libwnck, 0.1)
+AM_INIT_AUTOMAKE(libwnck, 0.3)
 
 GETTEXT_PACKAGE=libwnck
 AC_SUBST(GETTEXT_PACKAGE)
