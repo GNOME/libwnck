@@ -1,3 +1,8 @@
+2003-11-17  Padraig O'Briain  <padraigobriain@sun.com>
+
+	* libwnck/tasklist.c (wnck_tasklist_init): Set translatable accessible 
+	name and description. Completes fix for bug #123953.
+
 2003-11-16  Havoc Pennington  <hp@redhat.com>
 
 	* configure.in: 2.5.0

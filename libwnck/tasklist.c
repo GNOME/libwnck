@@ -450,8 +450,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->idle_callback_tag = 0;
 
   atk_obj = gtk_widget_get_accessible (widget);
-  atk_object_set_name (atk_obj, "Window List");
-  atk_object_set_description (atk_obj, "Tool to switch between visible windows");
+  atk_object_set_name (atk_obj, _("Window List"));
+  atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
 }
 
 static void
