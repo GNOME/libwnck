@@ -694,6 +694,9 @@ update_client_list (WnckScreen *screen)
       
       ++i;
     }
+  
+  g_free (stack);
+  g_free (mapping);
       
   /* put list back in order */
   new_list = g_list_reverse (new_list);
@@ -713,13 +716,13 @@ update_client_list (WnckScreen *screen)
       g_assert (created_apps == NULL);
       g_assert (closed_apps == NULL);
       g_list_free (new_stack_list);
-      g_list_free (new_list);
+      g_list_free (new_list);      
       --reentrancy_guard;
       return;
     }
 
   g_list_free (screen->priv->mapped_windows);
-  g_list_free (screen->priv->stacked_windows);
+  g_list_free (screen->priv->stacked_windows);  
   screen->priv->mapped_windows = new_list;
   screen->priv->stacked_windows = new_stack_list;
 
