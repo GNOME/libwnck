@@ -1,5 +1,10 @@
 2004-03-22  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: doh, STARTUP_NOTIFICATION_PACKAGE is
+	still needed.
+
+2004-03-22  Mark McLoughlin  <mark@skynet.ie>
+
 	* configure.in,
 	  libwnck-1.0-uninstalled.pc.in,
 	  libwnck-1.0.pc.in: remove explicit dependancy on

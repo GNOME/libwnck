@@ -70,8 +70,10 @@ STARTUP_NOTIFICATION_REQUIRED=0.4
 if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_REQUIRED libstartup-notification-1.0; then
   echo "Building with libstartup-notification"
   AC_DEFINE(HAVE_STARTUP_NOTIFICATION)
+  STARTUP_NOTIFICATION_PACKAGE=libstartup-notification-1.0
 else
   echo "Building without libstartup-notification"
+  STARTUP_NOTIFICATION_PACKAGE=
 fi
 
 dnl X development libraries check
