@@ -37,20 +37,21 @@ _wnck_get_cardinal (Window  xwindow,
   gulong nitems;
   gulong bytes_after;
   gulong *num;
-  int err;
+  int err, result;
 
   *val = 0;
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, XA_CARDINAL, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&num);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_CARDINAL, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&num);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
   
   if (type != XA_CARDINAL)
@@ -74,7 +75,7 @@ _wnck_get_wm_state (Window  xwindow)
   gulong nitems;
   gulong bytes_after;
   gulong *num;
-  int err;
+  int err, result;
   Atom wm_state;
   int retval;
 
@@ -83,14 +84,15 @@ _wnck_get_wm_state (Window  xwindow)
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      wm_state,
-                      0, G_MAXLONG,
-		      False, wm_state, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&num);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       wm_state,
+			       0, G_MAXLONG,
+			       False, wm_state, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&num);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return retval;
   
   if (type != wm_state)
@@ -116,20 +118,21 @@ _wnck_get_window (Window  xwindow,
   gulong nitems;
   gulong bytes_after;
   Window *w;
-  int err;
+  int err, result;
 
   *val = 0;
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, XA_WINDOW, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&w);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_WINDOW, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&w);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
   
   if (type != XA_WINDOW)
@@ -210,19 +213,20 @@ _wnck_get_string_property_latin1 (Window  xwindow,
   gulong nitems;
   gulong bytes_after;
   guchar *str;
-  int result;
+  int err, result;
   char *retval;
   
   _wnck_error_trap_push ();
   str = NULL;
-  XGetWindowProperty (gdk_display,
-                      xwindow, atom,
-                      0, G_MAXLONG,
-		      False, XA_STRING, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&str);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow, atom,
+			       0, G_MAXLONG,
+			       False, XA_STRING, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&str);  
 
-  result = _wnck_error_trap_pop ();
-  if (result != Success)
+  err = _wnck_error_trap_pop ();
+  if (err != Success ||
+      result != Success)
     return NULL;
   
   if (type != XA_STRING)
@@ -247,7 +251,7 @@ _wnck_get_utf8_property (Window  xwindow,
   gulong nitems;
   gulong bytes_after;
   guchar *val;
-  int err;
+  int err, result;
   char *retval;
   Atom utf8_string;
 
@@ -256,16 +260,17 @@ _wnck_get_utf8_property (Window  xwindow,
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, utf8_string,
-                      &type, &format, &nitems,
-		      &bytes_after, (guchar **)&val);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, utf8_string,
+			       &type, &format, &nitems,
+			       &bytes_after, (guchar **)&val);  
   err = _wnck_error_trap_pop ();
 
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return NULL;
   
   if (type != utf8_string ||
@@ -303,21 +308,22 @@ _wnck_get_window_list (Window   xwindow,
   gulong nitems;
   gulong bytes_after;
   Window *data;
-  int err;
+  int err, result;
 
   *windows = NULL;
   *len = 0;
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, XA_WINDOW, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&data);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_WINDOW, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&data);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
   
   if (type != XA_WINDOW)
@@ -346,21 +352,22 @@ _wnck_get_atom_list (Window   xwindow,
   gulong nitems;
   gulong bytes_after;
   Atom *data;
-  int err;
+  int err, result;
 
   *atoms = NULL;
   *len = 0;
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, XA_ATOM, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&data);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_ATOM, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&data);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
   
   if (type != XA_ATOM)
@@ -389,21 +396,22 @@ _wnck_get_cardinal_list (Window   xwindow,
   gulong nitems;
   gulong bytes_after;
   gulong *nums;
-  int err;
+  int err, result;
 
   *cardinals = NULL;
   *len = 0;
   
   _wnck_error_trap_push ();
   type = None;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      atom,
-                      0, G_MAXLONG,
-		      False, XA_CARDINAL, &type, &format, &nitems,
-		      &bytes_after, (guchar **)&nums);  
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_CARDINAL, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&nums);  
   err = _wnck_error_trap_pop ();
-  if (err != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
   
   if (type != XA_CARDINAL)
@@ -967,7 +975,7 @@ read_rgb_icon (Window         xwindow,
   int format;
   gulong nitems;
   gulong bytes_after;
-  int result;
+  int result, err;
   gulong *data;
   gulong *best;
   int w, h;
@@ -977,16 +985,17 @@ read_rgb_icon (Window         xwindow,
   _wnck_error_trap_push ();
   type = None;
   data = NULL;
-  XGetWindowProperty (gdk_display,
-                      xwindow,
-                      _wnck_atom_get ("_NET_WM_ICON"),
-		      0, G_MAXLONG,
-		      False, XA_CARDINAL, &type, &format, &nitems,
-		      &bytes_after, ((guchar **)&data));
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       _wnck_atom_get ("_NET_WM_ICON"),
+			       0, G_MAXLONG,
+			       False, XA_CARDINAL, &type, &format, &nitems,
+			       &bytes_after, ((guchar **)&data));
   
-  result = _wnck_error_trap_pop ();
+  err = _wnck_error_trap_pop ();
   
-  if (result != Success)
+  if (err != Success ||
+      result != Success)
     return FALSE;
 
   if (type != XA_CARDINAL)
@@ -1260,23 +1269,24 @@ get_kwm_win_icon (Window  xwindow,
   gulong nitems;
   gulong bytes_after;
   Pixmap *icons;
-  int result;
+  int err, result;
 
   *pixmap = None;
   *mask = None;
   
   _wnck_error_trap_push ();
   icons = NULL;
-  XGetWindowProperty (gdk_display, xwindow,
-                      _wnck_atom_get ("KWM_WIN_ICON"),
-                      0, G_MAXLONG,
-		      False,
-                      _wnck_atom_get ("KWM_WIN_ICON"),
-                      &type, &format, &nitems,
-		      &bytes_after, (guchar **)&icons);  
+  result = XGetWindowProperty (gdk_display, xwindow,
+			       _wnck_atom_get ("KWM_WIN_ICON"),
+			       0, G_MAXLONG,
+			       False,
+			       _wnck_atom_get ("KWM_WIN_ICON"),
+			       &type, &format, &nitems,
+			       &bytes_after, (guchar **)&icons);  
 
-  result = _wnck_error_trap_pop ();
-  if (result != Success)
+  err = _wnck_error_trap_pop ();
+  if (err != Success ||
+      result != Success)
     return;
   
   if (type != _wnck_atom_get ("KWM_WIN_ICON"))

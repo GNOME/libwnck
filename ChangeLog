@@ -1,3 +1,9 @@
+Thu Jan 03 13:55:40 2002  George Lebl <jirka@5z.com>
+
+	* libwnck/xutils.c: Also check the return of the XGetWindowProperty
+	  function instead of just the error pop thing.  Apparently checking
+	  the error that was popped is not a reliable way to handle this.
+
 2001-12-31  Kevin Vandersloot <kfv101@psu.edu>
 
 	* libwnck/screen.c: free the stack and mapping window
