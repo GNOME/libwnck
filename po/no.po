@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-01-12 00:58+0100\n"
-"PO-Revision-Date: 2002-01-12 00:58+0100\n"
+"POT-Creation-Date: 2002-01-27 12:21+0100\n"
+"PO-Revision-Date: 2002-01-27 12:21+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -14,47 +14,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 " <no@li.org>\n"
 
-#: libwnck/window-action-menu.c:157
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "applikasjon uten tittel"
+
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "Gje_nopprett"
 
-#: libwnck/window-action-menu.c:163
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "_Minimer"
 
-#: libwnck/window-action-menu.c:170
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "_Gjenopprett"
 
-#: libwnck/window-action-menu.c:176
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Ma_ksimer"
 
-#: libwnck/window-action-menu.c:183
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "Fjern _skygge"
 
-#: libwnck/window-action-menu.c:189
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "_Skyggelegg"
 
-#: libwnck/window-action-menu.c:300
+#: libwnck/window-action-menu.c:297
 msgid "Close"
 msgstr "Lukk"
 
-#: libwnck/window-action-menu.c:321
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "F_lytt"
 
-#: libwnck/window-action-menu.c:327
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "End_re størrelse"
 
-#: libwnck/window.c:32
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "vindu uten tittel"
 
-#: libwnck/workspace.c:200
+#: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
