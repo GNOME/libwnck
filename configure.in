@@ -10,12 +10,12 @@ dnl libtool versioning for libwnck
 dnl increment if the interface has additions, changes, removals.
 LIBWNCK_CURRENT=7
 
-dnl increment any time the source changes; set to 
+dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
 LIBWNCK_REVISION=0
 
 dnl increment if any interfaces have been added; set to 0
-dnl  if any interfaces have been removed. removal has 
+dnl  if any interfaces have been removed. removal has
 dnl  precedence over adding, so set to 0 if both happened.
 LIBWNCK_AGE=3
 
@@ -55,7 +55,7 @@ GETTEXT_PACKAGE=libwnck
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
-ALL_LINGUAS="ar az be bg ca da de el es et fi fr gl he hi hu ja ko it lv ms nl nn no pl pt pt_BR ru sk sl sv tr uk vi wa zh_CN zh_TW"
+ALL_LINGUAS="ar az be bg ca da de el es et fi fr gl he hi hu ja ko it lv ms nl nn no pl pt pt_BR ru sk sl sq sv tr uk vi wa zh_CN zh_TW"
 AM_GLIB_GNU_GETTEXT
 
 # AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
