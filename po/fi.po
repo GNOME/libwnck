@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-12-02 23:18-0500\n"
-"PO-Revision-Date: 2002-10-02 22:26+0300\n"
+"POT-Creation-Date: 2002-12-11 21:34+0200\n"
+"PO-Revision-Date: 2002-12-06 19:39+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Napsauta tätä vaihtaaksesi työtilaan %s"
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "P_alauta"
+msgstr "_Palauta"
 
 #: libwnck/window-action-menu.c:198
 msgid "_Minimize"
@@ -46,23 +46,23 @@ msgstr "Pa_lauta koko"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "Suu_renna"
+msgstr "S_uurenna"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr "_Myös sisältö"
+msgstr "Rullaa _auki"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr "_Vain otsikkopalkki"
+msgstr "_Rullaa"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "Näkyy vain _tässä työtilassa"
+msgstr "Vain _tässä työtilassa"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "Näkyy _kaikissa työtiloissa"
+msgstr "_Kaikissa työtiloissa"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -70,7 +70,7 @@ msgstr "S_iirrä"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "M_uuta kokoa"
+msgstr "_Muuta kokoa"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
