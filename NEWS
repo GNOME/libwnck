@@ -1,3 +1,19 @@
+2.7.91
+===
+
+ Fixes
+
+  - Fix issue with AtkComponent co-ordinates (Arvind Samptur)
+  - Fix window minimization vs. activation for mouse focus (Elijah Newren)
+  - Resolve some no-focus-on-map issues (Elijah Newren)
+  - Regenerate stale built sources (Torsten Schoenfeld)
+
+ Translators
+
+  - Kemal Sanjta (bs)
+  - Pauli Virtanen (fi)
+  - Amanpreet Singh Alam (pa)
+
 2.7.90
 ===
 
