@@ -1300,12 +1300,12 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_MENU:
     case WNCK_WINDOW_UTILITY:
     case WNCK_WINDOW_SPLASHSCREEN:
+    case WNCK_WINDOW_DIALOG:
+    case WNCK_WINDOW_MODAL_DIALOG:
       window->priv->skip_taskbar = TRUE;
       break;
       
     case WNCK_WINDOW_NORMAL:
-    case WNCK_WINDOW_DIALOG:
-    case WNCK_WINDOW_MODAL_DIALOG:
       break;
     }
 
