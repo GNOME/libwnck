@@ -1,3 +1,8 @@
+2003-11-16  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/util.c (wnck_xid_read_resource_usage): new function
+	(wnck_pid_read_resource_usage): new
+
 2003-10-27  Michael Meeks  <michael@ximian.com>
 
 	* libwnck/window.c (find_last_transient_for): when
