@@ -43,6 +43,8 @@ libwnck_1_la_SOURCES= 		\
 	$(wnck_built_headers)	\
 	$(wnck_built_cfiles)
 
+$(libwnck_1_la_OBJECTS): inlinepixbufs.h
+
 test_wnck_SOURCES=		\
 	test-wnck.c
 

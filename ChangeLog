@@ -1,3 +1,7 @@
+2002-03-03  Johan Dahlin  <jdahlin@telia.com>
+
+	* libwnck/Makefile.am: #71562
+
 2002-03-02  Tõivo Leedjärv  <leedjarv@interest.ee>
 
 	* configure.in: Added et to ALL_LINGUAS.
