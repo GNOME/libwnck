@@ -1,21 +1,19 @@
 # Danish translation of libwnck.
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Ole Laursen <olau@hardworking.dk>, 2002.
-#
-# Se oversættelsen til Sawfish for en liste over begreber.
+# Copyright (C) 2002, 03 Free Software Foundation, Inc.
+# Ole Laursen <olau@hardworking.dk>, 2002, 03.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2002-11-25 23:04+0100\n"
+"POT-Creation-Date: 2003-05-19 21:48+0200\n"
+"PO-Revision-Date: 2003-05-19 21:50+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "unavngivet program"
 
@@ -33,17 +31,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klik her for at skifte til arbejdsområdet %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "Gen_dan"
+msgstr "_Gendan"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Minimér"
+msgstr "Mi_nimér"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Gendan"
 
@@ -68,7 +63,6 @@ msgid "Put on _All Workspaces"
 msgstr "Anbring på _alle arbejdsområder"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Flyt"
 
@@ -80,11 +74,11 @@ msgstr "Ænd_r størrelse"
 msgid "_Close"
 msgstr "_Luk"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "unavngivet vindue"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
