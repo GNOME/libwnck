@@ -1,3 +1,7 @@
+2003-01-22  Marius Andreiana <marius galuna.ro>
+
+	* configure.in: added 'ro' to ALL_LINGUAS
+
 2003-01-22  Christian Rose  <menthos@menthos.com>
 
 	* configure.in: Added "mn" to ALL_LINGUAS.
@@ -439,7 +443,7 @@ Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 	to get the number of strings, start the string count at 1, since
 	even with nitems == 0 there is a single empty string.
 
-2002-06-02  Carlos PerellÛ MarÌn <carlos@gnome-db.org>
+2002-06-02  Carlos Perell√≥ Mar√≠n <carlos@gnome-db.org>
 
 	* configure.in (ALL_LINGUAS): Added ca.
 
@@ -484,7 +488,7 @@ Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 
 	* libwnck/window.c (_wnck_window_process_property_notify):
 	The property that has the icon pixmap is called WM_HINTS, 
-	not WM_NORMAL_HINTS. Fixes #81138, reported by HÂvard 
+	not WM_NORMAL_HINTS. Fixes #81138, reported by H√•vard 
 	Wigtil.
 
 2002-05-14  Anders Carlsson  <andersca@gnu.org>
@@ -699,7 +703,7 @@ Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 	(wnck_task_create_widgets): add weak pointer for 
 	task->button
 
-2002-03-06  Germ·n Poo-Caaman~o
+2002-03-06  Germ√°n Poo-Caaman~o
 
 	* configure.in: Added "es" to ALL_LINGUAS.
 
@@ -716,7 +720,7 @@ Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 
 	* libwnck/Makefile.am: #71562
 
-2002-03-02  Tıivo Leedj‰rv  <leedjarv@interest.ee>
+2002-03-02  T√µivo Leedj√§rv  <leedjarv@interest.ee>
 
 	* configure.in: Added et to ALL_LINGUAS.
 
