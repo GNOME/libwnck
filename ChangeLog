@@ -1,3 +1,13 @@
+2005-01-31  Elijah Newren  <newren@gmail.com>
+
+	Try 2 to correct misleading and inaccurate wording.  Hopefully,
+	really fixes #165379.
+
+	* libwnck/window-action-menu.c: Change wording of menu from
+	"Always on Current Workspace" to "Always on Visible Workspace".
+	"Always on Current Workspace" could sound like a synonym of "Only
+	on This Workspace" when it was supposed to be the opposite.
+
 2005-01-28  Elijah Newren  <newren@gmail.com>
 
 	* MAINTAINERS:
