@@ -159,6 +159,8 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
        ++i;
      }
 
+   XFree(types);
+
    usage->total_bytes_estimate = usage->pixmap_bytes;
 
    /* FIXME look in the X server source and come up with better

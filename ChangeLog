@@ -1,3 +1,10 @@
+2004-12-15  Mark McLoughlin  <mark@skynet.ie>
+
+	Fix from Benoît Dejean <TazForEver@dlfp.org> in
+	bug #158875
+
+	* libwnck/util.c: (wnck_xid_read_resource_usage): fix leak.
+
 2004-12-03  Benjamin Kahn  <xkahn@novell.com>
 
 	* When a window title is too long to fit in the space provided, 
