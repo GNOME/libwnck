@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-03-03 20:56+0100\n"
-"Last-Translator: Christian Meyer <chrisime@gnome.org>\n"
+"Project-Id-Version: libwnck HEAD\n"
+"POT-Creation-Date: 2002-07-31 21:25+0200\n"
+"PO-Revision-Date: 2002-07-31 19:36+0100\n"
+"Last-Translator: Christian Neumair <christian-neumair@web.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,6 +16,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "namenlose Anwendung"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Arbeitsflächen-Umschalter"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Werkzeug, um zwischen den Arbeitsflächen zu wechseln"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klicken Sie hier, um zur Arbeitsfläche %s zu wechseln"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -42,9 +55,8 @@ msgid "_Shade"
 msgstr "_Aufrollen"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
 msgid "_Close"
-msgstr "Schließen"
+msgstr "S_chließen"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
