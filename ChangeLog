@@ -1,3 +1,8 @@
+2001-12-05  Christian Meyer  <chrisime@gnome.org>
+
+	* configure.in:
+	Added 'de' entry to ALL_LINGUAS
+
 2001-12-04  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.c:

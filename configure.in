@@ -55,7 +55,7 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
-ALL_LINGUAS="nl"
+ALL_LINGUAS="de nl"
 AM_GLIB_GNU_GETTEXT
 
 PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 1.3.9)
