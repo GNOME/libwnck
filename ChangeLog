@@ -1,3 +1,8 @@
+2002-01-12  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/tasklist.c:
+	Use wnck_application_get_name/mini_icon for grouped tasks.
+
 2002-01-11  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in (LIBWNCK_CURRENT): bump soname

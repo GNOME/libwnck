@@ -29,7 +29,7 @@
  * 
  *  Add total focused time to the grouping score function
  *  Fine tune the grouping scoring function
- *  Fix naming and icon for groups/applications
+ *  Fix "changes" to naming and icon for groups/applications 
  *  Maybe fine tune size_allocate() some more...
  *  Better vertical layout handling
  *  prefs
@@ -1224,8 +1224,8 @@ wnck_task_get_text (WnckTask *task)
   
   if (task->is_application)
     {
-      /* FIXME: Implement this */
-      return g_strdup ("An application");
+      /* FIXME: What if the application name changes */
+      return g_strdup (wnck_application_get_name (task->application));
     }
   else
     {
@@ -1330,27 +1330,7 @@ wnck_task_get_icon (WnckTask *task)
   
   if (task->is_application)
     {
-      GList *l;
-      /* FIXME: Implement this correct, Right now, just get a random icon from some window */
-      
-      l = wnck_application_get_windows (task->application);
-
-      minimized = TRUE;
-
-      while (l)
-	{
-	  window = WNCK_WINDOW (l->data);
-	  if (!(wnck_window_get_state (window) & WNCK_WINDOW_STATE_MINIMIZED))
-	    {
-	      minimized = FALSE;
-	      break;
-	    }
-	  
-	  l = l->next;
-	}
-      
-      l = wnck_application_get_windows (task->application);
-      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (WNCK_WINDOW (l->data)),
+      pixbuf =  wnck_task_scale_icon (wnck_application_get_mini_icon (task->application),
 				      minimized);
     }
   else
