@@ -1,3 +1,7 @@
+2002-09-16  Havoc Pennington  <hp@pobox.com>
+
+	* configure.in: bump version to 2.1.0 for the unstable branch
+
 2002-09-16  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: require gtk+ 2.1.0.
