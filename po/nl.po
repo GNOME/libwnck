@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 20:52+0200\n"
+"POT-Creation-Date: 2003-06-21 12:59+0200\n"
 "PO-Revision-Date: 2003-06-14 01:38+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -76,7 +76,7 @@ msgstr "Afmetingen _wijzigen"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
-msgstr "_Sluiten"
+msgstr "Sl_uiten"
 
 #: libwnck/window.c:31
 msgid "untitled window"
