@@ -1,0 +1,90 @@
+# libwnck এর বাংলা অনুবাদ.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libwnck package.
+# Jamil Ahmed <jamil@bengalinux.org>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2003-02-25 02:25-0800\n"
+"PO-Revision-Date: 2003-02-23 16:40+0600\n"
+"Last-Translator: Jamil Ahmed <jamil@bengalinux.org>\n"
+"Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "নামবিহীন এপ্লিকেশন"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "কর্মক্ষেত্র বদলানো"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "কর্মক্ষেত্র বদলানোর ব্যবস্থা/প্রক্রিয়া"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "কর্মক্ষেত্র %s বদলাতে এখানে ক্লিক করুন"
+
+#: libwnck/window-action-menu.c:191
+#, fuzzy
+msgid "Un_minimize"
+msgstr "ছোট করো না"
+
+#: libwnck/window-action-menu.c:198
+#, fuzzy
+msgid "_Minimize"
+msgstr "ছোট করো"
+
+#: libwnck/window-action-menu.c:206
+#, fuzzy
+msgid "_Unmaximize"
+msgstr "বড় করো না"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "বড় করো"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "খুলো"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "গুটাও"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "শুধুমাত্র এই কর্মক্ষেত্রে"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "সকল কর্মক্ষেত্রে রাখুন"
+
+# msgstr "সকল কর্মক্ষেত্র রাখো"
+#: libwnck/window-action-menu.c:372
+#, fuzzy
+msgid "Mo_ve"
+msgstr "সরাও"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "আকার বদলাও"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "বন্ধ কর"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "নামবিহীন উইন্ডো"
+
+#: libwnck/workspace.c:222
+#, c-format
+msgid "Workspace %d"
+msgstr "কর্মক্ষেত্র %d"
