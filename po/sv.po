@@ -1,14 +1,14 @@
 # Swedish messages for libwnck.
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
-# Christian Rose <menthos@menthos.com>, 2001, 2002.
+# Copyright (C) 2001, 2002, 2003 Free Software Foundation, Inc.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003.
 #
 # $Id$
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2002-11-29 17:55+0100\n"
+"POT-Creation-Date: 2003-05-01 12:38+0200\n"
+"PO-Revision-Date: 2003-05-01 12:40+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,19 +33,16 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klicka på detta för att byta till arbetsyta %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "Av_minimera"
+msgstr "Avmi_nimera"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Minimera"
+msgstr "Mi_nimera"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_Avmaximera"
+msgstr "Avma_ximera"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -68,7 +65,6 @@ msgid "Put on _All Workspaces"
 msgstr "Placera på _alla arbetsytor"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Flytta"
 
@@ -80,14 +76,35 @@ msgstr "_Ändra storlek"
 msgid "_Close"
 msgstr "_Stäng"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "namnlöst fönster"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
+
+#~ msgid "Un_minimize"
+#~ msgstr "Av_minimera"
+
+#~ msgid "Unminimize"
+#~ msgstr "Avminimera"
+
+#~ msgid "_Minimize"
+#~ msgstr "_Minimera"
+
+#~ msgid "Minimize"
+#~ msgstr "Minimera"
+
+#~ msgid "_Unmaximize"
+#~ msgstr "_Avmaximera"
+
+#~ msgid "Unmaximize"
+#~ msgstr "Avmaximera"
+
+#~ msgid "Move"
+#~ msgstr "Flytta"
 
 #~ msgid "U_nshade"
 #~ msgstr "A_vskugga"
