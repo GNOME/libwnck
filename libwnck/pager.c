@@ -1298,7 +1298,7 @@ wnck_pager_get_background (WnckPager *pager,
                            int        height)
 {
   Pixmap p;
-  GdkPixbuf *pix;
+  GdkPixbuf *pix = NULL;
   
   /* We have to be careful not to keep alternating between
    * width/height values, otherwise this would get really slow.
@@ -1324,12 +1324,15 @@ wnck_pager_get_background (WnckPager *pager,
   
   p = wnck_screen_get_background_pixmap (pager->priv->screen);
 
-  _wnck_error_trap_push ();
-  pix = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
-                                          p,
-                                          0, 0, 0, 0,
-                                          -1, -1);
-  _wnck_error_trap_pop ();
+  if (p != None)
+    {
+      _wnck_error_trap_push ();
+      pix = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
+                                              p,
+                                              0, 0, 0, 0,
+                                              -1, -1);
+      _wnck_error_trap_pop ();
+    }
 
   if (pix)
     {

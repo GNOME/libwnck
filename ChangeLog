@@ -1,5 +1,11 @@
 2002-04-18  Mark McLoughlin  <mark@skynet.ie>
 
+	* libwnck/pager.c: (wnck_pager_get_background): check
+	that we have a valid XID before trying to munge it
+	into a pixbuf (#79099).
+
+2002-04-18  Mark McLoughlin  <mark@skynet.ie>
+
 	* libwnck/tasklist.c: (wnck_tasklist_size_request): fix crash
 	with zero length array. (#78869)
 
