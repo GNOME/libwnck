@@ -1,5 +1,5 @@
 
-SUBDIRS=libwnck
+SUBDIRS=libwnck po
 
 EXTRA_DIST=libwnck-1.0.pc.in
 
