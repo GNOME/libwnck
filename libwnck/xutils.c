@@ -1456,12 +1456,12 @@ typedef enum
 {
   /* These MUST be in ascending order of preference;
    * i.e. if we get _NET_WM_ICON and already have
-   * WM_NORMAL_HINTS, we prefer _NET_WM_ICON
+   * WM_HINTS, we prefer _NET_WM_ICON
    */
   USING_NO_ICON,
   USING_FALLBACK_ICON,
   USING_KWM_WIN_ICON,
-  USING_WM_NORMAL_HINTS,
+  USING_WM_HINTS,
   USING_NET_WM_ICON
 } IconOrigin;
 
@@ -1478,7 +1478,7 @@ struct _WnckIconCache
   int ideal_mini_height;
   guint want_fallback : 1;
   /* TRUE if these props have changed */
-  guint wm_normal_hints_dirty : 1;
+  guint wm_hints_dirty : 1;
   guint kwm_win_icon_dirty : 1;
   guint net_wm_icon_dirty : 1;  
 };
@@ -1499,7 +1499,7 @@ _wnck_icon_cache_new (void)
   icon_cache->ideal_mini_width = -1;
   icon_cache->ideal_mini_height = -1;
   icon_cache->want_fallback = TRUE;
-  icon_cache->wm_normal_hints_dirty = TRUE;
+  icon_cache->wm_hints_dirty = TRUE;
   icon_cache->kwm_win_icon_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
   
@@ -1522,7 +1522,7 @@ clear_icon_cache (WnckIconCache *icon_cache,
 
   if (dirty_all)
     {
-      icon_cache->wm_normal_hints_dirty = TRUE;
+      icon_cache->wm_hints_dirty = TRUE;
       icon_cache->kwm_win_icon_dirty = TRUE;
       icon_cache->net_wm_icon_dirty = TRUE;
     }
@@ -1544,8 +1544,8 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
     icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("KWM_WIN_ICON"))
     icon_cache->kwm_win_icon_dirty = TRUE;
-  else if (atom == _wnck_atom_get ("WM_NORMAL_HINTS"))
-    icon_cache->wm_normal_hints_dirty = TRUE;
+  else if (atom == _wnck_atom_get ("WM_HINTS"))
+    icon_cache->wm_hints_dirty = TRUE;
 }
 
 gboolean
@@ -1554,8 +1554,8 @@ _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache)
   if (icon_cache->origin <= USING_KWM_WIN_ICON &&
       icon_cache->kwm_win_icon_dirty)
     return TRUE;
-  else if (icon_cache->origin <= USING_WM_NORMAL_HINTS &&
-           icon_cache->wm_normal_hints_dirty)
+  else if (icon_cache->origin <= USING_WM_HINTS &&
+           icon_cache->wm_hints_dirty)
     return TRUE;
   else if (icon_cache->origin <= USING_NET_WM_ICON &&
            icon_cache->net_wm_icon_dirty)
@@ -1604,6 +1604,41 @@ replace_cache (WnckIconCache *icon_cache,
     g_object_ref (G_OBJECT (new_mini_icon));
 
   icon_cache->mini_icon = new_mini_icon;
+}
+
+static GdkPixbuf*
+scaled_from_pixdata (guchar *pixdata,
+                     int     w,
+                     int     h,
+                     int     new_w,
+                     int     new_h)
+{
+  GdkPixbuf *src;
+  GdkPixbuf *dest;
+  
+  src = gdk_pixbuf_new_from_data (pixdata,
+                                  GDK_COLORSPACE_RGB,
+                                  TRUE,
+                                  8,
+                                  w, h, w * 4,
+                                  free_pixels, 
+                                  NULL);
+
+  if (src == NULL)
+    return NULL;
+
+  if (w != new_w || h != new_h)
+    {
+      dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
+      
+      g_object_unref (G_OBJECT (src));
+    }
+  else
+    {
+      dest = src;
+    }
+
+  return dest;
 }
 
 gboolean
@@ -1668,21 +1703,10 @@ _wnck_read_icons (Window         xwindow,
                          &w, &h, &pixdata,
                          &mini_w, &mini_h, &mini_pixdata))
         {
-          *iconp = gdk_pixbuf_new_from_data (pixdata,
-                                             GDK_COLORSPACE_RGB,
-                                             TRUE,
-                                             8,
-                                             w, h, w * 4,
-                                             free_pixels,
-                                             NULL);
+          *iconp = scaled_from_pixdata (pixdata, w, h, ideal_width, ideal_height);
           
-          *mini_iconp = gdk_pixbuf_new_from_data (mini_pixdata,
-                                                  GDK_COLORSPACE_RGB,
-                                                  TRUE,
-                                                  8,
-                                                  mini_w, mini_h, mini_w * 4,
-                                                  free_pixels,
-                                                  NULL);
+          *mini_iconp = scaled_from_pixdata (mini_pixdata, mini_w, mini_h,
+                                             ideal_mini_width, ideal_mini_height);
 
           replace_cache (icon_cache, USING_NET_WM_ICON,
                          *iconp, *mini_iconp);
@@ -1691,10 +1715,10 @@ _wnck_read_icons (Window         xwindow,
         }
     }
 
-  if (icon_cache->origin <= USING_WM_NORMAL_HINTS &&
-      icon_cache->wm_normal_hints_dirty)
+  if (icon_cache->origin <= USING_WM_HINTS &&
+      icon_cache->wm_hints_dirty)
     {
-      icon_cache->wm_normal_hints_dirty = FALSE;
+      icon_cache->wm_hints_dirty = FALSE;
       
       _wnck_error_trap_push ();
       hints = XGetWMHints (gdk_display, xwindow);
@@ -1727,7 +1751,7 @@ _wnck_read_icons (Window         xwindow,
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
 
-              replace_cache (icon_cache, USING_WM_NORMAL_HINTS,
+              replace_cache (icon_cache, USING_WM_HINTS,
                              *iconp, *mini_iconp);
 
               return TRUE;

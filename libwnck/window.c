@@ -893,11 +893,6 @@ get_icons (WnckWindow *window)
                         DEFAULT_MINI_ICON_HEIGHT))
     {
       window->priv->need_emit_icon_changed = TRUE;
-      
-      if (icon)
-        g_object_ref (G_OBJECT (icon));
-      if (mini_icon)
-        g_object_ref (G_OBJECT (mini_icon));
 
       if (window->priv->icon)
         g_object_unref (G_OBJECT (window->priv->icon));

@@ -1,3 +1,13 @@
+2002-02-09  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/xutils.c (_wnck_read_icons): properly scale _NET_WM_ICON
+	icons
+
+	* libwnck/window.c (get_icons): remove extra ref of the icon
+	returned from wnck_read_icons, this resulted in a memleak
+
+	* libwnck/xutils.c: fix naming confusion (WM_NORMAL_HINTS vs. WM_HINTS)
+
 2002-02-08  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c (wnck_pager_button_release): if someone drops a
