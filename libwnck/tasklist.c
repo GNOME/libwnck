@@ -2234,6 +2234,44 @@ wnck_task_get_icon (WnckTask *task)
   return pixbuf;
 }
 
+static gboolean
+wnck_task_get_demands_attention (WnckTask *task)
+{
+  GList *l;
+  WnckTask *win_task;
+  gboolean demands_attention;
+
+  demands_attention = FALSE;
+
+  switch (task->type)
+    {
+    case WNCK_TASK_CLASS_GROUP:
+      l = task->windows;
+      while (l)
+	{
+	  win_task = WNCK_TASK (l->data);
+
+	  if (wnck_window_get_state (win_task->window) & WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+	    {
+	      demands_attention = TRUE;
+	      break;
+	    }
+
+	  l = l->next;
+	}
+      break;
+
+    case WNCK_TASK_WINDOW:
+      demands_attention =
+	wnck_window_get_state (task->window) & WNCK_WINDOW_STATE_DEMANDS_ATTENTION;
+      break;
+
+    case WNCK_TASK_STARTUP_SEQUENCE:
+      break;
+    }
+
+  return demands_attention != FALSE;
+}
 
 static void
 wnck_task_update_visible_state (WnckTask *task)
@@ -2251,8 +2289,7 @@ wnck_task_update_visible_state (WnckTask *task)
   if (text != NULL)
     {
       gtk_label_set_text (GTK_LABEL (task->label), text);
-      if (wnck_window_get_state (task->window) &
-          WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+      if (wnck_task_get_demands_attention (task))
         eel_gtk_label_make_bold ((GTK_LABEL (task->label)));
       else
         wnck_gtk_label_make_normal ((GTK_LABEL (task->label)));
@@ -2491,8 +2528,7 @@ wnck_task_create_widgets (WnckTask *task)
 
   text = wnck_task_get_text (task);
   task->label = gtk_label_new (text);
-  if (wnck_window_get_state (task->window) &
-      WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+  if (wnck_task_get_demands_attention (task))
     eel_gtk_label_make_bold ((GTK_LABEL (task->label)));
   gtk_widget_show (task->label);
 

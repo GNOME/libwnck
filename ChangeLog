@@ -1,3 +1,16 @@
+2004-09-21  Mark McLoughlin  <mark@skynet.ie>
+
+	Fix some runtime warning spew reported in bug #149313
+
+	* libwnck/tasklist.c:
+	(wnck_task_get_demands_attention): impl. handling task
+	groups as well as individual tasks.
+	(wnck_task_update_visible_state),
+	(wnck_task_create_widgets): use get_demands_attention()
+	
+	* libwnck/window.[ch]: (update_actions): handle the minimize
+	and fullscreen actions.
+
 2004-09-21  Ross Burton  <ross@burtonini.com>
 
 	* libwnck/window.h: Add prototypes for wnck_window_set_fullscreen

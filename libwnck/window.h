@@ -63,7 +63,8 @@ typedef enum
   WNCK_WINDOW_ACTION_MINIMIZE                = 1 << 12,
   WNCK_WINDOW_ACTION_UNMINIMIZE              = 1 << 13,
   WNCK_WINDOW_ACTION_MAXIMIZE                = 1 << 14,
-  WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15
+  WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15,
+  WNCK_WINDOW_ACTION_FULLSCREEN              = 1 << 16
 } WnckWindowActions;
 
 typedef enum

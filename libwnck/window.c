@@ -1795,7 +1795,8 @@ update_actions (WnckWindow *window)
                 WNCK_WINDOW_ACTION_MAXIMIZE                |
                 WNCK_WINDOW_ACTION_UNMAXIMIZE              |
                 WNCK_WINDOW_ACTION_MINIMIZE                |
-                WNCK_WINDOW_ACTION_UNMINIMIZE;
+                WNCK_WINDOW_ACTION_UNMINIMIZE              |
+                WNCK_WINDOW_ACTION_FULLSCREEN;
       return;
     }
 
@@ -1816,6 +1817,10 @@ update_actions (WnckWindow *window)
         window->priv->actions |= WNCK_WINDOW_ACTION_STICK |
                                  WNCK_WINDOW_ACTION_UNSTICK;
 
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_MINIMIZE"))
+	window->priv->actions |= WNCK_WINDOW_ACTION_MINIMIZE   |
+	                         WNCK_WINDOW_ACTION_UNMINIMIZE;
+
       else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_MAXIMIZE_HORZ"))
         window->priv->actions |= WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY |
                                  WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY;
@@ -1829,6 +1834,10 @@ update_actions (WnckWindow *window)
 
       else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_CLOSE"))
         window->priv->actions |= WNCK_WINDOW_ACTION_CLOSE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_FULLSCREEN"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_FULLSCREEN;
+
       else
         {
           const char *name = _wnck_atom_name (atoms [i]);
@@ -1845,11 +1854,6 @@ update_actions (WnckWindow *window)
     window->priv->actions |=
         WNCK_WINDOW_ACTION_MAXIMIZE   |
         WNCK_WINDOW_ACTION_UNMAXIMIZE;
-
-  /* These are always enabled */
-  window->priv->actions |=
-        WNCK_WINDOW_ACTION_MINIMIZE   |
-        WNCK_WINDOW_ACTION_UNMINIMIZE;
 }
 
 static void
