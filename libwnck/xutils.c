@@ -968,15 +968,11 @@ read_rgb_icon (Window         xwindow,
   gulong nitems;
   gulong bytes_after;
   int result;
-  gulong *data; /* FIXME should be guint? */
+  gulong *data;
   gulong *best;
   int w, h;
   gulong *best_mini;
   int mini_w, mini_h;
-  
-  if (sizeof (gulong) != 4)
-    g_warning ("%s: Whoops, I think this function may be broken on 64-bit\n",
-               G_GNUC_FUNCTION);
   
   _wnck_error_trap_push ();
   type = None;

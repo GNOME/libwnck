@@ -233,6 +233,9 @@ wnck_task_finalize (GObject *object)
 
   task = WNCK_TASK (object);
 
+  if (task->tasklist->priv->active_task == task)
+    wnck_tasklist_change_active_task (task->tasklist, NULL);
+
   if (task->button)
     {
       gtk_widget_destroy (task->button);
@@ -866,6 +869,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       state = wnck_window_get_state (win);
       if ((state & WNCK_WINDOW_STATE_SKIP_TASKLIST) == 0 &&
 	  (tasklist->priv->include_all_workspaces ||
+	   active_workspace == NULL ||
 	   wnck_window_is_on_workspace (win, active_workspace)) &&
 	  (tasklist->priv->include_unminimized ||
 	   (state & WNCK_WINDOW_STATE_MINIMIZED)))
@@ -1122,7 +1126,7 @@ wnck_task_popup_menu (WnckTask  *task)
   GdkPixbuf *pixbuf;
   GtkWidget *menu_item;
   GtkWidget *image;
-  GList *l;
+  GList *l, *list;
   
   if (task->application == NULL)
     return;
@@ -1133,13 +1137,15 @@ wnck_task_popup_menu (WnckTask  *task)
   menu = task->menu;
   
   /* Remove old menu content */
-  l = gtk_container_get_children (GTK_CONTAINER (menu));
+  list = gtk_container_get_children (GTK_CONTAINER (menu));
+  l = list;
   while (l)
     {
       GtkWidget *child = GTK_WIDGET (l->data);
       gtk_container_remove (GTK_CONTAINER (menu), child);
       l = l->next;
     }
+  g_list_free (list);
   
   l = task->windows;
   while (l)

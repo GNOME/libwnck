@@ -1,3 +1,20 @@
+Fri Dec 28 02:11:26 2001  George Lebl <jirka@5z.com>
+
+	* libwnck/tasklist.c:  Bug hunting results: (and no, I haven't
+	  found the bug I was looking for)
+	  (wnck_task_finalize): If this is the active task, we set the
+	  active task to NULL so that we don't have pointers to non existant
+	  objects.  Mostly just being anal.
+	  (wnck_tasklist_update_lists): active_workspace CAN be NULL so check
+	  for that.  If this is the case, we just show the task as if it
+	  were on the active workspace.
+	  (wnck_task_popup_menu): gtk_container_get_children returns a newly
+	  allocated list, so free it after use.
+
+	* xutils.c (read_rgb_icon): Remove that annoying warning about this
+	  function possibly not being 64bit safe.  It is.  I've checked the
+	  code, and furthermore it actually does work on alpha.
+
 2001-12-23  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/tasklist.c: (wnck_task_create_widgets): kill unused rc_style.
