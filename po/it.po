@@ -1,0 +1,65 @@
+# Italian translation of libwnck.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Pier Luigi Fiorini <plfiorini@libero.it>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 0.7\n"
+"POT-Creation-Date: 2002-04-06 06:55+0200\n"
+"PO-Revision-Date: 2002-04-10 18:38+0200\n"
+"Last-Translator: Pier Luigi Fiorini <plfiorini@libero.it>\n"
+"Language-Team: Italiano <tp@lists.linux.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "applicazione senza nome"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "De_minimizza"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "_Minimizza"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "Dema_ssimizza"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "Ma_ssimizza"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "Sr_otola"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "_Arrotola"
+
+#: libwnck/window-action-menu.c:297
+msgid "Close"
+msgstr "Chiudi"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "S_posta"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "R_idimensiona"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "finestra senza titolo"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Area di lavoro %d"
+
