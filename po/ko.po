@@ -1,14 +1,13 @@
 # libwnck 
-# Copyright (C) 2002 Free Software Foundation, Inc.
 # Young-Ho, Cha <ganadist@chollian.net>, 2002.
-# Changwoo Ryu <cwryu@debian.org>, 2002.
+# Changwoo Ryu <cwryu@debian.org>, 2002-2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.1.90\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2003-01-15 20:22+0900\n"
-"Last-Translator: Young-Ho, Cha <ganadist@mizi.com>\n"
+"Project-Id-Version: libwnck 2.3.0\n"
+"POT-Creation-Date: 2003-05-03 02:02+0900\n"
+"PO-Revision-Date: 2003-05-03 02:03+0900\n"
+"Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GTP Korean <gnome-kr-translation@gnome.or.kr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,19 +31,16 @@ msgid "Click this to switch to workspace %s"
 msgstr "작업 공간 %s(으)로 바꾸려면 누르십시오"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "최소화 취소(_M)"
+msgstr "최소화 취소(_N)"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "최소화(_M)"
+msgstr "최소화(_N)"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "최대화 취소(_U)"
+msgstr "최대화 취소(_X)"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -67,9 +63,8 @@ msgid "Put on _All Workspaces"
 msgstr "모든 작업공간에 두기(_A)"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "옮기기(_V)"
+msgstr "옮기기(_M)"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
@@ -79,11 +74,11 @@ msgstr "크기 조정(_R)"
 msgid "_Close"
 msgstr "닫기(_C)"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "제목없는 창"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "작업 공간 %d"
