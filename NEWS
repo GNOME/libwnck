@@ -1,3 +1,14 @@
+2.8.1
+===
+
+ Fixes
+
+  - Only highlight sticky windows on the current workspace (Elijah Newren)
+
+ Translators
+
+  - Aiet Kolkhi (ka)
+
 2.8.0.1
 ===
 

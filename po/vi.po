@@ -109,8 +109,8 @@ msgstr "Danh sách cửa sổ"
 msgid "Tool to switch between visible windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ đang hiện"
 
-msgid "U_nshade"
-msgstr "_Bỏ bóng"
+#~ msgid "U_nshade"
+#~ msgstr "_Bỏ bóng"
 
-msgid "_Shade"
-msgstr "Bó_ng"
+#~ msgid "_Shade"
+#~ msgstr "Bó_ng"

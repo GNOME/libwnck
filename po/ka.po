@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
-"POT-Creation-Date: 2004-04-29 15:37+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-04-30 01:22+0400\n"
 "Last-Translator: Aiet Kolkhi <aiet@qartuli.net>\n"
 "Language-Team: Georgian <aiet@qartuli.net>\n"
@@ -31,70 +32,69 @@ msgstr "სამუშაო სივრცის გადამრთვე�
 msgid "Click this to switch to workspace %s"
 msgstr "დააწკაპუნეთ აქ, თუ გნებავთ %s სივრცეზე გადასვლა"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "მაქ_სიმირება"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "_მინიმირება"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "მი_ნიმირება"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "გადიდე_ბა"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "_ჩამოშლა"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "ა_კეცვა"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "მხოლოდ ა_მ სივრცეში"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "აჩვენე _ყველა დესკტოპზე"
 
-#: libwnck/window-action-menu.c:375
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "სამუშაო სივრცე %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "სამუშაო სივრცე 1_0"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "სამუშაო სივრცე %s%d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "_გადაადგილება"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "_ზომის შეცვლა"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_დაკეტვა"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "სხვა დესკტოპზე გა_დაადგილება"
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -103,11 +103,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "უსახელო სარკმელი"
 
-#: libwnck/tasklist.c:461
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "სარკმელთა სია"
 
-#: libwnck/tasklist.c:462
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
-

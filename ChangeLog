@@ -1,3 +1,7 @@
+2004-10-12  Mark McLoughlin  <mark@skynet.ie>
+
+	* configure.in: Version 2.8.1.
+
 2004-10-03  Elijah Newren  <newren@math.utah.edu>
 
 	Don't highlight a sticky window on all workspaces when it has
