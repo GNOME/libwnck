@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2005-02-02 21:32+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -19,15 +19,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "nepojmenovaná aplikace"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Přepínač pracovních ploch"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Nástroj pro přepínání mezi pracovními plochami"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknutím sem se přepnete na pracovní plochu %s"
@@ -36,101 +36,101 @@ msgstr "Kliknutím sem se přepnete na pracovní plochu %s"
 msgid "Unknown Window"
 msgstr "Neznámé okno"
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "Neotevřeno žádné okno"
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "Výběr oken"
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "Nástroj pro přepínání mezi okny"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "Seznam oken"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "Nástroj pro přepínání mezi viditelnými okny"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 msgid "_Close All"
 msgstr "_Zavřít vše"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 msgid "_Minimize All"
 msgstr "Mi_nimalizovat vše"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 msgid "_Unminimize All"
 msgstr "Demi_nimalizovat vše"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "Demi_nimalizovat"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "Mi_nimalizovat"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Dema_ximalizovat"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ma_ximalizovat"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "Vy_rolovat"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "Za_rolovat"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "_Jen na této pracovní ploše"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "_Vždy na viditelné pracovní ploše"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovní plocha %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Pracovní plocha 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Pracovní plocha %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_Přesunout"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "_Změnit velikost"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_Zavřít"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Přesunout na jinou _pracovní plochu"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"

@@ -1,3 +1,35 @@
+2.9.92
+======
+
+ Fixes
+
+  - Fix warnings (Kjartan Maraas)
+  - Remove hack needed because of a metacity bug (Elijah)
+  - Check for whether a window or one of its transients has the demands
+    attention hint set (Elijah)
+  - Handle the changes to _NET_ACTIVE_WINDOW (Elijah)
+  - API change to add a timestamp to _NET_CURRENT_DESKTOP message (Elijah)
+  - Plug leak (Vincent)
+  - Fix tasklist button not requesting a reasonable size (Vincent)
+
+ Translators
+
+  - Jordi Mallach (ca)
+  - Nikos Charonitakis (el)
+  - Benoît Dejean (fr)
+  - Ankit Patel (gu)
+  - Luca Ferretti (it)
+  - Takeshi AIHANA (ja)
+  - Changwoo Ryu (ko)
+  - Tino Meinen (nl)
+  - GNOME PL Team (pl)
+  - Evandro Fernandes Giovanini (pt_BR)
+  - Duarte Loreto (pt)
+  - Leonid Kanter (ru)
+  - Laurent Dhima (sq)
+  - Paisa Seeluangsawat (th)
+  - Maxim Dziumanenko (uk)
+
 2.9.91
 ======
 

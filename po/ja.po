@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-12 22:57+0900\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2005-02-12 22:53+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -16,126 +16,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../libwnck/application.c:26
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "タイトル無しのアプリケーション"
 
-#: ../libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "ワークスペース切替"
 
-#: ../libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "ワークスペース切替用ツール"
 
-#: ../libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "これを押せばワークスペース %s へ切り替わります"
 
-#: ../libwnck/selector.c:218
+#: libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "不明なウィンドウです"
 
-#: ../libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "ウィンドウが開いていません"
 
-#: ../libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "ウィンドウの選択"
 
-#: ../libwnck/selector.c:742
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "ウィンドウを切り替えるツール"
 
-#: ../libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "ウィンドウの一覧"
 
-#: ../libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "表示可能なウィンドウ切り替えツール"
 
-#: ../libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 msgid "_Close All"
 msgstr "全て閉じる(_C)"
 
-#: ../libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 msgid "_Minimize All"
 msgstr "全て最小化(_M)"
 
-#: ../libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 msgid "_Unminimize All"
 msgstr "全て最小化解除(_U)"
 
-#: ../libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "最小化解除(_N)"
 
-#: ../libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: ../libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "最大化解除(_X)"
 
-#: ../libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "展開(_U)"
 
-#: ../libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "巻き上げ(_U)"
 
-#: ../libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "現在のワークスペースのみ(_O)"
 
-#: ../libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "常に表示しているワークスペース(_A)"
 
-#: ../libwnck/window-action-menu.c:376 ../libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: ../libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "ワークスペース 1_0"
 
-#: ../libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ワークスペース %s%d"
 
-#: ../libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "移動(_M)"
 
-#: ../libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "サイズの変更(_R)"
 
-#: ../libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: ../libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "別のワークスペースへ移動する(_W)"
 
-#: ../libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "タイトル無しのウインドウ"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2005-02-23 15:55+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanpreetalam@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਕਾਰਜ"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "ਵਰਕਸਪੇਸ ਸਵਿੱਚਰ"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਸਹਾਇਕ"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ ਦਬਾਉ"
@@ -38,101 +38,101 @@ msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ 
 msgid "Unknown Window"
 msgstr "ਅਣਜਾਣ ਝਰੋਖਾ"
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "ਕੋਈ ਝਰੋਖਾ ਖੁੱਲਾ ਨਹੀਂ"
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "ਝਰੋਖਾ ਚੋਣਕਾਰ"
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 msgid "_Close All"
 msgstr "ਸਭ ਬੰਦ(_C)"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 msgid "_Minimize All"
 msgstr "ਸਭ ਅਲਪੀਕਰਨ(_M)"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 msgid "_Unminimize All"
 msgstr "ਸਭ ਅਲਪੀਕਰਨ ਨਹੀ(_U)"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "ਅਲਪੀਕਰਨ ਨਹੀ(_n)"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "ਅਲਪੀਕਰਨ(_n)"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "ਅਧਿਕਤਮ ਨਹੀ(_x)"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "ਅਧਿਕਤਮ(_x)"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "ਨਾ ਸਮੇਟੋ(_U)"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "ਸਮੇਟੋ(_U)"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ(_O)"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ(_A)"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "ਵਰਕਸਪੇਸ 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "ਏਧਰ-ਓਧਰ(_M)"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "ਮੁਡ਼-ਅਕਾਰ(_R)"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "ਸਮਾਪਤ(_C)"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_W)"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
@@ -140,4 +140,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਝਰੋਖਾ"
-

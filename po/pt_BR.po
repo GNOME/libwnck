@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-20 06:24+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2005-02-20 15:21-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
@@ -18,15 +18,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "aplicação sem título"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Alternador Ambiente de Trabalho"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Ferramenta para alternar entre áreas de trabalho"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Clicar para ir para a área de trabalho %s"
@@ -35,101 +35,101 @@ msgstr "Clicar para ir para a área de trabalho %s"
 msgid "Unknown Window"
 msgstr "Janela Desconhecida"
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "Nenhuma Janela Aberta"
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "Seletor de Janelas"
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "Ferramenta para alternar entre janelas"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "Lista de Janelas"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para alternar entre janelas visíveis"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 msgid "_Close All"
 msgstr "_Fechar Todas"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 msgid "_Minimize All"
 msgstr "_Minimizar Todas"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 msgid "_Unminimize All"
 msgstr "_Desfazer Minimizar Todas"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "Desfazer Mi_nimizar"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Desfazer Ma_ximizar"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "_Desenrolar"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "Rolar para cim_a"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "_Apenas nesta Área de Trabalho"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "_Sempre na Área de Trabalho visível"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Área de Trabalho 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Área de Trabalho %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_Mover"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "Fe_char"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Ir para outra _área de trabalho"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"

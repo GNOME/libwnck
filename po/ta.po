@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2004-09-03 10:35+0530\n"
 "Last-Translator: Jayaradha N <jaya@pune.redhat.com>\n"
 "Language-Team: Tamil <zhakanini@yahoogroups.com>\n"
@@ -24,15 +24,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "பெயரற்ற நிரல்"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "வேலையிட மாற்றி"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "வேலையிடங்களுக்கு மாற்றும் கருவி"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "%s வேலையிடத்திற்கு மாற்ற இதனை அமுத்தவும்"
@@ -41,108 +41,108 @@ msgstr "%s வேலையிடத்திற்கு மாற்ற இத�
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 #, fuzzy
 msgid "Window Selector"
 msgstr "சாளர பட்டியல்"
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "காட்சியில் உள்ள சாளரங்களுக்கு மாற்றும் கருவி"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "சாளர பட்டியல்"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "காட்சியில் உள்ள சாளரங்களுக்கு மாற்றும் கருவி"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 #, fuzzy
 msgid "_Close All"
 msgstr "_மூடு"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 #, fuzzy
 msgid "_Minimize All"
 msgstr "(_n)சிறியதாக்கு"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "(_n)சிறிதாக்காதே"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "(_n)சிறிதாக்காதே"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "(_n)சிறியதாக்கு"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "(_x)பெரிதாக்காதே"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "ஆக-பெருதாக்கு"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "கீழ் விரி"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "மேலே சுருட்டு"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 #, fuzzy
 msgid "_Only on This Workspace"
 msgstr "இவ்வேலையிடத்தில் மட்டும்"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 #, fuzzy
 msgid "_Always on Visible Workspace"
 msgstr "இவ்வேலையிடத்தில் மட்டும்"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "வேலையிடம் %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "வேலையிடம் 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "வேலையிடம் %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "(_M)நகர்த்து"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "அளவு மாற்று"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_மூடு"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "(_W)மற்ற வேலையிடத்திற்கு மாற்று"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"

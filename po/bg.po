@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2005-02-01 16:42+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
@@ -21,15 +21,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "програма без име"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Превключвател между работни плотове"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Инструмент за превключване между работни плотове"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Натиснете тук за превключване към работен плот %s"
@@ -38,101 +38,101 @@ msgstr "Натиснете тук за превключване към рабо�
 msgid "Unknown Window"
 msgstr "Непознат прозорец"
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "Няма отворени прозорци"
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "Списък с прозорците"
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "Програма за превключване между прозорците"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "Списък с прозорците"
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "Инструмент за превключване между видимите прозорци"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 msgid "_Close All"
 msgstr "_Затваряне на всички"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 msgid "_Minimize All"
 msgstr "_Минимизиране на всички"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 msgid "_Unminimize All"
 msgstr "_Деминимизиране на всички"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "_Деминимизиране"
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "_Минимизиране"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Дема_ксимизиране"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ма_ксимизиране"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "_Развиване"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "_Свиване"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "_Само на този работен плот"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "_Винаги на видимия работен плот"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "Работен плот %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Работен плот 1_0"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Работно място %s%d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_Преместване"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "О_размеряване"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_Затваряне"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Преместване на друг _работен плот"
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"

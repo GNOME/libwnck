@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
+"POT-Creation-Date: 2005-02-28 18:44+0100\n"
 "PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
@@ -19,15 +19,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "തരക്കെട്ടില്ലാത്ത പ്രയോഗം"
 
-#: libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "പണിയറ തിരഞ്ഞെടുക്കുക"
 
-#: libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
 
-#: libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇവിടെ അമ‍ര്ത്തുക"
@@ -36,109 +36,109 @@ msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇ
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:639
+#: libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:741
+#: libwnck/selector.c:734
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:742
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
 
-#: libwnck/tasklist.c:523
+#: libwnck/tasklist.c:528
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:524
+#: libwnck/tasklist.c:529
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
 
-#: libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2108
 #, fuzzy
 msgid "_Close All"
 msgstr "അടയ്‍ക്കുക"
 
-#: libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2123
 #, fuzzy
 msgid "_Minimize All"
 msgstr "ചെറുതാക്കുക"
 
-#: libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2134
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
 
-#: libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr ""
 
-#: libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "ചെറുതാക്കുക"
 
-#: libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
 
-#: libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "വലുതാക്കുക"
 
-#: libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "ചുരുളഴിക്കുക"
 
-#: libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "ചുരുട്ടുക"
 
-#: libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:256
 #, fuzzy
 msgid "_Only on This Workspace"
 msgstr "ഈ പണിയറയില് മാത്രം"
 
-#: libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:263
 #, fuzzy
 msgid "_Always on Visible Workspace"
 msgstr "ഈ പണിയറയില് മാത്രം"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "പണിയറ %d"
 
-#: libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:386
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "പണിയറ %d"
 
-#: libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:388
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "പണിയറ %d"
 
-#: libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "മാറ്റുക"
 
-#: libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "വലിപ്പം മാറ്റുക"
 
-#: libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "അടയ്‍ക്കുക"
 
-#: libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr ""
