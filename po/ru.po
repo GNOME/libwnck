@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-12-02 23:18-0500\n"
-"PO-Revision-Date: 2002-07-25 15:36+04:00\n"
+"POT-Creation-Date: 2003-01-09 16:41+0300\n"
+"PO-Revision-Date: 2003-01-09 17:01+0300\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Переключатель рабочих мест"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Средство для переключения между рабочими местами"
+msgstr "Инструмент для переключения между рабочими местами"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
@@ -44,23 +44,23 @@ msgstr "Восстановить _прежний размер"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "Развернуть во весь _экран"
+msgstr "Развернуть на весь _экран"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "С_катать"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Рас_катать"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Поместить только на э_то Рабочее место"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Поместить на вс_е Рабочие места"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
