@@ -3,6 +3,41 @@
 
 #include <libwnck/libwnck.h>
 
+/* enumerations from "pager.h" */
+GType
+wnck_pager_display_mode_get_type (void)
+{
+  static GType etype = 0;
+  if (etype == 0) {
+    static const GEnumValue values[] = {
+      { WNCK_PAGER_DISPLAY_NAME, "WNCK_PAGER_DISPLAY_NAME", "name" },
+      { WNCK_PAGER_DISPLAY_CONTENT, "WNCK_PAGER_DISPLAY_CONTENT", "content" },
+      { 0, NULL, NULL }
+    };
+    etype = g_enum_register_static ("WnckPagerDisplayMode", values);
+  }
+  return etype;
+}
+
+
+/* enumerations from "tasklist.h" */
+GType
+wnck_tasklist_grouping_type_get_type (void)
+{
+  static GType etype = 0;
+  if (etype == 0) {
+    static const GEnumValue values[] = {
+      { WNCK_TASKLIST_NEVER_GROUP, "WNCK_TASKLIST_NEVER_GROUP", "never-group" },
+      { WNCK_TASKLIST_AUTO_GROUP, "WNCK_TASKLIST_AUTO_GROUP", "auto-group" },
+      { WNCK_TASKLIST_ALWAYS_GROUP, "WNCK_TASKLIST_ALWAYS_GROUP", "always-group" },
+      { 0, NULL, NULL }
+    };
+    etype = g_enum_register_static ("WnckTasklistGroupingType", values);
+  }
+  return etype;
+}
+
+
 /* enumerations from "window.h" */
 GType
 wnck_window_state_get_type (void)
@@ -17,6 +52,8 @@ wnck_window_state_get_type (void)
       { WNCK_WINDOW_STATE_SKIP_PAGER, "WNCK_WINDOW_STATE_SKIP_PAGER", "skip-pager" },
       { WNCK_WINDOW_STATE_SKIP_TASKLIST, "WNCK_WINDOW_STATE_SKIP_TASKLIST", "skip-tasklist" },
       { WNCK_WINDOW_STATE_STICKY, "WNCK_WINDOW_STATE_STICKY", "sticky" },
+      { WNCK_WINDOW_STATE_HIDDEN, "WNCK_WINDOW_STATE_HIDDEN", "hidden" },
+      { WNCK_WINDOW_STATE_FULLSCREEN, "WNCK_WINDOW_STATE_FULLSCREEN", "fullscreen" },
       { WNCK_WINDOW_STATE_DEMANDS_ATTENTION, "WNCK_WINDOW_STATE_DEMANDS_ATTENTION", "demands-attention" },
       { 0, NULL, NULL }
     };
@@ -50,6 +87,28 @@ wnck_window_actions_get_type (void)
       { 0, NULL, NULL }
     };
     etype = g_flags_register_static ("WnckWindowActions", values);
+  }
+  return etype;
+}
+
+GType
+wnck_window_type_get_type (void)
+{
+  static GType etype = 0;
+  if (etype == 0) {
+    static const GEnumValue values[] = {
+      { WNCK_WINDOW_NORMAL, "WNCK_WINDOW_NORMAL", "normal" },
+      { WNCK_WINDOW_DESKTOP, "WNCK_WINDOW_DESKTOP", "desktop" },
+      { WNCK_WINDOW_DOCK, "WNCK_WINDOW_DOCK", "dock" },
+      { WNCK_WINDOW_DIALOG, "WNCK_WINDOW_DIALOG", "dialog" },
+      { WNCK_WINDOW_MODAL_DIALOG, "WNCK_WINDOW_MODAL_DIALOG", "modal-dialog" },
+      { WNCK_WINDOW_TOOLBAR, "WNCK_WINDOW_TOOLBAR", "toolbar" },
+      { WNCK_WINDOW_MENU, "WNCK_WINDOW_MENU", "menu" },
+      { WNCK_WINDOW_UTILITY, "WNCK_WINDOW_UTILITY", "utility" },
+      { WNCK_WINDOW_SPLASHSCREEN, "WNCK_WINDOW_SPLASHSCREEN", "splashscreen" },
+      { 0, NULL, NULL }
+    };
+    etype = g_enum_register_static ("WnckWindowType", values);
   }
   return etype;
 }

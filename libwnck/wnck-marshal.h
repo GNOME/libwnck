@@ -1,5 +1,8 @@
 
-#include	<gobject/gmarshal.h>
+#ifndef ___wnck_marshal_MARSHAL_H__
+#define ___wnck_marshal_MARSHAL_H__
+
+#include	<glib-object.h>
 
 G_BEGIN_DECLS
 
@@ -12,4 +15,6 @@ extern void _wnck_marshal_VOID__FLAGS_FLAGS (GClosure     *closure,
                                              gpointer      marshal_data);
 
 G_END_DECLS
+
+#endif /* ___wnck_marshal_MARSHAL_H__ */
 

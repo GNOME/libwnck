@@ -1,3 +1,9 @@
+2004-08-09  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/wnck-enum-types.[ch],
+	  libwnck/wnck-marshal.[ch]: run "make regenerate-built-sources".
+	(Torsten Schoenfeld <kaffeetisch@gmx.de>, bug #125227)
+
 2004-08-07  Elijah Newren  <newren@math.utah.edu>
 
 	* libwnck/window.c (wnck_window_unminimize): call
