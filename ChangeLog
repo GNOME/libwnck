@@ -1,3 +1,13 @@
+2003-07-29  Arvind Samptur <arvind.samptur@wipro.com>
+
+	* libwnck/xutils.c (_wnck_get_utf8_list): Number of
+	strings we are processing is one more than required.
+	Fixes workspace switcher having workspaces names blank
+	when adding new workspaces. Random problem.
+
+	Also get the string count right even without a null byte at the end
+	Pointed out by Havoc.
+
 2003-07-20  Mariano Suárez-Alvarez <msuarezalvarez@arnet.com.ar>
 
 	* libwnck/window.c(force_update_now): slightly reorder the updating of
