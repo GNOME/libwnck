@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-11-26 05:42+0100\n"
-"PO-Revision-Date: 2002-12-10 19:37+EDT\n"
+"POT-Creation-Date: 2002-12-13 05:58+0100\n"
+"PO-Revision-Date: 2002-12-13 23:47+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,47 +32,55 @@ msgstr "መስሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
 msgid "Click this to switch to workspace %s"
 msgstr "ወደ መስሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "ምታሳንስ (_m)"
+msgstr "ምታሳንስ (_M)"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "ምሳንስ (_M)"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "ምታስተልቅ (_U)"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "ምተልቅ (_x)"
+msgstr "ምተልቅ (_X)"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "ማውረድ (n)"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "ማውረድ (U)"
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "ማውጣት (_S)"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "ማውጣት (_U)"
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "ዝጋ (_C)"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
-msgstr "ምንቀሳቅስ (_v)"
+msgstr "ምንቀሳቅስ (_V)"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "እንደገና መጧን ማስተሥከል (_R)"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "ዝጋ (_C)"
 
 #: libwnck/window.c:29
 msgid "untitled window"
 msgstr "ያልተሰየመ መስኮት"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "የ%d መሥሪያ ቦታ"
