@@ -67,25 +67,14 @@ struct _WnckWindowPrivate
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
 
+  WnckIconCache *icon_cache;
+  
   WnckWindowActions actions;
 
   int x;
   int y;
   int width;
   int height;
-  
-  /* window has no icon, don't bother querying the
-   * properties again
-   */
-  guint icon_fetch_failed : 1;
-
-  /* whether to make up a standard default icon if none is set on the
-   * window
-   */
-  guint want_fallback_icon : 1;
-
-  /* Icon is a fallback icon */
-  guint icon_is_fallback : 1;
 
   /* window state */
   guint is_minimized : 1;
@@ -145,7 +134,6 @@ static void update_actions   (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
-static void invalidate_icon  (WnckWindow *window);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -193,7 +181,8 @@ wnck_window_init (WnckWindow *window)
   window->priv->preferred_icon_height = DEFAULT_ICON_HEIGHT;
   window->priv->preferred_mini_icon_width = DEFAULT_MINI_ICON_WIDTH;
   window->priv->preferred_mini_icon_height = DEFAULT_MINI_ICON_HEIGHT;
-  window->priv->want_fallback_icon = TRUE;
+
+  window->priv->icon_cache = _wnck_icon_cache_new ();
 }
 
 static void
@@ -272,7 +261,13 @@ wnck_window_finalize (GObject *object)
 
   unqueue_update (window);
 
-  invalidate_icon (window);
+  if (window->priv->icon)
+    g_object_unref (G_OBJECT (window->priv->icon));
+
+  if (window->priv->mini_icon)
+    g_object_unref (G_OBJECT (window->priv->mini_icon));
+  
+  _wnck_icon_cache_free (window->priv->icon_cache);
 
   g_free (window->priv->name);
   g_free (window->priv->icon_name);
@@ -864,38 +859,40 @@ wnck_window_is_active (WnckWindow *window)
 static void
 get_icons (WnckWindow *window)
 {
-  if (window->priv->icon != NULL ||
-      window->priv->icon_fetch_failed)
-    return;
+  GdkPixbuf *icon;
+  GdkPixbuf *mini_icon;
 
-  _wnck_read_icons (window->priv->xwindow,
-                    &window->priv->icon,
-                    window->priv->preferred_icon_width,
-                    window->priv->preferred_icon_height,
-                    &window->priv->mini_icon,
-                    window->priv->preferred_mini_icon_width,
-                    window->priv->preferred_mini_icon_height);
+  icon = NULL;
+  mini_icon = NULL;
+  
+  if (_wnck_read_icons (window->priv->xwindow,
+                        window->priv->icon_cache,
+                        &icon,
+                        window->priv->preferred_icon_width,
+                        window->priv->preferred_icon_height,
+                        &mini_icon,
+                        window->priv->preferred_mini_icon_width,
+                        window->priv->preferred_mini_icon_height))
+    {
+      window->priv->need_emit_icon_changed = TRUE;
+      
+      if (icon)
+        g_object_ref (G_OBJECT (icon));
+      if (mini_icon)
+        g_object_ref (G_OBJECT (mini_icon));
+
+      if (window->priv->icon)
+        g_object_unref (G_OBJECT (window->priv->icon));
+
+      if (window->priv->mini_icon)
+        g_object_unref (G_OBJECT (window->priv->mini_icon));
+
+      window->priv->icon = icon;
+      window->priv->mini_icon = mini_icon;
+    }
 
   g_assert ((window->priv->icon && window->priv->mini_icon) ||
             !(window->priv->icon || window->priv->mini_icon));
-
-  if (window->priv->icon == NULL)
-    window->priv->icon_fetch_failed = TRUE;
-
-  if (window->priv->icon == NULL &&
-      window->priv->want_fallback_icon)
-    {
-      _wnck_get_fallback_icons (&window->priv->icon,
-                                window->priv->preferred_icon_width,
-                                window->priv->preferred_icon_height,
-                                &window->priv->mini_icon,
-                                window->priv->preferred_mini_icon_width,
-                                window->priv->preferred_mini_icon_height);
-
-      window->priv->icon_is_fallback = TRUE;
-    }
-
-  window->priv->need_emit_icon_changed = FALSE;
 }
 
 GdkPixbuf*
@@ -904,6 +901,10 @@ wnck_window_get_icon (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
   get_icons (window);
+  if (window->priv->need_emit_icon_changed)
+    queue_update (window); /* not done in get_icons since we call that from
+                            * the update
+                            */
 
   return window->priv->icon;
 }
@@ -914,7 +915,11 @@ wnck_window_get_mini_icon (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
   
   get_icons (window);
-
+  if (window->priv->need_emit_icon_changed)
+    queue_update (window); /* not done in get_icons since we call that from
+                            * the update
+                            */
+  
   return window->priv->mini_icon;
 }
 
@@ -924,16 +929,7 @@ wnck_window_set_create_fallback_icon (WnckWindow *window,
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  setting = setting != FALSE;
-
-  if (setting != window->priv->want_fallback_icon)
-    {
-      if ((setting && window->priv->icon == NULL) ||
-          (!setting && window->priv->icon_is_fallback))
-        invalidate_icon (window);
-      
-      window->priv->want_fallback_icon = setting;
-    }
+  _wnck_icon_cache_set_want_fallback (window->priv->icon_cache, setting);
 }
 
 /**
@@ -963,9 +959,11 @@ wnck_window_set_icon_size (WnckWindow *window,
   if (width != window->priv->preferred_icon_width ||
       height != window->priv->preferred_icon_height)
     {
+      /* on next get_icons, the icon cache will notice
+       * that our size has changed
+       */
       window->priv->preferred_icon_width = width;
       window->priv->preferred_icon_height = height;
-      invalidate_icon (window);
     }
 }
 
@@ -990,9 +988,11 @@ wnck_window_set_mini_icon_size (WnckWindow *window,
   if (width != window->priv->preferred_mini_icon_width ||
       height != window->priv->preferred_mini_icon_height)
     {
+      /* on next get_icons, the icon cache will notice
+       * that our size has changed
+       */
       window->priv->preferred_mini_icon_width = width;
       window->priv->preferred_mini_icon_height = height;
-      invalidate_icon (window);
     }
 }
 
@@ -1179,8 +1179,8 @@ _wnck_window_process_property_notify (WnckWindow *window,
            xevent->xproperty.atom ==
            _wnck_atom_get ("WM_NORMAL_HINTS"))
     {
-      invalidate_icon (window);
-      window->priv->need_emit_icon_changed = TRUE;
+      _wnck_icon_cache_property_changed (window->priv->icon_cache,
+                                         xevent->xproperty.atom);
       queue_update (window);
     }
 }
@@ -1432,6 +1432,8 @@ force_update_now (WnckWindow *window)
   update_minimized (window);
   update_workspace (window); /* emits signals */
   update_actions (window);
+
+  get_icons (window);
   
   new_state = COMPRESS_STATE (window);
 
@@ -1443,10 +1445,7 @@ force_update_now (WnckWindow *window)
                           window->priv->actions);
   
   if (window->priv->need_emit_icon_changed)
-    {
-      window->priv->need_emit_icon_changed = FALSE;
-      emit_icon_changed (window);
-    }
+    emit_icon_changed (window);
 }
 
 
@@ -1480,19 +1479,6 @@ unqueue_update (WnckWindow *window)
 }
 
 static void
-invalidate_icon (WnckWindow *window)
-{
-  if (window->priv->icon)
-    g_object_unref (G_OBJECT (window->priv->icon));
-  if (window->priv->mini_icon)
-    g_object_unref (G_OBJECT (window->priv->mini_icon));
-  window->priv->icon = NULL;
-  window->priv->mini_icon = NULL;
-  window->priv->icon_fetch_failed = FALSE;
-  window->priv->icon_is_fallback = FALSE;
-}
-
-static void
 emit_name_changed (WnckWindow *window)
 {
   g_signal_emit (G_OBJECT (window),
@@ -1521,6 +1507,7 @@ emit_workspace_changed (WnckWindow *window)
 static void
 emit_icon_changed (WnckWindow *window)
 {
+  window->priv->need_emit_icon_changed = FALSE;
   g_signal_emit (G_OBJECT (window),
                  signals[ICON_CHANGED],
                  0);

@@ -1,3 +1,12 @@
+2001-12-04  Havoc Pennington  <hp@pobox.com>
+
+        The following change is basically untested.
+	
+	* libwnck/window.c (get_icons): use the whole icon cache thingy
+
+	* libwnck/xutils.c (_wnck_read_icons): all reworked to use an
+	"icon cache" object to avoid pointless icon change notifies
+
 2001-12-03  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.c:

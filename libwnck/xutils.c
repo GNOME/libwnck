@@ -1270,14 +1270,178 @@ get_kwm_win_icon (Window  xwindow,
   return;
 }
 
+typedef enum
+{
+  /* These MUST be in ascending order of preference;
+   * i.e. if we get _NET_WM_ICON and already have
+   * WM_NORMAL_HINTS, we prefer _NET_WM_ICON
+   */
+  USING_NO_ICON,
+  USING_FALLBACK_ICON,
+  USING_KWM_WIN_ICON,
+  USING_WM_NORMAL_HINTS,
+  USING_NET_WM_ICON
+} IconOrigin;
+
+struct _WnckIconCache
+{
+  IconOrigin origin;
+  Pixmap prev_pixmap;
+  Pixmap prev_mask;
+  GdkPixbuf *icon;
+  GdkPixbuf *mini_icon;
+  int ideal_width;
+  int ideal_height;
+  int ideal_mini_width;
+  int ideal_mini_height;
+  guint want_fallback : 1;
+  /* TRUE if these props have changed */
+  guint wm_normal_hints_dirty : 1;
+  guint kwm_win_icon_dirty : 1;
+  guint net_wm_icon_dirty : 1;
+};
+
+WnckIconCache*
+_wnck_icon_cache_new (void)
+{
+  WnckIconCache *icon_cache;
+
+  icon_cache = g_new (WnckIconCache, 1);
+
+  icon_cache->origin = USING_NO_ICON;
+  icon_cache->prev_pixmap = None;
+  icon_cache->icon = NULL;
+  icon_cache->mini_icon = NULL;
+  icon_cache->ideal_width = -1; /* won't be a legit width */
+  icon_cache->ideal_height = -1;
+  icon_cache->ideal_mini_width = -1;
+  icon_cache->ideal_mini_height = -1;
+  icon_cache->want_fallback = TRUE;
+  icon_cache->wm_normal_hints_dirty = TRUE;
+  icon_cache->kwm_win_icon_dirty = TRUE;
+  icon_cache->net_wm_icon_dirty = TRUE;
+  
+  return icon_cache;
+}
+
+static void
+clear_icon_cache (WnckIconCache *icon_cache,
+                  gboolean       dirty_all)
+{
+  if (icon_cache->icon)
+    g_object_unref (G_OBJECT (icon_cache->icon));
+  icon_cache->icon = NULL;
+  
+  if (icon_cache->mini_icon)
+    g_object_unref (G_OBJECT (icon_cache->mini_icon));
+  icon_cache->mini_icon = NULL;
+
+  icon_cache->origin = USING_NO_ICON;
+
+  if (dirty_all)
+    {
+      icon_cache->wm_normal_hints_dirty = TRUE;
+      icon_cache->kwm_win_icon_dirty = TRUE;
+      icon_cache->net_wm_icon_dirty = TRUE;
+    }
+}
+
 void
-_wnck_read_icons (Window      xwindow,
-                  GdkPixbuf **iconp,
-                  int         ideal_width,
-                  int         ideal_height,
-                  GdkPixbuf **mini_iconp,
-                  int         ideal_mini_width,
-                  int         ideal_mini_height)
+_wnck_icon_cache_free (WnckIconCache *icon_cache)
+{
+  clear_icon_cache (icon_cache, FALSE);
+  
+  g_free (icon_cache);
+}
+
+void
+_wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
+                                   Atom           atom)
+{  
+  if (atom == _wnck_atom_get ("_NET_WM_ICON"))
+    {
+      if (icon_cache->origin <= USING_NET_WM_ICON)
+        clear_icon_cache (icon_cache, FALSE);
+
+      icon_cache->net_wm_icon_dirty = TRUE;
+    }
+  else if (atom == _wnck_atom_get ("KWM_WIN_ICON"))
+    {
+      if (icon_cache->origin <= USING_KWM_WIN_ICON)
+        clear_icon_cache (icon_cache, FALSE);
+
+      icon_cache->kwm_win_icon_dirty = TRUE;
+    }
+  else if (atom == _wnck_atom_get ("WM_NORMAL_HINTS"))
+    {
+      if (icon_cache->origin <= USING_WM_NORMAL_HINTS)
+        clear_icon_cache (icon_cache, FALSE);
+
+      icon_cache->wm_normal_hints_dirty = TRUE;
+    }
+}
+
+gboolean
+_wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache)
+{
+  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
+      icon_cache->kwm_win_icon_dirty)
+    return TRUE;
+  else if (icon_cache->origin <= USING_WM_NORMAL_HINTS &&
+           icon_cache->wm_normal_hints_dirty)
+    return TRUE;
+  else if (icon_cache->origin <= USING_NET_WM_ICON &&
+           icon_cache->net_wm_icon_dirty)
+    return TRUE;
+  else if (icon_cache->origin < USING_FALLBACK_ICON &&
+           icon_cache->want_fallback)
+    return TRUE;
+  else if (icon_cache->origin == USING_NO_ICON)
+    return TRUE;
+  else if (icon_cache->origin == USING_FALLBACK_ICON &&
+           !icon_cache->want_fallback)
+    return TRUE;
+  else
+    return FALSE;
+}
+
+void
+_wnck_icon_cache_set_want_fallback (WnckIconCache *icon_cache,
+                                    gboolean       setting)
+{
+  icon_cache->want_fallback = TRUE;
+}
+
+static void
+replace_cache (WnckIconCache *icon_cache,
+               IconOrigin     origin,
+               GdkPixbuf     *new_icon,
+               GdkPixbuf     *new_mini_icon)
+{
+  clear_icon_cache (icon_cache, FALSE);
+  
+  icon_cache->origin = origin;
+
+  if (new_icon)
+    g_object_ref (G_OBJECT (new_icon));
+
+  icon_cache->icon = new_icon;
+
+  if (new_mini_icon)
+    g_object_ref (G_OBJECT (new_mini_icon));
+
+  icon_cache->mini_icon = new_mini_icon;
+}
+
+gboolean
+_wnck_read_icons (Window         xwindow,
+                  WnckIconCache *icon_cache,
+                  GdkPixbuf    **iconp,
+                  int            ideal_width,
+                  int            ideal_height,
+                  GdkPixbuf    **mini_iconp,
+                  int            ideal_mini_width,
+                  int            ideal_mini_height)
 {
   guchar *pixdata;     
   int w, h;
@@ -1286,68 +1450,171 @@ _wnck_read_icons (Window      xwindow,
   Pixmap pixmap;
   Pixmap mask;
   XWMHints *hints;
+
+  /* Return value is whether the icon changed */
+  
+  g_return_val_if_fail (icon_cache != NULL, FALSE);
   
   *iconp = NULL;
   *mini_iconp = NULL;
+  
+  if (ideal_width != icon_cache->ideal_width ||
+      ideal_height != icon_cache->ideal_height ||
+      ideal_mini_width != icon_cache->ideal_mini_width ||
+      ideal_mini_height != icon_cache->ideal_mini_height)
+    clear_icon_cache (icon_cache, TRUE);
+  
+  icon_cache->ideal_width = ideal_width;
+  icon_cache->ideal_height = ideal_height;
+  icon_cache->ideal_mini_width = ideal_mini_width;
+  icon_cache->ideal_mini_height = ideal_mini_height;
 
+  if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
+    return FALSE; /* we have no new info to use */
+  
   pixdata = NULL;
-  
-  if (read_rgb_icon (xwindow,
-                     ideal_width, ideal_height,
-                     ideal_mini_width, ideal_mini_height,
-                     &w, &h, &pixdata,
-                     &mini_w, &mini_h, &mini_pixdata))
+
+  /* Our algorithm here assumes that we can't have for example origin
+   * < USING_NET_WM_ICON and icon_cache->net_wm_icon_dirty == FALSE
+   * unless we have tried to read NET_WM_ICON.
+   *
+   * Put another way, if an icon origin is not dirty, then we have
+   * tried to read it at the current size. If it is dirty, then
+   * we haven't done that since the last change.
+   */
+   
+  if (icon_cache->origin <= USING_NET_WM_ICON &&
+      icon_cache->net_wm_icon_dirty)
+
     {
-      *iconp = gdk_pixbuf_new_from_data (pixdata,
-                                         GDK_COLORSPACE_RGB,
-                                         TRUE,
-                                         8,
-                                         w, h, w * 4,
-                                         free_pixels,
-                                         NULL);
+      icon_cache->net_wm_icon_dirty = FALSE;
+      
+      if (read_rgb_icon (xwindow,
+                         ideal_width, ideal_height,
+                         ideal_mini_width, ideal_mini_height,
+                         &w, &h, &pixdata,
+                         &mini_w, &mini_h, &mini_pixdata))
+        {
+          *iconp = gdk_pixbuf_new_from_data (pixdata,
+                                             GDK_COLORSPACE_RGB,
+                                             TRUE,
+                                             8,
+                                             w, h, w * 4,
+                                             free_pixels,
+                                             NULL);
+          
+          *mini_iconp = gdk_pixbuf_new_from_data (mini_pixdata,
+                                                  GDK_COLORSPACE_RGB,
+                                                  TRUE,
+                                                  8,
+                                                  mini_w, mini_h, mini_w * 4,
+                                                  free_pixels,
+                                                  NULL);
 
-      *mini_iconp = gdk_pixbuf_new_from_data (mini_pixdata,
-                                              GDK_COLORSPACE_RGB,
-                                              TRUE,
-                                              8,
-                                              mini_w, mini_h, mini_w * 4,
-                                              free_pixels,
-                                              NULL);
+          replace_cache (icon_cache, USING_NET_WM_ICON,
+                         *iconp, *mini_iconp);
 
-      return;
+          return TRUE;
+        }
+    }
+
+  if (icon_cache->origin <= USING_WM_NORMAL_HINTS &&
+      icon_cache->wm_normal_hints_dirty)
+    {
+      icon_cache->wm_normal_hints_dirty = FALSE;
+      
+      _wnck_error_trap_push ();
+      hints = XGetWMHints (gdk_display, xwindow);
+      _wnck_error_trap_pop ();
+      pixmap = None;
+      mask = None;
+      if (hints)
+        {
+          if (hints->flags & IconPixmapHint)
+            pixmap = hints->icon_pixmap;
+          if (hints->flags & IconMaskHint)
+            mask = hints->icon_mask;
+
+          XFree (hints);
+          hints = NULL;
+        }
+
+      /* We won't update if pixmap is unchanged;
+       * avoids a get_from_drawable() on every geometry
+       * hints change
+       */
+      if ((pixmap != icon_cache->prev_pixmap ||
+           mask != icon_cache->prev_mask) &&
+          pixmap != None)
+        {
+          if (try_pixmap_and_mask (pixmap, mask,
+                                   iconp, ideal_width, ideal_height,
+                                   mini_iconp, ideal_mini_width, ideal_mini_height))
+            {
+              icon_cache->prev_pixmap = pixmap;
+              icon_cache->prev_mask = mask;
+
+              replace_cache (icon_cache, USING_WM_NORMAL_HINTS,
+                             *iconp, *mini_iconp);
+
+              return TRUE;
+            }
+        }
+    }
+
+  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
+      icon_cache->kwm_win_icon_dirty)
+    {
+      icon_cache->kwm_win_icon_dirty = FALSE;
+      
+      get_kwm_win_icon (xwindow, &pixmap, &mask);
+
+      if ((pixmap != icon_cache->prev_pixmap ||
+           mask != icon_cache->prev_mask) &&
+          pixmap != None)
+        {
+          if (try_pixmap_and_mask (pixmap, mask,
+                                   iconp, ideal_width, ideal_height,
+                                   mini_iconp, ideal_mini_width, ideal_mini_height))
+            {
+              icon_cache->prev_pixmap = pixmap;
+              icon_cache->prev_mask = mask;
+
+              replace_cache (icon_cache, USING_KWM_WIN_ICON,
+                             *iconp, *mini_iconp);
+              
+              return TRUE;
+            }
+        }
     }
   
-  _wnck_error_trap_push ();
-  hints = XGetWMHints (gdk_display, xwindow);
-  _wnck_error_trap_pop ();
-  pixmap = None;
-  mask = None;
-  if (hints)
+  if (icon_cache->want_fallback &&
+      icon_cache->origin < USING_FALLBACK_ICON)
     {
-      if (hints->flags & IconPixmapHint)
-        pixmap = hints->icon_pixmap;
-      if (hints->flags & IconMaskHint)
-        mask = hints->icon_mask;
+      _wnck_get_fallback_icons (iconp,
+                                ideal_width,
+                                ideal_height,
+                                mini_iconp,
+                                ideal_mini_width,
+                                ideal_mini_height);
 
-      XFree (hints);
-      hints = NULL;
+      replace_cache (icon_cache, USING_FALLBACK_ICON,
+                     *iconp, *mini_iconp);
+
+      return TRUE;
     }
 
-  if (pixmap != None &&
-      try_pixmap_and_mask (pixmap, mask,
-                           iconp, ideal_width, ideal_height,
-                           mini_iconp, ideal_mini_width, ideal_mini_height))
-    return;
+  if (!icon_cache->want_fallback &&
+      icon_cache->origin == USING_FALLBACK_ICON)
+    {
+      /* Get rid of current icon */
+      clear_icon_cache (icon_cache, FALSE);
 
-  get_kwm_win_icon (xwindow, &pixmap, &mask);
+      return TRUE;
+    }
 
-  if (pixmap != None &&
-      try_pixmap_and_mask (pixmap, mask,
-                           iconp, ideal_width, ideal_height,
-                           mini_iconp, ideal_mini_width, ideal_mini_height))
-    return;
-  
-  /* No further ideas... */
+  /* found nothing new */
+  return FALSE;
 }
 
 #ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM

@@ -91,19 +91,31 @@ void   _wnck_select_input     (Window xwindow,
                                int    mask);
 
 
-void _wnck_read_icons         (Window      xwindow,
-                               GdkPixbuf **iconp,
-                               int         ideal_width,
-                               int         ideal_height,
-                               GdkPixbuf **mini_iconp,
-                               int         ideal_mini_width,
-                               int         ideal_mini_height);
-void _wnck_get_fallback_icons (GdkPixbuf **iconp,
-                               int         ideal_width,
-                               int         ideal_height,
-                               GdkPixbuf **mini_iconp,
-                               int         ideal_mini_width,
-                               int         ideal_mini_height);
+typedef struct _WnckIconCache WnckIconCache;
+
+WnckIconCache *_wnck_icon_cache_new                  (void);
+void           _wnck_icon_cache_free                 (WnckIconCache *icon_cache);
+void           _wnck_icon_cache_property_changed     (WnckIconCache *icon_cache,
+                                                      Atom           atom);
+gboolean       _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache);
+void           _wnck_icon_cache_set_want_fallback    (WnckIconCache *icon_cache,
+                                                      gboolean       setting);
+
+gboolean _wnck_read_icons         (Window          xwindow,
+                                   WnckIconCache  *icon_cache,
+                                   GdkPixbuf     **iconp,
+                                   int             ideal_width,
+                                   int             ideal_height,
+                                   GdkPixbuf     **mini_iconp,
+                                   int             ideal_mini_width,
+                                   int             ideal_mini_height);
+void _wnck_get_fallback_icons (GdkPixbuf     **iconp,
+                               int             ideal_width,
+                               int             ideal_height,
+                               GdkPixbuf     **mini_iconp,
+                               int             ideal_mini_width,
+                               int             ideal_mini_height);
+
 
 
 void _wnck_get_window_geometry (Window xwindow,
