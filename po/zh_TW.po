@@ -1,0 +1,54 @@
+# Traditional chinese translation for libwnck.
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Abel Cheung <maddog@linux.org.hk>, 2001.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 0.1\n"
+"POT-Creation-Date: 2001-11-29 09:16+0800\n"
+"PO-Revision-Date: 2001-11-29 09:21+0800\n"
+"Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
+"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/window-action-menu.c:157
+msgid "Un_minimize"
+msgstr "還原最小化(_M)"
+
+#: libwnck/window-action-menu.c:163
+msgid "_Minimize"
+msgstr "最小化(_M)"
+
+#: libwnck/window-action-menu.c:170
+msgid "_Unmaximize"
+msgstr "還原最大化(_U)"
+
+#: libwnck/window-action-menu.c:176
+msgid "Ma_ximize"
+msgstr "最大化(_X)"
+
+#: libwnck/window-action-menu.c:183
+msgid "U_nshade"
+msgstr "放下(_N)"
+
+#: libwnck/window-action-menu.c:189
+msgid "_Shade"
+msgstr "捲起(_S)"
+
+#: libwnck/window-action-menu.c:300
+msgid "Close"
+msgstr "關閉"
+
+#: libwnck/window-action-menu.c:321
+msgid "Mo_ve"
+msgstr "移動(_V)"
+
+#: libwnck/window-action-menu.c:327
+msgid "_Resize"
+msgstr "重設大小(_R)"
+
+#: libwnck/window.c:32
+msgid "untitled window"
+msgstr "無標題的視窗"
