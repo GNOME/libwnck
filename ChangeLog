@@ -1,3 +1,11 @@
+2001-12-04  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.c:
+	Don't grab button 2 and 3.
+	Use set_child_visible() instead of hiding widgets in size_allocate()
+	Some menu work.
+	Use tables instead of hboxes for the button packing.
+
 2001-12-04  Havoc Pennington  <hp@pobox.com>
 
         The following change is basically untested.

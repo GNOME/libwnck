@@ -36,6 +36,8 @@
  *  There seems to be a sizeing bug in gtk+. I need spurious size_requests or shows. (makes labels not size correctly)
  *  Sigh. The labels seem to overdraw the images...
  *  The menu size size-requested from the menu is 0,0. So menu positioning is borken.
+ *  sort by leading window xid first, and then xid, so grouped windows get next to each other.
+ *  stop_by_name button_press_event on the buttons to allow propagation to the panel.
  *
  */ 
 
@@ -142,7 +144,13 @@ static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gpointer          callback_data);
 static void     wnck_tasklist_remove	    (GtkContainer   *container,
 					     GtkWidget	    *widget);
-static void     wnck_tasklist_update_lists  (WnckTasklist     *tasklist);
+static void     wnck_tasklist_update_lists  (WnckTasklist   *tasklist);
+static int      wnck_tasklist_layout        (GtkAllocation  *allocation,
+					     int             max_width,
+					     int             max_height,
+					     int             n_buttons,
+					     int            *n_cols_out,
+					     int            *n_rows_out);
 
 static void     wnck_tasklist_active_window_changed    (WnckScreen   *screen,
 							WnckTasklist *tasklist);
@@ -321,6 +329,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   GtkRequisition child_req;
   int max_height = 1;
   int max_width = 1;
+  int u_width, u_height;
   GList *l;
   
   g_print ("wnck_tasklist_size_request()\n");
@@ -360,8 +369,21 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   tasklist->priv->max_button_width = max_width;
   tasklist->priv->max_button_height = max_height;
 
-  requisition->width = 400;
+
+  gtk_widget_get_size_request (widget, &u_width, &u_height);
+
+  requisition->width = 300;
   requisition->height = 48;
+  
+  if (u_height != -1)
+    {
+      requisition->height = u_height;
+    }
+  else if (u_width != -1)
+    {
+      requisition->width = u_width;
+      requisition->height = 4 * max_height;
+    }
 }
 
 /* returns the maximal possible button width (i.e. if you
@@ -1105,6 +1127,8 @@ wnck_task_update_visible_state (WnckTask *task)
 {
   GdkPixbuf *pixbuf;
   char *text;
+
+  g_print ("wnck_task_update_visible_state ()\n");
   
   pixbuf = wnck_task_get_icon (task);
   gtk_image_set_from_pixbuf (GTK_IMAGE (task->image),
@@ -1126,6 +1150,8 @@ wnck_task_state_changed (WnckWindow     *window,
 			 gpointer        data)
 {
   WnckTasklist *tasklist = WNCK_TASKLIST (data);
+
+  g_print ("wnck_task_state_changed ()\n");
   
   if (changed_mask & WNCK_WINDOW_STATE_SKIP_TASKLIST)
     {
@@ -1155,15 +1181,41 @@ wnck_task_state_changed (WnckWindow     *window,
 }
 
 static void
-wnck_task_icon_or_name_changed (WnckWindow *window,
-				gpointer        data)
+wnck_task_icon_changed (WnckWindow *window,
+			gpointer    data)
 {
   WnckTask *task = WNCK_TASK (data);
-  
+
+  g_print ("wnck_task_icon_changed () for %s\n", wnck_window_get_name (task->window));
+
   if (task)
     wnck_task_update_visible_state (task);
 }
-  
+
+static void
+wnck_task_name_changed (WnckWindow *window,
+			gpointer    data)
+{
+  WnckTask *task = WNCK_TASK (data);
+
+  g_print ("wnck_task_name_changed ()\n");
+
+  if (task)
+    wnck_task_update_visible_state (task);
+}
+
+static gboolean
+wnck_task_button_press_event (GtkWidget	      *widget,
+			      GdkEventButton  *event)
+{
+  if (event->button != 1)
+    g_signal_stop_emission_by_name (widget,
+				    "button_press_event");
+
+  return FALSE;
+}
+
+
 static void
 wnck_task_create_widgets (WnckTask *task)
 {
@@ -1205,7 +1257,6 @@ wnck_task_create_widgets (WnckTask *task)
 		    GTK_EXPAND, GTK_EXPAND,
 		    0, 0);
 
-
   gtk_container_add (GTK_CONTAINER (task->button), table);
   gtk_widget_show (table);
 
@@ -1213,14 +1264,18 @@ wnck_task_create_widgets (WnckTask *task)
   g_signal_connect (G_OBJECT (task->button), "toggled",
 		    G_CALLBACK (wnck_task_button_toggled), task);
 
+  
+  g_signal_connect (G_OBJECT (task->button), "button_press_event",
+		    G_CALLBACK (wnck_task_button_press_event), task);
+
   if (!task->is_application)
     {
       task->state_changed_tag = g_signal_connect (G_OBJECT (task->window), "state_changed",
 						  G_CALLBACK (wnck_task_state_changed), task->tasklist);
       task->icon_changed_tag = g_signal_connect (G_OBJECT (task->window), "icon_changed",
-						 G_CALLBACK (wnck_task_icon_or_name_changed), task);
+						 G_CALLBACK (wnck_task_icon_changed), task);
       task->name_changed_tag = g_signal_connect (G_OBJECT (task->window), "name_changed",
-						 G_CALLBACK (wnck_task_icon_or_name_changed), task);
+						 G_CALLBACK (wnck_task_name_changed), task);
     }
 
 }
