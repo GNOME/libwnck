@@ -1,3 +1,15 @@
+2001-12-08  Seth Nickell  <snickell@stanford.edu>
+
+	* libwnck/tasklist.c: (wnck_tasklist_change_active_task),
+	(wnck_tasklist_active_window_changed),
+	(wnck_tasklist_change_active_timeout), (wnck_task_menu_activated),
+	(wnck_tasklist_activate_task_window), (wnck_task_button_toggled):
+
+	When the user clicks to activate a window, toggle it immediately
+	and set a 0.5 second timeout which checks to make sure it was 
+	actually focused and if it wasn't changes to the tasklist to the
+	actually focused window.
+	
 2001-12-08  Christian Rose  <menthos@menthos.com>
 
 	* configure.in: Added "sv" to ALL_LINGUAS.

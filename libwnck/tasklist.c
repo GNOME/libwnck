@@ -19,7 +19,7 @@
  * Boston, MA 02111-1307, USA.
  */
 #include <string.h>
-
+#include <stdio.h>
 #include "tasklist.h"
 #include "window.h"
 #include "application.h"
@@ -108,6 +108,8 @@ struct _WnckTasklistPrivate
 
   gboolean grouping_enabled;
   gint grouping_limit;
+
+  guint activate_timeout_id;
 };
 
 
@@ -155,6 +157,12 @@ static void     wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
 static void     wnck_tasklist_window_added_or_removed  (WnckScreen   *screen,
 							WnckWindow   *win,
 							WnckTasklist *tasklist);
+
+static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
+							WnckTask *active_task);
+static gboolean wnck_tasklist_change_active_timeout    (gpointer data);
+static void     wnck_tasklist_activate_task_window     (WnckTask *task);
+
 
 static gpointer task_parent_class;
 static gpointer tasklist_parent_class;
@@ -344,6 +352,9 @@ wnck_tasklist_finalize (GObject *object)
   g_hash_table_destroy (tasklist->priv->app_hash);
   tasklist->priv->app_hash = NULL;
   
+  if (tasklist->priv->activate_timeout_id != 0)
+    gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+
   g_free (tasklist->priv);
   tasklist->priv = NULL;
 
@@ -876,17 +887,8 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 }
 
 static void
-wnck_tasklist_active_window_changed (WnckScreen   *screen,
-				     WnckTasklist *tasklist)
+wnck_tasklist_change_active_task (WnckTasklist *tasklist, WnckTask *active_task)
 {
-  WnckWindow *active_window;
-  WnckTask *active_task;
-  
-  active_window = wnck_screen_get_active_window (screen);
-
-  active_task = g_hash_table_lookup (tasklist->priv->win_hash,
-				     active_window);
-
   if (active_task &&
       active_task == tasklist->priv->active_task)
     return;
@@ -939,6 +941,21 @@ wnck_tasklist_active_window_changed (WnckScreen   *screen,
 }
 
 static void
+wnck_tasklist_active_window_changed (WnckScreen   *screen,
+				     WnckTasklist *tasklist)
+{
+  WnckWindow *active_window;
+  WnckTask *active_task;
+  
+  active_window = wnck_screen_get_active_window (screen);
+
+  active_task = g_hash_table_lookup (tasklist->priv->win_hash,
+				     active_window);
+
+  wnck_tasklist_change_active_task (tasklist, active_task);
+}
+
+static void
 wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
 					WnckTasklist *tasklist)
 {
@@ -984,23 +1001,68 @@ wnck_task_position_menu (GtkMenu   *menu,
   *push_in = TRUE;
 }
 
+static gboolean
+wnck_tasklist_change_active_timeout (gpointer data)
+{
+  WnckTasklist *tasklist = WNCK_TASKLIST (data);
+
+  tasklist->priv->activate_timeout_id = 0;
+
+  wnck_tasklist_active_window_changed (tasklist->priv->screen, tasklist);
+
+  return FALSE;
+}
+
 static void
 wnck_task_menu_activated (GtkMenuItem *menu_item,
 			  gpointer     data)
 {
   WnckTask *task = WNCK_TASK (data);
+
+  wnck_tasklist_activate_task_window (task);
+}
+
+static void
+wnck_tasklist_activate_task_window     (WnckTask *task)
+{
+  WnckTasklist *tasklist;
   WnckWindowState state;
+
+  tasklist = task->tasklist;
 
   if (task->window == NULL)
     return;
       
   state = wnck_window_get_state (task->window);
-  
+
   if (state & WNCK_WINDOW_STATE_MINIMIZED)
-    wnck_window_unminimize (task->window);
+    {
+      wnck_window_unminimize (task->window);
+      wnck_window_activate (task->window);
+    }
+  else
+    {
+      if (wnck_window_is_active (task->window))
+	{
+	  wnck_window_minimize (task->window);
+	  return;
+	}
+      else
+	{
+	  wnck_window_activate (task->window);
+	}
+    }
   
-  wnck_window_activate (task->window);
+
+  if (tasklist->priv->activate_timeout_id)
+    gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+
+  tasklist->priv->activate_timeout_id = 
+    gtk_timeout_add (500, &wnck_tasklist_change_active_timeout, tasklist);
+
+  wnck_tasklist_change_active_task (tasklist, task);
 }
+
 
 static void
 wnck_task_popup_menu (WnckTask  *task)
@@ -1091,20 +1153,10 @@ wnck_task_button_toggled (GtkButton *button,
     {
       if (task->window == NULL)
 	return;
-      
+
+      wnck_tasklist_activate_task_window (task);
+
       state = wnck_window_get_state (task->window);
-      if (state & WNCK_WINDOW_STATE_MINIMIZED)
-	{
-	  wnck_window_unminimize (task->window);
-	  wnck_window_activate (task->window);
-	}
-      else
-	{
-	  if (wnck_window_is_active (task->window))
-	    wnck_window_minimize (task->window);
-	  else
-	    wnck_window_activate (task->window);
-	}
     }
   
 }
