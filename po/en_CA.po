@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-29 00:10-0500\n"
-"PO-Revision-Date: 2005-01-29 20:52-0500\n"
+"POT-Creation-Date: 2005-02-01 02:37-0500\n"
+"PO-Revision-Date: 2005-02-01 20:52-0500\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@FreeBSD.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,42 @@ msgstr "Tool to switch between workspaces"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Click this to switch to workspace %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "Unknown Window"
+
+#: libwnck/selector.c:627
+msgid "No Windows Open"
+msgstr "No Windows Open"
+
+#: libwnck/selector.c:729
+msgid "Window Selector"
+msgstr "Window Selector"
+
+#: libwnck/selector.c:730
+msgid "Tool to switch between windows"
+msgstr "Tool to switch between windows"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Window List"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Tool to switch between visible windows"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Close All"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "_Minimize All"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "_Unminimize All"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -62,8 +98,8 @@ msgid "_Only on This Workspace"
 msgstr "_Only on This Workspace"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "_Always on Current Workspace"
+msgid "_Always on Visible Workspace"
+msgstr "_Always on Visible Workspace"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -103,23 +139,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "untitled window"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Window List"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Tool to switch between visible windows"
-
-#: libwnck/tasklist.c:2102
-msgid "_Close All"
-msgstr "_Close All"
-
-#: libwnck/tasklist.c:2117
-msgid "_Minimize All"
-msgstr "_Minimize All"
-
-#: libwnck/tasklist.c:2128
-msgid "_Unminimize All"
-msgstr "_Unminimize All"
