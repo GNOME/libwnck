@@ -1,5 +1,12 @@
 2001-10-09  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/test-wnck.c (maximized_toggled_callback): maximize don't
+	minimize to toggle maximization
+	(window_stacking_changed_callback): don't refill model on stacking
+	changed
+
+2001-10-09  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/window.c, libwnck/xutils.c: support window icons
 	(wnck_window_get_session_id_utf8): fix
 

@@ -144,7 +144,6 @@ window_stacking_changed_callback  (WnckScreen    *screen,
                                    gpointer       data)
 {
   g_print ("Stacking changed\n");
-  queue_refill_model ();
 }
 
 static void
@@ -622,9 +621,9 @@ maximized_toggled_callback (GtkCellRendererToggle *cell,
   window = get_window (model, &iter);
 
   if (wnck_window_is_maximized (window))
-    wnck_window_unminimize (window);
+    wnck_window_unmaximize (window);
   else
-    wnck_window_minimize (window);
+    wnck_window_maximize (window);
   
   gtk_tree_path_free (path);
 }
