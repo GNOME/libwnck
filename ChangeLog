@@ -1,5 +1,32 @@
 2002-06-02  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/*: clean up the accessibility patch:
+	 - s/G_CONST_RETURN/const/
+	 - s/gint/int/
+	 - s/gchar/char/
+	 - s/wspace/workspace/
+	 - s/ws/workspace/
+	 - move it out of the subdir
+	 - add _() to human-readable strings so 
+	   they get translated
+	 - formatting/indentation
+	 - no global variable of size GET_MAX_N_WS, this is 
+	   not the place to hardcode such a max, and globals should 
+	   not be named "aobj_ws" - they need namespacing.
+	   More importantly, you can't use a global to store
+	   accessibility info that is per-pager-instance.
+	 - do not return the address of a local variable from 
+	   wnck_wspace_get_rect.
+
+2002-05-21  Rajkumar Sivasamy <rajkumar.siva@wipro.com>
+
+	* libwnck/pager.c: Made changes to implement accessibility for pager
+
+	* libwnck/*: Files added to implement AtkSelection and
+	AtkComponent interface for setting accessibility features to pager
+
+2002-06-02  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/xutils.c (_wnck_get_utf8_list): when counting nul bytes
 	to get the number of strings, start the string count at 1, since
 	even with nitems == 0 there is a single empty string.

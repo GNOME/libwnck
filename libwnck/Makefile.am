@@ -26,6 +26,16 @@ libwnckinclude_HEADERS=			\
 wnck_built_headers = $(wnck_built_installed_headers) wnck-marshal.h
 wnck_built_cfiles = wnck-enum-types.c  wnck-marshal.c
 
+wnck_accessibility_files =			\
+	pager-accessible.c			\
+	pager-accessible.h			\
+	pager-accessible-factory.c		\
+	pager-accessible-factory.h		\
+	workspace-accessible.c			\
+	workspace-accessible.h			\
+	workspace-accessible-factory.c		\
+	workspace-accessible-factory.h
+
 libwnck_1_la_SOURCES= 		\
 	application.c		\
 	inlinepixbufs.h		\
@@ -41,7 +51,8 @@ libwnck_1_la_SOURCES= 		\
 	xutils.c		\
 	xutils.h		\
 	$(wnck_built_headers)	\
-	$(wnck_built_cfiles)
+	$(wnck_built_cfiles)	\
+	$(wnck_accessibility_files)
 
 $(libwnck_1_la_OBJECTS): inlinepixbufs.h
 

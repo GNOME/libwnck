@@ -24,6 +24,9 @@
 #include "window.h"
 #include "window-action-menu.h"
 #include "xutils.h"
+#include "pager-accessible-factory.h"
+#include "workspace-accessible-factory.h"
+
 
 #define N_SCREEN_CONNECTIONS 10
 
@@ -101,6 +104,9 @@ static GdkPixbuf* wnck_pager_get_background (WnckPager *pager,
                                              int        width,
                                              int        height);
 
+static AtkObject* wnck_pager_get_accessible (GtkWidget *widget);
+
+
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
 
@@ -167,6 +173,7 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->button_release_event = wnck_pager_button_release;
   widget_class->motion_notify_event = wnck_pager_motion;
   widget_class->focus = wnck_pager_focus;
+  widget_class->get_accessible = wnck_pager_get_accessible;   
 }
 
 static void
@@ -1381,4 +1388,96 @@ wnck_pager_get_background (WnckPager *pager,
     }
 
   return pager->priv->bg_cache;
+}
+
+/* 
+ *This will return aobj_pager whose parent is wnck's atk object -Gail Container
+ */
+static AtkObject *
+wnck_pager_get_accessible (GtkWidget *widget)
+{
+  gboolean static first_time = TRUE;
+
+  if (first_time) 
+    {
+      AtkObjectFactory *factory;
+      AtkRegistry *registry;
+      GType derived_type;
+      GType derived_atk_type;
+
+      /*
+       * Figure out whether accessibility is enabled by looking at the
+       * type of the accessible object which would be created for
+       * the parent type WnckPager.
+       */
+      derived_type = g_type_parent (WNCK_TYPE_PAGER);
+
+      registry = atk_get_default_registry ();
+      factory = atk_registry_get_factory (registry,
+                                          derived_type);
+      derived_atk_type = atk_object_factory_get_accessible_type (factory);
+
+      if (g_type_is_a (derived_atk_type, GTK_TYPE_ACCESSIBLE)) 
+        {
+          /*
+           * Specify what factory to use to create accessible
+           * objects
+           */
+          atk_registry_set_factory_type (registry,
+                                         WNCK_TYPE_PAGER,
+                                         WNCK_TYPE_PAGER_ACCESSIBLE_FACTORY);
+
+          atk_registry_set_factory_type (registry,
+                                         WNCK_TYPE_WORKSPACE,
+                                         WNCK_TYPE_WORKSPACE_ACCESSIBLE_FACTORY);
+        }
+      first_time = FALSE;
+    }
+  return GTK_WIDGET_CLASS (parent_class)->get_accessible (widget);
+}
+
+int 
+_wnck_pager_get_n_workspaces (WnckPager *pager)
+{
+  return wnck_screen_get_workspace_count (pager->priv->screen);
+}
+
+const char* 
+_wnck_pager_get_workspace_name (WnckPager *pager,
+                                int        i)
+{
+  WnckWorkspace *space;
+
+  space = wnck_screen_get_workspace (pager->priv->screen, i);
+  if (space)
+    return wnck_workspace_get_name (space);
+  else
+    return NULL;
+}
+
+WnckWorkspace*
+_wnck_pager_get_active_workspace (WnckPager *pager)
+{
+  return wnck_screen_get_active_workspace (pager->priv->screen);
+}
+
+WnckWorkspace*
+_wnck_pager_get_workspace (WnckPager *pager,
+                           int        i)
+{
+  return wnck_screen_get_workspace (pager->priv->screen, i);
+} 
+
+void 
+_wnck_pager_activate_workspace (WnckWorkspace *wspace)
+{
+  wnck_workspace_activate (wspace); 
+}
+
+void
+_wnck_pager_get_workspace_rect (WnckPager    *pager, 
+                                int           i,
+                                GdkRectangle *rect)
+{
+  get_workspace_rect (pager, i, rect);
 }

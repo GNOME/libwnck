@@ -29,6 +29,7 @@
 #include "workspace.h"
 #include "application.h"
 #include "xutils.h"
+#include "pager.h"
 
 G_BEGIN_DECLS
 
@@ -76,6 +77,17 @@ void _wnck_init (void);
 
 Screen *_wnck_screen_get_xscreen (WnckScreen *screen);
 
+
+void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace);
+int            _wnck_pager_get_n_workspaces     (WnckPager     *pager);
+const char*    _wnck_pager_get_workspace_name   (WnckPager     *pager,
+                                                 int            i);
+WnckWorkspace* _wnck_pager_get_active_workspace (WnckPager     *pager);
+WnckWorkspace* _wnck_pager_get_workspace        (WnckPager     *pager,
+                                                 int            i);
+void           _wnck_pager_get_workspace_rect   (WnckPager     *pager,
+                                                 int            i,
+                                                 GdkRectangle  *rect);
 
 G_END_DECLS
 
