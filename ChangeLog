@@ -1,3 +1,8 @@
+2002-04-18  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_request): fix crash
+	with zero length array. (#78869)
+
 2002-04-16  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.8
