@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-11-03 14:09-0500\n"
-"PO-Revision-Date: 2002-06-03 02:32+0200\n"
+"POT-Creation-Date: 2002-11-29 17:54+0100\n"
+"PO-Revision-Date: 2002-11-29 17:55+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -50,19 +50,19 @@ msgstr "Ma_ximera"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "Rulla _ned"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Rulla _upp"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Endast på _denna arbetsyta"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Placera på _alla arbetsytor"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
