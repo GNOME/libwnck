@@ -1,14 +1,14 @@
 # traditional Chinese translation of libwnck.
-# Copyright (C) 2001-2003 Free Software Foundation, Inc.
+# Copyright (C) 2001, 02, 03 Free Software Foundation, Inc.
 # Abel Cheung <maddog@linux.org.hk>, 2001-2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.1.5\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2003-01-05 04:19+0800\n"
+"Project-Id-Version: libwnck 2.3.0\n"
+"POT-Creation-Date: 2003-05-01 06:41+0800\n"
+"PO-Revision-Date: 2003-05-01 06:42+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
-"Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,19 +31,16 @@ msgid "Click this to switch to workspace %s"
 msgstr "按下此處可切換至工作區 %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "還原最小化(_M)"
+msgstr "取消最小化(_N)"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "最小化(_M)"
+msgstr "最小化(_N)"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "還原最大化(_U)"
+msgstr "取消最大化(_X)"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -66,9 +63,8 @@ msgid "Put on _All Workspaces"
 msgstr "放在所有工作區中(_A)"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "移動(_V)"
+msgstr "移動(_M)"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
@@ -78,11 +74,11 @@ msgstr "調整尺寸(_R)"
 msgid "_Close"
 msgstr "關閉(_C)"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "無標題的視窗"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"
