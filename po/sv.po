@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2005-01-20 17:02+0100\n"
+"POT-Creation-Date: 2005-01-31 10:19+0100\n"
+"PO-Revision-Date: 2005-01-31 10:19+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,42 @@ msgstr "Verktyg för att växla mellan arbetsytor"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klicka på detta för att byta till arbetsyta %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "Okänt fönster"
+
+#: libwnck/selector.c:627
+msgid "No Windows Open"
+msgstr "Inga fönster öppna"
+
+#: libwnck/selector.c:729
+msgid "Window Selector"
+msgstr "Fönsterväljare"
+
+#: libwnck/selector.c:730
+msgid "Tool to switch between windows"
+msgstr "Verktyg för att växla mellan fönster"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Fönsterlista"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Verktyg för att växla mellan synliga fönster"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Stäng alla"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "_Minimera alla"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "_Avminimera alla"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -58,12 +94,12 @@ msgid "Roll _Up"
 msgstr "Rulla _upp"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
-msgstr "Endast på _denna arbetsyta"
+msgid "_Only on This Workspace"
+msgstr "_Endast på denna arbetsyta"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Placera på _alla arbetsytor"
+msgid "_Always on Current Workspace"
+msgstr "_Alltid på aktuell arbetsyta"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,25 +140,8 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "namnlöst fönster"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Fönsterlista"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Verktyg för att växla mellan synliga fönster"
-
-#: libwnck/tasklist.c:2096
-msgid "_Close All"
-msgstr "_Stäng alla"
-
-#: libwnck/tasklist.c:2111
-msgid "_Minimize All"
-msgstr "_Minimera alla"
-
-#: libwnck/tasklist.c:2122
-msgid "_Unminimize All"
-msgstr "_Avminimera alla"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Placera på _alla arbetsytor"
 
 #~ msgid "untitled"
 #~ msgstr "namnlös"

@@ -1,3 +1,8 @@
+2005-01-31  Christian Rose  <menthos@menthos.com>
+
+	* POTFILES.in: Sorted and added missing file entry.
+	* sv.po: Updated Swedish translation.
+
 2005-01-31  Alexander Shopov  <ash@contact.bg>
 
 	* bg.po: Updated Bulgarian translation by
