@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-31 10:19+0100\n"
-"PO-Revision-Date: 2005-01-31 10:19+0100\n"
+"POT-Creation-Date: 2005-01-31 23:16+0100\n"
+"PO-Revision-Date: 2005-01-31 23:16+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -98,8 +98,8 @@ msgid "_Only on This Workspace"
 msgstr "_Endast på denna arbetsyta"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "_Alltid på aktuell arbetsyta"
+msgid "_Always on Visible Workspace"
+msgstr "_Alltid på synlig arbetsyta"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -139,6 +139,9 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "namnlöst fönster"
+
+#~ msgid "_Always on Current Workspace"
+#~ msgstr "_Alltid på aktuell arbetsyta"
 
 #~ msgid "Put on _All Workspaces"
 #~ msgstr "Placera på _alla arbetsytor"
