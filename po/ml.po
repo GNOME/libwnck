@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FSF-India <locale@gnu.org.in>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 2.2.x\n"
+"POT-Creation-Date: 2003-03-10 05:20+0100\n"
+"PO-Revision-Date: 2003-03-05 10:29+0530\n"
+"Last-Translator: FSF-India <locale@gnu.org.in>\n"
+"Language-Team: Malayalam <locale@gnu.org.in>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "തരക്കെട്ടില്ലാത്ത പ്രയോഗം"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "പണിയറ തിരഞ്ഞെടുക്കുക"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇവിടെ അമ‍ര്ത്തുക"
+
+#: libwnck/window-action-menu.c:191
+msgid "Un_minimize"
+msgstr "ചെറുതാക്കിയതൊഴിവാക്കുക"
+
+#: libwnck/window-action-menu.c:198
+msgid "_Minimize"
+msgstr "ചെറുതാക്കുക"
+
+#: libwnck/window-action-menu.c:206
+msgid "_Unmaximize"
+msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "വലുതാക്കുക"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "ചുരുളഴിക്കുക"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "ചുരുട്ടുക"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "ഈ പണിയറയില് മാത്രം"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "എല്ലാ പണിയറയിലും ഇടുക"
+
+#: libwnck/window-action-menu.c:372
+msgid "Mo_ve"
+msgstr "നീക്കുക"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "വലിപ്പം മാറ്റുക"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "അടയ്‍ക്കുക"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "തരക്കെട്ടില്ലാത്ത ജാലകം"
+
+#: libwnck/workspace.c:222
+#, c-format
+msgid "Workspace %d"
+msgstr "പണിയറ %d"
