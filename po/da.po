@@ -1,12 +1,13 @@
 # Danish translation of libwnck.
-# Copyright (C) 2002, 03 Free Software Foundation, Inc.
-# Ole Laursen <olau@hardworking.dk>, 2002, 03.
+# Copyright (C) 2002, 03, 04 Free Software Foundation, Inc.
+# Ole Laursen <olau@hardworking.dk>, 2002, 03, 04.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-05-19 21:50+0200\n"
+"Project-Id-Version: libwnck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-01 00:34+0100\n"
+"PO-Revision-Date: 2004-02-01 00:35+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -30,55 +31,81 @@ msgstr "Værktøj til at skifte mellem arbejdsområder"
 msgid "Click this to switch to workspace %s"
 msgstr "Klik her for at skifte til arbejdsområdet %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
 msgstr "_Gendan"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 msgid "Mi_nimize"
 msgstr "Mi_nimér"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 msgid "Unma_ximize"
 msgstr "_Gendan"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
 msgstr "Ma_ksimér"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
 msgstr "Rul _ned"
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
 msgstr "Rul _op"
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
 msgstr "Kun på _dette arbejdsområde"
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
 msgstr "Anbring på _alle arbejdsområder"
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Arbejdsområde %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "Arbejdsområde 1_0"
+
+#: libwnck/window-action-menu.c:370
+#, c-format
+msgid "Workspace %s%d"
+msgstr "Arbejdsområde %s%d"
+
+#: libwnck/window-action-menu.c:466
 msgid "_Move"
 msgstr "_Flyt"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
 msgstr "Ænd_r størrelse"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
 msgstr "_Luk"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "Flyt til andet _arbejdsområde"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "unavngivet vindue"
 
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "Arbejdsområde %d"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Vinduesliste"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Værktøj til at skifte mellem synlige vinduer"
