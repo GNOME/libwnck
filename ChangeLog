@@ -1,3 +1,20 @@
+2004-08-26  J.H.M. Dassen (Ray) <jdassen@debian.org>
+
+	http://bugzilla.gnome.org/show_bug.cgi?id=150699:
+	Implemented API documentation generation using gtk-doc (adapted from
+	libgsf's setup).
+
+	* gtk-doc.make: Added; copied from gtk-doc-tools.
+	* doc/Makefile.am, doc/libwnck-docs.sgml, doc/libwnck-overrides.txt:
+	Added; adapted from libgsf.
+	* Makefile.am: Added `doc' subdir; include `gtk-doc.make' in release
+	tarballs.
+	* configure.in: Check for gtk-doc-tools.
+	* autogen.sh: Shorter replacement version (using gnome-common); bumped
+	minimal automake version to 1.6 (as the documentation generation
+	doesn't work with automake 1.4).
+	* README: Updated the note on documentation.
+
 2004-08-17  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Add nb to ALL_LINGUAS.

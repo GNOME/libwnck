@@ -139,8 +139,14 @@ LDFLAGS=$save_LDFLAGS
 dnl Honor ACLOCAL_FLAGS for --enable-maintainer-mode
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
+##################################################
+# Checks for gtk-doc and docbook-tools
+##################################################
+GTK_DOC_CHECK([1.0])
+
 AC_OUTPUT([
 Makefile
+doc/Makefile
 po/Makefile.in
 libwnck/Makefile
 libwnck-1.0.pc
