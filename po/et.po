@@ -2,13 +2,13 @@
 # Copyright (C) 2002 The Free Software Foundation
 # This file is distributed under the same license as the libwnck package.
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
-# Tõivo Leedjärv <toivo@linux.ee>, 2002.
+# Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-20 22:11-0500\n"
-"PO-Revision-Date: 2002-06-06 16:10+0300\n"
+"POT-Creation-Date: 2003-01-21 21:09+0200\n"
+"PO-Revision-Date: 2003-01-21 21:11+0300\n"
 "Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -50,19 +50,19 @@ msgstr "Ma_ksimeeri"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "K_eri lahti"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "K_eri kokku"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Ainult _selles töötsoonis"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Pane kõikidesse t_öötsoonidesse"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
