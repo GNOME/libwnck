@@ -1,3 +1,7 @@
+2003-03-30  Fatih Demir <kabalak@gtranslator.org>
+
+	* configure.in: Added Tamil "ta" to the languages' list.
+
 2003-03-29  Paisa Seeluangsawat  <paisa@colorado.edu>
 
 	* configure.in: Added "th" to ALL_LINGUAS.
