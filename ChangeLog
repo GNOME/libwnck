@@ -1,5 +1,11 @@
 2005-01-11  Elijah Newren  <newren@gmail.com>
 
+	* libwnck/pager.c (get_windows_for_workspace_in_bottom_to_top):
+	include pinned windows only for the active workspace.  Fixes
+	#87531
+
+2005-01-11  Elijah Newren  <newren@gmail.com>
+
 	Allow minimizing an app via tasklist even when it has a transient.
 	Fixes #121556.
 

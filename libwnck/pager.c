@@ -567,6 +567,8 @@ get_windows_for_workspace_in_bottom_to_top (WnckScreen    *screen,
         continue;
       if (!is_active && wnck_window_is_sticky (win))
         continue;
+      if (!is_active && wnck_window_is_pinned (win))
+        continue;
 
       result = g_list_prepend (result, win);
     }
