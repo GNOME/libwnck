@@ -1,0 +1,71 @@
+# Translation into the walloon language.
+#
+# Si vos voloz donner on côp di spale pol ratournaedje di Gnome (ou des
+# ôtes libes programes) sicrijhoz-mu a l' adresse emile
+# <srtxg@chanae.alphanet.ch>; nos avans co bråmint di l' ovraedje a fé.
+#
+# Copyright (C) 1999 Free Software Foundation, Inc.
+# Pablo Saratxaga <srtxg@chanae.alphanet.ch> 1999-2002
+# Lucyin Mahin, 2000
+# Lorint Hendschel <LorintHendschel@skynet.be>, 2001
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 1.0.1\n"
+"POT-Creation-Date: 2002-05-10 21:56+0200\n"
+"PO-Revision-Date: 2002-05-10 22:06MET\n"
+"Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
+"Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "programe sins tite"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "_Rivni come divant"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "Å pus _ptit"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "_Rivni come divant"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "Å pus _grand"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "_Disrôler"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "_Erôler"
+
+#: libwnck/window-action-menu.c:297
+msgid "_Close"
+msgstr "_Clôre"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "_Bodjî"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "Candjî di _grandeu"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "purnea sins tite"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Sicribanne %d"
+

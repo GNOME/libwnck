@@ -1,0 +1,62 @@
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# pclouds <pclouds@gmx.net>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck VERSION\n"
+"POT-Creation-Date: 2002-05-05 15:04+0200\n"
+"PO-Revision-Date: 2002-05-06 23:04-0400\n"
+"Last-Translator: pclouds <pclouds@gmx.net>\n"
+"Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "ứng dụng không tên"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "Bỏ thu nhỏ"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "_Thu nhỏ"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "Bỏ p_hóng to"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "_Phóng to"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "_Bỏ bóng"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "Bó_ng"
+
+#: libwnck/window-action-menu.c:297
+msgid "_Close"
+msgstr "Đón_g"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "_Di chuyển"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "Đổi _kích thước"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "cửa sổ không tên"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Workspace %d"

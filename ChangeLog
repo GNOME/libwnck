@@ -1,3 +1,7 @@
+2002-05-10  Pablo Saratxaga  <pablo@mandrakesoft.com>
+
+	* configure.in: Added Vietnamese (vi) and Walloon (wa) to ALL_LINGUAS
+
 2002-05-02  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/pager.c (wnck_pager_get_background): disable showing
