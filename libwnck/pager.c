@@ -625,7 +625,8 @@ static void
 wnck_pager_draw_workspace (WnckPager    *pager,
 			   int           workspace,
 			   GdkRectangle *rect,
-                           GdkPixbuf    *bg_pixbuf)
+                           GdkPixbuf    *bg_pixbuf,
+                           gboolean      prelight)
 {
   GList *windows;
   GList *tmp;
@@ -642,7 +643,14 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   
   if (is_current)
     gdk_draw_rectangle (GTK_WIDGET (pager)->window,
+                        prelight ? 
+                        GTK_WIDGET (pager)->style->mid_gc[GTK_STATE_SELECTED] :
                         GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
+                        TRUE,
+                        rect->x, rect->y, rect->width, rect->height);
+  else if (prelight)
+    gdk_draw_rectangle (GTK_WIDGET (pager)->window,
+                        GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_PRELIGHT],
                         TRUE,
                         rect->x, rect->y, rect->width, rect->height);
   else if (bg_pixbuf)
@@ -731,6 +739,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   WnckWorkspace *active_space;
   GdkPixbuf *bg_pixbuf;
   gboolean first;
+  int drag_space;
   
   pager = WNCK_PAGER (widget);
 
@@ -738,6 +747,13 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   active_space = wnck_screen_get_active_workspace (pager->priv->screen);
   bg_pixbuf = NULL;
   first = TRUE;
+
+  if (pager->priv->dragging)
+    drag_space = workspace_at_point (pager,
+                                     pager->priv->drag_window_x,
+                                     pager->priv->drag_window_y);
+  else
+    drag_space = -1;
   
   i = 0;
   while (i < n_spaces)
@@ -762,41 +778,35 @@ wnck_pager_expose_event  (GtkWidget      *widget,
               first = FALSE;
             }
           
-	  wnck_pager_draw_workspace (pager, i, &rect, bg_pixbuf);
+	  wnck_pager_draw_workspace (pager, i, &rect, bg_pixbuf,
+                                     drag_space == i);
 	}
  
       ++i;
     }
 
-  /* Draw the drag window */
-  if (pager->priv->dragging)
+  /* Draw the drag window */  
+  if (drag_space >= 0)
     {
       GdkRectangle rect;
       GdkRectangle winrect;
       int dx, dy;
       
-      i = workspace_at_point (pager,
-                              pager->priv->drag_window_x,
-                              pager->priv->drag_window_y);
-
-      if (i >= 0)
-	{
-	  get_workspace_rect (pager, i, &rect);          
-	  get_window_rect (pager->priv->drag_window, &rect, &winrect);
-
-	  dx = (pager->priv->drag_window_x - rect.x) -
-	    pager->priv->drag_start_x_workspace_relative;
-	  dy = (pager->priv->drag_window_y - rect.y) -
-	    pager->priv->drag_start_y_workspace_relative;
-	  
-	  winrect.x += dx;
-	  winrect.y += dy;
-	  
-	  draw_window (widget->window,
-		       widget,
-		       pager->priv->drag_window,
-		       &winrect);
-	}
+      get_workspace_rect (pager, drag_space, &rect);          
+      get_window_rect (pager->priv->drag_window, &rect, &winrect);
+      
+      dx = (pager->priv->drag_window_x - rect.x) -
+        pager->priv->drag_start_x_workspace_relative;
+      dy = (pager->priv->drag_window_y - rect.y) -
+        pager->priv->drag_start_y_workspace_relative;
+      
+      winrect.x += dx;
+      winrect.y += dy;
+      
+      draw_window (widget->window,
+                   widget,
+                   pager->priv->drag_window,
+                   &winrect);
     }
   
   return FALSE;

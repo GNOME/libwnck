@@ -1,4 +1,10 @@
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/pager.c (wnck_pager_expose_event): prelight the
+	workspace that we're dragging over. #90869
+
 2002-09-27  Arvind Samptur <arvind.samptur@wipro.com>
+
         * libwnck/pager.c (workspace_create_callback): connect to
         name_changed on newly created workspace,
         (workspace_destroyed_callback): disconnect from name_changed,
