@@ -1,3 +1,7 @@
+2001-12-08  Christian Rose  <menthos@menthos.com>
+
+	* configure.in: Added "sv" to ALL_LINGUAS.
+
 2001-12-05  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.[ch]:

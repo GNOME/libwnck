@@ -1,3 +1,8 @@
+2001-12-08  Christian Rose  <menthos@menthos.com>
+
+	* .cvsignore: Added this file.
+	* sv.po: Added Swedish translation.
+
 2001-12-08  Abel Cheung  <maddog@linux.org.hk>
 
 	* zh_TW.po: REALLY add traditional Chinese translation.
