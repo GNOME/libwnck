@@ -1,5 +1,16 @@
 2005-02-20  Elijah Newren  <newren@gmail.com>
 
+	Backport of fix in the development branch to allow minimizing an
+	app via tasklist even when it has a transient.  Fixes #121556.
+
+	* libwnck/tasklist.c (wnck_tasklist_activate_task_window):
+	minimize the window if the window is active or its transient is
+
+	* libwnck/window.[ch] (wnck_window_transient_is_active): New
+	function to determine if a transient of a given window is active.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
 	Backport of fix in the development branch; patch from Juerg
 	Billeter to fix #163343.
 

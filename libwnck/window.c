@@ -1161,6 +1161,44 @@ wnck_window_activate_transient (WnckWindow *window)
     }
 }
 
+/**
+ * wnck_window_transient_is_active:
+ * @window: a #WnckWindow
+ *
+ * Return whether @window or one of its transients has focus.  This
+ * function is needed because clicking on the tasklist once will
+ * activate a transient instead of the window itself
+ * (wnck_window_activate_transient), and clicking again should
+ * minimize the window and it's transients.  (Not doing this can be
+ * especially annoying in the case of modal dialogs that don't appear
+ * in the tasklist).
+ * 
+ **/
+gboolean
+wnck_window_transient_is_active (WnckWindow *window)
+{
+  GList *windows;
+  WnckWindow *transient;
+  
+  if (!WNCK_IS_WINDOW (window))
+    return FALSE;
+
+  windows = wnck_screen_get_windows_stacked (window->priv->screen);
+
+  transient = window;
+  while (transient = find_last_transient_for (windows, transient->priv->xwindow))
+    {
+      /* catch transient cycles */
+      if (transient == window)
+        return FALSE;
+
+      if (wnck_window_is_active (transient))
+        return TRUE;
+    }
+
+  return FALSE;
+}
+
 static void
 get_icons (WnckWindow *window)
 {
