@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: punlinux\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-04 17:54+0530\n"
+"PO-Revision-Date: 2004-01-29 18:58+0530\n"
+"Last-Translator: Amanpreet Singh Alam <amanlinux@netscape.net>\n"
+"Language-Team: KBST Punjab <kbstpunjab@netscape.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:26
+msgid "untitled application"
+msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਕਾਰਜ"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "ਵਰਕਸਪੇਸ ਸਵਿਚਰ"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਯੰਤਰ"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਥੇ ਕਲਿਕ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:205
+msgid "Unmi_nimize"
+msgstr "ਛੋਟਾ ਨਾ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:212
+msgid "Mi_nimize"
+msgstr "ਛੋਟਾ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:220
+msgid "Unma_ximize"
+msgstr "ਵਡਾ ਨਾ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:227
+msgid "Ma_ximize"
+msgstr "ਵਡਾ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:235
+msgid "_Unroll"
+msgstr "ਨਾ ਖੋਲੋ"
+
+#: libwnck/window-action-menu.c:242
+msgid "Roll _Up"
+msgstr "ਲਪੇਟੋ"
+
+#: libwnck/window-action-menu.c:250
+msgid "Only on _This Workspace"
+msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ"
+
+#: libwnck/window-action-menu.c:257
+msgid "Put on _All Workspaces"
+msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਲਗਾਉ"
+
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "ਵਰਕਸਪੇਸ %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "ਵਰਕਸਪੇਸ 1_0"
+
+#: libwnck/window-action-menu.c:370
+#, c-format
+msgid "Workspace %s%d"
+msgstr "ਵਰਕਸਪੇਸ  %s%d"
+
+#: libwnck/window-action-menu.c:466
+msgid "_Move"
+msgstr "ਹਲਾਉ"
+
+#: libwnck/window-action-menu.c:473
+msgid "_Resize"
+msgstr "ਅਕਾਰ ਬਦਲਾਉ"
+
+#: libwnck/window-action-menu.c:486
+msgid "_Close"
+msgstr "ਬੰਦ ਕਰੋ"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "ਹੋਰ ਵਰਕਸਪੇਸ  ਵਿਚ ਭੇਜੋ"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: libwnck/window.c:32
+msgid "untitled window"
+msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਝਰੋਖਾ"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "ਝਰੋਖਾ ਸੂਚੀ"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "ਵਿਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
