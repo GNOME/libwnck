@@ -1,13 +1,14 @@
 # libwnck's Portuguese Translation
-# Copyright (C) 2001 libwnck
+# Copyright (C) 2001, 2004 libwnck
 # Distributed under the same licence as libwnck
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2004
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.4\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-05-13 01:35+0100\n"
+"Project-Id-Version: 2.6\n"
+"Report-Msgid-Bugs-To: Duarte Loreto <happyguy_pt@hotmail.com>\n"
+"POT-Creation-Date: 2004-01-03 18:58+0000\n"
+"PO-Revision-Date: 2004-01-03 19:10+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -20,24 +21,24 @@ msgstr "aplicação sem título"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "Alternador Ambiente de Trabalho"
+msgstr "Alternador de Áreas de Trabalho"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Ferramenta para alternar entre ambientes de trabalho"
+msgstr "Ferramenta para alternar entre áreas de trabalho"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Clicar para ir para ambiente de trabalho %s"
+msgstr "Clique para ir para a área de trabalho %s"
 
 #: libwnck/window-action-menu.c:191
 msgid "Unmi_nimize"
-msgstr "Rest_aurar"
+msgstr "Desmi_nimizar"
 
 #: libwnck/window-action-menu.c:198
 msgid "Mi_nimize"
-msgstr "Minimiz_ar"
+msgstr "Mi_nimizar"
 
 #: libwnck/window-action-menu.c:206
 msgid "Unma_ximize"
@@ -49,7 +50,7 @@ msgstr "Ma_ximizar"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr "_Desenrrolar"
+msgstr "D_esenrolar"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
@@ -57,11 +58,11 @@ msgstr "_Enrolar"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "Apenas _Neste Ambiente de Trabalho"
+msgstr "Apenas Nesta Área de _Trabalho"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "Em _Todos os Ambientes de Trabalho"
+msgstr "Colocar em Todas _as Áreas de Trabalho"
 
 #: libwnck/window-action-menu.c:375
 msgid "_Move"
@@ -73,7 +74,7 @@ msgstr "_Redimensionar"
 
 #: libwnck/window-action-menu.c:395
 msgid "_Close"
-msgstr "Fe_char"
+msgstr "_Fechar"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -82,10 +83,12 @@ msgstr "janela sem título"
 #: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Ambiente de Trabalho %d"
+msgstr "Área de Trabalho %d"
 
-#~ msgid "U_nshade"
-#~ msgstr "_Des-sombrear"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Lista de Janelas"
 
-#~ msgid "_Shade"
-#~ msgstr "_Sombrear"
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Ferramenta para alternar entre janelas visíveis"
