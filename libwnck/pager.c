@@ -1171,14 +1171,6 @@ wnck_pager_button_release (GtkWidget        *widget,
 	    if (wnck_workspace_get_viewport_x (space) != viewport_x ||
 		wnck_workspace_get_viewport_y (space) != viewport_y)
 	      wnck_screen_move_viewport (pager->priv->screen, viewport_x, viewport_y);
-            /* Activate the window clicked on *only* if it is in the
-             * current workspace.  Otherwise, the default window
-             * should be activated (but that's a job for the WM, not
-             * for the pager, as it is focus mode dependent).
-             */
-	    if ((space == wnck_screen_get_active_workspace (pager->priv->screen))
-                && (pager->priv->drag_window))
-	      wnck_window_activate (pager->priv->drag_window);
 	  }
       
       if (pager->priv->drag_window)

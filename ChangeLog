@@ -1,3 +1,11 @@
+2004-09-15  Elijah Newren  <newren@math.utah.edu>
+
+	Don't use the pager for window raising and focusing (fixes bug
+	#100470)
+
+	* src/pager.c (wnck_pager_button_release): Don't call
+	wnck_window_activate on the window clicked on.
+
 2004-09-13  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: post-release bump to 2.8.1.
