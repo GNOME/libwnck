@@ -1,3 +1,8 @@
+2002-01-14  Hasbullah Bin Pit <sebol@ikhlas.com>
+
+        * configure.in: Added "ms" to ALL_LINGUAS.
+	* po/ms.po: Added Malay Transation.
+
 2002-01-13  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/tasklist.[ch]:
