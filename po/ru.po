@@ -1,18 +1,20 @@
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2005 Free Software Foundation, Inc.
 # Valek Filippov <frob@df.ru>, 2002.
-# Dmitry G. Mastrukov <dmitry@taurussoft.org>, 2002
+# Dmitry G. Mastrukov <dmitry@taurussoft.org>, 2002.
+# Leonid Kanter <leon@asplinux.ru>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2004-03-11 10:54+0300\n"
-"Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
+"PO-Revision-Date: 2005-02-08 17:17+0200\n"
+"Last-Translator: Leonid Kanter <leon@asplinux.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -24,7 +26,7 @@ msgstr "Переключатель рабочих мест"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Инструмент для переключения между рабочими местами"
+msgstr "Утилита для переключения между рабочими местами"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
@@ -33,21 +35,19 @@ msgstr "Щёлкните для переключения на рабочее м�
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Неизвестное окно"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr ""
+msgstr "Нет открытых окон"
 
 #: libwnck/selector.c:741
-#, fuzzy
 msgid "Window Selector"
-msgstr "Список окон"
+msgstr "Переключатель окон"
 
 #: libwnck/selector.c:742
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Инструмент для переключения между рабочими местами"
+msgstr "Утилита для переключение между окнами"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
@@ -55,22 +55,19 @@ msgstr "Список окон"
 
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
-msgstr "Инструмент для переключения между рабочими местами"
+msgstr "Утилита переключения между видимыми окнами"
 
 #: libwnck/tasklist.c:2102
-#, fuzzy
 msgid "_Close All"
-msgstr "_Закрыть"
+msgstr "_Закрыть все"
 
 #: libwnck/tasklist.c:2117
-#, fuzzy
 msgid "_Minimize All"
-msgstr "_Свернуть"
+msgstr "_Свернуть все"
 
 #: libwnck/tasklist.c:2128
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "_Развернуть"
+msgstr "_Развернуть вс"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -90,21 +87,19 @@ msgstr "Развернуть на весь _экран"
 
 #: libwnck/window-action-menu.c:239
 msgid "_Unroll"
-msgstr "С_катать"
+msgstr "Рас_катать"
 
 #: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
-msgstr "Рас_катать"
+msgstr "С_катать"
 
 #: libwnck/window-action-menu.c:254
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Поместить только на э_то Рабочее место"
+msgstr "_Только на этом рабочем месте"
 
 #: libwnck/window-action-menu.c:261
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Поместить только на э_то Рабочее место"
+msgstr "_Всегда на видимом рабочем месте"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -145,11 +140,3 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "неозаглавленное окно"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "Поместить на вс_е Рабочие места"
-
-#~ msgid "U_nshade"
-#~ msgstr "Рас_шторить"
-
-#~ msgid "_Shade"
-#~ msgstr "За_шторить"
