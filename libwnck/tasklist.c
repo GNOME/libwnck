@@ -64,7 +64,7 @@ struct _WnckTask
   GtkWidget *button;
   GtkWidget *image;
   GtkWidget *label;
-
+  
   gboolean is_application;
   WnckApplication *application;
   WnckWindow *window;
@@ -103,6 +103,8 @@ struct _WnckTasklistPrivate
   
   GHashTable *win_hash;
   GHashTable *app_hash;
+  
+  GtkTooltips *tooltips;
 
   gint max_button_width;
   gint max_button_height;
@@ -356,10 +358,16 @@ wnck_tasklist_finalize (GObject *object)
   
   if (tasklist->priv->activate_timeout_id != 0)
     gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+    
+  if (tasklist->priv->tooltips)
+    {
+      g_object_unref (tasklist->priv->tooltips);
+      tasklist->priv->tooltips = NULL;
+    }
 
   g_free (tasklist->priv);
-  tasklist->priv = NULL;
-
+  tasklist->priv = NULL;  
+  
   G_OBJECT_CLASS (tasklist_parent_class)->finalize (object);
 }
 
@@ -773,6 +781,10 @@ wnck_tasklist_new (WnckScreen *screen)
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
 
   tasklist->priv->screen = screen;
+  
+  tasklist->priv->tooltips = gtk_tooltips_new ();
+  gtk_object_ref (GTK_OBJECT (tasklist->priv->tooltips));
+  gtk_object_sink (GTK_OBJECT (tasklist->priv->tooltips));
 
   wnck_tasklist_update_lists (tasklist);
   
@@ -1351,6 +1363,7 @@ wnck_task_update_visible_state (WnckTask *task)
 
   text = wnck_task_get_text (task);
   gtk_label_set_text (GTK_LABEL (task->label), text);
+  gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
   g_free (text);
 
   gtk_widget_queue_resize (GTK_WIDGET (task->tasklist));
@@ -1460,7 +1473,6 @@ wnck_task_create_widgets (WnckTask *task)
 
   text = wnck_task_get_text (task);
   task->label = gtk_label_new (text);
-  g_free (text);
   gtk_widget_show (task->label);
 
   gtk_table_attach (GTK_TABLE (table),
@@ -1478,7 +1490,10 @@ wnck_task_create_widgets (WnckTask *task)
 
   gtk_container_add (GTK_CONTAINER (task->button), table);
   gtk_widget_show (table);
-
+  
+  gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
+  g_free (text);
+  
   /* Set up signals */
   g_signal_connect (G_OBJECT (task->button), "toggled",
 		    G_CALLBACK (wnck_task_button_toggled), task);

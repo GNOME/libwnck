@@ -1,3 +1,7 @@
+2001-12-14  Kevin Vandersloot <kfv101@psu.edu>
+
+	* libwank/tasklist.c: Add tooltips
+
 Wed Dec 12 12:43:01 2001  Owen Taylor  <otaylor@redhat.com>
 
 	* configure.in: Fix so that ACLOCAL_FLAGS will be honored
