@@ -1,3 +1,13 @@
+2005-02-02  Vincent Untz  <vincent@vuntz.net>
+
+	* libwnck/selector.c: fix typo
+	(wnck_selector_window_icon_changed):
+	(wnck_selector_window_name_changed):
+	(wnck_selector_window_state_changed):
+	(wnck_selector_window_closed): don't do anything if the hash was not
+	created yet
+	Fix bug #163770
+
 2005-01-31  Elijah Newren  <newren@gmail.com>
 
 	Try 2 to correct misleading and inaccurate wording.  Hopefully,

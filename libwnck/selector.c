@@ -55,7 +55,7 @@ struct _WnckSelectorPrivate {
   WnckScreen *screen;
 };
 
-static void wnck_selector_init              (WnckSelector      *tasklist);
+static void wnck_selector_init              (WnckSelector      *selector);
 static void wnck_selector_class_init        (WnckSelectorClass *klass);
 static void wnck_selector_finalize          (GObject           *object);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
@@ -255,6 +255,9 @@ wnck_selector_window_icon_changed (WnckWindow *window,
 
   item = NULL;
 
+  if (!priv->window_hash)
+	  return;
+
   item = g_hash_table_lookup (priv->window_hash, window);
   if (item != NULL)
     {
@@ -276,6 +279,9 @@ wnck_selector_window_name_changed (WnckWindow *window,
 
   item = NULL;
   window_name = NULL;
+
+  if (!priv->window_hash)
+	  return;
 
   item = g_hash_table_lookup (priv->window_hash, window);
   if (item != NULL)
@@ -306,6 +312,9 @@ wnck_selector_window_state_changed (WnckWindow *window,
 
   item = NULL;
   window_name = NULL;
+
+  if (!priv->window_hash)
+	  return;
 
   item = g_hash_table_lookup (priv->window_hash, window);
   if (item == NULL)
@@ -503,6 +512,9 @@ wnck_selector_window_closed (WnckScreen *screen,
 
   if (!priv->menu || !GTK_WIDGET_VISIBLE (priv->menu))
     return;
+
+  if (!priv->window_hash)
+	  return;
 
   item = g_hash_table_lookup (priv->window_hash, window);
   if (!item)
