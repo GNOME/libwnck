@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-01-23 23:51+0800\n"
+"POT-Creation-Date: 2005-01-23 12:40+0100\n"
+"PO-Revision-Date: 2005-01-23 23:42+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -110,3 +110,15 @@ msgstr "窗口列表"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "在可见窗口间切换的工具"
+
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "全部关闭(_C)"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "全部最小化(_M)"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "全部恢复(_U)"
