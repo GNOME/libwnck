@@ -1,3 +1,10 @@
+2002-08-08  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/pager.c: (wnck_pager_set_layout_hint):
+	don't set the hint if this pager isn't showing
+	all workspaces - the chances are the users n_rows
+	setting is not what is wanted.
+
 2002-08-06  Craig Black  <blackc@speakeasy.net>
 
 	* libwnck/window-action-menu.c: (item_activated_callback):

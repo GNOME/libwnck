@@ -1002,6 +1002,14 @@ wnck_pager_set_layout_hint (WnckPager *pager)
   int layout_rows;
   int layout_cols;
 
+  /* The visual representation of the pager doesn't
+   * correspond to the layout of the workspaces
+   * here. i.e. the user will not pay any attention
+   * to the n_rows setting on this pager.
+   */
+  if (!pager->priv->show_all_workspaces)
+    return;
+
   if (pager->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
     {
       layout_rows = pager->priv->n_rows;
