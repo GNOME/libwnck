@@ -1,15 +1,15 @@
 # Translation of libwnck to Persian.
-# Copyright (C) 2003 Free Software Foundation, Inc.
-# Copyright (C) 2002, 2003 Roozbeh Pournader
-# Roozbeh Pournader <roozbeh@sharif.edu>, 2002, 2003
+# Copyright (C) 2002, 2003, 2004 Sharif FarsiWeb, Inc.
+# Roozbeh Pournader <roozbeh@farsiweb.info>, 2002, 2003
+# Meelad Zakaria <meelad@bamdad.org>, 2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
-"PO-Revision-Date: 2003-03-17 23:51+0330\n"
-"Last-Translator: Roozbeh Pournader <roozbeh@sharif.edu>\n"
+"POT-Creation-Date: 2004-08-21 04:07+0200\n"
+"PO-Revision-Date: 2004-08-21 10:00+0330\n"
+"Last-Translator: Meelad Zakaria <meelad@bamdad.org>\n"
 "Language-Team: Persian <farsi@lists.sharif.edu>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,76 +33,71 @@ msgid "Click this to switch to workspace %s"
 msgstr "برای تغییر به فضای کاری %s این‌جا کلیک کنید"
 
 #: libwnck/window-action-menu.c:209
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "ناحداقل کردن"
+msgstr "ناحداق_ل کردن"
 
 #: libwnck/window-action-menu.c:216
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "حداقل کردن"
+msgstr "حدا_قل کردن"
 
 #: libwnck/window-action-menu.c:224
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "ناحداکثر کردن"
+msgstr "ناحداک_ثر کردن"
 
 #: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
-msgstr "حداکثر کردن"
+msgstr "حدا_کثر کردن"
 
 #: libwnck/window-action-menu.c:239
 msgid "_Unroll"
-msgstr "پایین زدن"
+msgstr "_پایین زدن"
 
 #: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
-msgstr "بالا زدن"
+msgstr "_بالا زدن"
 
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
-msgstr "فقط در این فضای کاری"
+msgstr "فقط در _این فضای کاری"
 
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
-msgstr "در همه‌ی فضاهای کاری"
+msgstr "در _همه‌ی فضاهای کاری"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "فضای کاری %d"
+msgstr "فضای کاری %Id"
 
 #: libwnck/window-action-menu.c:384
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "فضای کاری %d"
+msgstr "فضای کاری  ۱۰"
 
 #: libwnck/window-action-menu.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "فضای کاری %d"
+msgstr "فضای کاری %s%Id"
 
 #: libwnck/window-action-menu.c:483
-#, fuzzy
 msgid "_Move"
-msgstr "حرکت"
+msgstr "_نقل مکان"
 
 #: libwnck/window-action-menu.c:490
 msgid "_Resize"
-msgstr "تغییر اندازه"
+msgstr "_تغییر اندازه"
 
 #: libwnck/window-action-menu.c:503
 msgid "_Close"
-msgstr "بستن"
+msgstr "ب_ستن"
 
 #: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "نقل مکان به یک _فضای کاری دیگر"
 
 #: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -110,9 +105,8 @@ msgstr "پنجره‌ی بی‌عنوان"
 
 #: libwnck/tasklist.c:507
 msgid "Window List"
-msgstr ""
+msgstr "فهرست پنجره‌ها"
 
 #: libwnck/tasklist.c:508
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "ابزار تغییر بین فضاهای کاری"
+msgstr "ابزاری برای جا‌به‌جایی بین فضاهای کاری"
