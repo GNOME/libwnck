@@ -60,6 +60,9 @@ GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (WnckScreen *screen);
 
+const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
+					      int           *n_elements);
+
 void wnck_tasklist_set_grouping (WnckTasklist             *tasklist,
 				 WnckTasklistGroupingType  grouping);
 void wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,

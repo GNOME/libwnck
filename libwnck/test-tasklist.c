@@ -22,6 +22,8 @@ main (int argc, char **argv)
   /*   wnck_gtk_window_set_dock_type (GTK_WINDOW (win)); */
 
   gtk_window_set_title (GTK_WINDOW (win), "Task List");
+  gtk_window_set_policy (GTK_WINDOW (win),
+			 TRUE, TRUE, FALSE);
 
   /* quit on window close */
   g_signal_connect (G_OBJECT (win), "destroy",
@@ -30,6 +32,7 @@ main (int argc, char **argv)
 
   tasklist = wnck_tasklist_new (screen);
 
+  wnck_tasklist_set_grouping (tasklist, WNCK_TASKLIST_AUTO_GROUP);
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (win), frame);

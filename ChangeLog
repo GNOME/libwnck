@@ -1,3 +1,16 @@
+2002-04-13  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/tasklist.h:
+	Add wnck_tasklist_get_size_hint_list().
+	
+	* libwnck/tasklist.c:
+	New sizing model. Now request 1 pixel width, but
+	also computes a list of valid size ranges that can be used
+	by the panel.
+
+	* libwnck/test-tasklist.c:
+	Use AUTO group and allow_shrink policy.
+
 2002-04-13  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/xutils.c (get_cmap): check that the system cmap 

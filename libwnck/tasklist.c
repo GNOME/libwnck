@@ -54,7 +54,7 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 #define MINI_ICON_SIZE 16
 #define DEFAULT_GROUPING_LIMIT 80
 
-#define DEFAULT_WIDTH 300
+#define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
 struct _WnckTask
@@ -120,6 +120,9 @@ struct _WnckTasklistPrivate
   gint grouping_limit;
 
   guint activate_timeout_id;
+
+  int *size_hints;
+  int size_hints_len;
 };
 
 
@@ -406,6 +409,10 @@ wnck_tasklist_finalize (GObject *object)
       tasklist->priv->tooltips = NULL;
     }
 
+  g_free (tasklist->priv->size_hints);
+  tasklist->priv->size_hints = NULL;
+  tasklist->priv->size_hints_len = 0;
+
   g_free (tasklist->priv);
   tasklist->priv = NULL;  
   
@@ -461,70 +468,6 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 
   tasklist->priv->grouping_limit = limit;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
-}
-
-static void
-wnck_tasklist_size_request  (GtkWidget      *widget,
-                             GtkRequisition *requisition)
-{
-  WnckTasklist *tasklist;
-  GtkRequisition child_req;
-  int max_height = 1;
-  int max_width = 1;
-  int u_width, u_height;
-  GList *l;
-  
-  tasklist = WNCK_TASKLIST (widget);
-
-  /* Calculate max needed height and width of the buttons */
-  l = tasklist->priv->windows;
-  while (l != NULL)
-    {
-      WnckTask *task = WNCK_TASK (l->data);
-
-      gtk_widget_size_request (task->button, &child_req);
-      
-      max_height = MAX (child_req.height,
-			max_height);
-      max_width = MAX (child_req.width,
-		       max_width);
-      
-      l = l->next;
-    }
-
-  l = tasklist->priv->applications;
-  while (l != NULL)
-    {
-      WnckTask *task = WNCK_TASK (l->data);
-      
-      gtk_widget_size_request (task->button, &child_req);
-      
-      max_height = MAX (child_req.height,
-			max_height);
-      max_width = MAX (child_req.width,
-		       max_width);
-      
-      l = l->next;
-    }
-
-  tasklist->priv->max_button_width = max_width;
-  tasklist->priv->max_button_height = max_height;
-
-
-  gtk_widget_get_size_request (widget, &u_width, &u_height);
-
-  requisition->width = DEFAULT_WIDTH;
-  requisition->height = DEFAULT_HEIGHT;
-  
-  if (u_height != -1)
-    {
-      requisition->height = u_height;
-    }
-  else if (u_width != -1)
-    {
-      requisition->width = u_width;
-      requisition->height = 4 * max_height;
-    }
 }
 
 /* returns the maximal possible button width (i.e. if you
@@ -641,6 +584,178 @@ wnck_task_get_highest_scored (GList     *ungrouped_apps,
 }
 
 static void
+wnck_tasklist_size_request  (GtkWidget      *widget,
+                             GtkRequisition *requisition)
+{
+  WnckTasklist *tasklist;
+  GtkRequisition child_req;
+  GtkAllocation  fake_allocation;
+  int max_height = 1;
+  int max_width = 1;
+  int u_width, u_height;
+  GList *l;
+  GArray *array;
+  GList *ungrouped_apps;
+  int n_windows;
+  int n_rows;
+  int n_cols, last_n_cols;
+  int n_grouped_buttons;
+  int i;
+  gboolean score_set;
+  int val;
+  WnckTask *app_task;
+  int lowest_range;
+  int grouping_limit;
+  
+  tasklist = WNCK_TASKLIST (widget);
+
+  /* Calculate max needed height and width of the buttons */
+  l = tasklist->priv->windows;
+  while (l != NULL)
+    {
+      WnckTask *task = WNCK_TASK (l->data);
+
+      gtk_widget_size_request (task->button, &child_req);
+      
+      max_height = MAX (child_req.height,
+			max_height);
+      max_width = MAX (child_req.width,
+		       max_width);
+      
+      l = l->next;
+    }
+
+  l = tasklist->priv->applications;
+  while (l != NULL)
+    {
+      WnckTask *task = WNCK_TASK (l->data);
+      
+      gtk_widget_size_request (task->button, &child_req);
+      
+      max_height = MAX (child_req.height,
+			max_height);
+      max_width = MAX (child_req.width,
+		       max_width);
+      
+      l = l->next;
+    }
+
+  tasklist->priv->max_button_width = max_width;
+  tasklist->priv->max_button_height = max_height;
+
+
+  gtk_widget_get_size_request (widget, &u_width, &u_height);
+
+  requisition->width = DEFAULT_WIDTH;
+  requisition->height = DEFAULT_HEIGHT;
+  
+  if (u_height != -1)
+    {
+      requisition->height = u_height;
+    }
+  else if (u_width != -1)
+    {
+      requisition->width = u_width;
+      requisition->height = 4 * max_height;
+    }
+  
+  fake_allocation.width = requisition->width;
+  fake_allocation.height = requisition->height;
+
+  array = g_array_new (FALSE, FALSE, sizeof (int));
+
+  /* Calculate size_hints list */
+  
+  n_windows = g_list_length (tasklist->priv->windows);
+  n_grouped_buttons = 0;
+  ungrouped_apps = g_list_copy (tasklist->priv->applications);
+  score_set = FALSE;
+
+  grouping_limit = MIN (tasklist->priv->grouping_limit,
+			tasklist->priv->max_button_width);
+  
+  /* Try ungrouped mode */
+  wnck_tasklist_layout (&fake_allocation,
+			tasklist->priv->max_button_width,
+			tasklist->priv->max_button_height,
+			n_windows,
+			&n_cols, &n_rows);
+
+  last_n_cols = G_MAXINT;
+  lowest_range = G_MAXINT;
+  if (tasklist->priv->grouping != WNCK_TASKLIST_ALWAYS_GROUP)
+    {
+      val = n_cols * tasklist->priv->max_button_width;
+      g_array_insert_val (array, array->len, val);
+      val = n_cols * grouping_limit;
+      g_array_insert_val (array, array->len, val);
+
+      last_n_cols = n_cols;
+      lowest_range = val;
+    }
+
+  while (ungrouped_apps != NULL &&
+	 tasklist->priv->grouping != WNCK_TASKLIST_NEVER_GROUP)
+    {
+      if (!score_set)
+	{
+	  wnck_tasklist_score_groups (tasklist, ungrouped_apps);
+	  score_set = TRUE;
+	}
+
+      ungrouped_apps = wnck_task_get_highest_scored (ungrouped_apps, &app_task);
+
+      n_grouped_buttons += g_list_length (app_task->windows) - 1;
+
+      wnck_tasklist_layout (&fake_allocation,
+			    tasklist->priv->max_button_width,
+			    tasklist->priv->max_button_height,
+			    n_windows - n_grouped_buttons,
+			    &n_cols, &n_rows);
+      if (n_cols != last_n_cols &&
+	  (tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP ||
+	   ungrouped_apps == NULL))
+	{
+	  val = n_cols * tasklist->priv->max_button_width;
+	  if (val >= lowest_range)
+	    { /* Overlaps old range */
+	      lowest_range = n_cols * grouping_limit;
+	      g_array_index(array, int, array->len-1) = lowest_range;
+	    }
+	  else
+	    {
+	      /* Full new range */
+	      g_array_insert_val (array, array->len, val);
+	      val = n_cols * grouping_limit;
+	      g_array_insert_val (array, array->len, val);
+	      lowest_range = val;
+	    }
+
+	  last_n_cols = n_cols;
+	}
+    }
+
+  /* Always let you go down to a zero size: */
+  g_array_index(array, int, array->len-1) = 0;
+
+  
+  if (tasklist->priv->size_hints)
+    g_free (tasklist->priv->size_hints);
+
+  tasklist->priv->size_hints_len = array->len;
+    
+  tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
+}
+
+const int *
+wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
+				  int           *n_elements)
+{
+  *n_elements = tasklist->priv->size_hints_len;
+  return tasklist->priv->size_hints;
+}
+  
+static void
 wnck_tasklist_size_allocate (GtkWidget      *widget,
                              GtkAllocation  *allocation)
 {
@@ -659,6 +774,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   GList *ungrouped_apps;
   WnckTask *win_task;
   GList *visible_tasks = NULL;
+  int grouping_limit;
   
   tasklist = WNCK_TASKLIST (widget);
 
@@ -666,6 +782,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   n_grouped_buttons = 0;
   ungrouped_apps = g_list_copy (tasklist->priv->applications);
   score_set = FALSE;
+
+  grouping_limit = MIN (tasklist->priv->grouping_limit,
+			tasklist->priv->max_button_width);
 
   /* Try ungrouped mode */
   button_width = wnck_tasklist_layout (allocation,
@@ -676,7 +795,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   while (ungrouped_apps != NULL &&
 	 ((tasklist->priv->grouping == WNCK_TASKLIST_ALWAYS_GROUP) ||
 	  ((tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP) &&
-	   (button_width < tasklist->priv->grouping_limit))))
+	   (button_width < grouping_limit))))
     {
       if (!score_set)
 	{
@@ -733,6 +852,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   i = 0;
   total_width = tasklist->priv->max_button_width * n_cols;
   total_width = MIN (total_width, allocation->width);
+  total_width = allocation->width;
   while (l != NULL)
     {
       WnckTask *task = WNCK_TASK (l->data);
