@@ -1,13 +1,14 @@
 # libwnck's Italian translation.
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright (C) Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
+# Luca Ferretti <elle.uca@infinito.it>, 2005
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-16 22:25+0100\n"
-"PO-Revision-Date: 2005-02-15 09:03+0100\n"
+"POT-Creation-Date: 2005-02-27 17:18+0100\n"
+"PO-Revision-Date: 2005-02-23 10:52+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@infinito.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -18,15 +19,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "applicazione senza titolo"
 
-#: ../libwnck/pager-accessible.c:317
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Selettore area di lavoro"
 
-#: ../libwnck/pager-accessible.c:328
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Strumento per spostarsi tra le aree di lavoro"
 
-#: ../libwnck/pager-accessible.c:432
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Fare clic qui per passare all'area di lavoro %s"
@@ -35,101 +36,101 @@ msgstr "Fare clic qui per passare all'area di lavoro %s"
 msgid "Unknown Window"
 msgstr "Finestra sconosciuta"
 
-#: ../libwnck/selector.c:639
+#: ../libwnck/selector.c:632
 msgid "No Windows Open"
 msgstr "Nessuna finestra aperta"
 
-#: ../libwnck/selector.c:741
+#: ../libwnck/selector.c:734
 msgid "Window Selector"
 msgstr "Selettore finestre"
 
-#: ../libwnck/selector.c:742
+#: ../libwnck/selector.c:735
 msgid "Tool to switch between windows"
 msgstr "Strumento per spostarsi tra le finestre"
 
-#: ../libwnck/tasklist.c:523
+#: ../libwnck/tasklist.c:526
 msgid "Window List"
 msgstr "Elenco finestre"
 
-#: ../libwnck/tasklist.c:524
+#: ../libwnck/tasklist.c:527
 msgid "Tool to switch between visible windows"
 msgstr "Strumento per spostarsi tra le finestre visibili"
 
-#: ../libwnck/tasklist.c:2102
+#: ../libwnck/tasklist.c:2106
 msgid "_Close All"
 msgstr "_Chiudi tutto"
 
-#: ../libwnck/tasklist.c:2117
+#: ../libwnck/tasklist.c:2121
 msgid "_Minimize All"
-msgstr "Minimizza _tutto"
+msgstr "_Minimizza tutto"
 
-#: ../libwnck/tasklist.c:2128
+#: ../libwnck/tasklist.c:2132
 msgid "_Unminimize All"
-msgstr "Deminimizza _tutto"
+msgstr "_Deminimizza tutto"
 
-#: ../libwnck/window-action-menu.c:209
+#: ../libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "De_minimizza"
 
-#: ../libwnck/window-action-menu.c:216
+#: ../libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "_Minimizza"
 
-#: ../libwnck/window-action-menu.c:224
+#: ../libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Dema_ssimizza"
 
-#: ../libwnck/window-action-menu.c:231
+#: ../libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ma_ssimizza"
 
-#: ../libwnck/window-action-menu.c:239
+#: ../libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "Sr_otola"
 
-#: ../libwnck/window-action-menu.c:246
+#: ../libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "Arr_otola"
 
-#: ../libwnck/window-action-menu.c:254
+#: ../libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "Solo su _questa area di lavoro"
 
-#: ../libwnck/window-action-menu.c:261
+#: ../libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "S_empre sull'area di lavoro visibile"
 
-#: ../libwnck/window-action-menu.c:376 ../libwnck/workspace.c:232
+#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
 
-#: ../libwnck/window-action-menu.c:384
+#: ../libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Area di lavoro 1_0"
 
-#: ../libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area di lavoro %s%d"
 
-#: ../libwnck/window-action-menu.c:483
+#: ../libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "S_posta"
 
-#: ../libwnck/window-action-menu.c:490
+#: ../libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "R_idimensiona"
 
-#: ../libwnck/window-action-menu.c:503
+#: ../libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: ../libwnck/window-action-menu.c:516
+#: ../libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Sposta su altra area di _lavoro"
 
-#: ../libwnck/window-action-menu.c:540
+#: ../libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
