@@ -1,3 +1,9 @@
+2002-05-30  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/screen.c (update_workspace_names): don't run off the end
+	of the names array if the window manager didn't provide enough
+	names for the number of spaces. #82837 I hope.
+
 2002-05-27  Yanko Kaneti  <yaneti@delcera.com>
 
 	* configure.in: (ALL_LINGUAS)  Added Bulgarian (bg).

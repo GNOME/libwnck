@@ -1089,17 +1089,19 @@ update_workspace_names (WnckScreen *screen)
                                _wnck_atom_get ("_NET_DESKTOP_NAMES"));
 
   copy = g_list_copy (screen->priv->workspaces);
-
+  
   i = 0;
   tmp = copy;
   while (tmp != NULL)
-    {
+    {      
       if (names && names[i])
-        _wnck_workspace_update_name (tmp->data, names[i]);
+        {
+          _wnck_workspace_update_name (tmp->data, names[i]);
+          ++i;
+        }
       else
         _wnck_workspace_update_name (tmp->data, NULL);
 
-      ++i;
       tmp = tmp->next;
     }
 
