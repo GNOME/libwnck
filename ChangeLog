@@ -1,5 +1,13 @@
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
+        Bug #89373
+	
+	* libwnck/xutils.c (_wnck_set_desktop_layout): set _NET_WM_TOPLEFT
+	part of the desktop layout.
+	(_wnck_set_desktop_layout): fix columns/rows being swapped.
+
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
 	* libwnck/pager.c (wnck_pager_expose_event): prelight the
 	workspace that we're dragging over. #90869
 

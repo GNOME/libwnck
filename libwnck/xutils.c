@@ -2197,15 +2197,22 @@ _wnck_set_dock_type_hint (Window xwindow)
   _wnck_error_trap_pop ();
 }
 
+/* orientation of pager */
 #define _NET_WM_ORIENTATION_HORZ 0
 #define _NET_WM_ORIENTATION_VERT 1
+
+/* starting corner for counting spaces */
+#define _NET_WM_TOPLEFT     0
+#define _NET_WM_TOPRIGHT    1
+#define _NET_WM_BOTTOMRIGHT 2
+#define _NET_WM_BOTTOMLEFT  3
 
 void
 _wnck_set_desktop_layout (Screen *xscreen,
                           int     rows,
                           int     columns)
 {
-  gulong data[3];
+  gulong data[4];
 
   /* FIXME: hack, hack, hack so as not
    * to have to add a orientation param
@@ -2216,8 +2223,9 @@ _wnck_set_desktop_layout (Screen *xscreen,
   g_assert ((rows == 0) || (columns == 0));
 
   data[0] = (columns == 0) ? _NET_WM_ORIENTATION_HORZ : _NET_WM_ORIENTATION_VERT;
-  data[1] = rows;
-  data[2] = columns;
+  data[1] = columns;
+  data[2] = rows;
+  data[3] = _NET_WM_TOPLEFT;
   
   _wnck_error_trap_push ();
 
@@ -2225,7 +2233,7 @@ _wnck_set_desktop_layout (Screen *xscreen,
                    RootWindowOfScreen (xscreen),
 		   _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
 		   XA_CARDINAL, 32, PropModeReplace,
-		   (guchar *)&data, 3);
+		   (guchar *)&data, sizeof (data));
 
   _wnck_error_trap_pop ();
 }
