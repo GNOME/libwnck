@@ -1,5 +1,13 @@
 2005-01-28  Elijah Newren  <newren@gmail.com>
 
+	Patch from Vincent Noel to make the tasklist window menu popup
+	near the mouse pointer.  Fixes #92842.
+
+	* libwnck/tasklist.c: (wnck_task_position_menu): get the pointer
+	location and adjust the menu location accordingly
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
 	Correct misleading and inaccurate wording.  Fixes #165379.
 
 	* libwnck/window-action-menu.c: (update_menu_state): change "Put

@@ -1873,7 +1873,9 @@ wnck_task_position_menu (GtkMenu   *menu,
   GtkRequisition requisition;
   gint menu_xpos;
   gint menu_ypos;
-
+  gint pointer_x;
+  gint pointer_y;
+  
   gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
 
   gdk_window_get_origin (widget->window, &menu_xpos, &menu_ypos);
@@ -1885,6 +1887,10 @@ wnck_task_position_menu (GtkMenu   *menu,
     menu_ypos -= requisition.height;
   else
     menu_ypos += widget->allocation.height;
+
+  gtk_widget_get_pointer (widget, &pointer_x, &pointer_y);
+  if (requisition.width < pointer_x)
+    menu_xpos += MIN (pointer_x, widget->allocation.width - requisition.width);
 
   *x = menu_xpos;
   *y = menu_ypos;
