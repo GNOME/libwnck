@@ -1,11 +1,12 @@
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Valek Filippov <frob@df.ru>, 2002.
+# Dmitry G. Mastrukov <dmitry@taurussoft.org>, 2002
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-06-03 08:10+04:00\n"
+"POT-Creation-Date: 2002-07-10 21:58+0400\n"
+"PO-Revision-Date: 2002-07-10 22:01+04:00\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +16,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "неозаглавленное приложение"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Переключатель рабочих мест"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Средство для переключения между рабочими местами"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Щёлкните для переключения на рабочее место %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -34,11 +48,11 @@ msgstr "Развернуть во весь _экран"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr "Вывести _из тени"
+msgstr "Рас_шторить"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "Ввести в _тень"
+msgstr "За_шторить"
 
 #: libwnck/window-action-menu.c:297
 msgid "_Close"
@@ -60,12 +74,3 @@ msgstr "неозаглавленное окно"
 #, c-format
 msgid "Workspace %d"
 msgstr "Рабочее место %d"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Переключатель рабочих мест"
-
-#~ msgid "Tool to switch between workspaces"
-#~ msgstr "Средство для переключения между рабочими местами"
-
-#~ msgid "Click this to switch to workspace %s"
-#~ msgstr "Щёлкните для переключения на рабочее место %s"
