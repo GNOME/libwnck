@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck-2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2004-02-29 20:47+0530\n"
 "Last-Translator: Nirav, Ankit, Ankur, Atit, Bhavin, Kartik, Khushbu, Sweta. "
 "<magnet@magnet-i.com>\n"
@@ -102,11 +102,11 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "શીર્ષક વગરની વિન્ડો"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr "વિન્ડોની યાદી"
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 msgid "Tool to switch between visible windows"
 msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
 

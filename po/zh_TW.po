@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2004-03-22 20:16+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -102,12 +102,12 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "無標題的視窗"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr "視窗清單"
 
 # FIXME: Not accurate, but this is easier to understand. Need a phrase
 # that's both easy to understand AND accurate. -- Abel
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 msgid "Tool to switch between visible windows"
 msgstr "用來切換至不同視窗的工具"

@@ -1,3 +1,9 @@
+2004-12-21  Vincent Untz  <vincent@vuntz.net>
+
+	* NEWS:
+	* README: Version 2.9.3.
+	* configure.in: check for GTK+ >= 2.5.4
+
 2004-12-20  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/tasklist.c:

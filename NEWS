@@ -1,3 +1,25 @@
+2.9.3
+=====
+
+ Fixes
+
+  - Ellipsize labels in tasklist (Benjamin Kahn)
+  - Use right icon size in tasklist (Benjamin Kahn)
+  - Add a default icon for windows without icon in tasklist (Benjamin Kahn)
+  - Fix leak (Benoît Dejean)
+  - Do not show windows from all screen when the tasklist is first created (Juerg Billeter)
+  -  Show all windows in tasklist with xinerama if there's only one tasklist (Juerg Billeter)
+  - Increase padding between text and icon in the tasklist (Benjamin Kahn)
+  - Code cleanups (Mark McLoughlin)
+
+ Misc
+
+  - Add a rationales.txt file (Elijah Newren)
+
+ Translators
+
+  - Vladimir Petkov (bg)
+
 2.8.1
 ===
 

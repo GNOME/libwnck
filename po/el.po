@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2004-03-01 15:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -107,10 +107,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "παράθυρο χωρίς τίτλο"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr "Λίστα Παραθύρων"
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 msgid "Tool to switch between visible windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"

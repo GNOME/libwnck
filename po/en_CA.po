@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2004-09-08 08:51-0400\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@FreeBSD.org>\n"
@@ -104,10 +104,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "untitled window"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr "Window List"
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 msgid "Tool to switch between visible windows"
 msgstr "Tool to switch between visible windows"

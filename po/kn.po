@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2002-05-29 14:58+0530\n"
 "Last-Translator: Pramod.R <rpramod@postmasterr.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -104,11 +104,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಕಿಟಕಿ"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳಗಳ ನಡುವೆ ಬದಲಾಯಿಸುವವ ಸಲಕರಣೆ"

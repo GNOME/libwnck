@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2004-02-18 10:53+0100\n"
 "Last-Translator: Alessio Frusciante <algol@firenze.linux.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
@@ -102,10 +102,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "finestra senza titolo"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr "Elenco delle finestre"
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 msgid "Tool to switch between visible windows"
 msgstr "Strumento per spostarsi tra le finestre visibili"

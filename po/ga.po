@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
+"POT-Creation-Date: 2004-12-21 20:41+0100\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -108,11 +108,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "fuinneog gan aninm"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:525
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:526
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"
