@@ -1,11 +1,10 @@
 # Slovenian translations of libwnck messages
 # Copyright (C) 1999-2002 Free Software Foundation, Inc.
 # 
-
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-03-07 12:30+0100\n"
+"POT-Creation-Date: 2002-03-24 15:50-0500\n"
 "PO-Revision-Date: 2002-02-26 00:23+0100\n"
 "Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: slovenian <sl@li.org>\n"
@@ -61,14 +60,3 @@ msgstr "neimenovano okno"
 #, c-format
 msgid "Workspace %d"
 msgstr "Delovna površina %d"
-
-
-# Smart report:
-# Total untranslated messages in file: 12 
-# Translations made:
-# full: 8
-# smart: 0
-# cond: 15
-# total: 23 ; distinct: 9
-
-

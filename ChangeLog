@@ -1,5 +1,9 @@
 2002-03-24  Havoc Pennington  <hp@pobox.com>
 
+	* configure.in: 0.7
+
+2002-03-24  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/tasklist.c (wnck_task_get_text): include number of 
 	windows in the text for an application, #75943
 

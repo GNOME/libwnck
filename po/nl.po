@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-03-15 08:38-0500\n"
+"POT-Creation-Date: 2002-03-24 15:50-0500\n"
 "PO-Revision-Date: 2002-03-15 17:57+0100\n"
 "Last-Translator: Hylke Witjens <hylke@wwd.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -61,5 +61,3 @@ msgstr "naamloos scherm"
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"
-
-
