@@ -1,15 +1,15 @@
 # libwnck ja.po.
-# Copyright (C) 2001-2004 Free Software Foundation, Inc.
+# Copyright (C) 2001-2005 Free Software Foundation, Inc.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2001-2002.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003
-# Takeshi AIHANA <aihana@gnome.gr.jp>, 2003-2004.
+# Takeshi AIHANA <aihana@gnome.gr.jp>, 2003-2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2004-02-26 23:15+0900\n"
+"POT-Creation-Date: 2005-01-26 19:05+0900\n"
+"PO-Revision-Date: 2005-01-26 19:03+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
@@ -113,16 +113,13 @@ msgid "Tool to switch between visible windows"
 msgstr "表示可能なウィンドウ切り替えツール"
 
 #: libwnck/tasklist.c:2096
-#, fuzzy
 msgid "_Close All"
-msgstr "閉じる(_C)"
+msgstr "全て閉じる(_C)"
 
 #: libwnck/tasklist.c:2111
-#, fuzzy
 msgid "_Minimize All"
-msgstr "最小化(_N)"
+msgstr "全て最小化(_M)"
 
 #: libwnck/tasklist.c:2122
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "最小化解除(_N)"
+msgstr "全て最小化解除(_U)"
