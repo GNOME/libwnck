@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-07-02 16:13+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-15 09:22+0100\n"
+"PO-Revision-Date: 2003-12-15 09:23+0100\n"
 "Last-Translator: Aleksandar Urošević <urke@users.sourceforge.net>\n"
 "Language-Team: Serbian (sr) <serbiangnome-lista@nongnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,4 +85,12 @@ msgstr "neimenovani prozor"
 #: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Radni prostor %d"
+msgstr "%d. radni prostor"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Spisak prozora"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Alat za prebacivanje između vidljivih prozora"
