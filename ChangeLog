@@ -1,3 +1,9 @@
+2003-07-20  Mariano Suárez-Alvarez <msuarezalvarez@arnet.com.ar>
+
+	* libwnck/window.c(force_update_now): slightly reorder the updating of
+	window names and icon names, avoiding bogus update when changing the
+	window name if the icon name is set. bug #17994.
+
 2003-07-11  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/tasklist.c, libwnck/window.c: patch from Kim Woelders to

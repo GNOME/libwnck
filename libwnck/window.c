@@ -1916,12 +1916,9 @@ force_update_now (WnckWindow *window)
    */
 
   old_name = window->priv->name;
-  old_icon_name = window->priv->icon_name;
   window->priv->name = NULL;
-  window->priv->icon_name = NULL;
 
   update_name (window);
-  update_icon_name (window);
 
   if (window->priv->name == NULL)
     window->priv->name = old_name;
@@ -1931,6 +1928,11 @@ force_update_now (WnckWindow *window)
         emit_name_changed (window);
       g_free (old_name);
     }
+
+  old_icon_name = window->priv->icon_name;
+  window->priv->icon_name = NULL;
+
+  update_icon_name (window);
 
   if (window->priv->icon_name == NULL)
     window->priv->icon_name = old_icon_name;
