@@ -1,3 +1,8 @@
+2004-06-25  Elijah Newren  <newren@math.utah.edu>
+
+	* libwnck/pager.c: Activate the window clicked in the pager only
+	if it is in the current workspace.  Fixes # 124981.
+
 2004-06-21  Anders Carlsson  <andersca@gnome.org>
 
 	* libwnck/window-action-menu.c: (item_activated_callback):
