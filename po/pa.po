@@ -1,19 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+# translation of libwnck.HEAD.pa.po to Punjabi
+# Amanpreet Singh Alam <aalam@redhat.com>, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: punlinux\n"
+"Project-Id-Version: libwnck.HEAD.pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-03 15:29+0100\n"
-"PO-Revision-Date: 2004-01-29 18:58+0530\n"
-"Last-Translator: Amanpreet Singh Alam <amanlinux@netscape.net>\n"
-"Language-Team: KBST Punjab <kbstpunjab@netscape.net>\n"
+"POT-Creation-Date: 2004-08-09 12:05+0200\n"
+"PO-Revision-Date: 2004-08-09 16:10+0530\n"
+"Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
+"Language-Team: Punjabi <pa@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
+"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -21,7 +21,7 @@ msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਕਾਰਜ"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "ਵਰਕਸਪੇਸ ਸਵਿਚਰ"
+msgstr "ਵਰਕਸਪੇਸ ਸਵਿੱਚਰ"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
@@ -30,31 +30,31 @@ msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਯੰਤਰ"
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਥੇ ਕਲਿਕ ਕਰੋ"
+msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ ਦਬਾਉ"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
-msgstr "ਛੋਟਾ ਨਾ ਕਰੋ"
+msgstr "ਅਲਪੀਕਰਨ ਨਹੀ"
 
 #: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
-msgstr "ਛੋਟਾ ਕਰੋ"
+msgstr "ਅਲਪੀਕਰਨ"
 
 #: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
-msgstr "ਵਡਾ ਨਾ ਕਰੋ"
+msgstr "ਅਧਿਕਤਮ ਨਹੀ"
 
 #: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
-msgstr "ਵਡਾ ਕਰੋ"
+msgstr "ਅਧਿਕਤਮ"
 
 #: libwnck/window-action-menu.c:239
 msgid "_Unroll"
-msgstr "ਨਾ ਖੋਲੋ"
+msgstr "ਨਾ ਸਮੇਟੋ"
 
 #: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
-msgstr "ਲਪੇਟੋ"
+msgstr "ਸਮੇਟੋ"
 
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
@@ -62,7 +62,7 @@ msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ"
 
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
-msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਲਗਾਉ"
+msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਭੇਜੋ"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -71,7 +71,7 @@ msgstr "ਵਰਕਸਪੇਸ %d"
 
 #: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
-msgstr "ਵਰਕਸਪੇਸ 1_0"
+msgstr "ਵਰਕਸਪੇਸ ੧_੦"
 
 #: libwnck/window-action-menu.c:386
 #, c-format
@@ -80,19 +80,19 @@ msgstr "ਵਰਕਸਪੇਸ  %s%d"
 
 #: libwnck/window-action-menu.c:483
 msgid "_Move"
-msgstr "ਹਲਾਉ"
+msgstr "ਏਧਰ-ਓਧਰ"
 
 #: libwnck/window-action-menu.c:490
 msgid "_Resize"
-msgstr "ਅਕਾਰ ਬਦਲਾਉ"
+msgstr "ਮੁਡ਼-ਅਕਾਰ"
 
 #: libwnck/window-action-menu.c:503
 msgid "_Close"
-msgstr "ਬੰਦ ਕਰੋ"
+msgstr "ਸਮਾਪਤ"
 
 #: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
-msgstr "ਹੋਰ ਵਰਕਸਪੇਸ  ਵਿਚ ਭੇਜੋ"
+msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ"
 
 #: libwnck/window-action-menu.c:540
 #, c-format
@@ -109,4 +109,4 @@ msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 
 #: libwnck/tasklist.c:508
 msgid "Tool to switch between visible windows"
-msgstr "ਵਿਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
