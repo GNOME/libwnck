@@ -1,0 +1,78 @@
+# Translations into the Amharic Language.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libwnck package.
+# Ge'ez Frontier Foundation <locales@geez.org>, 2002.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-11-26 05:42+0100\n"
+"PO-Revision-Date: 2002-12-10 19:37+EDT\n"
+"Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
+"Language-Team: Amharic <locales@geez.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "ያልተሰየሙ መጠቀሚያ ፕሮግራሜ"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "የመስሪያ ቦታ መቀያየሪያ"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "መስሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "ወደ መስሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
+
+#: libwnck/window-action-menu.c:155
+msgid "Un_minimize"
+msgstr "ምታሳንስ (_m)"
+
+#: libwnck/window-action-menu.c:161
+msgid "_Minimize"
+msgstr "ምሳንስ (_M)"
+
+#: libwnck/window-action-menu.c:168
+msgid "_Unmaximize"
+msgstr "ምታስተልቅ (_U)"
+
+#: libwnck/window-action-menu.c:174
+msgid "Ma_ximize"
+msgstr "ምተልቅ (_x)"
+
+#: libwnck/window-action-menu.c:181
+msgid "U_nshade"
+msgstr "ማውረድ (n)"
+
+#: libwnck/window-action-menu.c:187
+msgid "_Shade"
+msgstr "ማውጣት (_S)"
+
+#: libwnck/window-action-menu.c:298
+msgid "_Close"
+msgstr "ዝጋ (_C)"
+
+#: libwnck/window-action-menu.c:319
+msgid "Mo_ve"
+msgstr "ምንቀሳቅስ (_v)"
+
+#: libwnck/window-action-menu.c:325
+msgid "_Resize"
+msgstr "እንደገና መጧን ማስተሥከል (_R)"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "ያልተሰየመ መስኮት"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "የ%d መሥሪያ ቦታ"
