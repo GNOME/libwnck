@@ -1,3 +1,9 @@
+2002-05-14  Thomas Vander Stichele <thomas@apestaart.org>
+
+  	* libwnck/taslist.c: 
+	- implemented minimum_height 
+	- setting width or height to -1 unsets it to the default value
+
 2002-05-14  Anders Carlsson  <andersca@gnu.org>
 
 	* libwnck/window.c (_wnck_window_process_property_notify):

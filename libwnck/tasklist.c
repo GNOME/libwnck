@@ -67,7 +67,7 @@ struct _WnckTask
   GtkWidget *image;
   GtkWidget *label;
   
-  gboolean is_application;
+  gboolean is_application; /* TRUE if this task is a grouped application */
   WnckApplication *application;
   WnckWindow *window;
 
@@ -125,6 +125,7 @@ struct _WnckTasklistPrivate
   int size_hints_len;
 
   gint minimum_width;
+  gint minimum_height;
 };
 
 
@@ -364,6 +365,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
 
   tasklist->priv->minimum_width = DEFAULT_WIDTH;
+  tasklist->priv->minimum_height = DEFAULT_HEIGHT;
 }
 
 static void
@@ -474,11 +476,14 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
-/* set the minimum width */
+/* set the minimum width 
+ * use -1 to unset it (resulting in the default width */
 void 
 wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
 {
   g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  if (size == -1) size = DEFAULT_WIDTH;
 
   if (tasklist->priv->minimum_width == size)
     return;
@@ -494,6 +499,31 @@ wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
   g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
 	
   return tasklist->priv->minimum_width;
+}
+
+/* set the minimum height
+ * use -1 to unset it (resulting in the default height */
+void 
+wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  if (size == -1) size = DEFAULT_HEIGHT;
+
+  if (tasklist->priv->minimum_height == size)
+    return;
+
+  tasklist->priv->minimum_height = size;
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+ 
+/* get the minimum height */
+gint
+wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
+{
+  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
+	
+  return tasklist->priv->minimum_height;
 }
 
 /* returns the maximal possible button width (i.e. if you
@@ -672,7 +702,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   gtk_widget_get_size_request (widget, &u_width, &u_height);
 
   requisition->width = tasklist->priv->minimum_width;
-  requisition->height = DEFAULT_HEIGHT;
+  requisition->height = tasklist->priv->minimum_height;
   
   if (u_height != -1)
     {
