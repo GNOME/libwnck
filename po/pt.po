@@ -5,17 +5,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2002-04-29 01:37-0400\n"
-"PO-Revision-Date: 2002-02-10 02:20+0000\n"
+"POT-Creation-Date: 2002-05-06 01:21+0100\n"
+"PO-Revision-Date: 2002-05-06 01:25+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
-"Language-Team: Portuguese <none@none.org>\n"
+"Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "aplicação sem título"
+msgstr "aplicaÃ§Ã£o sem tÃ­tulo"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -42,9 +42,8 @@ msgid "_Shade"
 msgstr "_Sombrear"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
 msgid "_Close"
-msgstr "Fechar"
+msgstr "Fe_char"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
@@ -56,7 +55,7 @@ msgstr "_Redimensionar"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "janela sem título"
+msgstr "janela sem tÃ­tulo"
 
 #: libwnck/workspace.c:248
 #, c-format
