@@ -1359,26 +1359,11 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
                                    Atom           atom)
 {  
   if (atom == _wnck_atom_get ("_NET_WM_ICON"))
-    {
-      if (icon_cache->origin <= USING_NET_WM_ICON)
-        clear_icon_cache (icon_cache, FALSE);
-
-      icon_cache->net_wm_icon_dirty = TRUE;
-    }
+    icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("KWM_WIN_ICON"))
-    {
-      if (icon_cache->origin <= USING_KWM_WIN_ICON)
-        clear_icon_cache (icon_cache, FALSE);
-
-      icon_cache->kwm_win_icon_dirty = TRUE;
-    }
+    icon_cache->kwm_win_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("WM_NORMAL_HINTS"))
-    {
-      if (icon_cache->origin <= USING_WM_NORMAL_HINTS)
-        clear_icon_cache (icon_cache, FALSE);
-
-      icon_cache->wm_normal_hints_dirty = TRUE;
-    }
+    icon_cache->wm_normal_hints_dirty = TRUE;
 }
 
 gboolean
