@@ -1,22 +1,25 @@
 # Bulgarian translation for libwnck.
 # Copyright (C) 2002 Free Software Foundation, Inc.
-# Evgeni Boevski <linkej@yahoo.com>, 2002.
-# Yanko Kaneti <yaneti@declera.com>, 2002
-#
+# Evgeni Boevski <linkej@yahoo.com>, 2002;
+# Yanko Kaneti <yaneti@declera.com>, 2002;
+# Vladimir Petkov <vpetkov@i-space.org>, small updates and fixes 2004.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2003-08-07 04:47+0200\n"
-"Last-Translator: Evgeni Boevski <e_boevski@abv.bg>\n"
+"Project-Id-Version: libwnck 2.6\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-06-02 02:57+0200\n"
+"PO-Revision-Date: 2004-06-02 12:43+0300\n"
+"Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "неозаглавено приложение"
+msgstr "неозаглавена програма"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -31,73 +34,72 @@ msgstr "Инструмент за превключване между работ
 msgid "Click this to switch to workspace %s"
 msgstr "Натиснете тук за превключване към работно пространство %s"
 
-#: libwnck/window-action-menu.c:205
+#: libwnck/window-action-menu.c:208
 msgid "Unmi_nimize"
-msgstr "_Деминимизирай"
+msgstr "_Деминимизира"
 
-#: libwnck/window-action-menu.c:212
+#: libwnck/window-action-menu.c:215
 msgid "Mi_nimize"
-msgstr "_Минимизирай"
+msgstr "_Минимизира"
 
-#: libwnck/window-action-menu.c:220
+#: libwnck/window-action-menu.c:223
 msgid "Unma_ximize"
-msgstr "Дема_ксимизирай"
+msgstr "Дема_ксимизира"
 
-#: libwnck/window-action-menu.c:227
+#: libwnck/window-action-menu.c:230
 msgid "Ma_ximize"
-msgstr "Ма_ксимизирай"
+msgstr "Ма_ксимизира"
 
-#: libwnck/window-action-menu.c:235
+#: libwnck/window-action-menu.c:238
 msgid "_Unroll"
-msgstr "_Развий"
+msgstr "_Развива"
 
-#: libwnck/window-action-menu.c:242
+#: libwnck/window-action-menu.c:245
 msgid "Roll _Up"
-msgstr "_Свий"
+msgstr "_Свива"
 
-#: libwnck/window-action-menu.c:250
+#: libwnck/window-action-menu.c:253
 msgid "Only on _This Workspace"
 msgstr "Само на това _работно място"
 
-#: libwnck/window-action-menu.c:257
+#: libwnck/window-action-menu.c:260
 msgid "Put on _All Workspaces"
 msgstr "Сложи на _всички работни места"
 
-#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно пространство %d"
 
-#: libwnck/window-action-menu.c:368
-#, fuzzy
+#: libwnck/window-action-menu.c:383
 msgid "Workspace 1_0"
-msgstr "Работно пространство %d"
+msgstr "Работно място 1_0"
 
-#: libwnck/window-action-menu.c:370
-#, fuzzy, c-format
+#: libwnck/window-action-menu.c:385
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Работно пространство %d"
+msgstr "Работно място %s%d"
 
-#: libwnck/window-action-menu.c:466
+#: libwnck/window-action-menu.c:481
 msgid "_Move"
-msgstr "_Премести"
+msgstr "_Премества"
 
-#: libwnck/window-action-menu.c:473
+#: libwnck/window-action-menu.c:488
 msgid "_Resize"
-msgstr "О_размери"
+msgstr "О_размерява"
 
-#: libwnck/window-action-menu.c:486
+#: libwnck/window-action-menu.c:501
 msgid "_Close"
-msgstr "_Затвори"
+msgstr "_Затваря"
 
-#: libwnck/window-action-menu.c:499
+#: libwnck/window-action-menu.c:514
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Премества в Друго _Работно Място"
 
-#: libwnck/window-action-menu.c:517
+#: libwnck/window-action-menu.c:533
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -105,9 +107,9 @@ msgstr "неозаглавен прозорец"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
-msgstr ""
+msgstr "Списък с Прозорците"
 
 #: libwnck/tasklist.c:462
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "Инструмент за превключване между работни пространства"
+msgstr "Инструмент за превключване между видимите прозорци"
+
