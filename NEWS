@@ -1,3 +1,17 @@
+2.6.2.1
+===
+
+ Fixes
+
+ - Activate window in workspace switcher only if its on
+   the current workspace (Elijah Newren)
+ - Use timestamp with _NET_CLOSE_WINDOW (Anders Carlsson)
+
+ Translators
+
+ - John C Barstow (mi)
+ - Laurent Dhima (sq)
+
 2.6.2
 ===
 

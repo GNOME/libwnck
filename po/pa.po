@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: punlinux\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-01-29 18:58+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanlinux@netscape.net>\n"
 "Language-Team: KBST Punjab <kbstpunjab@netscape.net>\n"
@@ -32,69 +32,69 @@ msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਯੰਤਰ"
 msgid "Click this to switch to workspace %s"
 msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਥੇ ਕਲਿਕ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "ਛੋਟਾ ਨਾ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "ਛੋਟਾ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "ਵਡਾ ਨਾ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "ਵਡਾ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "ਨਾ ਖੋਲੋ"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "ਲਪੇਟੋ"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਲਗਾਉ"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "ਵਰਕਸਪੇਸ 1_0"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ  %s%d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 msgid "_Move"
 msgstr "ਹਲਾਉ"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "ਅਕਾਰ ਬਦਲਾਉ"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ  ਵਿਚ ਭੇਜੋ"
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr "%s"

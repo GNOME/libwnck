@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2003-08-21 19:18+0100\n"
 "Last-Translator: Joël Brich <joel.brich@laposte.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -32,70 +32,70 @@ msgstr "Ilo por ŝalti inter laborkadroj"
 msgid "Click this to switch to workspace %s"
 msgstr "Klaku tio por ŝalti al laborkadro %s"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "Nemi_nimumigu"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "Mi_nimumigu"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "Nema_ksimumigu"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "Ma_ksimumigu"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "Mal_faldu"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "Re_faldu"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "Nur en _tiu laborkadro"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "Metu en ĉi_uj laborkadroj"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborkadro %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "Laborkadro %d"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "Laborkadro %d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 msgid "_Move"
 msgstr "_Movu"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "Ŝanĝu _grandecon"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "_Fermu"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr ""

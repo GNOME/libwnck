@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-03-29 14:13+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -31,69 +31,69 @@ msgstr "Eina per a canviar entre espais de treball"
 msgid "Click this to switch to workspace %s"
 msgstr "Feu clic ací per a canviar a l'espai de treball %s"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "Desmi_nimitza"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "Mi_nimitza"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "Desma_ximitza"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "Ma_ximitza"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "_Desenrotlla"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "Enrotlla cap amunt"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "Només en a_quest espai de treball"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "Fica en _tots els espais de treball"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Espai de treball %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "Espai de treball 1_0"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espai de treball %s%d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 msgid "_Move"
 msgstr "_Mou"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "_Redimensiona"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "Tan_ca"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr "Mou a un altre _espai de treball"
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr "%s"

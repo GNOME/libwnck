@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck gnome-2-2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-04-03 10:27+0700\n"
 "Last-Translator: Mohammad DAMT <mdamt@bisnisweb.com>\n"
 "Language-Team: Indonesia <id@li.org>\n"
@@ -32,69 +32,69 @@ msgstr "Program untuk memilih area kerja yang aktif"
 msgid "Click this to switch to workspace %s"
 msgstr "Klik untuk memilih area kerja %s"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "Rub_ah ke ukuran semula (dari ukuran besar)"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "_Kecilkan"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "Ruba_h ke ukuran semula (dari ukuran kecil)"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "_Maksimalkan"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "Buka _Gulungan"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "G_ulung"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "di area kerja ini sa_ja"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "Letakkan di _semua area kerja"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Area kerja %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "Area kerja 1_0"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area kerja %s%d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 msgid "_Move"
 msgstr "Pi_ndahkan"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "Ganti Uku_ran"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "_Tutup"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr "Pindahkan ke Area Kerja _lain"
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr "%s"

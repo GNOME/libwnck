@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2003-01-10 16:30+0530\n"
 "Last-Translator: Jitendra Shah<jitendras@vsnl.com>\n"
 "Language-Team: Marathi <www.indictrans.org>\n"
@@ -31,74 +31,74 @@ msgstr "कार्यक्षेत्र बदलण्याचे  उप
 msgid "Click this to switch to workspace %s"
 msgstr "कार्यक्षेत्र %s मध्ये  बदल करीता इकडे  क्लिक करा "
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 #, fuzzy
 msgid "Unmi_nimize"
 msgstr "मोठे करा  (_m)"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 #, fuzzy
 msgid "Mi_nimize"
 msgstr "छोटे करा  (_M)"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 #, fuzzy
 msgid "Unma_ximize"
 msgstr "मोठे पासून  छोटे करा (_U)"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "मोठे  करा  (_x)"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "उलट घुमवा  (_U)"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "वर घुमवा (_U)"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "फक्त हे  कार्यक्षेत्र (_T)"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "सर्व  कार्यक्षेत्रां वर ठेवा  (_A)"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "कार्यक्षेत्र %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "कार्यक्षेत्र %d"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "कार्यक्षेत्र %d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 #, fuzzy
 msgid "_Move"
 msgstr "चालवा  (_v)"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "आकार बदला  (_R)"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "बंद करा  (_C)"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr ""

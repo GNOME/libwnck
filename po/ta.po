@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck Tamil 2.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2003-03-27 23:37+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -32,74 +32,74 @@ msgstr "வேலையிடங்களுக்கு மாற்றும�
 msgid "Click this to switch to workspace %s"
 msgstr "%s வேலையிடத்திற்கு மாற்ற இதனை அமுத்தவும்"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 #, fuzzy
 msgid "Unmi_nimize"
 msgstr "பெருதாக்கு"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 #, fuzzy
 msgid "Mi_nimize"
 msgstr "_ஆக-சிறியதாக்கு"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 #, fuzzy
 msgid "Unma_ximize"
 msgstr "சிறியதாக்கு"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "ஆக-பெருதாக்கு"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "கீழ் விரி"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "மேலே சுருட்டு"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "இவ்வேலையிடத்தில் மட்டும்"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "அனைத்து வேலையிடங்களிலும் போடுக"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "வேலையிடம் %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 #, fuzzy
 msgid "Workspace 1_0"
 msgstr "வேலையிடம் %d"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, fuzzy, c-format
 msgid "Workspace %s%d"
 msgstr "வேலையிடம் %d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 #, fuzzy
 msgid "_Move"
 msgstr "நகர்த்து"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "அளவு மாற்று"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "_மூடு"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr ""

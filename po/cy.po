@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-14 18:04+0100\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-03-16 00:47+0000\n"
 "Last-Translator: Dafydd Harries <daf@muse.19inch.net>\n"
 "Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -34,69 +34,69 @@ msgstr "Erfyn ar gyfer newid rhwng gweithfannau"
 msgid "Click this to switch to workspace %s"
 msgstr "Cliciwch yma i newid i weithfan %s"
 
-#: libwnck/window-action-menu.c:208
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "Dad_leihau"
 
-#: libwnck/window-action-menu.c:215
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "_Lleihau"
 
-#: libwnck/window-action-menu.c:223
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "_Dadehangu"
 
-#: libwnck/window-action-menu.c:230
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "_Ehangu"
 
-#: libwnck/window-action-menu.c:238
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "_Datrholio"
 
-#: libwnck/window-action-menu.c:245
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "Rholio i _Fyny"
 
-#: libwnck/window-action-menu.c:253
+#: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "Ar y Gweithfan _Yma'n Unig"
 
-#: libwnck/window-action-menu.c:260
+#: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "Rhoi ar _Pob Gweithfan"
 
-#: libwnck/window-action-menu.c:375 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Gweithfan %d"
 
-#: libwnck/window-action-menu.c:383
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "Gweithfan 1_0"
 
-#: libwnck/window-action-menu.c:385
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Gweithfan %s%d"
 
-#: libwnck/window-action-menu.c:481
+#: libwnck/window-action-menu.c:482
 msgid "_Move"
 msgstr "_Symud"
 
-#: libwnck/window-action-menu.c:488
+#: libwnck/window-action-menu.c:489
 msgid "_Resize"
 msgstr "Newid _Maint"
 
-#: libwnck/window-action-menu.c:501
+#: libwnck/window-action-menu.c:502
 msgid "_Close"
 msgstr "_Cau"
 
-#: libwnck/window-action-menu.c:514
+#: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
 msgstr "Symud at _Weithfan Arall"
 
-#: libwnck/window-action-menu.c:533
+#: libwnck/window-action-menu.c:534
 #, c-format
 msgid "%s"
 msgstr "%s"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-23 05:18+0200\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-02-23 14:46+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
@@ -39,7 +39,6 @@ msgstr "Ç'mi_nimizo"
 msgid "Mi_nimize"
 msgstr "Mi_nimizo"
 
-#. GRUT modified this item
 #: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "Zvo_gëlo"
@@ -56,12 +55,10 @@ msgstr "_Ç'mbështille"
 msgid "Roll _Up"
 msgstr "_Mbështille"
 
-#. GRUT modified this item
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
 msgstr "Vetëm në _Këtë Hapësirë Pune"
 
-#. GRUT modified this item
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
 msgstr "Vendose në të _Gjitha Hapësirat e Punës"
@@ -112,4 +109,3 @@ msgstr "Lista e dritareve"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Instrument për të lëvizur nga një dritare e dukshme tek tjetra"
-

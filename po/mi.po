@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-06-25 19:02+0200\n"
+"POT-Creation-Date: 2004-07-06 07:32+0100\n"
 "PO-Revision-Date: 2004-06-26 19:14+1200\n"
 "Last-Translator: John C Barstow <jbowtie@amathaine.com>\n"
 "Language-Team: Maori <maori@nzlinux.org.nz>\n"
@@ -115,4 +115,3 @@ msgstr "Matapihi Rārangi"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr ""
-
