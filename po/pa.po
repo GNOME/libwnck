@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-08-09 16:10+0530\n"
 "Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
 "Language-Team: Punjabi <pa@li.org>\n"
@@ -110,3 +110,18 @@ msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "ਸਮਾਪਤ"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "ਅਲਪੀਕਰਨ"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "ਅਲਪੀਕਰਨ ਨਹੀ"

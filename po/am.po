@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -117,3 +117,18 @@ msgstr ""
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "መሥሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "ዝጋ (_C)"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "መሳንስ (_M)"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "መታሳንስ (_M)"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-22 20:16+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -111,3 +111,18 @@ msgstr "視窗清單"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "用來切換至不同視窗的工具"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "關閉(_C)"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "最小化(_N)"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "取消最小化(_N)"

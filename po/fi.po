@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-02-01 02:01+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <gnome-fi-laatu@lists.sourceforge.net>\n"
@@ -111,3 +111,18 @@ msgstr "Ikkunaluettelo"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Työkalu, jolla voi siirtyä näkyvien ikkunoiden välillä"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Sulje"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Pienennä"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Palauta"

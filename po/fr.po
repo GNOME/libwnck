@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-02-28 17:39+0100\n"
 "Last-Translator: Christophe Merlet (RedFox) <redfox@redfoxcenter.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -112,3 +112,18 @@ msgstr "Liste des fenêtres"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Outil pour basculer entre les fenêtres visibles"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Fermer"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimiser"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Démi_nimiser"

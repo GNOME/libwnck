@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-03 00:38-0600\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
@@ -110,3 +110,18 @@ msgstr "ลิสต์หน้าต่าง"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "ปิ_ด"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "ย่_อหาย"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "เลิกย่_อหาย"

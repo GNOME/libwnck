@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-12 15:21-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: GNOME-BR <gnome-br@listas.cipsga.org.br>\n"
@@ -109,3 +109,18 @@ msgstr "Lista de Janelas"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para alternar entre janelas visíveis"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "Fe_char"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimizar"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Desfazer Mi_nimizar"

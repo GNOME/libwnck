@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-18 11:31+0530\n"
 "Last-Translator: Sayamindu Dasgupta <unmadindu@bengalinux.org>\n"
 "Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
@@ -110,3 +110,18 @@ msgstr "উইন্ডোর তালিকা"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "দৃশ্যমান উইন্ডো বদলানোর প্রোগ্রাম"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "বন্ধ কর (_ধ)"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "ছোট করো (_ছ)"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "ছোট থেকে বড় করো (_ব)"

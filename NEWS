@@ -1,3 +1,27 @@
+2.9.90
+======
+
+ Fixes
+
+  - Don't check the monitor-change if there's only one monitor (Juerg Billeter)
+  - Show "close all" and "(un)minimize all" options in the right click menu for
+    grouped windows (Jaap Haitsma)
+  - Make the task order in the tasklist intuitive (Elijah Newren)
+
+ Translators
+
+  - Vladimir Petkov (bg)
+  - Miloslav Trmac (cs)
+  - Frank Arnold (de)
+  - Adam Weinberger (en_CA)
+  - Francisco Javier F. Serrador (es)
+  - Kjartan Maraas (nb)
+  - Åsmund Skjæveland (nn)
+  - Kjartan Maraas (no)
+  - Mişu Moldovan (ro)
+  - Christian Rose (sv)
+  - Wang Jian (zh_CN)
+
 2.9.4
 =====
 

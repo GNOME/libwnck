@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-02-26 18:55+0530\n"
 "Last-Translator: G Karunakar <karunakar@freedomink.org>\n"
 "Language-Team: Gnome Hindi Team <indlinux-hindi-gnome@lists.sourceforge."
@@ -111,3 +111,18 @@ msgstr "विंडो सूची"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "कार्यक्षेत्र बदलने का उपकरण"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "बंद करें (_C)"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "छोटा करें (_M)"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "छोटे से बडा करें (_m)"

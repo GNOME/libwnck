@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-02-04 01:49+0100\n"
 "Last-Translator: Sanlig Badral <Badral@openmn.org>\n"
 "Language-Team: Mongolian <openmn-core@lists.sf.net>\n"
@@ -113,3 +113,18 @@ msgstr "Цонхны жагсаалт"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Цонхнуудын хооронд шилжих хэрэгсэл"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Хаах"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Жижигсгэх"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Буцааж _тавих"

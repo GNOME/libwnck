@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-01 15:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -114,3 +114,18 @@ msgstr "Λίστα Παραθύρων"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Κλείσιμο"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Ελα_χιστοποίηση"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Απελαχιστο_ποίηση"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2004-03-21 21:39-0500\n"
 "Last-Translator: Gareth Owen <gowen72@yahoo.comg>\n"
 "Language-Team: \n"
@@ -110,3 +110,18 @@ msgstr "Window List"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Tool to switch between visible windows"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Close"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimise"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Unmi_nimise"

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -120,6 +120,21 @@ msgstr ""
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para seleccionar os escritorios"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Pechar"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Minimizar"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Des_minimizar"
 
 #~ msgid "U_nshade"
 #~ msgstr "Dese_nrolar"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
+"POT-Creation-Date: 2005-01-25 14:31+0100\n"
 "PO-Revision-Date: 2002-12-29 15:08+0100\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -118,3 +118,18 @@ msgstr ""
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Usteye po discandjî d' on scribanne a l' ôte"
+
+#: libwnck/tasklist.c:2096
+#, fuzzy
+msgid "_Close All"
+msgstr "_Clôre"
+
+#: libwnck/tasklist.c:2111
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Å pus _ptit"
+
+#: libwnck/tasklist.c:2122
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Rivni come divant"
