@@ -2,14 +2,15 @@
 # Copyright (C) 2001-2004 Free Software Foundation, Inc.
 # Christian Meyer <chrisime@gnome.org>, 2001, 2002.
 # Christian Neumair <chris@gnome-de.org>, 2002-2004.
-#
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.5.1\n"
+"Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-01-18 10:46+0100\n"
-"Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
+"POT-Creation-Date: 2005-01-20 20:44+0100\n"
+"PO-Revision-Date: 2005-01-20 20:44+0100\n"
+"Last-Translator: Frank Arnold <frank@scirocco-5v-turbo.de>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,3 +111,15 @@ msgstr "Fensterliste"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Werkzeug, um zwischen sichtbaren Fenstern zu wechseln"
+
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "Alle sch_ließen"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "Alle m_inimieren"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "Alle wieder_herstellen"
