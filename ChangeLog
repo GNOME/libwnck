@@ -1,3 +1,14 @@
+2004-01-06  Leena Gunda  <leena.gunda@wipro.com>
+
+	* libwnck/window-action-menu.c:
+	(wnck_create_window_action_menu): Add the "Move to Workspace"
+	submenu to the actions menu.
+	(get_workspace_name_with_accel): Add mnemonics even to renamed
+	workspaces. Taken from metacity sources.
+	(item_activated_callback): Implement code to move the window to
+	specified workspace for MOVE_TO_WORKSPACE window action.
+	Fixes bug #96087.
+
 2004-01-03  Robert Sedak  <robert.sedak@sk.htnet.hr>
 
         * configure.in: Added "hr" in ALL_LINGUAS.
