@@ -41,8 +41,8 @@ extra_files =
 
 # CFLAGS and LDFLAGS for compiling scan program. Only needed
 # if $(DOC_MODULE).types is non-empty.
-GTKDOC_CFLAGS = -I$(top_srcdir) $(LIBGSF_CFLAGS)
-GTKDOC_LIBS = $(top_builddir)/libwnck/libwnck-1.la $(LIBGSF_LIBS)
+GTKDOC_CFLAGS = -I$(top_srcdir) $(LIBWNCK_CFLAGS)
+GTKDOC_LIBS = $(top_builddir)/libwnck/libwnck-1.la $(LIBWNCK_LIBS)
 
 include $(top_srcdir)/gtk-doc.make
 
