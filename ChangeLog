@@ -1,3 +1,9 @@
+2003-05-13  Hidetoshi Tajima  <hidetoshi.tajima@sun.com>
+
+	* configure.in:
+	* libwnck/Makefile.am (libwnck_1_la_LIBADD): 
+	add -lX11 to LDFLAGS, fixing #112530.
+
 2003-05-06  Ross Burton  <ross@burtonini.com>
 
 	* libwnck/window.[ch]:
