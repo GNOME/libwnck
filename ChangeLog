@@ -1,3 +1,16 @@
+2002-09-27  Arvind Samptur <arvind.samptur@wipro.com>
+        * libwnck/pager.c (workspace_create_callback): connect to
+        name_changed on newly created workspace,
+        (workspace_destroyed_callback): disconnect from name_changed,
+        (workspace_name_changed_callback): new function, we queue a resize
+        when a workspace title has been changed,
+        (wnck_pager_connect_screen): connect to name_changed on current
+        workspaces,
+        (wnck_pager_disconnect_screen): disconnect from name_changed on
+        current workspaces.
+
+        Patch by Kristian Rietveld  <kris@gtk.org>. Fixes #84165.
+
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/window-action-menu.c: Add "put on all spaces" menu item, 

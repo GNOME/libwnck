@@ -91,6 +91,8 @@ static gboolean wnck_pager_button_release (GtkWidget        *widget,
                                            GdkEventButton   *event);
 static gboolean wnck_pager_focus         (GtkWidget        *widget,
                                           GtkDirectionType  direction);
+static void workspace_name_changed_callback (WnckWorkspace *workspace,
+                                             gpointer       data);
 
 static void wnck_pager_connect_screen    (WnckPager  *pager,
                                           WnckScreen *screen);
@@ -1154,6 +1156,8 @@ workspace_created_callback        (WnckScreen      *screen,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
+  g_signal_connect (space, "name_changed",
+                    G_CALLBACK (workspace_name_changed_callback), pager);
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 
@@ -1163,6 +1167,7 @@ workspace_destroyed_callback      (WnckScreen      *screen,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
+  g_signal_handlers_disconnect_by_func (space, G_CALLBACK (workspace_name_changed_callback), pager);
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 
@@ -1241,6 +1246,13 @@ background_changed_callback (WnckWindow *window,
 }
 
 static void
+workspace_name_changed_callback (WnckWorkspace *space,
+                                 gpointer       data)
+{
+  gtk_widget_queue_resize (GTK_WIDGET (data));
+}
+
+static void
 wnck_pager_connect_screen (WnckPager  *pager,
                            WnckScreen *screen)
 {
@@ -1313,6 +1325,15 @@ wnck_pager_connect_screen (WnckPager  *pager,
   ++i;
   
   g_assert (i == N_SCREEN_CONNECTIONS);
+
+  /* connect to name_changed on each workspace */
+  for (i = 0; i < wnck_screen_get_workspace_count (pager->priv->screen); i++)
+    {
+      WnckWorkspace *space;
+      space = wnck_screen_get_workspace (pager->priv->screen, i);
+      g_signal_connect (space, "name_changed",
+                        G_CALLBACK (workspace_name_changed_callback), pager);
+    }
 }
 
 static void
@@ -1354,6 +1375,13 @@ wnck_pager_disconnect_screen (WnckPager  *pager)
       pager->priv->screen_connections[i] = 0;
       
       ++i;
+    }
+
+  for (i = 0; i < wnck_screen_get_workspace_count (pager->priv->screen); i++)
+    {
+      WnckWorkspace *space;
+      space = wnck_screen_get_workspace (pager->priv->screen, i);
+      g_signal_handlers_disconnect_by_func (space, G_CALLBACK (workspace_name_changed_callback), pager);
     }
 
   pager->priv->screen = NULL;
