@@ -247,6 +247,33 @@ get_workspace_rect (WnckPager    *pager,
     }
 }
                     
+static GList*
+get_windows_for_workspace_in_bottom_to_top (WnckScreen    *screen,
+                                            WnckWorkspace *workspace)
+{
+  GList *result;
+  GList *windows;
+  GList *tmp;
+  
+  result = NULL;
+
+  windows = wnck_screen_get_windows_stacked (screen);
+  tmp = windows;
+  while (tmp != NULL)
+    {
+      WnckWindow *win = WNCK_WINDOW (tmp->data);
+
+      if (wnck_window_is_pinned (win) ||
+          wnck_window_get_workspace (win) == workspace)
+        result = g_list_prepend (result, win);
+      
+      tmp = tmp->next;
+    }
+
+  result = g_list_reverse (result);
+
+  return result;
+}
 
 static gboolean
 wnck_pager_expose_event  (GtkWidget      *widget,
@@ -266,20 +293,146 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   while (i < n_spaces)
     {
       GdkRectangle rect;
-
-      get_workspace_rect (pager, i, &rect);
+      GList *windows;
+      GList *tmp;
+      gboolean is_current;
+      double width_ratio, height_ratio;
       
-      gdk_draw_rectangle (widget->window,
-                          widget->style->black_gc,
-                          FALSE,
-                          rect.x, rect.y, rect.width - 1, rect.height - 1);
+      get_workspace_rect (pager, i, &rect);
 
-      if (active_space &&
-          i == wnck_workspace_get_number (active_space))
+      width_ratio = (double) rect.width / (double) gdk_screen_width ();
+      height_ratio = (double) rect.height / (double) gdk_screen_height ();
+      
+      is_current = active_space &&
+        i == wnck_workspace_get_number (active_space);
+
+      if (is_current)
         gdk_draw_rectangle (widget->window,
-                            widget->style->white_gc,
+                            widget->style->bg_gc[GTK_STATE_SELECTED],
                             TRUE,
                             rect.x + 1, rect.y + 1, rect.width - 2, rect.height - 2);
+      
+      windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
+                                                            wnck_workspace_get (i));
+      
+      tmp = windows;
+      while (tmp != NULL)
+        {
+          WnckWindow *win = tmp->data;
+          int x, y, width, height;
+          GdkPixbuf *icon;
+          int icon_x, icon_y, icon_w, icon_h;
+          
+          wnck_window_get_geometry (win, &x, &y, &width, &height);
+
+          x *= width_ratio;
+          y *= height_ratio;
+          width *= width_ratio;
+          height *= height_ratio;
+
+          x += rect.x;
+          y += rect.y;
+
+          if (width < 3)
+            width = 3;
+          if (height < 3)
+            height = 3;
+          
+          gdk_draw_rectangle (widget->window,
+                              is_current ?
+                              widget->style->bg_gc[GTK_STATE_SELECTED] :
+                              widget->style->bg_gc[GTK_STATE_NORMAL],
+                              TRUE,
+                              x + 1, y + 1, width - 2, height - 2);
+
+          icon = wnck_window_get_icon (win);
+
+          icon_w = icon_h = 0;
+          
+          if (icon)
+            {              
+              icon_w = gdk_pixbuf_get_width (icon);
+              icon_h = gdk_pixbuf_get_height (icon);
+
+              /* If the icon is too big, fall back to mini icon.
+               * We don't arbitrarily scale the icon, because it's
+               * just too slow on my Athlon 850.
+               */
+              if (icon_w > (width - 2) ||
+                  icon_h > (height - 2))
+                {
+                  icon = wnck_window_get_mini_icon (win);
+                  if (icon)
+                    {
+                      icon_w = gdk_pixbuf_get_width (icon);
+                      icon_h = gdk_pixbuf_get_height (icon);
+
+                      /* Give up. */
+                      if (icon_w > (width - 2) ||
+                          icon_h > (height - 2))
+                        icon = NULL;
+                    }
+                }
+            }
+
+          if (icon)
+            {
+              icon_x = x + (width - icon_w) / 2;
+              icon_y = y + (height - icon_h) / 2;
+                
+              {
+                /* render_to_drawable should take a clip rect to save
+                 * us this mess...
+                 */
+                GdkRectangle pixbuf_rect;
+                GdkRectangle draw_rect;
+                GdkRectangle clip;
+
+                clip.x = x;
+                clip.y = y;
+                clip.width = width;
+                clip.height = height;
+                
+                pixbuf_rect.x = icon_x;
+                pixbuf_rect.y = icon_y;
+                pixbuf_rect.width = icon_w;
+                pixbuf_rect.height = icon_h;
+                
+                if (gdk_rectangle_intersect (&clip, &pixbuf_rect, &draw_rect))
+                  {
+                    gdk_pixbuf_render_to_drawable_alpha (icon,
+                                                         widget->window,
+                                                         draw_rect.x - pixbuf_rect.x,
+                                                         draw_rect.y - pixbuf_rect.y,
+                                                         draw_rect.x, draw_rect.y,
+                                                         draw_rect.width,
+                                                         draw_rect.height,
+                                                         GDK_PIXBUF_ALPHA_FULL,
+                                                         128,
+                                                         GDK_RGB_DITHER_NORMAL,
+                                                         0, 0);
+                  }
+              }
+            }
+          
+          gdk_draw_rectangle (widget->window,
+                              is_current ?
+                              widget->style->fg_gc[GTK_STATE_SELECTED] :
+                              widget->style->fg_gc[GTK_STATE_NORMAL],
+                              FALSE,
+                              x, y, width - 1, height - 1);
+          
+          tmp = tmp->next;
+        }
+
+      g_list_free (windows);
+      
+      gdk_draw_rectangle (widget->window,
+                          is_current ?
+                          widget->style->fg_gc[GTK_STATE_SELECTED] :
+                          widget->style->fg_gc[GTK_STATE_NORMAL],
+                          FALSE,
+                          rect.x, rect.y, rect.width - 1, rect.height - 1);
       
       ++i;
     }
@@ -483,6 +636,7 @@ window_geometry_changed_callback  (WnckWindow      *window,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
+  
   gtk_widget_queue_draw (GTK_WIDGET (pager));
 }
 
