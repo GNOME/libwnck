@@ -161,6 +161,7 @@ struct _WnckTasklistPrivate
   
 #ifdef HAVE_STARTUP_NOTIFICATION
   SnMonitorContext *sn_context;
+  guint startup_sequence_timeout;
 #endif
 };
 
@@ -236,6 +237,8 @@ static void     wnck_tasklist_disconnect_screen        (WnckTasklist *tasklist);
 #ifdef HAVE_STARTUP_NOTIFICATION
 static void     wnck_tasklist_sn_event                 (SnMonitorEvent *event,
                                                         void           *user_data);
+static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist,
+                                                        WnckWindow     *window);
 #endif
 
 
@@ -1271,6 +1274,14 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 
       ++i;
     }
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+  if (tasklist->priv->startup_sequence_timeout != 0)
+    {
+      g_source_remove (tasklist->priv->startup_sequence_timeout);
+      tasklist->priv->startup_sequence_timeout = 0;
+    }
+#endif
 }
 
 void
@@ -1581,6 +1592,10 @@ wnck_tasklist_window_added (WnckScreen   *screen,
 			    WnckWindow   *win,
 			    WnckTasklist *tasklist)
 {
+#ifdef HAVE_STARTUP_NOTIFICATION
+  wnck_tasklist_check_end_sequence (tasklist, win);
+#endif
+  
   wnck_tasklist_connect_window (tasklist, win);
 
   wnck_tasklist_update_lists (tasklist);
@@ -2470,6 +2485,60 @@ wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
   return task;
 }
 
+/* This should be fairly long, as it should never be required unless
+ * apps or .desktop files are buggy, and it's confusing if
+ * OpenOffice or whatever seems to stop launching - people
+ * might decide they need to launch it again.
+ */
+#define STARTUP_TIMEOUT 15000
+
+static gboolean
+sequence_timeout_callback (void *user_data)
+{
+  WnckTasklist *tasklist = user_data;
+  GList *tmp;
+  GTimeVal now;
+  long tv_sec, tv_usec;
+  double elapsed;
+
+  g_get_current_time (&now);
+
+ restart:
+  tmp = tasklist->priv->startup_sequences;
+  while (tmp != NULL)
+    {
+      WnckTask *task = WNCK_TASK (tmp->data);
+
+      sn_startup_sequence_get_last_active_time (task->startup_sequence,
+                                                &tv_sec, &tv_usec);
+      
+      elapsed =
+        ((((double)now.tv_sec - tv_sec) * G_USEC_PER_SEC +
+          (now.tv_usec - tv_usec))) / 1000.0;
+
+      if (elapsed > STARTUP_TIMEOUT)
+        {
+          g_assert (task->button != NULL);
+          /* removes task from list as a side effect */
+          gtk_widget_destroy (task->button);      
+
+          goto restart; /* don't iterate over changed list, just restart;
+                         * not efficient but who cares here.
+                         */
+        }
+      
+      tmp = tmp->next;
+    }
+  
+  if (tasklist->priv->startup_sequences == NULL)
+    {
+      tasklist->priv->startup_sequence_timeout = 0;
+      return FALSE;
+    }
+  else
+    return TRUE;
+}
+
 static void
 wnck_tasklist_sn_event (SnMonitorEvent *event,
                         void           *user_data)
@@ -2494,6 +2563,13 @@ wnck_tasklist_sn_event (SnMonitorEvent *event,
           g_list_prepend (tasklist->priv->startup_sequences,
                           task);
 
+        if (tasklist->priv->startup_sequence_timeout == 0)
+          {
+            tasklist->priv->startup_sequence_timeout =
+              g_timeout_add (1000, sequence_timeout_callback,
+                             tasklist);
+          }
+        
         gtk_widget_queue_resize (GTK_WIDGET (tasklist));
       }
       break;
@@ -2526,5 +2602,54 @@ wnck_tasklist_sn_event (SnMonitorEvent *event,
     case SN_MONITOR_EVENT_CANCELED:
       break;
     }
+
+  if (tasklist->priv->startup_sequences == NULL &&
+      tasklist->priv->startup_sequence_timeout != 0)
+    {
+      g_source_remove (tasklist->priv->startup_sequence_timeout);
+      tasklist->priv->startup_sequence_timeout = 0;
+    }
 }
+
+static void
+wnck_tasklist_check_end_sequence (WnckTasklist   *tasklist,
+                                  WnckWindow     *window)
+{
+  const char *res_class;
+  const char *res_name;
+  GList *tmp;
+  
+  if (tasklist->priv->startup_sequences == NULL)
+    return;
+  
+  res_class = _wnck_window_get_resource_class (window);
+  res_name = _wnck_window_get_resource_name (window);
+
+  if (res_class == NULL && res_name == NULL)
+    return;
+  
+  tmp = tasklist->priv->startup_sequences;
+  while (tmp != NULL)
+    {
+      WnckTask *task = WNCK_TASK (tmp->data);
+      const char *wmclass;
+
+      wmclass = sn_startup_sequence_get_wmclass (task->startup_sequence);
+      
+      if (wmclass != NULL &&
+          ((res_class && strcmp (res_class, wmclass) == 0) ||
+           (res_name && strcmp (res_name, wmclass) == 0)))
+        {
+          g_assert (task->button != NULL);
+          /* removes task from list as a side effect */
+          gtk_widget_destroy (task->button);      
+
+          /* only match one */
+          return;
+        }
+      
+      tmp = tmp->next;
+    }
+}
+
 #endif /* HAVE_STARTUP_NOTIFICATION */

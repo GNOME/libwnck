@@ -108,6 +108,9 @@ char*  _wnck_get_session_id     (Window xwindow);
 int    _wnck_get_pid            (Window xwindow);
 char*  _wnck_get_name           (Window xwindow);
 char*  _wnck_get_res_class_utf8 (Window xwindow);
+void   _wnck_get_wmclass        (Window xwindow,
+                                 char **res_class,
+                                 char **res_name);
 
 void   _wnck_select_input     (Window xwindow,
                                int    mask);
