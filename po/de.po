@@ -1,22 +1,21 @@
 # German translation for libwnck
-# Copyright (C) 2001 Free Software Foundation, Inc.
-# Christian Meyer <chrisime@gnome.org>, 2001.
+# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
+# Christian Meyer <chrisime@gnome.org>, 2001, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-02-17 20:43+0100\n"
-"PO-Revision-Date: 2001-12-05 22:58+0100\n"
+"POT-Creation-Date: 2002-03-03 20:56+0100\n"
+"PO-Revision-Date: 2002-03-03 20:56+0100\n"
 "Last-Translator: Christian Meyer <chrisime@gnome.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
-#, fuzzy
 msgid "untitled application"
-msgstr "namenloses Fenster"
+msgstr "namenlose Anwendung"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -44,7 +43,7 @@ msgstr "Au_frollen"
 
 #: libwnck/window-action-menu.c:297
 msgid "Close"
-msgstr "Schlieﬂen"
+msgstr "Schlie√üen"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
@@ -52,7 +51,7 @@ msgstr "_Bewegen"
 
 #: libwnck/window-action-menu.c:324
 msgid "_Resize"
-msgstr "_Grˆﬂe ‰ndern"
+msgstr "_Gr√∂√üe √§ndern"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -61,4 +60,4 @@ msgstr "namenloses Fenster"
 #: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Arbeitsoberfl√§che %d"
