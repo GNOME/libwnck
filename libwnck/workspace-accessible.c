@@ -134,18 +134,7 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
 
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
-#if 0
-  /* FIXME I don't have a fricking clue which one of these million god
-   * damn ATK objects is the WnckWorkspaceAccessible, but we want the
-   * ->index field from it.
-   */
-  _wnck_pager_get_workspace_rect (pager, space_accessible->index, &rect);
-#else
-  rect.x = 0;
-  rect.y = 0;
-  rect.width = 0;
-  rect.height = 0;
-#endif
+  _wnck_pager_get_workspace_rect (pager, WNCK_WORKSPACE_ACCESSIBLE (component)->index, &rect);
   
   *x = rect.x;
   *y = rect.y;
@@ -252,11 +241,6 @@ wnck_workspace_accessible_get_description (AtkObject *obj)
 static gint
 wnck_workspace_accessible_get_index_in_parent (AtkObject *obj)
 {
-  GObject *g_obj;
-  AtkGObjectAccessible *atk_gobj;
-  WnckWorkspace *workspace;
-  int index = 0;
-
   g_return_val_if_fail (WNCK_IS_WORKSPACE_ACCESSIBLE (obj), -1);
 
   return WNCK_WORKSPACE_ACCESSIBLE (obj)->index;

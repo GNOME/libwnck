@@ -402,7 +402,7 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
       factory = atk_registry_get_factory (default_registry,
                                           WNCK_TYPE_WORKSPACE);
           
-      wspace = _wnck_pager_get_workspace (pager, i); 
+      wspace = _wnck_pager_get_workspace (pager, len);
       space_accessible = WNCK_WORKSPACE_ACCESSIBLE (atk_object_factory_create_accessible (factory,
                                                                                           G_OBJECT (wspace)));
       atk_object_set_parent (ATK_OBJECT (space_accessible), obj);
