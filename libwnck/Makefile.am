@@ -77,7 +77,7 @@ libwnck_1_la_LDFLAGS=								    \
         -export-symbols-regex "^[^_].*"
 
 libwnck_1_la_LIBADD=   \
-	@LIBWNCK_LIBS@
+	@LIBWNCK_LIBS@ @X_LIBS@
 
 test_wnck_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 test_tasklist_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
