@@ -617,11 +617,14 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   is_current = active_space &&
     workspace == wnck_workspace_get_number (active_space);
 
+  /* FIXME in names mode, should probably draw things like a button.
+   */
+  
   if (is_current)
     gdk_draw_rectangle (GTK_WIDGET (pager)->window,
-			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
-			TRUE,
-			rect->x, rect->y, rect->width, rect->height);
+                        GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
+                        TRUE,
+                        rect->x, rect->y, rect->width, rect->height);
   else if (bg_pixbuf)
     {
       gdk_pixbuf_render_to_drawable (bg_pixbuf,
@@ -635,12 +638,12 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     }
   else
     gdk_draw_rectangle (GTK_WIDGET (pager)->window,
-			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_NORMAL],
-			TRUE,
-			rect->x, rect->y, rect->width, rect->height);
+                        GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_NORMAL],
+                        TRUE,
+                        rect->x, rect->y, rect->width, rect->height);
 
   if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
-    {
+    {      
       windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
 							    wnck_workspace_get (workspace));
       
@@ -671,8 +674,12 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     }
   else
     {
+      /* Workspace name mode */
       PangoLayout *layout;
       int w, h;
+
+      
+      
       layout = gtk_widget_create_pango_layout  (GTK_WIDGET (pager),
 						wnck_workspace_get_name (wnck_workspace_get (workspace)));
       
@@ -722,7 +729,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
            * for efficiency. width/height will only change by
            * one pixel at most.
            */
-          if (first)
+          if (first &&
+              pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
             {
               bg_pixbuf = wnck_pager_get_background (pager,
                                                      rect.width,

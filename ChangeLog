@@ -1,3 +1,13 @@
+2002-04-28  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/workspace.c (_wnck_workspace_update_name): add one 
+	to number in workspace name, we aren't supposed to have 
+	"workspace 0"
+
+	* libwnck/pager.c (wnck_pager_expose_event): don't thumbnail 
+	the background in display-workspace-names mode. In names mode,
+	should probably draw things more like a button.
+
 2002-04-21  Anders Carlsson  <andersca@gnu.org>
 
 	* libwnck/xutils.c: (scaled_from_pixdata):

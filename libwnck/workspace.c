@@ -246,7 +246,7 @@ _wnck_workspace_update_name (WnckWorkspace *space,
 
   if (space->priv->name == NULL)
     space->priv->name = g_strdup_printf (_("Workspace %d"),
-                                         space->priv->number);
+                                         space->priv->number + 1);
 
   if ((old && !name) ||
       (!old && name) ||
