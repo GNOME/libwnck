@@ -1,3 +1,7 @@
+2001-12-16  Duarte Loreto <happyguy_pt@hotmail.com>
+
+        * configure.in: Added Portuguese locale.
+
 2001-12-14  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.c (wnck_task_class_init):
