@@ -1,12 +1,13 @@
 # traditional Chinese translation of libwnck.
-# Copyright (C) 2001, 02, 03 Free Software Foundation, Inc.
-# Abel Cheung <maddog@linux.org.hk>, 2001-2003.
+# Copyright (C) 2001, 02, 03, 04 Free Software Foundation, Inc.
+# Abel Cheung <maddog@linux.org.hk>, 2001-2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.3.0\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2003-05-01 06:42+0800\n"
+"Project-Id-Version: libwnck 2.5.90\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-22 20:13+0800\n"
+"PO-Revision-Date: 2004-03-22 20:16+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -68,14 +69,13 @@ msgid "Workspace %d"
 msgstr "工作區 %d"
 
 #: libwnck/window-action-menu.c:368
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "工作區 %d"
+msgstr "工作區 1_0"
 
 #: libwnck/window-action-menu.c:370
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "工作區 %d"
+msgstr "工作區 %s%d"
 
 #: libwnck/window-action-menu.c:466
 msgid "_Move"
@@ -91,12 +91,12 @@ msgstr "關閉(_C)"
 
 #: libwnck/window-action-menu.c:499
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "移至另一個工作區(_W)"
 
 #: libwnck/window-action-menu.c:517
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -104,9 +104,10 @@ msgstr "無標題的視窗"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
-msgstr ""
+msgstr "視窗清單"
 
+# FIXME: Not accurate, but this is easier to understand. Need a phrase
+# that's both easy to understand AND accurate. -- Abel
 #: libwnck/tasklist.c:462
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "用來在不同工作區之間切換的工具"
+msgstr "用來切換至不同視窗的工具"
