@@ -959,6 +959,30 @@ _wnck_activate_workspace (Screen *screen,
 	      &xev);
 }
 
+void
+_wnck_toggle_showing_desktop (Screen  *screen,
+                              gboolean show)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = DisplayOfScreen (screen);
+  xev.xclient.window = RootWindowOfScreen (screen);
+  xev.xclient.message_type = _wnck_atom_get ("_NET_SHOWING_DESKTOP");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = show != FALSE;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (DisplayOfScreen (screen),
+	      RootWindowOfScreen (screen),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+}
+
 Window
 _wnck_get_group_leader (Window xwindow)
 {

@@ -23,7 +23,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include "workspace-accessible.h"
-
+#include "private.h"
 static void        wnck_workspace_accessible_class_init          (WnckWorkspaceAccessibleClass *klass);
 static const char* wnck_workspace_accessible_get_name            (AtkObject                    *obj);
 static const char* wnck_workspace_accessible_get_description     (AtkObject                    *obj);
@@ -150,6 +150,8 @@ wnck_workspace_accessible_get_size (AtkComponent *component,
   AtkCoordType coords; 
   int x, y;
 
+  /* FIXME this is blatantly broken (coords uninitialized) */
+  
   wnck_workspace_accessible_get_extents (component, &x, &y, width, height, coords);
 }
 

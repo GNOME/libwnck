@@ -1,3 +1,28 @@
+2002-09-23  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/test-wnck.c (main): add test stuff for showing desktop
+	feature
+
+	* libwnck/xutils.c (_wnck_toggle_showing_desktop): new function
+	(_wnck_activate_workspace): fix a hardcoded gdk_display, but it
+	looks like there are a lot more
+
+	* libwnck/screen.c (wnck_screen_toggle_showing_desktop):
+	new function
+	(wnck_screen_get_showing_desktop): new function
+
+	* libwnck/workspace-accessible.c: include headers to avoid
+	warnings
+	(wnck_workspace_accessible_get_size): add comment about how this 
+	is totally broken
+
+	* libwnck/pager.c: remove some unused variables
+
+	* configure.in: version to 2.1.1 and bump current/age
+
+	* libwnck/screen.c: monitor _NET_SHOWING_DESKTOP and emit a signal
+	if it changed
+
 2002-09-24  Arvind Samptur  <arvind.samptur@wipro.com>
 	* libwnck/window-action-menu.c (update_menu_state): Replace 
 	strings Shade with Roll Up and Unshade with Unroll.

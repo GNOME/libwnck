@@ -1171,7 +1171,7 @@ application_opened_callback       (WnckScreen      *screen,
                                    WnckApplication *app,
                                    gpointer         data)
 {
-  WnckPager *pager = WNCK_PAGER (data);
+  /*   WnckPager *pager = WNCK_PAGER (data); */
 }
 
 static void
@@ -1179,7 +1179,7 @@ application_closed_callback       (WnckScreen      *screen,
                                    WnckApplication *app,
                                    gpointer         data)
 {
-  WnckPager *pager = WNCK_PAGER (data);
+  /*   WnckPager *pager = WNCK_PAGER (data); */
 }
 
 static void

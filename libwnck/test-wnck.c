@@ -28,6 +28,8 @@ static void application_opened_callback       (WnckScreen      *screen,
                                                WnckApplication *app);
 static void application_closed_callback       (WnckScreen      *screen,
                                                WnckApplication *app);
+static void showing_desktop_changed_callback  (WnckScreen      *screen,
+                                               gpointer         data);
 static void window_name_changed_callback      (WnckWindow      *window,
                                                gpointer         data);
 static void window_state_changed_callback     (WnckWindow      *window,
@@ -87,7 +89,10 @@ main (int argc, char **argv)
   g_signal_connect (G_OBJECT (screen), "application_closed",
                     G_CALLBACK (application_closed_callback),
                     NULL);
-
+  g_signal_connect (G_OBJECT (screen), "showing_desktop_changed",
+                    G_CALLBACK (showing_desktop_changed_callback),
+                    NULL);
+  
   global_tree_model = create_tree_model ();
   global_tree_view = create_tree_view ();
   
@@ -219,6 +224,14 @@ application_closed_callback (WnckScreen      *screen,
 {
   g_print ("Application closed\n");
   queue_refill_model ();
+}
+
+static void
+showing_desktop_changed_callback (WnckScreen *screen,
+                                  gpointer    data)
+{
+  g_print ("Showing desktop now = %d\n",
+           wnck_screen_get_showing_desktop (screen));
 }
 
 static void

@@ -52,6 +52,8 @@ struct _WnckScreenPrivate
   Pixmap bg_pixmap;
   
   guint update_handler;  
+
+  guint showing_desktop : 1;
   
   /* if you add flags, be sure to set them
    * when we create the screen so we get an initial update
@@ -62,6 +64,7 @@ struct _WnckScreenPrivate
   guint need_update_active_window : 1;
   guint need_update_workspace_names : 1;
   guint need_update_bg_pixmap : 1;
+  guint need_update_showing_desktop : 1;
 };
 
 enum {
@@ -75,6 +78,7 @@ enum {
   APPLICATION_OPENED,
   APPLICATION_CLOSED,
   BACKGROUND_CHANGED,
+  SHOWING_DESKTOP_CHANGED,
   LAST_SIGNAL
 };
 
@@ -87,6 +91,7 @@ static void update_workspace_list   (WnckScreen      *screen);
 static void update_active_workspace (WnckScreen      *screen);
 static void update_active_window    (WnckScreen      *screen);
 static void update_workspace_names  (WnckScreen      *screen);
+static void update_showing_desktop  (WnckScreen      *screen);
 
 static void queue_update            (WnckScreen      *screen);
 static void unqueue_update          (WnckScreen      *screen);              
@@ -108,6 +113,7 @@ static void emit_application_opened       (WnckScreen      *screen,
 static void emit_application_closed       (WnckScreen      *screen,
                                            WnckApplication *app);
 static void emit_background_changed       (WnckScreen      *screen);
+static void emit_showing_desktop_changed  (WnckScreen      *screen);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -249,6 +255,19 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+  signals[SHOWING_DESKTOP_CHANGED] =
+    g_signal_new ("showing_desktop_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+#if 0
+                  /* FIXME when we can break ABI add this */
+                  G_STRUCT_OFFSET (WnckScreenClass, showing_desktop_changed),
+#else
+                  0,
+#endif
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -298,6 +317,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->need_update_active_window = TRUE;
   screen->priv->need_update_workspace_names = TRUE;
   screen->priv->need_update_bg_pixmap = TRUE;
+  screen->priv->need_update_showing_desktop = TRUE;
   
   queue_update (screen);
 }
@@ -566,6 +586,12 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
            _wnck_atom_get ("_XROOTPMAP_ID"))
     {
       screen->priv->need_update_bg_pixmap = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_SHOWING_DESKTOP"))
+    {
+      screen->priv->need_update_showing_desktop = TRUE;
       queue_update (screen);
     }
 }
@@ -1149,6 +1175,26 @@ update_bg_pixmap (WnckScreen *screen)
 }
 
 static void
+update_showing_desktop (WnckScreen *screen)
+{
+  int showing_desktop;
+  
+  if (!screen->priv->need_update_showing_desktop)
+    return;
+  
+  screen->priv->need_update_showing_desktop = FALSE;
+
+  showing_desktop = FALSE;
+  _wnck_get_cardinal (screen->priv->xroot,
+                      _wnck_atom_get ("_NET_SHOWING_DESKTOP"),
+                      &showing_desktop);
+
+  screen->priv->showing_desktop = showing_desktop != 0;
+  
+  emit_showing_desktop_changed (screen);
+}
+
+static void
 do_update_now (WnckScreen *screen)
 {
   if (screen->priv->update_handler)
@@ -1165,7 +1211,8 @@ do_update_now (WnckScreen *screen)
   update_active_workspace (screen);
   update_active_window (screen);
   update_workspace_names (screen);
-
+  update_showing_desktop (screen);
+  
   update_bg_pixmap (screen);
 }
 
@@ -1288,6 +1335,14 @@ emit_background_changed (WnckScreen *screen)
                  0);
 }
 
+static void
+emit_showing_desktop_changed (WnckScreen *screen)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[SHOWING_DESKTOP_CHANGED],
+                 0);
+}
+
 gboolean
 wnck_screen_net_wm_supports (WnckScreen *screen,
                              const char *atom)
@@ -1353,4 +1408,22 @@ wnck_screen_release_workspace_layout (WnckScreen *screen,
   _wnck_release_desktop_layout_manager (screen->priv->xscreen,
                                         current_token);
 
+}
+
+gboolean
+wnck_screen_get_showing_desktop (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), FALSE);
+  
+  return screen->priv->showing_desktop;
+}
+
+void
+wnck_screen_toggle_showing_desktop (WnckScreen *screen,
+                                    gboolean    show)
+{
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+
+  _wnck_toggle_showing_desktop (screen->priv->xscreen,
+                                show);
 }

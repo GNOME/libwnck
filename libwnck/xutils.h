@@ -110,6 +110,9 @@ void   _wnck_keyboard_move    (Screen *screen,
 void   _wnck_keyboard_size    (Screen *screen,
                                Window  xwindow);
 
+void _wnck_toggle_showing_desktop (Screen  *screen,
+                                   gboolean show);
+
 typedef struct _WnckIconCache WnckIconCache;
 
 WnckIconCache *_wnck_icon_cache_new                  (void);
