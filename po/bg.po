@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-31 10:05+0200\n"
-"PO-Revision-Date: 2005-01-31 10:05+0200\n"
+"POT-Creation-Date: 2005-02-02 19:15+0200\n"
+"PO-Revision-Date: 2005-02-01 16:42+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,42 @@ msgstr "Инструмент за превключване между работ
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Натиснете тук за превключване към работен плот %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "Непознат прозорец"
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr "Няма отворени прозорци"
+
+#: libwnck/selector.c:741
+msgid "Window Selector"
+msgstr "Списък с прозорците"
+
+#: libwnck/selector.c:742
+msgid "Tool to switch between windows"
+msgstr "Програма за превключване между прозорците"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Списък с прозорците"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Инструмент за превключване между видимите прозорци"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Затваряне на всички"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "_Минимизиране на всички"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "_Деминимизиране на всички"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -63,8 +99,8 @@ msgid "_Only on This Workspace"
 msgstr "_Само на този работен плот"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "_Винаги на този работен плот"
+msgid "_Always on Visible Workspace"
+msgstr "_Винаги на видимия работен плот"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,23 +140,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "неозаглавен прозорец"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Списък с прозорците"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Инструмент за превключване между видимите прозорци"
-
-#: libwnck/tasklist.c:2102
-msgid "_Close All"
-msgstr "_Затваряне на всички"
-
-#: libwnck/tasklist.c:2117
-msgid "_Minimize All"
-msgstr "_Минимизиране на всички"
-
-#: libwnck/tasklist.c:2128
-msgid "_Unminimize All"
-msgstr "_Деминимизиране на всички"
