@@ -1,3 +1,9 @@
+2002-05-11  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/tasklist.c (wnck_tasklist_activate_task_window):
+	activate window's workspace before switching to it, 
+	#81434. Handle wnck_window_get_workspace returning NULL.
+
 2002-05-10  Pablo Saratxaga  <pablo@mandrakesoft.com>
 
 	* configure.in: Added Vietnamese (vi) and Walloon (wa) to ALL_LINGUAS

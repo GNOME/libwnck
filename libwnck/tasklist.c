@@ -1298,7 +1298,8 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
 
       active_ws = wnck_screen_get_active_workspace (tasklist->priv->screen);
       window_ws = wnck_window_get_workspace (task->window);
-      if (active_ws != window_ws &&
+      if (window_ws &&
+          active_ws != window_ws &&
 	  !tasklist->priv->switch_workspace_on_unminimize)
 	wnck_workspace_activate (window_ws);
 	  
@@ -1313,6 +1314,12 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
 	}
       else
 	{
+          WnckWorkspace *window_ws;
+          
+          window_ws = wnck_window_get_workspace (task->window);
+          if (window_ws)
+            wnck_workspace_activate (window_ws);
+
 	  wnck_window_activate (task->window);
 	}
     }
