@@ -1,3 +1,8 @@
+2003-01-24  Gregory Merchan  <merchan@phys.lsu.edu>
+	
+	* libwnck/window-action-menu.c: Change mnemonics to match
+	metacity's. (Bug #104254)
+	
 2003-01-22  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/tasklist.c: time out startup sequences if we don't see

@@ -188,14 +188,14 @@ update_menu_state (ActionMenuData *amd)
   
   if (wnck_window_is_minimized (amd->window))
     {
-      set_item_text (amd->minimize_item, _("Un_minimize"));
+      set_item_text (amd->minimize_item, _("Unmi_nimize"));
       set_item_stock (amd->minimize_item, NULL);
       gtk_widget_set_sensitive (amd->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMINIMIZE) != 0);
     }
   else
     {
-      set_item_text (amd->minimize_item, _("_Minimize"));
+      set_item_text (amd->minimize_item, _("Mi_nimize"));
       set_item_stock (amd->minimize_item, WNCK_STOCK_MINIMIZE);
       gtk_widget_set_sensitive (amd->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_MINIMIZE) != 0);
@@ -203,7 +203,7 @@ update_menu_state (ActionMenuData *amd)
 
   if (wnck_window_is_maximized (amd->window))
     {
-      set_item_text (amd->maximize_item, _("_Unmaximize"));
+      set_item_text (amd->maximize_item, _("Unma_ximize"));
       set_item_stock (amd->maximize_item, NULL);
       gtk_widget_set_sensitive (amd->maximize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMAXIMIZE) != 0);
@@ -369,7 +369,7 @@ wnck_create_window_action_menu (WnckWindow *window)
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->move_item);  
 
-  set_item_text (amd->move_item, _("Mo_ve"));
+  set_item_text (amd->move_item, _("_Move"));
   set_item_stock (amd->move_item, NULL);
   
   amd->resize_item = make_menu_item (amd, RESIZE);
