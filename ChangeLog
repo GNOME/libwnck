@@ -1,3 +1,7 @@
+2003-02-06  Christian Rose  <menthos@menthos.com>
+
+	* configure.in: Added "id" to ALL_LINGUAS.
+
 2003-01-26  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/tasklist.c: (wnck_tasklist_check_end_sequence):
