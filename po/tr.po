@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-07 11:19+0100\n"
+"POT-Creation-Date: 2005-03-13 01:38+0200\n"
 "PO-Revision-Date: 2004-02-26 13:31+0200\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -35,21 +35,19 @@ msgstr "%s çalışma alanına geçmek için tıklayın"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Bilinmeyen Pencere"
 
 #: libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "Açık Pencere Yok"
 
 #: libwnck/selector.c:734
-#, fuzzy
 msgid "Window Selector"
-msgstr "Pencere Listesi"
+msgstr "Pencere Seçici"
 
 #: libwnck/selector.c:735
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Görünen pencereler arasında geçiş yapmak için araç"
+msgstr "Pencereler arasında geçiş yapmak için araç"
 
 #: libwnck/tasklist.c:528
 msgid "Window List"
@@ -60,19 +58,16 @@ msgid "Tool to switch between visible windows"
 msgstr "Görünen pencereler arasında geçiş yapmak için araç"
 
 #: libwnck/tasklist.c:2108
-#, fuzzy
 msgid "_Close All"
-msgstr "_Kapat"
+msgstr "Hepsini _Kapat"
 
 #: libwnck/tasklist.c:2123
-#, fuzzy
 msgid "_Minimize All"
-msgstr "_Küçült"
+msgstr "Hepsini _Küçült"
 
 #: libwnck/tasklist.c:2134
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Küçült_meyi geri al"
+msgstr "Hepsinin Küçült_mesini Geri Al"
 
 #: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
@@ -99,14 +94,12 @@ msgid "Roll _Up"
 msgstr "Y_ukarı sar"
 
 #: libwnck/window-action-menu.c:256
-#, fuzzy
 msgid "_Only on This Workspace"
 msgstr "Sadece _Bu Çalışma Alanında"
 
 #: libwnck/window-action-menu.c:263
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Sadece _Bu Çalışma Alanında"
+msgstr "Her Zaman _Görünen Çalışma Alanında"
 
 #: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
