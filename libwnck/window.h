@@ -42,7 +42,8 @@ typedef enum
   WNCK_WINDOW_STATE_SKIP_TASKLIST          = 1 << 5,
   WNCK_WINDOW_STATE_STICKY                 = 1 << 6,
   WNCK_WINDOW_STATE_HIDDEN                 = 1 << 7,
-  WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8
+  WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8,
+  WNCK_WINDOW_STATE_DEMANDS_ATTENTION      = 1 << 9
 } WnckWindowState;
 
 typedef enum
@@ -153,6 +154,7 @@ gboolean wnck_window_is_shaded                 (WnckWindow *window);
 gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
 gboolean wnck_window_is_sticky                 (WnckWindow *window);
+gboolean wnck_window_demands_attention         (WnckWindow *window);
 
 void wnck_window_set_skip_pager    (WnckWindow *window,
                                     gboolean skip);

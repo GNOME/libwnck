@@ -1,3 +1,32 @@
+2004-07-25  Rob Adams  <readams@gnome.org>
+
+	Add support for _NET_WM_STATE_DEMANDS_ATTENTION hint.  This makes
+	labels in the tasklist bold for windows with the hint set, and
+	adds API for reading the hint.
+	
+	* libwnck/window.c (COMPRESS_STATE): add demands attention hint
+	(wnck_window_demands_attention): new function, returns the state
+	of the demands attention flag
+	(update_state): include demands attention in the list of updated
+	state
+
+	* libwnck/window.h (WnckWindowState): Add
+	WNCK_WINDOW_STATE_DEMANDS_ATTENTION
+	(wnck_window_demands_attention): add prototype for new API
+	function
+
+	* libwnck/wnck-enum-types.c: add demands attention hint
+
+	* libwnck/tasklist.c (eel_gtk_label_make_bold): new function,
+	copy/paste from eel.
+	(wnck_gtk_label_make_normal): inverse of make_bold
+	(wnck_task_update_visible_state): If demands attention is set,
+	make bold, otherwise make normal.
+	(wnck_task_state_changed): demands attention changes require
+	updating the visible state
+	(wnck_task_create_widgets): If demands attention is set, make
+	bold.
+	
 2004-07-22  James M. Cape  <jcape@ignore-your.tv>
 
 	* libwnck/tasklist.c: (wnck_task_get_text):

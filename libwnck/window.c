@@ -46,7 +46,8 @@ static GHashTable *window_hash = NULL;
     ((window)->priv->skip_taskbar        << 5) |        \
     ((window)->priv->is_sticky           << 6) |        \
     ((window)->priv->is_hidden           << 7) |        \
-    ((window)->priv->is_fullscreen       << 8) )
+    ((window)->priv->is_fullscreen       << 8) |        \
+    ((window)->priv->demands_attention   << 9) )
 
 struct _WnckWindowPrivate
 {
@@ -97,6 +98,7 @@ struct _WnckWindowPrivate
   guint is_sticky : 1;
   guint is_hidden : 1;
   guint is_fullscreen : 1;
+  guint demands_attention : 1;
 
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
@@ -582,6 +584,25 @@ wnck_window_is_minimized (WnckWindow *window)
 
   return window->priv->is_minimized;
 }
+
+/**
+ * wnck_window_demands_attention:
+ * @window: a #WnckWindow
+ *
+ * If the window is has the demands attention state set returns
+ * %TRUE. This state may change anytime a state_changed signal gets
+ * emitted.
+ *
+ * Return value: %TRUE if window is minimized
+ **/
+gboolean
+wnck_window_demands_attention (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->demands_attention;
+}
+
 
 gboolean
 wnck_window_is_maximized_horizontally (WnckWindow *window)
@@ -1541,6 +1562,7 @@ update_state (WnckWindow *window)
       window->priv->skip_taskbar = FALSE;
       window->priv->skip_pager = FALSE;
       window->priv->net_wm_state_hidden = FALSE;
+      window->priv->demands_attention = FALSE;
       
       atoms = NULL;
       n_atoms = 0;
@@ -1567,6 +1589,8 @@ update_state (WnckWindow *window)
             window->priv->skip_taskbar = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"))
             window->priv->skip_pager = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_DEMANDS_ATTENTION"))
+            window->priv->demands_attention = TRUE;
 
           ++i;
         }

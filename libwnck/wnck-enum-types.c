@@ -17,6 +17,7 @@ wnck_window_state_get_type (void)
       { WNCK_WINDOW_STATE_SKIP_PAGER, "WNCK_WINDOW_STATE_SKIP_PAGER", "skip-pager" },
       { WNCK_WINDOW_STATE_SKIP_TASKLIST, "WNCK_WINDOW_STATE_SKIP_TASKLIST", "skip-tasklist" },
       { WNCK_WINDOW_STATE_STICKY, "WNCK_WINDOW_STATE_STICKY", "sticky" },
+      { WNCK_WINDOW_STATE_DEMANDS_ATTENTION, "WNCK_WINDOW_STATE_DEMANDS_ATTENTION", "demands-attention" },
       { 0, NULL, NULL }
     };
     etype = g_flags_register_static ("WnckWindowState", values);

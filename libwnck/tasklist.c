@@ -252,6 +252,52 @@ static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist
 static gpointer task_parent_class;
 static gpointer tasklist_parent_class;
 
+/**
+ * eel_gtk_label_make_bold.
+ *
+ * Switches the font of label to a bold equivalent.
+ * @label: The label.
+ **/
+void
+eel_gtk_label_make_bold (GtkLabel *label)
+{
+  PangoFontDescription *font_desc;
+
+  font_desc = pango_font_description_new ();
+
+  pango_font_description_set_weight (font_desc,
+                                     PANGO_WEIGHT_BOLD);
+
+  /* This will only affect the weight of the font, the rest is
+   * from the current state of the widget, which comes from the
+   * theme or user prefs, since the font desc only has the
+   * weight flag turned on.
+   */
+  gtk_widget_modify_font (GTK_WIDGET (label), font_desc);
+
+  pango_font_description_free (font_desc);
+}
+
+void
+wnck_gtk_label_make_normal (GtkLabel *label)
+{
+  PangoFontDescription *font_desc;
+
+  font_desc = pango_font_description_new ();
+
+  pango_font_description_set_weight (font_desc,
+                                     PANGO_WEIGHT_NORMAL);
+
+  /* This will only affect the weight of the font, the rest is
+   * from the current state of the widget, which comes from the
+   * theme or user prefs, since the font desc only has the
+   * weight flag turned on.
+   */
+  gtk_widget_modify_font (GTK_WIDGET (label), font_desc);
+
+  pango_font_description_free (font_desc);
+}
+
 GType
 wnck_task_get_type (void)
 {
@@ -2149,6 +2195,11 @@ wnck_task_update_visible_state (WnckTask *task)
   if (text != NULL)
     {
       gtk_label_set_text (GTK_LABEL (task->label), text);
+      if (wnck_window_get_state (task->window) &
+          WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+        eel_gtk_label_make_bold ((GTK_LABEL (task->label)));
+      else
+        wnck_gtk_label_make_normal ((GTK_LABEL (task->label)));
       gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
       g_free (text);
     }
@@ -2171,7 +2222,8 @@ wnck_task_state_changed (WnckWindow     *window,
       return;
     }
   
-  if (changed_mask & WNCK_WINDOW_STATE_MINIMIZED)
+  if ((changed_mask & WNCK_WINDOW_STATE_MINIMIZED) ||
+      (changed_mask & WNCK_WINDOW_STATE_DEMANDS_ATTENTION))
     {
       WnckTask *win_task;
 
@@ -2376,6 +2428,9 @@ wnck_task_create_widgets (WnckTask *task)
 
   text = wnck_task_get_text (task);
   task->label = gtk_label_new (text);
+  if (wnck_window_get_state (task->window) &
+      WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+    eel_gtk_label_make_bold ((GTK_LABEL (task->label)));
   gtk_widget_show (task->label);
 
   gtk_table_attach (GTK_TABLE (table),
