@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2004-02-16 21:37-0600\n"
+"PO-Revision-Date: 2004-03-03 00:38-0600\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,7 +84,7 @@ msgstr "ย้า_ย"
 
 #: libwnck/window-action-menu.c:473
 msgid "_Resize"
-msgstr "ย่_อขยาย"
+msgstr "_ปรับขนาด"
 
 #: libwnck/window-action-menu.c:486
 msgid "_Close"
