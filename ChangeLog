@@ -1,3 +1,14 @@
+2003-05-03  Havoc Pennington  <hp@pobox.com>
+
+	Fix #77941
+	
+	* libwnck/xutils.c (_wnck_icon_cache_set_want_fallback): make it
+	actually do something
+
+	* libwnck/application.c (wnck_application_get_icon)
+	(wnck_application_get_mini_icon): fall back to icon from one of
+	the windows if no icon found for the entire application
+
 2003-05-01  Telsa Gwynne  <hobbit@aloss.ukuu.org.uk>
 
 	* configure.in: Added "cy" (Welsh) to ALL_LIHGUAS

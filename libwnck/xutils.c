@@ -1880,7 +1880,7 @@ void
 _wnck_icon_cache_set_want_fallback (WnckIconCache *icon_cache,
                                     gboolean       setting)
 {
-  icon_cache->want_fallback = TRUE;
+  icon_cache->want_fallback = setting;
 }
 
 gboolean
