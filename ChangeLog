@@ -1,3 +1,8 @@
+2002-03-27  jacob berkman  <jacob@ximian.com>
+
+	* libwnck/Makefile.am (libwnck_1_la_LDFLAGS): don't pass the lib's
+	ldflags to apps
+
 2002-03-26  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/tasklist.c (wnck_task_get_text): compute number 

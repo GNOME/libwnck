@@ -59,7 +59,7 @@ noinst_PROGRAMS=		\
 	test-wnck		\
 	test-tasklist
 
-LDFLAGS=								    \
+libwnck_1_la_LDFLAGS=								    \
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE) \
         -export-symbols-regex "^[^_].*"
 
