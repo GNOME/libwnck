@@ -123,6 +123,8 @@ struct _WnckTasklistPrivate
 
   int *size_hints;
   int size_hints_len;
+
+  gint minimum_width;
 };
 
 
@@ -360,6 +362,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   
   tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
+
+  tasklist->priv->minimum_width = DEFAULT_WIDTH;
 }
 
 static void
@@ -468,6 +472,28 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 
   tasklist->priv->grouping_limit = limit;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+/* set the minimum width */
+void 
+wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  if (tasklist->priv->minimum_width == size)
+    return;
+
+  tasklist->priv->minimum_width = size;
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+ 
+/* get the minimum width */
+gint
+wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
+{
+  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
+	
+  return tasklist->priv->minimum_width;
 }
 
 /* returns the maximal possible button width (i.e. if you
@@ -645,7 +671,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 
   gtk_widget_get_size_request (widget, &u_width, &u_height);
 
-  requisition->width = DEFAULT_WIDTH;
+  requisition->width = tasklist->priv->minimum_width;
   requisition->height = DEFAULT_HEIGHT;
   
   if (u_height != -1)

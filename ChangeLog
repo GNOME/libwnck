@@ -1,3 +1,10 @@
+2002-05-11  Thomas Vander Stichele <thomas@apestaart.org>
+ 
+        * libwnck/tasklist.c: implemented minimum_width 
+        which can be set from applets to force a minimum width of the
+        tasklist applet
+        (see gnome-panel/applets/gen_util/tasklist.c)
+	
 2002-05-11  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/tasklist.c (wnck_tasklist_activate_task_window):

@@ -32,7 +32,7 @@ main (int argc, char **argv)
 
   tasklist = wnck_tasklist_new (screen);
 
-  wnck_tasklist_set_grouping (tasklist, WNCK_TASKLIST_AUTO_GROUP);
+  wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist), WNCK_TASKLIST_AUTO_GROUP);
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (win), frame);

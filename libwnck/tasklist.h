@@ -71,6 +71,9 @@ void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				       gint          limit);
 void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					       gboolean      include_all_workspaces);
+void wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size);
+gint wnck_tasklist_get_minimum_width (WnckTasklist *tasklist);
+    
 G_END_DECLS
 
 #endif /* WNCK_TASKLIST_H */
