@@ -7,17 +7,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-01-14 00:44+0100\n"
-"PO-Revision-Date: 2002-01-14 00:44+0100\n"
+"POT-Creation-Date: 2002-01-27 01:52+0100\n"
+"PO-Revision-Date: 2002-01-27 01:52+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "namnlöst program"
+msgstr "namnlÃ¶st program"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -45,7 +45,7 @@ msgstr "_Skugga"
 
 #: libwnck/window-action-menu.c:297
 msgid "Close"
-msgstr "Stäng"
+msgstr "StÃ¤ng"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
@@ -53,11 +53,11 @@ msgstr "_Flytta"
 
 #: libwnck/window-action-menu.c:324
 msgid "_Resize"
-msgstr "_Ändra storlek"
+msgstr "_Ã„ndra storlek"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "namnlöst fönster"
+msgstr "namnlÃ¶st fÃ¶nster"
 
 #: libwnck/workspace.c:248
 #, c-format
