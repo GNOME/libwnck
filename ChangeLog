@@ -1,5 +1,7 @@
 2003-11-16  Havoc Pennington  <hp@redhat.com>
 
+	* configure.in: 2.5.0
+
 	* libwnck/util.c (wnck_xid_read_resource_usage): new function
 	(wnck_pid_read_resource_usage): new
 
