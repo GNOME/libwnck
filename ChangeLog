@@ -1,5 +1,11 @@
 2003-10-22  Vincent Untz  <vincent@vuntz.net>
 
+	* libwnck/tasklist.c: (wnck_task_create_widgets) left align the button
+	label and add some padding.
+	Fix bug #120363 and bug #99760.
+
+2003-10-22  Vincent Untz  <vincent@vuntz.net>
+
 	* libwnck/pager.c: (wnck_pager_button_press) don't begin a drag if the
 	pager is in NAME mode because we can't see the window.
 	Fix bug #119031.
