@@ -349,11 +349,13 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       is_current = active_space &&
         i == wnck_workspace_get_number (active_space);
 
+#if 0
       if (is_current)
         gdk_draw_rectangle (widget->window,
                             widget->style->bg_gc[GTK_STATE_SELECTED],
                             TRUE,
                             rect.x + 1, rect.y + 1, rect.width - 2, rect.height - 2);
+#endif
       
       windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
                                                             wnck_workspace_get (i));
@@ -365,11 +367,14 @@ wnck_pager_expose_event  (GtkWidget      *widget,
           GdkPixbuf *icon;
           int icon_x, icon_y, icon_w, icon_h;
           GdkRectangle winrect;
+          gboolean is_active;
 
+          is_active = wnck_window_is_active (win);
+          
           get_window_rect (win, &rect, &winrect);
           
           gdk_draw_rectangle (widget->window,
-                              is_current ?
+                              is_active ?
                               widget->style->bg_gc[GTK_STATE_SELECTED] :
                               widget->style->bg_gc[GTK_STATE_NORMAL],
                               TRUE,
@@ -442,7 +447,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
             }
           
           gdk_draw_rectangle (widget->window,
-                              is_current ?
+                              is_active ?
                               widget->style->fg_gc[GTK_STATE_SELECTED] :
                               widget->style->fg_gc[GTK_STATE_NORMAL],
                               FALSE,

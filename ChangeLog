@@ -1,5 +1,10 @@
 2001-10-25  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/pager.c (wnck_pager_expose_event): only draw active
+	window as selected, not whole workspace
+
+2001-10-25  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/pager.c: right-click menu
 
 	* libwnck/window-menu.c: fix weak ref stuff
