@@ -1328,8 +1328,10 @@ wnck_window_is_in_viewport (WnckWindow    *window,
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
 
-  if (wnck_window_get_workspace (window) != workspace &&
-      !wnck_window_is_pinned (window))
+  if (wnck_window_is_pinned (window) )
+    return TRUE;
+
+  if (wnck_window_get_workspace (window) != workspace)
     return FALSE;
 
   viewport_rect.x = wnck_workspace_get_viewport_x (workspace);

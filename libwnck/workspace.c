@@ -35,6 +35,7 @@ struct _WnckWorkspacePrivate
   char *name;
   int width, height;            /* Workspace size */
   int viewport_x, viewport_y;   /* Viewport origin */
+  gboolean is_virtual;
 };
 
 enum {
@@ -208,6 +209,7 @@ _wnck_workspace_create (int number, WnckScreen *screen)
   /* Just set reasonable defaults */
   space->priv->width = wnck_screen_get_width (screen);
   space->priv->height = wnck_screen_get_height (screen);
+  space->priv->is_virtual = FALSE;
 
   space->priv->viewport_x = 0;
   space->priv->viewport_y = 0;
@@ -256,6 +258,9 @@ _wnck_workspace_set_geometry (WnckWorkspace *space,
       space->priv->width = w;
       space->priv->height = h;
 
+      space->priv->is_virtual = w > wnck_screen_get_width (space->priv->screen) ||
+				h > wnck_screen_get_height (space->priv->screen);
+
       return TRUE;  /* change was made */
     }
   else
@@ -300,4 +305,10 @@ int
 wnck_workspace_get_viewport_y (WnckWorkspace *space)
 {
   return space->priv->viewport_y;
+}
+
+gboolean
+wnck_workspace_is_virtual (WnckWorkspace *space)
+{
+  return space->priv->is_virtual;
 }

@@ -151,6 +151,8 @@ struct _WnckTasklistPrivate
   guint activate_timeout_id;
   guint screen_connections [N_SCREEN_CONNECTIONS];
 
+  guint idle_callback_tag;
+
   int *size_hints;
   int size_hints_len;
 
@@ -439,6 +441,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   tasklist->priv->minimum_width = DEFAULT_WIDTH;
   tasklist->priv->minimum_height = DEFAULT_HEIGHT;
+
+  tasklist->priv->idle_callback_tag = 0;
 }
 
 static void
@@ -489,6 +493,9 @@ wnck_tasklist_finalize (GObject *object)
   
   if (tasklist->priv->activate_timeout_id != 0)
     gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+  
+  if (tasklist->priv->idle_callback_tag != 0)
+    g_source_remove (tasklist->priv->idle_callback_tag);
     
   if (tasklist->priv->tooltips)
     {
@@ -1366,6 +1373,37 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
   g_assert (g_hash_table_size (tasklist->priv->app_hash) == 0);
 }
 
+
+/*
+ * This function determines if a window should be included in the tasklist.
+ */
+static gboolean
+wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
+{
+  WnckWorkspace *active_workspace;
+
+  if (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
+    return FALSE;
+
+  if (tasklist->priv->include_all_workspaces)
+    return TRUE;
+
+  if (wnck_window_is_pinned (win))
+    return TRUE;
+
+  active_workspace = wnck_screen_get_active_workspace (tasklist->priv->screen);  
+  if (active_workspace == NULL)
+    return TRUE;
+
+  if (active_workspace != wnck_window_get_workspace (win))
+    return FALSE;
+
+  if (!wnck_workspace_is_virtual (active_workspace))
+    return TRUE;
+
+  return wnck_window_is_in_viewport (win, active_workspace);
+}
+
 static void
 wnck_tasklist_update_lists (WnckTasklist *tasklist)
 {
@@ -1373,26 +1411,19 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   WnckWindow *win;
   WnckApplication *app;
   GList *l;
-  WnckWorkspace *active_workspace;
   WnckTask *app_task;
   WnckTask *win_task;
 
   wnck_tasklist_free_tasks (tasklist);
   
-  active_workspace = wnck_screen_get_active_workspace (tasklist->priv->screen);  
   windows = wnck_screen_get_windows (tasklist->priv->screen);
   
   l = windows;
   while (l != NULL)
     {
-      WnckWindowState state;
       win = WNCK_WINDOW (l->data);
 
-      state = wnck_window_get_state (win);
-      if ((state & WNCK_WINDOW_STATE_SKIP_TASKLIST) == 0 &&
-	  (tasklist->priv->include_all_workspaces ||
-	   active_workspace == NULL ||
-	   wnck_window_is_in_viewport (win, active_workspace)))
+      if (wnck_tasklist_include_window (tasklist, win))
 	{
 	  win_task = wnck_task_new_from_window (tasklist, win);
 	  tasklist->priv->windows = g_list_prepend (tasklist->priv->windows, win_task);
@@ -1415,7 +1446,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	      g_hash_table_insert (tasklist->priv->app_hash, app, app_task);
 	    }
 	  
-	    app_task->windows = g_list_prepend (app_task->windows, win_task);
+	  app_task->windows = g_list_prepend (app_task->windows, win_task);
 	}
       
       l = l->next;
@@ -1586,12 +1617,53 @@ wnck_tasklist_window_changed_workspace (WnckWindow   *window,
     }
 }
 
+static gboolean
+do_wnck_tasklist_update_lists (gpointer data)
+{
+  WnckTasklist *tasklist = WNCK_TASKLIST (data);
+
+  tasklist->priv->idle_callback_tag = 0;
+
+  wnck_tasklist_update_lists (tasklist);
+
+  return FALSE;
+}
+
+static void
+wnck_tasklist_window_changed_geometry (WnckWindow   *window,
+				       WnckTasklist *tasklist)
+{
+  WnckTask *win_task;
+  gboolean show;
+
+  if (tasklist->priv->idle_callback_tag != 0)
+    return;
+
+  /*
+   * We want to re-generate the task list if
+   * the window is shown but shouldn't be or
+   * the window isn't shown but should be.
+   */
+  win_task = g_hash_table_lookup (tasklist->priv->win_hash, window);
+  show = wnck_tasklist_include_window(tasklist, window);
+  if ((win_task == NULL && !show) || (win_task != NULL && show))
+    return;
+
+  /* Don't keep any stale references */
+  gtk_widget_queue_clear (GTK_WIDGET (tasklist));
+  
+  tasklist->priv->idle_callback_tag = g_idle_add (do_wnck_tasklist_update_lists, tasklist);
+}
+
 static void
 wnck_tasklist_connect_window (WnckTasklist *tasklist,
 			      WnckWindow   *window)
 {
   g_signal_connect_object (window, "workspace_changed",
 			   G_CALLBACK (wnck_tasklist_window_changed_workspace),
+			   tasklist, 0);
+  g_signal_connect_object (window, "geometry_changed",
+			   G_CALLBACK (wnck_tasklist_window_changed_geometry),
 			   tasklist, 0);
 }
 

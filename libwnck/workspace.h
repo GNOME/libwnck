@@ -62,6 +62,7 @@ int         wnck_workspace_get_width      (WnckWorkspace *space);
 int         wnck_workspace_get_height     (WnckWorkspace *space);
 int         wnck_workspace_get_viewport_x (WnckWorkspace *space);
 int         wnck_workspace_get_viewport_y (WnckWorkspace *space);
+gboolean    wnck_workspace_is_virtual     (WnckWorkspace *space);
 
 
 G_END_DECLS

@@ -1,3 +1,11 @@
+2003-07-11  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/tasklist.c, libwnck/window.c: patch from Kim Woelders to
+	update tasklist as windows move between viewports, and include
+	windows even if they are offscreen if the workspace is not virtual
+	(viewport is same size as screen).
+	bug #114620
+
 2003-06-15  Joël Brich <joel.brich@laposte.net>
 
 	* configure.in: Added "eo" to ALL_LINGUAS.
