@@ -1,6 +1,7 @@
 2001-10-09  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/window.c, libwnck/xutils.c: support window icons
+	(wnck_window_get_session_id_utf8): fix
 
 2001-10-08  Havoc Pennington  <hp@pobox.com>
 

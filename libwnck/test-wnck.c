@@ -482,6 +482,35 @@ workspace_set_func (GtkTreeViewColumn *tree_column,
 }
 
 static void
+pid_set_func (GtkTreeViewColumn *tree_column,
+              GtkCellRenderer   *cell,
+              GtkTreeModel      *model,
+              GtkTreeIter       *iter,
+              gpointer           data)
+{
+  WnckWindow *window;
+  int pid;
+  char *name;
+  
+  window = get_window (model, iter);
+  if (window == NULL)
+    return;
+  
+  pid = wnck_window_get_pid (window);
+
+  if (pid != 0)
+    name = g_strdup_printf ("%d", pid);
+  else
+    name = g_strdup ("not set");
+  
+  g_object_set (GTK_CELL_RENDERER (cell),
+                "text", name,
+                NULL);
+
+  g_free (name);
+}
+
+static void
 shaded_set_func (GtkTreeViewColumn *tree_column,
                  GtkCellRenderer   *cell,
                  GtkTreeModel      *model,
@@ -560,6 +589,67 @@ minimized_toggled_callback (GtkCellRendererToggle *cell,
   gtk_tree_path_free (path);
 }
 
+static void
+maximized_set_func (GtkTreeViewColumn *tree_column,
+                    GtkCellRenderer   *cell,
+                    GtkTreeModel      *model,
+                    GtkTreeIter       *iter,
+                    gpointer           data)
+{
+  WnckWindow *window;
+
+  window = get_window (model, iter);
+  if (window == NULL)
+    return;
+
+  
+  gtk_cell_renderer_toggle_set_active (GTK_CELL_RENDERER_TOGGLE (cell),
+                                       wnck_window_is_maximized (window));
+}
+
+static void
+maximized_toggled_callback (GtkCellRendererToggle *cell,
+                            char                  *path_string,
+                            gpointer               data)
+{
+  GtkTreeView *tree_view = GTK_TREE_VIEW (data);
+  GtkTreeModel *model = gtk_tree_view_get_model (tree_view);
+  GtkTreePath *path = gtk_tree_path_new_from_string (path_string);
+  GtkTreeIter iter;
+  WnckWindow *window;
+
+  gtk_tree_model_get_iter (model, &iter, path);
+  window = get_window (model, &iter);
+
+  if (wnck_window_is_maximized (window))
+    wnck_window_unminimize (window);
+  else
+    wnck_window_minimize (window);
+  
+  gtk_tree_path_free (path);
+}
+
+static void
+session_id_set_func (GtkTreeViewColumn *tree_column,
+                     GtkCellRenderer   *cell,
+                     GtkTreeModel      *model,
+                     GtkTreeIter       *iter,
+                     gpointer           data)
+{
+  WnckWindow *window;
+  const char *id;
+  
+  window = get_window (model, iter);
+  if (window == NULL)
+    return;
+  
+  id = wnck_window_get_session_id_utf8 (window);
+
+  g_object_set (GTK_CELL_RENDERER (cell),
+                "text", id ? id : "not session managed",
+                NULL);
+}
+
 static gboolean
 selection_func (GtkTreeSelection  *selection,
                 GtkTreeModel      *model,
@@ -622,6 +712,9 @@ create_tree_view (void)
   gtk_tree_view_column_set_title (column, "Window");
 
   cell_renderer = gtk_cell_renderer_pixbuf_new ();
+  g_object_set (G_OBJECT (cell_renderer),
+                "xpad", 2,
+                NULL);
   gtk_tree_view_column_pack_start (column,
                                    cell_renderer,
                                    FALSE);
@@ -646,6 +739,16 @@ create_tree_view (void)
                                               "Workspace",
                                               cell_renderer,
                                               workspace_set_func,
+                                              NULL,
+                                              NULL);
+
+  /* Process ID */
+  cell_renderer = gtk_cell_renderer_text_new ();
+  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+                                              -1, /* append */
+                                              "PID",
+                                              cell_renderer,
+                                              pid_set_func,
                                               NULL,
                                               NULL);
   
@@ -674,6 +777,29 @@ create_tree_view (void)
   g_signal_connect (G_OBJECT (cell_renderer), "toggled",
                     G_CALLBACK (minimized_toggled_callback),
                     tree_view);
+
+  /* Maximized checkbox */
+  cell_renderer = gtk_cell_renderer_toggle_new ();
+  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+                                              -1, /* append */
+                                              "Maximized",
+                                              cell_renderer,
+                                              maximized_set_func,
+                                              NULL,
+                                              NULL);
+  g_signal_connect (G_OBJECT (cell_renderer), "toggled",
+                    G_CALLBACK (maximized_toggled_callback),
+                    tree_view);
+
+  /* Session ID */
+  cell_renderer = gtk_cell_renderer_text_new ();
+  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+                                              -1, /* append */
+                                              "Session ID",
+                                              cell_renderer,
+                                              session_id_set_func,
+                                              NULL,
+                                              NULL);
   
   /* The selection will track the active window, so we need to
    * handle it with a custom function

@@ -430,7 +430,8 @@ wnck_window_get_session_id_utf8 (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  if (window->priv->session_id_utf8 == NULL)
+  if (window->priv->session_id_utf8 == NULL &&
+      window->priv->session_id != NULL)
     {
       GString *str;
       char *p;
