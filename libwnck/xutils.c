@@ -916,6 +916,56 @@ _wnck_get_name (Window xwindow)
   return name;
 }
 
+static char*
+latin1_to_utf8 (const char *latin1)
+{
+  GString *str;
+  const char *p;
+  
+  str = g_string_new (NULL);
+
+  p = latin1;
+  while (*p)
+    {
+      g_string_append_unichar (str, (gunichar) *p);
+      ++p;
+    }
+
+  return g_string_free (str, FALSE);
+}
+
+char*
+_wnck_get_res_class_utf8 (Window xwindow)
+{
+  XClassHint ch;
+  char *retval;
+  
+  _wnck_error_trap_push ();
+
+  ch.res_name = NULL;
+  ch.res_class = NULL;
+
+  XGetClassHint (gdk_display, xwindow,
+                 &ch);
+
+  _wnck_error_trap_pop ();
+  
+  retval = NULL;
+  
+  if (ch.res_name)
+    {
+      XFree (ch.res_name);
+    }
+
+  if (ch.res_class)
+    {
+      retval = latin1_to_utf8 (ch.res_class);
+      XFree (ch.res_class);
+    }
+
+  return retval;
+}
+
 void
 _wnck_select_input (Window xwindow,
                     int    mask)

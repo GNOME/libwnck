@@ -1,5 +1,22 @@
 2002-03-23  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/application.c (_wnck_application_create): try using 
+	window class from group leader, if the name of the app 
+	isn't set. #72887
+	(update_name): if multiple windows, try using the 
+	class from one of them, if we didn't get a class from the group 
+	leader or a name from the group leader.
+
+	* libwnck/xutils.c (_wnck_get_res_class_utf8): new function
+	
+	* libwnck/tasklist.c (wnck_task_create_widgets): connect 
+	to name_changed on the application, not just on windows.
+	(wnck_tasklist_free_tasks): hmm, I broke this just now; 
+	should have destroyed buttons, not unref'd tasks.
+	This is all set up a bit oddly.
+
+2002-03-23  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/screen.c (wnck_screen_finalize): set
 	screen pointer to NULL when the screen is finalized
 

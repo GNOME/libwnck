@@ -30,7 +30,7 @@
  * 
  *  Add total focused time to the grouping score function
  *  Fine tune the grouping scoring function
- *  Fix "changes" to naming and icon for groups/applications 
+ *  Fix "changes" to icon for groups/applications 
  *  Maybe fine tune size_allocate() some more...
  *  Better vertical layout handling
  *  prefs
@@ -79,6 +79,7 @@ struct _WnckTask
   gulong state_changed_tag;
   gulong icon_changed_tag;
   gulong name_changed_tag;
+  gulong app_name_changed_tag;
 
   GtkWidget *menu;
 };
@@ -272,6 +273,13 @@ wnck_task_finalize (GObject *object)
       task->name_changed_tag = 0;
     }
 
+  if (task->app_name_changed_tag)
+    {
+      g_signal_handler_disconnect (task->application,
+				   task->app_name_changed_tag);
+      task->app_name_changed_tag = 0;
+    }
+  
   if (task->menu)
     {
       gtk_widget_destroy (task->menu);
@@ -872,7 +880,10 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 	{
 	  WnckTask *task = WNCK_TASK (l->data);
 	  l = l->next;
-	  g_object_unref (task);
+          /* if we just unref the task it means we lose our ref to the
+           * task before we unparent the button, which breaks stuff.
+           */
+	  gtk_widget_destroy (task->button);
 	}
     }
   g_assert (tasklist->priv->windows == NULL);
@@ -885,7 +896,10 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 	{
 	  WnckTask *task = WNCK_TASK (l->data);
 	  l = l->next;
-	  g_object_unref (task);
+          /* if we just unref the task it means we lose our ref to the
+           * task before we unparent the button, which breaks stuff.
+           */
+	  gtk_widget_destroy (task->button);
 	}
     }
   g_assert (tasklist->priv->applications == NULL);
@@ -1279,7 +1293,6 @@ wnck_task_get_text (WnckTask *task)
   
   if (task->is_application)
     {
-      /* FIXME: What if the application name changes */
       return g_strdup (wnck_application_get_name (task->application));
     }
   else
@@ -1473,6 +1486,16 @@ wnck_task_name_changed (WnckWindow *window,
     wnck_task_update_visible_state (task);
 }
 
+static void
+wnck_task_app_name_changed (WnckApplication *app,
+                            gpointer         data)
+{
+  WnckTask *task = WNCK_TASK (data);
+
+  if (task)
+    wnck_task_update_visible_state (task);
+}
+
 static gboolean
 wnck_task_button_press_event (GtkWidget	      *widget,
 			      GdkEventButton  *event,
@@ -1560,7 +1583,12 @@ wnck_task_create_widgets (WnckTask *task)
                            G_OBJECT (task),
                            0);
 
-  if (!task->is_application)
+  if (task->is_application)
+    {
+      task->app_name_changed_tag = g_signal_connect (G_OBJECT (task->application), "name_changed",
+                                                     G_CALLBACK (wnck_task_app_name_changed), task);
+    }
+  else
     {
       task->state_changed_tag = g_signal_connect (G_OBJECT (task->window), "state_changed",
                                                   G_CALLBACK (wnck_task_state_changed), task->tasklist);

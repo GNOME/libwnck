@@ -87,10 +87,11 @@ void _wnck_change_workspace (Window   xwindow,
 void _wnck_activate         (Window   xwindow);
 void _wnck_activate_workspace (int    new_active_space);
 
-Window _wnck_get_group_leader (Window xwindow);
-char*  _wnck_get_session_id   (Window xwindow);
-int    _wnck_get_pid          (Window xwindow);
-char*  _wnck_get_name         (Window xwindow);
+Window _wnck_get_group_leader   (Window xwindow);
+char*  _wnck_get_session_id     (Window xwindow);
+int    _wnck_get_pid            (Window xwindow);
+char*  _wnck_get_name           (Window xwindow);
+char*  _wnck_get_res_class_utf8 (Window xwindow);
 
 void   _wnck_select_input     (Window xwindow,
                                int    mask);

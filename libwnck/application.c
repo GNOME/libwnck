@@ -360,9 +360,13 @@ _wnck_application_create (Window      xwindow,
   application->priv->screen = screen;
 
   application->priv->name = _wnck_get_name (xwindow);
+
+  if (application->priv->name == NULL)
+    application->priv->name = _wnck_get_res_class_utf8 (xwindow);
+  
   if (application->priv->name)
     application->priv->name_from_leader = TRUE;
-    
+  
   application->priv->pid = _wnck_get_pid (application->priv->xwindow);
   
   g_hash_table_insert (app_hash, &application->priv->xwindow, application);
@@ -511,9 +515,10 @@ update_name (WnckApplication *app)
 {
   if (app->priv->name == NULL)
     {
-      /* if only one window, get name from
-       * there. Otherwise we want to use
-       * the fallback name.
+      /* if only one window, get name from there. If more than one and
+       * they all have the same res_class, use that. Else we want to
+       * use the fallback name, since using the title of one of the
+       * windows would look wrong.
        */
       if (app->priv->windows &&
           app->priv->windows->next == NULL)
@@ -522,6 +527,17 @@ update_name (WnckApplication *app)
             g_strdup (wnck_window_get_name (app->priv->windows->data));
           app->priv->name_window = app->priv->windows->data;
           emit_name_changed (app);
+        }
+      else if (app->priv->windows)
+        {
+          /* more than one */
+          app->priv->name =
+            _wnck_get_res_class_utf8 (wnck_window_get_xid (app->priv->windows->data));
+          if (app->priv->name)
+            {
+              app->priv->name_window = app->priv->windows->data;
+              emit_name_changed (app);
+            }
         }
     }
 }
