@@ -1,3 +1,9 @@
+2.2.3
+===
+
+- Backport of a bunch of fixes from HEAD.  They are primarily Federico's
+  grouping changes, and some 64 bit fixes.
+
 2.2.2
 ===
 

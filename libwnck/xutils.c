@@ -1857,7 +1857,7 @@ void
 _wnck_icon_cache_set_want_fallback (WnckIconCache *icon_cache,
                                     gboolean       setting)
 {
-  icon_cache->want_fallback = TRUE;
+  icon_cache->want_fallback = setting;
 }
 
 gboolean
@@ -2314,7 +2314,7 @@ _wnck_set_desktop_layout (Screen *xscreen,
                    RootWindowOfScreen (xscreen),
 		   _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
 		   XA_CARDINAL, 32, PropModeReplace,
-		   (guchar *)&data, sizeof (data) / 4);
+		   (guchar *)&data, 4);
 
   _wnck_error_trap_pop ();
 }

@@ -2,6 +2,7 @@
 
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -107,6 +108,8 @@ wnck_application_init (WnckApplication *application)
   application->priv = g_new0 (WnckApplicationPrivate, 1);
 
   application->priv->icon_cache = _wnck_icon_cache_new ();
+  _wnck_icon_cache_set_want_fallback (application->priv->icon_cache,
+                                      FALSE);
 }
 
 static void
@@ -314,6 +317,29 @@ get_icons (WnckApplication *app)
             !(app->priv->icon || app->priv->mini_icon));
 }
 
+/* Prefer to get group icon from a window of type "normal" */
+static WnckWindow*
+find_icon_window (WnckApplication *app)
+{
+  GList *tmp;
+
+  tmp = app->priv->windows;
+  while (tmp != NULL)
+    {
+      WnckWindow *w = tmp->data;
+
+      if (wnck_window_get_window_type (w) == WNCK_WINDOW_NORMAL)
+        return w;
+      
+      tmp = tmp->next;
+    }
+
+  if (app->priv->windows)
+    return app->priv->windows->data;
+  else
+    return NULL;
+}
+
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
 {
@@ -321,7 +347,16 @@ wnck_application_get_icon (WnckApplication *app)
   if (app->priv->need_emit_icon_changed)
     emit_icon_changed (app);
 
-  return app->priv->icon;
+  if (app->priv->icon)
+    return app->priv->icon;
+  else
+    {
+      WnckWindow *w = find_icon_window (app);
+      if (w)
+        return wnck_window_get_icon (w);
+      else
+        return NULL;
+    }
 }
 
 GdkPixbuf*
@@ -331,7 +366,16 @@ wnck_application_get_mini_icon (WnckApplication *app)
   if (app->priv->need_emit_icon_changed)
     emit_icon_changed (app);
 
-  return app->priv->mini_icon;
+  if (app->priv->mini_icon)
+    return app->priv->mini_icon;
+  else
+    {
+      WnckWindow *w = find_icon_window (app);
+      if (w)
+        return wnck_window_get_mini_icon (w);
+      else
+        return NULL;
+    }
 }
 
 /**
@@ -445,6 +489,11 @@ _wnck_application_add_window (WnckApplication *app,
   /* emits signals, so do it last */
   reset_name (app);
   update_name (app);
+
+  /* see if we're using icon from a window */
+  if (app->priv->icon == NULL ||
+      app->priv->mini_icon == NULL)
+    emit_icon_changed (app);
 }
 
 void
@@ -464,6 +513,11 @@ _wnck_application_remove_window (WnckApplication *app,
   /* emits signals, so do it last */
   reset_name (app);
   update_name (app);
+
+  /* see if we're using icon from a window */
+  if (app->priv->icon == NULL ||
+      app->priv->mini_icon == NULL)
+    emit_icon_changed (app);
 }
 
 void

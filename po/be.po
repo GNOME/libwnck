@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.gnome-2-2.be\n"
-"POT-Creation-Date: 2003-06-02 15:21-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2003-02-07 02:03GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "дастасаваньне бяз назвы"
 
@@ -75,7 +76,7 @@ msgstr "Зьмяніць _памер"
 msgid "_Close"
 msgstr "_Зачыніць"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "акно бяз назвы"
 

@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
-"POT-Creation-Date: 2003-06-02 15:21-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2003-01-16 21:10+0100\n"
 "Last-Translator: Sanlig Badral <badral@chinggis.com>\n"
 "Language-Team: mongolian <mn@li.org>\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.1\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "нэргүй х.программ"
 
@@ -76,7 +77,7 @@ msgstr "Хэмжээ өө_рчилөх"
 msgid "_Close"
 msgstr "_Хаах"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "нэргүй цонх"
 

@@ -229,7 +229,8 @@ static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
 static gboolean wnck_tasklist_change_active_timeout    (gpointer data);
 static void     wnck_tasklist_activate_task_window     (WnckTask *task);
 
-static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist);
+static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist,
+							GList        *visible_tasks);
 static void     wnck_tasklist_connect_screen           (WnckTasklist *tasklist,
                                                         WnckScreen   *screen);
 static void     wnck_tasklist_disconnect_screen        (WnckTasklist *tasklist);
@@ -1077,10 +1078,11 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       i++;
       l = l->next;
     }
-  g_list_free (visible_tasks);
 
   /* Update icon geometries. */
-  wnck_tasklist_update_icon_geometries (tasklist);
+  wnck_tasklist_update_icon_geometries (tasklist, visible_tasks);
+  
+  g_list_free (visible_tasks);
   
   GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
 }
@@ -1504,24 +1506,38 @@ wnck_tasklist_change_active_task (WnckTasklist *tasklist, WnckTask *active_task)
 }
 
 static void
-wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist)
+wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
+				      GList        *visible_tasks)
 {
 	gint x, y, width, height;
-	GList *list;
+	GList *l1;
 	
-	for (list = tasklist->priv->windows; list; list = list->next) {
-		WnckTask *task = WNCK_TASK (list->data);
+	for (l1 = visible_tasks; l1; l1 = l1->next) {
+		WnckTask *task = WNCK_TASK (l1->data);
 		
 		if (!GTK_WIDGET_REALIZED (task->button))
 			continue;
 
 		gdk_window_get_origin (GTK_BUTTON (task->button)->event_window,
-					    &x, &y);
+				       &x, &y);
 		width = task->button->allocation.width;
 		height = task->button->allocation.height;
 
-		wnck_window_set_icon_geometry (task->window,
-					       x, y, width, height);
+		if (task->window)
+			wnck_window_set_icon_geometry (task->window,
+						       x, y, width, height);
+		else {
+			GList *l2;
+
+			for (l2 = task->windows; l2; l2 = l2->next) {
+				WnckTask *win_task = WNCK_TASK (l2->data);
+
+				g_assert (win_task->window);
+
+				wnck_window_set_icon_geometry (win_task->window,
+							       x, y, width, height);
+			}
+		}
 	}
 }
 

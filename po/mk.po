@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2003-06-13 20:52+0200\n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2003-06-15 09:41+0200\n"
 "Last-Translator: \n"
 "Language-Team:  <mk@li.org>\n"
@@ -38,15 +38,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Кликни го ова за да го смениш работното место %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Unmi_nimize"
+#, fuzzy
+msgid "Un_minimize"
 msgstr "_Врати минимизирано"
 
 #: libwnck/window-action-menu.c:198
-msgid "Mi_nimize"
+#, fuzzy
+msgid "_Minimize"
 msgstr "_Минимизирај"
 
 #: libwnck/window-action-menu.c:206
-msgid "Unma_ximize"
+#, fuzzy
+msgid "_Unmaximize"
 msgstr "_Врати максимизирано"
 
 #: libwnck/window-action-menu.c:213
@@ -70,7 +73,8 @@ msgid "Put on _All Workspaces"
 msgstr "Стави на _сите работни простори"
 
 #: libwnck/window-action-menu.c:372
-msgid "_Move"
+#, fuzzy
+msgid "Mo_ve"
 msgstr "По_мести"
 
 #: libwnck/window-action-menu.c:379
@@ -81,11 +85,11 @@ msgstr "_Промени големина"
 msgid "_Close"
 msgstr "_Затвори"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "прозорец без наслов"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно место %d"
@@ -95,4 +99,3 @@ msgstr "Работно место %d"
 
 #~ msgid "_Shade"
 #~ msgstr "_Подигнување и Спуштање"
-

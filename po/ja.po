@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck CVS-20030309\n"
-"POT-Creation-Date: 2003-06-02 15:21-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2003-03-10 09:26+0900\n"
 "Last-Translator: KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -14,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "タイトル無しのアプリケーション"
 
@@ -75,7 +76,7 @@ msgstr "大きさ変更(_R)"
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "タイトル無しのウインドウ"
 

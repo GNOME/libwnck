@@ -8,7 +8,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-04-27 20:14+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2003-04-29 13:13+0200\n"
 "Last-Translator: Arafat Medini <lumina@silverpen.de>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -17,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "برنامج غير معنون"
 
@@ -78,7 +79,7 @@ msgstr "ا_عد التحجيم"
 msgid "_Close"
 msgstr "ا_غلق"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "نافذة غير معنونة"
 
@@ -87,9 +88,8 @@ msgstr "نافذة غير معنونة"
 msgid "Workspace %d"
 msgstr "مساحة عمل %d"
 
-msgid "U_nshade"
-msgstr "ازل ال_تظليل"
+#~ msgid "U_nshade"
+#~ msgstr "ازل ال_تظليل"
 
-msgid "_Shade"
-msgstr "_ظلّل"
-
+#~ msgid "_Shade"
+#~ msgstr "_ظلّل"

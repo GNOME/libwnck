@@ -7,7 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2003-06-02 15:21-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-10-28 12:33-0400\n"
 "PO-Revision-Date: 2002-12-06 19:39+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -15,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "nimetön sovellus"
 
@@ -76,7 +77,7 @@ msgstr "_Muuta kokoa"
 msgid "_Close"
 msgstr "_Sulje"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:30
 msgid "untitled window"
 msgstr "nimetön ikkuna"
 

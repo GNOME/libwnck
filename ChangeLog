@@ -1,3 +1,31 @@
+Thu Oct 28 12:40:55 2004  Jonathan Blandford  <jrb@redhat.com>
+
+	* configure.in:
+	* NEWS: Release 2.2.3
+
+Thu Oct 28 12:31:04 2004  Jonathan Blandford  <jrb@redhat.com>
+
+	Backport of patch by Mark McLoughlin <mark@skynet.ie>:
+
+	Fixes bug #124148 - minimize animation goes to wrong place
+	with grouped windows.
+
+	* libwnck/tasklist.c:
+	(wnck_tasklist_size_allocate): pass in visible_windows to
+	update_icon_geometries.
+	(wnck_tasklist_update_icon_geometries): iterate over the
+	visible tasks updating the associated window's icon
+	geometries from there.
+
+Thu Oct 28 12:25:03 2004  Jonathan Blandford  <jrb@redhat.com>
+
+	* libwnck/xutils.c: 64 bit fixes.
+
+Thu Oct 28 12:22:13 2004  Jonathan Blandford  <jrb@redhat.com>
+
+	* libwnck/application.c:
+	* libwnck/xutils.c: Backport of patch to fix icon groupings.
+
 2003-11-22  Federico Mena Quintero  <federico@ximian.com>
 
 	Fixes #76159 - window grouping didn't work for Emacs et al.
