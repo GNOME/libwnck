@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-07-10 05:08+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-08-11 12:38+0200\n"
 "PO-Revision-Date: 2003-07-10 20:43+0200\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani <gnome@azitt.com>\n"
@@ -15,7 +16,7 @@ msgstr ""
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "adsız proqram"
+msgstr "adsız tə'minat"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -28,7 +29,7 @@ msgstr "İş sahələri arasında keçiş vasitəsi"
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "%s iş sahəsinə keçmək üçün tıqlayın"
+msgstr "%s iş sahəsinə keçmək üçün buraya tıqlayın"
 
 #: libwnck/window-action-menu.c:191
 msgid "Unmi_nimize"
@@ -52,15 +53,15 @@ msgstr "_Geri bur"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr "_Üstə Bur"
+msgstr "Ü_stə Bur"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "Ancaq _bu iş sahəsində"
+msgstr "Yalnız _Bu İş Sahəsinə Yerləşdir"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "_Bütün iş sahələrinə qoy"
+msgstr "Bü_tün İş Sahələrinə Yerləşdir"
 
 #: libwnck/window-action-menu.c:372
 msgid "_Move"
@@ -78,8 +79,7 @@ msgstr "_Bağla"
 msgid "untitled window"
 msgstr "adsız pəncərə"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "İş Sahəsi %d"
-
