@@ -1325,6 +1325,9 @@ wnck_pager_get_background (WnckPager *pager,
   if (pager->priv->screen == NULL)
     return NULL;
 
+  /* FIXME this just globally disables the thumbnailing feature */
+  return NULL;
+  
 #define MIN_BG_SIZE 10
   
   if (width < MIN_BG_SIZE || height < MIN_BG_SIZE)

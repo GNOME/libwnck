@@ -1,3 +1,8 @@
+2002-05-02  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/pager.c (wnck_pager_get_background): disable showing
+	thumbnail of desktop background.
+
 2002-04-29  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.9
