@@ -50,12 +50,18 @@ struct _WnckTasklistClass
   GtkContainerClass parent_class;
 };
 
+typedef enum {
+  WNCK_TASKLIST_NEVER_GROUP,
+  WNCK_TASKLIST_AUTO_GROUP,
+  WNCK_TASKLIST_ALWAYS_GROUP,
+} WnckTasklistGroupingType;
+
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (WnckScreen *screen);
 
-void wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
-				       gboolean      allow_grouping);
+void wnck_tasklist_set_grouping (WnckTasklist             *tasklist,
+				 WnckTasklistGroupingType  grouping);
 void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				       gint          limit);
 void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,

@@ -108,7 +108,7 @@ struct _WnckTasklistPrivate
   gint max_button_width;
   gint max_button_height;
 
-  gboolean grouping_enabled;
+  WnckTasklistGroupingType grouping;
   gint grouping_limit;
 
   guint activate_timeout_id;
@@ -332,7 +332,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->app_hash = g_hash_table_new (NULL, NULL);
   
-  tasklist->priv->grouping_enabled = TRUE;
+  tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
 }
 
@@ -383,17 +383,15 @@ wnck_tasklist_finalize (GObject *object)
 }
 
 void
-wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
-				  gboolean allow_grouping)
+wnck_tasklist_set_grouping (WnckTasklist            *tasklist,
+			    WnckTasklistGroupingType grouping)
 {
   g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
 
-  allow_grouping = (allow_grouping != 0);
-
-  if (tasklist->priv->grouping_enabled == allow_grouping)
+  if (tasklist->priv->grouping == grouping)
     return;
   
-  tasklist->priv->grouping_enabled = allow_grouping;
+  tasklist->priv->grouping = grouping;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
@@ -637,9 +635,10 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 				       tasklist->priv->max_button_height,
 				       n_windows,
 				       &n_cols, &n_rows);
-  while (tasklist->priv->grouping_enabled &&
-	 (ungrouped_apps != NULL) &&
-	 (button_width < tasklist->priv->grouping_limit))
+  while (ungrouped_apps != NULL &&
+	 ((tasklist->priv->grouping == WNCK_TASKLIST_ALWAYS_GROUP) ||
+	  ((tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP) &&
+	   (button_width < tasklist->priv->grouping_limit))))
     {
       if (!score_set)
 	{
