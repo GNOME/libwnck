@@ -1,3 +1,7 @@
+2005-02-26  Vincent Untz  <vincent@vuntz.net>
+
+	* libwnck/application.c: (_wnck_application_destroy): plug leak
+
 2005-02-20  Elijah Newren  <newren@gmail.com>
 
 	Handle the changes to _NET_ACTIVE_WINDOW from bug 128380 (made in

@@ -457,6 +457,8 @@ _wnck_application_destroy (WnckApplication *application)
 
   application->priv->xwindow = None;
   
+  g_free (application->priv->startup_id);
+
   /* remove hash's ref on the application */
   g_object_unref (G_OBJECT (application));
 }
