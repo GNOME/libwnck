@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-04-29 01:37-0400\n"
-"PO-Revision-Date: 2002-01-27 01:52+0100\n"
+"POT-Creation-Date: 2002-05-05 20:11+0200\n"
+"PO-Revision-Date: 2002-05-05 20:11+0200\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,12 +41,11 @@ msgstr "A_vskugga"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "_Skugga"
+msgstr "S_kugga"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
 msgid "_Close"
-msgstr "Stäng"
+msgstr "_Stäng"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
