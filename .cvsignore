@@ -1,6 +1,7 @@
 Makefile
 Makefile.in
 aclocal.m4
+autom4te.cache
 config.guess
 config.h
 config.h.in
@@ -10,6 +11,9 @@ config.sub
 configure
 libtool
 libwnck-1.0.pc
+libwnck-1.0-uninstalled.pc
 ltmain.sh
 stamp-h
 stamp-h.in
+libwnck-*.tar.gz
+

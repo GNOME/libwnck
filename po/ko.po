@@ -5,6 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.1\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-02-08 01:08+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
@@ -12,7 +13,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: libwnck/application.c:26

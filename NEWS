@@ -1,3 +1,20 @@
+2.6.1
+===
+
+ Fixes
+
+ - Fix icon-reading crash when using enlightenment (Neil Muller)
+ - AIX portability fixes (Kjartan Maraas)
+ - Don't attempt to center the workspace on the mouse click (Kim Woelders)
+ 
+ Translators
+
+ - Iñaki Larrañaga Murgoitio (eu)
+ - Guntupalli Karunakar (gu)
+ - Mohammad DAMT (id)
+ - Samúel Jón Gunnarsson (is)
+ - Baris Cicek (tr)
+
 2.5.90
 ===
 

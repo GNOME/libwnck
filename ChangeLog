@@ -1,5 +1,9 @@
 2004-04-19  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: Version 2.6.1.
+	
+2004-04-19  Mark McLoughlin  <mark@skynet.ie>
+
 	Patch from Neil Muller <neil@dip.sun.ac.za> in bug #133979
 
 	* libwnck/xutils.c: (find_largest_sizes), (find_best_size):

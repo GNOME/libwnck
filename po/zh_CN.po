@@ -6,6 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-01-23 23:51+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
@@ -13,7 +14,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
