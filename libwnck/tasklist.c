@@ -62,8 +62,6 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 #define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
-#define TIMEOUT_ACTIVATE 1000
-
 #define N_SCREEN_CONNECTIONS 5
 
 #define POINT_IN_RECT(xcoord, ycoord, rect) \
@@ -2442,7 +2440,7 @@ wnck_task_drag_motion (GtkWidget          *widget,
 {
 
    if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
-       task->button_activate = g_timeout_add (TIMEOUT_ACTIVATE,
+       task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
                                               wnck_task_motion_timeout,
                                               task);
    gdk_drag_status (context,0,time);

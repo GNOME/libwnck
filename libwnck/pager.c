@@ -1,3 +1,4 @@
+/* -*- Mode: C; tab-width: 8; indent-tabs-mode: t; c-basic-offset: 2 -*- */
 /* pager object */
 
 /*
@@ -28,7 +29,7 @@
 #include "xutils.h"
 #include "pager-accessible-factory.h"
 #include "workspace-accessible-factory.h"
-
+#include "private.h"
 
 #define N_SCREEN_CONNECTIONS 11
 
@@ -59,6 +60,9 @@ struct _WnckPagerPrivate
   GdkPixbuf *bg_cache;
 
   int layout_manager_token;
+
+  guint dnd_activate;
+  gint  dnd_workspace_number;
 };
 
 enum
@@ -88,6 +92,14 @@ static gboolean wnck_pager_expose_event  (GtkWidget        *widget,
                                           GdkEventExpose   *event);
 static gboolean wnck_pager_button_press  (GtkWidget        *widget,
                                           GdkEventButton   *event);
+static gboolean wnck_pager_drag_motion   (GtkWidget        *widget,
+                                          GdkDragContext   *context,
+                                          gint              x,
+                                          gint              y,
+                                          guint             time);
+static void wnck_pager_drag_motion_leave (GtkWidget        *widget,
+                                          GdkDragContext   *context,
+                                          guint             time);
 static gboolean wnck_pager_motion        (GtkWidget        *widget,
                                           GdkEventMotion   *event);
 static gboolean wnck_pager_button_release (GtkWidget        *widget,
@@ -161,6 +173,8 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->bg_cache = NULL;
   pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
 
+  gtk_drag_dest_set (GTK_WIDGET (pager), 0, NULL, 0, 0);
+
   GTK_WIDGET_SET_FLAGS (GTK_WIDGET (pager), GTK_CAN_FOCUS);
 }
 
@@ -183,7 +197,9 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->button_release_event = wnck_pager_button_release;
   widget_class->motion_notify_event = wnck_pager_motion;
   widget_class->focus = wnck_pager_focus;
-  widget_class->get_accessible = wnck_pager_get_accessible;   
+  widget_class->get_accessible = wnck_pager_get_accessible;
+  widget_class->drag_leave = wnck_pager_drag_motion_leave;
+  widget_class->drag_motion = wnck_pager_drag_motion;	
 }
 
 static void
@@ -200,7 +216,13 @@ wnck_pager_finalize (GObject *object)
       g_object_unref (G_OBJECT (pager->priv->bg_cache));
       pager->priv->bg_cache = NULL;
     }
-  
+
+  if (pager->priv->dnd_activate != 0)
+    {
+      g_source_remove (pager->priv->dnd_activate);
+      pager->priv->dnd_activate = 0;
+    }
+
   g_free (pager->priv);
   
   G_OBJECT_CLASS (parent_class)->finalize (object);
@@ -594,7 +616,7 @@ get_window_rect (WnckWindow         *window,
   unclipped_win_rect.width = width;
   unclipped_win_rect.height = height;
 
-  gdk_rectangle_intersect (workspace_rect, &unclipped_win_rect, rect);
+  gdk_rectangle_intersect ((GdkRectangle *) workspace_rect, &unclipped_win_rect, rect);
 }
 
 static void
@@ -1088,6 +1110,63 @@ wnck_pager_button_press (GtkWidget      *widget,
     }
   
   return handled;
+}
+
+static gboolean
+wnck_pager_drag_motion_timeout (gpointer data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+  WnckWorkspace *active_workspace, *dnd_workspace;
+
+  pager->priv->dnd_activate = 0;
+  active_workspace = wnck_screen_get_active_workspace (pager->priv->screen);
+  dnd_workspace    = wnck_screen_get_workspace (pager->priv->screen,
+                                                pager->priv->dnd_workspace_number);
+
+  if (dnd_workspace &&
+      (pager->priv->dnd_workspace_number != wnck_workspace_get_number (active_workspace)))
+    wnck_workspace_activate (dnd_workspace);
+
+  return FALSE;
+}
+
+static gboolean 
+wnck_pager_drag_motion (GtkWidget          *widget,
+                        GdkDragContext     *context,
+                        gint                x,
+                        gint                y,
+                        guint               time)
+{
+  WnckPager *pager;
+
+  pager = WNCK_PAGER (widget);
+
+  if (pager->priv->dnd_activate == 0 )
+    pager->priv->dnd_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+                                               wnck_pager_drag_motion_timeout,
+                                               pager);
+
+  pager->priv->dnd_workspace_number = workspace_at_point (pager, x, y, NULL, NULL);
+  gdk_drag_status (context, 0, time);
+
+  return (pager->priv->dnd_workspace_number != -1);
+}
+ 
+static void
+wnck_pager_drag_motion_leave (GtkWidget          *widget,
+                              GdkDragContext     *context,
+                              guint               time)
+{
+  WnckPager *pager;
+
+  pager = WNCK_PAGER (widget);
+
+  if (pager->priv->dnd_activate != 0)
+    {
+      g_source_remove (pager->priv->dnd_activate);
+      pager->priv->dnd_workspace_number = -1;
+      pager->priv->dnd_activate = 0;
+    }
 }
 
 static gboolean

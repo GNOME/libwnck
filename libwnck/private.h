@@ -38,6 +38,8 @@ G_BEGIN_DECLS
 
 #define _(x) dgettext (GETTEXT_PACKAGE, x)
 
+#define WNCK_ACTIVATE_TIMEOUT 1000
+
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);
 void _wnck_window_process_property_notify (WnckWindow *window,
