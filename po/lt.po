@@ -1,0 +1,86 @@
+# Lithuanian translation of libwnck.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libwnck package.
+# Tomas Kuliavas <tokul@users.sourceforge.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 2.3.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-09-02 11:54+0300\n"
+"PO-Revision-Date: 2003-08-20 06:45+0300\n"
+"Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:26
+msgid "untitled application"
+msgstr "neįvardinta programa"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Darbalaukių perjungiklis"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Įrankis leidžiantis persijungti tarp darbalaukių"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Paspausk, kad persijungtum į darbalaukį %s"
+
+#: libwnck/window-action-menu.c:191
+msgid "Unmi_nimize"
+msgstr "G_rąžinti sumažintą"
+
+#: libwnck/window-action-menu.c:198
+msgid "Mi_nimize"
+msgstr "_Sumažinti"
+
+#: libwnck/window-action-menu.c:206
+msgid "Unma_ximize"
+msgstr "_Grąžinti išdidintą"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "Iš_didinti"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "_Išvynioti"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "Su_vynioti"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "_Tik šiame darbalaukyje"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "_Visuose darbalaukiuose"
+
+#: libwnck/window-action-menu.c:372
+msgid "_Move"
+msgstr "_Perkelti"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "_Keisti dydį"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Uždaryti"
+
+#: libwnck/window.c:31
+msgid "untitled window"
+msgstr "neįvardintas langas"
+
+#: libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Darbalaukis %d"
