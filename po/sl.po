@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-02-26 00:23+0100\n"
 "Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: slovenian <sl@li.org>\n"
@@ -29,39 +29,39 @@ msgstr "Orodje za preklop med delovnimi površinami"
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknite sem za preklop na delovno površino %s"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "O_dkrči"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "_Skrči"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "Odr_azpni"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "_Razpni"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "Ods_enči"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "_Senči"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Zapri"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "Pres_tavi"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Spremeni _velikost"
 

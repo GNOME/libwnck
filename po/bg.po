@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-06-03 19:15+0200\n"
 "Last-Translator: Yanko Kaneti <yaneti@declera.com>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -31,39 +31,39 @@ msgstr "Инструмент за превключване между работ
 msgid "Click this to switch to workspace %s"
 msgstr "Натиснете тук за превключване към работно пространство %s"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "_Деминимизирай"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "_Минимизирай"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "Д_емаксимизирай"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "Ма_ксимизирай"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "_Отсенчи"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "За_сенчи"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Затвори"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "_Премести"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "О_размери"
 

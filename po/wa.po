@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-05-10 22:06MET\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -37,39 +37,39 @@ msgstr "Usteye po discandjî d' on scribanne a l' ôte"
 msgid "Click this to switch to workspace %s"
 msgstr "Clitchîz çouchal po potchî å scribanne %s"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "_Rivni come divant"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "Å pus _ptit"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "_Rivni come divant"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "Å pus _grand"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "_Disrôler"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "_Erôler"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Clôre"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "_Bodjî"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Candjî di _grandeu"
 

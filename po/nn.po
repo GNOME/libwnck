@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-01-25 05:35+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: Norwegian/Nynorsk <nn@li.org>\n"
@@ -31,40 +31,40 @@ msgstr ""
 msgid "Click this to switch to workspace %s"
 msgstr ""
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "Ikkje _maksimér"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "_Minimér"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "_Ikkje maksimér"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "Ma_ksimér"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "Fjern _skugge"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "_Skuggelegg"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 #, fuzzy
 msgid "_Close"
 msgstr "Lukk"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "Fl_ytt"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Gje_r om storleik"
 

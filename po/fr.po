@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.7\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-07-04 17:34+0200\n"
 "Last-Translator: Christophe Fergeau <teuf@users.sourceforge.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -29,39 +29,39 @@ msgstr "Outil pour changer de bureau"
 msgid "Click this to switch to workspace %s"
 msgstr "Cliquer ici pour atteindre le bureau %s"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "Annuler la minimisation"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "_Minimiser"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "_Annuler la maximisation"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "Ma_ximiser"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "_Dérouler"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "_Enrouler"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Fermer"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "Dé_placer"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "_Redimensionner"
 

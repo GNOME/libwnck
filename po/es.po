@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-08-04 13:31-0400\n"
+"POT-Creation-Date: 2002-08-08 19:30-0400\n"
 "PO-Revision-Date: 2002-06-03 16:48GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -33,39 +33,39 @@ msgstr "Herramienta para conmutar entre espacios de trabajo"
 msgid "Click this to switch to workspace %s"
 msgstr "Clic aquí para conmutar espacio de trabajo %s"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "_Restaurar"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "M_inimizar"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "_Restaurar"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "M_aximizar"
 
-#: libwnck/window-action-menu.c:180
+#: libwnck/window-action-menu.c:181
 msgid "U_nshade"
 msgstr "_Desenrollar"
 
-#: libwnck/window-action-menu.c:186
+#: libwnck/window-action-menu.c:187
 msgid "_Shade"
 msgstr "_Enrollar"
 
-#: libwnck/window-action-menu.c:297
+#: libwnck/window-action-menu.c:298
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "_Mover"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Re_dimensionar"
 
