@@ -1,5 +1,5 @@
 # Bulgarian translation for libwnck.
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2004 Free Software Foundation, Inc.
 # Evgeni Boevski <linkej@yahoo.com>, 2002;
 # Yanko Kaneti <yaneti@declera.com>, 2002;
 # Vladimir Petkov <vpetkov@i-space.org>, small updates and fixes 2004.
@@ -9,13 +9,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-07-06 07:32+0100\n"
-"PO-Revision-Date: 2004-06-02 12:43+0300\n"
+"POT-Creation-Date: 2004-07-04 05:31+0200\n"
+"PO-Revision-Date: 2004-07-04 17:06+0300\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -23,40 +23,40 @@ msgstr "неозаглавена програма"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "Превключвател на работни пространства"
+msgstr "Превключвател на работни места"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Инструмент за превключване между работни пространства"
+msgstr "Инструмент за превключване между работни място"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Натиснете тук за превключване към работно пространство %s"
+msgstr "Натиснете тук за превключване към работно място %s"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
-msgstr "_Деминимизира"
+msgstr "_Деминимизиране"
 
 #: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
-msgstr "_Минимизира"
+msgstr "_Минимизиране"
 
 #: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
-msgstr "Дема_ксимизира"
+msgstr "Дема_ксимизиране"
 
 #: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
-msgstr "Ма_ксимизира"
+msgstr "Ма_ксимизиране"
 
 #: libwnck/window-action-menu.c:239
 msgid "_Unroll"
-msgstr "_Развива"
+msgstr "_Развиване"
 
 #: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
-msgstr "_Свива"
+msgstr "_Свиване"
 
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
@@ -64,12 +64,12 @@ msgstr "Само на това _работно място"
 
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
-msgstr "Сложи на _всички работни места"
+msgstr "Поставяне на _всички работни места"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Работно пространство %d"
+msgstr "Работно място %d"
 
 #: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
@@ -82,19 +82,19 @@ msgstr "Работно място %s%d"
 
 #: libwnck/window-action-menu.c:482
 msgid "_Move"
-msgstr "_Премества"
+msgstr "_Преместване"
 
 #: libwnck/window-action-menu.c:489
 msgid "_Resize"
-msgstr "О_размерява"
+msgstr "О_размеряване"
 
 #: libwnck/window-action-menu.c:502
 msgid "_Close"
-msgstr "_Затваря"
+msgstr "_Затваряне"
 
 #: libwnck/window-action-menu.c:515
 msgid "Move to Another _Workspace"
-msgstr "Премества в Друго _Работно Място"
+msgstr "Преместване в Друго _Работно Място"
 
 #: libwnck/window-action-menu.c:534
 #, c-format
@@ -112,3 +112,4 @@ msgstr "Списък с Прозорците"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Инструмент за превключване между видимите прозорци"
+
