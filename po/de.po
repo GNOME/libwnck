@@ -5,15 +5,15 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.4.0.1\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-09-30 17:40+0200\n"
+"Project-Id-Version: libwnck 2.5.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-29 18:33+0100\n"
+"PO-Revision-Date: 2003-12-29 18:33+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -84,3 +84,12 @@ msgstr "namenloses Fenster"
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Fensterliste"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Werkzeug, um zwischen sichtbaren Fenstern zu wechseln"
+
