@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-02-17 20:43+0100\n"
+"POT-Creation-Date: 2002-01-28 21:17-0500\n"
 "PO-Revision-Date: 2002-01-27 01:52+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-02-17 20:43+0100\n"
+"POT-Creation-Date: 2002-01-28 21:17-0500\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Dirk-Jan C. Binnema <djcb@djcbsoftware.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-03-02 11:44+0100\n"
+"POT-Creation-Date: 2002-01-28 21:17-0500\n"
 "PO-Revision-Date: 2002-03-02 11:54+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -17,51 +17,51 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:1
+#: libwnck/application.c:25
 msgid "untitled application"
 msgstr "aplikacja bez nazwy"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "Cofnij m_inimalizację"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "Zm_inimalizuj"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "Cofnij m_aksymalizację"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Zm_aksymalizuj"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "Roz_wiń"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "Z_wiń"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:297
 msgid "Close"
 msgstr "Zamknij"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "Prze_nieś"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "Zmień _rozmiar"
 
-#: libwnck/window.c:1
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "okno bez tytułu"
 
-#: libwnck/workspace.c:1
+#: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar %d"
