@@ -57,6 +57,8 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 #define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
+#define TIMEOUT_ACTIVATE 1000
+
 struct _WnckTask
 {
   GObject parent_instance;
@@ -89,6 +91,8 @@ struct _WnckTask
                               * to change the togglebutton state
                               */
   guint was_active : 1;      /* used to fixup activation behavior */ 
+
+  guint button_activate;
 };
 
 struct _WnckTaskClass
@@ -323,7 +327,12 @@ wnck_task_finalize (GObject *object)
       task->application = NULL;
     }
 
-  
+  if (task->button_activate != 0)
+    {
+      g_source_remove (task->button_activate);
+      task->button_activate = 0;
+    } 
+
   G_OBJECT_CLASS (task_parent_class)->finalize (object);
 }
 
@@ -1793,6 +1802,49 @@ wnck_task_app_name_changed (WnckApplication *app,
 }
 
 static gboolean
+wnck_task_motion_timeout (gpointer data)
+{
+  WnckTask *task = WNCK_TASK (data);
+
+  task->button_activate = 0;
+
+  wnck_window_activate (task->window);
+
+  return FALSE;
+}
+
+static void
+wnck_task_drag_leave (GtkWidget          *widget,
+		      GdkDragContext     *context,
+		      guint               time,
+		      WnckTask           *task)
+{
+  if (task->button_activate != 0)
+    {
+      g_source_remove (task->button_activate);
+      task->button_activate = 0;
+    }
+}
+
+static gboolean
+wnck_task_drag_motion (GtkWidget          *widget,
+		       GdkDragContext     *context,
+		       gint                x,
+		       gint                y,
+		       guint               time,
+		       WnckTask            *task)
+{
+
+   if (task->button_activate == 0 && !(task->is_application))
+       task->button_activate = g_timeout_add (TIMEOUT_ACTIVATE,
+                                              wnck_task_motion_timeout,
+                                              task);
+   gdk_drag_status (context,0,time);
+
+   return TRUE;
+}
+
+static gboolean
 wnck_task_button_press_event (GtkWidget	      *widget,
 			      GdkEventButton  *event,
 			      gpointer         data)
@@ -1854,6 +1906,7 @@ wnck_task_create_widgets (WnckTask *task)
     disable_sound_quark = g_quark_from_static_string ("gnome_disable_sound_events");
 
   task->button = gtk_toggle_button_new ();
+  task->button_activate = 0;
   g_object_set_qdata (G_OBJECT (task->button),
 		      disable_sound_quark, GINT_TO_POINTER (TRUE));
   g_object_add_weak_pointer (G_OBJECT (task->button),
@@ -1861,6 +1914,8 @@ wnck_task_create_widgets (WnckTask *task)
   
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
+
+  gtk_drag_dest_set (GTK_WIDGET(task->button), 0, NULL, 0, 0);
 
   table = gtk_table_new (1, 2, FALSE);
 
@@ -1907,6 +1962,16 @@ wnck_task_create_widgets (WnckTask *task)
   
   g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
                            G_CALLBACK (wnck_task_button_press_event),
+                           G_OBJECT (task),
+                           0);
+
+  g_signal_connect_object (G_OBJECT(task->button), "drag_motion",
+                           G_CALLBACK (wnck_task_drag_motion),
+                           G_OBJECT (task),
+                           0); 
+
+  g_signal_connect_object (G_OBJECT(task->button), "drag_leave",
+                           G_CALLBACK (wnck_task_drag_leave),
                            G_OBJECT (task),
                            0);
 
