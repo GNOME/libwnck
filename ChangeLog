@@ -1,3 +1,18 @@
+2002-10-31  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.18
+
+2002-10-31  Havoc Pennington  <hp@redhat.com>
+
+        Backport from HEAD
+	
+	* libwnck/window.c (update_transient_for): track a flag for
+	whether we're really transient for an application window, 
+	or just marked transient for the root window.
+	(update_state): only skip taskbar for dialogs that are 
+	really transient for an application (so standalone dialogs
+	are still on the taskbar)
+
 2002-09-03  Christophe Fergeau  <teuf@users.sourceforge.net>
 
 	* added he.po to ALL_LINGUAS

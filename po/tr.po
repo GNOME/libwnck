@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
-"POT-Creation-Date: 2002-09-17 05:08+0200\n"
+"POT-Creation-Date: 2002-10-31 11:15-0500\n"
 "PO-Revision-Date: 2002-09-18 05:35+0300\n"
 "Last-Translator: Ömer Fadýl USTA <omer_fad@hotmail.com>\n"
 "Language-Team: GNOME Turk <gnome-turk@gnome.org>\n"
@@ -75,4 +75,3 @@ msgstr "isimsiz pencere"
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. Çalýþma Alaný"
-
