@@ -25,6 +25,7 @@
 #include "window.h"
 #include "workspace.h"
 #include "application.h"
+#include "class-group.h"
 #include "xutils.h"
 #include "private.h"
 #include <gdk/gdk.h>
@@ -83,6 +84,8 @@ enum {
   WORKSPACE_DESTROYED,
   APPLICATION_OPENED,
   APPLICATION_CLOSED,
+  CLASS_GROUP_OPENED,
+  CLASS_GROUP_CLOSED,
   BACKGROUND_CHANGED,
   SHOWING_DESKTOP_CHANGED,
   VIEWPORTS_CHANGED,
@@ -120,6 +123,10 @@ static void emit_application_opened       (WnckScreen      *screen,
                                            WnckApplication *app);
 static void emit_application_closed       (WnckScreen      *screen,
                                            WnckApplication *app);
+static void emit_class_group_opened       (WnckScreen      *screen,
+                                           WnckClassGroup  *class_group);
+static void emit_class_group_closed       (WnckScreen      *screen,
+                                           WnckClassGroup  *class_group);
 static void emit_background_changed       (WnckScreen      *screen);
 static void emit_showing_desktop_changed  (WnckScreen      *screen);
 static void emit_viewports_changed        (WnckScreen      *screen);
@@ -255,6 +262,34 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
+
+  signals[CLASS_GROUP_OPENED] =
+    g_signal_new ("class_group_opened",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+#if 0
+                  /* FIXME when we can break ABI add this */
+                  G_STRUCT_OFFSET (WnckScreenClass, class_group_opened),
+#else
+		  0,
+#endif
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
+
+  signals[CLASS_GROUP_CLOSED] =
+    g_signal_new ("class_group_closed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+#if 0
+                  /* FIXME when we can break ABI add this */
+                  G_STRUCT_OFFSET (WnckScreenClass, class_group_closed),
+#else
+		  0,
+#endif
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
 
   signals[BACKGROUND_CHANGED] =
     g_signal_new ("background_changed",
@@ -786,8 +821,8 @@ update_client_list (WnckScreen *screen)
   GList *new_list;
   GList *created;
   GList *closed;
-  GList *created_apps;
-  GList *closed_apps;
+  GList *created_apps, *closed_apps;
+  GList *created_class_groups, *closed_class_groups;
   GList *tmp;
   int i;
   GHashTable *new_hash;
@@ -829,6 +864,8 @@ update_client_list (WnckScreen *screen)
   closed = NULL;
   created_apps = NULL;
   closed_apps = NULL;
+  created_class_groups = NULL;
+  closed_class_groups = NULL;
 
   new_hash = g_hash_table_new (NULL, NULL);
   
@@ -844,9 +881,13 @@ update_client_list (WnckScreen *screen)
         {
           Window leader;
           WnckApplication *app;
+	  const char *res_class;
+	  WnckClassGroup *class_group;
           
           window = _wnck_window_create (stack[i], screen);
           created = g_list_prepend (created, window);
+
+	  /* Application */
 
           leader = wnck_window_get_group_leader (window);
           
@@ -858,6 +899,19 @@ update_client_list (WnckScreen *screen)
             }
           
           _wnck_application_add_window (app, window);
+
+	  /* Class group */
+
+	  res_class = _wnck_window_get_resource_class (window);
+
+	  class_group = wnck_class_group_get (res_class);
+	  if (class_group == NULL)
+	    {
+	      class_group = _wnck_class_group_create (res_class);
+	      created_class_groups = g_list_prepend (created_class_groups, class_group);
+	    }
+
+	  _wnck_class_group_add_window (class_group, window);
         }
 
       new_stack_list = g_list_prepend (new_stack_list, window);
@@ -881,15 +935,25 @@ update_client_list (WnckScreen *screen)
       if (g_hash_table_lookup (new_hash, window) == NULL)
         {
           WnckApplication *app;
+	  WnckClassGroup *class_group;
           
           closed = g_list_prepend (closed, window);
 
-          app = wnck_window_get_application (window);
+	  /* Remove from the app */
 
+          app = wnck_window_get_application (window);
           _wnck_application_remove_window (app, window);
 
           if (wnck_application_get_windows (app) == NULL)
             closed_apps = g_list_prepend (closed_apps, app);
+
+	  /* Remove from the class group */
+
+          class_group = wnck_window_get_class_group (window);
+          _wnck_class_group_remove_window (class_group, window);
+
+          if (wnck_class_group_get_windows (class_group) == NULL)
+            closed_class_groups = g_list_prepend (closed_class_groups, class_group);
         }
       
       tmp = tmp->next;
@@ -933,6 +997,8 @@ update_client_list (WnckScreen *screen)
       g_assert (closed == NULL);
       g_assert (created_apps == NULL);
       g_assert (closed_apps == NULL);
+      g_assert (created_class_groups == NULL);
+      g_assert (closed_class_groups == NULL);
       g_list_free (new_stack_list);
       g_list_free (new_list);      
       --reentrancy_guard;
@@ -940,7 +1006,7 @@ update_client_list (WnckScreen *screen)
     }
 
   g_list_free (screen->priv->mapped_windows);
-  g_list_free (screen->priv->stacked_windows);  
+  g_list_free (screen->priv->stacked_windows);
   screen->priv->mapped_windows = new_list;
   screen->priv->stacked_windows = new_stack_list;
 
@@ -949,31 +1015,22 @@ update_client_list (WnckScreen *screen)
    * don't handle it, but we do warn about it using reentrancy_guard
    */
 
-  /* Sequence is: application_opened, window_opened, window_closed,
-   * application_closed. We have to do all window list changes
-   * BEFORE doing any other signals, so that any observers
-   * have valid state for the window structure before they take
-   * further action
+  /* Sequence is: class_group_opened, application_opened, window_opened,
+   * window_closed, application_closed, class_group_closed. We have to do all
+   * window list changes BEFORE doing any other signals, so that any observers
+   * have valid state for the window structure before they take further action
    */
-  tmp = created_apps;
-  while (tmp != NULL)
-    {
-      emit_application_opened (screen, WNCK_APPLICATION (tmp->data));
-      
-      tmp = tmp->next;
-    }
-  
-  tmp = created;
-  while (tmp != NULL)
-    {
-      emit_window_opened (screen, WNCK_WINDOW (tmp->data));
-      
-      tmp = tmp->next;
-    }
+  for (tmp = created_class_groups; tmp; tmp = tmp->next)
+    emit_class_group_opened (screen, WNCK_CLASS_GROUP (tmp->data));
+
+  for (tmp = created_apps; tmp; tmp = tmp->next)
+    emit_application_opened (screen, WNCK_APPLICATION (tmp->data));
+
+  for (tmp = created; tmp; tmp = tmp->next)
+    emit_window_opened (screen, WNCK_WINDOW (tmp->data));
 
   active_changed = FALSE;
-  tmp = closed;
-  while (tmp != NULL)
+  for (tmp = closed; tmp; tmp = tmp->next)
     {
       WnckWindow *window;
 
@@ -986,21 +1043,13 @@ update_client_list (WnckScreen *screen)
         }
       
       emit_window_closed (screen, window);
-      
-      tmp = tmp->next;
     }
 
-  tmp = closed_apps;
-  while (tmp != NULL)
-    {
-      WnckApplication *app;
+  for (tmp = closed_apps; tmp; tmp = tmp->next)
+    emit_application_closed (screen, WNCK_APPLICATION (tmp->data));
 
-      app = WNCK_APPLICATION (tmp->data);
-
-      emit_application_closed (screen, app);
-      
-      tmp = tmp->next;
-    }
+  for (tmp = closed_class_groups; tmp; tmp = tmp->next)
+    emit_class_group_closed (screen, WNCK_CLASS_GROUP (tmp->data));
 
   if (stack_changed)
     emit_window_stacking_changed (screen);
@@ -1009,29 +1058,17 @@ update_client_list (WnckScreen *screen)
     emit_active_window_changed (screen);
   
   /* Now free the closed windows */
-  tmp = closed;
-  while (tmp != NULL)
-    {
-      WnckWindow *window = tmp->data;
-
-      _wnck_window_destroy (window);
-      
-      tmp = tmp->next;
-    }
+  for (tmp = closed; tmp; tmp = tmp->next)
+    _wnck_window_destroy (WNCK_WINDOW (tmp->data));
 
   /* Free the closed apps */
-  tmp = closed_apps;
-  while (tmp != NULL)
-    {
-      WnckApplication *app;
+  for (tmp = closed_apps; tmp; tmp = tmp->next)
+    _wnck_application_destroy (WNCK_APPLICATION (tmp->data));
 
-      app = WNCK_APPLICATION (tmp->data);
+  /* Free the closed class groups */
+  for (tmp = closed_class_groups; tmp; tmp = tmp->next)
+    _wnck_class_group_destroy (WNCK_CLASS_GROUP (tmp->data));
 
-      _wnck_application_destroy (app);
-      
-      tmp = tmp->next;
-    }
-  
   g_list_free (closed);
   g_list_free (created);
   g_list_free (closed_apps);
@@ -1553,6 +1590,24 @@ emit_application_closed (WnckScreen      *screen,
   g_signal_emit (G_OBJECT (screen),
                  signals[APPLICATION_CLOSED],
                  0, app);
+}
+
+static void
+emit_class_group_opened (WnckScreen     *screen,
+                         WnckClassGroup *class_group)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[CLASS_GROUP_OPENED],
+                 0, class_group);
+}
+
+static void
+emit_class_group_closed (WnckScreen     *screen,
+                         WnckClassGroup *class_group)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[CLASS_GROUP_CLOSED],
+                 0, class_group);
 }
 
 static void

@@ -8,7 +8,7 @@ AM_MAINTAINER_MODE
 dnl libtool versioning for libwnck
 
 dnl increment if the interface has additions, changes, removals.
-LIBWNCK_CURRENT=11
+LIBWNCK_CURRENT=12
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
@@ -17,7 +17,7 @@ LIBWNCK_REVISION=0
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been removed. removal has
 dnl  precedence over adding, so set to 0 if both happened.
-LIBWNCK_AGE=7
+LIBWNCK_AGE=8
 
 AC_SUBST(LIBWNCK_CURRENT)
 AC_SUBST(LIBWNCK_REVISION)

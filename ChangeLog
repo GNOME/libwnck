@@ -1,3 +1,89 @@
+2003-11-22  Federico Mena Quintero  <federico@ximian.com>
+
+	* libwnck/tasklist.c (WnckTaskType): Added a WNCK_TASK_CLASS_GROUP
+	type.
+	(struct _WnckTask): Added a class_group field, analogous to the
+	application and window fields.
+	(struct _WnckTasklistPrivate): Added class_groups and
+	class_group_hash fields.  Replaced the active_app field with an
+	active_class_group field.
+	(wnck_task_new_from_window): Set the class_group of the task from
+	the window.
+	(wnck_tasklist_update_lists): Create a WnckClassGroup if
+	necessary; do not use widgets for applications.
+	(wnck_task_new_from_class_group): New function.
+	(wnck_task_new_from_application): Set the class_group of the task
+	to NULL.
+	(wnck_task_new_from_startup_sequence): Likewise.
+	(wnck_task_compare): Sort groups before everything else.
+	(wnck_task_state_changed): Use the class_group rather than the
+	application.
+	(wnck_task_get_text): Handle class groups.
+	(wnck_task_button_toggled): Likewise.
+	(wnck_task_popup_menu): Handle class groups as well as
+	applications.
+	(wnck_tasklist_free_tasks): s/active_app/active_class_group.
+	(wnck_tasklist_change_active_task): Likewise.
+	(wnck_task_finalize): Unref the class_group.
+	(wnck_tasklist_init): Create the class_group_hash.
+	(wnck_tasklist_finalize): Free the class_group_hash.
+	(wnck_tasklist_size_request): Use the class groups rather than
+	applications.
+	(wnck_tasklist_size_allocate): Likewise.
+	(wnck_tasklist_forall): Likewise.
+	(wnck_tasklist_remove): Likewise.
+	(wnck_task_get_highest_scored): Likewise.
+	(wnck_tasklist_score_groups): Likewise.
+	(wnck_task_new_from_application): Do not create widgets.
+	(wnck_task_button_toggled): We don't need the window state here,
+	so don't fetch it.
+	(wnck_task_get_text): Use a window's name rather than its icon
+	name.  They seem to be the same for most windows, and Emacs screws
+	up the icon name, setting it to "emacs" only --- it's useless.
+	(WnckTaskType): Removed WNCK_TASK_APPLICATION.
+	(struct _WnckTask): Removed the application-related fields.
+	(struct _WnckTasklistPrivate): Likewise.
+	(wnck_task_finalize): Likewise.
+	(wnck_tasklist_finalize): Likewise.
+	(wnck_tasklist_free_tasks): Likewise.
+	(wnck_tasklist_update_lists): Likewise.
+	(wnck_task_popup_menu): Likewise.
+	(wnck_task_button_toggled): Likewise.
+	(wnck_task_get_text): Likewise.
+	(wnck_task_get_icon): Likewise.
+	(wnck_task_button_press_event): Likewise.
+	(wnck_task_create_widgets): Likewise.
+	(wnck_task_compare): Likewise.
+	(wnck_task_new_from_window): Likewise.
+	(wnck_task_new_from_startup_sequence): Likewise.
+	(wnck_task_app_name_changed): Removed.
+	(wnck_task_new_from_application): Removed.
+	(wnck_task_class_group_expose): Renamed from wnck_task_app_expose().
+
+	* libwnck/screen.h (struct _WnckScreenClass): Added
+	::class_group_opened() and ::class_group_closed() signals.
+
+	* libwnck/screen.c (update_client_list): Handle class groups by
+	creating new ones as needed and getting rid of empty ones.
+	(emit_class_group_opened): New function.
+	(emit_application_closed): New function.
+	(wnck_screen_class_init): Create the new signals.
+
+	* libwnck/window.c (struct _WnckWindowPrivate): Added a
+	class_group field.
+	(wnck_window_get_class_group): New function.
+	(_wnck_window_set_class_group): New function.
+
+	* libwnck/class-group.[ch]: New files that implement a simple
+	set of windows grouped by their resource class names.
+
+	* libwnck/Makefile.am: Added class-group.[ch].
+
+	* libwnck/test-tasklist.c (main): Set a default size so I don't
+	have to resize the test window every time.
+
+	* configure.in: Increment LIBWNCK_CURRENT and LIBWNCK_AGE.
+
 2003-11-17  Padraig O'Briain  <padraigobriain@sun.com>
 
 	* libwnck/tasklist.c (wnck_tasklist_init): Set translatable accessible 

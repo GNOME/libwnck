@@ -10,6 +10,7 @@ wnck_headers=			\
 	libwnck.h		\
 	pager.h			\
 	application.h		\
+	class-group.h		\
 	screen.h		\
 	tasklist.h		\
 	util.h			\
@@ -39,6 +40,7 @@ wnck_accessibility_files =			\
 
 libwnck_1_la_SOURCES= 		\
 	application.c		\
+	class-group.c		\
 	inlinepixbufs.h		\
 	pager.c			\
 	private.h		\

@@ -62,6 +62,10 @@ void           _wnck_workspace_destroy (WnckWorkspace *space);
 
 void _wnck_window_set_application    (WnckWindow      *window,
                                       WnckApplication *app);
+
+void _wnck_window_set_class_group (WnckWindow     *window,
+				   WnckClassGroup *class_group);
+
 void _wnck_application_add_window    (WnckApplication *app,
                                       WnckWindow      *window);
 void _wnck_application_remove_window (WnckApplication *app,
