@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2003-01-09 17:01+0300\n"
+"POT-Creation-Date: 2003-04-10 15:31+0400\n"
+"PO-Revision-Date: 2003-04-10 15:32+0400\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,17 +31,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Щёлкните для переключения на рабочее место %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "_Развернуть"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Свернуть"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "Восстановить _прежний размер"
 
@@ -66,7 +63,6 @@ msgid "Put on _All Workspaces"
 msgstr "Поместить на вс_е Рабочие места"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "Пере_местить"
 
@@ -78,11 +74,11 @@ msgstr "_Изменить размер"
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "неозаглавленное окно"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Рабочее место %d"
