@@ -1091,6 +1091,27 @@ wnck_window_is_visible_on_workspace (WnckWindow    *window,
 }
 
 /**
+ * wnck_window_set_icon_geometry:
+ * @window: a #WnckWindow
+ * @x: x coordinate in pixels
+ * @y: y coordinate in pixels
+ * @width: width in pixels
+ * @height: height in pixels
+ *
+ * Set the icon geometry for a WnckWindow.
+ */
+void
+wnck_window_set_icon_geometry (WnckWindow *window,
+			       int         x,
+			       int         y,
+			       int         width,
+			       int         height)
+{
+	_wnck_set_icon_geometry (window->priv->xwindow,
+				 x, y, width, height);
+}
+
+/**
  * wnck_window_is_on_workspace:
  * @window: a #WnckWindow
  * @workspace: a #WnckWorkspace

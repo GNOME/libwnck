@@ -962,8 +962,8 @@ wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist)
 		width = task->button->allocation.width;
 		height = task->button->allocation.height;
 
-		_wnck_set_icon_geometry (wnck_window_get_xid (task->window),
-					 x, y, width, height);
+		wnck_window_set_icon_geometry (task->window,
+					       x, y, width, height);
 	}
 }
 

@@ -1,5 +1,11 @@
 2001-12-10  Anders Carlsson  <andersca@gnu.org>
 
+	* libwnck/tasklist.c (wnck_tasklist_update_icon_geometries): Call
+	wnck_window_set_icon_geometry.
+
+	* libwnck/window.h,
+	* libwnck/window.c (wnck_window_set_icon_geometry): New function.
+
 	* libwnck/tasklist.c (wnck_tasklist_update_icon_geometries): 
 	New function.
 	(wnck_tasklist_size_allocate): call update_icon_geometries.

@@ -173,6 +173,11 @@ void wnck_window_set_icon_size            (WnckWindow *window,
 void wnck_window_set_mini_icon_size       (WnckWindow *window,
                                            int         width,
                                            int         height);
+void wnck_window_set_icon_geometry        (WnckWindow *window,
+					   int         x,
+					   int         y,
+					   int         width,
+					   int         height);
 
 WnckWindowActions wnck_window_get_actions (WnckWindow *window);
 WnckWindowState   wnck_window_get_state   (WnckWindow *window);
