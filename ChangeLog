@@ -1,5 +1,14 @@
 2005-01-28  Elijah Newren  <newren@gmail.com>
 
+	* MAINTAINERS:
+	* HACKING:
+
+	New files.  Clarify the rules on patches and such, and add some
+	getting started information for anyone that may want to try their
+	hand at hacking libwnck.
+
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
 	Patch from Vincent Noel to make the tasklist window menu popup
 	near the mouse pointer.  Fixes #92842.
 
