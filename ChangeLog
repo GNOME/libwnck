@@ -1,3 +1,8 @@
+2002-03-24  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/tasklist.c (wnck_task_get_text): include number of 
+	windows in the text for an application, #75943
+
 2002-03-23  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/screen.c (wnck_screen_class_init): call _wnck_init()
@@ -40,7 +45,7 @@
 	robustness
 	(wnck_task_create_widgets): connect_object
 	(wnck_tasklist_remove): unparent task->button, then 
-	unref task. This function was the actual cause of #72296 
+	unref task. This function was the actual cause of #72296
 	I believe.
 	(wnck_task_create_widgets): add weak pointer for 
 	task->button

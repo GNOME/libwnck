@@ -62,7 +62,8 @@ WnckApplication* wnck_application_get (gulong xwindow);
 
 gulong wnck_application_get_xid (WnckApplication *app);
 
-GList* wnck_application_get_windows (WnckApplication *app);
+GList* wnck_application_get_windows   (WnckApplication *app);
+int    wnck_application_get_n_windows (WnckApplication *app);
 
 /* application_get_name, application_get_pid, etc.; prefer to read
  * properties straight off the group leader, and failing that, if the

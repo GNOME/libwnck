@@ -199,6 +199,14 @@ wnck_application_get_windows (WnckApplication *app)
   return app->priv->windows;
 }
 
+int
+wnck_application_get_n_windows (WnckApplication *app)
+{
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), 0);
+
+  return g_list_length (app->priv->windows);
+}
+
 /**
  * wnck_application_get_name:
  * @app: a #WnckApplication

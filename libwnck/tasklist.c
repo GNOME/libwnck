@@ -1293,7 +1293,9 @@ wnck_task_get_text (WnckTask *task)
   
   if (task->is_application)
     {
-      return g_strdup (wnck_application_get_name (task->application));
+      return g_strdup_printf ("%s (%d)",
+                              wnck_application_get_name (task->application),
+                              wnck_application_get_n_windows (task->application));
     }
   else
     {
