@@ -1,3 +1,8 @@
+2003-02-20  Paisa Seeluangsawat  <paisa@colorado.edu>
+
+        * th.po: Added Thai translation.
+	* configure.in (ALL_LINGUAS): Added "th".
+
 2003-02-09  Christian Rose  <menthos@menthos.com>
 
 	* configure.in: Added "kn" to ALL_LINGUAS.
