@@ -1,3 +1,7 @@
+2002-12-15  Christophe Merlet  <redfox@redfoxcenter.org>
+
+	* fr.po: Updated French translation.
+
 2002-12-13  Daniel Yacob <locales@geez.org>
 
 	* am.po: Updated Amharic translation.
@@ -322,7 +326,7 @@
 	* pl.po: Added Polish translation by
 	GNOME PL Team <translators@gnome.pl>.
 
-2002-04-11  Christophe Merlet  <redfox@eikonex.org>
+2002-04-11  Christophe Merlet  <christophe@merlet.net>
 
 	* fr.po: Added French translation from
 	Christophe Fergeau <teuf@users.sourceforge.net>.
