@@ -1,3 +1,14 @@
+Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
+
+	* configure.in: version 2.1.4, and increment libtool versioning
+
+	* libwnck/pager.c (wnck_pager_set_shadow_type): New function.
+	Interprete points on the frame as belonging to the abutting
+	workspace.
+
+	* libwnck/test-pager.c (create_pager_window): Use
+	wnck_pager_set_shadow_type instead of a GtkFrame.
+
 2002-11-03  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/xutils.c (_wnck_set_desktop_layout): XChangeProperty

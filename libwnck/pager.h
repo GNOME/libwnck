@@ -69,6 +69,8 @@ void wnck_pager_set_display_mode (WnckPager            *pager,
 				  WnckPagerDisplayMode  mode);
 void wnck_pager_set_show_all     (WnckPager            *pager,
 				  gboolean              show_all_workspaces);
+void wnck_pager_set_shadow_type  (WnckPager	       *pager,
+				  GtkShadowType		shadow_type);
 
 G_END_DECLS
 
