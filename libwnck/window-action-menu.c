@@ -29,7 +29,8 @@ typedef enum
   MAXIMIZE,
   SHADE,
   MOVE,
-  RESIZE
+  RESIZE,
+  PIN
 } WindowAction;
 
 typedef struct _ActionMenuData ActionMenuData;
@@ -38,12 +39,13 @@ struct _ActionMenuData
 {
   WnckWindow *window;
   GtkWidget *menu;
-  GtkWidget *close_item;
   GtkWidget *minimize_item;
   GtkWidget *maximize_item;
   GtkWidget *shade_item;
   GtkWidget *move_item;
   GtkWidget *resize_item;
+  GtkWidget *close_item;
+  GtkWidget *pin_item;
   guint idle_handler;
 };
 
@@ -128,6 +130,12 @@ item_activated_callback (GtkWidget *menu_item,
       break;
     case RESIZE:
       wnck_window_keyboard_size (amd->window);
+      break;
+    case PIN:
+      if (wnck_window_is_pinned (amd->window))
+        wnck_window_unpin (amd->window);
+      else
+        wnck_window_pin (amd->window);
       break;
     }
 }
@@ -223,6 +231,21 @@ update_menu_state (ActionMenuData *amd)
                                 (actions & WNCK_WINDOW_ACTION_SHADE) != 0);
     }
 
+  if (wnck_window_is_pinned (amd->window))
+    {
+      set_item_text (amd->pin_item, _("Only on _This Workspace"));
+      set_item_stock (amd->pin_item, NULL);
+      gtk_widget_set_sensitive (amd->pin_item,
+                                (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
+    }
+  else
+    {
+      set_item_text (amd->pin_item, _("Put on _All Workspaces"));
+      set_item_stock (amd->pin_item, NULL);
+      gtk_widget_set_sensitive (amd->pin_item,
+                                (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
+    }
+  
   gtk_widget_set_sensitive (amd->close_item,
                             (actions & WNCK_WINDOW_ACTION_CLOSE) != 0);
   
@@ -355,19 +378,29 @@ wnck_create_window_action_menu (WnckWindow *window)
 
   set_item_text (amd->resize_item, _("_Resize"));
   set_item_stock (amd->move_item, NULL);
-  
-  amd->close_item = make_menu_item (amd, CLOSE);
 
   separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          separator);
+
+  amd->close_item = make_menu_item (amd, CLOSE);
   
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->close_item);
 
   set_item_text (amd->close_item, _("_Close"));
   set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
+
+  separator = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         separator);
+
+  amd->pin_item = make_menu_item (amd, PIN);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->pin_item);
+  set_item_stock (amd->pin_item, NULL);
   
   g_signal_connect_object (G_OBJECT (amd->window), 
                            "state_changed",

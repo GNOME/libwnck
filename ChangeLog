@@ -1,5 +1,10 @@
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
+	* libwnck/window-action-menu.c: Add "put on all spaces" menu item, 
+	patch from Jens Askengren  <jensus@linux.nu>
+
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
 	* libwnck/window.c (update_state): rework to update HIDDEN state
 	(wnck_window_is_visible_on_workspace): use state HIDDEN
 
