@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
-"POT-Creation-Date: 2003-09-08 15:13-0400\n"
+"POT-Creation-Date: 2003-09-10 14:56-0400\n"
 "PO-Revision-Date: 2002-12-29 15:08+0100\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
-"POT-Creation-Date: 2003-09-08 15:13-0400\n"
+"POT-Creation-Date: 2003-09-10 14:56-0400\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
