@@ -1,0 +1,63 @@
+# translation of libwnck
+# Copyright (C) 2001 Free Software Foundation, Inc.
+# Kjartan Maraas <kmaraas@gnome.org>, 2001.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 0.1\n"
+"POT-Creation-Date: 2001-12-04 11:33+0100\n"
+"PO-Revision-Date: 2001-12-11 23:50+0100\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Project-Id-Version: gtranslator 0.34\n"
+"POT-Creation-Date: 2001-10-07 16:44+0200\n"
+"PO-Revision-Date: 2001-10-07 17:00+0200\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norwegian <no@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
+" <no@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/window-action-menu.c:157
+msgid "Un_minimize"
+msgstr "Gje_nopprett"
+
+#: libwnck/window-action-menu.c:163
+msgid "_Minimize"
+msgstr "_Minimer"
+
+#: libwnck/window-action-menu.c:170
+msgid "_Unmaximize"
+msgstr "_Gjenopprett"
+
+#: libwnck/window-action-menu.c:176
+msgid "Ma_ximize"
+msgstr "Ma_ksimer"
+
+#: libwnck/window-action-menu.c:183
+msgid "U_nshade"
+msgstr ""
+
+#: libwnck/window-action-menu.c:189
+msgid "_Shade"
+msgstr "_Skyggelegg"
+
+#: libwnck/window-action-menu.c:300
+msgid "Close"
+msgstr "Lukk"
+
+#: libwnck/window-action-menu.c:321
+msgid "Mo_ve"
+msgstr "F_lytt"
+
+#: libwnck/window-action-menu.c:327
+msgid "_Resize"
+msgstr "End_re størrelse"
+
+#: libwnck/window.c:32
+msgid "untitled window"
+msgstr "vindu uten tittel"
+
