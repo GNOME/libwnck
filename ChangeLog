@@ -1,3 +1,9 @@
+2005-01-27  Vincent Noel  <vnoel@cox.net>
+
+	* libwnck/selector.c: (wnck_selector_dimm_icon),
+	(wnck_selector_set_window_icon): Don't crash when a minimized
+	window icon has no alpha. Fixes #165251.
+
 2005-01-25  Vincent Noel  <vnoel@cox.net>
 
 	Migrate the window menu widget handling code from gnome-panel.
