@@ -136,6 +136,8 @@ WnckApplication* wnck_window_get_application  (WnckWindow *window);
 gulong           wnck_window_get_group_leader (WnckWindow *window);
 gulong           wnck_window_get_xid          (WnckWindow *window);
 
+WnckClassGroup *wnck_window_get_class_group (WnckWindow *window);
+
 const char* wnck_window_get_session_id        (WnckWindow *window);
 const char* wnck_window_get_session_id_utf8   (WnckWindow *window);
 int         wnck_window_get_pid               (WnckWindow *window);

@@ -28,6 +28,7 @@ G_BEGIN_DECLS
 
 /* forward decls */
 typedef struct _WnckApplication WnckApplication;
+typedef struct _WnckClassGroup  WnckClassGroup;
 typedef struct _WnckWindow      WnckWindow;
 typedef struct _WnckWorkspace   WnckWorkspace;
 
@@ -86,6 +87,12 @@ struct _WnckScreenClass
 #if 0
   /* FIXME uncomment all this next time we feel like breaking ABI */
 
+  /* new class group */
+  void (* class_group_opened)       (WnckScreen     *screen,
+                                     WnckClassGroup *class_group);
+  /* class group gone */
+  void (* class_group_closed)       (WnckScreen     *screen,
+                                     WnckClassGroup *class_group);
   /* Toggle showing desktop */
   void (* showing_desktop_changed)  (WnckScreen      *screen);
   

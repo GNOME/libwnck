@@ -21,6 +21,7 @@
 
 #include <string.h>
 #include "window.h"
+#include "class-group.h"
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
@@ -49,6 +50,7 @@ struct _WnckWindowPrivate
   Window xwindow;
   WnckScreen *screen;
   WnckApplication *app;
+  WnckClassGroup *class_group;
   Window group_leader;
   Window transient_for;
   char *name;
@@ -473,6 +475,14 @@ wnck_window_get_xid (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
 
   return window->priv->xwindow;
+}
+
+WnckClassGroup *
+wnck_window_get_class_group (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->class_group;
 }
 
 /**
@@ -1296,6 +1306,20 @@ _wnck_window_set_application (WnckWindow      *window,
   if (window->priv->app)
     g_object_unref (G_OBJECT (window->priv->app));
   window->priv->app = app;
+}
+
+void
+_wnck_window_set_class_group (WnckWindow     *window,
+			      WnckClassGroup *class_group)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (class_group == NULL || WNCK_IS_CLASS_GROUP (class_group));
+
+  if (class_group)
+    g_object_ref (G_OBJECT (class_group));
+  if (window->priv->class_group)
+    g_object_unref (G_OBJECT (window->priv->class_group));
+  window->priv->class_group = class_group;
 }
 
 void
