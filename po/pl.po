@@ -1,0 +1,67 @@
+# Copyright (C) 2001-2002 Free Software Foundation, Inc.
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Aktualną wersję tego pliku możesz odnaleźć w repozytorium cvs.gnome.pl
+# (:pserver:anonymous@cvs.gnome.pl:/home/cvs, puste hasło)
+# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
+# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas na adres:
+# translators@gnome.pl
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-03-02 11:44+0100\n"
+"PO-Revision-Date: 2002-03-02 11:54+0100\n"
+"Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:1
+msgid "untitled application"
+msgstr "aplikacja bez nazwy"
+
+#: libwnck/window-action-menu.c:1
+msgid "Un_minimize"
+msgstr "Cofnij m_inimalizację"
+
+#: libwnck/window-action-menu.c:1
+msgid "_Minimize"
+msgstr "Zm_inimalizuj"
+
+#: libwnck/window-action-menu.c:1
+msgid "_Unmaximize"
+msgstr "Cofnij m_aksymalizację"
+
+#: libwnck/window-action-menu.c:1
+msgid "Ma_ximize"
+msgstr "Zm_aksymalizuj"
+
+#: libwnck/window-action-menu.c:1
+msgid "U_nshade"
+msgstr "Roz_wiń"
+
+#: libwnck/window-action-menu.c:1
+msgid "_Shade"
+msgstr "Z_wiń"
+
+#: libwnck/window-action-menu.c:1
+msgid "Close"
+msgstr "Zamknij"
+
+#: libwnck/window-action-menu.c:1
+msgid "Mo_ve"
+msgstr "Prze_nieś"
+
+#: libwnck/window-action-menu.c:1
+msgid "_Resize"
+msgstr "Zmień _rozmiar"
+
+#: libwnck/window.c:1
+msgid "untitled window"
+msgstr "okno bez tytułu"
+
+#: libwnck/workspace.c:1
+#, c-format
+msgid "Workspace %d"
+msgstr "Obszar %d"
