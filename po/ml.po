@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
@@ -31,6 +31,47 @@ msgstr "പണിയറകള്ക്കിടയില് മാറി കള�
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇവിടെ അമ‍ര്ത്തുക"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+msgid "Window Selector"
+msgstr ""
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr ""
+
+#: libwnck/tasklist.c:524
+#, fuzzy
+msgid "Tool to switch between visible windows"
+msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "അടയ്‍ക്കുക"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "ചെറുതാക്കുക"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -57,12 +98,14 @@ msgid "Roll _Up"
 msgstr "ചുരുട്ടുക"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "ഈ പണിയറയില് മാത്രം"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "എല്ലാ പണിയറയിലും ഇടുക"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "ഈ പണിയറയില് മാത്രം"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,26 +147,5 @@ msgstr ""
 msgid "untitled window"
 msgstr "തരക്കെട്ടില്ലാത്ത ജാലകം"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr ""
-
-#: libwnck/tasklist.c:524
-#, fuzzy
-msgid "Tool to switch between visible windows"
-msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "അടയ്‍ക്കുക"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "ചെറുതാക്കുക"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "എല്ലാ പണിയറയിലും ഇടുക"

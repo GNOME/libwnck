@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 12:43+0000\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-02-07 12:43+0100\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: \n"
@@ -100,8 +100,7 @@ msgstr "_Only on This Workspace"
 msgid "_Always on Visible Workspace"
 msgstr "_Always on Visible Workspace"
 
-#: libwnck/window-action-menu.c:376
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Workspace %d"
@@ -139,4 +138,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "untitled window"
-

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2003-06-05 13:25+0100\n"
 "Last-Translator: Mathieu van Woerkom <mathieu@brabants.org>\n"
 "Language-Team: Limburgish\n"
@@ -30,6 +30,47 @@ msgstr "Hulpke veur tösje versjillige wirkblajer te wissele"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klik hie veur te wissele nao wirkblaad %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+msgid "Window Selector"
+msgstr ""
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Hulpke veur tösje versjillige wirkblajer te wissele"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr ""
+
+#: libwnck/tasklist.c:524
+#, fuzzy
+msgid "Tool to switch between visible windows"
+msgstr "Hulpke veur tösje versjillige wirkblajer te wissele"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Sjloete"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Minimalisere"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Hersjtèlle"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -56,12 +97,14 @@ msgid "Roll _Up"
 msgstr "_Oprolle"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Allein op dit _wirkblaad"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Op _alle wirkblajer tuine"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Allein op dit _wirkblaad"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -103,26 +146,5 @@ msgstr ""
 msgid "untitled window"
 msgstr "naamloes vinster"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr ""
-
-#: libwnck/tasklist.c:524
-#, fuzzy
-msgid "Tool to switch between visible windows"
-msgstr "Hulpke veur tösje versjillige wirkblajer te wissele"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Sjloete"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Minimalisere"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "_Hersjtèlle"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Op _alle wirkblajer tuine"

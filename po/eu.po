@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-04-16 12:43+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -34,6 +34,47 @@ msgstr "Laneko area batetik bestera aldatzeko tresna"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Egin klik hemen %s laneko areara aldatzeko"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Leiho-zerrenda"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Leiho-zerrenda"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "It_xi"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Ikonotu"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Le_heneratu"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -60,12 +101,14 @@ msgid "Roll _Up"
 msgstr "Bil_du"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Laneko a_rea honetan bakarrik"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "_Jarri laneko area guztietan"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Laneko a_rea honetan bakarrik"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -106,25 +149,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "izenbururik gabeko leihoa"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Leiho-zerrenda"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "It_xi"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Ikonotu"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Le_heneratu"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "_Jarri laneko area guztietan"

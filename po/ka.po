@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-04-30 01:22+0400\n"
 "Last-Translator: Aiet Kolkhi <aiet@qartuli.net>\n"
 "Language-Team: Georgian <aiet@qartuli.net>\n"
@@ -31,6 +31,47 @@ msgstr "სამუშაო სივრცის გადამრთვე�
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "დააწკაპუნეთ აქ, თუ გნებავთ %s სივრცეზე გადასვლა"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "სარკმელთა სია"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "სარკმელთა სია"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_დაკეტვა"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_მინიმირება"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "მაქ_სიმირება"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -57,12 +98,14 @@ msgid "Roll _Up"
 msgstr "ა_კეცვა"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "მხოლოდ ა_მ სივრცეში"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "აჩვენე _ყველა დესკტოპზე"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "მხოლოდ ა_მ სივრცეში"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -103,25 +146,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "უსახელო სარკმელი"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "სარკმელთა სია"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_დაკეტვა"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_მინიმირება"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "მაქ_სიმირება"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "აჩვენე _ყველა დესკტოპზე"

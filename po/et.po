@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-29 12:39+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-01-29 21:27+0300\n"
 "Last-Translator: Priit Laes <amd@tt.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -33,6 +33,44 @@ msgstr "Rakend tööalade vahetamiseks"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klõpsa siin, et liikuda tööalale %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Akende nimekiri"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Rakend nähtavate akende vahteamiseks"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Akende nimekiri"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Rakend nähtavate akende vahteamiseks"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Sulge kõik"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "_Minimeeri kõik"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "_Taasta kõik"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -63,11 +101,11 @@ msgid "_Only on This Workspace"
 msgstr "Ainult _sellel tööalal"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
+#, fuzzy
+msgid "_Always on Visible Workspace"
 msgstr "Alati _sellel tööalal"
 
-#: libwnck/window-action-menu.c:376
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Tööala %d"
@@ -105,24 +143,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "pealkirjata aken"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Akende nimekiri"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Rakend nähtavate akende vahteamiseks"
-
-#: libwnck/tasklist.c:2102
-msgid "_Close All"
-msgstr "_Sulge kõik"
-
-#: libwnck/tasklist.c:2117
-msgid "_Minimize All"
-msgstr "_Minimeeri kõik"
-
-#: libwnck/tasklist.c:2128
-msgid "_Unminimize All"
-msgstr "_Taasta kõik"
-

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-09-10 16:25+0200\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -38,6 +38,47 @@ msgstr "Алатка за менување на работното место"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Кликни го ова за да го смениш работното место %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Листа на прозорци"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Алатка за менување помеѓу прозорците"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Листа на прозорци"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Алатка за менување помеѓу прозорците"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Затвори"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Минимизирај"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Врати минимизирано"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -64,12 +105,14 @@ msgid "Roll _Up"
 msgstr "_Завиткај"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Само на _овој работен простор"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Стави на _сите работни простори"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Само на _овој работен простор"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -110,25 +153,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "Прозорец без наслов"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Листа на прозорци"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Алатка за менување помеѓу прозорците"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Затвори"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Минимизирај"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "_Врати минимизирано"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Стави на _сите работни простори"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-12-25 04:13+0545\n"
 "Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
 "Language-Team: NEPALI <info@mpp.org.np>\n"
@@ -35,6 +35,47 @@ msgstr ""
 msgid "Click this to switch to workspace %s"
 msgstr "%s कार्यक्षेत्रमा जान यसलाई थिच्नुहोस्"
 
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "विन्डोको सूची "
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "देखिने विन्डोहरु बीच ?"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "विन्डोको सूची "
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "देखिने विन्डोहरु बीच ?"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_बन्द गर"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "सानो बनाउ"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "सानो नबनाउ"
+
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "सानो नबनाउ"
@@ -60,12 +101,14 @@ msgid "Roll _Up"
 msgstr "माथि जाउ"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "यो कार्यक्षेत्रमा मात्र "
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "सबै कार्यक्षेत्रमा राख"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "यो कार्यक्षेत्रमा मात्र "
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -106,25 +149,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "शीर्षकरहित विन्डो"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "विन्डोको सूची "
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "देखिने विन्डोहरु बीच ?"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_बन्द गर"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "सानो बनाउ"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "सानो नबनाउ"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "सबै कार्यक्षेत्रमा राख"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-31 23:16+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-01-31 23:16+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
@@ -37,15 +37,15 @@ msgstr "Klicka på detta för att byta till arbetsyta %s"
 msgid "Unknown Window"
 msgstr "Okänt fönster"
 
-#: libwnck/selector.c:627
+#: libwnck/selector.c:639
 msgid "No Windows Open"
 msgstr "Inga fönster öppna"
 
-#: libwnck/selector.c:729
+#: libwnck/selector.c:741
 msgid "Window Selector"
 msgstr "Fönsterväljare"
 
-#: libwnck/selector.c:730
+#: libwnck/selector.c:742
 msgid "Tool to switch between windows"
 msgstr "Verktyg för att växla mellan fönster"
 

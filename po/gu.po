@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck-2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-02-29 20:47+0530\n"
 "Last-Translator: Nirav, Ankit, Ankur, Atit, Bhavin, Kartik, Khushbu, Sweta. "
 "<magnet@magnet-i.com>\n"
@@ -30,6 +30,47 @@ msgstr "કામ કરવાની જગ્યા બદલવાનું �
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "કામ કરવાની જગ્યા %s માં બદલવા માટે અહિં ક્લિક કરો"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "વિન્ડોની યાદી"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "વિન્ડોની યાદી"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "બંધ કરો (_C)"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "નાનું કરો (_M)"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "નાનાં માંથી મોટું કરો (_m)"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -56,12 +97,14 @@ msgid "Roll _Up"
 msgstr "ઊપર ઘુમાવો (_U)"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "ફક્ત આ કામ કરવાની જગ્યા ઊપર (_T)"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "બધી કામ કરવાની જગ્યાઓમાં મુકો (_A)"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "ફક્ત આ કામ કરવાની જગ્યા ઊપર (_T)"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -102,28 +145,8 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "શીર્ષક વગરની વિન્ડો"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "વિન્ડોની યાદી"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "બંધ કરો (_C)"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "નાનું કરો (_M)"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "નાનાં માંથી મોટું કરો (_m)"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "બધી કામ કરવાની જગ્યાઓમાં મુકો (_A)"
 
 #~ msgid "U_nshade"
 #~ msgstr "છાયા દૂર કરો (_n)"

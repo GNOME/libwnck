@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -35,6 +35,47 @@ msgstr "כלי להחלפה בין סביבות עבודה"
 msgid "Click this to switch to workspace %s"
 msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "רשימת חלונות"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "כלי להחלפה בין חלונות נראים"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "רשימת חלונות"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "כלי להחלפה בין חלונות נראים"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_סגור"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_מזער"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "ב_טל מזעור"
+
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "ב_טל מזעור"
@@ -60,12 +101,14 @@ msgid "Roll _Up"
 msgstr "גלול מ_עלה"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "רק בסביבת עבודה _זו"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "שים ב_כל סביבות העבודה"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "רק בסביבת עבודה _זו"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -106,25 +149,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "חלון ללא-שם"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "רשימת חלונות"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "כלי להחלפה בין חלונות נראים"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_סגור"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_מזער"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "ב_טל מזעור"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "שים ב_כל סביבות העבודה"

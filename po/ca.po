@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.6.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-29 14:13+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -30,6 +30,47 @@ msgstr "Eina per a canviar entre espais de treball"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Feu clic ací per a canviar a l'espai de treball %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Llista de finestres"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Eina per a canviar entre finestres visibles"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Llista de finestres"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Eina per a canviar entre finestres visibles"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "Tan_ca"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimitza"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Desmi_nimitza"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -56,12 +97,14 @@ msgid "Roll _Up"
 msgstr "Enrotlla cap amunt"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Només en a_quest espai de treball"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Fica en _tots els espais de treball"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Només en a_quest espai de treball"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -102,28 +145,8 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "finestra sense títol"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Llista de finestres"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Eina per a canviar entre finestres visibles"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "Tan_ca"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Mi_nimitza"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Desmi_nimitza"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Fica en _tots els espais de treball"
 
 #~ msgid "U_nshade"
 #~ msgstr "Desenro_tllar"

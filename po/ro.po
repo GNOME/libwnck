@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-18 20:12+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>;\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>;\n"
@@ -29,6 +29,47 @@ msgstr "Unealtă pentru comutarea între spaţii de lucru"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Apăsaţi aici pentru comutarea în spaţiul de lucru %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Listă ferestre"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Unealtă pentru comutarea între ferestrele vizibile"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Listă ferestre"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Unealtă pentru comutarea între ferestrele vizibile"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "În_chidere"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Minimizează"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Demi_nimizează"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -55,12 +96,14 @@ msgid "Roll _Up"
 msgstr "În_făşoară"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Doar în _acest spaţiu de lucru"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Arată în _toate spaţiile de lucru"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Doar în _acest spaţiu de lucru"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -101,25 +144,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "fereastră fără titlu"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Listă ferestre"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Unealtă pentru comutarea între ferestrele vizibile"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "În_chidere"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Minimizează"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Demi_nimizează"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Arată în _toate spaţiile de lucru"

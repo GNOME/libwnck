@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-07-28 03:17+0200\n"
 "Last-Translator: Kemal Sanjta <gomez@lugzdk.ba>\n"
 "Language-Team: Bosnian <+>\n"
@@ -32,6 +32,47 @@ msgstr "Alat za prebacivanje između radnih površina"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klikni ovo da bi se prebacio na radnu površinu %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Lista prozora"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Alat za prebacivanje između vidljivih prozora"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Lista prozora"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Alat za prebacivanje između vidljivih prozora"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Zatvori"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimiziraj"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Demi_nimiziraj"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -58,12 +99,14 @@ msgid "Roll _Up"
 msgstr "Smotaj _Gore"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Samo na _Ovoj Radnoj površini"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Postavi na _Sve Radne površine"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Samo na _Ovoj Radnoj površini"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,25 +147,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "neimenovan prozor"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Lista prozora"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Alat za prebacivanje između vidljivih prozora"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Zatvori"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Mi_nimiziraj"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Demi_nimiziraj"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Postavi na _Sve Radne površine"

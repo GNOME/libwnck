@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-01 00:45+0200\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-02-01 00:46+0200\n"
 "Last-Translator: Žygimantas Beručka <uid0@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -36,15 +36,15 @@ msgstr "Spauskite norėdami persijungti į darbalaukį %s"
 msgid "Unknown Window"
 msgstr "Nežinomas langas"
 
-#: libwnck/selector.c:627
+#: libwnck/selector.c:639
 msgid "No Windows Open"
 msgstr "Nėra atidarytų langų"
 
-#: libwnck/selector.c:729
+#: libwnck/selector.c:741
 msgid "Window Selector"
 msgstr "Langų parinkiklis"
 
-#: libwnck/selector.c:730
+#: libwnck/selector.c:742
 msgid "Tool to switch between windows"
 msgstr "Įrankis leidžiantis persijungti tarp langų"
 

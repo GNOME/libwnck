@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-16 00:47+0000\n"
 "Last-Translator: Dafydd Harries <daf@muse.19inch.net>\n"
 "Language-Team: Cymraeg <gnome-cy@pengwyn.linux.org.uk>\n"
@@ -33,6 +33,47 @@ msgstr "Erfyn ar gyfer newid rhwng gweithfannau"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Cliciwch yma i newid i weithfan %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Rhestr Ffenestri"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Erfyn ar gyfer newid rhwng ffenstri gweladwy"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Rhestr Ffenestri"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Erfyn ar gyfer newid rhwng ffenstri gweladwy"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Cau"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Lleihau"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Dad_leihau"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -59,12 +100,14 @@ msgid "Roll _Up"
 msgstr "Rholio i _Fyny"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Ar y Gweithfan _Yma'n Unig"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Rhoi ar _Pob Gweithfan"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Ar y Gweithfan _Yma'n Unig"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -105,25 +148,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ffenestr di-deitl"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Rhestr Ffenestri"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Erfyn ar gyfer newid rhwng ffenstri gweladwy"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Cau"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Lleihau"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Dad_leihau"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Rhoi ar _Pob Gweithfan"

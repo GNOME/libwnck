@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-06 16:39+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-02-06 16:38+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -14,126 +14,126 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../libwnck/application.c:26
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "unavngivet program"
 
-#: ../libwnck/pager-accessible.c:317
+#: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
 msgstr "Arbejdsområdeskifter"
 
-#: ../libwnck/pager-accessible.c:328
+#: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
 msgstr "Værktøj til at skifte mellem arbejdsområder"
 
-#: ../libwnck/pager-accessible.c:432
+#: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klik her for at skifte til arbejdsområdet %s"
 
-#: ../libwnck/selector.c:218
+#: libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "Ukendt vindue"
 
-#: ../libwnck/selector.c:639
+#: libwnck/selector.c:639
 msgid "No Windows Open"
 msgstr "Ingen vinduer åbne"
 
-#: ../libwnck/selector.c:741
+#: libwnck/selector.c:741
 msgid "Window Selector"
 msgstr "Vinduesvælger"
 
-#: ../libwnck/selector.c:742
+#: libwnck/selector.c:742
 msgid "Tool to switch between windows"
 msgstr "Værktøj til at skifte mellem vinduer"
 
-#: ../libwnck/tasklist.c:523
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "Vinduesliste"
 
-#: ../libwnck/tasklist.c:524
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Værktøj til at skifte mellem synlige vinduer"
 
-#: ../libwnck/tasklist.c:2102
+#: libwnck/tasklist.c:2102
 msgid "_Close All"
 msgstr "_Luk alle"
 
-#: ../libwnck/tasklist.c:2117
+#: libwnck/tasklist.c:2117
 msgid "_Minimize All"
 msgstr "_Minimér alle"
 
-#: ../libwnck/tasklist.c:2128
+#: libwnck/tasklist.c:2128
 msgid "_Unminimize All"
 msgstr "_Gendan alle"
 
-#: ../libwnck/window-action-menu.c:209
+#: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "G_endan"
 
-#: ../libwnck/window-action-menu.c:216
+#: libwnck/window-action-menu.c:216
 msgid "Mi_nimize"
 msgstr "Min_imér"
 
-#: ../libwnck/window-action-menu.c:224
+#: libwnck/window-action-menu.c:224
 msgid "Unma_ximize"
 msgstr "Ge_ndan"
 
-#: ../libwnck/window-action-menu.c:231
+#: libwnck/window-action-menu.c:231
 msgid "Ma_ximize"
 msgstr "Ma_ksimér"
 
-#: ../libwnck/window-action-menu.c:239
+#: libwnck/window-action-menu.c:239
 msgid "_Unroll"
 msgstr "Rul _ned"
 
-#: ../libwnck/window-action-menu.c:246
+#: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
 msgstr "Rul _op"
 
-#: ../libwnck/window-action-menu.c:254
+#: libwnck/window-action-menu.c:254
 msgid "_Only on This Workspace"
 msgstr "Kun på _dette arbejdsområde"
 
-#: ../libwnck/window-action-menu.c:261
+#: libwnck/window-action-menu.c:261
 msgid "_Always on Visible Workspace"
 msgstr "_Altid på synligt arbejdsområde"
 
-#: ../libwnck/window-action-menu.c:376 ../libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
 
-#: ../libwnck/window-action-menu.c:384
+#: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
 msgstr "Arbejdsområde 1_0"
 
-#: ../libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:386
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbejdsområde %s%d"
 
-#: ../libwnck/window-action-menu.c:483
+#: libwnck/window-action-menu.c:483
 msgid "_Move"
 msgstr "_Flyt"
 
-#: ../libwnck/window-action-menu.c:490
+#: libwnck/window-action-menu.c:490
 msgid "_Resize"
 msgstr "Ænd_r størrelse"
 
-#: ../libwnck/window-action-menu.c:503
+#: libwnck/window-action-menu.c:503
 msgid "_Close"
 msgstr "_Luk"
 
-#: ../libwnck/window-action-menu.c:516
+#: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
 msgstr "Flyt til andet _arbejdsområde"
 
-#: ../libwnck/window-action-menu.c:540
+#: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "unavngivet vindue"

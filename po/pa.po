@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-08-09 16:10+0530\n"
 "Last-Translator: Amanpreet Singh Alam <aalam@redhat.com>\n"
 "Language-Team: Punjabi <pa@li.org>\n"
@@ -32,6 +32,47 @@ msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਯੰਤਰ"
 msgid "Click this to switch to workspace %s"
 msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ ਦਬਾਉ"
 
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "ਝਰੋਖਾ ਸੂਚੀ"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "ਝਰੋਖਾ ਸੂਚੀ"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "ਸਮਾਪਤ"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "ਅਲਪੀਕਰਨ"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "ਅਲਪੀਕਰਨ ਨਹੀ"
+
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "ਅਲਪੀਕਰਨ ਨਹੀ"
@@ -57,12 +98,14 @@ msgid "Roll _Up"
 msgstr "ਸਮੇਟੋ"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਭੇਜੋ"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -103,25 +146,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ਬਿਨਾਂ ਸਿਰਲੇਖ ਝਰੋਖਾ"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "ਝਰੋਖਾ ਸੂਚੀ"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "ਸਮਾਪਤ"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "ਅਲਪੀਕਰਨ"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "ਅਲਪੀਕਰਨ ਨਹੀ"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "ਸਾਰੇ ਵਰਕਸਪੇਸਾ ਲਈ ਭੇਜੋ"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-01 02:37-0500\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2005-02-01 20:52-0500\n"
 "Last-Translator: Adam Weinberger <adamw@gnome.org>\n"
 "Language-Team: Canadian English <adamw@FreeBSD.org>\n"
@@ -37,15 +37,15 @@ msgstr "Click this to switch to workspace %s"
 msgid "Unknown Window"
 msgstr "Unknown Window"
 
-#: libwnck/selector.c:627
+#: libwnck/selector.c:639
 msgid "No Windows Open"
 msgstr "No Windows Open"
 
-#: libwnck/selector.c:729
+#: libwnck/selector.c:741
 msgid "Window Selector"
 msgstr "Window Selector"
 
-#: libwnck/selector.c:730
+#: libwnck/selector.c:742
 msgid "Tool to switch between windows"
 msgstr "Tool to switch between windows"
 

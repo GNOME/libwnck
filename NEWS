@@ -1,3 +1,40 @@
+2.9.91
+======
+
+ Features
+
+  - New WnckSelector widget, using code from gnome-panel (Vincent Noel)
+
+ Fixes
+
+  - Correct misleading and inaccurate wording (Elijah)
+  - Make the tasklist window menu popup appear near the mouse pointer
+    (Vincent Noel)
+  - Fix warnings in WnckSelector (Vincent)
+
+ Misc
+
+  - Add MAINTAINERS & HACKING files (Elijah)
+
+ Translators
+
+  - Vladimir Petkov (bg)
+  - Miloslav Trmac (cs)
+  - Ole Laursen (da)
+  - Frank Arnold (de)
+  - Adam Weinberger (en_CA)
+  - David Lodge (en_GB)
+  - Lucas Vieites (es)
+  - Priit Laes (et)
+  - Pauli Virtanen (fi)
+  - Takeshi AIHANA (ja)
+  - Changwoo Ryu (ko)
+  - Žygimantas Beručka (lt)
+  - Kjartan Maraas (nb)
+  - Kjartan Maraas (no)
+  - Duarte Loreto (pt)
+  - Christian Rose (sv)
+
 2.9.90
 ======
 

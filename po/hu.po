@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-08-27 13:13+0200\n"
 "Last-Translator: Laszlo Dvornik <dvornik@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@gnome.hu>\n"
@@ -33,6 +33,47 @@ msgstr "Munkaterületek közötti váltást segítő eszköz"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kattintson ide a(z) %s. munkaterületre váltáshoz"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Ablaklista"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "A látható ablakok közötti váltást segítő eszköz"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Ablaklista"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "A látható ablakok közötti váltást segítő eszköz"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Bezárás"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Mi_nimalizálás"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Eredeti méret"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -59,12 +100,14 @@ msgid "Roll _Up"
 msgstr "_Felgördítés"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "M_unkaterületre korlátozás"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "_Megjelenítés minden munkaterületen"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "M_unkaterületre korlátozás"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -105,25 +148,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "névtelen ablak"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Ablaklista"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "A látható ablakok közötti váltást segítő eszköz"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Bezárás"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Mi_nimalizálás"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "_Eredeti méret"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "_Megjelenítés minden munkaterületen"

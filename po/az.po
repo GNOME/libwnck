@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.az\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-02-01 21:16+0200\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani Turkish <translation-team-az@lists.sourceforge."
@@ -33,6 +33,47 @@ msgstr "İş sahələri arasında keçiş vasitəsi"
 msgid "Click this to switch to workspace %s"
 msgstr "%s iş sahəsinə keçmək üçün buraya tıqlayın"
 
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Pəncərə Siyahısı"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Pəncərələr arasında keçiş vasitəsi"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Pəncərə Siyahısı"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Pəncərələr arasında keçiş vasitəsi"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Bağla"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "_Kiçilt"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "_Böyüt"
+
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
 msgstr "_Böyüt"
@@ -58,12 +99,14 @@ msgid "Roll _Up"
 msgstr "Ü_stə Bur"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Yalnız _Bu İş Sahəsində"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Bü_tün İş Sahələrində"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Yalnız _Bu İş Sahəsində"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,25 +147,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "adsız pəncərə"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Pəncərə Siyahısı"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Pəncərələr arasında keçiş vasitəsi"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Bağla"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "_Kiçilt"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "_Böyüt"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Bü_tün İş Sahələrində"

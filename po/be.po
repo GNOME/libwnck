@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-13 14:19+0200\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -32,6 +32,47 @@ msgstr "Сродак пераключэньня між працоўных пра
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Пстрыкніце сюды каб пераключыцца на прастору %s "
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Сьпіс вокнаў"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Сродак пераключэньня між бачнымі вокнамі"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Сьпіс вокнаў"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Сродак пераключэньня між бачнымі вокнамі"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "За_чыніць"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Най_меншыць"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Разнай_меншыць"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -58,12 +99,14 @@ msgid "Roll _Up"
 msgstr "З_гарнуць"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Толькі на _гэтай працоўнай прасторы"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Разьмясьціць на _ўсіх працоўных прасторах"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Толькі на _гэтай працоўнай прасторы"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,28 +147,8 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "безназоўнае вакно"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Сьпіс вокнаў"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Сродак пераключэньня між бачнымі вокнамі"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "За_чыніць"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Най_меншыць"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Разнай_меншыць"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Разьмясьціць на _ўсіх працоўных прасторах"
 
 #~ msgid "U_nshade"
 #~ msgstr "Вярнуць з _ценю"

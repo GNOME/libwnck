@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-13 06:26-0000\n"
 "Last-Translator: helgi <helgi@trance.is>\n"
 "Language-Team: Icelandic <gnome@techattack.nu>\n"
@@ -31,6 +31,47 @@ msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klikkaðu hér til að fletta yfir á vinnusvæði %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+msgid "Window Selector"
+msgstr ""
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr ""
+
+#: libwnck/tasklist.c:524
+#, fuzzy
+msgid "Tool to switch between visible windows"
+msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Loka"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Lág_marka"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Stækka upp á _ný"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -57,12 +98,14 @@ msgid "Roll _Up"
 msgstr "Rúlla _Upp"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Einungis á _þessu vinnusvæði"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Setj_a á öll vinnusvæði"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Einungis á _þessu vinnusvæði"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -104,26 +147,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ónefndur gluggi"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr ""
-
-#: libwnck/tasklist.c:524
-#, fuzzy
-msgid "Tool to switch between visible windows"
-msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Loka"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Lág_marka"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Stækka upp á _ný"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Setj_a á öll vinnusvæði"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-06-26 19:14+1200\n"
 "Last-Translator: John C Barstow <jbowtie@amathaine.com>\n"
 "Language-Team: Maori <maori@nzlinux.org.nz>\n"
@@ -31,6 +31,45 @@ msgstr ""
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
+msgstr ""
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Matapihi Rārangi"
+
+#: libwnck/selector.c:742
+msgid "Tool to switch between windows"
+msgstr ""
+
+#: libwnck/tasklist.c:523
+#, fuzzy
+msgid "Window List"
+msgstr "Matapihi Rārangi"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr ""
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Kati"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr ""
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
 msgstr ""
 
 #: libwnck/window-action-menu.c:209
@@ -59,11 +98,11 @@ msgid "Roll _Up"
 msgstr "Runga"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+msgid "_Only on This Workspace"
 msgstr ""
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
+msgid "_Always on Visible Workspace"
 msgstr ""
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
@@ -105,26 +144,4 @@ msgstr ""
 
 #: libwnck/window.c:32
 msgid "untitled window"
-msgstr ""
-
-#: libwnck/tasklist.c:523
-#, fuzzy
-msgid "Window List"
-msgstr "Matapihi Rārangi"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr ""
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Kati"
-
-#: libwnck/tasklist.c:2111
-msgid "_Minimize All"
-msgstr ""
-
-#: libwnck/tasklist.c:2122
-msgid "_Unminimize All"
 msgstr ""

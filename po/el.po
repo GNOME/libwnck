@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
+"POT-Creation-Date: 2005-02-07 21:26+0100\n"
 "PO-Revision-Date: 2004-03-01 15:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -35,6 +35,47 @@ msgstr "Εργαλείο για εναλλαγή μεταξύ χώρων εργ�
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr ""
+
+#: libwnck/selector.c:639
+msgid "No Windows Open"
+msgstr ""
+
+#: libwnck/selector.c:741
+#, fuzzy
+msgid "Window Selector"
+msgstr "Λίστα Παραθύρων"
+
+#: libwnck/selector.c:742
+#, fuzzy
+msgid "Tool to switch between windows"
+msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Λίστα Παραθύρων"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
+
+#: libwnck/tasklist.c:2102
+#, fuzzy
+msgid "_Close All"
+msgstr "_Κλείσιμο"
+
+#: libwnck/tasklist.c:2117
+#, fuzzy
+msgid "_Minimize All"
+msgstr "Ελα_χιστοποίηση"
+
+#: libwnck/tasklist.c:2128
+#, fuzzy
+msgid "_Unminimize All"
+msgstr "Απελαχιστο_ποίηση"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -61,12 +102,14 @@ msgid "Roll _Up"
 msgstr "Δίπλωμα _Πάνω"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+#, fuzzy
+msgid "_Only on This Workspace"
 msgstr "Μόνο σε Αυ_τό το Χώρο Εργασίας"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Τοποθέτηση σε Ό_λους τους Χώρους Εργασίας"
+#, fuzzy
+msgid "_Always on Visible Workspace"
+msgstr "Μόνο σε Αυ_τό το Χώρο Εργασίας"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -107,25 +150,5 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "παράθυρο χωρίς τίτλο"
 
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Λίστα Παραθύρων"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "_Κλείσιμο"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "Ελα_χιστοποίηση"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "Απελαχιστο_ποίηση"
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "Τοποθέτηση σε Ό_λους τους Χώρους Εργασίας"
