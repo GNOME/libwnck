@@ -4,6 +4,12 @@
 	it should be shortened and ellipsizes should be shown.
 	Fix for bug #155868
 
+	* The default application icon had been 24x24 and ALWAYS scaled down
+	to 16x16.  Plus, the icon showed a blank piece of paper when it
+	represented a window on the screen.  Fix the icon to show a window
+	and be the right size.
+	Fix for bug #155867
+
 2004-10-19  Elijah Newren  <newren@math.utah.edu>
 
 	* rationales.txt: New file (modelled after the metacity one with
