@@ -1,15 +1,22 @@
 # Translation of libwnck to Croatian
 # Copyright (C) Croatian team
 # Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,Zoran Jankovic <zoran.jankovic@inet.hr>,
+
+# Translation of libwnck to Croatian
+# Copyright (C) Croatian team
+# Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,Zoran Jankovic <zoran.jankovic@inet.hr>,
+# Translation of libwnck to Croatian
+# Copyright (C) Croatian team
+# Translators: Automatski Prijevod <>,Denis Lackovic <delacko@fly.srk.fer.hr>,Zoran Jankovic <zoran.jankovic@inet.hr>,
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0\n"
-"POT-Creation-Date: 2003-11-06 18:12+0100\n"
-"PO-Revision-Date: 2003-12-30 20:47+CET\n"
-"Last-Translator: auto\n"
+"POT-Creation-Date: 2004-01-02 15:34+0100\n"
+"PO-Revision-Date: 2004-01-02 20:37+CET\n"
+"Last-Translator: Robert Sedak <robert.sedak@sk.tel.hr>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: TransDict server\n"
 
@@ -74,7 +81,7 @@ msgstr "_Promjena veličine"
 msgid "_Close"
 msgstr "_Zatvori"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "bezimeni prozor"
 
@@ -82,4 +89,12 @@ msgstr "bezimeni prozor"
 #, c-format
 msgid "Workspace %d"
 msgstr "Radna površina %d"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Popis prozora"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Alat za izmjenu između vidljivih prozora"
 
