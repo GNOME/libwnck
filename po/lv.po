@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2002-12-20 21:59+0200\n"
 "Last-Translator: Artis Trops <hornet@navigators.lv>\n"
 "Language-Team: Latvian <ll10nt@inbox.lv>\n"
@@ -107,11 +107,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "nonosaukts logs"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Rīks, lai pārslēgtos starp darba vietām"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version:libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2003-07-05 10:29+0530\n"
 "Last-Translator: FSF-India <locale@gnu.org.in>\n"
 "Language-Team: Malayalam <locale@gnu.org.in>\n"
@@ -104,11 +104,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "തരക്കെട്ടില്ലാത്ത ജാലകം"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"

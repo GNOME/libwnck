@@ -1,3 +1,18 @@
+2.9.4
+=====
+
+ Fixes
+
+  - Implemented switching workspaces when doing a DnD operation
+    (Carlos Garnacho Parro, Fernando Villacis Postigo)
+  - Allow minimizing an app via tasklist even when it has a transient
+    (Elijah Newren)
+  - Include pinned windows only for the active workspace (Elijah Newren)
+
+ Translators
+
+  - Rajeev Shrestha (ne)
+
 2.9.3
 =====
 

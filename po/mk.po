@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-09-10 16:25+0200\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
@@ -110,10 +110,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "Прозорец без наслов"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "Листа на прозорци"
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Алатка за менување помеѓу прозорците"

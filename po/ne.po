@@ -2,12 +2,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the  libwnck package.
 # Pawan Chitrakar  <pawan@nplinux.org>, 2004.
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-11 04:37+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-12-25 04:13+0545\n"
 "Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
 "Language-Team: NEPALI <info@mpp.org.np>\n"
@@ -67,8 +67,7 @@ msgstr "यो कार्यक्षेत्रमा मात्र "
 msgid "Put on _All Workspaces"
 msgstr "सबै कार्यक्षेत्रमा राख"
 
-#: libwnck/window-action-menu.c:376
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "%d कार्यक्षेत्र"
@@ -107,11 +106,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "शीर्षकरहित विन्डो"
 
-#: libwnck/tasklist.c:518
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "विन्डोको सूची "
 
-#: libwnck/tasklist.c:519
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "देखिने विन्डोहरु बीच ?"
-

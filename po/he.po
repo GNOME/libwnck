@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -106,10 +106,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "חלון ללא-שם"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "רשימת חלונות"
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "כלי להחלפה בין חלונות נראים"

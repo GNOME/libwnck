@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-02-27 18:54+0300\n"
 "Last-Translator: Priit Laes <amd@tt.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -104,10 +104,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "pealkirjata aken"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "Akende nimekiri"
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Rakend nähtavate akende vahteamiseks"

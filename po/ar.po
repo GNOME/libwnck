@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-02-04 16:23+0100\n"
 "Last-Translator: Arafat Medini <lumina@silverpen.de>\n"
 "Language-Team: Arabic <doc@arabeyes.org>\n"
@@ -108,11 +108,11 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "نافذة غير معنونة"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "قائمة النوافذ"
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "أداة للتحوّل بين النوافذ المرئية"
 

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -112,11 +112,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "fiestra sen título"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para seleccionar os escritorios"

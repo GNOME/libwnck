@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-12-21 20:41+0100\n"
+"POT-Creation-Date: 2005-01-12 07:57+0100\n"
 "PO-Revision-Date: 2004-03-13 06:26-0000\n"
 "Last-Translator: helgi <helgi@trance.is>\n"
 "Language-Team: Icelandic <gnome@techattack.nu>\n"
@@ -104,11 +104,11 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ónefndur gluggi"
 
-#: libwnck/tasklist.c:525
+#: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:526
+#: libwnck/tasklist.c:524
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Verkfæri til þess að fletta á milli vinnusvæða"

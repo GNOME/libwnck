@@ -1,3 +1,7 @@
+2005-01-12  Vincent Untz  <vincent@vuntz.net>
+
+	* NEWS: Version 2.9.4.
+
 2005-01-11  Elijah Newren  <newren@gmail.com>
 
 	* libwnck/pager.c (get_windows_for_workspace_in_bottom_to_top):
