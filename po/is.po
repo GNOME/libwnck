@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# SamÃºel JÃ³n Gunnarsson  <sammi@techattack.nu>, 2003.
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2003-06-07 09:38+0200\n"
+"PO-Revision-Date: 2003-06-07 09:46--100\n"
+"Last-Translator: Samuel Jon Gunnarsson <sammi@techattack.nu>\n"
+"Language-Team: Icelandic <gnome@techattack.nu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:26
+msgid "untitled application"
+msgstr "ónefnt forrit"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Vinnusvæðaflettir"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klikkaðu hér til að fletta yfir á vinnusvæði %s"
+
+#: libwnck/window-action-menu.c:191
+msgid "Unmi_nimize"
+msgstr "Stækka upp á _ný"
+
+#: libwnck/window-action-menu.c:198
+msgid "Mi_nimize"
+msgstr "Lág_marka"
+
+#: libwnck/window-action-menu.c:206
+msgid "Unma_ximize"
+msgstr "Minn_ka glugga"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "_Hámarka"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "_Rúlla Niður"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "Rúlla _Upp"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "Einungis á _þessu vinnusvæði"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "Setj_a á öll vinnusvæði"
+
+#: libwnck/window-action-menu.c:372
+msgid "_Move"
+msgstr "_Flytja"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "Bre_yta stærð"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Loka"
+
+#: libwnck/window.c:31
+msgid "untitled window"
+msgstr "ónefndur gluggi"
+
+#: libwnck/workspace.c:230
+#, c-format
+msgid "Workspace %d"
+msgstr "Vinnusvæði %d"
+
