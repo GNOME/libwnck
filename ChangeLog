@@ -1,3 +1,32 @@
+2005-01-22  Elijah Newren  <newren@gmail.com>
+
+	Change how tasks are sorted in the tasklist (make it intuitive and
+	rememberable instead of "seemingly random").  Fixes #52225.
+
+	* libwnck/private.h: (_wnck_window_create): take a sort_order
+	parameter
+
+	* libwnck/screen.c: (struct _WnckScreenPrivate): keep a
+	window_order parameter that increments as new windows are created,
+	(wnck_screen_construct): initialize window_order too,
+	(update_client_list): add new windows in mapping order instead of
+	stacking order and be sure to pass the sort order when creating a
+	new window
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_allocate): list tasks
+	going down a column then going to a new row, instead of
+	vice-versa, (wnck_task_compare): use window sort_order instead of
+	the xid of the window's group leader and the xid of the window to
+	compare how to sort windows
+
+	* libwnck/window.c: (struct _WnckWindowPrivate): add a sort_order
+	flag, (_wnck_window_create): take a sort_order flag and use it to
+	set window->priv->sort_order, (wnck_window_get_sort_order): new
+	function to return the window's sort order
+
+	* libwnck/window.h: (wnck_window_get_sort_order): new function to
+	return the window's sort order
+
 2005-01-18  Elijah Newren  <newren@gmail.com>
 
 	Patch from Jaap Haitsma to show close all and (un)minimize all
@@ -14,7 +43,8 @@
 
 	* libwnck/tasklist.c (wnck_tasklist_window_changed_geometry): If
 	there's only one monitor then skip the monitor-change checking
-	code to avoid use of uninitialized variables causing craziness.
+	code to avoid use of uninitialized variables (this caused some
+	clicks on windows in the tasklist to be ignored).
 
 2005-01-12  Vincent Untz  <vincent@vuntz.net>
 

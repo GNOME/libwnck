@@ -55,6 +55,11 @@ struct _WnckScreenPrivate
   WnckWindow *previously_active_window;
   WnckWorkspace *active_workspace;
 
+  /* Provides the sorting order number for the next window, to make
+   * sure windows remain sorted in the order they appear.
+   */
+  gint window_order;
+
   Pixmap bg_pixmap;
   
   guint update_handler;  
@@ -384,6 +389,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->xroot = RootWindow (gdk_display, number);
   screen->priv->xscreen = ScreenOfDisplay (gdk_display, number);
   screen->priv->number = number;
+  screen->priv->window_order = 0;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   screen->priv->sn_display = sn_display_new (gdk_display,
@@ -891,13 +897,13 @@ update_client_list (WnckScreen *screen)
 
   new_hash = g_hash_table_new (NULL, NULL);
   
-  new_stack_list = NULL;
+  new_list = NULL;
   i = 0;
-  while (i < stack_length)
+  while (i < mapping_length)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (stack[i]);
+      window = wnck_window_get (mapping[i]);
 
       if (window == NULL)
         {
@@ -906,7 +912,10 @@ update_client_list (WnckScreen *screen)
 	  const char *res_class;
 	  WnckClassGroup *class_group;
           
-          window = _wnck_window_create (stack[i], screen);
+          window = _wnck_window_create (mapping[i], 
+                                        screen,
+                                        screen->priv->window_order++);
+
           created = g_list_prepend (created, window);
 
 	  /* Application */
@@ -936,7 +945,7 @@ update_client_list (WnckScreen *screen)
 	  _wnck_class_group_add_window (class_group, window);
         }
 
-      new_stack_list = g_list_prepend (new_stack_list, window);
+      new_list = g_list_prepend (new_list, window);
 
       g_hash_table_insert (new_hash, window, window);
       
@@ -944,12 +953,12 @@ update_client_list (WnckScreen *screen)
     }
       
   /* put list back in order */
-  new_stack_list = g_list_reverse (new_stack_list);
+  new_list = g_list_reverse (new_list);
 
   /* Now we need to find windows in the old list that aren't
    * in this new list
    */
-  tmp = screen->priv->stacked_windows;
+  tmp = screen->priv->mapped_windows;
   while (tmp != NULL)
     {
       WnckWindow *window = tmp->data;
@@ -984,17 +993,17 @@ update_client_list (WnckScreen *screen)
   g_hash_table_destroy (new_hash);
 
   /* Now get the mapping in list form */
-  new_list = NULL;
+  new_stack_list = NULL;
   i = 0;
-  while (i < mapping_length)
+  while (i < stack_length)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (mapping[i]);
+      window = wnck_window_get (stack[i]);
 
       g_assert (window != NULL);
 
-      new_list = g_list_prepend (new_list, window);
+      new_stack_list = g_list_prepend (new_stack_list, window);
       
       ++i;
     }
@@ -1003,7 +1012,7 @@ update_client_list (WnckScreen *screen)
   g_free (mapping);
       
   /* put list back in order */
-  new_list = g_list_reverse (new_list);
+  new_stack_list = g_list_reverse (new_stack_list);
   
   /* Now new_stack_list becomes screen->priv->stack_windows, new_list
    * becomes screen->priv->mapped_windows, and we emit the opened/closed

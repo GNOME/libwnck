@@ -63,6 +63,7 @@ struct _WnckWindowPrivate
   char *session_id_utf8;
   int pid;
   int workspace;
+  gint sort_order;
 
   WnckWindowType wintype;
   
@@ -346,7 +347,8 @@ wnck_window_get_screen (WnckWindow *window)
 
 WnckWindow*
 _wnck_window_create (Window      xwindow,
-                     WnckScreen *screen)
+                     WnckScreen *screen,
+                     gint        sort_order)
 {
   WnckWindow *window;
 
@@ -386,6 +388,8 @@ _wnck_window_create (Window      xwindow,
                              &window->priv->y,
                              &window->priv->width,
                              &window->priv->height);
+
+  window->priv->sort_order = sort_order;
   
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
@@ -550,6 +554,23 @@ wnck_window_get_pid (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
 
   return window->priv->pid;
+}
+
+/**
+ * wnck_window_get_sort_order:
+ * @window: a #WnckWindow
+ *
+ * Gets the sort order of @window; used for ordering of the window in
+ * the tasklist.  This is defined when the window is created.
+ *
+ * Return value: sort order of @window, or G_MAXINT if none available
+ **/
+gint
+wnck_window_get_sort_order (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), G_MAXINT);
+
+  return window->priv->sort_order;
 }
 
 /**

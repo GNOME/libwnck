@@ -50,7 +50,8 @@ void _wnck_screen_process_property_notify (WnckScreen *screen,
 void _wnck_window_process_configure_notify (WnckWindow *window,
                                             XEvent     *xevent);
 WnckWindow* _wnck_window_create  (Window      xwindow,
-                                  WnckScreen *screen);
+                                  WnckScreen *screen,
+                                  gint        sort_order);
 void        _wnck_window_destroy (WnckWindow *window);
 
 const char* _wnck_window_get_startup_id (WnckWindow *window);

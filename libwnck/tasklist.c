@@ -1154,8 +1154,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   while (l != NULL)
     {
       WnckTask *task = WNCK_TASK (l->data);
-      int col = i % n_cols;
-      int row = i / n_cols;
+      int row = i % n_rows;
+      int col = i / n_rows;
       
       child_allocation.x = total_width*col / n_cols;
       child_allocation.y = allocation->height*row / n_rows;
@@ -2774,11 +2774,10 @@ wnck_task_compare (gconstpointer  a,
 {
   WnckTask *task1 = WNCK_TASK (a);
   WnckTask *task2 = WNCK_TASK (b);
-  gulong xid1_1, xid1_2;
-  gulong xid2_1, xid2_2;
-  
-  xid1_1 = xid1_2 = xid2_1 = xid2_2 = 0;   /* silence compiler */
-  
+  gint pos1, pos2;
+
+  pos1 = pos2 = 0;  /* silence the compiler */
+
   switch (task1->type)
     {
     case WNCK_TASK_CLASS_GROUP:
@@ -2788,11 +2787,10 @@ wnck_task_compare (gconstpointer  a,
 	return -1; /* Sort groups before everything else */
 
     case WNCK_TASK_WINDOW:
-      xid1_1 = wnck_window_get_group_leader (task1->window);
-      xid1_2 = wnck_window_get_xid (task1->window);
+      pos1 = wnck_window_get_sort_order (task1->window);
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
-      xid1_1 = xid1_2 = G_MAXULONG;
+      pos1 = G_MAXINT;
       break;
     }
 
@@ -2805,20 +2803,20 @@ wnck_task_compare (gconstpointer  a,
 	return 1; /* Sort groups before everything else */
 
     case WNCK_TASK_WINDOW:
-      xid2_1 = wnck_window_get_group_leader (task2->window);
-      xid2_2 = wnck_window_get_xid (task2->window);
+      pos2 = wnck_window_get_sort_order (task2->window);
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
-      xid2_1 = xid2_2 = G_MAXULONG;
+      pos2 = G_MAXINT;
       break;
     }
       
-  if ((xid1_1 < xid2_1) || ((xid1_1 == xid2_1) && (xid1_2 < xid2_2)))
+  if (pos1 < pos2)
     return -1;
-  else if ((xid1_1 == xid2_1) && (xid1_2 == xid2_2))
-    return 0;
-  else
+  else if (pos1 > pos2)
     return 1;
+  else
+    return 0; /* should only happen if there's multiple processes being
+               * started, and then who cares about sort order... */
 }
 
 static void
