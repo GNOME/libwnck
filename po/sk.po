@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2003-01-04 15:38+0100\n"
+"POT-Creation-Date: 2003-01-09 23:39-0500\n"
 "PO-Revision-Date: 2003-01-04 15:38+0100\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -85,4 +85,3 @@ msgstr "okno bez mena"
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovná plocha %d"
-

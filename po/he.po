@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
-"POT-Creation-Date: 2003-01-03 06:02+0100\n"
+"POT-Creation-Date: 2003-01-09 23:39-0500\n"
 "PO-Revision-Date: 2003-01-03 16:50+0200\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -91,4 +91,3 @@ msgstr "סביבת עבודה %d"
 
 #~ msgid "_Shade"
 #~ msgstr "ה_צלל"
-

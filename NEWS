@@ -1,0 +1,6 @@
+2.1.90
+===
+
+- Fixed a big-ass memleak (Arjan van de Ven)
+- Added Czech translations
+- Updated README for first time ever

@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-02 02:03+0100\n"
+"POT-Creation-Date: 2003-01-09 23:39-0500\n"
 "PO-Revision-Date: 2003-01-02 02:12+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -17,72 +17,72 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:1
+#: libwnck/application.c:25
 msgid "untitled application"
 msgstr "aplikacja bez nazwy"
 
-#: libwnck/pager-accessible.c:1
+#: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
 msgstr "Przełącznik obszarów roboczych"
 
-#: libwnck/pager-accessible.c:1
+#: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
 msgstr "Narzędzie do przełączania obszarów roboczych"
 
-#: libwnck/pager-accessible.c:1
+#: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknij tutaj, aby przełączyć na obszar roboczy %s"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "Cofnij m_inimalizację"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "Zm_inimalizuj"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "Cofnij m_aksymalizację"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "Zm_aksymalizuj"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:221
 msgid "_Unroll"
 msgstr "Roz_wiń"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
 msgstr "Z_wiń"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
 msgstr "Tylko na tym _obszarze roboczym"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
 msgstr "Na wszystkich _obszarach roboczych"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "Prze_nieś"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "Zmień _rozmiar"
 
-#: libwnck/window-action-menu.c:1
+#: libwnck/window-action-menu.c:392
 msgid "_Close"
 msgstr "Za_mknij"
 
-#: libwnck/window.c:1
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "okno bez tytułu"
 
-#: libwnck/workspace.c:1
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar %d"

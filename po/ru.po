@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-09 16:41+0300\n"
+"POT-Creation-Date: 2003-01-09 23:39-0500\n"
 "PO-Revision-Date: 2003-01-09 17:01+0300\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
