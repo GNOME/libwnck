@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-11-03 14:09-0500\n"
-"PO-Revision-Date: 2002-10-27 22:49GMT+2\n"
+"POT-Creation-Date: 2002-11-04 09:32+0100\n"
+"PO-Revision-Date: 2002-11-05 01:50GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,74 +17,59 @@ msgid "untitled application"
 msgstr "дастасаваньне бяз назвы"
 
 #: libwnck/pager-accessible.c:317
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "Працоўная прастора %d"
+msgstr "Пераключальнік прастораў"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "Дастасаваньне для пераключэньня між працоўных прастораў"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "Клікніце сюды каб пераключыцца на прастору %s "
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
 msgstr "_Разгарнуць"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:161
 msgid "_Minimize"
 msgstr "Н_айменьшыць"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
 msgstr "Вярнуць _памер"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
 msgstr "На_йбольшыць"
 
-#: libwnck/window-action-menu.c:221
-msgid "_Unroll"
-msgstr ""
+#: libwnck/window-action-menu.c:181
+msgid "U_nshade"
+msgstr "Вярнуць з _ценю"
 
-#: libwnck/window-action-menu.c:228
-msgid "Roll _Up"
-msgstr ""
+#: libwnck/window-action-menu.c:187
+msgid "_Shade"
+msgstr "Схаваць у _цень"
 
-#: libwnck/window-action-menu.c:236
-msgid "Only on _This Workspace"
-msgstr ""
+#: libwnck/window-action-menu.c:298
+msgid "_Close"
+msgstr "_Зачыніць"
 
-#: libwnck/window-action-menu.c:243
-msgid "Put on _All Workspaces"
-msgstr ""
-
-#: libwnck/window-action-menu.c:372
+#: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
 msgstr "Пера_мясьціць"
 
-#: libwnck/window-action-menu.c:379
+#: libwnck/window-action-menu.c:325
 msgid "_Resize"
 msgstr "Зьмяніць _памер"
-
-#: libwnck/window-action-menu.c:392
-msgid "_Close"
-msgstr "_Зачыніць"
 
 #: libwnck/window.c:29
 msgid "untitled window"
 msgstr "акно бяз назвы"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "Вярнуць з _ценю"
-
-#~ msgid "_Shade"
-#~ msgstr "Схаваць у _цень"
