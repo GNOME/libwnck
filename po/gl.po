@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-08-25 15:18-0400\n"
+"POT-Creation-Date: 2002-09-27 21:35-0400\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -35,41 +35,49 @@ msgstr "Ferramenta para seleccionar os escritorios"
 msgid "Click this to switch to workspace %s"
 msgstr "Prema isto para activar o escritorio %s"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "Des_minimizar"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "_Minimizar"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "Desma_ximizar"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "Dese_nrolar"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "E_nrolar"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "_Pechar"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "Mo_ver"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "_Redimensionar"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Pechar"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -79,3 +87,9 @@ msgstr "fiestra sen título"
 #, c-format
 msgid "Workspace %d"
 msgstr "Escritorio %d"
+
+#~ msgid "U_nshade"
+#~ msgstr "Dese_nrolar"
+
+#~ msgid "_Shade"
+#~ msgstr "E_nrolar"

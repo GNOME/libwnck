@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD \n"
-"POT-Creation-Date: 2002-08-25 15:18-0400\n"
+"POT-Creation-Date: 2002-09-27 21:35-0400\n"
 "PO-Revision-Date: 2002-01-14 08:13+0800\n"
 "Last-Translator: Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.org>\n"
@@ -30,41 +30,49 @@ msgstr "Radas untuk menukar antara ruangkerja"
 msgid "Click this to switch to workspace %s"
 msgstr "Klik sini untuk menukar ke ruangkerja %s"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "Nyah_minimakan"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "_Minimakan"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "_Nyahmaksimakan"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "Ma_ksimakan"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "_Nyahsuram"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "_Suramkan"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "_Tutup"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "_Pindah"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "_Ubahsaiz"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Tutup"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -74,3 +82,9 @@ msgstr "tetingkap tiada tajuk"
 #, c-format
 msgid "Workspace %d"
 msgstr "Ruangkerja %d"
+
+#~ msgid "U_nshade"
+#~ msgstr "_Nyahsuram"
+
+#~ msgid "_Shade"
+#~ msgstr "_Suramkan"

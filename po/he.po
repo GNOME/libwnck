@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
-"POT-Creation-Date: 2002-08-26 05:09+0200\n"
+"POT-Creation-Date: 2002-09-27 21:35-0400\n"
 "PO-Revision-Date: 2002-08-27 01:41+0300\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -31,41 +31,49 @@ msgstr "כלי להחלפה בין סביבות עבודה"
 msgid "Click this to switch to workspace %s"
 msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "בטל מזעור"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "_מזער"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "בטל הגדלה"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "ה_גדל"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "בטל הצללה"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "ה_צלל"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "_סגור"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "_הזז"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "_שינוי גודל"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_סגור"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -76,3 +84,8 @@ msgstr "חלון ללא-שם"
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
 
+#~ msgid "U_nshade"
+#~ msgstr "בטל הצללה"
+
+#~ msgid "_Shade"
+#~ msgstr "ה_צלל"

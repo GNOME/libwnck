@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck CVS\n"
-"POT-Creation-Date: 2002-08-25 15:18-0400\n"
+"POT-Creation-Date: 2002-09-27 21:35-0400\n"
 "PO-Revision-Date: 2002-06-13 15:16+0900\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
@@ -30,41 +30,49 @@ msgstr "ワークスペース切替用ツール"
 msgid "Click this to switch to workspace %s"
 msgstr "これを押せばワークスペース %s へ切り替わります"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "最小化解除(_M)"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "最小化(_M)"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "最大化解除(_U)"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "シェード解除(_N)"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "シェード(_S)"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "閉じる(_C)"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "移動(_V)"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "大きさ変更(_R)"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "閉じる(_C)"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -74,3 +82,9 @@ msgstr "タイトル無しのウインドウ"
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
+
+#~ msgid "U_nshade"
+#~ msgstr "シェード解除(_N)"
+
+#~ msgid "_Shade"
+#~ msgstr "シェード(_S)"

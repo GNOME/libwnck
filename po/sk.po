@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2002-08-25 15:18-0400\n"
+"POT-Creation-Date: 2002-09-27 21:35-0400\n"
 "PO-Revision-Date: 2002-06-04 10:26+0200\n"
 "Last-Translator: Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -33,41 +33,49 @@ msgstr "Nástroj pre prepínanie medzi pracovnými plochami"
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknutím sa prepnete na plochu %s"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "_Obnoviť"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "_Minimalizovať"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "_Obnoviť"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "Ma_ximalizovať"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "_Rozbaliť"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "_Zabaliť"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "_Zavrieť"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "_Presunúť"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "Zmeniť _velkosť"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Zavrieť"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -77,3 +85,9 @@ msgstr "okno bez mena"
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovná plocha %d"
+
+#~ msgid "U_nshade"
+#~ msgstr "_Rozbaliť"
+
+#~ msgid "_Shade"
+#~ msgstr "_Zabaliť"
