@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-04-23 12:09+0200\n"
 "PO-Revision-Date: 2002-02-26 00:23+0100\n"
 "Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: slovenian <sl@li.org>\n"
@@ -56,7 +56,7 @@ msgstr "Spremeni _velikost"
 msgid "untitled window"
 msgstr "neimenovano okno"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
 msgstr "Delovna površina %d"
