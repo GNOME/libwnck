@@ -2,7 +2,7 @@ AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(libwnck, 2.5.0)
+AM_INIT_AUTOMAKE(libwnck, 2.4.0.1)
 AM_MAINTAINER_MODE
 
 dnl libtool versioning for libwnck
@@ -107,11 +107,6 @@ if test $pango_omitted_x_deps = yes ; then
     X_LIBS="$X_PRE_LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
   fi
 fi
-
-## Check for XRes
-AC_CHECK_LIB(XRes, XResQueryExtension,
-             X_LIBS="$X_LIBS -lXRes -lXext" ; AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [define if you have the XRes library]), ,
-             $X_LIBS -lXext)
 
 AC_SUBST(X_LIBS)
 

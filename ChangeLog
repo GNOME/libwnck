@@ -1,4 +1,4 @@
-2003-11-22  Federico Mena Quintero  <federico@ximian.com>
+2003-11-28  Federico Mena Quintero  <federico@ximian.com>
 
 	* libwnck/tasklist.c (WnckTaskType): Added a WNCK_TASK_CLASS_GROUP
 	type.
@@ -83,18 +83,6 @@
 	have to resize the test window every time.
 
 	* configure.in: Increment LIBWNCK_CURRENT and LIBWNCK_AGE.
-
-2003-11-17  Padraig O'Briain  <padraigobriain@sun.com>
-
-	* libwnck/tasklist.c (wnck_tasklist_init): Set translatable accessible 
-	name and description. Completes fix for bug #123953.
-
-2003-11-16  Havoc Pennington  <hp@redhat.com>
-
-	* configure.in: 2.5.0
-
-	* libwnck/util.c (wnck_xid_read_resource_usage): new function
-	(wnck_pid_read_resource_usage): new
 
 2003-10-27  Michael Meeks  <michael@ximian.com>
 

@@ -457,8 +457,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->idle_callback_tag = 0;
 
   atk_obj = gtk_widget_get_accessible (widget);
-  atk_object_set_name (atk_obj, _("Window List"));
-  atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
+  atk_object_set_name (atk_obj, "Window List");
+  atk_object_set_description (atk_obj, "Tool to switch between visible windows");
 }
 
 static void
@@ -1458,12 +1458,12 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	      class_group_task = wnck_task_new_from_class_group (tasklist, class_group);
 	      gtk_widget_set_parent (class_group_task->button, GTK_WIDGET (tasklist));
 	      gtk_widget_show (class_group_task->button);
-
+	      
 	      tasklist->priv->class_groups = g_list_prepend (tasklist->priv->class_groups,
 							     class_group_task);
 	      g_hash_table_insert (tasklist->priv->class_group_hash, class_group, class_group_task);
 	    }
-	  
+
 	  class_group_task->windows = g_list_prepend (class_group_task->windows, win_task);
 	}
       

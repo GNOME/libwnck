@@ -20,7 +20,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <string.h>
 #include "class-group.h"
 #include "window.h"
 #include "private.h"
