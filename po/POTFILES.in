@@ -1,2 +1,3 @@
 libwnck/window-action-menu.c
 libwnck/window.c
+libwnck/workspace.c
