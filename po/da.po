@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
-"PO-Revision-Date: 2002-04-16 18:09+0200\n"
+"POT-Creation-Date: 2002-04-26 17:21+0200\n"
+"PO-Revision-Date: 2002-04-26 17:21+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -45,8 +45,7 @@ msgid "_Shade"
 msgstr "Rul _op"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
-msgid "Close"
+msgid "_Close"
 msgstr "_Luk"
 
 #: libwnck/window-action-menu.c:318
