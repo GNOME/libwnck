@@ -1,3 +1,11 @@
+2004-04-19  Mark McLoughlin  <mark@skynet.ie>
+
+	Patch from Neil Muller <neil@dip.sun.ac.za> in bug #133979
+
+	* libwnck/xutils.c: (find_largest_sizes), (find_best_size):
+	Don't down-size nitems from a gulong to an int. Fixes a
+	crash with enlightenment, apparently.
+
 2004-04-18  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* libwnck/pager.c: (wnck_pager_button_press): AIX portability

@@ -1238,7 +1238,7 @@ _wnck_select_input (Window xwindow,
  */
 static gboolean
 find_largest_sizes (gulong *data,
-                    int     nitems,
+                    gulong  nitems,
                     int    *width,
                     int    *height)
 {
@@ -1273,7 +1273,7 @@ find_largest_sizes (gulong *data,
 
 static gboolean
 find_best_size (gulong  *data,
-                int      nitems,
+                gulong   nitems,
                 int      ideal_width,
                 int      ideal_height,
                 int     *width,
