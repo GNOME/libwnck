@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2005-01-26 01:15+0000\n"
+"POT-Creation-Date: 2005-02-18 00:47+0000\n"
+"PO-Revision-Date: 2005-02-18 00:50+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -34,21 +34,19 @@ msgstr "Clique para ir para a área de trabalho %s"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Janela Desconhecida"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr ""
+msgstr "Nenhuma Janela Aberta"
 
 #: libwnck/selector.c:741
-#, fuzzy
 msgid "Window Selector"
-msgstr "Lista de Janelas"
+msgstr "Selector de Janelas"
 
 #: libwnck/selector.c:742
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Ferramenta para alternar entre janelas visíveis"
+msgstr "Ferramenta para alternar entre janelas"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
@@ -95,14 +93,12 @@ msgid "Roll _Up"
 msgstr "_Enrolar"
 
 #: libwnck/window-action-menu.c:254
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Apenas Nesta Área de _Trabalho"
+msgstr "_Apenas nesta Área de Trabalho"
 
 #: libwnck/window-action-menu.c:261
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Apenas Nesta Área de _Trabalho"
+msgstr "_Sempre na Área de Trabalho Visível"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
