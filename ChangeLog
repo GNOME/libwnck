@@ -1,3 +1,9 @@
+2003-01-26  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c: (wnck_tasklist_check_end_sequence):
+	Actually end the sequnce if we match the wmclass against
+	a window.
+
 2003-01-22  Havoc Pennington  <hp@pobox.com>
 
         (not for 2.2.0)
