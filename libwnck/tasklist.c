@@ -1362,7 +1362,8 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
 
 
 static void
-wnck_task_popup_menu (WnckTask  *task)
+wnck_task_popup_menu (WnckTask *task,
+                      gboolean  action_submenu)
 {
   GtkWidget *menu;
   WnckTask *win_task;
@@ -1411,11 +1412,15 @@ wnck_task_popup_menu (WnckTask  *task)
 	}
       
       gtk_widget_show (menu_item);
-      
-      g_signal_connect_object (G_OBJECT (menu_item), "activate",
-                               G_CALLBACK (wnck_task_menu_activated),
-                               G_OBJECT (win_task),
-                               0);      
+
+       if (action_submenu)
+         gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
+                                    wnck_create_window_action_menu (win_task->window));
+       else
+         g_signal_connect_object (G_OBJECT (menu_item), "activate",
+                                  G_CALLBACK (wnck_task_menu_activated),
+                                  G_OBJECT (win_task),
+                                  0);
       
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       
@@ -1447,7 +1452,7 @@ wnck_task_button_toggled (GtkButton *button,
 
   if (task->is_application)
     {
-      wnck_task_popup_menu (task);
+      wnck_task_popup_menu (task, FALSE);
     }
   else
     {
@@ -1680,24 +1685,14 @@ wnck_task_button_press_event (GtkWidget	      *widget,
 			      gpointer         data)
 {
   WnckTask *task = WNCK_TASK (data);
-  
-  if (event->button != 1)
-    {
-      g_signal_stop_emission_by_name (widget,
-				      "button_press_event");
-    }
-  else
-    {
-      if (task->is_application)
-	{
-	  wnck_task_popup_menu (task);
-	  g_signal_stop_emission_by_name (widget,
-					  "button_press_event");
-	}
-    }
 
-  if (!task->is_application &&
-      event->button == 3)
+  if (task->is_application)
+    {
+      wnck_task_popup_menu (task,
+                            event->button == 3);
+      return TRUE;
+    }
+  else if (event->button == 3)
     {
       if (task->action_menu)
         gtk_widget_destroy (task->action_menu);

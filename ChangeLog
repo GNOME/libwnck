@@ -1,3 +1,9 @@
+2002-05-13  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/tasklist.c (wnck_task_popup_menu): patch from 
+	Arvind Samptur <arvind.samptur@wipro.com> to add window operation 
+	submenus to grouped tasks if you right-click. #79749
+
 2002-05-11  Thomas Vander Stichele <thomas@apestaart.org>
  
         * libwnck/tasklist.c: implemented minimum_width 
