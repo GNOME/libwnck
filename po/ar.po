@@ -1,95 +1,97 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# translation of libwnck.ar.po to 
+# translation of libwnck.po to Arabic
+# translation of libwnck.po to
+# Copyright (C) 2002,2003 Free Software Foundation, Inc.
 # Mohammed Gamal <f2c2001@yahoo.com>, 2002.
-#
+# Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
+# Arafat Medini <lumina@silverpen.de>, 2003.
+#  <lumina@silverpen.de>, 2003.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck VERSION\n"
+"Project-Id-Version: libwnck.ar\n"
+"Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2002-06-07 18:38-0300\n"
-"Last-Translator: Isam Bayazidi <bayazidi@arabeyes.org>\n"
-"Language-Team: Arabic <support@arabeyes.org>\n"
+"PO-Revision-Date: 2003-12-26 06:53+0100\n"
+"Last-Translator: Arafat Medini <lumina@silverpen.de>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.6\n"
+"Content-Transfer-Encoding: 8bit"
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "برنامج بدون عنوان"
+msgstr "تطبيق غير معنون"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "ناقل بين مساحات العمل"
+msgstr "محوّل مساحات العمل"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "أداة التحويل بين مساحات العمل"
+msgstr "أداة للتحوّل بين مساحات العمل"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "أضغط هذه للتحويل لمساحة العمل %s"
+msgstr "اضغط هذا للتحوّل لمساحة العمل %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "ازل الت_صغير"
+msgstr "إلغاء الت_صغير"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "ص_غر"
+msgstr "تص_غير"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "ازل الت_كبير"
+msgstr "إلغاء الت_كبير"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "ك_بر"
+msgstr "تك_بير"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_فتح اللف"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "لف إلى ال_أعلى"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "فقط على مساحة العمل _هذه"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "وضع على _جميع مساحات العمل"
 
 #: libwnck/window-action-menu.c:375
-#, fuzzy
 msgid "_Move"
-msgstr "ا_نقل"
+msgstr "_نقل"
 
 #: libwnck/window-action-menu.c:382
 msgid "_Resize"
-msgstr "ا_عادة تحجيم"
+msgstr "ت_حجيم"
 
 #: libwnck/window-action-menu.c:395
 msgid "_Close"
-msgstr "ا_غلق"
+msgstr "_غلق"
 
 #: libwnck/window.c:32
 msgid "untitled window"
-msgstr "نافذة بدون عنوان"
+msgstr "نافذة غير معنونة"
 
 #: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "مساحة عمل %d"
+msgstr "مساحة العمل %d"
 
 #~ msgid "U_nshade"
 #~ msgstr "ازل ال_تظليل"
 
 #~ msgid "_Shade"
-#~ msgstr "_ظلل"
+#~ msgstr "_ظلّل"
