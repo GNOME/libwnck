@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-06-10 11:11+0200\n"
 "PO-Revision-Date: 2002-05-10 22:06MET\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -23,6 +23,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "programe sins tite"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Discandjeu di scribannes"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Usteye po discandjî d' on scribanne a l' ôte"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Clitchîz çouchal po potchî å scribanne %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
