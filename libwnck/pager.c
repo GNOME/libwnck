@@ -235,7 +235,7 @@ wnck_pager_size_request  (GtkWidget      *widget,
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
   g_assert (pager->priv->n_rows > 0);
-  spaces_per_row = n_spaces /  pager->priv->n_rows;
+  spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
   
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {
@@ -280,13 +280,13 @@ get_workspace_rect (WnckPager    *pager,
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
   g_assert (pager->priv->n_rows > 0);
-  spaces_per_row = n_spaces /  pager->priv->n_rows;
+  spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
   
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {      
       rect->width = widget->allocation.width / pager->priv->n_rows;
       rect->height = widget->allocation.height / spaces_per_row;
-      rect->x = rect->width * (space % pager->priv->n_rows); 
+      rect->x = rect->width * (space / spaces_per_row); 
       rect->y = rect->height * (space % spaces_per_row);
     }
   else
@@ -294,7 +294,7 @@ get_workspace_rect (WnckPager    *pager,
       rect->width = widget->allocation.width / spaces_per_row;
       rect->height = widget->allocation.height / pager->priv->n_rows;
       rect->x = rect->width * (space % spaces_per_row);
-      rect->y = rect->height * (space % pager->priv->n_rows);
+      rect->y = rect->height * (space / spaces_per_row);
     }
 }
                     
@@ -793,6 +793,19 @@ wnck_pager_set_orientation (WnckPager     *pager,
     return;
 
   pager->priv->orientation = orientation;
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+void
+wnck_pager_set_n_rows (WnckPager *pager,
+		       int        n_rows)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  if (pager->priv->n_rows == n_rows)
+    return;
+
+  pager->priv->n_rows = n_rows;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 

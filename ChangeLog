@@ -1,3 +1,12 @@
+2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/pager.[ch] (get_workspace_rect):
+	Fix to work with n_rows != 0
+	(get_workspace_rect, wnck_pager_size_request):
+	Correct calculation of spaces_per_row if n_spaces not
+	a multiple of n_rows.
+	(wnck_pager_set_n_rows): Allow setting of n_rows.
+
 2001-11-26  Abel Cheung  <maddog@linux.org.hk>
 
 	* configure.in: Add po/Makefile.in to AC_OUTPUT for translator's
