@@ -128,6 +128,12 @@ void _wnck_get_window_position (Window xwindow,
                                 int   *xp,
                                 int   *yp);
 
+void _wnck_set_icon_geometry  (Window xwindow,
+			       int    x,
+			       int    y,
+			       int    width,
+			       int    height);
+
 void _wnck_set_dock_type_hint (Window xwindow);
 
 G_END_DECLS

@@ -1718,6 +1718,31 @@ _wnck_get_window_position (Window xwindow,
 }
 
 void
+_wnck_set_icon_geometry  (Window xwindow,
+			  int    x,
+			  int    y,
+			  int    width,
+			  int    height)
+{
+  gulong data[4];
+
+  data[0] = x;
+  data[1] = y;
+  data[2] = width;
+  data[3] = height;
+  
+  _wnck_error_trap_push ();
+
+  XChangeProperty (gdk_display,
+		   xwindow,
+		   _wnck_atom_get ("_NET_WM_ICON_GEOMETRY"),
+		   XA_CARDINAL, 32, PropModeReplace,
+		   (guchar *)&data, 4);
+
+  _wnck_error_trap_pop ();
+}
+
+void
 _wnck_set_dock_type_hint (Window xwindow)
 {
   Atom atom;

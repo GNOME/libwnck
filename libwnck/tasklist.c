@@ -23,6 +23,7 @@
 #include "tasklist.h"
 #include "window.h"
 #include "application.h"
+#include "xutils.h"
 
 /* TODO:
  * 
@@ -163,6 +164,7 @@ static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
 static gboolean wnck_tasklist_change_active_timeout    (gpointer data);
 static void     wnck_tasklist_activate_task_window     (WnckTask *task);
 
+static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist);
 
 static gpointer task_parent_class;
 static gpointer tasklist_parent_class;
@@ -671,6 +673,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       l = l->next;
     }
   g_list_free (visible_tasks);
+
+  /* Update icon geometries. */
+  wnck_tasklist_update_icon_geometries (tasklist);
   
   GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
 }
@@ -938,6 +943,28 @@ wnck_tasklist_change_active_task (WnckTasklist *tasklist, WnckTask *active_task)
 	  tasklist->priv->active_app->really_toggling = FALSE;
 	}
     }
+}
+
+static void
+wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist)
+{
+	gint x, y, width, height;
+	GList *list;
+	
+	for (list = tasklist->priv->windows; list; list = list->next) {
+		WnckTask *task = WNCK_TASK (list->data);
+		
+		if (!GTK_WIDGET_REALIZED (task->button))
+			continue;
+
+		gdk_window_get_origin (GTK_BUTTON (task->button)->event_window,
+					    &x, &y);
+		width = task->button->allocation.width;
+		height = task->button->allocation.height;
+
+		_wnck_set_icon_geometry (wnck_window_get_xid (task->window),
+					 x, y, width, height);
+	}
 }
 
 static void
