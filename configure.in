@@ -55,7 +55,7 @@ GETTEXT_PACKAGE=libwnck
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
 
-ALL_LINGUAS="da de es et fi ja ko lv ms nl nn no pl pt ru sk sl sv tr uk zh_CN zh_TW"
+ALL_LINGUAS="da de es et fi fr ja ko lv ms nl nn no pl pt ru sk sl sv tr uk zh_CN zh_TW"
 AM_GLIB_GNU_GETTEXT
 
 # AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
