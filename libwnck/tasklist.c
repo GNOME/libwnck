@@ -215,10 +215,10 @@ wnck_task_class_init (WnckTaskClass *klass)
   
   object_class->finalize = wnck_task_finalize;
 
-
   gtk_rc_parse_string ("
     style \"tasklist-button-style\"
     {
+       GtkWidget::focus-line-width=0
        GtkWidget::focus-padding=0
     }
 
@@ -1468,6 +1468,9 @@ wnck_task_create_widgets (WnckTask *task)
   char *text;
   
   task->button = gtk_toggle_button_new ();
+
+  GTK_WIDGET_UNSET_FLAGS(task->button, GTK_CAN_FOCUS);
+
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
 

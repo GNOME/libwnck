@@ -1,3 +1,9 @@
+2001-12-18  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.c (wnck_task_class_init):
+	Change focus-line-width too, and make the buttons
+	not GTK_CAN_FOCUS.
+
 2001-12-18  Takayuki KUSANO  <AE5T-KSN@asahi-net.or.jp>
 
 	* configure.in: Added "ja" to ALL_LINGUAS.
