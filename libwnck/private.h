@@ -47,7 +47,8 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   WnckScreen *screen);
 void        _wnck_window_destroy (WnckWindow *window);
 
-WnckWorkspace* _wnck_workspace_create  (int            number);
+WnckWorkspace* _wnck_workspace_create  (int            number,
+					WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);
 
 void _wnck_window_set_application    (WnckWindow      *window,
@@ -70,6 +71,11 @@ void _wnck_init (void);
 #define DEFAULT_ICON_HEIGHT 32
 #define DEFAULT_MINI_ICON_WIDTH 16
 #define DEFAULT_MINI_ICON_HEIGHT 16
+
+#define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
+
+Screen *_wnck_screen_get_xscreen (WnckScreen *screen);
+
 
 G_END_DECLS
 

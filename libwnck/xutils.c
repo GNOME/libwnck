@@ -763,7 +763,8 @@ _wnck_deiconify (Window xwindow)
 }
 
 void
-_wnck_close (Window xwindow)
+_wnck_close (Screen *screen,
+	     Window  xwindow)
 {
   XEvent xev;
   
@@ -779,14 +780,15 @@ _wnck_close (Window xwindow)
   xev.xclient.data.l[2] = 0;
 
   XSendEvent (gdk_display,
-              gdk_x11_get_default_root_xwindow (),
+              RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
 }
 
 void
-_wnck_change_state (Window   xwindow,
+_wnck_change_state (Screen  *screen,
+		    Window   xwindow,
                     gboolean add,
                     Atom     state1,
                     Atom     state2)
@@ -809,15 +811,16 @@ _wnck_change_state (Window   xwindow,
   xev.xclient.data.l[2] = state2;
 
   XSendEvent (gdk_display,
-              gdk_x11_get_default_root_xwindow (),
+	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 }
 
 void
-_wnck_change_workspace (Window xwindow,
-                        int    new_space)
+_wnck_change_workspace (Screen     *screen,
+			Window      xwindow,
+                        int         new_space)
 {
   XEvent xev;
   
@@ -833,14 +836,15 @@ _wnck_change_workspace (Window xwindow,
   xev.xclient.data.l[2] = 0;
 
   XSendEvent (gdk_display,
-              gdk_x11_get_default_root_xwindow (),
+	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
 }
 
 void
-_wnck_activate (Window xwindow)
+_wnck_activate (Screen *screen,
+		Window  xwindow)
 {
   XEvent xev;
   
@@ -856,14 +860,15 @@ _wnck_activate (Window xwindow)
   xev.xclient.data.l[2] = 0;
 
   XSendEvent (gdk_display,
-              gdk_x11_get_default_root_xwindow (),
+	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
 }
 
 void
-_wnck_activate_workspace (int new_active_space)
+_wnck_activate_workspace (Screen *screen,
+			  int     new_active_space)
 {
   XEvent xev;
   
@@ -871,7 +876,7 @@ _wnck_activate_workspace (int new_active_space)
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
   xev.xclient.display = gdk_display;
-  xev.xclient.window = gdk_x11_get_default_root_xwindow ();
+  xev.xclient.window = RootWindowOfScreen (screen);
   xev.xclient.message_type = _wnck_atom_get ("_NET_CURRENT_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_active_space;
@@ -879,7 +884,7 @@ _wnck_activate_workspace (int new_active_space)
   xev.xclient.data.l[2] = 0;
 
   XSendEvent (gdk_display,
-              gdk_x11_get_default_root_xwindow (),
+	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -2000,11 +2005,12 @@ _wnck_get_fallback_icons (GdkPixbuf **iconp,
 
 
 void
-_wnck_get_window_geometry (Window xwindow,
-                           int   *xp,
-                           int   *yp,
-                           int   *widthp,
-                           int   *heightp)
+_wnck_get_window_geometry (Screen *screen,
+			   Window  xwindow,
+                           int    *xp,
+                           int    *yp,
+                           int    *widthp,
+                           int    *heightp)
 {
   int x, y, width, height, bw, depth;
   Window root_window;
@@ -2021,7 +2027,7 @@ _wnck_get_window_geometry (Window xwindow,
   
   _wnck_error_trap_pop ();
 
-  _wnck_get_window_position (xwindow, xp, yp);
+  _wnck_get_window_position (screen, xwindow, xp, yp);
 
   if (widthp)
     *widthp = width;
@@ -2030,9 +2036,10 @@ _wnck_get_window_geometry (Window xwindow,
 }
 
 void
-_wnck_get_window_position (Window xwindow,
-                           int   *xp,
-                           int   *yp)
+_wnck_get_window_position (Screen *screen,
+			   Window  xwindow,
+                           int    *xp,
+                           int    *yp)
 {
   int x, y;
   Window child;
@@ -2043,7 +2050,7 @@ _wnck_get_window_position (Window xwindow,
   _wnck_error_trap_push ();
   XTranslateCoordinates (gdk_display,
                          xwindow,
-                         gdk_x11_get_default_root_xwindow (),
+			 RootWindowOfScreen (screen),
                          0, 0,
                          &x, &y, &child);
   _wnck_error_trap_pop ();

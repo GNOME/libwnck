@@ -353,7 +353,8 @@ _wnck_window_create (Window      xwindow,
   window->priv->pid =
     _wnck_get_pid (window->priv->xwindow);
 
-  _wnck_get_window_geometry (xwindow,
+  _wnck_get_window_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
+			     xwindow,
                              &window->priv->x,
                              &window->priv->y,
                              &window->priv->width,
@@ -631,7 +632,8 @@ wnck_window_close (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_close (window->priv->xwindow);
+  _wnck_close (WNCK_SCREEN_XSCREEN (window->priv->screen),
+	       window->priv->xwindow);
 }
 
 void
@@ -655,7 +657,8 @@ wnck_window_maximize                (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
@@ -666,7 +669,8 @@ wnck_window_unmaximize              (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
@@ -677,7 +681,8 @@ wnck_window_maximize_horizontally   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
                       0);
@@ -688,7 +693,8 @@ wnck_window_unmaximize_horizontally (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
                       0);
@@ -699,7 +705,8 @@ wnck_window_maximize_vertically     (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       0);
@@ -710,7 +717,8 @@ wnck_window_unmaximize_vertically   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       0);
@@ -721,7 +729,8 @@ wnck_window_shade                   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_SHADED"),
                       0);
@@ -732,7 +741,8 @@ wnck_window_unshade                 (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_SHADED"),
                       0);
@@ -743,7 +753,8 @@ wnck_window_stick                   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_STICKY"),
                       0);
@@ -754,7 +765,8 @@ wnck_window_unstick                 (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (window->priv->xwindow,
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_STICKY"),
                       0);
@@ -776,7 +788,7 @@ wnck_window_get_workspace (WnckWindow *window)
   if (window->priv->workspace == ALL_WORKSPACES)
     return NULL;
   else
-    return wnck_workspace_get (window->priv->workspace);
+    return wnck_screen_get_workspace (window->priv->screen, window->priv->workspace);
 }
 
 void
@@ -786,7 +798,8 @@ wnck_window_move_to_workspace (WnckWindow    *window,
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
-  _wnck_change_workspace (window->priv->xwindow,
+  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
+			  window->priv->xwindow,
                           wnck_workspace_get_number (space));
 }
 
@@ -813,7 +826,8 @@ wnck_window_pin (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_workspace (window->priv->xwindow,
+  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
+			  window->priv->xwindow,
                           ALL_WORKSPACES);
 }
 
@@ -840,7 +854,8 @@ wnck_window_unpin (WnckWindow *window)
 
   active = wnck_screen_get_active_workspace (window->priv->screen);
 
-  _wnck_change_workspace (window->priv->xwindow,
+  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
+			  window->priv->xwindow,
                           active ? wnck_workspace_get_number (active) : 0);
 }
 
@@ -856,7 +871,8 @@ wnck_window_activate (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_activate (window->priv->xwindow);
+  _wnck_activate (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		  window->priv->xwindow);
 }
 
 /**
@@ -1168,7 +1184,7 @@ _wnck_window_process_property_notify (WnckWindow *window,
            xevent->xproperty.atom ==
            _wnck_atom_get ("KWM_WIN_ICON") ||
            xevent->xproperty.atom ==
-           _wnck_atom_get ("WM_NORMAL_HINTS"))
+           _wnck_atom_get ("WM_HINTS"))
     {
       _wnck_icon_cache_property_changed (window->priv->icon_cache,
                                          xevent->xproperty.atom);
@@ -1187,7 +1203,8 @@ _wnck_window_process_configure_notify (WnckWindow *window,
     }
   else
     {
-      _wnck_get_window_position (window->priv->xwindow,
+      _wnck_get_window_position (WNCK_SCREEN_XSCREEN (window->priv->screen),
+				 window->priv->xwindow,
                                  &window->priv->x,
                                  &window->priv->y);
     }

@@ -86,9 +86,12 @@ struct _WnckScreenClass
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
+WnckScreen* wnck_screen_get_default (void);
 WnckScreen* wnck_screen_get (int index);
 WnckScreen* wnck_screen_get_for_root (gulong root_window_id);
 
+WnckWorkspace* wnck_screen_get_workspace        (WnckScreen *screen,
+						 int         workspace);
 WnckWorkspace* wnck_screen_get_active_workspace (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window    (WnckScreen *screen);
 
@@ -106,7 +109,6 @@ gulong wnck_screen_get_background_pixmap (WnckScreen *screen);
 
 int wnck_screen_get_width (WnckScreen *screen);
 int wnck_screen_get_height (WnckScreen *screen);
-
 
 G_END_DECLS
 

@@ -310,17 +310,18 @@ wnck_pager_size_request  (GtkWidget      *widget,
       else
 	{
 	  int n_spaces, i, w;
+	  WnckScreen *screen;
 	  PangoLayout *layout;
 
 	  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 	  layout = gtk_widget_create_pango_layout  (widget, NULL);
-	  
+	  screen = pager->priv->screen;
 	  other_dimension_size = 1;
 	  
 	  for (i = 0; i < n_spaces; i++)
 	    {
 	      pango_layout_set_text (layout,
-				     wnck_workspace_get_name (wnck_workspace_get (i)),
+				     wnck_workspace_get_name (wnck_screen_get_workspace (screen, i)),
 				     -1);
 	      pango_layout_get_pixel_size (layout, &w, NULL);
 	      other_dimension_size = MAX (other_dimension_size, w);
@@ -645,7 +646,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
     {      
       windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
-							    wnck_workspace_get (workspace));
+							    wnck_screen_get_workspace (pager->priv->screen,
+										       workspace));
       
       tmp = windows;
       while (tmp != NULL)
@@ -675,13 +677,16 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   else
     {
       /* Workspace name mode */
+      const char *workspace_name;
       PangoLayout *layout;
       int w, h;
 
       
-      
+
+      workspace_name = wnck_workspace_get_name (wnck_screen_get_workspace (pager->priv->screen,
+									   workspace));
       layout = gtk_widget_create_pango_layout  (GTK_WIDGET (pager),
-						wnck_workspace_get_name (wnck_workspace_get (workspace)));
+						workspace_name);
       
       pango_layout_get_pixel_size (layout, &w, &h);
       
@@ -800,7 +805,7 @@ wnck_pager_button_press  (GtkWidget      *widget,
 
       if (POINT_IN_RECT (event->x, event->y, rect))
         {
-          WnckWorkspace *space = wnck_workspace_get (i);
+          WnckWorkspace *space = wnck_screen_get_workspace (pager->priv->screen, i);
 
 	  if (event->button == 1)
 	    handled = TRUE;
@@ -909,7 +914,7 @@ wnck_pager_button_release (GtkWidget        *widget,
 
       if (i >= 0)
 	{
-	  space = wnck_workspace_get (i);
+	  space = wnck_screen_get_workspace (pager->priv->screen, i);
 
 	  if (space)
             {
@@ -931,7 +936,7 @@ wnck_pager_button_release (GtkWidget        *widget,
 
       if (i >= 0)
 	{
-	  space = wnck_workspace_get (i);
+	  space = wnck_screen_get_workspace (pager->priv->screen, i);
 
 	  if (space &&
 	      space != wnck_screen_get_active_workspace (pager->priv->screen))

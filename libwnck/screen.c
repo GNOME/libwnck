@@ -333,6 +333,16 @@ wnck_screen_get (int index)
   return screens[index];
 }
 
+WnckScreen*
+wnck_screen_get_default (void)
+{
+  int default_screen;
+
+  default_screen = DefaultScreen (gdk_display);
+
+  return wnck_screen_get (default_screen);
+}
+
 /**
  * wnck_screen_get_for_root:
  * @root_window_id: an Xlib window ID
@@ -361,6 +371,33 @@ wnck_screen_get_for_root (gulong root_window_id)
     }
 
   return NULL;
+}
+
+/**
+ * wnck_screen_get_workspace:
+ * @screen: a #WnckScreen
+ * @number: a workspace index
+ * 
+ * Gets the workspace numbered @number for screen @screen, or returns %NULL if
+ * no such workspace exists.
+ * 
+ * Return value: the workspace, or %NULL
+ **/
+WnckWorkspace*
+wnck_screen_get_workspace (WnckScreen *screen,
+			   int         number)
+{
+  GList *list;
+  
+  /* We trust this function with property-provided numbers, it
+   * must reliably return NULL on bad data
+   */
+  list = g_list_nth (screen->priv->workspaces, number);
+
+  if (list == NULL)
+    return NULL;
+  
+  return WNCK_WORKSPACE (list->data);
 }
 
 /**
@@ -920,7 +957,7 @@ update_workspace_list (WnckScreen *screen)
         {
           WnckWorkspace *space;
 
-          space = _wnck_workspace_create (old_n_spaces + i);
+          space = _wnck_workspace_create (old_n_spaces + i, screen);
 
           screen->priv->workspaces = g_list_append (screen->priv->workspaces,
                                                     space);
@@ -951,7 +988,7 @@ update_workspace_list (WnckScreen *screen)
       
       tmp = tmp->next;
     }
-
+  
   tmp = created;
   while (tmp != NULL)
     {
@@ -959,14 +996,16 @@ update_workspace_list (WnckScreen *screen)
       
       tmp = tmp->next;
     }
-
+  g_list_free (created);
+  
   tmp = deleted;
   while (tmp != NULL)
     {
-      _wnck_workspace_destroy (WNCK_WORKSPACE (tmp->data));
+      g_object_unref (tmp->data);
       
       tmp = tmp->next;
     }
+  g_list_free (deleted);
 
   /* Active workspace property may now be interpretable,
    * if it was a number larger than the active count previously
@@ -997,7 +1036,7 @@ update_active_workspace (WnckScreen *screen)
                            &number))
     number = -1;
   
-  space = wnck_workspace_get (number);
+  space = wnck_screen_get_workspace (screen, number);
 
   if (space == screen->priv->active_workspace)
     return;
@@ -1258,4 +1297,10 @@ wnck_screen_get_height (WnckScreen *screen)
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
 
   return gdk_screen_height ();
+}
+
+Screen *
+_wnck_screen_get_xscreen (WnckScreen *screen)
+{
+  return screen->priv->xscreen;
 }

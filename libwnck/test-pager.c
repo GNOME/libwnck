@@ -48,7 +48,7 @@ main (int argc, char **argv)
   
   gtk_init (&argc, &argv);
 
-  screen = wnck_screen_get (0);
+  screen = wnck_screen_get_default ();
 
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);

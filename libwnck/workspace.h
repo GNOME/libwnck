@@ -53,8 +53,6 @@ struct _WnckWorkspaceClass
 
 GType wnck_workspace_get_type (void) G_GNUC_CONST;
 
-WnckWorkspace* wnck_workspace_get (int number);
-
 int wnck_workspace_get_number (WnckWorkspace *space);
 
 const char* wnck_workspace_get_name (WnckWorkspace *space);

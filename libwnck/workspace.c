@@ -26,10 +26,9 @@
 #include "private.h"
 #include <string.h>
 
-static GHashTable* workspace_hash = NULL;
-
 struct _WnckWorkspacePrivate
 {
+  WnckScreen *screen;
   int number;
   char *name;
 };
@@ -121,27 +120,6 @@ wnck_workspace_finalize (GObject *object)
 }
 
 /**
- * wnck_workspace_get:
- * @number: a workspace index
- * 
- * Gets the workspace numbered @number, or returns %NULL if
- * no such workspace exists.
- * 
- * Return value: the workspace, or %NULL
- **/
-WnckWorkspace*
-wnck_workspace_get (int number)
-{
-  /* We trust this function with property-provided numbers, it
-   * must reliably return NULL on bad data
-   */
-  if (workspace_hash == NULL)
-    return NULL;
-  else
-    return g_hash_table_lookup (workspace_hash, &number);
-}
-
-/**
  * wnck_workspace_get_number:
  * @space: a #WnckWorkspace
  * 
@@ -191,46 +169,22 @@ wnck_workspace_activate (WnckWorkspace *space)
 {
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
-  _wnck_activate_workspace (space->priv->number);
+  _wnck_activate_workspace (WNCK_SCREEN_XSCREEN (space->priv->screen), space->priv->number);
 }
 
 WnckWorkspace*
-_wnck_workspace_create  (int number)
+_wnck_workspace_create (int number, WnckScreen *screen)
 {
   WnckWorkspace *space;
-  
-  if (workspace_hash == NULL)
-    workspace_hash = g_hash_table_new (g_int_hash, g_int_equal);
-
-  g_return_val_if_fail (g_hash_table_lookup (workspace_hash, &number) == NULL,
-                        NULL);
   
   space = g_object_new (WNCK_TYPE_WORKSPACE, NULL);
   space->priv->number = number;
   space->priv->name = NULL;
+  space->priv->screen = screen;
 
   _wnck_workspace_update_name (space, NULL);
   
-  g_hash_table_insert (workspace_hash, &space->priv->number, space);
-
-  /* Hash now owns one ref, caller gets none */
-  
   return space;
-}
-
-void
-_wnck_workspace_destroy (WnckWorkspace *space)
-{
-  g_return_if_fail (wnck_workspace_get (space->priv->number) == space);
-  
-  g_hash_table_remove (workspace_hash, &space->priv->number);
-
-  g_return_if_fail (wnck_workspace_get (space->priv->number) == NULL);
-
-  space->priv->number = -1;
-  
-  /* remove hash's ref on the workspace */  
-  g_object_unref (G_OBJECT (space));
 }
 
 void

@@ -1,3 +1,45 @@
+2002-05-14  Anders Carlsson  <andersca@gnu.org>
+
+	* libwnck/window.c (_wnck_window_process_property_notify):
+	The property that has the icon pixmap is called WM_HINTS, 
+	not WM_NORMAL_HINTS. Fixes #81138, reported by Håvard 
+	Wigtil.
+
+2002-05-14  Anders Carlsson  <andersca@gnu.org>
+
+	* configure.in:
+	* libwnck/pager.c: (wnck_pager_size_request),
+	(wnck_pager_draw_workspace), (wnck_pager_button_press),
+	(wnck_pager_button_release):
+	* libwnck/private.h:
+	* libwnck/screen.c: (wnck_screen_get_default),
+	(wnck_screen_get_workspace), (update_workspace_list),
+	(update_active_workspace), (wnck_screen_get_height),
+	(_wnck_screen_get_xscreen):
+	* libwnck/screen.h:
+	* libwnck/test-pager.c: (main):
+	* libwnck/test-tasklist.c: (main):
+	* libwnck/window.c: (_wnck_window_create), (wnck_window_close),
+	(wnck_window_maximize), (wnck_window_unmaximize),
+	(wnck_window_maximize_horizontally),
+	(wnck_window_unmaximize_horizontally),
+	(wnck_window_maximize_vertically),
+	(wnck_window_unmaximize_vertically), (wnck_window_shade),
+	(wnck_window_unshade), (wnck_window_stick), (wnck_window_unstick),
+	(wnck_window_get_workspace), (wnck_window_move_to_workspace),
+	(wnck_window_pin), (wnck_window_unpin), (wnck_window_activate),
+	(_wnck_window_process_configure_notify):
+	* libwnck/workspace.c: (wnck_workspace_activate),
+	(_wnck_workspace_create):
+	* libwnck/workspace.h:
+	* libwnck/xutils.c: (_wnck_close), (_wnck_change_state),
+	(_wnck_change_workspace), (_wnck_activate),
+	(_wnck_activate_workspace), (_wnck_get_window_geometry),
+	(_wnck_get_window_position):
+	* libwnck/xutils.h:
+	Add multi-screen support. Don't leak the created and deleted
+	lists in update_workspace_list. Bump version to 0.11.
+	
 2002-05-14  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.10

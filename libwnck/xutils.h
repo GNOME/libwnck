@@ -79,16 +79,21 @@ guint _wnck_xid_hash  (gconstpointer v);
 void _wnck_iconify   (Window xwindow);
 void _wnck_deiconify (Window xwindow);
 
-void _wnck_close     (Window xwindow);
+void _wnck_close     (Screen *screen,
+		      Window  xwindow);
 
-void _wnck_change_state     (Window   xwindow,
+void _wnck_change_state     (Screen  *screen,
+			     Window   xwindow,
                              gboolean add,
                              Atom     state1,
                              Atom     state2);
-void _wnck_change_workspace (Window   xwindow,
+void _wnck_change_workspace (Screen  *screen,
+			     Window   xwindow,
                              int      new_space);
-void _wnck_activate         (Window   xwindow);
-void _wnck_activate_workspace (int    new_active_space);
+void _wnck_activate         (Screen  *screen,
+			     Window   xwindow);
+void _wnck_activate_workspace (Screen *screen,
+			       int     new_active_space);
 
 Window _wnck_get_group_leader   (Window xwindow);
 char*  _wnck_get_session_id     (Window xwindow);
@@ -127,15 +132,17 @@ void _wnck_get_fallback_icons (GdkPixbuf     **iconp,
 
 
 
-void _wnck_get_window_geometry (Window xwindow,
-                                int   *xp,
-                                int   *yp,
-                                int   *widthp,
-                                int   *heightp);
+void _wnck_get_window_geometry (Screen *screen,
+				Window  xwindow,
+                                int    *xp,
+                                int    *yp,
+                                int    *widthp,
+                                int    *heightp);
 
-void _wnck_get_window_position (Window xwindow,
-                                int   *xp,
-                                int   *yp);
+void _wnck_get_window_position (Screen *screen,
+				Window  xwindow,
+                                int    *xp,
+                                int    *yp);
 
 void _wnck_set_icon_geometry  (Window xwindow,
 			       int    x,
