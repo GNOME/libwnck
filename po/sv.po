@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-05-01 12:40+0200\n"
+"POT-Creation-Date: 2003-12-22 00:49+0100\n"
+"PO-Revision-Date: 2003-12-22 00:50+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,6 +84,14 @@ msgstr "namnlöst fönster"
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Fönsterlista"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Verktyg för att växla mellan synliga fönster"
 
 #~ msgid "Un_minimize"
 #~ msgstr "Av_minimera"
