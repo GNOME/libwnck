@@ -1,0 +1,76 @@
+# libwnck Brazilian Portuguese Translation
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Evandro Fernandes Giovanini <evandrofg@ig.com.br>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.0\n"
+"POT-Creation-Date: 2002-08-16 13:21-0300\n"
+"PO-Revision-Date: 2002-08-16 13:31-0300\n"
+"Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
+"Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "aplicação sem título"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Alternador Ambiente de Trabalho"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Ferramenta para alternar entre áreas de trabalho"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Clicar para ir para a área de trabalho %s"
+
+#: libwnck/window-action-menu.c:155
+msgid "Un_minimize"
+msgstr "Desfazer _Minimizar"
+
+#: libwnck/window-action-menu.c:161
+msgid "_Minimize"
+msgstr "_Minimizar"
+
+#: libwnck/window-action-menu.c:168
+msgid "_Unmaximize"
+msgstr "Desfazer Ma_ximizar"
+
+#: libwnck/window-action-menu.c:174
+msgid "Ma_ximize"
+msgstr "Ma_ximizar"
+
+#: libwnck/window-action-menu.c:181
+msgid "U_nshade"
+msgstr "Desfazer _Sombrear"
+
+#: libwnck/window-action-menu.c:187
+msgid "_Shade"
+msgstr "_Sombrear"
+
+#: libwnck/window-action-menu.c:298
+msgid "_Close"
+msgstr "Fe_char"
+
+#: libwnck/window-action-menu.c:319
+msgid "Mo_ve"
+msgstr "Mo_ver"
+
+#: libwnck/window-action-menu.c:325
+msgid "_Resize"
+msgstr "_Redimensionar"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "janela sem título"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "Área de Trabalho %d"
