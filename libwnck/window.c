@@ -70,7 +70,12 @@ struct _WnckWindowPrivate
   int y;
   int width;
   int height;
-
+  
+  /* true if transient_for points to root window,
+   * not another app window
+   */
+  guint transient_for_root : 1;
+  
   /* window state */
   guint is_minimized : 1;
   guint is_maximized_horz : 1;
@@ -79,7 +84,7 @@ struct _WnckWindowPrivate
   guint skip_pager : 1;
   guint skip_taskbar : 1;
   guint is_sticky : 1;
-
+  
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
    * interpretation)
@@ -101,7 +106,7 @@ struct _WnckWindowPrivate
   guint need_emit_icon_changed : 1;
   guint need_update_actions : 1;
   guint need_update_wintype : 1;
-  guint need_update_transient_for : 1;
+  guint need_update_transient_for : 1;  
 };
 
 enum {
@@ -1338,13 +1343,21 @@ update_state (WnckWindow *window)
     {
     case WNCK_WINDOW_DESKTOP:
     case WNCK_WINDOW_DOCK:
+    case WNCK_WINDOW_SPLASHSCREEN:
+      window->priv->skip_taskbar = TRUE;
+      break;
+
     case WNCK_WINDOW_TOOLBAR:
     case WNCK_WINDOW_MENU:
     case WNCK_WINDOW_UTILITY:
-    case WNCK_WINDOW_SPLASHSCREEN:
     case WNCK_WINDOW_DIALOG:
     case WNCK_WINDOW_MODAL_DIALOG:
-      window->priv->skip_taskbar = TRUE;
+      /* Skip taskbar if the window is transient
+       * for some main application window
+       */
+      if (window->priv->transient_for != None &&
+          !window->priv->transient_for_root)
+        window->priv->skip_taskbar = TRUE;
       break;
       
     case WNCK_WINDOW_NORMAL:
@@ -1622,10 +1635,16 @@ update_transient_for (WnckWindow *window)
                         &parent))
     {
       window->priv->transient_for = parent;
+
+      if (wnck_screen_get_for_root (window->priv->transient_for) != NULL)
+        window->priv->transient_for_root = TRUE;
+      else
+        window->priv->transient_for_root = FALSE;
     }
   else
     {
       window->priv->transient_for = None;
+      window->priv->transient_for_root = FALSE;
     }
 }
 
