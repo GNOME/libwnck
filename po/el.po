@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.16\n"
-"POT-Creation-Date: 2002-10-31 11:58-0500\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-08-17 14:14+0100\n"
 "Last-Translator: Simos Xenitellis <simos@hellug.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -80,7 +80,7 @@ msgstr "_Κλείσιμο"
 msgid "untitled window"
 msgstr "παράθυρο χωρίς τίτλο"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"

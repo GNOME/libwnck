@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-10-31 11:58-0500\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-06-03 08:42+0200\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -82,7 +82,7 @@ msgstr "Za_mknij"
 msgid "untitled window"
 msgstr "okno bez tytułu"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Obszar %d"

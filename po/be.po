@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-10-27 22:49GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
@@ -16,48 +16,75 @@ msgstr ""
 msgid "untitled application"
 msgstr "дастасаваньне бяз назвы"
 
-#: libwnck/window-action-menu.c:154
+#: libwnck/pager-accessible.c:317
+#, fuzzy
+msgid "Workspace Switcher"
+msgstr "Працоўная прастора %d"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr ""
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr ""
+
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "_Разгарнуць"
 
-#: libwnck/window-action-menu.c:160
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "Н_айменьшыць"
 
-#: libwnck/window-action-menu.c:167
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "Вярнуць _памер"
 
-#: libwnck/window-action-menu.c:173
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "На_йбольшыць"
 
-#: libwnck/window-action-menu.c:180
-msgid "U_nshade"
-msgstr "Вярнуць з _ценю"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:186
-msgid "_Shade"
-msgstr "Схаваць у _цень"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:297
-msgid "_Close"
-msgstr "_Зачыніць"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:318
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "Пера_мясьціць"
 
-#: libwnck/window-action-menu.c:324
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "Зьмяніць _памер"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Зачыніць"
 
 #: libwnck/window.c:29
 msgid "untitled window"
 msgstr "акно бяз назвы"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Працоўная прастора %d"
 
+#~ msgid "U_nshade"
+#~ msgstr "Вярнуць з _ценю"
+
+#~ msgid "_Shade"
+#~ msgstr "Схаваць у _цень"

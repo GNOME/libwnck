@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
-"POT-Creation-Date: 2002-10-31 11:58-0500\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-05-10 22:06MET\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -85,7 +85,7 @@ msgstr "_Clôre"
 msgid "untitled window"
 msgstr "purnea sins tite"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Sicribanne %d"

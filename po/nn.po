@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-10-31 11:58-0500\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-01-25 05:35+0100\n"
 "Last-Translator:  <>\n"
 "Language-Team: Norwegian/Nynorsk <nn@li.org>\n"
@@ -80,7 +80,7 @@ msgstr "Lukk"
 msgid "untitled window"
 msgstr "vindauge utan tittel"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"

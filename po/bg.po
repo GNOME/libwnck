@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-10-31 11:58-0500\n"
+"POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-06-03 19:15+0200\n"
 "Last-Translator: Yanko Kaneti <yaneti@declera.com>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -79,7 +79,7 @@ msgstr "_Затвори"
 msgid "untitled window"
 msgstr "неозаглавен прозорец"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно пространство %d"
