@@ -182,6 +182,11 @@ void wnck_window_get_geometry (WnckWindow *window,
                                int        *widthp,
                                int        *heightp);
 
+gboolean wnck_window_is_visible_on_workspace (WnckWindow    *window,
+                                              WnckWorkspace *workspace);
+gboolean wnck_window_is_on_workspace         (WnckWindow    *window,
+                                              WnckWorkspace *workspace);
+
 G_END_DECLS
 
 #endif /* WNCK_WINDOW_H */

@@ -1054,6 +1054,54 @@ wnck_window_get_geometry (WnckWindow *window,
     *heightp = window->priv->height;
 }
 
+/**
+ * wnck_window_is_visible_on_workspace:
+ * @window: a #WnckWindow
+ * @workspace: a #WnckWorkspace
+ * 
+ * Like wnck_window_is_on_workspace(), but also checks that
+ * the window is in a visible state (i.e. not minimized or shaded).
+ * 
+ * Return value: %TRUE if @window appears on @workspace in normal state
+ **/
+gboolean
+wnck_window_is_visible_on_workspace (WnckWindow    *window,
+                                     WnckWorkspace *workspace)
+{
+  WnckWindowState state;
+
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
+  
+  state = wnck_window_get_state (window);
+
+  if (state & (WNCK_WINDOW_STATE_MINIMIZED |
+               WNCK_WINDOW_STATE_SHADED))
+    return FALSE; /* not visible */
+
+  return wnck_window_is_on_workspace (window, workspace);
+}
+
+/**
+ * wnck_window_is_on_workspace:
+ * @window: a #WnckWindow
+ * @workspace: a #WnckWorkspace
+ * 
+ * 
+ * 
+ * Return value: %TRUE if @window appears on @workspace
+ **/
+gboolean
+wnck_window_is_on_workspace (WnckWindow    *window,
+                             WnckWorkspace *workspace)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
+  
+  return wnck_window_is_pinned (window) ||
+    wnck_window_get_workspace (window) == workspace;
+}
+
 void
 _wnck_window_set_application (WnckWindow      *window,
                               WnckApplication *app)

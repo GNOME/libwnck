@@ -1,3 +1,16 @@
+2001-11-27  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/pager.c (wnck_pager_motion): return a value
+
+	* libwnck/window.c (wnck_window_is_on_workspace):
+	(wnck_window_is_visible_on_workspace): new functions to see if a
+	window is on a workspace, and on a workspace plus in normal state
+
+	* libwnck/pager.c (get_windows_for_workspace_in_bottom_to_top):
+	use wnck_window_is_visible_on_workspace() so we don't include
+	windows that are minimized, shaded, etc. Also, check 
+	that windows are not SKIP_PAGER
+
 2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/pager.[ch] (get_workspace_rect):

@@ -314,8 +314,8 @@ get_windows_for_workspace_in_bottom_to_top (WnckScreen    *screen,
     {
       WnckWindow *win = WNCK_WINDOW (tmp->data);
 
-      if (wnck_window_is_pinned (win) ||
-          wnck_window_get_workspace (win) == workspace)
+      if (wnck_window_is_visible_on_workspace (win, workspace) &&
+          (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_PAGER) == 0)
         result = g_list_prepend (result, win);
       
       tmp = tmp->next;
@@ -724,6 +724,8 @@ wnck_pager_motion (GtkWidget        *widget,
       pager->priv->drag_window_x = event->x;
       pager->priv->drag_window_y = event->y;
     }
+
+  return TRUE;
 }
 
 static gboolean
