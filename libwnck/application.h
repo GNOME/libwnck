@@ -54,6 +54,8 @@ GType wnck_application_get_type (void) G_GNUC_CONST;
 
 WnckApplication* wnck_application_get (gulong xwindow);
 
+gulong wnck_application_get_xid (WnckApplication *app);
+
 GList* wnck_application_get_windows (WnckApplication *app);
 
 /* FIXME we need application_get_name, application_get_pid,

@@ -1,3 +1,12 @@
+2001-12-02  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/application.[ch] (wnck_application_get_xid):
+	* libwnck/window.[ch] (wnck_window_get_xid):
+	New functions.
+
+	* libwnck/tasklist.c:
+	More work.
+	
 2001-12-01  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.[ch]:

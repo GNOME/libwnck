@@ -114,6 +114,24 @@ wnck_application_get (gulong xwindow)
     return g_hash_table_lookup (app_hash, &xwindow);
 }
 
+
+/**
+ * wnck_application_get_xid:
+ * @app: a #WnckApplication
+ * 
+ * Gets the X id of the group leader window for the app.
+ * 
+ * Return value: X id for the app
+ **/
+gulong
+wnck_application_get_xid (WnckApplication *app)
+{
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), 0);
+  
+  return app->priv->xwindow;
+}
+
+
 /**
  * wnck_application_get_windows:
  * @app: a #WnckApplication

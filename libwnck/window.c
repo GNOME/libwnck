@@ -447,6 +447,14 @@ wnck_window_get_group_leader (WnckWindow *window)
   return window->priv->group_leader;
 }
 
+gulong
+wnck_window_get_xid (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
+
+  return window->priv->xwindow;
+}
+
 /**
  * wnck_window_get_session_id:
  * @window: a #WnckWindow

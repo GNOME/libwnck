@@ -120,6 +120,7 @@ const char* wnck_window_get_icon_name (WnckWindow *window);
 
 WnckApplication* wnck_window_get_application  (WnckWindow *window);
 gulong           wnck_window_get_group_leader (WnckWindow *window);
+gulong           wnck_window_get_xid          (WnckWindow *window);
 
 const char* wnck_window_get_session_id        (WnckWindow *window);
 const char* wnck_window_get_session_id_utf8   (WnckWindow *window);
