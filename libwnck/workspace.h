@@ -23,6 +23,7 @@
 #define WNCK_WORKSPACE_H
 
 #include <glib-object.h>
+#include <libwnck/screen.h>
 
 G_BEGIN_DECLS
 
@@ -33,7 +34,6 @@ G_BEGIN_DECLS
 #define WNCK_IS_WORKSPACE_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), WNCK_TYPE_WORKSPACE))
 #define WNCK_WORKSPACE_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), WNCK_TYPE_WORKSPACE, WnckWorkspaceClass))
 
-typedef struct _WnckWorkspace        WnckWorkspace;
 typedef struct _WnckWorkspaceClass   WnckWorkspaceClass;
 typedef struct _WnckWorkspacePrivate WnckWorkspacePrivate;
 
@@ -51,6 +51,10 @@ struct _WnckWorkspaceClass
 };
 
 GType wnck_workspace_get_type (void) G_GNUC_CONST;
+
+WnckWorkspace* wnck_workspace_get (int number);
+
+int wnck_workspace_get_number (WnckWorkspace *space);
 
 G_END_DECLS
 

@@ -23,6 +23,7 @@
 #define WNCK_WINDOW_H
 
 #include <glib-object.h>
+#include <libwnck/screen.h>
 
 G_BEGIN_DECLS
 
@@ -33,7 +34,6 @@ G_BEGIN_DECLS
 #define WNCK_IS_WINDOW_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), WNCK_TYPE_WINDOW))
 #define WNCK_WINDOW_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), WNCK_TYPE_WINDOW, WnckWindowClass))
 
-typedef struct _WnckWindow        WnckWindow;
 typedef struct _WnckWindowClass   WnckWindowClass;
 typedef struct _WnckWindowPrivate WnckWindowPrivate;
 
@@ -48,9 +48,22 @@ struct _WnckWindowClass
 {
   GObjectClass parent_class;
 
+  /* window name or icon name changed */
+  void (* name_changed) (WnckWindow *window);
+
+  /* minimized, maximized, sticky, skip pager, skip task, shaded
+   * may have changed
+   */
+  void (* state_changed) (WnckWindow *window);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
+
+WnckWindow* wnck_window_get (gulong xwindow);
+
+const char* wnck_window_get_name      (WnckWindow *window);
+const char* wnck_window_get_icon_name (WnckWindow *window);
+gboolean    wnck_window_is_minimized  (WnckWindow *window);
 
 G_END_DECLS
 

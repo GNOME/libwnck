@@ -26,6 +26,12 @@
 
 G_BEGIN_DECLS
 
+/* forward decls */
+typedef struct _WnckWindow    WnckWindow;
+typedef struct _WnckWorkspace WnckWorkspace;
+
+/* Screen */
+
 #define WNCK_TYPE_SCREEN              (wnck_screen_get_type ())
 #define WNCK_SCREEN(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_SCREEN, WnckScreen))
 #define WNCK_SCREEN_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), WNCK_TYPE_SCREEN, WnckScreenClass))
@@ -48,10 +54,31 @@ struct _WnckScreenClass
 {
   GObjectClass parent_class;
 
+  /* focused window changed */
+  void (* active_window_changed)    (WnckScreen *screen);
+  /* current workspace changed */
+  void (* active_workspace_changed) (WnckScreen *screen);
+  /* stacking order changed */
+  void (* window_stacking_changed)  (WnckScreen *screen);
+  /* window added */
+  void (* window_opened)            (WnckScreen *screen,
+                                     WnckWindow *window);
+  /* window removed */
+  void (* window_closed)            (WnckScreen *screen,
+                                     WnckWindow *window);
+  /* new workspace */
+  void (* workspace_created)        (WnckScreen *screen,
+                                     WnckWorkspace *space);
+  /* workspace gone */
+  void (* workspace_destroyed)      (WnckScreen *screen,
+                                     WnckWorkspace *space);
+  
 };
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
+WnckScreen* wnck_screen_get (int index);
+WnckScreen* wnck_screen_get_for_root (gulong root_window_id);
 
 G_END_DECLS
 
