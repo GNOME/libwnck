@@ -6,7 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-28 21:47+0000\n"
 "PO-Revision-Date: 2003-02-10 18:53+0200\n"
 "Last-Translator: Arman Aksoy (Armish) <armish@linux-sevenler.de>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
@@ -87,6 +88,15 @@ msgstr "isimsiz pencere"
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. Çalışma Alanı"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr ""
+
+#: libwnck/tasklist.c:462
+#, fuzzy
+msgid "Tool to switch between visible windows"
+msgstr "Çalışma alanları arasında geçiş yapmaya yarayan bir araç"
 
 #~ msgid "U_nshade"
 #~ msgstr "T_oplamayı geri al"
