@@ -1,5 +1,12 @@
 2005-02-26  Vincent Untz  <vincent@vuntz.net>
 
+	* libwnck/tasklist.c: (wnck_task_create_widgets): use GtkHBox instead
+	of GtkTable, set a max width in characters for the label so that it
+	requests a reasonable size.
+	Fix bug #160977
+
+2005-02-26  Vincent Untz  <vincent@vuntz.net>
+
 	* libwnck/application.c: (_wnck_application_destroy): plug leak
 
 2005-02-20  Elijah Newren  <newren@gmail.com>

@@ -62,6 +62,8 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 #define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
+#define MAX_WIDTH_CHARS 250
+
 #define N_SCREEN_CONNECTIONS 5
 
 #define POINT_IN_RECT(xcoord, ycoord, rect) \
@@ -2620,11 +2622,10 @@ wnck_task_button_press_event (GtkWidget	      *widget,
   return FALSE;
 }
 
-
 static void
 wnck_task_create_widgets (WnckTask *task)
 {
-  GtkWidget *table;
+  GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
   static GQuark disable_sound_quark = 0;
@@ -2647,7 +2648,7 @@ wnck_task_create_widgets (WnckTask *task)
 
   gtk_drag_dest_set (GTK_WIDGET(task->button), 0, NULL, 0, 0);
 
-  table = gtk_table_new (1, 2, FALSE);
+  hbox = gtk_hbox_new (FALSE, 0);
 
   pixbuf = wnck_task_get_icon (task);
   if (pixbuf)
@@ -2665,26 +2666,17 @@ wnck_task_create_widgets (WnckTask *task)
   gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
   gtk_label_set_ellipsize (GTK_LABEL (task->label),
                           PANGO_ELLIPSIZE_END);
+  gtk_label_set_max_width_chars (GTK_LABEL (task->label), MAX_WIDTH_CHARS);
 
   if (wnck_task_get_demands_attention (task))
     make_gtk_label_bold ((GTK_LABEL (task->label)));
   gtk_widget_show (task->label);
 
-  gtk_table_attach (GTK_TABLE (table),
-		    task->image,
-		    0, 1,
-		    0, 1,
-		    0, GTK_EXPAND,
-		    4, 0);
-  gtk_table_attach (GTK_TABLE (table),
-		    task->label,
-		    1, 2,
-		    0, 1,
-		    GTK_FILL | GTK_EXPAND, GTK_EXPAND,		    
-		    2, 0);
+  gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE, 4);
+  gtk_box_pack_start (GTK_BOX (hbox), task->label, TRUE, TRUE, 2);
 
-  gtk_container_add (GTK_CONTAINER (task->button), table);
-  gtk_widget_show (table);
+  gtk_container_add (GTK_CONTAINER (task->button), hbox);
+  gtk_widget_show (hbox);
   
   gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
   g_free (text);
