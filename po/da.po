@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-11-03 14:09-0500\n"
-"PO-Revision-Date: 2002-06-03 16:05+0200\n"
+"POT-Creation-Date: 2002-11-25 23:04+0100\n"
+"PO-Revision-Date: 2002-11-25 23:04+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
@@ -50,19 +50,19 @@ msgstr "Ma_ksimér"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "Rul _ned"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Rul _op"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Kun på _dette arbejdsområde"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Anbring på _alle arbejdsområder"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -84,10 +84,3 @@ msgstr "unavngivet vindue"
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
-
-# hm, er det nu den rigtige vej?
-#~ msgid "U_nshade"
-#~ msgstr "Rul n_ed"
-
-#~ msgid "_Shade"
-#~ msgstr "Rul _op"
