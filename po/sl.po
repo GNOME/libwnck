@@ -1,0 +1,74 @@
+# Slovenian translations of libwnck messages
+# Copyright (C) 1999-2002 Free Software Foundation, Inc.
+# 
+
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-03-07 12:30+0100\n"
+"PO-Revision-Date: 2002-02-26 00:23+0100\n"
+"Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
+"Language-Team: slovenian <sl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "neimenovan program"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "O_dkrči"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "_Skrči"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "Odr_azpni"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "_Razpni"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "Ods_enči"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "_Senči"
+
+#: libwnck/window-action-menu.c:297
+msgid "Close"
+msgstr "Zapri"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "Pres_tavi"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "Spremeni _velikost"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "neimenovano okno"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Delovna površina %d"
+
+
+# Smart report:
+# Total untranslated messages in file: 12 
+# Translations made:
+# full: 8
+# smart: 0
+# cond: 15
+# total: 23 ; distinct: 9
+
+
