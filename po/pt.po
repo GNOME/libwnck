@@ -1,54 +1,63 @@
 # libwnck's Portuguese Translation
 # Copyright (C) 2001 Free Software Foundation, Inc.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2001-12-15 07:29-0500\n"
-"PO-Revision-Date: 2001-12-16 03:00+0000\n"
+"POT-Creation-Date: 2002-02-10 02:19+0000\n"
+"PO-Revision-Date: 2002-02-10 02:20+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <none@none.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/window-action-menu.c:157
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "aplicação sem título"
+
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "R_estaurar"
 
-#: libwnck/window-action-menu.c:163
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "_Minimizar"
 
-#: libwnck/window-action-menu.c:170
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "R_estaurar"
 
-#: libwnck/window-action-menu.c:176
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:183
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "_Des-sombrear"
 
-#: libwnck/window-action-menu.c:189
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "_Sombrear"
 
-#: libwnck/window-action-menu.c:300
+#: libwnck/window-action-menu.c:297
 msgid "Close"
 msgstr "Fechar"
 
-#: libwnck/window-action-menu.c:321
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "Mo_ver"
 
-#: libwnck/window-action-menu.c:327
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window.c:32
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "janela sem título"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Ambiente de Trabalho %d"
