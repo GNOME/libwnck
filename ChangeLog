@@ -1,3 +1,7 @@
+2002-09-26  Stanislav Brabec  <sbrabec@suse.cz>
+
+	* configure.in: Added cs to ALL_LINGUAS.
+
 2002-09-23  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/test-wnck.c (main): add test stuff for showing desktop
