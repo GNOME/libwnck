@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-30 03:33+0200\n"
-"PO-Revision-Date: 2005-01-30 03:37+0200\n"
+"POT-Creation-Date: 2005-02-01 00:45+0200\n"
+"PO-Revision-Date: 2005-02-01 00:46+0200\n"
 "Last-Translator: Žygimantas Beručka <uid0@akl.lt>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,42 @@ msgstr "Įrankis leidžiantis persijungti tarp darbalaukių"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Spauskite norėdami persijungti į darbalaukį %s"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "Nežinomas langas"
+
+#: libwnck/selector.c:627
+msgid "No Windows Open"
+msgstr "Nėra atidarytų langų"
+
+#: libwnck/selector.c:729
+msgid "Window Selector"
+msgstr "Langų parinkiklis"
+
+#: libwnck/selector.c:730
+msgid "Tool to switch between windows"
+msgstr "Įrankis leidžiantis persijungti tarp langų"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "Langų sąrašas"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "Įrankis leidžiantis persijungti tarp matomų langų"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "_Uždaryti visus"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "_Sumažinti visus"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "G_rąžinti visus iš sumažinimo"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -61,8 +97,8 @@ msgid "_Only on This Workspace"
 msgstr "_Tik šiame darbalaukyje"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "_Visada dabartiniame darbalaukyje"
+msgid "_Always on Visible Workspace"
+msgstr "_Visada matomame darbalaukyje"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -102,23 +138,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "neįvardintas langas"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "Langų sąrašas"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "Įrankis leidžiantis persijungti tarp matomų langų"
-
-#: libwnck/tasklist.c:2102
-msgid "_Close All"
-msgstr "_Uždaryti visus"
-
-#: libwnck/tasklist.c:2117
-msgid "_Minimize All"
-msgstr "_Sumažinti visus"
-
-#: libwnck/tasklist.c:2128
-msgid "_Unminimize All"
-msgstr "G_rąžinti visus iš sumažinimo"
