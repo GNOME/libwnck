@@ -5,21 +5,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2001-12-04 11:33+0100\n"
-"PO-Revision-Date: 2001-12-11 23:50+0100\n"
-"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
-"Language-Team: Project-Id-Version: gtranslator 0.34\n"
-"POT-Creation-Date: 2001-10-07 16:44+0200\n"
-"PO-Revision-Date: 2001-10-07 17:00+0200\n"
+"POT-Creation-Date: 2001-12-17 17:21+0100\n"
+"PO-Revision-Date: 2001-12-17 17:21+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <no@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
-"Content-Transfer-Encoding: 8-bit\n"
-" <no@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+" <no@li.org>\n"
 
 #: libwnck/window-action-menu.c:157
 msgid "Un_minimize"
@@ -39,7 +32,7 @@ msgstr "Ma_ksimer"
 
 #: libwnck/window-action-menu.c:183
 msgid "U_nshade"
-msgstr ""
+msgstr "Fjern _skygge"
 
 #: libwnck/window-action-menu.c:189
 msgid "_Shade"
@@ -60,4 +53,3 @@ msgstr "End_re størrelse"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "vindu uten tittel"
-
