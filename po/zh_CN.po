@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-31 14:04+0100\n"
+"POT-Creation-Date: 2005-02-01 06:06+0100\n"
 "PO-Revision-Date: 2005-01-29 16:34+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -97,8 +97,8 @@ msgid "_Only on This Workspace"
 msgstr "仅在此工作区(_O)"
 
 #: libwnck/window-action-menu.c:261
-msgid "_Always on Current Workspace"
-msgstr "总在当前工作区(_A)"
+msgid "_Always on Visible Workspace"
+msgstr "总在可见工作区(_A)"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
