@@ -1,5 +1,11 @@
 2005-01-12  Vincent Untz  <vincent@vuntz.net>
 
+	* configure.in: post-release bump to 2.9.90.
+
+==================== 2.9.4 ====================
+
+2005-01-12  Vincent Untz  <vincent@vuntz.net>
+
 	* NEWS: Version 2.9.4.
 
 2005-01-11  Elijah Newren  <newren@gmail.com>
