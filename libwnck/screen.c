@@ -2,6 +2,8 @@
 
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2003 Kim Woelders
+ * Copyright (C) 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -37,8 +39,7 @@ struct _WnckScreenPrivate
   int number;
   Window xroot;
   Screen *xscreen;
-  int width;
-  int height;
+  
   /* in map order */
   GList *mapped_windows;
   /* in stacking order */
@@ -64,6 +65,7 @@ struct _WnckScreenPrivate
    */
   guint need_update_stack_list : 1;
   guint need_update_workspace_list : 1;
+  guint need_update_viewport_settings : 1;
   guint need_update_active_workspace : 1;
   guint need_update_active_window : 1;
   guint need_update_workspace_names : 1;
@@ -83,6 +85,7 @@ enum {
   APPLICATION_CLOSED,
   BACKGROUND_CHANGED,
   SHOWING_DESKTOP_CHANGED,
+  VIEWPORTS_CHANGED,
   LAST_SIGNAL
 };
 
@@ -90,12 +93,13 @@ static void wnck_screen_init        (WnckScreen      *screen);
 static void wnck_screen_class_init  (WnckScreenClass *klass);
 static void wnck_screen_finalize    (GObject         *object);
 
-static void update_client_list      (WnckScreen      *screen);
-static void update_workspace_list   (WnckScreen      *screen);
-static void update_active_workspace (WnckScreen      *screen);
-static void update_active_window    (WnckScreen      *screen);
-static void update_workspace_names  (WnckScreen      *screen);
-static void update_showing_desktop  (WnckScreen      *screen);
+static void update_client_list        (WnckScreen      *screen);
+static void update_workspace_list     (WnckScreen      *screen);
+static void update_viewport_settings  (WnckScreen      *screen);
+static void update_active_workspace   (WnckScreen      *screen);
+static void update_active_window      (WnckScreen      *screen);
+static void update_workspace_names    (WnckScreen      *screen);
+static void update_showing_desktop    (WnckScreen      *screen);
 
 static void queue_update            (WnckScreen      *screen);
 static void unqueue_update          (WnckScreen      *screen);              
@@ -118,6 +122,7 @@ static void emit_application_closed       (WnckScreen      *screen,
                                            WnckApplication *app);
 static void emit_background_changed       (WnckScreen      *screen);
 static void emit_showing_desktop_changed  (WnckScreen      *screen);
+static void emit_viewports_changed        (WnckScreen      *screen);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -272,6 +277,20 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+    signals[VIEWPORTS_CHANGED] =
+    g_signal_new ("viewports_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+#if 0
+                  /* FIXME when we can break ABI add this */
+                  G_STRUCT_OFFSET (WnckScreenClass, viewports_changed),
+#else
+                  0,
+#endif
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -338,11 +357,9 @@ wnck_screen_construct (WnckScreen *screen,
   _wnck_select_input (screen->priv->xroot,
                       PropertyChangeMask);
 
-  screen->priv->width = WidthOfScreen (screen->priv->xscreen);
-  screen->priv->height = HeightOfScreen (screen->priv->xscreen);
-
   screen->priv->need_update_workspace_list = TRUE;
   screen->priv->need_update_stack_list = TRUE;
+  screen->priv->need_update_viewport_settings = TRUE;
   screen->priv->need_update_active_workspace = TRUE;
   screen->priv->need_update_active_window = TRUE;
   screen->priv->need_update_workspace_names = TRUE;
@@ -642,6 +659,18 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
            _wnck_atom_get ("_NET_CLIENT_LIST"))
     {
       screen->priv->need_update_stack_list = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_DESKTOP_VIEWPORT"))
+    {
+      screen->priv->need_update_viewport_settings = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_DESKTOP_GEOMETRY"))
+    {
+      screen->priv->need_update_viewport_settings = TRUE;
       queue_update (screen);
     }
   else if (xevent->xproperty.atom ==
@@ -1138,6 +1167,118 @@ update_workspace_list (WnckScreen *screen)
 }
 
 static void
+update_viewport_settings (WnckScreen *screen)
+{
+  int i, n_spaces;
+  WnckWorkspace *space;
+  gulong *p_coord;
+  int n_coord;
+  gboolean do_update;
+  int space_width, space_height;
+  gboolean got_viewport_prop;
+  
+  if (!screen->priv->need_update_viewport_settings)
+    return;
+
+  screen->priv->need_update_viewport_settings = FALSE;
+
+  do_update = FALSE;
+
+  n_spaces = wnck_screen_get_workspace_count (screen);
+
+  /* If no property, use the screen's size */
+  space_width = wnck_screen_get_width (screen);
+  space_height = wnck_screen_get_height (screen);
+  
+  if (_wnck_get_cardinal_list (screen->priv->xroot,
+			       _wnck_atom_get ("_NET_DESKTOP_GEOMETRY"),
+                               &p_coord, &n_coord) &&
+      p_coord != NULL)
+    {
+      if (n_coord == 2)
+	{
+          space_width = p_coord[0];
+          space_height = p_coord[1];
+          
+          if (space_width < wnck_screen_get_width (screen))
+            space_width = wnck_screen_get_width (screen);
+
+          if (space_height < wnck_screen_get_height (screen))
+            space_height = wnck_screen_get_height (screen);
+	}
+      
+      g_free (p_coord);
+    }
+          
+  for (i = 0; i < n_spaces; i++)
+    {
+      space = wnck_screen_get_workspace (screen, i);
+      g_assert (space != NULL);
+      
+      if (_wnck_workspace_set_geometry (space, space_width, space_height))
+        do_update = TRUE;
+    }
+
+  got_viewport_prop = FALSE;
+  
+  if (_wnck_get_cardinal_list (screen->priv->xroot,
+                               _wnck_atom_get ("_NET_DESKTOP_VIEWPORT"),
+                               &p_coord, &n_coord) &&
+      p_coord != NULL)
+    {
+      if (n_coord == 2 * n_spaces)
+        {
+          int screen_width, screen_height;
+
+          got_viewport_prop = TRUE;
+          
+          screen_width = wnck_screen_get_width (screen);
+          screen_height = wnck_screen_get_height (screen);
+          
+	  for (i = 0; i < n_spaces; i++)
+	    {
+              int x = 2 * i;
+              int y = 2 * i + 1;
+
+              space = wnck_screen_get_workspace (screen, i);
+              g_assert (space != NULL);
+              
+              if (p_coord[x] < 0)
+                p_coord[x] = 0;
+              else if (p_coord[x] > space_width - screen_width)
+                p_coord[x] = space_width - screen_width;
+
+              if (p_coord[y] < 0)
+                p_coord[y] = 0;
+              else if (p_coord[y] > space_height - screen_height)
+                p_coord[y] = space_height - screen_height;
+
+	      if (_wnck_workspace_set_viewport (space,
+                                                p_coord[x], p_coord[y]))
+                do_update = TRUE;
+	    }
+	}
+      
+      g_free (p_coord);
+    }
+
+  if (!got_viewport_prop)
+    {
+      for (i = 0; i < n_spaces; i++)
+        {
+          space = wnck_screen_get_workspace (screen, i);
+          g_assert (space != NULL);
+          
+          if (_wnck_workspace_set_viewport (space, 0, 0))
+            do_update = TRUE;
+        }
+    }
+  
+  if (do_update)
+    emit_viewports_changed (screen);
+}
+
+static void
 update_active_workspace (WnckScreen *screen)
 {
   int number;
@@ -1278,12 +1419,24 @@ do_update_now (WnckScreen *screen)
       screen->priv->update_handler = 0;
     }
 
+  /* if number of workspaces changes, we have to
+   * update the per-workspace information as well
+   * in case the WM changed the per-workspace info
+   * first and number of spaces second.
+   */
+  if (screen->priv->need_update_workspace_list)
+    {
+      screen->priv->need_update_viewport_settings = TRUE;
+      screen->priv->need_update_workspace_names = TRUE;
+    }
+      
   /* First get our big-picture state in order */
   update_workspace_list (screen);
   update_client_list (screen);
 
   /* Then note any smaller-scale changes */
   update_active_workspace (screen);
+  update_viewport_settings (screen);
   update_active_window (screen);
   update_workspace_names (screen);
   update_showing_desktop (screen);
@@ -1418,6 +1571,14 @@ emit_showing_desktop_changed (WnckScreen *screen)
                  0);
 }
 
+static void
+emit_viewports_changed (WnckScreen *screen)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[VIEWPORTS_CHANGED],
+                 0);
+}
+
 gboolean
 wnck_screen_net_wm_supports (WnckScreen *screen,
                              const char *atom)
@@ -1438,7 +1599,7 @@ wnck_screen_get_width (WnckScreen *screen)
 {
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
 
-  return gdk_screen_width ();
+  return WidthOfScreen (screen->priv->xscreen);
 }
 
 int
@@ -1446,7 +1607,7 @@ wnck_screen_get_height (WnckScreen *screen)
 {
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
 
-  return gdk_screen_height ();
+  return HeightOfScreen (screen->priv->xscreen);
 }
 
 Screen *
@@ -1507,6 +1668,27 @@ wnck_screen_toggle_showing_desktop (WnckScreen *screen,
 
   _wnck_toggle_showing_desktop (screen->priv->xscreen,
                                 show);
+}
+
+
+/**
+ * wnck_screen_move_viewport:
+ * @screen: a #WnckScreen
+ * @x: X offset of viewport
+ * @y: Y offset of viewport
+ *
+ * Ask window manager to move the viewport of the current workspace.
+ */
+void
+wnck_screen_move_viewport (WnckScreen *screen,
+                           int         x,
+                           int         y)
+{
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+  g_return_if_fail (x >= 0);
+  g_return_if_fail (y >= 0);
+  
+  _wnck_change_viewport (WNCK_SCREEN_XSCREEN (screen), x, y);
 }
 
 #ifdef HAVE_STARTUP_NOTIFICATION

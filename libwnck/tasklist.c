@@ -2,6 +2,8 @@
 
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2003 Kim Woelders
+ * Copyright (C) 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -62,7 +64,7 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define TIMEOUT_ACTIVATE 1000
 
-#define N_SCREEN_CONNECTIONS 4
+#define N_SCREEN_CONNECTIONS 5
 
 typedef enum
 {
@@ -220,6 +222,8 @@ static void     wnck_tasklist_window_added             (WnckScreen   *screen,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_window_removed           (WnckScreen   *screen,
 							WnckWindow   *win,
+							WnckTasklist *tasklist);
+static void     wnck_tasklist_viewports_changed        (WnckScreen   *screen,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_connect_window           (WnckTasklist *tasklist,
 							WnckWindow   *window);
@@ -1247,6 +1251,10 @@ wnck_tasklist_connect_screen (WnckTasklist *tasklist,
   c [i++] = g_signal_connect_object (G_OBJECT (screen), "window_closed",
                                      G_CALLBACK (wnck_tasklist_window_removed),
                                      tasklist, 0);
+  c [i++] = g_signal_connect_object (G_OBJECT (screen), "viewports_changed",
+                                     G_CALLBACK (wnck_tasklist_viewports_changed),
+                                     tasklist, 0);
+
 
   g_assert (i == N_SCREEN_CONNECTIONS);
 
@@ -1384,7 +1392,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       if ((state & WNCK_WINDOW_STATE_SKIP_TASKLIST) == 0 &&
 	  (tasklist->priv->include_all_workspaces ||
 	   active_workspace == NULL ||
-	   wnck_window_is_on_workspace (win, active_workspace)))
+	   wnck_window_is_in_viewport (win, active_workspace)))
 	{
 	  win_task = wnck_task_new_from_window (tasklist, win);
 	  tasklist->priv->windows = g_list_prepend (tasklist->priv->windows, win_task);
@@ -1606,6 +1614,14 @@ static void
 wnck_tasklist_window_removed (WnckScreen   *screen,
 			      WnckWindow   *win,
 			      WnckTasklist *tasklist)
+{
+  wnck_tasklist_update_lists (tasklist);
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+static void
+wnck_tasklist_viewports_changed (WnckScreen   *screen,
+                                 WnckTasklist *tasklist)
 {
   wnck_tasklist_update_lists (tasklist);
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));

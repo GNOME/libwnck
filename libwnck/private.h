@@ -77,6 +77,9 @@ void _wnck_screen_change_workspace_name (WnckScreen *screen,
                                          int         number,
                                          const char *name);
 
+gboolean _wnck_workspace_set_geometry (WnckWorkspace *space, int w, int h);
+gboolean _wnck_workspace_set_viewport (WnckWorkspace *space, int x, int y);
+
 void _wnck_init (void);
 
 #define DEFAULT_ICON_WIDTH 32

@@ -88,6 +88,9 @@ struct _WnckScreenClass
 
   /* Toggle showing desktop */
   void (* showing_desktop_changed)  (WnckScreen      *screen);
+
+  /* Viewport stuff changed */
+  void (* viewports_changed)        (WnckScreen      *screen);
   
   void (* pad1) (void);
   void (* pad2) (void);
@@ -102,44 +105,36 @@ struct _WnckScreenClass
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
-WnckScreen* wnck_screen_get_default (void);
-WnckScreen* wnck_screen_get (int index);
-WnckScreen* wnck_screen_get_for_root (gulong root_window_id);
-
-WnckWorkspace* wnck_screen_get_workspace        (WnckScreen *screen,
-						 int         workspace);
-WnckWorkspace* wnck_screen_get_active_workspace (WnckScreen *screen);
-WnckWindow*    wnck_screen_get_active_window    (WnckScreen *screen);
-
-GList*         wnck_screen_get_windows          (WnckScreen *screen);
-GList*         wnck_screen_get_windows_stacked  (WnckScreen *screen);
-
-void wnck_screen_force_update (WnckScreen *screen);
-
-int  wnck_screen_get_workspace_count    (WnckScreen *screen);
-void wnck_screen_change_workspace_count (WnckScreen *screen,
-                                         int         count);
-
-gboolean wnck_screen_net_wm_supports (WnckScreen *screen,
-                                      const char *atom);
-
-gulong wnck_screen_get_background_pixmap (WnckScreen *screen);
-
-int wnck_screen_get_width (WnckScreen *screen);
-int wnck_screen_get_height (WnckScreen *screen);
-
-gboolean wnck_screen_get_showing_desktop    (WnckScreen *screen);
-void     wnck_screen_toggle_showing_desktop (WnckScreen *screen,
-                                             gboolean    show);
-
-int  wnck_screen_try_set_workspace_layout (WnckScreen *screen,
-                                           int         current_token,
-                                           int         rows,
-                                           int         columns);
-void wnck_screen_release_workspace_layout (WnckScreen *screen,
-                                           int         current_token);
-
-
+WnckScreen*    wnck_screen_get_default              (void);
+WnckScreen*    wnck_screen_get                      (int         index);
+WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id);
+WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
+                                                     int         workspace);
+WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
+WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
+GList*         wnck_screen_get_windows              (WnckScreen *screen);
+GList*         wnck_screen_get_windows_stacked      (WnckScreen *screen);
+void           wnck_screen_force_update             (WnckScreen *screen);
+int            wnck_screen_get_workspace_count      (WnckScreen *screen);
+void           wnck_screen_change_workspace_count   (WnckScreen *screen,
+                                                     int         count);
+gboolean       wnck_screen_net_wm_supports          (WnckScreen *screen,
+                                                     const char *atom);
+gulong         wnck_screen_get_background_pixmap    (WnckScreen *screen);
+int            wnck_screen_get_width                (WnckScreen *screen);
+int            wnck_screen_get_height               (WnckScreen *screen);
+gboolean       wnck_screen_get_showing_desktop      (WnckScreen *screen);
+void           wnck_screen_toggle_showing_desktop   (WnckScreen *screen,
+                                                     gboolean    show);
+void           wnck_screen_move_viewport            (WnckScreen *screen,
+                                                     int         x,
+                                                     int         y);
+int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
+                                                     int         current_token,
+                                                     int         rows,
+                                                     int         columns);
+void           wnck_screen_release_workspace_layout (WnckScreen *screen,
+                                                     int         current_token);
 
 
 G_END_DECLS

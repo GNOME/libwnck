@@ -2,6 +2,8 @@
 
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2003 Kim Woelders
+ * Copyright (C) 2003 Red Hat, Inc.
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -1282,6 +1284,43 @@ wnck_window_is_on_workspace (WnckWindow    *window,
   
   return wnck_window_is_pinned (window) ||
     wnck_window_get_workspace (window) == workspace;
+}
+
+/**
+ * wnck_window_is_in_viewport:
+ * @window: a #WnckWindow
+ * @workspace: a #WnckWorkspace
+ * 
+ * Returns #TRUE if the window is inside the current viewport
+ * of the given workspace.
+ * 
+ * Return value: %TRUE if @window appears in current viewport
+ **/
+gboolean
+wnck_window_is_in_viewport (WnckWindow    *window,
+                            WnckWorkspace *workspace)
+{
+  GdkRectangle window_rect;
+  GdkRectangle viewport_rect;
+  
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
+
+  if (wnck_window_get_workspace (window) != workspace &&
+      !wnck_window_is_pinned (window))
+    return FALSE;
+
+  viewport_rect.x = wnck_workspace_get_viewport_x (workspace);
+  viewport_rect.y = wnck_workspace_get_viewport_y (workspace);
+  viewport_rect.width = wnck_screen_get_width (window->priv->screen);
+  viewport_rect.height = wnck_screen_get_height (window->priv->screen);
+
+  window_rect.x = window->priv->x + viewport_rect.x;
+  window_rect.y = window->priv->y + viewport_rect.y;
+  window_rect.width = window->priv->width;
+  window_rect.height = window->priv->height;
+
+  return gdk_rectangle_intersect (&viewport_rect, &window_rect, &window_rect);
 }
 
 void

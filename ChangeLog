@@ -1,3 +1,13 @@
+2003-04-04  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/*: Throughout, add support for viewports in
+	tasklist/pager. #109654 patch from Kim Woelders
+	
+2003-04-04  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/xutils.c (get_cmap): fix to use correct system colormap
+	for the screen, #109480 from Arvind Samptur
+
 2003-04-03  Matt Wilson  <msw@redhat.com>
 
 	* libwnck/xutils.c (_wnck_set_desktop_layout): make sure that

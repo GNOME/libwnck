@@ -1015,6 +1015,31 @@ _wnck_activate_workspace (Screen *screen,
 }
 
 void
+_wnck_change_viewport (Screen *screen,
+		       int     x,
+		       int     y)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = RootWindowOfScreen (screen);
+  xev.xclient.message_type = _wnck_atom_get ("_NET_DESKTOP_VIEWPORT");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = x;
+  xev.xclient.data.l[1] = y;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (gdk_display,
+	      RootWindowOfScreen (screen),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+}
+
+void
 _wnck_toggle_showing_desktop (Screen  *screen,
                               gboolean show)
 {
@@ -1552,7 +1577,8 @@ get_cmap (GdkPixmap *pixmap)
       else
         {
           /* Try system cmap */
-          cmap = gdk_colormap_get_system ();
+          GdkScreen *screen = gdk_drawable_get_screen (GDK_DRAWABLE (pixmap));
+          cmap = gdk_screen_get_system_colormap (screen);
           g_object_ref (G_OBJECT (cmap));
         }
     }
