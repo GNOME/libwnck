@@ -1,3 +1,8 @@
+2004-01-02  Padraig O'Briain  <padraigobriain@sun.com>
+
+	* libwnck/window.c (update_actions): Add check that atom name is 
+	not NULL. Fixes bug #127189.
+
 2003-12-10  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: Version 2.5.1.

@@ -1773,7 +1773,10 @@ update_actions (WnckWindow *window)
       else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_CLOSE"))
         window->priv->actions |= WNCK_WINDOW_ACTION_CLOSE;
       else
-        g_warning ("Unhandled action type %s", _wnck_atom_name (atoms [i]));
+        {
+          const char *name = _wnck_atom_name (atoms [i]);
+          g_warning ("Unhandled action type %s", name ? name: "(nil)");
+        }
 
       i++;
     }
