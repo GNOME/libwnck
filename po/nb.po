@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-01-13 00:35+0100\n"
+"POT-Creation-Date: 2005-01-19 15:29+0100\n"
+"PO-Revision-Date: 2005-01-19 15:30+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.n>\n"
 "MIME-Version: 1.0\n"
@@ -110,3 +110,15 @@ msgstr "Vinduliste"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Verktøy for å bytte mellom synlige vinduer"
+
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "_Lukk alle"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "_Minimer alle"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "Gje_nopprett alle"
