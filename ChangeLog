@@ -1,5 +1,9 @@
 2002-06-02  Havoc Pennington  <hp@pobox.com>
 
+	* configure.in: 0.13
+
+2002-06-02  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/*: clean up the accessibility patch:
 	 - s/G_CONST_RETURN/const/
 	 - s/gint/int/

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2002-05-17 18:35-0400\n"
+"POT-Creation-Date: 2002-06-02 22:45-0400\n"
 "PO-Revision-Date: 2002-05-06 23:04-0400\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
