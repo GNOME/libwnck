@@ -2,17 +2,19 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # Gil Osher <dolfin@rpg.org.il>, 2002
+# Gil 'Dolfin' Osher <dolfin@rpg.org.il>, 2002
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
-"POT-Creation-Date: 2002-12-02 23:18-0500\n"
-"PO-Revision-Date: 2002-08-27 01:41+0300\n"
-"Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
+"POT-Creation-Date: 2002-12-05 06:15+0100\n"
+"PO-Revision-Date: 2002-12-05 22:49+0200\n"
+"Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
@@ -33,7 +35,7 @@ msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "בטל מזעור"
+msgstr "ב_טל מזעור"
 
 #: libwnck/window-action-menu.c:198
 msgid "_Minimize"
@@ -41,7 +43,7 @@ msgstr "_מזער"
 
 #: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
-msgstr "בטל הגדלה"
+msgstr "_בטל הגדלה"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -49,19 +51,19 @@ msgstr "ה_גדל"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "גלול _חזרה"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "גלול _מעלה"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "רק בסביבת עבודה _זו"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "שים ב_כל סביבות העבודה"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -89,3 +91,4 @@ msgstr "סביבת עבודה %d"
 
 #~ msgid "_Shade"
 #~ msgstr "ה_צלל"
+
