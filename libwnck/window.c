@@ -80,6 +80,13 @@ struct _WnckWindowPrivate
   guint skip_taskbar : 1;
   guint is_sticky : 1;
 
+  /* _NET_WM_STATE_HIDDEN doesn't map directly into an
+   * externally-visible state (it determines the WM_STATE
+   * interpretation)
+   */
+  guint net_wm_state_hidden : 1;
+  guint wm_state_iconic : 1;
+  
   /* idle handler for updates */
   guint update_handler;
 
@@ -88,7 +95,7 @@ struct _WnckWindowPrivate
    */
   guint need_update_name : 1;
   guint need_update_state : 1;
-  guint need_update_minimized : 1;
+  guint need_update_wm_state : 1;
   guint need_update_icon_name : 1;
   guint need_update_workspace : 1;
   guint need_emit_icon_changed : 1;
@@ -124,7 +131,7 @@ static void emit_geometry_changed  (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
-static void update_minimized (WnckWindow *window);
+static void update_wm_state  (WnckWindow *window);
 static void update_icon_name (WnckWindow *window);
 static void update_workspace (WnckWindow *window);
 static void update_actions   (WnckWindow *window);
@@ -355,7 +362,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
   window->priv->need_update_icon_name = TRUE;
-  window->priv->need_update_minimized = TRUE;
+  window->priv->need_update_wm_state = TRUE;
   window->priv->need_update_workspace = TRUE;
   window->priv->need_update_actions = TRUE;
   window->priv->need_update_wintype = TRUE;
@@ -1113,7 +1120,7 @@ _wnck_window_process_property_notify (WnckWindow *window,
   else if (xevent->xproperty.atom ==
       _wnck_atom_get ("WM_STATE"))
     {
-      window->priv->need_update_minimized = TRUE;
+      window->priv->need_update_wm_state = TRUE;
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
@@ -1197,21 +1204,21 @@ _wnck_window_process_configure_notify (WnckWindow *window,
 }
 
 static void
-update_minimized (WnckWindow *window)
+update_wm_state (WnckWindow *window)
 {
   int state;
 
-  if (!window->priv->need_update_minimized)
+  if (!window->priv->need_update_wm_state)
     return;
 
-  window->priv->need_update_minimized = FALSE;
+  window->priv->need_update_wm_state = FALSE;
 
-  window->priv->is_minimized = FALSE;
+  window->priv->wm_state_iconic = FALSE;
 
   state = _wnck_get_wm_state (window->priv->xwindow);
 
   if (state == IconicState)
-    window->priv->is_minimized = TRUE;
+    window->priv->wm_state_iconic = TRUE;
 }
 
 static void
@@ -1241,7 +1248,8 @@ update_state (WnckWindow *window)
       window->priv->is_shaded = FALSE;
       window->priv->skip_taskbar = FALSE;
       window->priv->skip_pager = FALSE;
-
+      window->priv->net_wm_state_hidden = FALSE;
+      
       atoms = NULL;
       n_atoms = 0;
       _wnck_get_atom_list (window->priv->xwindow,
@@ -1255,6 +1263,8 @@ update_state (WnckWindow *window)
             window->priv->is_maximized_vert = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"))
             window->priv->is_maximized_horz = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_HIDDEN"))
+            window->priv->net_wm_state_hidden = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_STICKY"))
             window->priv->is_sticky = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SHADED"))
@@ -1302,7 +1312,14 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_MODAL_DIALOG:
     case WNCK_WINDOW_UTILITY:
       break;
-    }  
+    }
+
+  /* FIXME we need to recompute this if the window manager changes */
+  if (wnck_screen_net_wm_supports (window->priv->screen,
+                                   "_NET_WM_STATE_HIDDEN"))
+    window->priv->is_minimized = window->priv->net_wm_state_hidden;
+  else
+    window->priv->is_minimized = window->priv->wm_state_iconic;
 }
 
 static void
@@ -1544,9 +1561,11 @@ force_update_now (WnckWindow *window)
   old_actions = window->priv->actions;
 
   update_transient_for (window); /* wintype needs this to be first */
-  update_wintype (window);  
-  update_state (window);
-  update_minimized (window);
+  update_wintype (window);
+  update_wm_state (window);
+  update_state (window);     /* must come after the above, since they affect
+                              * our calculated state
+                              */
   update_workspace (window); /* emits signals */
   update_actions (window);
 

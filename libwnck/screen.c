@@ -1173,4 +1173,9 @@ emit_application_closed (WnckScreen      *screen,
                  0, app);
 }
 
-
+gboolean
+wnck_screen_net_wm_supports (WnckScreen *screen,
+                             const char *atom)
+{
+  return gdk_net_wm_supports (gdk_atom_intern (atom, FALSE));
+}

@@ -97,6 +97,9 @@ void wnck_screen_force_update (WnckScreen *screen);
 
 int wnck_screen_get_workspace_count (WnckScreen *screen);
 
+gboolean wnck_screen_net_wm_supports (WnckScreen *screen,
+                                      const char *atom);
+
 G_END_DECLS
 
 #endif /* WNCK_SCREEN_H */
