@@ -1906,6 +1906,7 @@ force_update_now (WnckWindow *window)
   WnckWindowActions old_actions;
   char *old_name;
   char *old_icon_name;
+  gboolean do_emit_name_changed = FALSE;
   
   unqueue_update (window);
 
@@ -1925,7 +1926,7 @@ force_update_now (WnckWindow *window)
   else
     {
       if (strcmp (window->priv->name, old_name) != 0)
-        emit_name_changed (window);
+        do_emit_name_changed = TRUE;
       g_free (old_name);
     }
 
@@ -1940,9 +1941,12 @@ force_update_now (WnckWindow *window)
     {
       if (old_icon_name == NULL ||
           strcmp (window->priv->icon_name, old_icon_name) != 0)
-        emit_name_changed (window);
+        do_emit_name_changed = TRUE;
       g_free (old_icon_name);
     }
+
+  if (do_emit_name_changed)
+    emit_name_changed (window);
 
   old_state = COMPRESS_STATE (window);
   old_actions = window->priv->actions;
