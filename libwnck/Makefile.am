@@ -73,6 +73,7 @@ noinst_PROGRAMS=		\
 
 libwnck_1_la_LDFLAGS=								    \
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE) \
+	-no-undefined \
         -export-symbols-regex "^[^_].*"
 
 libwnck_1_la_LIBADD=   \

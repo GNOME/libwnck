@@ -1,3 +1,9 @@
+2003-04-19  Masahiro Sakai  <sakai@tom.sfc.keio.ac.jp>
+
+	* configure.in: call AC_LIBTOOL_WIN32_DLL.
+
+	* libwnck/Makefile.am (libwnck_1_la_LDFLAGS): add -no-undefined.
+
 2003-04-04  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/*: Throughout, add support for viewports in
