@@ -1,5 +1,14 @@
 2004-12-15  Mark McLoughlin  <mark@skynet.ie>
 
+	Patch from Benjamin Kahn <xkahn@zoned.net> in
+	bug #155865
+
+	* libwnck/tasklist.c: (wnck_task_create_widgets):
+	Increase the amount of padding between the text
+	and icon.
+
+2004-12-15  Mark McLoughlin  <mark@skynet.ie>
+
 	* libwnck/tasklist.c: (make_gtk_label_bold): rename
 	from eel_gtk_label_make_bold() and make static.
 	

@@ -2570,13 +2570,13 @@ wnck_task_create_widgets (WnckTask *task)
 		    0, 1,
 		    0, 1,
 		    0, GTK_EXPAND,
-		    0, 0);
+		    4, 0);
   gtk_table_attach (GTK_TABLE (table),
 		    task->label,
 		    1, 2,
 		    0, 1,
 		    GTK_FILL | GTK_EXPAND, GTK_EXPAND,		    
-		    4, 0);
+		    2, 0);
 
   gtk_container_add (GTK_CONTAINER (task->button), table);
   gtk_widget_show (table);
