@@ -44,7 +44,8 @@ static GHashTable *window_hash = NULL;
     ((window)->priv->skip_pager          << 4) |        \
     ((window)->priv->skip_taskbar        << 5) |        \
     ((window)->priv->is_sticky           << 6) |        \
-    ((window)->priv->is_hidden           << 7) )
+    ((window)->priv->is_hidden           << 7) |        \
+    ((window)->priv->is_fullscreen       << 8) )
 
 struct _WnckWindowPrivate
 {
@@ -93,6 +94,7 @@ struct _WnckWindowPrivate
   guint skip_taskbar : 1;
   guint is_sticky : 1;
   guint is_hidden : 1;
+  guint is_fullscreen : 1;
 
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
@@ -681,6 +683,14 @@ wnck_window_is_skip_tasklist          (WnckWindow *window)
   return window->priv->skip_taskbar;
 }
 
+gboolean
+wnck_window_is_fullscreen                 (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_fullscreen;
+}
+
 void
 wnck_window_set_skip_tasklist (WnckWindow *window,
                                gboolean skip)
@@ -690,6 +700,18 @@ wnck_window_set_skip_tasklist (WnckWindow *window,
 		      window->priv->xwindow,
                       skip,
                       _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"),
+                      0);
+}
+
+void
+wnck_window_set_fullscreen (WnckWindow *window,
+                               gboolean fullscreen)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+		      window->priv->xwindow,
+                      fullscreen,
+                      _wnck_atom_get ("_NET_WM_STATE_FULLSCREEN"),
                       0);
 }
 
@@ -1511,6 +1533,8 @@ update_state (WnckWindow *window)
             window->priv->is_sticky = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SHADED"))
             window->priv->is_shaded = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_FULLSCREEN"))
+            window->priv->is_fullscreen = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"))
             window->priv->skip_taskbar = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"))

@@ -41,7 +41,8 @@ typedef enum
   WNCK_WINDOW_STATE_SKIP_PAGER             = 1 << 4,
   WNCK_WINDOW_STATE_SKIP_TASKLIST          = 1 << 5,
   WNCK_WINDOW_STATE_STICKY                 = 1 << 6,
-  WNCK_WINDOW_STATE_HIDDEN                 = 1 << 7
+  WNCK_WINDOW_STATE_HIDDEN                 = 1 << 7,
+  WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8
 } WnckWindowState;
 
 typedef enum
