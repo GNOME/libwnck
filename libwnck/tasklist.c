@@ -132,6 +132,7 @@ static char      *wnck_task_get_text (WnckTask *task);
 static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
 static gint       wnck_task_compare  (gconstpointer  a,
 				      gconstpointer  b);
+static void       wnck_task_update_visible_state (WnckTask *task);
 
 
 static void wnck_tasklist_init        (WnckTasklist      *tasklist);
@@ -968,6 +969,12 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       app_task = WNCK_TASK (l->data);
 
       app_task->windows = g_list_sort (app_task->windows, wnck_task_compare);
+
+      /* so the number of windows in the task gets reset on the
+       * task label
+       */
+      wnck_task_update_visible_state (app_task);
+      
       
       l = l->next;
     }
@@ -1295,7 +1302,7 @@ wnck_task_get_text (WnckTask *task)
     {
       return g_strdup_printf ("%s (%d)",
                               wnck_application_get_name (task->application),
-                              wnck_application_get_n_windows (task->application));
+                              g_list_length (task->windows));
     }
   else
     {

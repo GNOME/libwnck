@@ -1,3 +1,11 @@
+2002-03-26  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/tasklist.c (wnck_task_get_text): compute number 
+	of windows in an app differently so we don't count 
+	desktop windows, off-workspace windows, etc.
+	(wnck_tasklist_update_lists): update visible state 
+	of app tasks after we've updated all the lists
+
 2002-03-24  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.7
