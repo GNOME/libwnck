@@ -9,6 +9,7 @@ wnck_headers=			\
 	libwnck.h		\
 	application.h		\
 	screen.h		\
+	tasklist.h		\
 	window.h 		\
 	window-action-menu.h	\
 	window-menu.h		\
@@ -28,6 +29,7 @@ libwnck_1_la_SOURCES= 		\
 	inlinepixbufs.h		\
 	private.h		\
 	screen.c		\
+	tasklist.c		\
 	window.c		\
 	window-action-menu.c	\
 	window-menu.c		\
@@ -40,7 +42,12 @@ libwnck_1_la_SOURCES= 		\
 test_wnck_SOURCES=		\
 	test-wnck.c
 
-noinst_PROGRAMS=test-wnck
+test_tasklist_SOURCES=		\
+	test-tasklist.c
+
+noinst_PROGRAMS=		\
+	test-wnck		\
+	test-tasklist
 
 LDFLAGS=								    \
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE) \
@@ -50,6 +57,7 @@ libwnck_1_la_LIBADD=   \
 	@LIBWNCK_LIBS@
 
 test_wnck_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
+test_tasklist_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 
 ## we just punt on built sources, and check them into cvs, manually updating 
 ## when required.
