@@ -1,3 +1,7 @@
+2001-12-18  Takayuki KUSANO  <AE5T-KSN@asahi-net.or.jp>
+
+	* configure.in: Added "ja" to ALL_LINGUAS.
+
 2001-12-16  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/workspace.c (wnck_workspace_get_name): add this function
