@@ -21,6 +21,7 @@
 
 #include "util.h"
 #include "xutils.h"
+#include "private.h"
 #include <gdk/gdkx.h>
 
 static void
@@ -39,4 +40,15 @@ wnck_gtk_window_set_dock_type (GtkWindow *window)
                     NULL);
 }
 
+void
+_wnck_init (void)
+{
+  static gboolean done = FALSE;
 
+  if (!done)
+    {
+      bindtextdomain (GETTEXT_PACKAGE, WNCK_LOCALEDIR);
+      bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+      done = TRUE;
+    }
+}

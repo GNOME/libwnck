@@ -150,6 +150,8 @@ static void
 wnck_screen_class_init (WnckScreenClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  _wnck_init ();
   
   parent_class = g_type_class_peek_parent (klass);
   

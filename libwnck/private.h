@@ -64,6 +64,8 @@ void             _wnck_application_destroy (WnckApplication *app);
 void _wnck_workspace_update_name (WnckWorkspace *workspace,
                                   const char    *name);
 
+void _wnck_init (void);
+
 #define DEFAULT_ICON_WIDTH 32
 #define DEFAULT_ICON_HEIGHT 32
 #define DEFAULT_MINI_ICON_WIDTH 16

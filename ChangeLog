@@ -1,5 +1,18 @@
 2002-03-23  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/screen.c (wnck_screen_class_init): call _wnck_init()
+	here.
+
+	* libwnck/util.c (_wnck_init): add an init function to
+	be called when we create the main objects, and 
+	bindtextdomain() in here. #74026
+
+	* libwnck/Makefile.am (INCLUDES): define WNCK_LOCALEDIR
+
+	* configure.in (wncklocaledir): set up wncklocaledir variable
+
+2002-03-23  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/application.c (_wnck_application_create): try using 
 	window class from group leader, if the name of the app 
 	isn't set. #72887

@@ -1,6 +1,6 @@
 
 INCLUDES=@LIBWNCK_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
-	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE -DWNCK_LOCALEDIR=\"$(wncklocaledir)\"
 
 lib_LTLIBRARIES=libwnck-1.la
 
