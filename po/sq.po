@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD\n"
+"Project-Id-Version: libwnck.HEAD.sq\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-01-15 18:34+0100\n"
-"PO-Revision-Date: 2004-01-15 18:35+0100\n"
+"POT-Creation-Date: 2004-02-02 14:14+0100\n"
+"PO-Revision-Date: 2004-02-02 14:13+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "aplikacion pa emër"
+msgstr "aplikativ pa emër"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -110,4 +110,3 @@ msgstr "Lista e dritareve"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Instrument për t'u spostuar midis dritareve të dukshme"
-
