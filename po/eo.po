@@ -6,15 +6,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.3.1\n"
-"POT-Creation-Date: 2003-05-29 11:44+0200\n"
-"PO-Revision-Date: 2003-05-29 19:18+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-08-21 13:10+0200\n"
+"PO-Revision-Date: 2003-08-21 19:18+0100\n"
 "Last-Translator: Joël Brich <joel.brich@laposte.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "sentitola aplikaĵo"
 
@@ -32,15 +33,15 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klaku tio por ŝalti al laborkadro %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
-msgstr "Ne_minimumigu"
+msgid "Unmi_nimize"
+msgstr "Nemi_nimumigu"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
-msgstr "_Minimumigu"
+msgid "Mi_nimize"
+msgstr "Mi_nimumigu"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+msgid "Unma_ximize"
 msgstr "Nema_ksimumigu"
 
 #: libwnck/window-action-menu.c:213
@@ -64,8 +65,8 @@ msgid "Put on _All Workspaces"
 msgstr "Metu en ĉi_uj laborkadroj"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
-msgstr "Mo_vu"
+msgid "_Move"
+msgstr "_Movu"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
@@ -75,11 +76,11 @@ msgstr "Ŝanĝu _grandecon"
 msgid "_Close"
 msgstr "_Fermu"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "sentitola fenestro"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborkadro %d"
