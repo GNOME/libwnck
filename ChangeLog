@@ -1,3 +1,9 @@
+2004-08-16  Arvind Samptur  <arvind.samptur@wipro.com>
+
+	* libwnck/workspace-accessible.c: 
+	(wnck_workspace_accessible_get_extents): Get the AtkComponent 
+	co-ordinates right.  Fixes #136447
+
 2004-08-15  Elijah Newren  <newren@math.utah.edu>
 
 	Fix window activation vs. minimization for mouse focus. (fixes

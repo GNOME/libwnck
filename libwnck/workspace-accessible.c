@@ -107,6 +107,7 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
   GtkWidget *widget;
   AtkObject *parent;
   GObject *g_obj;
+  int px, py;
 
   g_return_if_fail (WNCK_IS_WORKSPACE_ACCESSIBLE (component));
 
@@ -134,10 +135,12 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
 
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
+  atk_component_get_position (ATK_COMPONENT (parent), &px,&py, coords);
+
   _wnck_pager_get_workspace_rect (pager, WNCK_WORKSPACE_ACCESSIBLE (component)->index, &rect);
   
-  *x = rect.x;
-  *y = rect.y;
+  *x = rect.x + px;
+  *y = rect.y + py;
   *height = rect.height;
   *width = rect.width; 
 }
