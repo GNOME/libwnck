@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.13\n"
-"POT-Creation-Date: 2002-08-08 19:30-0400\n"
+"POT-Creation-Date: 2002-08-25 15:18-0400\n"
 "PO-Revision-Date: 2002-06-03 13:15+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <gnome@softcatala.net>\n"
@@ -17,15 +17,15 @@ msgstr ""
 msgid "untitled application"
 msgstr "aplicació sense títol"
 
-#: libwnck/pager-accessible.c:295
+#: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
 msgstr "Canviador d'espais de treball"
 
-#: libwnck/pager-accessible.c:306
+#: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
 msgstr "Eina per a canviar entre espais de treball"
 
-#: libwnck/pager-accessible.c:410
+#: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Feu clic ací per a canviar a l'espai de treball %s"
