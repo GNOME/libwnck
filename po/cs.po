@@ -1,14 +1,14 @@
 # Czech translation of libwnck.
 # This file is distributed under the same license as the libwnck package.
-# Copyright (C) 2004 Miloslav Trmac <mitr@volny.cz>
-# Miloslav Trmac <mitr@volny.cz>, 2002, 2003, 2004.
+# Copyright (C) 2004, 2005 Miloslav Trmac <mitr@volny.cz>
+# Miloslav Trmac <mitr@volny.cz>, 2002, 2003, 2004, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-01-07 19:47+0100\n"
+"POT-Creation-Date: 2005-01-20 12:29+0100\n"
+"PO-Revision-Date: 2005-01-20 20:03+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -110,3 +110,15 @@ msgstr "Seznam oken"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Nástroj pro přepínání mezi viditelnými okny"
+
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "_Zavřít vše"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "Mi_nimalizovat vše"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "Demi_nimalizovat vše"
