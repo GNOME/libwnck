@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2003-07-06 22:31-0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-12 20:24+0100\n"
+"PO-Revision-Date: 2004-03-12 15:21-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: GNOME-BR <gnome-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
@@ -68,14 +69,13 @@ msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
 
 #: libwnck/window-action-menu.c:368
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "Área de Trabalho %d"
+msgstr "Área de Trabalho 1_0"
 
 #: libwnck/window-action-menu.c:370
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Área de Trabalho %d"
+msgstr "Área de Trabalho %s%d"
 
 #: libwnck/window-action-menu.c:466
 msgid "_Move"
@@ -91,12 +91,12 @@ msgstr "Fe_char"
 
 #: libwnck/window-action-menu.c:499
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Ir para outra _área de trabalho"
 
 #: libwnck/window-action-menu.c:517
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -104,9 +104,8 @@ msgstr "janela sem título"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
-msgstr ""
+msgstr "Lista de Janelas"
 
 #: libwnck/tasklist.c:462
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "Ferramenta para alternar entre áreas de trabalho"
+msgstr "Ferramenta para alternar entre janelas visíveis"
