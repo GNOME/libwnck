@@ -81,6 +81,7 @@ LDFLAGS=$save_LDFLAGS
 
 AC_OUTPUT([
 Makefile
+po/Makefile.in
 libwnck/Makefile
 libwnck-1.0.pc
 ])

@@ -1,3 +1,8 @@
+2001-11-26  Abel Cheung  <maddog@linux.org.hk>
+
+	* POTFILES.in: Searched for translatable entries in
+	  libwnck subdir.
+
 2001-09-16  gettextize  <bug-gnu-utils@gnu.org>
 
 	* Makefile.in.in: Upgrade to gettext-0.10.38.

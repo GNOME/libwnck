@@ -1,3 +1,8 @@
+2001-11-26  Abel Cheung  <maddog@linux.org.hk>
+
+	* configure.in: Add po/Makefile.in to AC_OUTPUT for translator's
+	  fun, if anybody manage to discover this CVS module :)
+
 2001-10-25  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/pager.c: fixups, window dragging, etc.
