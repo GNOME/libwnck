@@ -1,3 +1,6 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+libwnck/application.c
 libwnck/window-action-menu.c
 libwnck/window.c
 libwnck/workspace.c
