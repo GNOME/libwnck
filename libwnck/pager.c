@@ -40,7 +40,6 @@ struct _WnckPagerPrivate
   WnckWindow *drag_window;
   int drag_window_x;
   int drag_window_y;
-  GtkWidget *action_menu;
   WnckWindow *action_window;
   int action_click_x;
   int action_click_y;
@@ -85,14 +84,6 @@ static void wnck_pager_connect_screen    (WnckPager  *pager,
 static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
-
-static void wnck_pager_popup_action_menu (WnckPager  *pager,
-                                          WnckWindow *window,
-                                          int         button,
-                                          int         x,
-                                          int         y,
-                                          guint32     timestamp);
-static void wnck_pager_clear_action_menu (WnckPager  *pager);
 
 static void wnck_pager_clear_drag (WnckPager *pager);
 
@@ -167,8 +158,6 @@ wnck_pager_finalize (GObject *object)
 
   pager = WNCK_PAGER (object);
 
-  wnck_pager_clear_action_menu (pager);
-  
   wnck_pager_disconnect_screen (pager);
   
   g_free (pager->priv);
@@ -229,6 +218,8 @@ wnck_pager_size_request  (GtkWidget      *widget,
   int spaces_per_row;
   double screen_aspect;
   int other_dimension_size;
+  int u_width, u_height;
+  int size;
   
   pager = WNCK_PAGER (widget);
   
@@ -237,21 +228,31 @@ wnck_pager_size_request  (GtkWidget      *widget,
   g_assert (pager->priv->n_rows > 0);
   spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
   
+  gtk_widget_get_size_request (widget, &u_width, &u_height);
+  
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {
-      screen_aspect = (double) gdk_screen_height () / (double) gdk_screen_width ();
-      other_dimension_size = screen_aspect * pager->priv->workspace_size;
+      size = pager->priv->workspace_size;
+      if (u_width != -1)
+	size = u_width / pager->priv->n_rows;
       
-      requisition->width = pager->priv->workspace_size * pager->priv->n_rows;
+      screen_aspect = (double) gdk_screen_height () / (double) gdk_screen_width ();
+      other_dimension_size = screen_aspect * size;
+      
+      requisition->width = size * pager->priv->n_rows;
       requisition->height = other_dimension_size * spaces_per_row;
     }
   else
     {
+      size = pager->priv->workspace_size;
+      if (u_height != -1)
+	size = u_height / pager->priv->n_rows;
+      
       screen_aspect = (double) gdk_screen_width () / (double) gdk_screen_height ();
-      other_dimension_size = screen_aspect * pager->priv->workspace_size;
+      other_dimension_size = screen_aspect * size;
 
       requisition->width = other_dimension_size * spaces_per_row;
-      requisition->height = pager->priv->workspace_size * pager->priv->n_rows;
+      requisition->height = size * pager->priv->n_rows;
     }
 }
 
@@ -612,6 +613,7 @@ wnck_pager_button_press  (GtkWidget      *widget,
   WnckPager *pager;
   int i;
   int n_spaces;
+  gboolean handled = FALSE;
   
   pager = WNCK_PAGER (widget);
 
@@ -632,7 +634,10 @@ wnck_pager_button_press  (GtkWidget      *widget,
               space != wnck_screen_get_active_workspace (pager->priv->screen))
             {
               if (event->button == 1)
-                wnck_workspace_activate (space);
+		{
+		  wnck_workspace_activate (space);
+		  handled = TRUE;
+		}
               goto workspace_search_out;
             }
           else if (space)
@@ -667,15 +672,7 @@ wnck_pager_button_press  (GtkWidget      *widget,
                             event->x - rect.x;
                           pager->priv->drag_start_y_workspace_relative =
                             event->y - rect.y;
-                        }
-                      else if (event->button == 3)
-                        {
-                          wnck_pager_popup_action_menu (pager,
-                                                        win,
-                                                        event->button,
-                                                        event->x,
-                                                        event->y,
-                                                        event->time);
+			  handled = TRUE;
                         }
 
                       goto window_search_out;
@@ -696,7 +693,7 @@ wnck_pager_button_press  (GtkWidget      *widget,
 
  workspace_search_out:
 
-  return TRUE;
+  return handled;
 }
 
 static gboolean
@@ -852,9 +849,6 @@ window_closed_callback            (WnckScreen      *screen,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
-
-  if (pager->priv->action_window == window)
-    wnck_pager_clear_action_menu (pager);
 
   if (pager->priv->drag_window == window)
     wnck_pager_clear_drag (pager);
@@ -1051,67 +1045,6 @@ wnck_pager_disconnect_screen (WnckPager  *pager)
     }
 
   pager->priv->screen = NULL;
-}
-
-static void
-popup_position_func (GtkMenu   *menu,
-                     gint      *x,
-                     gint      *y,
-                     gboolean  *push_in,
-                     gpointer	user_data)
-{
-  WnckPager *pager;
-  GtkWidget *widget;
-  gint root_x, root_y;
-  GtkRequisition req;
-  
-  pager = WNCK_PAGER (user_data);
-  widget = GTK_WIDGET (pager);
-  
-  gtk_widget_size_request (pager->priv->action_menu, &req);
-
-  gdk_window_get_origin (widget->window, &root_x, &root_y);
-  root_x += pager->priv->action_click_x;
-  root_y += pager->priv->action_click_y;
-  
-  /* Ensure sanity */
-  *x = CLAMP (*x, root_x, (root_x + widget->allocation.width));
-  *y = CLAMP (*y, root_y, (root_y + widget->allocation.height));
-
-  *x = CLAMP (*x, 0, MAX (0, gdk_screen_width () - req.width));
-  *y = CLAMP (*y, 0, MAX (0, gdk_screen_height () - req.height));
-}
-
-static void
-wnck_pager_popup_action_menu (WnckPager  *pager,
-                              WnckWindow *window,
-                              int         button,
-                              int         x,
-                              int         y,
-                              guint32     timestamp)
-{
-  wnck_pager_clear_action_menu (pager);
-
-  pager->priv->action_window = window;
-  pager->priv->action_menu = wnck_create_window_action_menu (window);
-  pager->priv->action_click_x = x;
-  pager->priv->action_click_y = y;
-  
-  gtk_menu_popup (GTK_MENU (pager->priv->action_menu),
-                  NULL, NULL,
-                  popup_position_func, pager,
-                  button, timestamp);
-}
-
-static void
-wnck_pager_clear_action_menu (WnckPager  *pager)
-{
-  if (pager->priv->action_menu)
-    {
-      gtk_widget_destroy (pager->priv->action_menu);
-      pager->priv->action_menu = NULL;
-      pager->priv->action_window = NULL;
-    }
 }
 
 static void

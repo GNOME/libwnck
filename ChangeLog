@@ -1,3 +1,10 @@
+2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/pager.c:
+	Removed action menu.
+	Only return TRUE from button_press if we handled the button.
+	Handle set_usized widget correctly in size_request.
+
 2001-11-27  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c (wnck_pager_motion): return a value
