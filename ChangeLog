@@ -1,3 +1,10 @@
+2002-02-06  Padraig  O'Briain  <padraig.obriain@sun.com>
+
+	* libwnck/tasklist.c:
+	(wnck_task_get_icon) Remove unused variable minimized
+	(wnck_task_create_widgets) Allow toggle button to receive focus
+	so they can be manipulated using keyboard
+
 2002-01-30  Ole Laursen  <olau@hardworking.dk>
 
 	* configure.in: Added "da" again since something apparently went

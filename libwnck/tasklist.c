@@ -1345,7 +1345,6 @@ wnck_task_get_icon (WnckTask *task)
 {
   WnckWindowState state;
   GdkPixbuf *pixbuf;
-  gboolean minimized;
   
   if (task->is_application)
     {
@@ -1472,8 +1471,6 @@ wnck_task_create_widgets (WnckTask *task)
   char *text;
   
   task->button = gtk_toggle_button_new ();
-
-  GTK_WIDGET_UNSET_FLAGS(task->button, GTK_CAN_FOCUS);
 
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
