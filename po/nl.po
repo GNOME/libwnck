@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-11-25 05:34+0100\n"
+"POT-Creation-Date: 2002-12-02 23:18-0500\n"
 "PO-Revision-Date: 2002-06-09 01:55+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -32,47 +32,61 @@ msgstr "Hulpje om tussen verschillende bureaubladen te wisselen"
 msgid "Click this to switch to workspace %s"
 msgstr "Klik hier om te wisselen naar bureaublad %s"
 
-#: libwnck/window-action-menu.c:155
+#: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
 msgstr "_Herstellen"
 
-#: libwnck/window-action-menu.c:161
+#: libwnck/window-action-menu.c:198
 msgid "_Minimize"
 msgstr "_Minimaliseren"
 
-#: libwnck/window-action-menu.c:168
+#: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
 msgstr "_Herstellen"
 
-#: libwnck/window-action-menu.c:174
+#: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
 msgstr "Ma_ximaliseren"
 
-#: libwnck/window-action-menu.c:181
-msgid "U_nshade"
-msgstr "_Openrollen"
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr ""
 
-#: libwnck/window-action-menu.c:187
-msgid "_Shade"
-msgstr "_Dichtrollen"
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr ""
 
-#: libwnck/window-action-menu.c:298
-msgid "_Close"
-msgstr "_Sluiten"
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr ""
 
-#: libwnck/window-action-menu.c:319
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr ""
+
+#: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
 msgstr "_Verplaatsen"
 
-#: libwnck/window-action-menu.c:325
+#: libwnck/window-action-menu.c:379
 msgid "_Resize"
 msgstr "_Afmetingen wijzigen"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Sluiten"
 
 #: libwnck/window.c:29
 msgid "untitled window"
 msgstr "naamloos venster"
 
-#: libwnck/workspace.c:202
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"
+
+#~ msgid "U_nshade"
+#~ msgstr "_Openrollen"
+
+#~ msgid "_Shade"
+#~ msgstr "_Dichtrollen"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2002-11-29 13:23-0200\n"
+"POT-Creation-Date: 2002-12-02 23:18-0500\n"
 "PO-Revision-Date: 2002-11-29 13:23-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
@@ -82,4 +82,3 @@ msgstr "janela sem título"
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"
-
