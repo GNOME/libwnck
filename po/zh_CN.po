@@ -1,4 +1,4 @@
-# Simplified Chinese translation of libwnck.
+# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # Wang Jian <lark@linux.net.cn>, 2002
 # Funda Wang <fundawang@en2china.com>, 2003
@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2003-01-22 22:53+0800\n"
+"POT-Creation-Date: 2003-06-08 01:19+0800\n"
+"PO-Revision-Date: 2003-06-08 01:21+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -32,19 +32,16 @@ msgid "Click this to switch to workspace %s"
 msgstr "单击此处切换到工作区 %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "恢复(_M)"
+msgstr "恢复(_N)"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "最小化(_M)"
+msgstr "最小化(_N)"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "恢复(_U)"
+msgstr "恢复(_X)"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -60,16 +57,15 @@ msgstr "卷起(_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "只在此工作区上(_T)"
+msgstr "仅在此工作区(_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "放在所有工作区上(_A)"
+msgstr "在所有工作区(_A)"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "移动(_V)"
+msgstr "移动(_M)"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
