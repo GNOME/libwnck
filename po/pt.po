@@ -1,14 +1,14 @@
 # libwnck's Portuguese Translation
-# Copyright (C) 2001, 2004 libwnck
+# Copyright © 2001, 2004 libwnck
 # Distributed under the same licence as libwnck
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2004
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.6\n"
 "Report-Msgid-Bugs-To: Duarte Loreto <happyguy_pt@hotmail.com>\n"
-"POT-Creation-Date: 2004-01-03 18:58+0000\n"
-"PO-Revision-Date: 2004-01-03 19:10+0000\n"
+"POT-Creation-Date: 2004-02-03 02:12+0000\n"
+"PO-Revision-Date: 2004-02-03 02:15+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -32,58 +32,76 @@ msgstr "Ferramenta para alternar entre áreas de trabalho"
 msgid "Click this to switch to workspace %s"
 msgstr "Clique para ir para a área de trabalho %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
 msgstr "Desmi_nimizar"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 msgid "Unma_ximize"
 msgstr "Desma_ximizar"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
 msgstr "D_esenrolar"
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
 msgstr "_Enrolar"
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
 msgstr "Apenas Nesta Área de _Trabalho"
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
 msgstr "Colocar em Todas _as Áreas de Trabalho"
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Área de Trabalho %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "Área de Trabalho 1_0"
+
+#: libwnck/window-action-menu.c:370
+#, c-format
+msgid "Workspace %s%d"
+msgstr "Área de Trabalho %s%d"
+
+#: libwnck/window-action-menu.c:466
 msgid "_Move"
 msgstr "_Mover"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
 msgstr "_Fechar"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "Mover para Outra Área de _Trabalho"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "janela sem título"
-
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "Área de Trabalho %d"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
