@@ -36,6 +36,7 @@ create_pager_window (WnckScreen *screen,
   pager = wnck_pager_new (screen);
 
   wnck_pager_set_orientation (WNCK_PAGER (pager), orientation);
+  wnck_pager_set_n_rows (WNCK_PAGER (pager), 3);
   
   gtk_container_add (GTK_CONTAINER (frame), pager);  
   

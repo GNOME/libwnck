@@ -1,6 +1,15 @@
 2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/pager.c:
+	Remove the desktop outlines. Make there be one line of
+	background between the desktops, but not at the borders.
+	
+	* libwnck/test-pager.c:
+	Test with 3 rows.
+
+2001-11-27  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/pager.c:
 	Removed action menu.
 	Only return TRUE from button_press if we handled the button.
 	Handle set_usized widget correctly in size_request.

@@ -234,25 +234,25 @@ wnck_pager_size_request  (GtkWidget      *widget,
     {
       size = pager->priv->workspace_size;
       if (u_width != -1)
-	size = u_width / pager->priv->n_rows;
+	size = (u_width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
       
       screen_aspect = (double) gdk_screen_height () / (double) gdk_screen_width ();
       other_dimension_size = screen_aspect * size;
       
-      requisition->width = size * pager->priv->n_rows;
-      requisition->height = other_dimension_size * spaces_per_row;
+      requisition->width = size * pager->priv->n_rows + (pager->priv->n_rows - 1);
+      requisition->height = other_dimension_size * spaces_per_row  + (spaces_per_row - 1);
     }
   else
     {
       size = pager->priv->workspace_size;
       if (u_height != -1)
-	size = u_height / pager->priv->n_rows;
+	size = (u_height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
       
       screen_aspect = (double) gdk_screen_width () / (double) gdk_screen_height ();
       other_dimension_size = screen_aspect * size;
 
-      requisition->width = other_dimension_size * spaces_per_row;
-      requisition->height = size * pager->priv->n_rows;
+      requisition->width = other_dimension_size * spaces_per_row + (spaces_per_row - 1);
+      requisition->height = size * pager->priv->n_rows + (pager->priv->n_rows - 1);
     }
 }
 
@@ -275,6 +275,7 @@ get_workspace_rect (WnckPager    *pager,
   int n_spaces;
   int spaces_per_row;
   GtkWidget *widget;
+  int col, row;
   
   widget = GTK_WIDGET (pager);
   
@@ -285,17 +286,35 @@ get_workspace_rect (WnckPager    *pager,
   
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {      
-      rect->width = widget->allocation.width / pager->priv->n_rows;
-      rect->height = widget->allocation.height / spaces_per_row;
-      rect->x = rect->width * (space / spaces_per_row); 
-      rect->y = rect->height * (space % spaces_per_row);
+      rect->width = (widget->allocation.width - (pager->priv->n_rows - 1)) / pager->priv->n_rows;
+      rect->height = (widget->allocation.height - (spaces_per_row - 1)) / spaces_per_row;
+
+      col = space / spaces_per_row;
+      row = space % spaces_per_row;
+      rect->x = (rect->width + 1) * col; 
+      rect->y = (rect->height + 1) * row;
+      
+      if (col == pager->priv->n_rows - 1)
+	rect->width = widget->allocation.width - rect->x;
+      
+      if (row  == spaces_per_row - 1)
+	rect->height = widget->allocation.height - rect->y;
     }
   else
     {
-      rect->width = widget->allocation.width / spaces_per_row;
-      rect->height = widget->allocation.height / pager->priv->n_rows;
-      rect->x = rect->width * (space % spaces_per_row);
-      rect->y = rect->height * (space / spaces_per_row);
+      rect->width = (widget->allocation.width - (spaces_per_row - 1)) / spaces_per_row;
+      rect->height = (widget->allocation.height - (pager->priv->n_rows - 1)) / pager->priv->n_rows;
+      
+      col = space % spaces_per_row;
+      row = space / spaces_per_row;
+      rect->x = (rect->width + 1) * col; 
+      rect->y = (rect->height + 1) * row;
+
+      if (col == spaces_per_row - 1)
+	rect->width = widget->allocation.width - rect->x;
+      
+      if (row  == pager->priv->n_rows - 1)
+	rect->height = widget->allocation.height - rect->y;
     }
 }
                     
@@ -535,9 +554,15 @@ wnck_pager_expose_event  (GtkWidget      *widget,
 
       if (is_current)
         gdk_draw_rectangle (widget->window,                            
-                            widget->style->dark_gc[GTK_STATE_NORMAL],
+                            widget->style->dark_gc[GTK_STATE_SELECTED],
                             TRUE,
-                            rect.x + 1, rect.y + 1, rect.width - 2, rect.height - 2);
+                            rect.x, rect.y, rect.width, rect.height);
+      else
+	gdk_draw_rectangle (widget->window,
+                            widget->style->dark_gc[GTK_STATE_NORMAL],
+			    TRUE,
+			    rect.x, rect.y, rect.width, rect.height);
+
       
       windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
                                                             wnck_workspace_get (i));
@@ -566,12 +591,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
         }
 
       g_list_free (windows);
-      
-      gdk_draw_rectangle (widget->window,
-                          widget->style->fg_gc[GTK_STATE_NORMAL],
-                          FALSE,
-                          rect.x, rect.y, rect.width - 1, rect.height - 1);
-      
+
       ++i;
     }
 
