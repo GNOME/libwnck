@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
-"PO-Revision-Date: 2002-06-05 01:53+0700\n"
+"POT-Creation-Date: 2003-01-10 12:00+0100\n"
+"PO-Revision-Date: 2003-01-10 22:00+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -47,19 +47,19 @@ msgstr "_Phóng to"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Hoàn cuộn"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Cuộn _lên"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Chỉ trong Workspace _này"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Đặt trên _mọi Workspace"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"

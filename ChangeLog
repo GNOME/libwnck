@@ -1,3 +1,8 @@
+2003-01-14  Pablo Saratxaga  <pablo@mandrakesoft.com>
+
+	* configure.in: Added Amharic (am), Farsi (fa),
+	and Macedonian (mk) to ALL_LINGUAS
+
 2003-01-09  Havoc Pennington  <hp@pobox.com>
 
 	* README: update README
