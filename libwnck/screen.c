@@ -381,7 +381,10 @@ wnck_screen_get_active_window (WnckScreen *screen)
  * @screen: a #WnckScreen
  * 
  * Gets the screen's list of windows. The list is not copied
- * and should not be freed.
+ * and should not be freed. The list is not in a defined order,
+ * but should be "stable" (windows shouldn't reorder themselves in
+ * it). (However, the stability of the list is established by
+ * the window manager, so don't blame libwnck if it breaks down.)
  * 
  * Return value: reference to list of windows
  **/
@@ -393,6 +396,15 @@ wnck_screen_get_windows (WnckScreen *screen)
   return screen->priv->mapped_windows;
 }
 
+/**
+ * wnck_screen_get_windows_stacked:
+ * @screen: a #WnckScreen
+ * 
+ * Gets the screen's list of windows in bottom-to-top order.
+ * The list is not copied and should not be freed.
+ * 
+ * Return value: reference to list of windows in stacking order
+ **/
 GList*
 wnck_screen_get_windows_stacked (WnckScreen *screen)
 {

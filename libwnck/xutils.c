@@ -24,6 +24,7 @@
 #include "screen.h"
 #include "window.h"
 #include "private.h"
+#include "inlinepixbufs.h"
 
 gboolean
 _wnck_get_cardinal (Window  xwindow,
@@ -704,3 +705,646 @@ _wnck_select_input (Window xwindow,
   _wnck_error_trap_pop ();
 }
   
+/* The icon-reading code is copied
+ * from metacity, please sync bugfixes
+ */
+static gboolean
+find_largest_sizes (gulong *data,
+                    int     nitems,
+                    int    *width,
+                    int    *height)
+{
+  *width = 0;
+  *height = 0;
+  
+  while (nitems > 0)
+    {
+      int w, h;
+      gboolean replace;
+
+      replace = FALSE;
+      
+      if (nitems < 3)
+        return FALSE; /* no space for w, h */
+      
+      w = data[0];
+      h = data[1];
+      
+      if (nitems < ((w * h) + 2))
+        return FALSE; /* not enough data */
+
+      *width = MAX (w, *width);
+      *height = MAX (h, *height);
+      
+      data += (w * h) + 2;
+      nitems -= (w * h) + 2;
+    }
+
+  return TRUE;
+}
+
+static gboolean
+find_best_size (gulong  *data,
+                int      nitems,
+                int      ideal_width,
+                int      ideal_height,
+                int     *width,
+                int     *height,
+                gulong **start)
+{
+  int best_w;
+  int best_h;
+  gulong *best_start;
+  int max_width, max_height;
+  
+  *width = 0;
+  *height = 0;
+  *start = NULL;
+
+  if (!find_largest_sizes (data, nitems, &max_width, &max_height))
+    return FALSE;
+
+  if (ideal_width < 0)
+    ideal_width = max_width;
+  if (ideal_height < 0)
+    ideal_height = max_height;
+  
+  best_w = 0;
+  best_h = 0;
+  best_start = NULL;
+  
+  while (nitems > 0)
+    {
+      int w, h;
+      gboolean replace;
+
+      replace = FALSE;
+      
+      if (nitems < 3)
+        return FALSE; /* no space for w, h */
+      
+      w = data[0];
+      h = data[1];
+      
+      if (nitems < ((w * h) + 2))
+        break; /* not enough data */
+
+      if (best_start == NULL)
+        {
+          replace = TRUE;
+        }
+      else
+        {
+          /* work with averages */
+          const int ideal_size = (ideal_width + ideal_height) / 2;
+          int best_size = (best_w + best_h) / 2;
+          int this_size = (w + h) / 2;
+          
+          /* larger than desired is always better than smaller */
+          if (best_size < ideal_size &&
+              this_size >= ideal_size)
+            replace = TRUE;
+          /* if we have too small, pick anything bigger */
+          else if (best_size < ideal_size &&
+                   this_size > best_size)
+            replace = TRUE;
+          /* if we have too large, pick anything smaller
+           * but still >= the ideal
+           */
+          else if (best_size > ideal_size &&
+                   this_size >= ideal_size &&
+                   this_size < best_size)
+            replace = TRUE;
+        }
+
+      if (replace)
+        {
+          best_start = data + 2;
+          best_w = w;
+          best_h = h;
+        }
+
+      data += (w * h) + 2;
+      nitems -= (w * h) + 2;
+    }
+
+  if (best_start)
+    {
+      *start = best_start;
+      *width = best_w;
+      *height = best_h;
+      return TRUE;
+    }
+  else
+    return FALSE;
+}
+
+static void
+argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
+{
+  guchar *p;
+  int i;
+  
+  *pixdata = g_new (guchar, len * 4);
+  p = *pixdata;
+
+  /* One could speed this up a lot. */
+  i = 0;
+  while (i < len)
+    {
+      guint argb;
+      guint rgba;
+      
+      argb = argb_data[i];
+      rgba = (argb << 8) | (argb >> 24);
+      
+      *p = rgba >> 24;
+      ++p;
+      *p = (rgba >> 16) & 0xff;
+      ++p;
+      *p = (rgba >> 8) & 0xff;
+      ++p;
+      *p = rgba & 0xff;
+      ++p;
+      
+      ++i;
+    }
+}
+
+static gboolean
+read_rgb_icon (Window         xwindow,
+               int            ideal_width,
+               int            ideal_height,
+               int            ideal_mini_width,
+               int            ideal_mini_height,
+               int           *width,
+               int           *height,
+               guchar       **pixdata,
+               int           *mini_width,
+               int           *mini_height,
+               guchar       **mini_pixdata)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  int result;
+  gulong *data; /* FIXME should be guint? */
+  gulong *best;
+  int w, h;
+  gulong *best_mini;
+  int mini_w, mini_h;
+  
+  if (sizeof (gulong) != 4)
+    g_warning ("%s: Whoops, I think this function may be broken on 64-bit\n",
+               __FUNCTION__);
+  
+  _wnck_error_trap_push ();
+  type = None;
+  data = NULL;
+  XGetWindowProperty (gdk_display,
+                      xwindow,
+                      _wnck_atom_get ("_NET_WM_ICON"),
+		      0, G_MAXLONG,
+		      False, XA_CARDINAL, &type, &format, &nitems,
+		      &bytes_after, ((guchar **)&data));
+  
+  result = _wnck_error_trap_pop ();
+  
+  if (result != Success)
+    return FALSE;
+
+  if (type != XA_CARDINAL)
+    return FALSE; /* FIXME memory leak? */
+  
+  if (!find_best_size (data, nitems,
+                       ideal_width, ideal_height,
+                       &w, &h, &best))
+    {
+      XFree (data);
+      return FALSE;
+    }
+
+  if (!find_best_size (data, nitems,
+                       ideal_mini_width, ideal_mini_height,
+                       &mini_w, &mini_h, &best_mini))
+    {
+      XFree (data);
+      return FALSE;
+    }
+  
+  *width = w;
+  *height = h;
+
+  *mini_width = mini_w;
+  *mini_height = mini_h;
+
+  argbdata_to_pixdata (best, w * h, pixdata);
+  argbdata_to_pixdata (best_mini, mini_w * mini_h, mini_pixdata);
+
+  XFree (data);
+  
+  return TRUE;
+}
+
+static void
+free_pixels (guchar *pixels, gpointer data)
+{
+  g_free (pixels);
+}
+
+static void
+get_pixmap_geometry (Pixmap       pixmap,
+                     int         *w,
+                     int         *h,
+                     int         *d)
+{
+  Window root_ignored;
+  int x_ignored, y_ignored;
+  guint width, height;
+  guint border_width_ignored;
+  guint depth;
+
+  if (w)
+    *w = 1;
+  if (h)
+    *h = 1;
+  if (d)
+    *d = 1;
+  
+  XGetGeometry (gdk_display,
+                pixmap, &root_ignored, &x_ignored, &y_ignored,
+                &width, &height, &border_width_ignored, &depth);
+
+  if (w)
+    *w = width;
+  if (h)
+    *h = height;
+  if (d)
+    *d = depth;
+}
+
+static GdkPixbuf*
+apply_mask (GdkPixbuf *pixbuf,
+            GdkPixbuf *mask)
+{
+  int w, h;
+  int i, j;
+  GdkPixbuf *with_alpha;
+  guchar *src;
+  guchar *dest;
+  int src_stride;
+  int dest_stride;
+  
+  w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
+  h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
+  
+  with_alpha = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
+
+  dest = gdk_pixbuf_get_pixels (with_alpha);
+  src = gdk_pixbuf_get_pixels (mask);
+
+  dest_stride = gdk_pixbuf_get_rowstride (with_alpha);
+  src_stride = gdk_pixbuf_get_rowstride (mask);
+  
+  i = 0;
+  while (i < h)
+    {
+      j = 0;
+      while (j < w)
+        {
+          guchar *s = src + i * src_stride + j * 3;
+          guchar *d = dest + i * dest_stride + j * 4;
+          
+          /* s[0] == s[1] == s[2], they are 255 if the bit was set, 0
+           * otherwise
+           */
+          if (s[0] == 0)
+            d[3] = 0;   /* transparent */
+          else
+            d[3] = 255; /* opaque */
+          
+          ++j;
+        }
+      
+      ++i;
+    }
+
+  return with_alpha;
+}
+
+static GdkColormap*
+get_cmap (GdkPixmap *pixmap)
+{
+  GdkColormap *cmap;
+
+  cmap = gdk_drawable_get_colormap (pixmap);
+  if (cmap)
+    g_object_ref (G_OBJECT (cmap));
+
+  if (cmap == NULL)
+    {
+      if (gdk_drawable_get_depth (pixmap) == 1)
+        {
+          /* try null cmap */
+          cmap = NULL;
+        }
+      else
+        {
+          /* Try system cmap */
+          cmap = gdk_colormap_get_system ();
+          g_object_ref (G_OBJECT (cmap));
+        }
+    }
+
+  return cmap;
+}
+
+static GdkPixbuf*
+_wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
+                                  Pixmap       xpixmap,
+                                  int          src_x,
+                                  int          src_y,
+                                  int          dest_x,
+                                  int          dest_y,
+                                  int          width,
+                                  int          height)
+{
+  GdkDrawable *drawable;
+  GdkPixbuf *retval;
+  GdkColormap *cmap;
+  
+  retval = NULL;
+  
+  drawable = gdk_xid_table_lookup (xpixmap);
+
+  if (drawable)
+    g_object_ref (G_OBJECT (drawable));
+  else
+    drawable = gdk_pixmap_foreign_new (xpixmap);
+
+  cmap = get_cmap (drawable);
+  
+  retval = gdk_pixbuf_get_from_drawable (dest,
+                                         drawable,
+                                         cmap,
+                                         src_x, src_y,
+                                         dest_x, dest_y,
+                                         width, height);
+
+  if (cmap)
+    g_object_unref (G_OBJECT (cmap));
+  g_object_unref (G_OBJECT (drawable));
+
+  return retval;
+}
+
+static gboolean
+try_pixmap_and_mask (Pixmap      src_pixmap,
+                     Pixmap      src_mask,
+                     GdkPixbuf **iconp,
+                     int         ideal_width,
+                     int         ideal_height,
+                     GdkPixbuf **mini_iconp,
+                     int         ideal_mini_width,
+                     int         ideal_mini_height)
+{
+  GdkPixbuf *unscaled = NULL;
+  GdkPixbuf *mask = NULL;
+  int w, h;
+
+  if (src_pixmap == None)
+    return FALSE;
+      
+  _wnck_error_trap_push ();
+
+  get_pixmap_geometry (src_pixmap, &w, &h, NULL);
+      
+  unscaled = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
+                                               src_pixmap,
+                                               0, 0, 0, 0,
+                                               w, h);
+
+  if (unscaled && src_mask != None)
+    {
+      get_pixmap_geometry (src_mask, &w, &h, NULL);
+      mask = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
+                                               src_mask,
+                                               0, 0, 0, 0,
+                                               w, h);
+    }
+  
+  _wnck_error_trap_pop ();
+
+  if (mask)
+    {
+      GdkPixbuf *masked;
+      
+      masked = apply_mask (unscaled, mask);
+      g_object_unref (G_OBJECT (unscaled));
+      unscaled = masked;
+
+      g_object_unref (G_OBJECT (mask));
+      mask = NULL;
+    }
+  
+  if (unscaled)
+    {
+      *iconp =
+        gdk_pixbuf_scale_simple (unscaled,
+                                 ideal_width > 0 ? ideal_width :
+                                 gdk_pixbuf_get_width (unscaled),
+                                 ideal_height > 0 ? ideal_height :
+                                 gdk_pixbuf_get_height (unscaled),
+                                 GDK_INTERP_BILINEAR);
+      *mini_iconp =
+        gdk_pixbuf_scale_simple (unscaled,
+                                 ideal_mini_width > 0 ? ideal_mini_width :
+                                 gdk_pixbuf_get_width (unscaled),
+                                 ideal_mini_height > 0 ? ideal_mini_height :
+                                 gdk_pixbuf_get_height (unscaled),
+                                 GDK_INTERP_BILINEAR);      
+      
+      g_object_unref (G_OBJECT (unscaled));
+      return TRUE;
+    }
+  else
+    return FALSE;
+}
+
+static void
+get_kwm_win_icon (Window  xwindow,
+                  Pixmap *pixmap,
+                  Pixmap *mask)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  Pixmap *icons;
+  int result;
+
+  *pixmap = None;
+  *mask = None;
+  
+  _wnck_error_trap_push ();
+  icons = NULL;
+  XGetWindowProperty (gdk_display, xwindow,
+                      _wnck_atom_get ("KWM_WIN_ICON"),
+                      0, G_MAXLONG,
+		      False,
+                      _wnck_atom_get ("KWM_WIN_ICON"),
+                      &type, &format, &nitems,
+		      &bytes_after, (guchar **)&icons);  
+
+  result = _wnck_error_trap_pop ();
+  if (result != Success)
+    return;
+  
+  if (type != _wnck_atom_get ("KWM_WIN_ICON"))
+    return; /* FIXME mem leak? */
+  
+  *pixmap = icons[0];
+  *mask = icons[1];
+  
+  XFree (icons);
+
+  return;
+}
+
+void
+_wnck_read_icons (Window      xwindow,
+                  GdkPixbuf **iconp,
+                  int         ideal_width,
+                  int         ideal_height,
+                  GdkPixbuf **mini_iconp,
+                  int         ideal_mini_width,
+                  int         ideal_mini_height)
+{
+  guchar *pixdata;     
+  int w, h;
+  guchar *mini_pixdata;
+  int mini_w, mini_h;
+  Pixmap pixmap;
+  Pixmap mask;
+  XWMHints *hints;
+  
+  *iconp = NULL;
+  *mini_iconp = NULL;
+
+  pixdata = NULL;
+  
+  if (read_rgb_icon (xwindow,
+                     ideal_width, ideal_height,
+                     ideal_mini_width, ideal_mini_height,
+                     &w, &h, &pixdata,
+                     &mini_w, &mini_h, &mini_pixdata))
+    {
+      *iconp = gdk_pixbuf_new_from_data (pixdata,
+                                         GDK_COLORSPACE_RGB,
+                                         TRUE,
+                                         8,
+                                         w, h, w * 4,
+                                         free_pixels,
+                                         NULL);
+
+      *mini_iconp = gdk_pixbuf_new_from_data (mini_pixdata,
+                                              GDK_COLORSPACE_RGB,
+                                              TRUE,
+                                              8,
+                                              mini_w, mini_h, mini_w * 4,
+                                              free_pixels,
+                                              NULL);
+
+      return;
+    }
+  
+  _wnck_error_trap_push ();
+  hints = XGetWMHints (gdk_display, xwindow);
+  _wnck_error_trap_pop ();
+  pixmap = None;
+  mask = None;
+  if (hints)
+    {
+      if (hints->flags & IconPixmapHint)
+        pixmap = hints->icon_pixmap;
+      if (hints->flags & IconMaskHint)
+        mask = hints->icon_mask;
+
+      XFree (hints);
+      hints = NULL;
+    }
+
+  if (pixmap != None &&
+      try_pixmap_and_mask (pixmap, mask,
+                           iconp, ideal_width, ideal_height,
+                           mini_iconp, ideal_mini_width, ideal_mini_height))
+    return;
+
+  get_kwm_win_icon (xwindow, &pixmap, &mask);
+
+  if (pixmap != None &&
+      try_pixmap_and_mask (pixmap, mask,
+                           iconp, ideal_width, ideal_height,
+                           mini_iconp, ideal_mini_width, ideal_mini_height))
+    return;
+  
+  /* No further ideas... */
+}
+
+static GdkPixbuf*
+default_icon_at_size (int width,
+                      int height)
+{  
+
+  GdkPixbuf *base;
+  
+  base = gdk_pixbuf_new_from_stream (-1, default_icon_data,
+                                     FALSE,
+                                     NULL);
+  
+  g_assert (base);
+
+  if ((width < 0 && height < 0) ||
+      (gdk_pixbuf_get_width (base) == width &&
+       gdk_pixbuf_get_height (base) == height))
+    {
+      return base;
+    }
+  else
+    {
+      GdkPixbuf *scaled;
+      
+      scaled = gdk_pixbuf_scale_simple (base,
+                                        width > 0 ? width :
+                                        gdk_pixbuf_get_width (base),
+                                        height > 0 ? height :
+                                        gdk_pixbuf_get_height (base),
+                                        GDK_INTERP_BILINEAR);
+      
+      g_object_unref (G_OBJECT (base));
+      
+      return scaled;
+    }
+}
+
+void
+_wnck_get_fallback_icons (GdkPixbuf **iconp,
+                          int         ideal_width,
+                          int         ideal_height,
+                          GdkPixbuf **mini_iconp,
+                          int         ideal_mini_width,
+                          int         ideal_mini_height)
+{
+  *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
+                                 DEFAULT_ICON_WIDTH,
+                                 ideal_height > 0 ? ideal_height :
+                                 DEFAULT_ICON_HEIGHT);
+
+  *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
+                                      DEFAULT_MINI_ICON_WIDTH,
+                                      ideal_mini_height > 0 ? ideal_mini_height :
+                                      DEFAULT_MINI_ICON_HEIGHT);
+}
+
+

@@ -58,6 +58,29 @@ struct _WnckWindowPrivate
   char *session_id_utf8;
   int pid;
   int workspace;
+
+  int preferred_icon_width;
+  int preferred_icon_height;
+  int preferred_mini_icon_width;
+  int preferred_mini_icon_height;
+
+  GdkPixbuf *icon;
+  GdkPixbuf *mini_icon;
+
+  /* window has no icon, don't bother querying the
+   * properties again
+   */
+  guint icon_fetch_failed : 1;
+
+  /* whether to make up a standard default icon if none is set on the
+   * window
+   */
+  guint want_fallback_icon : 1;
+
+  /* Icon is a fallback icon */
+  guint icon_is_fallback : 1;
+
+  /* window state */
   guint is_minimized : 1;
   guint is_maximized_horz : 1;
   guint is_maximized_vert : 1;
@@ -65,7 +88,8 @@ struct _WnckWindowPrivate
   guint skip_pager : 1;
   guint skip_taskbar : 1;
   guint is_sticky : 1;
-  
+
+  /* idle handler for updates */
   guint update_handler;
 
   /* if you add flags, be sure to set them
@@ -76,12 +100,14 @@ struct _WnckWindowPrivate
   guint need_update_minimized : 1;
   guint need_update_icon_name : 1;
   guint need_update_workspace : 1;
+  guint need_emit_icon_changed : 1;
 };
 
 enum {
   NAME_CHANGED,
   STATE_CHANGED,
   WORKSPACE_CHANGED,
+  ICON_CHANGED,
   LAST_SIGNAL
 };
 
@@ -94,6 +120,7 @@ static void emit_state_changed     (WnckWindow      *window,
                                     WnckWindowState  changed_mask,
                                     WnckWindowState  new_state);
 static void emit_workspace_changed (WnckWindow      *window);
+static void emit_icon_changed      (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -103,7 +130,7 @@ static void update_workspace (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
-
+static void invalidate_icon  (WnckWindow *window);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -114,7 +141,7 @@ wnck_window_get_type (void)
   static GType object_type = 0;
 
   g_type_init ();
-  
+
   if (!object_type)
     {
       static const GTypeInfo object_info =
@@ -129,32 +156,38 @@ wnck_window_get_type (void)
         0,              /* n_preallocs */
         (GInstanceInitFunc) wnck_window_init,
       };
-      
+
       object_type = g_type_register_static (G_TYPE_OBJECT,
                                             "WnckWindow",
                                             &object_info, 0);
     }
-  
+
   return object_type;
 }
 
 static void
 wnck_window_init (WnckWindow *window)
-{  
+{
   window->priv = g_new0 (WnckWindowPrivate, 1);
 
   window->priv->name = g_strdup (FALLBACK_NAME);
   window->priv->icon_name = g_strdup (FALLBACK_NAME);
   window->priv->workspace = ALL_WORKSPACES;
+
+  window->priv->preferred_icon_width = DEFAULT_ICON_WIDTH;
+  window->priv->preferred_icon_height = DEFAULT_ICON_HEIGHT;
+  window->priv->preferred_mini_icon_width = DEFAULT_MINI_ICON_WIDTH;
+  window->priv->preferred_mini_icon_height = DEFAULT_MINI_ICON_HEIGHT;
+  window->priv->want_fallback_icon = TRUE;
 }
 
 static void
 wnck_window_class_init (WnckWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  
+
   parent_class = g_type_class_peek_parent (klass);
-  
+
   object_class->finalize = wnck_window_finalize;
 
   signals[NAME_CHANGED] =
@@ -184,6 +217,16 @@ wnck_window_class_init (WnckWindowClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+  signals[ICON_CHANGED] =
+    g_signal_new ("icon_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, icon_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
 }
 
 static void
@@ -195,26 +238,28 @@ wnck_window_finalize (GObject *object)
 
   unqueue_update (window);
 
+  invalidate_icon (window);
+
   g_free (window->priv->name);
   g_free (window->priv->icon_name);
   g_free (window->priv->session_id);
-  
+
   if (window->priv->app)
     g_object_unref (G_OBJECT (window->priv->app));
-  
+
   g_free (window->priv);
-  
+
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
 /**
  * wnck_window_get:
  * @xwindow: an Xlib window ID
- * 
+ *
  * Gets a preexisting #WnckWindow for the X window @xwindow.
  * Will not create a #WnckWindow if none exists. Robust
  * against bogus window IDs.
- * 
+ *
  * Return value: the #WnckWindow for this X window
  **/
 WnckWindow*
@@ -229,9 +274,9 @@ wnck_window_get (gulong xwindow)
 /**
  * wnck_window_get_screen:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the screen this window is on.
- * 
+ *
  * Return value: a #WnckScreen
  **/
 WnckScreen*
@@ -247,19 +292,19 @@ _wnck_window_create (Window      xwindow,
                      WnckScreen *screen)
 {
   WnckWindow *window;
-  
+
   if (window_hash == NULL)
     window_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
 
   g_return_val_if_fail (g_hash_table_lookup (window_hash, &xwindow) == NULL,
                         NULL);
-  
+
   window = g_object_new (WNCK_TYPE_WINDOW, NULL);
   window->priv->xwindow = xwindow;
   window->priv->screen = screen;
-  
+
   g_hash_table_insert (window_hash, &window->priv->xwindow, window);
-  
+
   /* Hash now owns one ref, caller gets none */
 
   /* Note that xwindow may correspond to a WnckApplication's xwindow,
@@ -277,14 +322,14 @@ _wnck_window_create (Window      xwindow,
 
   window->priv->pid =
     _wnck_get_pid (window->priv->xwindow);
-  
+
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
   window->priv->need_update_icon_name = TRUE;
   window->priv->need_update_minimized = TRUE;
   window->priv->need_update_workspace = TRUE;
   force_update_now (window);
-  
+
   return window;
 }
 
@@ -292,13 +337,13 @@ void
 _wnck_window_destroy (WnckWindow *window)
 {
   g_return_if_fail (wnck_window_get (window->priv->xwindow) == window);
-  
+
   g_hash_table_remove (window_hash, &window->priv->xwindow);
 
   g_return_if_fail (wnck_window_get (window->priv->xwindow) == NULL);
 
   window->priv->xwindow = None;
-  
+
   /* remove hash's ref on the window */
   g_object_unref (G_OBJECT (window));
 }
@@ -306,32 +351,32 @@ _wnck_window_destroy (WnckWindow *window)
 /**
  * wnck_window_get_name:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the name of the window, as it should be displayed in a pager
  * or tasklist. Always returns some value, even if the window
  * hasn't set a name.
  *
  * For icons titles, use wnck_window_get_icon_name() instead.
- * 
+ *
  * Return value: name of the window
  **/
 const char*
 wnck_window_get_name (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-  
+
   return window->priv->name;
 }
 
 /**
  * wnck_window_get_icon_name:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the name of the window, as it should be displayed for an
  * icon. Always returns some value, even if the window hasn't set a
  * name. Contrast with wnck_window_get_name(), which returns the
  * window title, not the icon title.
- * 
+ *
  * Return value: name of the window
  **/
 const char*
@@ -357,19 +402,19 @@ gulong
 wnck_window_get_group_leader (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
-  
+
   return window->priv->group_leader;
 }
 
 /**
  * wnck_window_get_session_id:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the session ID for @window in Latin-1 encoding.
  * NOTE: this is invalid UTF-8. You can't display this
  * string in a GTK widget without converting to UTF-8.
  * See wnck_window_get_session_id_utf8().
- * 
+ *
  * Return value: session ID in Latin-1
  **/
 const char*
@@ -389,7 +434,7 @@ wnck_window_get_session_id_utf8 (WnckWindow *window)
     {
       GString *str;
       char *p;
-      
+
       str = g_string_new ("");
 
       p = window->priv->session_id;
@@ -401,16 +446,16 @@ wnck_window_get_session_id_utf8 (WnckWindow *window)
 
       window->priv->session_id_utf8 = g_string_free (str, FALSE);
     }
-  
+
   return window->priv->session_id_utf8;
 }
 
 /**
  * wnck_window_get_pid:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the process ID of @window, if available.
- * 
+ *
  * Return value: PID of @window, or 0 if none available
  **/
 int
@@ -424,10 +469,10 @@ wnck_window_get_pid (WnckWindow *window)
 /**
  * wnck_window_is_minimized:
  * @window: a #WnckWindow
- * 
+ *
  * If the window is minimized returns %TRUE. Minimization state
  * may change anytime a state_changed signal gets emitted.
- * 
+ *
  * Return value: %TRUE if window is minimized
  **/
 gboolean
@@ -457,10 +502,10 @@ wnck_window_is_maximized_vertically   (WnckWindow *window)
 /**
  * wnck_window_is_maximized:
  * @window: a #WnckWindow
- * 
+ *
  * As for GDK, "maximized" means both vertically and horizontally.
- * If only one, then the window isn't considered maximized. 
- * 
+ * If only one, then the window isn't considered maximized.
+ *
  * Return value: %TRUE if the window is maximized in both directions
  **/
 gboolean
@@ -500,13 +545,13 @@ wnck_window_is_skip_tasklist          (WnckWindow *window)
 /**
  * wnck_window_is_sticky:
  * @window: a #WnckWindow
- * 
+ *
  * Sticky here means "stuck to the glass," i.e. does not scroll with
  * the viewport. In GDK/GTK,
  * e.g. gdk_window_stick()/gtk_window_stick(), sticky means stuck to
  * the glass and _also_ that the window is on all workspaces.
  * But here it only means the viewport aspect of it.
- * 
+ *
  * Return value: %TRUE if the window is "stuck to the glass"
  **/
 gboolean
@@ -552,7 +597,7 @@ wnck_window_unmaximize              (WnckWindow *window)
   _wnck_change_state (window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
-                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));  
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
 }
 
 void
@@ -625,7 +670,7 @@ void
 wnck_window_stick                   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
-  
+
   _wnck_change_state (window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_STICKY"),
@@ -646,11 +691,11 @@ wnck_window_unstick                 (WnckWindow *window)
 /**
  * wnck_window_get_workspace:
  * @window: a #WnckWindow
- * 
+ *
  * Gets the window's current workspace. If the window is
  * pinned (on all workspaces), or not on any workspaces,
  * %NULL may be returned.
- * 
+ *
  * Return value: single current workspace or %NULL
  **/
 WnckWorkspace*
@@ -676,18 +721,18 @@ wnck_window_move_to_workspace (WnckWindow    *window,
 /**
  * wnck_window_is_pinned:
  * @window: a #WnckWindow
- * 
+ *
  * %TRUE if the window is on all workspaces. Note that if this
  * changes, it's signalled by a workspace_changed signal,
  * not state_changed.
- * 
+ *
  * Return value: %TRUE if on all workspaces
  **/
 gboolean
 wnck_window_is_pinned (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
-  
+
   return window->priv->workspace == ALL_WORKSPACES;
 }
 
@@ -703,24 +748,24 @@ wnck_window_pin (WnckWindow *window)
 /**
  * wnck_window_unpin:
  * @window: a #WnckWindow
- * 
+ *
  * Sets @window's workspace to only the currently active workspace,
  * if the window was previously pinned. If the window wasn't pinned,
  * doesn't change the window's workspace. If the active workspace
  * isn't known for some reason (shouldn't happen much), sets the
  * window's workspace to 0.
- * 
+ *
  **/
 void
 wnck_window_unpin (WnckWindow *window)
 {
   WnckWorkspace *active;
-  
+
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
   if (window->priv->workspace != ALL_WORKSPACES)
     return;
-  
+
   active = wnck_screen_get_active_workspace (window->priv->screen);
 
   _wnck_change_workspace (window->priv->xwindow,
@@ -730,7 +775,7 @@ wnck_window_unpin (WnckWindow *window)
 /**
  * wnck_window_activate:
  * @window: a #WnckWindow
- * 
+ *
  * Ask the window manager to make @window the active window.  The
  * window manager may choose to raise @window along with focusing it.
  **/
@@ -745,9 +790,9 @@ wnck_window_activate (WnckWindow *window)
 /**
  * wnck_window_is_active:
  * @window: a #WnckWindow
- * 
- * 
- * 
+ *
+ *
+ *
  * Return value: %TRUE if the window is the active window
  **/
 gboolean
@@ -756,6 +801,141 @@ wnck_window_is_active (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   return window == wnck_screen_get_active_window (window->priv->screen);
+}
+
+static void
+get_icons (WnckWindow *window)
+{
+  if (window->priv->icon != NULL ||
+      window->priv->icon_fetch_failed)
+    return;
+
+  _wnck_read_icons (window->priv->xwindow,
+                    &window->priv->icon,
+                    window->priv->preferred_icon_width,
+                    window->priv->preferred_icon_height,
+                    &window->priv->mini_icon,
+                    window->priv->preferred_mini_icon_width,
+                    window->priv->preferred_mini_icon_height);
+
+  g_assert ((window->priv->icon && window->priv->mini_icon) ||
+            !(window->priv->icon || window->priv->mini_icon));
+
+  if (window->priv->icon == NULL)
+    window->priv->icon_fetch_failed = TRUE;
+
+  if (window->priv->icon == NULL &&
+      window->priv->want_fallback_icon)
+    {
+      _wnck_get_fallback_icons (&window->priv->icon,
+                                window->priv->preferred_icon_width,
+                                window->priv->preferred_icon_height,
+                                &window->priv->mini_icon,
+                                window->priv->preferred_mini_icon_width,
+                                window->priv->preferred_mini_icon_height);
+
+      window->priv->icon_is_fallback = TRUE;
+    }
+
+  window->priv->need_emit_icon_changed = FALSE;
+}
+
+GdkPixbuf*
+wnck_window_get_icon (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  get_icons (window);
+
+  return window->priv->icon;
+}
+
+GdkPixbuf*
+wnck_window_get_mini_icon (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+  
+  get_icons (window);
+
+  return window->priv->mini_icon;
+}
+
+void
+wnck_window_set_create_fallback_icon (WnckWindow *window,
+                                      gboolean    setting)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  setting = setting != FALSE;
+
+  if (setting != window->priv->want_fallback_icon)
+    {
+      if ((setting && window->priv->icon == NULL) ||
+          (!setting && window->priv->icon_is_fallback))
+        invalidate_icon (window);
+      
+      window->priv->want_fallback_icon = setting;
+    }
+}
+
+/**
+ * wnck_window_set_icon_size:
+ * @window: a #WnckWindow
+ * @width: preferred width or -1 if you want natural size
+ * @height: preferred height or -1 for natural size
+ *
+ * Width/height all icons should be scaled to; libwnck
+ * will pick the best available source icon to scale
+ * to this size. If you pass -1 for @width or @height the
+ * icon's largest natural size as provided by the application
+ * will be used; this is useful if you want to modify the
+ * image yourself, and don't want to lose information from
+ * the image by having libwnck scale it first.
+ *
+ **/
+void
+wnck_window_set_icon_size (WnckWindow *window,
+                           int         width,
+                           int         height)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (width != 0);
+  g_return_if_fail (height != 0);
+  
+  if (width != window->priv->preferred_icon_width ||
+      height != window->priv->preferred_icon_height)
+    {
+      window->priv->preferred_icon_width = width;
+      window->priv->preferred_icon_height = height;
+      invalidate_icon (window);
+    }
+}
+
+/**
+ * wnck_window_set_mini_icon_size:
+ * @window: a #WnckWindow
+ * @width: preferred width or -1 for natural
+ * @height: preferred height or -1 for natural
+ *
+ * Like wnck_window_set_icon_size() but for the mini icon.
+ *
+ **/
+void
+wnck_window_set_mini_icon_size (WnckWindow *window,
+                                int         width,
+                                int         height)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (width != 0);
+  g_return_if_fail (height != 0);
+  
+  if (width != window->priv->preferred_mini_icon_width ||
+      height != window->priv->preferred_mini_icon_height)
+    {
+      window->priv->preferred_mini_icon_width = width;
+      window->priv->preferred_mini_icon_height = height;
+      invalidate_icon (window);
+    }
 }
 
 void
@@ -814,13 +994,24 @@ _wnck_window_process_property_notify (WnckWindow *window,
       window->priv->need_update_workspace = TRUE;
       queue_update (window);
     }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_WM_ICON") ||
+           xevent->xproperty.atom ==
+           _wnck_atom_get ("KWM_WIN_ICON") ||
+           xevent->xproperty.atom ==
+           _wnck_atom_get ("WM_NORMAL_HINTS"))
+    {
+      invalidate_icon (window);
+      window->priv->need_emit_icon_changed = TRUE;
+      queue_update (window);
+    }
 }
 
 static void
 update_minimized (WnckWindow *window)
 {
   int state;
-  
+
   if (!window->priv->need_update_minimized)
     return;
 
@@ -833,14 +1024,14 @@ update_minimized (WnckWindow *window)
   if (state == IconicState)
     window->priv->is_minimized = TRUE;
 }
-  
+
 static void
 update_state (WnckWindow *window)
 {
   Atom *atoms;
   int n_atoms;
   int i;
-  
+
   if (!window->priv->need_update_state)
     return;
 
@@ -852,7 +1043,7 @@ update_state (WnckWindow *window)
   window->priv->is_shaded = FALSE;
   window->priv->skip_taskbar = FALSE;
   window->priv->skip_pager = FALSE;
-  
+
   atoms = NULL;
   n_atoms = 0;
   _wnck_get_atom_list (window->priv->xwindow,
@@ -877,7 +1068,7 @@ update_state (WnckWindow *window)
 
       ++i;
     }
-  
+
   g_free (atoms);
 }
 
@@ -885,7 +1076,7 @@ static void
 update_name (WnckWindow *window)
 {
   g_return_if_fail (window->priv->name == NULL);
-  
+
   if (!window->priv->need_update_name)
     return;
 
@@ -904,7 +1095,7 @@ update_name (WnckWindow *window)
   if (window->priv->name == NULL)
     window->priv->name =
       _wnck_get_text_property (window->priv->xwindow,
-                               XA_WM_NAME);  
+                               XA_WM_NAME);
 
   if (window->priv->name == NULL)
     window->priv->name = g_strdup (FALLBACK_NAME);
@@ -914,7 +1105,7 @@ static void
 update_icon_name (WnckWindow *window)
 {
   g_return_if_fail (window->priv->icon_name == NULL);
-  
+
   if (!window->priv->need_update_icon_name)
     return;
 
@@ -933,7 +1124,7 @@ update_icon_name (WnckWindow *window)
   if (window->priv->icon_name == NULL)
     window->priv->icon_name =
       _wnck_get_text_property (window->priv->xwindow,
-                               XA_WM_ICON_NAME);  
+                               XA_WM_ICON_NAME);
 
   if (window->priv->icon_name == NULL)
     window->priv->icon_name = g_strdup (FALLBACK_NAME);
@@ -944,14 +1135,14 @@ update_workspace (WnckWindow *window)
 {
   int val;
   int old;
-  
+
   if (!window->priv->need_update_workspace)
     return;
 
   window->priv->need_update_workspace = FALSE;
 
   old = window->priv->workspace;
-  
+
   val = ALL_WORKSPACES;
   _wnck_get_cardinal (window->priv->xwindow,
                       _wnck_atom_get ("_NET_WM_DESKTOP"),
@@ -970,7 +1161,7 @@ force_update_now (WnckWindow *window)
   WnckWindowState new_state;
   char *old_name;
   char *old_icon_name;
- 
+  
   unqueue_update (window);
 
   /* Name must be done before all other stuff,
@@ -978,7 +1169,7 @@ force_update_now (WnckWindow *window)
    * update_name/update_icon_name functions (no window name),
    * and we have to fix that before we emit any other signals
    */
-  
+
   old_name = window->priv->name;
   old_icon_name = window->priv->icon_name;
   window->priv->name = NULL;
@@ -1006,15 +1197,21 @@ force_update_now (WnckWindow *window)
     }
 
   old_state = COMPRESS_STATE (window);
-  
+
   update_state (window);
   update_minimized (window);
   update_workspace (window); /* emits signals */
 
   new_state = COMPRESS_STATE (window);
-  
-  if (old_state != new_state)      
+
+  if (old_state != new_state)
     emit_state_changed (window, old_state ^ new_state, new_state);
+
+  if (window->priv->need_emit_icon_changed)
+    {
+      window->priv->need_emit_icon_changed = FALSE;
+      emit_icon_changed (window);
+    }
 }
 
 
@@ -1022,7 +1219,7 @@ static gboolean
 update_idle (gpointer data)
 {
   WnckWindow *window = WNCK_WINDOW (data);
-  
+
   window->priv->update_handler = 0;
   force_update_now (window);
   return FALSE;
@@ -1048,6 +1245,19 @@ unqueue_update (WnckWindow *window)
 }
 
 static void
+invalidate_icon (WnckWindow *window)
+{
+  if (window->priv->icon)
+    g_object_unref (G_OBJECT (window->priv->icon));
+  if (window->priv->mini_icon)
+    g_object_unref (G_OBJECT (window->priv->mini_icon));
+  window->priv->icon = NULL;
+  window->priv->mini_icon = NULL;
+  window->priv->icon_fetch_failed = FALSE;
+  window->priv->icon_is_fallback = FALSE;
+}
+
+static void
 emit_name_changed (WnckWindow *window)
 {
   g_signal_emit (G_OBJECT (window),
@@ -1070,5 +1280,13 @@ emit_workspace_changed (WnckWindow *window)
 {
   g_signal_emit (G_OBJECT (window),
                  signals[WORKSPACE_CHANGED],
+                 0);
+}
+
+static void
+emit_icon_changed (WnckWindow *window)
+{
+  g_signal_emit (G_OBJECT (window),
+                 signals[ICON_CHANGED],
                  0);
 }

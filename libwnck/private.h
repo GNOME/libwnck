@@ -54,6 +54,11 @@ WnckApplication* _wnck_application_create  (Window           xwindow,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
 
+#define DEFAULT_ICON_WIDTH 32
+#define DEFAULT_ICON_HEIGHT 32
+#define DEFAULT_MINI_ICON_WIDTH 16
+#define DEFAULT_MINI_ICON_HEIGHT 16
+
 G_END_DECLS
 
 #endif /* WNCK_PRIVATE_H */

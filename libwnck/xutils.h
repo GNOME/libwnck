@@ -85,6 +85,22 @@ int    _wnck_get_pid          (Window xwindow);
 void   _wnck_select_input     (Window xwindow,
                                int    mask);
 
+
+void _wnck_read_icons         (Window      xwindow,
+                               GdkPixbuf **iconp,
+                               int         ideal_width,
+                               int         ideal_height,
+                               GdkPixbuf **mini_iconp,
+                               int         ideal_mini_width,
+                               int         ideal_mini_height);
+void _wnck_get_fallback_icons (GdkPixbuf **iconp,
+                               int         ideal_width,
+                               int         ideal_height,
+                               GdkPixbuf **mini_iconp,
+                               int         ideal_mini_width,
+                               int         ideal_mini_height);
+
+
 G_END_DECLS
 
 #endif /* WNCK_XUTILS_H */

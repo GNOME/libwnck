@@ -1,3 +1,7 @@
+2001-10-09  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/window.c, libwnck/xutils.c: support window icons
+
 2001-10-08  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/screen.c: support _NET_CLIENT_LIST, now I understand the 

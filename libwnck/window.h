@@ -24,6 +24,7 @@
 
 #include <glib-object.h>
 #include <libwnck/screen.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 G_BEGIN_DECLS
 
@@ -71,6 +72,9 @@ struct _WnckWindowClass
 
   /* Changed workspace or pinned/unpinned state */
   void (* workspace_changed) (WnckWindow *window);
+
+  /* Changed icon */
+  void (* icon_changed)      (WnckWindow *window);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
@@ -122,6 +126,19 @@ void     wnck_window_unpin     (WnckWindow *window);
 
 void     wnck_window_activate  (WnckWindow *window);
 gboolean wnck_window_is_active (WnckWindow *window);
+
+
+GdkPixbuf* wnck_window_get_icon      (WnckWindow *window);
+GdkPixbuf* wnck_window_get_mini_icon (WnckWindow *window);
+
+void wnck_window_set_create_fallback_icon (WnckWindow *window,
+                                           gboolean    setting);
+void wnck_window_set_icon_size            (WnckWindow *window,
+                                           int         width,
+                                           int         height);
+void wnck_window_set_mini_icon_size       (WnckWindow *window,
+                                           int         width,
+                                           int         height);
 
 G_END_DECLS
 

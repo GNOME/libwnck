@@ -22,6 +22,7 @@ wnck_built_cfiles = wnck-enum-types.c  wnck-marshal.c
 
 libwnck_1_la_SOURCES= 	\
 	application.c	\
+	inlinepixbufs.h	\
 	private.h	\
 	screen.c	\
 	window.c	\
@@ -59,7 +60,17 @@ regenerate-built-sources:
 	&& echo "#include <libwnck/libwnck.h>" > wnck-marshal.c \
         && @GLIB_GENMARSHAL@ --prefix=_wnck_marshal wnck-marshal.list --body >> wnck-marshal.c
 
-EXTRA_DIST= \
-	wnck-marshal.list
+IMAGES=default_icon.png
+VARIABLES=default_icon_data $(srcdir)/default_icon.png
 
+noinst_DATA = inlinepixbufs.h
+CLEANFILES += $(noinst_DATA)
 
+inlinepixbufs.h: $(IMAGES)
+	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
+
+$(OBJECTS): inlinepixbufs.h
+
+EXTRA_DIST= 			\
+	wnck-marshal.list	\
+	$(IMAGES)

@@ -36,6 +36,8 @@ static void window_state_changed_callback     (WnckWindow      *window,
                                                gpointer         data);
 static void window_workspace_changed_callback (WnckWindow      *window,
                                                gpointer         data);
+static void window_icon_changed_callback      (WnckWindow      *window,
+                                               gpointer         data);
 
 static GtkTreeModel* create_tree_model (void);
 static GtkWidget*    create_tree_view  (void);
@@ -164,6 +166,9 @@ window_opened_callback            (WnckScreen    *screen,
                     NULL);
   g_signal_connect (G_OBJECT (window), "workspace_changed",
                     G_CALLBACK (window_workspace_changed_callback),
+                    NULL);    
+  g_signal_connect (G_OBJECT (window), "icon_changed",
+                    G_CALLBACK (window_icon_changed_callback),
                     NULL);
 
   queue_refill_model ();
@@ -289,6 +294,15 @@ window_workspace_changed_callback (WnckWindow    *window,
   update_window (global_tree_model, window);
 }
 
+static void
+window_icon_changed_callback (WnckWindow    *window,
+                              gpointer       data)
+{
+  g_print ("Icon changed on window '%s'\n",
+           wnck_window_get_name (window));
+
+  update_window (global_tree_model, window);
+}
 
 static GtkTreeModel*
 create_tree_model (void)
@@ -414,7 +428,7 @@ icon_set_func (GtkTreeViewColumn *tree_column,
     return;
   
   g_object_set (GTK_CELL_RENDERER (cell),
-                "pixbuf", NULL,
+                "pixbuf", wnck_window_get_mini_icon (window),
                 NULL);
 }
 
