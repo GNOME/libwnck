@@ -1034,7 +1034,8 @@ find_last_transient_for (GList *windows,
     {
       WnckWindow *w = tmp->data;
 
-      if (w->priv->transient_for == xwindow)
+      if (w->priv->transient_for == xwindow &&
+	  w->priv->wintype != WNCK_WINDOW_UTILITY)
         retval = w;
       
       tmp = tmp->next;

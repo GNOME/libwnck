@@ -1,3 +1,9 @@
+2003-10-27  Michael Meeks  <michael@ximian.com>
+
+	* libwnck/window.c (find_last_transient_for): when
+	activating, prefer the main window over a utility
+	transient.
+
 2003-10-28  Padraig O'Briain  <padraigobriain@sun.com>
 
 	* libwnck/tasklist.c (wnck_tasklist_init): Set accessible name and 
