@@ -1,14 +1,14 @@
-# Traditional Chinese translation of libwnck.
+# traditional Chinese translation of libwnck.
 # Copyright (C) 2001-2002 Free Software Foundation, Inc.
 # Abel Cheung <maddog@linux.org.hk>, 2001-2002.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.12\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-05-28 19:58+0800\n"
+"Project-Id-Version: libwnck 0.13\n"
+"POT-Creation-Date: 2002-06-04 05:21+0800\n"
+"PO-Revision-Date: 2002-06-04 05:24+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
-"Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
+"Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,6 +16,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "無標題的應用程式"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "工作區切換程式"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "用來在不同工作區之間切換的工具"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "按下此處可切換至工作區 %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
