@@ -1,23 +1,37 @@
 # Spanish translation of libwnck.
-# Copyright (C) 2002 THE libwnck'S COPYRIGHT HOLDER
+# Copyright (C) 2001, 2002 Free Software Foundation, Inc
 # This file is distributed under the same license as the libwnck package.
 # Germán Poo Caamaño <gpoo@ubiobio.cl>, 2002.
 #  <gpoo@ubiobio.cl>, 2002.
-# 
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck cvs\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-03-05 22:45-0300\n"
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-06-03 17:23+0200\n"
+"PO-Revision-Date: 2002-06-03 16:48GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.5\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "Aplicación sin título"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Conmutar espacio de trabajo"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Herramienta para conmutar entre espacios de trabajo"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Clic aquí para conmutar espacio de trabajo %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -63,3 +77,4 @@ msgstr "Ventana sín título"
 #, c-format
 msgid "Workspace %d"
 msgstr "Espacio de trabajo %d"
+
