@@ -557,7 +557,7 @@ _wnck_get_utf8_list (Window   xwindow,
    * property is nul-separated
    */
   i = 0;
-  n_strings = 0;
+  n_strings = 1;
   while (i < nitems)
     {
       if (val[i] == '\0')
