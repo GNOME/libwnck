@@ -1,11 +1,5 @@
 2004-08-03  Mark McLoughlin  <mark@skynet.ie>
 
-	* configure.in: post-release bump to 2.7.91.
-
-==================== 2.7.90 ====================
-
-2004-08-03  Mark McLoughlin  <mark@skynet.ie>
-
 	* configure.in: Version 2.7.90.
 
 2004-07-25  Rob Adams  <readams@gnome.org>
