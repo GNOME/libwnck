@@ -1,19 +1,19 @@
 # Albanian translation of libwnck.
-# Copyright (C) 2002,2003 Free Software Foundation, Inc.
-# Laurent Dhima <laurenti@alblinux.net>, 2002,2003.
+# Copyright (C) 2002,2003, 2004 Free Software Foundation, Inc.
+# Laurent Dhima <laurenti@alblinux.net>, 2002,2003, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-06-12 10:13+0200\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-04 19:01+0100\n"
+"PO-Revision-Date: 2004-01-04 19:03+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Report-Msgid-Bugs-To: \n"
-"X-Generator: KBabel 1.0.1\n"
+"X-Generator: KBabel 1.3\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -85,8 +85,11 @@ msgstr "dritare pa emër"
 msgid "Workspace %d"
 msgstr "Zona e punës %d"
 
-#~ msgid "U_nshade"
-#~ msgstr "U_nshade"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Lista dritareve"
 
-#~ msgid "_Shade"
-#~ msgstr "_Shade"
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Instrument për t'u spostuar midis dritareve të dukshme"
+
