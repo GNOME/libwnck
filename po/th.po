@@ -6,80 +6,107 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-12-07 17:43-0600\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-16 22:03+0100\n"
+"PO-Revision-Date: 2004-02-16 21:37-0600\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@users.sf.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=TIS-620\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "���������ժ���"
+msgstr "โปรแกรมไม่มีชื่อ"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "�����Ѻ��鹷��ӧҹ"
+msgstr "ตัวสลับพื้นที่ทำงาน"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "����Ѻ��������ҧ��鹷��ӧҹ"
+msgstr "ใช้สลับไปมาระหว่างพื้นที่ทำงาน"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "����������Ǩ���Ѻ仾�鹷��ӧҹ %s"
+msgstr "กดที่นี่แล้วจะสลับไปพื้นที่ทำงาน %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
-msgstr "��ԡ�������ش (_N)"
+msgstr "เลิกย่_อหาย"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 msgid "Mi_nimize"
-msgstr "�������ش (_N)"
+msgstr "ย่_อหาย"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 msgid "Unma_ximize"
-msgstr "��ԡ��������� (_X)"
+msgstr "เลิกขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
-msgstr "��������� (_X)"
+msgstr "ขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
-msgstr "�����Ѻ (_U)"
+msgstr "_คลี่กลับ"
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
-msgstr "��ǹ��� (_U)"
+msgstr "_ม้วนขึ้น"
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
-msgstr "����鹷��ӧҹ�����ҹ�� (_T)"
+msgstr "บน_พื้นที่ทำงานนี้เท่านั้น"
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
-msgstr "�ʴ����ء��鹷��ӧҹ (_A)"
+msgstr "แสดงบนทุก_พื้นที่ทำงาน"
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "พื้นที่ทำงาน %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "พื้นที่ทำงาน 1_0"
+
+#: libwnck/window-action-menu.c:370
+#, c-format
+msgid "Workspace %s%d"
+msgstr "พื้นที่ทำงาน %s%d"
+
+#: libwnck/window-action-menu.c:466
 msgid "_Move"
-msgstr "���� (_M)"
+msgstr "ย้า_ย"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
-msgstr "��͢��� (_R)"
+msgstr "ย่_อขยาย"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
-msgstr "�Դ (_C)"
+msgstr "ปิ_ด"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
-msgstr "˹�ҵ�ҧ����ժ���"
+msgstr "หน้าต่างไม่มีชื่อ"
 
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "��鹷��ӧҹ %d"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "ลิสต์หน้าต่าง"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
