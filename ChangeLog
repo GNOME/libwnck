@@ -1,3 +1,11 @@
+2001-10-08  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/screen.c: support _NET_CLIENT_LIST, now I understand the 
+	point of both that and the stacking order one
+
+	* libwnck/window.c (_wnck_window_create): don't break GDK's event
+	mask, fixes resize issues with test-wnck
+
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/test-wnck.c: fixes (requires CVS HEAD GTK)

@@ -678,3 +678,29 @@ _wnck_get_pid (Window xwindow)
   else
     return val;
 }
+
+void
+_wnck_select_input (Window xwindow,
+                    int    mask)
+{
+  GdkWindow *gdkwindow;
+  
+  gdkwindow = gdk_xid_table_lookup (xwindow);
+
+  _wnck_error_trap_push ();
+  if (gdkwindow)
+    {
+      /* Avoid breaking GDK's setup,
+       * this somewhat relies on people setting
+       * event masks right after realization
+       * and not changing them again
+       */
+      XWindowAttributes attrs;
+      XGetWindowAttributes (gdk_display, xwindow, &attrs);
+      mask |= attrs.your_event_mask;
+    }
+  
+  XSelectInput (gdk_display, xwindow, mask);
+  _wnck_error_trap_pop ();
+}
+  

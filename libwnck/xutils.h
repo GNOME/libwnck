@@ -82,6 +82,9 @@ Window _wnck_get_group_leader (Window xwindow);
 char*  _wnck_get_session_id   (Window xwindow);
 int    _wnck_get_pid          (Window xwindow);
 
+void   _wnck_select_input     (Window xwindow,
+                               int    mask);
+
 G_END_DECLS
 
 #endif /* WNCK_XUTILS_H */

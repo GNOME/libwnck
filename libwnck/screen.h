@@ -91,6 +91,7 @@ WnckWorkspace* wnck_screen_get_active_workspace (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window    (WnckScreen *screen);
 
 GList*         wnck_screen_get_windows          (WnckScreen *screen);
+GList*         wnck_screen_get_windows_stacked  (WnckScreen *screen);
 
 G_END_DECLS
 

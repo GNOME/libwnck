@@ -27,6 +27,8 @@
 #include "private.h"
 #include <gdk/gdk.h>
 #include <gdk/gdkx.h>
+#include <string.h>
+#include <stdlib.h>
 
 static WnckScreen** screens = NULL;
 
@@ -37,8 +39,10 @@ struct _WnckScreenPrivate
   Screen *xscreen;
   int width;
   int height;
-  /* in bottom-to-top order */
-  GList *windows;
+  /* in map order */
+  GList *mapped_windows;
+  /* in stacking order */
+  GList *stacked_windows;
   /* in 0-to-N order */
   GList *workspaces;
 
@@ -238,6 +242,14 @@ wnck_screen_finalize (GObject *object)
   screen = WNCK_SCREEN (object);
 
   unqueue_update (screen);
+
+  /* FIXME this isn't right, we need to destroy the items
+   * in the list. But it doesn't matter at the
+   * moment since we never finalize screens anyway.
+   */
+  g_list_free (screen->priv->mapped_windows);
+  g_list_free (screen->priv->stacked_windows);
+  g_list_free (screen->priv->workspaces);
   
   g_free (screen->priv);
   
@@ -253,11 +265,8 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->xscreen = ScreenOfDisplay (gdk_display, number);
   screen->priv->number = number;
   
-  _wnck_error_trap_push ();
-  XSelectInput (gdk_display,
-                screen->priv->xroot,
-                PropertyChangeMask);
-  _wnck_error_trap_pop ();
+  _wnck_select_input (screen->priv->xroot,
+                      PropertyChangeMask);
 
   screen->priv->width = WidthOfScreen (screen->priv->xscreen);
   screen->priv->height = HeightOfScreen (screen->priv->xscreen);
@@ -381,7 +390,15 @@ wnck_screen_get_windows (WnckScreen *screen)
 {
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
-  return screen->priv->windows;
+  return screen->priv->mapped_windows;
+}
+
+GList*
+wnck_screen_get_windows_stacked (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->stacked_windows;
 }
 
 void
@@ -402,7 +419,9 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
       queue_update (screen);
     }
   else if (xevent->xproperty.atom ==
-           _wnck_atom_get ("_NET_CLIENT_LIST_STACKING"))
+           _wnck_atom_get ("_NET_CLIENT_LIST_STACKING") ||
+           xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_CLIENT_LIST"))
     {
       screen->priv->need_update_stack_list = TRUE;
       queue_update (screen);
@@ -440,11 +459,65 @@ lists_equal (GList *a,
   return TRUE;
 }
 
+static int
+wincmp (const void *a,
+        const void *b)
+{
+  const Window *aw = a;
+  const Window *bw = b;
+
+  if (*aw < *bw)
+    return -1;
+  else if (*aw > *bw)
+    return 1;
+  else
+    return 0;
+}
+
+static gboolean
+arrays_contain_same_windows (Window *a,
+                             int     a_len,
+                             Window *b,
+                             int     b_len)
+{
+  Window *a_tmp;
+  Window *b_tmp;
+  gboolean result;
+
+  if (a_len != b_len)
+    return FALSE;
+
+  if (a_len == 0 ||
+      b_len == 0)
+    return FALSE; /* one was nonzero */
+  
+  a_tmp = g_new (Window, a_len);
+  b_tmp = g_new (Window, b_len);
+
+  memcpy (a_tmp, a, a_len * sizeof (Window));
+  memcpy (b_tmp, b, b_len * sizeof (Window));
+
+  qsort (a_tmp, a_len, sizeof (Window), wincmp);
+  qsort (b_tmp, b_len, sizeof (Window), wincmp);
+
+  result = memcmp (a_tmp, b_tmp, sizeof (Window) * a_len) == 0;
+
+  g_free (a_tmp);
+  g_free (b_tmp);
+  
+  return result;
+}
+
 static void
 update_client_list (WnckScreen *screen)
 {
+  /* stacking order */
   Window *stack = NULL;
   int stack_length = 0;
+  /* mapping order */
+  Window *mapping = NULL;
+  int mapping_length = 0;
+  GList *new_stack_list;
   GList *new_list;
   GList *created;
   GList *closed;
@@ -455,6 +528,8 @@ update_client_list (WnckScreen *screen)
   GHashTable *new_hash;
   static int reentrancy_guard = 0;
   gboolean active_changed;
+  gboolean stack_changed;
+  gboolean list_changed;
   
   g_return_if_fail (reentrancy_guard == 0);
   
@@ -470,6 +545,21 @@ update_client_list (WnckScreen *screen)
                          &stack,
                          &stack_length);
 
+  _wnck_get_window_list (screen->priv->xroot,
+                         _wnck_atom_get ("_NET_CLIENT_LIST"),
+                         &mapping,
+                         &mapping_length);
+
+  if (!arrays_contain_same_windows (stack, stack_length,
+                                    mapping, mapping_length))
+    {
+      /* Don't update until we're in a consistent state */
+      g_free (stack);
+      g_free (mapping);
+      --reentrancy_guard;
+      return;
+    }
+  
   created = NULL;
   closed = NULL;
   created_apps = NULL;
@@ -477,7 +567,7 @@ update_client_list (WnckScreen *screen)
 
   new_hash = g_hash_table_new (NULL, NULL);
   
-  new_list = NULL;
+  new_stack_list = NULL;
   i = 0;
   while (i < stack_length)
     {
@@ -505,7 +595,7 @@ update_client_list (WnckScreen *screen)
           _wnck_application_add_window (app, window);
         }
 
-      new_list = g_list_prepend (new_list, window);
+      new_stack_list = g_list_prepend (new_stack_list, window);
 
       g_hash_table_insert (new_hash, window, window);
       
@@ -513,12 +603,12 @@ update_client_list (WnckScreen *screen)
     }
       
   /* put list back in order */
-  new_list = g_list_reverse (new_list);
+  new_stack_list = g_list_reverse (new_stack_list);
 
   /* Now we need to find windows in the old list that aren't
    * in this new list
    */
-  tmp = screen->priv->windows;
+  tmp = screen->priv->stacked_windows;
   while (tmp != NULL)
     {
       WnckWindow *window = tmp->data;
@@ -542,22 +632,49 @@ update_client_list (WnckScreen *screen)
 
   g_hash_table_destroy (new_hash);
 
-  /* Now new_list becomes screen->priv->windows,
-   * and we emit the opened/closed signals
+  /* Now get the mapping in list form */
+  new_list = NULL;
+  i = 0;
+  while (i < mapping_length)
+    {
+      WnckWindow *window;
+
+      window = wnck_window_get (mapping[i]);
+
+      g_assert (window != NULL);
+
+      new_list = g_list_prepend (new_list, window);
+      
+      ++i;
+    }
+      
+  /* put list back in order */
+  new_list = g_list_reverse (new_list);
+  
+  /* Now new_stack_list becomes screen->priv->stack_windows, new_list
+   * becomes screen->priv->mapped_windows, and we emit the opened/closed
+   * signals as appropriate
    */
-  if (lists_equal (screen->priv->windows, new_list))
+
+  stack_changed = !lists_equal (screen->priv->stacked_windows, new_stack_list);
+  list_changed = !lists_equal (screen->priv->mapped_windows, new_list);
+
+  if (!(stack_changed || list_changed))
     {
       g_assert (created == NULL);
       g_assert (closed == NULL);
       g_assert (created_apps == NULL);
       g_assert (closed_apps == NULL);
+      g_list_free (new_stack_list);
       g_list_free (new_list);
       --reentrancy_guard;
       return;
     }
 
-  g_list_free (screen->priv->windows);
-  screen->priv->windows = new_list;
+  g_list_free (screen->priv->mapped_windows);
+  g_list_free (screen->priv->stacked_windows);
+  screen->priv->mapped_windows = new_list;
+  screen->priv->stacked_windows = new_stack_list;
 
   /* Here we could get reentrancy if someone ran the main loop in
    * signal callbacks; though that would be a bit pathological, so we
@@ -616,8 +733,9 @@ update_client_list (WnckScreen *screen)
       
       tmp = tmp->next;
     }
-  
-  emit_window_stacking_changed (screen);
+
+  if (stack_changed)
+    emit_window_stacking_changed (screen);
 
   if (active_changed)
     emit_active_window_changed (screen);

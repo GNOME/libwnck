@@ -266,11 +266,8 @@ _wnck_window_create (Window      xwindow,
    * right now it doesn't matter since we use PropertyChangeMask both
    * places
    */
-  _wnck_error_trap_push ();
-  XSelectInput (gdk_display,
-                window->priv->xwindow,
-                PropertyChangeMask);
-  _wnck_error_trap_pop ();
+  _wnck_select_input (window->priv->xwindow,
+                      PropertyChangeMask);
 
   window->priv->group_leader =
     _wnck_get_group_leader (window->priv->xwindow);
