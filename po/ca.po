@@ -1,12 +1,13 @@
 # libwnck Catalan translation.
-# Copyright (C) 2002, 2003 Free Software Foundation, Inc.
-# Jordi Mallach <jordi@sindominio.net>, 2002, 2003.
+# Copyright © 2002, 2003, 2004 Free Software Foundation, Inc.
+# Jordi Mallach <jordi@sindominio.net>, 2002, 2003, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.3.0\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
-"PO-Revision-Date: 2003-05-10 02:47+0200\n"
+"Project-Id-Version: libwnck 2.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-29 14:12+0200\n"
+"PO-Revision-Date: 2004-03-29 14:13+0200\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -68,14 +69,13 @@ msgid "Workspace %d"
 msgstr "Espai de treball %d"
 
 #: libwnck/window-action-menu.c:368
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "Espai de treball %d"
+msgstr "Espai de treball 1_0"
 
 #: libwnck/window-action-menu.c:370
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Espai de treball %d"
+msgstr "Espai de treball %s%d"
 
 #: libwnck/window-action-menu.c:466
 msgid "_Move"
@@ -91,12 +91,12 @@ msgstr "Tan_ca"
 
 #: libwnck/window-action-menu.c:499
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Mou a un altre _espai de treball"
 
 #: libwnck/window-action-menu.c:517
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -104,12 +104,11 @@ msgstr "finestra sense títol"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
-msgstr ""
+msgstr "Llista de finestres"
 
 #: libwnck/tasklist.c:462
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "Eina per a canviar entre espais de treball"
+msgstr "Eina per a canviar entre finestres visibles"
 
 #~ msgid "U_nshade"
 #~ msgstr "Desenro_tllar"
