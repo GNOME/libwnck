@@ -1,12 +1,13 @@
-# SOME DESCRIPTIVE TITLE.
+# Simplified Chinese translation of libwnck.
 # Copyright (C) YEAR Free Software Foundation, Inc.
 # Wang Jian <lark@linux.net.cn>, 2002
+# Funda Wang <fundawang@en2china.com>, 2003
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-20 22:11-0500\n"
-"PO-Revision-Date: 2002-02-17 18:31+0800\n"
+"POT-Creation-Date: 2003-01-20 20:11+0100\n"
+"PO-Revision-Date: 2003-01-22 22:53+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
 "MIME-Version: 1.0\n"
@@ -18,18 +19,17 @@ msgid "untitled application"
 msgstr "未命名程序"
 
 #: libwnck/pager-accessible.c:317
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "工作区 %d"
+msgstr "工作区切换程序"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "在工作区间切换的工具"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "单击此处切换到工作区 %s"
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
@@ -49,19 +49,19 @@ msgstr "最大化(_X)"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "展开(_U)"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "卷起(_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "仅在此工作区(_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "置于所有工作区(_A)"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -72,9 +72,8 @@ msgid "_Resize"
 msgstr "改变大小(_R)"
 
 #: libwnck/window-action-menu.c:392
-#, fuzzy
 msgid "_Close"
-msgstr "关闭"
+msgstr "关闭(_C)"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -85,8 +84,3 @@ msgstr "未命名窗口"
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#~ msgid "U_nshade"
-#~ msgstr "恢复(_N)"
-
-#~ msgid "_Shade"
-#~ msgstr "卷起(_S)"
