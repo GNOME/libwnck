@@ -1,6 +1,6 @@
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
-	* libwnck/test-wnck.c: fixes
+	* libwnck/test-wnck.c: fixes (requires CVS HEAD GTK)
 
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 

@@ -624,7 +624,7 @@ _wnck_activate (Window xwindow)
               gdk_x11_get_default_root_xwindow (),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
-	      &xev);
+	      &xev); 
 }
 
 Window

@@ -125,8 +125,9 @@ active_window_changed_callback    (WnckScreen    *screen,
   g_print ("Active window changed\n");
 
   window = wnck_screen_get_active_window (screen);
-  
-  update_window (global_tree_model, window);
+
+  if (window)
+    update_window (global_tree_model, window);
 }
 
 static void
@@ -321,6 +322,8 @@ refill_tree_model (GtkTreeModel *model,
           GtkTreeSelection *selection;
           
           selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (global_tree_view));
+
+          gtk_tree_selection_unselect_all (selection);
           
           gtk_tree_selection_select_iter (selection, &iter);
         }
@@ -363,7 +366,9 @@ update_window (GtkTreeModel *model,
           GtkTreeSelection *selection;
           
           selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (global_tree_view));
-          
+
+          gtk_tree_selection_unselect_all (selection);
+
           gtk_tree_selection_select_iter (selection, &iter);
         }
     }
@@ -376,8 +381,6 @@ get_window (GtkTreeModel *model,
             GtkTreeIter  *iter)
 {
   WnckWindow *window;
-
-  g_print ("%d children\n", gtk_tree_model_iter_n_children (model, NULL));
   
   gtk_tree_model_get (model, iter,
                       0, &window,
@@ -547,6 +550,7 @@ static gboolean
 selection_func (GtkTreeSelection  *selection,
                 GtkTreeModel      *model,
                 GtkTreePath       *path,
+                gboolean           currently_selected,
                 gpointer           data)
 {
   GtkTreeIter iter;
@@ -564,8 +568,8 @@ selection_func (GtkTreeSelection  *selection,
   window = get_window (model, &iter);
   if (window == NULL)
     return FALSE;
-  
-  if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+
+  if (currently_selected)
     {
       /* Trying to unselect, not allowed if we are the active window */
       if (wnck_window_is_active (window))
@@ -661,6 +665,7 @@ create_tree_view (void)
    * handle it with a custom function
    */
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
+  gtk_tree_selection_set_mode (selection, GTK_SELECTION_MULTIPLE);
   gtk_tree_selection_set_select_function (selection, selection_func, NULL, NULL);
   return tree_view;
 }
