@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
-"POT-Creation-Date: 2002-12-12 06:11+0100\n"
+"POT-Creation-Date: 2003-06-02 15:21-0400\n"
 "PO-Revision-Date: 2002-12-20 17:41+0530\n"
 "Last-Translator: Pramod <rpramod@postmaster.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -83,4 +83,3 @@ msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಕಿಟಕಿ"
 #, c-format
 msgid "Workspace %d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
-

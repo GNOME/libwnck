@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.15\n"
-"POT-Creation-Date: 2003-02-05 23:57-0500\n"
+"POT-Creation-Date: 2003-06-02 15:21-0400\n"
 "PO-Revision-Date: 2003-01-21 21:32+0100\n"
 "Last-Translator: Lapo Calamandrei <lapo.calamandrei@virgilio.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"

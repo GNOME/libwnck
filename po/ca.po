@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.1.5\n"
-"POT-Creation-Date: 2003-02-05 23:57-0500\n"
+"POT-Creation-Date: 2003-06-02 15:21-0400\n"
 "PO-Revision-Date: 2002-12-21 00:47+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"

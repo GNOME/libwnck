@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck Tamil 2.2.0\n"
-"POT-Creation-Date: 2003-03-27 20:34+0100\n"
+"POT-Creation-Date: 2003-06-02 15:21-0400\n"
 "PO-Revision-Date: 2003-03-27 23:37+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -83,4 +83,3 @@ msgstr "¦ÀÂÃüÈ º¡ÇÃõ"
 #, c-format
 msgid "Workspace %d"
 msgstr "§Å¨ÄÂ¢¼õ %d"
-

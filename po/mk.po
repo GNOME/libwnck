@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mk\n"
-"POT-Creation-Date: 2003-04-10 04:13+0200\n"
+"POT-Creation-Date: 2003-06-02 15:21-0400\n"
 "PO-Revision-Date: 2003-04-16 15:04+0200\n"
 "Last-Translator: Ivan Stojmirov <stojmir@linux.net.mk>\n"
 "Language-Team: Macedonian <gnomk-main@lists.sourceforge.net>\n"
@@ -92,4 +92,3 @@ msgstr "Работно Место %d"
 
 #~ msgid "_Shade"
 #~ msgstr "_Подигнување и Спуштање"
-
