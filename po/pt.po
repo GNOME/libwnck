@@ -1,19 +1,20 @@
 # libwnck's Portuguese Translation
-# Copyright (C) 2001 Free Software Foundation, Inc.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002
+# Copyright (C) 2001 libwnck
+# Distributed under the same licence as libwnck
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
-"PO-Revision-Date: 2002-06-16 02:02+0100\n"
+"Project-Id-Version: 2.4\n"
+"POT-Creation-Date: 2003-05-13 01:31+0000\n"
+"PO-Revision-Date: 2003-05-13 01:35+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "aplicação sem título"
 
@@ -31,19 +32,16 @@ msgid "Click this to switch to workspace %s"
 msgstr "Clicar para ir para ambiente de trabalho %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "R_estaurar"
+msgstr "Rest_aurar"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Minimizar"
+msgstr "Minimiz_ar"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "R_estaurar"
+msgstr "Desma_ximizar"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -51,24 +49,23 @@ msgstr "Ma_ximizar"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Desenrrolar"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "_Enrolar"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Apenas _Neste Ambiente de Trabalho"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Em _Todos os Ambientes de Trabalho"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "Mo_ver"
+msgstr "_Mover"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
@@ -78,11 +75,11 @@ msgstr "_Redimensionar"
 msgid "_Close"
 msgstr "Fe_char"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "janela sem título"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Ambiente de Trabalho %d"
