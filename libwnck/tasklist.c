@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include "tasklist.h"
 #include "window.h"
+#include "workspace.h"
 #include "application.h"
 #include "xutils.h"
 
@@ -108,6 +109,8 @@ struct _WnckTasklistPrivate
   gint max_button_width;
   gint max_button_height;
 
+  gboolean switch_workspace_on_unminimize;
+  
   WnckTasklistGroupingType grouping;
   gint grouping_limit;
 
@@ -393,6 +396,15 @@ wnck_tasklist_set_grouping (WnckTasklist            *tasklist,
   
   tasklist->priv->grouping = grouping;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+void
+wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
+						  gboolean       switch_workspace_on_unminimize)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  tasklist->priv->switch_workspace_on_unminimize = switch_workspace_on_unminimize;
 }
 
 void
@@ -1109,7 +1121,15 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
 
   if (state & WNCK_WINDOW_STATE_MINIMIZED)
     {
-      wnck_window_unminimize (task->window);
+      WnckWorkspace *active_ws;
+      WnckWorkspace *window_ws;
+
+      active_ws = wnck_screen_get_active_workspace (tasklist->priv->screen);
+      window_ws = wnck_window_get_workspace (task->window);
+      if (active_ws != window_ws &&
+	  !tasklist->priv->switch_workspace_on_unminimize)
+	wnck_workspace_activate (window_ws);
+	  
       wnck_window_activate (task->window);
     }
   else
