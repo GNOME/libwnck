@@ -1170,16 +1170,9 @@ wnck_window_activate_transient (WnckWindow *window)
     }
 
   if (transient != NULL)
-    {
-      /* Raise but don't focus the main window */
-      XRaiseWindow (gdk_display, window->priv->xwindow);
-      /* then activate the transient */
-      wnck_window_activate (transient);
-    }
+    wnck_window_activate (transient);
   else
-    {
-      wnck_window_activate (window);
-    }
+    wnck_window_activate (window);
 }
 
 /**
