@@ -1,5 +1,23 @@
 2004-12-15  Mark McLoughlin  <mark@skynet.ie>
 
+	* libwnck/tasklist.c: (make_gtk_label_bold): rename
+	from eel_gtk_label_make_bold() and make static.
+	
+2004-12-15  Mark McLoughlin  <mark@skynet.ie>
+
+	Based on a patch from Juerg Billeter <j@bitron.ch> in
+	bug #154040.
+
+	* libwnck/tasklist.c:
+	(wnck_tasklist_init), (wnck_tasklist_finalize): track
+	tasklist instaces and call update_lists() on all instances
+	when instances are added or removed.
+	(wnck_tasklist_update_lists): only constrain the tasklist
+	to showing windows from a certain monitor if its the only
+	monitor.
+
+2004-12-15  Mark McLoughlin  <mark@skynet.ie>
+
 	Patch from Juerg Billeter <j@bitron.ch> in bug #154041
 	to fix windows from all screen being shown when tasklist
 	is first created.
