@@ -55,7 +55,8 @@ gboolean _wnck_get_cardinal_list (Window   xwindow,
                                   Atom     atom,
                                   gulong **cardinals,
                                   int     *len);
-
+char**   _wnck_get_utf8_list     (Window   xwindow,
+                                  Atom     atom);
 
 void _wnck_error_trap_push (void);
 int  _wnck_error_trap_pop  (void);

@@ -48,6 +48,7 @@ struct _WnckWorkspaceClass
 {
   GObjectClass parent_class;
 
+  void (* name_changed) (WnckWorkspace *space);
 };
 
 GType wnck_workspace_get_type (void) G_GNUC_CONST;

@@ -1,3 +1,12 @@
+2002-01-13  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/screen.c (update_workspace_names): update workspace
+	names as appropriate
+
+	* libwnck/workspace.c: implement a private method to update name
+
+	* libwnck/xutils.c (_wnck_get_utf8_list): new util function
+
 2002-01-12  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/pager.[ch]:

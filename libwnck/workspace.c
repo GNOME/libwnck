@@ -24,6 +24,7 @@
 #include "workspace.h"
 #include "xutils.h"
 #include "private.h"
+#include <string.h>
 
 static GHashTable* workspace_hash = NULL;
 
@@ -34,7 +35,7 @@ struct _WnckWorkspacePrivate
 };
 
 enum {
-  dummy, /* remove this when you add more signals */
+  NAME_CHANGED,
   LAST_SIGNAL
 };
 
@@ -42,6 +43,8 @@ static void wnck_workspace_init        (WnckWorkspace      *workspace);
 static void wnck_workspace_class_init  (WnckWorkspaceClass *klass);
 static void wnck_workspace_finalize    (GObject        *object);
 
+
+static void emit_name_changed (WnckWorkspace *space);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -93,6 +96,14 @@ wnck_workspace_class_init (WnckWorkspaceClass *klass)
   
   object_class->finalize = wnck_workspace_finalize;
 
+  signals[NAME_CHANGED] =
+    g_signal_new ("name_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWorkspaceClass, name_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -196,7 +207,9 @@ _wnck_workspace_create  (int number)
   
   space = g_object_new (WNCK_TYPE_WORKSPACE, NULL);
   space->priv->number = number;
-  space->priv->name = g_strdup_printf (_("Workspace %d"), number);
+  space->priv->name = NULL;
+
+  _wnck_workspace_update_name (space, NULL);
   
   g_hash_table_insert (workspace_hash, &space->priv->number, space);
 
@@ -218,4 +231,35 @@ _wnck_workspace_destroy (WnckWorkspace *space)
   
   /* remove hash's ref on the workspace */  
   g_object_unref (G_OBJECT (space));
+}
+
+void
+_wnck_workspace_update_name (WnckWorkspace *space,
+                             const char    *name)
+{
+  char *old;
+  
+  g_return_if_fail (WNCK_IS_WORKSPACE (space));
+
+  old = space->priv->name;
+  space->priv->name = g_strdup (name);
+
+  if (space->priv->name == NULL)
+    space->priv->name = g_strdup_printf (_("Workspace %d"),
+                                         space->priv->number);
+
+  if ((old && !name) ||
+      (!old && name) ||
+      (old && name && strcmp (old, name) != 0))
+    emit_name_changed (space);
+
+  g_free (old);
+}
+
+static void
+emit_name_changed (WnckWorkspace *space)
+{
+  g_signal_emit (G_OBJECT (space),
+                 signals[NAME_CHANGED],
+                 0);
 }

@@ -58,6 +58,7 @@ struct _WnckScreenPrivate
   guint need_update_workspace_list : 1;
   guint need_update_active_workspace : 1;
   guint need_update_active_window : 1;
+  guint need_update_workspace_names : 1;
 };
 
 enum {
@@ -81,6 +82,7 @@ static void update_client_list      (WnckScreen      *screen);
 static void update_workspace_list   (WnckScreen      *screen);
 static void update_active_workspace (WnckScreen      *screen);
 static void update_active_window    (WnckScreen      *screen);
+static void update_workspace_names  (WnckScreen      *screen);
 
 static void queue_update            (WnckScreen      *screen);
 static void unqueue_update          (WnckScreen      *screen);              
@@ -276,6 +278,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->need_update_stack_list = TRUE;
   screen->priv->need_update_active_workspace = TRUE;
   screen->priv->need_update_active_window = TRUE;
+  screen->priv->need_update_workspace_names = TRUE;
   
   queue_update (screen);
 }
@@ -477,6 +480,12 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
            _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS"))
     {
       screen->priv->need_update_workspace_list = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_DESKTOP_NAMES"))
+    {
+      screen->priv->need_update_workspace_names = TRUE;
       queue_update (screen);
     }
 }
@@ -1000,6 +1009,41 @@ update_active_window (WnckScreen *screen)
 }
 
 static void
+update_workspace_names (WnckScreen *screen)
+{
+  char **names;
+  int i;
+  GList *tmp;
+  GList *copy;
+  
+  if (!screen->priv->need_update_workspace_names)
+    return;
+
+  screen->priv->need_update_workspace_names = FALSE;
+
+  names = _wnck_get_utf8_list (screen->priv->xroot,
+                               _wnck_atom_get ("_NET_DESKTOP_NAMES"));
+
+  copy = g_list_copy (screen->priv->workspaces);
+
+  i = 0;
+  tmp = copy;
+  while (tmp != NULL)
+    {
+      if (names && names[i])
+        _wnck_workspace_update_name (tmp->data, names[i]);
+      else
+        _wnck_workspace_update_name (tmp->data, NULL);
+
+      ++i;
+      tmp = tmp->next;
+    }
+
+  g_strfreev (names);
+  g_list_free (copy);
+}
+
+static void
 do_update_now (WnckScreen *screen)
 {
   if (screen->priv->update_handler)
@@ -1015,6 +1059,7 @@ do_update_now (WnckScreen *screen)
   /* Then note any smaller-scale changes */
   update_active_workspace (screen);
   update_active_window (screen);
+  update_workspace_names (screen);
 }
 
 static gboolean

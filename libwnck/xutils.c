@@ -429,6 +429,91 @@ _wnck_get_cardinal_list (Window   xwindow,
   return TRUE;
 }
 
+char**
+_wnck_get_utf8_list (Window   xwindow,
+                     Atom     atom)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  char *val;
+  int err, result;
+  Atom utf8_string;
+  char **retval;
+  int i;
+  int n_strings;
+  char *p;
+  
+  utf8_string = _wnck_atom_get ("UTF8_STRING");
+  
+  _wnck_error_trap_push ();
+  type = None;
+  val = NULL;
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, utf8_string,
+			       &type, &format, &nitems,
+			       &bytes_after, (guchar **)&val);  
+  err = _wnck_error_trap_pop ();
+
+  if (err != Success ||
+      result != Success)
+    return NULL;
+  
+  if (type != utf8_string ||
+      format != 8 ||
+      nitems == 0)
+    {
+      if (val)
+        XFree (val);
+      return NULL;
+    }
+
+  /* I'm not sure this is right, but I'm guessing the
+   * property is nul-separated
+   */
+  i = 0;
+  n_strings = 0;
+  while (i < nitems)
+    {
+      if (val[i] == '\0')
+        ++n_strings;
+      ++i;
+    }
+
+  /* we're guaranteed that val has a nul on the end
+   * by XGetWindowProperty
+   */
+  
+  retval = g_new0 (char*, n_strings + 1);
+
+  p = val;
+  i = 0;
+  while (i < n_strings)
+    {
+      if (!g_utf8_validate (p, -1, NULL))
+        {
+          g_warning ("Property %s contained invalid UTF-8\n",
+                     _wnck_atom_name (atom));
+          XFree (val);
+          g_strfreev (retval);
+          return NULL;
+        }
+
+      retval[i] = g_strdup (p);
+      
+      p = p + strlen (p) + 1;
+      ++i;
+    }
+  
+  XFree (val);
+  
+  return retval;
+}
+
 void
 _wnck_error_trap_push (void)
 {
