@@ -1,3 +1,14 @@
+2002-08-06  Craig Black  <blackc@speakeasy.net>
+
+	* libwnck/window-action-menu.c: (item_activated_callback):
+	* libwnck/window.c: (wnck_window_keyboard_move),
+	(wnck_window_keyboard_size):
+	* libwnck/window.h:
+	* libwnck/xutils.c: (_wnck_keyboard_move), (_wnck_keyboard_size):
+	* libwnck/xutils.h:
+  Use _NET_WM_MOVERESIZE_SIZE_KEYBOARD and _NET_WM_MOVERESIZE_MOVE_KEYBOARD
+  to implement move and resize in window action menu.
+
 2002-08-02  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/pager.c:

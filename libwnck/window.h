@@ -163,6 +163,8 @@ void wnck_window_shade                   (WnckWindow *window);
 void wnck_window_unshade                 (WnckWindow *window);
 void wnck_window_stick                   (WnckWindow *window);
 void wnck_window_unstick                 (WnckWindow *window);
+void wnck_window_keyboard_move           (WnckWindow *window);
+void wnck_window_keyboard_size           (WnckWindow *window);
 
 WnckWorkspace* wnck_window_get_workspace     (WnckWindow    *window);
 void           wnck_window_move_to_workspace (WnckWindow    *window,

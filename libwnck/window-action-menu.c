@@ -123,10 +123,11 @@ item_activated_callback (GtkWidget *menu_item,
       else
         wnck_window_shade (amd->window);
       break;
-      /* These don't do anything yet, we need WM spec support */
     case MOVE:
+      wnck_window_keyboard_move (amd->window);
       break;
     case RESIZE:
+      wnck_window_keyboard_size (amd->window);
       break;
     }
 }

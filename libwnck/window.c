@@ -772,6 +772,24 @@ wnck_window_unstick                 (WnckWindow *window)
                       0);
 }
 
+void
+wnck_window_keyboard_move (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_keyboard_move (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                       window->priv->xwindow);
+}
+
+void
+wnck_window_keyboard_size (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_keyboard_size (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                       window->priv->xwindow);
+}
+
 /**
  * wnck_window_get_workspace:
  * @window: a #WnckWindow

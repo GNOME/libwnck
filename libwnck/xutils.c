@@ -793,6 +793,68 @@ _wnck_close (Screen *screen,
 	      &xev); 
 }
 
+#define _NET_WM_MOVERESIZE_SIZE_TOPLEFT      0
+#define _NET_WM_MOVERESIZE_SIZE_TOP          1
+#define _NET_WM_MOVERESIZE_SIZE_TOPRIGHT     2
+#define _NET_WM_MOVERESIZE_SIZE_RIGHT        3
+#define _NET_WM_MOVERESIZE_SIZE_BOTTOMRIGHT  4
+#define _NET_WM_MOVERESIZE_SIZE_BOTTOM       5
+#define _NET_WM_MOVERESIZE_SIZE_BOTTOMLEFT   6
+#define _NET_WM_MOVERESIZE_SIZE_LEFT         7
+#define _NET_WM_MOVERESIZE_MOVE              8
+#define _NET_WM_MOVERESIZE_SIZE_KEYBOARD     9
+#define _NET_WM_MOVERESIZE_MOVE_KEYBOARD    10
+
+void
+_wnck_keyboard_move (Screen *screen,
+                     Window  xwindow)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_WM_MOVERESIZE");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 0; /* unused */
+  xev.xclient.data.l[1] = 0; /* unused */
+  xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_MOVE_KEYBOARD;
+  xev.xclient.data.l[3] = 0; /* unused */
+
+  XSendEvent (gdk_display,
+              RootWindowOfScreen (screen),
+              False,
+              SubstructureRedirectMask | SubstructureNotifyMask,
+              &xev); 
+}
+
+void
+_wnck_keyboard_size (Screen *screen,
+                     Window  xwindow)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_WM_MOVERESIZE");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 0; /* unused */
+  xev.xclient.data.l[1] = 0; /* unused */
+  xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_SIZE_KEYBOARD;
+  xev.xclient.data.l[3] = 0; /* unused */
+
+  XSendEvent (gdk_display,
+              RootWindowOfScreen (screen),
+              False,
+              SubstructureRedirectMask | SubstructureNotifyMask,
+              &xev); 
+}
+
 void
 _wnck_change_state (Screen  *screen,
 		    Window   xwindow,

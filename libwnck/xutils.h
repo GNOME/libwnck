@@ -104,6 +104,12 @@ char*  _wnck_get_res_class_utf8 (Window xwindow);
 void   _wnck_select_input     (Window xwindow,
                                int    mask);
 
+void   _wnck_keyboard_move    (Screen *screen,
+                               Window  xwindow);
+
+void   _wnck_keyboard_size    (Screen *screen,
+                               Window  xwindow);
+
 typedef struct _WnckIconCache WnckIconCache;
 
 WnckIconCache *_wnck_icon_cache_new                  (void);
