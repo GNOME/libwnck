@@ -5,52 +5,60 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2001-12-12 15:50+0100\n"
-"PO-Revision-Date: 2001-12-12 15:52CET\n"
+"POT-Creation-Date: 2002-01-22 18:55+0100\n"
+"PO-Revision-Date: 2002-01-22 18:50CET\n"
 "Last-Translator: Stanislav Visnovsky <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 0.9.6\n"
 
-#: libwnck/window-action-menu.c:157
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "aplikácia bez mena"
+
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "_Obnoviť"
 
-#: libwnck/window-action-menu.c:163
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "_Minimalizovať"
 
-#: libwnck/window-action-menu.c:170
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "_Obnoviť"
 
-#: libwnck/window-action-menu.c:176
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Ma_ximalizovať"
 
-#: libwnck/window-action-menu.c:183
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "_Rozbaliť"
 
-#: libwnck/window-action-menu.c:189
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "_Zabaliť"
 
-#: libwnck/window-action-menu.c:300
+#: libwnck/window-action-menu.c:297
 msgid "Close"
 msgstr "Zavrieť"
 
-#: libwnck/window-action-menu.c:321
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "_Presunúť"
 
-#: libwnck/window-action-menu.c:327
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "Zmeniť _velkosť"
 
-#: libwnck/window.c:32
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "okno bez mena"
 
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "Pracovná plocha %d"
