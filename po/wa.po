@@ -38,17 +38,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Clitchîz çouchal po potchî å scribanne %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "_Rivni come divant"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "Å pus _ptit"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Rivni come divant"
 
@@ -73,7 +70,6 @@ msgid "Put on _All Workspaces"
 msgstr "Mete so _tos les scribannes"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Bodjî"
 
