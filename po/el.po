@@ -5,19 +5,20 @@
 # simos: 15 messages, 16Aug2002, initial translation.
 # kostas: 17 messages, 05Jan2003, updated translation for Gnome 2.1x
 # Simos Xenitellis <simos@hellug.gr>, 2002,2003.
-# Kostas Papadimas <pkst@gmx.net>, 2003
+# Kostas Papadimas <pkst@gnome.org>, 2003,2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-07-18 08:37+0300\n"
-"Last-Translator: Kostas Papadimas <pkst@gmx.net>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-03 18:08+0200\n"
+"PO-Revision-Date: 2004-02-03 18:12+0200\n"
+"Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -36,61 +37,88 @@ msgstr "Εργαλείο για εναλλαγή μεταξύ χώρων εργ�
 msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
 msgstr "Απελαχιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 msgid "Mi_nimize"
 msgstr "Ελα_χιστοποίηση"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 msgid "Unma_ximize"
 msgstr "Απομεγιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
 msgstr "_Αναδίπλωση"
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
 msgstr "Δίπλωμα _πάνω"
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
 msgstr "Μόνο σε αυ_τό το χώρο εργασίας"
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
 msgstr "Τοποθέτηση σε ό_λους τους χώρους εργασίας"
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Χώρος Εργασίας %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "Χώρος Εργασίας  1_0"
+
+#: libwnck/window-action-menu.c:370
+#, c-format
+msgid "Workspace %s%d"
+msgstr "Χώρος Εργασίας %s%d"
+
+#: libwnck/window-action-menu.c:466
 msgid "_Move"
 msgstr "_Μετακίνηση"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
 msgstr "Αλλαγή με_γέθους"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
 msgstr "_Κλείσιμο"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "Μετακίνηση σε άλλο χώρο ερ_γασίας"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "παράθυρο χωρίς τίτλο"
 
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "Χώρος Εργασίας %d"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Λίστα παραθύρων"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
 
 #~ msgid "U_nshade"
 #~ msgstr "Απο_σκίαση"
 
 #~ msgid "_Shade"
 #~ msgstr "_Σκίαση"
+
