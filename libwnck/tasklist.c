@@ -1764,8 +1764,14 @@ wnck_task_create_widgets (WnckTask *task)
   GtkWidget *table;
   GdkPixbuf *pixbuf;
   char *text;
+  static GQuark disable_sound_quark = 0;
   
+  if (!disable_sound_quark)
+    disable_sound_quark = g_quark_from_static_string ("gnome_disable_sound_events");
+
   task->button = gtk_toggle_button_new ();
+  g_object_set_qdata (G_OBJECT (task->button),
+		      disable_sound_quark, GINT_TO_POINTER (TRUE));
   g_object_add_weak_pointer (G_OBJECT (task->button),
                              (void**) &task->button);
   

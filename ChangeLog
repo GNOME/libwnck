@@ -1,3 +1,11 @@
+2002-06-13  jacob berkman  <jacob@ximian.com>
+
+	* libwnck/tasklist.c (wnck_task_create_widgets): tell libgnomeui
+	not to do toggle sounds on ourself, as it's incredibly annoying to
+	have the tasklist beep every time you change focus.
+
+	fixes bug #85088
+
 2002-06-11  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.14
