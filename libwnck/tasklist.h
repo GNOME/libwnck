@@ -53,7 +53,7 @@ struct _WnckTasklistClass
 typedef enum {
   WNCK_TASKLIST_NEVER_GROUP,
   WNCK_TASKLIST_AUTO_GROUP,
-  WNCK_TASKLIST_ALWAYS_GROUP,
+  WNCK_TASKLIST_ALWAYS_GROUP
 } WnckTasklistGroupingType;
 
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;

@@ -1058,7 +1058,7 @@ wnck_pager_button_press (GtkWidget      *widget,
 	    {
 	      if (event->button == 1)
 		{
-		  // wnck_window_activate (win);
+		  /* wnck_window_activate (win); */
 		  pager->priv->drag_window = win;
 		  pager->priv->drag_start_x = event->x;
 		  pager->priv->drag_start_y = event->y;
