@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0\n"
-"POT-Creation-Date: 2004-03-28 23:31+0200\n"
+"POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-03-28 23:31+CEST\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -72,6 +72,7 @@ msgid "Workspace 1_0"
 msgstr "Radna površina 1_0"
 
 #: libwnck/window-action-menu.c:370
+#, c-format
 msgid "Workspace %s%d"
 msgstr "Radna površina %s%d"
 
@@ -107,4 +108,3 @@ msgstr "Popis prozora"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Alat za izmjenu između vidljivih prozora"
-
