@@ -1,29 +1,30 @@
-# translation of libwnck.HEAD.mk.po to 
+# translation of libwnck.HEAD.mk.po to
 # translation of libwnck.HEAD.mk.po to Macedonian
 # translation of libwnck.HEAD.po to Macedonian
 # This file is distributed under the same license as the libwnck.HEAD.mk package.
 # Copyright (C) 2004 THE libwnck.HEAD.mk'S COPYRIGHT HOLDER
-# Ivan Stojmirov <stojmir@linux.net.mk>, 2002
-# Vladislav Bidikov <bidikovi@mail.com.mk>, 2003
-# Arangel Angov <ufo@linux.net.mk>, 2003
+# Ivan Stojmirov <stojmir@linux.net.mk>, 2002.
+# Vladislav Bidikov <bidikovi@mail.com.mk>, 2003.
+# Arangel Angov <ufo@linux.net.mk>, 2003, 2004.
 #  <tome@users.ossm.org.mk>, 2004.
-# 
-# 
+#
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-05 12:10+0200\n"
-"PO-Revision-Date: 2004-09-05 17:23+0200\n"
-"Last-Translator: Томислав Марковски <tome@users.ossm.org.mk>\n"
-"Language-Team: Macedonian <mk@li.org>\n"
+"POT-Creation-Date: 2004-09-08 12:11+0200\n"
+"PO-Revision-Date: 2004-09-10 16:25+0200\n"
+"Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
+"Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.3.1\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "Апликација без наслов"
+msgstr "Aпликација без наслов"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -107,7 +108,7 @@ msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
-msgstr "прозорец без наслов"
+msgstr "Прозорец без наслов"
 
 #: libwnck/tasklist.c:507
 msgid "Window List"
@@ -117,8 +118,3 @@ msgstr "Листа на прозорци"
 msgid "Tool to switch between visible windows"
 msgstr "Алатка за менување помеѓу прозорците"
 
-#~ msgid "U_nshade"
-#~ msgstr "В_рати Подигнување или Спуштање"
-
-#~ msgid "_Shade"
-#~ msgstr "_Подигнување и Спуштање"
