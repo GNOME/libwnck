@@ -1,3 +1,10 @@
+2001-10-25  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/pager.c: fixups, window dragging, etc.
+
+	* libwnck/xutils.c (filter_func): use proper window from configure
+	event
+
 2001-10-25  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c (wnck_pager_expose_event): tinker with

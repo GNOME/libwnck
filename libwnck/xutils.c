@@ -493,7 +493,7 @@ filter_func (GdkXEvent  *gdkxevent,
       {
         WnckWindow *window;
         
-        window = wnck_window_get (xevent->xany.window);
+        window = wnck_window_get (xevent->xconfigure.window);
         
         if (window)
           _wnck_window_process_configure_notify (window, xevent);

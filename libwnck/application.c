@@ -154,11 +154,8 @@ _wnck_application_create (Window      xwindow,
   /* Note that xwindow may correspond to a WnckWindow's xwindow,
    * so we select events needed by either
    */
-  _wnck_error_trap_push ();
-  XSelectInput (gdk_display,
-                application->priv->xwindow,
-                WNCK_APP_WINDOW_EVENT_MASK);
-  _wnck_error_trap_pop ();  
+  _wnck_select_input (application->priv->xwindow,
+                      WNCK_APP_WINDOW_EVENT_MASK);
   
   return application;
 }
