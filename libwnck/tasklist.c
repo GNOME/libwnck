@@ -2376,7 +2376,7 @@ wnck_task_get_demands_attention (WnckTask *task)
 	{
 	  win_task = WNCK_TASK (l->data);
 
-	  if (wnck_window_get_state (win_task->window) & WNCK_WINDOW_STATE_DEMANDS_ATTENTION)
+	  if (wnck_window_or_transient_demands_attention (win_task->window))
 	    {
 	      demands_attention = TRUE;
 	      break;
@@ -2388,7 +2388,7 @@ wnck_task_get_demands_attention (WnckTask *task)
 
     case WNCK_TASK_WINDOW:
       demands_attention =
-	wnck_window_get_state (task->window) & WNCK_WINDOW_STATE_DEMANDS_ATTENTION;
+	wnck_window_or_transient_demands_attention (task->window);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:

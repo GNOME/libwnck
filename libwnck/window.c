@@ -166,6 +166,9 @@ static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
 
+static WnckWindow* find_last_transient_for (GList *windows,
+                                            Window xwindow);
+
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
 
@@ -610,11 +613,11 @@ wnck_window_is_minimized (WnckWindow *window)
  * wnck_window_demands_attention:
  * @window: a #WnckWindow
  *
- * If the window is has the demands attention state set returns
+ * If the window has the demands attention state set returns
  * %TRUE. This state may change anytime a state_changed signal gets
  * emitted.
  *
- * Return value: %TRUE if window is minimized
+ * Return value: %TRUE if window has the demands_attention hint set
  **/
 gboolean
 wnck_window_demands_attention (WnckWindow *window)
@@ -624,6 +627,49 @@ wnck_window_demands_attention (WnckWindow *window)
   return window->priv->demands_attention;
 }
 
+/* Return whether one of the transients of @window demands attention */
+static gboolean
+transient_demands_attention (WnckWindow *window)
+{
+  GList *windows;
+  WnckWindow *transient;
+  
+  if (!WNCK_IS_WINDOW (window))
+    return FALSE;
+
+  windows = wnck_screen_get_windows_stacked (window->priv->screen);
+
+  transient = window;
+  while ((transient = find_last_transient_for (windows, transient->priv->xwindow)))
+    {
+      /* catch transient cycles */
+      if (transient == window)
+        return FALSE;
+
+      if (wnck_window_demands_attention (transient))
+        return TRUE;
+    }
+
+  return FALSE;
+}
+
+/**
+ * wnck_window_or_transient_demands_attention:
+ * @window: a #WnckWindow
+ *
+ * If the window or one of its transients has the demands attention
+ * state set returns %TRUE. This state may change anytime a
+ * state_changed signal gets emitted.
+ *
+ * Return value: %TRUE if window or one of its transients has the
+ *               demands_attention hint set
+ **/
+gboolean
+wnck_window_or_transient_demands_attention (WnckWindow *window)
+{
+  return wnck_window_demands_attention (window) || 
+         transient_demands_attention (window);
+}
 
 gboolean
 wnck_window_is_maximized_horizontally (WnckWindow *window)
@@ -1102,7 +1148,6 @@ wnck_window_is_most_recently_activated (WnckWindow *window)
   return (window == most_recently_activated_window);
 }
 
-
 static WnckWindow*
 find_last_transient_for (GList *windows,
                          Window xwindow)
@@ -1179,7 +1224,7 @@ wnck_window_activate_transient (WnckWindow *window)
  * wnck_window_transient_is_active:
  * @window: a #WnckWindow
  *
- * Return whether @window or one of its transients has focus.  This
+ * Return whether one of the transients of @window has focus.  This
  * function is needed because clicking on the tasklist once will
  * activate a transient instead of the window itself
  * (wnck_window_activate_transient), and clicking again should

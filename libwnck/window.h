@@ -155,9 +155,10 @@ gboolean wnck_window_is_maximized              (WnckWindow *window);
 gboolean wnck_window_is_shaded                 (WnckWindow *window);
 gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
-gboolean wnck_window_is_fullscreen                 (WnckWindow *window);
+gboolean wnck_window_is_fullscreen             (WnckWindow *window);
 gboolean wnck_window_is_sticky                 (WnckWindow *window);
 gboolean wnck_window_demands_attention         (WnckWindow *window);
+gboolean wnck_window_or_transient_demands_attention (WnckWindow *window);
 
 void wnck_window_set_skip_pager    (WnckWindow *window,
                                     gboolean skip);

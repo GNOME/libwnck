@@ -219,7 +219,7 @@ wnck_selector_get_window_name (WnckWindow *window)
   else
     name = g_strdup (const_name);
 
-  if (wnck_window_demands_attention (window))
+  if (wnck_window_or_transient_demands_attention (window))
     {
       return_value = g_strdup_printf ("<b>%s</b>", name);
       g_free (name);
