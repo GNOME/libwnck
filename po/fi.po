@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-04-29 01:37-0400\n"
+"POT-Creation-Date: 2002-05-17 18:35-0400\n"
 "PO-Revision-Date: 2002-04-15 22:07+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -59,7 +59,7 @@ msgstr "M_uuta kokoa"
 msgid "untitled window"
 msgstr "nimetön ikkuna"
 
-#: libwnck/workspace.c:248
+#: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-04-29 01:37-0400\n"
+"POT-Creation-Date: 2002-05-17 18:35-0400\n"
 "PO-Revision-Date: 2002-04-17 23:34+0100\n"
 "Last-Translator: Ronald Hummelink <ronald@hummelink.xs4all.nl>\n"
 "Language-Team: Dutch <nl@li.org>\n"
@@ -57,7 +57,7 @@ msgstr "_Afmetingen wijzigen"
 msgid "untitled window"
 msgstr "naamloos scherm"
 
-#: libwnck/workspace.c:248
+#: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"

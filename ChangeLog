@@ -1,3 +1,7 @@
+2002-05-17  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 0.12
+
 2002-05-15  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c: use the _NET_DESKTOP_LAYOUT stuff
