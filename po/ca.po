@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: libwnck 2.9.90\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-02-28 18:44+0100\n"
-"PO-Revision-Date: 2005-02-15 12:14+0100\n"
+"PO-Revision-Date: 2005-03-02 13:41+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr "N_omés en aquest espai de treball"
 
 #: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
-msgstr "Sempre _al espai de treball visible"
+msgstr "_Sempre a l'espai de treball visible"
 
 #: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
