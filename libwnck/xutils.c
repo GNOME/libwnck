@@ -2463,11 +2463,6 @@ _wnck_stock_icons_init (void)
   int i;
   static gboolean done = FALSE;
 
-  if (done)
-    return;
-
-  done = TRUE;
-
   StockIcon items[] =
   {
     { WNCK_STOCK_DELETE,   stock_delete_data   },
@@ -2475,6 +2470,11 @@ _wnck_stock_icons_init (void)
     { WNCK_STOCK_MAXIMIZE, stock_maximize_data }
   };
 
+  if (done)
+    return;
+
+  done = TRUE;
+  
   factory = gtk_icon_factory_new ();
   gtk_icon_factory_add_default (factory);
 

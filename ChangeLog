@@ -1,3 +1,9 @@
+2002-09-27  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/xutils.c (_wnck_stock_icons_init): fix dumb compilation
+	bug (maybe gcc 3.2 allows variable declarations not at top of
+	function?)
+
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/tasklist.c (wnck_task_get_text): use icon name not 
