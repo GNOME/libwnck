@@ -1,5 +1,13 @@
 2004-03-22  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in,
+	  libwnck-1.0-uninstalled.pc.in,
+	  libwnck-1.0.pc.in: remove explicit dependancy on
+	startup-notification since startup-notification headers
+	aren't actually required for building against libwnck.
+
+2004-03-22  Mark McLoughlin  <mark@skynet.ie>
+
 	* configure.in: post-release bump to 2.6.1.
 	
 2004-03-22  Mark McLoughlin  <mark@skynet.ie>

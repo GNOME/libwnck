@@ -6,7 +6,7 @@ includedir=@includedir@
 Name: libwnck
 Description: Window Navigator Construction Kit library
 Version: @VERSION@
-Requires: gtk+-2.0 @STARTUP_NOTIFICATION_PACKAGE@
+Requires: gtk+-2.0
 Libs: -L${libdir} -lwnck-1
 Cflags: -I${includedir}/libwnck-1.0
 
