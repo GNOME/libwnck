@@ -2641,7 +2641,7 @@ draw_dot (GdkWindow *window, GdkGC *lgc, GdkGC *dgc, int x, int y)
 }
 
 
-gboolean
+static gboolean
 wnck_task_class_group_expose (GtkWidget        *widget,
 			      GdkEventExpose   *event,
 			      gpointer          data)

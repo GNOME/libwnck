@@ -1,3 +1,8 @@
+2004-12-20  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c:
+	(wnck_task_class_group_expose): make static.
+
 2004-12-15  Mark McLoughlin  <mark@skynet.ie>
 
 	Patch from Benjamin Kahn <xkahn@zoned.net> in
