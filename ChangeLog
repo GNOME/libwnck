@@ -1,3 +1,10 @@
+2002-01-13  Alexander Larsson  <alla@lysator.liu.se>
+
+	* libwnck/tasklist.[ch]:
+	Remove the include_unminimized functionality. It was broken,
+	hard to fix and not usefull.
+	Add wnck_tasklist_set_include_all_workspaces ()
+
 2002-01-13  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/screen.c (update_workspace_names): update workspace

@@ -38,13 +38,6 @@ typedef struct _WnckTasklist        WnckTasklist;
 typedef struct _WnckTasklistClass   WnckTasklistClass;
 typedef struct _WnckTasklistPrivate WnckTasklistPrivate;
 
-typedef enum {
-  WNCK_TASKLIST_ALL,
-  WNCK_TASKLIST_WORKSPACE,
-  WNCK_TASKLIST_ALL_MINIMIZED,
-  WNCK_TASKLIST_WORKSPACE_MINIMIZED
-} WnckTasklistMode;
-
 struct _WnckTasklist
 {
   GtkContainer parent_instance;
@@ -61,13 +54,12 @@ GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (WnckScreen *screen);
 
-void wnck_tasklist_set_mode (WnckTasklist *tasklist,
-			     WnckTasklistMode mode);
-
 void wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
 				       gboolean      allow_grouping);
 void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				       gint          limit);
+void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
+					       gboolean      include_all_workspaces);
 G_END_DECLS
 
 #endif /* WNCK_TASKLIST_H */

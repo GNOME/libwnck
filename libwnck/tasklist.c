@@ -95,7 +95,6 @@ struct _WnckTasklistPrivate
   WnckTask *active_app; /* NULL if active window not in tasklist */
   
   gboolean include_all_workspaces;
-  gboolean include_unminimized;
   
   /* Calculated by update_lists */
   GList *windows;
@@ -329,7 +328,6 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv = g_new0 (WnckTasklistPrivate, 1);
 
   tasklist->priv->include_all_workspaces = FALSE;
-  tasklist->priv->include_unminimized = TRUE;
   
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->app_hash = g_hash_table_new (NULL, NULL);
@@ -389,8 +387,29 @@ wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
 				  gboolean allow_grouping)
 {
   g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  allow_grouping = (allow_grouping != 0);
+
+  if (tasklist->priv->grouping_enabled == allow_grouping)
+    return;
   
   tasklist->priv->grouping_enabled = allow_grouping;
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+void
+wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
+					  gboolean      include_all_workspaces)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  include_all_workspaces = (include_all_workspaces != 0);
+
+  if (tasklist->priv->include_all_workspaces == include_all_workspaces)
+    return;
+  
+  tasklist->priv->include_all_workspaces = include_all_workspaces;
+  wnck_tasklist_update_lists (tasklist);
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
@@ -399,7 +418,10 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				  gint          limit)
 {
   g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
-  
+
+  if (tasklist->priv->grouping_limit == limit)
+    return;
+
   tasklist->priv->grouping_limit = limit;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
@@ -870,9 +892,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       if ((state & WNCK_WINDOW_STATE_SKIP_TASKLIST) == 0 &&
 	  (tasklist->priv->include_all_workspaces ||
 	   active_workspace == NULL ||
-	   wnck_window_is_on_workspace (win, active_workspace)) &&
-	  (tasklist->priv->include_unminimized ||
-	   (state & WNCK_WINDOW_STATE_MINIMIZED)))
+	   wnck_window_is_on_workspace (win, active_workspace)))
 	{
 	  win_task = wnck_task_new_from_window (tasklist, win);
 	  tasklist->priv->windows = g_list_prepend (tasklist->priv->windows, win_task);
@@ -1326,12 +1346,11 @@ wnck_task_get_icon (WnckTask *task)
   WnckWindowState state;
   GdkPixbuf *pixbuf;
   gboolean minimized;
-  WnckWindow *window;
   
   if (task->is_application)
     {
       pixbuf =  wnck_task_scale_icon (wnck_application_get_mini_icon (task->application),
-				      minimized);
+				      FALSE);
     }
   else
     {
