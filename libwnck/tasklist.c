@@ -214,6 +214,16 @@ wnck_task_class_init (WnckTaskClass *klass)
   task_parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_task_finalize;
+
+
+  gtk_rc_parse_string ("
+    style \"tasklist-button-style\"
+    {
+       GtkWidget::focus-padding=0
+    }
+
+    widget \"*.tasklist-button\" style \"tasklist-button-style\"
+  ");
 }
 
 static void
@@ -1454,9 +1464,12 @@ wnck_task_create_widgets (WnckTask *task)
 {
   GtkWidget *table;
   GdkPixbuf *pixbuf;
+  GtkRcStyle *rc_style;
   char *text;
   
   task->button = gtk_toggle_button_new ();
+  gtk_widget_set_name (task->button,
+		       "tasklist-button");
 
   table = gtk_table_new (1, 2, FALSE);
 

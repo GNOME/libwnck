@@ -1,3 +1,11 @@
+2001-12-14  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.c (wnck_task_class_init):
+	An EEEEEEEEEEEEEEEEEVIL hack to make the tasklist
+	fit two lines in 48 pixels. I dunno if this is the
+	right thing to do, but the 5 extra pixels on each side
+	of the button really hurt us here.
+
 2001-12-14  Kevin Vandersloot <kfv101@psu.edu>
 
 	* libwank/tasklist.c: Add tooltips
