@@ -1,3 +1,8 @@
+2001-12-12  Stanislav Visnovsky  <visnovsky@nenya.ms.mff.cuni.cz>
+
+	* configure.in: Added "sk" to ALL_LINGUAS.
+	* po/sk.po: Added Slovak translation.
+
 2001-12-10  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Added "no" to ALL_LINGUAS.
