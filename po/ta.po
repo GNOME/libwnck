@@ -16,70 +16,70 @@ msgstr ""
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "¦ÀÂÃüÈ ¿¢Ãø"
+msgstr "பெயரற்ற நிரல்"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "§Å¨ÄÂ¢¼ Á¡üÈ¢"
+msgstr "வேலையிட மாற்றி"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "§Å¨ÄÂ¢¼í¸ÙìÌ Á¡üÚõ ¸ÕÅ¢"
+msgstr "வேலையிடங்களுக்கு மாற்றும் கருவி"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "%s §Å¨ÄÂ¢¼ò¾¢üÌ Á¡üÈ þ¾¨É «Óò¾×õ"
+msgstr "%s வேலையிடத்திற்கு மாற்ற இதனை அமுத்தவும்"
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "¦ÀÕ¾¡ìÌ"
+msgstr "பெருதாக்கு"
 
 #: libwnck/window-action-menu.c:198
 msgid "_Minimize"
-msgstr "_¬¸-º¢È¢Â¾¡ìÌ"
+msgstr "_ஆக-சிறியதாக்கு"
 
 #: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
-msgstr "º¢È¢Â¾¡ìÌ"
+msgstr "சிறியதாக்கு"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "¬¸-¦ÀÕ¾¡ìÌ"
+msgstr "ஆக-பெருதாக்கு"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr "¸£ú Å¢Ã¢"
+msgstr "கீழ் விரி"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr "§Á§Ä ÍÕðÎ"
+msgstr "மேலே சுருட்டு"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "þù§Å¨ÄÂ¢¼ò¾¢ø ÁðÎõ"
+msgstr "இவ்வேலையிடத்தில் மட்டும்"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "«¨ÉòÐ §Å¨ÄÂ¢¼í¸Ç¢Öõ §À¡Î¸"
+msgstr "அனைத்து வேலையிடங்களிலும் போடுக"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
-msgstr "¿¸÷òÐ"
+msgstr "நகர்த்து"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "«Ç× Á¡üÚ"
+msgstr "அளவு மாற்று"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
-msgstr "_ãÎ"
+msgstr "_மூடு"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "¦ÀÂÃüÈ º¡ÇÃõ"
+msgstr "பெயரற்ற சாளரம்"
 
 #: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
-msgstr "§Å¨ÄÂ¢¼õ %d"
+msgstr "வேலையிடம் %d"
