@@ -1,3 +1,10 @@
+2003-04-03  Matt Wilson  <msw@redhat.com>
+
+	* libwnck/xutils.c (_wnck_set_desktop_layout): make sure that
+	_NET_DECKTOP_LAYOUT is only 4 elements.  Using "sizeof (data) / 4"
+	results in 8 elements being set on 64 bit platforms.  Just use "4"
+	instead.
+
 2003-03-28  Fatih Demir <kabalak@gtranslator.org>
 
 	* configure.in: Added "ta" (Tamil) to the languages' list ALL_LINGUAS.

@@ -2311,7 +2311,7 @@ _wnck_set_desktop_layout (Screen *xscreen,
                    RootWindowOfScreen (xscreen),
 		   _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
 		   XA_CARDINAL, 32, PropModeReplace,
-		   (guchar *)&data, sizeof (data) / 4);
+		   (guchar *)&data, 4);
 
   _wnck_error_trap_pop ();
 }
