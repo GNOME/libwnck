@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-10-31 11:15-0500\n"
-"PO-Revision-Date: 2002-06-13 17:48+0200\n"
+"POT-Creation-Date: 2002-11-06 22:56+0200\n"
+"PO-Revision-Date: 2002-11-06 12:08--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,18 +18,17 @@ msgid "untitled application"
 msgstr "неназваний додаток"
 
 #: libwnck/pager-accessible.c:317
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "Робоче місце %d"
+msgstr "Перемикання робочих областей"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "Засіб перемикання миж робочими областями"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "Клацніть щоб перемикнутися в робочу область %s"
 
 #: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
@@ -74,4 +73,5 @@ msgstr "неназване вікно"
 #: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
-msgstr "Робоче місце %d"
+msgstr "Робоча область %d"
+
