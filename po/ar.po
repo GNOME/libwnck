@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Mohammed Gamal <f2c2001@yahoo.com>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-05-26 17:57-0500\n"
+"PO-Revision-Date: 2002-05-01 04:20+0300\n"
+"Last-Translator: محمد عَصَر <mohasr@arabeyes.org>\n"
+"Language-Team: Arabic <ar@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "نافذة بدون عنوان"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "ازل الت_صغير"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "ص_غر"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "ازل الت_كبير"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "ك_بر"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "ازل ال_تظليل"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "_ظلل"
+
+#: libwnck/window-action-menu.c:297
+msgid "_Close"
+msgstr "ا_غلق"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "ا_نقل"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "ا_عادة تحجيم"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "نافذة بدون عنوان"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "مساحة عمل %d"
