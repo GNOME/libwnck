@@ -940,6 +940,85 @@ wnck_window_is_active (WnckWindow *window)
   return window == wnck_screen_get_active_window (window->priv->screen);
 }
 
+
+static WnckWindow*
+find_last_transient_for (GList *windows,
+                         Window xwindow)
+{
+  GList *tmp; 
+  WnckWindow *retval;
+
+  /* find _last_ transient for xwindow in the list */
+  
+  retval = NULL;
+  
+  tmp = windows;
+  while (tmp != NULL)
+    {
+      WnckWindow *w = tmp->data;
+
+      if (w->priv->transient_for == xwindow)
+        retval = w;
+      
+      tmp = tmp->next;
+    }
+
+  return retval;
+}
+
+/**
+ * wnck_window_activate_transient:
+ * @window: a #WnckWindow
+ *
+ * If @window has transients, activates the most likely transient
+ * instead of the window itself. Otherwise activates @window.
+ * 
+ * FIXME the ideal behavior of this function is probably to activate
+ * the most recently active window among @window and its transients.
+ * This is probably best implemented on the window manager side.
+ * 
+ **/
+void
+wnck_window_activate_transient (WnckWindow *window)
+{
+  GList *windows;
+  WnckWindow *transient;
+  WnckWindow *next;
+  
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  windows = wnck_screen_get_windows_stacked (window->priv->screen);
+
+  transient = NULL;
+  next = find_last_transient_for (windows, window->priv->xwindow);
+  
+  while (next != NULL)
+    {
+      if (next == window)
+        {
+          /* catch transient cycles */
+          transient = NULL;
+          break;
+        }
+
+      transient = next;
+      
+      next = find_last_transient_for (windows, transient);
+    }
+
+  if (transient != NULL)
+    {
+      /* Raise but don't focus the main window */
+      XRaiseWindow (gdk_display, window->priv->xwindow);
+      /* then activate the transient */
+      wnck_window_activate (transient);
+    }
+  else
+    {
+      wnck_window_activate (window);
+    }
+}
+
 static void
 get_icons (WnckWindow *window)
 {

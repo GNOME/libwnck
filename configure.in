@@ -63,8 +63,23 @@ AM_GLIB_GNU_GETTEXT
 wncklocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(wncklocaledir)
 
+AC_PATH_PROG(PKG_CONFIG, pkg-config)
 
-PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.1.0)
+STARTUP_NOTIFICATION_REQUIRED=0.3
+if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_REQUIRED libstartup-notification-1.0; then
+  echo "Building with libstartup-notification"
+  AC_DEFINE(HAVE_STARTUP_NOTIFICATION)
+  with_startup_notification=yes
+  STARTUP_NOTIFICATION_PACKAGE=libstartup-notification-1.0
+else
+  echo "Building without libstartup-notification"
+  with_startup_notification=no
+  STARTUP_NOTIFICATION_PACKAGE=
+fi
+
+AC_SUBST(STARTUP_NOTIFICATION_PACKAGE)
+
+PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.1.0 $STARTUP_NOTIFICATION_PACKAGE)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 

@@ -1,3 +1,24 @@
+2002-10-24  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/tasklist.c (wnck_tasklist_activate_task_window): when
+	activating windows, use wnck_window_activate_transient()
+
+	* libwnck/window.c (wnck_window_activate_transient): new function
+
+	* libwnck/tasklist.c: add support for displaying a "starting up"
+	task.
+	(wnck_tasklist_remove): queue a resize on removing a button.
+	Doesn't seem like it should be needed, but apparently it is.
+
+	* libwnck/xutils.c (filter_func): process the startup notification events
+
+	* libwnck/screen.c (_wnck_screen_get_sn_display): new function
+
+	* configure.in: add libstartup-notification optional check
+
+	* libwnck-1.0.pc.in: require libstartup-notification if compiled
+	with it
+
 2002-09-27  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/xutils.c (_wnck_stock_icons_init): fix dumb compilation

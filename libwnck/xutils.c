@@ -662,6 +662,7 @@ filter_func (GdkXEvent  *gdkxevent,
              gpointer    data)
 {
   XEvent *xevent = gdkxevent;
+  int i;
   
   switch (xevent->type)
     {
@@ -704,6 +705,26 @@ filter_func (GdkXEvent  *gdkxevent,
       {
         _wnck_desktop_layout_manager_process_event (xevent);
       }
+      break;
+
+    case ClientMessage:
+#ifdef HAVE_STARTUP_NOTIFICATION
+      /* We're cheating as officially libsn requires
+       * us to send all events through sn_display_process_event
+       */
+      i = 0;
+      while (i < ScreenCount (gdk_display))
+        {
+          WnckScreen *s;
+
+          s = _wnck_screen_get_existing (i);
+          if (s != NULL)
+            sn_display_process_event (_wnck_screen_get_sn_display (s),
+                                      xevent);
+          
+          ++i;
+        }
+#endif /* HAVE_STARTUP_NOTIFICATION */
       break;
     }
   

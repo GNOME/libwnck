@@ -10,3 +10,5 @@
 #undef HAVE_SHAPE_EXT
 #undef HAVE_XFT
 #undef HAVE_SM
+#undef HAVE_STARTUP_NOTIFICATION
+
