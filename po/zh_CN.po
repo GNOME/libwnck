@@ -1,0 +1,63 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Free Software Foundation, Inc.
+# Wang Jian <lark@linux.net.cn>, 2002
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-02-17 18:28+0800\n"
+"PO-Revision-Date: 2002-02-17 18:31+0800\n"
+"Last-Translator: Wang Jian <lark@linux.net.cn>\n"
+"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "未命名程序"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "恢复(_M)"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "最小化(_M)"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "恢复(_U)"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "最大化(_X)"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "恢复(_N)"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "卷起(_S)"
+
+#: libwnck/window-action-menu.c:297
+msgid "Close"
+msgstr "关闭"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "移动(_V)"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "改变大小(_R)"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "未命名窗口"
+
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr "工作区 %d"
