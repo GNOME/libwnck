@@ -1,3 +1,25 @@
+2003-03-13  Mark McLoughlin  <mark@skynet.ie>
+
+	Fix bug #98357 - make the workspace switcher follow fitt's
+        law by being flush up against the screen edge. We do this
+	by drawing our own focus so libpanel-applet doesn't draw
+	it. Also, add a hack so the applet doesn't have to know
+	the panel's size in advance of allocation.
+
+	* libwnck/pager.c:
+	(wnck_pager_init): set CAN_FOCUS.
+	(wnck_pager_size_request): remove the width-for-height
+	requisition calculation from here. Also, account for
+	the focus line width.
+	(wnck_pager_size_allocate): calculate the workspace
+	size here and if it differs queue another resize so
+	we can get the width right. Hacky and slighlty 
+	dangerous but is safe with the panel. Also, account for
+	the focus line width.
+	(get_workspace_rect), (workspace_at_point): account for
+	the focus line.
+	(wnck_pager_expose_event): draw focus.
+
 2003-02-25  Taneem Ahmed  <taneem@eyetap.org>
 
 	* configure.in: Added "bn" to ALL_LINGUAS.
