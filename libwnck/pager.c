@@ -29,7 +29,11 @@
 struct _WnckPagerPrivate
 {
   WnckScreen *screen;
+  
   int n_rows; /* really columns for vertical orientation */
+  WnckPagerDisplayMode display_mode;
+  gboolean show_all_workspaces;
+  
   GtkOrientation orientation;
   int workspace_size;
   guint screen_connections[N_SCREEN_CONNECTIONS];
@@ -127,6 +131,8 @@ wnck_pager_init (WnckPager *pager)
   pager->priv = g_new0 (WnckPagerPrivate, 1);
 
   pager->priv->n_rows = 1;
+  pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
+  pager->priv->show_all_workspaces = TRUE;
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
 }
@@ -221,6 +227,7 @@ wnck_pager_size_request  (GtkWidget      *widget,
   int other_dimension_size;
   int u_width, u_height;
   int size;
+  int n_rows;
   
   pager = WNCK_PAGER (widget);
   
@@ -233,27 +240,85 @@ wnck_pager_size_request  (GtkWidget      *widget,
   
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {
-      size = pager->priv->workspace_size;
-      if (u_width != -1)
-	size = (u_width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
-      
       screen_aspect = (double) gdk_screen_height () / (double) gdk_screen_width ();
+
+      /* TODO: Handle WNCK_PAGER_DISPLAY_NAME for this case */
+
+      if (pager->priv->show_all_workspaces)
+	{
+	  size = pager->priv->workspace_size;
+	  if (u_width != -1)
+	    size = (u_width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
+ 
+	  n_rows = pager->priv->n_rows;
+	}
+      else
+	{
+	  size = pager->priv->workspace_size;
+	  if (u_width != -1)
+	    size = u_width;
+
+	  n_rows = 1;
+	  spaces_per_row = 1;
+	}
+      
       other_dimension_size = screen_aspect * size;
       
-      requisition->width = size * pager->priv->n_rows + (pager->priv->n_rows - 1);
+      requisition->width = size * n_rows + (n_rows - 1);
       requisition->height = other_dimension_size * spaces_per_row  + (spaces_per_row - 1);
     }
   else
     {
-      size = pager->priv->workspace_size;
-      if (u_height != -1)
-	size = (u_height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
-      
       screen_aspect = (double) gdk_screen_width () / (double) gdk_screen_height ();
-      other_dimension_size = screen_aspect * size;
+      
+      if (pager->priv->show_all_workspaces)
+	{
+	  size = pager->priv->workspace_size;
+	  if (u_height != -1)
+	    size = (u_height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
+ 
+	  n_rows = pager->priv->n_rows;
+	}
+      else
+	{
+	  size = pager->priv->workspace_size;
+	  if (u_height != -1)
+	    size = u_height;
 
+	  n_rows = 1;
+	  spaces_per_row = 1;
+	}
+
+      if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
+	{
+	  other_dimension_size = screen_aspect * size;
+	}
+      else
+	{
+	  int n_spaces, i, w;
+	  PangoLayout *layout;
+
+	  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+	  layout = gtk_widget_create_pango_layout  (widget, NULL);
+	  
+	  other_dimension_size = 1;
+	  
+	  for (i = 0; i < n_spaces; i++)
+	    {
+	      pango_layout_set_text (layout,
+				     wnck_workspace_get_name (wnck_workspace_get (i)),
+				     -1);
+	      pango_layout_get_pixel_size (layout, &w, NULL);
+	      other_dimension_size = MAX (other_dimension_size, w);
+	    }
+	  
+	  g_object_unref (layout);
+	  
+	  other_dimension_size += 2;
+	}
+      
       requisition->width = other_dimension_size * spaces_per_row + (spaces_per_row - 1);
-      requisition->height = size * pager->priv->n_rows + (pager->priv->n_rows - 1);
+      requisition->height = size * n_rows + (n_rows - 1);
     }
 }
 
@@ -279,6 +344,28 @@ get_workspace_rect (WnckPager    *pager,
   int col, row;
   
   widget = GTK_WIDGET (pager);
+
+  if (!pager->priv->show_all_workspaces)
+    {
+      WnckWorkspace *active_space;
+  
+      active_space = wnck_screen_get_active_workspace (pager->priv->screen);
+
+      rect->x = 0;
+      rect->y = 0;
+      if (active_space && space == wnck_workspace_get_number (active_space))
+	{
+	  rect->width = widget->allocation.width;
+	  rect->height = widget->allocation.height;
+	}
+      else
+	{
+	  rect->width = 0;
+	  rect->height = 0;
+	}
+
+      return;
+    }
   
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
@@ -499,6 +586,85 @@ workspace_at_point (WnckPager *pager,
   return -1;
 }
 
+
+static void
+wnck_pager_draw_workspace (WnckPager    *pager,
+			   int           workspace,
+			   GdkRectangle *rect)
+{
+  GList *windows;
+  GList *tmp;
+  gboolean is_current;
+  WnckWorkspace *active_space;
+  
+  active_space = wnck_screen_get_active_workspace (pager->priv->screen);
+
+  is_current = active_space &&
+    workspace == wnck_workspace_get_number (active_space);
+
+  if (is_current)
+    gdk_draw_rectangle (GTK_WIDGET (pager)->window,                            
+			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
+			TRUE,
+			rect->x, rect->y, rect->width, rect->height);
+  else
+    gdk_draw_rectangle (GTK_WIDGET (pager)->window,
+			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_NORMAL],
+			TRUE,
+			rect->x, rect->y, rect->width, rect->height);
+
+
+  if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
+    {
+      windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
+							    wnck_workspace_get (workspace));
+      
+      tmp = windows;
+      while (tmp != NULL)
+	{
+	  WnckWindow *win = tmp->data;
+	  GdkRectangle winrect;
+	  
+	  if (pager->priv->dragging &&
+	      win == pager->priv->drag_window)
+	    {
+	      tmp = tmp->next;
+	      continue;
+	    }
+	  
+	  get_window_rect (win, rect, &winrect);
+	  
+	  draw_window (GTK_WIDGET (pager)->window,
+		       GTK_WIDGET (pager),
+		       win,
+		       &winrect);
+	  
+	  tmp = tmp->next;
+	}
+      
+      g_list_free (windows);
+    }
+  else
+    {
+      PangoLayout *layout;
+      int w, h;
+      layout = gtk_widget_create_pango_layout  (GTK_WIDGET (pager),
+						wnck_workspace_get_name (wnck_workspace_get (workspace)));
+      
+      pango_layout_get_pixel_size (layout, &w, &h);
+      
+      gdk_draw_layout  (GTK_WIDGET (pager)->window,
+			is_current ?
+			GTK_WIDGET (pager)->style->fg_gc[GTK_STATE_SELECTED] :
+			GTK_WIDGET (pager)->style->fg_gc[GTK_STATE_NORMAL],
+			rect->x + (rect->width - w) / 2,
+			rect->y + (rect->height - h) / 2,
+			layout);
+
+      g_object_unref (layout);
+    }
+}
+
 static gboolean
 wnck_pager_expose_event  (GtkWidget      *widget,
                           GdkEventExpose *event)
@@ -517,55 +683,15 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   while (i < n_spaces)
     {
       GdkRectangle rect;
-      GList *windows;
-      GList *tmp;
-      gboolean is_current;
-      
-      get_workspace_rect (pager, i, &rect);
-      
-      is_current = active_space &&
-        i == wnck_workspace_get_number (active_space);
 
-      if (is_current)
-        gdk_draw_rectangle (widget->window,                            
-                            widget->style->dark_gc[GTK_STATE_SELECTED],
-                            TRUE,
-                            rect.x, rect.y, rect.width, rect.height);
-      else
-	gdk_draw_rectangle (widget->window,
-                            widget->style->dark_gc[GTK_STATE_NORMAL],
-			    TRUE,
-			    rect.x, rect.y, rect.width, rect.height);
-
-      
-      windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
-                                                            wnck_workspace_get (i));
-      
-      tmp = windows;
-      while (tmp != NULL)
-        {
-          WnckWindow *win = tmp->data;
-          GdkRectangle winrect;
-
-          if (pager->priv->dragging &&
-              win == pager->priv->drag_window)
-            {
-              tmp = tmp->next;
-              continue;
-            }
-          
-          get_window_rect (win, &rect, &winrect);
-
-          draw_window (widget->window,
-                       widget,
-                       win,
-                       &winrect);
-          
-          tmp = tmp->next;
-        }
-
-      g_list_free (windows);
-
+      if (pager->priv->show_all_workspaces ||
+	  (active_space && i == wnck_workspace_get_number (active_space)))
+	{
+	  get_workspace_rect (pager, i, &rect);
+	  
+	  wnck_pager_draw_workspace (pager, i, &rect);
+	}
+ 
       ++i;
     }
 
@@ -820,6 +946,35 @@ wnck_pager_set_n_rows (WnckPager *pager,
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 
+void
+wnck_pager_set_display_mode (WnckPager            *pager,
+			     WnckPagerDisplayMode  mode)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  if (pager->priv->display_mode == mode)
+    return;
+
+  pager->priv->display_mode = mode;
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+void
+wnck_pager_set_show_all (WnckPager *pager,
+			 gboolean   show_all_workspaces)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  show_all_workspaces = (show_all_workspaces != 0);
+
+  if (pager->priv->show_all_workspaces == show_all_workspaces)
+    return;
+
+  pager->priv->show_all_workspaces = show_all_workspaces;
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+
 static void
 active_window_changed_callback    (WnckScreen      *screen,
                                    gpointer         data)
@@ -1072,3 +1227,4 @@ wnck_pager_clear_drag (WnckPager *pager)
   pager->priv->drag_window_x = -1;
   pager->priv->drag_window_y = -1;
 }
+

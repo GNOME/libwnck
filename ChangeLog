@@ -1,5 +1,11 @@
 2002-01-12  Alexander Larsson  <alla@lysator.liu.se>
 
+	* libwnck/pager.[ch]:
+	Add support for displaying workspace names and
+	showing only the current workspace.
+
+2002-01-12  Alexander Larsson  <alla@lysator.liu.se>
+
 	* libwnck/tasklist.c:
 	Use wnck_application_get_name/mini_icon for grouped tasks.
 
