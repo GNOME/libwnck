@@ -3,19 +3,19 @@
 # Evgeni Boevski <linkej@yahoo.com>, 2002;
 # Yanko Kaneti <yaneti@declera.com>, 2002;
 # Vladimir Petkov <vpetkov@i-space.org>, small updates and fixes 2004.
-# 
-# 
+#  
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.6\n"
+"Project-Id-Version: libwnck 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-09-28 16:25+0100\n"
-"PO-Revision-Date: 2004-07-04 17:06+0300\n"
+"POT-Creation-Date: 2004-12-14 10:39+0200\n"
+"PO-Revision-Date: 2004-12-14 10:37+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
@@ -23,16 +23,16 @@ msgstr "неозаглавена програма"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "Превключвател на работни места"
+msgstr "Превключвател между работни плотове"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Инструмент за превключване между работни място"
+msgstr "Инструмент за превключване между работни плотове"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Натиснете тук за превключване към работно място %s"
+msgstr "Натиснете тук за превключване към работен плот %s"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -60,20 +60,20 @@ msgstr "_Свиване"
 
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
-msgstr "Само на това _работно място"
+msgstr "Само на този _работен плот"
 
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
-msgstr "Поставяне на _всички работни места"
+msgstr "Поставяне на _всички работни плотове"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Работно място %d"
+msgstr "Работен плот %d"
 
 #: libwnck/window-action-menu.c:384
 msgid "Workspace 1_0"
-msgstr "Работно място 1_0"
+msgstr "Работен плот 1_0"
 
 #: libwnck/window-action-menu.c:386
 #, c-format
@@ -94,7 +94,7 @@ msgstr "_Затваряне"
 
 #: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
-msgstr "Преместване в Друго _Работно Място"
+msgstr "Преместване на друг _работен плот"
 
 #: libwnck/window-action-menu.c:540
 #, c-format
@@ -107,7 +107,7 @@ msgstr "неозаглавен прозорец"
 
 #: libwnck/tasklist.c:518
 msgid "Window List"
-msgstr "Списък с Прозорците"
+msgstr "Списък с прозорците"
 
 #: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
