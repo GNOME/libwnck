@@ -2,22 +2,18 @@
 # Copyright (C) 2002 The Free Software Foundation
 # This file is distributed under the same license as the libwnck package.
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
-# Tõivo Leedjärv <leedjarv@interest.ee>, 2002.
+# Tõivo Leedjärv <toivo@linux.ee>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-01-28 21:17-0500\n"
-"PO-Revision-Date: 2002-03-02 16:42+0200\n"
-"Last-Translator: Tõivo Leedjärv <leedjarv@interest.ee>\n"
+"POT-Creation-Date: 2002-03-17 19:24+0200\n"
+"PO-Revision-Date: 2002-03-17 16:42+0200\n"
+"Last-Translator: Tõivo Leedjärv <toivo@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: libwnck/application.c:25
-msgid "untitled application"
-msgstr "pealkirjata rakendus"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -37,11 +33,11 @@ msgstr "Ma_ksimeeri"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr "Aken t_äissuuruses"
+msgstr "K_eri lahti"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "Aken _ribaks"
+msgstr "_Keri kokku"
 
 #: libwnck/window-action-menu.c:297
 msgid "Close"
@@ -55,11 +51,13 @@ msgstr "_Liiguta"
 msgid "_Resize"
 msgstr "Muuda _suurust"
 
-#: libwnck/window.c:29
-msgid "untitled window"
-msgstr "pealkirjata aken"
-
 #: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
 msgstr "Töötsoon %d"
+
+#~ msgid "untitled application"
+#~ msgstr "pealkirjata rakendus"
+
+#~ msgid "untitled window"
+#~ msgstr "pealkirjata aken"
