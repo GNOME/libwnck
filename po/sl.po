@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
+"POT-Creation-Date: 2003-01-19 12:18+0100\n"
 "PO-Revision-Date: 2002-02-26 00:23+0100\n"
 "Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
 "Language-Team: slovenian <sl@li.org>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: libwnck/application.c:25
 msgid "untitled application"
 msgstr "neimenovan program"
 
@@ -30,18 +30,15 @@ msgid "Click this to switch to workspace %s"
 msgstr "Kliknite sem za preklop na delovno površino %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
-msgid "Unmi_nimize"
+msgid "Un_minimize"
 msgstr "O_dkrči"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
-msgid "Mi_nimize"
+msgid "_Minimize"
 msgstr "_Skrči"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
-msgid "Unma_ximize"
+msgid "_Unmaximize"
 msgstr "Odr_azpni"
 
 #: libwnck/window-action-menu.c:213
@@ -65,8 +62,7 @@ msgid "Put on _All Workspaces"
 msgstr "Postavi na _vse delovne površine"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
-msgid "_Move"
+msgid "Mo_ve"
 msgstr "Pres_tavi"
 
 #: libwnck/window-action-menu.c:379
@@ -77,11 +73,11 @@ msgstr "Spremeni _velikost"
 msgid "_Close"
 msgstr "_Zapri"
 
-#: libwnck/window.c:31
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "neimenovano okno"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
 msgstr "Delovna površina %d"
