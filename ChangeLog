@@ -1,5 +1,11 @@
 2002-11-03  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/xutils.c (_wnck_set_desktop_layout): XChangeProperty
+	takes number of elements, not number of bytes. Doh. Will probably 
+	fix the window layout issue with metacity.
+
+2002-11-03  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/window.c (wnck_window_activate_transient): don't pass 
 	WnckWindow when expecting an X window
 
