@@ -1,3 +1,13 @@
+2001-11-30  Laszlo Peter  <laca@ireland.sun.com>
+
+	* libwnck/Makefile.am: fix the export-symbols-regex
+
+	* libwnck/application.c, libwnck/pager.c, libwnck/tasklist.c,
+	  libwnck/workspace.c: add a dummy entry to the enums so
+	  the signals array is not empty. (breaks the build with Forte C)
+
+	* libwnck/xutils.c: s/__FUNCTION__/G_GNUC_FUNCTION/
+
 2001-11-28  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/pager.c:

@@ -955,7 +955,7 @@ read_rgb_icon (Window         xwindow,
   
   if (sizeof (gulong) != 4)
     g_warning ("%s: Whoops, I think this function may be broken on 64-bit\n",
-               __FUNCTION__);
+               G_GNUC_FUNCTION);
   
   _wnck_error_trap_push ();
   type = None;

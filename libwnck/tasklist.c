@@ -42,6 +42,7 @@ struct _WnckTasklistPrivate
 
 enum
 {
+  dummy, /* remove this when you add more signals */
   LAST_SIGNAL
 };
 

@@ -48,6 +48,7 @@ struct _WnckPagerPrivate
 
 enum
 {
+  dummy, /* remove this when you add more signals */
   LAST_SIGNAL
 };
 
