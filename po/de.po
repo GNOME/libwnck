@@ -1,13 +1,13 @@
-# German translation for libwnck
-# Copyright (C) 2001, 2002 Free Software Foundation, Inc.
+# German libwnck translation.
+# Copyright (C) 2001-2003 Free Software Foundation, Inc.
 # Christian Meyer <chrisime@gnome.org>, 2001, 2002.
-# Christian Neumair <chris@gnome-de.org>, 2002.
+# Christian Neumair <chris@gnome-de.org>, 2002, 2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck HEAD\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2002-07-31 19:36+0100\n"
+"Project-Id-Version: libwnck 2.4.x\n"
+"POT-Creation-Date: 2003-06-07 15:44+0200\n"
+"PO-Revision-Date: 2003-06-07 15:44+0200\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr "namenlose Anwendung"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "Arbeitsflächen-Umschalter"
+msgstr "Arbeitsflächenumschalter"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
@@ -32,17 +32,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klicken Sie hier, um zur Arbeitsfläche %s zu wechseln"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "_Hervorholen"
+msgstr "_Wiederherstellen"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimieren"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Wiederherstellen"
 
@@ -67,7 +64,6 @@ msgid "Put on _All Workspaces"
 msgstr "Auf _alle Arbeitsflächen legen"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "_Verschieben"
 
@@ -87,9 +83,3 @@ msgstr "namenloses Fenster"
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeitsfläche %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "_Entrollen"
-
-#~ msgid "_Shade"
-#~ msgstr "_Aufrollen"
