@@ -1,3 +1,9 @@
+2003-10-22  Vincent Untz  <vincent@vuntz.net>
+
+	* libwnck/pager.c: (get_window_rect): clip the window rectangle so it
+	doesn't get out of the workspace rectangle.
+	Fix bug #104700.
+
 2003-10-21  Padraig O'Briain  <padraigobriain@sun.com>
 
 	* libwnck/window.c (force_update_now): Call emit_name_changed only

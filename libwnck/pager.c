@@ -562,6 +562,7 @@ get_window_rect (WnckWindow         *window,
   double width_ratio, height_ratio;
   int x, y, width, height;
   WnckWorkspace *workspace;
+  GdkRectangle unclipped_win_rect;
   
   workspace = wnck_window_get_workspace (window);
   if (workspace == NULL)
@@ -588,10 +589,12 @@ get_window_rect (WnckWindow         *window,
   if (height < 3)
     height = 3;
 
-  rect->x = x;
-  rect->y = y;
-  rect->width = width;
-  rect->height = height;
+  unclipped_win_rect.x = x;
+  unclipped_win_rect.y = y;
+  unclipped_win_rect.width = width;
+  unclipped_win_rect.height = height;
+
+  gdk_rectangle_intersect (workspace_rect, &unclipped_win_rect, rect);
 }
 
 static void
