@@ -67,7 +67,6 @@ struct _WnckTask
   GtkWidget *image;
   GtkWidget *label;
   
-  gboolean is_application; /* TRUE if this task is a grouped application */
   WnckApplication *application;
   WnckWindow *window;
 
@@ -75,8 +74,6 @@ struct _WnckTask
 
   GList *windows; /* List of the WnckTask for the window,
 		     if this is an application */
-  gboolean really_toggling; /* Set when tasklist really wants
-			       to change the togglebutton state */
   gulong state_changed_tag;
   gulong icon_changed_tag;
   gulong name_changed_tag;
@@ -86,6 +83,12 @@ struct _WnckTask
   GtkWidget *menu;
   /* ops menu */
   GtkWidget *action_menu;
+
+  guint is_application : 1;  /* TRUE if this task is a grouped application */
+  guint really_toggling : 1; /* Set when tasklist really wants
+                              * to change the togglebutton state
+                              */
+  guint was_active : 1;      /* used to fixup activation behavior */ 
 };
 
 struct _WnckTaskClass
@@ -1442,8 +1445,9 @@ wnck_tasklist_activate_task_window     (WnckTask *task)
     }
   else
     {
-      if (wnck_window_is_active (task->window))
+      if (task->was_active)
 	{
+	  task->was_active = FALSE;
 	  wnck_window_minimize (task->window);
 	  return;
 	}
@@ -1801,6 +1805,15 @@ wnck_task_button_press_event (GtkWidget	      *widget,
                             event->button == 3);
       return TRUE;
     }
+  else if (event->button == 1)
+    {
+      if (wnck_window_is_active (task->window))
+        task->was_active = TRUE;
+      else
+        task->was_active = FALSE;
+
+      return FALSE;
+    } 
   else if (event->button == 3)
     {
       if (task->action_menu)
@@ -1824,7 +1837,7 @@ wnck_task_button_press_event (GtkWidget	      *widget,
       
       return TRUE;
     }
-  
+
   return FALSE;
 }
 
