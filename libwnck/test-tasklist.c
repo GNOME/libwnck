@@ -19,7 +19,7 @@ main (int argc, char **argv)
   
   win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_stick (GTK_WINDOW (win));
-  wnck_gtk_window_set_dock_type (GTK_WINDOW (win));
+  /*   wnck_gtk_window_set_dock_type (GTK_WINDOW (win)); */
 
   gtk_window_set_title (GTK_WINDOW (win), "Task List");
 

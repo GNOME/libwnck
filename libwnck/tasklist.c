@@ -22,6 +22,7 @@
 #include <stdio.h>
 #include "tasklist.h"
 #include "window.h"
+#include "window-action-menu.h"
 #include "workspace.h"
 #include "application.h"
 #include "xutils.h"
@@ -81,7 +82,10 @@ struct _WnckTask
   gulong name_changed_tag;
   gulong app_name_changed_tag;
 
+  /* task menu */
   GtkWidget *menu;
+  /* ops menu */
+  GtkWidget *action_menu;
 };
 
 struct _WnckTaskClass
@@ -285,6 +289,12 @@ wnck_task_finalize (GObject *object)
     {
       gtk_widget_destroy (task->menu);
       task->menu = NULL;
+    }
+
+  if (task->action_menu)
+    {
+      gtk_widget_destroy (task->action_menu);
+      task->action_menu = NULL;
     }
 
   if (task->window)
@@ -629,7 +639,6 @@ wnck_task_get_highest_scored (GList     *ungrouped_apps,
 
   return g_list_remove (ungrouped_apps, best_task);
 }
-
 
 static void
 wnck_tasklist_size_allocate (GtkWidget      *widget,
@@ -1526,6 +1535,32 @@ wnck_task_button_press_event (GtkWidget	      *widget,
 					  "button_press_event");
 	}
     }
+
+  if (!task->is_application &&
+      event->button == 3)
+    {
+      if (task->action_menu)
+        gtk_widget_destroy (task->action_menu);
+
+      g_assert (task->action_menu == NULL);
+      
+      task->action_menu = wnck_create_window_action_menu (task->window);
+
+      g_object_add_weak_pointer (G_OBJECT (task->action_menu),
+                                 (void**) &task->action_menu);
+      
+      gtk_widget_show (task->action_menu);
+      gtk_menu_popup (GTK_MENU (task->action_menu),
+                      NULL, NULL,
+                      wnck_task_position_menu, task->button,
+                      event->button,
+                      gtk_get_current_event_time ());
+
+      /* FIXME we should really arrange to destroy the menu on popdown */
+      
+      return TRUE;
+    }
+  
   return FALSE;
 }
 

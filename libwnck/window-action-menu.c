@@ -294,7 +294,7 @@ wnck_create_window_action_menu (WnckWindow *window)
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->close_item);
 
-  set_item_text (amd->close_item, _("Close"));
+  set_item_text (amd->close_item, _("_Close"));
   
   amd->minimize_item = make_menu_item (amd, MINIMIZE);
   

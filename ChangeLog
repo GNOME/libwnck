@@ -1,3 +1,14 @@
+2002-04-10  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/window-action-menu.c (wnck_create_window_action_menu):
+	put mnemonic on "close" item
+
+	* libwnck/test-tasklist.c (main): don't set dock type, made it
+	kind of unusable
+
+	* libwnck/tasklist.c (wnck_task_button_press_event): pop up the
+	right-click window action menu
+
 2002-03-27  jacob berkman  <jacob@ximian.com>
 
 	* libwnck/Makefile.am (libwnck_1_la_LDFLAGS): don't pass the lib's
