@@ -1,3 +1,8 @@
+2002-01-30  Ole Laursen  <olau@hardworking.dk>
+
+	* configure.in: Added "da" again since something apparently went
+	wrong last time.
+
 2002-01-25  Roy-Magne Mo <rmo@sunnmore.net>
 	* configure.in: Added "nn" to ALL_LINGUAS.
 
