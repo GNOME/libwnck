@@ -1,3 +1,9 @@
+2003-02-05  Havoc Pennington  <hp@pobox.com>
+
+	* NEWS: update
+
+	* configure.in: 2.2.1
+
 2003-01-26  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/tasklist.c: (wnck_tasklist_check_end_sequence):

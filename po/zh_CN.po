@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-20 20:11+0100\n"
+"POT-Creation-Date: 2003-02-05 23:57-0500\n"
 "PO-Revision-Date: 2003-01-22 22:53+0800\n"
 "Last-Translator: Wang Jian <lark@linux.net.cn>\n"
 "Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
@@ -83,4 +83,3 @@ msgstr "未命名窗口"
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
-

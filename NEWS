@@ -1,3 +1,10 @@
+2.2.1
+===
+
+- Add support for StartupWMClass field in .desktop files, to 
+  allow us to do startup notification for legacy apps.
+- lots of new translations
+
 2.2.0
 ===
 

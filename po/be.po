@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-20 22:11-0500\n"
+"POT-Creation-Date: 2003-02-05 23:57-0500\n"
 "PO-Revision-Date: 2002-11-05 01:50GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"

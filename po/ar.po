@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-20 22:11-0500\n"
+"POT-Creation-Date: 2003-02-05 23:57-0500\n"
 "PO-Revision-Date: 2002-06-07 18:38-0300\n"
 "Last-Translator: Isam Bayazidi <bayazidi@arabeyes.org>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
