@@ -1788,7 +1788,8 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
    * the tasklist itself possibly changed monitor.
    */
   monitor_changed = FALSE;
-  if (wnck_window_get_state (window) & WNCK_WINDOW_STATE_SKIP_TASKLIST &&
+  if (tasklist->priv->monitor_num != -1 &&
+      (wnck_window_get_state (window) & WNCK_WINDOW_STATE_SKIP_TASKLIST) &&
       GTK_WIDGET (tasklist)->window != NULL)
     {
       /* Do the extra check only if there is a suspect of a monitor change (= this window is off monitor) */
