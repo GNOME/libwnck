@@ -2440,3 +2440,51 @@ _wnck_desktop_layout_manager_process_event (XEvent *xev)
 
   return FALSE;
 }
+
+/* stock icon code Copyright (C) 2002 Jorn Baayen <jorn@nl.linux.org> */
+typedef struct
+{
+  char *stock_id;
+  const guint8 *icon_data;
+} StockIcon;
+
+void
+_wnck_stock_icons_init (void)
+{
+  GtkIconFactory *factory;
+  int i;
+  static gboolean done = FALSE;
+
+  if (done)
+    return;
+
+  done = TRUE;
+
+  StockIcon items[] =
+  {
+    { WNCK_STOCK_DELETE,   stock_delete_data   },
+    { WNCK_STOCK_MINIMIZE, stock_minimize_data },
+    { WNCK_STOCK_MAXIMIZE, stock_maximize_data }
+  };
+
+  factory = gtk_icon_factory_new ();
+  gtk_icon_factory_add_default (factory);
+
+  for (i = 0; i < (gint) G_N_ELEMENTS (items); i++)
+    {
+      GtkIconSet *icon_set;
+      GdkPixbuf *pixbuf;
+
+      pixbuf = gdk_pixbuf_new_from_inline (-1, items[i].icon_data,
+					   FALSE,
+					   NULL);
+
+      icon_set = gtk_icon_set_new_from_pixbuf (pixbuf);
+      gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
+      gtk_icon_set_unref (icon_set);
+		
+      g_object_unref (G_OBJECT (pixbuf));
+    }
+
+  g_object_unref (G_OBJECT (factory));
+}

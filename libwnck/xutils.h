@@ -30,6 +30,10 @@
 
 G_BEGIN_DECLS
 
+#define WNCK_STOCK_DELETE "wnck-stock-delete"
+#define WNCK_STOCK_MAXIMIZE "wnck-stock-maximize"
+#define WNCK_STOCK_MINIMIZE "wnck-stock-minimize"
+
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
 gboolean _wnck_get_cardinal      (Window  xwindow,
@@ -181,6 +185,8 @@ int      _wnck_try_desktop_layout_manager           (Screen *xscreen,
 void     _wnck_release_desktop_layout_manager       (Screen *xscreen,
                                                      int     current_token);
 gboolean _wnck_desktop_layout_manager_process_event (XEvent *xev);
+
+void _wnck_stock_icons_init (void);
 
 G_END_DECLS
 

@@ -95,8 +95,11 @@ regenerate-built-sources:
 	&& echo "#include <libwnck/libwnck.h>" > wnck-marshal.c \
         && @GLIB_GENMARSHAL@ --prefix=_wnck_marshal wnck-marshal.list --body >> wnck-marshal.c
 
-IMAGES=default_icon.png
-VARIABLES=default_icon_data $(srcdir)/default_icon.png
+IMAGES=default_icon.png stock_delete.png stock_maximize.png stock_minimize.png
+VARIABLES=default_icon_data $(srcdir)/default_icon.png 		\
+	stock_delete_data $(srcdir)/stock_delete.png 		\
+	stock_maximize_data $(srcdir)/stock_maximize.png 	\
+	stock_minimize_data $(srcdir)/stock_minimize.png
 
 noinst_DATA = inlinepixbufs.h
 CLEANFILES += $(noinst_DATA)

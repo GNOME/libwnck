@@ -1,3 +1,12 @@
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/window-action-menu.c (wnck_create_window_action_menu):
+	use stock icons, and reorder menu to match metacity
+	
+	* libwnck/xutils.c (_wnck_stock_icons_init): new function
+
+	* libwnck/Makefile.am: add stock icons
+
 2002-09-26  Anders Carlsson  <andersca@gnu.org>
 
 	* configure.in (GETTEXT_PACKAGE): Remove cs until the .po file

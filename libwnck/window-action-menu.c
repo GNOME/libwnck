@@ -141,6 +141,34 @@ set_item_text (GtkWidget  *mi,
   gtk_label_set_use_underline (GTK_LABEL (GTK_BIN (mi)->child), TRUE);
 }
 
+static void
+set_item_stock (GtkWidget  *mi,
+                const char *stock_id)
+{
+  GtkWidget *image;
+  
+  image = gtk_image_menu_item_get_image (GTK_IMAGE_MENU_ITEM (mi));
+
+  if (stock_id == NULL)
+    {
+      if (image != NULL)
+        gtk_widget_destroy (image);
+      return;
+    }
+
+  if (image == NULL)
+    {
+      image = gtk_image_new_from_stock (stock_id, GTK_ICON_SIZE_MENU);
+      gtk_widget_show (image);
+      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (mi), image);
+    }
+  else
+    {
+      gtk_image_set_from_stock (GTK_IMAGE (image), stock_id,
+                                GTK_ICON_SIZE_MENU);
+    }
+}
+
 static gboolean
 update_menu_state (ActionMenuData *amd)
 {
@@ -153,12 +181,14 @@ update_menu_state (ActionMenuData *amd)
   if (wnck_window_is_minimized (amd->window))
     {
       set_item_text (amd->minimize_item, _("Un_minimize"));
+      set_item_stock (amd->minimize_item, NULL);
       gtk_widget_set_sensitive (amd->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMINIMIZE) != 0);
     }
   else
     {
       set_item_text (amd->minimize_item, _("_Minimize"));
+      set_item_stock (amd->minimize_item, WNCK_STOCK_MINIMIZE);
       gtk_widget_set_sensitive (amd->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_MINIMIZE) != 0);
     }
@@ -166,12 +196,14 @@ update_menu_state (ActionMenuData *amd)
   if (wnck_window_is_maximized (amd->window))
     {
       set_item_text (amd->maximize_item, _("_Unmaximize"));
+      set_item_stock (amd->maximize_item, NULL);
       gtk_widget_set_sensitive (amd->maximize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMAXIMIZE) != 0);
     }
   else
     {
       set_item_text (amd->maximize_item, _("Ma_ximize"));
+      set_item_stock (amd->maximize_item, WNCK_STOCK_MAXIMIZE);
       gtk_widget_set_sensitive (amd->maximize_item,
                                 (actions & WNCK_WINDOW_ACTION_MAXIMIZE) != 0);
     }
@@ -179,12 +211,14 @@ update_menu_state (ActionMenuData *amd)
   if (wnck_window_is_shaded (amd->window))
     {
       set_item_text (amd->shade_item, _("_Unroll"));
+      set_item_stock (amd->shade_item, NULL);
       gtk_widget_set_sensitive (amd->shade_item,
                                 (actions & WNCK_WINDOW_ACTION_UNSHADE) != 0);
     }
   else
     {
       set_item_text (amd->shade_item, _("Roll _Up"));
+      set_item_stock (amd->shade_item, NULL);
       gtk_widget_set_sensitive (amd->shade_item,
                                 (actions & WNCK_WINDOW_ACTION_SHADE) != 0);
     }
@@ -242,8 +276,8 @@ make_menu_item (ActionMenuData *amd,
 {
   GtkWidget *mi;
   
-  mi = gtk_menu_item_new_with_label ("");
-
+  mi = gtk_image_menu_item_new_with_label ("");
+  
   set_data (G_OBJECT (mi), amd);
   
   g_signal_connect (G_OBJECT (mi), "activate",
@@ -277,7 +311,10 @@ wnck_create_window_action_menu (WnckWindow *window)
 {
   GtkWidget *menu;
   ActionMenuData *amd;
-
+  GtkWidget *separator;
+  
+  _wnck_stock_icons_init ();
+  
   amd = g_new0 (ActionMenuData, 1);
   amd->window = window;
   
@@ -289,13 +326,6 @@ wnck_create_window_action_menu (WnckWindow *window)
 
   g_object_weak_ref (G_OBJECT (window), window_weak_notify, menu);
   g_object_weak_ref (G_OBJECT (menu), object_weak_notify, window);
-  
-  amd->close_item = make_menu_item (amd, CLOSE);
-  
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->close_item);
-
-  set_item_text (amd->close_item, _("_Close"));
   
   amd->minimize_item = make_menu_item (amd, MINIMIZE);
   
@@ -317,12 +347,27 @@ wnck_create_window_action_menu (WnckWindow *window)
                          amd->move_item);  
 
   set_item_text (amd->move_item, _("Mo_ve"));
+  set_item_stock (amd->move_item, NULL);
   
   amd->resize_item = make_menu_item (amd, RESIZE);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->resize_item);
 
   set_item_text (amd->resize_item, _("_Resize"));
+  set_item_stock (amd->move_item, NULL);
+  
+  amd->close_item = make_menu_item (amd, CLOSE);
+
+  separator = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         separator);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->close_item);
+
+  set_item_text (amd->close_item, _("_Close"));
+  set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
   
   g_signal_connect_object (G_OBJECT (amd->window), 
                            "state_changed",
