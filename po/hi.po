@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
-"PO-Revision-Date: 2002-09-04 16:30+0530\n"
+"POT-Creation-Date: 2003-01-10 04:01+0100\n"
+"PO-Revision-Date: 2003-01-10 16:30+0530\n"
 "Last-Translator: G Karunakar <karunakar@freedomink.org>\n"
 "Language-Team: Hindi <indlinux-hindi-gnome@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -33,47 +33,47 @@ msgstr "कार्यक्षेत्र %s में बदलने के
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "छोटे से बडा करें"
+msgstr "छोटे से बडा करें (_m)"
 
 #: libwnck/window-action-menu.c:198
 msgid "_Minimize"
-msgstr "छोटा करें"
+msgstr "छोटा करें (_M)"
 
 #: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
-msgstr "बडे से छोटा करें"
+msgstr "बडे से छोटा करें (_U)"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "बडा करें"
+msgstr "बडा करें (_x)"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "उलट घुमाएं (_U)"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "उपर घुमाएं (_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "केवल यही कार्यक्षेत्र (_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "सभी कार्यक्षेत्रों मे रखें (_A)"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
-msgstr "चलाएं"
+msgstr "चलाएं (_v)"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "आकार बदलें"
+msgstr "आकार बदलें (_R)"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
-msgstr "बंद करें"
+msgstr "बंद करें (_C)"
 
 #: libwnck/window.c:29
 msgid "untitled window"
@@ -85,7 +85,7 @@ msgid "Workspace %d"
 msgstr "कार्यक्षेत्र %d"
 
 #~ msgid "U_nshade"
-#~ msgstr "छाया हटाएं"
+#~ msgstr "छाया हटाएं (_n)"
 
 #~ msgid "_Shade"
-#~ msgstr "छाया"
+#~ msgstr "छाया (_S)"
