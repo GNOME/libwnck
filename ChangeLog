@@ -1,3 +1,12 @@
+2005-01-28  Elijah Newren  <newren@gmail.com>
+
+	Correct misleading and inaccurate wording.  Fixes #165379.
+
+	* libwnck/window-action-menu.c: (update_menu_state): change "Put
+	on All Workspaces" to "Always on Current Workspace".  (also make
+	the hotkey change for "Only on This Workspace" be O in order to
+	match Metacity change--see bug 165380)
+
 2005-01-27  Vincent Noel  <vnoel@cox.net>
 
 	* libwnck/selector.c: (wnck_selector_dimm_icon),

@@ -251,14 +251,14 @@ update_menu_state (ActionMenuData *amd)
 
   if (wnck_window_is_pinned (amd->window))
     {
-      set_item_text (amd->pin_item, _("Only on _This Workspace"));
+      set_item_text (amd->pin_item, _("_Only on This Workspace"));
       set_item_stock (amd->pin_item, NULL);
       gtk_widget_set_sensitive (amd->pin_item,
                                 (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
     }
   else
     {
-      set_item_text (amd->pin_item, _("Put on _All Workspaces"));
+      set_item_text (amd->pin_item, _("_Always on Current Workspace"));
       set_item_stock (amd->pin_item, NULL);
       gtk_widget_set_sensitive (amd->pin_item,
                                 (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
