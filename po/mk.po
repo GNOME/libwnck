@@ -11,69 +11,68 @@ msgstr ""
 "Last-Translator: Angov Arangel <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <main-gnomk@sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-5\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "°ЯЫШЪРжШшР СХЧ ЭРбЫЮТ"
+msgstr "РђРїР»РёРєР°С†РёСР° Р±РµР· РЅР°СЃР»РѕРІ"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "јХЭгТРз ЭР АРСЮвЭЮ јХбвЮ"
+msgstr "РњРµРЅСѓРІР°С‡ РЅР° Р Р°Р±РѕС‚РЅРѕ РњРµСЃС‚Рѕ"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "°ЫРвЪР ЧР ЬХЭгТРъХ ЭР аРСЮвЭЮ ЬХбвЮ"
+msgstr "РђР»Р°С‚РєР° Р·Р° РјРµРЅСѓРІР°СљРµ РЅР° СЂР°Р±РѕС‚РЅРѕ РјРµСЃС‚Рѕ"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "єЫШЪЭШ УЮ ЮТР ЧР ФР УЮ бЬХЭШи аРСЮвЭЮвЮ ЬХбвЮ %s"
+msgstr "РљР»РёРєРЅРё РіРѕ РѕРІР° Р·Р° РґР° РіРѕ СЃРјРµРЅРёС€ СЂР°Р±РѕС‚РЅРѕС‚Рѕ РјРµСЃС‚Рѕ %s"
 
 #: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
-msgstr "ІаРвШ_ЬШЭШЬШЧШаРЭЮ"
+msgstr "Р’СЂР°С‚Рё_РјРёРЅРёРјРёР·РёСЂР°РЅРѕ"
 
 #: libwnck/window-action-menu.c:161
 msgid "_Minimize"
-msgstr "_јШЭШЬШЧШаРш"
+msgstr "_РњРёРЅРёРјРёР·РёСЂР°С"
 
 #: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
-msgstr "_ІаРвШ јРЪбШЬШЧШаРЭЮ"
+msgstr "_Р’СЂР°С‚Рё РњР°РєСЃРёРјРёР·РёСЂР°РЅРѕ"
 
 #: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
-msgstr "јР_ЪбШЬШЧШаРш"
+msgstr "РњР°_РєСЃРёРјРёР·РёСЂР°С"
 
 #: libwnck/window-action-menu.c:181
 msgid "U_nshade"
-msgstr "І_аРвШ їЮФШУЭгТРъХ ШЫШ БЯгивРъХ"
+msgstr "Р’_СЂР°С‚Рё РџРѕРґРёРіРЅСѓРІР°СљРµ РёР»Рё РЎРїСѓС€С‚Р°СљРµ"
 
 #: libwnck/window-action-menu.c:187
 msgid "_Shade"
-msgstr "_їЮФШУЭгТРъХ Ш БЯгивРъХ"
+msgstr "_РџРѕРґРёРіРЅСѓРІР°СљРµ Рё РЎРїСѓС€С‚Р°СљРµ"
 
 #: libwnck/window-action-menu.c:298
 msgid "_Close"
-msgstr "_·РвТЮаШ"
+msgstr "_Р—Р°С‚РІРѕСЂРё"
 
 #: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
-msgstr "їЮ_ЬХбвШ"
+msgstr "РџРѕ_РјРµСЃС‚Рё"
 
 #: libwnck/window-action-menu.c:325
 msgid "_Resize"
-msgstr "_їаЮЬХЭШ іЮЫХЬШЭР"
+msgstr "_РџСЂРѕРјРµРЅРё Р“РѕР»РµРјРёРЅР°"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "ЯаЮЧЮаХж СХЧ ЭРбЫЮТ"
+msgstr "РїСЂРѕР·РѕСЂРµС† Р±РµР· РЅР°СЃР»РѕРІ"
 
 #: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
-msgstr "АРСЮвЭЮ јХбвЮ %d"
-
+msgstr "Р Р°Р±РѕС‚РЅРѕ РњРµСЃС‚Рѕ %d"

@@ -1,17 +1,17 @@
 # translation of tr.po to Turkish
 # Turkish translation of libwnck.
 # Copyright (C) 2002 Free Software Foundation, Inc.
-# Görkem Çetin <gorkem@gelecek.com.tr>, 2002.
+# GÃ¶rkem Ã‡etin <gorkem@gelecek.com.tr>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: tr\n"
 "POT-Creation-Date: 2002-11-03 14:09-0500\n"
 "PO-Revision-Date: 2002-07-28 20:08+0000\n"
-"Last-Translator: Görkem Çetin <gorkem@gelecek.com.tr>\n"
+"Last-Translator: GÃ¶rkem Ã‡etin <gorkem@gelecek.com.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-9\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0beta2\n"
 
@@ -22,7 +22,7 @@ msgstr "isimsiz pencere"
 #: libwnck/pager-accessible.c:317
 #, fuzzy
 msgid "Workspace Switcher"
-msgstr "%d. Çalýþma Alaný"
+msgstr "%d. Ã‡alÄ±ÅŸma AlanÄ±"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
@@ -35,19 +35,19 @@ msgstr ""
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
-msgstr "Küçü_ltmeyi geri al"
+msgstr "KÃ¼Ã§Ã¼_ltmeyi geri al"
 
 #: libwnck/window-action-menu.c:198
 msgid "_Minimize"
-msgstr "_Küçült"
+msgstr "_KÃ¼Ã§Ã¼lt"
 
 #: libwnck/window-action-menu.c:206
 msgid "_Unmaximize"
-msgstr "_Büyütmeyi geri al"
+msgstr "_BÃ¼yÃ¼tmeyi geri al"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
-msgstr "Bü_yüt"
+msgstr "BÃ¼_yÃ¼t"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
@@ -67,11 +67,11 @@ msgstr ""
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
-msgstr "_Taþý"
+msgstr "_TaÅŸÄ±"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "_Yeniden boyutlandýr"
+msgstr "_Yeniden boyutlandÄ±r"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
@@ -84,10 +84,10 @@ msgstr "isimsiz pencere"
 #: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
-msgstr "%d. Çalýþma Alaný"
+msgstr "%d. Ã‡alÄ±ÅŸma AlanÄ±"
 
 #~ msgid "U_nshade"
-#~ msgstr "T_oplamayý geri al"
+#~ msgstr "T_oplamayÄ± geri al"
 
 #~ msgid "_Shade"
 #~ msgstr "_Topla"
