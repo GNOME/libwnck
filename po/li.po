@@ -1,0 +1,84 @@
+# Limburgish translation of libwnck.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Mathieu van Woerkom <mathieu@brabants.org>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2003-06-05 04:50+0200\n"
+"PO-Revision-Date: 2003-06-05 13:25+0100\n"
+"Last-Translator: Mathieu van Woerkom <mathieu@brabants.org>\n"
+"Language-Team: Limburgish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:26
+msgid "untitled application"
+msgstr "naamloeze toepassing"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Wirkblaadwisselaar"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Hulpke veur tösje versjillige wirkblajer te wissele"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klik hie veur te wissele nao wirkblaad %s"
+
+#: libwnck/window-action-menu.c:191
+msgid "Unmi_nimize"
+msgstr "_Hersjtèlle"
+
+#: libwnck/window-action-menu.c:198
+msgid "Mi_nimize"
+msgstr "_Minimalisere"
+
+#: libwnck/window-action-menu.c:206
+msgid "Unma_ximize"
+msgstr "_Hersjtèlle"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "Ma_ximalisere"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "_Oetrolle"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "_Oprolle"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "Allein op dit _wirkblaad"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "Op _alle wirkblajer tuine"
+
+#: libwnck/window-action-menu.c:372
+msgid "_Move"
+msgstr "_Verplaatse"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "Aafmaetinge _verangere"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Sjloete"
+
+#: libwnck/window.c:31
+msgid "untitled window"
+msgstr "naamloes vinster"
+
+#: libwnck/workspace.c:230
+#, c-format
+msgid "Workspace %d"
+msgstr "Wirkblaad %d"
