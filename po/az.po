@@ -1,14 +1,14 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# libwnck faylının Azərbaycan dilinə tərcüməsi.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# Mətin Əmirov <metin@karegen.com>, 2003.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2003-03-08 15:57+0200\n"
+"POT-Creation-Date: 2003-07-10 05:08+0200\n"
+"PO-Revision-Date: 2003-07-10 20:43+0200\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
-"Language-Team: Azerbaijani Turkic <linuxaz@azerimail.net>\n"
+"Language-Team: Azerbaijani <gnome@azitt.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr "adsız proqram"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "İş Sahəsi Dəyişdirici"
+msgstr "İş Sahəsi Dəyişdiricisi"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
@@ -28,20 +28,17 @@ msgstr "İş sahələri arasında keçiş vasitəsi"
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "%s İş sahələrinə keçmək üçün klikləyin"
+msgstr "%s iş sahəsinə keçmək üçün tıqlayın"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "_Qaldır"
+msgstr "_Böyüt"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Kiçilt"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Balacalaşdır"
 
@@ -59,24 +56,23 @@ msgstr "_Üstə Bur"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr "Ancaq _Bu İş Sahəsinə"
+msgstr "Ancaq _bu iş sahəsində"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr "_Bütün İş Sahələrinə Qoy"
+msgstr "_Bütün iş sahələrinə qoy"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "Da_şı"
+msgstr "_Daşı"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "_Böyüklüyünü Dəyişdir"
+msgstr "_Ölçüləndir"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
-msgstr "_Qapat"
+msgstr "_Bağla"
 
 #: libwnck/window.c:31
 msgid "untitled window"
@@ -85,4 +81,5 @@ msgstr "adsız pəncərə"
 #: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
-msgstr "%d-ci iş sahəsi"
+msgstr "İş Sahəsi %d"
+
