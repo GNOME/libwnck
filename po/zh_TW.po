@@ -1,12 +1,12 @@
 # traditional Chinese translation of libwnck.
-# Copyright (C) 2001-2002 Free Software Foundation, Inc.
-# Abel Cheung <maddog@linux.org.hk>, 2001-2002.
+# Copyright (C) 2001-2003 Free Software Foundation, Inc.
+# Abel Cheung <maddog@linux.org.hk>, 2001-2003.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.13\n"
-"POT-Creation-Date: 2002-12-02 23:18-0500\n"
-"PO-Revision-Date: 2002-06-04 05:24+0800\n"
+"Project-Id-Version: libwnck 2.1.5\n"
+"POT-Creation-Date: 2003-01-05 04:17+0800\n"
+"PO-Revision-Date: 2003-01-05 04:19+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: traditional Chinese <zh-l10n@linux.org.tw>\n"
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "最大化(_X)"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "放下(_U)"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "捲起(_U)"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "只放在本工作區中(_T)"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "放在所有工作區中(_A)"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -68,7 +68,7 @@ msgstr "移動(_V)"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "重設大小(_R)"
+msgstr "調整尺寸(_R)"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
@@ -82,9 +82,3 @@ msgstr "無標題的視窗"
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "放下(_N)"
-
-#~ msgid "_Shade"
-#~ msgstr "捲起(_S)"
