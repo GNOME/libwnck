@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-06-07 09:38+0200\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-06-07 09:46--100\n"
 "Last-Translator: Samuel Jon Gunnarsson <sammi@techattack.nu>\n"
 "Language-Team: Icelandic <gnome@techattack.nu>\n"
@@ -79,8 +79,7 @@ msgstr "_Loka"
 msgid "untitled window"
 msgstr "ónefndur gluggi"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Vinnusvæði %d"
-

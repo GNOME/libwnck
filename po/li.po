@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-06-05 04:50+0200\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-06-05 13:25+0100\n"
 "Last-Translator: Mathieu van Woerkom <mathieu@brabants.org>\n"
 "Language-Team: Limburgish\n"
@@ -78,7 +78,7 @@ msgstr "_Sjloete"
 msgid "untitled window"
 msgstr "naamloes vinster"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Wirkblaad %d"

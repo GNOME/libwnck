@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.3.0\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-05-01 06:42+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
@@ -78,7 +78,7 @@ msgstr "關閉(_C)"
 msgid "untitled window"
 msgstr "無標題的視窗"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"

@@ -1,3 +1,7 @@
+2003-09-08  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: 2.4.0
+	
 2003-09-02  Gediminas Paulauskas  <menesis@delfi.lt>
 
 	* configure.in: Added lt to ALL_LINGUAS.

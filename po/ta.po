@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck Tamil 2.2.0\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-03-27 23:37+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -83,7 +83,7 @@ msgstr "_மூடு"
 msgid "untitled window"
 msgstr "பெயரற்ற சாளரம்"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "வேலையிடம் %d"

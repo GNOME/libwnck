@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2003-07-06 22:34-0300\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-07-06 22:31-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
 "Language-Team: GNOME-BR <gnome-br@listas.cipsga.org.br>\n"
@@ -78,7 +78,7 @@ msgstr "Fe_char"
 msgid "untitled window"
 msgstr "janela sem título"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de Trabalho %d"

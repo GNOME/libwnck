@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-02-23 16:40+0600\n"
 "Last-Translator: Jamil Ahmed <jamil@bengalinux.org>\n"
 "Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
@@ -80,7 +80,7 @@ msgstr "বন্ধ কর"
 msgid "untitled window"
 msgstr "নামবিহীন উইন্ডো"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "কর্মক্ষেত্র %d"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
+"POT-Creation-Date: 2003-09-08 15:13-0400\n"
 "PO-Revision-Date: 2003-02-20 21:30-0700\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@colorado.edu>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
@@ -83,7 +83,7 @@ msgstr "ปิด (_C)"
 msgid "untitled window"
 msgstr "หน้าต่างไม่มีชื่อ"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "พื้นที่ทำงาน %d"
