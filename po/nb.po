@@ -1,0 +1,112 @@
+# Norwegian translation of libwnck
+# Copyright (C) 2001-2003 Free Software Foundation, Inc.
+# Kjartan Maraas <kmaraas@gnome.org>, 2001-2003.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 2.5.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-08-17 12:07+0100\n"
+"PO-Revision-Date: 2004-01-13 00:35+0100\n"
+"Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
+"Language-Team: Norwegian <i18n-nb@lister.ping.uio.n>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+" <no@li.org>\n"
+
+#: libwnck/application.c:26
+msgid "untitled application"
+msgstr "applikasjon uten tittel"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Arbeidsområdebytter"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Verktøy for å bytte mellom arbeidsområder"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klikk her for å bytte til arbeidsområde %s"
+
+#: libwnck/window-action-menu.c:209
+msgid "Unmi_nimize"
+msgstr "Gje_nopprett"
+
+#: libwnck/window-action-menu.c:216
+msgid "Mi_nimize"
+msgstr "Mi_nimer"
+
+#: libwnck/window-action-menu.c:224
+msgid "Unma_ximize"
+msgstr "_Gjenopprett"
+
+#: libwnck/window-action-menu.c:231
+msgid "Ma_ximize"
+msgstr "Ma_ksimer"
+
+#: libwnck/window-action-menu.c:239
+msgid "_Unroll"
+msgstr "R_ull ned"
+
+#: libwnck/window-action-menu.c:246
+msgid "Roll _Up"
+msgstr "Rull _opp"
+
+#: libwnck/window-action-menu.c:254
+msgid "Only on _This Workspace"
+msgstr "Kun på _dette arbeidsområdet"
+
+#: libwnck/window-action-menu.c:261
+msgid "Put on _All Workspaces"
+msgstr "Plasser på _alle arbeidsområder"
+
+#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Arbeidsområde %d"
+
+#: libwnck/window-action-menu.c:384
+msgid "Workspace 1_0"
+msgstr "Arbeidsområde 1_0"
+
+#: libwnck/window-action-menu.c:386
+#, c-format
+msgid "Workspace %s%d"
+msgstr "Arbeidsområde %s%d"
+
+#: libwnck/window-action-menu.c:483
+msgid "_Move"
+msgstr "F_lytt"
+
+#: libwnck/window-action-menu.c:490
+msgid "_Resize"
+msgstr "End_re størrelse"
+
+#: libwnck/window-action-menu.c:503
+msgid "_Close"
+msgstr "_Lukk"
+
+#: libwnck/window-action-menu.c:516
+msgid "Move to Another _Workspace"
+msgstr "Flytt til et annet _arbeidsområde"
+
+#: libwnck/window-action-menu.c:540
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: libwnck/window.c:32
+msgid "untitled window"
+msgstr "vindu uten tittel"
+
+#: libwnck/tasklist.c:507
+msgid "Window List"
+msgstr "Vinduliste"
+
+#: libwnck/tasklist.c:508
+msgid "Tool to switch between visible windows"
+msgstr "Verktøy for å bytte mellom synlige vinduer"
