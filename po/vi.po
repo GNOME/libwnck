@@ -19,16 +19,16 @@ msgstr "ứng dụng không tên"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
-msgstr "Bộ chuyển Workspace"
+msgstr "Bộ chuyển Vùng làm việc"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr "Công cụ để chuyển giữa các workspace"
+msgstr "Công cụ để chuyển giữa các vùng làm việc"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Nhấn vào đây để chuyển qua workspace %s"
+msgstr "Nhấn vào đây để chuyển qua vùng làm việc %s"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -48,7 +48,7 @@ msgstr "_Phóng to"
 
 #: libwnck/window-action-menu.c:239
 msgid "_Unroll"
-msgstr "_Hoàn cuộn"
+msgstr "_Bỏ cuộn"
 
 #: libwnck/window-action-menu.c:246
 msgid "Roll _Up"
@@ -56,26 +56,25 @@ msgstr "Cuộn _lên"
 
 #: libwnck/window-action-menu.c:254
 msgid "Only on _This Workspace"
-msgstr "Chỉ trong Workspace _này"
+msgstr "Chỉ trong Vùng làm việc _này"
 
 #: libwnck/window-action-menu.c:261
 msgid "Put on _All Workspaces"
-msgstr "Đặt trên _mọi Workspace"
+msgstr "Đặt trên _mọi Vùng làm việc"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Workspace %d"
+msgstr "Vùng làm việc %d"
 
 #: libwnck/window-action-menu.c:384
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "Workspace %d"
+msgstr "Vùng làm việc 1_0"
 
 #: libwnck/window-action-menu.c:386
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Workspace %d"
+msgstr "Vùng làm việc %s%d"
 
 #: libwnck/window-action-menu.c:483
 msgid "_Move"
@@ -91,12 +90,12 @@ msgstr "Đón_g"
 
 #: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Chuyển sang vùng làm việc _khác"
 
 #: libwnck/window-action-menu.c:540
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -104,15 +103,14 @@ msgstr "cửa sổ không tên"
 
 #: libwnck/tasklist.c:518
 msgid "Window List"
-msgstr ""
+msgstr "Danh sách cửa sổ"
 
 #: libwnck/tasklist.c:519
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "Công cụ để chuyển giữa các workspace"
+msgstr "Công cụ để chuyển giữa các cửa sổ đang hiện"
 
-#~ msgid "U_nshade"
-#~ msgstr "_Bỏ bóng"
+msgid "U_nshade"
+msgstr "_Bỏ bóng"
 
-#~ msgid "_Shade"
-#~ msgstr "Bó_ng"
+msgid "_Shade"
+msgstr "Bó_ng"
