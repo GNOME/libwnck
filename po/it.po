@@ -1,13 +1,14 @@
-# libwnck's Italian translation.
+# libwnck Italian translation.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
-# 
+# Lapo Calamandrei <lapo.calamandrei@virgilio.it>, 2003.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.15\n"
 "POT-Creation-Date: 2003-01-20 22:11-0500\n"
-"PO-Revision-Date: 2002-08-08 21:32+0100\n"
-"Last-Translator: Pier Luigi Fiorini <plfiorini@supereva.it>\n"
+"PO-Revision-Date: 2003-01-21 21:32+0100\n"
+"Last-Translator: Lapo Calamandrei <lapo.calamandrei@virgilio.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -48,27 +49,27 @@ msgstr "Ma_ssimizza"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "Sr_otola"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Arr_otola"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Solo su _quest'area di lavoro"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Su _tutte le aree di lavoro"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
-msgstr "S_posta"
+msgstr "Muo_vi"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
-msgstr "R_idimensiona"
+msgstr "_Ridimensiona"
 
 #: libwnck/window-action-menu.c:392
 msgid "_Close"
@@ -82,9 +83,3 @@ msgstr "finestra senza titolo"
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "Sr_otola"
-
-#~ msgid "_Shade"
-#~ msgstr "_Arrotola"
