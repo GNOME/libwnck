@@ -5,7 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2004-02-24 16:28+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-03-12 19:32+0200\n"
 "PO-Revision-Date: 2002-12-09 07:22--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -31,17 +32,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Клацніть, щоб перемикнутися у робочу область %s"
 
 #: libwnck/window-action-menu.c:205
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "Де_мінімізувати"
 
 #: libwnck/window-action-menu.c:212
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Мінімізувати"
 
 #: libwnck/window-action-menu.c:220
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "Дема_ксимізувати"
 
@@ -71,17 +69,15 @@ msgid "Workspace %d"
 msgstr "Робоча область %d"
 
 #: libwnck/window-action-menu.c:368
-#, fuzzy
 msgid "Workspace 1_0"
-msgstr "Робоча область %d"
+msgstr "Робоча область 1_0"
 
 #: libwnck/window-action-menu.c:370
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Робоча область %d"
+msgstr "Робоча область %s%d"
 
 #: libwnck/window-action-menu.c:466
-#, fuzzy
 msgid "_Move"
 msgstr "Пере_нести"
 
@@ -95,12 +91,12 @@ msgstr "_Закрити"
 
 #: libwnck/window-action-menu.c:499
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Перенести у іншу робочу _область"
 
 #: libwnck/window-action-menu.c:517
 #, c-format
 msgid "%s"
-msgstr ""
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -108,9 +104,8 @@ msgstr "неназване вікно"
 
 #: libwnck/tasklist.c:461
 msgid "Window List"
-msgstr ""
+msgstr "Список вікон"
 
 #: libwnck/tasklist.c:462
-#, fuzzy
 msgid "Tool to switch between visible windows"
-msgstr "Засіб перемикання між робочими областями"
+msgstr "Засіб перемикання між видимими вікнами"
