@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2002-02-07 14:21+0800\n"
 "Last-Translator: Abel Cheung <maddog@linux.org.hk>\n"
 "Language-Team: Traditional Chinese <zh-l10n@linux.org.tw>\n"
@@ -42,7 +42,8 @@ msgid "_Shade"
 msgstr "捲起(_S)"
 
 #: libwnck/window-action-menu.c:297
-msgid "Close"
+#, fuzzy
+msgid "_Close"
 msgstr "關閉"
 
 #: libwnck/window-action-menu.c:318

@@ -1,3 +1,7 @@
+2002-04-29  Havoc Pennington  <hp@pobox.com>
+
+	* configure.in: 0.9
+
 2002-04-28  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/workspace.c (_wnck_workspace_update_name): add one 

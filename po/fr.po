@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.7\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2002-04-11 21:43+0200\n"
 "Last-Translator: Christophe Fergeau <teuf@users.sourceforge.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -42,7 +42,7 @@ msgstr "_Enrouler"
 
 #: libwnck/window-action-menu.c:297
 #, fuzzy
-msgid "Close"
+msgid "_Close"
 msgstr "_Fermer"
 
 #: libwnck/window-action-menu.c:318

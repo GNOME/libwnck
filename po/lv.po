@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2002-01-15 20:55+0200\n"
 "Last-Translator: Peteris Krisjanis <peteris.krisjanis@ttc.lv>\n"
 "Language-Team: Latvian <ll10nt@ttc.lv>\n"
@@ -44,7 +44,8 @@ msgid "_Shade"
 msgstr "Ēn_ot"
 
 #: libwnck/window-action-menu.c:297
-msgid "Close"
+#, fuzzy
+msgid "_Close"
 msgstr "Aizvērt"
 
 #: libwnck/window-action-menu.c:318

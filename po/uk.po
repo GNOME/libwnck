@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2002-04-11 09:30+0200\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -43,7 +43,7 @@ msgstr "З_горнути"
 
 #: libwnck/window-action-menu.c:297
 #, fuzzy
-msgid "Close"
+msgid "_Close"
 msgstr "_Закрити"
 
 #: libwnck/window-action-menu.c:318

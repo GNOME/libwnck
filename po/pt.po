@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2002-02-10 02:20+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <none@none.org>\n"
@@ -42,7 +42,8 @@ msgid "_Shade"
 msgstr "_Sombrear"
 
 #: libwnck/window-action-menu.c:297
-msgid "Close"
+#, fuzzy
+msgid "_Close"
 msgstr "Fechar"
 
 #: libwnck/window-action-menu.c:318
