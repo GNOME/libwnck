@@ -1130,6 +1130,18 @@ latin1_to_utf8 (const char *latin1)
 char*
 _wnck_get_res_class_utf8 (Window xwindow)
 {
+  char *res_class;
+
+  _wnck_get_wmclass (xwindow, &res_class, NULL);
+
+  return res_class;
+}
+
+void
+_wnck_get_wmclass (Window xwindow,
+                   char **res_class,
+                   char **res_name)
+{
   XClassHint ch;
   char *retval;
   
@@ -1144,19 +1156,28 @@ _wnck_get_res_class_utf8 (Window xwindow)
   _wnck_error_trap_pop ();
   
   retval = NULL;
+
+  if (res_class)
+    *res_class = NULL;
+
+  if (res_name)
+    *res_name = NULL;
   
   if (ch.res_name)
     {
+      if (res_name)
+        *res_name = latin1_to_utf8 (ch.res_name);
+      
       XFree (ch.res_name);
     }
 
   if (ch.res_class)
     {
-      retval = latin1_to_utf8 (ch.res_class);
+      if (res_class)
+        *res_class = latin1_to_utf8 (ch.res_class);
+      
       XFree (ch.res_class);
     }
-
-  return retval;
 }
 
 void

@@ -73,6 +73,9 @@ struct _WnckWindowPrivate
   int height;
 
   char *startup_id;
+
+  char *res_class;
+  char *res_name;
   
   /* true if transient_for points to root window,
    * not another app window
@@ -112,6 +115,7 @@ struct _WnckWindowPrivate
   guint need_update_wintype : 1;
   guint need_update_transient_for : 1;
   guint need_update_startup_id : 1;
+  guint need_update_wmclass : 1;
 };
 
 enum {
@@ -148,6 +152,7 @@ static void update_actions   (WnckWindow *window);
 static void update_wintype   (WnckWindow *window);
 static void update_transient_for (WnckWindow *window);
 static void update_startup_id (WnckWindow *window);
+static void update_wmclass    (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -285,6 +290,8 @@ wnck_window_finalize (GObject *object)
   g_free (window->priv->icon_name);
   g_free (window->priv->session_id);
   g_free (window->priv->startup_id);
+  g_free (window->priv->res_class);
+  g_free (window->priv->res_name);
   
   if (window->priv->app)
     g_object_unref (G_OBJECT (window->priv->app));
@@ -381,6 +388,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_wintype = TRUE;
   window->priv->need_update_transient_for = TRUE;
   window->priv->need_update_startup_id = TRUE;
+  window->priv->need_update_wmclass = TRUE;
   force_update_now (window);
 
   return window;
@@ -598,6 +606,22 @@ _wnck_window_get_startup_id (WnckWindow *window)
     }
 
   return window->priv->startup_id;
+}
+
+const char*
+_wnck_window_get_resource_class (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->res_class;
+}
+
+const char*
+_wnck_window_get_resource_name (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->res_name;
 }
 
 /**
@@ -1341,6 +1365,11 @@ _wnck_window_process_property_notify (WnckWindow *window,
       window->priv->need_update_startup_id = TRUE;
       queue_update (window);
     }
+  else if (xevent->xproperty.atom == XA_WM_CLASS)
+    {
+      window->priv->need_update_wmclass = TRUE;
+      queue_update (window);
+    }
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
@@ -1789,6 +1818,22 @@ update_startup_id (WnckWindow *window)
 }
 
 static void
+update_wmclass (WnckWindow *window)
+{
+  if (!window->priv->need_update_wmclass)
+    return;
+
+  window->priv->need_update_wmclass = FALSE;
+
+  g_free (window->priv->res_class);
+  g_free (window->priv->res_name);
+
+  _wnck_get_wmclass (window->priv->xwindow,
+                     &window->priv->res_class,
+                     &window->priv->res_name);
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -1836,6 +1881,7 @@ force_update_now (WnckWindow *window)
   old_actions = window->priv->actions;
 
   update_startup_id (window);    /* no side effects */
+  update_wmclass (window);
   update_transient_for (window); /* wintype needs this to be first */
   update_wintype (window);
   update_wm_state (window);

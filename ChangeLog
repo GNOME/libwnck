@@ -1,3 +1,12 @@
+2003-01-22  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/tasklist.c: time out startup sequences if we don't see
+	them end, and end them if a window is mapped with StartupWMClass.
+
+	* libwnck/window.c (_wnck_window_get_resource_class) 
+	(_wnck_window_get_resource_name): add internal API 
+	to get window classes
+
 2003-01-22  Marius Andreiana <marius galuna.ro>
 
 	* configure.in: added 'ro' to ALL_LINGUAS
