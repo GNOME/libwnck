@@ -1,13 +1,14 @@
 # libwnck Bahasa Melayu (ms)
 # Jika takut risiko, Jangan bicara tentang Perjuangan
-# Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>, 2001
+# Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>, 2001-2004
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-02-20 01:15+0800\n"
 "PO-Revision-Date: 2002-12-21 11:42+0800\n"
-"Last-Translator: Hasbullah Bin Pit <sebol@ikhlas.com>\n"
+"Last-Translator: Hasbullah Bin Pit <sebol@my-penguin.org>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,55 +31,80 @@ msgstr "Radas untuk menukar antara ruangkerja"
 msgid "Click this to switch to workspace %s"
 msgstr "Klik sini untuk menukar ke ruangkerja %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 msgid "Unmi_nimize"
 msgstr "Nyahmi_nimum"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 msgid "Mi_nimize"
 msgstr "Mi_nimum"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 msgid "Unma_ximize"
 msgstr "Nyahma_ksimum"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
 msgstr "Ma_ksimum"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
 msgstr "_Bentang"
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
 msgstr "_Gulung"
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
 msgstr "_Hanya pada Ruangkerja ini"
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
 msgstr "Letak pada Semu_a Ruangkerja"
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Ruangkerja %d"
+
+#: libwnck/window-action-menu.c:368
+msgid "Workspace 1_0"
+msgstr "Ruangkerja 1_0"
+
+#: libwnck/window-action-menu.c:370
+msgid "Workspace %s%d"
+msgstr "Ruangkerja %s%d"
+
+#: libwnck/window-action-menu.c:466
 msgid "_Move"
 msgstr "_Alih"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
 msgstr "_Ubahsaiz"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
 msgstr "_Tutup"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr "Alih ke _Ruangkerja Lain"
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr "%s"
 
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "tetingkap tiada tajuk"
 
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "Ruangkerja %d"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Senarai Tetingkap"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Alat untuk menukar antara ruangkerja yg kelihatan"
