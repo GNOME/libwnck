@@ -100,9 +100,11 @@ void _wnck_change_workspace (Screen  *screen,
 			     Window   xwindow,
                              int      new_space);
 void _wnck_activate         (Screen  *screen,
-			     Window   xwindow);
+                             Window   xwindow,
+                             Time     timestamp);
 void _wnck_activate_workspace (Screen *screen,
-			       int     new_active_space);
+                               int     new_active_space,
+                               Time    timestamp);
 void _wnck_change_viewport (Screen *screen,
 			    int     x,
 			    int     y);

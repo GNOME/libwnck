@@ -611,7 +611,11 @@ minimized_toggled_callback (GtkCellRendererToggle *cell,
   window = get_window (model, &iter);
 
   if (wnck_window_is_minimized (window))
-    wnck_window_unminimize (window);
+    /* The toggled callback will only be called in reaction to user
+     * button presses or key presses, so gtk_get_current_event_time()
+     * should be okay here.
+     */
+    wnck_window_unminimize (window, gtk_get_current_event_time ());
   else
     wnck_window_minimize (window);
   
@@ -716,7 +720,11 @@ selection_func (GtkTreeSelection  *selection,
         return TRUE;
       else
         {
-          wnck_window_activate (window);
+          /* This should only be called in reaction to user button
+           * presses or key presses (I hope), so
+           * gtk_get_current_event_time() should be okay here.
+           */
+          wnck_window_activate (window, gtk_get_current_event_time ());
           return FALSE;
         }
     }

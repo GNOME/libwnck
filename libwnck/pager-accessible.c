@@ -169,7 +169,8 @@ wnck_pager_add_selection (AtkSelection *selection,
    * Activate the following worksapce as current workspace
    */
   wspace = _wnck_pager_get_workspace (pager, i);
-  _wnck_pager_activate_workspace (wspace);
+  /* FIXME: Is gtk_get_current_event_time() good enough here?  I have no idea */
+  _wnck_pager_activate_workspace (wspace, gtk_get_current_event_time ());
  
   return TRUE;
 }

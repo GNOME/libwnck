@@ -972,13 +972,11 @@ _wnck_change_workspace (Screen     *screen,
 
 void
 _wnck_activate (Screen *screen,
-		Window  xwindow)
+                Window  xwindow,
+                Time    timestamp)
 {
   XEvent xev;
 
-  Time timestamp;
-
-  timestamp = gtk_get_current_event_time();
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
@@ -993,6 +991,8 @@ _wnck_activate (Screen *screen,
   xev.xclient.data.l[0] = 2;
   xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
@@ -1003,7 +1003,8 @@ _wnck_activate (Screen *screen,
 
 void
 _wnck_activate_workspace (Screen *screen,
-			  int     new_active_space)
+                          int     new_active_space,
+                          Time    timestamp)
 {
   XEvent xev;
   
@@ -1015,8 +1016,10 @@ _wnck_activate_workspace (Screen *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_CURRENT_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_active_space;
-  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),

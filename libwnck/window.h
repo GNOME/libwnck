@@ -168,9 +168,10 @@ void wnck_window_set_fullscreen (WnckWindow *window,
                                  gboolean fullscreen);
 
 void wnck_window_close                   (WnckWindow *window,
-					  guint32     timestamp);
+                                          guint32     timestamp);
 void wnck_window_minimize                (WnckWindow *window);
-void wnck_window_unminimize              (WnckWindow *window);
+void wnck_window_unminimize              (WnckWindow *window,
+                                          guint32     timestamp);
 void wnck_window_maximize                (WnckWindow *window);
 void wnck_window_unmaximize              (WnckWindow *window);
 void wnck_window_maximize_horizontally   (WnckWindow *window);
@@ -193,10 +194,12 @@ gboolean wnck_window_is_pinned (WnckWindow *window);
 void     wnck_window_pin       (WnckWindow *window);
 void     wnck_window_unpin     (WnckWindow *window);
 
-void     wnck_window_activate  (WnckWindow *window);
+void     wnck_window_activate  (WnckWindow *window,
+                                guint32     timestamp);
 gboolean wnck_window_is_active (WnckWindow *window);
 gboolean wnck_window_is_most_recently_activated (WnckWindow *window);
-void     wnck_window_activate_transient (WnckWindow *window);
+void     wnck_window_activate_transient (WnckWindow *window,
+                                         guint32     timestamp);
 gboolean wnck_window_transient_is_active (WnckWindow *window);
 
 GdkPixbuf* wnck_window_get_icon      (WnckWindow *window);

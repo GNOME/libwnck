@@ -106,7 +106,8 @@ SnDisplay* _wnck_screen_get_sn_display (WnckScreen *screen);
 
 WnckScreen* _wnck_screen_get_existing (int number);
 
-void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace);
+void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace,
+                                                 guint32        timestamp);
 int            _wnck_pager_get_n_workspaces     (WnckPager     *pager);
 const char*    _wnck_pager_get_workspace_name   (WnckPager     *pager,
                                                  int            i);

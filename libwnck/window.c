@@ -852,11 +852,12 @@ wnck_window_minimize                (WnckWindow *window)
 }
 
 void
-wnck_window_unminimize              (WnckWindow *window)
+wnck_window_unminimize              (WnckWindow *window,
+                                     guint32     timestamp)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  wnck_window_activate_transient (window);
+  wnck_window_activate_transient (window, timestamp);
 }
 
 void
@@ -1092,12 +1093,14 @@ wnck_window_unpin (WnckWindow *window)
  * window manager may choose to raise @window along with focusing it.
  **/
 void
-wnck_window_activate (WnckWindow *window)
+wnck_window_activate (WnckWindow *window,
+                      guint32     timestamp)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
   _wnck_activate (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		  window->priv->xwindow);
+                  window->priv->xwindow,
+                  timestamp);
 }
 
 /**
@@ -1187,7 +1190,8 @@ find_last_transient_for (GList *windows,
  * 
  **/
 void
-wnck_window_activate_transient (WnckWindow *window)
+wnck_window_activate_transient (WnckWindow *window,
+                                guint32     timestamp)
 {
   GList *windows;
   WnckWindow *transient;
@@ -1215,9 +1219,9 @@ wnck_window_activate_transient (WnckWindow *window)
     }
 
   if (transient != NULL)
-    wnck_window_activate (transient);
+    wnck_window_activate (transient, timestamp);
   else
-    wnck_window_activate (window);
+    wnck_window_activate (window, timestamp);
 }
 
 /**

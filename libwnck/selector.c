@@ -357,15 +357,8 @@ wnck_selector_active_window_changed (WnckScreen *screen,
 static void
 wnck_selector_activate_window (WnckWindow *window)
 {
-  WnckWorkspace *workspace;
-
-  workspace = wnck_window_get_workspace (window);
-  wnck_workspace_activate (workspace);
-
-  if (wnck_window_is_minimized (window))
-    wnck_window_unminimize (window);
-
-  wnck_window_activate (window);
+  /* We're in an activate callback, so gtk_get_current_time() works... */
+  wnck_window_activate (window, gtk_get_current_event_time ());
 }
 
 #define SELECTOR_MAX_WIDTH 50   /* maximum width in characters */

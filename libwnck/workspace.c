@@ -187,11 +187,14 @@ wnck_workspace_change_name (WnckWorkspace *space,
  * 
  **/
 void
-wnck_workspace_activate (WnckWorkspace *space)
+wnck_workspace_activate (WnckWorkspace *space,
+                         guint32        timestamp)
 {
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
-  _wnck_activate_workspace (WNCK_SCREEN_XSCREEN (space->priv->screen), space->priv->number);
+  _wnck_activate_workspace (WNCK_SCREEN_XSCREEN (space->priv->screen),
+                            space->priv->number,
+                            timestamp);
 }
 
 WnckWorkspace*

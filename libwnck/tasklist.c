@@ -116,6 +116,8 @@ struct _WnckTask
   guint was_active : 1;      /* used to fixup activation behavior */ 
 
   guint button_activate;
+
+  guint32 dnd_timestamp;
 };
 
 struct _WnckTaskClass
@@ -240,7 +242,8 @@ static void     wnck_tasklist_connect_window           (WnckTasklist *tasklist,
 static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
 							WnckTask *active_task);
 static gboolean wnck_tasklist_change_active_timeout    (gpointer data);
-static void     wnck_tasklist_activate_task_window     (WnckTask *task);
+static void     wnck_tasklist_activate_task_window     (WnckTask *task,
+                                                        guint32   timestamp);
 
 static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist,
 							GList        *visible_tasks);
@@ -1915,11 +1918,15 @@ wnck_task_menu_activated (GtkMenuItem *menu_item,
 {
   WnckTask *task = WNCK_TASK (data);
 
-  wnck_tasklist_activate_task_window (task);
+  /* This is an "activate" callback function so gtk_get_current_event_time()
+   * will suffice.
+   */
+  wnck_tasklist_activate_task_window (task, gtk_get_current_event_time ());
 }
 
 static void
-wnck_tasklist_activate_task_window (WnckTask *task)
+wnck_tasklist_activate_task_window (WnckTask *task,
+                                    guint32   timestamp)
 {
   WnckTasklist *tasklist;
   WnckWindowState state;
@@ -1940,10 +1947,10 @@ wnck_tasklist_activate_task_window (WnckTask *task)
       window_ws = wnck_window_get_workspace (task->window);
       if (window_ws &&
           active_ws != window_ws &&
-	  !tasklist->priv->switch_workspace_on_unminimize)
-	wnck_workspace_activate (window_ws);
-	  
-      wnck_window_activate_transient (task->window);
+          tasklist->priv->switch_workspace_on_unminimize)
+        wnck_window_move_to_workspace (task->window, active_ws);
+
+      wnck_window_activate_transient (task->window, timestamp);
     }
   else
     {
@@ -1955,14 +1962,8 @@ wnck_tasklist_activate_task_window (WnckTask *task)
 	}
       else
 	{
-          WnckWorkspace *window_ws;
-          
-          window_ws = wnck_window_get_workspace (task->window);
-          if (window_ws)
-            wnck_workspace_activate (window_ws);
-
-	  wnck_window_activate_transient (task->window);
-	}
+          wnck_window_activate_transient (task->window, timestamp);
+        }
     }
   
 
@@ -2002,7 +2003,10 @@ wnck_task_unminimize_all (GtkMenuItem *menu_item,
   while (l)
     {
       WnckTask *child = WNCK_TASK (l->data);
-      wnck_window_unminimize (child->window);
+      /* This is inside an activate callback, so gtk_get_current_event_time()
+       * will work.
+       */
+      wnck_window_unminimize (child->window, gtk_get_current_event_time ());
       l = l->next;
     }
 }
@@ -2165,8 +2169,11 @@ wnck_task_button_toggled (GtkButton *button,
     case WNCK_TASK_WINDOW:
       if (task->window == NULL)
 	return;
-      
-      wnck_tasklist_activate_task_window (task);
+
+      /* This should only be called by clicking on the task button, so
+       * gtk_get_current_event_time() should be fine here...
+       */
+      wnck_tasklist_activate_task_window (task, gtk_get_current_event_time ());
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
       break;
@@ -2510,7 +2517,9 @@ wnck_task_motion_timeout (gpointer data)
 
   task->button_activate = 0;
 
-  wnck_window_activate_transient (task->window);
+  wnck_window_activate_transient (task->window, task->dnd_timestamp);
+
+  task->dnd_timestamp = 0;
 
   return FALSE;
 }
@@ -2536,14 +2545,14 @@ wnck_task_drag_motion (GtkWidget          *widget,
 		       guint               time,
 		       WnckTask            *task)
 {
+  task->dnd_timestamp = time;
+  if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
+      task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+                                             wnck_task_motion_timeout,
+                                             task);
+  gdk_drag_status (context,0,time);
 
-   if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
-       task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
-                                              wnck_task_motion_timeout,
-                                              task);
-   gdk_drag_status (context,0,time);
-
-   return TRUE;
+  return TRUE;
 }
 
 static gboolean

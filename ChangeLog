@@ -1,3 +1,41 @@
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Handle the changes to _NET_ACTIVE_WINDOW from bug 128380 (made in
+	order to match the agreed upon official behavior of that EWMH
+	message), make relevant functions take a timestamp parameter, and
+	add a timestamp to the _NET_CURRENT_DESKTOP message.  Fixes all
+	libwnck issues pointed out in #128380 and #161361.
+
+	* libwnck/xutils.[ch]: (_wnck_activate): take a timestamp parameter
+	to avoid bugs from using gtk_get_current_event_time,
+	(_wnck_activate_workspace): likewise
+
+	* libwnck/pager_accessible.c:
+	* libwnck/pager.c:
+	* libwnck/private.h:
+	* libwnck/tasklist.c:
+	* libwnck/window-action-menu.c:
+	* libwnck/window.c:
+	* libwnck/window.h:
+	* libwnck/workspace.c:
+	* libwnck/workspace.h:
+	* test/test-wnck.c:
+	Handle the need for passing timestamps to _wnck_activate and
+	_wnck_activate_workspace (i.e. for _NET_ACTIVE_WINDOW and
+	_NET_CURRENT_DESKTOP messages)
+
+	* libwnck/tasklist.c:
+	Manual moving of windows to a different workspace now occurs under
+	different circumstances with the _NET_ACTIVE_WINDOW behavior
+	change.
+
+	* libwnck/selector.c:
+	With the new _NET_ACTIVE_WINDOW behavior, only
+	wnck_window_activate() is needed now.
+
+	* configure.in:
+	Increment LIBWNCK_CURRENT because of the API changes.
+
 2005-02-12  Elijah Newren  <newren@gmail.com>
 
 	Check for whether a window or one of its transients has the

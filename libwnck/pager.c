@@ -63,6 +63,7 @@ struct _WnckPagerPrivate
 
   guint dnd_activate;
   gint  dnd_workspace_number;
+  guint dnd_time;
 };
 
 enum
@@ -1126,7 +1127,7 @@ wnck_pager_drag_motion_timeout (gpointer data)
 
   if (dnd_workspace &&
       (pager->priv->dnd_workspace_number != wnck_workspace_get_number (active_workspace)))
-    wnck_workspace_activate (dnd_workspace);
+    wnck_workspace_activate (dnd_workspace, pager->priv->dnd_time);
 
   return FALSE;
 }
@@ -1148,6 +1149,7 @@ wnck_pager_drag_motion (GtkWidget          *widget,
                                                pager);
 
   pager->priv->dnd_workspace_number = workspace_at_point (pager, x, y, NULL, NULL);
+  pager->priv->dnd_time = time;
   gdk_drag_status (context, 0, time);
 
   return (pager->priv->dnd_workspace_number != -1);
@@ -1166,6 +1168,7 @@ wnck_pager_drag_motion_leave (GtkWidget          *widget,
     {
       g_source_remove (pager->priv->dnd_activate);
       pager->priv->dnd_workspace_number = -1;
+      pager->priv->dnd_time = 0;
       pager->priv->dnd_activate = 0;
     }
 }
@@ -1225,7 +1228,7 @@ wnck_pager_button_release (GtkWidget        *widget,
               wnck_window_move_to_workspace (pager->priv->drag_window,
                                              space);
               if (space == wnck_screen_get_active_workspace (pager->priv->screen))
-                wnck_window_activate (pager->priv->drag_window);
+                wnck_window_activate (pager->priv->drag_window, event->time);
             }	  
 	}
       
@@ -1242,7 +1245,7 @@ wnck_pager_button_release (GtkWidget        *widget,
 
 	    /* Don't switch the desktop if we're already there */
 	    if (space != wnck_screen_get_active_workspace (pager->priv->screen))
-	      wnck_workspace_activate (space);
+	      wnck_workspace_activate (space, event->time);
 
 	    /* EWMH only lets us move the viewport for the active workspace,
 	     * but we just go ahead and hackily assume that the activate
@@ -1859,9 +1862,10 @@ _wnck_pager_get_workspace (WnckPager *pager,
 } 
 
 void 
-_wnck_pager_activate_workspace (WnckWorkspace *wspace)
+_wnck_pager_activate_workspace (WnckWorkspace *wspace,
+                                guint32        timestamp)
 {
-  wnck_workspace_activate (wspace);
+  wnck_workspace_activate (wspace, timestamp);
 }
 
 void
