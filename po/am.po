@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "POT-Creation-Date: 2002-11-26 05:42+0100\n"
-"PO-Revision-Date: 2002-12-29 19:37+EDT\n"
+"PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "ያልተሰየሙ መጠቀሚያ ፕሮግራሜ"
+msgstr "ያልተሰየሙ መጠቀሚያ ፕሮግራም"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -34,7 +34,7 @@ msgstr "ወደ መሥሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
 
 #: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
-msgstr "መታሳንስ (_m)"
+msgstr "መታሳንስ (_M)"
 
 #: libwnck/window-action-menu.c:161
 msgid "_Minimize"
@@ -62,7 +62,7 @@ msgstr "ዝጋ (_C)"
 
 #: libwnck/window-action-menu.c:319
 msgid "Mo_ve"
-msgstr "ምንቀሳቅስ (_v)"
+msgstr "መንቀሳቅስ (_V)"
 
 #: libwnck/window-action-menu.c:325
 msgid "_Resize"
@@ -75,4 +75,4 @@ msgstr "ያልተሰየመ መስኮት"
 #: libwnck/workspace.c:202
 #, c-format
 msgid "Workspace %d"
-msgstr "የ%d መሥሪያ ቦታ"
+msgstr "መሥሪያ ቦታ %d"
