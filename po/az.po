@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2001-12-14 07:33-0500\n"
+"POT-Creation-Date: 2002-04-29 01:37-0400\n"
 "PO-Revision-Date: 2001-12-14 16:58GMT+0200\n"
 "Last-Translator: Vasif İsmayıloğlu MD <azerb_linux@hotmail.com>\n"
 "Language-Team: Azerbaijani Turkic <linuxaz@azerimail.net>\n"
@@ -14,43 +14,53 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: libwnck/window-action-menu.c:157
+#: libwnck/application.c:25
+#, fuzzy
+msgid "untitled application"
+msgstr "adsız pəncərə"
+
+#: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
 msgstr "_Qaldır"
 
-#: libwnck/window-action-menu.c:163
+#: libwnck/window-action-menu.c:160
 msgid "_Minimize"
 msgstr "_Kiçilt"
 
-#: libwnck/window-action-menu.c:170
+#: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
 msgstr "_Balacalaşdır"
 
-#: libwnck/window-action-menu.c:176
+#: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
 msgstr "Bö_yüt"
 
-#: libwnck/window-action-menu.c:183
+#: libwnck/window-action-menu.c:180
 msgid "U_nshade"
 msgstr "Kölgəni Qa_ldır"
 
-#: libwnck/window-action-menu.c:189
+#: libwnck/window-action-menu.c:186
 msgid "_Shade"
 msgstr "_Kölgələ"
 
-#: libwnck/window-action-menu.c:300
-msgid "Close"
+#: libwnck/window-action-menu.c:297
+#, fuzzy
+msgid "_Close"
 msgstr "Qapat"
 
-#: libwnck/window-action-menu.c:321
+#: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
 msgstr "Da_şı"
 
-#: libwnck/window-action-menu.c:327
+#: libwnck/window-action-menu.c:324
 msgid "_Resize"
 msgstr "_Böyüklüyünü Dəyişdir"
 
-#: libwnck/window.c:32
+#: libwnck/window.c:29
 msgid "untitled window"
 msgstr "adsız pəncərə"
 
+#: libwnck/workspace.c:248
+#, c-format
+msgid "Workspace %d"
+msgstr ""
