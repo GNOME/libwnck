@@ -1,3 +1,17 @@
+2002-08-01  Mark McLoughlin  <mark@skynet.ie>
+
+	Fixes #78260 - tasklist not being updated when windows
+	are moved in and out of the active workspace.
+
+	* libwnck/tasklist.c:
+	(wnck_tasklist_new): connect to all windows workspace_changed
+	signal.
+	(wnck_tasklist_window_changed_workspace): if the window has
+	been move into or our of the active workspace, update the
+	tasklist;
+	(wnck_tasklist_window_added): connect to the window workspace
+	changed signal and update the tasklist;
+
 2002-07-06  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/window.c (update_state): make dialogs skip the task

@@ -172,9 +172,14 @@ static void     wnck_tasklist_active_window_changed    (WnckScreen   *screen,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
 							WnckTasklist *tasklist);
-static void     wnck_tasklist_window_added_or_removed  (WnckScreen   *screen,
+static void     wnck_tasklist_window_added             (WnckScreen   *screen,
 							WnckWindow   *win,
 							WnckTasklist *tasklist);
+static void     wnck_tasklist_window_removed           (WnckScreen   *screen,
+							WnckWindow   *win,
+							WnckTasklist *tasklist);
+static void     wnck_tasklist_connect_window           (WnckTasklist *tasklist,
+							WnckWindow   *window);
 
 static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
 							WnckTask *active_task);
@@ -1039,6 +1044,7 @@ GtkWidget*
 wnck_tasklist_new (WnckScreen *screen)
 {
   WnckTasklist *tasklist;
+  GList        *windows;
 
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
 
@@ -1057,12 +1063,19 @@ wnck_tasklist_new (WnckScreen *screen)
 			   G_CALLBACK (wnck_tasklist_active_workspace_changed),
 			   tasklist, 0);
   g_signal_connect_object (G_OBJECT (screen), "window_opened",
-			   G_CALLBACK (wnck_tasklist_window_added_or_removed),
+			   G_CALLBACK (wnck_tasklist_window_added),
 			   tasklist, 0);
   g_signal_connect_object (G_OBJECT (screen), "window_closed",
-			   G_CALLBACK (wnck_tasklist_window_added_or_removed),
+			   G_CALLBACK (wnck_tasklist_window_removed),
 			   tasklist, 0);
-  
+
+  windows = wnck_screen_get_windows (screen);
+  while (windows != NULL)
+    {
+      wnck_tasklist_connect_window (tasklist, windows->data);
+      windows = windows->next;
+    }
+
   return GTK_WIDGET (tasklist);
 }
 
@@ -1284,9 +1297,67 @@ wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
 }
 
 static void
-wnck_tasklist_window_added_or_removed (WnckScreen   *screen,
-				       WnckWindow   *win,
-				       WnckTasklist *tasklist)
+wnck_tasklist_window_changed_workspace (WnckWindow   *window,
+					WnckTasklist *tasklist)
+{
+  WnckWorkspace *active_ws;
+  WnckWorkspace *window_ws;
+  gboolean       need_update;
+  GList         *l;
+
+  active_ws = wnck_screen_get_active_workspace (tasklist->priv->screen);
+  window_ws = wnck_window_get_workspace (window);
+
+  if (!window_ws)
+    return;
+
+  need_update = FALSE;
+
+  if (active_ws == window_ws)
+    need_update = TRUE;
+
+  l = tasklist->priv->windows;
+  while (!need_update && l != NULL)
+    {
+      WnckTask *task = l->data;
+
+      if (!task->is_application && task->window == window)
+        need_update = TRUE;
+
+      l = l->next;
+    }
+
+  if (need_update)
+    {
+      wnck_tasklist_update_lists (tasklist);
+      gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+    }
+}
+
+static void
+wnck_tasklist_connect_window (WnckTasklist *tasklist,
+			      WnckWindow   *window)
+{
+  g_signal_connect_object (window, "workspace_changed",
+			   G_CALLBACK (wnck_tasklist_window_changed_workspace),
+			   tasklist, 0);
+}
+
+static void
+wnck_tasklist_window_added (WnckScreen   *screen,
+			    WnckWindow   *win,
+			    WnckTasklist *tasklist)
+{
+  wnck_tasklist_connect_window (tasklist, win);
+
+  wnck_tasklist_update_lists (tasklist);
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+static void
+wnck_tasklist_window_removed (WnckScreen   *screen,
+			      WnckWindow   *win,
+			      WnckTasklist *tasklist)
 {
   wnck_tasklist_update_lists (tasklist);
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
