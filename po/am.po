@@ -42,7 +42,7 @@ msgstr "ምሳንስ (_M)"
 
 #: libwnck/window-action-menu.c:168
 msgid "_Unmaximize"
-msgstr "ምታሳንስ (_U)"
+msgstr "ምታስተልቅ (_U)"
 
 #: libwnck/window-action-menu.c:174
 msgid "Ma_ximize"
