@@ -191,6 +191,40 @@ _wnck_get_text_property (Window  xwindow,
 }
 
 char*
+_wnck_get_string_property_latin1 (Window  xwindow,
+                                  Atom    atom)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  guchar *str;
+  int result;
+  char *retval;
+  
+  _wnck_error_trap_push ();
+  str = NULL;
+  XGetWindowProperty (gdk_display,
+                      xwindow, atom,
+                      0, G_MAXLONG,
+		      False, XA_STRING, &type, &format, &nitems,
+		      &bytes_after, (guchar **)&str);  
+
+  result = _wnck_error_trap_pop ();
+  if (result != Success)
+    return NULL;
+  
+  if (type != XA_STRING)
+    return NULL; /* FIXME memory leak? */
+
+  retval = g_strdup (str);
+  
+  XFree (str);
+  
+  return retval;
+}
+
+char*
 _wnck_get_utf8_property (Window  xwindow,
                          Atom    atom)
 {
@@ -544,4 +578,80 @@ _wnck_change_state (Window   xwindow,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+}
+
+void
+_wnck_change_workspace (Window xwindow,
+                        int    new_space)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = new_space;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (gdk_display,
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+}
+
+Window
+_wnck_get_group_leader (Window xwindow)
+{
+  XWMHints *hints;
+  Window ret;
+  
+  _wnck_error_trap_push ();
+  hints = XGetWMHints (gdk_display, xwindow);
+  _wnck_error_trap_pop ();
+
+  /* default to window being its own leader */
+  ret = xwindow;
+  
+  if (hints &&
+      (hints->flags & WindowGroupHint))
+    ret = hints->window_group;
+
+  XFree (hints);
+
+  return ret;
+}
+
+char*
+_wnck_get_session_id (Window xwindow)
+{
+  Window client_leader;
+  
+  client_leader = None;
+  _wnck_get_window (xwindow,
+                    _wnck_atom_get ("WM_CLIENT_LEADER"),
+                    &client_leader);
+
+  if (client_leader == None)
+    return NULL;
+
+  return _wnck_get_string_property_latin1 (client_leader,
+                                           _wnck_atom_get ("SM_CLIENT_ID"));
+}
+
+int
+_wnck_get_pid (Window xwindow)
+{
+  int val;
+
+  if (!_wnck_get_cardinal (xwindow,
+                           _wnck_atom_get ("_NET_WM_PID"),
+                           &val))
+    return 0;
+  else
+    return val;
 }

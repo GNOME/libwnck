@@ -70,10 +70,16 @@ guint _wnck_xid_hash  (gconstpointer v);
 void _wnck_iconify   (Window xwindow);
 void _wnck_deiconify (Window xwindow);
 
-void _wnck_change_state (Window   xwindow,
-                         gboolean add,
-                         Atom     state1,
-                         Atom     state2);
+void _wnck_change_state     (Window   xwindow,
+                             gboolean add,
+                             Atom     state1,
+                             Atom     state2);
+void _wnck_change_workspace (Window   xwindow,
+                             int      new_space);
+
+Window _wnck_get_group_leader (Window xwindow);
+char*  _wnck_get_session_id   (Window xwindow);
+int    _wnck_get_pid          (Window xwindow);
 
 G_END_DECLS
 

@@ -20,10 +20,15 @@
  */
 
 #include "application.h"
+#include "private.h"
+
+static GHashTable *app_hash = NULL;
 
 struct _WnckApplicationPrivate
 {
-
+  Window xwindow;
+  WnckScreen *screen;
+  GList *windows;
 };
 
 enum {
@@ -72,7 +77,7 @@ wnck_application_get_type (void)
 static void
 wnck_application_init (WnckApplication *application)
 {  
-  application->priv = g_new (WnckApplicationPrivate, 1);
+  application->priv = g_new0 (WnckApplicationPrivate, 1);
 
 }
 
@@ -99,3 +104,102 @@ wnck_application_finalize (GObject *object)
   
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
+
+WnckApplication*
+wnck_application_get (gulong xwindow)
+{
+  if (app_hash == NULL)
+    return NULL;
+  else
+    return g_hash_table_lookup (app_hash, &xwindow);
+}
+
+/**
+ * wnck_application_get_windows:
+ * @app: a #WnckApplication
+ * 
+ * Gets a list of all windows belonging to @app. The list
+ * is returned by reference and should not be freed.
+ * 
+ * Return value: list of #WnckWindow in this app
+ **/
+GList*
+wnck_application_get_windows (WnckApplication *app)
+{
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
+
+  return app->priv->windows;
+}
+
+WnckApplication*
+_wnck_application_create (Window      xwindow,
+                          WnckScreen *screen)
+{
+  WnckApplication *application;
+  
+  if (app_hash == NULL)
+    app_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
+  
+  g_return_val_if_fail (g_hash_table_lookup (app_hash, &xwindow) == NULL,
+                        NULL);
+  
+  application = g_object_new (WNCK_TYPE_APPLICATION, NULL);
+  application->priv->xwindow = xwindow;
+  application->priv->screen = screen;
+  
+  g_hash_table_insert (app_hash, &application->priv->xwindow, application);
+  
+  /* Hash now owns one ref, caller gets none */
+
+  /* Note that xwindow may correspond to a WnckWindow's xwindow,
+   * right now it doesn't matter since we use PropertyChangeMask
+   * both places
+   */
+  _wnck_error_trap_push ();
+  XSelectInput (gdk_display,
+                application->priv->xwindow,
+                PropertyChangeMask);
+  _wnck_error_trap_pop ();  
+  
+  return application;
+}
+
+void
+_wnck_application_destroy (WnckApplication *application)
+{
+  g_return_if_fail (wnck_application_get (application->priv->xwindow) == application);
+  
+  g_hash_table_remove (app_hash, &application->priv->xwindow);
+
+  g_return_if_fail (wnck_application_get (application->priv->xwindow) == NULL);
+
+  application->priv->xwindow = None;
+  
+  /* remove hash's ref on the application */
+  g_object_unref (G_OBJECT (application));
+}
+
+void
+_wnck_application_add_window (WnckApplication *app,
+                              WnckWindow      *window)
+{
+  g_return_if_fail (WNCK_IS_APPLICATION (app));
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (wnck_window_get_application (window) == NULL);
+  
+  app->priv->windows = g_list_prepend (app->priv->windows, window);
+  _wnck_window_set_application (window, app);
+}
+
+void
+_wnck_application_remove_window (WnckApplication *app,
+                                 WnckWindow      *window)
+{
+  g_return_if_fail (WNCK_IS_APPLICATION (app));
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (wnck_window_get_application (window) == app);
+  
+  app->priv->windows = g_list_remove (app->priv->windows, window);
+  _wnck_window_set_application (window, NULL);
+}
+

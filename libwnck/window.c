@@ -28,6 +28,7 @@
 
 #define _(x) dgettext (GETTEXT_PACKAGE, x)
 #define FALLBACK_NAME _("untitled window")
+#define ALL_WORKSPACES (0xFFFFFFFF)
 
 static GHashTable *window_hash = NULL;
 
@@ -44,8 +45,15 @@ static GHashTable *window_hash = NULL;
 struct _WnckWindowPrivate
 {
   Window xwindow;
+  WnckScreen *screen;
+  WnckApplication *app;
+  Window group_leader;
   char *name;
   char *icon_name;
+  char *session_id;
+  char *session_id_utf8;
+  int pid;
+  int workspace;
   guint is_minimized : 1;
   guint is_maximized_horz : 1;
   guint is_maximized_vert : 1;
@@ -63,11 +71,13 @@ struct _WnckWindowPrivate
   guint need_update_state : 1;
   guint need_update_minimized : 1;
   guint need_update_icon_name : 1;
+  guint need_update_workspace : 1;
 };
 
 enum {
   NAME_CHANGED,
   STATE_CHANGED,
+  WORKSPACE_CHANGED,
   LAST_SIGNAL
 };
 
@@ -75,13 +85,15 @@ static void wnck_window_init        (WnckWindow      *window);
 static void wnck_window_class_init  (WnckWindowClass *klass);
 static void wnck_window_finalize    (GObject        *object);
 
-static void emit_name_changed  (WnckWindow *window);
-static void emit_state_changed (WnckWindow *window);
+static void emit_name_changed      (WnckWindow *window);
+static void emit_state_changed     (WnckWindow *window);
+static void emit_workspace_changed (WnckWindow *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
 static void update_minimized (WnckWindow *window);
 static void update_icon_name (WnckWindow *window);
+static void update_workspace (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -127,6 +139,7 @@ wnck_window_init (WnckWindow *window)
 
   window->priv->name = g_strdup (FALLBACK_NAME);
   window->priv->icon_name = g_strdup (FALLBACK_NAME);
+  window->priv->workspace = ALL_WORKSPACES;
 }
 
 static void
@@ -155,6 +168,15 @@ wnck_window_class_init (WnckWindowClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+  signals[WORKSPACE_CHANGED] =
+    g_signal_new ("workspace_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, workspace_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -165,6 +187,13 @@ wnck_window_finalize (GObject *object)
   window = WNCK_WINDOW (object);
 
   unqueue_update (window);
+
+  g_free (window->priv->name);
+  g_free (window->priv->icon_name);
+  g_free (window->priv->session_id);
+  
+  if (window->priv->app)
+    g_object_unref (G_OBJECT (window->priv->app));
   
   g_free (window->priv);
   
@@ -190,8 +219,25 @@ wnck_window_get (gulong xwindow)
     return g_hash_table_lookup (window_hash, &xwindow);
 }
 
+/**
+ * wnck_window_get_screen:
+ * @window: a #WnckWindow
+ * 
+ * Gets the screen this window is on.
+ * 
+ * Return value: a #WnckScreen
+ **/
+WnckScreen*
+wnck_window_get_screen (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->screen;
+}
+
 WnckWindow*
-_wnck_window_create (Window xwindow)
+_wnck_window_create (Window      xwindow,
+                     WnckScreen *screen)
 {
   WnckWindow *window;
   
@@ -203,21 +249,36 @@ _wnck_window_create (Window xwindow)
   
   window = g_object_new (WNCK_TYPE_WINDOW, NULL);
   window->priv->xwindow = xwindow;
-
+  window->priv->screen = screen;
+  
   g_hash_table_insert (window_hash, &window->priv->xwindow, window);
   
   /* Hash now owns one ref, caller gets none */
 
+  /* Note that xwindow may correspond to a WnckApplication's xwindow,
+   * right now it doesn't matter since we use PropertyChangeMask both
+   * places
+   */
   _wnck_error_trap_push ();
   XSelectInput (gdk_display,
                 window->priv->xwindow,
                 PropertyChangeMask);
   _wnck_error_trap_pop ();
+
+  window->priv->group_leader =
+    _wnck_get_group_leader (window->priv->xwindow);
+
+  window->priv->session_id =
+    _wnck_get_session_id (window->priv->xwindow);
+
+  window->priv->pid =
+    _wnck_get_pid (window->priv->xwindow);
   
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
   window->priv->need_update_icon_name = TRUE;
   window->priv->need_update_minimized = TRUE;
+  window->priv->need_update_workspace = TRUE;
   force_update_now (window);
   
   return window;
@@ -278,6 +339,82 @@ wnck_window_get_icon_name (WnckWindow *window)
     return window->priv->icon_name;
   else
     return window->priv->name;
+}
+
+WnckApplication*
+wnck_window_get_application  (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->app;
+}
+
+gulong
+wnck_window_get_group_leader (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
+  
+  return window->priv->group_leader;
+}
+
+/**
+ * wnck_window_get_session_id:
+ * @window: a #WnckWindow
+ * 
+ * Gets the session ID for @window in Latin-1 encoding.
+ * NOTE: this is invalid UTF-8. You can't display this
+ * string in a GTK widget without converting to UTF-8.
+ * See wnck_window_get_session_id_utf8().
+ * 
+ * Return value: session ID in Latin-1
+ **/
+const char*
+wnck_window_get_session_id (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->session_id;
+}
+
+const char*
+wnck_window_get_session_id_utf8 (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  if (window->priv->session_id_utf8 == NULL)
+    {
+      GString *str;
+      char *p;
+      
+      str = g_string_new ("");
+
+      p = window->priv->session_id;
+      while (*p)
+        {
+          g_string_append_unichar (str, g_utf8_get_char (p));
+          p = g_utf8_next_char (p);
+        }
+
+      window->priv->session_id_utf8 = g_string_free (str, FALSE);
+    }
+  
+  return window->priv->session_id_utf8;
+}
+
+/**
+ * wnck_window_get_pid:
+ * @window: a #WnckWindow
+ * 
+ * Gets the process ID of @window, if available.
+ * 
+ * Return value: PID of @window, or 0 if none available
+ **/
+int
+wnck_window_get_pid (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+
+  return window->priv->pid;
 }
 
 /**
@@ -502,6 +639,104 @@ wnck_window_unstick                 (WnckWindow *window)
                       0);
 }
 
+/**
+ * wnck_window_get_workspace:
+ * @window: a #WnckWindow
+ * 
+ * Gets the window's current workspace. If the window is
+ * pinned (on all workspaces), or not on any workspaces,
+ * %NULL may be returned.
+ * 
+ * Return value: single current workspace or %NULL
+ **/
+WnckWorkspace*
+wnck_window_get_workspace (WnckWindow *window)
+{
+  if (window->priv->workspace == ALL_WORKSPACES)
+    return NULL;
+  else
+    return wnck_workspace_get (window->priv->workspace);
+}
+
+void
+wnck_window_move_to_workspace (WnckWindow    *window,
+                               WnckWorkspace *space)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (WNCK_IS_WORKSPACE (space));
+
+  _wnck_change_workspace (window->priv->xwindow,
+                          wnck_workspace_get_number (space));
+}
+
+/**
+ * wnck_window_is_pinned:
+ * @window: a #WnckWindow
+ * 
+ * %TRUE if the window is on all workspaces. Note that if this
+ * changes, it's signalled by a workspace_changed signal,
+ * not state_changed.
+ * 
+ * Return value: %TRUE if on all workspaces
+ **/
+gboolean
+wnck_window_is_pinned (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+  
+  return window->priv->workspace == ALL_WORKSPACES;
+}
+
+void
+wnck_window_pin (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_workspace (window->priv->xwindow,
+                          ALL_WORKSPACES);
+}
+
+/**
+ * wnck_window_unpin:
+ * @window: a #WnckWindow
+ * 
+ * Sets @window's workspace to only the currently active workspace,
+ * if the window was previously pinned. If the window wasn't pinned,
+ * doesn't change the window's workspace. If the active workspace
+ * isn't known for some reason (shouldn't happen much), sets the
+ * window's workspace to 0.
+ * 
+ **/
+void
+wnck_window_unpin (WnckWindow *window)
+{
+  WnckWorkspace *active;
+  
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  if (window->priv->workspace != ALL_WORKSPACES)
+    return;
+  
+  active = wnck_screen_get_active_workspace (window->priv->screen);
+
+  _wnck_change_workspace (window->priv->xwindow,
+                          active ? wnck_workspace_get_number (active) : 0);
+}
+
+void
+_wnck_window_set_application (WnckWindow      *window,
+                              WnckApplication *app)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  g_return_if_fail (app == NULL || WNCK_IS_APPLICATION (app));
+
+  if (app)
+    g_object_ref (G_OBJECT (app));
+  if (window->priv->app)
+    g_object_unref (G_OBJECT (window->priv->app));
+  window->priv->app = app;
+}
+
 void
 _wnck_window_process_property_notify (WnckWindow *window,
                                       XEvent     *xevent)
@@ -530,6 +765,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
            _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"))
     {
       window->priv->need_update_icon_name = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_WM_DESKTOP"))
+    {
+      window->priv->need_update_workspace = TRUE;
       queue_update (window);
     }
 }
@@ -658,6 +899,30 @@ update_icon_name (WnckWindow *window)
 }
 
 static void
+update_workspace (WnckWindow *window)
+{
+  int val;
+  int old;
+  
+  if (!window->priv->need_update_workspace)
+    return;
+
+  window->priv->need_update_workspace = FALSE;
+
+  old = window->priv->workspace;
+  
+  val = ALL_WORKSPACES;
+  _wnck_get_cardinal (window->priv->xwindow,
+                      _wnck_atom_get ("_NET_WM_DESKTOP"),
+                      &val);
+
+  window->priv->workspace = val;
+
+  if (old != window->priv->workspace)
+    emit_workspace_changed (window);
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   int old_state;
@@ -702,6 +967,7 @@ force_update_now (WnckWindow *window)
   
   update_state (window);
   update_minimized (window);
+  update_workspace (window); /* emits signals */
   
   if (old_state != COMPRESS_STATE (window))
     emit_state_changed (window);
@@ -750,5 +1016,13 @@ emit_state_changed (WnckWindow *window)
 {
   g_signal_emit (G_OBJECT (window),
                  signals[STATE_CHANGED],
+                 0);
+}
+
+static void
+emit_workspace_changed (WnckWindow *window)
+{
+  g_signal_emit (G_OBJECT (window),
+                 signals[WORKSPACE_CHANGED],
                  0);
 }

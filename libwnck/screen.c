@@ -22,6 +22,7 @@
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
+#include "application.h"
 #include "xutils.h"
 #include "private.h"
 #include <gdk/gdk.h>
@@ -63,6 +64,8 @@ enum {
   WINDOW_CLOSED,
   WORKSPACE_CREATED,
   WORKSPACE_DESTROYED,
+  APPLICATION_OPENED,
+  APPLICATION_CLOSED,
   LAST_SIGNAL
 };
 
@@ -78,17 +81,23 @@ static void update_active_window    (WnckScreen      *screen);
 static void queue_update            (WnckScreen      *screen);
 static void unqueue_update          (WnckScreen      *screen);              
 
-static void emit_active_window_changed    (WnckScreen *screen);
-static void emit_active_workspace_changed (WnckScreen *screen);
-static void emit_window_stacking_changed  (WnckScreen *screen);
-static void emit_window_opened            (WnckScreen *screen,
-                                           WnckWindow *window);
-static void emit_window_closed            (WnckScreen *screen,
-                                           WnckWindow *window);
-static void emit_workspace_created        (WnckScreen *screen,
-                                           WnckWorkspace *space);
-static void emit_workspace_destroyed      (WnckScreen *screen,
-                                           WnckWorkspace *space);
+static void emit_active_window_changed    (WnckScreen      *screen);
+static void emit_active_workspace_changed (WnckScreen      *screen);
+static void emit_window_stacking_changed  (WnckScreen      *screen);
+static void emit_window_opened            (WnckScreen      *screen,
+                                           WnckWindow      *window);
+static void emit_window_closed            (WnckScreen      *screen,
+                                           WnckWindow      *window);
+static void emit_workspace_created        (WnckScreen      *screen,
+                                           WnckWorkspace   *space);
+static void emit_workspace_destroyed      (WnckScreen      *screen,
+                                           WnckWorkspace   *space);
+static void emit_application_opened       (WnckScreen      *screen,
+                                           WnckApplication *app);
+static void emit_application_closed       (WnckScreen      *screen,
+                                           WnckApplication *app);
+
+
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -183,7 +192,6 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
-
   
   signals[WORKSPACE_CREATED] =
     g_signal_new ("workspace_created",
@@ -202,6 +210,24 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
+
+  signals[APPLICATION_OPENED] =
+    g_signal_new ("application_opened",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckScreenClass, application_opened),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
+
+  signals[APPLICATION_CLOSED] =
+    g_signal_new ("application_closed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckScreenClass, application_closed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);  
 }
 
 static void
@@ -305,6 +331,42 @@ wnck_screen_get_for_root (gulong root_window_id)
   return NULL;
 }
 
+/**
+ * wnck_screen_get_active_workspace:
+ * @screen: a #WnckScreen 
+ * 
+ * Gets the active workspace. May return %NULL sometimes,
+ * if we are in a weird state due to the asynchronous
+ * nature of our interaction with the window manager.
+ * 
+ * Return value: active workspace or %NULL
+ **/
+WnckWorkspace*
+wnck_screen_get_active_workspace (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->active_workspace;
+}
+
+/**
+ * wnck_screen_get_active_window:
+ * @screen: a #WnckScreen
+ * 
+ * Gets the active window. May return %NULL sometimes,
+ * since not all window managers guarantee that a window
+ * is always active.
+ * 
+ * Return value: active window or %NULL
+ **/
+WnckWindow*
+wnck_screen_get_active_window (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->active_window;
+}
+
 void
 _wnck_screen_process_property_notify (WnckScreen *screen,
                                       XEvent     *xevent)
@@ -369,6 +431,8 @@ update_client_list (WnckScreen *screen)
   GList *new_list;
   GList *created;
   GList *closed;
+  GList *created_apps;
+  GList *closed_apps;
   GList *tmp;
   int i;
   GHashTable *new_hash;
@@ -390,6 +454,8 @@ update_client_list (WnckScreen *screen)
 
   created = NULL;
   closed = NULL;
+  created_apps = NULL;
+  closed_apps = NULL;
 
   new_hash = g_hash_table_new (NULL, NULL);
   
@@ -403,9 +469,22 @@ update_client_list (WnckScreen *screen)
 
       if (window == NULL)
         {
-          /* create gives us a reference to own */
-          window = _wnck_window_create (stack[i]);
+          Window leader;
+          WnckApplication *app;
+          
+          window = _wnck_window_create (stack[i], screen);
           created = g_list_prepend (created, window);
+
+          leader = wnck_window_get_group_leader (window);
+          
+          app = wnck_application_get (leader);
+          if (app == NULL)
+            {
+              app = _wnck_application_create (leader, screen);
+              created_apps = g_list_prepend (created_apps, app);
+            }
+          
+          _wnck_application_add_window (app, window);
         }
 
       new_list = g_list_prepend (new_list, window);
@@ -427,7 +506,18 @@ update_client_list (WnckScreen *screen)
       WnckWindow *window = tmp->data;
 
       if (g_hash_table_lookup (new_hash, window) == NULL)
-        closed = g_list_prepend (closed, window);
+        {
+          WnckApplication *app;
+          
+          closed = g_list_prepend (closed, window);
+
+          app = wnck_window_get_application (window);
+
+          _wnck_application_remove_window (app, window);
+
+          if (wnck_application_get_windows (app) == NULL)
+            closed_apps = g_list_prepend (closed_apps, app);
+        }
       
       tmp = tmp->next;
     }
@@ -441,6 +531,8 @@ update_client_list (WnckScreen *screen)
     {
       g_assert (created == NULL);
       g_assert (closed == NULL);
+      g_assert (created_apps == NULL);
+      g_assert (closed_apps == NULL);
       g_list_free (new_list);
       --reentrancy_guard;
       return;
@@ -453,6 +545,17 @@ update_client_list (WnckScreen *screen)
    * signal callbacks; though that would be a bit pathological, so we
    * don't handle it, but we do warn about it using reentrancy_guard
    */
+
+  /* Sequence is: application_opened, window_opened, window_closed,
+   * application_closed
+   */
+  tmp = created_apps;
+  while (tmp != NULL)
+    {
+      emit_application_opened (screen, WNCK_APPLICATION (tmp->data));
+      
+      tmp = tmp->next;
+    }
   
   tmp = created;
   while (tmp != NULL)
@@ -480,6 +583,18 @@ update_client_list (WnckScreen *screen)
       tmp = tmp->next;
     }
 
+  tmp = closed_apps;
+  while (tmp != NULL)
+    {
+      WnckApplication *app;
+
+      app = WNCK_APPLICATION (tmp->data);
+
+      emit_application_closed (screen, app);
+      
+      tmp = tmp->next;
+    }
+  
   emit_window_stacking_changed (screen);
 
   /* Now free the closed windows */
@@ -493,8 +608,23 @@ update_client_list (WnckScreen *screen)
       tmp = tmp->next;
     }
 
+  /* Free the closed apps */
+  tmp = closed_apps;
+  while (tmp != NULL)
+    {
+      WnckApplication *app;
+
+      app = WNCK_APPLICATION (tmp->data);
+
+      _wnck_application_destroy (app);
+      
+      tmp = tmp->next;
+    }
+  
   g_list_free (closed);
   g_list_free (created);
+  g_list_free (closed_apps);
+  g_list_free (created_apps);
 
   --reentrancy_guard;
 
@@ -773,6 +903,24 @@ emit_workspace_destroyed (WnckScreen    *screen,
   g_signal_emit (G_OBJECT (screen),
                  signals[WORKSPACE_DESTROYED],
                  0, space);
+}
+
+static void
+emit_application_opened (WnckScreen      *screen,
+                         WnckApplication *app)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[APPLICATION_OPENED],
+                 0, app);
+}
+
+static void
+emit_application_closed (WnckScreen      *screen,
+                         WnckApplication *app)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[APPLICATION_CLOSED],
+                 0, app);
 }
 
 

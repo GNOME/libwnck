@@ -23,6 +23,7 @@
 #define WNCK_APPLICATION_H
 
 #include <glib-object.h>
+#include <libwnck/screen.h>
 
 G_BEGIN_DECLS
 
@@ -33,7 +34,6 @@ G_BEGIN_DECLS
 #define WNCK_IS_APPLICATION_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), WNCK_TYPE_APPLICATION))
 #define WNCK_APPLICATION_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), WNCK_TYPE_APPLICATION, WnckApplicationClass))
 
-typedef struct _WnckApplication        WnckApplication;
 typedef struct _WnckApplicationClass   WnckApplicationClass;
 typedef struct _WnckApplicationPrivate WnckApplicationPrivate;
 
@@ -52,6 +52,16 @@ struct _WnckApplicationClass
 
 GType wnck_application_get_type (void) G_GNUC_CONST;
 
+WnckApplication* wnck_application_get (gulong xwindow);
+
+GList* wnck_application_get_windows (WnckApplication *app);
+
+/* FIXME we need application_get_name, application_get_pid,
+ * etc.; these should prefer to read those properties
+ * straight off the group leader, and failing that, if
+ * the prop is the same for all windows in the app,
+ * return the values for the window.
+ */
 
 G_END_DECLS
 

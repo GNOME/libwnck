@@ -55,14 +55,26 @@ struct _WnckWindowClass
    * may have changed
    */
   void (* state_changed) (WnckWindow *window);
+
+  /* Changed workspace or pinned/unpinned state */
+  void (* workspace_changed) (WnckWindow *window);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
 
 WnckWindow* wnck_window_get (gulong xwindow);
 
+WnckScreen* wnck_window_get_screen    (WnckWindow *window);
+
 const char* wnck_window_get_name      (WnckWindow *window);
 const char* wnck_window_get_icon_name (WnckWindow *window);
+
+WnckApplication* wnck_window_get_application  (WnckWindow *window);
+gulong           wnck_window_get_group_leader (WnckWindow *window);
+
+const char* wnck_window_get_session_id        (WnckWindow *window);
+const char* wnck_window_get_session_id_utf8   (WnckWindow *window);
+int         wnck_window_get_pid               (WnckWindow *window);
 
 gboolean wnck_window_is_minimized              (WnckWindow *window);
 gboolean wnck_window_is_maximized_horizontally (WnckWindow *window);
@@ -85,6 +97,16 @@ void wnck_window_shade                   (WnckWindow *window);
 void wnck_window_unshade                 (WnckWindow *window);
 void wnck_window_stick                   (WnckWindow *window);
 void wnck_window_unstick                 (WnckWindow *window);
+
+WnckWorkspace* wnck_window_get_workspace     (WnckWindow    *window);
+void           wnck_window_move_to_workspace (WnckWindow    *window,
+                                              WnckWorkspace *space);
+
+/* pinned = on all workspaces */
+gboolean wnck_window_is_pinned (WnckWindow *window);
+void     wnck_window_pin       (WnckWindow *window);
+void     wnck_window_unpin     (WnckWindow *window);
+
 
 G_END_DECLS
 

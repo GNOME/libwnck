@@ -1,5 +1,15 @@
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/window.c: add support for getting session ID, pid
+
+	* libwnck/application.c: implement creation/destruction of the
+	application object, and its association with a window
+
+	* libwnck/window.c: add code to monitor a window's current
+	workspace
+
+2001-10-07  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/window.c: add a bunch of state query/modify functions
 
 2001-10-07  Havoc Pennington  <hp@pobox.com>

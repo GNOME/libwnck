@@ -27,8 +27,9 @@
 G_BEGIN_DECLS
 
 /* forward decls */
-typedef struct _WnckWindow    WnckWindow;
-typedef struct _WnckWorkspace WnckWorkspace;
+typedef struct _WnckApplication WnckApplication;
+typedef struct _WnckWindow      WnckWindow;
+typedef struct _WnckWorkspace   WnckWorkspace;
 
 /* Screen */
 
@@ -72,6 +73,12 @@ struct _WnckScreenClass
   /* workspace gone */
   void (* workspace_destroyed)      (WnckScreen *screen,
                                      WnckWorkspace *space);
+  /* new app */
+  void (* application_opened)       (WnckScreen      *screen,
+                                     WnckApplication *app);
+  /* app gone */
+  void (* application_closed)       (WnckScreen      *screen,
+                                     WnckApplication *app);
   
 };
 
@@ -79,6 +86,10 @@ GType wnck_screen_get_type (void) G_GNUC_CONST;
 
 WnckScreen* wnck_screen_get (int index);
 WnckScreen* wnck_screen_get_for_root (gulong root_window_id);
+
+WnckWorkspace* wnck_screen_get_active_workspace (WnckScreen *screen);
+WnckWindow*    wnck_screen_get_active_window    (WnckScreen *screen);
+
 
 G_END_DECLS
 

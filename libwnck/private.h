@@ -25,6 +25,7 @@
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
+#include "application.h"
 #include "xutils.h"
 
 G_BEGIN_DECLS
@@ -35,13 +36,23 @@ void _wnck_window_process_property_notify (WnckWindow *window,
 void _wnck_screen_process_property_notify (WnckScreen *screen,
                                            XEvent     *xevent);
 
-WnckWindow* _wnck_window_create (Window xwindow);
-
+WnckWindow* _wnck_window_create  (Window      xwindow,
+                                  WnckScreen *screen);
 void        _wnck_window_destroy (WnckWindow *window);
 
 WnckWorkspace* _wnck_workspace_create  (int            number);
 void           _wnck_workspace_destroy (WnckWorkspace *space);
 
+void _wnck_window_set_application    (WnckWindow      *window,
+                                      WnckApplication *app);
+void _wnck_application_add_window    (WnckApplication *app,
+                                      WnckWindow      *window);
+void _wnck_application_remove_window (WnckApplication *app,
+                                      WnckWindow      *window);
+
+WnckApplication* _wnck_application_create  (Window           xwindow,
+                                            WnckScreen      *screen);
+void             _wnck_application_destroy (WnckApplication *app);
 
 G_END_DECLS
 
