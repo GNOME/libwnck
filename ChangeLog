@@ -1,3 +1,12 @@
+2004-04-14  Mark McLoughlin  <mark@skynet.ie>
+
+	Patch from Kim Woelders in bug #122086.
+
+	* libwnck/pager.c: (wnck_pager_button_release): only switch
+	workspaces if actually clicking on a different workspace
+	and move to viewport co-ordinates (0, 0) rather then where
+	the mouse actually clicks.
+
 2004-04-10  Guntupalli Karunakar  <karunakar@freedomink.org>
 
         * configure.in: Added "gu" (Gujarati) to ALL_LINGUAS.

@@ -1146,25 +1146,35 @@ wnck_pager_button_release (GtkWidget        *widget,
     {
       i = workspace_at_point (pager, event->x, event->y, &viewport_x, &viewport_y);
 
-      if (i >= 0)
-	{
-	  space = wnck_screen_get_workspace (pager->priv->screen, i);
+      if (i >= 0 && (space = wnck_screen_get_workspace (pager->priv->screen, i)))
+	  {
+	    int screen_width, screen_height;
 
-	  if (space)
-            {
-              wnck_workspace_activate (space);
+	    /* Don't switch the desktop if we're already there */
+	    if (space != wnck_screen_get_active_workspace (pager->priv->screen))
+	      wnck_workspace_activate (space);
 
-              /* EWMH only lets us move the viewport for the active workspace,
-               * but we just go ahead and hackily assume that the activate
-               * just above takes effect prior to moving the viewport
-               */
-              wnck_screen_move_viewport (pager->priv->screen,
-                                         viewport_x, viewport_y);
+	    /* EWMH only lets us move the viewport for the active workspace,
+	     * but we just go ahead and hackily assume that the activate
+	     * just above takes effect prior to moving the viewport
+	     */
+
+	    /* Transform the pointer location to viewport origin, assuming
+	     * that we want the nearest "regular" viewport containing the
+	     * pointer.
+	     */
+	    screen_width  = wnck_screen_get_width  (pager->priv->screen);
+	    screen_height = wnck_screen_get_height (pager->priv->screen);
+	    viewport_x = (viewport_x / screen_width)  * screen_width;
+	    viewport_y = (viewport_y / screen_height) * screen_height;
               
-              if (pager->priv->drag_window)
-                wnck_window_activate (pager->priv->drag_window);
-            }
-	}
+	    if (wnck_workspace_get_viewport_x (space) != viewport_x ||
+		wnck_workspace_get_viewport_y (space) != viewport_y)
+	      wnck_screen_move_viewport (pager->priv->screen, viewport_x, viewport_y);
+              
+	    if (pager->priv->drag_window)
+	      wnck_window_activate (pager->priv->drag_window);
+	  }
       
       if (pager->priv->drag_window)
         wnck_pager_clear_drag (pager);
