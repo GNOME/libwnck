@@ -367,6 +367,23 @@ wnck_screen_get_active_window (WnckScreen *screen)
   return screen->priv->active_window;
 }
 
+/**
+ * wnck_screen_get_windows:
+ * @screen: a #WnckScreen
+ * 
+ * Gets the screen's list of windows. The list is not copied
+ * and should not be freed.
+ * 
+ * Return value: reference to list of windows
+ **/
+GList*
+wnck_screen_get_windows (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->windows;
+}
+
 void
 _wnck_screen_process_property_notify (WnckScreen *screen,
                                       XEvent     *xevent)

@@ -1,5 +1,10 @@
 2001-10-07  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/test-wnck.c: add GUI to test program. exposes various
+	GTK bugs...
+
+2001-10-07  Havoc Pennington  <hp@pobox.com>
+
         * libwnck/window.c: add more info to state_changed signal, 
 	set up generated enum/marshaller files to support it.
 	
