@@ -1,5 +1,9 @@
 2003-03-13  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: bump to 2.3.0.
+
+2003-03-13  Mark McLoughlin  <mark@skynet.ie>
+
 	Fix bug #98357 - make the workspace switcher follow fitt's
         law by being flush up against the screen edge. We do this
 	by drawing our own focus so libpanel-applet doesn't draw
