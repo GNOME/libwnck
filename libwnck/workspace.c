@@ -19,15 +19,19 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+#include <libintl.h>
 #include "workspace.h"
 #include "xutils.h"
+
+#define _(x) dgettext (GETTEXT_PACKAGE, x)
 
 static GHashTable* workspace_hash = NULL;
 
 struct _WnckWorkspacePrivate
 {
   int number;
-  
+  char *name;
 };
 
 enum {
@@ -99,6 +103,7 @@ wnck_workspace_finalize (GObject *object)
 
   workspace = WNCK_WORKSPACE (object);
 
+  g_free (workspace->priv->name);
   
   g_free (workspace->priv);
   
@@ -143,6 +148,28 @@ wnck_workspace_get_number (WnckWorkspace *space)
 }
 
 /**
+ * wnck_workspace_get_name:
+ * @space: a #WnckWorkspace
+ * 
+ * Gets the name that should be used to refer to the workspace
+ * in the user interface. If the user hasn't set a special name,
+ * will be something like "Workspace 3" - otherwise whatever name
+ * the user set.
+ *
+ * FIXME haven't actually implemented reading the user-set
+ * name from the window manager.
+ * 
+ * Return value: workspace name, never %NULL 
+ **/
+const char*
+wnck_workspace_get_name (WnckWorkspace *space)
+{
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), NULL);
+  
+  return space->priv->name;
+}
+
+/**
  * wnck_workspace_activate:
  * @space: a #WnckWorkspace
  * 
@@ -170,7 +197,8 @@ _wnck_workspace_create  (int number)
   
   space = g_object_new (WNCK_TYPE_WORKSPACE, NULL);
   space->priv->number = number;
-
+  space->priv->name = g_strdup_printf (_("Workspace %d"), number);
+  
   g_hash_table_insert (workspace_hash, &space->priv->number, space);
 
   /* Hash now owns one ref, caller gets none */
