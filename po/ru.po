@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "POT-Creation-Date: 2002-04-29 01:37-0400\n"
-"PO-Revision-Date: 2002-04-16 00:13+04:00\n"
+"PO-Revision-Date: 2002-05-04 19:08+04:00\n"
 "Last-Translator: Dmitry G. Mastrukov <dmitry@taurussoft.org>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,6 @@ msgid "_Shade"
 msgstr "Ввести в _тень"
 
 #: libwnck/window-action-menu.c:297
-#, fuzzy
 msgid "_Close"
 msgstr "_Закрыть"
 
