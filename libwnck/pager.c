@@ -445,7 +445,7 @@ draw_window (GdkDrawable        *drawable,
         pixbuf_rect.width = icon_w;
         pixbuf_rect.height = icon_h;
                 
-        if (gdk_rectangle_intersect (winrect, &pixbuf_rect,
+        if (gdk_rectangle_intersect ((GdkRectangle *)winrect, &pixbuf_rect,
                                      &draw_rect))
           {
             gdk_pixbuf_render_to_drawable_alpha (icon,
@@ -472,9 +472,6 @@ draw_window (GdkDrawable        *drawable,
                       winrect->width - 1, winrect->height - 1);
 }            
 
-#define REALLY_SMALL -100000000
-#define REALLY_BIG    100000000
-
 static int
 workspace_at_point (WnckPager *pager,
                     int        x,
@@ -498,9 +495,7 @@ workspace_at_point (WnckPager *pager,
       ++i;
     }
 
-  /* If it wasn't in any workspace it was probably in the unused area
-   * after the last workspace */
-  return n_spaces - 1;
+  return -1;
 }
 
 static gboolean
@@ -583,22 +578,25 @@ wnck_pager_expose_event  (GtkWidget      *widget,
       i = workspace_at_point (pager,
                               pager->priv->drag_window_x,
                               pager->priv->drag_window_y);
-      
-      get_workspace_rect (pager, i, &rect);          
-      get_window_rect (pager->priv->drag_window, &rect, &winrect);
 
-      dx = (pager->priv->drag_window_x - rect.x) -
-        pager->priv->drag_start_x_workspace_relative;
-      dy = (pager->priv->drag_window_y - rect.y) -
-        pager->priv->drag_start_y_workspace_relative;
-      
-      winrect.x += dx;
-      winrect.y += dy;
-      
-      draw_window (widget->window,
-                   widget,
-                   pager->priv->drag_window,
-                   &winrect);
+      if (i >= 0)
+	{
+	  get_workspace_rect (pager, i, &rect);          
+	  get_window_rect (pager->priv->drag_window, &rect, &winrect);
+
+	  dx = (pager->priv->drag_window_x - rect.x) -
+	    pager->priv->drag_start_x_workspace_relative;
+	  dy = (pager->priv->drag_window_y - rect.y) -
+	    pager->priv->drag_start_y_workspace_relative;
+	  
+	  winrect.x += dx;
+	  winrect.y += dy;
+	  
+	  draw_window (widget->window,
+		       widget,
+		       pager->priv->drag_window,
+		       &winrect);
+	}
     }
   
   return FALSE;
@@ -628,17 +626,10 @@ wnck_pager_button_press  (GtkWidget      *widget,
         {
           WnckWorkspace *space = wnck_workspace_get (i);
 
-          if (space &&
-              space != wnck_screen_get_active_workspace (pager->priv->screen))
-            {
-              if (event->button == 1)
-		{
-		  wnck_workspace_activate (space);
-		  handled = TRUE;
-		}
-              goto workspace_search_out;
-            }
-          else if (space)
+	  if (event->button == 1)
+	    handled = TRUE;
+	  
+	  if (space)
             {
               GList *windows;
               GList *tmp;
@@ -670,7 +661,6 @@ wnck_pager_button_press  (GtkWidget      *widget,
                             event->x - rect.x;
                           pager->priv->drag_start_y_workspace_relative =
                             event->y - rect.y;
-			  handled = TRUE;
                         }
 
                       goto window_search_out;
@@ -727,31 +717,54 @@ static gboolean
 wnck_pager_button_release (GtkWidget        *widget,
                            GdkEventButton   *event)
 {
+  WnckWorkspace *space;
   WnckPager *pager;
+  int i;
+  gboolean handled = FALSE;
 
   pager = WNCK_PAGER (widget);
 
   if (event->button == 1 && pager->priv->dragging)
     {
-      int i;
-      WnckWorkspace *space;
       
       i = workspace_at_point (pager,
                               event->x,
                               event->y);
 
-      space = wnck_workspace_get (i);
+      if (i >= 0)
+	{
+	  space = wnck_workspace_get (i);
 
-      if (space)
-        wnck_window_move_to_workspace (pager->priv->drag_window,
-                                       space);
+	  if (space)
+	    wnck_window_move_to_workspace (pager->priv->drag_window,
+					   space);
+	  
+	}
       
       wnck_pager_clear_drag (pager);
+      handled = TRUE;
     }
-  else if (event->button == 1 && pager->priv->drag_window)
+  else if (event->button == 1)
     {
-      wnck_window_activate (pager->priv->drag_window);
-      wnck_pager_clear_drag (pager);
+      i = workspace_at_point (pager,
+                              event->x,
+                              event->y);
+
+      if (i >= 0)
+	{
+	  space = wnck_workspace_get (i);
+
+	  if (space &&
+	      space != wnck_screen_get_active_workspace (pager->priv->screen))
+	    wnck_workspace_activate (space);
+	}
+      
+      if (pager->priv->drag_window)
+	{
+	  wnck_window_activate (pager->priv->drag_window);
+	  wnck_pager_clear_drag (pager);
+	}
+      handled = TRUE;
     }
 
   return FALSE;
