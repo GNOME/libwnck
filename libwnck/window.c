@@ -187,7 +187,7 @@ wnck_window_init (WnckWindow *window)
   window->priv = g_new0 (WnckWindowPrivate, 1);
 
   window->priv->name = g_strdup (FALLBACK_NAME);
-  window->priv->icon_name = g_strdup (FALLBACK_NAME);
+  window->priv->icon_name = NULL;
   window->priv->workspace = ALL_WORKSPACES;
 
   window->priv->icon_cache = _wnck_icon_cache_new ();
@@ -1443,8 +1443,7 @@ update_icon_name (WnckWindow *window)
       _wnck_get_text_property (window->priv->xwindow,
                                XA_WM_ICON_NAME);
 
-  if (window->priv->icon_name == NULL)
-    window->priv->icon_name = g_strdup (FALLBACK_NAME);
+  /* no fallback, get_icon_name falls back to regular window title */
 }
 
 static void
@@ -1699,7 +1698,8 @@ force_update_now (WnckWindow *window)
     window->priv->icon_name = old_icon_name;
   else
     {
-      if (strcmp (window->priv->icon_name, old_icon_name) != 0)
+      if (old_icon_name == NULL ||
+          strcmp (window->priv->icon_name, old_icon_name) != 0)
         emit_name_changed (window);
       g_free (old_icon_name);
     }

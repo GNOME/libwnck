@@ -245,6 +245,10 @@ wnck_application_get_icon_name (WnckApplication *app)
 {
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
+  /* FIXME this isn't actually implemented, should be different
+   * from regular name
+   */
+  
   if (app->priv->name)
     return app->priv->name;
   else

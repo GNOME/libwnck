@@ -1,5 +1,17 @@
 2002-09-27  Havoc Pennington  <hp@redhat.com>
 
+	* libwnck/tasklist.c (wnck_task_get_text): use icon name not 
+	regular name
+
+	* libwnck/window.c (wnck_window_init): init icon name to NULL so
+	we can tell when it's unset and fall back to regular name
+	(update_icon_name): don't use a fallback for icon name
+
+	* libwnck/application.c (wnck_application_get_icon_name): add a
+	FIXME that this doesn't do the right thing
+	
+2002-09-27  Havoc Pennington  <hp@redhat.com>
+
         Bug #89373
 	
 	* libwnck/xutils.c (_wnck_set_desktop_layout): set _NET_WM_TOPLEFT

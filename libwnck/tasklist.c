@@ -613,12 +613,12 @@ wnck_tasklist_score_groups (WnckTasklist *tasklist,
 
 	  if (first_name == NULL)
 	    {
-	      first_name = wnck_window_get_name (win_task->window);
+	      first_name = wnck_window_get_icon_name (win_task->window);
 	      n_same_title++;
 	    }
 	  else
 	    {
-	      if (strcmp (wnck_window_get_name (win_task->window),
+	      if (strcmp (wnck_window_get_icon_name (win_task->window),
 			  first_name) == 0)
 		n_same_title++;
 	    }
@@ -1654,13 +1654,13 @@ wnck_task_get_text (WnckTask *task)
   if (task->is_application)
     {
       return g_strdup_printf ("%s (%d)",
-                              wnck_application_get_name (task->application),
+                              wnck_application_get_icon_name (task->application),
                               g_list_length (task->windows));
     }
   else
     {
       state = wnck_window_get_state (task->window);
-      name = wnck_window_get_name (task->window);
+      name = wnck_window_get_icon_name (task->window);
       
       if (state & WNCK_WINDOW_STATE_MINIMIZED)
 	return g_strdup_printf ("[%s]", name);
