@@ -1,16 +1,16 @@
-# Italian translation of libwnck.
+# libwnck's Italian translation.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
 # 
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2002-08-08 19:30-0400\n"
-"PO-Revision-Date: 2002-05-22 01:31+0200\n"
+"Project-Id-Version: libwnck 0.15\n"
+"POT-Creation-Date: 2002-08-08 21:31+0200\n"
+"PO-Revision-Date: 2002-08-08 21:32+0100\n"
 "Last-Translator: Pier Luigi Fiorini <plfiorini@supereva.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
@@ -18,18 +18,17 @@ msgid "untitled application"
 msgstr "applicazione senza nome"
 
 #: libwnck/pager-accessible.c:295
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "Area di lavoro %d"
+msgstr "Selettore area di lavoro"
 
 #: libwnck/pager-accessible.c:306
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "Strumento per spostarsi tra le aree di lavoro"
 
 #: libwnck/pager-accessible.c:410
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "Cliccare questo per passare all'area di lavoro %s"
 
 #: libwnck/window-action-menu.c:155
 msgid "Un_minimize"
