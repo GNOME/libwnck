@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-06-03 15:58+0900\n"
+"POT-Creation-Date: 2002-06-02 22:45-0400\n"
 "PO-Revision-Date: 2002-06-03 15:58+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: Korean <gnome-kr-translation@lists.sourceforge.net>\n"
@@ -17,19 +17,6 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "제목 없는 프로그램"
-
-#: libwnck/pager-accessible.c:295
-msgid "Workspace Switcher"
-msgstr "작업 공간 전환"
-
-#: libwnck/pager-accessible.c:306
-msgid "Tool to switch between workspaces"
-msgstr "작업 공간 사이로 전환하는 툴"
-
-#: libwnck/pager-accessible.c:410
-#, c-format
-msgid "Click this to switch to workspace %s"
-msgstr "작업 공간 %s로(으로) 전환하려면 클릭하십시오"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -75,3 +62,12 @@ msgstr "제목없는 창"
 #, c-format
 msgid "Workspace %d"
 msgstr "작업 공간 %d"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "작업 공간 전환"
+
+#~ msgid "Tool to switch between workspaces"
+#~ msgstr "작업 공간 사이로 전환하는 툴"
+
+#~ msgid "Click this to switch to workspace %s"
+#~ msgstr "작업 공간 %s로(으로) 전환하려면 클릭하십시오"

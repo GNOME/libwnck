@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD \n"
-"POT-Creation-Date: 2002-06-10 13:58+0800\n"
+"POT-Creation-Date: 2002-06-02 22:45-0400\n"
 "PO-Revision-Date: 2002-01-14 08:13+0800\n"
 "Last-Translator: Hasbullah Bin Pit (sebol) <sebol@ikhlas.com>\n"
 "Language-Team: Projek Gabai <gabai-penyumbang@lists.sourceforge.org>\n"
@@ -16,19 +16,6 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "aplikasi tiada tajuk"
-
-#: libwnck/pager-accessible.c:295
-msgid "Workspace Switcher"
-msgstr "Penukar Ruangkerja"
-
-#: libwnck/pager-accessible.c:306
-msgid "Tool to switch between workspaces"
-msgstr "Radas untuk menukar antara ruangkerja"
-
-#: libwnck/pager-accessible.c:410
-#, c-format
-msgid "Click this to switch to workspace %s"
-msgstr "Klik sini untuk menukar ke ruangkerja %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -74,3 +61,12 @@ msgstr "tetingkap tiada tajuk"
 #, c-format
 msgid "Workspace %d"
 msgstr "Ruangkerja %d"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Penukar Ruangkerja"
+
+#~ msgid "Tool to switch between workspaces"
+#~ msgstr "Radas untuk menukar antara ruangkerja"
+
+#~ msgid "Click this to switch to workspace %s"
+#~ msgstr "Klik sini untuk menukar ke ruangkerja %s"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2002-05-21 16:59+0200\n"
+"POT-Creation-Date: 2002-06-02 22:45-0400\n"
 "PO-Revision-Date: 2002-05-22 01:31+0200\n"
 "Last-Translator: Pier Luigi Fiorini <plfiorini@supereva.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
@@ -61,4 +61,3 @@ msgstr "finestra senza titolo"
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
-

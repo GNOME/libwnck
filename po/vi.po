@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2002-06-04 10:09+0200\n"
+"POT-Creation-Date: 2002-06-02 22:45-0400\n"
 "PO-Revision-Date: 2002-06-05 01:53+0700\n"
 "Last-Translator: pclouds <pclouds@gmx.net>\n"
 "Language-Team: GnomeVI <gnomevi-list@lists.sourceforge.net>\n"
@@ -15,19 +15,6 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "ứng dụng không tên"
-
-#: libwnck/pager-accessible.c:295
-msgid "Workspace Switcher"
-msgstr "Bộ chuyển Workspace"
-
-#: libwnck/pager-accessible.c:306
-msgid "Tool to switch between workspaces"
-msgstr "Công cụ để chuyển giữa các workspace"
-
-#: libwnck/pager-accessible.c:410
-#, c-format
-msgid "Click this to switch to workspace %s"
-msgstr "Nhấn vào đây để chuyển qua workspace %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -73,3 +60,12 @@ msgstr "cửa sổ không tên"
 #, c-format
 msgid "Workspace %d"
 msgstr "Workspace %d"
+
+#~ msgid "Workspace Switcher"
+#~ msgstr "Bộ chuyển Workspace"
+
+#~ msgid "Tool to switch between workspaces"
+#~ msgstr "Công cụ để chuyển giữa các workspace"
+
+#~ msgid "Click this to switch to workspace %s"
+#~ msgstr "Nhấn vào đây để chuyển qua workspace %s"
