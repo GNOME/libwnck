@@ -1,6 +1,15 @@
 2005-02-20  Elijah Newren  <newren@gmail.com>
 
 	Backport of fix in the development branch; patch from Juerg
+	Billeter to fix windows from all screen being shown when tasklist
+	is first created.
+
+	* libwnck/tasklist.c: (wnck_tasklist_realize):
+        update lists after realization.
+
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Backport of fix in the development branch; patch from Juerg
 	Billeter with modifications by Mark.
 
 	* libwnck/tasklist.c:
