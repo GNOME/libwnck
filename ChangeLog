@@ -1,3 +1,8 @@
+2002-05-14  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/pager.c (wnck_pager_button_release): only activate a
+	window if we did not activate a workspace. #81817
+
 2002-05-14  Thomas Vander Stichele <thomas@apestaart.org>
 
   	* libwnck/taslist.c: 
@@ -44,8 +49,8 @@
 	(_wnck_get_window_position):
 	* libwnck/xutils.h:
 	Add multi-screen support. Don't leak the created and deleted
-	lists in update_workspace_list. Bump version to 0.11.
-	
+	lists in update_workspace_list. Bump version to 0.11.	
+
 2002-05-14  Havoc Pennington  <hp@pobox.com>
 
 	* configure.in: 0.10

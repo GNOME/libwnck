@@ -784,8 +784,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
 }
 
 static gboolean
-wnck_pager_button_press  (GtkWidget      *widget,
-                          GdkEventButton *event)
+wnck_pager_button_press (GtkWidget      *widget,
+                         GdkEventButton *event)
 {
   WnckPager *pager;
   int i;
@@ -938,16 +938,18 @@ wnck_pager_button_release (GtkWidget        *widget,
 	{
 	  space = wnck_screen_get_workspace (pager->priv->screen, i);
 
-	  if (space &&
-	      space != wnck_screen_get_active_workspace (pager->priv->screen))
-	    wnck_workspace_activate (space);
+	  if (space)
+            {
+              if (space != wnck_screen_get_active_workspace (pager->priv->screen))
+                wnck_workspace_activate (space);
+              else if (pager->priv->drag_window)
+                wnck_window_activate (pager->priv->drag_window);
+            }
 	}
       
       if (pager->priv->drag_window)
-	{
-	  wnck_window_activate (pager->priv->drag_window);
-	  wnck_pager_clear_drag (pager);
-	}
+        wnck_pager_clear_drag (pager);
+
       handled = TRUE;
     }
 
