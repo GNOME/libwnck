@@ -1464,7 +1464,6 @@ wnck_task_create_widgets (WnckTask *task)
 {
   GtkWidget *table;
   GdkPixbuf *pixbuf;
-  GtkRcStyle *rc_style;
   char *text;
   
   task->button = gtk_toggle_button_new ();

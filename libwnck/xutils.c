@@ -54,7 +54,10 @@ _wnck_get_cardinal (Window  xwindow,
     return FALSE;
   
   if (type != XA_CARDINAL)
-    return FALSE;
+    {
+      XFree (num);
+      return FALSE;
+    }
 
   *val = *num;
   
@@ -91,7 +94,10 @@ _wnck_get_wm_state (Window  xwindow)
     return retval;
   
   if (type != wm_state)
-    return retval;
+    {
+      XFree (num);
+      return retval;
+    }
 
   retval = *num;
   
@@ -127,7 +133,10 @@ _wnck_get_window (Window  xwindow,
     return FALSE;
   
   if (type != XA_WINDOW)
-    return FALSE;
+    {
+      XFree (w);
+      return FALSE;
+    }
 
   *val = *w;
   
@@ -217,7 +226,10 @@ _wnck_get_string_property_latin1 (Window  xwindow,
     return NULL;
   
   if (type != XA_STRING)
-    return NULL; /* FIXME memory leak? */
+    {
+      XFree (str);
+      return NULL;
+    }
 
   retval = g_strdup (str);
   
@@ -309,7 +321,10 @@ _wnck_get_window_list (Window   xwindow,
     return FALSE;
   
   if (type != XA_WINDOW)
-    return FALSE; /* FIXME memory leak? */
+    {
+      XFree (data);
+      return FALSE;
+    }
 
   *windows = g_new (Window, nitems);
   memcpy (*windows, data, sizeof (Window) * nitems);
@@ -349,7 +364,10 @@ _wnck_get_atom_list (Window   xwindow,
     return FALSE;
   
   if (type != XA_ATOM)
-    return FALSE; /* FIXME memory leak? */
+    {
+      XFree (data);
+      return FALSE;
+    }
 
   *atoms = g_new (Atom, nitems);
   memcpy (*atoms, data, sizeof (Atom) * nitems);
@@ -389,7 +407,10 @@ _wnck_get_cardinal_list (Window   xwindow,
     return FALSE;
   
   if (type != XA_CARDINAL)
-    return FALSE; /* FIXME memory leak ? */
+    {
+      XFree (nums);
+      return FALSE;
+    }
 
   *cardinals = g_new (gulong, nitems);
   memcpy (*cardinals, nums, sizeof (gulong) * nitems);
@@ -973,7 +994,10 @@ read_rgb_icon (Window         xwindow,
     return FALSE;
 
   if (type != XA_CARDINAL)
-    return FALSE; /* FIXME memory leak? */
+    {
+      XFree (data);
+      return FALSE;
+    }
   
   if (!find_best_size (data, nitems,
                        ideal_width, ideal_height,
@@ -1260,7 +1284,10 @@ get_kwm_win_icon (Window  xwindow,
     return;
   
   if (type != _wnck_atom_get ("KWM_WIN_ICON"))
-    return; /* FIXME mem leak? */
+    {
+      XFree (icons);
+      return;
+    }
   
   *pixmap = icons[0];
   *mask = icons[1];

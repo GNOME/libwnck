@@ -1,3 +1,13 @@
+2001-12-23  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c: (wnck_task_create_widgets): kill unused rc_style.
+
+	* libwnck/xutils.c: (_wnck_get_cardinal), (_wnck_get_wm_state),
+	(_wnck_get_window), (_wnck_get_string_property_latin1),
+	(_wnck_get_window_list), (_wnck_get_atom_list),
+	(_wnck_get_cardinal_list), (read_rgb_icon), (get_kwm_win_icon):
+	fix memleak FIXMEs.
+
 2001-12-18  Alex Larsson  <alexl@redhat.com>
 
 	* libwnck/tasklist.c (wnck_task_class_init):
