@@ -1,50 +1,50 @@
+# translation of nn.po to Norwegian Nynorsk
 # Norwegian/Nynorsk translation of libwnck
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2004 Free Software Foundation, Inc.
 # Roy-Magne Mo <rmo@sunnmore.net>, 2002.
-# 
+# Åsmund Skjæveland <aasmunds@fys.uio.no>, 2004.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2002-01-25 05:35+0100\n"
-"Last-Translator:  <>\n"
-"Language-Team: Norwegian/Nynorsk <nn@li.org>\n"
+"Project-Id-Version: nn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2004-01-05 23:39+0100\n"
+"PO-Revision-Date: 2004-01-05 23:55+0100\n"
+"Last-Translator: Åsmund Skjæveland <aasmunds@fys.uio.no>\n"
+"Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.0.2\n"
 
 #: libwnck/application.c:26
 msgid "untitled application"
 msgstr "program utan namn"
 
 #: libwnck/pager-accessible.c:317
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "Arbeidsområde %d"
+msgstr "Arbeidsområdeskiftar"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "Verktøy som byter mellom arbeidsområde"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "Klikk på dette for å byta til arbeidsområde %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "Ikkje _maksimér"
+msgstr "Gje_nopprett"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimér"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
-msgstr "_Ikkje maksimér"
+msgstr "_Gjenopprett"
 
 #: libwnck/window-action-menu.c:213
 msgid "Ma_ximize"
@@ -52,33 +52,31 @@ msgstr "Ma_ksimér"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "R_ull ned"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "Rull _opp"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Berre på _dette arbeidsområdet"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Plasser på _alle arbeidsområde"
 
 #: libwnck/window-action-menu.c:375
-#, fuzzy
 msgid "_Move"
 msgstr "Fl_ytt"
 
 #: libwnck/window-action-menu.c:382
 msgid "_Resize"
-msgstr "Gje_r om storleik"
+msgstr "End_ra storleik"
 
 #: libwnck/window-action-menu.c:395
-#, fuzzy
 msgid "_Close"
-msgstr "Lukk"
+msgstr "_Lukk"
 
 #: libwnck/window.c:32
 msgid "untitled window"
@@ -89,8 +87,17 @@ msgstr "vindauge utan tittel"
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
 
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Vindaugeliste"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Verktøy til å byta mellom synlege vindauge"
+
 #~ msgid "U_nshade"
 #~ msgstr "Fjern _skugge"
 
 #~ msgid "_Shade"
 #~ msgstr "_Skuggelegg"
+
