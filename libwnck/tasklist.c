@@ -215,15 +215,15 @@ wnck_task_class_init (WnckTaskClass *klass)
   
   object_class->finalize = wnck_task_finalize;
 
-  gtk_rc_parse_string ("
-    style \"tasklist-button-style\"
-    {
-       GtkWidget::focus-line-width=0
-       GtkWidget::focus-padding=0
-    }
-
-    widget \"*.tasklist-button\" style \"tasklist-button-style\"
-  ");
+  gtk_rc_parse_string ("\n"
+    "   style \"tasklist-button-style\"\n"
+    "   {\n"
+    "      GtkWidget::focus-line-width=0\n"
+    "      GtkWidget::focus-padding=0\n"
+    "   }\n"
+    "\n"
+    "    widget \"*.tasklist-button\" style \"tasklist-button-style\"\n"
+    "\n");
 }
 
 static void
