@@ -1,0 +1,86 @@
+# Tamil translation of libwnck.
+# Copyright (C) 2003 libwnck'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the libwnck package.
+# Dinesh Nadarajah <n_dinesh@yahoo.com>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck Tamil 2.2.0\n"
+"POT-Creation-Date: 2003-03-27 20:34+0100\n"
+"PO-Revision-Date: 2003-03-27 23:37+0600\n"
+"Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
+"Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "¦ÀÂÃüÈ ¿¢Ãø"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "§Å¨ÄÂ¢¼ Á¡üÈ¢"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "§Å¨ÄÂ¢¼í¸ÙìÌ Á¡üÚõ ¸ÕÅ¢"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "%s §Å¨ÄÂ¢¼ò¾¢üÌ Á¡üÈ þ¾¨É «Óò¾×õ"
+
+#: libwnck/window-action-menu.c:191
+msgid "Un_minimize"
+msgstr "¦ÀÕ¾¡ìÌ"
+
+#: libwnck/window-action-menu.c:198
+msgid "_Minimize"
+msgstr "_¬¸-º¢È¢Â¾¡ìÌ"
+
+#: libwnck/window-action-menu.c:206
+msgid "_Unmaximize"
+msgstr "º¢È¢Â¾¡ìÌ"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "¬¸-¦ÀÕ¾¡ìÌ"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "¸£ú Å¢Ã¢"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "§Á§Ä ÍÕðÎ"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "þù§Å¨ÄÂ¢¼ò¾¢ø ÁðÎõ"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "«¨ÉòÐ §Å¨ÄÂ¢¼í¸Ç¢Öõ §À¡Î¸"
+
+#: libwnck/window-action-menu.c:372
+msgid "Mo_ve"
+msgstr "¿¸÷òÐ"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "«Ç× Á¡üÚ"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_ãÎ"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "¦ÀÂÃüÈ º¡ÇÃõ"
+
+#: libwnck/workspace.c:222
+#, c-format
+msgid "Workspace %d"
+msgstr "§Å¨ÄÂ¢¼õ %d"
+
