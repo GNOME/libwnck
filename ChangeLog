@@ -1,5 +1,14 @@
 2004-12-15  Mark McLoughlin  <mark@skynet.ie>
 
+	Patch from Juerg Billeter <j@bitron.ch> in bug #154041
+	to fix windows from all screen being shown when tasklist
+	is first created.
+
+	* libwnck/tasklist.c: (wnck_tasklist_realize):
+	update lists after realization.
+
+2004-12-15  Mark McLoughlin  <mark@skynet.ie>
+
 	Fix from Benoît Dejean <TazForEver@dlfp.org> in
 	bug #158875
 

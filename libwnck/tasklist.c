@@ -1181,6 +1181,8 @@ wnck_tasklist_realize (GtkWidget *widget)
 #endif
   
   (* GTK_WIDGET_CLASS (tasklist_parent_class)->realize) (widget);
+
+  wnck_tasklist_update_lists (tasklist);
 }
 
 static void
