@@ -294,8 +294,8 @@ make_gtk_label_bold (GtkLabel *label)
   pango_font_description_free (font_desc);
 }
 
-void
-wnck_gtk_label_make_normal (GtkLabel *label)
+static void
+make_gtk_label_normal (GtkLabel *label)
 {
   PangoFontDescription *font_desc;
 
@@ -2321,7 +2321,7 @@ wnck_task_update_visible_state (WnckTask *task)
       if (wnck_task_get_demands_attention (task))
         make_gtk_label_bold ((GTK_LABEL (task->label)));
       else
-        wnck_gtk_label_make_normal ((GTK_LABEL (task->label)));
+        make_gtk_label_normal ((GTK_LABEL (task->label)));
       gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
       g_free (text);
     }

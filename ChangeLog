@@ -1,6 +1,12 @@
 2004-12-20  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/tasklist.c:
+	(make_gtk_label_normal): rename and make
+	static.
+
+2004-12-20  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c:
 	(wnck_task_class_group_expose): make static.
 
 2004-12-15  Mark McLoughlin  <mark@skynet.ie>
