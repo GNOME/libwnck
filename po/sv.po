@@ -1,6 +1,6 @@
 # Swedish messages for libwnck.
-# Copyright (C) 2001, 2002, 2003, 2004 Free Software Foundation, Inc.
-# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004.
+# Copyright (C) 2001, 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+# Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
 #
 # $Id$
 #
@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-01-12 19:07+0100\n"
+"POT-Creation-Date: 2005-01-20 17:02+0100\n"
+"PO-Revision-Date: 2005-01-20 17:02+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -112,14 +112,35 @@ msgstr "Fönsterlista"
 msgid "Tool to switch between visible windows"
 msgstr "Verktyg för att växla mellan synliga fönster"
 
-#~ msgid "Un_minimize"
-#~ msgstr "Av_minimera"
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "_Stäng alla"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "_Minimera alla"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "_Avminimera alla"
+
+#~ msgid "untitled"
+#~ msgstr "namnlös"
+
+#~ msgid "Untitled"
+#~ msgstr "Namnlös"
+
+#~ msgid "_Minimize"
+#~ msgstr "_Minimera"
+
+#~ msgid "_Unminimize"
+#~ msgstr "_Avminimera"
 
 #~ msgid "Unminimize"
 #~ msgstr "Avminimera"
 
-#~ msgid "_Minimize"
-#~ msgstr "_Minimera"
+#~ msgid "Un_minimize"
+#~ msgstr "Av_minimera"
 
 #~ msgid "Minimize"
 #~ msgstr "Minimera"
