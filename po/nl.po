@@ -1,8 +1,8 @@
 # Dutch translation of libwnck.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # Ronald Hummelink <ronald@hummelink.xs4all.nl>, 2002.
-# Reinout van Schouwen <reinout@cs.vu.nl>, 2002, 2005.
-# Tino Meinen <a.t.meinen@chello.nl> 2002-2004.
+# Reinout van Schouwen <reinout@cs.vu.nl>, 2002.
+# Tino Meinen <a.t.meinen@chello.nl> 2002, 2003, 2004, 2005.
 # ------
 # Deze berichten zijn ook te zien als je met de rechter muisknop
 # op optieknop van het venster klikt
@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-14 05:15+0100\n"
-"PO-Revision-Date: 2004-01-07 15:19+0100\n"
-"Last-Translator: Reinout van Schouwen <reinout@cs.vu.nl>\n"
+"POT-Creation-Date: 2005-02-14 13:13+0100\n"
+"PO-Revision-Date: 2005-02-14 19:46+0100\n"
+"Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,35 +42,37 @@ msgstr "Onbekend venster"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr "Geen open vensters"
+msgstr "Geen geopende vensters"
 
+# niet helemaal exact vertaald, maar het is wel duidelijk zo
 #: libwnck/selector.c:741
 msgid "Window Selector"
-msgstr "Venstermenu"
+msgstr "Vensterselectie"
 
 #: libwnck/selector.c:742
 msgid "Tool to switch between windows"
-msgstr "Hulpmiddel om te wisselen tussen vensters"
+msgstr "Een hulpje om te wisselen van venster"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
 msgstr "Vensterlijst"
 
+# degenen die zichtbaar zijn
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
-msgstr "Hulpmiddel om tussen zichtbare vensters te wisselen"
+msgstr "Een hulpje om te wisselen van venster (die zichbaar zijn)"
 
 #: libwnck/tasklist.c:2102
 msgid "_Close All"
-msgstr "Alle sl_uiten"
+msgstr "Alles sl_uiten"
 
 #: libwnck/tasklist.c:2117
 msgid "_Minimize All"
-msgstr "Alle _minimaliseren"
+msgstr "Alles _minimaliseren"
 
 #: libwnck/tasklist.c:2128
 msgid "_Unminimize All"
-msgstr "Alle _herstellen"
+msgstr "Alles _herstellen"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -102,7 +104,7 @@ msgstr "Alleen op dit _werkblad"
 
 #: libwnck/window-action-menu.c:261
 msgid "_Always on Visible Workspace"
-msgstr "Altijd op _zichtbaar werkblad"
+msgstr "_Altijd op zichbare werkblad"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -132,7 +134,7 @@ msgstr "Sl_uiten"
 
 #: libwnck/window-action-menu.c:516
 msgid "Move to Another _Workspace"
-msgstr "Ver_plaatsen naar ander werkblad"
+msgstr "_Verplaatsen naar ander werkblad"
 
 #: libwnck/window-action-menu.c:540
 #, c-format
