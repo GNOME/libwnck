@@ -1,3 +1,8 @@
+2002-06-03  Christian Rose  <menthos@menthos.com>
+
+	* POTFILES.in: Added missing file.
+	* sv.po: Updated Swedish translation.
+
 2002-06-02  Vincent van Adrighem <V.vanAdrighem@dirck.mine.nu>
 
 	* nl.po: Updated Dutch translation by Reinout van Schouwen.
