@@ -1,3 +1,13 @@
+2001-12-05  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.[ch]:
+	Add calls to disable grouping and set grouping limit.
+	Remove warnings.
+	Enable grouping
+	Some scoring work.
+	Fix ownership issues
+	Popup menu on button_press too, to handle hold-down-button 
+
 2001-12-05  Christian Meyer  <chrisime@gnome.org>
 
 	* configure.in:

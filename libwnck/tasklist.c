@@ -18,6 +18,7 @@
  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
  * Boston, MA 02111-1307, USA.
  */
+#include <string.h>
 
 #include "tasklist.h"
 #include "window.h"
@@ -25,14 +26,14 @@
 
 /* TODO:
  * 
- *  Grouping
- *  Group menu
+ *  Add total focused time to the grouping score function
+ *  Fine tune the grouping scoring function
+ *  Fix naming and icon for groups/applications
  *  Maybe fine tune size_allocate() some more...
  *  Better vertical layout handling
  *  prefs
  *  ellipsizing lables
  *  support for right-click menu merging w/ bonobo for the applet
- *  Fix all the races... (listed to WnckWindow::finalize and null out WnckTask?)
  *
  */ 
 
@@ -48,7 +49,7 @@ typedef struct _WnckTask        WnckTask;
 typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define MINI_ICON_SIZE 16
-#define GROUPING_LIMIT 140
+#define DEFAULT_GROUPING_LIMIT 80
 
 #define DEFAULT_WIDTH 300
 #define DEFAULT_HEIGHT 48
@@ -71,12 +72,13 @@ struct _WnckTask
 
   GList *windows; /* List of the WnckTask for the window,
 		     if this is an application */
-
   gboolean really_toggling; /* Set when tasklist really wants
 			       to change the togglebutton state */
   gulong state_changed_tag;
   gulong icon_changed_tag;
   gulong name_changed_tag;
+
+  GtkWidget *menu;
 };
 
 struct _WnckTaskClass
@@ -103,13 +105,11 @@ struct _WnckTasklistPrivate
 
   gint max_button_width;
   gint max_button_height;
+
+  gboolean grouping_enabled;
+  gint grouping_limit;
 };
 
-enum
-{
-  dummy, /* remove this when you add more signals */
-  LAST_SIGNAL
-};
 
 static void wnck_task_init        (WnckTask      *task);
 static void wnck_task_class_init  (WnckTaskClass *klass);
@@ -134,8 +134,6 @@ static void     wnck_tasklist_size_request  (GtkWidget        *widget,
                                              GtkRequisition   *requisition);
 static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
-static gboolean wnck_tasklist_focus         (GtkWidget        *widget,
-                                             GtkDirectionType  direction);
 static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gboolean	       include_internals,
                                              GtkCallback       callback,
@@ -160,7 +158,6 @@ static void     wnck_tasklist_window_added_or_removed  (WnckScreen   *screen,
 
 static gpointer task_parent_class;
 static gpointer tasklist_parent_class;
-static guint signals[LAST_SIGNAL] = { 0 };
 
 GType
 wnck_task_get_type (void)
@@ -227,16 +224,44 @@ wnck_task_finalize (GObject *object)
     }
 
   if (task->state_changed_tag)
-    g_signal_handler_disconnect (task->window,
-				 task->state_changed_tag);
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->state_changed_tag);
+      task->state_changed_tag = 0;
+    }
 
   if (task->icon_changed_tag)
-    g_signal_handler_disconnect (task->window,
-				 task->icon_changed_tag);
-
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->icon_changed_tag);
+      task->icon_changed_tag = 0;
+    }
+  
   if (task->name_changed_tag)
-    g_signal_handler_disconnect (task->window,
-				 task->name_changed_tag);
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->name_changed_tag);
+      task->name_changed_tag = 0;
+    }
+
+  if (task->menu)
+    {
+      gtk_widget_destroy (task->menu);
+      task->menu = NULL;
+    }
+
+  if (task->window)
+    {
+      g_object_unref (task->window);
+      task->window = NULL;
+    }
+
+  if (task->application)
+    {
+      g_object_unref (task->application);
+      task->application = NULL;
+    }
+
   
   G_OBJECT_CLASS (task_parent_class)->finalize (object);
 }
@@ -283,7 +308,9 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->app_hash = g_hash_table_new (NULL, NULL);
-
+  
+  tasklist->priv->grouping_enabled = TRUE;
+  tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
 }
 
 static void
@@ -312,11 +339,35 @@ wnck_tasklist_finalize (GObject *object)
   tasklist = WNCK_TASKLIST (object);
 
   g_hash_table_destroy (tasklist->priv->win_hash);
+  tasklist->priv->win_hash = NULL;
+  
   g_hash_table_destroy (tasklist->priv->app_hash);
+  tasklist->priv->app_hash = NULL;
   
   g_free (tasklist->priv);
-  
+  tasklist->priv = NULL;
+
   G_OBJECT_CLASS (tasklist_parent_class)->finalize (object);
+}
+
+void
+wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
+				  gboolean allow_grouping)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+  
+  tasklist->priv->grouping_enabled = allow_grouping;
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+void
+wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
+				  gint          limit)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+  
+  tasklist->priv->grouping_limit = limit;
+  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
 static void
@@ -336,7 +387,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   l = tasklist->priv->windows;
   while (l != NULL)
     {
-      WnckTask *task = l->data;
+      WnckTask *task = WNCK_TASK (l->data);
 
       gtk_widget_size_request (task->button, &child_req);
       
@@ -351,7 +402,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   l = tasklist->priv->applications;
   while (l != NULL)
     {
-      WnckTask *task = l->data;
+      WnckTask *task = WNCK_TASK (l->data);
       
       gtk_widget_size_request (task->button, &child_req);
       
@@ -422,14 +473,47 @@ wnck_tasklist_score_groups (WnckTasklist *tasklist,
 			    GList        *ungrouped_apps)
 {
   WnckTask *app_task;
-  GList *l;
+  WnckTask *win_task;
+  GList *l, *w;
+  const char *first_name = NULL;
+  int n_windows;
+  int n_same_title;
+  double same_window_ratio;
 
   l = ungrouped_apps;
   while (l != NULL)
     {
       app_task = WNCK_TASK (l->data);
 
-      app_task->grouping_score = 42;
+      n_windows = g_list_length (app_task->windows);
+
+      n_same_title = 0;
+      w = app_task->windows;
+      while (w != NULL)
+	{
+	  win_task = WNCK_TASK (w->data);
+
+	  if (first_name == NULL)
+	    {
+	      first_name = wnck_window_get_name (win_task->window);
+	      n_same_title++;
+	    }
+	  else
+	    {
+	      if (strcmp (wnck_window_get_name (win_task->window),
+			  first_name) == 0)
+		n_same_title++;
+	    }
+	  
+	  w = w->next;
+	}
+      same_window_ratio = (double)n_same_title/(double)n_windows;
+
+      /* FIXME: This is fairly bogus and should be researched more.
+       *        XP groups by least used, so we probably want to add
+       *        total focused time to this expression.
+       */
+      app_task->grouping_score = -same_window_ratio * 5 + n_windows;
 
       l = l->next;
     }
@@ -441,7 +525,7 @@ wnck_task_get_highest_scored (GList     *ungrouped_apps,
 {
   WnckTask *app_task;
   WnckTask *best_task = NULL;
-  double max_score = -1;
+  double max_score = -1000000000.0; /* Large negative score */
   GList *l;
  
   l = ungrouped_apps;
@@ -497,9 +581,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 				       tasklist->priv->max_button_height,
 				       n_windows,
 				       &n_cols, &n_rows);
-
-  while (0 && /* FIXME: This temporarily disables grouping */
-	 ungrouped_apps != NULL /*&& button_width > GROUPING_LIMIT*/)
+  while (tasklist->priv->grouping_enabled &&
+	 (ungrouped_apps != NULL) &&
+	 (button_width < tasklist->priv->grouping_limit))
     {
       if (!score_set)
 	{
@@ -558,7 +642,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   total_width = MIN (total_width, allocation->width);
   while (l != NULL)
     {
-      WnckTask *task = l->data;
+      WnckTask *task = WNCK_TASK (l->data);
       int col = i % n_cols;
       int row = i / n_cols;
       
@@ -580,18 +664,6 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
 }
 
-static gboolean
-wnck_tasklist_focus (GtkWidget        *widget,
-                     GtkDirectionType  direction)
-{
-  WnckTasklist *tasklist;
-
-  tasklist = WNCK_TASKLIST (widget);
-
-  /* Hmm, maybe the default impl. works if it's in forall order */
-  return GTK_WIDGET_CLASS (tasklist_parent_class)->focus (widget, direction);
-}
-
 static void
 wnck_tasklist_forall (GtkContainer *container,
                       gboolean      include_internals,
@@ -606,21 +678,19 @@ wnck_tasklist_forall (GtkContainer *container,
   tmp = tasklist->priv->windows;
   while (tmp != NULL)
     {
-      WnckTask *task = tmp->data;
+      WnckTask *task = WNCK_TASK (tmp->data);
+      tmp = tmp->next;
       
       (* callback) (task->button, callback_data);
-      
-      tmp = tmp->next;
     }
   
   tmp = tasklist->priv->applications;
   while (tmp != NULL)
     {
-      WnckTask *task = tmp->data;
+      WnckTask *task = WNCK_TASK (tmp->data);
+      tmp = tmp->next;
       
       (* callback) (task->button, callback_data);
-      
-      tmp = tmp->next;
     }
 }
 
@@ -628,8 +698,52 @@ static void
 wnck_tasklist_remove (GtkContainer   *container,
 		      GtkWidget	    *widget)
 {
+  WnckTasklist *tasklist;
+  GList *tmp;
+  gboolean found = FALSE;
+  
   g_return_if_fail (WNCK_IS_TASKLIST (container));
   g_return_if_fail (widget != NULL);
+
+  tasklist = WNCK_TASKLIST (container);
+
+  tmp = tasklist->priv->windows;
+  while (tmp != NULL)
+    {
+      WnckTask *task = WNCK_TASK (tmp->data);
+      tmp = tmp->next;
+
+      if (task->button == widget)
+	{
+	  g_hash_table_remove (tasklist->priv->win_hash,
+			       task->window);
+	  tasklist->priv->windows =
+	    g_list_remove (tasklist->priv->windows,
+			   task);
+	  gtk_widget_destroy (task->button);
+	  found = TRUE;
+	  break;
+	}
+      
+    }
+  
+  tmp = tasklist->priv->applications;
+  while (!found && (tmp != NULL))
+    {
+      WnckTask *task = WNCK_TASK (tmp->data);
+      tmp = tmp->next;
+      
+      if (task->button == widget)
+	{
+	  g_hash_table_remove (tasklist->priv->app_hash,
+			       task->application);
+	  tasklist->priv->applications =
+	    g_list_remove (tasklist->priv->applications,
+			   task);
+	  gtk_widget_destroy (task->button);
+	  break;
+	}
+    }
 
   gtk_widget_unparent (widget);
 }
@@ -662,13 +776,6 @@ wnck_tasklist_new (WnckScreen *screen)
   return GTK_WIDGET (tasklist);
 }
 
-static gboolean remove_all (gpointer  key,
-			    gpointer  value,
-			    gpointer  user_data)
-{
-  return TRUE;
-}
-
 static void
 wnck_tasklist_update_lists (WnckTasklist *tasklist)
 {
@@ -680,10 +787,6 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   WnckTask *app_task;
   WnckTask *win_task;
 
-  /* Remove old contents of hashtable and lists */
-  g_hash_table_foreach_remove (tasklist->priv->win_hash, remove_all, NULL);
-  g_hash_table_foreach_remove (tasklist->priv->app_hash, remove_all, NULL);
-
   tasklist->priv->active_task = NULL;
   tasklist->priv->active_app = NULL;
   
@@ -692,24 +795,26 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       l = tasklist->priv->windows;
       while (l != NULL)
 	{
-	  g_object_unref (l->data);
+	  WnckTask *task = WNCK_TASK (l->data);
 	  l = l-> next;
+	  g_object_unref (task);
 	}
-      g_list_free (tasklist->priv->windows);
-      tasklist->priv->windows = NULL;
     }
+  g_assert (tasklist->priv->windows == NULL);
+  g_assert (g_hash_table_size (tasklist->priv->win_hash) == 0);
 
   if (tasklist->priv->applications)
     {
       l = tasklist->priv->applications;
       while (l != NULL)
 	{
-	  g_object_unref (l->data);
+	  WnckTask *task = WNCK_TASK (l->data);
 	  l = l-> next;
+	  g_object_unref (task);
 	}
-      g_list_free (tasklist->priv->applications);
-      tasklist->priv->applications = NULL;
     }
+  g_assert (tasklist->priv->applications == NULL);
+  g_assert (g_hash_table_size (tasklist->priv->app_hash) == 0);
 
   active_workspace = wnck_screen_get_active_workspace (tasklist->priv->screen);  
   windows = wnck_screen_get_windows (tasklist->priv->screen);
@@ -732,7 +837,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	  g_hash_table_insert (tasklist->priv->win_hash, win, win_task);
 	  
 	  gtk_widget_set_parent (win_task->button, GTK_WIDGET (tasklist));
-	  gtk_widget_show (win_task->button); /* FIXME: This show is bogus, but if it is not here the labels don't redraw correctly */
+	  gtk_widget_show (win_task->button);
 	  
 	  app = wnck_window_get_application (win);
 	  app_task = g_hash_table_lookup (tasklist->priv->app_hash, app);
@@ -741,7 +846,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	    {
 	      app_task = wnck_task_new_from_application (tasklist, app);
 	      gtk_widget_set_parent (app_task->button, GTK_WIDGET (tasklist));
-	      gtk_widget_show (app_task->button); /* FIXME: This show is bogus, but if it is not here the labels don't redraw correctly */
+	      gtk_widget_show (app_task->button);
 	      
 	      tasklist->priv->applications = g_list_prepend (tasklist->priv->applications,
 							     app_task);
@@ -862,7 +967,6 @@ wnck_task_position_menu (GtkMenu   *menu,
   gint menu_xpos;
   gint menu_ypos;
 
-  /* FIXME: This call always returns 0, 0. What's up with that? */
   gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
 
   gdk_window_get_origin (widget->window, &menu_xpos, &menu_ypos);
@@ -880,6 +984,88 @@ wnck_task_position_menu (GtkMenu   *menu,
   *push_in = TRUE;
 }
 
+static void
+wnck_task_menu_activated (GtkMenuItem *menu_item,
+			  gpointer     data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  WnckWindowState state;
+
+  if (task->window == NULL)
+    return;
+      
+  state = wnck_window_get_state (task->window);
+  
+  if (state & WNCK_WINDOW_STATE_MINIMIZED)
+    wnck_window_unminimize (task->window);
+  
+  wnck_window_activate (task->window);
+}
+
+static void
+wnck_task_popup_menu (WnckTask  *task)
+{
+  GtkWidget *menu;
+  WnckTask *win_task;
+  char *text;
+  GdkPixbuf *pixbuf;
+  GtkWidget *menu_item;
+  GtkWidget *image;
+  GList *l;
+  
+  if (task->application == NULL)
+    return;
+  
+  if (task->menu == NULL)
+    task->menu = gtk_menu_new ();
+  
+  menu = task->menu;
+  
+  /* Remove old menu content */
+  l = gtk_container_get_children (GTK_CONTAINER (menu));
+  while (l)
+    {
+      GtkWidget *child = GTK_WIDGET (l->data);
+      gtk_container_remove (GTK_CONTAINER (menu), child);
+      l = l->next;
+    }
+  
+  l = task->windows;
+  while (l)
+    {
+      win_task = WNCK_TASK (l->data);
+      
+      text = wnck_task_get_text (win_task);
+      menu_item = gtk_image_menu_item_new_with_label (text);
+      g_free (text);
+      
+      pixbuf = wnck_task_get_icon (win_task);
+      if (pixbuf)
+	{
+	  image = gtk_image_new_from_pixbuf (pixbuf);
+	  gtk_widget_show (image);
+	  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
+					 image);
+	  g_object_unref (pixbuf);
+	}
+      
+      gtk_widget_show (menu_item);
+      
+      g_signal_connect (G_OBJECT (menu_item), "activate",
+			G_CALLBACK (wnck_task_menu_activated), win_task);
+      
+      
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+      
+      l = l->next;
+    }
+  
+  gtk_widget_show (menu);
+  gtk_menu_popup (GTK_MENU (menu),
+		  NULL, NULL,
+		  wnck_task_position_menu, task->button,
+		  1, gtk_get_current_event_time ());
+}
 
 static void
 wnck_task_button_toggled (GtkButton *button,
@@ -899,55 +1085,13 @@ wnck_task_button_toggled (GtkButton *button,
 
   if (task->is_application)
     {
-      GtkWidget *menu;
-      WnckTask *win_task;
-      char *text;
-      GdkPixbuf *pixbuf;
-      GtkWidget *menu_item;
-      GtkWidget *image;
-      GList *l;
-
-      menu = gtk_menu_new ();
-
-      l = task->windows;
-      while (l)
-	{
-	  win_task = WNCK_TASK (l->data);
-	  
-	  text = wnck_task_get_text (win_task);
-	  menu_item = gtk_image_menu_item_new_with_label (text);
-	  g_free (text);
-
-	  pixbuf = wnck_task_get_icon (win_task);
-	  if (pixbuf)
-	    {
-	      image = gtk_image_new_from_pixbuf (pixbuf);
-	      gtk_widget_show (image);
-	      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
-					     image);
-	      g_object_unref (pixbuf);
-	    }
-
-	  gtk_widget_show (menu_item);
-
-	  gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-	  
-	  l = l->next;
-	}
-
-      /* FIXME: Implement menu selection */
-
-      gtk_widget_show (menu);
-      gtk_menu_popup (GTK_MENU (menu),
-		      NULL, NULL,
-		      wnck_task_position_menu, button,
-		      1, gtk_get_current_event_time ());
-
-      /* FIXME: We leak the menu here */
-      
+      wnck_task_popup_menu (task);
     }
   else
     {
+      if (task->window == NULL)
+	return;
+      
       state = wnck_window_get_state (task->window);
       if (state & WNCK_WINDOW_STATE_MINIMIZED)
 	{
@@ -1190,12 +1334,25 @@ wnck_task_name_changed (WnckWindow *window,
 
 static gboolean
 wnck_task_button_press_event (GtkWidget	      *widget,
-			      GdkEventButton  *event)
+			      GdkEventButton  *event,
+			      gpointer         data)
 {
+  WnckTask *task = WNCK_TASK (data);
+  
   if (event->button != 1)
-    g_signal_stop_emission_by_name (widget,
-				    "button_press_event");
-
+    {
+      g_signal_stop_emission_by_name (widget,
+				      "button_press_event");
+    }
+  else
+    {
+      if (task->is_application)
+	{
+	  wnck_task_popup_menu (task);
+	  g_signal_stop_emission_by_name (widget,
+					  "button_press_event");
+	}
+    }
   return FALSE;
 }
 
@@ -1339,8 +1496,8 @@ wnck_task_new_from_window (WnckTasklist *tasklist,
   task = g_object_new (WNCK_TYPE_TASK, NULL);
 
   task->is_application = FALSE;
-  task->window = window;
-  task->application = wnck_window_get_application (window);
+  task->window = g_object_ref (window);
+  task->application = g_object_ref (wnck_window_get_application (window));
   task->tasklist = tasklist;
   
   wnck_task_create_widgets (task);
@@ -1357,7 +1514,7 @@ wnck_task_new_from_application (WnckTasklist    *tasklist,
   task = g_object_new (WNCK_TYPE_TASK, NULL);
 
   task->is_application = TRUE;
-  task->application = application;
+  task->application = g_object_ref (application);
   task->window = NULL;
   task->tasklist = tasklist;
   

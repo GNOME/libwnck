@@ -64,6 +64,10 @@ GtkWidget *wnck_tasklist_new (WnckScreen *screen);
 void wnck_tasklist_set_mode (WnckTasklist *tasklist,
 			     WnckTasklistMode mode);
 
+void wnck_tasklist_set_allow_grouping (WnckTasklist *tasklist,
+				       gboolean      allow_grouping);
+void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
+				       gint          limit);
 G_END_DECLS
 
 #endif /* WNCK_TASKLIST_H */
