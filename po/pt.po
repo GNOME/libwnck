@@ -1,12 +1,12 @@
 # libwnck's Portuguese Translation
 # Copyright (C) 2001 Free Software Foundation, Inc.
-# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002
+# Duarte Loreto <happyguy_pt@hotmail.com>, 2001, 2002, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2003-01-20 22:11-0500\n"
-"PO-Revision-Date: 2002-06-16 02:02+0100\n"
+"Project-Id-Version: 2.2\n"
+"POT-Creation-Date: 2003-02-02 14:48+0000\n"
+"PO-Revision-Date: 2003-02-02 14:50+0100\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "Ma_ximizar"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Desenrrolar"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "_Enrolar"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Apenas _Neste Ambiente de Trabalho"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Em _Todos os Ambientes de Trabalho"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
