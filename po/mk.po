@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2002-10-17 05:08+0200\n"
+"PO-Revision-Date: 2002-10-28 12:21GMT\n"
+"Last-Translator: Angov Arangel <ufo@linux.net.mk>\n"
+"Language-Team: Macedonian <main-gnomk@sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-5\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 0.9.6\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "Апликација без наслов"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Менувач на Работно Место"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Алатка за менување на работно место"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Кликни го ова за да го смениш работното место %s"
+
+#: libwnck/window-action-menu.c:155
+msgid "Un_minimize"
+msgstr "Врати_минимизирано"
+
+#: libwnck/window-action-menu.c:161
+msgid "_Minimize"
+msgstr "_Минимизирај"
+
+#: libwnck/window-action-menu.c:168
+msgid "_Unmaximize"
+msgstr "_Врати Максимизирано"
+
+#: libwnck/window-action-menu.c:174
+msgid "Ma_ximize"
+msgstr "Ма_ксимизирај"
+
+#: libwnck/window-action-menu.c:181
+msgid "U_nshade"
+msgstr "В_рати Подигнување или Спуштање"
+
+#: libwnck/window-action-menu.c:187
+msgid "_Shade"
+msgstr "_Подигнување и Спуштање"
+
+#: libwnck/window-action-menu.c:298
+msgid "_Close"
+msgstr "_Затвори"
+
+#: libwnck/window-action-menu.c:319
+msgid "Mo_ve"
+msgstr "По_мести"
+
+#: libwnck/window-action-menu.c:325
+msgid "_Resize"
+msgstr "_Промени Големина"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "прозорец без наслов"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "Работно Место %d"
+
