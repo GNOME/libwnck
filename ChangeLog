@@ -1,3 +1,9 @@
+2002-02-08  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/application.c (struct _WnckApplicationPrivate): fix some
+	bad comments that said client leader instead of group leader
+	(though the code in screen.c does correctly pass in the group leader)
+
 2002-02-07  Abel Cheung  <maddog@linux.org.hk>
 
 	* configure.in: Added "zh_TW" to ALL_LINGUAS.

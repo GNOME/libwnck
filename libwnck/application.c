@@ -28,7 +28,7 @@ static GHashTable *app_hash = NULL;
 
 struct _WnckApplicationPrivate
 {
-  Window xwindow; /* client leader */
+  Window xwindow; /* group leader */
   WnckScreen *screen;
   GList *windows;
   int pid;
@@ -43,7 +43,7 @@ struct _WnckApplicationPrivate
 
   WnckWindow *icon_window;
   
-  guint name_from_leader : 1; /* name is from client leader */
+  guint name_from_leader : 1; /* name is from group leader */
   guint icon_from_leader : 1;
   
   guint need_emit_icon_changed : 1;
@@ -206,7 +206,7 @@ wnck_application_get_windows (WnckApplication *app)
  * Gets the name of an application, employing various
  * suboptimal heuristics to try to figure it out.
  * Probably GTK should have a function to allow apps to
- * set _NET_WM_NAME on the client leader as the app name,
+ * set _NET_WM_NAME on the group leader as the app name,
  * and the WM spec should say that's where the app name
  * goes.
  * 
@@ -342,7 +342,7 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
   return _wnck_icon_cache_get_is_fallback (app->priv->icon_cache);
 }
 
-/* xwindow is a client leader */
+/* xwindow is a group leader */
 WnckApplication*
 _wnck_application_create (Window      xwindow,
                           WnckScreen *screen)
