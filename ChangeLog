@@ -1,3 +1,7 @@
+2001-12-10  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* configure.in: Added "no" to ALL_LINGUAS.
+	
 2001-12-10  Anders Carlsson  <andersca@gnu.org>
 
 	* libwnck/tasklist.c (wnck_tasklist_update_icon_geometries): Call
