@@ -604,6 +604,29 @@ _wnck_change_workspace (Window xwindow,
 	      &xev);
 }
 
+void
+_wnck_activate (Window xwindow)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 0;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (gdk_display,
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+}
+
 Window
 _wnck_get_group_leader (Window xwindow)
 {

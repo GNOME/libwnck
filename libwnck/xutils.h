@@ -76,6 +76,7 @@ void _wnck_change_state     (Window   xwindow,
                              Atom     state2);
 void _wnck_change_workspace (Window   xwindow,
                              int      new_space);
+void _wnck_activate         (Window   xwindow);
 
 Window _wnck_get_group_leader (Window xwindow);
 char*  _wnck_get_session_id   (Window xwindow);

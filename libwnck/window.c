@@ -730,6 +730,37 @@ wnck_window_unpin (WnckWindow *window)
                           active ? wnck_workspace_get_number (active) : 0);
 }
 
+/**
+ * wnck_window_activate:
+ * @window: a #WnckWindow
+ * 
+ * Ask the window manager to make @window the active window.  The
+ * window manager may choose to raise @window along with focusing it.
+ **/
+void
+wnck_window_activate (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_activate (window->priv->xwindow);
+}
+
+/**
+ * wnck_window_is_active:
+ * @window: a #WnckWindow
+ * 
+ * 
+ * 
+ * Return value: %TRUE if the window is the active window
+ **/
+gboolean
+wnck_window_is_active (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window == wnck_screen_get_active_window (window->priv->screen);
+}
+
 void
 _wnck_window_set_application (WnckWindow      *window,
                               WnckApplication *app)

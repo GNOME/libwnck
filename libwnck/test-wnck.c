@@ -120,7 +120,13 @@ static void
 active_window_changed_callback    (WnckScreen    *screen,
                                    gpointer       data)
 {
+  WnckWindow *window;
+  
   g_print ("Active window changed\n");
+
+  window = wnck_screen_get_active_window (screen);
+  
+  update_window (global_tree_model, window);
 }
 
 static void
@@ -194,6 +200,7 @@ application_opened_callback (WnckScreen      *screen,
                              WnckApplication *app)
 {
   g_print ("Application opened\n");
+  queue_refill_model ();
 }
 
 static void
@@ -201,6 +208,7 @@ application_closed_callback (WnckScreen      *screen,
                              WnckApplication *app)
 {
   g_print ("Application closed\n");
+  queue_refill_model ();
 }
 
 static void
@@ -296,9 +304,6 @@ refill_tree_model (GtkTreeModel *model,
                    WnckScreen   *screen)
 {
   GList *tmp;
-
-  /* We remove the model right away, since its old contents are probably invalid */
-  gtk_tree_view_set_model (GTK_TREE_VIEW (global_tree_view), NULL);
   
   gtk_list_store_clear (GTK_LIST_STORE (model));
 
@@ -311,10 +316,17 @@ refill_tree_model (GtkTreeModel *model,
       gtk_list_store_append (GTK_LIST_STORE (model), &iter);
       gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, window, -1);
 
+      if (wnck_window_is_active (window))
+        {
+          GtkTreeSelection *selection;
+          
+          selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (global_tree_view));
+          
+          gtk_tree_selection_select_iter (selection, &iter);
+        }
+      
       tmp = tmp->next;
     }
-
-  gtk_tree_view_set_model (GTK_TREE_VIEW (global_tree_view), model);
   
   gtk_tree_view_columns_autosize (GTK_TREE_VIEW (global_tree_view));
 }
@@ -327,9 +339,14 @@ update_window (GtkTreeModel *model,
   GList *windows;
   int i;
   
-  /* The trick here is to find the right row, for now we assume
-   * the screen and the model are in sync
+  /* The trick here is to find the right row, we assume
+   * the screen and the model are in sync, unless we have a
+   * model refill queued, in which case they aren't and we'll update
+   * this window in the idle queue anyhow.
    */
+  if (refill_idle != 0)
+    return;
+  
   windows = wnck_screen_get_windows (wnck_window_get_screen (window));
 
   i = g_list_index (windows, window);
@@ -337,8 +354,19 @@ update_window (GtkTreeModel *model,
   g_return_if_fail (i >= 0);
 
   if (gtk_tree_model_iter_nth_child (model, &iter, NULL, i))
-    /* Reset the list store value to trigger a redraw */
-    gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, window, -1);
+    {
+      /* Reset the list store value to trigger a recompute */
+      gtk_list_store_set (GTK_LIST_STORE (model), &iter, 0, window, -1);
+
+      if (wnck_window_is_active (window))
+        {
+          GtkTreeSelection *selection;
+          
+          selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (global_tree_view));
+          
+          gtk_tree_selection_select_iter (selection, &iter);
+        }
+    }
   else
     g_warning ("Tree model has no row %d", i);
 }
@@ -348,15 +376,23 @@ get_window (GtkTreeModel *model,
             GtkTreeIter  *iter)
 {
   WnckWindow *window;
+
+  g_print ("%d children\n", gtk_tree_model_iter_n_children (model, NULL));
   
   gtk_tree_model_get (model, iter,
                       0, &window,
                       -1);
 
-  /* we know the model and screen are still holding a reference,
-   * so cheat a bit
+  /* window may be NULL after we append to the list store and
+   * before we set the value with gtk_list_store_set()
    */
-  g_object_unref (G_OBJECT (window));
+  if (window)
+    {
+      /* we know the model and screen are still holding a reference,
+       * so cheat a bit
+       */
+      g_object_unref (G_OBJECT (window));
+    }
 
   return window;
 }
@@ -371,6 +407,8 @@ icon_set_func (GtkTreeViewColumn *tree_column,
   WnckWindow *window;
   
   window = get_window (model, iter);
+  if (window == NULL)
+    return;
   
   g_object_set (GTK_CELL_RENDERER (cell),
                 "pixbuf", NULL,
@@ -387,12 +425,44 @@ title_set_func (GtkTreeViewColumn *tree_column,
   WnckWindow *window;
 
   window = get_window (model, iter);
+  if (window == NULL)
+    return;
   
   g_object_set (GTK_CELL_RENDERER (cell),
                 "text", wnck_window_get_name (window),
                 NULL);
 }
 
+static void
+workspace_set_func (GtkTreeViewColumn *tree_column,
+                    GtkCellRenderer   *cell,
+                    GtkTreeModel      *model,
+                    GtkTreeIter       *iter,
+                    gpointer           data)
+{
+  WnckWindow *window;
+  WnckWorkspace *space;
+  char *name;
+  
+  window = get_window (model, iter);
+  if (window == NULL)
+    return;
+  
+  space = wnck_window_get_workspace (window);
+
+  if (space)
+    name = g_strdup_printf ("%d", wnck_workspace_get_number (space));
+  else if (wnck_window_is_pinned (window))
+    name = g_strdup ("all");
+  else
+    name = g_strdup ("none");
+  
+  g_object_set (GTK_CELL_RENDERER (cell),
+                "text", name,
+                NULL);
+
+  g_free (name);
+}
 
 static void
 shaded_set_func (GtkTreeViewColumn *tree_column,
@@ -404,7 +474,9 @@ shaded_set_func (GtkTreeViewColumn *tree_column,
   WnckWindow *window;
 
   window = get_window (model, iter);
-
+  if (window == NULL)
+    return;
+  
   gtk_cell_renderer_toggle_set_active (GTK_CELL_RENDERER_TOGGLE (cell),
                                        wnck_window_is_shaded (window));
 }
@@ -441,7 +513,10 @@ minimized_set_func (GtkTreeViewColumn *tree_column,
   WnckWindow *window;
 
   window = get_window (model, iter);
+  if (window == NULL)
+    return;
 
+  
   gtk_cell_renderer_toggle_set_active (GTK_CELL_RENDERER_TOGGLE (cell),
                                        wnck_window_is_minimized (window));
 }
@@ -466,6 +541,48 @@ minimized_toggled_callback (GtkCellRendererToggle *cell,
     wnck_window_minimize (window);
   
   gtk_tree_path_free (path);
+}
+
+static gboolean
+selection_func (GtkTreeSelection  *selection,
+                GtkTreeModel      *model,
+                GtkTreePath       *path,
+                gpointer           data)
+{
+  GtkTreeIter iter;
+  WnckWindow *window;
+  
+  /* Kind of some hack action here. If you try to select a row that's
+   * not the active window, we ask the WM to make that window active
+   * as a side effect. But we don't actually allow selecting anything
+   * that isn't already active. Then, in the active window callback we
+   * select the newly-active window
+   */
+  
+  gtk_tree_model_get_iter (model, &iter, path);  
+
+  window = get_window (model, &iter);
+  if (window == NULL)
+    return FALSE;
+  
+  if (gtk_tree_selection_get_selected (selection, NULL, &iter))
+    {
+      /* Trying to unselect, not allowed if we are the active window */
+      if (wnck_window_is_active (window))
+        return FALSE;
+      else
+        return TRUE;
+    }
+  else
+    {
+      if (wnck_window_is_active (window))
+        return TRUE;
+      else
+        {
+          wnck_window_activate (window);
+          return FALSE;
+        }
+    }
 }
 
 static GtkWidget*
@@ -502,9 +619,19 @@ create_tree_view (void)
   gtk_tree_view_append_column (GTK_TREE_VIEW (tree_view),
                                column);
   
-  /* Then create a toggle column, only one renderer in this column
+  /* Then create a workspace column, only one renderer in this column
    * so we get to use insert_column convenience function
    */
+  cell_renderer = gtk_cell_renderer_text_new ();
+  gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
+                                              -1, /* append */
+                                              "Workspace",
+                                              cell_renderer,
+                                              workspace_set_func,
+                                              NULL,
+                                              NULL);
+  
+  /* Shaded checkbox */
   cell_renderer = gtk_cell_renderer_toggle_new ();
   gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
                                               -1, /* append */
@@ -517,7 +644,7 @@ create_tree_view (void)
                     G_CALLBACK (shaded_toggled_callback),
                     tree_view);
 
-  /* Minimized check */
+  /* Minimized checkbox */
   cell_renderer = gtk_cell_renderer_toggle_new ();
   gtk_tree_view_insert_column_with_data_func (GTK_TREE_VIEW (tree_view),
                                               -1, /* append */
@@ -529,14 +656,12 @@ create_tree_view (void)
   g_signal_connect (G_OBJECT (cell_renderer), "toggled",
                     G_CALLBACK (minimized_toggled_callback),
                     tree_view);
-
   
   /* The selection will track the active window, so we need to
    * handle it with a custom function
    */
   selection = gtk_tree_view_get_selection (GTK_TREE_VIEW (tree_view));
-  /* FIXME */
-  
+  gtk_tree_selection_set_select_function (selection, selection_func, NULL, NULL);
   return tree_view;
 }
 
@@ -557,5 +682,8 @@ queue_refill_model (void)
   if (refill_idle != 0)
     return;
 
-  g_idle_add_full (G_PRIORITY_LOW, do_refill_model, NULL, NULL);
+  /* Don't keep any stale references */
+  gtk_list_store_clear (GTK_LIST_STORE (global_tree_model));
+  
+  refill_idle = g_idle_add (do_refill_model, NULL);
 }

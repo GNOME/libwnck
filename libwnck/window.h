@@ -120,6 +120,9 @@ gboolean wnck_window_is_pinned (WnckWindow *window);
 void     wnck_window_pin       (WnckWindow *window);
 void     wnck_window_unpin     (WnckWindow *window);
 
+void     wnck_window_activate  (WnckWindow *window);
+gboolean wnck_window_is_active (WnckWindow *window);
+
 G_END_DECLS
 
 #endif /* WNCK_WINDOW_H */

@@ -454,7 +454,8 @@ update_client_list (WnckScreen *screen)
   int i;
   GHashTable *new_hash;
   static int reentrancy_guard = 0;
-
+  gboolean active_changed;
+  
   g_return_if_fail (reentrancy_guard == 0);
   
   if (!screen->priv->need_update_stack_list)
@@ -564,7 +565,10 @@ update_client_list (WnckScreen *screen)
    */
 
   /* Sequence is: application_opened, window_opened, window_closed,
-   * application_closed
+   * application_closed. We have to do all window list changes
+   * BEFORE doing any other signals, so that any observers
+   * have valid state for the window structure before they take
+   * further action
    */
   tmp = created_apps;
   while (tmp != NULL)
@@ -582,6 +586,7 @@ update_client_list (WnckScreen *screen)
       tmp = tmp->next;
     }
 
+  active_changed = FALSE;
   tmp = closed;
   while (tmp != NULL)
     {
@@ -592,7 +597,7 @@ update_client_list (WnckScreen *screen)
       if (window == screen->priv->active_window)
         {
           screen->priv->active_window = NULL;
-          emit_active_window_changed (screen);
+          active_changed = TRUE;
         }
       
       emit_window_closed (screen, window);
@@ -614,6 +619,9 @@ update_client_list (WnckScreen *screen)
   
   emit_window_stacking_changed (screen);
 
+  if (active_changed)
+    emit_active_window_changed (screen);
+  
   /* Now free the closed windows */
   tmp = closed;
   while (tmp != NULL)
@@ -837,8 +845,8 @@ update_idle (gpointer data)
   update_client_list (screen);
 
   /* Then note any smaller-scale changes */
-  update_active_window (screen);
   update_active_workspace (screen);
+  update_active_window (screen);
   
   return FALSE;
 }
