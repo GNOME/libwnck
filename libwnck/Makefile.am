@@ -1,5 +1,6 @@
 
-INCLUDES=@LIBWNCK_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir)
+INCLUDES=@LIBWNCK_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
+	-DWNCK_I_KNOW_THIS_IS_UNSTABLE
 
 lib_LTLIBRARIES=libwnck-1.la
 
@@ -9,6 +10,8 @@ wnck_headers=			\
 	application.h		\
 	screen.h		\
 	window.h 		\
+	window-action-menu.h	\
+	window-menu.h		\
 	workspace.h
 
 wnck_built_installed_headers=wnck-enum-types.h
@@ -20,15 +23,17 @@ libwnckinclude_HEADERS=			\
 wnck_built_headers = $(wnck_built_installed_headers) wnck-marshal.h
 wnck_built_cfiles = wnck-enum-types.c  wnck-marshal.c
 
-libwnck_1_la_SOURCES= 	\
-	application.c	\
-	inlinepixbufs.h	\
-	private.h	\
-	screen.c	\
-	window.c	\
-	workspace.c	\
-	xutils.c	\
-	xutils.h	\
+libwnck_1_la_SOURCES= 		\
+	application.c		\
+	inlinepixbufs.h		\
+	private.h		\
+	screen.c		\
+	window.c		\
+	window-action-menu.c	\
+	window-menu.c		\
+	workspace.c		\
+	xutils.c		\
+	xutils.h		\
 	$(wnck_built_headers)	\
 	$(wnck_built_cfiles)
 

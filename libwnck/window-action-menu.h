@@ -1,4 +1,4 @@
-/* libwnck header */
+/* window action menu (ops on a single window) */
 
 /*
  * Copyright (C) 2001 Havoc Pennington
@@ -19,17 +19,16 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef WNCK_LIB_H
-#define WNCK_LIB_H
+#ifndef WNCK_WINDOW_ACTION_MENU_H
+#define WNCK_WINDOW_ACTION_MENU_H
 
-#include <libwnck/application.h>
-#include <libwnck/screen.h>
 #include <libwnck/window.h>
-#include <libwnck/workspace.h>
-#include <libwnck/wnck-enum-types.h>
+#include <gtk/gtk.h>
 
-#include <libwnck/window-menu.h>
+G_BEGIN_DECLS
 
-#endif /* WNCK_LIB_H */
+GtkWidget* wnck_create_window_action_menu (WnckWindow *window);
 
+G_END_DECLS
 
+#endif /* WNCK_WINDOW_MENU_H */

@@ -1,3 +1,13 @@
+2001-10-18  Havoc Pennington  <hp@redhat.com>
+
+	* libwnck/window-action-menu.c: menu for window operations
+	(close, maximize, etc.)
+
+	* libwnck/window.h: add #error unless you define a magic symbol
+
+	* libwnck/window-menu.h: add window menu feature (list of windows
+	to choose)
+
 2001-10-09  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/test-wnck.c (maximized_toggled_callback): maximize don't

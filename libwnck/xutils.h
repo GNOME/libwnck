@@ -70,6 +70,8 @@ guint _wnck_xid_hash  (gconstpointer v);
 void _wnck_iconify   (Window xwindow);
 void _wnck_deiconify (Window xwindow);
 
+void _wnck_close     (Window xwindow);
+
 void _wnck_change_state     (Window   xwindow,
                              gboolean add,
                              Atom     state1,

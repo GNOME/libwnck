@@ -22,6 +22,10 @@
 #ifndef WNCK_WINDOW_H
 #define WNCK_WINDOW_H
 
+#ifndef WNCK_I_KNOW_THIS_IS_UNSTABLE
+#error "libwnck should only be used if you understand that it's subject to frequent change, and is not supported as a fixed API/ABI or as part of the platform"
+#endif
+
 #include <glib-object.h>
 #include <libwnck/screen.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
@@ -38,6 +42,26 @@ typedef enum
   WNCK_WINDOW_STATE_SKIP_TASKLIST          = 1 << 5,
   WNCK_WINDOW_STATE_STICKY                 = 1 << 6
 } WnckWindowState;
+
+typedef enum
+{
+  WNCK_WINDOW_ACTION_MOVE                    = 1 << 0,
+  WNCK_WINDOW_ACTION_RESIZE                  = 1 << 1,
+  WNCK_WINDOW_ACTION_SHADE                   = 1 << 2,
+  WNCK_WINDOW_ACTION_STICK                   = 1 << 3,
+  WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   = 1 << 4,
+  WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     = 1 << 5,
+  WNCK_WINDOW_ACTION_CHANGE_WORKSPACE        = 1 << 6, /* includes pin/unpin */
+  WNCK_WINDOW_ACTION_CLOSE                   = 1 << 7,
+  WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY = 1 << 8,
+  WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   = 1 << 9,
+  WNCK_WINDOW_ACTION_UNSHADE                 = 1 << 10,
+  WNCK_WINDOW_ACTION_UNSTICK                 = 1 << 11,
+  WNCK_WINDOW_ACTION_MINIMIZE                = 1 << 12,
+  WNCK_WINDOW_ACTION_UNMINIMIZE              = 1 << 13,
+  WNCK_WINDOW_ACTION_MAXIMIZE                = 1 << 14,
+  WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15
+} WnckWindowActions;
 
 #define WNCK_TYPE_WINDOW              (wnck_window_get_type ())
 #define WNCK_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_WINDOW, WnckWindow))
@@ -75,6 +99,11 @@ struct _WnckWindowClass
 
   /* Changed icon */
   void (* icon_changed)      (WnckWindow *window);
+
+  /* Changed actions */
+  void (* actions_changed)   (WnckWindow       *window,
+                              WnckWindowActions changed_mask,
+                              WnckWindowActions new_actions);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
@@ -102,6 +131,7 @@ gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
 gboolean wnck_window_is_sticky                 (WnckWindow *window);
 
+void wnck_window_close                   (WnckWindow *window);
 void wnck_window_minimize                (WnckWindow *window);
 void wnck_window_unminimize              (WnckWindow *window);
 void wnck_window_maximize                (WnckWindow *window);
@@ -139,6 +169,9 @@ void wnck_window_set_icon_size            (WnckWindow *window,
 void wnck_window_set_mini_icon_size       (WnckWindow *window,
                                            int         width,
                                            int         height);
+
+WnckWindowActions wnck_window_get_actions (WnckWindow *window);
+WnckWindowState   wnck_window_get_state   (WnckWindow *window);
 
 G_END_DECLS
 

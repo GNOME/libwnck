@@ -1,0 +1,313 @@
+/* window action menu (ops on a single window) */
+
+/*
+ * Copyright (C) 2001 Havoc Pennington
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
+ */
+
+#include "window-action-menu.h"
+
+#include <config.h>
+#include <libintl.h>
+#define _(x) dgettext (GETTEXT_PACKAGE, x)
+
+typedef enum
+{
+  CLOSE,
+  MINIMIZE,
+  MAXIMIZE,
+  SHADE,
+  MOVE,
+  RESIZE
+} WindowAction;
+
+typedef struct _ActionMenuData ActionMenuData;
+
+struct _ActionMenuData
+{
+  WnckWindow *window;
+  GtkWidget *close_item;
+  GtkWidget *minimize_item;
+  GtkWidget *maximize_item;
+  GtkWidget *shade_item;
+  GtkWidget *move_item;
+  GtkWidget *resize_item;
+  guint idle_handler;
+};
+
+static void
+window_weak_notify (gpointer data,
+                    GObject *window)
+{
+  g_object_set_data (G_OBJECT (data), "wnck-action-data", NULL);
+}
+
+static void
+set_data (GObject        *obj,
+          ActionMenuData *amd)
+{
+  g_object_set_data (obj, "wnck-action-data", amd);
+  if (amd && amd->window)
+    g_object_weak_ref (G_OBJECT (amd->window), window_weak_notify, obj);
+}
+
+static ActionMenuData*
+get_data (GObject *obj)
+{
+  return g_object_get_data (obj, "wnck-action-data");
+}
+
+static void
+item_activated_callback (GtkWidget *menu_item,
+                         gpointer   data)
+{
+  ActionMenuData *amd = get_data (G_OBJECT (menu_item));
+  WindowAction action = GPOINTER_TO_INT (data);
+  
+  if (amd == NULL)
+    return;
+
+  switch (action)
+    {
+    case CLOSE:
+      wnck_window_close (amd->window);
+      break;
+    case MINIMIZE:
+      if (wnck_window_is_minimized (amd->window))
+        wnck_window_unminimize (amd->window);
+      else
+        wnck_window_minimize (amd->window);
+      break;
+    case MAXIMIZE:
+      if (wnck_window_is_maximized (amd->window))
+        wnck_window_unmaximize (amd->window);
+      else
+        wnck_window_maximize (amd->window);
+      break;
+    case SHADE:
+      if (wnck_window_is_shaded (amd->window))
+        wnck_window_unshade (amd->window);
+      else
+        wnck_window_shade (amd->window);
+      break;
+      /* These don't do anything yet, we need WM spec support */
+    case MOVE:
+      break;
+    case RESIZE:
+      break;
+    }
+}
+
+static void
+set_item_text (GtkWidget  *mi,
+               const char *text)
+{
+  gtk_label_set_text (GTK_LABEL (GTK_BIN (mi)->child),
+                      text);
+  gtk_label_set_use_underline (GTK_LABEL (GTK_BIN (mi)->child), TRUE);
+}
+
+static gboolean
+update_menu_state (ActionMenuData *amd)
+{
+  WnckWindowActions actions;  
+
+  amd->idle_handler = 0;
+  
+  actions = wnck_window_get_actions (amd->window);
+  
+  if (wnck_window_is_minimized (amd->window))
+    {
+      set_item_text (amd->minimize_item, _("Un_minimize"));
+      gtk_widget_set_sensitive (amd->minimize_item,
+                                (actions & WNCK_WINDOW_ACTION_UNMINIMIZE) != 0);
+    }
+  else
+    {
+      set_item_text (amd->minimize_item, _("_Minimize"));
+      gtk_widget_set_sensitive (amd->minimize_item,
+                                (actions & WNCK_WINDOW_ACTION_MINIMIZE) != 0);
+    }
+
+  if (wnck_window_is_maximized (amd->window))
+    {
+      set_item_text (amd->maximize_item, _("_Unmaximize"));
+      gtk_widget_set_sensitive (amd->maximize_item,
+                                (actions & WNCK_WINDOW_ACTION_UNMAXIMIZE) != 0);
+    }
+  else
+    {
+      set_item_text (amd->maximize_item, _("Ma_ximize"));
+      gtk_widget_set_sensitive (amd->maximize_item,
+                                (actions & WNCK_WINDOW_ACTION_MAXIMIZE) != 0);
+    }
+
+  if (wnck_window_is_shaded (amd->window))
+    {
+      set_item_text (amd->shade_item, _("U_nshade"));
+      gtk_widget_set_sensitive (amd->shade_item,
+                                (actions & WNCK_WINDOW_ACTION_UNSHADE) != 0);
+    }
+  else
+    {
+      set_item_text (amd->shade_item, _("_Shade"));
+      gtk_widget_set_sensitive (amd->shade_item,
+                                (actions & WNCK_WINDOW_ACTION_SHADE) != 0);
+    }
+
+  gtk_widget_set_sensitive (amd->close_item,
+                            (actions & WNCK_WINDOW_ACTION_CLOSE) != 0);
+  
+  gtk_widget_set_sensitive (amd->move_item,
+                            (actions & WNCK_WINDOW_ACTION_MOVE) != 0);
+
+  gtk_widget_set_sensitive (amd->resize_item,
+                            (actions & WNCK_WINDOW_ACTION_RESIZE) != 0);
+  
+  return FALSE;
+}
+
+static void
+queue_update (ActionMenuData *amd)
+{
+  if (amd->idle_handler == 0)
+    amd->idle_handler = g_idle_add ((GSourceFunc)update_menu_state, amd);
+}
+
+static void
+state_changed_callback (WnckWindow     *window,
+                        WnckWindowState changed_mask,
+                        WnckWindowState new_state,
+                        gpointer        data)
+{
+  ActionMenuData *amd;
+
+  amd = get_data (data);
+
+  if (amd)
+    queue_update (amd);
+}
+
+static void
+actions_changed_callback (WnckWindow       *window,
+                          WnckWindowActions changed_mask,
+                          WnckWindowActions new_actions,
+                          gpointer          data)
+{
+  ActionMenuData *amd;
+
+  amd = get_data (data);
+
+  if (amd)
+    queue_update (amd);
+}
+
+static GtkWidget*
+make_menu_item (ActionMenuData *amd,
+                WindowAction    action)
+{
+  GtkWidget *mi;
+  
+  mi = gtk_menu_item_new_with_label ("");
+
+  set_data (G_OBJECT (mi), amd);
+  
+  g_signal_connect (G_OBJECT (mi), "activate",
+                    G_CALLBACK (item_activated_callback),
+                    GINT_TO_POINTER (action));
+  
+  gtk_widget_show (mi);
+
+  return mi;
+}
+
+static void
+amd_free (ActionMenuData *amd)
+{
+  if (amd->idle_handler)
+    g_source_remove (amd->idle_handler);
+
+  g_free (amd);
+}
+
+GtkWidget*
+wnck_create_window_action_menu (WnckWindow *window)
+{
+  GtkWidget *menu;
+  ActionMenuData *amd;
+
+  amd = g_new0 (ActionMenuData, 1);
+  amd->window = window;
+  
+  menu = gtk_menu_new ();
+
+  g_object_set_data_full (G_OBJECT (menu), "wnck-action-data",
+                          amd, (GDestroyNotify) amd_free);
+
+  g_object_weak_ref (G_OBJECT (menu), window_weak_notify, menu);
+  
+  amd->close_item = make_menu_item (amd, CLOSE);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->close_item);
+
+  set_item_text (amd->close_item, _("Close"));
+  
+  amd->minimize_item = make_menu_item (amd, MINIMIZE);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->minimize_item);
+
+  amd->maximize_item = make_menu_item (amd, MAXIMIZE);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->maximize_item);
+
+  amd->shade_item = make_menu_item (amd, SHADE);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->shade_item);
+
+  amd->move_item = make_menu_item (amd, MOVE);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->move_item);  
+
+  set_item_text (amd->move_item, _("Mo_ve"));
+  
+  amd->resize_item = make_menu_item (amd, RESIZE);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->resize_item);
+
+  set_item_text (amd->resize_item, _("_Resize"));
+  
+  g_signal_connect_object (G_OBJECT (amd->window), 
+                           "state_changed",
+                           G_CALLBACK (state_changed_callback),
+                           G_OBJECT (menu),
+                           0);
+
+  g_signal_connect_object (G_OBJECT (amd->window), 
+                           "actions_changed",
+                           G_CALLBACK (actions_changed_callback),
+                           G_OBJECT (menu),
+                           0);
+
+  update_menu_state (amd);
+  
+  return menu;
+}
+

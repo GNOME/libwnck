@@ -67,6 +67,8 @@ struct _WnckWindowPrivate
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
 
+  WnckWindowActions actions;
+  
   /* window has no icon, don't bother querying the
    * properties again
    */
@@ -101,6 +103,7 @@ struct _WnckWindowPrivate
   guint need_update_icon_name : 1;
   guint need_update_workspace : 1;
   guint need_emit_icon_changed : 1;
+  guint need_update_actions : 1;
 };
 
 enum {
@@ -108,6 +111,7 @@ enum {
   STATE_CHANGED,
   WORKSPACE_CHANGED,
   ICON_CHANGED,
+  ACTIONS_CHANGED,
   LAST_SIGNAL
 };
 
@@ -121,12 +125,16 @@ static void emit_state_changed     (WnckWindow      *window,
                                     WnckWindowState  new_state);
 static void emit_workspace_changed (WnckWindow      *window);
 static void emit_icon_changed      (WnckWindow      *window);
+static void emit_actions_changed   (WnckWindow       *window,
+                                    WnckWindowActions changed_mask,
+                                    WnckWindowActions new_actions);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
 static void update_minimized (WnckWindow *window);
 static void update_icon_name (WnckWindow *window);
 static void update_workspace (WnckWindow *window);
+static void update_actions   (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -227,6 +235,17 @@ wnck_window_class_init (WnckWindowClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  signals[ACTIONS_CHANGED] =
+    g_signal_new ("actions_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, actions_changed),
+                  NULL, NULL,
+                  _wnck_marshal_VOID__FLAGS_FLAGS,
+                  G_TYPE_NONE, 2,
+                  WNCK_TYPE_WINDOW_ACTIONS,
+                  WNCK_TYPE_WINDOW_ACTIONS);
+  
 }
 
 static void
@@ -561,6 +580,14 @@ wnck_window_is_sticky                 (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   return window->priv->is_sticky;
+}
+
+void
+wnck_window_close (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_close (window->priv->xwindow);
 }
 
 void
@@ -939,6 +966,39 @@ wnck_window_set_mini_icon_size (WnckWindow *window,
     }
 }
 
+/**
+ * wnck_window_get_actions:
+ * @window: a #WnckWindow
+ * 
+ * Gets the window operations that should be sensitive for @window.
+ * 
+ * Return value: bitmask of actions the window supports
+ **/
+WnckWindowActions
+wnck_window_get_actions (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+
+  return window->priv->actions;
+}
+
+
+/**
+ * wnck_window_get_state:
+ * @window: a #WnckWindow
+ * 
+ * Gets the state of a window as a bitmask.
+ * 
+ * Return value: bitmask of active state flags.
+ **/
+WnckWindowState
+wnck_window_get_state (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+
+  return COMPRESS_STATE (window);
+}
+
 void
 _wnck_window_set_application (WnckWindow      *window,
                               WnckApplication *app)
@@ -987,6 +1047,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
            _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"))
     {
       window->priv->need_update_icon_name = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_WM_ALLOWED_ACTIONS"))
+    {
+      window->priv->need_update_actions = TRUE;
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
@@ -1156,10 +1222,35 @@ update_workspace (WnckWindow *window)
 }
 
 static void
+update_actions (WnckWindow *window)
+{
+  if (!window->priv->need_update_actions)
+    return;
+  
+  window->priv->need_update_actions = FALSE;
+  
+  /* FIXME read property */
+  window->priv->actions =
+    WNCK_WINDOW_ACTION_MOVE                    |
+    WNCK_WINDOW_ACTION_RESIZE                  |
+    WNCK_WINDOW_ACTION_SHADE                   |
+    WNCK_WINDOW_ACTION_STICK                   |
+    WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   |
+    WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     |
+    WNCK_WINDOW_ACTION_CHANGE_WORKSPACE        |
+    WNCK_WINDOW_ACTION_CLOSE                   |
+    WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY |
+    WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   |
+    WNCK_WINDOW_ACTION_UNSHADE                 |
+    WNCK_WINDOW_ACTION_UNSTICK;
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
   WnckWindowState new_state;
+  WnckWindowActions old_actions;
   char *old_name;
   char *old_icon_name;
   
@@ -1198,16 +1289,22 @@ force_update_now (WnckWindow *window)
     }
 
   old_state = COMPRESS_STATE (window);
-
+  old_actions = window->priv->actions;
+  
   update_state (window);
   update_minimized (window);
   update_workspace (window); /* emits signals */
-
+  update_actions (window);
+  
   new_state = COMPRESS_STATE (window);
 
   if (old_state != new_state)
     emit_state_changed (window, old_state ^ new_state, new_state);
 
+  if (old_actions != window->priv->actions)
+    emit_actions_changed (window, old_actions ^ window->priv->actions,
+                          window->priv->actions);
+  
   if (window->priv->need_emit_icon_changed)
     {
       window->priv->need_emit_icon_changed = FALSE;
@@ -1290,4 +1387,14 @@ emit_icon_changed (WnckWindow *window)
   g_signal_emit (G_OBJECT (window),
                  signals[ICON_CHANGED],
                  0);
+}
+
+static void
+emit_actions_changed   (WnckWindow       *window,
+                        WnckWindowActions changed_mask,
+                        WnckWindowActions new_actions)
+{
+  g_signal_emit (G_OBJECT (window),
+                 signals[ACTIONS_CHANGED],
+                 0, changed_mask, new_actions);
 }

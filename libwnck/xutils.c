@@ -552,6 +552,29 @@ _wnck_deiconify (Window xwindow)
 }
 
 void
+_wnck_close (Window xwindow)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = 0;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (gdk_display,
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev); 
+}
+
+void
 _wnck_change_state (Window   xwindow,
                     gboolean add,
                     Atom     state1,

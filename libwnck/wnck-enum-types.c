@@ -24,6 +24,35 @@ wnck_window_state_get_type (void)
   return etype;
 }
 
+GType
+wnck_window_actions_get_type (void)
+{
+  static GType etype = 0;
+  if (etype == 0) {
+    static const GFlagsValue values[] = {
+      { WNCK_WINDOW_ACTION_MOVE, "WNCK_WINDOW_ACTION_MOVE", "move" },
+      { WNCK_WINDOW_ACTION_RESIZE, "WNCK_WINDOW_ACTION_RESIZE", "resize" },
+      { WNCK_WINDOW_ACTION_SHADE, "WNCK_WINDOW_ACTION_SHADE", "shade" },
+      { WNCK_WINDOW_ACTION_STICK, "WNCK_WINDOW_ACTION_STICK", "stick" },
+      { WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY, "WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY", "maximize-horizontally" },
+      { WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY, "WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY", "maximize-vertically" },
+      { WNCK_WINDOW_ACTION_CHANGE_WORKSPACE, "WNCK_WINDOW_ACTION_CHANGE_WORKSPACE", "change-workspace" },
+      { WNCK_WINDOW_ACTION_CLOSE, "WNCK_WINDOW_ACTION_CLOSE", "close" },
+      { WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY, "WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY", "unmaximize-horizontally" },
+      { WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY, "WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY", "unmaximize-vertically" },
+      { WNCK_WINDOW_ACTION_UNSHADE, "WNCK_WINDOW_ACTION_UNSHADE", "unshade" },
+      { WNCK_WINDOW_ACTION_UNSTICK, "WNCK_WINDOW_ACTION_UNSTICK", "unstick" },
+      { WNCK_WINDOW_ACTION_MINIMIZE, "WNCK_WINDOW_ACTION_MINIMIZE", "minimize" },
+      { WNCK_WINDOW_ACTION_UNMINIMIZE, "WNCK_WINDOW_ACTION_UNMINIMIZE", "unminimize" },
+      { WNCK_WINDOW_ACTION_MAXIMIZE, "WNCK_WINDOW_ACTION_MAXIMIZE", "maximize" },
+      { WNCK_WINDOW_ACTION_UNMAXIMIZE, "WNCK_WINDOW_ACTION_UNMAXIMIZE", "unmaximize" },
+      { 0, NULL, NULL }
+    };
+    etype = g_flags_register_static ("WnckWindowActions", values);
+  }
+  return etype;
+}
+
 
 /* Generated data ends here */
 
