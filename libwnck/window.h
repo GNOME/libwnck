@@ -189,6 +189,7 @@ void     wnck_window_unpin     (WnckWindow *window);
 
 void     wnck_window_activate  (WnckWindow *window);
 gboolean wnck_window_is_active (WnckWindow *window);
+gboolean wnck_window_is_most_recently_activated (WnckWindow *window);
 void     wnck_window_activate_transient (WnckWindow *window);
 
 

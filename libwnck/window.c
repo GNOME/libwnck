@@ -1049,6 +1049,38 @@ wnck_window_is_active (WnckWindow *window)
   return window == wnck_screen_get_active_window (window->priv->screen);
 }
 
+/**
+ * wnck_window_is_most_recently_activated:
+ * @window: a #WnckWindow
+ *
+ * Determines whether @window is the most recently activated window.
+ * The most recently activated window is identical to the active
+ * window for click and sloppy focus methods (since a window is always
+ * active in those cases) but differs slightly for mouse focus since
+ * we often have no window active.
+ *
+ * Return value: %TRUE if window was the most recently activated window
+ **/
+gboolean
+wnck_window_is_most_recently_activated (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  WnckWindow * current;
+  WnckWindow * previous;
+  WnckWindow * most_recently_activated_window;
+
+  current  = wnck_screen_get_active_window (window->priv->screen);
+  previous = wnck_screen_get_previously_active_window (window->priv->screen);
+
+  if (current)
+    most_recently_activated_window = current;
+  else
+    most_recently_activated_window = previous;
+
+  return (window == most_recently_activated_window);
+}
+
 
 static WnckWindow*
 find_last_transient_for (GList *windows,

@@ -119,6 +119,7 @@ WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
+WnckWindow*    wnck_screen_get_previously_active_window (WnckScreen *screen);
 GList*         wnck_screen_get_windows              (WnckScreen *screen);
 GList*         wnck_screen_get_windows_stacked      (WnckScreen *screen);
 void           wnck_screen_force_update             (WnckScreen *screen);

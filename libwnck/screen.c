@@ -47,8 +47,12 @@ struct _WnckScreenPrivate
   GList *stacked_windows;
   /* in 0-to-N order */
   GList *workspaces;
-  
+
+  /* previously_active_window is used in tandem with active_window to
+   * determine return status of meta_window_is_most_recently_actived().
+   */
   WnckWindow *active_window;
+  WnckWindow *previously_active_window;
   WnckWorkspace *active_workspace;
 
   Pixmap bg_pixmap;
@@ -551,6 +555,24 @@ wnck_screen_get_active_window (WnckScreen *screen)
 }
 
 /**
+ * wnck_screen_get_previously_active_window:
+ * @screen: a #WnckScreen
+ * 
+ * Gets the previously active window. May return %NULL
+ * sometimes, since not all window managers guarantee
+ * that a window is always active.
+ * 
+ * Return value: previously active window or %NULL
+ **/
+WnckWindow*
+wnck_screen_get_previously_active_window (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->previously_active_window;
+}
+
+/**
  * wnck_screen_get_windows:
  * @screen: a #WnckScreen
  * 
@@ -1038,8 +1060,14 @@ update_client_list (WnckScreen *screen)
 
       if (window == screen->priv->active_window)
         {
+          screen->priv->previously_active_window = screen->priv->active_window;
           screen->priv->active_window = NULL;
           active_changed = TRUE;
+        }
+
+      if (window == screen->priv->previously_active_window)
+        {
+          screen->priv->previously_active_window = NULL;
         }
       
       emit_window_closed (screen, window);
@@ -1363,6 +1391,7 @@ update_active_window (WnckScreen *screen)
   if (window == screen->priv->active_window)
     return;
 
+  screen->priv->previously_active_window = screen->priv->active_window;
   screen->priv->active_window = window;
 
   emit_active_window_changed (screen);

@@ -2345,7 +2345,14 @@ wnck_task_button_press_event (GtkWidget	      *widget,
     case WNCK_TASK_WINDOW:
       if (event->button == 1)
         {
-          if (wnck_window_is_active (task->window))
+          /* is_most_recently_activated == is_active for click &
+	   * sloppy focus methods.  We use the former here because
+	   * 'mouse' focus provides a special case.  In that case, no
+	   * window will be active, but if a window was the most
+	   * recently active one (i.e. user moves mouse straight from
+	   * window to tasklist), then we should still minimize it.
+           */
+          if (wnck_window_is_most_recently_activated (task->window))
             task->was_active = TRUE;
           else
             task->was_active = FALSE;

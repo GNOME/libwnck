@@ -1,3 +1,24 @@
+2004-08-15  Elijah Newren  <newren@math.utah.edu>
+
+	Fix window activation vs. minimization for mouse focus. (fixes
+	#136581)
+
+	* libwnck/screen.c (struct _WnckScreenPrivate): add a
+	previously_active_window field,
+	(wnck_screen_get_previously_active_window): new function,
+	(update_client_list): update the previously_active_window as well,
+	(update_active_window): also updates the previously_active_window
+	now.
+
+	* libwnck/screen.h Added wnck_screen_get_previously_active_window
+
+	* libwnck/tasklist.c (wnck_task_button_press_event): minimize when
+	the tasklist button is pressed if the window is the most recently
+	activated (instead of if the window is currently active).
+
+	* libwnck/window.[ch] (wnck_window_is_most_recently_activated):
+	new function
+
 2004-08-09  Mark McLoughlin  <mark@skynet.ie>
 
 	* libwnck/wnck-enum-types.[ch],
