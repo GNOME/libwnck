@@ -2,16 +2,16 @@
 # Copyright (C) 2002, 2004 Free Software Foundation, Inc.
 # Evgeni Boevski <linkej@yahoo.com>, 2002;
 # Yanko Kaneti <yaneti@declera.com>, 2002;
-# Vladimir Petkov <vpetkov@i-space.org>, small updates and fixes 2004.
-#  
+# Vladimir Petkov <vpetkov@i-space.org>, 2004.
+#  Vladimir Petkov <vpetkov@i-space.org>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2005-01-19 18:09+0200\n"
+"POT-Creation-Date: 2005-01-31 10:05+0200\n"
+"PO-Revision-Date: 2005-01-31 10:05+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
-"Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,7 @@ msgstr ""
 
 #: libwnck/application.c:26
 msgid "untitled application"
-msgstr "неозаглавена програма"
+msgstr "програма без име"
 
 #: libwnck/pager-accessible.c:317
 msgid "Workspace Switcher"
@@ -59,12 +59,12 @@ msgid "Roll _Up"
 msgstr "_Свиване"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
-msgstr "Само на този _работен плот"
+msgid "_Only on This Workspace"
+msgstr "_Само на този работен плот"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Поставяне на _всички работни плотове"
+msgid "_Always on Current Workspace"
+msgstr "_Винаги на този работен плот"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -113,14 +113,14 @@ msgstr "Списък с прозорците"
 msgid "Tool to switch between visible windows"
 msgstr "Инструмент за превключване между видимите прозорци"
 
-#: libwnck/tasklist.c:2096
+#: libwnck/tasklist.c:2102
 msgid "_Close All"
 msgstr "_Затваряне на всички"
 
-#: libwnck/tasklist.c:2111
+#: libwnck/tasklist.c:2117
 msgid "_Minimize All"
 msgstr "_Минимизиране на всички"
 
-#: libwnck/tasklist.c:2122
+#: libwnck/tasklist.c:2128
 msgid "_Unminimize All"
 msgstr "_Деминимизиране на всички"
