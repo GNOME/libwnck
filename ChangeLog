@@ -1,3 +1,9 @@
+2003-01-26  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/tasklist.c: (wnck_tasklist_check_end_sequence):
+	Actually end the sequnce if we match the wmclass against
+	a window.
+
 2003-01-24  Gregory Merchan  <merchan@phys.lsu.edu>
 	
 	* libwnck/window-action-menu.c: Change mnemonics to match

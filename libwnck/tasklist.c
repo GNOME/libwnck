@@ -2640,6 +2640,8 @@ wnck_tasklist_check_end_sequence (WnckTasklist   *tasklist,
           ((res_class && strcmp (res_class, wmclass) == 0) ||
            (res_name && strcmp (res_name, wmclass) == 0)))
         {
+          sn_startup_sequence_complete (task->startup_sequence);
+
           g_assert (task->button != NULL);
           /* removes task from list as a side effect */
           gtk_widget_destroy (task->button);      
