@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
+"POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -35,62 +35,90 @@ msgstr "Ferramenta para seleccionar os escritorios"
 msgid "Click this to switch to workspace %s"
 msgstr "Prema isto para activar o escritorio %s"
 
-#: libwnck/window-action-menu.c:191
+#: libwnck/window-action-menu.c:205
 #, fuzzy
 msgid "Unmi_nimize"
 msgstr "Des_minimizar"
 
-#: libwnck/window-action-menu.c:198
+#: libwnck/window-action-menu.c:212
 #, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimizar"
 
-#: libwnck/window-action-menu.c:206
+#: libwnck/window-action-menu.c:220
 #, fuzzy
 msgid "Unma_ximize"
 msgstr "Desma_ximizar"
 
-#: libwnck/window-action-menu.c:213
+#: libwnck/window-action-menu.c:227
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: libwnck/window-action-menu.c:221
+#: libwnck/window-action-menu.c:235
 msgid "_Unroll"
 msgstr ""
 
-#: libwnck/window-action-menu.c:228
+#: libwnck/window-action-menu.c:242
 msgid "Roll _Up"
 msgstr ""
 
-#: libwnck/window-action-menu.c:236
+#: libwnck/window-action-menu.c:250
 msgid "Only on _This Workspace"
 msgstr ""
 
-#: libwnck/window-action-menu.c:243
+#: libwnck/window-action-menu.c:257
 msgid "Put on _All Workspaces"
 msgstr ""
 
-#: libwnck/window-action-menu.c:375
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
+#, c-format
+msgid "Workspace %d"
+msgstr "Escritorio %d"
+
+#: libwnck/window-action-menu.c:368
+#, fuzzy
+msgid "Workspace 1_0"
+msgstr "Escritorio %d"
+
+#: libwnck/window-action-menu.c:370
+#, fuzzy, c-format
+msgid "Workspace %s%d"
+msgstr "Escritorio %d"
+
+#: libwnck/window-action-menu.c:466
 #, fuzzy
 msgid "_Move"
 msgstr "Mo_ver"
 
-#: libwnck/window-action-menu.c:382
+#: libwnck/window-action-menu.c:473
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: libwnck/window-action-menu.c:395
+#: libwnck/window-action-menu.c:486
 msgid "_Close"
 msgstr "_Pechar"
+
+#: libwnck/window-action-menu.c:499
+msgid "Move to Another _Workspace"
+msgstr ""
+
+#: libwnck/window-action-menu.c:517
+#, c-format
+msgid "%s"
+msgstr ""
 
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "fiestra sen título"
 
-#: libwnck/workspace.c:232
-#, c-format
-msgid "Workspace %d"
-msgstr "Escritorio %d"
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr ""
+
+#: libwnck/tasklist.c:462
+#, fuzzy
+msgid "Tool to switch between visible windows"
+msgstr "Ferramenta para seleccionar os escritorios"
 
 #~ msgid "U_nshade"
 #~ msgstr "Dese_nrolar"

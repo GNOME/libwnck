@@ -1,3 +1,14 @@
+2.5.90
+===
+
+Thanks to Laszlo Peter, Leena Gunda Padraig O'Briain for fixes in
+this release
+
+  - allow building against an uninstalled libwnck build
+  - add "Move to Workspace" menu
+  - fix crash with updated allowed actions hint
+
+===
 2.4.0
 ===
 

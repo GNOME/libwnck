@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2004-01-23 12:02+0100\n"
+"POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-01-23 12:05+0100\n"
 "Last-Translator: Andras Timar <timar@fsf.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
@@ -110,4 +110,3 @@ msgstr "Ablaklista"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "A látható ablakok közötti váltást segítő eszköz"
-
