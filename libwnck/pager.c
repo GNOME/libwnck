@@ -984,6 +984,19 @@ wnck_pager_focus (GtkWidget        *widget,
   return GTK_WIDGET_CLASS (parent_class)->focus (widget, direction);
 }
 
+void
+wnck_pager_set_screen (WnckPager  *pager,
+		       WnckScreen *screen)
+{
+  if (pager->priv->screen == screen)
+    return;
+
+  if (pager->priv->screen)
+    wnck_pager_disconnect_screen (pager);
+
+  wnck_pager_connect_screen (pager, screen);
+}
+
 GtkWidget*
 wnck_pager_new (WnckScreen *screen)
 {

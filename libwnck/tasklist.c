@@ -59,6 +59,8 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define TIMEOUT_ACTIVATE 1000
 
+#define N_SCREEN_CONNECTIONS 4
+
 struct _WnckTask
 {
   GObject parent_instance;
@@ -127,6 +129,7 @@ struct _WnckTasklistPrivate
   gint grouping_limit;
 
   guint activate_timeout_id;
+  guint screen_connections [N_SCREEN_CONNECTIONS];
 
   int *size_hints;
   int size_hints_len;
@@ -194,6 +197,9 @@ static gboolean wnck_tasklist_change_active_timeout    (gpointer data);
 static void     wnck_tasklist_activate_task_window     (WnckTask *task);
 
 static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist);
+static void     wnck_tasklist_connect_screen           (WnckTasklist *tasklist,
+                                                        WnckScreen   *screen);
+static void     wnck_tasklist_disconnect_screen        (WnckTasklist *tasklist);
 
 static gpointer task_parent_class;
 static gpointer tasklist_parent_class;
@@ -409,6 +415,8 @@ wnck_tasklist_finalize (GObject *object)
   WnckTasklist *tasklist;
 
   tasklist = WNCK_TASKLIST (object);
+
+  wnck_tasklist_disconnect_screen (tasklist);
 
   /* Tasks should have gone away due to removing their
    * buttons in container destruction
@@ -1051,35 +1059,31 @@ wnck_tasklist_remove (GtkContainer   *container,
     }
 }
 
-
-GtkWidget*
-wnck_tasklist_new (WnckScreen *screen)
+static void
+wnck_tasklist_connect_screen (WnckTasklist *tasklist,
+			      WnckScreen   *screen)
 {
-  WnckTasklist *tasklist;
-  GList        *windows;
+  GList *windows;
+  guint *c;
+  int    i;
 
-  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  i = 0;
+  c = tasklist->priv->screen_connections;
 
-  tasklist->priv->screen = screen;
-  
-  tasklist->priv->tooltips = gtk_tooltips_new ();
-  gtk_object_ref (GTK_OBJECT (tasklist->priv->tooltips));
-  gtk_object_sink (GTK_OBJECT (tasklist->priv->tooltips));
+  c [i++] = g_signal_connect_object (G_OBJECT (screen), "active_window_changed",
+                                     G_CALLBACK (wnck_tasklist_active_window_changed),
+                                     tasklist, 0);
+  c [i++] = g_signal_connect_object (G_OBJECT (screen), "active_workspace_changed",
+                                     G_CALLBACK (wnck_tasklist_active_workspace_changed),
+                                     tasklist, 0);
+  c [i++] = g_signal_connect_object (G_OBJECT (screen), "window_opened",
+                                     G_CALLBACK (wnck_tasklist_window_added),
+                                     tasklist, 0);
+  c [i++] = g_signal_connect_object (G_OBJECT (screen), "window_closed",
+                                     G_CALLBACK (wnck_tasklist_window_removed),
+                                     tasklist, 0);
 
-  wnck_tasklist_update_lists (tasklist);
-  
-  g_signal_connect_object (G_OBJECT (screen), "active_window_changed",
-			   G_CALLBACK (wnck_tasklist_active_window_changed),
-			   tasklist, 0);
-  g_signal_connect_object (G_OBJECT (screen), "active_workspace_changed",
-			   G_CALLBACK (wnck_tasklist_active_workspace_changed),
-			   tasklist, 0);
-  g_signal_connect_object (G_OBJECT (screen), "window_opened",
-			   G_CALLBACK (wnck_tasklist_window_added),
-			   tasklist, 0);
-  g_signal_connect_object (G_OBJECT (screen), "window_closed",
-			   G_CALLBACK (wnck_tasklist_window_removed),
-			   tasklist, 0);
+  g_assert (i == N_SCREEN_CONNECTIONS);
 
   windows = wnck_screen_get_windows (screen);
   while (windows != NULL)
@@ -1087,6 +1091,55 @@ wnck_tasklist_new (WnckScreen *screen)
       wnck_tasklist_connect_window (tasklist, windows->data);
       windows = windows->next;
     }
+}
+
+static void
+wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
+{
+  int i;
+
+  i = 0;
+  while (i < N_SCREEN_CONNECTIONS)
+    {
+      if (tasklist->priv->screen_connections [i] != 0)
+        g_signal_handler_disconnect (G_OBJECT (tasklist->priv->screen),
+                                     tasklist->priv->screen_connections [i]);
+
+      tasklist->priv->screen_connections [i] = 0;
+
+      ++i;
+    }
+}
+
+void
+wnck_tasklist_set_screen (WnckTasklist *tasklist,
+			  WnckScreen   *screen)
+{
+  if (tasklist->priv->screen == screen)
+    return;
+
+  if (tasklist->priv->screen)
+    wnck_tasklist_disconnect_screen (tasklist);
+
+  tasklist->priv->screen = screen;
+
+  wnck_tasklist_update_lists (tasklist);
+
+  wnck_tasklist_connect_screen (tasklist, screen);
+}
+
+GtkWidget*
+wnck_tasklist_new (WnckScreen *screen)
+{
+  WnckTasklist *tasklist;
+
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+
+  tasklist->priv->tooltips = gtk_tooltips_new ();
+  gtk_object_ref (GTK_OBJECT (tasklist->priv->tooltips));
+  gtk_object_sink (GTK_OBJECT (tasklist->priv->tooltips));
+
+  wnck_tasklist_set_screen (tasklist, screen);
 
   return GTK_WIDGET (tasklist);
 }

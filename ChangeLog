@@ -1,3 +1,13 @@
+2002-09-16  Mark McLoughlin  <mark@skynet.ie>
+
+	* libwnck/pager.[ch]: (wnck_pager_set_screen): impl.
+
+	* libwnck/tasklist.[ch]: (wnck_tasklist_connect_screen),
+	(wnck_tasklist_disconnect_screen), (wnck_tasklist_set_screen):
+	implement changing the screen the tasklist operates upon.
+	(wnck_tasklist_new): use set_screen
+	(wnck_tasklist_finalize): disconnect screen.
+
 2002-09-03  Christophe Fergeau  <teuf@users.sourceforge.net>
 
 	* added he.po to ALL_LINGUAS

@@ -59,7 +59,8 @@ typedef enum {
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (WnckScreen *screen);
-
+void       wnck_tasklist_set_screen (WnckTasklist *tasklist,
+				     WnckScreen   *screen);
 const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 					      int           *n_elements);
 
