@@ -148,6 +148,46 @@ _wnck_get_window (Window  xwindow,
   return TRUE;
 }
 
+gboolean
+_wnck_get_atom (Window  xwindow,
+                Atom    atom,
+                Atom   *val)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  Atom *a;
+  int err, result;
+
+  *val = 0;
+  
+  _wnck_error_trap_push ();
+  type = None;
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_ATOM, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&a);  
+  err = _wnck_error_trap_pop ();
+  if (err != Success ||
+      result != Success)
+    return FALSE;
+  
+  if (type != XA_ATOM)
+    {
+      XFree (a);
+      return FALSE;
+    }
+
+  *val = *a;
+  
+  XFree (a);
+
+  return TRUE;
+}
+
 static char*
 text_property_to_utf8 (const XTextProperty *prop)
 {

@@ -1,5 +1,16 @@
 2002-02-08  Havoc Pennington  <hp@pobox.com>
 
+	* libwnck/test-tasklist.c (main): put it at 0,0
+
+	* libwnck/test-pager.c (create_pager_window): create it at 0,0 so
+	it doesn't get buried
+
+	* libwnck/window.c (update_state): use semantic type to set 
+	skip_taskbar skip_pager sometimes.
+	(wnck_window_get_window_type): new function
+
+2002-02-08  Havoc Pennington  <hp@pobox.com>
+
 	* libwnck/application.c (struct _WnckApplicationPrivate): fix some
 	bad comments that said client leader instead of group leader
 	(though the code in screen.c does correctly pass in the group leader)

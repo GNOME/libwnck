@@ -49,6 +49,7 @@ struct _WnckWindowPrivate
   WnckScreen *screen;
   WnckApplication *app;
   Window group_leader;
+  Window transient_for;
   char *name;
   char *icon_name;
   char *session_id;
@@ -56,6 +57,8 @@ struct _WnckWindowPrivate
   int pid;
   int workspace;
 
+  WnckWindowType wintype;
+  
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
 
@@ -90,6 +93,8 @@ struct _WnckWindowPrivate
   guint need_update_workspace : 1;
   guint need_emit_icon_changed : 1;
   guint need_update_actions : 1;
+  guint need_update_wintype : 1;
+  guint need_update_transient_for : 1;
 };
 
 enum {
@@ -123,6 +128,8 @@ static void update_minimized (WnckWindow *window);
 static void update_icon_name (WnckWindow *window);
 static void update_workspace (WnckWindow *window);
 static void update_actions   (WnckWindow *window);
+static void update_wintype   (WnckWindow *window);
+static void update_transient_for (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -351,6 +358,8 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_minimized = TRUE;
   window->priv->need_update_workspace = TRUE;
   window->priv->need_update_actions = TRUE;
+  window->priv->need_update_wintype = TRUE;
+  window->priv->need_update_transient_for = TRUE;
   force_update_now (window);
 
   return window;
@@ -496,6 +505,22 @@ wnck_window_get_pid (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
 
   return window->priv->pid;
+}
+
+/**
+ * wnck_window_get_window_type:
+ * @window: a #WnckWindow
+ * 
+ * Retrieves the semantic type of the window.
+ * 
+ * Return value: semantic type
+ **/
+WnckWindowType
+wnck_window_get_window_type (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+  
+  return window->priv->wintype;
 }
 
 /**
@@ -1124,6 +1149,19 @@ _wnck_window_process_property_notify (WnckWindow *window,
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_WM_WINDOW_TYPE"))
+    {
+      window->priv->need_update_wintype = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("WM_TRANSIENT_FOR"))
+    {
+      window->priv->need_update_transient_for = TRUE;
+      window->priv->need_update_wintype = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
            _wnck_atom_get ("KWM_WIN_ICON") ||
@@ -1182,45 +1220,89 @@ update_state (WnckWindow *window)
   Atom *atoms;
   int n_atoms;
   int i;
+  gboolean reread_net_wm_state;
 
-  if (!window->priv->need_update_state)
-    return;
+  reread_net_wm_state = window->priv->need_update_state;
 
   window->priv->need_update_state = FALSE;
 
-  window->priv->is_maximized_horz = FALSE;
-  window->priv->is_maximized_vert = FALSE;
-  window->priv->is_sticky = FALSE;
-  window->priv->is_shaded = FALSE;
-  window->priv->skip_taskbar = FALSE;
-  window->priv->skip_pager = FALSE;
-
-  atoms = NULL;
-  n_atoms = 0;
-  _wnck_get_atom_list (window->priv->xwindow,
-                       _wnck_atom_get ("_NET_WM_STATE"),
-                       &atoms, &n_atoms);
-
-  i = 0;
-  while (i < n_atoms)
+  /* This is a bad hack, we always add the
+   * state based on window type in to the state,
+   * even if no state update is pending (since the
+   * state update just means the _NET_WM_STATE prop
+   * changed
+   */
+  
+  if (reread_net_wm_state)
     {
-      if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"))
-        window->priv->is_maximized_vert = TRUE;
-      else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"))
-        window->priv->is_maximized_horz = TRUE;
-      else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_STICKY"))
-        window->priv->is_sticky = TRUE;
-      else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SHADED"))
-        window->priv->is_shaded = TRUE;
-      else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"))
-        window->priv->skip_taskbar = TRUE;
-      else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"))
-        window->priv->skip_pager = TRUE;
+      window->priv->is_maximized_horz = FALSE;
+      window->priv->is_maximized_vert = FALSE;
+      window->priv->is_sticky = FALSE;
+      window->priv->is_shaded = FALSE;
+      window->priv->skip_taskbar = FALSE;
+      window->priv->skip_pager = FALSE;
 
-      ++i;
+      atoms = NULL;
+      n_atoms = 0;
+      _wnck_get_atom_list (window->priv->xwindow,
+                           _wnck_atom_get ("_NET_WM_STATE"),
+                           &atoms, &n_atoms);
+
+      i = 0;
+      while (i < n_atoms)
+        {
+          if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"))
+            window->priv->is_maximized_vert = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"))
+            window->priv->is_maximized_horz = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_STICKY"))
+            window->priv->is_sticky = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SHADED"))
+            window->priv->is_shaded = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"))
+            window->priv->skip_taskbar = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"))
+            window->priv->skip_pager = TRUE;
+
+          ++i;
+        }
+
+      g_free (atoms);
     }
 
-  g_free (atoms);
+  switch (window->priv->wintype)
+    {
+    case WNCK_WINDOW_DESKTOP:
+    case WNCK_WINDOW_DOCK:
+    case WNCK_WINDOW_TOOLBAR:
+    case WNCK_WINDOW_MENU:
+    case WNCK_WINDOW_UTILITY:
+    case WNCK_WINDOW_SPLASHSCREEN:
+      window->priv->skip_taskbar = TRUE;
+      break;
+      
+    case WNCK_WINDOW_NORMAL:
+    case WNCK_WINDOW_DIALOG:
+    case WNCK_WINDOW_MODAL_DIALOG:
+      break;
+    }
+
+  switch (window->priv->wintype)
+    {
+    case WNCK_WINDOW_DESKTOP:
+    case WNCK_WINDOW_DOCK:
+    case WNCK_WINDOW_TOOLBAR:
+    case WNCK_WINDOW_MENU:
+    case WNCK_WINDOW_SPLASHSCREEN:
+      window->priv->skip_pager = TRUE;
+      break;
+      
+    case WNCK_WINDOW_NORMAL:
+    case WNCK_WINDOW_DIALOG:
+    case WNCK_WINDOW_MODAL_DIALOG:
+    case WNCK_WINDOW_UTILITY:
+      break;
+    }  
 }
 
 static void
@@ -1321,6 +1403,101 @@ update_actions (WnckWindow *window)
 }
 
 static void
+update_wintype (WnckWindow *window)
+{
+  Atom *atoms;
+  int n_atoms;
+  WnckWindowType type;
+  gboolean found_type;
+  
+  if (!window->priv->need_update_wintype)
+    return;
+
+  window->priv->need_update_wintype = FALSE;
+
+  found_type = FALSE;
+  type = WNCK_WINDOW_NORMAL;
+  
+  if (_wnck_get_atom_list (window->priv->xwindow,
+                           _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
+                           &atoms,
+                           &n_atoms))
+    {
+      int i;
+      
+      i = 0;
+      while (i < n_atoms && !found_type)
+        {
+          /* We break as soon as we find one we recognize,
+           * supposed to prefer those near the front of the list
+           */
+          found_type = TRUE;
+          if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DESKTOP"))
+            type = WNCK_WINDOW_DESKTOP;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DOCK"))
+            type = WNCK_WINDOW_DOCK;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_TOOLBAR"))
+            type = WNCK_WINDOW_TOOLBAR;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MENU"))
+            type = WNCK_WINDOW_MENU;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DIALOG"))
+            type = WNCK_WINDOW_DIALOG;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_NORMAL"))
+            type = WNCK_WINDOW_NORMAL;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MODAL_DIALOG"))
+            type = WNCK_WINDOW_MODAL_DIALOG;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_UTILITY"))
+            type = WNCK_WINDOW_UTILITY;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASHSCREEN"))
+            type = WNCK_WINDOW_SPLASHSCREEN;
+          else
+            found_type = FALSE;
+          
+          ++i;
+        }
+
+      g_free (atoms);
+    }
+
+  if (!found_type)
+    {
+      if (window->priv->transient_for != None)
+        {
+          type = WNCK_WINDOW_DIALOG;
+        }
+      else
+        {
+          type = WNCK_WINDOW_NORMAL;
+        }
+      found_type = TRUE;
+    }
+
+  window->priv->wintype = type;
+}
+
+static void
+update_transient_for (WnckWindow *window)
+{
+  Window parent;
+
+  if (!window->priv->need_update_transient_for)
+    return;
+
+  window->priv->need_update_transient_for = FALSE;
+  
+  if (_wnck_get_window (window->priv->xwindow,
+                        _wnck_atom_get ("WM_TRANSIENT_FOR"),
+                        &parent))
+    {
+      window->priv->transient_for = parent;
+    }
+  else
+    {
+      window->priv->transient_for = None;
+    }
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -1365,7 +1542,9 @@ force_update_now (WnckWindow *window)
 
   old_state = COMPRESS_STATE (window);
   old_actions = window->priv->actions;
-  
+
+  update_transient_for (window); /* wintype needs this to be first */
+  update_wintype (window);  
   update_state (window);
   update_minimized (window);
   update_workspace (window); /* emits signals */

@@ -38,6 +38,9 @@ main (int argc, char **argv)
 
   gtk_widget_show (tasklist);
   gtk_widget_show (frame);
+
+  gtk_window_move (GTK_WINDOW (win), 0, 0);
+  
   gtk_widget_show (win);
   
   gtk_main ();

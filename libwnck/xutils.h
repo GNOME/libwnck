@@ -39,6 +39,9 @@ int      _wnck_get_wm_state      (Window  xwindow);
 gboolean _wnck_get_window        (Window  xwindow,
                                   Atom    atom,
                                   Window *val);
+gboolean _wnck_get_atom          (Window  xwindow,
+                                  Atom    atom,
+                                  Atom   *val);
 char*    _wnck_get_text_property (Window  xwindow,
                                   Atom    atom);
 char*    _wnck_get_utf8_property (Window  xwindow,
@@ -91,7 +94,6 @@ char*  _wnck_get_name         (Window xwindow);
 
 void   _wnck_select_input     (Window xwindow,
                                int    mask);
-
 
 typedef struct _WnckIconCache WnckIconCache;
 

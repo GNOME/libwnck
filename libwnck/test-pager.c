@@ -20,9 +20,7 @@ create_pager_window (WnckScreen *screen,
   gtk_window_set_title (GTK_WINDOW (win), "Pager");
 
   /* very very random */
-  gtk_window_move (GTK_WINDOW (win),
-                   gdk_screen_width () / 2,
-                   gdk_screen_height () - 20);
+  gtk_window_move (GTK_WINDOW (win), 0, 0);
   
   /* quit on window close */
   g_signal_connect (G_OBJECT (win), "destroy",

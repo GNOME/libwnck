@@ -63,6 +63,19 @@ typedef enum
   WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15
 } WnckWindowActions;
 
+typedef enum
+{
+  WNCK_WINDOW_NORMAL,       /* document/app window */
+  WNCK_WINDOW_DESKTOP,      /* desktop background */
+  WNCK_WINDOW_DOCK,         /* panel */
+  WNCK_WINDOW_DIALOG,       /* dialog */
+  WNCK_WINDOW_MODAL_DIALOG, /* modal dialog */
+  WNCK_WINDOW_TOOLBAR,      /* tearoff toolbar */
+  WNCK_WINDOW_MENU,         /* tearoff menu */
+  WNCK_WINDOW_UTILITY,      /* palette/toolbox window */
+  WNCK_WINDOW_SPLASHSCREEN  /* splash screen */
+} WnckWindowType;
+
 #define WNCK_TYPE_WINDOW              (wnck_window_get_type ())
 #define WNCK_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_WINDOW, WnckWindow))
 #define WNCK_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), WNCK_TYPE_WINDOW, WnckWindowClass))
@@ -125,6 +138,8 @@ gulong           wnck_window_get_xid          (WnckWindow *window);
 const char* wnck_window_get_session_id        (WnckWindow *window);
 const char* wnck_window_get_session_id_utf8   (WnckWindow *window);
 int         wnck_window_get_pid               (WnckWindow *window);
+
+WnckWindowType wnck_window_get_window_type    (WnckWindow *window);
 
 gboolean wnck_window_is_minimized              (WnckWindow *window);
 gboolean wnck_window_is_maximized_horizontally (WnckWindow *window);
