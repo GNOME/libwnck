@@ -789,7 +789,7 @@ wnck_window_unminimize              (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_deiconify (window->priv->xwindow);
+  wnck_window_activate_transient (window);
 }
 
 void

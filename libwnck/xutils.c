@@ -975,6 +975,13 @@ _wnck_activate (Screen *screen,
 		Window  xwindow)
 {
   XEvent xev;
+
+  Time timestamp;
+
+  timestamp = gtk_get_current_event_time();
+  if (timestamp == 0)
+    g_warning ("Received a timestamp of 0; window activation may not "
+               "function properly.\n");
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -983,8 +990,8 @@ _wnck_activate (Screen *screen,
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
   xev.xclient.format = 32;
-  xev.xclient.data.l[0] = 0;
-  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[0] = 2;
+  xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
 
   XSendEvent (gdk_display,
