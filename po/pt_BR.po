@@ -5,10 +5,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2002-11-29 13:23-0300\n"
+"POT-Creation-Date: 2003-07-06 22:34-0300\n"
+"PO-Revision-Date: 2003-07-06 22:31-0300\n"
 "Last-Translator: Evandro Fernandes Giovanini <evandrofg@ig.com.br>\n"
-"Language-Team: Brazilian Portuguese <gnome-br@listas.cipsga.org.br>\n"
+"Language-Team: GNOME-BR <gnome-br@listas.cipsga.org.br>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,17 +31,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Clicar para ir para a área de trabalho %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "Desfazer _Minimizar"
+msgstr "Desfazer Mi_nimizar"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
-msgstr "_Minimizar"
+msgstr "Mi_nimizar"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "Desfazer Ma_ximizar"
 
@@ -66,9 +63,8 @@ msgid "Put on _All Workspaces"
 msgstr "Colocar em tod_as Áreas de Trabalho"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "Mo_ver"
+msgstr "_Mover"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
