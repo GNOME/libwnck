@@ -293,11 +293,6 @@ get_icons (WnckApplication *app)
     {
       app->priv->need_emit_icon_changed = TRUE;
       app->priv->icon_from_leader = TRUE;
-      
-      if (icon)
-        g_object_ref (G_OBJECT (icon));
-      if (mini_icon)
-        g_object_ref (G_OBJECT (mini_icon));
 
       if (app->priv->icon)
         g_object_unref (G_OBJECT (app->priv->icon));
