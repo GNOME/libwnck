@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-10 04:01+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-01-10 16:30+0530\n"
 "Last-Translator: G Karunakar <karunakar@freedomink.org>\n"
 "Language-Team: Hindi <indlinux-hindi-gnome@lists.sourceforge.net>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "कार्यक्षेत्र %s में बदलने के लिए इधर क्लिक करें"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "छोटे से बडा करें (_m)"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "छोटा करें (_M)"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "बडे से छोटा करें (_U)"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "सभी कार्यक्षेत्रों मे रखें (_A)"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "चलाएं (_v)"
 
 #: libwnck/window-action-menu.c:379

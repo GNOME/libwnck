@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-12-18 18:53+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -34,15 +34,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klik hier om te wisselen naar werkblad %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "_Herstellen"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Minimaliseren"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "_Herstellen"
 
 #: libwnck/window-action-menu.c:213
@@ -66,7 +69,8 @@ msgid "Put on _All Workspaces"
 msgstr "Op _alle werkbladen tonen"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "_Verplaatsen"
 
 #: libwnck/window-action-menu.c:379

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-03-08 12:32+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-03-08 15:57+0200\n"
 "Last-Translator: Mətin Əmirov <metin@karegen.com>\n"
 "Language-Team: Azerbaijani Turkic <linuxaz@azerimail.net>\n"
@@ -31,15 +31,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "%s İş sahələrinə keçmək üçün klikləyin"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "_Qaldır"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Kiçilt"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "_Balacalaşdır"
 
 #: libwnck/window-action-menu.c:213
@@ -63,7 +66,8 @@ msgid "Put on _All Workspaces"
 msgstr "_Bütün İş Sahələrinə Qoy"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "Da_şı"
 
 #: libwnck/window-action-menu.c:379
@@ -82,4 +86,3 @@ msgstr "adsız pəncərə"
 #, c-format
 msgid "Workspace %d"
 msgstr "%d-ci iş sahəsi"
-

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-07-31 19:36+0100\n"
 "Last-Translator: Christian Neumair <chris@gnome-de.org>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klicken Sie hier, um zur Arbeitsfläche %s zu wechseln"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "_Hervorholen"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Minimieren"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "_Wiederherstellen"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "Auf _alle Arbeitsflächen legen"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "_Verschieben"
 
 #: libwnck/window-action-menu.c:379

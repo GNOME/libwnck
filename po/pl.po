@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-01-02 02:12+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnome.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -35,15 +35,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Kliknij tutaj, aby przełączyć na obszar roboczy %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "Cofnij m_inimalizację"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "Zm_inimalizuj"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "Cofnij m_aksymalizację"
 
 #: libwnck/window-action-menu.c:213
@@ -67,7 +70,8 @@ msgid "Put on _All Workspaces"
 msgstr "Na wszystkich _obszarach roboczych"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "Prze_nieś"
 
 #: libwnck/window-action-menu.c:379

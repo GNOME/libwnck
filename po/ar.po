@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-06-07 18:38-0300\n"
 "Last-Translator: Isam Bayazidi <bayazidi@arabeyes.org>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "أضغط هذه للتحويل لمساحة العمل %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "ازل الت_صغير"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "ص_غر"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "ازل الت_كبير"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr ""
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "ا_نقل"
 
 #: libwnck/window-action-menu.c:379

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
-"POT-Creation-Date: 2002-12-13 05:58+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-12-15 22:51+0100\n"
 "Last-Translator: Ivan Stojmirov <stojmir@linux.net.mk>\n"
 "Language-Team: Macedonian <mk@li.org>\n"
@@ -33,15 +33,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Кликни го ова за да го смениш работното место %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "Врати_минимизирано"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Минимизирај"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "_Врати Максимизирано"
 
 #: libwnck/window-action-menu.c:213
@@ -65,7 +68,8 @@ msgid "Put on _All Workspaces"
 msgstr "Стави на _Сите Работни простори"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "По_мести"
 
 #: libwnck/window-action-menu.c:379
@@ -90,4 +94,3 @@ msgstr "Работно Место %d"
 
 #~ msgid "_Shade"
 #~ msgstr "_Подигнување и Спуштање"
-

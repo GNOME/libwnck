@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.gnome-2-2.be\n"
-"POT-Creation-Date: 2003-02-07 20:04+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-02-07 02:03GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Клікніце сюды каб пераключыцца на прастору %s "
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "_Разгарнуць"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "Н_айменьшыць"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "Вярнуць _памер"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "Разьмясьціць на _ўсіх працоўных прасторах"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "Пера_мясьціць"
 
 #: libwnck/window-action-menu.c:379
@@ -89,4 +93,3 @@ msgstr "Працоўная прастора %d"
 
 #~ msgid "_Shade"
 #~ msgstr "Схаваць у _цень"
-

@@ -3,11 +3,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>, 2003.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
-"POT-Creation-Date: 2003-02-01 12:15+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -33,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Cniog é seo chun dul go Binse-Oibre %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "Cuirim an _Déanaim-beagní ar ceall"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Déanaim-beagní"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "Cuirim an _Méadú ar ceall"
 
 #: libwnck/window-action-menu.c:213
@@ -65,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "Chuir ar _gach Binse-Oibre"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "_Bogadh"
 
 #: libwnck/window-action-menu.c:379

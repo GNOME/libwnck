@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.16\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-01-05 12:45+0200\n"
 "Last-Translator: Kostas Papadimas <pkst@gmx.net>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -35,15 +35,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "Απελαχιστο_ποίηση"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Ελαχιστοποίηση"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "Απομεγιστο_ποίηση"
 
 #: libwnck/window-action-menu.c:213
@@ -67,7 +70,8 @@ msgid "Put on _All Workspaces"
 msgstr "Τοποθέτηση σε ό_λους τους χώρους εργασίας"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "Μετα_κίνηση"
 
 #: libwnck/window-action-menu.c:379

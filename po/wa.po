@@ -12,7 +12,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
-"POT-Creation-Date: 2003-01-09 23:39-0500\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-12-29 15:08+0100\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -38,15 +38,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Clitchîz çouchal po potchî å scribanne %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "_Rivni come divant"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "Å pus _ptit"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "_Rivni come divant"
 
 #: libwnck/window-action-menu.c:213
@@ -70,7 +73,8 @@ msgid "Put on _All Workspaces"
 msgstr "Mete so _tos les scribannes"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "_Bodjî"
 
 #: libwnck/window-action-menu.c:379

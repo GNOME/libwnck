@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck gnome-2-2\n"
-"POT-Creation-Date: 2003-02-05 19:53+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-02-06 10:27+0700\n"
 "Last-Translator: Mohammad DAMT <mdamt@bisnisweb.com>\n"
 "Language-Team: Indonesia <id@li.org>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "Klik untuk memilih area kerja %s"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "Rub_ah ke ukuran semula (dari ukuran kecil)"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_Kecilkan"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "Ruba_h ke ukuran semula (dari ukuran maksimal)"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "Letakkan di _semua area kerja"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "Pi_ndahkan"
 
 #: libwnck/window-action-menu.c:379

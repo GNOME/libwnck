@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
-"POT-Creation-Date: 2002-12-12 06:11+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2002-12-20 17:41+0530\n"
 "Last-Translator: Pramod <rpramod@postmaster.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "ಇದ್ದನ್ನು ಕಾರ್ಯಾಸ್ಥಳಕ್ಕೆ  ಬದಲಾಯಿಸಲು ಒತ್ತಿ %s  "
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "ಮೇಲೆ ತರು"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "ಕೆಲ ಇಲಿಸು"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "ವಿಸ್ತೀರ್ಣ ಕಮ್ಮಿಮಾಡು"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "ಎಲ್ಲಾ ಕಾರ್ಯಾಸ್ಥಳಗಳ ಮೇಳೆ ಹಾಕು"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "ಜರಗಿಸು"
 
 #: libwnck/window-action-menu.c:379
@@ -83,4 +87,3 @@ msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಕಿಟಕಿ"
 #, c-format
 msgid "Workspace %d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"
-

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-01-06 06:04+0100\n"
+"POT-Creation-Date: 2003-03-26 21:49-0500\n"
 "PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -33,15 +33,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "ወደ መሥሪያ ቦታ %s ለመቀየር ይህንን ያቃጭሉ"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "መታሳንስ (_M)"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "መሳንስ (_M)"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "መታስተልቅ (_U)"
 
 #: libwnck/window-action-menu.c:213
@@ -65,7 +68,8 @@ msgid "Put on _All Workspaces"
 msgstr "ሁሉም መሥሪይ ቦታዎች ላይ አድርግ (_A)"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "መንቀሳቅስ (_V)"
 
 #: libwnck/window-action-menu.c:379
