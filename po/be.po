@@ -1,16 +1,18 @@
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# translation of libwnck.gnome-2-2.be.po to belarusian
+# Copyright (C) 2002,2003 Free Software Foundation, Inc.
+# Vital Khilko <dojlid@mova.org>, 2003
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-02-05 23:57-0500\n"
-"PO-Revision-Date: 2002-11-05 01:50GMT+2\n"
+"Project-Id-Version: libwnck.gnome-2-2.be\n"
+"POT-Creation-Date: 2003-02-07 20:04+0100\n"
+"PO-Revision-Date: 2003-02-07 02:03GMT+2\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: belarusian <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 0.9.5\n"
+"X-Generator: KBabel 1.0\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
@@ -47,19 +49,19 @@ msgstr "На_йбольшыць"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Згарнуць"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "_Згарнуць"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Толькі на _гэтай працоўнай прасторы"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "Разьмясьціць на _ўсіх працоўных прасторах"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -87,3 +89,4 @@ msgstr "Працоўная прастора %d"
 
 #~ msgid "_Shade"
 #~ msgstr "Схаваць у _цень"
+
