@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck gnome-2-2\n"
+"POT-Creation-Date: 2003-02-05 19:53+0100\n"
+"PO-Revision-Date: 2003-02-06 10:27+0700\n"
+"Last-Translator: Mohammad DAMT <mdamt@bisnisweb.com>\n"
+"Language-Team: Indonesia <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "aplikasi tak berjudul"
+
+#: libwnck/pager-accessible.c:317
+msgid "Workspace Switcher"
+msgstr "Program Pemilih Area kerja"
+
+#: libwnck/pager-accessible.c:328
+msgid "Tool to switch between workspaces"
+msgstr "Program untuk memilih area kerja yang aktif"
+
+#: libwnck/pager-accessible.c:432
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klik untuk memilih area kerja %s"
+
+#: libwnck/window-action-menu.c:191
+msgid "Un_minimize"
+msgstr "Rub_ah ke ukuran semula (dari ukuran kecil)"
+
+#: libwnck/window-action-menu.c:198
+msgid "_Minimize"
+msgstr "_Kecilkan"
+
+#: libwnck/window-action-menu.c:206
+msgid "_Unmaximize"
+msgstr "Ruba_h ke ukuran semula (dari ukuran maksimal)"
+
+#: libwnck/window-action-menu.c:213
+msgid "Ma_ximize"
+msgstr "_Maksimalkan"
+
+#: libwnck/window-action-menu.c:221
+msgid "_Unroll"
+msgstr "Buka _Gulungan"
+
+#: libwnck/window-action-menu.c:228
+msgid "Roll _Up"
+msgstr "G_ulung"
+
+#: libwnck/window-action-menu.c:236
+msgid "Only on _This Workspace"
+msgstr "di area kerja ini sa_ja"
+
+#: libwnck/window-action-menu.c:243
+msgid "Put on _All Workspaces"
+msgstr "Letakkan di _semua area kerja"
+
+#: libwnck/window-action-menu.c:372
+msgid "Mo_ve"
+msgstr "Pi_ndahkan"
+
+#: libwnck/window-action-menu.c:379
+msgid "_Resize"
+msgstr "Ganti Uku_ran"
+
+#: libwnck/window-action-menu.c:392
+msgid "_Close"
+msgstr "_Tutup"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "window tidak berjudul"
+
+#: libwnck/workspace.c:222
+#, c-format
+msgid "Workspace %d"
+msgstr "Area kerja %d"
