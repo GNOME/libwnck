@@ -62,7 +62,6 @@ struct _WnckTask
   GtkWidget *button;
   GtkWidget *image;
   GtkWidget *label;
-  GtkWidget *hbox;
 
   gboolean is_application;
   WnckApplication *application;
@@ -504,14 +503,14 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 	    {
 	      win_task = WNCK_TASK (l->data);
 	      
-	      gtk_widget_hide (GTK_WIDGET (win_task->button));
+	      gtk_widget_set_child_visible (GTK_WIDGET (win_task->button), FALSE);
 	      l = l->next;
 	    }
 	}
       else
 	{
 	  visible_tasks = g_list_prepend (visible_tasks, app_task->windows->data);
-	  gtk_widget_hide (GTK_WIDGET (app_task->button));
+	  gtk_widget_set_child_visible (GTK_WIDGET (app_task->button), FALSE);
 	}
       
       button_width = wnck_tasklist_layout (allocation,
@@ -528,7 +527,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       app_task = WNCK_TASK (l->data);
       
       visible_tasks = g_list_concat (visible_tasks, g_list_copy (app_task->windows));
-      gtk_widget_hide (GTK_WIDGET (app_task->button));
+      gtk_widget_set_child_visible (GTK_WIDGET (app_task->button), FALSE);
       l = l->next;
     }
 
@@ -553,7 +552,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       child_allocation.y += allocation->y;
 
       gtk_widget_size_allocate (task->button, &child_allocation);
-      gtk_widget_show (task->button);
+      gtk_widget_set_child_visible (GTK_WIDGET (task->button), TRUE);
 
       i++;
       l = l->next;
@@ -924,7 +923,7 @@ wnck_task_button_toggled (GtkButton *button,
 
       /* FIXME: Implement menu selection */
 
-
+      gtk_widget_show (menu);
       gtk_menu_popup (GTK_MENU (menu),
 		      NULL, NULL,
 		      wnck_task_position_menu, button,
@@ -976,16 +975,11 @@ wnck_task_get_text (WnckTask *task)
 }
 
 static void
-wnck_modify_icon (GdkColor *background, GdkPixbuf *pixbuf)
+wnck_dimm_icon (GdkPixbuf *pixbuf)
 {
   int x, y, pixel_stride, row_stride;
   guchar *row, *pixels;
   int w, h;
-  gint32 red, green, blue;
-  
-  red = background->red / 255;
-  blue = background->blue / 255;
-  green = background->green / 255;
 
   w = gdk_pixbuf_get_width (pixbuf);
   h = gdk_pixbuf_get_height (pixbuf);
@@ -1013,74 +1007,94 @@ wnck_modify_icon (GdkColor *background, GdkPixbuf *pixbuf)
 }
 
 static GdkPixbuf *
-wnck_task_get_icon (WnckTask *task)
+wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
 {
-  WnckWindowState state;
-  GdkPixbuf *orig;
-  GdkPixbuf *pixbuf;
   int w, h;
+  GdkPixbuf *pixbuf;
   
-  if (task->is_application)
+  w = gdk_pixbuf_get_width (orig);
+  h = gdk_pixbuf_get_height (orig);
+
+  if (h != MINI_ICON_SIZE ||
+      !gdk_pixbuf_get_has_alpha (orig))
     {
-      GList *l;
-      /* FIXME: Implement this */
-
-      /* Right now, just get a random icon from some window */
+      double scale;
       
-      l = wnck_application_get_windows (task->application);
-
-      if (l)
-	return g_object_ref (wnck_window_get_mini_icon (WNCK_WINDOW (l->data)));
-      else
-	return gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8,
-			       MINI_ICON_SIZE, MINI_ICON_SIZE);
+      pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+			       TRUE,
+			       8,
+			       MINI_ICON_SIZE * w / (double) h,
+			       MINI_ICON_SIZE);
+      
+      scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (orig);
+      
+      gdk_pixbuf_scale (orig,
+			pixbuf,
+			0, 0,
+			gdk_pixbuf_get_width (pixbuf),
+			gdk_pixbuf_get_height (pixbuf),
+			0, 0,
+			scale, scale,
+			GDK_INTERP_HYPER);
     }
   else
+    pixbuf = orig;
+  
+  if (minimized)
     {
-      state = wnck_window_get_state (task->window);
+      if (orig == pixbuf)
+	pixbuf = gdk_pixbuf_copy (orig);
       
-      orig = pixbuf = wnck_window_get_mini_icon (task->window);
-
-      if (orig == NULL)
-	return NULL;
-      
-      w = gdk_pixbuf_get_width (pixbuf);
-      h = gdk_pixbuf_get_height (pixbuf);
-
-      if (h != MINI_ICON_SIZE ||
-	  !gdk_pixbuf_get_has_alpha (pixbuf))
-	{
-	  double scale;
-	  
-	  pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
-				   TRUE,
-				   8,
-				   MINI_ICON_SIZE * w / (double) h,
-				   MINI_ICON_SIZE);
-
-	  scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (pixbuf);
-	  
-	  gdk_pixbuf_scale (orig,
-			    pixbuf,
-			    0, 0,
-			    gdk_pixbuf_get_width (pixbuf),
-			    gdk_pixbuf_get_height (pixbuf),
-			    0, 0,
-			    scale, scale,
-			    GDK_INTERP_HYPER);
-	}
-      
-      if (state & WNCK_WINDOW_STATE_MINIMIZED)
-	{
-	  if (orig == pixbuf)
-	    pixbuf = gdk_pixbuf_copy (orig);
-
-	  wnck_modify_icon (&GTK_WIDGET (task->tasklist)->style->bg[GTK_STATE_NORMAL], pixbuf);
-	}
+      wnck_dimm_icon (pixbuf);
     }
 
   if (orig == pixbuf)
     g_object_ref (pixbuf);
+  
+  return pixbuf;
+}
+
+
+static GdkPixbuf *
+wnck_task_get_icon (WnckTask *task)
+{
+  WnckWindowState state;
+  GdkPixbuf *pixbuf;
+  gboolean minimized;
+  WnckWindow *window;
+  
+  if (task->is_application)
+    {
+      GList *l;
+      /* FIXME: Implement this correct, Right now, just get a random icon from some window */
+      
+      l = wnck_application_get_windows (task->application);
+
+      minimized = TRUE;
+
+      while (l)
+	{
+	  window = WNCK_WINDOW (l->data);
+	  if (!(wnck_window_get_state (window) & WNCK_WINDOW_STATE_MINIMIZED))
+	    {
+	      minimized = FALSE;
+	      break;
+	    }
+	  
+	  l = l->next;
+	}
+      
+      l = wnck_application_get_windows (task->application);
+      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (WNCK_WINDOW (l->data)),
+				      minimized);
+    }
+  else
+    {
+      state = wnck_window_get_state (task->window);
+
+      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
+				      state & WNCK_WINDOW_STATE_MINIMIZED);
+    }
 
   return pixbuf;
 }
@@ -1153,14 +1167,14 @@ wnck_task_icon_or_name_changed (WnckWindow *window,
 static void
 wnck_task_create_widgets (WnckTask *task)
 {
-  GtkWidget *hbox;
+  GtkWidget *table;
   GdkPixbuf *pixbuf;
   char *text;
   
   g_print ("wnck_task_create_widgets()\n");
   task->button = gtk_toggle_button_new ();
 
-  task->hbox = hbox = gtk_hbox_new (FALSE, 2);
+  table = gtk_table_new (1, 2, FALSE);
 
   pixbuf = wnck_task_get_icon (task);
   if (pixbuf)
@@ -1178,12 +1192,22 @@ wnck_task_create_widgets (WnckTask *task)
   g_free (text);
   gtk_widget_show (task->label);
 
-  if (task->image)
-    gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE, 0);
-  gtk_box_pack_start (GTK_BOX (hbox), task->label, TRUE, FALSE, 0);
+  gtk_table_attach (GTK_TABLE (table),
+		    task->image,
+		    0, 1,
+		    0, 1,
+		    0, GTK_EXPAND,
+		    0, 0);
+  gtk_table_attach (GTK_TABLE (table),
+		    task->label,
+		    1, 2,
+		    0, 1,
+		    GTK_EXPAND, GTK_EXPAND,
+		    0, 0);
 
-  gtk_container_add (GTK_CONTAINER (task->button), hbox);
-  gtk_widget_show (hbox);
+
+  gtk_container_add (GTK_CONTAINER (task->button), table);
+  gtk_widget_show (table);
 
   /* Set up signals */
   g_signal_connect (G_OBJECT (task->button), "toggled",

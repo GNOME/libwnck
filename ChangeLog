@@ -1,3 +1,10 @@
+2001-12-03  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.c:
+	Don't show/hide children in size_allocate.
+	Show the menu before popping it up.
+	Scale app icons.
+
 2001-12-02  Alexander Larsson  <alla@lysator.liu.se>
 
 	* libwnck/application.[ch] (wnck_application_get_xid):
