@@ -1,13 +1,13 @@
-# Albanian translation of libwnck.
-# Copyright (C) 2002, 2003, 2004 Free Software Foundation, Inc.
-# Laurent Dhima <laurenti@alblinux.net>, 2002, 2003, 2004.
+# Përkthimi i mesazheve të libwnck në shqip
+# Copyright (C) 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
+# Laurent Dhima <laurenti@alblinux.net>, 2002, 2003, 2004, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD\n"
+"Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2004-02-23 14:46+0100\n"
+"POT-Creation-Date: 2005-02-14 05:15+0100\n"
+"PO-Revision-Date: 2005-02-14 13:27+0100\n"
 "Last-Translator: Laurent Dhima <laurenti@alblinux.net>\n"
 "Language-Team: Albanian <gnome-albanian-perkthyesit@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -33,21 +33,19 @@ msgstr "Kliko këtu për të kaluar tek hapësira e punës %s"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Dritare e panjohur"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr ""
+msgstr "Asnjë dritare e hapur"
 
 #: libwnck/selector.c:741
-#, fuzzy
 msgid "Window Selector"
-msgstr "Lista e dritareve"
+msgstr "Zgjedhësi i dritares"
 
 #: libwnck/selector.c:742
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Instrument për të lëvizur nga një dritare e dukshme tek tjetra"
+msgstr "Instrument për të lëvizur midis dritareve"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
@@ -58,19 +56,16 @@ msgid "Tool to switch between visible windows"
 msgstr "Instrument për të lëvizur nga një dritare e dukshme tek tjetra"
 
 #: libwnck/tasklist.c:2102
-#, fuzzy
 msgid "_Close All"
-msgstr "_Mbyll"
+msgstr "_Mbyll gjithçka"
 
 #: libwnck/tasklist.c:2117
-#, fuzzy
 msgid "_Minimize All"
-msgstr "Mi_nimizo"
+msgstr "_Minimizo gjithçka"
 
 #: libwnck/tasklist.c:2128
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Ç'mi_nimizo"
+msgstr "Ç'mi_nimizo gjithçka"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -97,14 +92,12 @@ msgid "Roll _Up"
 msgstr "_Mbështille"
 
 #: libwnck/window-action-menu.c:254
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Vetëm në _Këtë Hapësirë Pune"
+msgstr "_Vetëm në këtë hapësirë pune"
 
 #: libwnck/window-action-menu.c:261
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Vetëm në _Këtë Hapësirë Pune"
+msgstr "_Gjithmonë tek hapësira e dukshme e punës"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -145,5 +138,3 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "dritare pa emër"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "Vendose në të _Gjitha Hapësirat e Punës"
