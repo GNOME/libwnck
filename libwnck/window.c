@@ -297,6 +297,211 @@ wnck_window_is_minimized (WnckWindow *window)
   return window->priv->is_minimized;
 }
 
+gboolean
+wnck_window_is_maximized_horizontally (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_maximized_horz;
+}
+
+gboolean
+wnck_window_is_maximized_vertically   (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_maximized_vert;
+}
+
+/**
+ * wnck_window_is_maximized:
+ * @window: a #WnckWindow
+ * 
+ * As for GDK, "maximized" means both vertically and horizontally.
+ * If only one, then the window isn't considered maximized. 
+ * 
+ * Return value: %TRUE if the window is maximized in both directions
+ **/
+gboolean
+wnck_window_is_maximized (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return
+    window->priv->is_maximized_horz &&
+    window->priv->is_maximized_vert;
+}
+
+gboolean
+wnck_window_is_shaded                 (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_shaded;
+}
+
+gboolean
+wnck_window_is_skip_pager             (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->skip_pager;
+}
+
+gboolean
+wnck_window_is_skip_tasklist          (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->skip_taskbar;
+}
+
+/**
+ * wnck_window_is_sticky:
+ * @window: a #WnckWindow
+ * 
+ * Sticky here means "stuck to the glass," i.e. does not scroll with
+ * the viewport. In GDK/GTK,
+ * e.g. gdk_window_stick()/gtk_window_stick(), sticky means stuck to
+ * the glass and _also_ that the window is on all workspaces.
+ * But here it only means the viewport aspect of it.
+ * 
+ * Return value: %TRUE if the window is "stuck to the glass"
+ **/
+gboolean
+wnck_window_is_sticky                 (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_sticky;
+}
+
+void
+wnck_window_minimize                (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_iconify (window->priv->xwindow);
+}
+
+void
+wnck_window_unminimize              (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_deiconify (window->priv->xwindow);
+}
+
+void
+wnck_window_maximize                (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
+}
+
+void
+wnck_window_unmaximize              (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));  
+}
+
+void
+wnck_window_maximize_horizontally   (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
+                      0);
+}
+
+void
+wnck_window_unmaximize_horizontally (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
+                      0);
+}
+
+void
+wnck_window_maximize_vertically     (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
+                      0);
+}
+
+void
+wnck_window_unmaximize_vertically   (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
+                      0);
+}
+
+void
+wnck_window_shade                   (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_SHADED"),
+                      0);
+}
+
+void
+wnck_window_unshade                 (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_SHADED"),
+                      0);
+}
+
+void
+wnck_window_stick                   (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  
+  _wnck_change_state (window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_STICKY"),
+                      0);
+}
+
+void
+wnck_window_unstick                 (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_STICKY"),
+                      0);
+}
+
 void
 _wnck_window_process_property_notify (WnckWindow *window,
                                       XEvent     *xevent)

@@ -488,3 +488,60 @@ _wnck_xid_hash (gconstpointer v)
   return val;
 #endif
 }
+
+void
+_wnck_iconify (Window xwindow)
+{
+  _wnck_error_trap_push ();
+  XIconifyWindow (gdk_display, xwindow, DefaultScreen (gdk_display));
+  _wnck_error_trap_pop ();
+}
+
+void
+_wnck_deiconify (Window xwindow)
+{
+  /* We need special precautions, because GDK doesn't like
+   * XMapWindow() called on its windows, need to use the
+   * GDK functions
+   */
+  GdkWindow *gdkwindow;
+
+  gdkwindow = gdk_xid_table_lookup (xwindow);
+
+  _wnck_error_trap_push ();
+  if (gdkwindow)
+    gdk_window_show (gdkwindow);
+  else
+    XMapRaised (gdk_display, xwindow);
+  _wnck_error_trap_pop ();
+}
+
+void
+_wnck_change_state (Window   xwindow,
+                    gboolean add,
+                    Atom     state1,
+                    Atom     state2)
+{
+  XEvent xev;
+
+#define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
+#define _NET_WM_STATE_ADD           1    /* add/set property */
+#define _NET_WM_STATE_TOGGLE        2    /* toggle property  */  
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_WM_STATE");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = add ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
+  xev.xclient.data.l[1] = state1;
+  xev.xclient.data.l[2] = state2;
+
+  XSendEvent (gdk_display,
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
+}

@@ -67,6 +67,13 @@ int   _wnck_xid_equal (gconstpointer v1,
                        gconstpointer v2);
 guint _wnck_xid_hash  (gconstpointer v);
 
+void _wnck_iconify   (Window xwindow);
+void _wnck_deiconify (Window xwindow);
+
+void _wnck_change_state (Window   xwindow,
+                         gboolean add,
+                         Atom     state1,
+                         Atom     state2);
 
 G_END_DECLS
 

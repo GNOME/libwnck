@@ -63,7 +63,28 @@ WnckWindow* wnck_window_get (gulong xwindow);
 
 const char* wnck_window_get_name      (WnckWindow *window);
 const char* wnck_window_get_icon_name (WnckWindow *window);
-gboolean    wnck_window_is_minimized  (WnckWindow *window);
+
+gboolean wnck_window_is_minimized              (WnckWindow *window);
+gboolean wnck_window_is_maximized_horizontally (WnckWindow *window);
+gboolean wnck_window_is_maximized_vertically   (WnckWindow *window);
+gboolean wnck_window_is_maximized              (WnckWindow *window);
+gboolean wnck_window_is_shaded                 (WnckWindow *window);
+gboolean wnck_window_is_skip_pager             (WnckWindow *window);
+gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
+gboolean wnck_window_is_sticky                 (WnckWindow *window);
+
+void wnck_window_minimize                (WnckWindow *window);
+void wnck_window_unminimize              (WnckWindow *window);
+void wnck_window_maximize                (WnckWindow *window);
+void wnck_window_unmaximize              (WnckWindow *window);
+void wnck_window_maximize_horizontally   (WnckWindow *window);
+void wnck_window_unmaximize_horizontally (WnckWindow *window);
+void wnck_window_maximize_vertically     (WnckWindow *window);
+void wnck_window_unmaximize_vertically   (WnckWindow *window);
+void wnck_window_shade                   (WnckWindow *window);
+void wnck_window_unshade                 (WnckWindow *window);
+void wnck_window_stick                   (WnckWindow *window);
+void wnck_window_unstick                 (WnckWindow *window);
 
 G_END_DECLS
 
