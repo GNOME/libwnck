@@ -27,17 +27,12 @@
  * 
  *  Grouping
  *  Group menu
- *  Fine tune size_allocate()
- *  Vertical layout handling
+ *  Maybe fine tune size_allocate() some more...
+ *  Better vertical layout handling
  *  prefs
  *  ellipsizing lables
  *  support for right-click menu merging w/ bonobo for the applet
  *  Fix all the races... (listed to WnckWindow::finalize and null out WnckTask?)
- *  There seems to be a sizeing bug in gtk+. I need spurious size_requests or shows. (makes labels not size correctly)
- *  Sigh. The labels seem to overdraw the images...
- *  The menu size size-requested from the menu is 0,0. So menu positioning is borken.
- *  sort by leading window xid first, and then xid, so grouped windows get next to each other.
- *  stop_by_name button_press_event on the buttons to allow propagation to the panel.
  *
  */ 
 
@@ -54,6 +49,9 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define MINI_ICON_SIZE 16
 #define GROUPING_LIMIT 140
+
+#define DEFAULT_WIDTH 300
+#define DEFAULT_HEIGHT 48
 
 struct _WnckTask
 {
@@ -332,7 +330,6 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   int u_width, u_height;
   GList *l;
   
-  g_print ("wnck_tasklist_size_request()\n");
   tasklist = WNCK_TASKLIST (widget);
 
   /* Calculate max needed height and width of the buttons */
@@ -372,8 +369,8 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 
   gtk_widget_get_size_request (widget, &u_width, &u_height);
 
-  requisition->width = 300;
-  requisition->height = 48;
+  requisition->width = DEFAULT_WIDTH;
+  requisition->height = DEFAULT_HEIGHT;
   
   if (u_height != -1)
     {
@@ -487,8 +484,6 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   WnckTask *win_task;
   GList *visible_tasks = NULL;
   
-  g_print ("wnck_tasklist_size_allocate()\n");
-  
   tasklist = WNCK_TASKLIST (widget);
 
   n_windows = g_list_length (tasklist->priv->windows);
@@ -503,7 +498,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 				       n_windows,
 				       &n_cols, &n_rows);
 
-  while (ungrouped_apps != NULL /*&& button_width > GROUPING_LIMIT*/)
+  while (0 && /* FIXME: This temporarily disables grouping */
+	 ungrouped_apps != NULL /*&& button_width > GROUPING_LIMIT*/)
     {
       if (!score_set)
 	{
@@ -644,8 +640,6 @@ wnck_tasklist_new (WnckScreen *screen)
 {
   WnckTasklist *tasklist;
 
-  g_print ("wnck_tasklist_new()\n");
-  
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
 
   tasklist->priv->screen = screen;
@@ -686,8 +680,6 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   WnckTask *app_task;
   WnckTask *win_task;
 
-  g_print ("wnck_tasklist_update_lists()\n");
-  
   /* Remove old contents of hashtable and lists */
   g_hash_table_foreach_remove (tasklist->priv->win_hash, remove_all, NULL);
   g_hash_table_foreach_remove (tasklist->priv->app_hash, remove_all, NULL);
@@ -1128,8 +1120,6 @@ wnck_task_update_visible_state (WnckTask *task)
   GdkPixbuf *pixbuf;
   char *text;
 
-  g_print ("wnck_task_update_visible_state ()\n");
-  
   pixbuf = wnck_task_get_icon (task);
   gtk_image_set_from_pixbuf (GTK_IMAGE (task->image),
 			     pixbuf);
@@ -1151,8 +1141,6 @@ wnck_task_state_changed (WnckWindow     *window,
 {
   WnckTasklist *tasklist = WNCK_TASKLIST (data);
 
-  g_print ("wnck_task_state_changed ()\n");
-  
   if (changed_mask & WNCK_WINDOW_STATE_SKIP_TASKLIST)
     {
       wnck_tasklist_update_lists  (tasklist);
@@ -1186,8 +1174,6 @@ wnck_task_icon_changed (WnckWindow *window,
 {
   WnckTask *task = WNCK_TASK (data);
 
-  g_print ("wnck_task_icon_changed () for %s\n", wnck_window_get_name (task->window));
-
   if (task)
     wnck_task_update_visible_state (task);
 }
@@ -1197,8 +1183,6 @@ wnck_task_name_changed (WnckWindow *window,
 			gpointer    data)
 {
   WnckTask *task = WNCK_TASK (data);
-
-  g_print ("wnck_task_name_changed ()\n");
 
   if (task)
     wnck_task_update_visible_state (task);
@@ -1223,7 +1207,6 @@ wnck_task_create_widgets (WnckTask *task)
   GdkPixbuf *pixbuf;
   char *text;
   
-  g_print ("wnck_task_create_widgets()\n");
   task->button = gtk_toggle_button_new ();
 
   table = gtk_table_new (1, 2, FALSE);
@@ -1320,22 +1303,28 @@ wnck_task_compare (gconstpointer  a,
 {
   WnckTask *task1 = WNCK_TASK (a);
   WnckTask *task2 = WNCK_TASK (b);
-  gulong xid1;
-  gulong xid2;
+  gulong xid1_1, xid1_2;
+  gulong xid2_1, xid2_2;
 
   if (task1->is_application)
-    xid1 = wnck_application_get_xid (task1->application);
+    xid1_1 = xid1_2 = wnck_application_get_xid (task1->application);
   else
-    xid1 = wnck_window_get_xid (task1->window);
-    
+    {
+      xid1_1 = wnck_window_get_group_leader (task1->window);
+      xid1_2 = wnck_window_get_xid (task1->window);
+    }
+
   if (task2->is_application)
-    xid2 = wnck_application_get_xid (task2->application);
+    xid2_1 = xid2_2 = wnck_application_get_xid (task2->application);
   else
-    xid2 = wnck_window_get_xid (task2->window);
+    {
+      xid2_1 = wnck_window_get_group_leader (task2->window);
+      xid2_2 = wnck_window_get_xid (task2->window);
+    }
     
-  if (xid1 < xid2)
+  if ((xid1_1 < xid2_1) || ((xid1_1 == xid2_1) && (xid1_2 < xid2_2)))
     return -1;
-  else if (xid1 == xid2)
+  else if ((xid1_1 == xid2_1) && (xid1_2 == xid2_2))
     return 0;
   else
     return 1;
@@ -1347,7 +1336,6 @@ wnck_task_new_from_window (WnckTasklist *tasklist,
 {
   WnckTask *task;
 
-  g_print ("wnck_task_new_from_window()\n");
   task = g_object_new (WNCK_TYPE_TASK, NULL);
 
   task->is_application = FALSE;
@@ -1366,7 +1354,6 @@ wnck_task_new_from_application (WnckTasklist    *tasklist,
 {
   WnckTask *task;
 
-  g_print ("wnck_task_new_from_app()\n");
   task = g_object_new (WNCK_TYPE_TASK, NULL);
 
   task->is_application = TRUE;

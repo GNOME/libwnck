@@ -1,5 +1,14 @@
 2001-12-04  Alex Larsson  <alexl@redhat.com>
 
+	* libwnck/tasklist.c:
+	Update TODO list
+	Remove debug spew
+	Disable grouping
+	Sort by group leader first.
+	Use defines for default width/height
+
+2001-12-04  Alex Larsson  <alexl@redhat.com>
+
 	* libwnck/xutils.c (_wnck_icon_cache_property_changed):
 	Don't clear the icon cache here.
 	
