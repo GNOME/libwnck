@@ -38,6 +38,8 @@ static void window_workspace_changed_callback (WnckWindow      *window,
                                                gpointer         data);
 static void window_icon_changed_callback      (WnckWindow      *window,
                                                gpointer         data);
+static void window_geometry_changed_callback  (WnckWindow      *window,
+                                               gpointer         data);
 
 static GtkTreeModel* create_tree_model (void);
 static GtkWidget*    create_tree_view  (void);
@@ -169,7 +171,10 @@ window_opened_callback            (WnckScreen    *screen,
   g_signal_connect (G_OBJECT (window), "icon_changed",
                     G_CALLBACK (window_icon_changed_callback),
                     NULL);
-
+  g_signal_connect (G_OBJECT (window), "geometry_changed",
+                    G_CALLBACK (window_geometry_changed_callback),
+                    NULL);
+  
   queue_refill_model ();
 }
 
@@ -301,6 +306,18 @@ window_icon_changed_callback (WnckWindow    *window,
            wnck_window_get_name (window));
 
   update_window (global_tree_model, window);
+}
+
+static void
+window_geometry_changed_callback  (WnckWindow      *window,
+                                   gpointer         data)
+{
+  int x, y, width, height;
+
+  wnck_window_get_geometry (window, &x, &y, &width, &height);
+  
+  g_print ("Geometry changed on window '%s': %d,%d  %d x %d\n",
+           wnck_window_get_name (window), x, y, width, height);
 }
 
 static GtkTreeModel*

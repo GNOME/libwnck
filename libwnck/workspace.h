@@ -56,6 +56,8 @@ WnckWorkspace* wnck_workspace_get (int number);
 
 int wnck_workspace_get_number (WnckWorkspace *space);
 
+void wnck_workspace_activate (WnckWorkspace *space);
+
 G_END_DECLS
 
 #endif /* WNCK_WORKSPACE_H */

@@ -84,6 +84,7 @@ static void update_active_window    (WnckScreen      *screen);
 
 static void queue_update            (WnckScreen      *screen);
 static void unqueue_update          (WnckScreen      *screen);              
+static void do_update_now           (WnckScreen      *screen);
 
 static void emit_active_window_changed    (WnckScreen      *screen);
 static void emit_active_workspace_changed (WnckScreen      *screen);
@@ -411,6 +412,40 @@ wnck_screen_get_windows_stacked (WnckScreen *screen)
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
   return screen->priv->stacked_windows;
+}
+
+/**
+ * wnck_screen_force_update:
+ * @screen: a #WnckScreen
+ * 
+ * Synchronously and immediately update the window list.  This is
+ * usually a bad idea for both performance and correctness reasons (to
+ * get things right, you need to write model-view code that tracks
+ * changes, not get a static list of open windows).
+ * 
+ **/
+void
+wnck_screen_force_update (WnckScreen *screen)
+{
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+
+  do_update_now (screen);
+}
+
+/**
+ * wnck_screen_get_workspace_count:
+ * @screen: a #WnckScreen
+ * 
+ * Gets the number of workspaces.
+ * 
+ * Return value: number of workspaces
+ **/
+int
+wnck_screen_get_workspace_count (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
+
+  return g_list_length (screen->priv->workspaces);
 }
 
 void
@@ -961,6 +996,24 @@ update_active_window (WnckScreen *screen)
   emit_active_window_changed (screen);
 }
 
+static void
+do_update_now (WnckScreen *screen)
+{
+  if (screen->priv->update_handler)
+    {
+      g_source_remove (screen->priv->update_handler);
+      screen->priv->update_handler = 0;
+    }
+
+  /* First get our big-picture state in order */
+  update_workspace_list (screen);
+  update_client_list (screen);
+
+  /* Then note any smaller-scale changes */
+  update_active_workspace (screen);
+  update_active_window (screen);
+}
+
 static gboolean
 update_idle (gpointer data)
 {
@@ -970,13 +1023,7 @@ update_idle (gpointer data)
 
   screen->priv->update_handler = 0;
 
-  /* First get our big-picture state in order */
-  update_workspace_list (screen);
-  update_client_list (screen);
-
-  /* Then note any smaller-scale changes */
-  update_active_workspace (screen);
-  update_active_window (screen);
+  do_update_now (screen);
   
   return FALSE;
 }

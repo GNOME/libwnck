@@ -1,4 +1,4 @@
-/* libwnck header */
+/* util header */
 
 /*
  * Copyright (C) 2001 Havoc Pennington
@@ -19,20 +19,13 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#ifndef WNCK_LIB_H
-#define WNCK_LIB_H
+#ifndef WNCK_UTIL_H
+#define WNCK_UTIL_H
 
-#include <libwnck/application.h>
-#include <libwnck/screen.h>
-#include <libwnck/util.h>
-#include <libwnck/window.h>
-#include <libwnck/workspace.h>
-#include <libwnck/wnck-enum-types.h>
+#include <gtk/gtk.h>
 
-#include <libwnck/pager.h>
-#include <libwnck/tasklist.h>
-#include <libwnck/window-menu.h>
+void wnck_gtk_window_set_dock_type (GtkWindow *window);
 
-#endif /* WNCK_LIB_H */
+#endif /* WNCK_UTIL_H */
 
 

@@ -35,7 +35,8 @@ void _wnck_window_process_property_notify (WnckWindow *window,
 
 void _wnck_screen_process_property_notify (WnckScreen *screen,
                                            XEvent     *xevent);
-
+void _wnck_window_process_configure_notify (WnckWindow *window,
+                                            XEvent     *xevent);
 WnckWindow* _wnck_window_create  (Window      xwindow,
                                   WnckScreen *screen);
 void        _wnck_window_destroy (WnckWindow *window);

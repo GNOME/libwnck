@@ -152,13 +152,12 @@ _wnck_application_create (Window      xwindow,
   /* Hash now owns one ref, caller gets none */
 
   /* Note that xwindow may correspond to a WnckWindow's xwindow,
-   * right now it doesn't matter since we use PropertyChangeMask
-   * both places
+   * so we select events needed by either
    */
   _wnck_error_trap_push ();
   XSelectInput (gdk_display,
                 application->priv->xwindow,
-                PropertyChangeMask);
+                WNCK_APP_WINDOW_EVENT_MASK);
   _wnck_error_trap_pop ();  
   
   return application;

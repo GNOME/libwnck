@@ -19,6 +19,7 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
 #include "xutils.h"
 #include <string.h>
 #include "screen.h"
@@ -144,7 +145,7 @@ text_property_to_utf8 (const XTextProperty *prop)
   
   list = NULL;
 
-  count = gdk_text_property_to_utf8_list (prop->encoding,
+  count = gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding),
                                           prop->format,
                                           prop->value,
                                           prop->nitems,
@@ -418,9 +419,9 @@ static GHashTable *reverse_atom_hash = NULL;
 Atom
 _wnck_atom_get (const char *atom_name)
 {
-  GdkAtom retval;
+  Atom retval;
   
-  g_return_val_if_fail (atom_name != NULL, GDK_NONE);
+  g_return_val_if_fail (atom_name != NULL, None);
 
   if (!atom_hash)
     {
@@ -485,6 +486,17 @@ filter_func (GdkXEvent  *gdkxevent,
             if (window)
               _wnck_window_process_property_notify (window, xevent);
           }
+      }
+      break;
+
+    case ConfigureNotify:
+      {
+        WnckWindow *window;
+        
+        window = wnck_window_get (xevent->xany.window);
+        
+        if (window)
+          _wnck_window_process_configure_notify (window, xevent);
       }
       break;
     }
@@ -649,6 +661,29 @@ _wnck_activate (Window xwindow)
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
+}
+
+void
+_wnck_activate_workspace (int new_active_space)
+{
+  XEvent xev;
+  
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = gdk_x11_get_default_root_xwindow ();
+  xev.xclient.message_type = _wnck_atom_get ("_NET_CURRENT_DESKTOP");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = new_active_space;
+  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[2] = 0;
+
+  XSendEvent (gdk_display,
+              gdk_x11_get_default_root_xwindow (),
+              False,
+	      SubstructureRedirectMask | SubstructureNotifyMask,
+	      &xev);
 }
 
 Window
@@ -1315,6 +1350,10 @@ _wnck_read_icons (Window      xwindow,
   /* No further ideas... */
 }
 
+#ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
+#define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
+#endif
+
 static GdkPixbuf*
 default_icon_at_size (int width,
                       int height)
@@ -1322,7 +1361,7 @@ default_icon_at_size (int width,
 
   GdkPixbuf *base;
   
-  base = gdk_pixbuf_new_from_stream (-1, default_icon_data,
+  base = gdk_pixbuf_new_from_inline (-1, default_icon_data,
                                      FALSE,
                                      NULL);
   
@@ -1371,3 +1410,75 @@ _wnck_get_fallback_icons (GdkPixbuf **iconp,
 }
 
 
+void
+_wnck_get_window_geometry (Window xwindow,
+                           int   *xp,
+                           int   *yp,
+                           int   *widthp,
+                           int   *heightp)
+{
+  int x, y, width, height, bw, depth;
+  Window root_window;
+
+  width = 1;
+  height = 1;
+  
+  _wnck_error_trap_push ();
+
+  XGetGeometry (gdk_display,
+                xwindow,
+                &root_window,
+                &x, &y, &width, &height, &bw, &depth);
+  
+  _wnck_error_trap_pop ();
+
+  _wnck_get_window_position (xwindow, xp, yp);
+
+  if (widthp)
+    *widthp = width;
+  if (heightp)
+    *heightp = height;
+}
+
+void
+_wnck_get_window_position (Window xwindow,
+                           int   *xp,
+                           int   *yp)
+{
+  int x, y;
+  Window child;
+
+  x = 0;
+  y = 0;
+  
+  _wnck_error_trap_push ();
+  XTranslateCoordinates (gdk_display,
+                         xwindow,
+                         gdk_x11_get_default_root_xwindow (),
+                         0, 0,
+                         &x, &y, &child);
+  _wnck_error_trap_pop ();
+
+  if (xp)
+    *xp = x;
+  if (yp)
+    *yp = y;
+}
+
+void
+_wnck_set_dock_type_hint (Window xwindow)
+{
+  Atom atom;
+
+  atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DOCK");
+  
+  _wnck_error_trap_push ();
+
+  XChangeProperty (gdk_display,
+                   xwindow, 
+                   _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
+		   XA_ATOM, 32, PropModeReplace,
+		   (guchar *)&atom, 1);
+
+  _wnck_error_trap_pop ();
+}

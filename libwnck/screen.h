@@ -93,6 +93,10 @@ WnckWindow*    wnck_screen_get_active_window    (WnckScreen *screen);
 GList*         wnck_screen_get_windows          (WnckScreen *screen);
 GList*         wnck_screen_get_windows_stacked  (WnckScreen *screen);
 
+void wnck_screen_force_update (WnckScreen *screen);
+
+int wnck_screen_get_workspace_count (WnckScreen *screen);
+
 G_END_DECLS
 
 #endif /* WNCK_SCREEN_H */

@@ -68,6 +68,11 @@ struct _WnckWindowPrivate
   GdkPixbuf *mini_icon;
 
   WnckWindowActions actions;
+
+  int x;
+  int y;
+  int width;
+  int height;
   
   /* window has no icon, don't bother querying the
    * properties again
@@ -112,6 +117,7 @@ enum {
   WORKSPACE_CHANGED,
   ICON_CHANGED,
   ACTIONS_CHANGED,
+  GEOMETRY_CHANGED,
   LAST_SIGNAL
 };
 
@@ -128,6 +134,7 @@ static void emit_icon_changed      (WnckWindow      *window);
 static void emit_actions_changed   (WnckWindow       *window,
                                     WnckWindowActions changed_mask,
                                     WnckWindowActions new_actions);
+static void emit_geometry_changed  (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -245,7 +252,15 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_TYPE_NONE, 2,
                   WNCK_TYPE_WINDOW_ACTIONS,
                   WNCK_TYPE_WINDOW_ACTIONS);
-  
+
+  signals[GEOMETRY_CHANGED] =
+    g_signal_new ("geometry_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, geometry_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);  
 }
 
 static void
@@ -327,11 +342,11 @@ _wnck_window_create (Window      xwindow,
   /* Hash now owns one ref, caller gets none */
 
   /* Note that xwindow may correspond to a WnckApplication's xwindow,
-   * right now it doesn't matter since we use PropertyChangeMask both
-   * places
+   * that's why we select the union of the mask we want for Application
+   * and the one we want for window
    */
   _wnck_select_input (window->priv->xwindow,
-                      PropertyChangeMask);
+                      WNCK_APP_WINDOW_EVENT_MASK);
 
   window->priv->group_leader =
     _wnck_get_group_leader (window->priv->xwindow);
@@ -342,6 +357,12 @@ _wnck_window_create (Window      xwindow,
   window->priv->pid =
     _wnck_get_pid (window->priv->xwindow);
 
+  _wnck_get_window_geometry (xwindow,
+                             &window->priv->x,
+                             &window->priv->y,
+                             &window->priv->width,
+                             &window->priv->height);
+  
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
   window->priv->need_update_icon_name = TRUE;
@@ -999,6 +1020,39 @@ wnck_window_get_state (WnckWindow *window)
   return COMPRESS_STATE (window);
 }
 
+/**
+ * wnck_window_get_geometry:
+ * @window: a #WnckWindow
+ * @xp: return location for X coordinate of window 
+ * @yp: return location for Y coordinate of window
+ * @widthp: return location for width of window
+ * @heightp: return location for height of window
+ *
+ * Gets the size and position of the window, as last received
+ * in a configure notify (i.e. this call does not round-trip
+ * to the server, just gets the last size we were notified of).
+ * The X and Y coordinates are relative to the root window.
+ * 
+ **/
+void
+wnck_window_get_geometry (WnckWindow *window,
+                          int        *xp,
+                          int        *yp,
+                          int        *widthp,
+                          int        *heightp)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  if (xp)
+    *xp = window->priv->x;
+  if (yp)
+    *yp = window->priv->y;
+  if (widthp)
+    *widthp = window->priv->width;
+  if (heightp)
+    *heightp = window->priv->height;
+}
+
 void
 _wnck_window_set_application (WnckWindow      *window,
                               WnckApplication *app)
@@ -1072,6 +1126,28 @@ _wnck_window_process_property_notify (WnckWindow *window,
       window->priv->need_emit_icon_changed = TRUE;
       queue_update (window);
     }
+}
+
+void
+_wnck_window_process_configure_notify (WnckWindow *window,
+                                       XEvent     *xevent)
+{
+  if (xevent->xconfigure.send_event)
+    {
+      window->priv->x = xevent->xconfigure.x;
+      window->priv->y = xevent->xconfigure.y;
+    }
+  else
+    {
+      _wnck_get_window_position (window->priv->xwindow,
+                                 &window->priv->x,
+                                 &window->priv->y);
+    }
+
+  window->priv->width = xevent->xconfigure.width;
+  window->priv->height = xevent->xconfigure.height;
+
+  emit_geometry_changed (window);
 }
 
 static void
@@ -1397,4 +1473,12 @@ emit_actions_changed   (WnckWindow       *window,
   g_signal_emit (G_OBJECT (window),
                  signals[ACTIONS_CHANGED],
                  0, changed_mask, new_actions);
+}
+
+static void
+emit_geometry_changed (WnckWindow *window)
+{
+  g_signal_emit (G_OBJECT (window),
+                 signals[GEOMETRY_CHANGED],
+                 0);
 }

@@ -7,9 +7,11 @@ lib_LTLIBRARIES=libwnck-1.la
 libwnckincludedir=$(includedir)/libwnck-1.0/libwnck
 wnck_headers=			\
 	libwnck.h		\
+	pager.h			\
 	application.h		\
 	screen.h		\
 	tasklist.h		\
+	util.h			\
 	window.h 		\
 	window-action-menu.h	\
 	window-menu.h		\
@@ -27,9 +29,11 @@ wnck_built_cfiles = wnck-enum-types.c  wnck-marshal.c
 libwnck_1_la_SOURCES= 		\
 	application.c		\
 	inlinepixbufs.h		\
+	pager.c			\
 	private.h		\
 	screen.c		\
 	tasklist.c		\
+	util.c			\
 	window.c		\
 	window-action-menu.c	\
 	window-menu.c		\
@@ -45,7 +49,11 @@ test_wnck_SOURCES=		\
 test_tasklist_SOURCES=		\
 	test-tasklist.c
 
+test_pager_SOURCES=		\
+	test-pager.c
+
 noinst_PROGRAMS=		\
+	test-pager		\
 	test-wnck		\
 	test-tasklist
 
@@ -58,6 +66,7 @@ libwnck_1_la_LIBADD=   \
 
 test_wnck_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 test_tasklist_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
+test_pager_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 
 ## we just punt on built sources, and check them into cvs, manually updating 
 ## when required.

@@ -20,6 +20,7 @@
  */
 
 #include "workspace.h"
+#include "xutils.h"
 
 static GHashTable* workspace_hash = NULL;
 
@@ -125,12 +126,35 @@ wnck_workspace_get (int number)
     return g_hash_table_lookup (workspace_hash, &number);
 }
 
+/**
+ * wnck_workspace_get_number:
+ * @space: a #WnckWorkspace
+ * 
+ * 
+ * 
+ * Return value: get the index of the workspace
+ **/
 int
 wnck_workspace_get_number (WnckWorkspace *space)
 {
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
   
   return space->priv->number;
+}
+
+/**
+ * wnck_workspace_activate:
+ * @space: a #WnckWorkspace
+ * 
+ * Ask window manager to make @space the active workspace.
+ * 
+ **/
+void
+wnck_workspace_activate (WnckWorkspace *space)
+{
+  g_return_if_fail (WNCK_IS_WORKSPACE (space));
+
+  _wnck_activate_workspace (space->priv->number);
 }
 
 WnckWorkspace*

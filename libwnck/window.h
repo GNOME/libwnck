@@ -104,6 +104,9 @@ struct _WnckWindowClass
   void (* actions_changed)   (WnckWindow       *window,
                               WnckWindowActions changed_mask,
                               WnckWindowActions new_actions);
+
+  /* Changed size/position */
+  void (* geometry_changed)      (WnckWindow       *window);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
@@ -172,6 +175,12 @@ void wnck_window_set_mini_icon_size       (WnckWindow *window,
 
 WnckWindowActions wnck_window_get_actions (WnckWindow *window);
 WnckWindowState   wnck_window_get_state   (WnckWindow *window);
+
+void wnck_window_get_geometry (WnckWindow *window,
+                               int        *xp,
+                               int        *yp,
+                               int        *widthp,
+                               int        *heightp);
 
 G_END_DECLS
 

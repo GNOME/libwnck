@@ -1,3 +1,15 @@
+2001-10-24  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: hack to work with slightly older GTK as well as
+	HEAD
+	
+	* libwnck/screen.c (wnck_screen_force_update): add function to
+	force immediate reading of screen state, instead of queueing it
+
+	* libwnck/window.c: add geometry reporting
+
+	* libwnck/pager.c: pager widget skeleton
+
 2001-10-18  Havoc Pennington  <hp@redhat.com>
 
 	* libwnck/tasklist.c: skeleton of widget for tasklist-like

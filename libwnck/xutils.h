@@ -30,6 +30,8 @@
 
 G_BEGIN_DECLS
 
+#define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
+
 gboolean _wnck_get_cardinal      (Window  xwindow,
                                   Atom    atom,
                                   int    *val);
@@ -79,6 +81,7 @@ void _wnck_change_state     (Window   xwindow,
 void _wnck_change_workspace (Window   xwindow,
                              int      new_space);
 void _wnck_activate         (Window   xwindow);
+void _wnck_activate_workspace (int    new_active_space);
 
 Window _wnck_get_group_leader (Window xwindow);
 char*  _wnck_get_session_id   (Window xwindow);
@@ -102,6 +105,18 @@ void _wnck_get_fallback_icons (GdkPixbuf **iconp,
                                int         ideal_mini_width,
                                int         ideal_mini_height);
 
+
+void _wnck_get_window_geometry (Window xwindow,
+                                int   *xp,
+                                int   *yp,
+                                int   *widthp,
+                                int   *heightp);
+
+void _wnck_get_window_position (Window xwindow,
+                                int   *xp,
+                                int   *yp);
+
+void _wnck_set_dock_type_hint (Window xwindow);
 
 G_END_DECLS
 
