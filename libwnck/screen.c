@@ -1304,3 +1304,33 @@ _wnck_screen_get_xscreen (WnckScreen *screen)
 {
   return screen->priv->xscreen;
 }
+
+int
+wnck_screen_try_set_workspace_layout (WnckScreen *screen,
+                                      int         current_token,
+                                      int         rows,
+                                      int         columns)
+{
+  int retval;
+  
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen),
+                        WNCK_NO_MANAGER_TOKEN);
+  
+  retval = _wnck_try_desktop_layout_manager (screen->priv->xscreen, current_token);
+
+  if (retval != WNCK_NO_MANAGER_TOKEN)
+    {
+      _wnck_set_desktop_layout (screen->priv->xscreen, rows, columns);
+    }
+
+  return retval;
+}
+
+void
+wnck_screen_release_workspace_layout (WnckScreen *screen,
+                                      int         current_token)
+{
+  _wnck_release_desktop_layout_manager (screen->priv->xscreen,
+                                        current_token);
+
+}

@@ -1,3 +1,9 @@
+2002-05-15  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/pager.c: use the _NET_DESKTOP_LAYOUT stuff
+
+	* libwnck/xutils.c: Add stuff related to _NET_DESKTOP_LAYOUT
+
 2002-05-14  Havoc Pennington  <hp@pobox.com>
 
 	* libwnck/pager.c (wnck_pager_button_release): only activate a

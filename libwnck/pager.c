@@ -51,6 +51,8 @@ struct _WnckPagerPrivate
   guint dragging : 1;
 
   GdkPixbuf *bg_cache;
+
+  int layout_manager_token;
 };
 
 enum
@@ -143,6 +145,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
   pager->priv->bg_cache = NULL;
+  pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
 }
 
 static void
@@ -216,6 +219,12 @@ wnck_pager_realize (GtkWidget *widget)
 
   widget->style = gtk_style_attach (widget->style, widget->window);
   gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
+
+  pager->priv->layout_manager_token =
+    wnck_screen_try_set_workspace_layout (pager->priv->screen,
+                                          pager->priv->layout_manager_token,
+                                          pager->priv->n_rows,
+                                          0);
 }
 
 static void
@@ -226,6 +235,9 @@ wnck_pager_unrealize (GtkWidget *widget)
   pager = WNCK_PAGER (widget);
 
   wnck_pager_clear_drag (pager);
+
+  wnck_screen_release_workspace_layout (pager->priv->screen,
+                                        pager->priv->layout_manager_token);
   
   GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
 }
@@ -1003,6 +1015,12 @@ wnck_pager_set_n_rows (WnckPager *pager,
 
   pager->priv->n_rows = n_rows;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
+  
+  pager->priv->layout_manager_token =
+    wnck_screen_try_set_workspace_layout (pager->priv->screen,
+                                          pager->priv->layout_manager_token,
+                                          pager->priv->n_rows,
+                                          0);
 }
 
 void

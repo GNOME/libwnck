@@ -110,6 +110,14 @@ gulong wnck_screen_get_background_pixmap (WnckScreen *screen);
 int wnck_screen_get_width (WnckScreen *screen);
 int wnck_screen_get_height (WnckScreen *screen);
 
+int  wnck_screen_try_set_workspace_layout (WnckScreen *screen,
+                                           int         current_token,
+                                           int         rows,
+                                           int         columns);
+void wnck_screen_release_workspace_layout (WnckScreen *screen,
+                                           int         current_token);
+
+
 G_END_DECLS
 
 #endif /* WNCK_SCREEN_H */

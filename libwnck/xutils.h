@@ -152,6 +152,10 @@ void _wnck_set_icon_geometry  (Window xwindow,
 
 void _wnck_set_dock_type_hint (Window xwindow);
 
+void _wnck_set_desktop_layout (Screen *xscreen,
+                               int     rows,
+                               int     columns);
+
 GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
                                              Pixmap       xpixmap,
                                              int          src_x,
@@ -160,6 +164,14 @@ GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
                                              int          dest_y,
                                              int          width,
                                              int          height);
+
+#define WNCK_NO_MANAGER_TOKEN 0
+
+int      _wnck_try_desktop_layout_manager           (Screen *xscreen,
+                                                     int     current_token);
+void     _wnck_release_desktop_layout_manager       (Screen *xscreen,
+                                                     int     current_token);
+gboolean _wnck_desktop_layout_manager_process_event (XEvent *xev);
 
 G_END_DECLS
 
