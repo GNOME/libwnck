@@ -1,3 +1,16 @@
+2005-02-20  Elijah Newren  <newren@gmail.com>
+
+	Backport of fix in the development branch; patch from Juerg
+	Billeter with modifications by Mark.
+
+	* libwnck/tasklist.c:
+        (wnck_tasklist_init), (wnck_tasklist_finalize): track
+        tasklist instaces and call update_lists() on all instances
+        when instances are added or removed.
+        (wnck_tasklist_update_lists): only constrain the tasklist
+        to showing windows from a certain monitor if its the only
+        monitor.
+
 2004-10-12  Mark McLoughlin  <mark@skynet.ie>
 
 	* configure.in: Version 2.8.1.
