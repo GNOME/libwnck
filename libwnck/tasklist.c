@@ -147,6 +147,7 @@ static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gpointer          callback_data);
 static void     wnck_tasklist_remove	    (GtkContainer   *container,
 					     GtkWidget	    *widget);
+static void     wnck_tasklist_free_tasks    (WnckTasklist   *tasklist);
 static void     wnck_tasklist_update_lists  (WnckTasklist   *tasklist);
 static int      wnck_tasklist_layout        (GtkAllocation  *allocation,
 					     int             max_width,
@@ -364,6 +365,13 @@ wnck_tasklist_finalize (GObject *object)
 
   tasklist = WNCK_TASKLIST (object);
 
+  /* Tasks should have gone away due to removing their
+   * buttons in container destruction
+   */
+  g_assert (tasklist->priv->windows == NULL);
+  g_assert (tasklist->priv->applications == NULL);
+  /* wnck_tasklist_free_tasks (tasklist); */
+  
   g_hash_table_destroy (tasklist->priv->win_hash);
   tasklist->priv->win_hash = NULL;
   
@@ -766,11 +774,10 @@ wnck_tasklist_forall (GtkContainer *container,
 
 static void
 wnck_tasklist_remove (GtkContainer   *container,
-		      GtkWidget	    *widget)
+		      GtkWidget	     *widget)
 {
   WnckTasklist *tasklist;
   GList *tmp;
-  gboolean found = FALSE;
   
   g_return_if_fail (WNCK_IS_TASKLIST (container));
   g_return_if_fail (widget != NULL);
@@ -790,15 +797,15 @@ wnck_tasklist_remove (GtkContainer   *container,
 	  tasklist->priv->windows =
 	    g_list_remove (tasklist->priv->windows,
 			   task);
-	  gtk_widget_destroy (task->button);
-	  found = TRUE;
+
+          gtk_widget_unparent (widget);
+          g_object_unref (task);
 	  break;
 	}
-      
     }
   
   tmp = tasklist->priv->applications;
-  while (!found && (tmp != NULL))
+  while (tmp != NULL)
     {
       WnckTask *task = WNCK_TASK (tmp->data);
       tmp = tmp->next;
@@ -810,12 +817,12 @@ wnck_tasklist_remove (GtkContainer   *container,
 	  tasklist->priv->applications =
 	    g_list_remove (tasklist->priv->applications,
 			   task);
-	  gtk_widget_destroy (task->button);
+
+          gtk_widget_unparent (widget);
+          g_object_unref (task);
 	  break;
 	}
     }
-
-  gtk_widget_unparent (widget);
 }
 
 
@@ -851,16 +858,10 @@ wnck_tasklist_new (WnckScreen *screen)
 }
 
 static void
-wnck_tasklist_update_lists (WnckTasklist *tasklist)
+wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 {
-  GList *windows;
-  WnckWindow *win;
-  WnckApplication *app;
   GList *l;
-  WnckWorkspace *active_workspace;
-  WnckTask *app_task;
-  WnckTask *win_task;
-
+  
   tasklist->priv->active_task = NULL;
   tasklist->priv->active_app = NULL;
   
@@ -870,7 +871,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       while (l != NULL)
 	{
 	  WnckTask *task = WNCK_TASK (l->data);
-	  l = l-> next;
+	  l = l->next;
 	  g_object_unref (task);
 	}
     }
@@ -883,13 +884,27 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       while (l != NULL)
 	{
 	  WnckTask *task = WNCK_TASK (l->data);
-	  l = l-> next;
+	  l = l->next;
 	  g_object_unref (task);
 	}
     }
   g_assert (tasklist->priv->applications == NULL);
   g_assert (g_hash_table_size (tasklist->priv->app_hash) == 0);
+}
 
+static void
+wnck_tasklist_update_lists (WnckTasklist *tasklist)
+{
+  GList *windows;
+  WnckWindow *win;
+  WnckApplication *app;
+  GList *l;
+  WnckWorkspace *active_workspace;
+  WnckTask *app_task;
+  WnckTask *win_task;
+
+  wnck_tasklist_free_tasks (tasklist);
+  
   active_workspace = wnck_screen_get_active_workspace (tasklist->priv->screen);  
   windows = wnck_screen_get_windows (tasklist->priv->screen);
   
@@ -1207,9 +1222,10 @@ wnck_task_popup_menu (WnckTask  *task)
       
       gtk_widget_show (menu_item);
       
-      g_signal_connect (G_OBJECT (menu_item), "activate",
-			G_CALLBACK (wnck_task_menu_activated), win_task);
-      
+      g_signal_connect_object (G_OBJECT (menu_item), "activate",
+                               G_CALLBACK (wnck_task_menu_activated),
+                               G_OBJECT (win_task),
+                               0);      
       
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       
@@ -1490,7 +1506,9 @@ wnck_task_create_widgets (WnckTask *task)
   char *text;
   
   task->button = gtk_toggle_button_new ();
-
+  g_object_add_weak_pointer (G_OBJECT (task->button),
+                             (void**) &task->button);
+  
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
 
@@ -1531,19 +1549,23 @@ wnck_task_create_widgets (WnckTask *task)
   g_free (text);
   
   /* Set up signals */
-  g_signal_connect (G_OBJECT (task->button), "toggled",
-		    G_CALLBACK (wnck_task_button_toggled), task);
+  g_signal_connect_object (G_OBJECT (task->button), "toggled",
+                           G_CALLBACK (wnck_task_button_toggled),
+                           G_OBJECT (task),
+                           0);
 
   
-  g_signal_connect (G_OBJECT (task->button), "button_press_event",
-		    G_CALLBACK (wnck_task_button_press_event), task);
+  g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
+                           G_CALLBACK (wnck_task_button_press_event),
+                           G_OBJECT (task),
+                           0);
 
   if (!task->is_application)
     {
       task->state_changed_tag = g_signal_connect (G_OBJECT (task->window), "state_changed",
-						  G_CALLBACK (wnck_task_state_changed), task->tasklist);
+                                                  G_CALLBACK (wnck_task_state_changed), task->tasklist);
       task->icon_changed_tag = g_signal_connect (G_OBJECT (task->window), "icon_changed",
-						 G_CALLBACK (wnck_task_icon_changed), task);
+                                                 G_CALLBACK (wnck_task_icon_changed), task);
       task->name_changed_tag = g_signal_connect (G_OBJECT (task->window), "name_changed",
 						 G_CALLBACK (wnck_task_name_changed), task);
     }
@@ -1650,8 +1672,10 @@ wnck_task_new_from_application (WnckTasklist    *tasklist,
   
   wnck_task_create_widgets (task);
   
-  g_signal_connect_after (task->button, "expose_event",
-			  G_CALLBACK (wnck_task_app_expose), task);
+  g_signal_connect_object (task->button, "expose_event",
+                           G_CALLBACK (wnck_task_app_expose),
+                           G_OBJECT (task),
+                           G_CONNECT_AFTER);
   
   return task;
 }

@@ -243,7 +243,7 @@ wnck_screen_finalize (GObject *object)
   WnckScreen *screen;
 
   screen = WNCK_SCREEN (object);
-
+  
   unqueue_update (screen);
 
   /* FIXME this isn't right, we need to destroy the items
@@ -253,6 +253,8 @@ wnck_screen_finalize (GObject *object)
   g_list_free (screen->priv->mapped_windows);
   g_list_free (screen->priv->stacked_windows);
   g_list_free (screen->priv->workspaces);
+
+  screens[screen->priv->number] = NULL;
   
   g_free (screen->priv);
   

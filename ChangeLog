@@ -1,3 +1,20 @@
+2002-03-23  Havoc Pennington  <hp@pobox.com>
+
+	* libwnck/screen.c (wnck_screen_finalize): set
+	screen pointer to NULL when the screen is finalized
+
+	* libwnck/tasklist.c: fixes related to #72296
+	(wnck_tasklist_finalize): Assert that we have no remaining tasks.
+	(wnck_task_popup_menu): use connect_object out of sheer paranoia
+	(wnck_task_new_from_application): use connect_object for
+	robustness
+	(wnck_task_create_widgets): connect_object
+	(wnck_tasklist_remove): unparent task->button, then 
+	unref task. This function was the actual cause of #72296 
+	I believe.
+	(wnck_task_create_widgets): add weak pointer for 
+	task->button
+
 2002-03-06  Germán Poo-Caaman~o
 
 	* configure.in: Added "es" to ALL_LINGUAS.
