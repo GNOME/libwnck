@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2004-02-08 01:08+0900\n"
+"POT-Creation-Date: 2005-02-01 03:43+0900\n"
+"PO-Revision-Date: 2005-02-01 03:46+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +31,42 @@ msgstr "작업 공간을 바꾸는 도구"
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "작업 공간 %s(으)로 바꾸려면 누르십시오"
+
+#: libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "알 수 없는 창"
+
+#: libwnck/selector.c:627
+msgid "No Windows Open"
+msgstr "열린 창이 없습니다"
+
+#: libwnck/selector.c:729
+msgid "Window Selector"
+msgstr "창 선택"
+
+#: libwnck/selector.c:730
+msgid "Tool to switch between windows"
+msgstr "창 사이로 옮겨 다니는 도구"
+
+#: libwnck/tasklist.c:523
+msgid "Window List"
+msgstr "창 목록"
+
+#: libwnck/tasklist.c:524
+msgid "Tool to switch between visible windows"
+msgstr "창 사이로 옮겨 다니는 도구"
+
+#: libwnck/tasklist.c:2102
+msgid "_Close All"
+msgstr "모두 닫기(_C)"
+
+#: libwnck/tasklist.c:2117
+msgid "_Minimize All"
+msgstr "모두 최소화(_M)"
+
+#: libwnck/tasklist.c:2128
+msgid "_Unminimize All"
+msgstr "모두 최소화 취소(_U)"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -57,12 +93,12 @@ msgid "Roll _Up"
 msgstr "말아올리기(_U)"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
-msgstr "이 작업 공간에만 놓기(_T)"
+msgid "_Only on This Workspace"
+msgstr "이 작업 공간에만 놓기(_O)"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "모든 작업 공간에 놓기(_A)"
+msgid "_Always on Current Workspace"
+msgstr "항상 현재 작업 공간에 놓기(_A)"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -102,26 +138,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "제목없는 창"
-
-#: libwnck/tasklist.c:523
-msgid "Window List"
-msgstr "창 목록"
-
-#: libwnck/tasklist.c:524
-msgid "Tool to switch between visible windows"
-msgstr "창 사이로 옮겨 다니는 도구"
-
-#: libwnck/tasklist.c:2096
-#, fuzzy
-msgid "_Close All"
-msgstr "닫기(_C)"
-
-#: libwnck/tasklist.c:2111
-#, fuzzy
-msgid "_Minimize All"
-msgstr "최소화(_N)"
-
-#: libwnck/tasklist.c:2122
-#, fuzzy
-msgid "_Unminimize All"
-msgstr "최소화 취소(_N)"
