@@ -4,9 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.0\n"
-"POT-Creation-Date: 2003-12-10 11:44+0000\n"
-"PO-Revision-Date: 2003-04-29 20:06+0200\n"
+"Project-Id-Version: libwnck VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2003-12-15 04:18+0100\n"
+"PO-Revision-Date: 2003-12-15 12:32+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -82,3 +83,11 @@ msgstr "nepojmenované okno"
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovní plocha %d"
+
+#: libwnck/tasklist.c:461
+msgid "Window List"
+msgstr "Seznam oken"
+
+#: libwnck/tasklist.c:462
+msgid "Tool to switch between visible windows"
+msgstr "Nástroj pro přepínání mezi viditelnými okny"
