@@ -5,3 +5,4 @@ libwnck/pager-accessible.c
 libwnck/window-action-menu.c
 libwnck/window.c
 libwnck/workspace.c
+libwnck/tasklist.c
