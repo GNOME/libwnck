@@ -86,6 +86,7 @@ void _wnck_activate_workspace (int    new_active_space);
 Window _wnck_get_group_leader (Window xwindow);
 char*  _wnck_get_session_id   (Window xwindow);
 int    _wnck_get_pid          (Window xwindow);
+char*  _wnck_get_name         (Window xwindow);
 
 void   _wnck_select_input     (Window xwindow,
                                int    mask);
@@ -100,6 +101,7 @@ void           _wnck_icon_cache_property_changed     (WnckIconCache *icon_cache,
 gboolean       _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache);
 void           _wnck_icon_cache_set_want_fallback    (WnckIconCache *icon_cache,
                                                       gboolean       setting);
+gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache *icon_cache);
 
 gboolean _wnck_read_icons         (Window          xwindow,
                                    WnckIconCache  *icon_cache,

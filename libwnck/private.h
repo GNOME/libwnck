@@ -22,6 +22,8 @@
 #ifndef WNCK_PRIVATE_H
 #define WNCK_PRIVATE_H
 
+#include <config.h>
+#include <libintl.h>
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
@@ -30,6 +32,10 @@
 
 G_BEGIN_DECLS
 
+#define _(x) dgettext (GETTEXT_PACKAGE, x)
+
+void _wnck_application_process_property_notify (WnckApplication *app,
+                                                XEvent          *xevent);
 void _wnck_window_process_property_notify (WnckWindow *window,
                                            XEvent     *xevent);
 

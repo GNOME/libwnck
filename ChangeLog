@@ -1,3 +1,29 @@
+2002-01-11  Havoc Pennington  <hp@pobox.com>
+
+	* configure.in (LIBWNCK_CURRENT): bump soname
+
+	* libwnck/window.c (wnck_window_get_icon_is_fallback): add this
+	(wnck_window_set_create_fallback_icon): to replace this broken 
+	global setting
+
+	* libwnck/application.c (wnck_application_get_name): implement
+	(wnck_application_get_pid): implement
+	(wnck_application_get_icon): implement
+	(wnck_application_get_mini_icon): implement
+
+	* libwnck/xutils.c (filter_func): pass property notifies
+	to WnckApplication
+
+	* libwnck/window.c (update_name): use _wnck_get_name
+	(wnck_window_set_icon_size): delete, this global 
+	setting breaks if you have several applets in one 
+	process trying to use wnck. We can add 
+	wnck_window_get_icon_at_size() or something if people 
+	need it.
+
+	* libwnck/xutils.c (_wnck_get_name): function to try all the
+	various "name" properties
+
 2002-01-06  Fatih Demir <kabalak@gtranslator.org>
 
 	* configure.in: Added "tr" to the language list.

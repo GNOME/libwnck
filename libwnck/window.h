@@ -165,14 +165,8 @@ gboolean wnck_window_is_active (WnckWindow *window);
 GdkPixbuf* wnck_window_get_icon      (WnckWindow *window);
 GdkPixbuf* wnck_window_get_mini_icon (WnckWindow *window);
 
-void wnck_window_set_create_fallback_icon (WnckWindow *window,
-                                           gboolean    setting);
-void wnck_window_set_icon_size            (WnckWindow *window,
-                                           int         width,
-                                           int         height);
-void wnck_window_set_mini_icon_size       (WnckWindow *window,
-                                           int         width,
-                                           int         height);
+gboolean wnck_window_get_icon_is_fallback (WnckWindow *window);
+
 void wnck_window_set_icon_geometry        (WnckWindow *window,
 					   int         x,
 					   int         y,

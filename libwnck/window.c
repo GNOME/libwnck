@@ -19,8 +19,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include <config.h>
-#include <libintl.h>
 #include <string.h>
 #include "window.h"
 #include "xutils.h"
@@ -28,7 +26,6 @@
 #include "wnck-enum-types.h"
 #include "wnck-marshal.h"
 
-#define _(x) dgettext (GETTEXT_PACKAGE, x)
 #define FALLBACK_NAME _("untitled window")
 #define ALL_WORKSPACES (0xFFFFFFFF)
 
@@ -58,11 +55,6 @@ struct _WnckWindowPrivate
   char *session_id_utf8;
   int pid;
   int workspace;
-
-  int preferred_icon_width;
-  int preferred_icon_height;
-  int preferred_mini_icon_width;
-  int preferred_mini_icon_height;
 
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
@@ -176,11 +168,6 @@ wnck_window_init (WnckWindow *window)
   window->priv->name = g_strdup (FALLBACK_NAME);
   window->priv->icon_name = g_strdup (FALLBACK_NAME);
   window->priv->workspace = ALL_WORKSPACES;
-
-  window->priv->preferred_icon_width = DEFAULT_ICON_WIDTH;
-  window->priv->preferred_icon_height = DEFAULT_ICON_HEIGHT;
-  window->priv->preferred_mini_icon_width = DEFAULT_MINI_ICON_WIDTH;
-  window->priv->preferred_mini_icon_height = DEFAULT_MINI_ICON_HEIGHT;
 
   window->priv->icon_cache = _wnck_icon_cache_new ();
 }
@@ -868,11 +855,10 @@ get_icons (WnckWindow *window)
   if (_wnck_read_icons (window->priv->xwindow,
                         window->priv->icon_cache,
                         &icon,
-                        window->priv->preferred_icon_width,
-                        window->priv->preferred_icon_height,
+                        DEFAULT_ICON_WIDTH, DEFAULT_ICON_HEIGHT,
                         &mini_icon,
-                        window->priv->preferred_mini_icon_width,
-                        window->priv->preferred_mini_icon_height))
+                        DEFAULT_MINI_ICON_WIDTH,
+                        DEFAULT_MINI_ICON_HEIGHT))
     {
       window->priv->need_emit_icon_changed = TRUE;
       
@@ -923,77 +909,21 @@ wnck_window_get_mini_icon (WnckWindow *window)
   return window->priv->mini_icon;
 }
 
-void
-wnck_window_set_create_fallback_icon (WnckWindow *window,
-                                      gboolean    setting)
-{
-  g_return_if_fail (WNCK_IS_WINDOW (window));
-
-  _wnck_icon_cache_set_want_fallback (window->priv->icon_cache, setting);
-}
-
 /**
- * wnck_window_set_icon_size:
+ * wnck_window_get_icon_is_fallback:
  * @window: a #WnckWindow
- * @width: preferred width or -1 if you want natural size
- * @height: preferred height or -1 for natural size
  *
- * Width/height all icons should be scaled to; libwnck
- * will pick the best available source icon to scale
- * to this size. If you pass -1 for @width or @height the
- * icon's largest natural size as provided by the application
- * will be used; this is useful if you want to modify the
- * image yourself, and don't want to lose information from
- * the image by having libwnck scale it first.
- *
+ * Checks if we are using a default fallback icon because
+ * none was set on the window.
+ * 
+ * Return value: %TRUE if icon is a fallback
  **/
-void
-wnck_window_set_icon_size (WnckWindow *window,
-                           int         width,
-                           int         height)
+gboolean
+wnck_window_get_icon_is_fallback (WnckWindow *window)
 {
-  g_return_if_fail (WNCK_IS_WINDOW (window));
-  g_return_if_fail (width != 0);
-  g_return_if_fail (height != 0);
-  
-  if (width != window->priv->preferred_icon_width ||
-      height != window->priv->preferred_icon_height)
-    {
-      /* on next get_icons, the icon cache will notice
-       * that our size has changed
-       */
-      window->priv->preferred_icon_width = width;
-      window->priv->preferred_icon_height = height;
-    }
-}
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
-/**
- * wnck_window_set_mini_icon_size:
- * @window: a #WnckWindow
- * @width: preferred width or -1 for natural
- * @height: preferred height or -1 for natural
- *
- * Like wnck_window_set_icon_size() but for the mini icon.
- *
- **/
-void
-wnck_window_set_mini_icon_size (WnckWindow *window,
-                                int         width,
-                                int         height)
-{
-  g_return_if_fail (WNCK_IS_WINDOW (window));
-  g_return_if_fail (width != 0);
-  g_return_if_fail (height != 0);
-  
-  if (width != window->priv->preferred_mini_icon_width ||
-      height != window->priv->preferred_mini_icon_height)
-    {
-      /* on next get_icons, the icon cache will notice
-       * that our size has changed
-       */
-      window->priv->preferred_mini_icon_width = width;
-      window->priv->preferred_mini_icon_height = height;
-    }
+  return _wnck_icon_cache_get_is_fallback (window->priv->icon_cache);
 }
 
 /**
@@ -1303,20 +1233,7 @@ update_name (WnckWindow *window)
 
   window->priv->need_update_name = FALSE;
 
-  if (window->priv->name == NULL)
-    window->priv->name =
-      _wnck_get_utf8_property (window->priv->xwindow,
-                               _wnck_atom_get ("_NET_WM_VISIBLE_NAME"));
-
-  if (window->priv->name == NULL)
-    window->priv->name =
-      _wnck_get_utf8_property (window->priv->xwindow,
-                               _wnck_atom_get ("_NET_WM_NAME"));
-
-  if (window->priv->name == NULL)
-    window->priv->name =
-      _wnck_get_text_property (window->priv->xwindow,
-                               XA_WM_NAME);
+  window->priv->name = _wnck_get_name (window->priv->xwindow);
 
   if (window->priv->name == NULL)
     window->priv->name = g_strdup (FALLBACK_NAME);

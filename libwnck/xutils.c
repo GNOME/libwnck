@@ -509,9 +509,14 @@ filter_func (GdkXEvent  *gdkxevent,
         else
           {
             WnckWindow *window;
+            WnckApplication *app;
 
             window = wnck_window_get (xevent->xany.window);
+            app = wnck_application_get (xevent->xany.window);
 
+            if (app)
+              _wnck_application_process_property_notify (app, xevent);
+            
             if (window)
               _wnck_window_process_property_notify (window, xevent);
           }
@@ -765,6 +770,25 @@ _wnck_get_pid (Window xwindow)
     return 0;
   else
     return val;
+}
+
+char*
+_wnck_get_name (Window xwindow)
+{
+  char *name;
+  
+  name = _wnck_get_utf8_property (xwindow,
+                                  _wnck_atom_get ("_NET_WM_VISIBLE_NAME"));
+
+  if (name == NULL)
+    name = _wnck_get_utf8_property (xwindow,
+                                    _wnck_atom_get ("_NET_WM_NAME"));
+
+  if (name == NULL)
+    name = _wnck_get_text_property (xwindow,
+                                    XA_WM_NAME);
+
+  return name;
 }
 
 void
@@ -1331,7 +1355,7 @@ struct _WnckIconCache
   /* TRUE if these props have changed */
   guint wm_normal_hints_dirty : 1;
   guint kwm_win_icon_dirty : 1;
-  guint net_wm_icon_dirty : 1;
+  guint net_wm_icon_dirty : 1;  
 };
 
 WnckIconCache*
@@ -1428,6 +1452,12 @@ _wnck_icon_cache_set_want_fallback (WnckIconCache *icon_cache,
                                     gboolean       setting)
 {
   icon_cache->want_fallback = TRUE;
+}
+
+gboolean
+_wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
+{
+  return icon_cache->origin == USING_FALLBACK_ICON;
 }
 
 static void

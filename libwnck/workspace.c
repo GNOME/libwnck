@@ -23,8 +23,7 @@
 #include <libintl.h>
 #include "workspace.h"
 #include "xutils.h"
-
-#define _(x) dgettext (GETTEXT_PACKAGE, x)
+#include "private.h"
 
 static GHashTable* workspace_hash = NULL;
 

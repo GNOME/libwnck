@@ -20,10 +20,7 @@
  */
 
 #include "window-action-menu.h"
-
-#include <config.h>
-#include <libintl.h>
-#define _(x) dgettext (GETTEXT_PACKAGE, x)
+#include "private.h"
 
 typedef enum
 {
