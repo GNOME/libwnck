@@ -1,3 +1,15 @@
+2003-12-10  Mark McLoughlin  <mark@skynet.ie>
+
+	Fixes bug #124148 - minimize animation goes to wrong place
+	with grouped windows.
+
+	* libwnck/tasklist.c:
+	(wnck_tasklist_size_allocate): pass in visible_windows to
+	update_icon_geometries.
+	(wnck_tasklist_update_icon_geometries): iterate over the
+	visible tasks updating the associated window's icon
+	geometries from there.
+
 2003-11-28  Federico Mena Quintero  <federico@ximian.com>
 
 	* libwnck/tasklist.c (WnckTaskType): Added a WNCK_TASK_CLASS_GROUP
