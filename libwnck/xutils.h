@@ -39,6 +39,9 @@ int      _wnck_get_wm_state      (Window  xwindow);
 gboolean _wnck_get_window        (Window  xwindow,
                                   Atom    atom,
                                   Window *val);
+gboolean _wnck_get_pixmap        (Window  xwindow,
+                                  Atom    atom,
+                                  Pixmap *val);
 gboolean _wnck_get_atom          (Window  xwindow,
                                   Atom    atom,
                                   Atom   *val);
@@ -141,6 +144,15 @@ void _wnck_set_icon_geometry  (Window xwindow,
 			       int    height);
 
 void _wnck_set_dock_type_hint (Window xwindow);
+
+GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
+                                             Pixmap       xpixmap,
+                                             int          src_x,
+                                             int          src_y,
+                                             int          dest_x,
+                                             int          dest_y,
+                                             int          width,
+                                             int          height);
 
 G_END_DECLS
 

@@ -79,7 +79,9 @@ struct _WnckScreenClass
   /* app gone */
   void (* application_closed)       (WnckScreen      *screen,
                                      WnckApplication *app);
-  
+
+  /* New background */
+  void (* background_changed)       (WnckScreen      *screen);
 };
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
@@ -99,6 +101,12 @@ int wnck_screen_get_workspace_count (WnckScreen *screen);
 
 gboolean wnck_screen_net_wm_supports (WnckScreen *screen,
                                       const char *atom);
+
+gulong wnck_screen_get_background_pixmap (WnckScreen *screen);
+
+int wnck_screen_get_width (WnckScreen *screen);
+int wnck_screen_get_height (WnckScreen *screen);
+
 
 G_END_DECLS
 

@@ -23,8 +23,9 @@
 #include "workspace.h"
 #include "window.h"
 #include "window-action-menu.h"
+#include "xutils.h"
 
-#define N_SCREEN_CONNECTIONS 9
+#define N_SCREEN_CONNECTIONS 10
 
 struct _WnckPagerPrivate
 {
@@ -48,6 +49,8 @@ struct _WnckPagerPrivate
   int action_click_x;
   int action_click_y;
   guint dragging : 1;
+
+  GdkPixbuf *bg_cache;
 };
 
 enum
@@ -92,6 +95,10 @@ static void wnck_pager_disconnect_screen (WnckPager  *pager);
 
 static void wnck_pager_clear_drag (WnckPager *pager);
 
+static GdkPixbuf* wnck_pager_get_background (WnckPager *pager,
+                                             int        width,
+                                             int        height);
+
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
 
@@ -135,6 +142,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->show_all_workspaces = TRUE;
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
+  pager->priv->bg_cache = NULL;
 }
 
 static void
@@ -166,6 +174,12 @@ wnck_pager_finalize (GObject *object)
   pager = WNCK_PAGER (object);
 
   wnck_pager_disconnect_screen (pager);
+
+  if (pager->priv->bg_cache)
+    {
+      g_object_unref (G_OBJECT (pager->priv->bg_cache));
+      pager->priv->bg_cache = NULL;
+    }
   
   g_free (pager->priv);
   
@@ -590,7 +604,8 @@ workspace_at_point (WnckPager *pager,
 static void
 wnck_pager_draw_workspace (WnckPager    *pager,
 			   int           workspace,
-			   GdkRectangle *rect)
+			   GdkRectangle *rect,
+                           GdkPixbuf    *bg_pixbuf)
 {
   GList *windows;
   GList *tmp;
@@ -603,16 +618,26 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     workspace == wnck_workspace_get_number (active_space);
 
   if (is_current)
-    gdk_draw_rectangle (GTK_WIDGET (pager)->window,                            
+    gdk_draw_rectangle (GTK_WIDGET (pager)->window,
 			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
 			TRUE,
 			rect->x, rect->y, rect->width, rect->height);
+  else if (bg_pixbuf)
+    {
+      gdk_pixbuf_render_to_drawable (bg_pixbuf,
+                                     GTK_WIDGET (pager)->window,
+                                     GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_SELECTED],
+                                     0, 0,
+                                     rect->x, rect->y,
+                                     -1, -1,
+                                     GDK_RGB_DITHER_MAX,
+                                     0, 0);
+    }
   else
     gdk_draw_rectangle (GTK_WIDGET (pager)->window,
 			GTK_WIDGET (pager)->style->dark_gc[GTK_STATE_NORMAL],
 			TRUE,
 			rect->x, rect->y, rect->width, rect->height);
-
 
   if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
     {
@@ -673,11 +698,15 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   int i;
   int n_spaces;
   WnckWorkspace *active_space;
+  GdkPixbuf *bg_pixbuf;
+  gboolean first;
   
   pager = WNCK_PAGER (widget);
 
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
   active_space = wnck_screen_get_active_workspace (pager->priv->screen);
+  bg_pixbuf = NULL;
+  first = TRUE;
   
   i = 0;
   while (i < n_spaces)
@@ -688,8 +717,20 @@ wnck_pager_expose_event  (GtkWidget      *widget,
 	  (active_space && i == wnck_workspace_get_number (active_space)))
 	{
 	  get_workspace_rect (pager, i, &rect);
-	  
-	  wnck_pager_draw_workspace (pager, i, &rect);
+
+          /* We only want to do this once, even if w/h change,
+           * for efficiency. width/height will only change by
+           * one pixel at most.
+           */
+          if (first)
+            {
+              bg_pixbuf = wnck_pager_get_background (pager,
+                                                     rect.width,
+                                                     rect.height);
+              first = FALSE;
+            }
+          
+	  wnck_pager_draw_workspace (pager, i, &rect, bg_pixbuf);
 	}
  
       ++i;
@@ -1104,6 +1145,21 @@ window_geometry_changed_callback  (WnckWindow      *window,
 }
 
 static void
+background_changed_callback (WnckWindow *window,
+                             gpointer    data)
+{
+  WnckPager *pager = WNCK_PAGER (data);
+
+  if (pager->priv->bg_cache)
+    {
+      g_object_unref (G_OBJECT (pager->priv->bg_cache));
+      pager->priv->bg_cache = NULL;
+    }
+  
+  gtk_widget_queue_draw (GTK_WIDGET (pager));
+}
+
+static void
 wnck_pager_connect_screen (WnckPager  *pager,
                            WnckScreen *screen)
 {
@@ -1170,6 +1226,11 @@ wnck_pager_connect_screen (WnckPager  *pager,
                            pager);
   ++i;
 
+  c[i] = g_signal_connect (G_OBJECT (screen), "background_changed",
+                           G_CALLBACK (background_changed_callback),
+                           pager);
+  ++i;
+  
   g_assert (i == N_SCREEN_CONNECTIONS);
 }
 
@@ -1231,3 +1292,54 @@ wnck_pager_clear_drag (WnckPager *pager)
   pager->priv->drag_window_y = -1;
 }
 
+static GdkPixbuf*
+wnck_pager_get_background (WnckPager *pager,
+                           int        width,
+                           int        height)
+{
+  Pixmap p;
+  GdkPixbuf *pix;
+  
+  /* We have to be careful not to keep alternating between
+   * width/height values, otherwise this would get really slow.
+   */
+  if (pager->priv->bg_cache &&
+      gdk_pixbuf_get_width (pager->priv->bg_cache) == width &&
+      gdk_pixbuf_get_height (pager->priv->bg_cache) == height)
+    return pager->priv->bg_cache;
+
+  if (pager->priv->bg_cache)
+    {
+      g_object_unref (G_OBJECT (pager->priv->bg_cache));
+      pager->priv->bg_cache = NULL;
+    }
+
+  if (pager->priv->screen == NULL)
+    return NULL;
+
+#define MIN_BG_SIZE 10
+  
+  if (width < MIN_BG_SIZE || height < MIN_BG_SIZE)
+    return NULL;
+  
+  p = wnck_screen_get_background_pixmap (pager->priv->screen);
+
+  _wnck_error_trap_push ();
+  pix = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
+                                          p,
+                                          0, 0, 0, 0,
+                                          -1, -1);
+  _wnck_error_trap_pop ();
+
+  if (pix)
+    {
+      pager->priv->bg_cache = gdk_pixbuf_scale_simple (pix,
+                                                       width,
+                                                       height,
+                                                       GDK_INTERP_BILINEAR);
+
+      g_object_unref (G_OBJECT (pix));
+    }
+
+  return pager->priv->bg_cache;
+}

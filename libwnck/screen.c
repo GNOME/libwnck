@@ -49,8 +49,10 @@ struct _WnckScreenPrivate
   WnckWindow *active_window;
   WnckWorkspace *active_workspace;
 
-  guint update_handler;
-
+  Pixmap bg_pixmap;
+  
+  guint update_handler;  
+  
   /* if you add flags, be sure to set them
    * when we create the screen so we get an initial update
    */
@@ -59,6 +61,7 @@ struct _WnckScreenPrivate
   guint need_update_active_workspace : 1;
   guint need_update_active_window : 1;
   guint need_update_workspace_names : 1;
+  guint need_update_bg_pixmap : 1;
 };
 
 enum {
@@ -71,6 +74,7 @@ enum {
   WORKSPACE_DESTROYED,
   APPLICATION_OPENED,
   APPLICATION_CLOSED,
+  BACKGROUND_CHANGED,
   LAST_SIGNAL
 };
 
@@ -103,8 +107,7 @@ static void emit_application_opened       (WnckScreen      *screen,
                                            WnckApplication *app);
 static void emit_application_closed       (WnckScreen      *screen,
                                            WnckApplication *app);
-
-
+static void emit_background_changed       (WnckScreen      *screen);
 
 static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
@@ -236,7 +239,16 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_STRUCT_OFFSET (WnckScreenClass, application_closed),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
-                  G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);  
+                  G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
+
+  signals[BACKGROUND_CHANGED] =
+    g_signal_new ("background_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckScreenClass, background_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -271,6 +283,8 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->xroot = RootWindow (gdk_display, number);
   screen->priv->xscreen = ScreenOfDisplay (gdk_display, number);
   screen->priv->number = number;
+
+  screen->priv->bg_pixmap = None;
   
   _wnck_select_input (screen->priv->xroot,
                       PropertyChangeMask);
@@ -283,6 +297,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->need_update_active_workspace = TRUE;
   screen->priv->need_update_active_window = TRUE;
   screen->priv->need_update_workspace_names = TRUE;
+  screen->priv->need_update_bg_pixmap = TRUE;
   
   queue_update (screen);
 }
@@ -490,6 +505,12 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
            _wnck_atom_get ("_NET_DESKTOP_NAMES"))
     {
       screen->priv->need_update_workspace_names = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_XROOTPMAP_ID"))
+    {
+      screen->priv->need_update_bg_pixmap = TRUE;
       queue_update (screen);
     }
 }
@@ -1048,6 +1069,27 @@ update_workspace_names (WnckScreen *screen)
 }
 
 static void
+update_bg_pixmap (WnckScreen *screen)
+{
+  Pixmap p;
+  
+  if (!screen->priv->need_update_bg_pixmap)
+    return;
+  
+  screen->priv->need_update_bg_pixmap = FALSE;
+
+  p = None;
+  _wnck_get_pixmap (screen->priv->xroot,
+                    _wnck_atom_get ("_XROOTPMAP_ID"),
+                    &p);
+  /* may have failed, so p may still be None */
+
+  screen->priv->bg_pixmap = p;
+  
+  emit_background_changed (screen);
+}
+
+static void
 do_update_now (WnckScreen *screen)
 {
   if (screen->priv->update_handler)
@@ -1064,6 +1106,8 @@ do_update_now (WnckScreen *screen)
   update_active_workspace (screen);
   update_active_window (screen);
   update_workspace_names (screen);
+
+  update_bg_pixmap (screen);
 }
 
 static gboolean
@@ -1177,9 +1221,41 @@ emit_application_closed (WnckScreen      *screen,
                  0, app);
 }
 
+static void
+emit_background_changed (WnckScreen *screen)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[BACKGROUND_CHANGED],
+                 0);
+}
+
 gboolean
 wnck_screen_net_wm_supports (WnckScreen *screen,
                              const char *atom)
 {
   return gdk_net_wm_supports (gdk_atom_intern (atom, FALSE));
+}
+
+gulong
+wnck_screen_get_background_pixmap (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), None);
+  
+  return screen->priv->bg_pixmap;
+}
+
+int
+wnck_screen_get_width (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
+
+  return gdk_screen_width ();
+}
+
+int
+wnck_screen_get_height (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), 0);
+
+  return gdk_screen_height ();
 }

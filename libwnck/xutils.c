@@ -149,6 +149,46 @@ _wnck_get_window (Window  xwindow,
 }
 
 gboolean
+_wnck_get_pixmap (Window  xwindow,
+                  Atom    atom,
+                  Pixmap *val)
+{
+  Atom type;
+  int format;
+  gulong nitems;
+  gulong bytes_after;
+  Window *w;
+  int err, result;
+
+  *val = 0;
+  
+  _wnck_error_trap_push ();
+  type = None;
+  result = XGetWindowProperty (gdk_display,
+			       xwindow,
+			       atom,
+			       0, G_MAXLONG,
+			       False, XA_PIXMAP, &type, &format, &nitems,
+			       &bytes_after, (guchar **)&w);  
+  err = _wnck_error_trap_pop ();
+  if (err != Success ||
+      result != Success)
+    return FALSE;
+  
+  if (type != XA_PIXMAP)
+    {
+      XFree (w);
+      return FALSE;
+    }
+
+  *val = *w;
+  
+  XFree (w);
+
+  return TRUE;
+}
+
+gboolean
 _wnck_get_atom (Window  xwindow,
                 Atom    atom,
                 Atom   *val)
@@ -1352,7 +1392,7 @@ get_cmap (GdkPixmap *pixmap)
   return cmap;
 }
 
-static GdkPixbuf*
+GdkPixbuf*
 _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
                                   Pixmap       xpixmap,
                                   int          src_x,
@@ -1376,6 +1416,14 @@ _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
     drawable = gdk_pixmap_foreign_new (xpixmap);
 
   cmap = get_cmap (drawable);
+
+  /* GDK is supposed to do this but doesn't in GTK 2.0.2,
+   * fixed in 2.0.3
+   */
+  if (width < 0)
+    gdk_drawable_get_size (drawable, &width, NULL);
+  if (height < 0)
+    gdk_drawable_get_size (drawable, NULL, &height);
   
   retval = gdk_pixbuf_get_from_drawable (dest,
                                          drawable,
