@@ -1,3 +1,9 @@
+2004-12-03  Benjamin Kahn  <xkahn@novell.com>
+
+	* When a window title is too long to fit in the space provided, 
+	it should be shortened and ellipsizes should be shown.
+	Fix for bug #155868
+
 2004-10-19  Elijah Newren  <newren@math.utah.edu>
 
 	* rationales.txt: New file (modelled after the metacity one with

@@ -2528,6 +2528,10 @@ wnck_task_create_widgets (WnckTask *task)
 
   text = wnck_task_get_text (task);
   task->label = gtk_label_new (text);
+  gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
+  gtk_label_set_ellipsize (GTK_LABEL (task->label),
+                          PANGO_ELLIPSIZE_END);
+
   if (wnck_task_get_demands_attention (task))
     eel_gtk_label_make_bold ((GTK_LABEL (task->label)));
   gtk_widget_show (task->label);
@@ -2542,7 +2546,7 @@ wnck_task_create_widgets (WnckTask *task)
 		    task->label,
 		    1, 2,
 		    0, 1,
-		    GTK_FILL, GTK_EXPAND,
+		    GTK_FILL | GTK_EXPAND, GTK_EXPAND,		    
 		    4, 0);
 
   gtk_container_add (GTK_CONTAINER (task->button), table);
