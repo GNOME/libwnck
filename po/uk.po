@@ -1,14 +1,15 @@
 # Ukrainian translation of libwnck.
 # Copyright (C) 2001 Free Software Foundation, Inc.
 # Yuriy Syrota <rasta@renome.rovno.ua>, 2001.
+# Maxim Dziumanenko <mvd@mylinux.com.ua>, 2004.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-02-07 21:26+0100\n"
-"PO-Revision-Date: 2002-12-09 07:22--500\n"
-"Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
+"POT-Creation-Date: 2005-02-15 21:06+0200\n"
+"PO-Revision-Date: 2005-02-15 07:22--500\n"
+"Last-Translator: # Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -33,21 +34,19 @@ msgstr "Клацніть, щоб перемикнутися у робочу об
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Невідоме вікно"
 
 #: libwnck/selector.c:639
 msgid "No Windows Open"
-msgstr ""
+msgstr "Немає відкритих вікон"
 
 #: libwnck/selector.c:741
-#, fuzzy
 msgid "Window Selector"
-msgstr "Список вікон"
+msgstr "Перемикач вікон"
 
 #: libwnck/selector.c:742
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Засіб перемикання між видимими вікнами"
+msgstr "Засіб перемикання між вікнами"
 
 #: libwnck/tasklist.c:523
 msgid "Window List"
@@ -58,19 +57,16 @@ msgid "Tool to switch between visible windows"
 msgstr "Засіб перемикання між видимими вікнами"
 
 #: libwnck/tasklist.c:2102
-#, fuzzy
 msgid "_Close All"
-msgstr "_Закрити"
+msgstr "_Закрити все"
 
 #: libwnck/tasklist.c:2117
-#, fuzzy
 msgid "_Minimize All"
-msgstr "_Мінімізувати"
+msgstr "_Згорнути все"
 
 #: libwnck/tasklist.c:2128
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Де_мінімізувати"
+msgstr "Де_мінімізувати все"
 
 #: libwnck/window-action-menu.c:209
 msgid "Unmi_nimize"
@@ -97,14 +93,12 @@ msgid "Roll _Up"
 msgstr "_Згорнути"
 
 #: libwnck/window-action-menu.c:254
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Лише на _це робоче місце"
+msgstr "_Лише на цьому робочій області"
 
 #: libwnck/window-action-menu.c:261
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Лише на _це робоче місце"
+msgstr "Зав_жди на видимому робочій області"
 
 #: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
 #, c-format
@@ -144,6 +138,3 @@ msgstr "%s"
 #: libwnck/window.c:32
 msgid "untitled window"
 msgstr "неназване вікно"
-
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "На _всі робочі місця"
