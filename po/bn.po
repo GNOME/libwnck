@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-02-25 02:14-0800\n"
+"POT-Creation-Date: 2003-02-26 02:06-0800\n"
 "PO-Revision-Date: 2003-02-23 16:40+0600\n"
 "Last-Translator: Jamil Ahmed <jamil@bengalinux.org>\n"
 "Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
@@ -32,17 +32,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "কর্মক্ষেত্র %s বদলাতে এখানে ক্লিক করুন"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
 msgstr "ছোট করো না"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "ছোট করো"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "বড় করো না"
 
@@ -68,7 +65,6 @@ msgstr "সকল কর্মক্ষেত্রে রাখুন"
 
 # msgstr "সকল কর্মক্ষেত্র রাখো"
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
 msgstr "সরাও"
 
