@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.11\n"
-"POT-Creation-Date: 2002-11-03 14:09-0500\n"
-"PO-Revision-Date: 2002-08-08 14:34+0200\n"
+"POT-Creation-Date: 2002-12-02 16:16+0100\n"
+"PO-Revision-Date: 2002-12-02 16:18+0100\n"
 "Last-Translator: DOMA Peter <zelin@pointernet.hu>\n"
 "Language-Team: Hungarian <hu@gnome.hu>\n"
 "MIME-Version: 1.0\n"
@@ -48,19 +48,19 @@ msgstr "_Nagyítás"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Legördítés"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "_Felgördítés"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Csak _erre a munkaterületre"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "_Minden munkaterületre"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
