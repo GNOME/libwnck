@@ -26,6 +26,12 @@
 #include "workspace-accessible.h"
 #include "private.h"
 
+typedef struct _WnckPagerAccessiblePriv WnckPagerAccessiblePriv;
+struct _WnckPagerAccessiblePriv
+{
+  GSList *children;
+};
+
 static void        wnck_pager_accessible_class_init       (WnckPagerAccessibleClass *klass);
 static const char* wnck_pager_accessible_get_name         (AtkObject                *obj);
 static const char* wnck_pager_accessible_get_description  (AtkObject                *obj);
@@ -45,8 +51,10 @@ static void        wnck_pager_accessible_update_workspace (AtkObject            
                                                            int                       i);
 static void        wnck_pager_accessible_finalize         (GObject                  *gobject);
 
+static WnckPagerAccessiblePriv* get_private_data          (GObject                  *gobject);
 
 static void* parent_class;
+static GQuark quark_private_data = 0;
 
 GType
 wnck_pager_accessible_get_type (void)
@@ -128,6 +136,7 @@ wnck_pager_accessible_class_init (WnckPagerAccessibleClass *klass)
   class->ref_child = wnck_pager_accessible_ref_child;
 
   obj_class->finalize = wnck_pager_accessible_finalize;
+  quark_private_data = g_quark_from_static_string ("wnck-pager-accessible-private-data");
 }
 
 
@@ -274,14 +283,27 @@ wnck_pager_accessible_new (GtkWidget *widget)
 static void
 wnck_pager_accessible_finalize (GObject *gobject)
 {
-  WnckPagerAccessible *pager_accessible;
+  WnckPagerAccessiblePriv *pager_accessible_priv;
+  GSList *children;
 
-  pager_accessible = WNCK_PAGER_ACCESSIBLE (gobject);
+  pager_accessible_priv = get_private_data (gobject);
   
-  g_slist_foreach (pager_accessible->children,
-                   (GFunc) g_object_unref, NULL);
+  if (pager_accessible_priv)
+    {
+      if (pager_accessible_priv->children)
+        {
+          children = pager_accessible_priv->children;
+          g_slist_foreach (children,
+                           (GFunc) g_object_unref, NULL);
 
-  g_slist_free (pager_accessible->children);
+          g_slist_free (children);
+        }
+
+      g_free (pager_accessible_priv);
+      g_object_set_qdata (gobject,
+                          quark_private_data,
+                          NULL);
+    }
   
   G_OBJECT_CLASS (parent_class)->finalize (gobject);
 }
@@ -344,7 +366,7 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
   WnckPager *pager;
   int n_spaces = 0;
   int len;
-  WnckPagerAccessible *pager_accessible;
+  WnckPagerAccessiblePriv *pager_accessible_priv;
   AtkObject *ret;
   
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), NULL);
@@ -358,9 +380,9 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
     return NULL;
 
   pager = WNCK_PAGER (widget);
-  pager_accessible = WNCK_PAGER_ACCESSIBLE (obj);
+  pager_accessible_priv = get_private_data (G_OBJECT (obj));
 
-  len = g_slist_length (pager_accessible->children);
+  len = g_slist_length (pager_accessible_priv->children);
   n_spaces = _wnck_pager_get_n_workspaces (pager);
 
   if (i < 0 || i >= n_spaces)
@@ -385,13 +407,13 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
                                                                                           G_OBJECT (wspace)));
       atk_object_set_parent (ATK_OBJECT (space_accessible), obj);
 
-      pager_accessible->children = g_slist_append (pager_accessible->children,
+      pager_accessible_priv->children = g_slist_append (pager_accessible_priv->children,
                                                    space_accessible);
       
       ++len;
     }
 
-  ret = g_slist_nth_data (pager_accessible->children, i);
+  ret = g_slist_nth_data (pager_accessible_priv->children, i);
   g_object_ref (G_OBJECT (ret));
   wnck_pager_accessible_update_workspace (ret, pager, i);
   
@@ -411,3 +433,22 @@ wnck_pager_accessible_update_workspace (AtkObject *aobj_ws,
                                           aobj_ws->name);
   aobj_ws->role = ATK_ROLE_UNKNOWN;
 }
+
+static WnckPagerAccessiblePriv*
+get_private_data (GObject *gobject)
+{
+  WnckPagerAccessiblePriv *private_data;
+
+  private_data = g_object_get_qdata (gobject,
+                                     quark_private_data);
+  if (!private_data)
+    {
+      private_data = g_new0 (WnckPagerAccessiblePriv, 1);
+      g_object_set_qdata (gobject,
+                          quark_private_data,
+                          private_data);
+    }
+  return private_data;
+}
+
+

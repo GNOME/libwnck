@@ -42,8 +42,6 @@ typedef struct _WnckPagerAccessibleClass WnckPagerAccessibleClass;
 struct _WnckPagerAccessible
 {
   GtkAccessible parent;
-
-  GSList *children;
 };
 
 struct _WnckPagerAccessibleClass
