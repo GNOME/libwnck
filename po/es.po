@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-05-14 13:12+0200\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2002-06-03 16:48GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -84,4 +84,3 @@ msgstr "Ventana sín título"
 #, c-format
 msgid "Workspace %d"
 msgstr "Espacio de trabajo %d"
-

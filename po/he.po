@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
-"POT-Creation-Date: 2003-04-29 13:35+0200\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2003-04-29 17:19+0300\n"
 "Last-Translator: Gil 'Dolfin' Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.1\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "תוכנית ללא-שם"
 
@@ -91,4 +91,3 @@ msgstr "סביבת עבודה %d"
 
 #~ msgid "_Shade"
 #~ msgstr "ה_צלל"
-

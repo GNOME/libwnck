@@ -1,3 +1,19 @@
+2.3.1
+===
+
+Thanks to Hidetoshi Tajima, Ross Burton, Masahiro Sakai, Kim Woelders,
+Arvind Samptur, Matt Wilson for fixes in this release.
+
+- put -lX11 in link flags
+- add API to manipulate window fullscreen state
+- use an icon from one of the windows in a group, rather than 
+  the "white piece of paper" icon, if a group doesn't set an icon
+- fixes for Cygwin compilation
+- add support for viewports in window list and workspace switcher
+- fix multihead glitches
+- set desktop layout properly on 64-bit platforms
+- new/updated translations
+
 2.3.0
 ===
 

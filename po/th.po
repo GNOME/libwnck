@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2003-02-20 21:30-0700\n"
 "Last-Translator: Paisa Seeluangsawat <paisa@colorado.edu>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "โปรแกรมไม่มีชื่อ"
 
@@ -79,11 +79,11 @@ msgstr "ย่อขยาย (_R)"
 msgid "_Close"
 msgstr "ปิด (_C)"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "หน้าต่างไม่มีชื่อ"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "พื้นที่ทำงาน %d"

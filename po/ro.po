@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.1.90\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2003-01-19 16:09+0200\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>;\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>;\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "aplicaţie fără nume"
 
@@ -77,11 +77,11 @@ msgstr "_Redimensionează"
 msgid "_Close"
 msgstr "În_chidere"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "fereastră fără titlu"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "Spaţiul de lucru %d"

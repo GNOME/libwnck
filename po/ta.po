@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck Tamil 2.2.0\n"
-"POT-Creation-Date: 2003-03-27 20:34+0100\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2003-03-27 23:37+0600\n"
 "Last-Translator: Dinesh Nadarajah <n_dinesh@yahoo.com>\n"
 "Language-Team: Tamil <tamilinix@yahoogroups.com>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "¦ÀÂÃüÈ ¿¢Ãø"
 
@@ -32,15 +32,18 @@ msgid "Click this to switch to workspace %s"
 msgstr "%s §Å¨ÄÂ¢¼ò¾¢üÌ Á¡üÈ þ¾¨É «Óò¾×õ"
 
 #: libwnck/window-action-menu.c:191
-msgid "Un_minimize"
+#, fuzzy
+msgid "Unmi_nimize"
 msgstr "¦ÀÕ¾¡ìÌ"
 
 #: libwnck/window-action-menu.c:198
-msgid "_Minimize"
+#, fuzzy
+msgid "Mi_nimize"
 msgstr "_¬¸-º¢È¢Â¾¡ìÌ"
 
 #: libwnck/window-action-menu.c:206
-msgid "_Unmaximize"
+#, fuzzy
+msgid "Unma_ximize"
 msgstr "º¢È¢Â¾¡ìÌ"
 
 #: libwnck/window-action-menu.c:213
@@ -64,7 +67,8 @@ msgid "Put on _All Workspaces"
 msgstr "«¨ÉòÐ §Å¨ÄÂ¢¼í¸Ç¢Öõ §À¡Î¸"
 
 #: libwnck/window-action-menu.c:372
-msgid "Mo_ve"
+#, fuzzy
+msgid "_Move"
 msgstr "¿¸÷òÐ"
 
 #: libwnck/window-action-menu.c:379
@@ -75,12 +79,11 @@ msgstr "«Ç× Á¡üÚ"
 msgid "_Close"
 msgstr "_ãÎ"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "¦ÀÂÃüÈ º¡ÇÃõ"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "§Å¨ÄÂ¢¼õ %d"
-

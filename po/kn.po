@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Libwnck.Gnome.Core-2.1\n"
-"POT-Creation-Date: 2003-03-26 21:49-0500\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2002-12-20 17:41+0530\n"
 "Last-Translator: Pramod <rpramod@postmaster.co.uk>\n"
 "Language-Team: Kannada <LL@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:25
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಅನ್ವಯಕ"
 
@@ -79,11 +79,11 @@ msgstr "ಗಾತ್ರ ಬದಲಾಯಿಸು"
 msgid "_Close"
 msgstr "ಮುಚ್ಚು"
 
-#: libwnck/window.c:29
+#: libwnck/window.c:31
 msgid "untitled window"
 msgstr "ಶೀರ್ಷಿಕೆಯಿಲ್ಲದ ಕಿಟಕಿ"
 
-#: libwnck/workspace.c:222
+#: libwnck/workspace.c:230
 #, c-format
 msgid "Workspace %d"
 msgstr "ಕಾರ್ಯಾಸ್ಥಳ %d"

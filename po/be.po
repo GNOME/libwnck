@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.be\n"
-"POT-Creation-Date: 2003-05-19 04:53+0200\n"
+"POT-Creation-Date: 2003-05-20 12:19-0400\n"
 "PO-Revision-Date: 2003-05-19 10:27+0300\n"
 "Last-Translator: Vital Khilko <dojlid@mova.org>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -90,4 +90,3 @@ msgstr "Працоўная прастора %d"
 
 #~ msgid "_Shade"
 #~ msgstr "Схаваць у _цень"
-

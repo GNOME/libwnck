@@ -1,3 +1,8 @@
+2003-05-20  Havoc Pennington  <hp@redhat.com>
+
+	* configure.in: increment to 2.3.1, and bump libtool stuff to 
+	indicate that interfaces were added.
+
 2003-05-13  Hidetoshi Tajima  <hidetoshi.tajima@sun.com>
 
 	* configure.in:
