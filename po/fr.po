@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.7\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
-"PO-Revision-Date: 2002-04-11 21:43+0200\n"
+"POT-Creation-Date: 2002-07-04 17:31+0200\n"
+"PO-Revision-Date: 2002-07-04 17:34+0200\n"
 "Last-Translator: Christophe Fergeau <teuf@users.sourceforge.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "application sans titre"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Changement de bureau"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Outil pour changer de bureau"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Cliquer ici pour atteindre le bureau %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -60,3 +73,4 @@ msgstr "fenêtre sans titre"
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureau %d"
+
