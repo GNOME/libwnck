@@ -1,0 +1,76 @@
+# Hungarian translation of libwnck.
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# DOMA Peter <zelin@pointernet.hu>, 2002.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck 0.11\n"
+"POT-Creation-Date: 2002-08-13 18:52+0200\n"
+"PO-Revision-Date: 2002-08-08 14:34+0200\n"
+"Last-Translator: DOMA Peter <zelin@pointernet.hu>\n"
+"Language-Team: Hungarian <hu@gnome.hu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "névtelen alkalmazás"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Munkaterület-váltó"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Munkaterületek közötti váltást segítő eszköz"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Kattints ide a %s. munkaterületre váltáshoz"
+
+#: libwnck/window-action-menu.c:155
+msgid "Un_minimize"
+msgstr "_Nagyítás"
+
+#: libwnck/window-action-menu.c:161
+msgid "_Minimize"
+msgstr "_Kicsinyítés"
+
+#: libwnck/window-action-menu.c:168
+msgid "_Unmaximize"
+msgstr "_Kicsinyítés"
+
+#: libwnck/window-action-menu.c:174
+msgid "Ma_ximize"
+msgstr "_Nagyítás"
+
+#: libwnck/window-action-menu.c:181
+msgid "U_nshade"
+msgstr "_Lenyitás"
+
+#: libwnck/window-action-menu.c:187
+msgid "_Shade"
+msgstr "_Felcsukás"
+
+#: libwnck/window-action-menu.c:298
+msgid "_Close"
+msgstr "_Bezárás"
+
+#: libwnck/window-action-menu.c:319
+msgid "Mo_ve"
+msgstr "_Mozgatás"
+
+#: libwnck/window-action-menu.c:325
+msgid "_Resize"
+msgstr "_Méretezés"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "névtelen ablak"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "%d. munkaterület"
