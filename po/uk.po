@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-12-02 23:18-0500\n"
-"PO-Revision-Date: 2002-06-13 17:48+0200\n"
+"POT-Creation-Date: 2002-12-09 18:21+0200\n"
+"PO-Revision-Date: 2002-12-09 07:22--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,18 +18,17 @@ msgid "untitled application"
 msgstr "неназваний додаток"
 
 #: libwnck/pager-accessible.c:317
-#, fuzzy
 msgid "Workspace Switcher"
-msgstr "Робоче місце %d"
+msgstr "Перемикання робочих областей"
 
 #: libwnck/pager-accessible.c:328
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "Засіб перемикання між робочими областями"
 
 #: libwnck/pager-accessible.c:432
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "Клацніть, щоб перемикнутися у робочу область %s"
 
 #: libwnck/window-action-menu.c:191
 msgid "Un_minimize"
@@ -49,19 +48,19 @@ msgstr "Ма_ксимізувати"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr ""
+msgstr "_Розгорнути"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
-msgstr ""
+msgstr "_Згорнути"
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "Лише на _це робоче місце"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "На _всі робочі місця"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -82,10 +81,4 @@ msgstr "неназване вікно"
 #: libwnck/workspace.c:222
 #, c-format
 msgid "Workspace %d"
-msgstr "Робоче місце %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "Роз_горнути"
-
-#~ msgid "_Shade"
-#~ msgstr "З_горнути"
+msgstr "Робоча область %d"
