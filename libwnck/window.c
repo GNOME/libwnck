@@ -1406,29 +1406,90 @@ update_workspace (WnckWindow *window)
 static void
 update_actions (WnckWindow *window)
 {
+  Atom *atoms;
+  int   n_atoms;
+  int   i;
+
   if (!window->priv->need_update_actions)
     return;
-  
+
   window->priv->need_update_actions = FALSE;
-  
-  /* FIXME read property */
-  window->priv->actions =
-    WNCK_WINDOW_ACTION_MOVE                    |
-    WNCK_WINDOW_ACTION_RESIZE                  |
-    WNCK_WINDOW_ACTION_SHADE                   |
-    WNCK_WINDOW_ACTION_STICK                   |
-    WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   |
-    WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     |
-    WNCK_WINDOW_ACTION_CHANGE_WORKSPACE        |
-    WNCK_WINDOW_ACTION_CLOSE                   |
-    WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY |
-    WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   |
-    WNCK_WINDOW_ACTION_UNSHADE                 |
-    WNCK_WINDOW_ACTION_UNSTICK                 |
-    WNCK_WINDOW_ACTION_MAXIMIZE                |
-    WNCK_WINDOW_ACTION_UNMAXIMIZE              |
-    WNCK_WINDOW_ACTION_MINIMIZE                |
-    WNCK_WINDOW_ACTION_UNMINIMIZE;
+
+  window->priv->actions = 0;
+
+  if (!_wnck_get_atom_list (window->priv->xwindow,
+                            _wnck_atom_get ("_NET_WM_ALLOWED_ACTIONS"),
+                            &atoms,
+                            &n_atoms))
+    {
+      window->priv->actions = 
+                WNCK_WINDOW_ACTION_MOVE                    |
+                WNCK_WINDOW_ACTION_RESIZE                  |
+                WNCK_WINDOW_ACTION_SHADE                   |
+                WNCK_WINDOW_ACTION_STICK                   |
+                WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   |
+                WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     |
+                WNCK_WINDOW_ACTION_CHANGE_WORKSPACE        |
+                WNCK_WINDOW_ACTION_CLOSE                   |
+                WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY |
+                WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   |
+                WNCK_WINDOW_ACTION_UNSHADE                 |
+                WNCK_WINDOW_ACTION_UNSTICK                 |
+                WNCK_WINDOW_ACTION_MAXIMIZE                |
+                WNCK_WINDOW_ACTION_UNMAXIMIZE              |
+                WNCK_WINDOW_ACTION_MINIMIZE                |
+                WNCK_WINDOW_ACTION_UNMINIMIZE;
+      return;
+    }
+
+  i = 0;
+  while (i < n_atoms)
+    {
+      if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_MOVE"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_MOVE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_RESIZE"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_RESIZE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_SHADE"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_SHADE |
+                                 WNCK_WINDOW_ACTION_UNSHADE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_STICK"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_STICK |
+                                 WNCK_WINDOW_ACTION_UNSTICK;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_MAXIMIZE_HORZ"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY |
+                                 WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_MAXIMIZE_VERT"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY |
+                                 WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_CHANGE_DESKTOP"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_CHANGE_WORKSPACE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_CLOSE"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_CLOSE;
+      else
+        g_warning ("Unhandled action type %s", _wnck_atom_name (atoms [i]));
+
+      i++;
+    }
+
+  g_free (atoms);
+
+  if ((window->priv->actions & WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY) &&
+      (window->priv->actions & WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY))
+    window->priv->actions |=
+        WNCK_WINDOW_ACTION_MAXIMIZE   |
+        WNCK_WINDOW_ACTION_UNMAXIMIZE;
+
+  /* These are always enabled */
+  window->priv->actions |=
+        WNCK_WINDOW_ACTION_MINIMIZE   |
+        WNCK_WINDOW_ACTION_UNMINIMIZE;
 }
 
 static void
