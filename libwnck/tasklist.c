@@ -66,6 +66,12 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define N_SCREEN_CONNECTIONS 5
 
+#define POINT_IN_RECT(xcoord, ycoord, rect) \
+ ((xcoord) >= (rect).x &&                   \
+  (xcoord) <  ((rect).x + (rect).width) &&  \
+  (ycoord) >= (rect).y &&                   \
+  (ycoord) <  ((rect).y + (rect).height))
+
 typedef enum
 {
   WNCK_TASK_CLASS_GROUP,
@@ -167,6 +173,9 @@ struct _WnckTasklistPrivate
   SnMonitorContext *sn_context;
   guint startup_sequence_timeout;
 #endif
+
+  gint monitor_num;
+  GdkRectangle monitor_geometry;
 };
 
 
@@ -502,6 +511,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->minimum_height = DEFAULT_HEIGHT;
 
   tasklist->priv->idle_callback_tag = 0;
+
+  tasklist->priv->monitor_num = -1;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -1445,9 +1456,19 @@ static gboolean
 wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
 {
   WnckWorkspace *active_workspace;
+  int x, y, w, h;
 
   if (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
     return FALSE;
+
+  if (tasklist->priv->monitor_num != -1)
+    {
+      wnck_window_get_geometry (win, &x, &y, &w, &h);
+      /* Don't include the window if its center point is not on the same monitor */
+      if (gdk_screen_get_monitor_at_point (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
+                                           x + w / 2, y + h / 2) != tasklist->priv->monitor_num)
+        return FALSE;
+    }
 
   if (tasklist->priv->include_all_workspaces)
     return TRUE;
@@ -1477,11 +1498,25 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   GList *l;
   WnckTask *win_task;
   WnckTask *class_group_task;
+  gint monitor_num;
 
   wnck_tasklist_free_tasks (tasklist);
   
   windows = wnck_screen_get_windows (tasklist->priv->screen);
   
+  if (GTK_WIDGET (tasklist)->window != NULL)
+    {
+      monitor_num = gdk_screen_get_monitor_at_window (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
+                                                      GTK_WIDGET (tasklist)->window);
+      if (monitor_num != tasklist->priv->monitor_num)
+        {
+          tasklist->priv->monitor_num = monitor_num;
+          gdk_screen_get_monitor_geometry (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
+                                           tasklist->priv->monitor_num,
+                                           &tasklist->priv->monitor_geometry);
+        }
+    }
+ 
   l = windows;
   while (l != NULL)
     {
@@ -1714,18 +1749,39 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
 {
   WnckTask *win_task;
   gboolean show;
+  gboolean monitor_changed;
+  int x, y, w, h;
 
   if (tasklist->priv->idle_callback_tag != 0)
     return;
 
   /*
+   * If the (parent of the) tasklist itself skips
+   * the tasklist, we need an extra check whether
+   * the tasklist itself possibly changed monitor.
+   */
+  monitor_changed = FALSE;
+  if (wnck_window_get_state (window) & WNCK_WINDOW_STATE_SKIP_TASKLIST &&
+      GTK_WIDGET (tasklist)->window != NULL)
+    {
+      /* Do the extra check only if there is a suspect of a monitor change (= this window is off monitor) */
+      wnck_window_get_geometry (window, &x, &y, &w, &h);
+      if (!POINT_IN_RECT (x + w / 2, y + h / 2, tasklist->priv->monitor_geometry))
+        {
+          monitor_changed = (gdk_screen_get_monitor_at_window (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
+                                                     GTK_WIDGET (tasklist)->window) != tasklist->priv->monitor_num);
+        }
+    }
+
+  /*
    * We want to re-generate the task list if
    * the window is shown but shouldn't be or
-   * the window isn't shown but should be.
+   * the window isn't shown but should be or
+   * the tasklist itself changed monitor.
    */
   win_task = g_hash_table_lookup (tasklist->priv->win_hash, window);
   show = wnck_tasklist_include_window(tasklist, window);
-  if ((win_task == NULL && !show) || (win_task != NULL && show))
+  if (((win_task == NULL && !show) || (win_task != NULL && show)) && !monitor_changed)
     return;
 
   /* Don't keep any stale references */

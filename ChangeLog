@@ -1,3 +1,8 @@
+2004-09-17  Juerg Billeter  <j@bitron.ch>
+
+	* libwnck/tasklist.c: only show windows which are on the same
+	monitor	as the tasklist (fixes bug #98698)
+
 2004-09-15  Elijah Newren  <newren@math.utah.edu>
 
 	Don't use the pager for window raising and focusing (fixes bug
