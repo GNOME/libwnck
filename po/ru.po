@@ -9,54 +9,54 @@ msgstr ""
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=koi8-r\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "неозаглавленное приложение"
+msgstr "п╫п╣п╬п╥п╟пЁп╩п╟п╡п╩п╣п╫п╫п╬п╣ п©я─п╦п╩п╬п╤п╣п╫п╦п╣"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
-msgstr "Развернуть"
+msgstr "п═п╟п╥п╡п╣я─п╫я┐я┌я▄"
 
 #: libwnck/window-action-menu.c:160
 msgid "_Minimize"
-msgstr "Свернуть"
+msgstr "п║п╡п╣я─п╫я┐я┌я▄"
 
 #: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
-msgstr "Обычный размер"
+msgstr "п▓п╬я│я│я┌п╟п╫п╬п╡п╦я┌я▄ п©я─п╣п╤п╫п╦п╧ я─п╟п╥п╪п╣я─"
 
 #: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
-msgstr "Во весь экран"
+msgstr "п═п╟п╥п╡п╣я─п╫я┐я┌я▄ п╡п╬ п╡п╣я│я▄ я█п╨я─п╟п╫"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr "Убрать тень"
+msgstr "п▓я▀п╡п╣я│я┌п╦ п╦п╥ я┌п╣п╫п╦"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "Затенить"
+msgstr "п▓п╡п╣я│я┌п╦ п╡ я┌п╣п╫я▄"
 
 #: libwnck/window-action-menu.c:297
 msgid "Close"
-msgstr "Закрыть"
+msgstr "п≈п╟п╨я─я▀я┌я▄"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
-msgstr "Переместить"
+msgstr "п÷п╣я─п╣п╪п╣я│я┌п╦я┌я▄"
 
 #: libwnck/window-action-menu.c:324
 msgid "_Resize"
-msgstr "Изменить размер"
+msgstr "п≤п╥п╪п╣п╫п╦я┌я▄ я─п╟п╥п╪п╣я─"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "неозаглавленное окно"
+msgstr "п╫п╣п╬п╥п╟пЁп╩п╟п╡п╩п╣п╫п╫п╬п╣ п╬п╨п╫п╬"
 
 #: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
-msgstr "Рабочее место %d"
+msgstr "п═п╟п╠п╬я┤п╣п╣ п╪п╣я│я┌п╬ %d"
