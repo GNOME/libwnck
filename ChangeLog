@@ -1,3 +1,8 @@
+2002-03-04  Erwann Chenede - <erwann.chenede@sun.com>
+
+	* libwnck/screen.c: check screen != NULL before 
+	dereferencing the screen #73144 
+	
 2002-03-03  Johan Dahlin  <jdahlin@telia.com>
 
 	* libwnck/Makefile.am: #71562

@@ -335,7 +335,7 @@ wnck_screen_get_for_root (gulong root_window_id)
   i = 0;
   while (i < ScreenCount (gdk_display))
     {
-      if (screens[i]->priv->xroot == root_window_id)
+      if (screens[i] != NULL && screens[i]->priv->xroot == root_window_id)
         return screens[i];
       
       ++i;
