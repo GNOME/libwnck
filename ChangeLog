@@ -1,3 +1,7 @@
+2003-07-01  Telsa Gwynne  <hobbit@aloss.ukuu.org.uk>
+
+	* configure.in: Added "cy" (Welsh) to ALL_LINGUAS
+
 2003-06-15  Joël Brich <joel.brich@laposte.net>
 
 	* configure.in: Added "eo" to ALL_LINGUAS.
