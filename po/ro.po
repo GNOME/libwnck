@@ -3,9 +3,9 @@
 # Mişu Moldovan <dumol@go.ro>, 2003.
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.1.90\n"
-"POT-Creation-Date: 2003-05-20 12:19-0400\n"
-"PO-Revision-Date: 2003-01-19 16:09+0200\n"
+"Project-Id-Version: libwnck 2.3.1\n"
+"POT-Creation-Date: 2003-08-24 20:52+0300\n"
+"PO-Revision-Date: 2003-08-24 20:55+0300\n"
 "Last-Translator: Mişu Moldovan <dumol@go.ro>;\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>;\n"
 "MIME-Version: 1.0\n"
@@ -30,17 +30,14 @@ msgid "Click this to switch to workspace %s"
 msgstr "Apăsaţi aici pentru comutarea în spaţiul de lucru %s"
 
 #: libwnck/window-action-menu.c:191
-#, fuzzy
 msgid "Unmi_nimize"
-msgstr "De_minimizează"
+msgstr "Demi_nimizează"
 
 #: libwnck/window-action-menu.c:198
-#, fuzzy
 msgid "Mi_nimize"
 msgstr "_Minimizează"
 
 #: libwnck/window-action-menu.c:206
-#, fuzzy
 msgid "Unma_ximize"
 msgstr "_Demaximizează"
 
@@ -50,7 +47,7 @@ msgstr "Ma_ximizează"
 
 #: libwnck/window-action-menu.c:221
 msgid "_Unroll"
-msgstr "De_strânge"
+msgstr "D_estrânge"
 
 #: libwnck/window-action-menu.c:228
 msgid "Roll _Up"
@@ -65,9 +62,8 @@ msgid "Put on _All Workspaces"
 msgstr "Arată în _toate spaţiile de lucru"
 
 #: libwnck/window-action-menu.c:372
-#, fuzzy
 msgid "_Move"
-msgstr "Mu_tă"
+msgstr "M_ută"
 
 #: libwnck/window-action-menu.c:379
 msgid "_Resize"
@@ -81,7 +77,7 @@ msgstr "În_chidere"
 msgid "untitled window"
 msgstr "fereastră fără titlu"
 
-#: libwnck/workspace.c:230
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
-msgstr "Spaţiul de lucru %d"
+msgstr "Spaţiu de lucru %d"
