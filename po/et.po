@@ -1,15 +1,16 @@
 # libwnck eesti keele tõlge.
-# Copyright (C) 2002 The Free Software Foundation
+# Copyright (C) 2002-2005 The Free Software Foundation
 # This file is distributed under the same license as the libwnck package.
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
 # Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
+# Priit Laes <amd@store20.com>, 2005.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-25 14:31+0100\n"
-"PO-Revision-Date: 2004-02-27 18:54+0300\n"
+"POT-Creation-Date: 2005-01-29 12:39+0100\n"
+"PO-Revision-Date: 2005-01-29 21:27+0300\n"
 "Last-Translator: Priit Laes <amd@tt.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -58,14 +59,15 @@ msgid "Roll _Up"
 msgstr "K_eri kokku"
 
 #: libwnck/window-action-menu.c:254
-msgid "Only on _This Workspace"
+msgid "_Only on This Workspace"
 msgstr "Ainult _sellel tööalal"
 
 #: libwnck/window-action-menu.c:261
-msgid "Put on _All Workspaces"
-msgstr "Aseta kõikidele t_ööaladele"
+msgid "_Always on Current Workspace"
+msgstr "Alati _sellel tööalal"
 
-#: libwnck/window-action-menu.c:376 libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:376
+#: libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Tööala %d"
@@ -112,17 +114,15 @@ msgstr "Akende nimekiri"
 msgid "Tool to switch between visible windows"
 msgstr "Rakend nähtavate akende vahteamiseks"
 
-#: libwnck/tasklist.c:2096
-#, fuzzy
+#: libwnck/tasklist.c:2102
 msgid "_Close All"
-msgstr "_Sulge"
+msgstr "_Sulge kõik"
 
-#: libwnck/tasklist.c:2111
-#, fuzzy
+#: libwnck/tasklist.c:2117
 msgid "_Minimize All"
-msgstr "_Minimeeri"
+msgstr "_Minimeeri kõik"
 
-#: libwnck/tasklist.c:2122
-#, fuzzy
+#: libwnck/tasklist.c:2128
 msgid "_Unminimize All"
-msgstr "_Taasta"
+msgstr "_Taasta kõik"
+
