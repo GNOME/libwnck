@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"POT-Creation-Date: 2004-03-01 15:01+0200\n"
+"POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-03-01 15:04-0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.fothnet.gr>\n"
 "Language-Team: Greek <nls@tux.hellug.gr>\n"
@@ -67,8 +67,7 @@ msgstr "Μόνο σε Αυ_τό το Χώρο Εργασίας"
 msgid "Put on _All Workspaces"
 msgstr "Τοποθέτηση σε Ό_λους τους Χώρους Εργασίας"
 
-#: libwnck/window-action-menu.c:360
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
@@ -114,4 +113,3 @@ msgstr "Λίστα Παραθύρων"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
-

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2004-02-27 04:22+0100\n"
+"POT-Creation-Date: 2004-02-24 16:28+0000\n"
 "PO-Revision-Date: 2004-02-27 18:54+0300\n"
 "Last-Translator: Priit Laes <amd@tt.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
@@ -64,8 +64,7 @@ msgstr "Ainult _sellel tööalal"
 msgid "Put on _All Workspaces"
 msgstr "Aseta kõikidele t_ööaladele"
 
-#: libwnck/window-action-menu.c:360
-#: libwnck/workspace.c:232
+#: libwnck/window-action-menu.c:360 libwnck/workspace.c:232
 #, c-format
 msgid "Workspace %d"
 msgstr "Tööala %d"
@@ -111,4 +110,3 @@ msgstr "Akende nimekiri"
 #: libwnck/tasklist.c:462
 msgid "Tool to switch between visible windows"
 msgstr "Rakend nähtavate akende vahteamiseks"
-
