@@ -1,5 +1,11 @@
 2004-07-06  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: post-release bump to 2.6.3.
+
+==================== 2.6.2.1 ====================
+
+2004-07-06  Mark McLoughlin  <mark@skynet.ie>
+
 	* configure.in: Version 2.6.2.1.
 
 2004-06-25  Elijah Newren  <newren@math.utah.edu>
