@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libwnck
+Description: Window Navigator Construction Kit library
+Version: @VERSION@
+Requires: gtk+-2.0
+Libs: -L${libdir} -lwnck-1
+Cflags: -I${includedir}/libwnck-1.0
+
