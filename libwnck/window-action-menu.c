@@ -178,13 +178,13 @@ update_menu_state (ActionMenuData *amd)
 
   if (wnck_window_is_shaded (amd->window))
     {
-      set_item_text (amd->shade_item, _("U_nshade"));
+      set_item_text (amd->shade_item, _("_Unroll"));
       gtk_widget_set_sensitive (amd->shade_item,
                                 (actions & WNCK_WINDOW_ACTION_UNSHADE) != 0);
     }
   else
     {
-      set_item_text (amd->shade_item, _("_Shade"));
+      set_item_text (amd->shade_item, _("Roll _Up"));
       gtk_widget_set_sensitive (amd->shade_item,
                                 (actions & WNCK_WINDOW_ACTION_SHADE) != 0);
     }
