@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-01-14 14:00+0100\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@arrakis.es>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -106,10 +106,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "ventana sín título"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Lista de ventanas"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Herramienta para cambiar entre ventanas visibles"

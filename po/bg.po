@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.6\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-07-04 17:06+0300\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -105,10 +105,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "неозаглавен прозорец"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Списък с Прозорците"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Инструмент за превключване между видимите прозорци"

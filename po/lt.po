@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-01-10 10:09+0200\n"
 "Last-Translator: Tomas Kuliavas <tokul@users.sourceforge.net>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -102,10 +102,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "neįvardintas langas"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Langų sąrašas"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Įrankis leidžiantis persijungti tarp matomų langų"

@@ -1,3 +1,24 @@
+2.8.0.1
+===
+
+ Fixes
+
+  - Don't activate windows when clicking on the pager (Elijah Newren)
+  - Only show windows which are on the same monitor as the tasklist (Juerg Billeter)
+  - Add missing prototype - wnck_window_set_fullscreen() (Ross Burton)
+  - Fix runtime warning spew (Mark)
+
+ Translators
+
+  - Meelad Zakaria (fa)
+
+2.8.0
+===
+
+ Translators
+
+  - Adam Weinberger (en_CA)
+
 2.7.92
 ===
 

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2002-12-09 07:22--500\n"
 "Last-Translator: Yuriy Syrota <yuri@renome.rovno.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -102,10 +102,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "неназване вікно"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Список вікон"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Засіб перемикання між видимими вікнами"

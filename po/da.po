@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-02-01 00:35+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -102,10 +102,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "unavngivet vindue"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Vinduesliste"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Værktøj til at skifte mellem synlige vinduer"

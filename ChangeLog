@@ -1,3 +1,7 @@
+2004-09-28  Mark McLoughlin  <mark@skynet.ie>
+
+	* configure.in: Version 2.8.0.1.
+
 2004-09-21  Mark McLoughlin  <mark@skynet.ie>
 
 	Fix some runtime warning spew reported in bug #149313

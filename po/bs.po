@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2004-07-28 03:17+0200\n"
 "Last-Translator: Kemal Sanjta <gomez@lugzdk.ba>\n"
 "Language-Team: Bosnian <+>\n"
@@ -104,10 +104,10 @@ msgstr "%s"
 msgid "untitled window"
 msgstr "neimenovan prozor"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr "Lista prozora"
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 msgid "Tool to switch between visible windows"
 msgstr "Alat za prebacivanje između vidljivih prozora"

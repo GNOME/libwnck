@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2004-08-30 14:27+0100\n"
+"POT-Creation-Date: 2004-09-28 16:25+0100\n"
 "PO-Revision-Date: 2003-01-14 11:02+EDT\n"
 "Last-Translator: Ge'ez Frontier Foundation <locales@geez.org>\n"
 "Language-Team: Amharic <locales@geez.org>\n"
@@ -109,11 +109,11 @@ msgstr ""
 msgid "untitled window"
 msgstr "ያልተሰየመ መስኮት"
 
-#: libwnck/tasklist.c:507
+#: libwnck/tasklist.c:518
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:508
+#: libwnck/tasklist.c:519
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "መሥሪያ ቦታዌ መሥከል መቀያየሪያ መሣሪያ"
