@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2003-02-05 23:57-0500\n"
+"POT-Creation-Date: 2003-02-24 05:11+0100\n"
 "PO-Revision-Date: 2002-08-24 03:13+0430\n"
 "Last-Translator: Roozbeh Pournader <roozbeh@sharif.edu>\n"
 "Language-Team: Persian <farsi@lists.sharif.edu>\n"
@@ -56,11 +56,11 @@ msgstr ""
 
 #: libwnck/window-action-menu.c:236
 msgid "Only on _This Workspace"
-msgstr ""
+msgstr "فقط در این فضای کاری"
 
 #: libwnck/window-action-menu.c:243
 msgid "Put on _All Workspaces"
-msgstr ""
+msgstr "در همه‌ی فضاهای کاری"
 
 #: libwnck/window-action-menu.c:372
 msgid "Mo_ve"
@@ -82,9 +82,3 @@ msgstr "پنجره‌ی بی‌عنوان"
 #, c-format
 msgid "Workspace %d"
 msgstr "فضای کاری %d"
-
-#~ msgid "U_nshade"
-#~ msgstr "حذف سایه"
-
-#~ msgid "_Shade"
-#~ msgstr "سایه کردن"
