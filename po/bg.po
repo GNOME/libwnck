@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-01-12 07:57+0100\n"
-"PO-Revision-Date: 2004-12-14 10:37+0200\n"
+"POT-Creation-Date: 2005-01-19 19:04+0200\n"
+"PO-Revision-Date: 2005-01-19 18:09+0200\n"
 "Last-Translator: Vladimir Petkov <vpetkov@i-space.org>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
 "MIME-Version: 1.0\n"
@@ -112,3 +112,15 @@ msgstr "Списък с прозорците"
 #: libwnck/tasklist.c:524
 msgid "Tool to switch between visible windows"
 msgstr "Инструмент за превключване между видимите прозорци"
+
+#: libwnck/tasklist.c:2096
+msgid "_Close All"
+msgstr "_Затваряне на всички"
+
+#: libwnck/tasklist.c:2111
+msgid "_Minimize All"
+msgstr "_Минимизиране на всички"
+
+#: libwnck/tasklist.c:2122
+msgid "_Unminimize All"
+msgstr "_Деминимизиране на всички"
