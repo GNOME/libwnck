@@ -1,11 +1,11 @@
 # Bulgarian translation for libwnck.
-# Copyright (C) YEAR Free Software Foundation, Inc.
+# Copyright (C) 2002 Free Software Foundation, Inc.
 # Evgeni Boevski <linkej@yahoo.com>, 2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-05-28 02:49+0300\n"
+"POT-Creation-Date: 2002-05-28 19:28+0300\n"
 "PO-Revision-Date: 2002-05-28 00:19+0200\n"
 "Last-Translator: Evgeni Boevski <linkej@yahoo.com>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -19,39 +19,39 @@ msgstr "неозаглавено приложение"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
-msgstr "Деминимизирай(m)"
+msgstr "_Деминимизирай"
 
 #: libwnck/window-action-menu.c:160
 msgid "_Minimize"
-msgstr "Минимизирай(m)"
+msgstr "_Минимизирай"
 
 #: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
-msgstr "Демаксимизирай(u)"
+msgstr "Д_емаксимизирай"
 
 #: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
-msgstr "Максимизирай(x)"
+msgstr "Ма_ксимизирай"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr "Отсенчи(n)"
+msgstr "_Отсенчи"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "Засенчи(s)"
+msgstr "За_сенчи"
 
 #: libwnck/window-action-menu.c:297
 msgid "_Close"
-msgstr "Затвори(c)"
+msgstr "_Затвори"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
-msgstr "Премести(v)"
+msgstr "_Премести"
 
 #: libwnck/window-action-menu.c:324
 msgid "_Resize"
-msgstr "Оразмери(r)"
+msgstr "О_размери"
 
 #: libwnck/window.c:29
 msgid "untitled window"
