@@ -1,0 +1,81 @@
+# Galician translation of libwnck.
+# Copyright (C) 2002 Jesús Bravo Álvarez.
+# Jesús Bravo Álvarez <suso@trasno.net>, 2002.
+#
+# Proxecto Trasno - Adaptación do software libre á lingua galega:  Se desexas
+# colaborar connosco, podes atopar máis información en http://www.trasno.net
+#
+# First Version: 2002-06-04 10:56+0200
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"POT-Creation-Date: 2002-06-04 01:26+0200\n"
+"PO-Revision-Date: 2002-06-04 10:56+0200\n"
+"Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
+"Language-Team: Galician <proxecto@trasno.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: libwnck/application.c:25
+msgid "untitled application"
+msgstr "aplicación sen título"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Selector de escritorio"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Ferramenta para seleccionar os escritorios"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Prema isto para activar o escritorio %s"
+
+#: libwnck/window-action-menu.c:154
+msgid "Un_minimize"
+msgstr "Des_minimizar"
+
+#: libwnck/window-action-menu.c:160
+msgid "_Minimize"
+msgstr "_Minimizar"
+
+#: libwnck/window-action-menu.c:167
+msgid "_Unmaximize"
+msgstr "Desma_ximizar"
+
+#: libwnck/window-action-menu.c:173
+msgid "Ma_ximize"
+msgstr "Ma_ximizar"
+
+#: libwnck/window-action-menu.c:180
+msgid "U_nshade"
+msgstr "Dese_nrolar"
+
+#: libwnck/window-action-menu.c:186
+msgid "_Shade"
+msgstr "E_nrolar"
+
+#: libwnck/window-action-menu.c:297
+msgid "_Close"
+msgstr "_Pechar"
+
+#: libwnck/window-action-menu.c:318
+msgid "Mo_ve"
+msgstr "Mo_ver"
+
+#: libwnck/window-action-menu.c:324
+msgid "_Resize"
+msgstr "_Redimensionar"
+
+#: libwnck/window.c:29
+msgid "untitled window"
+msgstr "fiestra sen título"
+
+#: libwnck/workspace.c:202
+#, c-format
+msgid "Workspace %d"
+msgstr "Escritorio %d"
