@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2002-06-21 09:12+0200\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-06-21 13:03GMT+0200\n"
 "Last-Translator: Peteris Krisjanis <pecisk@inbox.lv>\n"
 "Language-Team: Latvian <ll10nt@inbox.lv>\n"
@@ -75,4 +75,3 @@ msgstr "nonosaukts logs"
 #, c-format
 msgid "Workspace %d"
 msgstr "Darba lauks %d"
-

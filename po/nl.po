@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-06-09 01:55+0200\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
@@ -18,6 +18,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "naamloze toepassing"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Bureaubladwisselaar"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Hulpje om tussen verschillende bureaubladen te wisselen"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klik hier om te wisselen naar bureaublad %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -63,12 +76,3 @@ msgstr "naamloos venster"
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureaublad %d"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Bureaubladwisselaar"
-
-#~ msgid "Tool to switch between workspaces"
-#~ msgstr "Hulpje om tussen verschillende bureaubladen te wisselen"
-
-#~ msgid "Click this to switch to workspace %s"
-#~ msgstr "Klik hier om te wisselen naar bureaublad %s"

@@ -10,7 +10,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-06-04 10:56+0200\n"
 "Last-Translator: Jesús Bravo Álvarez <suso@trasno.net>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -21,6 +21,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "aplicación sen título"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Selector de escritorio"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Ferramenta para seleccionar os escritorios"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Prema isto para activar o escritorio %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -66,12 +79,3 @@ msgstr "fiestra sen título"
 #, c-format
 msgid "Workspace %d"
 msgstr "Escritorio %d"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Selector de escritorio"
-
-#~ msgid "Tool to switch between workspaces"
-#~ msgstr "Ferramenta para seleccionar os escritorios"
-
-#~ msgid "Click this to switch to workspace %s"
-#~ msgstr "Prema isto para activar o escritorio %s"

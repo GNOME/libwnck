@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-06-03 16:05+0200\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -18,6 +18,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "unavngivet program"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Arbejdsområdeskifter"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Værktøj til at skifte mellem arbejdsområder"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klik her for at skifte til arbejdsområdet %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -64,12 +77,3 @@ msgstr "unavngivet vindue"
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbejdsområde %d"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Arbejdsområdeskifter"
-
-#~ msgid "Tool to switch between workspaces"
-#~ msgstr "Værktøj til at skifte mellem arbejdsområder"
-
-#~ msgid "Click this to switch to workspace %s"
-#~ msgstr "Klik her for at skifte til arbejdsområdet %s"

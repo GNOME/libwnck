@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sk\n"
-"POT-Creation-Date: 2002-06-02 22:45-0400\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-06-04 10:26+0200\n"
 "Last-Translator: Stanislav Višňovský <visnovsky@nenya.ms.mff.cuni.cz>\n"
 "Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
@@ -19,6 +19,19 @@ msgstr ""
 #: libwnck/application.c:25
 msgid "untitled application"
 msgstr "aplikácia bez mena"
+
+#: libwnck/pager-accessible.c:295
+msgid "Workspace Switcher"
+msgstr "Prepínanie pracovnej plochy"
+
+#: libwnck/pager-accessible.c:306
+msgid "Tool to switch between workspaces"
+msgstr "Nástroj pre prepínanie medzi pracovnými plochami"
+
+#: libwnck/pager-accessible.c:410
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Kliknutím sa prepnete na plochu %s"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
@@ -64,12 +77,3 @@ msgstr "okno bez mena"
 #, c-format
 msgid "Workspace %d"
 msgstr "Pracovná plocha %d"
-
-#~ msgid "Workspace Switcher"
-#~ msgstr "Prepínanie pracovnej plochy"
-
-#~ msgid "Tool to switch between workspaces"
-#~ msgstr "Nástroj pre prepínanie medzi pracovnými plochami"
-
-#~ msgid "Click this to switch to workspace %s"
-#~ msgstr "Kliknutím sa prepnete na plochu %s"

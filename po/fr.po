@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.7\n"
-"POT-Creation-Date: 2002-07-04 17:31+0200\n"
+"POT-Creation-Date: 2002-08-04 13:31-0400\n"
 "PO-Revision-Date: 2002-07-04 17:34+0200\n"
 "Last-Translator: Christophe Fergeau <teuf@users.sourceforge.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -73,4 +73,3 @@ msgstr "fenêtre sans titre"
 #, c-format
 msgid "Workspace %d"
 msgstr "Bureau %d"
-
