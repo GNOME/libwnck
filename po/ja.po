@@ -1,63 +1,63 @@
 # libwnck ja.po.
-# Copyright (C) 2001 Free Software Foundation, Inc.
-# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2001.
+# Copyright (C) 2001-2002 Free Software Foundation, Inc.
+# Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2001-2002.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck CVS\n"
-"POT-Creation-Date: 2002-03-24 15:50-0500\n"
-"PO-Revision-Date: 2002-01-26 22:48+0900\n"
+"POT-Creation-Date: 2002-04-17 23:31+0900\n"
+"PO-Revision-Date: 2002-04-17 23:32+0900\n"
 "Last-Translator: Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>\n"
 "Language-Team: Japanese <translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=euc-jp\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: libwnck/application.c:25
 msgid "untitled application"
-msgstr "¥¿¥¤¥È¥ëÌµ¤·¤Î¥¢¥×¥ê¥±¡¼¥·¥ç¥ó"
+msgstr "ã‚¿ã‚¤ãƒˆãƒ«ç„¡ã—ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³"
 
 #: libwnck/window-action-menu.c:154
 msgid "Un_minimize"
-msgstr "ºÇ¾®²½²ò½ü(_M)"
+msgstr "æœ€å°åŒ–è§£é™¤(_M)"
 
 #: libwnck/window-action-menu.c:160
 msgid "_Minimize"
-msgstr "ºÇ¾®²½(_M)"
+msgstr "æœ€å°åŒ–(_M)"
 
 #: libwnck/window-action-menu.c:167
 msgid "_Unmaximize"
-msgstr "ºÇÂç²½²ò½ü(_U)"
+msgstr "æœ€å¤§åŒ–è§£é™¤(_U)"
 
 #: libwnck/window-action-menu.c:173
 msgid "Ma_ximize"
-msgstr "ºÇÂç²½(_X)"
+msgstr "æœ€å¤§åŒ–(_X)"
 
 #: libwnck/window-action-menu.c:180
 msgid "U_nshade"
-msgstr "¥·¥§¡¼¥É²ò½ü(_N)"
+msgstr "ã‚·ã‚§ãƒ¼ãƒ‰è§£é™¤(_N)"
 
 #: libwnck/window-action-menu.c:186
 msgid "_Shade"
-msgstr "¥·¥§¡¼¥É(_S)"
+msgstr "ã‚·ã‚§ãƒ¼ãƒ‰(_S)"
 
 #: libwnck/window-action-menu.c:297
-msgid "Close"
-msgstr "ÊÄ¤¸¤ë"
+msgid "_Close"
+msgstr "é–‰ã˜ã‚‹(_C)"
 
 #: libwnck/window-action-menu.c:318
 msgid "Mo_ve"
-msgstr "°ÜÆ°(_V)"
+msgstr "ç§»å‹•(_V)"
 
 #: libwnck/window-action-menu.c:324
 msgid "_Resize"
-msgstr "Âç¤­¤µÊÑ¹¹(_R)"
+msgstr "å¤§ãã•å¤‰æ›´(_R)"
 
 #: libwnck/window.c:29
 msgid "untitled window"
-msgstr "¥¿¥¤¥È¥ëÌµ¤·¤Î¥¦¥¤¥ó¥É¥¦"
+msgstr "ã‚¿ã‚¤ãƒˆãƒ«ç„¡ã—ã®ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦"
 
 #: libwnck/workspace.c:248
 #, c-format
 msgid "Workspace %d"
-msgstr "¥ï¡¼¥¯¥¹¥Ú¡¼¥¹ %d"
+msgstr "ãƒ¯ãƒ¼ã‚¯ã‚¹ãƒšãƒ¼ã‚¹ %d"
