@@ -23,10 +23,9 @@
 #define WNCK_TASKLIST_H
 
 #include <gtk/gtk.h>
+#include <libwnck/screen.h>
 
 G_BEGIN_DECLS
-
-typedef struct _WnckTask WnckTask;
 
 #define WNCK_TYPE_TASKLIST              (wnck_tasklist_get_type ())
 #define WNCK_TASKLIST(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_TASKLIST, WnckTasklist))
@@ -38,6 +37,13 @@ typedef struct _WnckTask WnckTask;
 typedef struct _WnckTasklist        WnckTasklist;
 typedef struct _WnckTasklistClass   WnckTasklistClass;
 typedef struct _WnckTasklistPrivate WnckTasklistPrivate;
+
+typedef enum {
+  WNCK_TASKLIST_ALL,
+  WNCK_TASKLIST_WORKSPACE,
+  WNCK_TASKLIST_ALL_MINIMIZED,
+  WNCK_TASKLIST_WORKSPACE_MINIMIZED
+} WnckTasklistMode;
 
 struct _WnckTasklist
 {
@@ -53,32 +59,10 @@ struct _WnckTasklistClass
 
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
-GtkWidget* wnck_tasklist_new (void);
+GtkWidget *wnck_tasklist_new (WnckScreen *screen);
 
-WnckTask* wnck_tasklist_append_task (WnckTasklist *tasklist,
-                                     const char   *text,
-                                     GdkPixbuf    *icon,
-                                     gpointer      task_data);
-void      wnck_tasklist_remove_task (WnckTasklist *tasklist,
-                                     WnckTask     *task);
-
-WnckTask* wnck_tasklist_get_task_at_point (WnckTasklist *tasklist,
-                                           int           x,
-                                           int           y);
-WnckTask* wnck_tasklist_get_focused_task  (WnckTasklist *tasklist);
-
-void      wnck_tasklist_set_active_task   (WnckTasklist *tasklist,
-                                           WnckTask     *task);
-
-WnckTask* wnck_tasklist_find_task_by_data (WnckTasklist *tasklist,
-                                           gpointer      data);
-
-#define WNCK_TYPE_TASK wnck_task_get_type ();
-GType wnck_task_get_type (void) G_GNUC_CONST;
-
-const char* wnck_task_get_text (WnckTask *task);
-GdkPixbuf*  wnck_task_get_icon (WnckTask *task);
-gpointer    wnck_task_get_data (WnckTask *task);
+void wnck_tasklist_set_mode (WnckTasklist *tasklist,
+			     WnckTasklistMode mode);
 
 G_END_DECLS
 

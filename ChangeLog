@@ -1,3 +1,10 @@
+2001-12-01  Alex Larsson  <alexl@redhat.com>
+
+	* libwnck/tasklist.[ch]:
+	* libwnck/test-tasklist.c:
+	Initial work on the tasklist. This is work in progress, but
+	does compile.
+
 2001-11-30  Laszlo Peter  <laca@ireland.sun.com>
 
 	* libwnck/Makefile.am: fix the export-symbols-regex
