@@ -31,7 +31,7 @@
 
 #include <libwnck/pager.h>
 #include <libwnck/tasklist.h>
-#include <libwnck/window-menu.h>
+#include <libwnck/selector.h>
 
 #endif /* WNCK_LIB_H */
 

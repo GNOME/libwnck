@@ -12,11 +12,11 @@ wnck_headers=			\
 	application.h		\
 	class-group.h		\
 	screen.h		\
+	selector.h		\
 	tasklist.h		\
 	util.h			\
 	window.h 		\
 	window-action-menu.h	\
-	window-menu.h		\
 	workspace.h
 
 wnck_built_installed_headers=wnck-enum-types.h
@@ -45,11 +45,11 @@ libwnck_1_la_SOURCES= 		\
 	pager.c			\
 	private.h		\
 	screen.c		\
+	selector.c		\
 	tasklist.c		\
 	util.c			\
 	window.c		\
 	window-action-menu.c	\
-	window-menu.c		\
 	workspace.c		\
 	xutils.c		\
 	xutils.h		\

@@ -1,3 +1,33 @@
+2005-01-25  Vincent Noel  <vnoel@cox.net>
+
+	Migrate the window menu widget handling code from gnome-panel.
+	Promote the window menu to a full-blown widget. Use GObject
+	functions for private structures. Fixes #164474. 
+	
+	* gtk-doc.make:
+	* libwnck/Makefile.am:
+	* libwnck/libwnck.h:
+	* libwnck/selector.c: (wnck_selector_destroy),
+	(wnck_selector_get_screen),
+	(wnck_selector_get_default_window_icon), (wnck_selector_dimm_icon),
+	(wnck_selector_set_window_icon), (wnck_selector_set_active_window),
+	(wnck_selector_get_window_name),
+	(wnck_selector_window_icon_changed),
+	(wnck_selector_window_name_changed),
+	(wnck_selector_window_state_changed),
+	(wnck_selector_active_window_changed),
+	(wnck_selector_activate_window), (wnck_selector_get_width),
+	(wnck_selector_item_new), (wnck_selector_add_window),
+	(wnck_selector_window_opened), (wnck_selector_window_closed),
+	(wncklet_connect_while_alive), (wnck_selector_connect_to_window),
+	(wnck_selector_connect_to_screen), (wnck_selector_destroy_menu),
+	(wnck_selector_menu_hidden), (wnck_selector_on_show),
+	(wnck_selector_setup_menu), (wnck_selector_fill),
+	(wnck_selector_get_type), (wnck_selector_init),
+	(wnck_selector_class_init), (wnck_selector_finalize),
+	(wnck_selector_new):
+	* libwnck/selector.h:
+
 2005-01-25  Vincent Untz  <vincent@vuntz.net>
 
 	* configure.in: post-release bump to 2.9.91.
