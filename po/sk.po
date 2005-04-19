@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-03-07 11:19+0100\n"
-"PO-Revision-Date: 2004-05-28 21:29+0200\n"
+"POT-Creation-Date: 2005-04-19 06:52+0200\n"
+"PO-Revision-Date: 2005-04-10 23:44+0200\n"
 "Last-Translator: Ivan Noris <vix@vazka.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -39,21 +39,19 @@ msgstr "Kliknutím sa prepnete na plochu %s"
 
 #: libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Neznáme okno"
 
 #: libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "Nie sú otvorené žiadne okná"
 
 #: libwnck/selector.c:734
-#, fuzzy
 msgid "Window Selector"
-msgstr "Zoznam okien"
+msgstr "Výber okien"
 
 #: libwnck/selector.c:735
-#, fuzzy
 msgid "Tool to switch between windows"
-msgstr "Nástroj pre prepínanie medzi viditeľnými oknami"
+msgstr "Nástroj pre prepínanie medzi oknami"
 
 #: libwnck/tasklist.c:528
 msgid "Window List"
@@ -64,19 +62,16 @@ msgid "Tool to switch between visible windows"
 msgstr "Nástroj pre prepínanie medzi viditeľnými oknami"
 
 #: libwnck/tasklist.c:2108
-#, fuzzy
 msgid "_Close All"
-msgstr "_Zavrieť"
+msgstr "_Zavrieť všetky"
 
 #: libwnck/tasklist.c:2123
-#, fuzzy
 msgid "_Minimize All"
-msgstr "_Minimalizovať"
+msgstr "_Minimalizovať všetky"
 
 #: libwnck/tasklist.c:2134
-#, fuzzy
 msgid "_Unminimize All"
-msgstr "Zrušiť m_inimalizáciu"
+msgstr "Zrušiť m_inimalizáciu všetkých"
 
 #: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
@@ -103,14 +98,12 @@ msgid "Roll _Up"
 msgstr "_Zabaliť"
 
 #: libwnck/window-action-menu.c:256
-#, fuzzy
 msgid "_Only on This Workspace"
-msgstr "Iba na _tejto pracovnej ploche"
+msgstr "Iba na tejt_o pracovnej ploche"
 
 #: libwnck/window-action-menu.c:263
-#, fuzzy
 msgid "_Always on Visible Workspace"
-msgstr "Iba na _tejto pracovnej ploche"
+msgstr "Vždy n_a viditeľnej pracovnej ploche"
 
 #: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
 #, c-format
