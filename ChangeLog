@@ -1,5 +1,11 @@
 2005-05-17  Mark McLoughlin  <mark@skynet.ie>
 
+	* configure.in: post-release bump to 2.11.2
+
+==================== 2.11.1 ====================
+
+2005-05-17  Mark McLoughlin  <mark@skynet.ie>
+
 	* configure.in: Version 2.11.1.
 
 2005-04-01  Adi Attar  <aattar@cvs.gnome.org>
