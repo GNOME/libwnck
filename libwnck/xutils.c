@@ -272,7 +272,7 @@ _wnck_get_text_property (Window  xwindow,
     {
       retval = text_property_to_utf8 (&text);
 
-      if (text.nitems > 0)
+      if (text.value)
         XFree (text.value);
     }
   else
