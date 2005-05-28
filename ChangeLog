@@ -1,3 +1,9 @@
+2005-05-28  Elijah Newren  <newren@gmail.com>
+
+	* libwnck/class-group.c (_wnck_class_group_remove_window): Patch
+	from Jaap Haitsma to determine a new group leader when the
+	previous one gets removed.  Fixes #142569.
+
 2005-05-27  Benoît Dejean  <TazForEver@dlfp.org>
 
 	* libwnck/xutils.c: (_wnck_get_text_property): Fixed possible leak.

@@ -509,6 +509,9 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
 
   priv->windows = g_list_remove (priv->windows, window);
   _wnck_window_set_class_group (window, NULL);
+
+  set_name (class_group);
+  set_icon (class_group);
 }
 
 /**
