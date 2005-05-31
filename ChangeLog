@@ -1,3 +1,35 @@
+2005-05-31  Ray Strode  <rstrode@redhat.com>
+
+	Make windows that demand attention more noticeable by
+	glowing their tasklist buttons (bug 120439).
+
+	* libwnck/tasklist.c (struct _WnckTask): add some new
+	fields to track glowing start time, screenshot,
+	(wnck_task_init): initialize new fields
+	(glow_pixbuf): new function to uniformly luminate a
+	pixbuf by some factor (with 1.0 meaning don't change)
+	(wnck_task_button_glow): new function to glow tasklist
+	button by some factor dependent on how long the button
+	has been glowing. 
+	(wnck_task_clear_glow_start_timeout_id): function to 
+	clear the glow timeout id when it becomes stale
+	(wnck_task_queue_glow): new function to start glowing a 
+	tasklist button.
+	(wnck_task_stop_glow): new function to stop glowing a 
+	tasklist butotn.
+	(wnck_task_finalize): stop glowing any buttons that
+	are glowing.
+	(wnck_tasklist_size_allocate): when a button gets hidden
+	be sure to invalidate its screenshot.
+	(wnck_task_popup_menu): when a window in a tasklist group
+	demands attention then make it's menu item bold.
+	(wnck_task_update_visible_state), 
+	(wnck_task_create_widgets): when a window demands
+	attention start glowing its tasklist button.
+	(wnck_task_expose): rename wnck_task_class_group_expose
+	to wnck_task_expose, handle taking a screenshot of the
+	button right after it's drawn.
+
 2005-05-29  Vincent Untz  <vuntz@gnome.org>
 
 	* MAINTAINERS: update my e-mail address

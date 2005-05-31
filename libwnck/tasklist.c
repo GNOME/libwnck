@@ -22,6 +22,7 @@
 */
 
 #include <config.h>
+#include <math.h>
 #include <string.h>
 #include <stdio.h>
 #include "tasklist.h"
@@ -120,6 +121,12 @@ struct _WnckTask
   guint button_activate;
 
   guint32 dnd_timestamp;
+
+  GdkPixbuf *screenshot;
+
+  gdouble glow_start_time;
+  
+  guint button_glow;
 };
 
 struct _WnckTaskClass
@@ -193,6 +200,8 @@ static WnckTask *wnck_task_new_from_class_group (WnckTasklist    *tasklist,
 static WnckTask *wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
                                                       SnStartupSequence *sequence);
 #endif
+static gboolean wnck_task_get_demands_attention (WnckTask *task);
+
 
 static char      *wnck_task_get_text (WnckTask *task);
 static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
@@ -350,6 +359,9 @@ wnck_task_get_type (void)
 static void
 wnck_task_init (WnckTask *task)
 {  
+  task->glow_start_time = 0.0;
+  task->button_glow = 0;
+  task->screenshot = NULL;
 }
 
 static void
@@ -370,6 +382,147 @@ wnck_task_class_init (WnckTaskClass *klass)
     "\n"
     "    widget \"*.tasklist-button\" style \"tasklist-button-style\"\n"
     "\n");
+}
+static GdkPixbuf *
+glow_pixbuf (const GdkPixbuf *source, 
+             gdouble          factor)
+{
+  gint i, j;
+  gint width, height, has_alpha, rowstride;
+  guchar *destination_data;
+  guchar *source_data;
+  guchar *source_pixel;
+  guchar *destination_pixel;
+  int channel_intensity;
+  guchar r, g, b;
+
+  GdkPixbuf *destination;
+
+  has_alpha = gdk_pixbuf_get_has_alpha (source);
+  width = gdk_pixbuf_get_width (source);
+  height = gdk_pixbuf_get_height (source);
+  rowstride = gdk_pixbuf_get_rowstride (source);
+  source_data = gdk_pixbuf_get_pixels (source);
+
+  destination = gdk_pixbuf_copy (source);
+  destination_data = gdk_pixbuf_get_pixels (destination);
+
+  for (i = 0; i < height; i++)
+    {
+      source_pixel = source_data + i * rowstride;
+      destination_pixel = destination_data + i * rowstride;
+
+      for (j = 0; j < width; j++)
+        {
+          enum
+            {
+              CHANNEL_RED = 0,
+              CHANNEL_GREEN,
+              CHANNEL_BLUE,
+              CHANNELS_PER_COLOR_STIMULUS
+            };
+          r = source_pixel[CHANNEL_RED];
+          g = source_pixel[CHANNEL_GREEN];
+          b = source_pixel[CHANNEL_BLUE];
+          source_pixel += CHANNELS_PER_COLOR_STIMULUS;
+
+          channel_intensity = r * factor;
+          destination_pixel[CHANNEL_RED] = CLAMP (channel_intensity, 0, 255);
+          channel_intensity = g * factor;
+          destination_pixel[CHANNEL_GREEN] = CLAMP (channel_intensity, 0, 255);
+          channel_intensity = b * factor;
+          destination_pixel[CHANNEL_BLUE] = CLAMP (channel_intensity, 0, 255);
+          destination_pixel += CHANNELS_PER_COLOR_STIMULUS;
+
+          if (has_alpha)
+            {
+              destination_pixel[0] = source_pixel[0];
+              source_pixel++;
+              destination_pixel++;
+            }
+        }
+    }
+  return destination;
+}
+
+static gboolean
+wnck_task_button_glow (WnckTask *task)
+{
+  GdkPixbuf *glowing_screenshot;
+  GTimeVal tv;
+  gdouble glow_factor, now;
+
+  if (task->screenshot == NULL)
+    return TRUE;
+
+  g_get_current_time (&tv);
+  now = (tv.tv_sec * (1.0 * G_USEC_PER_SEC) +
+        tv.tv_usec) / G_USEC_PER_SEC;
+
+  if (task->glow_start_time <= G_MINDOUBLE)
+    task->glow_start_time = now;
+
+  /* These numbers can probably be tweaked some.
+   * The 1.0 is the first value it will get and .4 is
+   * the "radius" from 1.0 that it will go; i.e.,
+   * it will go up from 1.0 to 1.4 then down from
+   * 1.4 to .6, then back up again. The 2.0 in the
+   * denomator is how many seconds it takes to travel 
+   * through the entire range of numbers.
+   */
+  glow_factor = .4 * sin ((now - task->glow_start_time) * (2.0 * M_PI) / 2.0) + 1.0;
+
+  glowing_screenshot = glow_pixbuf (task->screenshot, glow_factor);
+
+  gdk_draw_pixbuf (task->button->window,
+                   task->button->style->fg_gc[GTK_WIDGET_STATE (task->button)],
+                   glowing_screenshot,
+                   0, 0, 
+                   task->button->allocation.x, 
+                   task->button->allocation.y,
+                   gdk_pixbuf_get_width (glowing_screenshot),
+                   gdk_pixbuf_get_height (glowing_screenshot),
+                   GDK_RGB_DITHER_NORMAL, 0, 0);
+  gdk_pixbuf_unref (glowing_screenshot);
+
+  return TRUE;
+}
+
+static void
+wnck_task_clear_glow_start_timeout_id (WnckTask *task)
+{
+  task->button_glow = 0;
+}
+
+static void
+wnck_task_queue_glow (WnckTask *task)
+{
+  if (task->button_glow == 0)
+    {
+      task->glow_start_time = 0.0;
+
+      /* The animation doesn't speed up or slow down based on the
+       * timeout value, but instead will just appear smoother or 
+       * choppier. To adjust the speed change the parameter to 
+       * sine in the timeout callback.
+       */
+      task->button_glow =
+        g_timeout_add_full (G_PRIORITY_DEFAULT_IDLE, 
+                            50,
+                            (GSourceFunc) wnck_task_button_glow, task,
+                            (GDestroyNotify) wnck_task_clear_glow_start_timeout_id);
+    }
+}
+
+static void
+wnck_task_stop_glow (WnckTask *task)
+{
+  if (task->button_glow != 0)
+    {
+      g_source_remove (task->button_glow);
+      task->button_glow = 0;
+      task->glow_start_time = 0.0;
+    }
 }
 
 static void
@@ -463,6 +616,8 @@ wnck_task_finalize (GObject *object)
       g_source_remove (task->button_activate);
       task->button_activate = 0;
     } 
+
+  wnck_task_stop_glow (task);
 
   G_OBJECT_CLASS (task_parent_class)->finalize (object);
 }
@@ -1117,6 +1272,12 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 	      win_task = WNCK_TASK (l->data);
 	      
 	      gtk_widget_set_child_visible (GTK_WIDGET (win_task->button), FALSE);
+
+              if (win_task->screenshot != NULL)
+                {
+                  g_object_unref (win_task->screenshot);
+                  win_task->screenshot = NULL;
+                }
 	      l = l->next;
 	    }
 	}
@@ -1124,7 +1285,13 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 	{
 	  visible_tasks = g_list_prepend (visible_tasks, class_group_task->windows->data);
 	  gtk_widget_set_child_visible (GTK_WIDGET (class_group_task->button), FALSE);
-	}
+
+          if (class_group_task->screenshot != NULL)
+            {
+              g_object_unref (class_group_task->screenshot);
+              class_group_task->screenshot = NULL;
+            }
+        }
       
       button_width = wnck_tasklist_layout (allocation,
 					   tasklist->priv->max_button_width,
@@ -1141,6 +1308,12 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       
       visible_tasks = g_list_concat (visible_tasks, g_list_copy (class_group_task->windows));
       gtk_widget_set_child_visible (GTK_WIDGET (class_group_task->button), FALSE);
+      if (class_group_task->screenshot != NULL)
+        {
+          g_object_unref (class_group_task->screenshot);
+          class_group_task->screenshot = NULL;
+        }
+
       l = l->next;
     }
 
@@ -1562,7 +1735,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	  
 	  gtk_widget_set_parent (win_task->button, GTK_WIDGET (tasklist));
 	  gtk_widget_show (win_task->button);
-	  
+
 	  /* Class group */
 
 	  class_group = wnck_window_get_class_group (win);
@@ -2067,6 +2240,8 @@ wnck_task_popup_menu (WnckTask *task,
       
       text = wnck_task_get_text (win_task);
       menu_item = gtk_image_menu_item_new_with_label (text);
+      if (wnck_task_get_demands_attention (win_task)) 
+        make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
       g_free (text);
       
       pixbuf = wnck_task_get_icon (win_task);
@@ -2424,9 +2599,15 @@ wnck_task_update_visible_state (WnckTask *task)
     {
       gtk_label_set_text (GTK_LABEL (task->label), text);
       if (wnck_task_get_demands_attention (task))
-        make_gtk_label_bold ((GTK_LABEL (task->label)));
+        {
+          make_gtk_label_bold ((GTK_LABEL (task->label)));
+          wnck_task_queue_glow (task);
+        }
       else
-        make_gtk_label_normal ((GTK_LABEL (task->label)));
+        {
+          make_gtk_label_normal ((GTK_LABEL (task->label)));
+          wnck_task_stop_glow (task);
+        }
       gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
       g_free (text);
     }
@@ -2622,6 +2803,11 @@ wnck_task_button_press_event (GtkWidget	      *widget,
   return FALSE;
 }
 
+static gboolean
+wnck_task_expose (GtkWidget        *widget,
+                  GdkEventExpose   *event,
+                  gpointer          data);
+
 static void
 wnck_task_create_widgets (WnckTask *task)
 {
@@ -2669,7 +2855,11 @@ wnck_task_create_widgets (WnckTask *task)
   gtk_label_set_max_width_chars (GTK_LABEL (task->label), MAX_WIDTH_CHARS);
 
   if (wnck_task_get_demands_attention (task))
-    make_gtk_label_bold ((GTK_LABEL (task->label)));
+    {
+      make_gtk_label_bold ((GTK_LABEL (task->label)));
+      wnck_task_queue_glow (task);
+    }
+
   gtk_widget_show (task->label);
 
   gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE, 4);
@@ -2728,6 +2918,11 @@ wnck_task_create_widgets (WnckTask *task)
     default:
       g_assert_not_reached ();
     }
+
+  g_signal_connect_object (task->button, "expose_event",
+                           G_CALLBACK (wnck_task_expose),
+                           G_OBJECT (task),
+                           G_CONNECT_AFTER);
 }
 
 static void
@@ -2737,30 +2932,74 @@ draw_dot (GdkWindow *window, GdkGC *lgc, GdkGC *dgc, int x, int y)
   gdk_draw_point (window, lgc, x+1, y+1);
 }
 
-
 static gboolean
-wnck_task_class_group_expose (GtkWidget        *widget,
-			      GdkEventExpose   *event,
-			      gpointer          data)
+wnck_task_expose (GtkWidget        *widget,
+                  GdkEventExpose   *event,
+                  gpointer          data)
 {
   GtkStyle *style;
   GdkGC *lgc, *dgc;
   int x, y, i, j;
+  WnckTask *task;
 
-  style = widget->style;
+  task = WNCK_TASK (data);
   
-  lgc = style->light_gc[GTK_STATE_NORMAL];
-  dgc = style->dark_gc[GTK_STATE_NORMAL];
+  switch (task->type)
+    {
+    case WNCK_TASK_CLASS_GROUP:
+      style = widget->style;
+      lgc = style->light_gc[GTK_STATE_NORMAL];
+      dgc = style->dark_gc[GTK_STATE_NORMAL];
 
-  x = widget->allocation.x + widget->allocation.width -
-    (GTK_CONTAINER (widget)->border_width + style->ythickness + 10);
-  y = widget->allocation.y + style->xthickness + 2;
- 
-  for (i = 0; i < 3; i++) {
-    for (j = i; j < 3; j++) {
-      draw_dot (widget->window, lgc, dgc, x + j*3, y + i*3);
+      x = widget->allocation.x + widget->allocation.width -
+          (GTK_CONTAINER (widget)->border_width + style->ythickness + 10);
+      y = widget->allocation.y + style->xthickness + 2;
+
+      for (i = 0; i < 3; i++) {
+            for (j = i; j < 3; j++) {
+                  draw_dot (widget->window, lgc, dgc, x + j*3, y + i*3);
+            }
+      }
+
+      /* Fall through to get screenshot
+       */
+    case WNCK_TASK_WINDOW:
+      if ((event->area.x <= widget->allocation.x) &&
+          (event->area.y <= widget->allocation.y) &&
+          (event->area.width >= widget->allocation.width) &&
+          (event->area.height >= widget->allocation.height))
+        {
+
+          if (task->screenshot != NULL)
+            {
+              g_object_unref (task->screenshot);
+              task->screenshot = NULL;
+            }
+
+          if (task->button_glow != 0)
+            {
+              task->screenshot = gdk_pixbuf_get_from_drawable (NULL,
+                                                               widget->window,
+                                                               NULL,
+                                                               widget->allocation.x, 
+                                                               widget->allocation.y,
+                                                               0, 0,
+                                                               widget->allocation.width, 
+                                                               widget->allocation.height);
+            }
+        }
+
+    case WNCK_TASK_STARTUP_SEQUENCE:
+      break;
     }
-  }
+
+  if ((task->button_glow == 0) &&
+      (task->screenshot != NULL))
+    {
+      g_object_unref (task->screenshot);
+      task->screenshot = NULL;
+    }
+
   return FALSE;
 }
 
@@ -2893,11 +3132,6 @@ wnck_task_new_from_class_group (WnckTasklist   *tasklist,
   task->tasklist = tasklist;
 
   wnck_task_create_widgets (task);
-
-  g_signal_connect_object (task->button, "expose_event",
-                           G_CALLBACK (wnck_task_class_group_expose),
-                           G_OBJECT (task),
-                           G_CONNECT_AFTER);
 
   return task;
 }
