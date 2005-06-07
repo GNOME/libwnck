@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-02-02 21:32+0100\n"
 "Last-Translator: Miloslav Trmac <mitr@volny.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -48,23 +48,23 @@ msgstr "Výběr oken"
 msgid "Tool to switch between windows"
 msgstr "Nástroj pro přepínání mezi okny"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Seznam oken"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "Nástroj pro přepínání mezi viditelnými okny"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "_Zavřít vše"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "Mi_nimalizovat vše"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "Demi_nimalizovat vše"
 

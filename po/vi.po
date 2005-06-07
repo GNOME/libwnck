@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-03-05 01:30+0700\n"
 "Last-Translator: \n"
 "Language-Team:  <en@li.org>\n"
@@ -48,23 +48,23 @@ msgstr "Bộ chọn cửa sổ"
 msgid "Tool to switch between windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Danh sách cửa sổ"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ đang hiện"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "Đón_g tất cả"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "_Thu nhỏ tất cả"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "_Bỏ thu nhỏ tất cả"
 

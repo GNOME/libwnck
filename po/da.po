@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-02-06 16:38+0100\n"
 "Last-Translator: Ole Laursen <olau@hardworking.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
@@ -47,23 +47,23 @@ msgstr "Vinduesvælger"
 msgid "Tool to switch between windows"
 msgstr "Værktøj til at skifte mellem vinduer"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Vinduesliste"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "Værktøj til at skifte mellem synlige vinduer"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "_Luk alle"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "_Minimér alle"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "_Gendan alle"
 

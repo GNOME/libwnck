@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -49,26 +49,26 @@ msgstr ""
 msgid "Tool to switch between windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 #, fuzzy
 msgid "_Close All"
 msgstr "_Dúnann"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 #, fuzzy
 msgid "_Minimize All"
 msgstr "_Déanaim-beagní"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "Cuirim an _Déanaim-beagní ar ceall"

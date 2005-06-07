@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-04-10 23:44+0200\n"
 "Last-Translator: Ivan Noris <vix@vazka.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -53,23 +53,23 @@ msgstr "Výber okien"
 msgid "Tool to switch between windows"
 msgstr "Nástroj pre prepínanie medzi oknami"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Zoznam okien"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "Nástroj pre prepínanie medzi viditeľnými oknami"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "_Zavrieť všetky"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "_Minimalizovať všetky"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "Zrušiť m_inimalizáciu všetkých"
 

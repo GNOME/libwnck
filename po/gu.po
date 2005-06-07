@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-02-24 18:15+0530\n"
 "Last-Translator: Ankit Patel <ankit@redhat.com>\n"
 "Language-Team: Gujarati <gu@li.org>\n"
@@ -51,23 +51,23 @@ msgstr "વિન્ડો પસંદ કરનાર"
 msgid "Tool to switch between windows"
 msgstr "વિન્ડો વચ્ચે ફેરબદલી કરવાનું સાધન"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "વિન્ડોની યાદી"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "બધુ બંધ કરો (_C)"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "બધુ નાનું કરો (_M)"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "બધુ નાનામાંથી પાછુ લાવો (_U)"
 

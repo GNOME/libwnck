@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-02-13 23:19+0100\n"
 "Last-Translator: Benoît Dejean <TazForEver@dlfp.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -51,23 +51,23 @@ msgstr "Sélecteur de fenêtre"
 msgid "Tool to switch between windows"
 msgstr "Outil pour basculer entre les fenêtres"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Liste des fenêtres"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "Outil pour basculer entre les fenêtres visibles"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 msgid "_Close All"
 msgstr "Tout _fermer"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 msgid "_Minimize All"
 msgstr "Tout mi_nimiser"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr "Tout démi_nimiser"
 

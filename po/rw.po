@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2005-03-28 19:35-0700\n"
 "Last-Translator: Steve Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -60,28 +60,28 @@ msgid "Tool to switch between windows"
 msgstr "Kuri Hindura hagati"
 
 # sfx2/sdi\sfxslots.src:SID_MDIWINDOWLIST.text
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "Irisiti y'Amadirishya"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Kuri Hindura hagati Kigaragara"
 
 # 955
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 #, fuzzy
 msgid "_Close All"
 msgstr "funga byose"
 
 # 3848
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 #, fuzzy
 msgid "_Minimize All"
 msgstr "gabanya/ byose bigire bito"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 msgid "_Unminimize All"
 msgstr ""
 

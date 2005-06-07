@@ -1,3 +1,20 @@
+2.11.3
+======
+
+ Features
+
+  - Make windows that demand attention more noticeable by glowing their
+    tasklist buttons (Ray Strode)
+
+ Fixes
+
+  - fix possible leak (Benoît Dejean)
+  - determine a group leader when the previous one gets removed (Jaap Haitsma)
+
+ Translators
+
+  - Ignacio Casal Quinteiro (gl)
+
 2.11.1
 ======
 

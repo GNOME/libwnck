@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-05-17 16:33+0100\n"
+"POT-Creation-Date: 2005-06-07 21:32+0200\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -53,25 +53,25 @@ msgstr "רשימת חלונות"
 msgid "Tool to switch between windows"
 msgstr "כלי להחלפה בין חלונות נראים"
 
-#: libwnck/tasklist.c:528
+#: libwnck/tasklist.c:683
 msgid "Window List"
 msgstr "רשימת חלונות"
 
-#: libwnck/tasklist.c:529
+#: libwnck/tasklist.c:684
 msgid "Tool to switch between visible windows"
 msgstr "כלי להחלפה בין חלונות נראים"
 
-#: libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2283
 #, fuzzy
 msgid "_Close All"
 msgstr "_סגור"
 
-#: libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2298
 #, fuzzy
 msgid "_Minimize All"
 msgstr "_מזער"
 
-#: libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2309
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "ב_טל מזעור"
