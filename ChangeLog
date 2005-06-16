@@ -1,3 +1,43 @@
+2005-06-16  Elijah Newren  <newren@gmail.com>
+
+	Add support for the Urgent hint; fixes #120439.
+
+	* libwnck/selector.c (wnck_selector_get_window_name): 
+	* libwnck/tasklist.c (wnck_task_popup_menu,
+	  wnck_task_get_demands_attention, wnck_task_update_visibile_state,
+	  wnck_task_create_widgets):
+	* libwnck/window.[ch] (wnck_window_demands_attention,
+	  transient_demands_attention,
+	  wnck_window_or_transient_demands_attention):
+
+	two function renames: (1) from
+	wnck_window_or_transient_demands_attention() to
+	wnck_window_or_transient_needs_attention(), and (2) from
+	-wnck_task_get_demands_attention() to
+	wnck_task_get_needs_attention()
+
+	* libwnck/selector.c (wnck_selector_window_state_changed):
+	* libwnck/tasklist.c (wnck_task_state_changed):
+	* libwnck/window.h (enum WnckWindowState):
+
+	add WNCK_WINDOW_STATE_URGENT and checks for it
+
+	* libwnck/window.c (COMPRESS_STATE macro): add
+	(window)->priv->is_urgent, (struct _WnckWindowPrivate): add
+	is_urgent_field and need_update_wmhints field),
+	(_wnck_window_create): provide default group leader but have
+	update_wmhints() do the actual setting if there is a different one
+	specified, (_wnck_window_process_property_notify): add need for
+	updating from WM_HINTS separate from icon_cache_property updating,
+	(update_state): looks like there's a bug here so throw in a FIXME
+	though I don't have time to check into it right now,
+	(update_wmclass): new function to get updates related to WM_HINTS
+	atom, (force_update_now): call update_wmhints()
+
+	* libwnck/xutils.h (_wnck_get_group_leader): remove this function
+	as it has been replaced by the more comprehensive update_wmhints()
+	in window.c
+
 2005-06-07  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.11.4

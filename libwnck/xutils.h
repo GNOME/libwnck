@@ -109,7 +109,6 @@ void _wnck_change_viewport (Screen *screen,
 			    int     x,
 			    int     y);
 
-Window _wnck_get_group_leader   (Window xwindow);
 char*  _wnck_get_session_id     (Window xwindow);
 int    _wnck_get_pid            (Window xwindow);
 char*  _wnck_get_name           (Window xwindow);

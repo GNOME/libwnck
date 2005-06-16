@@ -219,7 +219,7 @@ wnck_selector_get_window_name (WnckWindow *window)
   else
     name = g_strdup (const_name);
 
-  if (wnck_window_or_transient_demands_attention (window))
+  if (wnck_window_or_transient_needs_attention (window))
     {
       return_value = g_strdup_printf ("<b>%s</b>", name);
       g_free (name);
@@ -307,7 +307,8 @@ wnck_selector_window_state_changed (WnckWindow *window,
       (changed_mask &
        (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED |
         WNCK_WINDOW_STATE_SKIP_TASKLIST |
-        WNCK_WINDOW_STATE_DEMANDS_ATTENTION)))
+        WNCK_WINDOW_STATE_DEMANDS_ATTENTION |
+        WNCK_WINDOW_STATE_URGENT)))
     return;
 
   item = NULL;
@@ -332,7 +333,7 @@ wnck_selector_window_state_changed (WnckWindow *window,
 
   if (changed_mask &
       (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED |
-       WNCK_WINDOW_STATE_DEMANDS_ATTENTION))
+       WNCK_WINDOW_STATE_DEMANDS_ATTENTION | WNCK_WINDOW_STATE_URGENT))
     {
       window_name = wnck_selector_get_window_name (window);
       gtk_label_set_text (GTK_LABEL (item->label), window_name);

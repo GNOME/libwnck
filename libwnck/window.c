@@ -47,7 +47,8 @@ static GHashTable *window_hash = NULL;
     ((window)->priv->is_sticky           << 6) |        \
     ((window)->priv->is_hidden           << 7) |        \
     ((window)->priv->is_fullscreen       << 8) |        \
-    ((window)->priv->demands_attention   << 9) )
+    ((window)->priv->demands_attention   << 9) |        \
+    ((window)->priv->is_urgent           << 10) )
 
 struct _WnckWindowPrivate
 {
@@ -100,6 +101,7 @@ struct _WnckWindowPrivate
   guint is_hidden : 1;
   guint is_fullscreen : 1;
   guint demands_attention : 1;
+  guint is_urgent : 1;
 
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
@@ -125,6 +127,7 @@ struct _WnckWindowPrivate
   guint need_update_transient_for : 1;
   guint need_update_startup_id : 1;
   guint need_update_wmclass : 1;
+  guint need_update_wmhints : 1;
 };
 
 enum {
@@ -376,8 +379,10 @@ _wnck_window_create (Window      xwindow,
   _wnck_select_input (window->priv->xwindow,
                       WNCK_APP_WINDOW_EVENT_MASK);
 
-  window->priv->group_leader =
-    _wnck_get_group_leader (window->priv->xwindow);
+  /* Default the group leader to the window itself; it is set in
+   * update_wmhints() if a different group leader is specified.
+   */
+  window->priv->group_leader = window->priv->xwindow;
 
   window->priv->session_id =
     _wnck_get_session_id (window->priv->xwindow);
@@ -404,6 +409,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_transient_for = TRUE;
   window->priv->need_update_startup_id = TRUE;
   window->priv->need_update_wmclass = TRUE;
+  window->priv->need_update_wmhints = TRUE;
   force_update_now (window);
 
   return window;
@@ -610,26 +616,26 @@ wnck_window_is_minimized (WnckWindow *window)
 }
 
 /**
- * wnck_window_demands_attention:
+ * wnck_window_needs_attention:
  * @window: a #WnckWindow
  *
- * If the window has the demands attention state set returns
- * %TRUE. This state may change anytime a state_changed signal gets
- * emitted.
+ * If the window needs attention returns %TRUE. This state may change
+ * anytime a state_changed signal gets emitted, as it can depend on flags
+ * such as the demands_attention and is_urgent hints.
  *
- * Return value: %TRUE if window has the demands_attention hint set
+ * Return value: %TRUE if window needs attention
  **/
 gboolean
-wnck_window_demands_attention (WnckWindow *window)
+wnck_window_needs_attention (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
-  return window->priv->demands_attention;
+  return window->priv->demands_attention || window->priv->is_urgent;
 }
 
-/* Return whether one of the transients of @window demands attention */
+/* Return whether one of the transients of @window needs attention */
 static gboolean
-transient_demands_attention (WnckWindow *window)
+transient_needs_attention (WnckWindow *window)
 {
   GList *windows;
   WnckWindow *transient;
@@ -646,7 +652,7 @@ transient_demands_attention (WnckWindow *window)
       if (transient == window)
         return FALSE;
 
-      if (wnck_window_demands_attention (transient))
+      if (wnck_window_needs_attention (transient))
         return TRUE;
     }
 
@@ -654,21 +660,19 @@ transient_demands_attention (WnckWindow *window)
 }
 
 /**
- * wnck_window_or_transient_demands_attention:
+ * wnck_window_or_transient_needs_attention:
  * @window: a #WnckWindow
  *
- * If the window or one of its transients has the demands attention
- * state set returns %TRUE. This state may change anytime a
- * state_changed signal gets emitted.
+ * If the window or one of its transients needs attention returns %TRUE.
+ * This state may change anytime a state_changed signal gets emitted.
  *
- * Return value: %TRUE if window or one of its transients has the
- *               demands_attention hint set
+ * Return value: %TRUE if window or one of its transients needs attention
  **/
 gboolean
-wnck_window_or_transient_demands_attention (WnckWindow *window)
+wnck_window_or_transient_needs_attention (WnckWindow *window)
 {
-  return wnck_window_demands_attention (window) || 
-         transient_demands_attention (window);
+  return wnck_window_needs_attention (window) || 
+         transient_needs_attention (window);
 }
 
 gboolean
@@ -1616,12 +1620,16 @@ _wnck_window_process_property_notify (WnckWindow *window,
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
-           _wnck_atom_get ("KWM_WIN_ICON") ||
-           xevent->xproperty.atom ==
-           _wnck_atom_get ("WM_HINTS"))
+           _wnck_atom_get ("KWM_WIN_ICON"))
     {
       _wnck_icon_cache_property_changed (window->priv->icon_cache,
                                          xevent->xproperty.atom);
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
+  	   _wnck_atom_get ("WM_HINTS"))
+    {
+      window->priv->need_update_wmhints = TRUE;
       queue_update (window);
     }
 }
@@ -1756,6 +1764,9 @@ update_state (WnckWindow *window)
       break;
     }
 
+  /* FIXME!!!!!!!!!! What in the world is this buggy duplicate of the code
+   * immediately above this for??!?!?
+   */
   switch (window->priv->wintype)
     {
     case WNCK_WINDOW_DESKTOP:
@@ -2089,6 +2100,39 @@ update_wmclass (WnckWindow *window)
 }
 
 static void
+update_wmhints (WnckWindow *window)
+{
+  XWMHints *hints;
+
+  if (!window->priv->need_update_wmhints)
+    return;
+
+  _wnck_error_trap_push ();
+  hints = XGetWMHints (gdk_display, window->priv->xwindow);
+  _wnck_error_trap_pop ();
+
+  if (hints)
+    {
+      if ((hints->flags & IconPixmapHint) ||
+          (hints->flags & IconMaskHint))
+        _wnck_icon_cache_property_changed (window->priv->icon_cache,
+                                           _wnck_atom_get ("WM_HINTS"));
+
+      if (hints->flags & WindowGroupHint)
+          window->priv->group_leader = hints->window_group;
+
+      if (hints->flags & XUrgencyHint)
+        window->priv->is_urgent = TRUE;
+      else
+        window->priv->is_urgent = FALSE;
+
+      XFree (hints);
+    }
+
+  window->priv->need_update_wmhints = FALSE;
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -2143,6 +2187,7 @@ force_update_now (WnckWindow *window)
 
   update_startup_id (window);    /* no side effects */
   update_wmclass (window);
+  update_wmhints (window);
   update_transient_for (window); /* wintype needs this to be first */
   update_wintype (window);
   update_wm_state (window);
