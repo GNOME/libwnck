@@ -158,7 +158,7 @@ wnck_selector_set_window_icon (WnckSelector *selector,
   freeme2 = NULL;
 
   if (window)
-    pixbuf = wnck_window_get_icon (window);
+    pixbuf = wnck_window_get_mini_icon (window);
 
   if (!pixbuf)
     pixbuf = wnck_selector_get_default_window_icon ();

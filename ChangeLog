@@ -1,3 +1,9 @@
+2005-06-21  Vincent Noel  <vnoel@cox.net>
+
+	* libwnck/selector.c (wnck_selector_set_window_icon): Show the
+	mini_icon instead of the regular icon, like the
+	tasklist. Crispier. Fixes bug #169220.
+
 2005-06-16  Elijah Newren  <newren@gmail.com>
 
 	Add support for the Urgent hint; fixes #120439.
