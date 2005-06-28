@@ -1,3 +1,8 @@
+2005-06-28  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: Version 2.10.2.
+
 2005-04-01  Adi Attar  <aattar@cvs.gnome.org>
 
 	* configure.in: Added "xh" to ALL_LINGUAS.

@@ -2,7 +2,7 @@ AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(libwnck, 2.10.1)
+AM_INIT_AUTOMAKE(libwnck, 2.10.2)
 AM_MAINTAINER_MODE
 
 dnl libtool versioning for libwnck
@@ -12,7 +12,7 @@ LIBWNCK_CURRENT=16
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=1
+LIBWNCK_REVISION=2
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has
