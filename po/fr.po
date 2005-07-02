@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-02-13 23:19+0100\n"
 "Last-Translator: Benoît Dejean <TazForEver@dlfp.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -39,15 +39,15 @@ msgstr "Cliquer ici pour atteindre l'espace de travail %s"
 msgid "Unknown Window"
 msgstr "Fenêtre inconnue"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Aucune fenêtre ouverte"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Sélecteur de fenêtre"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Outil pour basculer entre les fenêtres"
 

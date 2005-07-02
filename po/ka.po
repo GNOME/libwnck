@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2004-04-30 01:22+0400\n"
 "Last-Translator: Aiet Kolkhi <aiet@qartuli.net>\n"
 "Language-Team: Georgian <aiet@qartuli.net>\n"
@@ -36,16 +36,16 @@ msgstr "დააწკაპუნეთ აქ, თუ გნებავთ %
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Window Selector"
 msgstr "სარკმელთა სია"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"

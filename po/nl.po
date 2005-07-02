@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-02-14 19:46+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -40,16 +40,16 @@ msgstr "Klik hier om te wisselen naar werkblad %s"
 msgid "Unknown Window"
 msgstr "Onbekend venster"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Geen geopende vensters"
 
 # niet helemaal exact vertaald, maar het is wel duidelijk zo
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Vensterselectie"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Een hulpje om te wisselen van venster"
 

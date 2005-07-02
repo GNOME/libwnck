@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.12\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-03-28 19:35-0700\n"
 "Last-Translator: Steve Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -46,15 +46,15 @@ msgstr "iyi Kuri Hindura Kuri Umwanya- nkenerwa"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Kuri Hindura hagati"

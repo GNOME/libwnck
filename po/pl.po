@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2003-06-27 01:25+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnomepl.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -39,15 +39,15 @@ msgstr "Kliknij tutaj, aby przełączyć na obszar roboczy %s"
 msgid "Unknown Window"
 msgstr "Nieznane okno"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Brak otwartych okien"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Wybór okien"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Narzędzie do przełączania pomiędzy oknami"
 

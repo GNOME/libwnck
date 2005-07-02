@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.9.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-03-02 13:41+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -35,15 +35,15 @@ msgstr "Feu clic ací per a canviar a l'espai de treball %s"
 msgid "Unknown Window"
 msgstr "Finestra desconeguda"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "No hi ha finestres obertes"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Selector de finestres"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Eina per a canviar entre finestres"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-02-15 07:22--500\n"
 "Last-Translator: # Maxim Dziumanenko <mvd@mylinux.com.ua>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -36,15 +36,15 @@ msgstr "Клацніть, щоб перемикнутися у робочу об
 msgid "Unknown Window"
 msgstr "Невідоме вікно"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Немає відкритих вікон"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Перемикач вікон"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Засіб перемикання між вікнами"
 

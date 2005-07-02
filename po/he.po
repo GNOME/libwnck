@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -39,16 +39,16 @@ msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Window Selector"
 msgstr "רשימת חלונות"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "כלי להחלפה בין חלונות נראים"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-01-21 13:55+0100\n"
 "Last-Translator: Åsmund Skjæveland\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -39,16 +39,16 @@ msgstr "Klikk på dette for å byta til arbeidsområde %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Window Selector"
 msgstr "Vindaugeliste"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Verktøy til å byta mellom synlege vindauge"

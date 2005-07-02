@@ -1,3 +1,20 @@
+2.11.4
+======
+
+ Features
+
+  - Add support for the Urgent hint (Elijah)
+
+ Fixes
+
+  -  Show the mini_icon instead of the regular icon for the selector
+     (Vincent Noel)
+
+ Translators
+
+  - Takeshi AIHANA (ja)
+  - Abel Cheung (zh_TW)
+
 2.11.3
 ======
 

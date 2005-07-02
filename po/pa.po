@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-02-23 15:55+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanpreetalam@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -38,15 +38,15 @@ msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ 
 msgid "Unknown Window"
 msgstr "ਅਣਜਾਣ ਝਰੋਖਾ"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "ਕੋਈ ਝਰੋਖਾ ਖੁੱਲਾ ਨਹੀਂ"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "ਝਰੋਖਾ ਚੋਣਕਾਰ"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
 

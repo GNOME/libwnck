@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-02-21 00:28+0200\n"
 "Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
 "Language-Team:  <team@gnome.gr>\n"
@@ -44,15 +44,15 @@ msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο �
 msgid "Unknown Window"
 msgstr "Άγνωστο Παράθυρο"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Δεν υπάρχουν ανοικτά παράθυρα"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Επιλογέας Παραθύρων"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ παραθύρων"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -36,15 +36,15 @@ msgstr "Cniog é seo chun dul go Binse-Oibre %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"

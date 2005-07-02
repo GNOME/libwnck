@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2004-03-28 23:31+CEST\n"
 "Last-Translator: auto\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
@@ -35,16 +35,16 @@ msgstr "Kliknite na ovo za prebacivanje na radnu površinu %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Window Selector"
 msgstr "Popis prozora"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Alat za izmjenu između vidljivih prozora"

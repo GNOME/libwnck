@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2004-12-25 04:13+0545\n"
 "Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
 "Language-Team: NEPALI <info@mpp.org.np>\n"
@@ -39,16 +39,16 @@ msgstr "%s कार्यक्षेत्रमा जान यसलाई 
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 #, fuzzy
 msgid "Window Selector"
 msgstr "विन्डोको सूची "
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "देखिने विन्डोहरु बीच ?"

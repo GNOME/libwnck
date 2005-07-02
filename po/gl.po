@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.gnome-2-10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-06-07 21:32+0200\n"
+"POT-Creation-Date: 2005-07-02 11:51+0200\n"
 "PO-Revision-Date: 2005-06-07 08:53+0200\n"
 "Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
 "Language-Team: Galego\n"
@@ -43,15 +43,15 @@ msgstr "Prema isto para activar o escritorio %s"
 msgid "Unknown Window"
 msgstr "Fiestra descoñecida"
 
-#: libwnck/selector.c:632
+#: libwnck/selector.c:633
 msgid "No Windows Open"
 msgstr "Non hai fiestras abertas"
 
-#: libwnck/selector.c:734
+#: libwnck/selector.c:735
 msgid "Window Selector"
 msgstr "Selector de fiestras"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:736
 msgid "Tool to switch between windows"
 msgstr "Ferramenta para cambiar entre fiestras"
 
