@@ -16,4 +16,9 @@ ltmain.sh
 stamp-h
 stamp-h.in
 libwnck-*.tar.gz
-
+INSTALL
+depcomp
+install-sh
+missing
+mkinstalldirs
+stamp-h1

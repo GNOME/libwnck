@@ -1,5 +1,11 @@
 2005-07-02  Vincent Untz  <vuntz@gnome.org>
 
+	* .cvsignore:
+	* doc/.cvsignore: updated
+	* COPYING: fix, again. I'm not the one who broke it, for once :-)
+
+2005-07-02  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in: post-release bump to 2.11.5
 
 ==================== 2.11.4 ====================
