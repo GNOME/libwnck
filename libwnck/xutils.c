@@ -844,6 +844,8 @@ _wnck_close (Screen *screen,
   xev.xclient.data.l[0] = timestamp;
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
@@ -881,6 +883,7 @@ _wnck_keyboard_move (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_MOVE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
@@ -906,6 +909,7 @@ _wnck_keyboard_size (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_SIZE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
@@ -937,6 +941,8 @@ _wnck_change_state (Screen  *screen,
   xev.xclient.data.l[0] = add ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
   xev.xclient.data.l[1] = state1;
   xev.xclient.data.l[2] = state2;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
@@ -962,6 +968,8 @@ _wnck_change_workspace (Screen     *screen,
   xev.xclient.data.l[0] = new_space;
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
@@ -1045,6 +1053,8 @@ _wnck_change_viewport (Screen *screen,
   xev.xclient.data.l[0] = x;
   xev.xclient.data.l[1] = y;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
@@ -1069,6 +1079,8 @@ _wnck_toggle_showing_desktop (Screen  *screen,
   xev.xclient.data.l[0] = show != FALSE;
   xev.xclient.data.l[1] = 0;
   xev.xclient.data.l[2] = 0;
+  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[4] = 0;
 
   XSendEvent (DisplayOfScreen (screen),
 	      RootWindowOfScreen (screen),

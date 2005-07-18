@@ -1,5 +1,19 @@
 2005-07-17  Elijah Newren  <newren@gmail.com>
 
+	Patch from Gregory Merchan to zero out unused fields in
+	ClientMessages, as required by the EWMH spec.  Fixes what's left
+	of #135024.
+
+	* libwnck/window.c (wnck_window_activate,
+	wnck_window_activate_transient): improve/fix the documentation
+
+	* libwnck/xutils.c: (_wnck_close, _wnck_keyboard_move,
+	_wnck_keyboard_size, _wnck_change_state, _wnck_change_workspace,
+	_wnck_change_viewport, _wnck_toggle_showing_desktop): zero out
+	unused fields
+
+2005-07-17  Elijah Newren  <newren@gmail.com>
+
 	Patch from Mariano to have window list tooltips display WM_NAME
 	instead of WM_ICON_NAME.  Finally fixes #124463.
 

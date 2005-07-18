@@ -1092,6 +1092,8 @@ wnck_window_unpin (WnckWindow *window)
 /**
  * wnck_window_activate:
  * @window: a #WnckWindow
+ * @timestamp: the X server timestamp of the user interaction event that
+ *             caused this call to occur
  *
  * Ask the window manager to make @window the active window.  The
  * window manager may choose to raise @window along with focusing it.
@@ -1184,6 +1186,8 @@ find_last_transient_for (GList *windows,
 /**
  * wnck_window_activate_transient:
  * @window: a #WnckWindow
+ * @timestamp: the X server timestamp of the user interaction event that
+ *             caused this call to occur
  *
  * If @window has transients, activates the most likely transient
  * instead of the window itself. Otherwise activates @window.
