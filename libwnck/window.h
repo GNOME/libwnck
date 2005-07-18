@@ -137,6 +137,7 @@ const char* wnck_window_get_name      (WnckWindow *window);
 const char* wnck_window_get_icon_name (WnckWindow *window);
 
 WnckApplication* wnck_window_get_application  (WnckWindow *window);
+WnckWindow*      wnck_window_get_transient    (WnckWindow *window);
 gulong           wnck_window_get_group_leader (WnckWindow *window);
 gulong           wnck_window_get_xid          (WnckWindow *window);
 

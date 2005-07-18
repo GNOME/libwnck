@@ -480,6 +480,14 @@ wnck_window_get_application  (WnckWindow *window)
   return window->priv->app;
 }
 
+WnckWindow*
+wnck_window_get_transient (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
+
+  return wnck_window_get (window->priv->transient_for);
+}
+
 gulong
 wnck_window_get_group_leader (WnckWindow *window)
 {

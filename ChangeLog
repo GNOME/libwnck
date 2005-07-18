@@ -1,3 +1,14 @@
+2005-07-18  Xavier Claessens  <x_claessens@skynet.be>
+
+	Correctly determine the active task when dealing with transients.
+	Fixes #310381.
+
+	* libwnck/tasklist.c (wnck_tasklist_active_window_changed): if the
+	current window doesn't have a corresponding task search for an
+	ancestor window that does
+	
+	* libwnck/window.[hc] (wnck_window_get_transient): new function
+
 2005-07-18  Elijah Newren  <newren@gmail.com>
 
 	Fix an activation/minimization inconsistency.  Mostly only affects
