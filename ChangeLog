@@ -1,3 +1,23 @@
+2005-07-18  Elijah Newren  <newren@gmail.com>
+
+	Fix an activation/minimization inconsistency.  Mostly only affects
+	mouse focus (fixes a case where the stuff from both bug 136581 and
+	bug 121556 needs to be applied instead of just one of the two).
+
+	* libwnck/tasklist.c (wnck_tasklist_activate_task_window):
+	* libwnck/window.[ch] (wnck_window_transient_is_most_recently_activated):
+
+	rename wnck_window_transient_is_active() to
+	wnck_window_transient_is_most_recently_activated().
+
+	* libwnck/window.[ch] (wnck_window_transient_is_most_recently_activated):
+
+	Call wnck_window_is_most_recently_activated() for each transient
+	instead of wnck_window_is_active().
+
+	* configure.in:
+	bump LIBWNCK_CURRENT due to function rename
+
 2005-07-17  Elijah Newren  <newren@gmail.com>
 
 	Patch from Gregory Merchan to zero out unused fields in

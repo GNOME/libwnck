@@ -1233,10 +1233,13 @@ wnck_window_activate_transient (WnckWindow *window,
 }
 
 /**
- * wnck_window_transient_is_active:
+ * wnck_window_transient_is_most_recently_activated:
  * @window: a #WnckWindow
  *
- * Return whether one of the transients of @window has focus.  This
+ * Return whether one of the transients of @window is the most
+ * recently activated window.  See
+ * wnck_window_is_most_recently_activated() for a more complete
+ * description of what is meant by most recently activated.  This
  * function is needed because clicking on the tasklist once will
  * activate a transient instead of the window itself
  * (wnck_window_activate_transient), and clicking again should
@@ -1246,7 +1249,7 @@ wnck_window_activate_transient (WnckWindow *window,
  * 
  **/
 gboolean
-wnck_window_transient_is_active (WnckWindow *window)
+wnck_window_transient_is_most_recently_activated (WnckWindow *window)
 {
   GList *windows;
   WnckWindow *transient;
@@ -1263,7 +1266,7 @@ wnck_window_transient_is_active (WnckWindow *window)
       if (transient == window)
         return FALSE;
 
-      if (wnck_window_is_active (transient))
+      if (wnck_window_is_most_recently_activated (transient))
         return TRUE;
     }
 

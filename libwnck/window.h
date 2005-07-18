@@ -201,7 +201,7 @@ gboolean wnck_window_is_active (WnckWindow *window);
 gboolean wnck_window_is_most_recently_activated (WnckWindow *window);
 void     wnck_window_activate_transient (WnckWindow *window,
                                          guint32     timestamp);
-gboolean wnck_window_transient_is_active (WnckWindow *window);
+gboolean wnck_window_transient_is_most_recently_activated (WnckWindow *window);
 
 GdkPixbuf* wnck_window_get_icon      (WnckWindow *window);
 GdkPixbuf* wnck_window_get_mini_icon (WnckWindow *window);

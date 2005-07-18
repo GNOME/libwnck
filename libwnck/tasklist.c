@@ -2129,7 +2129,8 @@ wnck_tasklist_activate_task_window (WnckTask *task,
     }
   else
     {
-      if (task->was_active || wnck_window_transient_is_active (task->window))
+      if (task->was_active || 
+          wnck_window_transient_is_most_recently_activated (task->window))
 	{
 	  task->was_active = FALSE;
 	  wnck_window_minimize (task->window);
