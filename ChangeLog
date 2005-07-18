@@ -1,3 +1,18 @@
+2005-07-17  Elijah Newren  <newren@gmail.com>
+
+	Patch from Mariano to have window list tooltips display WM_NAME
+	instead of WM_ICON_NAME.  Finally fixes #124463.
+
+	* libwnck/tasklist.c:
+	(wnck_task_get_text): add a gboolean icon_text parameter, and use
+	it to determine whether to get_icon_name or get_name
+
+	(wnck_task_popup_menu):
+	(wnck_task_update_visibile_state):
+	(wnck_task_create_widgets):
+	pass true or false as appropriate for icon_text parameter to
+	wnck_task_get_text()
+
 2005-07-02  Vincent Untz  <vuntz@gnome.org>
 
 	* .cvsignore:

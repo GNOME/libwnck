@@ -203,7 +203,7 @@ static WnckTask *wnck_task_new_from_startup_sequence (WnckTasklist      *tasklis
 static gboolean wnck_task_get_needs_attention (WnckTask *task);
 
 
-static char      *wnck_task_get_text (WnckTask *task);
+static char      *wnck_task_get_text (WnckTask *task, gboolean icon_text);
 static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
 static gint       wnck_task_compare  (gconstpointer  a,
 				      gconstpointer  b);
@@ -2238,7 +2238,7 @@ wnck_task_popup_menu (WnckTask *task,
     {
       win_task = WNCK_TASK (l->data);
       
-      text = wnck_task_get_text (win_task);
+      text = wnck_task_get_text (win_task, FALSE);
       menu_item = gtk_image_menu_item_new_with_label (text);
       if (wnck_task_get_needs_attention (win_task)) 
         make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
@@ -2358,7 +2358,7 @@ wnck_task_button_toggled (GtkButton *button,
 }
 
 static char *
-wnck_task_get_text (WnckTask *task)
+wnck_task_get_text (WnckTask *task, gboolean icon_text)
 {
   WnckWindowState state;
   const char *name;
@@ -2376,8 +2376,12 @@ wnck_task_get_text (WnckTask *task)
 				g_list_length (task->windows));
 
     case WNCK_TASK_WINDOW:
+      if (icon_text)
+        name = wnck_window_get_icon_name (task->window);
+      else 
+        name = wnck_window_get_name (task->window);
+       
       state = wnck_window_get_state (task->window);
-      name = wnck_window_get_name (task->window);
       
       if (state & WNCK_WINDOW_STATE_SHADED)
 	return g_strdup_printf ("=%s=", name);
@@ -2594,7 +2598,7 @@ wnck_task_update_visible_state (WnckTask *task)
   if (pixbuf)
     g_object_unref (pixbuf);
 
-  text = wnck_task_get_text (task);
+  text = wnck_task_get_text (task, TRUE);
   if (text != NULL)
     {
       gtk_label_set_text (GTK_LABEL (task->label), text);
@@ -2608,8 +2612,13 @@ wnck_task_update_visible_state (WnckTask *task)
           make_gtk_label_normal ((GTK_LABEL (task->label)));
           wnck_task_stop_glow (task);
         }
-      gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
       g_free (text);
+      text = wnck_task_get_text (task, FALSE);
+      if (text != NULL)
+        {
+          gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
+          g_free (text);
+        }
     }
 
   gtk_widget_queue_resize (GTK_WIDGET (task->tasklist));
@@ -2848,7 +2857,7 @@ wnck_task_create_widgets (WnckTask *task)
   
   gtk_widget_show (task->image);
 
-  text = wnck_task_get_text (task);
+  text = wnck_task_get_text (task, TRUE);
   task->label = gtk_label_new (text);
   gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
   gtk_label_set_ellipsize (GTK_LABEL (task->label),
@@ -2868,7 +2877,9 @@ wnck_task_create_widgets (WnckTask *task)
 
   gtk_container_add (GTK_CONTAINER (task->button), hbox);
   gtk_widget_show (hbox);
+  g_free (text);
   
+  text = wnck_task_get_text (task, FALSE);
   gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
   g_free (text);
   
