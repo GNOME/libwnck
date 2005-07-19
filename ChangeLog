@@ -1,3 +1,28 @@
+2005-07-19  Benoît Dejean  <TazForEver@dlfp.org>
+
+	* libwnck/tasklist.c (wnck_task_get_type):
+	Marked static and G_GNUC_CONST.
+	
+	* libwnck/wnck-marshal.c:
+	added missing #include.
+	
+	* libwnck/xutils.c (_wnck_get_string_property_latin1):
+	Marked static.
+	
+	* libwnck/xutils.c (_wnck_get_group_leader):
+	#if 0 as it's never used.
+	
+	* libwnck/pager-accessible.c (wnck_workspace_accessible_get_type):
+	Marked GTypeInfo const.
+	
+	* libwnck/pager-accessible-factory.h
+	libwnck/pager-accessible.h
+	libwnck/selector.h
+	libwnck/wnck-enum-types.h
+	libwnck/workspace-accessible-factory.h
+	libwnck/workspace-accessible.h:
+	Marked *_get_type() G_GNUC_CONST.
+
 2005-07-19  Olivier Andrieu  <oliv__a@users.sourceforge.net>
 
 	* libwnck/window.[ch] (wnck_window_set_window_type): new setter

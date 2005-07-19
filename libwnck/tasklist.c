@@ -326,7 +326,10 @@ make_gtk_label_normal (GtkLabel *label)
   pango_font_description_free (font_desc);
 }
 
-GType
+static GType
+wnck_task_get_type (void) G_GNUC_CONST;
+
+static GType
 wnck_task_get_type (void)
 {
   static GType object_type = 0;

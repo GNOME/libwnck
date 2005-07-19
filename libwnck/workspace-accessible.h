@@ -51,7 +51,7 @@ struct _WnckWorkspaceAccessibleClass
   AtkGObjectAccessibleClass parent_class;
 };
 
-GType wnck_workspace_accessible_get_type (void);
+GType wnck_workspace_accessible_get_type (void) G_GNUC_CONST;
 
 AtkObject* wnck_workspace_accessible_new (GObject *obj); 
 

@@ -1,4 +1,5 @@
 #include <libwnck/libwnck.h>
+#include "wnck-marshal.h"
 
 #include	<glib-object.h>
 

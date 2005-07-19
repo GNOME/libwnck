@@ -54,7 +54,7 @@ wnck_workspace_accessible_get_type (void)
 
   if (!type)
     {
-      static GTypeInfo tinfo = 
+      static const GTypeInfo tinfo = 
       {
         sizeof (WnckWorkspaceAccessibleClass),
         (GBaseInitFunc) NULL, /* base init */

@@ -46,7 +46,7 @@ struct _WnckWorkspaceAccessibleFactoryClass
   AtkObjectFactoryClass parent_class;
 };
 
-GType wnck_workspace_accessible_factory_get_type (void);
+GType wnck_workspace_accessible_factory_get_type (void) G_GNUC_CONST;
 
 AtkObjectFactory* wnck_workspace_accessible_factory_new (void);
 

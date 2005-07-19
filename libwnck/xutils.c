@@ -285,7 +285,7 @@ _wnck_get_text_property (Window  xwindow,
   return retval;
 }
 
-char*
+static char*
 _wnck_get_string_property_latin1 (Window  xwindow,
                                   Atom    atom)
 {
@@ -1089,6 +1089,7 @@ _wnck_toggle_showing_desktop (Screen  *screen,
 	      &xev);
 }
 
+#if 0
 Window
 _wnck_get_group_leader (Window xwindow)
 {
@@ -1110,6 +1111,7 @@ _wnck_get_group_leader (Window xwindow)
 
   return ret;
 }
+#endif /* 0 */
 
 char*
 _wnck_get_session_id (Window xwindow)

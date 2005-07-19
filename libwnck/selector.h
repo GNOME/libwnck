@@ -48,7 +48,7 @@ struct _WnckSelectorClass
 };
 
 GtkWidget *wnck_selector_new      (WnckScreen *screen);
-GType      wnck_selector_get_type (void);
+GType      wnck_selector_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
 #endif /* WNCK_SELECTOR_H */
