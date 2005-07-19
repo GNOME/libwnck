@@ -1,0 +1,96 @@
+<!-- ##### SECTION Title ##### -->
+wnck-enum-types
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION wnck_pager_display_mode_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO WNCK_TYPE_PAGER_DISPLAY_MODE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION wnck_tasklist_grouping_type_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO WNCK_TYPE_TASKLIST_GROUPING_TYPE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION wnck_window_state_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO WNCK_TYPE_WINDOW_STATE ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION wnck_window_actions_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO WNCK_TYPE_WINDOW_ACTIONS ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION wnck_window_type_get_type ##### -->
+<para>
+
+</para>
+
+@Returns: 
+
+
+<!-- ##### MACRO WNCK_TYPE_WINDOW_TYPE ##### -->
+<para>
+
+</para>
+
+
+

@@ -1,0 +1,36 @@
+<!-- ##### SECTION Title ##### -->
+WnckSelector
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT WnckSelectorPrivate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION wnck_selector_new ##### -->
+<para>
+
+</para>
+
+@screen: 
+@Returns: 
+
+

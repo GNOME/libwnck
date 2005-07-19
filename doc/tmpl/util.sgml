@@ -1,0 +1,49 @@
+<!-- ##### SECTION Title ##### -->
+util
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION wnck_gtk_window_set_dock_type ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_xid_read_resource_usage ##### -->
+<para>
+
+</para>
+
+@gdk_display: 
+@Param2: 
+@usage: 
+
+
+<!-- ##### FUNCTION wnck_pid_read_resource_usage ##### -->
+<para>
+
+</para>
+
+@gdk_display: 
+@Param2: 
+@usage: 
+
+

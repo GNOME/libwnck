@@ -1,0 +1,30 @@
+<!-- ##### SECTION Title ##### -->
+WnckPagerAccessible
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### FUNCTION wnck_pager_accessible_new ##### -->
+<para>
+
+</para>
+
+@widget: 
+@Returns: 
+
+

@@ -1,0 +1,81 @@
+<!-- ##### SECTION Title ##### -->
+WnckClassGroup
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT WnckClassGroupPrivate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION wnck_class_group_get ##### -->
+<para>
+
+</para>
+
+@res_class: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_windows ##### -->
+<para>
+
+</para>
+
+@class_group: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_res_class ##### -->
+<para>
+
+</para>
+
+@class_group: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_name ##### -->
+<para>
+
+</para>
+
+@class_group: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_icon ##### -->
+<para>
+
+</para>
+
+@class_group: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_mini_icon ##### -->
+<para>
+
+</para>
+
+@class_group: 
+@Returns: 
+
+

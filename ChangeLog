@@ -1,3 +1,8 @@
+2005-07-19  Matthias Clasen  <mclasen@redhat.com>
+
+	* doc/tmpl/*.sgml: Add template files to cvs, to make
+	a clean build from cvs work.  (#302231, Ali Akcaagac)
+
 2005-07-18  Elijah Newren  <newren@gmail.com>
 
 	Patch from Philipp Thomas and Benoit Dejean to clean up a number

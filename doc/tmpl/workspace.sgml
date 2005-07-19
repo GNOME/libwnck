@@ -1,0 +1,108 @@
+<!-- ##### SECTION Title ##### -->
+WnckWorkspace
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### STRUCT WnckWorkspacePrivate ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### FUNCTION wnck_workspace_get_number ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_get_name ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_change_name ##### -->
+<para>
+
+</para>
+
+@space: 
+@name: 
+
+
+<!-- ##### FUNCTION wnck_workspace_activate ##### -->
+<para>
+
+</para>
+
+@space: 
+@timestamp: 
+
+
+<!-- ##### FUNCTION wnck_workspace_get_width ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_get_height ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_get_viewport_x ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_get_viewport_y ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_is_virtual ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
