@@ -149,6 +149,8 @@ int         wnck_window_get_pid               (WnckWindow *window);
 gint        wnck_window_get_sort_order        (WnckWindow *window);
 
 WnckWindowType wnck_window_get_window_type    (WnckWindow *window);
+void           wnck_window_set_window_type    (WnckWindow *window,
+                                               WnckWindowType wintype);
 
 gboolean wnck_window_is_minimized              (WnckWindow *window);
 gboolean wnck_window_is_maximized_horizontally (WnckWindow *window);

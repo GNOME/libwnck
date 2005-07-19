@@ -608,6 +608,63 @@ wnck_window_get_window_type (WnckWindow *window)
 }
 
 /**
+ * wnck_window_set_window_type:
+ * @window: a #WnckWindow
+ * @wintype: the #WnckWindowType type hint
+ * 
+ * Sets the semantic type of the window.
+ * 
+ **/
+void
+wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
+{
+  Atom atom;
+
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  switch (wintype) {
+  case WNCK_WINDOW_NORMAL:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_NORMAL");
+    break;
+  case WNCK_WINDOW_DESKTOP:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DESKTOP");
+    break;
+  case WNCK_WINDOW_DOCK:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DOCK");
+    break;
+  case WNCK_WINDOW_DIALOG:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DIALOG");
+    break;
+  case WNCK_WINDOW_MODAL_DIALOG:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MODAL_DIALOG");
+    break;
+  case WNCK_WINDOW_TOOLBAR:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_TOOLBAR");
+    break;
+  case WNCK_WINDOW_MENU:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MENU");
+    break;
+  case WNCK_WINDOW_UTILITY:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_UTILITY");
+    break;
+  case WNCK_WINDOW_SPLASHSCREEN:
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASHSCREEN");
+    break;
+  default:
+    return;
+  }
+  _wnck_error_trap_push ();
+
+  XChangeProperty (gdk_display,
+                   window->priv->xwindow, 
+                   _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
+		   XA_ATOM, 32, PropModeReplace,
+		   (guchar *)&atom, 1);
+
+  _wnck_error_trap_pop ();
+}
+
+/**
  * wnck_window_is_minimized:
  * @window: a #WnckWindow
  *
