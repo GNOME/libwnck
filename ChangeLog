@@ -1,3 +1,31 @@
+2005-07-18  Elijah Newren  <newren@gmail.com>
+
+	Patch from Philipp Thomas and Benoit Dejean to clean up a number
+	of warnings.  Fixes #140175.
+
+	* libwnck/application.c (wnck_application_get_type):
+	* libwnck/pager.c (wnck_pager_get_type):
+	* libwnck/screen.c (wnck_screen_get_type):
+	* libwnck/tasklist.c (wnck_task_get_type, wnck_tasklist_get_type):
+	* libwnck/window.c (wnck_window_get_type):
+	* libwnck/workspace.c (wnck_workspace_get_type):
+	make sure to intialize the value_table field of the GTypeInfo
+
+	* libwnck/pager.c (wnck_pager_get_accessible):
+	s/gboolean static/static gboolean/
+
+	* libwnck/xutils.c (_wnck_get_utf8_list):
+	make local vars i and n_strings be guints instead of ints to avoid
+	comparison with unsigned quanties errors
+
+	* libwnck/xutils.c (_wnck_get_cardinal, _wnck_get_wm_state,
+	  _wnck_get_window, _wnck_get_pixmap, _wnck_get_atom,
+	  _wnck_get_window_list, _wnck_get_atom_list,
+	  _wnck_get_cardinal_list, _wnck_get_utf8_list, read_rgb_icon,
+	  get_kwm_win_icon):
+	typecast to (void*) instead of (guchar**) to avoid compiling
+	errors
+
 2005-07-18  Xavier Claessens  <x_claessens@skynet.be>
 
 	Correctly determine the active task when dealing with transients.

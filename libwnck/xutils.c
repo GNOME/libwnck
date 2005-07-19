@@ -49,7 +49,7 @@ _wnck_get_cardinal (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&num);  
+			       &bytes_after, (void*)&num);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -90,7 +90,7 @@ _wnck_get_wm_state (Window  xwindow)
 			       wm_state,
 			       0, G_MAXLONG,
 			       False, wm_state, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&num);  
+			       &bytes_after, (void*)&num);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -130,7 +130,7 @@ _wnck_get_window (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_WINDOW, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&w);  
+			       &bytes_after, (void*)&w);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -170,7 +170,7 @@ _wnck_get_pixmap (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_PIXMAP, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&w);  
+			       &bytes_after, (void*)&w);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -210,7 +210,7 @@ _wnck_get_atom (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_ATOM, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&a);  
+			       &bytes_after, (void*)&a);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -401,7 +401,7 @@ _wnck_get_window_list (Window   xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_WINDOW, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&data);  
+			       &bytes_after, (void*)&data);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -445,7 +445,7 @@ _wnck_get_atom_list (Window   xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_ATOM, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&data);  
+			       &bytes_after, (void*)&data);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -489,7 +489,7 @@ _wnck_get_cardinal_list (Window   xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&nums);  
+			       &bytes_after, (void*)&nums);  
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
@@ -522,8 +522,8 @@ _wnck_get_utf8_list (Window   xwindow,
   int err, result;
   Atom utf8_string;
   char **retval;
-  int i;
-  int n_strings;
+  guint i;
+  guint n_strings;
   char *p;
   
   utf8_string = _wnck_atom_get ("UTF8_STRING");
@@ -537,7 +537,7 @@ _wnck_get_utf8_list (Window   xwindow,
 			       0, G_MAXLONG,
 			       False, utf8_string,
 			       &type, &format, &nitems,
-			       &bytes_after, (guchar **)&val);  
+			       &bytes_after, (void*)&val);  
   err = _wnck_error_trap_pop ();
 
   if (err != Success ||
@@ -1454,7 +1454,7 @@ read_rgb_icon (Window         xwindow,
 			       _wnck_atom_get ("_NET_WM_ICON"),
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
-			       &bytes_after, ((guchar **)&data));
+			       &bytes_after, (void*)&data);
   
   err = _wnck_error_trap_pop ();
   
@@ -1761,7 +1761,7 @@ get_kwm_win_icon (Window  xwindow,
 			       False,
 			       _wnck_atom_get ("KWM_WIN_ICON"),
 			       &type, &format, &nitems,
-			       &bytes_after, (guchar **)&icons);  
+			       &bytes_after, (void*)&icons);  
 
   err = _wnck_error_trap_pop ();
   if (err != Success ||

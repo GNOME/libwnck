@@ -346,6 +346,7 @@ wnck_task_get_type (void)
         sizeof (WnckTask),
         0,              /* n_preallocs */
         (GInstanceInitFunc) wnck_task_init,
+        NULL            /* value_table */
       };
       
       object_type = g_type_register_static (G_TYPE_OBJECT,
@@ -642,6 +643,7 @@ wnck_tasklist_get_type (void)
         sizeof (WnckTasklist),
         0,              /* n_preallocs */
         (GInstanceInitFunc) wnck_tasklist_init,
+        NULL            /* value_table */
       };
       
       object_type = g_type_register_static (GTK_TYPE_CONTAINER,

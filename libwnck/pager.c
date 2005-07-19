@@ -149,6 +149,7 @@ wnck_pager_get_type (void)
         sizeof (WnckPager),
         0,              /* n_preallocs */
         (GInstanceInitFunc) wnck_pager_init,
+        NULL            /* value_table */
       };
       
       object_type = g_type_register_static (GTK_TYPE_WIDGET,
@@ -1789,7 +1790,7 @@ wnck_pager_get_background (WnckPager *pager,
 static AtkObject *
 wnck_pager_get_accessible (GtkWidget *widget)
 {
-  gboolean static first_time = TRUE;
+  static gboolean first_time = TRUE;
 
   if (first_time) 
     {

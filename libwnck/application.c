@@ -92,6 +92,7 @@ wnck_application_get_type (void)
         sizeof (WnckApplication),
         0,              /* n_preallocs */
         (GInstanceInitFunc) wnck_application_init,
+        NULL            /* value_table */
       };
       
       object_type = g_type_register_static (G_TYPE_OBJECT,
