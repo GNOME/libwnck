@@ -1,3 +1,8 @@
+2005-07-19  Elijah Newren  <newren@gmail.com>
+
+	* libwnck/xutils.c (_wnck_get_group_leader): remove this function
+	(should have been removed as part of my patch in bug #120439)
+
 2005-07-19  Benoît Dejean  <TazForEver@dlfp.org>
 
 	* libwnck/tasklist.c (wnck_task_get_type):

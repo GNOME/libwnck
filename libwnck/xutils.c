@@ -1089,30 +1089,6 @@ _wnck_toggle_showing_desktop (Screen  *screen,
 	      &xev);
 }
 
-#if 0
-Window
-_wnck_get_group_leader (Window xwindow)
-{
-  XWMHints *hints;
-  Window ret;
-  
-  _wnck_error_trap_push ();
-  hints = XGetWMHints (gdk_display, xwindow);
-  _wnck_error_trap_pop ();
-
-  /* default to window being its own leader */
-  ret = xwindow;
-  
-  if (hints &&
-      (hints->flags & WindowGroupHint))
-    ret = hints->window_group;
-
-  XFree (hints);
-
-  return ret;
-}
-#endif /* 0 */
-
 char*
 _wnck_get_session_id (Window xwindow)
 {
