@@ -185,6 +185,7 @@ struct _WnckTasklistPrivate
 
   gint monitor_num;
   GdkRectangle monitor_geometry;
+  GtkReliefStyle relief;
 };
 
 
@@ -683,6 +684,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->idle_callback_tag = 0;
 
   tasklist->priv->monitor_num = -1;
+  tasklist->priv->relief = GTK_RELIEF_NORMAL;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -778,6 +780,27 @@ wnck_tasklist_set_grouping (WnckTasklist            *tasklist,
   
   tasklist->priv->grouping = grouping;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+}
+
+static void
+wnck_tasklist_set_relief_callback (WnckWindow   *win,
+				   WnckTask     *task,
+				   WnckTasklist *tasklist)
+{
+  gtk_button_set_relief (GTK_BUTTON (task->button), tasklist->priv->relief);
+}
+
+void
+wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
+{
+  if (relief == tasklist->priv->relief)
+    return;
+
+  tasklist->priv->relief = relief;
+
+  g_hash_table_foreach (tasklist->priv->win_hash,
+                        (GHFunc) wnck_tasklist_set_relief_callback,
+                        tasklist);
 }
 
 void
@@ -2827,7 +2850,7 @@ wnck_task_expose (GtkWidget        *widget,
                   gpointer          data);
 
 static void
-wnck_task_create_widgets (WnckTask *task)
+wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 {
   GtkWidget *hbox;
   GdkPixbuf *pixbuf;
@@ -2841,6 +2864,9 @@ wnck_task_create_widgets (WnckTask *task)
     task->button = gtk_button_new ();
   else
     task->button = gtk_toggle_button_new ();
+
+  gtk_button_set_relief (GTK_BUTTON (task->button), relief);
+
   task->button_activate = 0;
   g_object_set_qdata (G_OBJECT (task->button),
 		      disable_sound_quark, GINT_TO_POINTER (TRUE));
@@ -3131,7 +3157,7 @@ wnck_task_new_from_window (WnckTasklist *tasklist,
   task->class_group = g_object_ref (wnck_window_get_class_group (window));
   task->tasklist = tasklist;
   
-  wnck_task_create_widgets (task);
+  wnck_task_create_widgets (task, tasklist->priv->relief);
 
   remove_startup_sequences_for_window (tasklist, window);
   
@@ -3151,7 +3177,7 @@ wnck_task_new_from_class_group (WnckTasklist   *tasklist,
   task->class_group = g_object_ref (class_group);
   task->tasklist = tasklist;
 
-  wnck_task_create_widgets (task);
+  wnck_task_create_widgets (task, tasklist->priv->relief);
 
   return task;
 }
@@ -3172,7 +3198,7 @@ wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
   sn_startup_sequence_ref (task->startup_sequence);
   task->tasklist = tasklist;
   
-  wnck_task_create_widgets (task);
+  wnck_task_create_widgets (task, tasklist->priv->relief);
 
   return task;
 }

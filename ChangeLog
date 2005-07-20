@@ -1,3 +1,9 @@
+2005-07-20  Ryan Lortie  <desrt@desrt.ca>
+
+	* libwnck/tasklist.h (wnck_tasklist_set_button_relief):
+	* libwnck/tasklist.c:  Add new API for allowing the button relief
+	to be set to GTK_RELIEF_NONE on transparent panels.
+
 2005-07-19  Elijah Newren  <newren@gmail.com>
 
 	* libwnck/xutils.c (_wnck_get_group_leader): remove this function
