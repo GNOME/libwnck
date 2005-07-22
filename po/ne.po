@@ -1,153 +1,148 @@
+# translation of libwnck.HEAD.po to Nepali
 # Nepali Translation Project.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the  libwnck package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Pawan Chitrakar  <pawan@nplinux.org>, 2004.
-# 
+# Jaydeep Bhusal <zaydeep@hotmail.com>, 2005.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck\n"
+"Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
-"PO-Revision-Date: 2004-12-25 04:13+0545\n"
-"Last-Translator: Rajeev Shrestha <rstha@ecomail.com.np>\n"
-"Language-Team: NEPALI <info@mpp.org.np>\n"
+"POT-Creation-Date: 2005-04-22 05:43+0000\n"
+"PO-Revision-Date: 2005-06-02 11:04+0545\n"
+"Last-Translator: Jaydeep Bhusal <zaydeep@hotmail.com>\n"
+"Language-Team: Nepali <info@mpp.org.np>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Nepali\n"
 "X-Poedit-Country: NEPAL\n"
 "X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: Nplurals=2;plural=(n!=0)\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:26
 msgid "untitled application"
 msgstr "शीर्षकरहित कार्यक्रम"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
-msgstr ""
+msgstr "कार्यस्थान स्विचर"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "कार्यस्थानहरु को बिच मा स्विच गर्ने उपकरण"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "%s कार्यक्षेत्रमा जान यसलाई थिच्नुहोस्"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "अज्ञात विन्डो"
 
-#: libwnck/selector.c:633
+#: ../libwnck/selector.c:632
 msgid "No Windows Open"
-msgstr ""
+msgstr "कुनै विन्डोहरु खुला छैन"
 
-#: libwnck/selector.c:735
-#, fuzzy
+#: ../libwnck/selector.c:734
 msgid "Window Selector"
-msgstr "विन्डोको सूची "
+msgstr "विन्डो चयनकर्ता"
 
-#: libwnck/selector.c:736
-#, fuzzy
+#: ../libwnck/selector.c:735
 msgid "Tool to switch between windows"
-msgstr "देखिने विन्डोहरु बीच ?"
+msgstr "विन्डोहरु बीच स्विच गर्ने उपकरण"
 
-#: libwnck/tasklist.c:683
+#: ../libwnck/tasklist.c:528
 msgid "Window List"
 msgstr "विन्डोको सूची "
 
-#: libwnck/tasklist.c:684
+#: ../libwnck/tasklist.c:529
 msgid "Tool to switch between visible windows"
 msgstr "देखिने विन्डोहरु बीच ?"
 
-#: libwnck/tasklist.c:2283
-#, fuzzy
+#: ../libwnck/tasklist.c:2108
 msgid "_Close All"
-msgstr "_बन्द गर"
+msgstr "_सबै बन्द गर"
 
-#: libwnck/tasklist.c:2298
-#, fuzzy
+#: ../libwnck/tasklist.c:2123
 msgid "_Minimize All"
-msgstr "सानो बनाउ"
+msgstr "_सबै सानो बनाउ"
 
-#: libwnck/tasklist.c:2309
-#, fuzzy
+#: ../libwnck/tasklist.c:2134
 msgid "_Unminimize All"
-msgstr "सानो नबनाउ"
+msgstr "_सबै सानो नबनाउ"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "सानो नबनाउ"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "सानो बनाउ"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "ठूलो नबनाउ"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "ठूलो बनाउ"
 
-#: libwnck/window-action-menu.c:241
+#: ../libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "नबेर"
 
-#: libwnck/window-action-menu.c:248
+#: ../libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "माथि जाउ"
 
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
-msgstr "यो कार्यक्षेत्रमा मात्र "
+msgstr "_यो कार्यस्थानमा मात्र "
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
-msgstr "यो कार्यक्षेत्रमा मात्र "
+msgstr "_सँधै दृश्य कार्यस्थानमा "
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:235
 #, c-format
 msgid "Workspace %d"
 msgstr "%d कार्यक्षेत्र"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "कार्यक्षेत्र १_०"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d कार्यक्षेत्र"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_सार"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "पुन: आकार "
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_बन्द गर"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "अरु कार्यक्षेत्रमा लैजाउ"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "शीर्षकरहित विन्डो"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "सबै कार्यक्षेत्रमा राख"
