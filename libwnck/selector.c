@@ -357,8 +357,20 @@ wnck_selector_active_window_changed (WnckScreen *screen,
 static void
 wnck_selector_activate_window (WnckWindow *window)
 {
+  WnckWorkspace *workspace;
+  guint32 timestamp;
+
   /* We're in an activate callback, so gtk_get_current_time() works... */
-  wnck_window_activate (window, gtk_get_current_event_time ());
+  timestamp = gtk_get_current_event_time ();
+
+  /* FIXME: THIS IS SICK AND WRONG AND BUGGY.  See the end of
+   * http://mail.gnome.org/archives/wm-spec-list/2005-July/msg00032.html
+   * There should only be *one* activate call.
+   */
+  workspace = wnck_window_get_workspace (window);
+  wnck_workspace_activate (workspace, timestamp);
+
+  wnck_window_activate (window, timestamp);
 }
 
 #define SELECTOR_MAX_WIDTH 50   /* maximum width in characters */

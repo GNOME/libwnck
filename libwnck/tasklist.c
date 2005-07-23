@@ -1949,8 +1949,8 @@ wnck_tasklist_activate_task_window (WnckTask *task,
       window_ws = wnck_window_get_workspace (task->window);
       if (window_ws &&
           active_ws != window_ws &&
-          tasklist->priv->switch_workspace_on_unminimize)
-        wnck_window_move_to_workspace (task->window, active_ws);
+          !tasklist->priv->switch_workspace_on_unminimize)
+        wnck_workspace_activate (window_ws, timestamp);
 
       wnck_window_activate_transient (task->window, timestamp);
     }
@@ -1964,6 +1964,16 @@ wnck_tasklist_activate_task_window (WnckTask *task,
 	}
       else
 	{
+          WnckWorkspace *window_ws;
+          
+          /* FIXME: THIS IS SICK AND WRONG AND BUGGY.  See the end of
+           * http://mail.gnome.org/archives/wm-spec-list/2005-July/msg00032.html
+           * There should only be *one* activate call.
+           */
+          window_ws = wnck_window_get_workspace (task->window);
+          if (window_ws)
+            wnck_workspace_activate (window_ws, timestamp);
+
           wnck_window_activate_transient (task->window, timestamp);
         }
     }
