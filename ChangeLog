@@ -1,3 +1,9 @@
+==================== 2.10.3 ====================
+
+2005-07-23  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: Version 2.10.3
+
 2005-07-23  Elijah Newren  <newren@gmail.com>
 
 	Revert the portion of the patch from bug 161361 related to the
