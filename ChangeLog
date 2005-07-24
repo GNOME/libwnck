@@ -1,3 +1,21 @@
+2005-07-23  Elijah Newren  <newren@gmail.com>
+
+	Revert the portion of the patch from bug 161361 related to the
+	behavioral change of _NET_ACTIVE_WINDOW as that behavioral change
+	is being reverted in metacity (see bug 128380)
+
+	* libwnck/selector.c (wnck_selector_activate_window): send a
+	_net_current_desktop and _net_active_widow message.  See FIXME in
+	the code about how this is sick and wrong and needs to be
+	fixed--but happens to work fine for now.
+
+	* libwnck/tasklist.c (wnck_tasklist_activate_task_window): no need
+	to move the window manually to the current workspace under default
+	behavior, need to manually send a _net_current_desktop message
+	first if user has stupid option set.  See FIXME in the code about
+	how the latter change is sick and wrong and needs to be fixed--but
+	happens to work fine for now.
+
 2005-07-20  Ryan Lortie  <desrt@desrt.ca>
 
 	* libwnck/tasklist.h (wnck_tasklist_set_button_relief):
