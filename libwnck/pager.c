@@ -171,6 +171,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
   pager->priv->bg_cache = NULL;
+  pager->priv->action_window = NULL;
   pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
 
   gtk_drag_dest_set (GTK_WIDGET (pager), 0, NULL, 0, 0);
@@ -876,8 +877,9 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 	  WnckWindow *win = tmp->data;
 	  GdkRectangle winrect;
 	  
-	  if (pager->priv->dragging &&
-	      win == pager->priv->drag_window)
+          if ((pager->priv->dragging &&
+               win == pager->priv->drag_window) ||
+              win == pager->priv->action_window)
 	    {
 	      tmp = tmp->next;
 	      continue;
@@ -1041,6 +1043,9 @@ wnck_pager_expose_event  (GtkWidget      *widget,
                    &winrect,
                    is_current);
     }
+
+  if (pager->priv->action_window)
+    pager->priv->action_window = NULL;
   
   return FALSE;
 }
@@ -1225,6 +1230,7 @@ wnck_pager_button_release (GtkWidget        *widget,
 
 	  if (space)
             {
+              pager->priv->action_window = pager->priv->drag_window;
               wnck_window_move_to_workspace (pager->priv->drag_window,
                                              space);
               if (space == wnck_screen_get_active_workspace (pager->priv->screen))

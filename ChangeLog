@@ -1,3 +1,10 @@
+2005-07-29  Christian Neumair  <chris@gnome-de.org>
+
+	* libwnck/pager.c: (wnck_pager_init), (wnck_pager_draw_workspace),
+	(wnck_pager_expose_event), (wnck_pager_button_release):
+	Prevent pager from flickering when moving windows between workspaces.
+	Fixes #167745.
+
 2005-07-23  Elijah Newren  <newren@gmail.com>
 
 	* configure.in: post-release bump to 2.10.4.
