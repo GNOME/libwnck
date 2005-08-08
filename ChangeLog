@@ -1,3 +1,11 @@
+==================== 2.11.91 ====================
+
+2005-08-08  Elijah Newren  <newren@gmail.com>
+
+	* configure.in:
+	* NEWS:
+	version 2.11.91
+
 2005-07-29  Christian Neumair  <chris@gnome-de.org>
 
 	* libwnck/pager.c: (wnck_pager_init), (wnck_pager_draw_workspace),

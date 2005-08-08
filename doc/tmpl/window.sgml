@@ -9,12 +9,10 @@ WnckWindow
 
 </para>
 
-
 <!-- ##### SECTION See_Also ##### -->
 <para>
 
 </para>
-
 
 <!-- ##### SECTION Stability_Level ##### -->
 
@@ -204,6 +202,15 @@ WnckWindow
 
 @window: 
 @Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_set_window_type ##### -->
+<para>
+
+</para>
+
+@window: 
+@wintype: 
 
 
 <!-- ##### FUNCTION wnck_window_is_minimized ##### -->

@@ -1,3 +1,34 @@
+2.11.91
+=======
+
+ Fixes
+
+  - Have window list tooltips display WM_NAME instead of WM_ICON_NAME
+    (Mariano Suarez-Alvarez) [#124463]
+  - Zero out unused fields in ClientMessages, as required by the EWMH
+    spec (Gregory Merchan) [#135024]
+  - Fix an activation/minimization inconsistency (Elijah Newren)
+  - Correctly determine the active task when dealing with transients
+    (Xavier Claessens) [#310381]
+  - Clean up a number of warnings (Philipp Thomas, Benoit Dejean)
+    [#140175, #310829]
+  - Fix builds that don't disable docs, get make distcheck to work
+    (Matthias Clasen) [#302231]
+  - Add wnck_window_set_window_type() function (Olivier Andrieu)
+    [#133306]
+  - Add API for allowing the button relief to be set to
+    GTK_RELIEF_NONE for transparent panels (Ryan Lortie) [#167932]
+  - Fix workspace switching behavior (revert the stuff related to the
+    behavioral change from bug 161361 made in the 2.10 cycle -- Elijah
+    Newren)
+  - Prevent pager from flickering when moving windows between
+    workspaces (Christian Neumair) [#167745]
+
+ Translators
+
+  - Christophe Merlet (RedFox) (fr)
+  - Jaydeep Bhusal (ne)
+
 2.11.4
 ======
 
