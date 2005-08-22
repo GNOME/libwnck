@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2004-03-13 06:26-0000\n"
 "Last-Translator: helgi <helgi@trance.is>\n"
 "Language-Team: Icelandic <gnome@techattack.nu>\n"
@@ -36,39 +36,39 @@ msgstr "Klikkaðu hér til að fletta yfir á vinnusvæði %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Verkfæri til þess að fletta á milli vinnusvæða"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 #, fuzzy
 msgid "_Close All"
 msgstr "_Loka"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 #, fuzzy
 msgid "_Minimize All"
 msgstr "Lág_marka"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "Stækka upp á _ný"
@@ -107,7 +107,7 @@ msgstr "Einungis á _þessu vinnusvæði"
 msgid "_Always on Visible Workspace"
 msgstr "Einungis á _þessu vinnusvæði"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Vinnusvæði %d"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-01-21 13:55+0100\n"
 "Last-Translator: Åsmund Skjæveland\n"
 "Language-Team: Norwegian Nynorsk <i18n-nn@lister.ping.uio.no>\n"
@@ -39,37 +39,37 @@ msgstr "Klikk på dette for å byta til arbeidsområde %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 #, fuzzy
 msgid "Window Selector"
 msgstr "Vindaugeliste"
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Verktøy til å byta mellom synlege vindauge"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Vindaugeliste"
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Verktøy til å byta mellom synlege vindauge"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "_Lukk alle"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "_Minimer alle"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "Gje_nopprett alle"
 
@@ -107,7 +107,7 @@ msgstr "Berre på _dette arbeidsområdet"
 msgid "_Always on Visible Workspace"
 msgstr "Berre på _dette arbeidsområdet"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"

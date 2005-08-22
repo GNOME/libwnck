@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.3.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2003-08-21 19:18+0100\n"
 "Last-Translator: Joël Brich <joel.brich@laposte.net>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -36,39 +36,39 @@ msgstr "Klaku tio por ŝalti al laborkadro %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Ilo por ŝalti inter laborkadroj"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Ilo por ŝalti inter laborkadroj"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 #, fuzzy
 msgid "_Close All"
 msgstr "_Fermu"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 #, fuzzy
 msgid "_Minimize All"
 msgstr "Mi_nimumigu"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "Nemi_nimumigu"
@@ -107,7 +107,7 @@ msgstr "Nur en _tiu laborkadro"
 msgid "_Always on Visible Workspace"
 msgstr "Nur en _tiu laborkadro"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Laborkadro %d"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.5.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-03-04 01:30+0800\n"
 "Last-Translator: Abel Cheung <abel@oaka.org>\n"
 "Language-Team: Chinese (traditional) <community@linuxhall.org>\n"
@@ -35,39 +35,39 @@ msgstr "按下此處可切換至工作區 %s"
 msgid "Unknown Window"
 msgstr "不明的視窗"
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "沒有視窗開啟"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "視窗切換程式"
 
 # FIXME: Not accurate, but this is easier to understand. Need a phrase
 # that's both easy to understand AND accurate. -- Abel
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "用來切換至不同視窗的工具"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "視窗清單"
 
 # FIXME: Not accurate, but this is easier to understand. Need a phrase
 # that's both easy to understand AND accurate. -- Abel
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "用來切換至不同可視視窗的工具"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "全部關閉(_C)"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "全部最小化(_M)"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "全部取消最小化(_U)"
 
@@ -103,7 +103,7 @@ msgstr "只放在本工作區顯示(_O)"
 msgid "_Always on Visible Workspace"
 msgstr "放在所有工作區中(_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"

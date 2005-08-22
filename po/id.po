@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck gnome-2-2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2004-04-03 10:27+0700\n"
 "Last-Translator: Mohammad DAMT <mdamt@bisnisweb.com>\n"
 "Language-Team: Indonesia <id@li.org>\n"
@@ -36,39 +36,39 @@ msgstr "Klik untuk memilih area kerja %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 #, fuzzy
 msgid "Window Selector"
 msgstr "Daftar Jendela"
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Program untuk memilih jendela program yang tampak"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Daftar Jendela"
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Program untuk memilih jendela program yang tampak"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 #, fuzzy
 msgid "_Close All"
 msgstr "_Tutup"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 #, fuzzy
 msgid "_Minimize All"
 msgstr "_Kecilkan"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "Rub_ah ke ukuran semula (dari ukuran besar)"
@@ -107,7 +107,7 @@ msgstr "di area kerja ini sa_ja"
 msgid "_Always on Visible Workspace"
 msgstr "di area kerja ini sa_ja"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Area kerja %d"

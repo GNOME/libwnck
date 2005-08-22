@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-06-11 17:41+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
@@ -37,35 +37,35 @@ msgstr "これを押せばワークスペース %s へ切り替わります"
 msgid "Unknown Window"
 msgstr "不明なウィンドウです"
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "ウィンドウが開いていません"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "ウィンドウの選択"
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "ウィンドウを切り替えるツール"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "ウィンドウの一覧"
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "表示可能なウィンドウ切り替えツール"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "全て閉じる(_C)"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "全て最小化(_M)"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "全て最小化解除(_U)"
 
@@ -101,7 +101,7 @@ msgstr "現在のワークスペースのみ(_O)"
 msgid "_Always on Visible Workspace"
 msgstr "全てのワークスペースに配置する(_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pa\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-02-23 15:55+0530\n"
 "Last-Translator: Amanpreet Singh Alam <amanpreetalam@yahoo.com>\n"
 "Language-Team: Punjabi <fedora-trans-pa@redhat.com>\n"
@@ -38,35 +38,35 @@ msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲਣ ਲਈ ਇਸ ਨੂੰ 
 msgid "Unknown Window"
 msgstr "ਅਣਜਾਣ ਝਰੋਖਾ"
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "ਕੋਈ ਝਰੋਖਾ ਖੁੱਲਾ ਨਹੀਂ"
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "ਝਰੋਖਾ ਚੋਣਕਾਰ"
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "ਝਰੋਖਾ ਸੂਚੀ"
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "ਸਭ ਬੰਦ(_C)"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "ਸਭ ਅਲਪੀਕਰਨ(_M)"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "ਸਭ ਅਲਪੀਕਰਨ ਨਹੀ(_U)"
 
@@ -102,7 +102,7 @@ msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ(_O)"
 msgid "_Always on Visible Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ(_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"

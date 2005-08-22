@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-02-14 19:46+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
@@ -40,37 +40,37 @@ msgstr "Klik hier om te wisselen naar werkblad %s"
 msgid "Unknown Window"
 msgstr "Onbekend venster"
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "Geen geopende vensters"
 
 # niet helemaal exact vertaald, maar het is wel duidelijk zo
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "Vensterselectie"
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "Een hulpje om te wisselen van venster"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Vensterlijst"
 
 # degenen die zichtbaar zijn
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Een hulpje om te wisselen van venster (die zichbaar zijn)"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "Alles sl_uiten"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "Alles _minimaliseren"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "Alles _herstellen"
 
@@ -106,7 +106,7 @@ msgstr "Alleen op dit _werkblad"
 msgid "_Always on Visible Workspace"
 msgstr "_Altijd op zichbare werkblad"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Werkblad %d"

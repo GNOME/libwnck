@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libqnck.gnome-2.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2003-02-20 12:00+0100\n"
 "Last-Translator: Pól Ó Dubhthaigh <dubhthach@zion.nuigalway.ie>\n"
 "Language-Team:Irish \n"
@@ -36,39 +36,39 @@ msgstr "Cniog é seo chun dul go Binse-Oibre %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Feidhmchlár le haighaidh an Binse-Oibre a athrú"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 #, fuzzy
 msgid "_Close All"
 msgstr "_Dúnann"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 #, fuzzy
 msgid "_Minimize All"
 msgstr "_Déanaim-beagní"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "Cuirim an _Déanaim-beagní ar ceall"
@@ -110,7 +110,7 @@ msgstr "Ar an Binse-Oibre _Seo"
 msgid "_Always on Visible Workspace"
 msgstr "Ar an Binse-Oibre _Seo"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Binse-Oibre %d"

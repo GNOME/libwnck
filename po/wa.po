@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 11:51+0200\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2002-12-29 15:08+0100\n"
 "Last-Translator: Pablo Saratxaga <pablo@mandrakesoft.com>\n"
 "Language-Team: Walon <linux-wa@chanae.alphanet.ch>\n"
@@ -42,39 +42,39 @@ msgstr "Clitchîz çouchal po potchî å scribanne %s"
 msgid "Unknown Window"
 msgstr ""
 
-#: libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr ""
 
-#: libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr ""
 
-#: libwnck/selector.c:736
+#: libwnck/selector.c:748
 #, fuzzy
 msgid "Tool to switch between windows"
 msgstr "Usteye po discandjî d' on scribanne a l' ôte"
 
-#: libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr ""
 
-#: libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 #, fuzzy
 msgid "Tool to switch between visible windows"
 msgstr "Usteye po discandjî d' on scribanne a l' ôte"
 
-#: libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 #, fuzzy
 msgid "_Close All"
 msgstr "_Clôre"
 
-#: libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 #, fuzzy
 msgid "_Minimize All"
 msgstr "Å pus _ptit"
 
-#: libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 #, fuzzy
 msgid "_Unminimize All"
 msgstr "_Rivni come divant"
@@ -113,7 +113,7 @@ msgstr "Seulmint dins _ci scribanne chal"
 msgid "_Always on Visible Workspace"
 msgstr "Seulmint dins _ci scribanne chal"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Sicribanne %d"

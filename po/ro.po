@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-08-21 15:08+0000\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-08-22 00:04+0300\n"
 "Last-Translator: Mişu Moldovan <dumol@gnome.ro>>\n"
 "Language-Team: Romanian <gnomero-list@lists.sourceforge.net>>\n"
@@ -14,127 +14,127 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../libwnck/application.c:26
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "aplicaţie fără nume"
 
-#: ../libwnck/pager-accessible.c:318
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Comutare spaţii de lucru"
 
-#: ../libwnck/pager-accessible.c:329
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Unealtă pentru comutarea între spaţii de lucru"
 
-#: ../libwnck/pager-accessible.c:433
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Apăsaţi aici pentru comutarea în spaţiul de lucru %s"
 
-#: ../libwnck/selector.c:218
+#: libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "Fereastră necunoscută"
 
-#: ../libwnck/selector.c:645
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "Nici o fereastră deschisă"
 
-#: ../libwnck/selector.c:747
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "Selector ferestre"
 
-#: ../libwnck/selector.c:748
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "Unealtă pentru comutarea între ferestre"
 
-#: ../libwnck/tasklist.c:690
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Listă ferestre"
 
-#: ../libwnck/tasklist.c:691
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Unealtă pentru comutarea între ferestrele vizibile"
 
-#: ../libwnck/tasklist.c:2324
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "În_chide tot"
 
-#: ../libwnck/tasklist.c:2339
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "_Minimizează tot"
 
-#: ../libwnck/tasklist.c:2350
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "Demi_nimizează tot"
 
-#: ../libwnck/window-action-menu.c:211
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "Demi_nimizează"
 
-#: ../libwnck/window-action-menu.c:218
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "_Minimizează"
 
-#: ../libwnck/window-action-menu.c:226
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "_Demaximizează"
 
-#: ../libwnck/window-action-menu.c:233
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ma_ximizează"
 
-#: ../libwnck/window-action-menu.c:241
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "_Desfăşoară"
 
-#: ../libwnck/window-action-menu.c:248
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "În_făşoară"
 
-#: ../libwnck/window-action-menu.c:256
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "Doar în _acest spaţiu de lucru"
 
-#: ../libwnck/window-action-menu.c:263
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "Întotde_auna în spaţiul vizibil"
 
-#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:236
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Spaţiul %d"
 
-#: ../libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Spaţiul 1_0"
 
-#: ../libwnck/window-action-menu.c:388
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Spaţiul %s%d"
 
-#: ../libwnck/window-action-menu.c:485
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "M_ută"
 
-#: ../libwnck/window-action-menu.c:492
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "_Redimensionează"
 
-#: ../libwnck/window-action-menu.c:505
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "În_chide"
 
-#: ../libwnck/window-action-menu.c:518
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Mută în alt _spaţiu"
 
-#: ../libwnck/window-action-menu.c:542
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "fereastră fără titlu"
 

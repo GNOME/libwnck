@@ -96,6 +96,15 @@ WnckTasklist
 @include_all_workspaces: 
 
 
+<!-- ##### FUNCTION wnck_tasklist_set_button_relief ##### -->
+<para>
+
+</para>
+
+@tasklist: 
+@relief: 
+
+
 <!-- ##### FUNCTION wnck_tasklist_set_minimum_width ##### -->
 <para>
 

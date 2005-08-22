@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-04-22 05:43+0000\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-06-02 11:04+0545\n"
 "Last-Translator: Jaydeep Bhusal <zaydeep@hotmail.com>\n"
 "Language-Team: Nepali <info@mpp.org.np>\n"
@@ -22,127 +22,126 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: Nplurals=2;plural=(n!=0)\n"
 
-#: ../libwnck/application.c:26
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "शीर्षकरहित कार्यक्रम"
 
-#: ../libwnck/pager-accessible.c:318
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "कार्यस्थान स्विचर"
 
-#: ../libwnck/pager-accessible.c:329
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "कार्यस्थानहरु को बिच मा स्विच गर्ने उपकरण"
 
-#: ../libwnck/pager-accessible.c:433
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "%s कार्यक्षेत्रमा जान यसलाई थिच्नुहोस्"
 
-#: ../libwnck/selector.c:218
+#: libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "अज्ञात विन्डो"
 
-#: ../libwnck/selector.c:632
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "कुनै विन्डोहरु खुला छैन"
 
-#: ../libwnck/selector.c:734
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "विन्डो चयनकर्ता"
 
-#: ../libwnck/selector.c:735
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "विन्डोहरु बीच स्विच गर्ने उपकरण"
 
-#: ../libwnck/tasklist.c:528
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "विन्डोको सूची "
 
-#: ../libwnck/tasklist.c:529
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "देखिने विन्डोहरु बीच ?"
 
-#: ../libwnck/tasklist.c:2108
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "_सबै बन्द गर"
 
-#: ../libwnck/tasklist.c:2123
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "_सबै सानो बनाउ"
 
-#: ../libwnck/tasklist.c:2134
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "_सबै सानो नबनाउ"
 
-#: ../libwnck/window-action-menu.c:211
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "सानो नबनाउ"
 
-#: ../libwnck/window-action-menu.c:218
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "सानो बनाउ"
 
-#: ../libwnck/window-action-menu.c:226
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "ठूलो नबनाउ"
 
-#: ../libwnck/window-action-menu.c:233
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "ठूलो बनाउ"
 
-#: ../libwnck/window-action-menu.c:241
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "नबेर"
 
-#: ../libwnck/window-action-menu.c:248
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "माथि जाउ"
 
-#: ../libwnck/window-action-menu.c:256
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "_यो कार्यस्थानमा मात्र "
 
-#: ../libwnck/window-action-menu.c:263
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "_सँधै दृश्य कार्यस्थानमा "
 
-#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "%d कार्यक्षेत्र"
 
-#: ../libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "कार्यक्षेत्र १_०"
 
-#: ../libwnck/window-action-menu.c:388
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d कार्यक्षेत्र"
 
-#: ../libwnck/window-action-menu.c:485
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_सार"
 
-#: ../libwnck/window-action-menu.c:492
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "पुन: आकार "
 
-#: ../libwnck/window-action-menu.c:505
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_बन्द गर"
 
-#: ../libwnck/window-action-menu.c:518
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "अरु कार्यक्षेत्रमा लैजाउ"
 
-#: ../libwnck/window-action-menu.c:542
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "शीर्षकरहित विन्डो"
-

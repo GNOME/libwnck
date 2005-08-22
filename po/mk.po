@@ -13,135 +13,135 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-07-02 06:18+0000\n"
+"POT-Creation-Date: 2005-08-22 10:18+0200\n"
 "PO-Revision-Date: 2005-07-02 12:22+0200\n"
 "Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit"
+"Content-Transfer-Encoding: 8bit\n"
 
-#: ../libwnck/application.c:26
+#: libwnck/application.c:26
 msgid "untitled application"
 msgstr "Aпликација без наслов"
 
-#: ../libwnck/pager-accessible.c:318
+#: libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Менувач на работно место"
 
-#: ../libwnck/pager-accessible.c:329
+#: libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Алатка за менување на работното место"
 
-#: ../libwnck/pager-accessible.c:433
+#: libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Кликни го ова за да го смениш работното место %s"
 
-#: ../libwnck/selector.c:218
+#: libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "Непознат прозорец"
 
-#: ../libwnck/selector.c:633
+#: libwnck/selector.c:645
 msgid "No Windows Open"
 msgstr "Нема отворени прозорци"
 
-#: ../libwnck/selector.c:735
+#: libwnck/selector.c:747
 msgid "Window Selector"
 msgstr "Одбирач на прозорци"
 
-#: ../libwnck/selector.c:736
+#: libwnck/selector.c:748
 msgid "Tool to switch between windows"
 msgstr "Алатка за менување помеѓу прозорци"
 
-#: ../libwnck/tasklist.c:683
+#: libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Листа на прозорци"
 
-#: ../libwnck/tasklist.c:684
+#: libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Алатка за менување помеѓу прозорците"
 
-#: ../libwnck/tasklist.c:2283
+#: libwnck/tasklist.c:2324
 msgid "_Close All"
 msgstr "_Затвори сѐ"
 
-#: ../libwnck/tasklist.c:2298
+#: libwnck/tasklist.c:2339
 msgid "_Minimize All"
 msgstr "_Минимизирај сѐ"
 
-#: ../libwnck/tasklist.c:2309
+#: libwnck/tasklist.c:2350
 msgid "_Unminimize All"
 msgstr "_Врати минимизирани"
 
-#: ../libwnck/window-action-menu.c:211
+#: libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "_Врати минимизирано"
 
-#: ../libwnck/window-action-menu.c:218
+#: libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "_Минимизирај"
 
-#: ../libwnck/window-action-menu.c:226
+#: libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "_Врати максимизирано"
 
-#: ../libwnck/window-action-menu.c:233
+#: libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ма_ксимизирај"
 
-#: ../libwnck/window-action-menu.c:241
+#: libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "_Одвиткај"
 
-#: ../libwnck/window-action-menu.c:248
+#: libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "_Завиткај"
 
-#: ../libwnck/window-action-menu.c:256
+#: libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "_Само на овој работен простор"
 
-#: ../libwnck/window-action-menu.c:263
+#: libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
 msgstr "_Секогаш на тековниот работен простор"
 
-#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:235
+#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно место %d"
 
-#: ../libwnck/window-action-menu.c:386
+#: libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "Работно место 1_0"
 
-#: ../libwnck/window-action-menu.c:388
+#: libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Работно место %s%d"
 
-#: ../libwnck/window-action-menu.c:485
+#: libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "По_мести"
 
-#: ../libwnck/window-action-menu.c:492
+#: libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "_Промени големина"
 
-#: ../libwnck/window-action-menu.c:505
+#: libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "_Затвори"
 
-#: ../libwnck/window-action-menu.c:518
+#: libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Премести на друго _работно место"
 
-#: ../libwnck/window-action-menu.c:542
+#: libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: libwnck/window.c:32
 msgid "untitled window"
 msgstr "Прозорец без наслов"
 
