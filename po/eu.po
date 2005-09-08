@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
+"POT-Creation-Date: 2005-09-08 20:35+0200\n"
 "PO-Revision-Date: 2004-04-16 12:43+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
@@ -18,134 +18,127 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.0.2\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:26
 msgid "untitled application"
 msgstr "izenbururik gabeko aplikazioa"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Laneko arearen aldatzailea"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Laneko area batetik bestera aldatzeko tresna"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Egin klik hemen %s laneko areara aldatzeko"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:218
 msgid "Unknown Window"
-msgstr ""
+msgstr "Leiho ezezaguna"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:645
 msgid "No Windows Open"
-msgstr ""
+msgstr "Ez da leihorik ireki"
 
-#: libwnck/selector.c:747
-#, fuzzy
+#: ../libwnck/selector.c:747
 msgid "Window Selector"
-msgstr "Leiho-zerrenda"
+msgstr "Leiho-hautatzailea"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:748
 msgid "Tool to switch between windows"
-msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
+msgstr "Leiho batetik bestera aldatzeko tresna"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:690
 msgid "Window List"
 msgstr "Leiho-zerrenda"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:691
 msgid "Tool to switch between visible windows"
 msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2324
 msgid "_Close All"
-msgstr "It_xi"
+msgstr "It_xi denak"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2339
 msgid "_Minimize All"
-msgstr "_Ikonotu"
+msgstr "_Minimizatu denak"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2350
 msgid "_Unminimize All"
-msgstr "Le_heneratu"
+msgstr "_Leheneratu denak"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:211
 msgid "Unmi_nimize"
 msgstr "Le_heneratu"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:218
 msgid "Mi_nimize"
 msgstr "_Ikonotu"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:226
 msgid "Unma_ximize"
 msgstr "Leh_eneratu"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:233
 msgid "Ma_ximize"
 msgstr "Ma_ximizatu"
 
-#: libwnck/window-action-menu.c:241
+#: ../libwnck/window-action-menu.c:241
 msgid "_Unroll"
 msgstr "_Zabaldu"
 
-#: libwnck/window-action-menu.c:248
+#: ../libwnck/window-action-menu.c:248
 msgid "Roll _Up"
 msgstr "Bil_du"
 
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:256
 msgid "_Only on This Workspace"
 msgstr "Laneko a_rea honetan bakarrik"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:263
 msgid "_Always on Visible Workspace"
-msgstr "Laneko a_rea honetan bakarrik"
+msgstr "Laneko area ikusgaian _beti"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "%d laneko area"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:386
 msgid "Workspace 1_0"
 msgstr "1_0 laneko area"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:388
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d laneko area"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:485
 msgid "_Move"
 msgstr "_Mugitu"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:492
 msgid "_Resize"
 msgstr "_Aldatu tamaina"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:505
 msgid "_Close"
 msgstr "It_xi"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:518
 msgid "Move to Another _Workspace"
 msgstr "Aldatu beste _laneko areara"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:542
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "izenbururik gabeko leihoa"
 
