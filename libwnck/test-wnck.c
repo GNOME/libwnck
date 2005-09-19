@@ -274,6 +274,9 @@ window_state_changed_callback (WnckWindow     *window,
   if (changed & WNCK_WINDOW_STATE_STICKY)
     g_print (" sticky = %d\n", wnck_window_is_sticky (window));
 
+  if (changed & WNCK_WINDOW_STATE_FULLSCREEN)
+    g_print (" fullscreen = %d\n", wnck_window_is_fullscreen (window));
+
   g_assert ( ((new & WNCK_WINDOW_STATE_MINIMIZED) != 0) ==
              wnck_window_is_minimized (window) );
   g_assert ( ((new & WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY) != 0) ==

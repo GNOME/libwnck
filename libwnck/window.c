@@ -1776,6 +1776,7 @@ update_state (WnckWindow *window)
       window->priv->skip_taskbar = FALSE;
       window->priv->skip_pager = FALSE;
       window->priv->net_wm_state_hidden = FALSE;
+      window->priv->is_fullscreen = FALSE;
       window->priv->demands_attention = FALSE;
       
       atoms = NULL;

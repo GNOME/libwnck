@@ -1,3 +1,14 @@
+2005-09-19  Elijah Newren  <newren@gmail.com>
+
+	Fix lack of detection of removal from fullscreen state; part of
+	the patch from Michael Vogt.  Fixes #316700.
+
+	* libwnck/window.c (update_state): don't forget to initialize
+	window->priv->is_fullscreen to FALSE.
+
+	* libwnck/test-wnck.c (window_state_changed_callback): Notify
+	about fullscreen state changes too
+
 2005-09-05  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.12.1
