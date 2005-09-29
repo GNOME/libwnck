@@ -1,3 +1,15 @@
+2005-09-29  Vincent Untz  <vuntz@gnome.org>
+
+	* .cvsignore: updated
+
+	* Makefile.am:
+	* configure.in: use intltool
+	Based on patch by Rodney Dawes <dobey@novell.com>. Fixes bug #317190
+
+	* gtk-doc.make: should not be in CVS
+	* acconfig.h: ditto
+	* stamp.h.in: ditto
+
 2005-09-19  Elijah Newren  <newren@gmail.com>
 
 	Fix lack of detection of removal from fullscreen state; part of

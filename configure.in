@@ -23,10 +23,11 @@ AC_SUBST(LIBWNCK_CURRENT)
 AC_SUBST(LIBWNCK_REVISION)
 AC_SUBST(LIBWNCK_AGE)
 
+AC_PROG_INTLTOOL([0.34])
+
 AC_PROG_CC
 AC_ISC_POSIX
 AC_HEADER_STDC
-AC_ARG_PROGRAM
 AC_LIBTOOL_WIN32_DLL
 AM_PROG_LIBTOOL
 
@@ -54,7 +55,7 @@ changequote([,])dnl
 
 GETTEXT_PACKAGE=libwnck
 AC_SUBST(GETTEXT_PACKAGE)
-AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE")
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Package name])
 
 ALL_LINGUAS="am ar az be bg bn bs ca cs cy da de el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kn ko li lt lv mi mk ml mn mr ms nb ne nl nn no pa pl pt pt_BR ro ru rw sk sl sq sr sr@Latn sv ta th tr uk vi wa xh zh_CN zh_TW"
 AM_GLIB_GNU_GETTEXT
@@ -69,7 +70,7 @@ AC_PATH_PROG(PKG_CONFIG, pkg-config)
 STARTUP_NOTIFICATION_REQUIRED=0.4
 if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_REQUIRED libstartup-notification-1.0; then
   echo "Building with libstartup-notification"
-  AC_DEFINE(HAVE_STARTUP_NOTIFICATION)
+  AC_DEFINE(HAVE_STARTUP_NOTIFICATION, , [Define if we have libstartup-notification])
   STARTUP_NOTIFICATION_PACKAGE=libstartup-notification-1.0
 else
   echo "Building without libstartup-notification"
