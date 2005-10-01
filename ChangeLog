@@ -1,3 +1,14 @@
+2005-10-01  Elijah Newren  <newren@gmail.com>
+
+	Patch from Denis Jacquerye to add a test-selector program for
+	testing; it doesn't get installed, so this isn't breaking any
+	freezes.  Fixes #165269.
+
+	* libwnck/test-selector.c: new file
+
+	* libwnck/Makefile.am: Make sure to include the new test-selector
+	program, but don't install it
+
 2005-09-29  Vincent Untz  <vuntz@gnome.org>
 
 	* .cvsignore: updated

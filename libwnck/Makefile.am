@@ -65,12 +65,16 @@ test_wnck_SOURCES=		\
 test_tasklist_SOURCES=		\
 	test-tasklist.c
 
+test_selector_SOURCES=		\
+	test-selector.c
+
 test_pager_SOURCES=		\
 	test-pager.c
 
 noinst_PROGRAMS=		\
 	test-pager		\
 	test-wnck		\
+	test-selector		\
 	test-tasklist
 
 libwnck_1_la_LDFLAGS=								    \
@@ -83,6 +87,7 @@ libwnck_1_la_LIBADD=   \
 
 test_wnck_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 test_tasklist_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
+test_selector_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 test_pager_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
 
 ## we just punt on built sources, and check them into cvs, manually updating 
