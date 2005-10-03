@@ -748,7 +748,6 @@ wnck_tasklist_free_skipped_windows (WnckTasklist  *tasklist)
     }
   
   g_list_free (tasklist->priv->skipped_windows);
-  tasklist->priv->skipped_windows = NULL;
 }
 
 static void
@@ -767,7 +766,10 @@ wnck_tasklist_finalize (GObject *object)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
   
   if (tasklist->priv->skipped_windows)
-    wnck_tasklist_free_skipped_windows (tasklist);
+    {
+      wnck_tasklist_free_skipped_windows (tasklist);
+      tasklist->priv->skipped_windows = NULL;
+    }
   
   wnck_tasklist_disconnect_screen (tasklist);
 
@@ -1707,7 +1709,10 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
     }
   
   if (tasklist->priv->skipped_windows)
-    wnck_tasklist_free_skipped_windows (tasklist);
+    {
+      wnck_tasklist_free_skipped_windows (tasklist);
+      tasklist->priv->skipped_windows = NULL;
+    }
   
   g_assert (tasklist->priv->class_groups == NULL);
   g_assert (g_hash_table_size (tasklist->priv->class_group_hash) == 0);

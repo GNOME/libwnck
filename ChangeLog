@@ -1,5 +1,15 @@
 2005-10-03  Elijah Newren  <newren@gmail.com>
 
+	As suggested by Vincent in bug 163293...
+
+	* libwnck/tasklist.c (wnck_tasklist_free_skipped_windows,
+	wnck_tasklist_finalize, wnck_tasklist_free_tasks): have the caller
+	of wnck_tasklist_free_skipped_windows() set
+	tasklist->priv->skipped_windows to NULL instead of having
+	wnck_tasklist_free_skipped_windows() do it
+
+2005-10-03  Elijah Newren  <newren@gmail.com>
+
 	* NEWS: I didn't assist Denis with the patch for bug 165269 at
 	all; I merely committed it.
 
