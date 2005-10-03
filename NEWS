@@ -1,3 +1,23 @@
+2.12.1
+=======
+
+ Features
+
+  - add a test-selector program for testing. It doesn't get installed.
+    (Denis Jacquerye, Elijah) [#165269]
+
+ Fixes
+
+  - Use intltool & various other build enhanements (Rodney Dawes, Vincent)
+    [#317190]
+  - Detect windows that are removed from the skip_taskbar state (Jochen Baier)
+    [#163293]
+
+ Translators
+
+  - Mahay Alam Khan (bn)
+  - Iñaki Larrañaga Murgoitio (eu)
+
 2.12.0
 =======
 
