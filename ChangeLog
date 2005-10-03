@@ -1,3 +1,24 @@
+2005-09-30  Jochen Baier  <Jochen.Baier@stud.uni-karlsruhe.de>
+
+	Detect windows that are removed from the skip_taskbar state.
+	Fixes #163293.
+
+	* libwnck/tasklist.c (struct skipped_window): new struct, (struct
+	WnckTasklistPrivate): include a list of skipped windows,
+	(wnck_task_state_changed): need to provide a prototype early on
+	because we want to call it earlier in the code,
+	(wnck_tasklist_init): initialize skipped_windows,
+	(wnck_tasklist_free_skipped_windows): new function,
+	(wnck_tasklist_finalize, wnck_tasklist_free_tasks): free the
+	skipped_windows, (tasklist_include_window_ignoring_skip_taskbar):
+	new function doing most the work that
+	wnck_tasklist_include_window() used to do,
+	(wnck_tasklist_include_window): keep the skip_tasklist check but
+	have tasklist_include_window_ignoring_skip_taskbar() do the rest,
+	(wnck_tasklist_update_lists): have windows that would otherwise be
+	included if it weren't for the skip_taskbar thingy be placed in
+	the skipped_windows list
+
 2005-10-01  Elijah Newren  <newren@gmail.com>
 
 	Patch from Denis Jacquerye to add a test-selector program for

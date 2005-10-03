@@ -134,6 +134,12 @@ struct _WnckTaskClass
   GObjectClass parent_class;
 };
 
+typedef struct _skipped_window
+{
+  WnckWindow *window;
+  gulong tag;
+} skipped_window;
+
 struct _WnckTasklistPrivate
 {
   WnckScreen *screen;
@@ -150,6 +156,11 @@ struct _WnckTasklistPrivate
   /* Not handled by update_lists */
   GList *startup_sequences;
   
+  /* windows with _NET_WM_STATE_SKIP_TASKBAR set; connected to 
+   * "state_changed" signal, but excluded from tasklist.
+   */
+  GList *skipped_windows; 
+
   GHashTable *class_group_hash;
   GHashTable *win_hash;
   
@@ -209,8 +220,10 @@ static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
 static gint       wnck_task_compare  (gconstpointer  a,
 				      gconstpointer  b);
 static void       wnck_task_update_visible_state (WnckTask *task);
-
-
+static void       wnck_task_state_changed        (WnckWindow      *window,
+                                                  WnckWindowState  changed_mask, 
+                                                  WnckWindowState  new_state,
+                                                  gpointer         data);
 static void wnck_tasklist_init        (WnckTasklist      *tasklist);
 static void wnck_tasklist_class_init  (WnckTasklistClass *klass);
 static void wnck_tasklist_finalize    (GObject        *object);
@@ -686,6 +699,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->monitor_num = -1;
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
 
+  tasklist->priv->skipped_windows = NULL;
+
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
@@ -717,6 +732,26 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
 }
 
 static void
+wnck_tasklist_free_skipped_windows (WnckTasklist  *tasklist)
+{
+  GList *l;
+  
+  l = tasklist->priv->skipped_windows;
+  
+  while (l != NULL)
+    {
+      skipped_window *skipped = (skipped_window*) l->data;
+      g_signal_handler_disconnect (skipped->window, skipped->tag);
+      g_object_unref (skipped->window);
+      g_free (skipped);
+      l = l->next;
+    }
+  
+  g_list_free (tasklist->priv->skipped_windows);
+  tasklist->priv->skipped_windows = NULL;
+}
+
+static void
 wnck_tasklist_finalize (GObject *object)
 {
   WnckTasklist *tasklist;
@@ -730,6 +765,9 @@ wnck_tasklist_finalize (GObject *object)
 
   if (tasklist->priv->free_icon_loader_data != NULL)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
+  
+  if (tasklist->priv->skipped_windows)
+    wnck_tasklist_free_skipped_windows (tasklist);
   
   wnck_tasklist_disconnect_screen (tasklist);
 
@@ -1667,6 +1705,10 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 	  gtk_widget_destroy (task->button);
 	}
     }
+  
+  if (tasklist->priv->skipped_windows)
+    wnck_tasklist_free_skipped_windows (tasklist);
+  
   g_assert (tasklist->priv->class_groups == NULL);
   g_assert (g_hash_table_size (tasklist->priv->class_group_hash) == 0);
 }
@@ -1676,13 +1718,11 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
  * This function determines if a window should be included in the tasklist.
  */
 static gboolean
-wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
+tasklist_include_window_ignoring_skip_taskbar (WnckTasklist *tasklist,
+                                               WnckWindow *win)
 {
   WnckWorkspace *active_workspace;
   int x, y, w, h;
-
-  if (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
-    return FALSE;
 
   if (tasklist->priv->monitor_num != -1)
     {
@@ -1710,6 +1750,15 @@ wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
     return TRUE;
 
   return wnck_window_is_in_viewport (win, active_workspace);
+}
+
+static gboolean
+wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
+{
+  if (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
+    return FALSE;
+
+  return tasklist_include_window_ignoring_skip_taskbar (tasklist, win);
 }
 
 static void
@@ -1782,6 +1831,18 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	  
 	  class_group_task->windows = g_list_prepend (class_group_task->windows, win_task);
 	}
+      else if (tasklist_include_window_ignoring_skip_taskbar (tasklist, win))
+        {
+          skipped_window *skipped = g_new0 (skipped_window, 1);
+          skipped->window = g_object_ref (win);
+          skipped->tag = g_signal_connect (G_OBJECT (win),
+                                           "state_changed",
+                                           G_CALLBACK (wnck_task_state_changed),
+                                           tasklist);
+          tasklist->priv->skipped_windows = 
+            g_list_prepend (tasklist->priv->skipped_windows,
+                            (gpointer) skipped);
+        }
       
       l = l->next;
     }
