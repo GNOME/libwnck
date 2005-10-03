@@ -1,3 +1,8 @@
+2005-10-03  Elijah Newren  <newren@gmail.com>
+
+	* NEWS: I didn't assist Denis with the patch for bug 165269 at
+	all; I merely committed it.
+
 2005-10-03  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.12.2
