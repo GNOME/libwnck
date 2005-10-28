@@ -1,3 +1,7 @@
+2005-10-28  Erdal Ronahi  <erdal.ronahi@gmail.com>
+
+	* configure.in: Added ku (Kurdish) to ALL_LINGUAS
+
 2005-10-03  Elijah Newren  <newren@gmail.com>
 
 	As suggested by Vincent in bug 163293...
