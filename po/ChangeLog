@@ -1,3 +1,10 @@
+2005-11-21  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* nb.po: Fix some errors reported by Sindre Bjørdal
+	in https://bugzilla.redhat.com/bugzilla/show_bug.cgi?id=162622
+	* nn.po: Same.
+	* no.po: Same.
+
 2005-11-16  Priit Laes  <plaes@cvs.gnome.org>
 
 	* et.po: Translation updated by Ivar Smolin.
