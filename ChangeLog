@@ -1,5 +1,18 @@
 2005-12-04  Vincent Untz  <vuntz@gnome.org>
 
+	Add scrolling support to the tasklist. Patch by Xavier Claessens
+	<x_claessens@skynet.be>. Fix bug #309956.
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_allocate): recreate the list
+	of windows here, but have it sorted
+	(wnck_tasklist_scroll_cb): new
+	(wnck_tasklist_new): connect to scroll-event
+	(wnck_task_compare): add a comment here about the fact that the
+	windows sort used for scrolling depends on the position of the
+	sequences in the sort
+
+2005-12-04  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in:
 	* libwnck/xutils.c: remove old hack for old versions of GTK+
 

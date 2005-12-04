@@ -127,6 +127,9 @@ struct _WnckTask
   gdouble glow_start_time;
   
   guint button_glow;
+  
+  guint row;
+  guint col;
 };
 
 struct _WnckTaskClass
@@ -1295,6 +1298,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   GList *ungrouped_class_groups;
   WnckTask *win_task;
   GList *visible_tasks = NULL;
+  GList *windows_sorted = NULL;
   int grouping_limit;
   
   tasklist = WNCK_TASKLIST (widget);
@@ -1413,6 +1417,24 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       gtk_widget_size_allocate (task->button, &child_allocation);
       gtk_widget_set_child_visible (GTK_WIDGET (task->button), TRUE);
 
+      if (task->type != WNCK_TASK_STARTUP_SEQUENCE)
+        {
+          GList *ll;
+          
+          /* Build sorted windows list */
+          if (g_list_length (task->windows) > 1)
+            windows_sorted = g_list_concat (windows_sorted,
+                                           g_list_copy (task->windows));
+          else
+            windows_sorted = g_list_append (windows_sorted, task);
+          task->row = row;
+          task->col = col;
+          for (ll = task->windows; ll; ll = ll->next)
+            {
+              WNCK_TASK (ll->data)->row = row;
+              WNCK_TASK (ll->data)->col = col;
+            }
+        }
       i++;
       l = l->next;
     }
@@ -1421,7 +1443,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   wnck_tasklist_update_icon_geometries (tasklist, visible_tasks);
   
   g_list_free (visible_tasks);
-  
+  g_list_free (tasklist->priv->windows);
+  tasklist->priv->windows = windows_sorted;
+ 
   GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
 }
 
@@ -1654,6 +1678,86 @@ wnck_tasklist_set_screen (WnckTasklist *tasklist,
   wnck_tasklist_connect_screen (tasklist, screen);
 }
 
+static gboolean
+wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
+                         GdkEventScroll *event,
+                         gpointer user_data)
+{
+  /* use the fact that tasklist->priv->windows is sorted is sorted
+   * see wnck_tasklist_size_allocate() */
+  GList *window;
+  gint row = 0;
+  gint col = 0;
+
+  window = g_list_find (tasklist->priv->windows,
+                        tasklist->priv->active_task);
+  if (window)
+    {
+      row = WNCK_TASK (window->data)->row;
+      col = WNCK_TASK (window->data)->col;
+    }
+  else
+    if (tasklist->priv->activate_timeout_id)
+      /* There is no active_task yet, but there will be one after the timeout.
+       * It occurs if we change the active task too fast. */
+      return TRUE;
+
+  switch (event->direction)
+    {
+      case GDK_SCROLL_UP:
+        if (!window)
+          window = g_list_last (tasklist->priv->windows);
+        else
+          window = window->prev;
+      break;
+
+      case GDK_SCROLL_DOWN:
+        if (!window)
+          window = tasklist->priv->windows;
+        else
+          window = window->next;
+      break;
+
+      case GDK_SCROLL_LEFT:
+        if (!window)
+          window = g_list_last (tasklist->priv->windows);
+        else
+          {
+            /* Search the first window on the previous colomn at same row */
+            while (window && (WNCK_TASK(window->data)->row != row ||
+                              WNCK_TASK(window->data)->col != col-1))
+              window = window->prev;
+            /* If no window found, select the first one */
+            if (!window)
+              window = tasklist->priv->windows;
+          }
+      break;
+
+      case GDK_SCROLL_RIGHT:
+        if (!window)
+          window = tasklist->priv->windows;
+        else
+          {
+            /* Search the first window on the next colomn at same row */
+            while (window && (WNCK_TASK(window->data)->row != row ||
+                              WNCK_TASK(window->data)->col != col+1))
+              window = window->next;
+            /* If no window found, select the last one */
+            if (!window)
+              window = g_list_last (tasklist->priv->windows);
+          }
+      break;
+
+      default:
+        g_assert_not_reached ();
+    }
+
+  if (window)
+    wnck_tasklist_activate_task_window (window->data, event->time);
+
+  return TRUE;
+}
+
 GtkWidget*
 wnck_tasklist_new (WnckScreen *screen)
 {
@@ -1667,6 +1771,13 @@ wnck_tasklist_new (WnckScreen *screen)
 
   wnck_tasklist_set_screen (tasklist, screen);
 
+  /* callback when there is a scroll-event for switching to the next window  */
+  g_signal_connect_object (G_OBJECT (tasklist),
+                           "scroll-event",
+                           G_CALLBACK (wnck_tasklist_scroll_cb),
+                           G_OBJECT (tasklist),
+                           0);
+  
   return GTK_WIDGET (tasklist);
 }
 
@@ -3158,8 +3269,8 @@ wnck_task_compare (gconstpointer  a,
       pos1 = wnck_window_get_sort_order (task1->window);
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
-      pos1 = G_MAXINT;
-      break;
+      pos1 = G_MAXINT; /* startup sequences are sorted at the end. */
+      break;           /* Changing this will break scrolling.      */
     }
 
   switch (task2->type)
