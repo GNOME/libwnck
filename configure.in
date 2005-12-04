@@ -131,12 +131,6 @@ fi
 
 AC_SUBST(GDK_PIXBUF_CSOURCE)
 
-## hack to work with old GTK versions for now 
-save_LDFLAGS=$LDFLAGS
-LDFLAGS="$LIBWNCK_LIBS $LDFLAGS"
-AC_CHECK_FUNCS(gdk_pixbuf_new_from_stream)
-LDFLAGS=$save_LDFLAGS
-
 dnl Honor ACLOCAL_FLAGS for --enable-maintainer-mode
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 

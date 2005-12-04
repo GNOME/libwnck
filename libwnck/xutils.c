@@ -2143,10 +2143,6 @@ _wnck_read_icons (Window         xwindow,
   return FALSE;
 }
 
-#ifdef HAVE_GDK_PIXBUF_NEW_FROM_STREAM
-#define gdk_pixbuf_new_from_inline gdk_pixbuf_new_from_stream
-#endif
-
 static GdkPixbuf*
 default_icon_at_size (int width,
                       int height)
