@@ -1,3 +1,21 @@
+2.13.3
+=======
+
+ Features
+
+  - Add scrolling support to the tasklist (Xavier Claessens)
+
+ Misc
+
+  - Remove old hack (Vincent)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Kjartan Maraas (nb)
+  - Kjartan Maraas (nn)
+  - Kjartan Maraas (no)
+
 2.13.1
 =======
 
