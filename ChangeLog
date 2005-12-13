@@ -1,3 +1,13 @@
+2005-12-13  Vincent Untz  <vuntz@gnome.org>
+
+	Fix critical warning, bug #149326.
+
+	* libwnck/tasklist.c: (wnck_tasklist_init): move the code changing
+	the list of tasklist instances...
+	(wnck_tasklist_realize): ... here
+	(wnck_tasklist_finalize): ditto, moving the code...
+	(wnck_tasklist_unrealize): there
+
 2005-12-12  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.13.4
