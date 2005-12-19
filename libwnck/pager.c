@@ -291,17 +291,27 @@ wnck_pager_size_request  (GtkWidget      *widget,
   int size;
   int n_rows;
   int focus_width;
-  
+  WnckWorkspace *space;
+
   pager = WNCK_PAGER (widget);
   
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
   g_assert (pager->priv->n_rows > 0);
   spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
- 
+  space = wnck_screen_get_workspace (pager->priv->screen, 0);
+  
   if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
     {
-      screen_aspect = (double) gdk_screen_height () / (double) gdk_screen_width ();
+      if (space) {
+        screen_aspect =
+              (double) wnck_workspace_get_height (space) /
+              (double) wnck_workspace_get_width (space);
+      } else {
+        screen_aspect =
+              (double) wnck_screen_get_height (pager->priv->screen) /
+              (double) wnck_screen_get_width (pager->priv->screen);
+      }
 
       /* TODO: Handle WNCK_PAGER_DISPLAY_NAME for this case */
 
@@ -324,10 +334,16 @@ wnck_pager_size_request  (GtkWidget      *widget,
     }
   else
     {
-      screen_aspect =
-        (double) wnck_screen_get_width (pager->priv->screen) /
-        (double) wnck_screen_get_height (pager->priv->screen);
-      
+      if (space) {
+        screen_aspect =
+              (double) wnck_workspace_get_width (space) /
+              (double) wnck_workspace_get_height (space);
+      } else {
+        screen_aspect =
+              (double) wnck_screen_get_width (pager->priv->screen) /
+              (double) wnck_screen_get_height (pager->priv->screen);
+      }
+
       if (pager->priv->show_all_workspaces)
 	{
 	  size = pager->priv->workspace_size;

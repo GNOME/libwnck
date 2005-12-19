@@ -1,5 +1,13 @@
 2005-12-19  Vincent Untz  <vuntz@gnome.org>
 
+	Use virtual desktop size when computing size of pager.
+	Bug #311863. Based on patch by Loïc Minier <lool+gnome@via.ecp.fr>
+
+	* libwnck/pager.c: (wnck_pager_size_request): use workspace sizes when
+	available
+
+2005-12-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_tasklist_get_size_hint_list): add a
 	warning if argument is not valid
 
