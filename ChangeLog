@@ -1,5 +1,13 @@
 2005-12-19  Vincent Untz  <vuntz@gnome.org>
 
+	Change active window when scrolling on the selector.
+	Fix bug #323238. Patch by Nigel Tao <nigel.tao@myrealbox.com>
+
+	* libwnck/selector.c: (wnck_selector_scroll_cb): new
+	(wnck_selector_fill): connect to "scroll-event"
+
+2005-12-19  Vincent Untz  <vuntz@gnome.org>
+
 	Use virtual desktop size when computing size of pager.
 	Bug #311863. Based on patch by Loïc Minier <lool+gnome@via.ecp.fr>
 

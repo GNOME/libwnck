@@ -590,6 +590,84 @@ wnck_selector_destroy_menu (GtkWidget *widget, WnckSelector *selector)
   priv->no_windows_item = NULL;
 }
 
+static gboolean
+wnck_selector_scroll_cb (WnckSelector *selector,
+                         GdkEventScroll *event,
+                         gpointer user_data)
+{
+  WnckScreen *screen;
+  WnckWorkspace *workspace;
+  GList *windows_list;
+  GList *l;
+  WnckWindow *window;
+  WnckWindow *previous_window;
+  gboolean should_activate_next_window;
+
+  screen = wnck_selector_get_screen (selector);
+  workspace = wnck_screen_get_active_workspace (screen);
+  windows_list = wnck_screen_get_windows (screen);
+
+  /* Walk through the list of windows until we find the active one
+   * (considering only those windows on the same workspace).
+   * Then, depending on whether we're scrolling up or down, activate the next
+   * window in the list (if it exists), or the previous one.
+   * Note that earlier windows in the GList* windows_list are shown lower in the
+   * menu, and later windows higher, since the windows are added with
+   * gtk_menu_shell_prepend in the function wnck_selector_add_window.
+   * Thus, a SCROLL_DOWN should activate the previous window in the list, and
+   * a SCROLL_UP should activate the next window in the list.
+   */
+  previous_window = NULL;
+  should_activate_next_window = FALSE;
+  for (l = windows_list; l; l = l->next)
+    {
+      window = WNCK_WINDOW (l->data);
+
+      if (wnck_window_is_skip_tasklist (window))
+        continue;
+
+      if (workspace && wnck_window_get_workspace (window) != workspace)
+        continue;
+
+      if (should_activate_next_window)
+        {
+          wnck_window_activate_transient (window, event->time);
+          return TRUE;
+        }
+
+      if (wnck_window_is_active (window))
+        {
+          switch (event->direction)
+            {
+              case GDK_SCROLL_UP:
+                should_activate_next_window = TRUE;
+              break;
+
+              case GDK_SCROLL_DOWN:
+                if (previous_window != NULL)
+                  {
+                    wnck_window_activate_transient (previous_window,
+                                                    event->time);
+                    return TRUE;
+                  }
+              break;
+
+              case GDK_SCROLL_LEFT:
+              case GDK_SCROLL_RIGHT:
+                /* We ignore LEFT and RIGHT scroll events. */
+              break;
+
+              default:
+                g_assert_not_reached ();
+            }
+        }
+
+      previous_window = window;
+    }
+  
+  return TRUE;
+}
+
 static void
 wnck_selector_menu_hidden (GtkWidget *menu, WnckSelector *selector)
 {
@@ -679,6 +757,8 @@ wnck_selector_fill (WnckSelector *selector)
 
   g_signal_connect (selector, "destroy",
                     G_CALLBACK (wnck_selector_destroy), selector);
+  g_signal_connect (selector, "scroll-event",
+                    G_CALLBACK (wnck_selector_scroll_cb), selector);
 
   priv->menu_item = gtk_menu_item_new ();
   gtk_widget_show (priv->menu_item);
@@ -783,5 +863,6 @@ wnck_selector_new (WnckScreen *screen)
   priv = WNCK_SELECTOR_GET_PRIVATE (selector);
   priv->screen = screen;
   wnck_selector_fill (selector);
+
   return GTK_WIDGET (selector);
 }
