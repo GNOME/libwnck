@@ -1,3 +1,14 @@
+2005-12-19  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_get_size_hint_list): add a
+	warning if argument is not valid
+
+	Sort window in a group alphabetically. Fix bug #171804.
+	Based on patch by Xavier Claessens <xclaesse@gmail.com>
+
+	* libwnck/tasklist.c: (wnck_task_compare_alphabetically): new
+	(wnck_tasklist_size_allocate): sort windows in a group
+
 2005-12-13  Vincent Untz  <vuntz@gnome.org>
 
 	Fix critical warning, bug #149326.

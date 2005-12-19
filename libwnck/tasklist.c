@@ -220,6 +220,8 @@ static gboolean wnck_task_get_needs_attention (WnckTask *task);
 
 static char      *wnck_task_get_text (WnckTask *task, gboolean icon_text);
 static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
+static gint       wnck_task_compare_alphabetically (gconstpointer  a,
+                                                    gconstpointer  b);
 static gint       wnck_task_compare  (gconstpointer  a,
 				      gconstpointer  b);
 static void       wnck_task_update_visible_state (WnckTask *task);
@@ -1264,6 +1266,8 @@ const int *
 wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 				  int           *n_elements)
 {
+  g_return_val_if_fail (n_elements != NULL, NULL);
+
   *n_elements = tasklist->priv->size_hints_len;
   return tasklist->priv->size_hints;
 }
@@ -1326,6 +1330,10 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       if (g_list_length (class_group_task->windows) > 1)
 	{
 	  visible_tasks = g_list_prepend (visible_tasks, class_group_task);
+
+          /* Sort */
+          class_group_task->windows = g_list_sort (class_group_task->windows,
+                                                   wnck_task_compare_alphabetically);
 	  
 	  /* Hide all this group's windows */
 	  l = class_group_task->windows;
@@ -3232,6 +3240,25 @@ wnck_task_expose (GtkWidget        *widget,
     }
 
   return FALSE;
+}
+
+static gint
+wnck_task_compare_alphabetically (gconstpointer a,
+                                  gconstpointer b)
+{
+  char *text1;
+  char *text2;
+  gint  result;
+
+  text1 = wnck_task_get_text (WNCK_TASK (a), FALSE);
+  text2 = wnck_task_get_text (WNCK_TASK (b), FALSE);
+
+  result= g_utf8_collate (text1, text2);
+
+  g_free (text1);
+  g_free (text2);
+
+  return result;
 }
 
 static gint
