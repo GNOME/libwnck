@@ -1,3 +1,16 @@
+2.13.4
+======
+
+ Features
+
+  - Sort window in a group alphabetically (Xavier Claessens, Vincent)
+  - Change active window when scrolling on the selector (Nigel Tao)
+
+ Fixes
+
+  - Remove critical warning (Vincent)
+  - Use virtual desktop size when computing size of pager (Loic Minier, Vincent)
+
 2.13.3
 =======
 

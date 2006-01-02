@@ -1,3 +1,8 @@
+2006-02-01  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.13.4
+
 2005-12-19  Vincent Untz  <vuntz@gnome.org>
 
 	Change active window when scrolling on the selector.
