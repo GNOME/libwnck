@@ -842,7 +842,7 @@ _wnck_close (Screen *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = timestamp;
-  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[1] = _wnck_get_client_type ();
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -883,7 +883,7 @@ _wnck_keyboard_move (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_MOVE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = 0;
+  xev.xclient.data.l[4] = _wnck_get_client_type ();
 
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
@@ -909,7 +909,7 @@ _wnck_keyboard_size (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_SIZE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = 0;
+  xev.xclient.data.l[4] = _wnck_get_client_type ();
 
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
@@ -941,7 +941,7 @@ _wnck_change_state (Screen  *screen,
   xev.xclient.data.l[0] = add ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
   xev.xclient.data.l[1] = state1;
   xev.xclient.data.l[2] = state2;
-  xev.xclient.data.l[3] = 0;
+  xev.xclient.data.l[3] = _wnck_get_client_type ();
   xev.xclient.data.l[4] = 0;
 
   XSendEvent (gdk_display,
@@ -966,7 +966,7 @@ _wnck_change_workspace (Screen     *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_space;
-  xev.xclient.data.l[1] = 0;
+  xev.xclient.data.l[1] = _wnck_get_client_type ();
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -996,7 +996,7 @@ _wnck_activate (Screen *screen,
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
   xev.xclient.format = 32;
-  xev.xclient.data.l[0] = 2;
+  xev.xclient.data.l[0] = _wnck_get_client_type ();
   xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;

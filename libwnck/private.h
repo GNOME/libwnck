@@ -30,6 +30,7 @@
 #include "application.h"
 #include "xutils.h"
 #include "pager.h"
+#include "util.h"
 #ifdef HAVE_STARTUP_NOTIFICATION
 #include <libsn/sn.h>
 #endif
@@ -39,6 +40,8 @@ G_BEGIN_DECLS
 #define _(x) dgettext (GETTEXT_PACKAGE, x)
 
 #define WNCK_ACTIVATE_TIMEOUT 1000
+
+WnckClientType _wnck_get_client_type ();
 
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);

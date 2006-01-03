@@ -1,10 +1,37 @@
-2006-02-01  Vincent Untz  <vuntz@gnome.org>
+2006-01-03  Elijah Newren  <newren@gmail.com>
+
+	Quit wrongly specifying the source indication in EWMH messages
+	where we did so, and start specifying the source indication where
+	we didn't even specify it.  Requires 'pager' (as defined in the
+	EWMH) apps to register as such to get this right.  Fixes #325556.
+
+	* libwnck/private.h (_wnck_get_client_type): 
+	* libwnck/util.h (enum WnckClientType, wnck_set_client_type):
+	* libwnck/util.c (wnck_set_client_type, _wnck_get_client_type):
+	New functions and an accompanying enum
+
+	* libwnck/util.c (static WnckClientType client_type):
+	static var for tracking what the client type is
+	
+	* libwnck/xutils.c (_wnck_close, _wnck_keyboard_move,
+	_wnck_keyboard_size, _wnck_change_state, _wnck_change_workspace,
+	_wnck_activate):
+	Use _wnck_get_client_type() to determine the source indication
+	field instead of leaving it unspecified or taking a random (and
+	usually wrong) guess.
+
+	* configure.in: Interface addition, so make some random change to
+	CURRENT/REVISION/AGE that looks right.  After googling and looking
+	at a number of other modules, it's nowhere close to clear to me as
+	to how this is supposed to change.
+	
+2006-01-02  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.13.5
 
 ==================== 2.13.4 ====================
 
-2006-02-01  Vincent Untz  <vuntz@gnome.org>
+2006-01-02  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in:
 	* NEWS: version 2.13.4

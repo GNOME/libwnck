@@ -233,6 +233,32 @@ wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
     }
 }
 
+static WnckClientType client_type = 0;
+
+void
+wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
+{
+  /* Clients constantly switching types makes no sense; this should only be
+   * set once.
+   */
+  if (client_type != 0)
+    g_critical ("wnck_set_client_type got called multiple times.\n");
+  else
+    client_type = ewmh_sourceindication_client_type;
+}
+
+WnckClientType
+_wnck_get_client_type ()
+{
+  /* If the type hasn't been set yet, use the default--treat it as a
+   * normal application.
+   */
+  if (client_type == 0)
+    client_type = WNCK_CLIENT_TYPE_APPLICATION;
+
+  return client_type;
+}
+
 void
 _wnck_init (void)
 {
