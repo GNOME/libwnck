@@ -1,4 +1,4 @@
-SUBDIRS = doc libwnck po
+SUBDIRS = libwnck doc po
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libwnck-1.0.pc

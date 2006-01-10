@@ -1,3 +1,9 @@
+2006-01-10  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* Makefile.am:
+	  since the library needs to be built before the docs can scan it,
+	  descend into libwnck first
+
 2006-01-06  Abel Cheung  <maddog@linuxhall.org>
 
 	* configure.in: Added "zh_HK" to ALL_LINGUAS.
