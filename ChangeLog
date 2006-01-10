@@ -1,5 +1,11 @@
 2006-01-10  Thomas Vander Stichele  <thomas at apestaart dot org>
 
+	* doc/libwnck-sections.txt:
+	  add this file to CVS, as is done in other modules, so that
+	  a clean build from CVS works
+
+2006-01-10  Thomas Vander Stichele  <thomas at apestaart dot org>
+
 	* Makefile.am:
 	  since the library needs to be built before the docs can scan it,
 	  descend into libwnck first
