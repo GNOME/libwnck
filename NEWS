@@ -1,3 +1,15 @@
+2.13.5
+======
+
+ Fixes
+
+  - Correctly specify the source indication (Elijah)
+  - Doc generation fixes (Thomas Vander Stichele)
+
+ Translations
+
+  - Abel Cheung (zh_HK)
+
 2.13.4
 ======
 
