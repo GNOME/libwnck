@@ -17,12 +17,28 @@ util
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### ENUM WnckClientType ##### -->
+<para>
+
+</para>
+
+@WNCK_CLIENT_TYPE_APPLICATION: 
+@WNCK_CLIENT_TYPE_PAGER: 
+
 <!-- ##### FUNCTION wnck_gtk_window_set_dock_type ##### -->
 <para>
 
 </para>
 
 @window: 
+
+
+<!-- ##### FUNCTION wnck_set_client_type ##### -->
+<para>
+
+</para>
+
+@ewmh_sourceindication_client_type: 
 
 
 <!-- ##### FUNCTION wnck_xid_read_resource_usage ##### -->
