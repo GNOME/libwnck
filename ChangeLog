@@ -1,3 +1,14 @@
+2006-01-17  Elijah Newren  <newren gmail com>
+
+	Thanks to Bart Vanbrabant for lots of debugging and testing work.
+
+	* libwnck/selector.c (wnck_selector_activate_window): Make sure
+	return value of wnck_window_get_workspace() is a valid workspace
+	before trying to activate it.  Fixes #327435.
+
+	* libwnck/tasklist.c (wnck_tasklist_active_window_changed): Fix
+	coding style violation -- space before parens.  :)
+
 2006-01-16  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.13.90

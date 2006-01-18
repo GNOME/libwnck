@@ -2095,7 +2095,7 @@ wnck_tasklist_active_window_changed (WnckScreen   *screen,
   /* FIXME: check for group modal window */
   for (active_window = wnck_screen_get_active_window (screen);
        active_window && !active_task;
-       active_window = wnck_window_get_transient(active_window))
+       active_window = wnck_window_get_transient (active_window))
     active_task = g_hash_table_lookup (tasklist->priv->win_hash,
                                        active_window);
 
