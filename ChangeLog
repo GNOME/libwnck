@@ -1,3 +1,10 @@
+2006-01-21  Elijah Newren  <newren gmail com>
+
+	* libwnck/tasklist.c (tasklist_include_window_ignoring_skip_taskbar):
+	include demands-attention/urgent windows unconditionally in
+	tasklist; this should help users not miss important windows on
+	other workspaces.  #305979
+
 2006-01-17  Elijah Newren  <newren gmail com>
 
 	Thanks to Bart Vanbrabant for lots of debugging and testing work.
