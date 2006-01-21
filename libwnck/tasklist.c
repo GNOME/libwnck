@@ -299,52 +299,6 @@ static gpointer tasklist_parent_class;
  */
 static GSList *tasklist_instances;
 
-/**
- * make_gtk_label_bold.
- *
- * Switches the font of label to a bold equivalent.
- * @label: The label.
- **/
-static void
-make_gtk_label_bold (GtkLabel *label)
-{
-  PangoFontDescription *font_desc;
-
-  font_desc = pango_font_description_new ();
-
-  pango_font_description_set_weight (font_desc,
-                                     PANGO_WEIGHT_BOLD);
-
-  /* This will only affect the weight of the font, the rest is
-   * from the current state of the widget, which comes from the
-   * theme or user prefs, since the font desc only has the
-   * weight flag turned on.
-   */
-  gtk_widget_modify_font (GTK_WIDGET (label), font_desc);
-
-  pango_font_description_free (font_desc);
-}
-
-static void
-make_gtk_label_normal (GtkLabel *label)
-{
-  PangoFontDescription *font_desc;
-
-  font_desc = pango_font_description_new ();
-
-  pango_font_description_set_weight (font_desc,
-                                     PANGO_WEIGHT_NORMAL);
-
-  /* This will only affect the weight of the font, the rest is
-   * from the current state of the widget, which comes from the
-   * theme or user prefs, since the font desc only has the
-   * weight flag turned on.
-   */
-  gtk_widget_modify_font (GTK_WIDGET (label), font_desc);
-
-  pango_font_description_free (font_desc);
-}
-
 static GType
 wnck_task_get_type (void) G_GNUC_CONST;
 
@@ -2466,7 +2420,7 @@ wnck_task_popup_menu (WnckTask *task,
       text = wnck_task_get_text (win_task, FALSE);
       menu_item = gtk_image_menu_item_new_with_label (text);
       if (wnck_task_get_needs_attention (win_task)) 
-        make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
+        _make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
       g_free (text);
       
       pixbuf = wnck_task_get_icon (win_task);
@@ -2829,12 +2783,12 @@ wnck_task_update_visible_state (WnckTask *task)
       gtk_label_set_text (GTK_LABEL (task->label), text);
       if (wnck_task_get_needs_attention (task))
         {
-          make_gtk_label_bold ((GTK_LABEL (task->label)));
+          _make_gtk_label_bold ((GTK_LABEL (task->label)));
           wnck_task_queue_glow (task);
         }
       else
         {
-          make_gtk_label_normal ((GTK_LABEL (task->label)));
+          _make_gtk_label_normal ((GTK_LABEL (task->label)));
           wnck_task_stop_glow (task);
         }
       g_free (text);
@@ -3094,7 +3048,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   if (wnck_task_get_needs_attention (task))
     {
-      make_gtk_label_bold ((GTK_LABEL (task->label)));
+      _make_gtk_label_bold ((GTK_LABEL (task->label)));
       wnck_task_queue_glow (task);
     }
 
