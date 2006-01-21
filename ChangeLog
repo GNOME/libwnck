@@ -1,3 +1,44 @@
+2006-01-21  Srirama Sharma  <srirama.sharma@wipro.com>
+
+	This patch is union of patches given by Leena Gunda and Christian
+	Neumair along with some minor modifications; it synchronizes the
+	right-click-menu with that of Metacity's.  #135710.
+
+	* libwnck/screen.c :
+	(wnck_create_window_action_menu): Add "Move to Workspace Left/
+	Right/Up/Down" menu item.
+	(item_activated_callback): Implement code to move the window to
+	the workspace at left/right/up/down.
+
+	* libwnck/screen.h :
+	Added the WnckWorkspaceLayout and WnckMotionDirection structure.
+
+	* libwnck/window-action-menu.c :
+	(wnck_screen_get_workspace_index): Get the index of the
+	workspace.
+	(wnck_screen_get_workspace_neighbor): Get the neighbor of the
+	workspace in specified direction.
+	(_wnck_screen_process_property_notify): If the workspace layout
+	has changed, call the idle handler to update the screen info.
+	(wnck_screen_calc_workspace_layout): calculate the workspace
+	layout.
+	(wnck_screen_free_workspace_layout): free the layout grid.
+	(update_workspace_layout): idle handler to update the screen
+	info. if the layout has changed.
+	The code to calculate the workspace layout is taken from
+	metacity sources.
+	(make_check_menu_item): create a check menu item with the given
+	mnemonic text.
+	(update_menu_state): replace the Roll up/Unroll menu item with
+	On Top check menu item.
+
+	* libwnck/window.[ch] :
+	(wnck_window_make_above): Put the window on top of all window.
+	(wnck_window_is_above): check whether the window is above all
+	other window.
+	(wnck_window_unmake_above): if the window is on top then uncheck
+	the menu item.
+
 2006-01-21  Elijah Newren  <newren gmail com>
 
 	* libwnck/tasklist.c (tasklist_include_window_ignoring_skip_taskbar):

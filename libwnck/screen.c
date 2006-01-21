@@ -33,6 +33,22 @@
 #include <string.h>
 #include <stdlib.h>
 
+#define _NET_WM_ORIENTATION_HORZ 0
+#define _NET_WM_ORIENTATION_VERT 1
+
+#define _NET_WM_TOPLEFT     0
+#define _NET_WM_TOPRIGHT    1
+#define _NET_WM_BOTTOMRIGHT 2
+#define _NET_WM_BOTTOMLEFT  3
+
+typedef enum
+{
+  SCREEN_TOPLEFT,
+  SCREEN_TOPRIGHT,
+  SCREEN_BOTTOMLEFT,
+  SCREEN_BOTTOMRIGHT
+} ScreenCorner;
+
 static WnckScreen** screens = NULL;
 
 struct _WnckScreenPrivate
@@ -70,6 +86,11 @@ struct _WnckScreenPrivate
   
   guint showing_desktop : 1;
   
+  guint vertical_workspaces : 1;
+  ScreenCorner starting_corner;
+  gint rows_of_workspaces;
+  gint columns_of_workspaces;  
+
   /* if you add flags, be sure to set them
    * when we create the screen so we get an initial update
    */
@@ -78,6 +99,7 @@ struct _WnckScreenPrivate
   guint need_update_viewport_settings : 1;
   guint need_update_active_workspace : 1;
   guint need_update_active_window : 1;
+  guint need_update_workspace_layout : 1;
   guint need_update_workspace_names : 1;
   guint need_update_bg_pixmap : 1;
   guint need_update_showing_desktop : 1;
@@ -110,6 +132,7 @@ static void update_workspace_list     (WnckScreen      *screen);
 static void update_viewport_settings  (WnckScreen      *screen);
 static void update_active_workspace   (WnckScreen      *screen);
 static void update_active_window      (WnckScreen      *screen);
+static void update_workspace_layout   (WnckScreen      *screen);
 static void update_workspace_names    (WnckScreen      *screen);
 static void update_showing_desktop    (WnckScreen      *screen);
 
@@ -392,6 +415,11 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->number = number;
   screen->priv->window_order = 0;
 
+  screen->priv->rows_of_workspaces = 1;
+  screen->priv->columns_of_workspaces = -1;
+  screen->priv->vertical_workspaces = FALSE;
+  screen->priv->starting_corner = SCREEN_TOPLEFT;
+
 #ifdef HAVE_STARTUP_NOTIFICATION
   screen->priv->sn_display = sn_display_new (gdk_display,
                                              sn_error_trap_push,
@@ -408,6 +436,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->need_update_viewport_settings = TRUE;
   screen->priv->need_update_active_workspace = TRUE;
   screen->priv->need_update_active_window = TRUE;
+  screen->priv->need_update_workspace_layout = TRUE;
   screen->priv->need_update_workspace_names = TRUE;
   screen->priv->need_update_bg_pixmap = TRUE;
   screen->priv->need_update_showing_desktop = TRUE;
@@ -525,6 +554,27 @@ wnck_screen_get_workspace (WnckScreen *screen,
   return WNCK_WORKSPACE (list->data);
 }
 
+int
+wnck_screen_get_workspace_index (WnckScreen    *screen,
+                                 WnckWorkspace *workspace)
+{
+  GList *tmp;
+  int i;
+
+  i = 0;
+  tmp = screen->priv->workspaces;
+  while (tmp != NULL)
+    {
+      if (tmp->data == workspace)
+        return i;
+
+      ++i;
+
+      tmp = tmp->next;
+    }
+  return -1; /* compiler warnings */
+}
+
 /**
  * wnck_screen_get_active_workspace:
  * @screen: a #WnckScreen 
@@ -541,6 +591,54 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
   return screen->priv->active_workspace;
+}
+
+WnckWorkspace*
+wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
+                                    WnckWorkspace      *workspace,
+                                    WnckMotionDirection direction)
+{
+  WnckWorkspaceLayout layout;
+  int i, current_space, num_workspaces;
+
+  current_space = wnck_screen_get_workspace_index (screen, workspace);
+  num_workspaces = wnck_screen_get_workspace_count (screen);
+
+  wnck_screen_calc_workspace_layout (screen, num_workspaces,
+                                     current_space, &layout);
+
+  switch (direction)
+    {
+    case WNCK_MOTION_LEFT:
+      layout.current_col -= 1;
+      break;
+    case WNCK_MOTION_RIGHT:
+      layout.current_col += 1;
+      break;
+    case WNCK_MOTION_UP:
+      layout.current_row -= 1;
+      break;
+    case WNCK_MOTION_DOWN:
+      layout.current_row += 1;
+      break;
+    }
+
+  if (layout.current_col < 0)
+    layout.current_col = 0;
+  if (layout.current_col >= layout.cols)
+    layout.current_col = layout.cols - 1;
+  if (layout.current_row < 0)
+    layout.current_row = 0;
+  if (layout.current_row >= layout.rows)
+    layout.current_row = layout.rows - 1;
+
+  i = layout.grid[layout.current_row * layout.cols + layout.current_col];
+
+  if (i < 0)
+    i = current_space;
+
+  wnck_screen_free_workspace_layout (&layout);
+  return wnck_screen_get_workspace (screen, i);
 }
 
 /**
@@ -744,6 +842,12 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
       queue_update (screen);
     }
   else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_DESKTOP_LAYOUT"))
+    {
+      screen->priv->need_update_workspace_layout = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_DESKTOP_NAMES"))
     {
       screen->priv->need_update_workspace_names = TRUE;
@@ -761,6 +865,213 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
       screen->priv->need_update_showing_desktop = TRUE;
       queue_update (screen);
     }
+}
+
+void
+wnck_screen_calc_workspace_layout (WnckScreen          *screen,
+                                   int                  num_workspaces,
+                                   int                  current_space,
+                                   WnckWorkspaceLayout *layout)
+{
+  int rows, cols;
+  int grid_area;
+  int *grid;
+  int i, r, c;
+  int current_row, current_col;
+
+  rows = screen->priv->rows_of_workspaces;
+  cols = screen->priv->columns_of_workspaces;
+
+  if (rows <= 0 && cols <= 0)
+    cols = num_workspaces;
+
+  if (rows <= 0)
+    rows = num_workspaces / cols + ((num_workspaces % cols) > 0 ? 1 : 0);
+  if (cols <= 0)
+    cols = num_workspaces / rows + ((num_workspaces % rows) > 0 ? 1 : 0);
+
+  /* paranoia */
+  if (rows < 1)
+    rows = 1;
+  if (cols < 1)
+    cols = 1;
+
+  g_assert (rows != 0 && cols != 0);
+
+  grid_area = rows * cols;
+
+  grid = g_new (int, grid_area);
+
+  current_row = -1;
+  current_col = -1;
+  i = 0;
+
+  switch (screen->priv->starting_corner)
+    {
+    case SCREEN_TOPLEFT:
+      if (screen->priv->vertical_workspaces)
+        {
+          c = 0;
+          while (c < cols)
+            {
+              r = 0;
+              while (r < rows)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  ++r;
+                }
+              ++c;
+            }
+        }
+      else
+        {
+          r = 0;
+          while (r < rows)
+            {
+              c = 0;
+              while (c < cols)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  ++c;
+                }
+              ++r;
+            }
+        }
+      break;
+    case SCREEN_TOPRIGHT:
+      if (screen->priv->vertical_workspaces)
+        {
+          c = cols - 1;
+          while (c >= 0)
+            {
+              r = 0;
+              while (r < rows)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  ++r;
+                }
+              --c;
+            }
+        }
+      else
+        {
+          r = 0;
+          while (r < rows)
+            {
+              c = cols - 1;
+              while (c >= 0)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  --c;
+                }
+              ++r;
+            }
+        }
+      break;
+    case SCREEN_BOTTOMLEFT:
+      if (screen->priv->vertical_workspaces)
+        {
+          c = 0;
+          while (c < cols)
+            {
+              r = rows - 1;
+              while (r >= 0)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  --r;
+                }
+              ++c;
+            }
+        }
+      else
+        {
+          r = rows - 1;
+          while (r >= 0)
+            {
+              c = 0;
+              while (c < cols)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  ++c;
+                }
+              --r;
+            }
+        }
+      break;
+    case SCREEN_BOTTOMRIGHT:
+      if (screen->priv->vertical_workspaces)
+        {
+          c = cols - 1;
+          while (c >= 0)
+            {
+              r = rows - 1;
+              while (r >= 0)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  --r;
+                }
+              --c;
+            }
+        }
+      else
+        {
+          r = rows - 1;
+          while (r >= 0)
+            {
+              c = cols - 1;
+              while (c >= 0)
+                {
+                  grid[r*cols+c] = i;
+                  ++i;
+                  --c;
+                }
+              --r;
+            }
+        }
+      break;
+    } 
+
+  current_row = 0;
+  current_col = 0;
+  r = 0;
+  while (r < rows)
+    {
+      c = 0;
+      while (c < cols)
+        {
+          if (grid[r*cols+c] == current_space)
+            {
+              current_row = r;
+              current_col = c;
+            }
+          else if (grid[r*cols+c] >= num_workspaces)
+            {
+              /* flag nonexistent spaces with -1 */
+              grid[r*cols+c] = -1;
+            }
+          ++c;
+        }
+      ++r;
+    }
+  layout->rows = rows;
+  layout->cols = cols;
+  layout->grid = grid;
+  layout->grid_area = grid_area;
+  layout->current_row = current_row;
+  layout->current_col = current_col;
+}
+
+void
+wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout)
+{
+  g_free (layout->grid);
 }
 
 static gboolean
@@ -1408,6 +1719,93 @@ update_active_window (WnckScreen *screen)
 }
 
 static void
+update_workspace_layout (WnckScreen *screen)
+{
+  gulong *list;
+  int n_items;
+
+  list = NULL;
+  n_items = 0;
+
+  if (!screen->priv->need_update_workspace_layout)
+    return;
+
+  screen->priv->need_update_workspace_layout = FALSE;
+
+  if (_wnck_get_cardinal_list (screen->priv->xroot,
+                               _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
+                               &list, 
+                               &n_items))
+    {
+      if (n_items == 3 || n_items == 4)
+        {
+          int cols, rows;
+
+          switch (list[0])
+            {
+            case _NET_WM_ORIENTATION_HORZ:
+              screen->priv->vertical_workspaces = FALSE;
+              break;
+            case _NET_WM_ORIENTATION_VERT:
+              screen->priv->vertical_workspaces = TRUE;
+              break;
+            default:
+              g_warning ("Someone set a weird orientation in _NET_DESKTOP_LAYOUT\n");
+              break;
+            }
+
+          cols = list[1];
+          rows = list[2];
+
+          if (rows <= 0 && cols <= 0)
+            {
+              g_warning ("Columns = %d rows = %d in _NET_DESKTOP_LAYOUT makes no sense\n", rows, cols);
+            }
+          else
+            {
+              if (rows > 0)
+                screen->priv->rows_of_workspaces = rows;
+              else
+                screen->priv->rows_of_workspaces = -1;
+
+              if (cols > 0)
+                screen->priv->columns_of_workspaces = cols;
+              else
+                screen->priv->columns_of_workspaces = -1;
+            }
+          if (n_items == 4)
+            {
+              switch (list[3])
+                {
+                  case _NET_WM_TOPLEFT:
+                    screen->priv->starting_corner = SCREEN_TOPLEFT;
+                    break;
+                  case _NET_WM_TOPRIGHT:
+                    screen->priv->starting_corner = SCREEN_TOPRIGHT;
+                    break;
+                  case _NET_WM_BOTTOMRIGHT:
+                    screen->priv->starting_corner = SCREEN_BOTTOMRIGHT;
+                    break;
+                  case _NET_WM_BOTTOMLEFT:
+                    screen->priv->starting_corner = SCREEN_BOTTOMLEFT;
+                    break;
+                  default:
+                    g_warning ("Someone set a weird starting corner in _NET_DESKTOP_LAYOUT\n");
+                    break;
+                }
+            }
+          else
+            screen->priv->starting_corner = SCREEN_TOPLEFT;
+        }
+      else
+        {
+          g_warning ("Someone set _NET_DESKTOP_LAYOUT to %d integers instead of 4 (3 is accepted for backwards compat)\n", n_items);
+        }
+      g_free (list);
+    }
+}
+
+static void
 update_workspace_names (WnckScreen *screen)
 {
   char **names;
@@ -1514,6 +1912,7 @@ do_update_now (WnckScreen *screen)
   update_active_workspace (screen);
   update_viewport_settings (screen);
   update_active_window (screen);
+  update_workspace_layout (screen);
   update_workspace_names (screen);
   update_showing_desktop (screen);
   

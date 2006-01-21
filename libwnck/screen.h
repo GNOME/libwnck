@@ -110,6 +110,26 @@ struct _WnckScreenClass
 #endif
 };
 
+typedef struct WnckWorkspaceLayout WnckWorkspaceLayout;
+
+struct WnckWorkspaceLayout
+{
+  int rows;
+  int cols;
+  int *grid;
+  int grid_area;
+  int current_row;
+  int current_col;
+};
+
+typedef enum
+{
+  WNCK_MOTION_UP = -1,
+  WNCK_MOTION_DOWN = -2,
+  WNCK_MOTION_LEFT = -3,
+  WNCK_MOTION_RIGHT = -4
+} WnckMotionDirection;
+
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
 WnckScreen*    wnck_screen_get_default              (void);
@@ -117,6 +137,11 @@ WnckScreen*    wnck_screen_get                      (int         index);
 WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id);
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
+int            wnck_screen_get_workspace_index      (WnckScreen    *screen,
+                                                     WnckWorkspace *workspace);
+WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
+                                                     WnckWorkspace      *workspace,
+                                                     WnckMotionDirection direction);
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_previously_active_window (WnckScreen *screen);
@@ -143,6 +168,11 @@ int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                                      int         columns);
 void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
+void           wnck_screen_calc_workspace_layout    (WnckScreen          *screen,
+                                                     int                  num_workspaces,
+                                                     int                  current_space,
+                                                     WnckWorkspaceLayout *layout);
+void           wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout);
 
 
 G_END_DECLS

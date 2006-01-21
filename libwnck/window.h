@@ -45,6 +45,7 @@ typedef enum
   WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8,
   WNCK_WINDOW_STATE_DEMANDS_ATTENTION      = 1 << 9,
   WNCK_WINDOW_STATE_URGENT                 = 1 << 10,
+  WNCK_WINDOW_STATE_ABOVE                  = 1 << 11
 } WnckWindowState;
 
 typedef enum
@@ -65,7 +66,8 @@ typedef enum
   WNCK_WINDOW_ACTION_UNMINIMIZE              = 1 << 13,
   WNCK_WINDOW_ACTION_MAXIMIZE                = 1 << 14,
   WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15,
-  WNCK_WINDOW_ACTION_FULLSCREEN              = 1 << 16
+  WNCK_WINDOW_ACTION_FULLSCREEN              = 1 << 16,
+  WNCK_WINDOW_ACTION_ABOVE                   = 1 << 17
 } WnckWindowActions;
 
 typedef enum
@@ -157,6 +159,7 @@ gboolean wnck_window_is_maximized_horizontally (WnckWindow *window);
 gboolean wnck_window_is_maximized_vertically   (WnckWindow *window);
 gboolean wnck_window_is_maximized              (WnckWindow *window);
 gboolean wnck_window_is_shaded                 (WnckWindow *window);
+gboolean wnck_window_is_above                  (WnckWindow *window);
 gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
 gboolean wnck_window_is_fullscreen             (WnckWindow *window);
@@ -184,6 +187,8 @@ void wnck_window_maximize_vertically     (WnckWindow *window);
 void wnck_window_unmaximize_vertically   (WnckWindow *window);
 void wnck_window_shade                   (WnckWindow *window);
 void wnck_window_unshade                 (WnckWindow *window);
+void wnck_window_make_above              (WnckWindow *window);
+void wnck_window_unmake_above            (WnckWindow *window);
 void wnck_window_stick                   (WnckWindow *window);
 void wnck_window_unstick                 (WnckWindow *window);
 void wnck_window_keyboard_move           (WnckWindow *window);

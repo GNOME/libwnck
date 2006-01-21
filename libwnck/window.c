@@ -48,7 +48,8 @@ static GHashTable *window_hash = NULL;
     ((window)->priv->is_hidden           << 7) |        \
     ((window)->priv->is_fullscreen       << 8) |        \
     ((window)->priv->demands_attention   << 9) |        \
-    ((window)->priv->is_urgent           << 10) )
+    ((window)->priv->is_urgent           << 10)|        \
+    ((window)->priv->is_above            << 11))
 
 struct _WnckWindowPrivate
 {
@@ -95,6 +96,7 @@ struct _WnckWindowPrivate
   guint is_maximized_horz : 1;
   guint is_maximized_vert : 1;
   guint is_shaded : 1;
+  guint is_above : 1;
   guint skip_pager : 1;
   guint skip_taskbar : 1;
   guint is_sticky : 1;
@@ -824,6 +826,14 @@ wnck_window_is_shaded                 (WnckWindow *window)
 }
 
 gboolean
+wnck_window_is_above                  (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_above;
+}
+
+gboolean
 wnck_window_is_skip_pager             (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
@@ -1023,6 +1033,30 @@ wnck_window_unshade                 (WnckWindow *window)
 		      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_SHADED"),
+                      0);
+}
+
+void
+wnck_window_make_above (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_ABOVE"),
+                      0);
+}
+
+void
+wnck_window_unmake_above (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_ABOVE"),
                       0);
 }
 
@@ -1773,6 +1807,7 @@ update_state (WnckWindow *window)
       window->priv->is_maximized_vert = FALSE;
       window->priv->is_sticky = FALSE;
       window->priv->is_shaded = FALSE;
+      window->priv->is_above = FALSE;
       window->priv->skip_taskbar = FALSE;
       window->priv->skip_pager = FALSE;
       window->priv->net_wm_state_hidden = FALSE;
@@ -1798,6 +1833,8 @@ update_state (WnckWindow *window)
             window->priv->is_sticky = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SHADED"))
             window->priv->is_shaded = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_ABOVE"))
+            window->priv->is_above = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_FULLSCREEN"))
             window->priv->is_fullscreen = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"))
@@ -1969,6 +2006,7 @@ update_actions (WnckWindow *window)
                 WNCK_WINDOW_ACTION_MOVE                    |
                 WNCK_WINDOW_ACTION_RESIZE                  |
                 WNCK_WINDOW_ACTION_SHADE                   |
+                WNCK_WINDOW_ACTION_ABOVE                   |
                 WNCK_WINDOW_ACTION_STICK                   |
                 WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   |
                 WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     |
