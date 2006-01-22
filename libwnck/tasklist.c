@@ -2750,10 +2750,11 @@ wnck_task_state_changed (WnckWindow     *window,
       (changed_mask & WNCK_WINDOW_STATE_DEMANDS_ATTENTION) ||
       (changed_mask & WNCK_WINDOW_STATE_URGENT))
     {
-      WnckTask *win_task;
+      WnckTask *win_task = NULL;
 
-      win_task = g_hash_table_lookup (tasklist->priv->win_hash,
-						window);
+      /* FIXME: Handle group modal dialogs */
+      for (; window && !win_task; window = wnck_window_get_transient (window))
+        win_task = g_hash_table_lookup (tasklist->priv->win_hash, window);
 
       if (win_task)
 	{
@@ -2761,7 +2762,9 @@ wnck_task_state_changed (WnckWindow     *window,
 
 	  wnck_task_update_visible_state (win_task);
 	  
-	  class_group_task = g_hash_table_lookup (tasklist->priv->class_group_hash, win_task->class_group);
+	  class_group_task =
+            g_hash_table_lookup (tasklist->priv->class_group_hash,
+                                 win_task->class_group);
 
 	  if (class_group_task)
 	    wnck_task_update_visible_state (class_group_task);
