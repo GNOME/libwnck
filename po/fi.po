@@ -8,134 +8,152 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-02-04 11:54+0200\n"
+"POT-Creation-Date: 2006-01-22 09:21+0200\n"
+"PO-Revision-Date: 2006-01-22 09:25+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:26
 msgid "untitled application"
 msgstr "nimetön sovellus"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Työtilanvaihtaja"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Työkalu, jolla voi vaihtaa työtilaa"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Napsauta tätä vaihtaaksesi työtilaan %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "Tuntematon ikkuna"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:726
 msgid "No Windows Open"
 msgstr "Ei ikkunoita avoinna"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:830
 msgid "Window Selector"
 msgstr "Ikkunanvalitsin"
 
-#: libwnck/selector.c:748
+#: ../libwnck/selector.c:831
 msgid "Tool to switch between windows"
 msgstr "Työkalu, jolla voi siirtyä ikkunoiden välillä"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:664
 msgid "Window List"
 msgstr "Ikkunaluettelo"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:665
 msgid "Tool to switch between visible windows"
 msgstr "Työkalu, jolla voi siirtyä näkyvien ikkunoiden välillä"
 
-#: libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2462
 msgid "_Close All"
 msgstr "_Sulje kaikki"
 
-#: libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2477
 msgid "_Minimize All"
 msgstr "_Pienennä kaikki"
 
-#: libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2488
 msgid "_Unminimize All"
 msgstr "_Palauta kaikki"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:257
 msgid "Unmi_nimize"
 msgstr "_Palauta"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:264
 msgid "Mi_nimize"
 msgstr "_Pienennä"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:272
 msgid "Unma_ximize"
 msgstr "Pa_lauta koko"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:279
 msgid "Ma_ximize"
 msgstr "S_uurenna"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_Rullaa auki"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "_Rullaa"
-
-#: libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:299
 msgid "_Only on This Workspace"
 msgstr "Vain _tässä työtilassa"
 
-#: libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:306
 msgid "_Always on Visible Workspace"
 msgstr "_Aina näkyvässä työtilassa"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "Työtila %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:468
 msgid "Workspace 1_0"
 msgstr "Työtila 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:470
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Työtila %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:560
+msgid "On _Top"
+msgstr "_Nosta"
+
+#: ../libwnck/window-action-menu.c:569
 msgid "_Move"
 msgstr "S_iirrä"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:576
 msgid "_Resize"
 msgstr "_Muuta kokoa"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:589
 msgid "_Close"
 msgstr "_Sulje"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:617
+msgid "Move to Workspace _Left"
+msgstr "Siirrä t_yötilaan vasemmalla"
+
+#: ../libwnck/window-action-menu.c:628
+msgid "Move to Workspace R_ight"
+msgstr "Siirrä t_yötilaan oikealla"
+
+#: ../libwnck/window-action-menu.c:639
+msgid "Move to Workspace _Up"
+msgstr "Siirrä t_yötilaan yläpuolella"
+
+#: ../libwnck/window-action-menu.c:651
+msgid "Move to Workspace _Down"
+msgstr "Siirrä t_yötilaan alapuolella"
+
+#: ../libwnck/window-action-menu.c:665
 msgid "Move to Another _Workspace"
 msgstr "Siirrä toiseen t_yötilaan"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:681
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "nimetön ikkuna"
+
+#~ msgid "_Unroll"
+#~ msgstr "_Rullaa auki"
+
+#~ msgid "Roll _Up"
+#~ msgstr "_Rullaa"
