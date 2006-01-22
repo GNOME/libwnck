@@ -754,8 +754,16 @@ workspace_at_point (WnckPager *pager,
 			"focus-line-width", &focus_width,
 			NULL);
 
-  xthickness = focus_width + widget->style->xthickness;
-  ythickness = focus_width + widget->style->ythickness;
+  if (pager->priv->shadow_type != GTK_SHADOW_NONE)
+    {
+      xthickness = focus_width + widget->style->xthickness;
+      ythickness = focus_width + widget->style->ythickness;
+    }
+  else
+    {
+      xthickness = focus_width;
+      ythickness = focus_width;
+    }
 
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
   
@@ -766,33 +774,39 @@ workspace_at_point (WnckPager *pager,
       
       get_workspace_rect (pager, i, &rect);
 
-      if (pager->priv->shadow_type != GTK_SHADOW_NONE)
-	{
-	  /* If workspace is on the edge, pretend points on the frame
-	   * belong to the workspace.
-	   */
+      /* If workspace is on the edge, pretend points on the frame belong to the
+       * workspace.
+       * Else, pretend the right/bottom line separating two workspaces belong
+       * to the workspace.
+       */
+      GtkWidget *widget = GTK_WIDGET (pager);
 
-	  GtkWidget *widget = GTK_WIDGET (pager);
-
-	  if (rect.x == xthickness)
-	    {
-	      rect.x = 0;
-	      rect.width += xthickness;
-	    }
-	  if (rect.y == ythickness)
-	    {
-	      rect.y = 0;
-	      rect.height += ythickness;
-	    }
-	  if (rect.y + rect.height == widget->allocation.height - ythickness)
-	    {
-	      rect.height += ythickness;
-	    }
-	  if (rect.x + rect.width == widget->allocation.width - xthickness)
-	    {
-	      rect.width += xthickness;
-	    }
-	}
+      if (rect.x == xthickness)
+        {
+          rect.x = 0;
+          rect.width += xthickness;
+        }
+      if (rect.y == ythickness)
+        {
+          rect.y = 0;
+          rect.height += ythickness;
+        }
+      if (rect.y + rect.height == widget->allocation.height - ythickness)
+        {
+          rect.height += ythickness;
+        }
+      else
+        {
+          rect.height += 1;
+        }
+      if (rect.x + rect.width == widget->allocation.width - xthickness)
+        {
+          rect.width += xthickness;
+        }
+      else
+        {
+          rect.width += 1;
+        }
 
       if (POINT_IN_RECT (x, y, rect))
         {

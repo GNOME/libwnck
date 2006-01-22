@@ -1,3 +1,12 @@
+2006-01-22  Vincent Untz  <vuntz@gnome.org>
+
+	Make the pager Fitt's law compliant when shadow type is none.
+
+	* pager.c: (workspace_at_point): count the focus width when
+	shadow_type == GTK_SHADOW_NONE, extend the workspaces so that the
+	right/bottom lines belong to them too.
+	Fix bug #304248
+
 2006-01-22  Elijah Newren  <newren gmail com>
 
 	* libwnck/tasklist.c (wnck_task_state_changed): when we get a
