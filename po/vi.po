@@ -1,140 +1,160 @@
-# translation of vi.po to 
-# Copyright (C) 2002, 2005 Free Software Foundation, Inc.
-# pclouds <pclouds@gmx.net>, 2002, 2005.
-#
+# Vietnamese translation for Libwnck
+# Copyright © 2002-2006 Gnome i18n Project for Vietnamese.
+# Nguyễn Thái Ngọc Duy <pclouds@gmx.net>, 2002, 2005.
+# Clytie Siddall <clytie@riverland.net.au>, 2006.
+# 
 msgid ""
-msgstr ""
-"Project-Id-Version: vi\n"
+""
+msgstr "Project-Id-Version: libwnck 2.13.5 HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-03-05 01:30+0700\n"
-"Last-Translator: \n"
-"Language-Team:  <en@li.org>\n"
+"POT-Creation-Date: 2006-01-21 23:29+0100\n"
+"PO-Revision-Date: 2006-01-22 15:51+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: LocFactoryEditor 1.6b31\n"
 
-#: libwnck/application.c:26
+#:../libwnck/application.c:26
 msgid "untitled application"
 msgstr "ứng dụng không tên"
 
-#: libwnck/pager-accessible.c:318
+#:../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "Bộ chuyển Vùng làm việc"
 
-#: libwnck/pager-accessible.c:329
+#:../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "Công cụ để chuyển giữa các vùng làm việc"
 
-#: libwnck/pager-accessible.c:433
-#, c-format
+#:../libwnck/pager-accessible.c:433
+#,c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Nhấn vào đây để chuyển qua vùng làm việc %s"
 
-#: libwnck/selector.c:218
+#:../libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "Cửa sổ lạ"
 
-#: libwnck/selector.c:645
+#:../libwnck/selector.c:726
 msgid "No Windows Open"
 msgstr "Chưa mở cửa sổ"
 
-#: libwnck/selector.c:747
+#:../libwnck/selector.c:830
 msgid "Window Selector"
 msgstr "Bộ chọn cửa sổ"
 
-#: libwnck/selector.c:748
+#:../libwnck/selector.c:831
 msgid "Tool to switch between windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ"
 
-#: libwnck/tasklist.c:690
+#:../libwnck/tasklist.c:664
 msgid "Window List"
 msgstr "Danh sách cửa sổ"
 
-#: libwnck/tasklist.c:691
+#:../libwnck/tasklist.c:665
 msgid "Tool to switch between visible windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ đang hiện"
 
-#: libwnck/tasklist.c:2324
+#:../libwnck/tasklist.c:2462
 msgid "_Close All"
-msgstr "Đón_g tất cả"
+msgstr "_Đóng hết"
 
-#: libwnck/tasklist.c:2339
+#:../libwnck/tasklist.c:2477
 msgid "_Minimize All"
-msgstr "_Thu nhỏ tất cả"
+msgstr "_Thu nhỏ hết"
 
-#: libwnck/tasklist.c:2350
+#:../libwnck/tasklist.c:2488
 msgid "_Unminimize All"
-msgstr "_Bỏ thu nhỏ tất cả"
+msgstr "_Bỏ thu nhỏ hết"
 
-#: libwnck/window-action-menu.c:211
+#:../libwnck/window-action-menu.c:257
 msgid "Unmi_nimize"
 msgstr "_Bỏ thu nhỏ"
 
-#: libwnck/window-action-menu.c:218
+#:../libwnck/window-action-menu.c:264
 msgid "Mi_nimize"
 msgstr "_Thu nhỏ"
 
-#: libwnck/window-action-menu.c:226
+#:../libwnck/window-action-menu.c:272
 msgid "Unma_ximize"
 msgstr "Bỏ p_hóng to"
 
-#: libwnck/window-action-menu.c:233
+#:../libwnck/window-action-menu.c:279
 msgid "Ma_ximize"
 msgstr "_Phóng to"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_Bỏ cuộn"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "Cuộn _lên"
-
-#: libwnck/window-action-menu.c:256
+#:../libwnck/window-action-menu.c:299
 msgid "_Only on This Workspace"
 msgstr "Chỉ trong Vùng làm việc _này"
 
-#: libwnck/window-action-menu.c:263
+#:../libwnck/window-action-menu.c:306
 msgid "_Always on Visible Workspace"
-msgstr "T_rong mọi vùng làm việc"
+msgstr "_Luôn trong Vùng làm việc đang hiện"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
-#, c-format
+#:../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
+#,c-format
 msgid "Workspace %d"
 msgstr "Vùng làm việc %d"
 
-#: libwnck/window-action-menu.c:386
+#:../libwnck/window-action-menu.c:468
 msgid "Workspace 1_0"
 msgstr "Vùng làm việc 1_0"
 
-#: libwnck/window-action-menu.c:388
-#, c-format
+#:../libwnck/window-action-menu.c:470
+#,c-format
 msgid "Workspace %s%d"
 msgstr "Vùng làm việc %s%d"
 
-#: libwnck/window-action-menu.c:485
+#:../libwnck/window-action-menu.c:560
+msgid "On _Top"
+msgstr "Ở tr_ên"
+
+#:../libwnck/window-action-menu.c:569
 msgid "_Move"
 msgstr "_Di chuyển"
 
-#: libwnck/window-action-menu.c:492
+#:../libwnck/window-action-menu.c:576
 msgid "_Resize"
-msgstr "Đổi _kích thước"
+msgstr "Đổi _kích cỡ"
 
-#: libwnck/window-action-menu.c:505
+#:../libwnck/window-action-menu.c:589
 msgid "_Close"
-msgstr "Đón_g"
+msgstr "_Đóng"
 
-#: libwnck/window-action-menu.c:518
+#:../libwnck/window-action-menu.c:617
+msgid "Move to Workspace _Left"
+msgstr "Chuyển sang vùng làm việc bên _trái"
+
+#:../libwnck/window-action-menu.c:628
+msgid "Move to Workspace R_ight"
+msgstr "Chuyển sang vùng làm việc bên _phải"
+
+#:../libwnck/window-action-menu.c:639
+msgid "Move to Workspace _Up"
+msgstr "Chuyển sang vùng làm việc bên tr_ên"
+
+#:../libwnck/window-action-menu.c:651
+msgid "Move to Workspace _Down"
+msgstr "Chuyển sang vùng làm việc bên _dưới"
+
+#:../libwnck/window-action-menu.c:665
 msgid "Move to Another _Workspace"
 msgstr "Chuyển sang vùng làm việc _khác"
 
-#: libwnck/window-action-menu.c:542
-#, c-format
+#:../libwnck/window-action-menu.c:681
+#,c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#:../libwnck/window.c:32
 msgid "untitled window"
 msgstr "cửa sổ không tên"
+
+#~ msgid "_Unroll"
+#~ msgstr "_Bỏ cuộn"
+
+#~ msgid "Roll _Up"
+#~ msgstr "Cuộn _lên"
