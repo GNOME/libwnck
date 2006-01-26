@@ -1,3 +1,10 @@
+2006-01-26  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* libwnck/workspace-accessible.c:
+	(wnck_workspace_accessible_get_size): Initialize coords to AT_XY_SCREEN
+	to get rid of a compiler warning. FIXME remains since the value was
+	picked at random.
+
 2006-01-22  Vincent Untz  <vuntz@gnome.org>
 
 	Make the pager Fitt's law compliant when shadow type is none.

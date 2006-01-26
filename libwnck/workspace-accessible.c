@@ -150,10 +150,10 @@ wnck_workspace_accessible_get_size (AtkComponent *component,
                                     int          *width,
                                     int          *height)
 {
-  AtkCoordType coords; 
+  AtkCoordType coords = ATK_XY_SCREEN; 
   int x, y;
 
-  /* FIXME this is blatantly broken (coords uninitialized) */
+  /* FIXME: Value for initialization of coords picked randomly to please gcc */
   
   wnck_workspace_accessible_get_extents (component, &x, &y, width, height, coords);
 }
