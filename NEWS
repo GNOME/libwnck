@@ -1,3 +1,39 @@
+2.13.90
+=======
+
+ Fixes
+
+  - Fix crash on workspace activation (Elijah, Bart Vanbrabant)
+    [#327435]
+  - Include demands-attention/urgent windows unconditionally in
+    tasklist; this should help users not miss important windows on
+    other workspaces (Elijah) [#305979]
+  - Synchronize the right-click-menu with that of Metacity's (Srirama
+    Sharma, Leena Gunda, Christian Neumair) [#135710]
+  - Escape window titles used in pango markup, avoids some crashes too
+    (Vincent Noel, jylefort FreeBSD org) [#306289]
+  - Correctly catch and handle demands-attention/urgent state changes
+    for transients of windows in the tasklist (Elijah) [#317541]
+  - Make the pager Fitts's law compliant when shadow type is none
+    (Vincent) [#304248]
+  - Avoid a compiler warning (Kjartan)
+
+ Translations
+
+  - Jordi Mallach (ca)
+  - Adam Weinberger (en_CA)
+  - Lucas Vieites (es)
+  - Pauli Virtanen (fi)
+  - Ignacio Casal Quinteiro (gl)
+  - Ankit Patel (gu)
+  - Kjartan Maraas (nb)
+  - Tino Meinen (nl)
+  - Kjartan Maraas (no)
+  - Evandro Fernandes Giovanini (pt_BR)
+  - Theppitak Karoonboonyanan (th)
+  - Clytie Siddall (vi)
+  - Wang Jian (zh_CN)
+
 2.13.5
 ======
 
