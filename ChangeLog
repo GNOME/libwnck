@@ -1,5 +1,11 @@
 2006-01-30  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release bump to 2.13.91
+
+==================== 2.13.90 ====================
+
+2006-01-30  Elijah Newren  <newren gmail com>
+
 	* configure.in:
 	* NEWS: version 2.13.90
 
