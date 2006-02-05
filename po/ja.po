@@ -1,141 +1,153 @@
 # libwnck ja.po.
-# Copyright (C) 2001-2005 Free Software Foundation, Inc.
+# Copyright (C) 2001-2006 Free Software Foundation, Inc.
 # Takayuki KUSANO <AE5T-KSN@asahi-net.or.jp>, 2001-2002.
 # KAMAGASAKO Masatoshi <emerald@gnome.gr.jp>, 2003
-# Takeshi AIHANA <aihana@gnome.gr.jp>, 2003-2005.
+# Takeshi AIHANA <aihana@gnome.gr.jp>, 2003-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-06-11 17:41+0900\n"
+"POT-Creation-Date: 2006-02-05 22:10+0900\n"
+"PO-Revision-Date: 2006-02-05 22:09+0900\n"
 "Last-Translator: Takeshi AIHANA <aihana@gnome.gr.jp>\n"
 "Language-Team: Japanese <gnome-translation@gnome.gr.jp>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:26
 msgid "untitled application"
 msgstr "タイトル無しのアプリケーション"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:318
 msgid "Workspace Switcher"
 msgstr "ワークスペース切替"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:329
 msgid "Tool to switch between workspaces"
 msgstr "ワークスペース切替用ツール"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:433
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "これを押せばワークスペース %s へ切り替わります"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:218
 msgid "Unknown Window"
 msgstr "不明なウィンドウです"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:726
 msgid "No Windows Open"
 msgstr "ウィンドウが開いていません"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:830
 msgid "Window Selector"
 msgstr "ウィンドウの選択"
 
-#: libwnck/selector.c:748
+#: ../libwnck/selector.c:831
 msgid "Tool to switch between windows"
 msgstr "ウィンドウを切り替えるツール"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:664
 msgid "Window List"
 msgstr "ウィンドウの一覧"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:665
 msgid "Tool to switch between visible windows"
 msgstr "表示可能なウィンドウ切り替えツール"
 
-#: libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2462
 msgid "_Close All"
 msgstr "全て閉じる(_C)"
 
-#: libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2477
 msgid "_Minimize All"
 msgstr "全て最小化(_M)"
 
-#: libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2488
 msgid "_Unminimize All"
 msgstr "全て最小化解除(_U)"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:257
 msgid "Unmi_nimize"
 msgstr "最小化解除(_N)"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:264
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:272
 msgid "Unma_ximize"
 msgstr "最大化解除(_X)"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:279
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "展開(_U)"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "巻き上げ(_U)"
-
-#: libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:299
 msgid "_Only on This Workspace"
 msgstr "現在のワークスペースのみ(_O)"
 
-#: libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:306
 msgid "_Always on Visible Workspace"
 msgstr "全てのワークスペースに配置する(_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
 #, c-format
 msgid "Workspace %d"
 msgstr "ワークスペース %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:468
 msgid "Workspace 1_0"
 msgstr "ワークスペース 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:470
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ワークスペース %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:560
+msgid "On _Top"
+msgstr "最前面(_T)"
+
+#: ../libwnck/window-action-menu.c:569
 msgid "_Move"
 msgstr "移動(_M)"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:576
 msgid "_Resize"
 msgstr "サイズの変更(_R)"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:589
 msgid "_Close"
 msgstr "閉じる(_C)"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:617
+msgid "Move to Workspace _Left"
+msgstr "左のワークスペースへ移動する(_L)"
+
+#: ../libwnck/window-action-menu.c:628
+msgid "Move to Workspace R_ight"
+msgstr "右のワークスペースへ移動する(_I)"
+
+#: ../libwnck/window-action-menu.c:639
+msgid "Move to Workspace _Up"
+msgstr "上のワークスペースへ移動する(_U)"
+
+#: ../libwnck/window-action-menu.c:651
+msgid "Move to Workspace _Down"
+msgstr "下のワークスペースへ移動する(_D)"
+
+#: ../libwnck/window-action-menu.c:665
 msgid "Move to Another _Workspace"
 msgstr "別のワークスペースへ移動する(_W)"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:681
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "タイトル無しのウインドウ"
