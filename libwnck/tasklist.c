@@ -704,11 +704,6 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
-
-  tasklist_instances = g_slist_append (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
 }
 
 static void
@@ -756,11 +751,6 @@ wnck_tasklist_finalize (GObject *object)
   WnckTasklist *tasklist;
 
   tasklist = WNCK_TASKLIST (object);
-  
-  tasklist_instances = g_slist_remove (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
 
   if (tasklist->priv->free_icon_loader_data != NULL)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
@@ -1443,7 +1433,10 @@ wnck_tasklist_realize (GtkWidget *widget)
   
   (* GTK_WIDGET_CLASS (tasklist_parent_class)->realize) (widget);
 
-  wnck_tasklist_update_lists (tasklist);
+  tasklist_instances = g_slist_append (tasklist_instances, tasklist);
+  g_slist_foreach (tasklist_instances,
+		   (GFunc) wnck_tasklist_update_lists,
+		   NULL);
 }
 
 static void
@@ -1459,6 +1452,11 @@ wnck_tasklist_unrealize (GtkWidget *widget)
 #endif
   
   (* GTK_WIDGET_CLASS (tasklist_parent_class)->unrealize) (widget);
+  
+  tasklist_instances = g_slist_remove (tasklist_instances, tasklist);
+  g_slist_foreach (tasklist_instances,
+		   (GFunc) wnck_tasklist_update_lists,
+		   NULL);
 }
 
 static void

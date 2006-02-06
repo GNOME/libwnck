@@ -1,3 +1,27 @@
+2006-02-06  Vincent Untz  <vuntz@gnome.org>
+
+	Backports from HEAD.
+
+        Use virtual desktop size when computing size of pager.
+        Bug #311863. Based on patch by Loïc Minier <lool+gnome@via.ecp.fr>
+
+        * libwnck/pager.c: (wnck_pager_size_request): use workspace sizes when
+        available
+
+	Fix critical warning, bug #149326.
+
+	* libwnck/tasklist.c: (wnck_tasklist_init): move the code changing
+	the list of tasklist instances...
+	(wnck_tasklist_realize): ... here
+	(wnck_tasklist_finalize): ditto, moving the code...
+	(wnck_tasklist_unrealize): there
+
+	Thanks to Bart Vanbrabant for lots of debugging and testing work.
+
+	* libwnck/selector.c (wnck_selector_activate_window): Make sure
+	return value of wnck_window_get_workspace() is a valid workspace
+	before trying to activate it.  Fixes #327435.
+
 2006-01-22  Elijah Newren  <newren gmail com>
 
 	* libwnck/tasklist.c (wnck_task_state_changed): when we get a

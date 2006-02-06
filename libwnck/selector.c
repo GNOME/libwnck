@@ -369,7 +369,8 @@ wnck_selector_activate_window (WnckWindow *window)
    * There should only be *one* activate call.
    */
   workspace = wnck_window_get_workspace (window);
-  wnck_workspace_activate (workspace, timestamp);
+  if (workspace)
+    wnck_workspace_activate (workspace, timestamp);
 
   wnck_window_activate (window, timestamp);
 }
