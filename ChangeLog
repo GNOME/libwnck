@@ -1,5 +1,10 @@
 2006-02-06  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.12.3
+
+2006-02-06  Vincent Untz  <vuntz@gnome.org>
+
 	Backport from HEAD.
 
 	* libwnck/tasklist.c:

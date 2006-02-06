@@ -1,3 +1,21 @@
+2.12.3
+======
+
+ Fixes
+
+  - Correctly catch and handle demands-attention/urgent state changes
+    for transients of windows in the tasklist (Elijah) [#317541]
+  - Remove critical warning (Vincent)
+  - Use virtual desktop size when computing size of pager (Loic Minier, Vincent)
+  - Escape window titles used in pango markup, avoids some crashes too
+    (Vincent Noel, jylefort FreeBSD org) [#306289]
+  - Fix crash on workspace activation (Elijah, Bart Vanbrabant)
+    [#327435]
+
+ Translators
+
+  - Abel Cheung (zh_HK)
+
 2.12.2
 =======
 
