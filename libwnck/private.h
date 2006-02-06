@@ -118,6 +118,9 @@ void           _wnck_pager_get_workspace_rect   (WnckPager     *pager,
                                                  int            i,
                                                  GdkRectangle  *rect);
 
+void           _make_gtk_label_bold   (GtkLabel *label);
+void           _make_gtk_label_normal (GtkLabel *label);
+
 
 G_END_DECLS
 

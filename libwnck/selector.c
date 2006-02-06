@@ -25,12 +25,12 @@
  */
 
 #include <gtk/gtk.h>
-#include <glib/gi18n.h>
 
 #include "selector.h"
 #include "inlinepixbufs.h"
 #include "libwnck.h"
 #include "screen.h"
+#include "private.h"
 
 typedef struct
 {
@@ -219,13 +219,6 @@ wnck_selector_get_window_name (WnckWindow *window)
   else
     name = g_strdup (const_name);
 
-  if (wnck_window_or_transient_needs_attention (window))
-    {
-      return_value = g_strdup_printf ("<b>%s</b>", name);
-      g_free (name);
-      name = return_value;
-    }
-
   if (wnck_window_is_shaded (window))
     {
       return_value = g_strdup_printf ("=%s=", name);
@@ -331,9 +324,17 @@ wnck_selector_window_state_changed (WnckWindow *window,
         gtk_widget_show (item->item);
     }
 
+  if (changed_mask & 
+      (WNCK_WINDOW_STATE_DEMANDS_ATTENTION | WNCK_WINDOW_STATE_URGENT))      
+    {
+      if (wnck_window_or_transient_needs_attention (window))
+	_make_gtk_label_bold (GTK_LABEL (item->label));
+      else
+	_make_gtk_label_normal (GTK_LABEL (item->label));
+    }
+
   if (changed_mask &
-      (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED |
-       WNCK_WINDOW_STATE_DEMANDS_ATTENTION | WNCK_WINDOW_STATE_URGENT))
+      (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED))
     {
       window_name = wnck_selector_get_window_name (window);
       gtk_label_set_text (GTK_LABEL (item->label), window_name);
@@ -425,12 +426,13 @@ wnck_selector_item_new (WnckSelector *selector,
   gtk_misc_set_alignment (GTK_MISC (ellipsizing_label), 0.0, 0.5);
   gtk_label_set_ellipsize (GTK_LABEL (ellipsizing_label),
                            PANGO_ELLIPSIZE_END);
-  /* if window demands attention, we need markup */
-  if (window != NULL)
-    gtk_label_set_use_markup (GTK_LABEL (ellipsizing_label), TRUE);
 
   if (window != NULL)
     {
+      /* if window demands attention, bold the label */
+      if (wnck_window_or_transient_needs_attention (window))
+	_make_gtk_label_bold (GTK_LABEL (ellipsizing_label));
+
       hash_item = g_new0 (window_hash_item, 1);
       hash_item->item = item;
       hash_item->label = ellipsizing_label;
