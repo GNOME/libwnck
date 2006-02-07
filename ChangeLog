@@ -1,3 +1,15 @@
+2006-02-07  Torsten Schoenfeld  <kaffeetisch@gmx.de>
+
+	* libwnck/wnck-enum-types.c:
+	* libwnck/wnck-enum-types.h:
+	* libwnck/wnck-marshal.c:
+	* libwnck/wnck-marshal.h:
+	* libwnck/Makefile.am: Automate the creation of the GEnum/GFlags
+	types and signal marshalling files by moving the generated files
+	to the top of the list of built sources and making them depend on
+	suitable targets.  Consequently, remove the generated files from
+	the repository and get rid of the regenerate-built-sources target.
+
 2006-01-30  Elijah Newren  <newren gmail com>
 
 	* configure.in: post-release bump to 2.13.91
