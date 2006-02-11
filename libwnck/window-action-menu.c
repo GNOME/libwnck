@@ -19,8 +19,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
 #include <string.h>
 #include <stdio.h>
+#include <glib/gi18n-lib.h>
 
 #include "window-action-menu.h"
 #include "private.h"

@@ -22,7 +22,8 @@
  */
 
 #include <config.h>
-#include <libintl.h>
+
+#include <glib/gi18n-lib.h>
 #include "workspace.h"
 #include "xutils.h"
 #include "private.h"

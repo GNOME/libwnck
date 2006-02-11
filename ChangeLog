@@ -1,3 +1,31 @@
+2006-02-11  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/.cvsignore: updated
+
+	* libwnck/application.c: fix doc for
+	wnck_application_get_icon_is_fallback
+	* libwnck/screen.c: fix the doc for wnck_screen_get_workspace
+
+	* libwnck/screen.h: mark the WnckWorkspaceLayout as private
+
+	Don't define _ in libwnck and use glib for this.
+	Fix bug #328621.
+	Using gi18n-lib.h also fixes bug #323181.
+
+	* libwnck/application.c: include <glib/gi18n-lib.h>
+	* libwnck/pager-accessible.c: ditto
+	* libwnck/screen.c: ditto
+	* libwnck/selector.c: ditto
+	* libwnck/tasklist.c: ditto
+	* libwnck/util.c: ditto
+	* libwnck/window.c: ditto
+	* libwnck/workspace.c: ditto
+
+	* libwnck/private.h: don't define _
+
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/private.sgml: remove documentation for _
+
 2006-02-07  Torsten Schoenfeld  <kaffeetisch@gmx.de>
 
 	* libwnck/wnck-enum-types.c:

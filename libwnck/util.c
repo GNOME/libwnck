@@ -19,6 +19,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
+#include <glib/gi18n-lib.h>
 #include "util.h"
 #include "xutils.h"
 #include "private.h"

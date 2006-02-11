@@ -110,9 +110,9 @@ struct _WnckScreenClass
 #endif
 };
 
-typedef struct WnckWorkspaceLayout WnckWorkspaceLayout;
+typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
 
-struct WnckWorkspaceLayout
+struct _WnckWorkspaceLayout
 {
   int rows;
   int cols;

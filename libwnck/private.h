@@ -23,7 +23,6 @@
 #define WNCK_PRIVATE_H
 
 #include <config.h>
-#include <libintl.h>
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
@@ -36,8 +35,6 @@
 #endif
 
 G_BEGIN_DECLS
-
-#define _(x) dgettext (GETTEXT_PACKAGE, x)
 
 #define WNCK_ACTIVATE_TIMEOUT 1000
 

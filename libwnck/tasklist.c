@@ -22,9 +22,12 @@
 */
 
 #include <config.h>
+
+#include <config.h>
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
+#include <glib/gi18n-lib.h>
 #include "tasklist.h"
 #include "window.h"
 #include "class-group.h"

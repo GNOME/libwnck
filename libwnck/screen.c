@@ -21,6 +21,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
+#include <glib/gi18n-lib.h>
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
@@ -530,23 +533,23 @@ wnck_screen_get_for_root (gulong root_window_id)
 /**
  * wnck_screen_get_workspace:
  * @screen: a #WnckScreen
- * @number: a workspace index
+ * @workspace: a workspace index
  * 
- * Gets the workspace numbered @number for screen @screen, or returns %NULL if
- * no such workspace exists.
+ * Gets the workspace numbered @workspace for screen @screen, or returns %NULL
+ * if no such workspace exists.
  * 
  * Return value: the workspace, or %NULL
  **/
 WnckWorkspace*
 wnck_screen_get_workspace (WnckScreen *screen,
-			   int         number)
+			   int         workspace)
 {
   GList *list;
   
   /* We trust this function with property-provided numbers, it
    * must reliably return NULL on bad data
    */
-  list = g_list_nth (screen->priv->workspaces, number);
+  list = g_list_nth (screen->priv->workspaces, workspace);
 
   if (list == NULL)
     return NULL;

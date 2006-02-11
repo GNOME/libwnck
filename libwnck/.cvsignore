@@ -1,8 +1,14 @@
 Makefile
 Makefile.in
 inlinepixbufs.h
+stamp-wnck-enum-types.h
+stamp-wnck-marshal.h
 test-pager
 test-selector
 test-tasklist
 test-wnck
+wnck-enum-types.c
+wnck-enum-types.h
+wnck-marshal.c
+wnck-marshal.h
 *~

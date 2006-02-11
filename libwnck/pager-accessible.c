@@ -17,7 +17,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
 #include <libwnck/libwnck.h>
+#include <glib/gi18n-lib.h>
 #include <gtk/gtkwidget.h>
 #include <string.h>
 #include <atk/atkobjectfactory.h>

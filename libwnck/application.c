@@ -20,6 +20,9 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
+#include <glib/gi18n-lib.h>
 #include "application.h"
 #include "private.h"
 
@@ -381,7 +384,7 @@ wnck_application_get_mini_icon (WnckApplication *app)
 
 /**
  * wnck_application_get_icon_is_fallback:
- * @application: a #WnckApplication
+ * @app: a #WnckApplication
  *
  * Checks if we are using a default fallback icon because
  * none was set on the application.
