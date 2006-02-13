@@ -1,140 +1,152 @@
 # libwnck's Italian translation.
 # Copyright (C) Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
-# Luca Ferretti <elle.uca@infinito.it>, 2005
+# Luca Ferretti <elle.uca@infinito.it>, 2005-2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-02-23 10:52+0100\n"
-"Last-Translator: Luca Ferretti <elle.uca@infinito.it>\n"
+"POT-Creation-Date: 2006-02-13 12:29+0100\n"
+"PO-Revision-Date: 2006-02-13 12:35+0100\n"
+"Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "applicazione senza titolo"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Selettore area di lavoro"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Strumento per spostarsi tra le aree di lavoro"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Fare clic qui per passare all'area di lavoro %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
 msgstr "Finestra sconosciuta"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
 msgstr "Nessuna finestra aperta"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
 msgstr "Selettore finestre"
 
-#: libwnck/selector.c:748
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
 msgstr "Strumento per spostarsi tra le finestre"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:667
 msgid "Window List"
 msgstr "Elenco finestre"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:668
 msgid "Tool to switch between visible windows"
 msgstr "Strumento per spostarsi tra le finestre visibili"
 
-#: libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2465
 msgid "_Close All"
 msgstr "_Chiudi tutto"
 
-#: libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2480
 msgid "_Minimize All"
 msgstr "_Minimizza tutto"
 
-#: libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2491
 msgid "_Unminimize All"
 msgstr "_Deminimizza tutto"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "De_minimizza"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "_Minimizza"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "Dema_ssimizza"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "Ma_ssimizza"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "Sr_otola"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "Arr_otola"
-
-#: libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "Solo su _questa area di lavoro"
 
-#: libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "S_empre sull'area di lavoro visibile"
+msgstr "Sempre sull'area di lavoro _visibile"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "Area di lavoro 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area di lavoro %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "In _primo piano"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "S_posta"
+msgstr "M_uovi"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr "R_idimensiona"
+msgstr "_Ridimensiona"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Chiudi"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:620
+msgid "Move to Workspace _Left"
+msgstr "Sposta su area di lavoro a s_inistra"
+
+#: ../libwnck/window-action-menu.c:631
+msgid "Move to Workspace R_ight"
+msgstr "Sposta su area di lavoro a d_estra"
+
+#: ../libwnck/window-action-menu.c:642
+msgid "Move to Workspace _Up"
+msgstr "Sposta su area di lavoro in alt_o"
+
+#: ../libwnck/window-action-menu.c:654
+msgid "Move to Workspace _Down"
+msgstr "Sposta su area di lavoro in _basso"
+
+#: ../libwnck/window-action-menu.c:668
 msgid "Move to Another _Workspace"
 msgstr "Sposta su altra area di _lavoro"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:684
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:35
 msgid "untitled window"
 msgstr "finestra senza titolo"
