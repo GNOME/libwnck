@@ -1,3 +1,21 @@
+2.13.91
+=======
+
+ Misc
+
+  - Automate the creation of some files (Torsten Schoenfeld)
+  - Don't redefine the _ macro for translation (Vincent) [#328621]
+  - Make the selector widget translations work again (Vincent) [#323181]
+
+ Translations
+
+  - Vladimir Petkov (bg)
+  - Miloslav Trmac (cs)
+  - Priit Laes (et)
+  - Luca Ferretti (it)
+  - Takeshi AIHANA (ja)
+  - Слободан Д. Средојевић (sr)
+
 2.13.90
 =======
 
