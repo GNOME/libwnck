@@ -1,5 +1,11 @@
 2006-02-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu): fix
+	critical warning when creating the menu for a pinned window (for which
+	there is no reason to try to get the number of the workspace it is on).
+
+2006-02-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (draw_window): don't pass negative width or height
 	to gdk_draw_rectangle(). It seems it draws a big rectangle when it's
 	negative :-)

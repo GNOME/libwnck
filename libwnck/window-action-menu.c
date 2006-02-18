@@ -602,8 +602,14 @@ wnck_create_window_action_menu (WnckWindow *window)
                          amd->pin_item);
   set_item_stock (amd->pin_item, NULL);
   
+  workspace = wnck_window_get_workspace (amd->window);
+
   num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (amd->window));
-  present_workspace = wnck_workspace_get_number (wnck_window_get_workspace (amd->window));
+
+  if (workspace)
+    present_workspace = wnck_workspace_get_number (workspace);
+  else
+    present_workspace = -1;
 
   wnck_screen_calc_workspace_layout (wnck_window_get_screen (amd->window),
                                      num_workspaces,
@@ -657,13 +663,6 @@ wnck_create_window_action_menu (WnckWindow *window)
       else 
          amd->down_item = NULL;  
     }
-
-  workspace = wnck_window_get_workspace (amd->window);
-
-  if (workspace)
-    present_workspace = wnck_workspace_get_number (workspace);
-  else 
-    present_workspace = -1;
 
   amd->workspace_item = gtk_menu_item_new_with_mnemonic (_("Move to Another _Workspace")); 
   gtk_widget_show (amd->workspace_item);
