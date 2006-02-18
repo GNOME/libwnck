@@ -1261,12 +1261,13 @@ wnck_pager_button_release (GtkWidget        *widget,
 
 	  if (space)
             {
-              pager->priv->action_window = pager->priv->drag_window;
               wnck_window_move_to_workspace (pager->priv->drag_window,
                                              space);
               if (space == wnck_screen_get_active_workspace (pager->priv->screen))
                 wnck_window_activate (pager->priv->drag_window, event->time);
-            }	  
+              else
+                pager->priv->action_window = pager->priv->drag_window;
+            }
 	}
       
       wnck_pager_clear_drag (pager);
