@@ -1,5 +1,9 @@
 2006-02-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_button_release): really fix the bug :-)
+
+2006-02-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_button_release): don't mark the window
 	being dropped as the one in action (ie, the one that we should not
 	draw) if we drop it on its original workspace.
