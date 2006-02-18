@@ -658,7 +658,7 @@ draw_window (GdkDrawable        *drawable,
                       widget->style->bg_gc[GTK_STATE_NORMAL],
                       TRUE,
                       winrect->x + 1, winrect->y + 1,
-                      winrect->width - 2, winrect->height - 2);
+                      MAX (0, winrect->width - 2), MAX (0, winrect->height - 2));
 
   icon = wnck_window_get_icon (win);
 
@@ -731,7 +731,7 @@ draw_window (GdkDrawable        *drawable,
                       widget->style->fg_gc[GTK_STATE_NORMAL],
                       FALSE,
                       winrect->x, winrect->y,
-                      winrect->width - 1, winrect->height - 1);
+                      MAX (0, winrect->width - 1), MAX (0, winrect->height - 1));
 }            
 
 static int

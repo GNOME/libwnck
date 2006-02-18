@@ -1,5 +1,12 @@
 2006-02-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (draw_window): don't pass negative width or height
+	to gdk_draw_rectangle(). It seems it draws a big rectangle when it's
+	negative :-)
+	Fix bug #155502
+
+2006-02-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_button_release): really fix the bug :-)
 
 2006-02-18  Vincent Untz  <vuntz@gnome.org>
