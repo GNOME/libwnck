@@ -1,148 +1,160 @@
-# translation of el.po to 
+# translation of el.po to
 # translation of el.po to Greek
 # Greek translation of libwncj.
 # Copyright (C) 2003 GNOME Foundation.
 #
-# simos: 15 messages, 16Aug2002, initial translation.
-# kostas: 17 messages, 05Jan2003, updated translation for Gnome 2.1x
-# Simos Xenitellis <simos@hellug.gr>, 2002,2003.
-# Kostas Papadimas <pkst@gnome.org>, 2003,2004.
-# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005.
 #
+# simos: 15 messages, 16Aug2002, initial translation.
+# kostas: 17 messages, 05Jan2003, updated translation for Gnome 2.1x.
+# Simos Xenitellis <simos@hellug.gr>, 2002,2003.
+# Kostas Papadimas <pkst@gnome.org>, 2003,2004, 2006.
+# Nikos Charonitakis <charosn@her.forthnet.gr>, 2005.
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-02-21 00:28+0200\n"
-"Last-Translator: Nikos Charonitakis <charosn@her.forthnet.gr>\n"
-"Language-Team:  <team@gnome.gr>\n"
+"POT-Creation-Date: 2006-02-20 11:22+0200\n"
+"PO-Revision-Date: 2006-02-20 11:22+0200\n"
+"Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
+"Language-Team: Greek <team@gnome.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "εφαρμογή χωρίς τίτλο"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Εναλλάκτης Χώρων Εργασίας"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Εργαλείο για εναλλαγή μεταξύ χώρων εργασίας"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
 msgstr "Άγνωστο Παράθυρο"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
 msgstr "Δεν υπάρχουν ανοικτά παράθυρα"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
 msgstr "Επιλογέας Παραθύρων"
 
-#: libwnck/selector.c:748
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ παραθύρων"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:667
 msgid "Window List"
 msgstr "Λίστα Παραθύρων"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:668
 msgid "Tool to switch between visible windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
 
-#: libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2465
 msgid "_Close All"
 msgstr "_Κλείσιμο Όλων"
 
-#: libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2480
 msgid "_Minimize All"
 msgstr "Ελα_χιστοποίηση Όλων"
 
-#: libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2491
 msgid "_Unminimize All"
 msgstr "Μεγιστο_ποίηση Όλων"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "Απελαχιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "Ελα_χιστοποίηση"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "Απομεγιστο_ποίηση"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_Αναδίπλωση"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "Δίπλωμα _Επάνω"
-
-#: libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "Μόνο σε αυ_τό το χώρο εργασίας"
 
-#: libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
 msgstr "_Πάντοτε σε Ορατό Χώρο Εργασίας"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "Χώρος Εργασίας 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Χώρος Εργασίας %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "Προς τα _πάνω"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "_Μετακίνηση"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "Αλλαγή με_γέθους"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Μετακίνηση σε χώρο ερ_γασίας αριστερά"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "Μετακίνηση σε χώρο εργασίας δε_ξιά"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Μετακίνηση σε χώρο εργασίας _πάνω"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Μετακίνηση σε χώρο εργασίας _κάτω"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "Μετακίνηση σε Άλλο Χώρο Ερ_γασίας"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:683
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:35
 msgid "untitled window"
 msgstr "παράθυρο χωρίς τίτλο"
