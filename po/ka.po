@@ -1,150 +1,162 @@
 # Georgian translation of libwnck.
-# Copyright (C) 2004 Aiet Kolkhi
+# Copyright © 2004 Aiet Kolkhi.
 # This file is distributed under the same license as the libwnck package.
 # Aiet Kolkhi <aiet@qartuli.net>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 0.1\n"
+"Project-Id-Version: libwnck 2.13.91\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2004-04-30 01:22+0400\n"
+"POT-Creation-Date: 2006-02-21 09:14+0100\n"
+"PO-Revision-Date: 2006-02-21 14:10+0100\n"
 "Last-Translator: Aiet Kolkhi <aiet@qartuli.net>\n"
-"Language-Team: Georgian <aiet@qartuli.net>\n"
+"Language-Team: Georgian <ka@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "უსახელო პროგრამა"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "სივრცის გადამრთველი"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
-msgstr "სამუშაო სივრცის გადამრთველი"
+msgstr "სამუშაო სივრცის გადამრთველი ხელსაწყო"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "დააწკაპუნეთ აქ, თუ გნებავთ %s სივრცეზე გადასვლა"
+msgstr "დააწკაპუნეთ აქ, თუ გნებავთ %s სივრცეში გადასვლა"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "უცნობი ფანჯარა"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "არავითარი გახსნა"
 
-#: libwnck/selector.c:747
-#, fuzzy
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "სარკმელთა სია"
+msgstr "ფანჯრის ამომრჩევი"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
+msgstr "ფანჯრებს შორის გადასვლის ხელსაწყო"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:667
 msgid "Window List"
-msgstr "სარკმელთა სია"
+msgstr "ფანჯრების სია"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:668
 msgid "Tool to switch between visible windows"
-msgstr "ხელსაწყოები ხილულ ფანჯრებში გადასასვლელად"
+msgstr "ხილულ ფანჯრებს შორის გადასვლის ხელსაწყო"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2465
 msgid "_Close All"
-msgstr "_დაკეტვა"
+msgstr "_დახურე ყველა"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2480
 msgid "_Minimize All"
-msgstr "_მინიმირება"
+msgstr "_ყველას მინიმიზირება"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2491
 msgid "_Unminimize All"
-msgstr "მაქ_სიმირება"
+msgstr "ყველას მაქ_სიმიზირება"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr "მაქ_სიმირება"
+msgstr "მაქ_სიმიზირება"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "_მინიმირება"
+msgstr "_მინიმიზირება"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "მი_ნიმირება"
+msgstr "მი_ნიმიზირება"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "გადიდე_ბა"
+msgstr "გაფართოე_ბა"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_ჩამოშლა"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "ა_კეცვა"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "მხოლოდ ა_მ სივრცეში"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "მხოლოდ ა_მ სივრცეში"
+msgstr "_აჩვენე მიმდინარე გარემოში"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "სამუშაო სივრცე %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "სამუშაო სივრცე 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "სამუშაო სივრცე %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "წინა პ_ლანზე"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "_გადაადგილება"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "_ზომის შეცვლა"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
-msgstr "_დაკეტვა"
+msgstr "_დახურვა"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "მა_რცხნივ გადატანა"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "მარ_ჯვნივ გადატანა"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "ზემოთ გა_დატანა"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "ქვემოთ გადაა_ტანა"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "სხვა დესკტოპზე გა_დაადგილება"
+msgstr "სხვა სივრცეში გა_დატანა"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:683
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:35
 msgid "untitled window"
-msgstr "უსახელო სარკმელი"
+msgstr "უსახელო ფანჯარა"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "აჩვენე _ყველა დესკტოპზე"
+msgid "_Unroll"
+msgstr "_ჩამოშლა"
+
+msgid "Roll _Up"
+msgstr "ა_კეცვა"
+
+msgid "Put on _All Workspaces"
+msgstr "აჩვენე _ყველა დესკტოპზე"
