@@ -3,144 +3,155 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-08 20:35+0200\n"
-"PO-Revision-Date: 2004-04-16 12:43+0200\n"
-"Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
+"POT-Creation-Date: 2006-02-23 14:11+0100\n"
+"PO-Revision-Date: 2006-02-23 14:14+0100\n"
+"Last-Translator: Iñaki Larrañaga <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.0.2\n"
+"X-Generator: KBabel 1.10.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
-#: ../libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "izenbururik gabeko aplikazioa"
 
-#: ../libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Laneko arearen aldatzailea"
 
-#: ../libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Laneko area batetik bestera aldatzeko tresna"
 
-#: ../libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Egin klik hemen %s laneko areara aldatzeko"
 
-#: ../libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
 msgstr "Leiho ezezaguna"
 
-#: ../libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
 msgstr "Ez da leihorik ireki"
 
-#: ../libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
 msgstr "Leiho-hautatzailea"
 
-#: ../libwnck/selector.c:748
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
 msgstr "Leiho batetik bestera aldatzeko tresna"
 
-#: ../libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:667
 msgid "Window List"
 msgstr "Leiho-zerrenda"
 
-#: ../libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:668
 msgid "Tool to switch between visible windows"
 msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
 
-#: ../libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2465
 msgid "_Close All"
 msgstr "It_xi denak"
 
-#: ../libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2480
 msgid "_Minimize All"
 msgstr "_Minimizatu denak"
 
-#: ../libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2491
 msgid "_Unminimize All"
 msgstr "_Leheneratu denak"
 
-#: ../libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "Le_heneratu"
 
-#: ../libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "_Ikonotu"
 
-#: ../libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "Leh_eneratu"
 
-#: ../libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "Ma_ximizatu"
 
-#: ../libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_Zabaldu"
-
-#: ../libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "Bil_du"
-
-#: ../libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "Laneko a_rea honetan bakarrik"
 
-#: ../libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
 msgstr "Laneko area ikusgaian _beti"
 
-#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "%d laneko area"
 
-#: ../libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "1_0 laneko area"
 
-#: ../libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d laneko area"
 
-#: ../libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "_Goian"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "_Mugitu"
 
-#: ../libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "_Aldatu tamaina"
 
-#: ../libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "It_xi"
 
-#: ../libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Aldatu e_zkerreko laneko areara"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "Aldatu e_skuineko laneko areara"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Aldatu _gaineko laneko areara"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Aldatu _beheko laneko areara"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "Aldatu beste _laneko areara"
 
-#: ../libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:683
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: ../libwnck/window.c:32
+#: ../libwnck/window.c:35
 msgid "untitled window"
 msgstr "izenbururik gabeko leihoa"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "_Jarri laneko area guztietan"
