@@ -1,141 +1,156 @@
-# Copyright (C) 2002, 2005 Free Software Foundation, Inc.
+# translation of libwnck.HEAD.po to Russian
+# Copyright (C) 2002, 2005, 2006 Free Software Foundation, Inc.
 # Valek Filippov <frob@df.ru>, 2002.
 # Dmitry G. Mastrukov <dmitry@taurussoft.org>, 2002.
 # Leonid Kanter <leon@asplinux.ru>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck\n"
+"Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2005-02-21 15:37+0200\n"
-"Last-Translator: Leonid Kanter <leon@asplinux.ru>\n"
+"POT-Creation-Date: 2006-02-27 07:19+0100\n"
+"PO-Revision-Date: 2006-02-27 11:44+0200\n"
+"Last-Translator: Leonid Kanter\n"
 "Language-Team: Russian <gnome-cyr@gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.11.1\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "неозаглавленное приложение"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Переключатель рабочих мест"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Утилита для переключения между рабочими местами"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Щёлкните для переключения на рабочее место %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
 msgstr "Неизвестное окно"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
 msgstr "Нет открытых окон"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
 msgstr "Переключатель окон"
 
-#: libwnck/selector.c:748
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
 msgstr "Утилита для переключение между окнами"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:667
 msgid "Window List"
 msgstr "Список окон"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:668
 msgid "Tool to switch between visible windows"
 msgstr "Утилита переключения между видимыми окнами"
 
-#: libwnck/tasklist.c:2324
+#: ../libwnck/tasklist.c:2465
 msgid "_Close All"
 msgstr "_Закрыть все"
 
-#: libwnck/tasklist.c:2339
+#: ../libwnck/tasklist.c:2480
 msgid "_Minimize All"
 msgstr "_Свернуть все"
 
-#: libwnck/tasklist.c:2350
+#: ../libwnck/tasklist.c:2491
 msgid "_Unminimize All"
 msgstr "_Развернуть все"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "_Развернуть"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "_Свернуть"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "Восстановить _прежний размер"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "Развернуть на весь _экран"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "Рас_катать"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "С_катать"
-
-#: libwnck/window-action-menu.c:256
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "_Только на этом рабочем месте"
 
-#: libwnck/window-action-menu.c:263
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
 msgstr "_Всегда на видимом рабочем месте"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Рабочее место %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "Рабочее место 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Рабочее место %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "_Наверх"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "Пере_местить"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "_Изменить размер"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Закрыть"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Переместить на рабочее место с_лева"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "_Переместить на рабочее место справа"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Переместить на рабочее место _выше"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Переместить на рабочее место _ниже"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "Переместить на другое _Рабочее место"
 
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:683
 #, c-format
 msgid "%s"
 msgstr "%s"
 
-#: libwnck/window.c:32
+#: ../libwnck/window.c:35
 msgid "untitled window"
 msgstr "неозаглавленное окно"
+
