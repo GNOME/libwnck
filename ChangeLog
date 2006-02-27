@@ -1,3 +1,8 @@
+2006-02-27  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.13.92
+
 2006-02-18  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/window-action-menu.c: (wnck_create_window_action_menu): fix

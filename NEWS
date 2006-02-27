@@ -1,3 +1,26 @@
+2.13.92
+=======
+
+ Fixes
+
+  - Fix window disappearing in workspace switcher after drag and drop (Vincent)
+    [#317373]
+  - Fix corrupted drawing of windows (Vincent) [#155502]
+  - Fix critical warning with action menu of pinned windows (Vincent)
+
+ Translations
+
+  - Lasse Bang Mikkelsen (da)
+  - Kostas Papadimas (el)
+  - Iñaki Larrañaga (eu)
+  - Gabor Kelemen (hu)
+  - Aiet Kolkhi (ka)
+  - Žygimantas Beručka (lt)
+  - Duarte Loreto (pt)
+  - Leonid Kanter (ru)
+  - Woodman Tuen (zh_HK)
+  - Woodman Tuen (zh_TW)
+
 2.13.91
 =======
 
