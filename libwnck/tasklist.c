@@ -2276,6 +2276,8 @@ wnck_tasklist_activate_task_window (WnckTask *task,
 {
   WnckTasklist *tasklist;
   WnckWindowState state;
+  WnckWorkspace *active_ws;
+  WnckWorkspace *window_ws;
 
   tasklist = task->tasklist;
 
@@ -2284,13 +2286,11 @@ wnck_tasklist_activate_task_window (WnckTask *task,
       
   state = wnck_window_get_state (task->window);
 
+  active_ws = wnck_screen_get_active_workspace (tasklist->priv->screen);
+  window_ws = wnck_window_get_workspace (task->window);
+
   if (state & WNCK_WINDOW_STATE_MINIMIZED)
     {
-      WnckWorkspace *active_ws;
-      WnckWorkspace *window_ws;
-
-      active_ws = wnck_screen_get_active_workspace (tasklist->priv->screen);
-      window_ws = wnck_window_get_workspace (task->window);
       if (window_ws &&
           active_ws != window_ws &&
           !tasklist->priv->switch_workspace_on_unminimize)
@@ -2300,8 +2300,9 @@ wnck_tasklist_activate_task_window (WnckTask *task,
     }
   else
     {
-      if (task->was_active || 
-          wnck_window_transient_is_most_recently_activated (task->window))
+      if ((task->was_active || 
+           wnck_window_transient_is_most_recently_activated (task->window)) &&
+          (window_ws && active_ws == window_ws))
 	{
 	  task->was_active = FALSE;
 	  wnck_window_minimize (task->window);
@@ -2309,13 +2310,10 @@ wnck_tasklist_activate_task_window (WnckTask *task,
 	}
       else
 	{
-          WnckWorkspace *window_ws;
-          
           /* FIXME: THIS IS SICK AND WRONG AND BUGGY.  See the end of
            * http://mail.gnome.org/archives/wm-spec-list/2005-July/msg00032.html
            * There should only be *one* activate call.
            */
-          window_ws = wnck_window_get_workspace (task->window);
           if (window_ws)
             wnck_workspace_activate (window_ws, timestamp);
 

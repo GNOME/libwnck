@@ -1,3 +1,9 @@
+2006-03-06  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_activate_task_window): don't
+	minimize the window when it's on another desktop and it was the last
+	active window. Activate it instead. Fix bug #331661
+
 2006-02-27  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.13.92
