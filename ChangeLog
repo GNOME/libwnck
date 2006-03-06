@@ -1,5 +1,11 @@
 2006-03-06  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (workspace_at_point): fixes C89 compliance
+	Patch by Jens Granseuer <jensgr@gmx.net>
+	Fix bug #332866
+
+2006-03-06  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_tasklist_activate_task_window): don't
 	minimize the window when it's on another desktop and it was the last
 	active window. Activate it instead. Fix bug #331661

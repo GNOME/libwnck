@@ -771,6 +771,7 @@ workspace_at_point (WnckPager *pager,
   while (i < n_spaces)
     {
       GdkRectangle rect;
+      GtkWidget *widget;
       
       get_workspace_rect (pager, i, &rect);
 
@@ -779,7 +780,7 @@ workspace_at_point (WnckPager *pager,
        * Else, pretend the right/bottom line separating two workspaces belong
        * to the workspace.
        */
-      GtkWidget *widget = GTK_WIDGET (pager);
+      widget = GTK_WIDGET (pager);
 
       if (rect.x == xthickness)
         {
