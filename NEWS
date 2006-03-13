@@ -1,3 +1,23 @@
+2.14.0
+======
+
+ Fixes
+
+  - Don't minimize the window when it's on another desktop and it was the last
+    active window (Vincent) [#331661]
+  - Fix C89 compliance (Jens Granseuer) [#332866]
+
+ Translations
+
+  - Rhys Jones (cy)
+  - Hendrik Richter (de)
+  - Rajesh Ranjan (hi)
+  - Raivis Dejus (lv)
+  - Mugurel Tudor (ro)
+  - Laurent Dhima (sq)
+  - Daniel Nylander (sv)
+  - Maxim Dziumanenko (uk)
+
 2.13.92
 =======
 
