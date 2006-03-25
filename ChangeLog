@@ -1,3 +1,11 @@
+2006-03-25  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_task_finalize): fix leaks
+	* libwnck/xutils.c: (_wnck_icon_cache_new): fill the structure with
+	lots of nice 0.
+	Patch by Dan Winship <danw@novell.com>
+	Fix bug #334137
+
 2006-03-13  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.14.1

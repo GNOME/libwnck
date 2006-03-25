@@ -1796,7 +1796,7 @@ _wnck_icon_cache_new (void)
 {
   WnckIconCache *icon_cache;
 
-  icon_cache = g_new (WnckIconCache, 1);
+  icon_cache = g_new0 (WnckIconCache, 1);
 
   icon_cache->origin = USING_NO_ICON;
   icon_cache->prev_pixmap = None;

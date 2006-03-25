@@ -561,7 +561,7 @@ wnck_task_finalize (GObject *object)
 
   if (task->menu)
     {
-      gtk_widget_destroy (task->menu);
+      g_object_unref (task->menu);
       task->menu = NULL;
     }
 
@@ -596,6 +596,12 @@ wnck_task_finalize (GObject *object)
       g_source_remove (task->button_activate);
       task->button_activate = 0;
     } 
+
+  if (task->screenshot)
+    {
+      g_object_unref (task->screenshot);
+      task->screenshot = NULL;
+    }
 
   wnck_task_stop_glow (task);
 
