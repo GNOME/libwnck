@@ -1,5 +1,12 @@
 2006-03-25  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_tasklist_activate_task_window): minimize
+	the window if it's on all workspaces when it was active, instead of
+	activating it.
+	Fix bug #335316
+
+2006-03-25  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_finalize): fix leaks
 	* libwnck/xutils.c: (_wnck_icon_cache_new): fill the structure with
 	lots of nice 0.
