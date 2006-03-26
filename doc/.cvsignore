@@ -12,6 +12,5 @@ libwnck-undocumented.txt
 libwnck-unused.txt
 libwnck.interfaces
 libwnck.prerequisites
-libwnck-sections.txt
 *.lo
 tmpl

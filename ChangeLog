@@ -1,3 +1,7 @@
+2006-03-26  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/.cvsignore: libwnck-sections.txt shouldn't be ignored
+
 2006-03-25  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/tasklist.c: (wnck_tasklist_activate_task_window): minimize
