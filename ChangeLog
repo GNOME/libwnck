@@ -1,3 +1,15 @@
+2006-03-28  Elijah Newren  <newren gmail com>
+
+	Fix transient cycles causing infinite loops, #332493.  Portion of
+	patch providing robustness against self-transiency (i.e. cycle
+	length of 1) provided by Dan Winship.
+
+	* libwnck/tasklist.c (wnck_tasklist_active_window_changed): check
+	for transient cycles
+
+	* libwnck/window.c (update_transient_for): disallow
+	self-transiency entirely
+
 2006-03-26  Vincent Untz  <vuntz@gnome.org>
 
 	* doc/.cvsignore: libwnck-sections.txt shouldn't be ignored
