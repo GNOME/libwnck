@@ -2127,7 +2127,8 @@ update_transient_for (WnckWindow *window)
   
   if (_wnck_get_window (window->priv->xwindow,
                         _wnck_atom_get ("WM_TRANSIENT_FOR"),
-                        &parent))
+                        &parent) &&
+      parent != window->priv->xwindow)
     {
       window->priv->transient_for = parent;
 
