@@ -1,3 +1,7 @@
+2006-03-30  Guntupalli Karunakar  <karunakar@indlinux.org>
+
+        * configure.in: Added "dz" (Dzongkha) to ALL_LINGUAS.
+
 2006-03-28  Elijah Newren  <newren gmail com>
 
 	Fix transient cycles causing infinite loops, #332493.  Portion of
