@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck.HEAD.dz\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-03-06 05:24+0100\n"
+"PO-Revision-Date: 2006-03-28 11:12-0500\n"
+"Last-Translator: \n"
+"Language-Team: DZONGKHA <pgeyleg@dit.gov.bt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2;plural=(n!=1);\n"
+"X-Poedit-Language: Dzongkha\n"
+"X-Poedit-Country: BHUTAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: ../libwnck/application.c:26
+msgid "untitled application"
+msgstr "མགོ་མིང་མ་བཏགས་པའི་གློག་རིམ།"
+
+#: ../libwnck/pager-accessible.c:318
+msgid "Workspace Switcher"
+msgstr "ལཱ་གི་ས་སྒོ་ སོར་བསྒྱུར་འབད་མི།"
+
+#: ../libwnck/pager-accessible.c:329
+msgid "Tool to switch between workspaces"
+msgstr "ལཱ་གི་ས་སྒོའི་བར་ན་ སོར་བསྒྱུར་འབད་ནིའི་ལག་ཆས།"
+
+#: ../libwnck/pager-accessible.c:433
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "ལཱ་གི་ས་སྒོ་%sལུ་ སོར་བསྒྱུར་འབད་ནི་ལུ་ འདི་ལུ་ཨེབ་གཏང་འབད།"
+
+#: ../libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "ངོ་མ་ཤེས་པའི་སྒོ་སྒྲིག།"
+
+#: ../libwnck/selector.c:648
+msgid "No Windows Open"
+msgstr "སྒོ་སྒྲིག་གཅིག་ཡང་ ཁ་མ་ཕྱེ་བས།"
+
+#: ../libwnck/selector.c:750
+msgid "Window Selector"
+msgstr "སྒོ་སྒྲིག་སེལ་བྱེད།"
+
+#: ../libwnck/selector.c:751
+msgid "Tool to switch between windows"
+msgstr "སྒོ་སྒྲིག་གི་བར་ན་ སོར་བསྒྱུར་འབད་ནིའི་ལག་ཆས།"
+
+#: ../libwnck/tasklist.c:659
+msgid "Window List"
+msgstr "སྒོ་སྒྲིག་གི་ཐོ་ཡིག།"
+
+#: ../libwnck/tasklist.c:660
+msgid "Tool to switch between visible windows"
+msgstr "མཐོང་ཚུགས་པའི་ སྒོ་སྒྲིག་གི་བར་ན་ སོར་བསྒྱུར་འབད་ནིའི་ལག་ཆས།"
+
+#: ../libwnck/tasklist.c:2342
+msgid "_Close All"
+msgstr "ཆ་མཉམ་ཁ་བསྡམས།(_C)"
+
+#: ../libwnck/tasklist.c:2357
+msgid "_Minimize All"
+msgstr "ཆ་མཉམ་ཆུང་ཀུ་བཟོ།(_M)"
+
+#: ../libwnck/tasklist.c:2368
+msgid "_Unminimize All"
+msgstr "ཆ་མཉམ་ཆུང་བཟོ་བཤོལ།(_U)"
+
+#: ../libwnck/window-action-menu.c:211
+msgid "Unmi_nimize"
+msgstr "ཆུང་བཟོ་བཤོལ།(_n)"
+
+#: ../libwnck/window-action-menu.c:218
+msgid "Mi_nimize"
+msgstr "ཆུང་ཀུ་བཟོ།(_n)"
+
+#: ../libwnck/window-action-menu.c:226
+msgid "Unma_ximize"
+msgstr "སྦོམ་བཟོ་བཤོལ།(_x)"
+
+#: ../libwnck/window-action-menu.c:233
+msgid "Ma_ximize"
+msgstr "སྦོམ་བཟོ།(_x)"
+
+#: ../libwnck/window-action-menu.c:241
+msgid "_Unroll"
+msgstr "སྒྲིལ་བཤོལ་འབད།(_U)"
+
+#: ../libwnck/window-action-menu.c:248
+msgid "Roll _Up"
+msgstr "སྒྲིལ།(_U)"
+
+#: ../libwnck/window-action-menu.c:256
+msgid "_Only on This Workspace"
+msgstr "ལཱ་གི་ས་སྒོ་འདི་གུ་རྐྱངམ་གཅིག།(_O)"
+
+#: ../libwnck/window-action-menu.c:263
+msgid "_Always on Visible Workspace"
+msgstr "ཨ་རྟག་རང་ མཐོང་ཚུགས་པའི་ ལཱ་གི་ས་སྒོ་གུ(_A)"
+
+#: ../libwnck/window-action-menu.c:378
+#: ../libwnck/workspace.c:236
+#, c-format
+msgid "Workspace %d"
+msgstr "ལཱ་གི་ས་སྒོ་%d"
+
+#: ../libwnck/window-action-menu.c:386
+msgid "Workspace 1_0"
+msgstr "ལཱ་གི་ས་སྒོ་ ༡ ༠།(_0)"
+
+#: ../libwnck/window-action-menu.c:388
+#, c-format
+msgid "Workspace %s%d"
+msgstr "ལཱ་གི་ས་སྒོ་ %s%d"
+
+#: ../libwnck/window-action-menu.c:485
+msgid "_Move"
+msgstr "སྤོ།(_M)"
+
+#: ../libwnck/window-action-menu.c:492
+msgid "_Resize"
+msgstr "ཚད་སླར་སྒྲིག(_R)"
+
+#: ../libwnck/window-action-menu.c:505
+msgid "_Close"
+msgstr "ཁ་བསྡམས།(_C)"
+
+#: ../libwnck/window-action-menu.c:518
+msgid "Move to Another _Workspace"
+msgstr "ལཱ་གི་ས་སྒོ་གཞན་ལུ་སྤོ།(_W)"
+
+#: ../libwnck/window-action-menu.c:542
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: ../libwnck/window.c:32
+msgid "untitled window"
+msgstr "མགོ་མིང་མ་བཏགས་པའི་སྒོ་སྒྲིག།"
+
