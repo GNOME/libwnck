@@ -1,0 +1,159 @@
+# Oriya translation of libwnck.gnome-2-12.pot.
+# Copyright (C) 2006, Free Software Foundation, Inc.
+# This file is distributed under the same license as the libwnck package.
+# Gora Mohanty <gora_mohanty@yahoo.co.in>, 2006.
+# $Id$
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck.gnome-2-12.or\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2006-04-04 01:43+0530\n"
+"PO-Revision-Date: 2006-04-04 01:46+0530\n"
+"Last-Translator: Gora Mohanty <gora_mohanty@yahoo.co.in>\n"
+"Language-Team: Oriya <oriya-group@lists.sarovar.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../libwnck/application.c:26
+msgid "untitled application"
+msgstr "ଅଜଣା ପ୍ରୟୋଗ"
+
+#: ../libwnck/pager-accessible.c:318
+msgid "Workspace Switcher"
+msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର ଚୟକ"
+
+#: ../libwnck/pager-accessible.c:329
+msgid "Tool to switch between workspaces"
+msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର ମଧ୍ଯରେ ଘୁଞ୍ଚାଇବା ପାଇଁ ସାଧନ"
+
+#: ../libwnck/pager-accessible.c:433
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "%s କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚିବା ପାଇଁ ଏହାକୁ ଦବାନ୍ତୁ"
+
+#: ../libwnck/selector.c:218
+msgid "Unknown Window"
+msgstr "ଅଜଣା ୱିଣ୍ଡୋ"
+
+#: ../libwnck/selector.c:648
+msgid "No Windows Open"
+msgstr "କୌଣସି ଖୋଲା ୱିଣ୍ଡୋ ନାହିଁ"
+
+#: ../libwnck/selector.c:750
+msgid "Window Selector"
+msgstr "ୱିଣ୍ଡୋ ଚୟକ"
+
+#: ../libwnck/selector.c:751
+msgid "Tool to switch between windows"
+msgstr "ୱିଣ୍ଡୋ ମଧ୍ଯରେ ଘୁଞ୍ଚାଇବା ପାଇଁ ସାଧନ"
+
+#: ../libwnck/tasklist.c:659
+msgid "Window List"
+msgstr "ୱିଣ୍ଡୋ ତାଲିକା"
+
+#: ../libwnck/tasklist.c:660
+msgid "Tool to switch between visible windows"
+msgstr "ଦୃଶ୍ଯମାନ ୱିଣ୍ଡୋ ମଧ୍ଯରେ ଘୁଞ୍ଚାଇବା ପାଇଁ ସାଧନ"
+
+#: ../libwnck/tasklist.c:2349
+msgid "_Close All"
+msgstr "ସବୁ ବନ୍ଦ କରନ୍ତୁ (_C)"
+
+#: ../libwnck/tasklist.c:2364
+msgid "_Minimize All"
+msgstr "ସବୁକୁ ଯଥାସମ୍ଭବ ଛୋଟ କରନ୍ତୁ (_M)"
+
+#: ../libwnck/tasklist.c:2375
+msgid "_Unminimize All"
+msgstr "ସବୁକୁ ଯକ୍ଷୁଦ୍ରତମରୁ ବଢ଼ାନ୍ତୁ (_U)"
+
+#: ../libwnck/window-action-menu.c:211
+msgid "Unmi_nimize"
+msgstr "କ୍ଷୁଦ୍ରତମରୁ ବଢ଼ାନ୍ତୁ (_n)"
+
+#: ../libwnck/window-action-menu.c:218
+msgid "Mi_nimize"
+msgstr "ଯଥାସମ୍ଭବ ଛୋଟ କରନ୍ତୁ (_n)"
+
+#: ../libwnck/window-action-menu.c:226
+msgid "Unma_ximize"
+msgstr "ବୃହତ୍ତମରୁ ଛୋଟ କରନ୍ତୁ (_x)"
+
+#: ../libwnck/window-action-menu.c:233
+msgid "Ma_ximize"
+msgstr "ଯଥାସମ୍ଭବ ବଡ଼ କରନ୍ତୁ (_x)"
+
+#: ../libwnck/window-action-menu.c:241
+msgid "_Unroll"
+msgstr "ଗୁଡ଼ାନ୍ତୁ (_U)"
+
+#: ../libwnck/window-action-menu.c:248
+msgid "Roll _Up"
+msgstr "ଉପରକୁ ଗୁଡ଼ାନ୍ତୁ (_U)"
+
+#: ../libwnck/window-action-menu.c:256
+msgid "_Only on This Workspace"
+msgstr "କେବଳ ଏହି କାର୍ଯ୍ଯକ୍ଷେତ୍ରରେ (_O)"
+
+#: ../libwnck/window-action-menu.c:263
+msgid "_Always on Visible Workspace"
+msgstr "ସଦାବେଳେ ଦୃଶ୍ଯମାନ କାର୍ଯ୍ଯକ୍ଷେତ୍ରରେ (_A)"
+
+#: ../libwnck/window-action-menu.c:378 ../libwnck/workspace.c:236
+#, c-format
+msgid "Workspace %d"
+msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର %d"
+
+#: ../libwnck/window-action-menu.c:386
+msgid "Workspace 1_0"
+msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର ୧_୦"
+
+#: ../libwnck/window-action-menu.c:388
+#, c-format
+msgid "Workspace %s%d"
+msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର %s%d"
+
+#: ../libwnck/window-action-menu.c:485
+msgid "_Move"
+msgstr "ଘୁଞ୍ଚାନ୍ତୁ (_M)"
+
+#: ../libwnck/window-action-menu.c:492
+msgid "_Resize"
+msgstr "ଆକାର ବଦଳାନ୍ତୁ (_R)"
+
+#: ../libwnck/window-action-menu.c:505
+msgid "_Close"
+msgstr "ବନ୍ଦ କରନ୍ତୁ (_C)"
+
+#: ../libwnck/window-action-menu.c:518
+msgid "Move to Another _Workspace"
+msgstr "ଅନ୍ଯ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_W)"
+
+#: ../libwnck/window-action-menu.c:542
+#, c-format
+msgid "%s"
+msgstr "%s"
+
+#: ../libwnck/window.c:32
+msgid "untitled window"
+msgstr "ଶୀର୍ଷକହୀନ ୱିଣ୍ଡୋ"
+
+#~ msgid "On _Top"
+#~ msgstr "ଉପରେ (_T)"
+
+#~ msgid "Move to Workspace _Left"
+#~ msgstr "ବାମ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_L)"
+
+#~ msgid "Move to Workspace R_ight"
+#~ msgstr "ଡାହାଣ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_i)"
+
+#~ msgid "Move to Workspace _Up"
+#~ msgstr "ଉପର କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_U)"
+
+#~ msgid "Move to Workspace _Down"
+#~ msgstr "ତଳ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_D)"
+
+#~ msgid "Put on _All Workspaces"
+#~ msgstr "ସବୁ କାର୍ଯ୍ଯକ୍ଷେତ୍ରରେ ସ୍ଥାପିତ କରନ୍ତୁ (_A)"
