@@ -1,3 +1,19 @@
+2006-04-08  Elijah Newren  <newren gmail com>
+
+	Patch from Leszek Matok to ensure we get notification of
+	demands-attent/urgent windows on other workspaces immediately.
+	Fixes #336142.
+
+	* libwnck/tasklist.c (tasklist_include_window_impl): gather out
+	common functionality for special casing whether to include the
+	window in different lists, (tasklist_include_in_skipped_list):
+	rename from tasklist_include_window_ignoring_skip_taskbar() to be
+	more precise and use tasklist_include_window_impl(),
+	(wnck_tasklist_include_window): use_tasklist_include_window_impl()
+	now, (wnck_task_state_changed): check whether we need to update
+	the list of tasks due to a state change of a task on another
+	workspace.
+
 2006-04-04  Gora Mohanty  <gmohanty@cvs.gnome.org>
 
         * configure.in: Added 'or' (Oriya) to ALL_LINGUAS.

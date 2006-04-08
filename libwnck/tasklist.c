@@ -1803,11 +1803,16 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
  * This function determines if a window should be included in the tasklist.
  */
 static gboolean
-tasklist_include_window_ignoring_skip_taskbar (WnckTasklist *tasklist,
-                                               WnckWindow *win)
+tasklist_include_window_impl (WnckTasklist *tasklist,
+                              WnckWindow   *win,
+                              gboolean      check_for_skipped_list)
 {
   WnckWorkspace *active_workspace;
   int x, y, w, h;
+
+  if (!check_for_skipped_list &&
+      wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
+    return FALSE;
 
   if (tasklist->priv->monitor_num != -1)
     {
@@ -1817,6 +1822,12 @@ tasklist_include_window_ignoring_skip_taskbar (WnckTasklist *tasklist,
                                            x + w / 2, y + h / 2) != tasklist->priv->monitor_num)
         return FALSE;
     }
+
+  /* Remainder of checks aren't relevant for checking if the window should
+   * be in the skipped list.
+   */
+  if (check_for_skipped_list)
+    return TRUE;
 
   if (tasklist->priv->include_all_workspaces)
     return TRUE;
@@ -1839,12 +1850,19 @@ tasklist_include_window_ignoring_skip_taskbar (WnckTasklist *tasklist,
 }
 
 static gboolean
+tasklist_include_in_skipped_list (WnckTasklist *tasklist, WnckWindow *win)
+{
+  return tasklist_include_window_impl (tasklist, 
+                                       win,
+                                       TRUE /* check_for_skipped_list */);
+}
+
+static gboolean
 wnck_tasklist_include_window (WnckTasklist *tasklist, WnckWindow *win)
 {
-  if (wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
-    return FALSE;
-
-  return tasklist_include_window_ignoring_skip_taskbar (tasklist, win);
+  return tasklist_include_window_impl (tasklist, 
+                                       win,
+                                       FALSE /* check_for_skipped_list */);
 }
 
 static void
@@ -1917,7 +1935,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	  
 	  class_group_task->windows = g_list_prepend (class_group_task->windows, win_task);
 	}
-      else if (tasklist_include_window_ignoring_skip_taskbar (tasklist, win))
+      else if (tasklist_include_in_skipped_list (tasklist, win))
         {
           skipped_window *skipped = g_new0 (skipped_window, 1);
           skipped->window = g_object_ref (win);
@@ -2170,8 +2188,9 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
    * the tasklist itself changed monitor.
    */
   win_task = g_hash_table_lookup (tasklist->priv->win_hash, window);
-  show = wnck_tasklist_include_window(tasklist, window);
-  if (((win_task == NULL && !show) || (win_task != NULL && show)) && !monitor_changed)
+  show = wnck_tasklist_include_window (tasklist, window);
+  if (((win_task == NULL && !show) || (win_task != NULL && show)) &&
+      !monitor_changed)
     return;
 
   /* Don't keep any stale references */
@@ -2832,6 +2851,20 @@ wnck_task_state_changed (WnckWindow     *window,
       return;
     }
   
+  if ((changed_mask & WNCK_WINDOW_STATE_DEMANDS_ATTENTION) ||
+      (changed_mask & WNCK_WINDOW_STATE_URGENT))
+    {
+      WnckWorkspace *active_workspace =
+        wnck_screen_get_active_workspace (tasklist->priv->screen);
+
+      if (active_workspace                              &&
+          active_workspace != wnck_window_get_workspace (window))
+        {
+          wnck_tasklist_update_lists (tasklist);
+          gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+        }
+    }
+    
   if ((changed_mask & WNCK_WINDOW_STATE_MINIMIZED)         ||
       (changed_mask & WNCK_WINDOW_STATE_DEMANDS_ATTENTION) ||
       (changed_mask & WNCK_WINDOW_STATE_URGENT))
