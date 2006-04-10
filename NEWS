@@ -1,3 +1,20 @@
+2.14.1
+======
+
+ Fixes
+
+  - Fix leaks (Dan Winship) [#334137]
+  - Fix minimization of "always on visible desktop" windows with the tasklist
+    (Vincent) [#335316]
+  - Fix transient cycles causing infinite loops (Dan Winship, Elijah) [#332493]
+  - Immediately show notification for demands-attent/urgent windows on other
+    workspaces in the tasklist (Leszek Matok) [#336142]
+
+ Translations
+
+  - Ales Nyakhaychyk (be)
+  - Gora Mohanty (or)
+
 2.14.0
 ======
 
