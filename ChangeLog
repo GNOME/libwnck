@@ -1,3 +1,13 @@
+2006-04-20  Brian Pepple  <bdpepple@gmail.com>
+
+	#337953
+
+	* po/LINGUAS: New file listing all supported languages.
+
+	* configure.in: Use po/LINGUAS instead of including all languages
+	directly in this file. See the wiki for more information:
+	http://live.gnome.org/GnomeGoals/PoLinguas.
+	
 2006-04-20  Elijah Newren  <newren gmail com>
 
 	* configure.in: We've branched now, so we're now version 2.15.0.
