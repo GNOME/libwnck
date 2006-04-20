@@ -1,3 +1,7 @@
+2006-04-20  Elijah Newren  <newren gmail com>
+
+	* configure.in: We've branched now, so we're now version 2.15.0.
+
 2006-04-18  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Remove obsolete entry for no_NO
