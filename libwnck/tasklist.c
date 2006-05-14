@@ -126,6 +126,8 @@ struct _WnckTask
   guint32 dnd_timestamp;
 
   GdkPixbuf *screenshot;
+  GdkPixbuf *screenshot_fade1;
+  GdkPixbuf *screenshot_fade2;
 
   gdouble glow_start_time;
   
@@ -203,6 +205,8 @@ struct _WnckTasklistPrivate
   gint monitor_num;
   GdkRectangle monitor_geometry;
   GtkReliefStyle relief;
+  
+  GdkPixmap *background;
 };
 
 
@@ -242,6 +246,8 @@ static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
 static void     wnck_tasklist_unrealize     (GtkWidget        *widget);
+static gint     wnck_tasklist_expose        (GtkWidget        *widget,
+                                             GdkEventExpose    *event);
 static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gboolean	       include_internals,
                                              GtkCallback       callback,
@@ -305,6 +311,26 @@ static GSList *tasklist_instances;
 static GType
 wnck_task_get_type (void) G_GNUC_CONST;
 
+static void
+cleanup_screenshots (WnckTask *task)
+{
+  if (task->screenshot != NULL)
+    {
+      g_object_unref (task->screenshot);
+      task->screenshot = NULL;
+    }
+  if (task->screenshot_fade1 != NULL)
+    {
+      g_object_unref (task->screenshot_fade1);
+      task->screenshot_fade1 = NULL;
+    }
+  if (task->screenshot_fade2 != NULL)
+    {
+      g_object_unref (task->screenshot_fade2);
+      task->screenshot_fade2 = NULL;
+    }
+}
+
 static GType
 wnck_task_get_type (void)
 {
@@ -342,6 +368,8 @@ wnck_task_init (WnckTask *task)
   task->glow_start_time = 0.0;
   task->button_glow = 0;
   task->screenshot = NULL;
+  task->screenshot_fade1 = NULL;
+  task->screenshot_fade2 = NULL;
 }
 
 static void
@@ -363,65 +391,34 @@ wnck_task_class_init (WnckTaskClass *klass)
     "    widget \"*.tasklist-button\" style \"tasklist-button-style\"\n"
     "\n");
 }
+
 static GdkPixbuf *
-glow_pixbuf (const GdkPixbuf *source, 
+glow_pixbuf (WnckTask        *task,
              gdouble          factor)
 {
-  gint i, j;
-  gint width, height, has_alpha, rowstride;
-  guchar *destination_data;
-  guchar *source_data;
-  guchar *source_pixel;
-  guchar *destination_pixel;
-  int channel_intensity;
-  guchar r, g, b;
-
   GdkPixbuf *destination;
+  
+  destination = gdk_pixbuf_copy (task->screenshot);
+  if (destination == NULL)
+    return NULL;
 
-  has_alpha = gdk_pixbuf_get_has_alpha (source);
-  width = gdk_pixbuf_get_width (source);
-  height = gdk_pixbuf_get_height (source);
-  rowstride = gdk_pixbuf_get_rowstride (source);
-  source_data = gdk_pixbuf_get_pixels (source);
-
-  destination = gdk_pixbuf_copy (source);
-  destination_data = gdk_pixbuf_get_pixels (destination);
-
-  for (i = 0; i < height; i++)
+  if (factor > 0)
     {
-      source_pixel = source_data + i * rowstride;
-      destination_pixel = destination_data + i * rowstride;
-
-      for (j = 0; j < width; j++)
-        {
-          enum
-            {
-              CHANNEL_RED = 0,
-              CHANNEL_GREEN,
-              CHANNEL_BLUE,
-              CHANNELS_PER_COLOR_STIMULUS
-            };
-          r = source_pixel[CHANNEL_RED];
-          g = source_pixel[CHANNEL_GREEN];
-          b = source_pixel[CHANNEL_BLUE];
-          source_pixel += CHANNELS_PER_COLOR_STIMULUS;
-
-          channel_intensity = r * factor;
-          destination_pixel[CHANNEL_RED] = CLAMP (channel_intensity, 0, 255);
-          channel_intensity = g * factor;
-          destination_pixel[CHANNEL_GREEN] = CLAMP (channel_intensity, 0, 255);
-          channel_intensity = b * factor;
-          destination_pixel[CHANNEL_BLUE] = CLAMP (channel_intensity, 0, 255);
-          destination_pixel += CHANNELS_PER_COLOR_STIMULUS;
-
-          if (has_alpha)
-            {
-              destination_pixel[0] = source_pixel[0];
-              source_pixel++;
-              destination_pixel++;
-            }
-        }
+      gdk_pixbuf_composite (task->screenshot_fade1, destination, 0, 0,
+                            gdk_pixbuf_get_width (task->screenshot),
+                            gdk_pixbuf_get_height (task->screenshot),
+                            0, 0, 1, 1, GDK_INTERP_NEAREST,
+                            ABS((int)(factor * G_MAXUINT8)));
     }
+  else
+    {
+      gdk_pixbuf_composite (task->screenshot_fade2, destination, 0, 0,
+                            gdk_pixbuf_get_width (task->screenshot),
+                            gdk_pixbuf_get_height (task->screenshot),
+                            0, 0, 1, 1, GDK_INTERP_NEAREST,
+                            ABS((int)(factor * G_MAXUINT8)));
+    }
+  
   return destination;
 }
 
@@ -431,6 +428,7 @@ wnck_task_button_glow (WnckTask *task)
   GdkPixbuf *glowing_screenshot;
   GTimeVal tv;
   gdouble glow_factor, now;
+  gfloat fade_opacity, loop_time;
 
   if (task->screenshot == NULL)
     return TRUE;
@@ -442,17 +440,22 @@ wnck_task_button_glow (WnckTask *task)
   if (task->glow_start_time <= G_MINDOUBLE)
     task->glow_start_time = now;
 
-  /* These numbers can probably be tweaked some.
-   * The 1.0 is the first value it will get and .4 is
-   * the "radius" from 1.0 that it will go; i.e.,
-   * it will go up from 1.0 to 1.4 then down from
-   * 1.4 to .6, then back up again. The 2.0 in the
-   * denomator is how many seconds it takes to travel 
-   * through the entire range of numbers.
-   */
-  glow_factor = .4 * sin ((now - task->glow_start_time) * (2.0 * M_PI) / 2.0) + 1.0;
+  gtk_widget_style_get (GTK_WIDGET (task->tasklist), "fade-opacity", &fade_opacity,
+                                                     "fade-loop-time", &loop_time,
+                                                     NULL);
+  
+  /* This is basically a cos curve which is moved up by 1, and every second
+   * iteration is flipped down.
+   * So below is a cos function, that is between 0 and 1 starting at 0. */
+  glow_factor = fade_opacity * (0.5 - 0.5 * cos ((now - task->glow_start_time) * M_PI * 4.0 / loop_time));
 
-  glowing_screenshot = glow_pixbuf (task->screenshot, glow_factor);
+  /* and this will flip every second iteration down. */
+  if ((int)((now - task->glow_start_time) / loop_time * 2.0) % 2 == 1)
+  	glow_factor = -glow_factor;
+
+  glowing_screenshot = glow_pixbuf (task, glow_factor);
+  if (glowing_screenshot == NULL)
+    return TRUE;
 
   gdk_draw_pixbuf (task->button->window,
                    task->button->style->fg_gc[GTK_WIDGET_STATE (task->button)],
@@ -597,11 +600,7 @@ wnck_task_finalize (GObject *object)
       task->button_activate = 0;
     } 
 
-  if (task->screenshot)
-    {
-      g_object_unref (task->screenshot);
-      task->screenshot = NULL;
-    }
+  cleanup_screenshots (task);
 
   wnck_task_stop_glow (task);
 
@@ -666,6 +665,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   tasklist->priv->monitor_num = -1;
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
+  
+  tasklist->priv->background = NULL;
 
   tasklist->priv->skipped_windows = NULL;
 
@@ -689,9 +690,58 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
+  widget_class->expose_event = wnck_tasklist_expose;
   
   container_class->forall = wnck_tasklist_forall;
   container_class->remove = wnck_tasklist_remove;
+  
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_boolean ("fade-using-state",
+                                                                 "Using state",
+                                                                 "If set to TRUE the Tasklist will fade between two states. If set to FALSE, it will fade between two colors. Default: FALSE",
+                                                                 FALSE,
+                                                                 G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_enum ("fade-state1",
+                                                              "First state",
+                                                              "Sets the first state used to do the fading. Default: GTK_STATE_PRELIGHT",
+                                                              GTK_TYPE_STATE_TYPE,
+                                                              GTK_STATE_PRELIGHT,
+                                                              G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_enum ("fade-state2",
+                                                              "Second state",
+                                                              "Sets the second state used to do the fading. Default: GTK_STATE_PRELIGHT",
+                                                              GTK_TYPE_STATE_TYPE,
+                                                              GTK_STATE_PRELIGHT,
+                                                              G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_boxed ("fade-color1",
+                                                               "First color",
+                                                               "Sets the first color used for the fading.",
+                                                               GDK_TYPE_COLOR,
+                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_boxed ("fade-color2",
+                                                               "Second color",
+                                                               "Sets the second color used for the fading.",
+                                                               GDK_TYPE_COLOR,
+                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+  
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_float ("fade-opacity",
+                                                              "Final opacity",
+                                                              "The final opacity that will be reached. Default: 0.4",
+                                                              0.0, 1.0, 0.4,
+                                                              G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+  
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_float ("fade-loop-time",
+                                                              "Loop time",
+                                                              "The time one loop takes when fading, in seconds. Default: 3.0",
+                                                              0.2, 10.0, 3.0,
+                                                              G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 }
 
 static void
@@ -761,6 +811,9 @@ wnck_tasklist_finalize (GObject *object)
   tasklist->priv->size_hints = NULL;
   tasklist->priv->size_hints_len = 0;
 
+  g_object_unref (tasklist->priv->background);
+  tasklist->priv->background = NULL;
+  
   g_free (tasklist->priv);
   tasklist->priv = NULL;  
   
@@ -1306,11 +1359,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 	      
 	      gtk_widget_set_child_visible (GTK_WIDGET (win_task->button), FALSE);
 
-              if (win_task->screenshot != NULL)
-                {
-                  g_object_unref (win_task->screenshot);
-                  win_task->screenshot = NULL;
-                }
+              cleanup_screenshots (win_task);
+              
 	      l = l->next;
 	    }
 	}
@@ -1319,11 +1369,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 	  visible_tasks = g_list_prepend (visible_tasks, class_group_task->windows->data);
 	  gtk_widget_set_child_visible (GTK_WIDGET (class_group_task->button), FALSE);
 
-          if (class_group_task->screenshot != NULL)
-            {
-              g_object_unref (class_group_task->screenshot);
-              class_group_task->screenshot = NULL;
-            }
+          cleanup_screenshots (class_group_task);
         }
       
       button_width = wnck_tasklist_layout (allocation,
@@ -1341,11 +1387,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       
       visible_tasks = g_list_concat (visible_tasks, g_list_copy (class_group_task->windows));
       gtk_widget_set_child_visible (GTK_WIDGET (class_group_task->button), FALSE);
-      if (class_group_task->screenshot != NULL)
-        {
-          g_object_unref (class_group_task->screenshot);
-          class_group_task->screenshot = NULL;
-        }
+      
+      cleanup_screenshots (class_group_task);
 
       l = l->next;
     }
@@ -1452,6 +1495,39 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   g_slist_foreach (tasklist_instances,
 		   (GFunc) wnck_tasklist_update_lists,
 		   NULL);
+}
+
+static gint
+wnck_tasklist_expose (GtkWidget      *widget,
+                      GdkEventExpose *event)
+{
+  WnckTasklist *tasklist;
+  GdkGC *gc;
+  
+  g_return_val_if_fail (WNCK_IS_TASKLIST (widget), FALSE);
+  g_return_val_if_fail (event != NULL, FALSE);
+  
+  if (GTK_WIDGET_DRAWABLE (widget))
+    {
+      tasklist = WNCK_TASKLIST (widget);
+      /* get a screenshot of the background */
+      
+      if (tasklist->priv->background != NULL)
+        g_object_unref (tasklist->priv->background);
+      
+      tasklist->priv->background = gdk_pixmap_new (widget->window,
+                                                   widget->allocation.width,
+                                                   widget->allocation.height,
+                                                   -1);
+      gc = gdk_gc_new (tasklist->priv->background);
+      gdk_draw_drawable (tasklist->priv->background, gc, widget->window,
+                         widget->allocation.x, widget->allocation.y, 0, 0,
+                         widget->allocation.width, widget->allocation.height);
+      
+      g_object_unref (gc);
+    }
+  
+  return (* GTK_WIDGET_CLASS (tasklist_parent_class)->expose_event) (widget, event);
 }
 
 static void
@@ -3176,6 +3252,110 @@ draw_dot (GdkWindow *window, GdkGC *lgc, GdkGC *dgc, int x, int y)
   gdk_draw_point (window, lgc, x+1, y+1);
 }
 
+static void
+fake_expose_widget (GtkWidget *widget,
+                    GdkPixmap *pixmap,
+                    gint       x,
+                    gint       y)
+{
+  GdkWindow *tmp_window;
+  GdkEventExpose event;
+
+  event.type = GDK_EXPOSE;
+  event.window = pixmap;
+  event.send_event = FALSE;
+  event.region = NULL;
+  event.count = 0;
+
+  tmp_window = widget->window;
+  widget->window = pixmap;
+  widget->allocation.x += x;
+  widget->allocation.y += y;
+
+  event.area = widget->allocation;
+
+  gtk_widget_send_expose (widget, (GdkEvent *) &event);
+
+  widget->window = tmp_window;
+  widget->allocation.x -= x;
+  widget->allocation.y -= y;
+}
+
+static GdkPixbuf*
+take_screenshot (WnckTask *task, gint pos)
+{
+  WnckTasklist *tasklist;
+  GtkWidget    *tasklist_widget;
+  GdkGC *gc;
+  GdkPixmap *pixmap;
+  GdkPixbuf *screenshot;
+  gint width, height;
+  gboolean fade_using_state;
+  
+  width = task->button->allocation.width;
+  height = task->button->allocation.height;
+  
+  pixmap = gdk_pixmap_new (task->button->window, width, height, -1);
+  
+  tasklist = WNCK_TASKLIST (task->tasklist);
+  tasklist_widget = GTK_WIDGET (task->tasklist);
+
+
+  gc = gdk_gc_new (pixmap);
+  
+  /* first draw the button */
+  gtk_widget_style_get (tasklist_widget, "fade-using-state", &fade_using_state, NULL);
+  if (!fade_using_state)
+    {
+      GdkColor *color;
+      
+      if (pos == 1)
+        gtk_widget_style_get (tasklist_widget, "fade-color1", &color, NULL);
+      else
+        gtk_widget_style_get (tasklist_widget, "fade-color2", &color, NULL);
+      
+      if (color == NULL)
+        color = gdk_color_copy (&task->button->style->base[GTK_STATE_SELECTED]);
+        
+      gdk_gc_set_rgb_fg_color (gc, color);
+      gdk_draw_rectangle (pixmap, gc, TRUE, 0, 0, width + 1, height + 1);
+      
+      gdk_color_free (color);
+    }
+  else
+    {
+      GtkStateType state;
+      if (pos == 1)
+        gtk_widget_style_get (tasklist_widget, "fade-state1", &state, NULL);
+      else
+        gtk_widget_style_get (tasklist_widget, "fade-state2", &state, NULL);
+      
+      /* copy the background */
+      gdk_draw_drawable (pixmap, gc, tasklist->priv->background,
+                         task->button->allocation.x, task->button->allocation.y,
+                         0, 0, width, height);
+      
+      /* draw the button */
+      gtk_paint_box (task->button->style, (GdkWindow*) pixmap,
+                     state, GTK_SHADOW_OUT, NULL, task->button, "button",
+                     0, 0, width, height);
+    }
+  g_object_unref (gc);
+  
+  /* then the image and label */
+  fake_expose_widget (task->image, pixmap,
+                      -task->button->allocation.x, -task->button->allocation.y);
+  fake_expose_widget (task->label, pixmap,
+                      -task->button->allocation.x, -task->button->allocation.y);
+  
+  /* get the screenshot, and return */
+  screenshot = gdk_pixbuf_get_from_drawable (NULL, pixmap, NULL, 0, 0,
+                                             0, 0, width, height);
+  g_object_unref (pixmap);
+  
+  return screenshot;
+}
+
 static gboolean
 wnck_task_expose (GtkWidget        *widget,
                   GdkEventExpose   *event,
@@ -3187,6 +3367,8 @@ wnck_task_expose (GtkWidget        *widget,
   WnckTask *task;
 
   task = WNCK_TASK (data);
+  
+  cleanup_screenshots (task);
   
   switch (task->type)
     {
@@ -3213,13 +3395,6 @@ wnck_task_expose (GtkWidget        *widget,
           (event->area.width >= widget->allocation.width) &&
           (event->area.height >= widget->allocation.height))
         {
-
-          if (task->screenshot != NULL)
-            {
-              g_object_unref (task->screenshot);
-              task->screenshot = NULL;
-            }
-
           if (task->button_glow != 0)
             {
               task->screenshot = gdk_pixbuf_get_from_drawable (NULL,
@@ -3230,18 +3405,15 @@ wnck_task_expose (GtkWidget        *widget,
                                                                0, 0,
                                                                widget->allocation.width, 
                                                                widget->allocation.height);
+              
+              /* we also need to take screenshots for screenshot_fade1 and screenshot_fade2 */
+              task->screenshot_fade1 = take_screenshot (task, 1);
+              task->screenshot_fade2 = take_screenshot (task, 2);
             }
         }
 
     case WNCK_TASK_STARTUP_SEQUENCE:
       break;
-    }
-
-  if ((task->button_glow == 0) &&
-      (task->screenshot != NULL))
-    {
-      g_object_unref (task->screenshot);
-      task->screenshot = NULL;
     }
 
   return FALSE;
