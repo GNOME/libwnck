@@ -1,3 +1,7 @@
+2006-05-15  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in: require intltool 0.35.0
+
 2006-05-15  Benjamin Otte  <otte@gnome.org>
 
 	* libwnck/pager.c: (wnck_pager_check_prelight):
