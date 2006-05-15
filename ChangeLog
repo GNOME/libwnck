@@ -1,3 +1,57 @@
+2006-05-15  Vincent Untz  <vuntz@gnome.org>
+
+	Many things: cairo love, use dnd from GTK+, make the pager look
+	better.
+
+	Based on patch from Benjamin Otte <in7y118@public.uni-hamburg.de>,
+	which is based on patch from Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+	Fix bug #339293 (and bug #96675)
+
+	* libwnck/pager.c: (wnck_pager_init): updated, set drag targets to
+	x-wnck-window-id
+	(wnck_pager_class_init): provide new methods for lots of events
+	(wnck_pager_realize): we're interested in leave_notify too
+	(wnck_pager_unrealize): updated
+	(wnck_pager_window_state_is_relevant): new
+	(wnck_pager_window_get_workspace): new, helper
+	(get_windows_for_workspace_in_bottom_to_top): simplify
+	(draw_window): changed so that a GtkStateType is passed as argument,
+	to let us know how to draw the window. Use translucency if requested.
+	Cairo love.
+	(wnck_pager_draw_workspace): updated with cairo love, and simplified
+	the choice of the state, don't skip the drag window, make the workspace
+	look special if it should be prelit for dnd
+	(wnck_pager_expose_event): only draw workspace if necessary, don't
+	draw the drag window
+	(wnck_pager_button_press): updated
+	(wnck_pager_drag_motion_timeout): updated
+	(wnck_pager_queue_draw_workspace): new
+	(wnck_pager_queue_draw_window): new
+	(wnck_pager_check_prelight): new, to highlight the workspace under the
+	mouse
+	(wnck_pager_drag_motion): accept dnd target we know
+	(wnck_pager_drag_drop): new, for real dnd
+	(wnck_pager_drag_data_received): new, for real dnd
+	(wnck_pager_drag_data_get): new, for real dnd
+	(wnck_pager_drag_end): new
+	(wnck_pager_drag_motion_leave): updated
+	(wnck_drag_context_destroyed): new, for the drag icon
+	(wnck_update_drag_icon): new, for the drag icon
+	(wnck_drag_window_destroyed): new, for the drag icon
+	(wnck_drag_clean_up): new, for the drag icon
+	(_wnck_window_set_as_drag_icon): new, for the drag icon
+	(wnck_pager_motion): start dragging, with real dnd, and set drag icon
+	(wnck_pager_leave_notify): stop highlighting workspaces
+	(wnck_pager_button_release): remove old dnd code
+	(window_opened_callback): use wnck_pager_queue_draw_window()
+	(window_closed_callback): use wnck_pager_queue_draw_window()
+	(window_name_changed_callback): use wnck_pager_queue_draw_window()
+	(window_state_changed_callback): use wnck_pager_queue_draw_window()
+	(window_icon_changed_callback): use wnck_pager_queue_draw_window()
+	(window_geometry_changed_callback): use wnck_pager_queue_draw_window()
+	(wnck_pager_connect_screen): s/while/for
+	(wnck_pager_clear_drag): updated
+
 2006-05-14  Vincent Untz  <vuntz@gnome.org>
 
 	Improve glowing effect in tasklist. Based on patch by Benjamin Berg
