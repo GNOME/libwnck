@@ -69,6 +69,12 @@ void _wnck_window_set_application    (WnckWindow      *window,
 void _wnck_window_set_class_group (WnckWindow     *window,
 				   WnckClassGroup *class_group);
 
+/* this one is in pager.c since it needs code from there to draw the icon */
+void 
+_wnck_window_set_as_drag_icon (WnckWindow     *window,
+                               GdkDragContext *context,
+                               GtkWidget      *drag_source);
+
 void _wnck_application_add_window    (WnckApplication *app,
                                       WnckWindow      *window);
 void _wnck_application_remove_window (WnckApplication *app,

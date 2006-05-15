@@ -1474,7 +1474,7 @@ wnck_drag_clean_up (WnckWindow     *window,
  *
  * Sets the given @window as the drag icon for @context.
  **/
-static void 
+void 
 _wnck_window_set_as_drag_icon (WnckWindow     *window,
                                GdkDragContext *context,
                                GtkWidget      *drag_source)

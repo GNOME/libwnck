@@ -1,5 +1,17 @@
 2006-05-15  Vincent Untz  <vuntz@gnome.org>
 
+	Based on patch from Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+	End of fix for bug #96675
+
+	* libwnck/pager.c:
+	* libwnck/private.h: make _wnck_window_set_as_drag_icon() a private
+	function
+	* libwnck/tasklist.c: (wnck_task_drag_begin): new, set the drag icon
+	(wnck_task_drag_data_get): new
+	(wnck_task_create_widgets): new, setup the dnd stuff
+
+2006-05-15  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_button_press): simplify a bit, always
 	save the start coordinate of the drag
 	(wnck_pager_button_release): simplify a bit, only activate the

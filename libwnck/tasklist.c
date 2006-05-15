@@ -44,7 +44,6 @@
  *  Maybe fine tune size_allocate() some more...
  *  Better vertical layout handling
  *  prefs
- *  ellipsizing labels
  *  support for right-click menu merging w/ bonobo for the applet
  *
  */ 
@@ -3053,6 +3052,30 @@ wnck_task_drag_motion (GtkWidget          *widget,
   return TRUE;
 }
 
+void  
+wnck_task_drag_begin (GtkWidget          *widget,
+		      GdkDragContext     *context,
+		      WnckTask           *task)
+{
+  _wnck_window_set_as_drag_icon (task->window, context, widget);
+}
+
+void  
+wnck_task_drag_data_get (GtkWidget          *widget,
+		         GdkDragContext     *context,
+		         GtkSelectionData   *selection_data,
+		         guint               info,
+		 	 guint               time,
+		         WnckTask           *task)
+{
+  gulong xid;    
+
+  xid = wnck_window_get_xid (task->window);
+  gtk_selection_data_set (selection_data,
+ 		          selection_data->target,
+			  8, (guchar *)&xid, sizeof (gulong));
+}
+
 static gboolean
 wnck_task_button_press_event (GtkWidget	      *widget,
 			      GdkEventButton  *event,
@@ -3130,6 +3153,9 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GdkPixbuf *pixbuf;
   char *text;
   static GQuark disable_sound_quark = 0;
+  static const GtkTargetEntry targets[] = {
+    { "application/x-wnck-window-id", 0, 0 }
+  };
   
   if (!disable_sound_quark)
     disable_sound_quark = g_quark_from_static_string ("gnome_disable_sound_events");
@@ -3151,6 +3177,14 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 		       "tasklist-button");
 
   gtk_drag_dest_set (GTK_WIDGET(task->button), 0, NULL, 0, 0);
+
+  if (task->type == WNCK_TASK_WINDOW)
+    {
+      gtk_drag_source_set (GTK_WIDGET (task->button),
+		           GDK_BUTTON1_MASK,
+		           targets, 1,
+		           GDK_ACTION_MOVE);
+    }
 
   hbox = gtk_hbox_new (FALSE, 0);
 
@@ -3214,6 +3248,18 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
                            G_OBJECT (task),
                            0);
 
+  if (task->type == WNCK_TASK_WINDOW) {
+      g_signal_connect_object (G_OBJECT(task->button), "drag_data_get",
+                               G_CALLBACK (wnck_task_drag_data_get),
+                               G_OBJECT (task),
+                               0); 
+
+      g_signal_connect_object (G_OBJECT(task->button), "drag_begin",
+                               G_CALLBACK (wnck_task_drag_begin),
+                               G_OBJECT (task),
+                               0); 
+  }
+  
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
