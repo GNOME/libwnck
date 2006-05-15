@@ -1,3 +1,9 @@
+2006-05-15  Benjamin Otte  <otte@gnome.org>
+
+	* libwnck/pager.c: (wnck_pager_check_prelight):
+	  fix an issue where dnd highlights can be drawn around the active
+	  workspace even though no dnd is happening.
+
 2006-05-15  Vincent Untz  <vuntz@gnome.org>
 
 	Many things: cairo love, use dnd from GTK+, make the pager look

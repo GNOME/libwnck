@@ -1232,6 +1232,7 @@ wnck_pager_check_prelight (WnckPager *pager,
       wnck_pager_queue_draw_workspace (pager, pager->priv->prelight);
       wnck_pager_queue_draw_workspace (pager, id);
       pager->priv->prelight = id;
+      pager->priv->prelight_dnd = prelight_dnd;
     }
   else if (prelight_dnd != pager->priv->prelight_dnd)
     {
