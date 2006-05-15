@@ -1,3 +1,33 @@
+2.15.2
+======
+
+ Features
+
+  - Improve glowing effect in tasklist and make it themeable (Benjamin Berg)
+    [#325176]
+  - Use cairo in the pager (Benjamin Otte) [#339293]
+  - Improve drag and drop in the pager (Nickolay V. Shmyrev, Benjamin Otte)
+    [#96675, #339293]
+  - Improve look of the pager (Benjamin Otte) [#339293]
+  - Add dragging of windows from the tasklist (Nickolay V. Shmyrev) [#96675]
+
+ Fixes
+
+  - Fix crash when a X resource doesn't exist anymore (Vincent) [#336823]
+  - Don't change workspace when releasing the button on another workspace
+    (Vincent) [#110510]
+
+ Misc
+
+  - Use po/LINGUAS (Brian Pepple) [#337953]
+  - Depends on intltool 0.35.0
+
+ Translations
+
+  - Mindu Dorji (dz)
+  - Baptiste Mille-Mathias (fr)
+  - GNOME PL Team (pl)
+
 2.14.1
 ======
 

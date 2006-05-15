@@ -1,5 +1,10 @@
 2006-05-15  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.15.2
+
+2006-05-15  Vincent Untz  <vuntz@gnome.org>
+
 	Based on patch from Nickolay V. Shmyrev <nshmyrev@yandex.ru>
 	End of fix for bug #96675
 
