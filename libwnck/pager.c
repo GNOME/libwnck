@@ -1108,64 +1108,62 @@ wnck_pager_button_press (GtkWidget      *widget,
                          GdkEventButton *event)
 {
   WnckPager *pager;
-  gboolean handled = FALSE;
   int space_number;
   WnckWorkspace *space = NULL;
   GdkRectangle workspace_rect;
 						    
+  if (event->button != 1)
+    return FALSE;
+
   pager = WNCK_PAGER (widget);
 
   space_number = workspace_at_point (pager, event->x, event->y, NULL, NULL);
 
   if (space_number != -1)
-    {
-      if (event->button == 1)
-	handled = TRUE;
+  {
+    get_workspace_rect (pager, space_number, &workspace_rect);
+    space = wnck_screen_get_workspace (pager->priv->screen, space_number);
+  }
 
-      get_workspace_rect (pager, space_number, &workspace_rect);
-      space = wnck_screen_get_workspace (pager->priv->screen, space_number);
+  if (space)
+    {
+      /* always save the start coordinates so we can know if we need to change
+       * workspace when the button is released (ie, start and end coordinates
+       * should be in the same workspace) */
+      pager->priv->drag_start_x = event->x;
+      pager->priv->drag_start_y = event->y;
     }
 
   if (space && (pager->priv->display_mode != WNCK_PAGER_DISPLAY_NAME))
-    {
-      GList *windows;
-      GList *tmp;
+  {
+    GList *windows;
+    GList *tmp;
 
-      windows =
-	get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
-						    space);
-      
-      /* clicks on top windows first */
-      windows = g_list_reverse (windows);
-      
-      tmp = windows;
-      while (tmp != NULL)
-	{
-	  WnckWindow *win = WNCK_WINDOW (tmp->data);
-	  GdkRectangle winrect;
-	  
-	  get_window_rect (win, &workspace_rect, &winrect);
-	  
-	  if (POINT_IN_RECT (event->x, event->y, winrect))
-	    {
-	      if (event->button == 1)
-		{
-		  /* wnck_window_activate (win); */
-		  pager->priv->drag_window = win;
-		  pager->priv->drag_start_x = event->x;
-		  pager->priv->drag_start_y = event->y;
-		}
-	      
-	      break;
-	    }
-	  
-	  tmp = tmp->next;
-	}
-      
-      g_list_free (windows);
-    }
-  
-  return handled;
+    windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
+                                                          space);
+ 
+    /* clicks on top windows first */
+    windows = g_list_reverse (windows);
+
+    for (tmp = windows; tmp != NULL; tmp = tmp->next)
+      {
+        WnckWindow *win = WNCK_WINDOW (tmp->data);
+        GdkRectangle winrect;
+
+        get_window_rect (win, &workspace_rect, &winrect);
+
+        if (POINT_IN_RECT (event->x, event->y, winrect))
+          {
+            /* wnck_window_activate (win); */
+            pager->priv->drag_window = win;
+            break;
+          }
+      }
+
+    g_list_free (windows);
+  }
+
+  return TRUE;
 }
 
 static gboolean
@@ -1551,44 +1549,54 @@ wnck_pager_button_release (GtkWidget        *widget,
   WnckWorkspace *space;
   WnckPager *pager;
   int i;
+  int j;
   int viewport_x;
   int viewport_y;
   
+  if (event->button != 1)
+    return FALSE;
+
   pager = WNCK_PAGER (widget);
   
-  if (event->button == 1 && !pager->priv->dragging)
+  if (!pager->priv->dragging)
     {
-      i = workspace_at_point (pager, event->x, event->y, &viewport_x, &viewport_y);
+      i = workspace_at_point (pager,
+                              event->x, event->y,
+                              &viewport_x, &viewport_y);
+      j = workspace_at_point (pager,
+                              pager->priv->drag_start_x,
+                              pager->priv->drag_start_y,
+                              NULL, NULL);
 
-      if (i >= 0 && (space = wnck_screen_get_workspace (pager->priv->screen, i)))
-	  {
-	    int screen_width, screen_height;
+      if (i == j && i >= 0 &&
+          (space = wnck_screen_get_workspace (pager->priv->screen, i)))
+        {
+          int screen_width, screen_height;
 
-	    /* Don't switch the desktop if we're already there */
-	    if (space != wnck_screen_get_active_workspace (pager->priv->screen))
-	      wnck_workspace_activate (space, event->time);
+          /* Don't switch the desktop if we're already there */
+          if (space != wnck_screen_get_active_workspace (pager->priv->screen))
+            wnck_workspace_activate (space, event->time);
 
-	    /* EWMH only lets us move the viewport for the active workspace,
-	     * but we just go ahead and hackily assume that the activate
-	     * just above takes effect prior to moving the viewport
-	     */
+          /* EWMH only lets us move the viewport for the active workspace,
+           * but we just go ahead and hackily assume that the activate
+           * just above takes effect prior to moving the viewport
+           */
 
-	    /* Transform the pointer location to viewport origin, assuming
-	     * that we want the nearest "regular" viewport containing the
-	     * pointer.
-	     */
-	    screen_width  = wnck_screen_get_width  (pager->priv->screen);
-	    screen_height = wnck_screen_get_height (pager->priv->screen);
-	    viewport_x = (viewport_x / screen_width)  * screen_width;
-	    viewport_y = (viewport_y / screen_height) * screen_height;
-              
-	    if (wnck_workspace_get_viewport_x (space) != viewport_x ||
-		wnck_workspace_get_viewport_y (space) != viewport_y)
-	      wnck_screen_move_viewport (pager->priv->screen, viewport_x, viewport_y);
-	  }
+          /* Transform the pointer location to viewport origin, assuming
+           * that we want the nearest "regular" viewport containing the
+           * pointer.
+           */
+          screen_width  = wnck_screen_get_width  (pager->priv->screen);
+          screen_height = wnck_screen_get_height (pager->priv->screen);
+          viewport_x = (viewport_x / screen_width)  * screen_width;
+          viewport_y = (viewport_y / screen_height) * screen_height;
+            
+          if (wnck_workspace_get_viewport_x (space) != viewport_x ||
+              wnck_workspace_get_viewport_y (space) != viewport_y)
+            wnck_screen_move_viewport (pager->priv->screen, viewport_x, viewport_y);
+        }
       
-      if (pager->priv->drag_window)
-        wnck_pager_clear_drag (pager);
+      wnck_pager_clear_drag (pager);
     }
 
   return FALSE;

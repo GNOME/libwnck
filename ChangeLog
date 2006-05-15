@@ -1,5 +1,13 @@
 2006-05-15  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_button_press): simplify a bit, always
+	save the start coordinate of the drag
+	(wnck_pager_button_release): simplify a bit, only activate the
+	workspace of it's the same than the one where we pressed the button
+	Fix bug #110510
+
+2006-05-15  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in: require intltool 0.35.0
 
 2006-05-15  Benjamin Otte  <otte@gnome.org>
