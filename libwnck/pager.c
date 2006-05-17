@@ -1247,8 +1247,12 @@ wnck_pager_drag_motion (GtkWidget          *widget,
                         guint               time)
 {
   WnckPager *pager;
+  gint previous_workspace;
 
   pager = WNCK_PAGER (widget);
+
+  previous_workspace = pager->priv->prelight;
+  wnck_pager_check_prelight (pager, x, y, TRUE);
 
   if (gtk_drag_dest_find_target (widget, context, NULL))
     {
@@ -1256,15 +1260,25 @@ wnck_pager_drag_motion (GtkWidget          *widget,
     }
   else 
     {
-      if (pager->priv->dnd_activate == 0)   
-         pager->priv->dnd_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
-                                                    wnck_pager_drag_motion_timeout,
-                                                    pager);
-
-      pager->priv->dnd_time = time;
       gdk_drag_status (context, 0, time);
+
+      if (pager->priv->prelight != previous_workspace &&
+	  pager->priv->dnd_activate != 0)
+	{
+	  /* remove timeout, the window we hover over changed */
+	  g_source_remove (pager->priv->dnd_activate);
+	  pager->priv->dnd_activate = 0;
+	  pager->priv->dnd_time = 0;
+	}
+
+      if (pager->priv->dnd_activate == 0 && pager->priv->prelight > -1)   
+	{
+	  pager->priv->dnd_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+                                                     wnck_pager_drag_motion_timeout,
+                                                     pager);
+	  pager->priv->dnd_time = time;
+	}
     }    
-  wnck_pager_check_prelight (pager, x, y, TRUE);
 
   return (pager->priv->prelight != -1);
 }
