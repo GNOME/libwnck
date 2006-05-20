@@ -828,14 +828,6 @@ wnck_window_is_shaded                 (WnckWindow *window)
   return window->priv->is_shaded;
 }
 
-/**
- * wnck_window_is_skip_tasklist:
- * @window: a #WnckWindow
- *
- * 
- *
- * Returns: TRUE if the window should be skipped in tasklists.
- **/
 gboolean
 wnck_window_is_above                  (WnckWindow *window)
 {
