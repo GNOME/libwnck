@@ -680,7 +680,7 @@ wnck_create_window_action_menu (WnckWindow *window)
       GtkWidget *item;
 	
       name = get_workspace_name_with_accel (amd->window, i);
-      label = g_strdup_printf (_("%s"), name);
+      label = g_strdup_printf ("%s", name);
 
       item = make_menu_item (amd, MOVE_TO_WORKSPACE);
       g_object_set_data (G_OBJECT (item), "workspace", GINT_TO_POINTER (i));
