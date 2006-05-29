@@ -1,3 +1,17 @@
+2.14.2
+======
+
+ Fixes
+
+  - Fix crash when a X resource doesn't exist anymore (Vincent) [#336823]
+
+ Translations
+
+  - Mindu Dorji (dz)
+  - Baptiste Mille-Mathias (fr)
+  - Mohammad DAMT (id)
+  - GNOME PL Team (pl)
+
 2.14.1
 ======
 
