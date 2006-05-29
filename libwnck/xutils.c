@@ -1611,6 +1611,7 @@ _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
   GdkColormap *cmap;
   
   retval = NULL;
+  cmap = NULL;
   
   drawable = gdk_xid_table_lookup (xpixmap);
 
@@ -1619,26 +1620,30 @@ _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
   else
     drawable = gdk_pixmap_foreign_new (xpixmap);
 
-  cmap = get_cmap (drawable);
+  if (drawable)
+    {
+      cmap = get_cmap (drawable);
 
-  /* GDK is supposed to do this but doesn't in GTK 2.0.2,
-   * fixed in 2.0.3
-   */
-  if (width < 0)
-    gdk_drawable_get_size (drawable, &width, NULL);
-  if (height < 0)
-    gdk_drawable_get_size (drawable, NULL, &height);
-  
-  retval = gdk_pixbuf_get_from_drawable (dest,
-                                         drawable,
-                                         cmap,
-                                         src_x, src_y,
-                                         dest_x, dest_y,
-                                         width, height);
+      /* GDK is supposed to do this but doesn't in GTK 2.0.2,
+       * fixed in 2.0.3
+       */
+      if (width < 0)
+        gdk_drawable_get_size (drawable, &width, NULL);
+      if (height < 0)
+        gdk_drawable_get_size (drawable, NULL, &height);
+
+      retval = gdk_pixbuf_get_from_drawable (dest,
+                                             drawable,
+                                             cmap,
+                                             src_x, src_y,
+                                             dest_x, dest_y,
+                                             width, height);
+    }
 
   if (cmap)
     g_object_unref (G_OBJECT (cmap));
-  g_object_unref (G_OBJECT (drawable));
+  if (drawable)
+    g_object_unref (G_OBJECT (drawable));
 
   return retval;
 }
