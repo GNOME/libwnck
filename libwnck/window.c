@@ -216,7 +216,7 @@ wnck_window_init (WnckWindow *window)
 {
   window->priv = g_new0 (WnckWindowPrivate, 1);
 
-  window->priv->name = g_strdup (FALLBACK_NAME);
+  window->priv->name = NULL;
   window->priv->icon_name = NULL;
   window->priv->workspace = ALL_WORKSPACES;
 
@@ -437,12 +437,35 @@ _wnck_window_destroy (WnckWindow *window)
 }
 
 /**
+ * wnck_window_has_name:
+ * @window: a #WnckWindow
+ *
+ * Checks whether or not @window has a name. wnck_window_get_name()
+ * will always return some value, even if the window hasn't set a
+ * name; wnck_window_has_name() can be used to tell if that name is
+ * real or not.
+ *
+ * For icons titles, use wnck_window_has_icon_name() instead.
+ *
+ * Return value: %TRUE if wnck_window_get_name() returns the window's
+ * real name, %FALSE if it returns a fallback name.
+ **/
+gboolean
+wnck_window_has_name (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->name != NULL;
+}
+
+/**
  * wnck_window_get_name:
  * @window: a #WnckWindow
  *
  * Gets the name of the window, as it should be displayed in a pager
  * or tasklist. Always returns some value, even if the window
- * hasn't set a name.
+ * hasn't set a name; use wnck_window_has_name() if you need to know
+ * whether the returned name is "real" or not.
  *
  * For icons titles, use wnck_window_get_icon_name() instead.
  *
@@ -453,17 +476,47 @@ wnck_window_get_name (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  return window->priv->name;
+  if (window->priv->name)
+    return window->priv->name;
+  else
+    return FALLBACK_NAME;
+}
+
+/**
+ * wnck_window_has_icon_name:
+ * @window: a #WnckWindow
+ *
+ * Checks whether or not @window has an icon name.
+ * wnck_window_get_icon_name() will always return some value, even if
+ * the window hasn't set an icon name; wnck_window_has_icon_name() can
+ * be used to tell if that name is real or not.
+ *
+ * (Note that if wnck_window_has_icon_name() returns %FALSE, but
+ * wnck_window_has_name() returns %TRUE, then the name returned by
+ * wnck_window_get_icon_name() is the window name. Only when both
+ * methods return %FALSE does wnck_window_get_icon_name() return a
+ * generic fallback name.)
+ *
+ * Return value: %TRUE if wnck_window_get_icon_name() returns the
+ * window's real icon name, %FALSE if it returns a fallback name.
+ **/
+gboolean
+wnck_window_has_icon_name (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->icon_name != NULL;
 }
 
 /**
  * wnck_window_get_icon_name:
  * @window: a #WnckWindow
  *
- * Gets the name of the window, as it should be displayed for an
- * icon. Always returns some value, even if the window hasn't set a
- * name. Contrast with wnck_window_get_name(), which returns the
- * window title, not the icon title.
+ * Gets the name of the window, as it should be displayed for an icon.
+ * Always returns some value, even if the window hasn't set a name;
+ * use wnck_window_has_icon_name() if you need to know if the name is
+ * "real" or not. Contrast with wnck_window_get_name(), which returns
+ * the window title, not the icon title.
  *
  * Return value: name of the window
  **/
@@ -474,8 +527,10 @@ wnck_window_get_icon_name (WnckWindow *window)
 
   if (window->priv->icon_name)
     return window->priv->icon_name;
-  else
+  else if (window->priv->name)
     return window->priv->name;
+  else
+    return FALLBACK_NAME;
 }
 
 WnckApplication*
@@ -1929,9 +1984,6 @@ update_name (WnckWindow *window)
   window->priv->need_update_name = FALSE;
 
   window->priv->name = _wnck_get_name (window->priv->xwindow);
-
-  if (window->priv->name == NULL)
-    window->priv->name = g_strdup (FALLBACK_NAME);
 }
 
 static void
@@ -2271,29 +2323,34 @@ force_update_now (WnckWindow *window)
 
   update_name (window);
 
-  if (window->priv->name == NULL)
-    window->priv->name = old_name;
+  if (old_name == NULL || window->priv->name == NULL)
+    {
+      if (old_name != window->priv->name)
+	do_emit_name_changed = TRUE;
+    }
   else
     {
       if (strcmp (window->priv->name, old_name) != 0)
         do_emit_name_changed = TRUE;
-      g_free (old_name);
     }
+  g_free (old_name);
 
   old_icon_name = window->priv->icon_name;
   window->priv->icon_name = NULL;
 
   update_icon_name (window);
 
-  if (window->priv->icon_name == NULL)
-    window->priv->icon_name = old_icon_name;
+  if (old_icon_name == NULL || window->priv->icon_name == NULL)
+    {
+      if (old_icon_name != window->priv->icon_name)
+	do_emit_name_changed = TRUE;
+    }
   else
     {
-      if (old_icon_name == NULL ||
-          strcmp (window->priv->icon_name, old_icon_name) != 0)
+      if (strcmp (window->priv->icon_name, old_icon_name) != 0)
         do_emit_name_changed = TRUE;
-      g_free (old_icon_name);
     }
+  g_free (old_icon_name);
 
   if (do_emit_name_changed)
     emit_name_changed (window);

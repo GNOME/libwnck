@@ -1,3 +1,10 @@
+2006-05-29  Dan Winship  <danw@novell.com>
+
+	* libwnck/window.c (wnck_window_has_name,
+	wnck_window_has_icon_name): new methods to test if the names
+	returned by wnck_window_get_name and wnck_window_get_icon_name are
+	real or just FALLBACK_NAME. #342577
+
 2006-05-20  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):

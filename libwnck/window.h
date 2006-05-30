@@ -135,7 +135,9 @@ WnckWindow* wnck_window_get (gulong xwindow);
 
 WnckScreen* wnck_window_get_screen    (WnckWindow *window);
 
+gboolean    wnck_window_has_name      (WnckWindow *window);
 const char* wnck_window_get_name      (WnckWindow *window);
+gboolean    wnck_window_has_icon_name (WnckWindow *window);
 const char* wnck_window_get_icon_name (WnckWindow *window);
 
 WnckApplication* wnck_window_get_application  (WnckWindow *window);
