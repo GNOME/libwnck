@@ -1,3 +1,9 @@
+2006-05-31  Dan Winship  <danw@novell.com>
+
+	* libwnck/window.c (update_name, update_icon_name,
+	force_update_now): fix previous patch to not occasionally lose
+	track of the icon name (and clean up the logic a little).
+
 2006-05-29  Dan Winship  <danw@novell.com>
 
 	* libwnck/window.c (wnck_window_has_name,

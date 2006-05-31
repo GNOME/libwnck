@@ -126,13 +126,15 @@ struct _WnckWindowPrivate
   guint need_update_wm_state : 1;
   guint need_update_icon_name : 1;
   guint need_update_workspace : 1;
-  guint need_emit_icon_changed : 1;
   guint need_update_actions : 1;
   guint need_update_wintype : 1;
   guint need_update_transient_for : 1;
   guint need_update_startup_id : 1;
   guint need_update_wmclass : 1;
   guint need_update_wmhints : 1;
+
+  guint need_emit_name_changed : 1;
+  guint need_emit_icon_changed : 1;
 };
 
 enum {
@@ -416,6 +418,8 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_startup_id = TRUE;
   window->priv->need_update_wmclass = TRUE;
   window->priv->need_update_wmhints = TRUE;
+  window->priv->need_emit_name_changed = FALSE;
+  window->priv->need_emit_icon_changed = FALSE;
   force_update_now (window);
 
   return window;
@@ -1973,45 +1977,61 @@ update_state (WnckWindow *window)
     }
 }
 
+static gboolean
+nullstr_equal (const char *str1, const char *str2)
+{
+  if (str1 == NULL || str2 == NULL)
+    return str1 == str2;
+  else
+    return !strcmp (str1, str2);
+}
+
 static void
 update_name (WnckWindow *window)
 {
-  g_return_if_fail (window->priv->name == NULL);
+  char *new_name;
 
   if (!window->priv->need_update_name)
     return;
 
   window->priv->need_update_name = FALSE;
 
-  window->priv->name = _wnck_get_name (window->priv->xwindow);
+  new_name = _wnck_get_name (window->priv->xwindow);
+
+  if (!nullstr_equal (window->priv->name, new_name))
+    window->priv->need_emit_name_changed = TRUE;
+
+  g_free (window->priv->name);
+  window->priv->name = new_name;
 }
 
 static void
 update_icon_name (WnckWindow *window)
 {
-  g_return_if_fail (window->priv->icon_name == NULL);
+  char *new_name = NULL;
 
   if (!window->priv->need_update_icon_name)
     return;
 
   window->priv->need_update_icon_name = FALSE;
 
-  if (window->priv->icon_name == NULL)
-    window->priv->icon_name =
-      _wnck_get_utf8_property (window->priv->xwindow,
-                               _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
+  if (new_name == NULL)
+    new_name = _wnck_get_utf8_property (window->priv->xwindow,
+                                        _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
 
-  if (window->priv->icon_name == NULL)
-    window->priv->icon_name =
-      _wnck_get_utf8_property (window->priv->xwindow,
-                               _wnck_atom_get ("_NET_WM_ICON_NAME"));
+  if (new_name == NULL)
+    new_name = _wnck_get_utf8_property (window->priv->xwindow,
+                                        _wnck_atom_get ("_NET_WM_ICON_NAME"));
 
-  if (window->priv->icon_name == NULL)
-    window->priv->icon_name =
-      _wnck_get_text_property (window->priv->xwindow,
-                               XA_WM_ICON_NAME);
+  if (new_name == NULL)
+    new_name = _wnck_get_text_property (window->priv->xwindow,
+                                        XA_WM_ICON_NAME);
 
-  /* no fallback, get_icon_name falls back to regular window title */
+  if (!nullstr_equal (window->priv->icon_name, new_name))
+    window->priv->need_emit_name_changed = TRUE;
+
+  g_free (window->priv->icon_name);
+  window->priv->icon_name = new_name;
 }
 
 static void
@@ -2306,9 +2326,6 @@ force_update_now (WnckWindow *window)
   WnckWindowState old_state;
   WnckWindowState new_state;
   WnckWindowActions old_actions;
-  char *old_name;
-  char *old_icon_name;
-  gboolean do_emit_name_changed = FALSE;
   
   unqueue_update (window);
 
@@ -2318,41 +2335,10 @@ force_update_now (WnckWindow *window)
    * and we have to fix that before we emit any other signals
    */
 
-  old_name = window->priv->name;
-  window->priv->name = NULL;
-
   update_name (window);
-
-  if (old_name == NULL || window->priv->name == NULL)
-    {
-      if (old_name != window->priv->name)
-	do_emit_name_changed = TRUE;
-    }
-  else
-    {
-      if (strcmp (window->priv->name, old_name) != 0)
-        do_emit_name_changed = TRUE;
-    }
-  g_free (old_name);
-
-  old_icon_name = window->priv->icon_name;
-  window->priv->icon_name = NULL;
-
   update_icon_name (window);
 
-  if (old_icon_name == NULL || window->priv->icon_name == NULL)
-    {
-      if (old_icon_name != window->priv->icon_name)
-	do_emit_name_changed = TRUE;
-    }
-  else
-    {
-      if (strcmp (window->priv->icon_name, old_icon_name) != 0)
-        do_emit_name_changed = TRUE;
-    }
-  g_free (old_icon_name);
-
-  if (do_emit_name_changed)
+  if (window->priv->need_emit_name_changed)
     emit_name_changed (window);
 
   old_state = COMPRESS_STATE (window);
@@ -2418,6 +2404,7 @@ unqueue_update (WnckWindow *window)
 static void
 emit_name_changed (WnckWindow *window)
 {
+  window->priv->need_emit_name_changed = FALSE;
   g_signal_emit (G_OBJECT (window),
                  signals[NAME_CHANGED],
                  0);
