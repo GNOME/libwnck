@@ -1,5 +1,11 @@
 2006-06-12  Elijah Newren  <newren gmail com>
 
+	* configure.in: post-release bump to 2.15.4
+
+==================== 2.15.3 ====================
+
+2006-06-12  Elijah Newren  <newren gmail com>
+
 	* NEWS: version 2.15.3
 
 2006-05-31  Dan Winship  <danw@novell.com>
