@@ -1,3 +1,22 @@
+2.15.3
+======
+
+ Fixes
+
+  - restart activation timeout when the mouse moves to a different
+    workspace (Benjamin)
+  - new methods to test if the names returned by wnck_window_get_name
+    and wnck_window_get_icon_name are real or just FALLBACK_NAME (Dan)
+    [#342577]
+
+ Misc
+
+  - don't translate %s (Vincent) [#339069]
+
+ Translations
+
+  - Guillaume Savaton (eo)
+
 2.15.2
 ======
 

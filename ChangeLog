@@ -1,3 +1,7 @@
+2006-06-12  Elijah Newren  <newren gmail com>
+
+	* NEWS: version 2.15.3
+
 2006-05-31  Dan Winship  <danw@novell.com>
 
 	* libwnck/window.c (update_name, update_icon_name,
