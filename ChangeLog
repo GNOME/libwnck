@@ -1,3 +1,8 @@
+2006-06-29  Benjamin Otte  <in7y118@public.uni-hamburg.de>
+
+	* libwnck/pager.c: (get_window_rect): round the window size so windows
+	that go to the bottom actually occupy the last pixel
+
 2006-06-12  Elijah Newren  <newren gmail com>
 
 	* configure.in: post-release bump to 2.15.4

@@ -670,10 +670,10 @@ get_window_rect (WnckWindow         *window,
   
   x += wnck_workspace_get_viewport_x (workspace);
   y += wnck_workspace_get_viewport_y (workspace);
-  x *= width_ratio;
-  y *= height_ratio;
-  width *= width_ratio;
-  height *= height_ratio;
+  x = x * width_ratio + 0.5;
+  y = y * height_ratio + 0.5;
+  width = width * width_ratio + 0.5;
+  height = height * height_ratio + 0.5;
   
   x += workspace_rect->x;
   y += workspace_rect->y;
