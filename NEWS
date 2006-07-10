@@ -1,3 +1,16 @@
+2.15.4
+======
+
+ Fixes
+
+  - Make windows that go to the bottom occupy the last pixel of the pager
+    (Benjamin Otte)
+
+ Translators
+
+  - Mahay Alam Khan (bn_IN)
+  - Rahul Bhalerao (mr)
+
 2.15.3
 ======
 
