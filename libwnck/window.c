@@ -27,6 +27,7 @@
 #include <string.h>
 #include "window.h"
 #include "class-group.h"
+#include "util.h"
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
@@ -1577,6 +1578,43 @@ wnck_window_get_geometry (WnckWindow *window,
     *widthp = window->priv->width;
   if (heightp)
     *heightp = window->priv->height;
+}
+
+/**
+ * wnck_window_set_geometry:
+ * @window: a #WnckWindow
+ * @gravity: one of #WnckWindowGravity
+ * @geometry_mask: a mask of #WnckWindowMoveResizeMask
+ * @x: new X coordinate of window
+ * @y: new Y coordinate of window
+ * @width: new width of window
+ * @height: new height of window
+ *
+ * Sets the size and position of the window.
+ *
+ **/
+void
+wnck_window_set_geometry (WnckWindow               *window,
+                          WnckWindowGravity         gravity,
+                          WnckWindowMoveResizeMask  geometry_mask,
+                          int                       x,
+                          int                       y,
+                          int                       width,
+                          int                       height)
+{
+  int gravity_and_flags;
+  int source;
+
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  source = _wnck_get_client_type();
+  gravity_and_flags = gravity;
+  gravity_and_flags |= geometry_mask << 8;
+  gravity_and_flags |= source << 12;
+
+  _wnck_set_window_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                             window->priv->xwindow,
+                             gravity_and_flags, x, y, width, height);
 }
 
 /**

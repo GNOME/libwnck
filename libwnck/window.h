@@ -83,6 +83,28 @@ typedef enum
   WNCK_WINDOW_SPLASHSCREEN  /* splash screen */
 } WnckWindowType;
 
+typedef enum
+{
+  WNCK_WINDOW_GRAVITY_CURRENT   = 0,
+  WNCK_WINDOW_GRAVITY_NORTHWEST = 1,
+  WNCK_WINDOW_GRAVITY_NORTH     = 2,
+  WNCK_WINDOW_GRAVITY_NORTHEAST = 3,
+  WNCK_WINDOW_GRAVITY_WEST      = 4,
+  WNCK_WINDOW_GRAVITY_CENTER    = 5,
+  WNCK_WINDOW_GRAVITY_EAST      = 6,
+  WNCK_WINDOW_GRAVITY_SOUTHWEST = 7,
+  WNCK_WINDOW_GRAVITY_SOUTH     = 8,
+  WNCK_WINDOW_GRAVITY_SOUTHEAST = 9
+} WnckWindowGravity;
+
+typedef enum
+{
+  WNCK_WINDOW_CHANGE_X      = 1 << 0,
+  WNCK_WINDOW_CHANGE_Y      = 1 << 1,
+  WNCK_WINDOW_CHANGE_WIDTH  = 1 << 2,
+  WNCK_WINDOW_CHANGE_HEIGHT = 1 << 3,
+} WnckWindowMoveResizeMask;
+
 #define WNCK_TYPE_WINDOW              (wnck_window_get_type ())
 #define WNCK_WINDOW(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_WINDOW, WnckWindow))
 #define WNCK_WINDOW_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), WNCK_TYPE_WINDOW, WnckWindowClass))
@@ -232,6 +254,13 @@ void wnck_window_get_geometry (WnckWindow *window,
                                int        *yp,
                                int        *widthp,
                                int        *heightp);
+void wnck_window_set_geometry (WnckWindow               *window,
+                               WnckWindowGravity         gravity,
+                               WnckWindowMoveResizeMask  geometry_mask,
+                               int                       x,
+                               int                       y,
+                               int                       width,
+                               int                       height);
 
 gboolean wnck_window_is_visible_on_workspace (WnckWindow    *window,
                                               WnckWorkspace *workspace);

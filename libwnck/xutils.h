@@ -163,6 +163,13 @@ void _wnck_get_window_geometry (Screen *screen,
                                 int    *yp,
                                 int    *widthp,
                                 int    *heightp);
+void _wnck_set_window_geometry (Screen *screen,
+                                Window  xwindow,
+                                int     gravity_and_flags,
+                                int     x,
+                                int     y,
+                                int     width,
+                                int     height);
 
 void _wnck_get_window_position (Screen *screen,
 				Window  xwindow,

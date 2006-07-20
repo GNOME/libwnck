@@ -2237,6 +2237,36 @@ _wnck_get_window_geometry (Screen *screen,
     *heightp = height;
 }
 
+void _wnck_set_window_geometry (Screen *screen,
+                                Window  xwindow,
+                                int     gravity_and_flags,
+                                int     x,
+                                int     y,
+                                int     width,
+                                int     height)
+{
+  XEvent xev;
+
+  xev.xclient.type = ClientMessage;
+  xev.xclient.serial = 0;
+  xev.xclient.send_event = True;
+  xev.xclient.display = gdk_display;
+  xev.xclient.window = xwindow;
+  xev.xclient.message_type = _wnck_atom_get ("_NET_MOVERESIZE_WINDOW");
+  xev.xclient.format = 32;
+  xev.xclient.data.l[0] = gravity_and_flags;
+  xev.xclient.data.l[1] = x;
+  xev.xclient.data.l[2] = y;
+  xev.xclient.data.l[3] = width;
+  xev.xclient.data.l[4] = height;
+
+  XSendEvent (gdk_display,
+              RootWindowOfScreen (screen),
+              False,
+              SubstructureRedirectMask | SubstructureNotifyMask,
+              &xev);
+}
+
 void
 _wnck_get_window_position (Screen *screen,
 			   Window  xwindow,

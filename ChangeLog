@@ -1,3 +1,12 @@
+2006-07-20  Vincent Untz  <vuntz@gnome.org>
+
+	Add move/resize window API. Patch by Magnus Therning
+	<magnus@therning.org>. Fix bug #342899
+
+	* libwnck/window.[ch]: (wnck_window_set_geometry): new
+	add enums for wnck_window_set_geometry()
+	* libwnck/xutils.[ch]: (_wnck_set_window_geometry): new
+
 2006-07-11  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.15.5
