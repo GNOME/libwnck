@@ -843,6 +843,8 @@ wnck_tasklist_set_relief_callback (WnckWindow   *win,
 void
 wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
 {
+  GList *walk;
+
   if (relief == tasklist->priv->relief)
     return;
 
@@ -851,6 +853,8 @@ wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
   g_hash_table_foreach (tasklist->priv->win_hash,
                         (GHFunc) wnck_tasklist_set_relief_callback,
                         tasklist);
+  for (walk = tasklist->priv->class_groups; walk; walk = g_list_next (walk))
+    gtk_button_set_relief (GTK_BUTTON (WNCK_TASK (walk->data)->button), relief);
 }
 
 void
