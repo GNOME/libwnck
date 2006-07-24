@@ -1,3 +1,14 @@
+2.15.90
+=======
+
+ Features
+
+  - Add move/resize window API (Magnus Therning)
+
+ Fixes
+
+  - Correctly set relief for group buttons in the tasklist (Benjamin Otte)
+
 2.15.4
 ======
 
