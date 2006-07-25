@@ -11,7 +11,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck HEAD\n"
+"Project-Id-Version: libwnck 2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-09 09:01+0100\n"
 "PO-Revision-Date: 2006-02-09 19:52+0300\n"
@@ -158,9 +158,3 @@ msgstr "%s"
 #: ../libwnck/window.c:32
 msgid "untitled window"
 msgstr "pealkirjata aken"
-
-#~ msgid "_Unroll"
-#~ msgstr "K_eri lahti"
-#~ msgid "Roll _Up"
-#~ msgstr "K_eri kokku"
-
