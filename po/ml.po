@@ -1,151 +1,151 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# translation of libwnck.HEAD.ml.po to Malayalam
 # This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # FSF-India <locale@gnu.org.in>, 2003.
+# Ani Peter <apeter@redhat.com>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version:libwnck.HEAD\n"
+"Project-Id-Version: libwnck.HEAD.ml\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2003-07-05 10:29+0530\n"
-"Last-Translator: FSF-India <locale@gnu.org.in>\n"
-"Language-Team: Malayalam <locale@gnu.org.in>\n"
+"POT-Creation-Date: 2006-08-04 07:48+0200\n"
+"PO-Revision-Date: 2006-08-05 01:30+0530\n"
+"Last-Translator: Ani Peter <apeter@redhat.com>\n"
+"Language-Team: Malayalam\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
-msgstr "തരക്കെട്ടില്ലാത്ത പ്രയോഗം"
+msgstr "തലക്കെട്ടില്ലാത്ത പ്രയോഗം"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "പണിയറ തിരഞ്ഞെടുക്കുക"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
-msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+msgstr "പണിയറകള്‍ക്കിടയില്‍ മാറുവാനുളള ഉപകരണം"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന് ഇവിടെ അമ‍ര്ത്തുക"
+msgstr "%s-ാം പണിയറയിലേക്ക് മാറാന്‍ ഇവിടെ അമര്‍ത്തുക"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "അപരിചിതമായ ജാലകം"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "ജാലകമൊന്നും തുറന്നിട്ടില്ല"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr ""
+msgstr "ജാലകം തിരഞ്ഞെടുക്കുന്ന സംവിധാനം"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+msgstr "ജാലകങ്ങള്‍ക്കിടയില്‍ മാറുവാനുളള ഉപകരണം"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:673
 msgid "Window List"
-msgstr ""
+msgstr "ജാലകത്തിന്‍റെ പട്ടിക"
 
-#: libwnck/tasklist.c:691
-#, fuzzy
+#: ../libwnck/tasklist.c:674
 msgid "Tool to switch between visible windows"
-msgstr "പണിയറകള്ക്കിടയില് മാറി കളിക്കുവാനുള്ള ഉപകരണം"
+msgstr "ദൃശ്യമായ ജാലകങ്ങള്‍ക്കിടയിലൂടെ മാറുവാനുള്ള ഉപകരണം"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2574
 msgid "_Close All"
-msgstr "അടയ്‍ക്കുക"
+msgstr "എല്ലാം അടയ്‍ക്കുക (_C)"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2589
 msgid "_Minimize All"
-msgstr "ചെറുതാക്കുക"
+msgstr "എല്ലാം ചെറുതാക്കുക (_M)"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2600
 msgid "_Unminimize All"
-msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
+msgstr "എല്ലാം ചെറുതാക്കിയത് ഒഴിവാക്കുക (_U)"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr ""
+msgstr "ചെറുതാക്കിയത് ഒഴിവാക്കുക (_n)"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "ചെറുതാക്കുക"
+msgstr "ചെറുതാക്കുക (_n)"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "വലുതാക്കിയതൊഴിവാക്കുക"
+msgstr "വലുതാക്കിയതൊഴിവാക്കുക (_x)"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "വലുതാക്കുക"
+msgstr "വലുതാക്കുക (_x)"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "ചുരുളഴിക്കുക"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "ചുരുട്ടുക"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "ഈ പണിയറയില് മാത്രം"
+msgstr "ഈ പണിയറയില്‍ മാത്രം (_O)"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "ഈ പണിയറയില് മാത്രം"
+msgstr "എപ്പോഴും ദൃശ്യമായ പണിയറയില്‍ (_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "പണിയറ %d"
 
-#: libwnck/window-action-menu.c:386
-#, fuzzy
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr "പണിയറ %d"
+msgstr "പണിയറ 1_0"
 
-#: libwnck/window-action-menu.c:388
-#, fuzzy, c-format
-msgid "Workspace %s%d"
-msgstr "പണിയറ %d"
-
-#: libwnck/window-action-menu.c:485
-msgid "_Move"
-msgstr "മാറ്റുക"
-
-#: libwnck/window-action-menu.c:492
-msgid "_Resize"
-msgstr "വലിപ്പം മാറ്റുക"
-
-#: libwnck/window-action-menu.c:505
-msgid "_Close"
-msgstr "അടയ്‍ക്കുക"
-
-#: libwnck/window-action-menu.c:518
-msgid "Move to Another _Workspace"
-msgstr ""
-
-#: libwnck/window-action-menu.c:542
+#: ../libwnck/window-action-menu.c:473
 #, c-format
-msgid "%s"
-msgstr ""
+msgid "Workspace %s%d"
+msgstr "പണിയറ %s%d"
 
-#: libwnck/window.c:32
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "മുകളില്‍ (_T)"
+
+#: ../libwnck/window-action-menu.c:572
+msgid "_Move"
+msgstr "നീങ്ങുക (_M)"
+
+#: ../libwnck/window-action-menu.c:579
+msgid "_Resize"
+msgstr "വലിപ്പം മാറ്റുക (_R)"
+
+#: ../libwnck/window-action-menu.c:592
+msgid "_Close"
+msgstr "അടയ്‍ക്കുക (_C)"
+
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "ഇടത്തുളള പണിയറയിലേക്ക് നീങ്ങുക (_L)"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "വലത്തുളള പണിയറയിലേക്ക് നീങ്ങുക (_R)"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "മുകളിലുളള പണിയറയിലേക്ക് നീങ്ങുക (_U)"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "താഴെയുളള പണിയറയിലേക്ക് നീങ്ങുക (_D)"
+
+#: ../libwnck/window-action-menu.c:667
+msgid "Move to Another _Workspace"
+msgstr "മറ്റൊരു പണിയറയിലേക്ക് നീങ്ങുക (_W)"
+
+#: ../libwnck/window.c:36
 msgid "untitled window"
-msgstr "തരക്കെട്ടില്ലാത്ത ജാലകം"
+msgstr "തലക്കെട്ടില്ലാത്ത ജാലകം"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "എല്ലാ പണിയറയിലും ഇടുക"
