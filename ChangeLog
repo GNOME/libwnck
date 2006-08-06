@@ -1,3 +1,11 @@
+2006-08-06  Benjamin Berg  <benjamin@sipsolutions.net>
+
+	* libwnck/tasklist.c: (cleanup_screenshots), (wnck_task_init),
+	(glow_pixbuf), (wnck_task_button_glow), (wnck_task_queue_glow),
+	(wnck_tasklist_class_init), (take_screenshot), (wnck_task_expose):
+	Changed the glowing code to have less and saner style properties.
+	See bug #350138.
+
 2006-07-24  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.15.91
