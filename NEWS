@@ -1,3 +1,16 @@
+2.15.91
+=======
+
+ Fixes
+
+  - Changed the glowing code to have less and saner style properties
+    (Benjamin Berg) [#350138]
+
+ Translators
+
+  - Runa Bhattacharjee (bn_IN)
+  - Ani Peter (ml)
+
 2.15.90
 =======
 
