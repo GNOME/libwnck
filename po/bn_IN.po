@@ -1,5 +1,5 @@
-# libwnck এর বাংলা অনুবাদ.
-# Copyright (C) 2002 Free Software Foundation, Inc.
+# Bengali India translation of libwnck
+# Copyright (C) 2002, 2006 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 # Jamil Ahmed <jamil@bengalinux.org>, 2003.
 # Mahay Alam Khan <makl10n@yahoo.com>, 2005.
@@ -9,13 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-07-03 07:47+0200\n"
-"PO-Revision-Date: 2005-10-02 23:12+0600\n"
-"Last-Translator: Mahay Alam Khan <makl10n@yahoo.com>\n"
-"Language-Team: Bangla <gnome-translation@bengalinux.org>\n"
+"POT-Creation-Date: 2006-08-07 08:14+0200\n"
+"PO-Revision-Date: 2006-08-07 12:23+0530\n"
+"Last-Translator: Runa Bhattacharjee <runabh@gmail.com>\n"
+"Language-Team: Bengali India\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 
 #: ../libwnck/application.c:29
 msgid "untitled application"
@@ -23,16 +25,16 @@ msgstr "নামবিহীন অ্যাপ্লিকেশন"
 
 #: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
-msgstr "কর্মক্ষেত্র বদলানোর প্রোগ্রাম"
+msgstr "কর্মক্ষেত্র পরিবর্তন ব্যবস্থা"
 
 #: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
-msgstr "কর্মক্ষেত্র বদলানোর জন্য ব্যবহৃত টুল"
+msgstr "কর্মক্ষেত্র পরিবর্তনের জন্য ব্যবহৃত সামগ্রী"
 
 #: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "কর্মক্ষেত্র %s-এ বদলাতে এখানে ক্লিক করুন"
+msgstr "কর্মক্ষেত্র %s-এ পরিবর্তন করতে এই স্থানে ক্লিক করুন"
 
 #: ../libwnck/selector.c:221
 msgid "Unknown Window"
@@ -40,59 +42,59 @@ msgstr "অজানা উইন্ডো"
 
 #: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr "কোন উইন্ডো খোলা নয়"
+msgstr "কোনো উইন্ডো বর্তমানে খোলা নেই"
 
 #: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "উইন্ডো নির্বাচক"
+msgstr "উইন্ডো নির্বাচন ব্যবস্থা"
 
 #: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "উইন্ডো পরিবর্তন করার টুল"
+msgstr "উইন্ডো পরিবর্তন করতে ব্যবহৃত সামগ্রী"
 
-#: ../libwnck/tasklist.c:673
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "উইন্ডোর তালিকা"
 
-#: ../libwnck/tasklist.c:674
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
-msgstr "দৃশ্যমান উইন্ডো বদলানোর টুল"
+msgstr "দৃশ্যমান উইন্ডোর মধ্যে পরিবর্তন করতে ব্যবহৃত সামগ্রী"
 
-#: ../libwnck/tasklist.c:2570
+#: ../libwnck/tasklist.c:2521
 msgid "_Close All"
-msgstr "সব বন্ধ করো (_ব)"
+msgstr "সব বন্ধ করুন (_C)"
 
-#: ../libwnck/tasklist.c:2585
+#: ../libwnck/tasklist.c:2536
 msgid "_Minimize All"
-msgstr "সব আড়াল করো (_স)"
+msgstr "সব আড়াল করুন (_M)"
 
-#: ../libwnck/tasklist.c:2596
+#: ../libwnck/tasklist.c:2547
 msgid "_Unminimize All"
-msgstr "সব দেখাও (_আ)"
+msgstr "সব প্রদর্শন করুন (_U)"
 
 #: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr "দেখাও (_ব)"
+msgstr "বড় করুন (_n)"
 
 #: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "আড়াল করো (_ছ)"
+msgstr "আড়াল করুন (_n)"
 
 #: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "মাঝারি আয়তনের করো (_ম)"
+msgstr "স্বাভাবিক মাপ (_x)"
 
 #: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "বড় করো (_ড়)"
+msgstr "বড় করুন (_x)"
 
 #: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "শুধুমাত্র এই কর্মক্ষেত্রে (_ক)"
+msgstr "শুধুমাত্র বর্তমান কর্মক্ষেত্রে (_O)"
 
 #: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "সবসময় দৃশ্যমান কর্মক্ষেত্রে (_স)"
+msgstr "দৃশ্যমান কর্মক্ষেত্রে সর্বদা উপস্থিত (_A)"
 
 #: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
@@ -101,7 +103,7 @@ msgstr "কর্মক্ষেত্র %d"
 
 #: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr "কর্মক্ষেত্র ১_০"
+msgstr "কর্মক্ষেত্র 1_0"
 
 #: ../libwnck/window-action-menu.c:473
 #, c-format
@@ -110,56 +112,41 @@ msgstr "কর্মক্ষেত্র %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr ""
+msgstr "উপরে (_T)"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "সরাও (_ও)"
+msgstr "স্থানান্তরণ (_M)"
 
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr "আকার বদলাও (_আ)"
+msgstr "মাপ পরিবর্তন (_R)"
 
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
-msgstr "বন্ধ করো (_ধ)"
+msgstr "বন্ধ করুন (_C)"
 
 #: ../libwnck/window-action-menu.c:626
-#, fuzzy
 msgid "Move to Workspace _Left"
-msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
+msgstr "বাঁদিকের কর্মক্ষেত্রে স্থানান্তর করুন (_L)"
 
 #: ../libwnck/window-action-menu.c:637
-#, fuzzy
 msgid "Move to Workspace R_ight"
-msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
+msgstr "ডান দিকের কর্মক্ষেত্রে স্থানান্তর করুন (_i)"
 
 #: ../libwnck/window-action-menu.c:648
-#, fuzzy
 msgid "Move to Workspace _Up"
-msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
+msgstr "উপরের কর্মক্ষেত্রে স্থানান্তরণ (_U)"
 
 #: ../libwnck/window-action-menu.c:660
-#, fuzzy
 msgid "Move to Workspace _Down"
-msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
+msgstr "নীচের কর্মক্ষেত্রে স্থানান্তরণ (_D)"
 
 #: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "অন্য কর্মক্ষেত্রে নিয়ে যাও (_য)"
+msgstr "পৃথক কর্মক্ষেত্রে স্থানান্তরণ (_W)"
 
-#: ../libwnck/window.c:35
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "নামবিহীন উইন্ডো"
 
-#~ msgid "_Unroll"
-#~ msgstr "খোলো (_ল)"
-
-#~ msgid "Roll _Up"
-#~ msgstr "গোটাও (_গ)"
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "সকল কর্মক্ষেত্রে রাখুন (_স)"
