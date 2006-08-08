@@ -3046,7 +3046,7 @@ Sun Nov 24 18:38:27 2002  Soeren Sandmann  <sandmann@daimi.au.dk>
 
 	* libwnck/tasklist.[ch]:
 	Remove the include_unminimized functionality. It was broken,
-	hard to fix and not usefull.
+	hard to fix and not useful.
 	Add wnck_tasklist_set_include_all_workspaces ()
 
 2002-01-13  Havoc Pennington  <hp@pobox.com>
