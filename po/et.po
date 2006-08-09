@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: libwnck 2.14\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-02-09 09:01+0100\n"
-"PO-Revision-Date: 2006-02-09 19:52+0300\n"
+"PO-Revision-Date: 2006-08-09 18:25+0300\n"
 "Last-Translator: Priit Laes <amd@store20.com>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr "_Minimeeri"
 
 #: ../libwnck/window-action-menu.c:272
 msgid "Unma_ximize"
-msgstr "T_aasta suurus"
+msgstr "Taasta s_uurus"
 
 #: ../libwnck/window-action-menu.c:279
 msgid "Ma_ximize"
@@ -116,7 +116,7 @@ msgstr "Tööala %s%d"
 
 #: ../libwnck/window-action-menu.c:560
 msgid "On _Top"
-msgstr "Kõike _pealmine"
+msgstr "Kõige p_ealmine"
 
 #: ../libwnck/window-action-menu.c:569
 msgid "_Move"
@@ -124,7 +124,7 @@ msgstr "_Liiguta"
 
 #: ../libwnck/window-action-menu.c:576
 msgid "_Resize"
-msgstr "Muuda _suurust"
+msgstr "Muuda suu_rust"
 
 #: ../libwnck/window-action-menu.c:589
 msgid "_Close"
@@ -132,23 +132,23 @@ msgstr "_Sulge"
 
 #: ../libwnck/window-action-menu.c:617
 msgid "Move to Workspace _Left"
-msgstr "Liigu _vasakpoolsele tööalale"
+msgstr "Tõsta _vasakpoolsele tööalale"
 
 #: ../libwnck/window-action-menu.c:628
 msgid "Move to Workspace R_ight"
-msgstr "Liigu _parempoolsele tööalale"
+msgstr "Tõsta _parempoolsele tööalale"
 
 #: ../libwnck/window-action-menu.c:639
 msgid "Move to Workspace _Up"
-msgstr "Liigu _ülemisele tööalale"
+msgstr "Tõsta _ülemisele tööalale"
 
 #: ../libwnck/window-action-menu.c:651
 msgid "Move to Workspace _Down"
-msgstr "Liigu _alumisele tööalale"
+msgstr "Tõsta _alumisele tööalale"
 
 #: ../libwnck/window-action-menu.c:665
 msgid "Move to Another _Workspace"
-msgstr "Liigu mõnele teisele _tööalale"
+msgstr "Tõsta mõ_nele teisele tööalale"
 
 #: ../libwnck/window-action-menu.c:681
 #, c-format
