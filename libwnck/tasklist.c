@@ -742,10 +742,16 @@ wnck_tasklist_finalize (GObject *object)
   tasklist->priv->class_group_hash = NULL;
   
   if (tasklist->priv->activate_timeout_id != 0)
-    gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+    {
+      gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+      tasklist->priv->activate_timeout_id = 0;
+    }
   
   if (tasklist->priv->idle_callback_tag != 0)
-    g_source_remove (tasklist->priv->idle_callback_tag);
+    {
+      g_source_remove (tasklist->priv->idle_callback_tag);
+      tasklist->priv->idle_callback_tag = 0;
+    }
     
   if (tasklist->priv->tooltips)
     {
@@ -757,8 +763,11 @@ wnck_tasklist_finalize (GObject *object)
   tasklist->priv->size_hints = NULL;
   tasklist->priv->size_hints_len = 0;
 
-  g_object_unref (tasklist->priv->background);
-  tasklist->priv->background = NULL;
+  if (tasklist->priv->background)
+    {
+      g_object_unref (tasklist->priv->background);
+      tasklist->priv->background = NULL;
+    }
   
   g_free (tasklist->priv);
   tasklist->priv = NULL;  
