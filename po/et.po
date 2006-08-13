@@ -93,7 +93,7 @@ msgstr "Ma_ksimeeri"
 
 #: ../libwnck/window-action-menu.c:299
 msgid "_Only on This Workspace"
-msgstr "Ainult _sellel tööalal"
+msgstr "_Ainult sellel tööalal"
 
 #: ../libwnck/window-action-menu.c:306
 msgid "_Always on Visible Workspace"
