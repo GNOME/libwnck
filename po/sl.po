@@ -1,155 +1,159 @@
-# Slovenian translations of libwnck messages
+# Slovenian libwnck translation.
 # Copyright (C) 1999-2002 Free Software Foundation, Inc.
-# 
+# Matic Žgur <mr.zgur@gmail.com>, 2006.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2002-02-26 00:23+0100\n"
-"Last-Translator: Andraž Tori <andraz.tori1@guest.arnes.si>\n"
+"POT-Creation-Date: 2006-08-14 16:55+0200\n"
+"PO-Revision-Date: 2006-08-14 18:44+0100\n"
+"Last-Translator: Matic Žgur <mr.zgur@gmail.com>\n"
 "Language-Team: slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "neimenovan program"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Preklopnik delovnih površin"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Orodje za preklop med delovnimi površinami"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknite sem za preklop na delovno površino %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "Neznano okno"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "Ni odprtih oken"
 
-#: libwnck/selector.c:747
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr ""
+msgstr "Izbirnik oken"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "Orodje za preklop med delovnimi površinami"
+msgstr "Orodje za preklop med okni"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
-msgstr ""
+msgstr "Seznam oken"
 
-#: libwnck/tasklist.c:691
-#, fuzzy
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
-msgstr "Orodje za preklop med delovnimi površinami"
+msgstr "Orodje za preklop med vidnimi okni"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2530
 msgid "_Close All"
-msgstr "_Zapri"
+msgstr "Zapri _vse"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
-msgstr "_Skrči"
+msgstr "_Pomanjšaj vse"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
-msgstr "_Odkrči"
+msgstr "_Odkrči vse"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "_Odkrči"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "_Skrči"
+msgstr "P_omanjšaj"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "Odr_azpni"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "_Razpni"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "_Odvij"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "_Zavrti navzgor"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "Le na _tej delovni površini"
+msgstr "Samo na _tej delovni površini"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "Le na _tej delovni površini"
+msgstr "_Vedno na vidni delovni površini"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463
+#: ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Delovna površina %d"
 
-#: libwnck/window-action-menu.c:386
-#, fuzzy
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr "Delovna površina %d"
+msgstr "Delovna površina 1_0"
 
-#: libwnck/window-action-menu.c:388
-#, fuzzy, c-format
+#: ../libwnck/window-action-menu.c:473
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Delovna površina %d"
+msgstr "Delovna površina %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "Na _vrh"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "Pres_tavi"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "Spremeni _velikost"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Zapri"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Pomakni se na delovno površino _levo"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "Pomakni se na delovno površino _desno"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Pomakni se na delovno površino _zgoraj"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Pomakni se na delovno površino _spodaj"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr ""
+msgstr "Pomakni se na drugo _delovno površino"
 
-#: libwnck/window-action-menu.c:542
-#, c-format
-msgid "%s"
-msgstr ""
-
-#: libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "neimenovano okno"
 
+#~ msgid "_Unroll"
+#~ msgstr "_Odvij"
+#~ msgid "Roll _Up"
+#~ msgstr "_Zavrti navzgor"
 #~ msgid "Put on _All Workspaces"
 #~ msgstr "Postavi na _vse delovne površine"
-
 #~ msgid "U_nshade"
 #~ msgstr "Ods_enči"
-
 #~ msgid "_Shade"
 #~ msgstr "_Senči"
+
