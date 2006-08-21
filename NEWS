@@ -1,3 +1,19 @@
+2.15.92
+=======
+
+ Fixes
+
+  - Fix crash when tasklist is destroyed (Vincent)
+
+ Misc
+
+  - Update delete icon for the context menu (Baptiste Mille-Mathias)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Matic Žgur (sl)
+
 2.15.91
 =======
 
