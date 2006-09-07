@@ -3323,6 +3323,7 @@ take_screenshot (WnckTask *task)
       style->bg[task->button->state] = style->bg[GTK_STATE_SELECTED];
       /* Now attach it to the window */
       attached_style = gtk_style_attach (style, pixmap);
+      g_object_ref (attached_style);
       
       /* copy the background */
       gdk_draw_drawable (pixmap, attached_style->bg_gc[GTK_STATE_NORMAL],
@@ -3336,6 +3337,7 @@ take_screenshot (WnckTask *task)
                      0, 0, width, height);
 
       g_object_unref (style);
+      gtk_style_detach (attached_style);
       g_object_unref (attached_style);
     }
   

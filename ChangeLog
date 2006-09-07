@@ -1,3 +1,9 @@
+2006-09-07  Benjamin Berg  <benjamin@sipsolutions.net>
+
+	* libwnck/tasklist.c: (take_screenshot):
+	- Fix a critical warning and a leak of a GtkStyle in the glowing
+	code when taking the screenshot. (Fixes #354268)
+
 2006-09-04  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.16.1
