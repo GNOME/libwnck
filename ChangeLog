@@ -1,3 +1,9 @@
+2006-09-11  Ryan Lortie  <desrt@desrt.ca>
+
+	* libwnck/window.c (WnckWindowPrivate, wnck_window_init,
+	wnck_window_set_icon_geometry): Avoid sending spurious icon geometry
+	updates. (Fixes #355523)
+
 2006-09-07  Benjamin Berg  <benjamin@sipsolutions.net>
 
 	* libwnck/tasklist.c: (take_screenshot):

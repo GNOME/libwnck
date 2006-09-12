@@ -63,6 +63,7 @@ struct _WnckWindowPrivate
   WnckClassGroup *class_group;
   Window group_leader;
   Window transient_for;
+  GdkRectangle icon_geometry;
   char *name;
   char *icon_name;
   char *session_id;
@@ -222,6 +223,7 @@ wnck_window_init (WnckWindow *window)
   window->priv->name = NULL;
   window->priv->icon_name = NULL;
   window->priv->workspace = ALL_WORKSPACES;
+  window->priv->icon_geometry.width = -1; /* invalid cached value */
 
   window->priv->icon_cache = _wnck_icon_cache_new ();
 }
@@ -1661,6 +1663,17 @@ wnck_window_set_icon_geometry (WnckWindow *window,
 			       int         width,
 			       int         height)
 {
+  if (window->priv->icon_geometry.x == x &&
+      window->priv->icon_geometry.y == y &&
+      window->priv->icon_geometry.width == width &&
+      window->priv->icon_geometry.height == height)
+    return;
+
+  window->priv->icon_geometry.x = x;
+  window->priv->icon_geometry.y = y;
+  window->priv->icon_geometry.width = width;
+  window->priv->icon_geometry.height = height;
+
   _wnck_set_icon_geometry (window->priv->xwindow,
                            x, y, width, height);
 }
