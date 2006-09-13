@@ -1,150 +1,160 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# Indonesia translation of libwnck.
+# Copyright (C) 2000 THE libwnck'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the libwnck package.
+# Mohammad DAMT <mdamt@bisnisweb.com>, 2000.
+# 
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck gnome-2-2\n"
+"Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2004-04-03 10:27+0700\n"
+"POT-Creation-Date: 2006-09-13 08:59+0700\n"
+"PO-Revision-Date: 2000-09-13 08:48+0700\n"
 "Last-Translator: Mohammad DAMT <mdamt@bisnisweb.com>\n"
-"Language-Team: Indonesia <id@li.org>\n"
+"Language-Team: Indonesia <kontak@id.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "aplikasi tak berjudul"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Program Pemilih Area kerja"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Program untuk memilih area kerja yang aktif"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klik untuk memilih area kerja %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "Jendela Tak Dikenal"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "Tanpa Jendela Terbuka"
 
-#: libwnck/selector.c:747
-#, fuzzy
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "Daftar Jendela"
+msgstr "Pemilih Jendela"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "Program untuk memilih jendela program yang tampak"
+msgstr "Alat untuk memindah antara jendela"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "Daftar Jendela"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
 msgstr "Program untuk memilih jendela program yang tampak"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2530
 msgid "_Close All"
-msgstr "_Tutup"
+msgstr "_Tutup Semua"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
-msgstr "_Kecilkan"
+msgstr "_Minimalkan Semua"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
-msgstr "Rub_ah ke ukuran semula (dari ukuran besar)"
+msgstr "Jangan kecilkan Sem_ua"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "Rub_ah ke ukuran semula (dari ukuran besar)"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "_Kecilkan"
+msgstr "Kecilka_n"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "Ruba_h ke ukuran semula (dari ukuran kecil)"
+msgstr "Kem_balikan"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "_Maksimalkan"
+msgstr "Pe_rbesar"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "Buka _Gulungan"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "G_ulung"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "di area kerja ini sa_ja"
+msgstr "_Hanya pada Area Kerja Ini"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "di area kerja ini sa_ja"
+msgstr "Sel_alu pada Area Kerja Terlihat"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Area kerja %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "Area kerja 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area kerja %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "Di A_tas"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "Pi_ndahkan"
+msgstr "_Pindahkan"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr "Ganti Uku_ran"
+msgstr "Ganti·Uku_ran"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Tutup"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Pindahkan ke Area Kerja _Kiri"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "P_indahkan ke Area Kerja Kanan"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Pindahkan ke Area Kerja _Atas"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Pindahkan ke Area Kerja _Bawah"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "Pindahkan ke Area Kerja _lain"
 
-#: libwnck/window-action-menu.c:542
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "window tidak berjudul"
+
+#~ msgid "_Unroll"
+#~ msgstr "Buka _Gulungan"
+
+#~ msgid "Roll _Up"
+#~ msgstr "G_ulung"
+
+#~ msgid "%s"
+#~ msgstr "%s"
 
 #~ msgid "Put on _All Workspaces"
 #~ msgstr "Letakkan di _semua area kerja"
