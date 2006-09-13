@@ -9,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD.ta\n"
+"Project-Id-Version: ta\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-13 07:49+0200\n"
-"PO-Revision-Date: 2006-09-13 15:27+0530\n"
+"PO-Revision-Date: 2006-09-13 15:46+0530\n"
 "Last-Translator: Felix <ifelix@redhat.com>\n"
 "Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr "நகர்த்தவும் (_M)"
 
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr " மறுஅளவு (_R)"
+msgstr "மறுஅளவு (_R)"
 
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
