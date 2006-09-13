@@ -1,3 +1,4 @@
+# translation of ml.po to Malayalam
 # translation of libwnck.HEAD.ml.po to Malayalam
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
@@ -6,10 +7,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD.ml\n"
+"Project-Id-Version: ml\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-08-04 07:48+0200\n"
-"PO-Revision-Date: 2006-08-05 01:30+0530\n"
+"PO-Revision-Date: 2006-09-13 15:55+0530\n"
 "Last-Translator: Ani Peter <apeter@redhat.com>\n"
 "Language-Team: Malayalam\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +116,7 @@ msgstr "മുകളില്‍ (_T)"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "നീങ്ങുക (_M)"
+msgstr "നീക്കുക (_M)"
 
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
