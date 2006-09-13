@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-01-22 09:21+0200\n"
-"PO-Revision-Date: 2006-01-22 09:25+0200\n"
+"PO-Revision-Date: 2006-09-13 18:23+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -87,11 +87,11 @@ msgstr "S_uurenna"
 
 #: ../libwnck/window-action-menu.c:299
 msgid "_Only on This Workspace"
-msgstr "Vain _tässä työtilassa"
+msgstr "Näytä vain _tässä työtilassa"
 
 #: ../libwnck/window-action-menu.c:306
 msgid "_Always on Visible Workspace"
-msgstr "_Aina näkyvässä työtilassa"
+msgstr "Näytä _aina näkyvässä työtilassa"
 
 #: ../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
 #, c-format
@@ -109,7 +109,7 @@ msgstr "Työtila %s%d"
 
 #: ../libwnck/window-action-menu.c:560
 msgid "On _Top"
-msgstr "_Nosta"
+msgstr "_Päällimmäiseksi"
 
 #: ../libwnck/window-action-menu.c:569
 msgid "_Move"
@@ -125,19 +125,19 @@ msgstr "_Sulje"
 
 #: ../libwnck/window-action-menu.c:617
 msgid "Move to Workspace _Left"
-msgstr "Siirrä t_yötilaan vasemmalla"
+msgstr "Siirrä _vasempaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:628
 msgid "Move to Workspace R_ight"
-msgstr "Siirrä t_yötilaan oikealla"
+msgstr "Siirrä _oikeaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:639
 msgid "Move to Workspace _Up"
-msgstr "Siirrä t_yötilaan yläpuolella"
+msgstr "Siirrä _ylläolevaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:651
 msgid "Move to Workspace _Down"
-msgstr "Siirrä t_yötilaan alapuolella"
+msgstr "Siirrä _allaolevaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:665
 msgid "Move to Another _Workspace"
