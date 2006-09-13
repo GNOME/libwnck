@@ -1,155 +1,155 @@
+# translation of libwnck.HEAD.ta.po to Tamil
 # translation of ta.po to Tamil
 # Tamil translation of libwnck.
 # Copyright (C) 2003 libwnck'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the libwnck package.
 # Dinesh Nadarajah <n_dinesh@yahoo.com>, 2003.
 # Jayaradha N <jaya@pune.redhat.com>, 2004.
+# Felix <ifelix@redhat.com>, 2006.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: ta\n"
+"Project-Id-Version: libwnck.HEAD.ta\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
-"PO-Revision-Date: 2004-09-03 10:35+0530\n"
-"Last-Translator: Jayaradha N <jaya@pune.redhat.com>\n"
-"Language-Team: Tamil <zhakanini@yahoogroups.com>\n"
+"POT-Creation-Date: 2006-09-13 07:49+0200\n"
+"PO-Revision-Date: 2006-09-13 15:27+0530\n"
+"Last-Translator: Felix <ifelix@redhat.com>\n"
+"Language-Team: Tamil <ta@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
-"Plural-Forms: Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.9.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n\n"
 "\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
-msgstr "பெயரற்ற நிரல்"
+msgstr "தலைப்பில்லாத பயன்பாடு"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "வேலையிட மாற்றி"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "வேலையிடங்களுக்கு மாற்றும் கருவி"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "%s வேலையிடத்திற்கு மாற்ற இதனை அமுத்தவும்"
+msgstr "%s வேலையிடத்திற்கு மாற்ற இதனை சொடுக்கவும்"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "தெரியாத சாளரம்"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "சாளரங்கள் எதுவும் திறக்கப்படவில்லை"
 
-#: libwnck/selector.c:747
-#, fuzzy
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "சாளர பட்டியல்"
+msgstr "சாளர தேர்வி"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "காட்சியில் உள்ள சாளரங்களுக்கு மாற்றும் கருவி"
+msgstr "சாளரங்களுக்கு இடையே மாற்றும் கருவி"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "சாளர பட்டியல்"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
 msgstr "காட்சியில் உள்ள சாளரங்களுக்கு மாற்றும் கருவி"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2530
 msgid "_Close All"
-msgstr "_மூடு"
+msgstr "அனைத்தையும் மூடவும் (_C)"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
-msgstr "(_n)சிறியதாக்கு"
+msgstr "அனைத்தையும் குறுக்கவும் (_M)"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
-msgstr "(_n)சிறிதாக்காதே"
+msgstr "அனைத்தையும் குறுக்க வேண்டாம் (_U)"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr "(_n)சிறிதாக்காதே"
+msgstr "குறுக்காத (_n)"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "(_n)சிறியதாக்கு"
+msgstr "குறுக்கவும் (_n)"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "(_x)பெரிதாக்காதே"
+msgstr "பெரிதாக்காத (_x)"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "ஆக-பெருதாக்கு"
+msgstr "பெரிதாக்கவும் (_x)"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "கீழ் விரி"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "மேலே சுருட்டு"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "இவ்வேலையிடத்தில் மட்டும்"
+msgstr "இந்த வேலையிடத்தில் மட்டும் (_O)"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "இவ்வேலையிடத்தில் மட்டும்"
+msgstr "எப்போதும் தெரியும் வேலையிடத்தில் (_A)"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "வேலையிடம் %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "வேலையிடம் 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "வேலையிடம் %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "மேலே (_T)"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "(_M)நகர்த்து"
+msgstr "நகர்த்தவும் (_M)"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr "அளவு மாற்று"
+msgstr " மறுஅளவு (_R)"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
-msgstr "_மூடு"
+msgstr "மூடவும் (_C)"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "வேலையிடத்தின் இடப்பக்கத்திற்கு நகர்த்தவும் (_L)"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "வேலையிடத்தின் வலப்பக்கத்திற்கு நகர்த்தவும் (_i)"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "வேலையிடத்தின் மேலே நகர்த்தவும் (_U)"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "வேலையிடத்தின் கீழே நகர்த்தவும் (_D)"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "(_W)மற்ற வேலையிடத்திற்கு மாற்று"
+msgstr "மற்ற வேலையிடத்திற்கு மாற்றவும் (_W)"
 
-#: libwnck/window-action-menu.c:542
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
-msgstr "பெயரற்ற சாளரம்"
+msgstr "தலைப்பில்லாத சாளரம்"
 
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "அனைத்து வேலையிடங்களிலும் போடுக"
