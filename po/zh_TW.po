@@ -1,15 +1,15 @@
 # Chinese (Taiwan) translation of libwnck.
 # Copyright (C) 2001-2006 Free Software Foundation, Inc.
-# Abel Cheung <abel@oaka.org>, 2001-2005.
-# Abel Cheung <abel@oaka.org>, 2006.
+# Abel Cheung <abel@oaka.org>, 2001-2006.
+# Woodman Tuen <wmtuen@gmail.com>, 2006.
 # 
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-24 09:53+0100\n"
-"PO-Revision-Date: 2006-02-24 10:56+0800\n"
+"POT-Creation-Date: 2006-09-13 09:49+0800\n"
+"PO-Revision-Date: 2006-09-13 17:44+0800\n"
 "Last-Translator: Woodman Tuen <wmtuen@gmail.com>\n"
 "Language-Team: Chinese (Taiwan) <community@linuxhall.org>\n"
 "MIME-Version: 1.0\n"
@@ -51,25 +51,25 @@ msgstr "視窗切換程式"
 msgid "Tool to switch between windows"
 msgstr "用來切換至不同視窗的工具"
 
-#: ../libwnck/tasklist.c:667
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "視窗清單"
 
 # FIXME: Not accurate, but this is easier to understand. Need a phrase
 # that's both easy to understand AND accurate. -- Abel
-#: ../libwnck/tasklist.c:668
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
 msgstr "用來切換至不同可視視窗的工具"
 
-#: ../libwnck/tasklist.c:2465
+#: ../libwnck/tasklist.c:2530
 msgid "_Close All"
 msgstr "全部關閉(_C)"
 
-#: ../libwnck/tasklist.c:2480
+#: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
 msgstr "全部最小化(_M)"
 
-#: ../libwnck/tasklist.c:2491
+#: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
 msgstr "全部取消最小化(_U)"
 
@@ -77,84 +77,99 @@ msgstr "全部取消最小化(_U)"
 msgid "Unmi_nimize"
 msgstr "取消最小化(_N)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "取消最大化(_X)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "只放在本工作區顯示(_O)"
+msgstr "只在本工作區顯示(_O)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "放在所有工作區中(_A)"
+msgstr "在所有工作區顯示(_A)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "工作區 %d"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "工作區 1_0"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "工作區 %s%d"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
 msgstr "最上層(_T)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "移動(_M)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "調整尺寸(_R)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "關閉(_C)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
 msgstr "移至左方的工作區(_L)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:637
 msgid "Move to Workspace R_ight"
 msgstr "移至右方的工作區(_R)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
 msgstr "移至上方的工作區(_U)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
 msgstr "移至下方的工作區(_D)"
 
+# (Abel) take care of the same string in metacity
 #: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "移至另一個工作區(_W)"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:35
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "無標題的視窗"
+
+#~ msgid "%s"
+#~ msgstr "%s"
 
 #~ msgid "_Unroll"
 #~ msgstr "放下(_U)"
