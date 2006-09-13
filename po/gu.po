@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.gu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-23 07:31+0100\n"
-"PO-Revision-Date: 2006-01-23 15:03+0530\n"
+"POT-Creation-Date: 2006-09-13 00:48+0200\n"
+"PO-Revision-Date: 2006-09-13 11:26+0530\n"
 "Last-Translator: Ankit Patel <ankit644@yahoo.com>\n"
 "Language-Team: Gujarati <indianoss-gujarati@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -18,140 +18,136 @@ msgstr ""
 "X-Generator: KBabel 1.9.1\n"
 "Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
 "\n"
+"\n"
 
-#: ../libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
-msgstr "નામ વગરનો કાર્યક્રમ"
+msgstr "શીર્ષકવીહિન કાર્યક્રમ"
 
-#: ../libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "કામ કરવાની જગ્યા બદલનાર"
 
-#: ../libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
 
-#: ../libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "કામ કરવાની જગ્યા %s માં બદલવા માટે અહિં ક્લિક કરો"
 
-#: ../libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
 msgstr "અજ્ઞાત વિન્ડો"
 
-#: ../libwnck/selector.c:726
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
 msgstr "કોઈ વિન્ડો ખૂલેલી નથી"
 
-#: ../libwnck/selector.c:830
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
 msgstr "વિન્ડો પસંદ કરનાર"
 
-#: ../libwnck/selector.c:831
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
 msgstr "વિન્ડો વચ્ચે ફેરબદલી કરવાનું સાધન"
 
-#: ../libwnck/tasklist.c:664
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
-msgstr "વિન્ડોની યાદી"
+msgstr "વિન્ડો યાદી"
 
-#: ../libwnck/tasklist.c:665
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
-msgstr "કામ કરવાની જગ્યા બદલવાનું સાધન"
+msgstr "દેખીતી વિન્ડો વચ્ચે બદલવાનું સાધન"
 
-#: ../libwnck/tasklist.c:2462
+#: ../libwnck/tasklist.c:2530
 msgid "_Close All"
-msgstr "બધુ બંધ કરો (_C)"
+msgstr "બધું બંધ કરો (_C)"
 
-#: ../libwnck/tasklist.c:2477
+#: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
-msgstr "બધુ નાનું કરો (_M)"
+msgstr "બધું ન્યૂનતમ કરો (_M)"
 
-#: ../libwnck/tasklist.c:2488
+#: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
-msgstr "બધુ નાનામાંથી પાછુ લાવો (_U)"
+msgstr "બધું ન્યૂનતમમાંથી પાછુ લાવો (_U)"
 
-#: ../libwnck/window-action-menu.c:257
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr "નાનાં માંથી મોટું કરો (_m)"
+msgstr "ન્યૂનતમમાંથી પાછુ લાવો (_n)"
 
-#: ../libwnck/window-action-menu.c:264
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "નાનું કરો (_M)"
+msgstr "ન્યૂનતમ કરો (_n)"
 
-#: ../libwnck/window-action-menu.c:272
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "મોટા માંથી નાનું કરો (_U)"
+msgstr "મહત્તમમાંથી પાછુ લાવો (_x)"
 
-#: ../libwnck/window-action-menu.c:279
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "મોટું કરો (_x)"
+msgstr "મહત્તમ કરો (_x)"
 
-#: ../libwnck/window-action-menu.c:299
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "માત્ર આ કામ કરવાની જગ્યા પર (_O)"
 
-#: ../libwnck/window-action-menu.c:306
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "હંમેશા દ્રશ્ય કામ કરવાની જગ્યા પર (_A)"
+msgstr "હંમેશા દેખીતી કામ કરવાની જગ્યા પર (_A)"
 
-#: ../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "કામ કરવાની જગ્યા %d"
 
-#: ../libwnck/window-action-menu.c:468
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "કામ કરવાની જગ્યા ૧_૦"
 
-#: ../libwnck/window-action-menu.c:470
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "કામ કરવાની જગ્યા %s%d"
 
-#: ../libwnck/window-action-menu.c:560
+#: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
 msgstr "ટોચ પર (_T)"
 
-#: ../libwnck/window-action-menu.c:569
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "ખસેડો (_v)"
+msgstr "ખસેડો (_M)"
 
-#: ../libwnck/window-action-menu.c:576
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "માપ બદલો (_R)"
 
-#: ../libwnck/window-action-menu.c:589
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "બંધ કરો (_C)"
 
-#: ../libwnck/window-action-menu.c:617
+#: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
-msgstr "ડાબી કામ કરવાની જગ્યામાં ખસેડો (_L)"
+msgstr "ડાબી કામ કરવાની જગ્યામાં ખસો (_L)"
 
-#: ../libwnck/window-action-menu.c:628
+#: ../libwnck/window-action-menu.c:637
 msgid "Move to Workspace R_ight"
-msgstr "જમણી કામ કરવાની જગ્યામાં ખસેડો (_i)"
+msgstr "જમણી કામ કરવાની જગ્યામાં ખસો (_i)"
 
-#: ../libwnck/window-action-menu.c:639
+#: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
-msgstr "ઉપરની કામ કરવાની જગ્યામાં ખસેડો (_U)"
+msgstr "ઉપરની કામ કરવાની જગ્યામાં ખસો (_U)"
 
-#: ../libwnck/window-action-menu.c:651
+#: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
-msgstr "નીચેની કામ કરવાની જગ્યામાં ખસેડો (_D)"
+msgstr "નીચેની કામ કરવાની જગ્યામાં ખસો (_D)"
 
-#: ../libwnck/window-action-menu.c:665
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "બીજી કામ કરવાની જગ્યામાં ખસેડો (_W)"
+msgstr "બીજી કામ કરવાની જગ્યામાં ખસો (_W)"
 
-#: ../libwnck/window-action-menu.c:681
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
-msgstr "શીર્ષક વગરની વિન્ડો"
+msgstr "શીર્ષકવીહિન વિન્ડો"
 
