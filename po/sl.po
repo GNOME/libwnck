@@ -1,13 +1,15 @@
-# Slovenian libwnck translation.
-# Copyright (C) 1999-2002 Free Software Foundation, Inc.
+# Slovenian translation of libwnck.
+# Copyright (C) 1999-2006 Free Software Foundation, Inc.
+# This file is distributed under the same license as the libwnck package.
+#
 # Matic Žgur <mr.zgur@gmail.com>, 2006.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-08-14 16:55+0200\n"
-"PO-Revision-Date: 2006-08-14 18:44+0100\n"
+"POT-Creation-Date: 2006-09-14 07:29+0200\n"
+"PO-Revision-Date: 2006-09-14 19:33+0100\n"
 "Last-Translator: Matic Žgur <mr.zgur@gmail.com>\n"
 "Language-Team: slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -61,7 +63,7 @@ msgstr "Zapri _vse"
 
 #: ../libwnck/tasklist.c:2545
 msgid "_Minimize All"
-msgstr "_Pomanjšaj vse"
+msgstr "Po_manjšaj vse"
 
 #: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
@@ -73,23 +75,23 @@ msgstr "_Odkrči"
 
 #: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "P_omanjšaj"
+msgstr "Poma_njšaj"
 
 #: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "Odr_azpni"
+msgstr "Odra_zpni"
 
 #: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "_Razpni"
+msgstr "Ra_zpni"
 
 #: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "Samo na _tej delovni površini"
+msgstr "Sam_o na tej delovni površini"
 
 #: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "_Vedno na vidni delovni površini"
+msgstr "Vedno n_a vidni delovni površini"
 
 #: ../libwnck/window-action-menu.c:463
 #: ../libwnck/workspace.c:237
@@ -112,11 +114,11 @@ msgstr "Na _vrh"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "Pres_tavi"
+msgstr "_Prestavi"
 
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
-msgstr "Spremeni _velikost"
+msgstr "Sp_remeni velikost"
 
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
@@ -124,23 +126,23 @@ msgstr "_Zapri"
 
 #: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
-msgstr "Pomakni se na delovno površino _levo"
+msgstr "Premakni na delovno površino _levo"
 
 #: ../libwnck/window-action-menu.c:637
 msgid "Move to Workspace R_ight"
-msgstr "Pomakni se na delovno površino _desno"
+msgstr "Premakni na delovno površ_ino desno"
 
 #: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
-msgstr "Pomakni se na delovno površino _zgoraj"
+msgstr "Premakni na delovno površino _gor"
 
 #: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
-msgstr "Pomakni se na delovno površino _spodaj"
+msgstr "Premakni na delovno površino _dol"
 
 #: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "Pomakni se na drugo _delovno površino"
+msgstr "Premakni na drugo _delovno površino"
 
 #: ../libwnck/window.c:36
 msgid "untitled window"
