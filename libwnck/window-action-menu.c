@@ -709,6 +709,7 @@ wnck_create_window_action_menu (WnckWindow *window)
                            0);
 
   update_menu_state (amd);
+  wnck_screen_free_workspace_layout (&layout);
   
   return menu;
 }

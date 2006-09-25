@@ -1220,6 +1220,8 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 	}
     }
 
+  g_list_free (ungrouped_class_groups);
+
   /* Always let you go down to a zero size: */
   if (array->len > 0)
     g_array_index(array, int, array->len-1) = 0;
@@ -1407,6 +1409,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   
   g_list_free (visible_tasks);
   g_list_free (tasklist->priv->windows);
+  g_list_free (ungrouped_class_groups);
   tasklist->priv->windows = windows_sorted;
  
   GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
@@ -2465,7 +2468,10 @@ wnck_task_popup_menu (WnckTask *task,
     return;
   
   if (task->menu == NULL)
-    task->menu = gtk_menu_new ();
+    {
+      task->menu = gtk_menu_new ();
+      g_object_ref_sink (task->menu);
+    }
   
   menu = task->menu;
   

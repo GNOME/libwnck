@@ -1425,6 +1425,8 @@ update_client_list (WnckScreen *screen)
   g_list_free (created);
   g_list_free (closed_apps);
   g_list_free (created_apps);
+  g_list_free (closed_class_groups);
+  g_list_free (created_class_groups);
 
   --reentrancy_guard;
 

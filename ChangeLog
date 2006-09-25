@@ -1,3 +1,18 @@
+2006-09-14  Benjamin Berg  <benjamin@sipsolutions.net>
+
+	Fixes from bug #354830:
+
+	* libwnck/screen.c: (update_client_list):
+	* libwnck/tasklist.c: (wnck_tasklist_size_request),
+	(wnck_tasklist_size_allocate):
+	- fix a bunch of GList leaks
+
+	* libwnck/tasklist.c: (wnck_task_popup_menu):
+	- g_object_ref_sink the menu after creating it
+
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):
+	- free the WnckWorkspaceLayout
+
 2006-09-11  Ryan Lortie  <desrt@desrt.ca>
 
 	* libwnck/window.c (WnckWindowPrivate, wnck_window_init,
