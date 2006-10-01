@@ -1,3 +1,8 @@
+2006-10-01  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in: depends on GTK+ >= 2.8.0 (and thus on cairo)
+	Fix bug #348189. Thanks to dmacks@netspace.org
+
 2006-09-14  Benjamin Berg  <benjamin@sipsolutions.net>
 
 	Fixes from bug #354830:
