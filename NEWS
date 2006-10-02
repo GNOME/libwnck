@@ -1,3 +1,35 @@
+2.16.1
+======
+
+ Fixes
+
+  - Fix critical warning and leak (Benjamin Berg) [#354268]
+  - Avoid sending spurious icon geometry updates (Ryan Lortie) [#355523]
+  - Fix leaks (Benjamin Berg) [#354830]
+
+ Misc
+
+  - Require GTK+ 2.8.0 (Vincent) [#348189]
+
+ Translators
+
+  - Vladimir Petkov (bg)
+  - Jordi Mallach (ca)
+  - David Lodge (en_GB)
+  - Francisco Javier F. Serrador (es)
+  - Pauli Virtanen (fi)
+  - Ankit Patel (gu)
+  - Rajesh Ranjan (hi)
+  - Mohammad DAMT (id)
+  - Ani Peter (ml)
+  - Wouter Bolsterlee (nl)
+  - Matic Žgur (sl)
+  - Daniel Nylander (sv)
+  - Felix (ta)
+  - Sree Ganesh (te)
+  - Woodman Tuen (zh_HK)
+  - Woodman Tuen (zh_TW)
+
 2.16.0
 ======
 

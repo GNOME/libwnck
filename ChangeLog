@@ -1,3 +1,8 @@
+2006-10-02  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.16.0
+
 2006-10-01  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: depends on GTK+ >= 2.8.0 (and thus on cairo)
