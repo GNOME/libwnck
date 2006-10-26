@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-14 14:04+0200\n"
-"PO-Revision-Date: 2006-10-26 22:13+0200\n"
+"PO-Revision-Date: 2006-10-26 22:27+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +27,11 @@ msgstr "aplicación sin título"
 
 #: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
-msgstr "Intercambiador de espacios de trabajo"
+msgstr "Selector de áreas de trabajo"
 
 #: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
-msgstr "Herramienta para cambiar entre espacios de trabajo"
+msgstr "Herramienta para cambiar entre áreas de trabajo"
 
 #: ../libwnck/pager-accessible.c:436
 #, c-format
@@ -72,7 +72,7 @@ msgstr "_Minimizar todo"
 
 #: ../libwnck/tasklist.c:2556
 msgid "_Unminimize All"
-msgstr "_Restaurar todo"
+msgstr "Res_taurar todo"
 
 #: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
@@ -101,16 +101,16 @@ msgstr "_Siempre en el área de trabajo visible"
 #: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
-msgstr "Espacio de trabajo %d"
+msgstr "Área de trabajo %d"
 
 #: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr "Espacio de trabajo 1_0"
+msgstr "Área de trabajo 1_0"
 
 #: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Espacio de trabajo %s%d"
+msgstr "Área de trabajo %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
