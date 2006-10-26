@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-09-14 14:04+0200\n"
-"PO-Revision-Date: 2006-09-14 14:07+0200\n"
+"PO-Revision-Date: 2006-10-26 22:13+0200\n"
 "Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -114,7 +114,7 @@ msgstr "Espacio de trabajo %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "En_cima"
+msgstr "_Encima"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
@@ -138,7 +138,7 @@ msgstr "Mover al área de trabajo de la _derecha"
 
 #: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
-msgstr "Mover al área de trabajo de _arriba"
+msgstr "Mover al área de trabajo de a_rriba"
 
 #: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
