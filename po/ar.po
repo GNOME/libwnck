@@ -1,24 +1,27 @@
-# translation of libwnck.ar.po to 
-# translation of libwnck.po to Arabic
+# translation of libwnck.HEAD.ar.po to Arabic
+# translation of libwnck.ar.po to
 # translation of libwnck.po to
-# Copyright (C) 2002,2003 Free Software Foundation, Inc.
+# Copyright (C) 2002,2003, 2006 Free Software Foundation, Inc.
+#
+#
 # Mohammed Gamal <f2c2001@yahoo.com>, 2002.
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Arafat Medini <lumina@silverpen.de>, 2003.
 # Djihed Afifi <djihed@gmail.com>, 2006.
-#
-#
+# Khaled Hosny <khaledhosny@eglug.org>, 2006.
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.ar\n"
+"Project-Id-Version: libwnck.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-30 00:54+0000\n"
-"PO-Revision-Date: 2006-10-05 21:07-0000\n"
-"Last-Translator: Djihed Afifi <djihed@gmail.com>\n"
-"Language-Team: Arabic <doc@arabeyes.org>\n"
+"PO-Revision-Date: 2006-11-16 17:42+0200\n"
+"Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
+"Language-Team: Arabic <support@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 
 #: ../libwnck/application.c:29
 msgid "untitled application"
@@ -63,15 +66,15 @@ msgstr "أداة للتحوّل بين النوافذ المرئية"
 
 #: ../libwnck/tasklist.c:2536
 msgid "_Close All"
-msgstr "_غلق الكل"
+msgstr "ا_غلق الكل"
 
 #: ../libwnck/tasklist.c:2551
 msgid "_Minimize All"
-msgstr "تص_غير الكل"
+msgstr "_صغّر الكل"
 
 #: ../libwnck/tasklist.c:2562
 msgid "_Unminimize All"
-msgstr "إلغاء الت_صغير للكل"
+msgstr "إلغاء ت_صغير الكل"
 
 #: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
@@ -79,7 +82,7 @@ msgstr "إلغاء الت_صغير"
 
 #: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
-msgstr "تص_غير"
+msgstr "_صغّر"
 
 #: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
@@ -87,7 +90,7 @@ msgstr "إلغاء الت_كبير"
 
 #: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
-msgstr "تك_بير"
+msgstr "ك_بّر"
 
 #: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
@@ -113,11 +116,11 @@ msgstr "مساحة العمل %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "إلى الأ_على"
+msgstr "على ال_قمة"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
-msgstr "_نقل"
+msgstr "ا_نقل"
 
 #: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
@@ -125,46 +128,29 @@ msgstr "ت_حجيم"
 
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
-msgstr "_غلق"
+msgstr "ا_غلق"
 
 #: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
-msgstr "نقل لمساحة عمل نحو ال_يسار"
+msgstr "انقل لمساحة عمل نحو ال_يسار"
 
 #: ../libwnck/window-action-menu.c:637
 msgid "Move to Workspace R_ight"
-msgstr "نقل ل_مساحة عمل نحو الي_مين"
+msgstr "انقل ل_مساحة عمل نحو الي_مين"
 
 #: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
-msgstr "نقل ل_مساحة عمل نحو الف_وق"
+msgstr "انقل ل_مساحة عمل نحو الف_وق"
 
 #: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
-msgstr "نقل ل_مساحة عمل نحو التحت"
+msgstr "انقل ل_مساحة عمل نحو التحت"
 
 #: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "نقل ل_مساحة عمل مغايرة"
+msgstr "انقل ل_مساحة عمل مغايرة"
 
 #: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "نافذة غير معنونة"
 
-#~ msgid "_Unroll"
-#~ msgstr "_فتح اللف"
-
-#~ msgid "Roll _Up"
-#~ msgstr "لف إلى ال_أعلى"
-
-#~ msgid "%s"
-#~ msgstr "%s"
-
-#~ msgid "Put on _All Workspaces"
-#~ msgstr "وضع على _جميع مساحات العمل"
-
-#~ msgid "U_nshade"
-#~ msgstr "ازل ال_تظليل"
-
-#~ msgid "_Shade"
-#~ msgstr "_ظلّل"
