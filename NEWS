@@ -1,3 +1,20 @@
+2.16.2
+======
+
+ Fixes
+
+  - Change to the workspace of a window before activating it on dragging
+    (Sven Herzberg) [#359874]
+
+ Translators
+
+  - Khaled Hosny (ar)
+  - Francisco Javier F. Serrador (es)
+  - Christophe Merlet (RedFox) (fr)
+  - Takeshi AIHANA (ja)
+  - GNOME PL Team (pl)
+  - Duarte Loreto (pt)
+
 2.16.1
 ======
 
