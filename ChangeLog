@@ -1,3 +1,7 @@
+2006-11-20  Sven Herzberg  <herzi@gnome-de.org>
+
+	* libwnck/test-tasklist.c: include gi18n.h (fixes bug #377182)
+
 2006-11-19  Sven Herzberg  <herzi@gnome-de.org>
 
 	* libwnck/tasklist.c: change to the workspace of a window before

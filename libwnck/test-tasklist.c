@@ -1,6 +1,7 @@
-
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
+
+#include <glib/gi18n.h>
 
 static gboolean display_all = FALSE;
 
