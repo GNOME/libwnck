@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.14\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-23 01:34+0000\n"
-"PO-Revision-Date: 2006-02-23 01:40+0000\n"
+"POT-Creation-Date: 2006-11-19 19:33+0000\n"
+"PO-Revision-Date: 2006-11-19 19:40+0000\n"
 "Last-Translator: Duarte Loreto <happyguy_pt@hotmail.com>\n"
 "Language-Team: Portuguese <gnome_pt@yahoogroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -48,25 +48,29 @@ msgstr "Selector de Janelas"
 msgid "Tool to switch between windows"
 msgstr "Ferramenta para alternar entre janelas"
 
-#: ../libwnck/tasklist.c:667
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "Lista de Janelas"
 
-#: ../libwnck/tasklist.c:668
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para alternar entre janelas visíveis"
 
-#: ../libwnck/tasklist.c:2465
+#: ../libwnck/tasklist.c:2536
 msgid "_Close All"
 msgstr "_Fechar Todas"
 
-#: ../libwnck/tasklist.c:2480
+#: ../libwnck/tasklist.c:2551
 msgid "_Minimize All"
 msgstr "_Minimizar Todas"
 
-#: ../libwnck/tasklist.c:2491
+#: ../libwnck/tasklist.c:2562
 msgid "_Unminimize All"
 msgstr "_Restaurar Todas"
+
+#: ../libwnck/test-tasklist.c:8
+msgid "Display windows from all workspaces"
+msgstr "Apresentar janelas de todas as áreas de trabalho"
 
 #: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
@@ -78,7 +82,7 @@ msgstr "Mi_nimizar"
 
 #: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "Desma_ximizar"
+msgstr "Resta_urar"
 
 #: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
@@ -108,7 +112,7 @@ msgstr "Área de Trabalho %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "No _Topp"
+msgstr "No _Topo"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
@@ -142,14 +146,12 @@ msgstr "Mover para a Área de Trabalho A_baixo"
 msgid "Move to Another _Workspace"
 msgstr "Mover para Outra Área de _Trabalho"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:35
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "janela sem título"
+
+#~ msgid "%s"
+#~ msgstr "%s"
 
 #~ msgid "_Unroll"
 #~ msgstr "D_esenrolar"
