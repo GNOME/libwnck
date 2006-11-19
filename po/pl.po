@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-19 09:20+0200\n"
+"POT-Creation-Date: 2006-11-12 16:29+0100\n"
 "PO-Revision-Date: 2003-06-27 01:25+0100\n"
 "Last-Translator: GNOME PL Team <translators@gnomepl.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -51,23 +51,23 @@ msgstr "Wybór okien"
 msgid "Tool to switch between windows"
 msgstr "Narzędzie do przełączania pomiędzy oknami"
 
-#: ../libwnck/tasklist.c:673
+#: ../libwnck/tasklist.c:647
 msgid "Window List"
 msgstr "Lista okien"
 
-#: ../libwnck/tasklist.c:674
+#: ../libwnck/tasklist.c:648
 msgid "Tool to switch between visible windows"
 msgstr "Narzędzie do przełączania pomiędzy widocznymi oknami"
 
-#: ../libwnck/tasklist.c:2495
+#: ../libwnck/tasklist.c:2536
 msgid "_Close All"
 msgstr "Zamknij _wszystkie"
 
-#: ../libwnck/tasklist.c:2510
+#: ../libwnck/tasklist.c:2551
 msgid "_Minimize All"
 msgstr "Zminimalizuj wszys_tkie"
 
-#: ../libwnck/tasklist.c:2521
+#: ../libwnck/tasklist.c:2562
 msgid "_Unminimize All"
 msgstr "Cofnij minimalizację wszystkic_h"
 
@@ -145,11 +145,9 @@ msgstr "Przenieś do _dolnego obszaru"
 msgid "Move to Another _Workspace"
 msgstr "Przenieś do innego _obszaru"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:35
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "okno bez tytułu"
+
+#~ msgid "%s"
+#~ msgstr "%s"
