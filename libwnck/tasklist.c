@@ -2976,10 +2976,20 @@ wnck_task_class_icon_changed (WnckClassGroup *class_group,
 static gboolean
 wnck_task_motion_timeout (gpointer data)
 {
+  WnckWorkspace *ws;
   WnckTask *task = WNCK_TASK (data);
 
   task->button_activate = 0;
 
+  /* FIXME: THIS IS SICK AND WRONG AND BUGGY.  See the end of
+   * http://mail.gnome.org/archives/wm-spec-list/2005-July/msg00032.html
+   * There should only be *one* activate call.
+   */
+  ws = wnck_window_get_workspace (task->window);
+  if (ws && ws != wnck_screen_get_active_workspace (wnck_screen_get_default ()))
+  {
+    wnck_workspace_activate (ws, task->dnd_timestamp);
+  }
   wnck_window_activate_transient (task->window, task->dnd_timestamp);
 
   task->dnd_timestamp = 0;

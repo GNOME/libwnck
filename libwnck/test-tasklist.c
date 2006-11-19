@@ -2,15 +2,28 @@
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
+static gboolean display_all = FALSE;
+
+static GOptionEntry entries[] = {
+	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
+	{NULL }
+};
+
 int
 main (int argc, char **argv)
 {
+  GOptionContext* ctxt;
   WnckScreen *screen;
   GtkWidget *win;
   GtkWidget *frame;
   GtkWidget *tasklist;
   
-  gtk_init (&argc, &argv);
+  ctxt = g_option_context_new ("");
+  g_option_context_add_main_entries (ctxt, entries, NULL);
+  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
+  g_option_context_parse (ctxt, &argc, &argv, NULL);
+  g_option_context_free (ctxt);
+  ctxt = NULL;
 
   screen = wnck_screen_get_default ();
   
@@ -33,6 +46,7 @@ main (int argc, char **argv)
 
   tasklist = wnck_tasklist_new (screen);
 
+  wnck_tasklist_set_include_all_workspaces (WNCK_TASKLIST (tasklist), display_all);
   wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist), WNCK_TASKLIST_ALWAYS_GROUP);
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);

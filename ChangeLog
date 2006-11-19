@@ -1,3 +1,10 @@
+2006-11-19  Sven Herzberg  <herzi@gnome-de.org>
+
+	* libwnck/tasklist.c: change to the workspace of a window before
+	activating it on drag-motion
+	* libwnck/test-tasklist.c: added "-a" argument to make the test
+	tasklist display windows for all workspaces
+
 2006-10-02  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.16.2
