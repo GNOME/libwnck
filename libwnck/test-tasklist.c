@@ -5,8 +5,9 @@
 
 static gboolean display_all = FALSE;
 
+//FIXME 2.18: mark string as translatable
 static GOptionEntry entries[] = {
-	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
+	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
 	{NULL }
 };
 

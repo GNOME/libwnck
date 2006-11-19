@@ -1,3 +1,8 @@
+2006-11-20  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/test-tasklist.c: remove new string. My fault (I told Sven to
+	commit this to a stable branch)
+
 2006-11-20  Sven Herzberg  <herzi@gnome-de.org>
 
 	* libwnck/test-tasklist.c: include gi18n.h (fixes bug #377182)
