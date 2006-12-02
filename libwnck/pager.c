@@ -49,7 +49,7 @@ struct _WnckPagerPrivate
   int prelight; /* workspace mouse is hovering over */
   gboolean prelight_dnd; /* is dnd happening? */
 
-  gboolean dragging :1;
+  guint dragging :1;
   int drag_start_x;
   int drag_start_y;
   WnckWindow *drag_window;

@@ -551,7 +551,7 @@ wnck_window_get_application  (WnckWindow *window)
 WnckWindow*
 wnck_window_get_transient (WnckWindow *window)
 {
-  g_return_val_if_fail (WNCK_IS_WINDOW (window), None);
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
   return wnck_window_get (window->priv->transient_for);
 }

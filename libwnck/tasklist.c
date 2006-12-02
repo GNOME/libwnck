@@ -23,7 +23,6 @@
 
 #include <config.h>
 
-#include <config.h>
 #include <math.h>
 #include <string.h>
 #include <stdio.h>

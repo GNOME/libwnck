@@ -1,3 +1,11 @@
+2006-12-02  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* libwnck/pager.c:
+	* libwnck/tasklist.c: 
+	* libwnck/util.c: (_wnck_get_client_type):
+	* libwnck/window.c: (wnck_window_get_transient):
+	Sparse warning fixes.
+
 2006-11-20  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.16.3

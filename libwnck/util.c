@@ -251,7 +251,7 @@ wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
 }
 
 WnckClientType
-_wnck_get_client_type ()
+_wnck_get_client_type (void)
 {
   /* If the type hasn't been set yet, use the default--treat it as a
    * normal application.
