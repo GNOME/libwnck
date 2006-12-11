@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.9.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-13 21:26+0200\n"
-"PO-Revision-Date: 2006-09-13 21:50+0200\n"
+"POT-Creation-Date: 2006-12-11 21:04+0100\n"
+"PO-Revision-Date: 2006-12-11 21:05+0100\n"
 "Last-Translator: Jordi Mallach <jordi@sindominio.net>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,23 +47,23 @@ msgstr "Selector de finestres"
 msgid "Tool to switch between windows"
 msgstr "Eina per a canviar entre finestres"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Llista de finestres"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Eina per a canviar entre finestres visibles"
 
-#: ../libwnck/tasklist.c:2530
+#: ../libwnck/tasklist.c:2535
 msgid "_Close All"
 msgstr "Tan_ca-ho tot"
 
-#: ../libwnck/tasklist.c:2545
+#: ../libwnck/tasklist.c:2550
 msgid "_Minimize All"
 msgstr "_Minimitza-ho tot"
 
-#: ../libwnck/tasklist.c:2556
+#: ../libwnck/tasklist.c:2561
 msgid "_Unminimize All"
 msgstr "_Desminimitza-ho tot"
 
@@ -107,7 +107,7 @@ msgstr "Espai de treball %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "A Sobr_e"
+msgstr "Per damun_t"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
