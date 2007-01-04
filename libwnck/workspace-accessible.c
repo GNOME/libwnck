@@ -54,7 +54,7 @@ wnck_workspace_accessible_get_type (void)
 
   if (!type)
     {
-      static const GTypeInfo tinfo = 
+      const GTypeInfo tinfo = 
       {
         sizeof (WnckWorkspaceAccessibleClass),
         (GBaseInitFunc) NULL, /* base init */
@@ -68,7 +68,7 @@ wnck_workspace_accessible_get_type (void)
         NULL /* value table */
       };
 
-      static const GInterfaceInfo atk_component_info = 
+      const GInterfaceInfo atk_component_info = 
       {
         (GInterfaceInitFunc) atk_component_interface_init,
         (GInterfaceFinalizeFunc) NULL,

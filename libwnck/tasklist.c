@@ -332,7 +332,7 @@ wnck_task_get_type (void)
   
   if (!object_type)
     {
-      static const GTypeInfo object_info =
+      const GTypeInfo object_info =
       {
         sizeof (WnckTaskClass),
         (GBaseInitFunc) NULL,
@@ -588,7 +588,7 @@ wnck_tasklist_get_type (void)
   
   if (!object_type)
     {
-      static const GTypeInfo object_info =
+      const GTypeInfo object_info =
       {
         sizeof (WnckTasklistClass),
         (GBaseInitFunc) NULL,

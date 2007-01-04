@@ -33,7 +33,7 @@ wnck_pager_accessible_factory_get_type (void)
 
   if (!type) 
     {
-      static const GTypeInfo tinfo = 
+      const GTypeInfo tinfo = 
         {
           sizeof (WnckPagerAccessibleFactoryClass),
           (GBaseInitFunc) NULL, /* base init */

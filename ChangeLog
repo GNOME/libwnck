@@ -1,3 +1,24 @@
+2007-01-04  Christian Persch  <chpe@svn.gnome.org>
+
+	* libwnck/application.c: (wnck_application_get_type):
+	* libwnck/class-group.c: (wnck_class_group_get_type):
+	* libwnck/pager-accessible-factory.c:
+	(wnck_pager_accessible_factory_get_type):
+	* libwnck/pager-accessible.c: (wnck_pager_accessible_get_type):
+	* libwnck/pager.c: (wnck_pager_get_type):
+	* libwnck/screen.c: (wnck_screen_get_type):
+	* libwnck/selector.c: (wnck_selector_get_type):
+	* libwnck/tasklist.c: (wnck_task_get_type),
+	(wnck_tasklist_get_type):
+	* libwnck/window.c: (wnck_window_get_type):
+	* libwnck/workspace-accessible-factory.c:
+	(wnck_workspace_accessible_factory_get_type):
+	* libwnck/workspace-accessible.c:
+	(wnck_workspace_accessible_get_type):
+	* libwnck/workspace.c: (wnck_workspace_get_type):
+	No need to make GTypeInfo and GInterfaceInfo structs static. Bug
+	#382594.
+
 2006-12-02  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* libwnck/pager.c:

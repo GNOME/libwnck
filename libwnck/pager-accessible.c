@@ -66,7 +66,7 @@ wnck_pager_accessible_get_type (void)
 
   if (!type) 
     {
-      static GTypeInfo tinfo = 
+      GTypeInfo tinfo = 
         {
           sizeof (WnckPagerAccessibleClass),
           (GBaseInitFunc) NULL, /* base init */
@@ -80,7 +80,7 @@ wnck_pager_accessible_get_type (void)
           NULL /* value table */
         };
 
-      static const GInterfaceInfo atk_selection_info = 
+      const GInterfaceInfo atk_selection_info = 
         {
           (GInterfaceInitFunc) atk_selection_interface_init,
           (GInterfaceFinalizeFunc) NULL,
