@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-30 00:54+0000\n"
+"POT-Creation-Date: 2007-01-09 01:20+0000\n"
 "PO-Revision-Date: 2006-11-16 17:42+0200\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
 "Language-Team: Arabic <support@arabeyes.org>\n"
@@ -21,7 +21,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
+"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && "
+"n<=10 ? 2 : 3\n"
 
 #: ../libwnck/application.c:29
 msgid "untitled application"
@@ -56,23 +57,23 @@ msgstr "منتقي النوافذ"
 msgid "Tool to switch between windows"
 msgstr "أداة للتحوّل بين النوافذ"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "قائمة النوافذ"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "أداة للتحوّل بين النوافذ المرئية"
 
-#: ../libwnck/tasklist.c:2536
+#: ../libwnck/tasklist.c:2535
 msgid "_Close All"
 msgstr "ا_غلق الكل"
 
-#: ../libwnck/tasklist.c:2551
+#: ../libwnck/tasklist.c:2550
 msgid "_Minimize All"
 msgstr "_صغّر الكل"
 
-#: ../libwnck/tasklist.c:2562
+#: ../libwnck/tasklist.c:2561
 msgid "_Unminimize All"
 msgstr "إلغاء ت_صغير الكل"
 
@@ -153,4 +154,3 @@ msgstr "انقل ل_مساحة عمل مغايرة"
 #: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "نافذة غير معنونة"
-
