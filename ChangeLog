@@ -1,3 +1,8 @@
+2007-01-29  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.16.3
+
 2007-01-04  Christian Persch  <chpe@svn.gnome.org>
 
 	* libwnck/application.c: (wnck_application_get_type):

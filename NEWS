@@ -1,3 +1,18 @@
+2.16.3
+======
+
+ Fixes
+
+  - Remove warnings (Kjartan Maraas)
+  - Code cleanups (Christian Persch)
+
+ Translators
+
+  - Khaled Hosny (ar)
+  - Ihar Hrachyshka (be)
+  - Jordi Mallach (ca)
+  - Og Maciel (pt_BR)
+
 2.16.2
 ======
 
