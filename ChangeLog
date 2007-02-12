@@ -1,3 +1,14 @@
+2007-02-12  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_allocate): fix for RTL
+	environments
+	Fix bug #154320
+	* libwnck/pager.c: (get_workspace_rect): ditto
+	Fix bug #387897
+	* libwnck/test-tasklist.c: (main): set direction to RTL if the RTL
+	environment variable is set
+	* libwnck/test-pager.c: (main): ditto
+
 2007-01-04  Christian Persch  <chpe@svn.gnome.org>
 
 	* libwnck/application.c: (wnck_application_get_type):

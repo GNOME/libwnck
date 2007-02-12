@@ -565,6 +565,10 @@ get_workspace_rect (WnckPager    *pager,
 
       col = space / spaces_per_row;
       row = space % spaces_per_row;
+
+      if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+        col = spaces_per_row - col - 1;
+
       rect->x = (rect->width + 1) * col; 
       rect->y = (rect->height + 1) * row;
       
@@ -581,6 +585,10 @@ get_workspace_rect (WnckPager    *pager,
       
       col = space % spaces_per_row;
       row = space / spaces_per_row;
+
+      if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+        col = spaces_per_row - col - 1;
+
       rect->x = (rect->width + 1) * col; 
       rect->y = (rect->height + 1) * row;
 

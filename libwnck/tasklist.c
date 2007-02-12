@@ -1371,6 +1371,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       int row = i % n_rows;
       int col = i / n_rows;
       
+      if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_RTL)
+        col = n_cols - col - 1;
+
       child_allocation.x = total_width*col / n_cols;
       child_allocation.y = allocation->height*row / n_rows;
       child_allocation.width = total_width*(col + 1) / n_cols - child_allocation.x;
