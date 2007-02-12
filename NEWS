@@ -1,3 +1,19 @@
+2.17.91
+=======
+
+ Fixes
+
+  - Remove warnings (Kjartan Maraas)
+  - Code cleanups (Christian Persch)
+  - Make tasklist RTL aware (Vincent)
+  - Make pager RTL aware (Vincent)
+
+ Translators
+
+  - Ihar Hrachyshka (be)
+  - Jordi Mallach (ca)
+  - Og Maciel (pt_BR)
+
 2.16.2
 ======
 
