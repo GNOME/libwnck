@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.he\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-09-05 11:49+0200\n"
+"POT-Creation-Date: 2007-01-02 05:38+0000\n"
 "PO-Revision-Date: 2004-04-24 12:25+0000\n"
 "Last-Translator: Gil Osher <dolfin@rpg.org.il>\n"
 "Language-Team: Hebrew <he@li.org>\n"
@@ -18,136 +18,148 @@ msgstr ""
 "X-Generator: KBabel 1.3.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "תוכנית ללא-שם"
 
-#: libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "מחליף סביבות עבודה"
 
-#: libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "כלי להחלפה בין סביבות עבודה"
 
-#: libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "לחץ על זה כדי להחליף לסביבת עבודה %s"
 
-#: libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr ""
+msgstr "חלון לא ידוע"
 
-#: libwnck/selector.c:645
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr ""
+msgstr "אין חלונות פתוחים"
 
-#: libwnck/selector.c:747
-#, fuzzy
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "רשימת חלונות"
+msgstr "בוחר חלונות"
 
-#: libwnck/selector.c:748
-#, fuzzy
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "כלי להחלפה בין חלונות נראים"
+msgstr "כלי להחלפה בין חלונות"
 
-#: libwnck/tasklist.c:690
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "רשימת חלונות"
 
-#: libwnck/tasklist.c:691
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "כלי להחלפה בין חלונות נראים"
 
-#: libwnck/tasklist.c:2324
-#, fuzzy
+#: ../libwnck/tasklist.c:2535
 msgid "_Close All"
-msgstr "_סגור"
+msgstr "_סגור הכל"
 
-#: libwnck/tasklist.c:2339
-#, fuzzy
+#: ../libwnck/tasklist.c:2550
 msgid "_Minimize All"
-msgstr "_מזער"
+msgstr ""
+"מזער _הכל"
 
-#: libwnck/tasklist.c:2350
-#, fuzzy
+#: ../libwnck/tasklist.c:2561
 msgid "_Unminimize All"
-msgstr "ב_טל מזעור"
+msgstr ""
+"בט_ל מזעור הכל"
 
-#: libwnck/window-action-menu.c:211
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
 msgstr "ב_טל מזעור"
 
-#: libwnck/window-action-menu.c:218
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "_מזער"
 
-#: libwnck/window-action-menu.c:226
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
 msgstr "_שחזר"
 
-#: libwnck/window-action-menu.c:233
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "ה_גדל"
 
-#: libwnck/window-action-menu.c:241
-msgid "_Unroll"
-msgstr "גלול _חזרה"
-
-#: libwnck/window-action-menu.c:248
-msgid "Roll _Up"
-msgstr "גלול מ_עלה"
-
-#: libwnck/window-action-menu.c:256
-#, fuzzy
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
 msgstr "רק בסביבת עבודה _זו"
 
-#: libwnck/window-action-menu.c:263
-#, fuzzy
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "רק בסביבת עבודה _זו"
+msgstr ""
+"תמיד בסביבת העבודה ה_גלויה"
 
-#: libwnck/window-action-menu.c:378 libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "סביבת עבודה %d"
 
-#: libwnck/window-action-menu.c:386
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
 msgstr "סביבת עבודה 1_0"
 
-#: libwnck/window-action-menu.c:388
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
 msgstr "סביבת עבודה %s%d"
 
-#: libwnck/window-action-menu.c:485
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "_מעל"
+
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "_הזז"
 
-#: libwnck/window-action-menu.c:492
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "ש_נה גודל"
 
-#: libwnck/window-action-menu.c:505
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_סגור"
 
-#: libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "הזז לסביבת _העבודה השמאלית"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "הזז לסביבת _הע_בודה הימנית"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "הזז לסביבת העבו_דה למעלה"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "הזז לסביבת העבודה ל_מטה"
+
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
 msgstr "הזז לסביבת _עבודה אחרת"
 
-#: libwnck/window-action-menu.c:542
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "חלון ללא-שם"
+
+#~ msgid "_Unroll"
+#~ msgstr "גלול _חזרה"
+
+#~ msgid "Roll _Up"
+#~ msgstr "גלול מ_עלה"
+
+#~ msgid "%s"
+#~ msgstr "%s"
 
 #~ msgid "Put on _All Workspaces"
 #~ msgstr "שים ב_כל סביבות העבודה"
