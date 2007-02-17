@@ -1712,7 +1712,7 @@ wnck_pager_set_n_rows (WnckPager *pager,
 		       int        n_rows)
 {
   g_return_if_fail (WNCK_IS_PAGER (pager));
-  g_return_if_fail (n_rows < 1);
+  g_return_if_fail (n_rows > 0);
 
   if (pager->priv->n_rows == n_rows)
     return;

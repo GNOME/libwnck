@@ -1,5 +1,10 @@
 2007-02-17  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_set_n_rows): don't accept to set to
+	less than 1 row. Again. (My one-line patch was broken ;-))
+
+2007-02-17  Vincent Untz  <vuntz@gnome.org>
+
 	* test-tasklist.c: add an option to always group windows, and default
 	to automatic grouping
 	* test-tasklist.c: (main):
