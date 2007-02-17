@@ -1,3 +1,8 @@
+2007-02-17  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/pager.c: (wnck_pager_set_n_rows): don't accept to set to
+	less than 1 row
+
 2007-02-12  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.17.92
