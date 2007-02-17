@@ -1,5 +1,10 @@
 2007-02-17  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_update_drag_icon): improve a bit, so that the
+	icon has a good width/height ratio, and is not always huge
+
+2007-02-17  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_set_n_rows): don't accept to set to
 	less than 1 row. Again. (My one-line patch was broken ;-))
 

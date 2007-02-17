@@ -1418,6 +1418,7 @@ wnck_update_drag_icon (WnckWindow     *window,
 		       GdkDragContext *context)
 {
   gint org_w, org_h, dnd_w, dnd_h;
+  WnckWorkspace *workspace;
   GdkRectangle rect;
   GdkPixmap *pixmap;
   GtkWidget *widget;
@@ -1426,27 +1427,32 @@ wnck_update_drag_icon (WnckWindow     *window,
   if (!gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (widget),
 					  GTK_ICON_SIZE_DND, &dnd_w, &dnd_h))
     dnd_w = dnd_h = 32;
-    
-  /* windows are huge, so let's make this huge */
-  dnd_w *= 2;
-  dnd_h *= 2;
-    
+ 
+  workspace = wnck_window_get_workspace (window);
+  if (workspace == NULL)
+    workspace = wnck_screen_get_active_workspace (wnck_window_get_screen (window));
+  if (workspace == NULL)
+    return;
+
   wnck_window_get_geometry (window, NULL, NULL, &org_w, &org_h);
+
   rect.x = rect.y = 0;
-  rect.width = sqrt (dnd_w * dnd_h * org_w / org_h);
+  /* windows are huge, so let's make this huge */
+  dnd_w *= 3;
+  rect.width = (dnd_w * org_w) / wnck_workspace_get_width (workspace);
   rect.width = MIN (org_w, rect.width);
-  rect.width = MAX (rect.width, 2 + DEFAULT_ICON_WIDTH);
-  rect.height = sqrt (dnd_w * dnd_h * org_h / org_w);
-  rect.height = MIN (org_h, rect.height);
-  rect.height = MAX (rect.height, 2 + DEFAULT_ICON_HEIGHT);
+  rect.height = (rect.width * org_h) / org_w;
+
   pixmap = gdk_pixmap_new (GTK_WIDGET (widget)->window,
                            rect.width, rect.height, -1);
   draw_window (GDK_DRAWABLE (pixmap), widget, window,
 	       &rect, GTK_STATE_NORMAL, FALSE);  
+
   gtk_drag_set_icon_pixmap (context, 
                             gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap)),
 			    pixmap, NULL,
-			    rect.width / 2, 0);
+			    rect.width / 4, 0);
+
   g_object_unref (pixmap);
 }
 
