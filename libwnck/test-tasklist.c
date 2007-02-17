@@ -4,9 +4,11 @@
 #include <glib/gi18n.h>
 
 static gboolean display_all = FALSE;
+static gboolean always_group = FALSE;
 
-//FIXME 2.18: mark string as translatable
+//FIXME 2.18: mark strings as translatable
 static GOptionEntry entries[] = {
+	{"always-group", 'a', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
 	{NULL }
 };
@@ -42,8 +44,7 @@ main (int argc, char **argv)
   /*   wnck_gtk_window_set_dock_type (GTK_WINDOW (win)); */
 
   gtk_window_set_title (GTK_WINDOW (win), "Task List");
-  gtk_window_set_policy (GTK_WINDOW (win),
-			 TRUE, TRUE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (win), TRUE);
 
   /* quit on window close */
   g_signal_connect (G_OBJECT (win), "destroy",
@@ -53,7 +54,13 @@ main (int argc, char **argv)
   tasklist = wnck_tasklist_new (screen);
 
   wnck_tasklist_set_include_all_workspaces (WNCK_TASKLIST (tasklist), display_all);
-  wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist), WNCK_TASKLIST_ALWAYS_GROUP);
+  if (always_group)
+    wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
+                                WNCK_TASKLIST_ALWAYS_GROUP);
+  else
+    wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
+                                WNCK_TASKLIST_AUTO_GROUP);
+
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (win), frame);

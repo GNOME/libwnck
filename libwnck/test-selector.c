@@ -23,8 +23,7 @@ main (int argc, char **argv)
   /*   wnck_gtk_window_set_dock_type (GTK_WINDOW (win)); */
 
   gtk_window_set_title (GTK_WINDOW (win), "Window Selector");
-  gtk_window_set_policy (GTK_WINDOW (win),
-			 TRUE, TRUE, FALSE);
+  gtk_window_set_resizable (GTK_WINDOW (win), TRUE);
 
   /* quit on window close */
   g_signal_connect (G_OBJECT (win), "destroy",
