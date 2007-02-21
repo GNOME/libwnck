@@ -1,3 +1,8 @@
+2007-02-21  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_scroll_cb): fix left/right scroll
+	for RTL
+
 2007-02-20  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* Makefile.am: Dist MAINTAINERS.

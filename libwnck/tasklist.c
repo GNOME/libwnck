@@ -1692,8 +1692,9 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
                          GdkEventScroll *event,
                          gpointer user_data)
 {
-  /* use the fact that tasklist->priv->windows is sorted is sorted
+  /* use the fact that tasklist->priv->windows is sorted
    * see wnck_tasklist_size_allocate() */
+  GtkTextDirection ltr;
   GList *window;
   gint row = 0;
   gint col = 0;
@@ -1711,6 +1712,8 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
        * It occurs if we change the active task too fast. */
       return TRUE;
 
+  ltr = (gtk_widget_get_direction (GTK_WIDGET (tasklist)) != GTK_TEXT_DIR_RTL);
+
   switch (event->direction)
     {
       case GDK_SCROLL_UP:
@@ -1727,35 +1730,74 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
           window = window->next;
       break;
 
+#define TASKLIST_GET_MOST_LEFT(ltr, window, tasklist)   \
+  do                                                    \
+    {                                                   \
+      if (ltr)                                          \
+        window = tasklist->priv->windows;               \
+      else                                              \
+        window = g_list_last (tasklist->priv->windows); \
+    } while (0)
+
+#define TASKLIST_GET_MOST_RIGHT(ltr, window, tasklist)  \
+  do                                                    \
+    {                                                   \
+      if (ltr)                                          \
+        window = g_list_last (tasklist->priv->windows); \
+      else                                              \
+        window = tasklist->priv->windows;               \
+    } while (0)
+
       case GDK_SCROLL_LEFT:
         if (!window)
-          window = g_list_last (tasklist->priv->windows);
+          TASKLIST_GET_MOST_RIGHT (ltr, window, tasklist);
         else
           {
             /* Search the first window on the previous colomn at same row */
-            while (window && (WNCK_TASK(window->data)->row != row ||
-                              WNCK_TASK(window->data)->col != col-1))
-              window = window->prev;
-            /* If no window found, select the first one */
+            if (ltr)
+              {
+                while (window && (WNCK_TASK(window->data)->row != row ||
+                                  WNCK_TASK(window->data)->col != col-1))
+                  window = window->prev;
+              }
+            else
+              {
+                while (window && (WNCK_TASK(window->data)->row != row ||
+                                  WNCK_TASK(window->data)->col != col-1))
+                  window = window->next;
+              }
+            /* If no window found, select the top/bottom left one */
             if (!window)
-              window = tasklist->priv->windows;
+              TASKLIST_GET_MOST_LEFT (ltr, window, tasklist);
           }
       break;
 
       case GDK_SCROLL_RIGHT:
         if (!window)
-          window = tasklist->priv->windows;
+          TASKLIST_GET_MOST_LEFT (ltr, window, tasklist);
         else
           {
             /* Search the first window on the next colomn at same row */
-            while (window && (WNCK_TASK(window->data)->row != row ||
-                              WNCK_TASK(window->data)->col != col+1))
-              window = window->next;
-            /* If no window found, select the last one */
+            if (ltr)
+              {
+                while (window && (WNCK_TASK(window->data)->row != row ||
+                                  WNCK_TASK(window->data)->col != col+1))
+                  window = window->next;
+              }
+            else
+              {
+                while (window && (WNCK_TASK(window->data)->row != row ||
+                                  WNCK_TASK(window->data)->col != col+1))
+                  window = window->prev;
+              }
+            /* If no window found, select the top/bottom right one */
             if (!window)
-              window = g_list_last (tasklist->priv->windows);
+              TASKLIST_GET_MOST_RIGHT (ltr, window, tasklist);
           }
       break;
+
+#undef TASKLIST_GET_MOST_LEFT
+#undef TASKLIST_GET_MOST_RIGHT
 
       default:
         g_assert_not_reached ();
