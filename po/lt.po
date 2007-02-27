@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-23 00:53+0200\n"
+"POT-Creation-Date: 2007-02-27 15:48+0200\n"
 "PO-Revision-Date: 2006-02-23 00:55+0200\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -48,23 +48,23 @@ msgstr "Langų parinkiklis"
 msgid "Tool to switch between windows"
 msgstr "Įrankis leidžiantis persijungti tarp langų"
 
-#: ../libwnck/tasklist.c:667
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Langų sąrašas"
 
-#: ../libwnck/tasklist.c:668
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Įrankis leidžiantis persijungti tarp matomų langų"
 
-#: ../libwnck/tasklist.c:2465
+#: ../libwnck/tasklist.c:2580
 msgid "_Close All"
 msgstr "_Užverti visus"
 
-#: ../libwnck/tasklist.c:2480
+#: ../libwnck/tasklist.c:2595
 msgid "_Minimize All"
 msgstr "_Sumažinti visus"
 
-#: ../libwnck/tasklist.c:2491
+#: ../libwnck/tasklist.c:2606
 msgid "_Unminimize All"
 msgstr "G_rąžinti visus iš sumažinimo"
 
@@ -142,11 +142,9 @@ msgstr "Perkelti į darbalaukį _apačioje"
 msgid "Move to Another _Workspace"
 msgstr "Perkelti į kitą _darbalaukį"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:35
+#: ../libwnck/window.c:36
 msgid "untitled window"
 msgstr "nepavadintas langas"
+
+#~ msgid "%s"
+#~ msgstr "%s"
