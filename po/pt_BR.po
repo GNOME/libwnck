@@ -109,7 +109,7 @@ msgstr "Área de Trabalho %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "No _Topo"
+msgstr "Sempre no _Topo"
 
 #: ../libwnck/window-action-menu.c:572
 msgid "_Move"
