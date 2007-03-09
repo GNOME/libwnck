@@ -1,0 +1,149 @@
+# Biełaruski pierakład libwnck.
+# Copyright (C) 2007 Free Software Foundation.
+# This file is distributed under the same license as the libwnck package.
+# Ihar Hračyška <ihar.hrachyshka@gmail.com>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: libwnck\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2007-03-09 15:57+0200\n"
+"PO-Revision-Date: 2007-03-09 13:53+0300\n"
+"Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
+"Language-Team: Belarusian Latin <i18n@mova.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: ../libwnck/application.c:29
+msgid "untitled application"
+msgstr "aplikacyja biaz nazvy"
+
+#: ../libwnck/pager-accessible.c:321
+msgid "Workspace Switcher"
+msgstr "Pieraklučalnik pracoŭnych abšaraŭ"
+
+#: ../libwnck/pager-accessible.c:332
+msgid "Tool to switch between workspaces"
+msgstr "Pryłada dla pieraklučeńnia pracoŭnych abšaraŭ"
+
+#: ../libwnck/pager-accessible.c:436
+#, c-format
+msgid "Click this to switch to workspace %s"
+msgstr "Klikni, kab pieraklučycca na pracoŭny abšar %s"
+
+#: ../libwnck/selector.c:221
+msgid "Unknown Window"
+msgstr "Nieviadomaje akno"
+
+#: ../libwnck/selector.c:729
+msgid "No Windows Open"
+msgstr "Niama adčynienych voknaŭ"
+
+#: ../libwnck/selector.c:833
+msgid "Window Selector"
+msgstr "Vybar voknaŭ"
+
+#: ../libwnck/selector.c:834
+msgid "Tool to switch between windows"
+msgstr "Pryłada pieraklučeńnia pamiž voknami"
+
+#: ../libwnck/tasklist.c:646
+msgid "Window List"
+msgstr "Śpis voknaŭ"
+
+#: ../libwnck/tasklist.c:647
+msgid "Tool to switch between visible windows"
+msgstr "Pryłada dla pieraklučeńnia pamiž bačnymi voknami"
+
+#: ../libwnck/tasklist.c:2580
+msgid "_Close All"
+msgstr "_Začyni ŭsie"
+
+#: ../libwnck/tasklist.c:2595
+msgid "_Minimize All"
+msgstr "_Minimizuj usie"
+
+#: ../libwnck/tasklist.c:2606
+msgid "_Unminimize All"
+msgstr "_Anuluj minimizacyju usich voknaŭ"
+
+#: ../libwnck/window-action-menu.c:260
+msgid "Unmi_nimize"
+msgstr "_Anuluj minimizacyju"
+
+#: ../libwnck/window-action-menu.c:267
+msgid "Mi_nimize"
+msgstr "Mi_nimizuj"
+
+#: ../libwnck/window-action-menu.c:275
+msgid "Unma_ximize"
+msgstr "An_uluj maksymizacyju"
+
+#: ../libwnck/window-action-menu.c:282
+msgid "Ma_ximize"
+msgstr "Ma_ksymizuj"
+
+#: ../libwnck/window-action-menu.c:302
+msgid "_Only on This Workspace"
+msgstr "_Tolki na hetym pracoŭnym abšary"
+
+#: ../libwnck/window-action-menu.c:309
+msgid "_Always on Visible Workspace"
+msgstr "_Zaŭsiody na bačnym pracoŭnym abšary"
+
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
+#, c-format
+msgid "Workspace %d"
+msgstr "Pracoŭny abšar %d"
+
+#: ../libwnck/window-action-menu.c:471
+msgid "Workspace 1_0"
+msgstr "Pracoŭny abšar 1_0"
+
+#: ../libwnck/window-action-menu.c:473
+#, c-format
+msgid "Workspace %s%d"
+msgstr "Pracoŭny abšar %s%d"
+
+#: ../libwnck/window-action-menu.c:563
+msgid "On _Top"
+msgstr "_Uhary"
+
+#: ../libwnck/window-action-menu.c:572
+msgid "_Move"
+msgstr "_Ruš"
+
+#: ../libwnck/window-action-menu.c:579
+msgid "_Resize"
+msgstr "Źm_iani pamier"
+
+#: ../libwnck/window-action-menu.c:592
+msgid "_Close"
+msgstr "Za_čyni"
+
+#: ../libwnck/window-action-menu.c:626
+msgid "Move to Workspace _Left"
+msgstr "Ruš na _levy pracoŭny abšar"
+
+#: ../libwnck/window-action-menu.c:637
+msgid "Move to Workspace R_ight"
+msgstr "Ruš na _pravy pracoŭny abšar"
+
+#: ../libwnck/window-action-menu.c:648
+msgid "Move to Workspace _Up"
+msgstr "Ruš na _vierchni pracoŭny abšar"
+
+#: ../libwnck/window-action-menu.c:660
+msgid "Move to Workspace _Down"
+msgstr "Ruš na _nižni pracoŭny abšar"
+
+#: ../libwnck/window-action-menu.c:667
+msgid "Move to Another _Workspace"
+msgstr "Ruš na _inšy pracoŭny abšar"
+
+#: ../libwnck/window.c:36
+msgid "untitled window"
+msgstr "vakno biez zahałoŭka"
