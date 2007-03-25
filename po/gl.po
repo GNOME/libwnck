@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-01-22 12:03+0100\n"
+"POT-Creation-Date: 2006-12-04 15:52+0100\n"
 "PO-Revision-Date: 2006-01-22 12:05+0100\n"
 "Last-Translator: Ignacio Casal Quinteiro <nacho.resa@gmail.com>\n"
 "Language-Team: Galego\n"
@@ -22,139 +22,136 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.1\n"
 
-#: ../libwnck/application.c:26
+#: ../libwnck/application.c:29
 msgid "untitled application"
 msgstr "aplicación sen título"
 
-#: ../libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
-msgstr "Selector de escritorio"
+msgstr "Selector de espazo de traballo"
 
-#: ../libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
-msgstr "Ferramenta para seleccionar os escritorios"
+msgstr "Ferramenta para intercambiar entre os espazos de traballo"
 
-#: ../libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Prema isto para activar o escritorio %s"
+msgstr "Prema isto para cambiar o espazo de traballo %s"
 
-#: ../libwnck/selector.c:218
+#: ../libwnck/selector.c:221
 msgid "Unknown Window"
-msgstr "Fiestra descoñecida"
+msgstr "Ventá descoñecida"
 
-#: ../libwnck/selector.c:726
+#: ../libwnck/selector.c:729
 msgid "No Windows Open"
-msgstr "Non hai fiestras abertas"
+msgstr "Non hai ventás abertas"
 
-#: ../libwnck/selector.c:830
+#: ../libwnck/selector.c:833
 msgid "Window Selector"
-msgstr "Selector de fiestras"
+msgstr "Selector de ventás"
 
-#: ../libwnck/selector.c:831
+#: ../libwnck/selector.c:834
 msgid "Tool to switch between windows"
-msgstr "Ferramenta para cambiar entre fiestras"
+msgstr "Ferramenta para intercambiar entre ventás"
 
-#: ../libwnck/tasklist.c:664
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
-msgstr "Lista de fiestras"
+msgstr "Lista de ventás"
 
-#: ../libwnck/tasklist.c:665
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
-msgstr "Ferramenta para cambiar entre fiestras visibles"
+msgstr "Ferramenta para intercambiar entre ventás visibles"
 
-#: ../libwnck/tasklist.c:2462
+#: ../libwnck/tasklist.c:2535
 msgid "_Close All"
-msgstr "_Pechar todo"
+msgstr "_Pechar todos"
 
-#: ../libwnck/tasklist.c:2477
+#: ../libwnck/tasklist.c:2550
 msgid "_Minimize All"
 msgstr "_Minimizar todo"
 
-#: ../libwnck/tasklist.c:2488
+#: ../libwnck/tasklist.c:2561
 msgid "_Unminimize All"
-msgstr "Des_minimizar todo"
+msgstr "Res_taurar todo"
 
-#: ../libwnck/window-action-menu.c:257
+#: ../libwnck/window-action-menu.c:260
 msgid "Unmi_nimize"
-msgstr "Desmi_nimizar"
+msgstr "Res_taurar"
 
-#: ../libwnck/window-action-menu.c:264
+#: ../libwnck/window-action-menu.c:267
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: ../libwnck/window-action-menu.c:272
+#: ../libwnck/window-action-menu.c:275
 msgid "Unma_ximize"
-msgstr "Desma_ximizar"
+msgstr "Res_taurar"
 
-#: ../libwnck/window-action-menu.c:279
+#: ../libwnck/window-action-menu.c:282
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../libwnck/window-action-menu.c:299
+#: ../libwnck/window-action-menu.c:302
 msgid "_Only on This Workspace"
-msgstr "_Só neste espacio de traballo"
+msgstr "_Só neste espazo de traballo"
 
-#: ../libwnck/window-action-menu.c:306
+#: ../libwnck/window-action-menu.c:309
 msgid "_Always on Visible Workspace"
-msgstr "_Sempre no espacio de traballo visible"
+msgstr "_Sempre no espazo de traballo visible"
 
-#: ../libwnck/window-action-menu.c:460 ../libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
-msgstr "Escritorio %d"
+msgstr "Espazo de traballo %d"
 
-#: ../libwnck/window-action-menu.c:468
+#: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr "Espacio de traballo 1_0"
+msgstr "Espazo de traballo 1_0"
 
-#: ../libwnck/window-action-menu.c:470
+#: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Espacio de traballo %s%d"
+msgstr "Espazo de traballo %s%d"
 
-#: ../libwnck/window-action-menu.c:560
+#: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
-msgstr "_Enriba"
+msgstr "_En primeiro plano"
 
-#: ../libwnck/window-action-menu.c:569
+#: ../libwnck/window-action-menu.c:572
 msgid "_Move"
 msgstr "_Mover"
 
-#: ../libwnck/window-action-menu.c:576
+#: ../libwnck/window-action-menu.c:579
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: ../libwnck/window-action-menu.c:589
+#: ../libwnck/window-action-menu.c:592
 msgid "_Close"
 msgstr "_Pechar"
 
-#: ../libwnck/window-action-menu.c:617
+#: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
 msgstr "Mover ao espazo de traballo da _esquerda"
 
-#: ../libwnck/window-action-menu.c:628
+#: ../libwnck/window-action-menu.c:637
 msgid "Move to Workspace R_ight"
 msgstr "Mover ao espazo de traballo da _dereita"
 
-#: ../libwnck/window-action-menu.c:639
+#: ../libwnck/window-action-menu.c:648
 msgid "Move to Workspace _Up"
-msgstr "Mover ao espazo de traballo de e_nriba"
+msgstr "Mover ao espazo de traballo de a_rriba"
 
-#: ../libwnck/window-action-menu.c:651
+#: ../libwnck/window-action-menu.c:660
 msgid "Move to Workspace _Down"
-msgstr "Mover ao espazo de traballo de e_mbaixo"
+msgstr "Mover ao espazo de traballo de a_baixo"
 
-#: ../libwnck/window-action-menu.c:665
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Another _Workspace"
-msgstr "Mover a outro _espacio de traballo"
+msgstr "Mover a outro _espazo de traballo"
 
-#: ../libwnck/window-action-menu.c:681
-#, c-format
-msgid "%s"
-msgstr "%s"
-
-#: ../libwnck/window.c:32
+#: ../libwnck/window.c:36
 msgid "untitled window"
-msgstr "fiestra sen título"
+msgstr "ventá sen título"
 
+#~ msgid "%s"
+#~ msgstr "%s"
