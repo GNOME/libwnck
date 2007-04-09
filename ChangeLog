@@ -1,3 +1,9 @@
+2007-04-09  Elijah Newren  <newren gmail com>
+
+	* libwnck/window.h (enum WnckWindowGravity): add
+	WNCK_WINDOW_GRAVITY_STATIC.  (See #344521; this extra defined
+	constant should have been added as part of #342899)
+
 2007-03-12  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.18.1
