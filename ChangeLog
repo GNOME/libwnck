@@ -1,3 +1,9 @@
+2007-04-10  Matthias Clasen  <mclasen@redhat.com>
+
+	* libwnck/xutils.c (text_property_to_utf8): Always
+	free the list of strings returned by  
+	gdk_text_property_to_utf8_list.  (#428056)
+
 2007-04-09  Elijah Newren  <newren gmail com>
 
 	* libwnck/window.h (enum WnckWindowGravity): add
