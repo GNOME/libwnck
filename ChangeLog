@@ -1,3 +1,15 @@
+2007-04-11  Elijah Newren  <newren gmail com>
+
+	Check whether window manager supports _NET_WM_ACTION_ABOVE and
+	_NET_WM_ACTION_BELOW instead of guessing whether these are
+	supported.  Fixes part of #352383 & #115247.
+
+	* libwnck/window.c (update_actions): check for
+	_NET_WM_ACTION_(ABOVE|BELOW).
+
+	* libwnck/window.h (enum WnckWindowActions): add
+	WNCK_WINDOW_ACTION_ABOVE and WNCK_WINDOW_ACTION_BELOW.
+
 2007-04-10  Matthias Clasen  <mclasen@redhat.com>
 
 	* libwnck/xutils.c (text_property_to_utf8): Always

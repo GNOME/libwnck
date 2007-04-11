@@ -2188,6 +2188,12 @@ update_actions (WnckWindow *window)
       else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_FULLSCREEN"))
         window->priv->actions |= WNCK_WINDOW_ACTION_FULLSCREEN;
 
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_ABOVE"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_ABOVE;
+
+      else if (atoms[i] == _wnck_atom_get ("_NET_WM_ACTION_BELOW"))
+        window->priv->actions |= WNCK_WINDOW_ACTION_BELOW;
+
       else
         {
           const char *name = _wnck_atom_name (atoms [i]);
