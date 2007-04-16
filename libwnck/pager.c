@@ -938,7 +938,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
                                      GDK_RGB_DITHER_MAX,
                                      0, 0);
     }
-  else
+  else if (active_space)
     {
       int vx, vy, vw, vh; /* viewport */
       double width_ratio, height_ratio;

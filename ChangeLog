@@ -1,3 +1,10 @@
+2007-04-15  Elijah Newren  <newren gmail com>
+
+	Patch from Kim Woelders to fix #403377 (crash on startup).
+
+	* libwnck/pager.c (wnck_pager_draw_workspace): avoid a crash when
+	there is no active workspace yet
+
 2007-04-11  Elijah Newren  <newren gmail com>
 
 	Check whether window manager supports _NET_WM_ACTION_ABOVE and
