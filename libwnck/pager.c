@@ -1372,7 +1372,7 @@ wnck_pager_drag_data_get (GtkWidget        *widget,
   WnckPager *pager = WNCK_PAGER (widget);
   gulong xid;
 
-  if (pager->priv->drag_window == NULL) 
+  if (pager->priv->drag_window == NULL)
     return;
 
   xid = wnck_window_get_xid (pager->priv->drag_window);
@@ -1451,7 +1451,7 @@ wnck_update_drag_icon (WnckWindow     *window,
 
   /* we need at least three pixels to draw the smallest window */
   rect.width = MAX (rect.width, 3);
-  rect.height = MAX (rect.width, 3);
+  rect.height = MAX (rect.height, 3);
 
   pixmap = gdk_pixmap_new (GTK_WIDGET (widget)->window,
                            rect.width, rect.height, -1);
@@ -1472,11 +1472,6 @@ wnck_drag_window_destroyed (gpointer  contextp,
 {
   wnck_drag_clean_up ((WnckWindow *) window, GDK_DRAG_CONTEXT (contextp),
                       FALSE, TRUE);
-  /* FIXME: I'd like to have a "window is destroyed" indication, but no idea
-   * how best to do it.
-   * I didn't like setting GTK_STOCK_MISSING_IMAGE for example, because
-   * that indicates a missing image, not a missing window */
-  gtk_drag_set_icon_default (contextp);
 }
 
 /* CAREFUL: This function is a bit brittle, because the pointers given may be
