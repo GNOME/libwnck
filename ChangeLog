@@ -1,5 +1,18 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window-action-menu.c: (window_weak_notify): destroy the menu
+	when the window is getting finalized
+	(set_data): kill
+	(get_data): walk up in the parent tree to get the widget which knows
+	about "wnck-action-data"
+	(item_activated_callback): updated
+	(make_radio_menu_item): don't call set_data since it's now useless
+	(make_check_menu_item): ditto
+	(make_menu_item): ditto
+	Should fix bug #410133
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	Make it possible to reorder tasklist buttons with drag and drop.
 	Fix bug #302398. Patch by Nickolay V. Shmyrev <nshmyrev@yandex.ru>
 
