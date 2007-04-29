@@ -37,6 +37,7 @@ typedef enum
   MOVE,
   RESIZE,
   PIN,
+  UNPIN,
   LEFT,
   RIGHT,
   UP,
@@ -58,6 +59,7 @@ struct _ActionMenuData
   GtkWidget *close_item;
   GtkWidget *workspace_separator;
   GtkWidget *pin_item;
+  GtkWidget *unpin_item;
   GtkWidget *left_item;
   GtkWidget *right_item;
   GtkWidget *up_item;
@@ -152,10 +154,10 @@ item_activated_callback (GtkWidget *menu_item,
       wnck_window_keyboard_size (amd->window);
       break;
     case PIN:
-      if (wnck_window_is_pinned (amd->window))
         wnck_window_unpin (amd->window);
-      else
-        wnck_window_pin (amd->window);
+      break;
+    case UNPIN:
+      wnck_window_pin (amd->window);
       break;
     case LEFT:
       {
@@ -297,20 +299,30 @@ update_menu_state (ActionMenuData *amd)
   gtk_widget_set_sensitive (amd->above_item,
                             (actions & WNCK_WINDOW_ACTION_ABOVE) != 0);
 
+  g_signal_handlers_block_by_func (G_OBJECT (amd->pin_item),
+                                   item_activated_callback,
+                                   GINT_TO_POINTER (PIN));
+  g_signal_handlers_block_by_func (G_OBJECT (amd->unpin_item),
+                                   item_activated_callback,
+                                   GINT_TO_POINTER (UNPIN));
   if (wnck_window_is_pinned (amd->window))
-    {
-      set_item_text (amd->pin_item, _("_Only on This Workspace"));
-      set_item_stock (amd->pin_item, NULL);
-      gtk_widget_set_sensitive (amd->pin_item,
-                                (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
-    }
+          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (amd->unpin_item),
+                                          TRUE);
   else
-    {
-      set_item_text (amd->pin_item, _("_Always on Visible Workspace"));
-      set_item_stock (amd->pin_item, NULL);
-      gtk_widget_set_sensitive (amd->pin_item,
-                                (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
-    }
+          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (amd->pin_item),
+                                          TRUE);
+  g_signal_handlers_unblock_by_func (G_OBJECT (amd->pin_item),
+                                     item_activated_callback,
+                                     GINT_TO_POINTER (PIN));
+  g_signal_handlers_unblock_by_func (G_OBJECT (amd->unpin_item),
+                                     item_activated_callback,
+                                     GINT_TO_POINTER (UNPIN));
+
+  gtk_widget_set_sensitive (amd->pin_item,
+                            (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
+
+  gtk_widget_set_sensitive (amd->unpin_item,
+                            (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0);
   
   gtk_widget_set_sensitive (amd->close_item,
                             (actions & WNCK_WINDOW_ACTION_CLOSE) != 0);
@@ -347,12 +359,14 @@ update_menu_state (ActionMenuData *amd)
     {
       gtk_widget_show (amd->workspace_separator);
       gtk_widget_show (amd->pin_item);
+      gtk_widget_show (amd->unpin_item);
       gtk_widget_show (amd->workspace_item);
     }
   else
     {
       gtk_widget_hide (amd->workspace_separator);
       gtk_widget_hide (amd->pin_item);
+      gtk_widget_show (amd->unpin_item);
       gtk_widget_hide (amd->workspace_item);
     }
   
@@ -392,6 +406,28 @@ actions_changed_callback (WnckWindow       *window,
 
   if (amd)
     queue_update (amd);
+}
+
+static GtkWidget*
+make_radio_menu_item (ActionMenuData  *amd,
+                      WindowAction     action,
+                      GSList         **group,
+                      const gchar     *mnemonic_text)
+{
+  GtkWidget *mi;
+
+  mi = gtk_radio_menu_item_new_with_mnemonic (*group, mnemonic_text);
+  *group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (mi));
+
+  set_data (G_OBJECT (mi), amd);
+
+  g_signal_connect (G_OBJECT (mi), "activate",
+                    G_CALLBACK (item_activated_callback),
+                    GINT_TO_POINTER (action));
+
+  gtk_widget_show (mi);
+
+  return mi;
 }
 
 static GtkWidget*
@@ -531,6 +567,7 @@ wnck_create_window_action_menu (WnckWindow *window)
   int num_workspaces, present_workspace, i;
   WnckWorkspace *workspace;
   WnckWorkspaceLayout layout;
+  GSList *pin_group;
 
   _wnck_stock_icons_init ();
   
@@ -558,12 +595,6 @@ wnck_create_window_action_menu (WnckWindow *window)
   
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->maximize_item);
-
-  amd->above_item = make_check_menu_item (amd, ABOVE,
-                                          _("On _Top"));
-  
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->above_item);
 
   amd->move_item = make_menu_item (amd, MOVE);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -597,10 +628,24 @@ wnck_create_window_action_menu (WnckWindow *window)
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          separator);
 
-  amd->pin_item = make_menu_item (amd, PIN);
+  amd->above_item = make_check_menu_item (amd, ABOVE,
+                                          _("Always On _Top"));
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->above_item);
+ 
+  pin_group = NULL;
+
+  amd->unpin_item = make_radio_menu_item (amd, UNPIN, &pin_group,
+                                          _("_Always on Visible Workspace"));
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->unpin_item);
+
+  amd->pin_item = make_radio_menu_item (amd, PIN, &pin_group,
+                                        _("_Only on This Workspace"));
+  
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          amd->pin_item);
-  set_item_stock (amd->pin_item, NULL);
   
   workspace = wnck_window_get_workspace (amd->window);
 

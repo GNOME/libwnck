@@ -1,5 +1,16 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window-action-menu.c: (item_activated_callback): handle PIN
+	and UNPIN
+	(update_menu_state): updated for pin/unpin menu items
+	(make_radio_menu_item): new
+	(wnck_create_window_action_menu): updated to match the metacity menu
+	layout
+	Fix bug #376522, based on patch by Bruno Boaventura
+	<brunobol@gnome.org>
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/window.h:
 	* libwnck/xutils.c: (_wnck_get_string_property_latin1):
 	(_wnck_get_utf8_property):
