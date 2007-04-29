@@ -1427,6 +1427,8 @@ wnck_update_drag_icon (WnckWindow     *window,
   if (!gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (widget),
 					  GTK_ICON_SIZE_DND, &dnd_w, &dnd_h))
     dnd_w = dnd_h = 32;
+  /* windows are huge, so let's make this huge */
+  dnd_w *= 3;
  
   workspace = wnck_window_get_workspace (window);
   if (workspace == NULL)
@@ -1437,11 +1439,13 @@ wnck_update_drag_icon (WnckWindow     *window,
   wnck_window_get_geometry (window, NULL, NULL, &org_w, &org_h);
 
   rect.x = rect.y = 0;
-  /* windows are huge, so let's make this huge */
-  dnd_w *= 3;
-  rect.width = (dnd_w * org_w) / wnck_workspace_get_width (workspace);
+  rect.width = 0.5 + ((double) (dnd_w * org_w) / (double) wnck_workspace_get_width (workspace));
   rect.width = MIN (org_w, rect.width);
-  rect.height = (rect.width * org_h) / org_w;
+  rect.height = 0.5 + ((double) (rect.width * org_h) / (double) org_w);
+
+  /* we need at least three pixels to draw the smallest window */
+  rect.width = MAX (rect.width, 3);
+  rect.height = MAX (rect.width, 3);
 
   pixmap = gdk_pixmap_new (GTK_WIDGET (widget)->window,
                            rect.width, rect.height, -1);
