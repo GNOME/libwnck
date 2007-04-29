@@ -1,5 +1,18 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	Make it possible to reorder tasklist buttons with drag and drop.
+	Fix bug #302398. Patch by Nickolay V. Shmyrev <nshmyrev@yandex.ru>
+
+	* libwnck/tasklist.c: (wnck_task_drag_leave): unhighlight the button
+	(wnck_task_drag_motion): check whether we can accept the dragged data
+	or not
+	(wnck_task_drag_data_received): handle drop
+	(wnck_task_create_widgets): setup buttons for windows for drag and
+	drop of windows
+	* libwnck/window.[ch]: (wnck_window_set_sort_order): new
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_drag_begin): new
 	(wnck_selector_drag_data_get): neew
 	(wnck_selector_item_new): connect to the drag signals

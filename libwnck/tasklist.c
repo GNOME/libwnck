@@ -3052,6 +3052,8 @@ wnck_task_drag_leave (GtkWidget          *widget,
       g_source_remove (task->button_activate);
       task->button_activate = 0;
     }
+
+  gtk_drag_unhighlight (widget);
 }
 
 static gboolean
@@ -3062,13 +3064,21 @@ wnck_task_drag_motion (GtkWidget          *widget,
 		       guint               time,
 		       WnckTask            *task)
 {
-  task->dnd_timestamp = time;
-  if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
-      task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
-                                             wnck_task_motion_timeout,
-                                             task);
-  gdk_drag_status (context,0,time);
+  if (gtk_drag_dest_find_target (widget, context, NULL))
+    {
+       gtk_drag_highlight (widget);
+       gdk_drag_status (context, context->suggested_action, time);
+    }
+  else
+    {
+       task->dnd_timestamp = time;
 
+       if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
+           task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+                                                  wnck_task_motion_timeout,
+                                                  task);
+       gdk_drag_status (context, 0, time);
+    }
   return TRUE;
 }
 
@@ -3094,6 +3104,72 @@ wnck_task_drag_data_get (GtkWidget          *widget,
   gtk_selection_data_set (selection_data,
  		          selection_data->target,
 			  8, (guchar *)&xid, sizeof (gulong));
+}
+
+void
+wnck_task_drag_data_received (GtkWidget          *widget,
+                              GdkDragContext     *context,
+                              gint                x,
+                              gint                y,
+                              GtkSelectionData   *data,
+                              guint               info,
+                              guint               time,
+                              WnckTask           *target_task)
+{
+  WnckTasklist *tasklist;
+  GList        *l, *windows;
+  WnckWindow   *window;
+  gulong       *xid;
+  guint         new_order, old_order, order;
+  WnckWindow   *found_window;
+
+  if ((data->length != sizeof (gulong)) || (data->format != 8))
+    {
+      gtk_drag_finish (context, FALSE, FALSE, time);
+      return;
+    }
+
+  tasklist = target_task->tasklist;
+  xid = (gulong *)data->data;
+  found_window = NULL;
+  windows = wnck_screen_get_windows (tasklist->priv->screen);
+
+  for (l = windows; l; l = l->next)
+    {
+       window = WNCK_WINDOW (l->data);
+       if (wnck_window_get_xid (window) == *xid)
+         {
+            old_order = wnck_window_get_sort_order (window);
+            new_order = wnck_window_get_sort_order (target_task->window);
+            if (old_order < new_order)
+              new_order++;
+            found_window = window;
+            break;
+         }
+    }
+
+  if (found_window)
+    {
+       for (l = windows; l; l = l->next)
+         {
+            window = WNCK_WINDOW (l->data);
+            order = wnck_window_get_sort_order (window);
+            if (order >= new_order)
+              wnck_window_set_sort_order (window, order + 1);
+         }
+       wnck_window_set_sort_order (found_window, new_order);
+
+       if (!tasklist->priv->include_all_workspaces)
+         {
+           WnckWorkspace *active_space;
+           active_space = wnck_screen_get_active_workspace (tasklist->priv->screen);
+           wnck_window_move_to_workspace (found_window, active_space);
+         }
+
+       gtk_widget_queue_resize (GTK_WIDGET (tasklist));
+    }
+
+    gtk_drag_finish (context, TRUE, FALSE, time);
 }
 
 static gboolean
@@ -3196,15 +3272,18 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
 
-  gtk_drag_dest_set (GTK_WIDGET(task->button), 0, NULL, 0, 0);
-
   if (task->type == WNCK_TASK_WINDOW)
     {
       gtk_drag_source_set (GTK_WIDGET (task->button),
-		           GDK_BUTTON1_MASK,
-		           targets, 1,
-		           GDK_ACTION_MOVE);
+                           GDK_BUTTON1_MASK,
+                           targets, 1,
+                           GDK_ACTION_MOVE);
+      gtk_drag_dest_set (GTK_WIDGET (task->button), GTK_DEST_DEFAULT_DROP,
+                         targets, 1, GDK_ACTION_MOVE);
     }
+  else
+    gtk_drag_dest_set (GTK_WIDGET (task->button), 0,
+                       NULL, 0, GDK_ACTION_DEFAULT);
 
   hbox = gtk_hbox_new (FALSE, 0);
 
@@ -3262,6 +3341,20 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
                            G_CALLBACK (wnck_task_drag_motion),
                            G_OBJECT (task),
                            0); 
+
+  if (task->type == WNCK_TASK_WINDOW) 
+    {
+      g_signal_connect_object (G_OBJECT (task->button), "drag_data_get",
+                               G_CALLBACK (wnck_task_drag_data_get),
+                               G_OBJECT (task),
+                               0); 
+
+      g_signal_connect_object (G_OBJECT (task->button), "drag_data_received",
+                               G_CALLBACK (wnck_task_drag_data_received),
+                               G_OBJECT (task),
+                               0); 
+
+    }
 
   g_signal_connect_object (G_OBJECT(task->button), "drag_leave",
                            G_CALLBACK (wnck_task_drag_leave),

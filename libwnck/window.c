@@ -646,7 +646,7 @@ wnck_window_get_pid (WnckWindow *window)
  * @window: a #WnckWindow
  *
  * Gets the sort order of @window; used for ordering of the window in
- * the tasklist.  This is defined when the window is created.
+ * the tasklist.  The initial value is defined when the window is created.
  *
  * Return value: sort order of @window, or G_MAXINT if none available
  **/
@@ -656,6 +656,24 @@ wnck_window_get_sort_order (WnckWindow *window)
   g_return_val_if_fail (WNCK_IS_WINDOW (window), G_MAXINT);
 
   return window->priv->sort_order;
+}
+
+/**
+ * wnck_window_set_sort_order:
+ * @window: a #WnckWindow
+ * @order: new order
+ *
+ * Sets the sort order of @window; used for ordering of the window in
+ * the tasklist. 
+ *
+ **/
+void        wnck_window_set_sort_order        (WnckWindow *window, 
+					       gint order)
+{ 
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+  
+  window->priv->sort_order = order;
+  return;
 }
 
 /**
