@@ -414,6 +414,30 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   return width;
 }
 
+static void  
+wnck_selector_drag_begin (GtkWidget          *widget,
+			  GdkDragContext     *context,
+			  WnckWindow         *window)
+{
+  _wnck_window_set_as_drag_icon (window, context, widget);
+}
+
+static void  
+wnck_selector_drag_data_get (GtkWidget          *widget,
+			     GdkDragContext     *context,
+			     GtkSelectionData   *selection_data,
+			     guint               info,
+			     guint               time,
+			     WnckWindow         *window)
+{
+  gulong xid;    
+
+  xid = wnck_window_get_xid (window);
+  gtk_selection_data_set (selection_data,
+ 		          selection_data->target,
+			  8, (guchar *)&xid, sizeof (gulong));
+}
+
 static GtkWidget *
 wnck_selector_item_new (WnckSelector *selector,
                         const gchar *label, WnckWindow *window)
@@ -422,6 +446,9 @@ wnck_selector_item_new (WnckSelector *selector,
   GtkWidget *ellipsizing_label;
   window_hash_item *hash_item;
   WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
+  static const GtkTargetEntry targets[] = {
+    { "application/x-wnck-window-id", 0, 0 }
+  };
 
   item = gtk_image_menu_item_new ();
 
@@ -449,6 +476,22 @@ wnck_selector_item_new (WnckSelector *selector,
   gtk_widget_set_size_request (ellipsizing_label,
                                wnck_selector_get_width (GTK_WIDGET (selector),
                                                         label), -1);
+
+  gtk_drag_source_set (item,
+		       GDK_BUTTON1_MASK,
+		       targets, 1,
+		       GDK_ACTION_MOVE);
+
+  g_signal_connect_object (item, "drag_data_get",
+                           G_CALLBACK (wnck_selector_drag_data_get),
+                           G_OBJECT (window),
+                           0); 
+
+  g_signal_connect_object (item, "drag_begin",
+                           G_CALLBACK (wnck_selector_drag_begin),
+                           G_OBJECT (window),
+                           0); 
+
   return item;
 }
 
