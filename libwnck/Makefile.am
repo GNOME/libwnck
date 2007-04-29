@@ -1,7 +1,7 @@
 
 INCLUDES=@LIBWNCK_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE -DWNCK_LOCALEDIR=\"$(wncklocaledir)\" \
-	-DSN_API_NOT_YET_FROZEN=1
+	-DSN_API_NOT_YET_FROZEN=1 $(DISABLE_DEPRECATED_CFLAGS) $(WARN_CFLAGS)
 
 lib_LTLIBRARIES=libwnck-1.la
 
@@ -101,6 +101,7 @@ stamp-wnck-marshal.h: wnck-marshal.list
 
 wnck-marshal.c: wnck-marshal.list wnck-marshal.h
 	echo "#include <libwnck/libwnck.h>" > new-wnck-marshal.c \
+	&& echo "#include \"wnck-marshal.h\"" >> new-wnck-marshal.c \
 	&& (cd $(srcdir) \
 	&& glib-genmarshal --prefix=_wnck_marshal wnck-marshal.list --body) >> new-wnck-marshal.c \
 	&& cp new-wnck-marshal.c wnck-marshal.c \

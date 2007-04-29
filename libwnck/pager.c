@@ -929,14 +929,14 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   
   if (bg_pixbuf)
     {
-      gdk_pixbuf_render_to_drawable (bg_pixbuf,
-                                     widget->window,
-                                     widget->style->dark_gc[state],
-                                     0, 0,
-                                     rect->x, rect->y,
-                                     -1, -1,
-                                     GDK_RGB_DITHER_MAX,
-                                     0, 0);
+      gdk_draw_pixbuf (widget->window,
+                       widget->style->dark_gc[state],
+                       bg_pixbuf,
+                       0, 0,
+                       rect->x, rect->y,
+                       -1, -1,
+                       GDK_RGB_DITHER_MAX,
+                       0, 0);
     }
   else if (active_space)
     {

@@ -439,7 +439,7 @@ wnck_task_button_glow (WnckTask *task)
                    gdk_pixbuf_get_width (glowing_screenshot),
                    gdk_pixbuf_get_height (glowing_screenshot),
                    GDK_RGB_DITHER_NORMAL, 0, 0);
-  gdk_pixbuf_unref (glowing_screenshot);
+  g_object_unref (glowing_screenshot);
 
   return TRUE;
 }
@@ -742,7 +742,7 @@ wnck_tasklist_finalize (GObject *object)
   
   if (tasklist->priv->activate_timeout_id != 0)
     {
-      gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+      g_source_remove (tasklist->priv->activate_timeout_id);
       tasklist->priv->activate_timeout_id = 0;
     }
   
@@ -1817,8 +1817,7 @@ wnck_tasklist_new (WnckScreen *screen)
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
 
   tasklist->priv->tooltips = gtk_tooltips_new ();
-  gtk_object_ref (GTK_OBJECT (tasklist->priv->tooltips));
-  gtk_object_sink (GTK_OBJECT (tasklist->priv->tooltips));
+  g_object_ref_sink (G_OBJECT (tasklist->priv->tooltips));
 
   wnck_tasklist_set_screen (tasklist, screen);
 
@@ -2276,7 +2275,7 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
     return;
 
   /* Don't keep any stale references */
-  gtk_widget_queue_clear (GTK_WIDGET (tasklist));
+  gtk_widget_queue_draw (GTK_WIDGET (tasklist));
   
   tasklist->priv->idle_callback_tag = g_idle_add (do_wnck_tasklist_update_lists, tasklist);
 }
@@ -2437,10 +2436,10 @@ wnck_tasklist_activate_task_window (WnckTask *task,
   
 
   if (tasklist->priv->activate_timeout_id)
-    gtk_timeout_remove (tasklist->priv->activate_timeout_id);
+    g_source_remove (tasklist->priv->activate_timeout_id);
 
   tasklist->priv->activate_timeout_id = 
-    gtk_timeout_add (500, &wnck_tasklist_change_active_timeout, tasklist);
+    g_timeout_add (500, &wnck_tasklist_change_active_timeout, tasklist);
 
   wnck_tasklist_change_active_task (tasklist, task);
 }
@@ -3082,7 +3081,7 @@ wnck_task_drag_motion (GtkWidget          *widget,
   return TRUE;
 }
 
-void  
+static void
 wnck_task_drag_begin (GtkWidget          *widget,
 		      GdkDragContext     *context,
 		      WnckTask           *task)
@@ -3090,7 +3089,7 @@ wnck_task_drag_begin (GtkWidget          *widget,
   _wnck_window_set_as_drag_icon (task->window, context, widget);
 }
 
-void  
+static void
 wnck_task_drag_data_get (GtkWidget          *widget,
 		         GdkDragContext     *context,
 		         GtkSelectionData   *selection_data,
@@ -3106,7 +3105,7 @@ wnck_task_drag_data_get (GtkWidget          *widget,
 			  8, (guchar *)&xid, sizeof (gulong));
 }
 
-void
+static void
 wnck_task_drag_data_received (GtkWidget          *widget,
                               GdkDragContext     *context,
                               gint                x,

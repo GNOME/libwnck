@@ -4,6 +4,8 @@ AM_CONFIG_HEADER(config.h)
 
 AM_INIT_AUTOMAKE(libwnck, 2.18.1)
 AM_MAINTAINER_MODE
+GNOME_COMMON_INIT
+GNOME_MAINTAINER_MODE_DEFINES
 
 dnl libtool versioning for libwnck
 
@@ -52,6 +54,17 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
+GNOME_COMPILE_WARNINGS(maximum)
+
+AC_ARG_ENABLE(deprecations,
+              [AC_HELP_STRING([--enable-deprecations],
+                              [warn about deprecated usages [default=no]])],,
+              [enable_deprecations=no])
+
+if test "x$enable_deprecations" = "xyes"; then
+   DISABLE_DEPRECATED_CFLAGS=$DISABLE_DEPRECATED
+   AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
+fi
 
 GETTEXT_PACKAGE=libwnck
 AC_SUBST(GETTEXT_PACKAGE)

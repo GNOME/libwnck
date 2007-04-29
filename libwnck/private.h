@@ -38,7 +38,7 @@ G_BEGIN_DECLS
 
 #define WNCK_ACTIVATE_TIMEOUT 1000
 
-WnckClientType _wnck_get_client_type ();
+WnckClientType _wnck_get_client_type (void);
 
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);

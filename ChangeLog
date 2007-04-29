@@ -1,5 +1,25 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	Kill warnings and usage of deprecated functions
+
+	* configure.in: add flags for compiler warnings and deprecations
+	* libwnck/tasklist.c: (wnck_task_button_glow): no deprecated function
+	(wnck_tasklist_finalize): ditto
+	(wnck_tasklist_new): ditto
+	(wnck_tasklist_window_changed_geometry): ditto
+	(wnck_tasklist_activate_task_window): ditto
+	(wnck_task_drag_begin): make function static
+	(wnck_task_drag_data_get): ditto
+	(wnck_task_drag_data_received): ditto
+	* libwnck/private.h: fix declaration of _wnck_get_client_type()
+	* libwnck/pager.c: (wnck_pager_draw_workspace): no deprecated function
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):
+	ditto
+	* libwnck/Makefile.am: use new compiler flags for deprecations and
+	warnings, include wnck-marshal.h in wnck-marshal.c
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_update_drag_icon): fix typo which broke the
 	height of the icon (was the same as the width)
 	(wnck_drag_window_destroyed): don't reset to the default icon. This is
