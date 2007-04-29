@@ -295,7 +295,7 @@ _wnck_get_string_property_latin1 (Window  xwindow,
   int format;
   gulong nitems;
   gulong bytes_after;
-  guchar *str;
+  gchar *str;
   int err, result;
   char *retval;
   
@@ -333,7 +333,7 @@ _wnck_get_utf8_property (Window  xwindow,
   int format;
   gulong nitems;
   gulong bytes_after;
-  guchar *val;
+  gchar *val;
   int err, result;
   char *retval;
   Atom utf8_string;
@@ -627,7 +627,7 @@ _wnck_set_utf8_list (Window   xwindow,
 		   xwindow,
                    atom,
 		   utf8_string, 8, PropModeReplace,
-		   flattened->str, flattened->len);
+		   (guchar *) flattened->str, flattened->len);
   
   _wnck_error_trap_pop ();
 
@@ -2216,7 +2216,8 @@ _wnck_get_window_geometry (Screen *screen,
                            int    *widthp,
                            int    *heightp)
 {
-  int x, y, width, height, bw, depth;
+  int x, y;
+  unsigned int width, height, bw, depth;
   Window root_window;
 
   width = 1;

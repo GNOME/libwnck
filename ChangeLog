@@ -1,5 +1,15 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window.h:
+	* libwnck/xutils.c: (_wnck_get_string_property_latin1):
+	(_wnck_get_utf8_property):
+	(_wnck_set_utf8_list):
+	(_wnck_get_window_geometry): fix compilation warnings
+	Fix bug #431175, based on patch by Bernard Leak
+	<bernard@brenda-arkle.demon.co.uk>
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_update_drag_icon): make sure the width and
 	the height of the rectangle are strictly positive (so we don't try to
 	draw in a non-existing rectangle)

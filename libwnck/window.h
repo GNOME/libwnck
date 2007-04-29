@@ -104,7 +104,7 @@ typedef enum
   WNCK_WINDOW_CHANGE_X      = 1 << 0,
   WNCK_WINDOW_CHANGE_Y      = 1 << 1,
   WNCK_WINDOW_CHANGE_WIDTH  = 1 << 2,
-  WNCK_WINDOW_CHANGE_HEIGHT = 1 << 3,
+  WNCK_WINDOW_CHANGE_HEIGHT = 1 << 3
 } WnckWindowMoveResizeMask;
 
 #define WNCK_TYPE_WINDOW              (wnck_window_get_type ())
