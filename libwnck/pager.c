@@ -1331,12 +1331,18 @@ wnck_pager_drag_data_received (GtkWidget          *widget,
 
   if ((selection_data->length != sizeof (gulong)) ||
       (selection_data->format != 8))
-    gtk_drag_finish (context, FALSE, FALSE, time);
+    {
+      gtk_drag_finish (context, FALSE, FALSE, time);
+      return;
+    }
   
   i = workspace_at_point (pager, x, y, NULL, NULL);
   space = wnck_screen_get_workspace (pager->priv->screen, i);
   if (!space)
-    gtk_drag_finish (context, FALSE, FALSE, time);
+    {
+      gtk_drag_finish (context, FALSE, FALSE, time);
+      return;
+    }
   
   xid = *((gulong *)selection_data->data);
 	      

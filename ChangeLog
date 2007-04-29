@@ -1,5 +1,12 @@
 2007-04-29  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_drag_data_received): return instead of
+	dumbly continuing in this function when we know that the drag doesn't
+	work
+	Should fix bug #415675
+
+2007-04-29  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/window-action-menu.c: (window_weak_notify): destroy the menu
 	when the window is getting finalized
 	(set_data): kill
