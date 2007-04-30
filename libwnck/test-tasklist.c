@@ -6,10 +6,9 @@
 static gboolean display_all = FALSE;
 static gboolean always_group = FALSE;
 
-//FIXME 2.18: mark strings as translatable
 static GOptionEntry entries[] = {
-	{"always-group", 'a', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
-	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
+	{"always-group", 'a', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
+	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
 	{NULL }
 };
 
