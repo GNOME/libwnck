@@ -3,14 +3,14 @@
 # Daniel Nylander <po@danielnylander.se>, 2006.
 # Christian Rose <menthos@menthos.com>, 2001, 2002, 2003, 2004, 2005.
 #
-# $Id$
+# $Id: sv.po,v 1.53 2006/09/12 18:14:46 dnylande Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-12 15:50+0200\n"
-"PO-Revision-Date: 2006-09-12 20:14+0100\n"
+"POT-Creation-Date: 2007-05-01 03:48+0100\n"
+"PO-Revision-Date: 2007-05-03 22:07+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -38,110 +38,118 @@ msgstr "Klicka på detta för att byta till arbetsyta %s"
 msgid "Unknown Window"
 msgstr "Okänt fönster"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/selector.c:772
 msgid "No Windows Open"
 msgstr "Inga fönster öppna"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:876
 msgid "Window Selector"
 msgstr "Fönsterväljare"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:877
 msgid "Tool to switch between windows"
 msgstr "Verktyg för att växla mellan fönster"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Fönsterlista"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Verktyg för att växla mellan synliga fönster"
 
-#: ../libwnck/tasklist.c:2530
+#: ../libwnck/tasklist.c:2579
 msgid "_Close All"
 msgstr "_Stäng alla"
 
-#: ../libwnck/tasklist.c:2545
+#: ../libwnck/tasklist.c:2594
 msgid "_Minimize All"
 msgstr "Minimera _alla"
 
-#: ../libwnck/tasklist.c:2556
+#: ../libwnck/tasklist.c:2605
 msgid "_Unminimize All"
 msgstr "Avminimera _alla"
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-tasklist.c:10
+msgid "Always group windows"
+msgstr "Gruppera alltid fönster"
+
+#: ../libwnck/test-tasklist.c:11
+msgid "Display windows from all workspaces"
+msgstr "Visa fönster från alla arbetsytor"
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "Avmi_nimera"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "_Minimera"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "Avma_ximera"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "Ma_ximera"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "_Endast på denna arbetsyta"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "_Alltid på synlig arbetsyta"
-
-#: ../libwnck/window-action-menu.c:463
+#: ../libwnck/window-action-menu.c:498
 #: ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "Arbetsyta 1_0"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbetsyta %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "_Överst"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "_Flytta"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "_Ändra storlek"
 
-#: ../libwnck/window-action-menu.c:592
+#: ../libwnck/window-action-menu.c:621
 msgid "_Close"
 msgstr "_Stäng"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:630
+msgid "Always On _Top"
+msgstr "Alltid _överst"
+
+#: ../libwnck/window-action-menu.c:638
+msgid "_Always on Visible Workspace"
+msgstr "_Alltid på synlig arbetsyta"
+
+#: ../libwnck/window-action-menu.c:643
+msgid "_Only on This Workspace"
+msgstr "_Endast på denna arbetsyta"
+
+#: ../libwnck/window-action-menu.c:669
 msgid "Move to Workspace _Left"
 msgstr "Flytta till arbetsyta till _vänster"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:680
 msgid "Move to Workspace R_ight"
 msgstr "Flytta till arbetsyta till _höger"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:691
 msgid "Move to Workspace _Up"
 msgstr "Flytta till arbetsyta _uppåt"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:703
 msgid "Move to Workspace _Down"
 msgstr "Flytta till arbetsyta _nedanför"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:710
 msgid "Move to Another _Workspace"
 msgstr "Flytta till en annan _arbetsyta"
 
