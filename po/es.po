@@ -1,19 +1,18 @@
-# translation of es.po to Spanish
-# traducción de es.po al Spanish
 # Spanish translation of libwnck.
-# Copyright (C) 2001, 2002, 2003, 2005, 2006 Free Software Foundation, Inc
+# Copyright (C) 2001, 2002, 2003, 2005, 2006, 2007 Free Software Foundation, Inc
 # This file is distributed under the same license as the  libwnck package.
 #
 # Germán Poo Caamaño <gpoo@ubiobio.cl>, 2002.
 # Francisco Javier F. Serrador <serrador@cvs.gnome.org>, 2005, 2006.
 # Lucas Vieites <lucas@asixinformatica.com>, 2005.
+# Jorge González <jorgegonz@svn.gnome.org>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-14 14:04+0200\n"
-"PO-Revision-Date: 2006-10-26 22:27+0200\n"
-"Last-Translator: Francisco Javier F. Serrador <serrador@cvs.gnome.org>\n"
+"POT-Creation-Date: 2007-05-01 03:48+0100\n"
+"PO-Revision-Date: 2007-05-04 10:53+0200\n"
+"Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -42,109 +41,117 @@ msgstr "Pulse aquí para cambiar al área de trabajo %s"
 msgid "Unknown Window"
 msgstr "Ventana desconocida"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/selector.c:772
 msgid "No Windows Open"
 msgstr "No hay ventanas abiertas"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:876
 msgid "Window Selector"
 msgstr "Selector de ventanas"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:877
 msgid "Tool to switch between windows"
 msgstr "Herramienta para cambiar entre ventanas"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Lista de ventanas"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Herramienta para cambiar entre ventanas visibles"
 
-#: ../libwnck/tasklist.c:2530
+#: ../libwnck/tasklist.c:2579
 msgid "_Close All"
 msgstr "Cerrar _todo"
 
-#: ../libwnck/tasklist.c:2545
+#: ../libwnck/tasklist.c:2594
 msgid "_Minimize All"
 msgstr "_Minimizar todo"
 
-#: ../libwnck/tasklist.c:2556
+#: ../libwnck/tasklist.c:2605
 msgid "_Unminimize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-tasklist.c:10
+msgid "Always group windows"
+msgstr "Siempre agrupar ventanas"
+
+#: ../libwnck/test-tasklist.c:11
+msgid "Display windows from all workspaces"
+msgstr "Mostrar las ventanas de todas las áreas de trabajo"
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "_Sólo en este área de trabajo"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "_Siempre en el área de trabajo visible"
-
-#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
+#: ../libwnck/window-action-menu.c:498 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "Área de trabajo 1_0"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Área de trabajo %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "_Encima"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "_Mover"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "Re_dimensionar"
 
-#: ../libwnck/window-action-menu.c:592
+#: ../libwnck/window-action-menu.c:621
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:630
+msgid "Always On _Top"
+msgstr "Siempre en_cima"
+
+#: ../libwnck/window-action-menu.c:638
+msgid "_Always on Visible Workspace"
+msgstr "_Siempre en el área de trabajo visible"
+
+#: ../libwnck/window-action-menu.c:643
+msgid "_Only on This Workspace"
+msgstr "_Sólo en este área de trabajo"
+
+#: ../libwnck/window-action-menu.c:669
 msgid "Move to Workspace _Left"
 msgstr "Mover a al área de trabajo de la _izquierda"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:680
 msgid "Move to Workspace R_ight"
 msgstr "Mover al área de trabajo de la _derecha"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:691
 msgid "Move to Workspace _Up"
 msgstr "Mover al área de trabajo de a_rriba"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:703
 msgid "Move to Workspace _Down"
 msgstr "Mover al área de trabajo de a_bajo"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:710
 msgid "Move to Another _Workspace"
 msgstr "Mover a _otro área de trabajo"
 
