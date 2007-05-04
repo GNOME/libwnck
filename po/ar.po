@@ -1,27 +1,27 @@
 # translation of libwnck.HEAD.ar.po to Arabic
 # translation of libwnck.ar.po to
 # translation of libwnck.po to
-# Copyright (C) 2002,2003, 2006 Free Software Foundation, Inc.
+# Copyright (C) 2002,2003, 2006, 2007 Free Software Foundation, Inc.
 #
 #
 # Mohammed Gamal <f2c2001@yahoo.com>, 2002.
 # Isam Bayazidi <bayazidi@arabeyes.org>, 2002.
 # Arafat Medini <lumina@silverpen.de>, 2003.
 # Djihed Afifi <djihed@gmail.com>, 2006.
-# Khaled Hosny <khaledhosny@eglug.org>, 2006.
+# Khaled Hosny <khaledhosny@eglug.org>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.ar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-10-30 00:54+0000\n"
-"PO-Revision-Date: 2006-11-16 17:42+0200\n"
+"POT-Creation-Date: 2007-05-02 17:05+0100\n"
+"PO-Revision-Date: 2007-05-04 07:29+0300\n"
 "Last-Translator: Khaled Hosny <khaledhosny@eglug.org>\n"
-"Language-Team: Arabic <support@arabeyes.org>\n"
+"Language-Team: Arabic <doc@arabeyes.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 0 : n==2 ? 1 : n>=3 && n<=10 ? 2 : 3\n"
 
 #: ../libwnck/application.c:29
 msgid "untitled application"
@@ -44,109 +44,117 @@ msgstr "اضغط هذا للتحوّل لمساحة العمل %s"
 msgid "Unknown Window"
 msgstr "نافذة مجهولة"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/selector.c:772
 msgid "No Windows Open"
 msgstr "لا يوجد نافذة مفتوحة"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:876
 msgid "Window Selector"
 msgstr "منتقي النوافذ"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:877
 msgid "Tool to switch between windows"
 msgstr "أداة للتحوّل بين النوافذ"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "قائمة النوافذ"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "أداة للتحوّل بين النوافذ المرئية"
 
-#: ../libwnck/tasklist.c:2536
+#: ../libwnck/tasklist.c:2579
 msgid "_Close All"
 msgstr "ا_غلق الكل"
 
-#: ../libwnck/tasklist.c:2551
+#: ../libwnck/tasklist.c:2594
 msgid "_Minimize All"
 msgstr "_صغّر الكل"
 
-#: ../libwnck/tasklist.c:2562
+#: ../libwnck/tasklist.c:2605
 msgid "_Unminimize All"
 msgstr "إلغاء ت_صغير الكل"
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-tasklist.c:10
+msgid "Always group windows"
+msgstr "جمّع النوافذ دائماً"
+
+#: ../libwnck/test-tasklist.c:11
+msgid "Display windows from all workspaces"
+msgstr "أظهر النوافذ من كل مساحات العمل"
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "إلغاء الت_صغير"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "_صغّر"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "إلغاء الت_كبير"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "ك_بّر"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "فقط على مساحة العمل _هذه"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "فقط على مساحة العمل الم_رئية"
-
-#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
+#: ../libwnck/window-action-menu.c:498 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "مساحة العمل %d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "مساحة العمل 1_0"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "مساحة العمل %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "على ال_قمة"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "ا_نقل"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "ت_حجيم"
 
-#: ../libwnck/window-action-menu.c:592
+#: ../libwnck/window-action-menu.c:621
 msgid "_Close"
 msgstr "ا_غلق"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:630
+msgid "Always On _Top"
+msgstr "دائما _فوق الكل"
+
+#: ../libwnck/window-action-menu.c:638
+msgid "_Always on Visible Workspace"
+msgstr "فقط على مساحة العمل الم_رئية"
+
+#: ../libwnck/window-action-menu.c:643
+msgid "_Only on This Workspace"
+msgstr "فقط على مساحة العمل _هذه"
+
+#: ../libwnck/window-action-menu.c:669
 msgid "Move to Workspace _Left"
 msgstr "انقل لمساحة عمل نحو ال_يسار"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:680
 msgid "Move to Workspace R_ight"
 msgstr "انقل ل_مساحة عمل نحو الي_مين"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:691
 msgid "Move to Workspace _Up"
 msgstr "انقل ل_مساحة عمل نحو الف_وق"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:703
 msgid "Move to Workspace _Down"
 msgstr "انقل ل_مساحة عمل نحو التحت"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:710
 msgid "Move to Another _Workspace"
 msgstr "انقل ل_مساحة عمل مغايرة"
 
