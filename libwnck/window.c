@@ -33,7 +33,7 @@
 #include "wnck-enum-types.h"
 #include "wnck-marshal.h"
 
-#define FALLBACK_NAME _("untitled window")
+#define FALLBACK_NAME _("Untitled window")
 #define ALL_WORKSPACES (0xFFFFFFFF)
 
 static GHashTable *window_hash = NULL;

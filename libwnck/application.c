@@ -26,7 +26,7 @@
 #include "application.h"
 #include "private.h"
 
-#define FALLBACK_NAME _("untitled application")
+#define FALLBACK_NAME _("Untitled application")
 
 static GHashTable *app_hash = NULL;
 
