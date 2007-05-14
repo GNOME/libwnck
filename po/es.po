@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-01 03:48+0100\n"
-"PO-Revision-Date: 2007-05-04 10:53+0200\n"
+"POT-Creation-Date: 2007-05-14 04:06+0100\n"
+"PO-Revision-Date: 2007-05-14 09:28+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,8 +21,8 @@ msgstr ""
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../libwnck/application.c:29
-msgid "untitled application"
-msgstr "aplicación sin título"
+msgid "Untitled application"
+msgstr "Aplicación sin título"
 
 #: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
@@ -156,6 +156,6 @@ msgid "Move to Another _Workspace"
 msgstr "Mover a _otro área de trabajo"
 
 #: ../libwnck/window.c:36
-msgid "untitled window"
-msgstr "ventana sin título"
+msgid "Untitled window"
+msgstr "Ventana sin título"
 
