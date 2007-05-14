@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-04-30 23:15+0300\n"
-"PO-Revision-Date: 2007-04-30 23:16+0300\n"
+"POT-Creation-Date: 2007-05-14 05:40+0300\n"
+"PO-Revision-Date: 2007-05-14 05:43+0300\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian Latin <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: ../libwnck/application.c:29
-msgid "untitled application"
-msgstr "aplikacyja biaz nazvy"
+msgid "Untitled application"
+msgstr "Aplikacyja biaz nazvy"
 
 #: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
@@ -69,11 +69,36 @@ msgstr "_Minimalizuj usie"
 msgid "_Unminimize All"
 msgstr "_Anuluj minimalizacyju ŭsich voknaŭ"
 
-#: ../libwnck/test-tasklist.c:10
+#: ../libwnck/test-pager.c:13
+msgid "Use N_ROWS rows"
+msgstr "Užyj KOLKI_RADKOŬ radkoŭ"
+
+#: ../libwnck/test-pager.c:13
+msgid "N_ROWS"
+msgstr "KOLKI_RADKOŬ"
+
+#: ../libwnck/test-pager.c:14
+msgid "Only show current workspace"
+msgstr "Pakazvaj tolki hety pracoŭny abšar"
+
+#: ../libwnck/test-pager.c:15
+#: ../libwnck/test-tasklist.c:13
+msgid "Use RTL as default direction"
+msgstr "Užyj aryjentacyju sprava ŭleva jak zmoŭčanuju"
+
+#: ../libwnck/test-pager.c:16
+msgid "Show workspace names instead of workspace contents"
+msgstr "Pakazvaj nazvy rabočych abšaraŭ, a nia ichnaje źmieściva"
+
+#: ../libwnck/test-pager.c:17
+msgid "Use a vertical orientation"
+msgstr "Užyj vertykalnuju aryjentacyju"
+
+#: ../libwnck/test-tasklist.c:11
 msgid "Always group windows"
 msgstr "Zaŭsiody hrupuj vokny"
 
-#: ../libwnck/test-tasklist.c:11
+#: ../libwnck/test-tasklist.c:12
 msgid "Display windows from all workspaces"
 msgstr "Pakazvaj vokny z usich rabočych abšaraŭ"
 
@@ -153,6 +178,6 @@ msgid "Move to Another _Workspace"
 msgstr "Pierasuń na _inšy pracoŭny abšar"
 
 #: ../libwnck/window.c:36
-msgid "untitled window"
-msgstr "vakno biez zahałoŭka"
+msgid "Untitled window"
+msgstr "Vakno biez zahałoŭka"
 
