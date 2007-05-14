@@ -1,3 +1,14 @@
+2007-05-14  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/test-tasklist.c: (main): call gtk_init(), and get a --rtl
+	commandline argument
+	* libwnck/test-pager.c: add --n-rows, --only-current, --rtl,
+	--show-name and --vertical-orientation commandline arguments
+	(create_pager_window), (main): updated for commandline arguments
+	* libwnck/pager.c: (get_workspace_rect): fix vertical pager in RTL
+	environments
+	Fix bug #431461
+
 2007-05-13  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/application.c:

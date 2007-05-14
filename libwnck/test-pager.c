@@ -1,10 +1,29 @@
-
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
+#include <glib/gi18n.h>
+
+static int n_rows = 1;
+static gboolean only_current = FALSE;
+static gboolean rtl = FALSE;
+static gboolean show_name = FALSE;
+static gboolean vertical = FALSE;
+
+static GOptionEntry entries[] = {
+	{"n-rows", 'n', 0, G_OPTION_ARG_INT, &n_rows, N_("Use N_ROWS rows"), N_("N_ROWS")},
+	{"only-current", 'c', 0, G_OPTION_ARG_NONE, &only_current, N_("Only show current workspace"), NULL},
+	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
+	{"show-name", 's', 0, G_OPTION_ARG_NONE, &show_name, N_("Show workspace names instead of workspace contents"), NULL},
+	{"vertical-orientation", 'v', 0, G_OPTION_ARG_NONE, &vertical, N_("Use a vertical orientation"), NULL},
+	{NULL }
+};
+
 static void
 create_pager_window (WnckScreen *screen,
-                     GtkOrientation orientation)
+                     GtkOrientation orientation,
+		     gboolean       show_all,
+		     WnckPagerDisplayMode mode,
+		     int n_rows)
 {
   GtkWidget *win;
   GtkWidget *pager;
@@ -28,8 +47,10 @@ create_pager_window (WnckScreen *screen,
 
   pager = wnck_pager_new (screen);
 
+  wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
+  wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
   wnck_pager_set_orientation (WNCK_PAGER (pager), orientation);
-  wnck_pager_set_n_rows (WNCK_PAGER (pager), 3);
+  wnck_pager_set_n_rows (WNCK_PAGER (pager), n_rows);
   wnck_pager_set_shadow_type (WNCK_PAGER (pager), GTK_SHADOW_IN);
   
   gtk_container_add (GTK_CONTAINER (win), pager);
@@ -40,12 +61,21 @@ create_pager_window (WnckScreen *screen,
 int
 main (int argc, char **argv)
 {
+  GOptionContext *ctxt;
+  GtkOrientation  orientation;
+  WnckPagerDisplayMode mode;
   WnckScreen *screen;
   
+  ctxt = g_option_context_new ("");
+  g_option_context_add_main_entries (ctxt, entries, NULL);
+  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
+  g_option_context_parse (ctxt, &argc, &argv, NULL);
+  g_option_context_free (ctxt);
+  ctxt = NULL;
+
   gtk_init (&argc, &argv);
 
-  /* to test rtl layout, set RTL=1 in the environment */
-  if (g_getenv ("RTL"))
+  if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
   screen = wnck_screen_get_default ();
@@ -53,8 +83,17 @@ main (int argc, char **argv)
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
   
-  create_pager_window (screen, GTK_ORIENTATION_HORIZONTAL);
-  /*   create_pager_window (screen, GTK_ORIENTATION_VERTICAL); */
+  if (vertical)
+	  orientation = GTK_ORIENTATION_VERTICAL;
+  else
+	  orientation = GTK_ORIENTATION_HORIZONTAL;
+
+  if (show_name)
+	  mode = WNCK_PAGER_DISPLAY_NAME;
+  else
+	  mode = WNCK_PAGER_DISPLAY_CONTENT;
+
+  create_pager_window (screen, orientation, !only_current, mode, n_rows);
   
   gtk_main ();
   

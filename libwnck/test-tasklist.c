@@ -5,17 +5,19 @@
 
 static gboolean display_all = FALSE;
 static gboolean always_group = FALSE;
+static gboolean rtl = FALSE;
 
 static GOptionEntry entries[] = {
-	{"always-group", 'a', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
+	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
+	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
 	{NULL }
 };
 
 int
 main (int argc, char **argv)
 {
-  GOptionContext* ctxt;
+  GOptionContext *ctxt;
   WnckScreen *screen;
   GtkWidget *win;
   GtkWidget *frame;
@@ -28,8 +30,9 @@ main (int argc, char **argv)
   g_option_context_free (ctxt);
   ctxt = NULL;
 
-  /* to test rtl layout, set RTL=1 in the environment */
-  if (g_getenv ("RTL"))
+  gtk_init (&argc, &argv);
+
+  if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
   screen = wnck_screen_get_default ();
