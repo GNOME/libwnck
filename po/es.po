@@ -1,3 +1,4 @@
+# translation of libwnck.HEAD.es.po to Spanish
 # Spanish translation of libwnck.
 # Copyright (C) 2001, 2002, 2003, 2005, 2006, 2007 Free Software Foundation, Inc
 # This file is distributed under the same license as the  libwnck package.
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-14 04:06+0100\n"
-"PO-Revision-Date: 2007-05-14 09:28+0200\n"
+"POT-Creation-Date: 2007-05-14 22:26+0100\n"
+"PO-Revision-Date: 2007-05-15 13:52+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -73,11 +74,35 @@ msgstr "_Minimizar todo"
 msgid "_Unminimize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/test-tasklist.c:10
+#: ../libwnck/test-pager.c:13
+msgid "Use N_ROWS rows"
+msgstr "Usar columnas N_COLUMNAS"
+
+#: ../libwnck/test-pager.c:13
+msgid "N_ROWS"
+msgstr "N_COLUMNAS"
+
+#: ../libwnck/test-pager.c:14
+msgid "Only show current workspace"
+msgstr "Sólo mostrar esta área de trabajo"
+
+#: ../libwnck/test-pager.c:15 ../libwnck/test-tasklist.c:13
+msgid "Use RTL as default direction"
+msgstr "Usar la dirección D-->I como predeterminada"
+
+#: ../libwnck/test-pager.c:16
+msgid "Show workspace names instead of workspace contents"
+msgstr "Mostrar los nombres de las áreas de trabajo en lugar del contenido"
+
+#: ../libwnck/test-pager.c:17
+msgid "Use a vertical orientation"
+msgstr "Usar orientación vertical"
+
+#: ../libwnck/test-tasklist.c:11
 msgid "Always group windows"
 msgstr "Siempre agrupar ventanas"
 
-#: ../libwnck/test-tasklist.c:11
+#: ../libwnck/test-tasklist.c:12
 msgid "Display windows from all workspaces"
 msgstr "Mostrar las ventanas de todas las áreas de trabajo"
 
