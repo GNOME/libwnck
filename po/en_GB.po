@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-09-10 11:16+0100\n"
-"PO-Revision-Date: 2006-09-10 11:16-0000\n"
+"POT-Creation-Date: 2007-05-15 22:52+0100\n"
+"PO-Revision-Date: 2007-05-15 22:52-0000\n"
 "Last-Translator: David Lodge <dave@cirt.net>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,8 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../libwnck/application.c:29
-msgid "untitled application"
-msgstr "untitled application"
+msgid "Untitled application"
+msgstr "Untitled application"
 
 #: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
@@ -36,116 +36,149 @@ msgstr "Click this to switch to workspace %s"
 msgid "Unknown Window"
 msgstr "Unknown Window"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/selector.c:772
 msgid "No Windows Open"
 msgstr "No Windows Open"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:876
 msgid "Window Selector"
 msgstr "Window Selector"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:877
 msgid "Tool to switch between windows"
 msgstr "Tool to switch between windows"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Window List"
 
-#: ../libwnck/tasklist.c:648
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Tool to switch between visible windows"
 
-#: ../libwnck/tasklist.c:2530
+#: ../libwnck/tasklist.c:2579
 msgid "_Close All"
 msgstr "_Close All"
 
-#: ../libwnck/tasklist.c:2545
+#: ../libwnck/tasklist.c:2594
 msgid "_Minimize All"
 msgstr "_Minimise All"
 
-#: ../libwnck/tasklist.c:2556
+#: ../libwnck/tasklist.c:2605
 msgid "_Unminimize All"
 msgstr "_Unminimise All"
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-pager.c:13
+msgid "Use N_ROWS rows"
+msgstr "Use N_ROWS rows"
+
+#: ../libwnck/test-pager.c:13
+msgid "N_ROWS"
+msgstr "N_ROWS"
+
+#: ../libwnck/test-pager.c:14
+msgid "Only show current workspace"
+msgstr "Only show current workspace"
+
+#: ../libwnck/test-pager.c:15
+#: ../libwnck/test-tasklist.c:13
+msgid "Use RTL as default direction"
+msgstr "Use RTL as default direction"
+
+#: ../libwnck/test-pager.c:16
+msgid "Show workspace names instead of workspace contents"
+msgstr "Show workspace names instead of workspace contents"
+
+#: ../libwnck/test-pager.c:17
+msgid "Use a vertical orientation"
+msgstr "Use a vertical orientation"
+
+#: ../libwnck/test-tasklist.c:11
+msgid "Always group windows"
+msgstr "Always group windows"
+
+#: ../libwnck/test-tasklist.c:12
+msgid "Display windows from all workspaces"
+msgstr "Display windows from all workspaces"
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "Unmi_nimise"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "Mi_nimise"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "Unma_ximise"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "Ma_ximise"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "_Only on This Workspace"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "_Always on Visible Workspace"
-
-#: ../libwnck/window-action-menu.c:463
+#: ../libwnck/window-action-menu.c:498
 #: ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Workspace %d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "Workspace 1_0"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Workspace %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "On _Top"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "_Move"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "_Resize"
 
-#: ../libwnck/window-action-menu.c:592
+#: ../libwnck/window-action-menu.c:621
 msgid "_Close"
 msgstr "_Close"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:630
+msgid "Always On _Top"
+msgstr "Always On _Top"
+
+#: ../libwnck/window-action-menu.c:638
+msgid "_Always on Visible Workspace"
+msgstr "_Always on Visible Workspace"
+
+#: ../libwnck/window-action-menu.c:643
+msgid "_Only on This Workspace"
+msgstr "_Only on This Workspace"
+
+#: ../libwnck/window-action-menu.c:669
 msgid "Move to Workspace _Left"
 msgstr "Move to Workspace _Left"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:680
 msgid "Move to Workspace R_ight"
 msgstr "Move to Workspace R_ight"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:691
 msgid "Move to Workspace _Up"
 msgstr "Move to Workspace _Up"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:703
 msgid "Move to Workspace _Down"
 msgstr "Move to Workspace _Down"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:710
 msgid "Move to Another _Workspace"
 msgstr "Move to Another _Workspace"
 
 #: ../libwnck/window.c:36
-msgid "untitled window"
-msgstr "untitled window"
+msgid "Untitled window"
+msgstr "Untitled window"
 
 #~ msgid "_Unroll"
 #~ msgstr "_Unroll"
