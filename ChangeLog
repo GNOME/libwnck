@@ -1,5 +1,12 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_fill): don't connect to the
+	destroy signal
+	(wnck_selector_class_init): directly set a destroy handler
+	(wnck_selector_destroy): updated
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.[ch]: use G_DEFINE_TYPE
 	(wnck_selector_get_screen): assert that the widget has a screen
 	(wnck_selector_disconnect_from_window): new

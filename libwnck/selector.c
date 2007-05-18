@@ -62,23 +62,9 @@ G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
 static void wnck_selector_finalize          (GObject           *object);
 static void wnck_selector_realize           (GtkWidget *widget);
 static void wnck_selector_unrealize         (GtkWidget *widget);
+static void wnck_selector_destroy           (GtkObject *object);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
                                              WnckWindow        *window);
-
-static void
-wnck_selector_destroy (GtkWidget *widget, WnckSelector *selector)
-{
-  WnckSelectorPrivate *priv;
-  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-  if (priv->menu)
-    gtk_widget_destroy (priv->menu);
-  priv->menu = NULL;
-  priv->no_windows_item = NULL;
-
-  if (priv->icon_pixbuf)
-    g_object_unref (priv->icon_pixbuf);
-  priv->icon_pixbuf = NULL;
-}
 
 static WnckScreen *
 wnck_selector_get_screen (WnckSelector *selector)
@@ -809,8 +795,6 @@ wnck_selector_fill (WnckSelector *selector)
 {
   WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
-  g_signal_connect (selector, "destroy",
-                    G_CALLBACK (wnck_selector_destroy), selector);
   g_signal_connect (selector, "scroll-event",
                     G_CALLBACK (wnck_selector_scroll_cb), selector);
 
@@ -857,10 +841,13 @@ wnck_selector_init (WnckSelector *selector)
 static void
 wnck_selector_class_init (WnckSelectorClass *klass)
 {
-  GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  GtkWidgetClass *widget_class  = (GtkWidgetClass *) klass;
+  GObjectClass   *object_class     = G_OBJECT_CLASS (klass);
+  GtkObjectClass *gtk_object_class = GTK_OBJECT_CLASS (klass);
+  GtkWidgetClass *widget_class     = GTK_WIDGET_CLASS (klass);
 
   object_class->finalize = wnck_selector_finalize;
+
+  gtk_object_class->destroy = wnck_selector_destroy;
 
   widget_class->realize   = wnck_selector_realize;
   widget_class->unrealize = wnck_selector_unrealize;
@@ -882,6 +869,23 @@ wnck_selector_finalize (GObject *object)
   priv->window_hash = NULL;
 
   G_OBJECT_CLASS (wnck_selector_parent_class)->finalize (object);
+}
+
+static void
+wnck_selector_destroy (GtkObject *object)
+{
+  WnckSelectorPrivate *priv;
+  priv = WNCK_SELECTOR_GET_PRIVATE (WNCK_SELECTOR (object));
+  if (priv->menu)
+    gtk_widget_destroy (priv->menu);
+  priv->menu = NULL;
+  priv->no_windows_item = NULL;
+
+  if (priv->icon_pixbuf)
+    g_object_unref (priv->icon_pixbuf);
+  priv->icon_pixbuf = NULL;
+
+  GTK_OBJECT_CLASS (wnck_selector_parent_class)->destroy (object);
 }
 
 static void
