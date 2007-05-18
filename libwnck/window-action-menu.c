@@ -608,19 +608,6 @@ wnck_create_window_action_menu (WnckWindow *window)
   set_item_text (amd->resize_item, _("_Resize"));
   set_item_stock (amd->move_item, NULL);
 
-  separator = gtk_separator_menu_item_new ();
-  gtk_widget_show (separator);
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         separator);
-
-  amd->close_item = make_menu_item (amd, CLOSE);
-  
-  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->close_item);
-
-  set_item_text (amd->close_item, _("_Close"));
-  set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
-
   amd->workspace_separator = separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -738,6 +725,19 @@ wnck_create_window_action_menu (WnckWindow *window)
       g_free (name);
       g_free (label);	
     }
+
+  separator = gtk_separator_menu_item_new ();
+  gtk_widget_show (separator);
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         separator);
+
+  amd->close_item = make_menu_item (amd, CLOSE);
+  
+  gtk_menu_shell_append (GTK_MENU_SHELL (menu),
+                         amd->close_item);
+
+  set_item_text (amd->close_item, _("_Close"));
+  set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
 		 
   g_signal_connect_object (G_OBJECT (amd->window), 
                            "state_changed",

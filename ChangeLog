@@ -1,3 +1,9 @@
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):
+	Move the Close menu item at the bottom of the menu.
+	Fix libwnck side of bug #104026
+
 2007-05-14  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/test-tasklist.c: (main): call gtk_init(), and get a --rtl
