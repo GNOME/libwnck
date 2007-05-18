@@ -1,5 +1,13 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: remove useless fields from the private structure
+	(wnck_selector_destroy_menu): beautification
+	(wnck_selector_fill): use a local variable for the menu item
+	(wnck_selector_init): nullify everything
+	(wnck_selector_destroy): updated and nullify some things
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_add_window): put pinned windows
 	with windows in the current workspace.
 	The code in tasklist_include_window_impl() is more complete and could

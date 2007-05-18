@@ -44,14 +44,12 @@ typedef struct
 #define WNCK_SELECTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SELECTOR, WnckSelectorPrivate))
 
 struct _WnckSelectorPrivate {
-  GtkWidget *image;
-  GtkWidget *menu;
-  GtkWidget *menu_bar;
-  GtkWidget *menu_item;
-  GtkWidget *no_windows_item;
-
-  GdkPixbuf *icon_pixbuf;
+  GtkWidget  *image;
   WnckWindow *icon_window;
+
+  /* those have the same lifecycle as the menu */
+  GtkWidget  *menu;
+  GtkWidget  *no_windows_item;
   GHashTable *window_hash;
 
   int size;
@@ -651,6 +649,7 @@ wnck_selector_destroy_menu (GtkWidget *widget, WnckSelector *selector)
   if (priv->window_hash)
     g_hash_table_destroy (priv->window_hash);
   priv->window_hash = NULL;
+
   priv->no_windows_item = NULL;
 }
 
@@ -796,21 +795,22 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
 static void
 wnck_selector_fill (WnckSelector *selector)
 {
+  GtkWidget *menu_item;
   WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   g_signal_connect (selector, "scroll-event",
                     G_CALLBACK (wnck_selector_scroll_cb), selector);
 
-  priv->menu_item = gtk_menu_item_new ();
-  gtk_widget_show (priv->menu_item);
-  gtk_menu_shell_append (GTK_MENU_SHELL (selector), priv->menu_item);
+  menu_item = gtk_menu_item_new ();
+  gtk_widget_show (menu_item);
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector), menu_item);
 
   priv->image = gtk_image_new ();
   gtk_widget_show (priv->image);
-  gtk_container_add (GTK_CONTAINER (priv->menu_item), priv->image);
+  gtk_container_add (GTK_CONTAINER (menu_item), priv->image);
 
   priv->menu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (priv->menu_item),
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
                              priv->menu);
   g_signal_connect (priv->menu, "hide",
                     G_CALLBACK (wnck_selector_menu_hidden), selector);
@@ -835,10 +835,20 @@ static void
 wnck_selector_init (WnckSelector *selector)
 {
   AtkObject *atk_obj;
+  WnckSelectorPrivate *priv;
 
   atk_obj = gtk_widget_get_accessible (GTK_WIDGET (selector));
   atk_object_set_name (atk_obj, _("Window Selector"));
   atk_object_set_description (atk_obj, _("Tool to switch between windows"));
+
+  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
+
+  priv->image           = NULL;
+  priv->icon_window     = NULL;
+  priv->menu            = NULL;
+  priv->no_windows_item = NULL;
+  priv->window_hash     = NULL;
+  priv->size            = -1;
 }
 
 static void
@@ -879,14 +889,13 @@ wnck_selector_destroy (GtkObject *object)
 {
   WnckSelectorPrivate *priv;
   priv = WNCK_SELECTOR_GET_PRIVATE (WNCK_SELECTOR (object));
+
   if (priv->menu)
     gtk_widget_destroy (priv->menu);
   priv->menu = NULL;
-  priv->no_windows_item = NULL;
 
-  if (priv->icon_pixbuf)
-    g_object_unref (priv->icon_pixbuf);
-  priv->icon_pixbuf = NULL;
+  priv->image       = NULL;
+  priv->icon_window = NULL;
 
   GTK_OBJECT_CLASS (wnck_selector_parent_class)->destroy (object);
 }
