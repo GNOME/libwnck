@@ -4,11 +4,13 @@
 #include <glib/gi18n.h>
 
 static gboolean display_all = FALSE;
+static gboolean never_group = FALSE;
 static gboolean always_group = FALSE;
 static gboolean rtl = FALSE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
+	{"never-group", 'n', 0, G_OPTION_ARG_NONE, &never_group, N_("Never group windows"), NULL},
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
 	{NULL }
@@ -59,6 +61,9 @@ main (int argc, char **argv)
   if (always_group)
     wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
                                 WNCK_TASKLIST_ALWAYS_GROUP);
+  else if (never_group)
+    wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
+                                WNCK_TASKLIST_NEVER_GROUP);
   else
     wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
                                 WNCK_TASKLIST_AUTO_GROUP);
