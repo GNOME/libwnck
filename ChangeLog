@@ -1,3 +1,9 @@
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/screen.c: (wnck_screen_class_init):
+	* libwnck/screen.h: I've already broken API, so add the few signals
+	that were commented out, and re-break API before we release :-)
+
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/selector.c: (wnck_selector_scroll_cb): take into account

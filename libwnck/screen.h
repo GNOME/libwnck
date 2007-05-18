@@ -84,9 +84,6 @@ struct _WnckScreenClass
   /* New background */
   void (* background_changed)       (WnckScreen      *screen);
 
-#if 0
-  /* FIXME uncomment all this next time we feel like breaking ABI */
-
   /* new class group */
   void (* class_group_opened)       (WnckScreen     *screen,
                                      WnckClassGroup *class_group);
@@ -99,6 +96,7 @@ struct _WnckScreenClass
   /* Viewport stuff changed */
   void (* viewports_changed)        (WnckScreen      *screen);
   
+#if 0
   void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);

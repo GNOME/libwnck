@@ -303,12 +303,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
     g_signal_new ("class_group_opened",
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-#if 0
-                  /* FIXME when we can break ABI add this */
                   G_STRUCT_OFFSET (WnckScreenClass, class_group_opened),
-#else
-		  0,
-#endif
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
@@ -317,12 +312,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
     g_signal_new ("class_group_closed",
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-#if 0
-                  /* FIXME when we can break ABI add this */
                   G_STRUCT_OFFSET (WnckScreenClass, class_group_closed),
-#else
-		  0,
-#endif
                   NULL, NULL,
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
@@ -339,12 +329,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
     g_signal_new ("showing_desktop_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-#if 0
-                  /* FIXME when we can break ABI add this */
                   G_STRUCT_OFFSET (WnckScreenClass, showing_desktop_changed),
-#else
-                  0,
-#endif
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -353,12 +338,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
     g_signal_new ("viewports_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
-#if 0
-                  /* FIXME when we can break ABI add this */
                   G_STRUCT_OFFSET (WnckScreenClass, viewports_changed),
-#else
-                  0,
-#endif
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
