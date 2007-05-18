@@ -1,5 +1,12 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_add_window): put pinned windows
+	with windows in the current workspace.
+	The code in tasklist_include_window_impl() is more complete and could
+	maybe be shared.
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_fill): don't connect to the
 	destroy signal
 	(wnck_selector_class_init): directly set a destroy handler

@@ -507,7 +507,10 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
   workspace =
     wnck_screen_get_active_workspace (wnck_selector_get_screen (selector));
 
-  if (wnck_window_get_workspace (window) == workspace)
+  /* FIXME: tasklist_include_window_impl() is similar to this, but more
+   * complete */
+  if (wnck_window_is_pinned (window) ||
+      wnck_window_get_workspace (window) == workspace)
     gtk_menu_shell_prepend (GTK_MENU_SHELL (priv->menu), item);
   else
     gtk_menu_shell_append (GTK_MENU_SHELL (priv->menu), item);
