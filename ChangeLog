@@ -1,5 +1,10 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_scroll_cb): take into account
+	pinned windows too
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_make_menu_consistent): new, to
 	hide/show the separator and "no windows" item when it makes sense
 	(wnck_selector_window_state_changed), (wnck_selector_add_window),

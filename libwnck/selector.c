@@ -722,7 +722,8 @@ wnck_selector_scroll_cb (WnckSelector *selector,
       if (wnck_window_is_skip_tasklist (window))
         continue;
 
-      if (workspace && wnck_window_get_workspace (window) != workspace)
+      if (workspace && !wnck_window_is_pinned (window) &&
+          wnck_window_get_workspace (window) != workspace)
         continue;
 
       if (should_activate_next_window)
