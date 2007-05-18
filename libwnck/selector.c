@@ -134,7 +134,6 @@ wnck_selector_set_window_icon (WnckSelector *selector,
   GdkPixbuf *pixbuf, *freeme, *freeme2;
   int width, height;
   int icon_size = -1;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   pixbuf = NULL;
   freeme = NULL;
@@ -146,8 +145,8 @@ wnck_selector_set_window_icon (WnckSelector *selector,
   if (!pixbuf)
     pixbuf = wnck_selector_get_default_window_icon ();
 
-  if (!use_icon_size && priv->size > 1)
-    icon_size = priv->size;
+  if (!use_icon_size && selector->priv->size > 1)
+    icon_size = selector->priv->size;
 
   if (icon_size == -1)
     gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
@@ -183,9 +182,9 @@ wnck_selector_set_window_icon (WnckSelector *selector,
 static void
 wnck_selector_set_active_window (WnckSelector *selector, WnckWindow *window)
 {
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-  wnck_selector_set_window_icon (selector, priv->image, window, FALSE);
-  priv->icon_window = window;
+  wnck_selector_set_window_icon (selector, selector->priv->image,
+		  		 window, FALSE);
+  selector->priv->icon_window = window;
 }
 
 /* The results of this function will need to be freed. */
@@ -224,17 +223,16 @@ wnck_selector_window_icon_changed (WnckWindow *window,
 {
   window_hash_item *item;
   GtkWidget *image;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
-  if (priv->icon_window == window)
+  if (selector->priv->icon_window == window)
     wnck_selector_set_active_window (selector, window);
 
   item = NULL;
 
-  if (!priv->window_hash)
+  if (!selector->priv->window_hash)
 	  return;
 
-  item = g_hash_table_lookup (priv->window_hash, window);
+  item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (item != NULL)
     {
       image = gtk_image_new ();
@@ -251,15 +249,14 @@ wnck_selector_window_name_changed (WnckWindow *window,
 {
   window_hash_item *item;
   char *window_name;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   item = NULL;
   window_name = NULL;
 
-  if (!priv->window_hash)
+  if (!selector->priv->window_hash)
 	  return;
 
-  item = g_hash_table_lookup (priv->window_hash, window);
+  item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (item != NULL)
     {
       window_name = wnck_selector_get_window_name (window);
@@ -277,7 +274,6 @@ wnck_selector_window_state_changed (WnckWindow *window,
 {
   window_hash_item *item;
   char *window_name;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   if (!
       (changed_mask &
@@ -290,10 +286,10 @@ wnck_selector_window_state_changed (WnckWindow *window,
   item = NULL;
   window_name = NULL;
 
-  if (!priv->window_hash)
+  if (!selector->priv->window_hash)
 	  return;
 
-  item = g_hash_table_lookup (priv->window_hash, window);
+  item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (item == NULL)
     return;
 
@@ -331,11 +327,10 @@ wnck_selector_active_window_changed (WnckScreen *screen,
                                      WnckSelector *selector)
 {
   WnckWindow *window;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   window = wnck_screen_get_active_window (screen);
 
-  if (priv->icon_window != window)
+  if (selector->priv->icon_window != window)
     wnck_selector_set_active_window (selector, window);
 }
 
@@ -425,7 +420,6 @@ wnck_selector_item_new (WnckSelector *selector,
   GtkWidget *item;
   GtkWidget *ellipsizing_label;
   window_hash_item *hash_item;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
   };
@@ -446,7 +440,7 @@ wnck_selector_item_new (WnckSelector *selector,
       hash_item = g_new0 (window_hash_item, 1);
       hash_item->item = item;
       hash_item->label = ellipsizing_label;
-      g_hash_table_insert (priv->window_hash, window, hash_item);
+      g_hash_table_insert (selector->priv->window_hash, window, hash_item);
     }
 
   gtk_container_add (GTK_CONTAINER (item), ellipsizing_label);
@@ -482,7 +476,6 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
   GtkWidget *item;
   GtkWidget *image;
   char *name;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   if (wnck_window_is_skip_tasklist (window))
     return;
@@ -509,9 +502,9 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
    * complete */
   if (wnck_window_is_pinned (window) ||
       wnck_window_get_workspace (window) == workspace)
-    gtk_menu_shell_prepend (GTK_MENU_SHELL (priv->menu), item);
+    gtk_menu_shell_prepend (GTK_MENU_SHELL (selector->priv->menu), item);
   else
-    gtk_menu_shell_append (GTK_MENU_SHELL (priv->menu), item);
+    gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), item);
 
   g_signal_connect_swapped (item, "activate",
                             G_CALLBACK (wnck_selector_activate_window),
@@ -524,15 +517,13 @@ static void
 wnck_selector_window_opened (WnckScreen *screen,
                              WnckWindow *window, WnckSelector *selector)
 {
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-
-  if (priv->menu && GTK_WIDGET_VISIBLE (priv->menu))
+  if (selector->priv->menu && GTK_WIDGET_VISIBLE (selector->priv->menu))
     {
-      if (priv->no_windows_item
-          && GTK_WIDGET_VISIBLE (priv->no_windows_item))
-        gtk_widget_hide (priv->no_windows_item);
+      if (selector->priv->no_windows_item
+          && GTK_WIDGET_VISIBLE (selector->priv->no_windows_item))
+        gtk_widget_hide (selector->priv->no_windows_item);
       wnck_selector_add_window (selector, window);
-      gtk_menu_reposition (GTK_MENU (priv->menu));
+      gtk_menu_reposition (GTK_MENU (selector->priv->menu));
     }
 
   wnck_selector_connect_to_window (selector, window);
@@ -542,24 +533,23 @@ static void
 wnck_selector_window_closed (WnckScreen *screen,
                              WnckWindow *window, WnckSelector *selector)
 {
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
   window_hash_item *item;
 
-  if (window == priv->icon_window)
+  if (window == selector->priv->icon_window)
     wnck_selector_set_active_window (selector, NULL);
 
-  if (!priv->menu || !GTK_WIDGET_VISIBLE (priv->menu))
+  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
     return;
 
-  if (!priv->window_hash)
+  if (!selector->priv->window_hash)
 	  return;
 
-  item = g_hash_table_lookup (priv->window_hash, window);
+  item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (!item)
     return;
 
   gtk_widget_hide (item->item);
-  gtk_menu_reposition (GTK_MENU (priv->menu));
+  gtk_menu_reposition (GTK_MENU (selector->priv->menu));
 }
 
 static void
@@ -643,14 +633,13 @@ wnck_selector_disconnect_from_screen (WnckSelector *selector,
 static void
 wnck_selector_destroy_menu (GtkWidget *widget, WnckSelector *selector)
 {
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-  priv->menu = NULL;
+  selector->priv->menu = NULL;
 
-  if (priv->window_hash)
-    g_hash_table_destroy (priv->window_hash);
-  priv->window_hash = NULL;
+  if (selector->priv->window_hash)
+    g_hash_table_destroy (selector->priv->window_hash);
+  selector->priv->window_hash = NULL;
 
-  priv->no_windows_item = NULL;
+  selector->priv->no_windows_item = NULL;
 }
 
 static gboolean
@@ -744,29 +733,28 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
   WnckScreen *screen;
   GList *windows;
   GList *l, *children;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   /* Remove existing items */
-  children = gtk_container_get_children (GTK_CONTAINER (priv->menu));
+  children = gtk_container_get_children (GTK_CONTAINER (selector->priv->menu));
   for (l = children; l; l = l->next)
-    gtk_container_remove (GTK_CONTAINER (priv->menu), l->data);
+    gtk_container_remove (GTK_CONTAINER (selector->priv->menu), l->data);
   g_list_free (children);
 
-  priv->no_windows_item = NULL;
+  selector->priv->no_windows_item = NULL;
 
   /* Add separator */
   separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
-  gtk_menu_shell_append (GTK_MENU_SHELL (priv->menu), separator);
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), separator);
 
 
   /* Add windows */
   screen = wnck_selector_get_screen (selector);
   windows = wnck_screen_get_windows (screen);
 
-  if (priv->window_hash)
-    g_hash_table_destroy (priv->window_hash);
-  priv->window_hash = g_hash_table_new_full (g_direct_hash,
+  if (selector->priv->window_hash)
+    g_hash_table_destroy (selector->priv->window_hash);
+  selector->priv->window_hash = g_hash_table_new_full (g_direct_hash,
                                                  g_direct_equal,
                                                  NULL, g_free);
 
@@ -774,21 +762,21 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
     wnck_selector_add_window (selector, l->data);
 
   /* Remove separator if it is at the start or the end of the menu */
-  l = GTK_MENU_SHELL (priv->menu)->children;
+  l = GTK_MENU_SHELL (selector->priv->menu)->children;
 
   if ((separator == l->data) || separator == g_list_last (l)->data)
     gtk_widget_destroy (separator);
 
   /* Check if a no-windows item is needed */
-  if (!GTK_MENU_SHELL (priv->menu)->children)
+  if (!GTK_MENU_SHELL (selector->priv->menu)->children)
     {
-      priv->no_windows_item =
+      selector->priv->no_windows_item =
         wnck_selector_item_new (selector, _("No Windows Open"), NULL);
 
-      gtk_widget_set_sensitive (priv->no_windows_item, FALSE);
-      gtk_widget_show (priv->no_windows_item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (priv->menu),
-                             priv->no_windows_item);
+      gtk_widget_set_sensitive (selector->priv->no_windows_item, FALSE);
+      gtk_widget_show (selector->priv->no_windows_item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu),
+                             selector->priv->no_windows_item);
     }
 }
 
@@ -796,7 +784,6 @@ static void
 wnck_selector_fill (WnckSelector *selector)
 {
   GtkWidget *menu_item;
-  WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
   g_signal_connect (selector, "scroll-event",
                     G_CALLBACK (wnck_selector_scroll_cb), selector);
@@ -805,18 +792,18 @@ wnck_selector_fill (WnckSelector *selector)
   gtk_widget_show (menu_item);
   gtk_menu_shell_append (GTK_MENU_SHELL (selector), menu_item);
 
-  priv->image = gtk_image_new ();
-  gtk_widget_show (priv->image);
-  gtk_container_add (GTK_CONTAINER (menu_item), priv->image);
+  selector->priv->image = gtk_image_new ();
+  gtk_widget_show (selector->priv->image);
+  gtk_container_add (GTK_CONTAINER (menu_item), selector->priv->image);
 
-  priv->menu = gtk_menu_new ();
+  selector->priv->menu = gtk_menu_new ();
   gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
-                             priv->menu);
-  g_signal_connect (priv->menu, "hide",
+                             selector->priv->menu);
+  g_signal_connect (selector->priv->menu, "hide",
                     G_CALLBACK (wnck_selector_menu_hidden), selector);
-  g_signal_connect (priv->menu, "destroy",
+  g_signal_connect (selector->priv->menu, "destroy",
                     G_CALLBACK (wnck_selector_destroy_menu), selector);
-  g_signal_connect (priv->menu, "show",
+  g_signal_connect (selector->priv->menu, "show",
                     G_CALLBACK (wnck_selector_on_show), selector);
 
   gtk_widget_set_name (GTK_WIDGET (selector),
@@ -835,20 +822,19 @@ static void
 wnck_selector_init (WnckSelector *selector)
 {
   AtkObject *atk_obj;
-  WnckSelectorPrivate *priv;
 
   atk_obj = gtk_widget_get_accessible (GTK_WIDGET (selector));
   atk_object_set_name (atk_obj, _("Window Selector"));
   atk_object_set_description (atk_obj, _("Tool to switch between windows"));
 
-  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
+  selector->priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
-  priv->image           = NULL;
-  priv->icon_window     = NULL;
-  priv->menu            = NULL;
-  priv->no_windows_item = NULL;
-  priv->window_hash     = NULL;
-  priv->size            = -1;
+  selector->priv->image           = NULL;
+  selector->priv->icon_window     = NULL;
+  selector->priv->menu            = NULL;
+  selector->priv->no_windows_item = NULL;
+  selector->priv->window_hash     = NULL;
+  selector->priv->size            = -1;
 }
 
 static void
@@ -872,14 +858,12 @@ static void
 wnck_selector_finalize (GObject *object)
 {
   WnckSelector *selector;
-  WnckSelectorPrivate *priv;
 
   selector = WNCK_SELECTOR (object);
-  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
-  if (priv->window_hash)
-    g_hash_table_destroy (priv->window_hash);
-  priv->window_hash = NULL;
+  if (selector->priv->window_hash)
+    g_hash_table_destroy (selector->priv->window_hash);
+  selector->priv->window_hash = NULL;
 
   G_OBJECT_CLASS (wnck_selector_parent_class)->finalize (object);
 }
@@ -887,15 +871,16 @@ wnck_selector_finalize (GObject *object)
 static void
 wnck_selector_destroy (GtkObject *object)
 {
-  WnckSelectorPrivate *priv;
-  priv = WNCK_SELECTOR_GET_PRIVATE (WNCK_SELECTOR (object));
+  WnckSelector *selector;
 
-  if (priv->menu)
-    gtk_widget_destroy (priv->menu);
-  priv->menu = NULL;
+  selector = WNCK_SELECTOR (object);
 
-  priv->image       = NULL;
-  priv->icon_window = NULL;
+  if (selector->priv->menu)
+    gtk_widget_destroy (selector->priv->menu);
+  selector->priv->menu = NULL;
+
+  selector->priv->image       = NULL;
+  selector->priv->icon_window = NULL;
 
   GTK_OBJECT_CLASS (wnck_selector_parent_class)->destroy (object);
 }

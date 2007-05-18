@@ -1,5 +1,20 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_set_window_icon),
+	(wnck_selector_set_active_window),
+	(wnck_selector_window_icon_changed),
+	(wnck_selector_window_name_changed),
+	(wnck_selector_window_state_changed),
+	(wnck_selector_active_window_changed), (wnck_selector_item_new),
+	(wnck_selector_add_window), (wnck_selector_window_opened),
+	(wnck_selector_window_closed), (wnck_selector_destroy_menu),
+	(wnck_selector_on_show), (wnck_selector_fill),
+	(wnck_selector_init), (wnck_selector_finalize),
+	(wnck_selector_destroy): use selector->priv insteaf of
+	WNCK_SELECTOR_GET_PRIVATE() everywhere
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: remove useless fields from the private structure
 	(wnck_selector_destroy_menu): beautification
 	(wnck_selector_fill): use a local variable for the menu item
