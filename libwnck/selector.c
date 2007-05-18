@@ -55,16 +55,15 @@ struct _WnckSelectorPrivate {
   GHashTable *window_hash;
 
   int size;
-  WnckScreen *screen;
 };
 
-static void wnck_selector_init              (WnckSelector      *selector);
-static void wnck_selector_class_init        (WnckSelectorClass *klass);
+G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
+
 static void wnck_selector_finalize          (GObject           *object);
+static void wnck_selector_realize           (GtkWidget *widget);
+static void wnck_selector_unrealize         (GtkWidget *widget);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
                                              WnckWindow        *window);
-
-static gpointer selector_parent_class;
 
 static void
 wnck_selector_destroy (GtkWidget *widget, WnckSelector *selector)
@@ -85,11 +84,8 @@ static WnckScreen *
 wnck_selector_get_screen (WnckSelector *selector)
 {
   GdkScreen *screen;
-  WnckSelectorPrivate *priv;
 
-  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-  if (!gtk_widget_has_screen (GTK_WIDGET (selector)))
-    return priv->screen;
+  g_assert (gtk_widget_has_screen (GTK_WIDGET (selector)));
 
   screen = gtk_widget_get_screen (GTK_WIDGET (selector));
 
@@ -611,6 +607,21 @@ wnck_selector_connect_to_window (WnckSelector *selector, WnckWindow *window)
 }
 
 static void
+wnck_selector_disconnect_from_window (WnckSelector *selector,
+                                      WnckWindow   *window)
+{
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_selector_window_icon_changed,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_selector_window_name_changed,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_selector_window_state_changed,
+                                        selector);
+}
+
+static void
 wnck_selector_connect_to_screen (WnckSelector *selector, WnckScreen *screen)
 {
   wncklet_connect_while_alive (screen, "active_window_changed",
@@ -625,6 +636,21 @@ wnck_selector_connect_to_screen (WnckSelector *selector, WnckScreen *screen)
   wncklet_connect_while_alive (screen, "window_closed",
                                G_CALLBACK (wnck_selector_window_closed),
                                selector, selector);
+}
+
+static void
+wnck_selector_disconnect_from_screen (WnckSelector *selector,
+                                      WnckScreen   *screen)
+{
+  g_signal_handlers_disconnect_by_func (screen,
+                                        wnck_selector_active_window_changed,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (screen,
+                                        wnck_selector_window_opened,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (screen,
+                                        wnck_selector_window_closed,
+                                        selector);
 }
 
 static void
@@ -779,27 +805,6 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
 }
 
 static void
-wnck_selector_setup_menu (WnckSelector *selector)
-{
-  WnckScreen *screen;
-  GList *windows, *l;
-
-  screen = wnck_selector_get_screen (selector);
-  windows = wnck_screen_get_windows (screen);
-
-  for (l = windows; l; l = l->next)
-    if (wnck_window_is_active (l->data))
-      break;
-
-  wnck_selector_set_active_window (selector, l ? l->data : NULL);
-
-  for (l = windows; l; l = l->next)
-    wnck_selector_connect_to_window (selector, l->data);
-
-  wnck_selector_connect_to_screen (selector, screen);
-}
-
-static void
 wnck_selector_fill (WnckSelector *selector)
 {
   WnckSelectorPrivate *priv = WNCK_SELECTOR_GET_PRIVATE (selector);
@@ -836,35 +841,7 @@ wnck_selector_fill (WnckSelector *selector)
                        "}\n"
                        "widget \"*gnome-panel-window-menu-menu-bar*\" style : highest \"gnome-panel-window-menu-menu-bar-style\"");
 
-  wnck_selector_setup_menu (selector);
   gtk_widget_show (GTK_WIDGET (selector));
-}
-
-GType
-wnck_selector_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-
-  if (!object_type)
-    {
-      const GTypeInfo object_info = {
-        sizeof (WnckSelectorClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_selector_class_init,
-        NULL,                   /* class_finalize */
-        NULL,                   /* class_data */
-        sizeof (WnckSelector),
-        0,                      /* n_preallocs */
-        (GInstanceInitFunc) wnck_selector_init,
-      };
-
-      object_type = g_type_register_static (GTK_TYPE_MENU_BAR,
-                                            "WnckSelector", &object_info, 0);
-    }
-  return object_type;
 }
 
 static void
@@ -881,9 +858,13 @@ static void
 wnck_selector_class_init (WnckSelectorClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+  GtkWidgetClass *widget_class  = (GtkWidgetClass *) klass;
 
-  selector_parent_class = g_type_class_peek_parent (klass);
   object_class->finalize = wnck_selector_finalize;
+
+  widget_class->realize   = wnck_selector_realize;
+  widget_class->unrealize = wnck_selector_unrealize;
+
   g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
 }
 
@@ -900,17 +881,56 @@ wnck_selector_finalize (GObject *object)
     g_hash_table_destroy (priv->window_hash);
   priv->window_hash = NULL;
 
-  G_OBJECT_CLASS (selector_parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_selector_parent_class)->finalize (object);
+}
+
+static void
+wnck_selector_realize (GtkWidget *widget)
+{
+  WnckSelector *selector;
+  WnckScreen   *screen;
+  WnckWindow   *window;
+  GList        *l;
+
+  GTK_WIDGET_CLASS (wnck_selector_parent_class)->realize (widget);
+
+  selector = WNCK_SELECTOR (widget);
+  screen = wnck_selector_get_screen (selector);
+
+  window = wnck_screen_get_active_window (screen);
+  wnck_selector_set_active_window (selector, window);
+
+  for (l = wnck_screen_get_windows (screen); l; l = l->next)
+    wnck_selector_connect_to_window (selector, l->data);
+
+  wnck_selector_connect_to_screen (selector, screen);
+}
+
+static void
+wnck_selector_unrealize (GtkWidget *widget)
+{
+  WnckSelector *selector;
+  WnckScreen   *screen;
+  GList        *l;
+
+  selector = WNCK_SELECTOR (widget);
+  screen = wnck_selector_get_screen (selector);
+
+  wnck_selector_disconnect_from_screen (selector, screen);
+
+  for (l = wnck_screen_get_windows (screen); l; l = l->next)
+    wnck_selector_disconnect_from_window (selector, l->data);
+
+  GTK_WIDGET_CLASS (wnck_selector_parent_class)->unrealize (widget);
 }
 
 GtkWidget *
-wnck_selector_new (WnckScreen *screen)
+wnck_selector_new (void)
 {
   WnckSelector *selector;
-  WnckSelectorPrivate *priv;
+
   selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
-  priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-  priv->screen = screen;
+
   wnck_selector_fill (selector);
 
   return GTK_WIDGET (selector);

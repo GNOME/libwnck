@@ -1,5 +1,21 @@
 2007-05-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.[ch]: use G_DEFINE_TYPE
+	(wnck_selector_get_screen): assert that the widget has a screen
+	(wnck_selector_disconnect_from_window): new
+	(wnck_selector_disconnect_from_screen): new
+	(wnck_selector_setup_menu): killed (moved to the realize handler)
+	(wnck_selector_fill): don't call wnck_selector_setup_menu()
+	(wnck_selector_class_init): set up handlers for realize/unrealize
+	(wnck_selector_finalize): updated
+	(wnck_selector_realize): connect to the screen
+	(wnck_selector_unrealize): disconnect from the screen
+	(wnck_selector_new): we don't need a screen argument here
+	* libwnck/test-selector.c: (main): updated
+	Fix bug #164474. This breaks API.
+
+2007-05-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/test-tasklist.c: (main): add --never-group
 
 2007-05-18  Vincent Untz  <vuntz@gnome.org>

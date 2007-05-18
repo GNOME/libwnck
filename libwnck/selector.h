@@ -23,7 +23,6 @@
 #define WNCK_SELECTOR_H
 
 #include <gtk/gtk.h>
-#include "screen.h"
 
 G_BEGIN_DECLS
 #define WNCK_TYPE_SELECTOR              (wnck_selector_get_type ())
@@ -47,7 +46,7 @@ struct _WnckSelectorClass
   GtkMenuBarClass parent_class;
 };
 
-GtkWidget *wnck_selector_new      (WnckScreen *screen);
+GtkWidget *wnck_selector_new      (void);
 GType      wnck_selector_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
