@@ -187,6 +187,49 @@ wnck_selector_set_active_window (WnckSelector *selector, WnckWindow *window)
   selector->priv->icon_window = window;
 }
 
+static void
+wnck_selector_make_menu_consistent (WnckSelector *selector)
+{
+  GList     *l;
+  GtkWidget *separator;
+  gboolean   separator_is_first;
+  gboolean   separator_is_last;
+  gboolean   visible_window;
+
+  separator_is_first = FALSE;
+  separator_is_last = FALSE;
+  visible_window = FALSE;
+
+  for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+    {
+      if (GTK_IS_SEPARATOR_MENU_ITEM (l->data))
+        {
+          if (!visible_window)
+            separator_is_first = TRUE;
+          separator_is_last = TRUE;
+          separator = GTK_WIDGET (l->data);
+          continue;
+        }
+
+      if (GTK_WIDGET_VISIBLE (l->data) &&
+          l->data != selector->priv->no_windows_item)
+        {
+          separator_is_last = FALSE;
+          visible_window = TRUE;
+        }
+    }
+
+  if (separator_is_first || separator_is_last)
+    gtk_widget_hide (separator);
+  else
+    gtk_widget_show (separator);
+
+  if (visible_window)
+    gtk_widget_hide (selector->priv->no_windows_item);
+  else
+    gtk_widget_show (selector->priv->no_windows_item);
+}
+
 /* The results of this function will need to be freed. */
 static char *
 wnck_selector_get_window_name (WnckWindow *window)
@@ -296,11 +339,13 @@ wnck_selector_window_state_changed (WnckWindow *window,
   if (changed_mask & WNCK_WINDOW_STATE_SKIP_TASKLIST)
     {
       if (wnck_window_is_skip_tasklist (window))
-        {
-          gtk_widget_hide (item->item);
-        }
+        gtk_widget_hide (item->item);
       else
         gtk_widget_show (item->item);
+
+      wnck_selector_make_menu_consistent (selector);
+
+      gtk_menu_reposition (GTK_MENU (selector->priv->menu));
     }
 
   if (changed_mask & 
@@ -477,9 +522,6 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
   GtkWidget *image;
   char *name;
 
-  if (wnck_window_is_skip_tasklist (window))
-    return;
-
   name = wnck_selector_get_window_name (window);
 
   item = wnck_selector_item_new (selector, name, window);
@@ -510,7 +552,8 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
                             G_CALLBACK (wnck_selector_activate_window),
                             window);
 
-  gtk_widget_show (item);
+  if (!wnck_window_is_skip_tasklist (window))
+    gtk_widget_show (item);
 }
 
 static void
@@ -519,10 +562,9 @@ wnck_selector_window_opened (WnckScreen *screen,
 {
   if (selector->priv->menu && GTK_WIDGET_VISIBLE (selector->priv->menu))
     {
-      if (selector->priv->no_windows_item
-          && GTK_WIDGET_VISIBLE (selector->priv->no_windows_item))
-        gtk_widget_hide (selector->priv->no_windows_item);
       wnck_selector_add_window (selector, window);
+      wnck_selector_make_menu_consistent (selector);
+
       gtk_menu_reposition (GTK_MENU (selector->priv->menu));
     }
 
@@ -549,6 +591,8 @@ wnck_selector_window_closed (WnckScreen *screen,
     return;
 
   gtk_widget_hide (item->item);
+  wnck_selector_make_menu_consistent (selector);
+
   gtk_menu_reposition (GTK_MENU (selector->priv->menu));
 }
 
@@ -740,11 +784,8 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
     gtk_container_remove (GTK_CONTAINER (selector->priv->menu), l->data);
   g_list_free (children);
 
-  selector->priv->no_windows_item = NULL;
-
   /* Add separator */
   separator = gtk_separator_menu_item_new ();
-  gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), separator);
 
 
@@ -761,23 +802,14 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
   for (l = windows; l; l = l->next)
     wnck_selector_add_window (selector, l->data);
 
-  /* Remove separator if it is at the start or the end of the menu */
-  l = GTK_MENU_SHELL (selector->priv->menu)->children;
+  selector->priv->no_windows_item = wnck_selector_item_new (selector,
+		  					    _("No Windows Open"),
+							    NULL);
+  gtk_widget_set_sensitive (selector->priv->no_windows_item, FALSE);
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu),
+                         selector->priv->no_windows_item);
 
-  if ((separator == l->data) || separator == g_list_last (l)->data)
-    gtk_widget_destroy (separator);
-
-  /* Check if a no-windows item is needed */
-  if (!GTK_MENU_SHELL (selector->priv->menu)->children)
-    {
-      selector->priv->no_windows_item =
-        wnck_selector_item_new (selector, _("No Windows Open"), NULL);
-
-      gtk_widget_set_sensitive (selector->priv->no_windows_item, FALSE);
-      gtk_widget_show (selector->priv->no_windows_item);
-      gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu),
-                             selector->priv->no_windows_item);
-    }
+  wnck_selector_make_menu_consistent (selector);
 }
 
 static void
