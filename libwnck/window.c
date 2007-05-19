@@ -720,9 +720,6 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
   case WNCK_WINDOW_DIALOG:
     atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DIALOG");
     break;
-  case WNCK_WINDOW_MODAL_DIALOG:
-    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MODAL_DIALOG");
-    break;
   case WNCK_WINDOW_TOOLBAR:
     atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_TOOLBAR");
     break;
@@ -1993,7 +1990,6 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_MENU:
     case WNCK_WINDOW_UTILITY:
     case WNCK_WINDOW_DIALOG:
-    case WNCK_WINDOW_MODAL_DIALOG:
       /* Skip taskbar if the window is transient
        * for some main application window
        */
@@ -2021,7 +2017,6 @@ update_state (WnckWindow *window)
       
     case WNCK_WINDOW_NORMAL:
     case WNCK_WINDOW_DIALOG:
-    case WNCK_WINDOW_MODAL_DIALOG:
     case WNCK_WINDOW_UTILITY:
       break;
     }
@@ -2272,8 +2267,6 @@ update_wintype (WnckWindow *window)
             type = WNCK_WINDOW_DIALOG;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_NORMAL"))
             type = WNCK_WINDOW_NORMAL;
-          else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_MODAL_DIALOG"))
-            type = WNCK_WINDOW_MODAL_DIALOG;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_UTILITY"))
             type = WNCK_WINDOW_UTILITY;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASH"))

@@ -1,3 +1,13 @@
+2007-05-20  Vincent Untz  <vuntz@gnome.org>
+
+	Remove all reference to _NET_WM_WINDOW_TYPE_MODAL_DIALOG since it's
+	not in the EWMH spec. This breaks API again.
+	Fix bug #124332.
+
+	* libwnck/window.c: (wnck_window_set_window_type), (update_state),
+	(update_wintype): don't handle the WNCK_WINDOW_MODAL_DIALOG cases
+	* libwnck/window.h: remove WNCK_WINDOW_MODAL_DIALOG
+
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/tasklist.c: (wnck_task_unmaximize_all): new

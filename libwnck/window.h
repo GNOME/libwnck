@@ -77,7 +77,6 @@ typedef enum
   WNCK_WINDOW_DESKTOP,      /* desktop background */
   WNCK_WINDOW_DOCK,         /* panel */
   WNCK_WINDOW_DIALOG,       /* dialog */
-  WNCK_WINDOW_MODAL_DIALOG, /* modal dialog */
   WNCK_WINDOW_TOOLBAR,      /* tearoff toolbar */
   WNCK_WINDOW_MENU,         /* tearoff menu */
   WNCK_WINDOW_UTILITY,      /* palette/toolbox window */
