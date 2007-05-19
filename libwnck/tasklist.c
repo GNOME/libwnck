@@ -542,7 +542,7 @@ wnck_task_finalize (GObject *object)
 
   if (task->action_menu)
     {
-      g_object_unref (task->action_menu);
+      gtk_widget_destroy (task->action_menu);
       task->action_menu = NULL;
     }
 
@@ -3224,7 +3224,8 @@ wnck_task_button_press_event (GtkWidget	      *widget,
                           event->button,
                           gtk_get_current_event_time ());
 
-          /* FIXME we should really arrange to destroy the menu on popdown */
+          g_signal_connect (task->action_menu, "deactivate",
+                            G_CALLBACK (gtk_widget_destroy), NULL);
       
           return TRUE;
         }

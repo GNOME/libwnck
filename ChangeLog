@@ -1,5 +1,12 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_finalize): don't unref the action
+	menu, but destroy it since it's a widget
+	(wnck_task_button_press_event): destroy the action menu on
+	"deactivate". Fix a FIXME :-)
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck-1.0.pc.in:
 	* libwnck-1.0-uninstalled.pc.in: require libstartup-notification-1.0
 	when we compile the library with sn
