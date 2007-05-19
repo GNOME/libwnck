@@ -459,6 +459,9 @@ wnck_selector_window_workspace_changed (WnckWindow   *window,
 
   item = NULL;
 
+  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+    return;
+
   if (!selector->priv->window_hash)
     return;
 
@@ -849,6 +852,9 @@ wnck_selector_workspace_created (WnckScreen    *screen,
                                  WnckWorkspace *workspace,
                                  WnckSelector  *selector)
 {
+  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+    return;
+
   /* this is assuming that the new workspace will have a higher number
    * than all the old workspaces, which is okay since the old workspaces
    * didn't disappear in the meantime */
@@ -868,6 +874,9 @@ wnck_selector_workspace_destroyed (WnckScreen    *screen,
   GList     *l;
   GtkWidget *destroy;
   int        i;
+
+  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+    return;
 
   destroy = NULL;
 
