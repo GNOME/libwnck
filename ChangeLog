@@ -1,5 +1,12 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_workspace_label_style_set): new
+	(wnck_selector_add_workspace): connect to the style-set signal to
+	update the label when theme changes, since we're using a theme color
+	for it
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_window_workspace_changed),
 	(wnck_selector_workspace_created),
 	(wnck_selector_workspace_destroyed): don't do anything if the menu is

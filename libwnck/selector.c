@@ -658,6 +658,14 @@ wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
 }
 
 static void
+wnck_selector_workspace_label_style_set (GtkLabel      *label,
+                                         GtkStyle      *previous_style,
+                                         WnckWorkspace *workspace)
+{
+  wnck_selector_workspace_name_changed (workspace, label);
+}
+
+static void
 wnck_selector_add_workspace (WnckSelector *selector,
                              WnckScreen   *screen,
                              int           workspace_n)
@@ -676,10 +684,14 @@ wnck_selector_add_workspace (WnckSelector *selector,
   gtk_widget_show (label);
   g_signal_connect (G_OBJECT (label), "expose-event",
                     G_CALLBACK (wnck_selector_workspace_label_exposed), NULL);
+  /* the handler will also take care of setting the name for the first time,
+   * and we'll be able to adapt to theme changes */
+  g_signal_connect (G_OBJECT (label), "style-set",
+                    G_CALLBACK (wnck_selector_workspace_label_style_set),
+		    workspace);
   wncklet_connect_while_alive (workspace, "name_changed",
                                G_CALLBACK (wnck_selector_workspace_name_changed),
                                 label, label);
-  wnck_selector_workspace_name_changed (workspace, GTK_LABEL (label));
 
   gtk_container_add (GTK_CONTAINER (item), label);
 
