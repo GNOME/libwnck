@@ -1,5 +1,11 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck-1.0.pc.in:
+	* libwnck-1.0-uninstalled.pc.in: require libstartup-notification-1.0
+	when we compile the library with sn
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/selector.c: (wnck_selector_workspace_label_style_set): new
 	(wnck_selector_add_workspace): connect to the style-set signal to
 	update the label when theme changes, since we're using a theme color
