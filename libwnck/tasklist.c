@@ -2384,6 +2384,47 @@ wnck_task_menu_activated (GtkMenuItem *menu_item,
 }
 
 static void
+wnck_tasklist_activate_next_in_class_group (WnckTask *task,
+                                            guint32   timestamp)
+{
+  WnckTask *activate_task;
+  gboolean  activate_next;
+  GList    *l;
+
+  activate_task = NULL;
+  activate_next = FALSE;
+
+  l = task->windows;
+  while (l)
+    {
+      WnckTask *task;
+
+      task = WNCK_TASK (l->data);
+
+      if (wnck_window_is_most_recently_activated (task->window))
+        activate_next = TRUE;
+      else if (activate_next)
+        {
+          activate_task = task;
+          break;
+        }
+
+      l = l->next;
+    }
+
+  /* no task in this group is active, or only the last one => activate
+   * the first task */
+  if (!activate_task && task->windows)
+    activate_task = WNCK_TASK (task->windows->data);
+
+  if (activate_task)
+    {
+      task->was_active = FALSE;
+      wnck_tasklist_activate_task_window (activate_task, timestamp);
+    }
+}
+
+static void
 wnck_tasklist_activate_task_window (WnckTask *task,
                                     guint32   timestamp)
 {
@@ -3181,8 +3222,11 @@ wnck_task_button_press_event (GtkWidget	      *widget,
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      wnck_task_popup_menu (task,
-			    event->button == 3);
+      if (event->button == 2)
+        wnck_tasklist_activate_next_in_class_group (task, event->time);
+      else
+        wnck_task_popup_menu (task,
+                              event->button == 3);
       return TRUE;
 
     case WNCK_TASK_WINDOW:

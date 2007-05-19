@@ -7,12 +7,14 @@ static gboolean display_all = FALSE;
 static gboolean never_group = FALSE;
 static gboolean always_group = FALSE;
 static gboolean rtl = FALSE;
+static gboolean skip_tasklist = FALSE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
 	{"never-group", 'n', 0, G_OPTION_ARG_NONE, &never_group, N_("Never group windows"), NULL},
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
+	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, N_("Don't show window in tasklist"), NULL},
 	{NULL }
 };
 
@@ -79,6 +81,12 @@ main (int argc, char **argv)
 
   gtk_window_move (GTK_WINDOW (win), 0, 0);
   
+  if (skip_tasklist)
+  {
+    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (win), TRUE); 
+    gtk_window_set_keep_above (GTK_WINDOW (win), TRUE); 
+  }
+
   gtk_widget_show (win);
   
   gtk_main ();

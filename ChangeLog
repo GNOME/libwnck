@@ -1,5 +1,16 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_tasklist_activate_next_in_class_group):
+	new, to activate the next window in a class group (and the first one
+	if none is active)
+	(wnck_task_button_press_event): if clicking with the middle button on
+	a group, call wnck_tasklist_activate_next_in_class_group()
+	Fix bug #342707
+	* libwnck/test-selector.c: (main): add --skip-tasklist
+	* libwnck/test-tasklist.c: (main): add --skip-tasklist
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_finalize): don't unref the action
 	menu, but destroy it since it's a widget
 	(wnck_task_button_press_event): destroy the action menu on

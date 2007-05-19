@@ -2,14 +2,31 @@
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
+#include <glib/gi18n.h>
+
+static gboolean skip_tasklist = FALSE;
+
+static GOptionEntry entries[] = {
+	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, N_("Don't show window in tasklist"), NULL},
+	{NULL }
+};
+
 int
 main (int argc, char **argv)
 {
+  GOptionContext *ctxt;
   WnckScreen *screen;
   GtkWidget *win;
   GtkWidget *frame;
   GtkWidget *selector;
-  
+
+  ctxt = g_option_context_new ("");
+  g_option_context_add_main_entries (ctxt, entries, NULL);
+  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
+  g_option_context_parse (ctxt, &argc, &argv, NULL);
+  g_option_context_free (ctxt);
+  ctxt = NULL;
+
   gtk_init (&argc, &argv);
 
   screen = wnck_screen_get_default ();
@@ -43,6 +60,12 @@ main (int argc, char **argv)
 
   gtk_window_move (GTK_WINDOW (win), 0, 0);
   
+  if (skip_tasklist)
+  {
+    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (win), TRUE); 
+    gtk_window_set_keep_above (GTK_WINDOW (win), TRUE); 
+  }
+
   gtk_widget_show (win);
   
   gtk_main ();
