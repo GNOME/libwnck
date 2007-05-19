@@ -1,5 +1,13 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_unmaximize_all): new
+	(wnck_task_maximize_all): new
+	(wnck_task_popup_menu): add Maximize all and Unmaximize all to the
+	context menu.
+	Fix bug #155875.
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_popup_menu): change order of the
 	right-click menu items. This is also consistent with the previous
 	change that put Close at the bottom of the action menu.
