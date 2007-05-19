@@ -5,6 +5,7 @@ libwnck/pager-accessible.c
 libwnck/selector.c
 libwnck/tasklist.c
 libwnck/test-pager.c
+libwnck/test-selector.c
 libwnck/test-tasklist.c
 libwnck/window-action-menu.c
 libwnck/window.c
