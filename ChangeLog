@@ -1,5 +1,12 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/selector.c: (wnck_selector_windows_compare): new, to sort
+	windows by their sort order
+	(wnck_selector_scroll_cb), (wnck_selector_on_show): sort the window
+	list
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	Show workspace names in the window selector.
 	Fix bug #150703.
 

@@ -69,6 +69,19 @@ static void wnck_selector_insert_window (WnckSelector *selector,
 static void wnck_selector_append_window (WnckSelector *selector,
                                          WnckWindow   *window);
 
+static gint
+wnck_selector_windows_compare (gconstpointer  a,
+                               gconstpointer  b)
+{
+  int posa;
+  int posb;
+
+  posa = wnck_window_get_sort_order (WNCK_WINDOW (a));
+  posb = wnck_window_get_sort_order (WNCK_WINDOW (b));
+
+  return (posa - posb);
+}
+
 static void
 wncklet_connect_while_alive (gpointer object,
                              const char *signal,
@@ -994,6 +1007,7 @@ wnck_selector_scroll_cb (WnckSelector *selector,
   screen = wnck_selector_get_screen (selector);
   workspace = wnck_screen_get_active_workspace (screen);
   windows_list = wnck_screen_get_windows (screen);
+  windows_list = g_list_sort (windows_list, wnck_selector_windows_compare);
 
   /* Walk through the list of windows until we find the active one
    * (considering only those windows on the same workspace).
@@ -1089,6 +1103,8 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
 
   /* Get windows ordered by workspaces */
   windows = wnck_screen_get_windows (screen);
+  windows = g_list_sort (windows, wnck_selector_windows_compare);
+
   for (l = windows; l; l = l->next)
     {
       workspace = wnck_window_get_workspace (l->data);
