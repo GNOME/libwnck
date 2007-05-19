@@ -1,5 +1,12 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_popup_menu): change order of the
+	right-click menu items. This is also consistent with the previous
+	change that put Close at the bottom of the action menu.
+	Fix bug #306758.
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_tasklist_activate_next_in_class_group):
 	new, to activate the next window in a class group (and the first one
 	if none is active)

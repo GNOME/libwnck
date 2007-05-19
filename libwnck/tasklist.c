@@ -2607,50 +2607,51 @@ wnck_task_popup_menu (WnckTask *task,
       l = l->next;
     }
 
-  /* In case of Right click, show Close All, Minimize All, Unminimize All*/
+  /* In case of Right click, show Minimize All, Unminimize All, Close All*/
   if (action_submenu) 
     {
       GtkWidget *separator;
       GtkWidget *image;
-		
-      separator = gtk_separator_menu_item_new ();
-      gtk_widget_show (separator);
-      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), separator);
-
-      menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Close All"));
-      image = gtk_image_new_from_stock (WNCK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
-      gtk_widget_show (image);
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);    
-      gtk_widget_show (menu_item);
-      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
-      g_signal_connect_object (G_OBJECT (menu_item), "activate",
-			       G_CALLBACK (wnck_task_close_all),
-			       G_OBJECT (task),
-			       0);
 
       separator = gtk_separator_menu_item_new ();
       gtk_widget_show (separator);
-      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), separator);
-	    
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), separator);
+
       menu_item = gtk_image_menu_item_new_with_mnemonic (_("_Minimize All"));
       image = gtk_image_new_from_stock (WNCK_STOCK_MINIMIZE, GTK_ICON_SIZE_MENU);
       gtk_widget_show (image);
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);  	
+      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
       gtk_widget_show (menu_item);
-      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
 	    		       G_CALLBACK (wnck_task_minimize_all),
 			       G_OBJECT (task),
 			       0);
-		
+
       menu_item =  gtk_image_menu_item_new_with_mnemonic (_("_Unminimize All"));
       gtk_widget_show (menu_item);
-      gtk_menu_shell_prepend (GTK_MENU_SHELL (menu), menu_item);			
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
   			       G_CALLBACK (wnck_task_unminimize_all),
 			       G_OBJECT (task),
-			       0);							
+			       0);
+
+      separator = gtk_separator_menu_item_new ();
+      gtk_widget_show (separator);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), separator);
+
+      menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Close All"));
+      image = gtk_image_new_from_stock (WNCK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
+      gtk_widget_show (image);
+      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+      gtk_widget_show (menu_item);
+      gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
+      g_signal_connect_object (G_OBJECT (menu_item), "activate",
+			       G_CALLBACK (wnck_task_close_all),
+			       G_OBJECT (task),
+			       0);
     }
+
   gtk_menu_set_screen (GTK_MENU (menu),
 		       _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
   
