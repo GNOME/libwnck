@@ -1,5 +1,43 @@
 2007-05-19  Vincent Untz  <vuntz@gnome.org>
 
+	Show workspace names in the window selector.
+	Fix bug #150703.
+
+	* libwnck/selector.c: (wncklet_connect_while_alive): moved in the file
+	(wnck_selector_make_menu_consistent): updated to handle with menu
+	items that are representing a workspace name
+	(wnck_selector_window_workspace_changed): new
+	(wnck_selector_item_new): don't setup dnd if there's no window ("no
+	windows open" case)
+	(wnck_selector_workspace_label_exposed): new
+	(wnck_selector_workspace_name_changed): new
+	(wnck_selector_add_workspace): new, append a workspace menu item to
+	the menu
+	(wnck_selector_create_window): moved code from
+	wnck_selector_add_window() here, but do not insert the menu item in
+	the menu
+	(wnck_selector_insert_window): new, to insert a window menu item at
+	the correct place wrt workspaces (more expensive than just appending
+	the menu item)
+	(wnck_selector_append_window): new
+	(wnck_selector_window_opened): updated, to insert the item at the
+	correct place
+	(wnck_selector_window_closed): updated, to disable the menu item wrt
+	workspace consistency in the menu
+	(wnck_selector_workspace_created): new; to add the workspace menu item
+	(wnck_selector_workspace_destroyed): new, to remove the workspace menu
+	item
+	(wnck_selector_connect_to_window): connect to "workspace_changed"
+	(wnck_selector_disconnect_from_window): disconnect
+	(wnck_selector_connect_to_screen): connect to "workspace_created" and
+	"workspace_destroyed"
+	(wnck_selector_disconnect_from_screen): disconnect
+	(wnck_selector_scroll_cb): update the algorithm since the way we
+	append window menu items in the menu has changed
+	(wnck_selector_on_show): updated to add windows, ordered by workspaces
+
+2007-05-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/screen.c: (wnck_screen_class_init):
 	* libwnck/screen.h: I've already broken API, so add the few signals
 	that were commented out, and re-break API before we release :-)

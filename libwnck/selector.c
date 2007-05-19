@@ -64,6 +64,27 @@ static void wnck_selector_destroy           (GtkObject *object);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
                                              WnckWindow        *window);
 
+static void wnck_selector_insert_window (WnckSelector *selector,
+                                         WnckWindow   *window);
+static void wnck_selector_append_window (WnckSelector *selector,
+                                         WnckWindow   *window);
+
+static void
+wncklet_connect_while_alive (gpointer object,
+                             const char *signal,
+                             GCallback func,
+                             gpointer func_data, gpointer alive_object)
+{
+  GClosure *closure;
+
+  closure = g_cclosure_new (func, func_data, NULL);
+  g_object_watch_closure (G_OBJECT (alive_object), closure);
+  g_signal_connect_closure_by_id (object,
+                                  g_signal_lookup (signal,
+                                                   G_OBJECT_TYPE (object)), 0,
+                                  closure, FALSE);
+}
+
 static WnckScreen *
 wnck_selector_get_screen (WnckSelector *selector)
 {
@@ -191,38 +212,87 @@ static void
 wnck_selector_make_menu_consistent (WnckSelector *selector)
 {
   GList     *l;
+  int        workspace_n;
+  GtkWidget *workspace_item;
   GtkWidget *separator;
   gboolean   separator_is_first;
   gboolean   separator_is_last;
   gboolean   visible_window;
 
+  workspace_n = -1;
+  workspace_item = NULL;
+
+  separator = NULL;
   separator_is_first = FALSE;
   separator_is_last = FALSE;
+
   visible_window = FALSE;
 
   for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
     {
-      if (GTK_IS_SEPARATOR_MENU_ITEM (l->data))
+      int i;
+
+      i = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (l->data),
+                                              "wnck-selector-workspace-n"));
+
+      if (i > 0)
+        {
+          workspace_n = i - 1;
+
+          /* we have two consecutive workspace items => hide the first */
+          if (workspace_item)
+            gtk_widget_hide (workspace_item);
+
+          workspace_item = GTK_WIDGET (l->data);
+        }
+      else if (GTK_IS_SEPARATOR_MENU_ITEM (l->data))
         {
           if (!visible_window)
             separator_is_first = TRUE;
           separator_is_last = TRUE;
           separator = GTK_WIDGET (l->data);
-          continue;
         }
-
-      if (GTK_WIDGET_VISIBLE (l->data) &&
-          l->data != selector->priv->no_windows_item)
+      else if (GTK_WIDGET_VISIBLE (l->data) &&
+               l->data != selector->priv->no_windows_item)
         {
           separator_is_last = FALSE;
           visible_window = TRUE;
-        }
+
+          /* if we know of a workspace item that was not shown */
+          if (workspace_item)
+            {
+              WnckWindow    *window;
+              WnckWorkspace *workspace;
+
+              window = g_object_get_data (G_OBJECT (l->data),
+                                          "wnck-selector-window");
+
+              if (window)
+                {
+                  workspace = wnck_window_get_workspace (window);
+                  if (workspace &&
+                      workspace_n == wnck_workspace_get_number (workspace))
+                    {
+                      gtk_widget_show (workspace_item);
+                      workspace_n = -1;
+                      workspace_item = NULL;
+                    }
+                }
+            }
+        } /* end if (normal item) */
     }
 
-  if (separator_is_first || separator_is_last)
-    gtk_widget_hide (separator);
-  else
-    gtk_widget_show (separator);
+  /* do we have a trailing workspace item to be hidden? */
+  if (workspace_item)
+    gtk_widget_hide (workspace_item);
+
+  if (separator)
+    {
+      if (separator_is_first || separator_is_last)
+        gtk_widget_hide (separator);
+      else
+        gtk_widget_show (separator);
+    }
 
   if (visible_window)
     gtk_widget_hide (selector->priv->no_windows_item);
@@ -367,6 +437,32 @@ wnck_selector_window_state_changed (WnckWindow *window,
     }
 }
 
+
+static void
+wnck_selector_window_workspace_changed (WnckWindow   *window,
+                                        WnckSelector *selector)
+{
+  window_hash_item *item;
+
+  item = NULL;
+
+  if (!selector->priv->window_hash)
+    return;
+
+  item = g_hash_table_lookup (selector->priv->window_hash, window);
+  if (!item)
+    return;
+
+  /* destroy the item and recreate one so it's at the right position */
+  gtk_widget_destroy (item->item);
+  g_hash_table_remove (selector->priv->window_hash, window);
+
+  wnck_selector_insert_window (selector, window);
+  wnck_selector_make_menu_consistent (selector);
+
+  gtk_menu_reposition (GTK_MENU (selector->priv->menu));
+}
+
 static void
 wnck_selector_active_window_changed (WnckScreen *screen,
                                      WnckSelector *selector)
@@ -496,26 +592,89 @@ wnck_selector_item_new (WnckSelector *selector,
                                wnck_selector_get_width (GTK_WIDGET (selector),
                                                         label), -1);
 
-  gtk_drag_source_set (item,
-		       GDK_BUTTON1_MASK,
-		       targets, 1,
-		       GDK_ACTION_MOVE);
+  if (window != NULL)
+    {
+      gtk_drag_source_set (item,
+                           GDK_BUTTON1_MASK,
+                           targets, 1,
+                           GDK_ACTION_MOVE);
 
-  g_signal_connect_object (item, "drag_data_get",
-                           G_CALLBACK (wnck_selector_drag_data_get),
-                           G_OBJECT (window),
-                           0); 
+      g_signal_connect_object (item, "drag_data_get",
+                               G_CALLBACK (wnck_selector_drag_data_get),
+                               G_OBJECT (window),
+                               0); 
 
-  g_signal_connect_object (item, "drag_begin",
-                           G_CALLBACK (wnck_selector_drag_begin),
-                           G_OBJECT (window),
-                           0); 
+      g_signal_connect_object (item, "drag_begin",
+                               G_CALLBACK (wnck_selector_drag_begin),
+                               G_OBJECT (window),
+                               0); 
+    }
 
   return item;
 }
 
+static gboolean
+wnck_selector_workspace_label_exposed (GtkWidget *widget)
+{
+  /* Bad hack to make the label draw normally, instead of insensitive. */
+  widget->state = GTK_STATE_NORMAL;
+
+  return FALSE;
+}
+
 static void
-wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
+wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
+                                      GtkLabel      *label)
+{
+  GdkColor *color;
+  char     *name;
+  char     *markup;
+
+  color = &GTK_WIDGET (label)->style->fg[GTK_STATE_INSENSITIVE];
+
+  name = g_markup_escape_text (wnck_workspace_get_name (workspace), -1);
+  markup = g_strdup_printf ("<span size=\"x-small\" style=\"italic\" foreground=\"#%.2x%.2x%.2x\">%s</span>",
+                            color->red, color->green, color->blue, name);
+  g_free (name);
+
+  gtk_label_set_markup (label, markup);
+  g_free (markup);
+}
+
+static void
+wnck_selector_add_workspace (WnckSelector *selector,
+                             WnckScreen   *screen,
+                             int           workspace_n)
+{
+  WnckWorkspace *workspace;
+  GtkWidget     *item;
+  GtkWidget     *label;
+
+  workspace = wnck_screen_get_workspace (screen, workspace_n);
+
+  item = gtk_menu_item_new ();
+  gtk_widget_set_sensitive (item, FALSE);
+
+  label = gtk_label_new ("");
+  gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
+  gtk_widget_show (label);
+  g_signal_connect (G_OBJECT (label), "expose-event",
+                    G_CALLBACK (wnck_selector_workspace_label_exposed), NULL);
+  wncklet_connect_while_alive (workspace, "name_changed",
+                               G_CALLBACK (wnck_selector_workspace_name_changed),
+                                label, label);
+  wnck_selector_workspace_name_changed (workspace, GTK_LABEL (label));
+
+  gtk_container_add (GTK_CONTAINER (item), label);
+
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), item);
+
+  g_object_set_data (G_OBJECT (item), "wnck-selector-workspace-n",
+                     GINT_TO_POINTER (workspace_n + 1));
+}
+
+static GtkWidget *
+wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
 {
   WnckWorkspace *workspace;
   GtkWidget *item;
@@ -540,33 +699,107 @@ wnck_selector_add_window (WnckSelector *selector, WnckWindow *window)
   workspace =
     wnck_screen_get_active_workspace (wnck_selector_get_screen (selector));
 
-  /* FIXME: tasklist_include_window_impl() is similar to this, but more
-   * complete */
-  if (wnck_window_is_pinned (window) ||
-      wnck_window_get_workspace (window) == workspace)
-    gtk_menu_shell_prepend (GTK_MENU_SHELL (selector->priv->menu), item);
-  else
-    gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), item);
-
   g_signal_connect_swapped (item, "activate",
                             G_CALLBACK (wnck_selector_activate_window),
                             window);
 
   if (!wnck_window_is_skip_tasklist (window))
     gtk_widget_show (item);
+
+  g_object_set_data (G_OBJECT (item), "wnck-selector-window", window);
+
+  return item;
+}
+
+static void
+wnck_selector_insert_window (WnckSelector *selector, WnckWindow *window)
+{
+  GtkWidget     *item;
+  WnckScreen    *screen;
+  WnckWorkspace *workspace;
+  int            workspace_n;
+  int            i;
+
+  screen = wnck_selector_get_screen (selector);
+  workspace = wnck_window_get_workspace (window);
+
+  if (!workspace && !wnck_window_is_pinned (window))
+    return;
+
+  item = wnck_selector_create_window (selector, window);
+
+  if (!workspace || workspace == wnck_screen_get_active_workspace (screen))
+    {
+      /* window is pinned or in the current workspace
+       * => insert before the separator */
+      GList *l;
+
+      i = 0;
+
+      for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+        {
+          if (GTK_IS_SEPARATOR_MENU_ITEM (l->data))
+            break;
+          i++;
+        }
+
+      gtk_menu_shell_insert (GTK_MENU_SHELL (selector->priv->menu),
+                             item, i);
+    }
+  else 
+    {
+      workspace_n = wnck_workspace_get_number (workspace);
+
+      if (workspace_n == wnck_screen_get_workspace_count (screen) - 1)
+        /* window is in last workspace => just append */
+        gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), item);
+      else
+        {
+          /* insert just before the next workspace item */
+          GList *l;
+
+          i = 0;
+
+          for (l = GTK_MENU_SHELL (selector->priv->menu)->children;
+               l; l = l->next)
+            {
+              int j;
+              j = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (l->data),
+                                                      "wnck-selector-workspace-n"));
+              if (j - 1 == workspace_n + 1)
+                break;
+              i++;
+            }
+
+          gtk_menu_shell_insert (GTK_MENU_SHELL (selector->priv->menu),
+                                 item, i);
+        }
+    }
+}
+
+static void
+wnck_selector_append_window (WnckSelector *selector, WnckWindow *window)
+{
+  GtkWidget *item;
+
+  item = wnck_selector_create_window (selector, window);
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), item);
 }
 
 static void
 wnck_selector_window_opened (WnckScreen *screen,
                              WnckWindow *window, WnckSelector *selector)
 {
-  if (selector->priv->menu && GTK_WIDGET_VISIBLE (selector->priv->menu))
-    {
-      wnck_selector_add_window (selector, window);
-      wnck_selector_make_menu_consistent (selector);
+  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+    return;
 
-      gtk_menu_reposition (GTK_MENU (selector->priv->menu));
-    }
+  if (!selector->priv->window_hash)
+    return;
+
+  wnck_selector_insert_window (selector, window);
+  wnck_selector_make_menu_consistent (selector);
+
+  gtk_menu_reposition (GTK_MENU (selector->priv->menu));
 
   wnck_selector_connect_to_window (selector, window);
 }
@@ -584,11 +817,13 @@ wnck_selector_window_closed (WnckScreen *screen,
     return;
 
   if (!selector->priv->window_hash)
-	  return;
+    return;
 
   item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (!item)
     return;
+
+  g_object_set_data (G_OBJECT (item->item), "wnck-selector-window", NULL);
 
   gtk_widget_hide (item->item);
   wnck_selector_make_menu_consistent (selector);
@@ -597,19 +832,57 @@ wnck_selector_window_closed (WnckScreen *screen,
 }
 
 static void
-wncklet_connect_while_alive (gpointer object,
-                             const char *signal,
-                             GCallback func,
-                             gpointer func_data, gpointer alive_object)
+wnck_selector_workspace_created (WnckScreen    *screen,
+                                 WnckWorkspace *workspace,
+                                 WnckSelector  *selector)
 {
-  GClosure *closure;
+  /* this is assuming that the new workspace will have a higher number
+   * than all the old workspaces, which is okay since the old workspaces
+   * didn't disappear in the meantime */
+  wnck_selector_add_workspace (selector, screen,
+                               wnck_workspace_get_number (workspace));
 
-  closure = g_cclosure_new (func, func_data, NULL);
-  g_object_watch_closure (G_OBJECT (alive_object), closure);
-  g_signal_connect_closure_by_id (object,
-                                  g_signal_lookup (signal,
-                                                   G_OBJECT_TYPE (object)), 0,
-                                  closure, FALSE);
+  wnck_selector_make_menu_consistent (selector);
+
+  gtk_menu_reposition (GTK_MENU (selector->priv->menu));
+}
+
+static void
+wnck_selector_workspace_destroyed (WnckScreen    *screen,
+                                   WnckWorkspace *workspace,
+                                   WnckSelector  *selector)
+{
+  GList     *l;
+  GtkWidget *destroy;
+  int        i;
+
+  destroy = NULL;
+
+  i = wnck_workspace_get_number (workspace);
+
+  /* search for the item of this workspace so that we destroy it */
+  for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+    {
+      int j;
+
+      j = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (l->data),
+                           "wnck-selector-workspace-n"));
+
+
+      if (j - 1 == i)
+        destroy = GTK_WIDGET (l->data);
+      else if (j - 1 > i)
+        /* shift the following workspaces */
+        g_object_set_data (G_OBJECT (l->data), "wnck-selector-workspace-n",
+                           GINT_TO_POINTER (j - 1));
+    }
+
+  if (destroy)
+    gtk_widget_destroy (destroy);
+
+  wnck_selector_make_menu_consistent (selector);
+
+  gtk_menu_reposition (GTK_MENU (selector->priv->menu));
 }
 
 static void
@@ -622,9 +895,11 @@ wnck_selector_connect_to_window (WnckSelector *selector, WnckWindow *window)
                                G_CALLBACK (wnck_selector_window_name_changed),
                                selector, selector);
   wncklet_connect_while_alive (window, "state_changed",
-                               G_CALLBACK
-                               (wnck_selector_window_state_changed), selector,
-                               selector);
+                               G_CALLBACK (wnck_selector_window_state_changed),
+                               selector, selector);
+  wncklet_connect_while_alive (window, "workspace_changed",
+                               G_CALLBACK (wnck_selector_window_workspace_changed),
+                               selector, selector);
 }
 
 static void
@@ -639,6 +914,9 @@ wnck_selector_disconnect_from_window (WnckSelector *selector,
                                         selector);
   g_signal_handlers_disconnect_by_func (window,
                                         wnck_selector_window_state_changed,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_selector_window_workspace_changed,
                                         selector);
 }
 
@@ -657,6 +935,14 @@ wnck_selector_connect_to_screen (WnckSelector *selector, WnckScreen *screen)
   wncklet_connect_while_alive (screen, "window_closed",
                                G_CALLBACK (wnck_selector_window_closed),
                                selector, selector);
+
+  wncklet_connect_while_alive (screen, "workspace_created",
+                               G_CALLBACK (wnck_selector_workspace_created),
+                               selector, selector);
+
+  wncklet_connect_while_alive (screen, "workspace_destroyed",
+                               G_CALLBACK (wnck_selector_workspace_destroyed),
+                               selector, selector);
 }
 
 static void
@@ -671,6 +957,12 @@ wnck_selector_disconnect_from_screen (WnckSelector *selector,
                                         selector);
   g_signal_handlers_disconnect_by_func (screen,
                                         wnck_selector_window_closed,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (screen,
+                                        wnck_selector_workspace_created,
+                                        selector);
+  g_signal_handlers_disconnect_by_func (screen,
+                                        wnck_selector_workspace_destroyed,
                                         selector);
 }
 
@@ -707,11 +999,6 @@ wnck_selector_scroll_cb (WnckSelector *selector,
    * (considering only those windows on the same workspace).
    * Then, depending on whether we're scrolling up or down, activate the next
    * window in the list (if it exists), or the previous one.
-   * Note that earlier windows in the GList* windows_list are shown lower in the
-   * menu, and later windows higher, since the windows are added with
-   * gtk_menu_shell_prepend in the function wnck_selector_add_window.
-   * Thus, a SCROLL_DOWN should activate the previous window in the list, and
-   * a SCROLL_UP should activate the next window in the list.
    */
   previous_window = NULL;
   should_activate_next_window = FALSE;
@@ -737,16 +1024,16 @@ wnck_selector_scroll_cb (WnckSelector *selector,
           switch (event->direction)
             {
               case GDK_SCROLL_UP:
-                should_activate_next_window = TRUE;
-              break;
-
-              case GDK_SCROLL_DOWN:
                 if (previous_window != NULL)
                   {
                     wnck_window_activate_transient (previous_window,
                                                     event->time);
                     return TRUE;
                   }
+              break;
+
+              case GDK_SCROLL_DOWN:
+                should_activate_next_window = TRUE;
               break;
 
               case GDK_SCROLL_LEFT:
@@ -776,6 +1063,10 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
 {
   GtkWidget *separator;
   WnckScreen *screen;
+  WnckWorkspace *workspace;
+  int nb_workspace;
+  int i;
+  GList **windows_per_workspace;
   GList *windows;
   GList *l, *children;
 
@@ -785,23 +1076,59 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
     gtk_container_remove (GTK_CONTAINER (selector->priv->menu), l->data);
   g_list_free (children);
 
-  /* Add separator */
-  separator = gtk_separator_menu_item_new ();
-  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), separator);
-
-
-  /* Add windows */
-  screen = wnck_selector_get_screen (selector);
-  windows = wnck_screen_get_windows (screen);
-
   if (selector->priv->window_hash)
     g_hash_table_destroy (selector->priv->window_hash);
   selector->priv->window_hash = g_hash_table_new_full (g_direct_hash,
                                                  g_direct_equal,
                                                  NULL, g_free);
 
+  screen = wnck_selector_get_screen (selector);
+
+  nb_workspace = wnck_screen_get_workspace_count (screen);
+  windows_per_workspace = g_malloc0 (nb_workspace * sizeof (GList *));
+
+  /* Get windows ordered by workspaces */
+  windows = wnck_screen_get_windows (screen);
   for (l = windows; l; l = l->next)
-    wnck_selector_add_window (selector, l->data);
+    {
+      workspace = wnck_window_get_workspace (l->data);
+      if (!workspace && wnck_window_is_pinned (l->data))
+        workspace = wnck_screen_get_active_workspace (screen);
+      if (!workspace)
+        continue;
+      i = wnck_workspace_get_number (workspace);
+      windows_per_workspace[i] = g_list_prepend (windows_per_workspace[i],
+                                                 l->data);
+    }
+
+  /* Add windows from the current workspace */
+  workspace = wnck_screen_get_active_workspace (screen);
+  if (workspace)
+    {
+      i = wnck_workspace_get_number (workspace);
+
+      windows_per_workspace[i] = g_list_reverse (windows_per_workspace[i]);
+      for (l = windows_per_workspace[i]; l; l = l->next)
+        wnck_selector_append_window (selector, l->data);
+      g_list_free (windows_per_workspace[i]);
+      windows_per_workspace[i] = NULL;
+    }
+
+  /* Add separator */
+  separator = gtk_separator_menu_item_new ();
+  gtk_menu_shell_append (GTK_MENU_SHELL (selector->priv->menu), separator);
+
+  /* Add windows from other workspaces */
+  for (i = 0; i < nb_workspace; i++)
+    {
+      wnck_selector_add_workspace (selector, screen, i);
+      windows_per_workspace[i] = g_list_reverse (windows_per_workspace[i]);
+      for (l = windows_per_workspace[i]; l; l = l->next)
+        wnck_selector_append_window (selector, l->data);
+      g_list_free (windows_per_workspace[i]);
+      windows_per_workspace[i] = NULL;
+    }
+  g_free (windows_per_workspace);
 
   selector->priv->no_windows_item = wnck_selector_item_new (selector,
 		  					    _("No Windows Open"),
