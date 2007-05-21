@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-18 17:27+0700\n"
-"PO-Revision-Date: 2007-05-18 17:33+0700\n"
+"POT-Creation-Date: 2007-05-21 18:44+0700\n"
+"PO-Revision-Date: 2007-05-21 18:49+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <L10n@opentle.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,19 +33,19 @@ msgstr "ใช้สลับไปมาระหว่างพื้นที
 msgid "Click this to switch to workspace %s"
 msgstr "กดที่นี่แล้วจะสลับไปพื้นที่ทำงาน %s"
 
-#: libwnck/selector.c:221
+#: libwnck/selector.c:326
 msgid "Unknown Window"
 msgstr "หน้าต่างไม่ทราบชื่อ"
 
-#: libwnck/selector.c:772
+#: libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "ไม่มีหน้าต่างเปิดอยู่"
 
-#: libwnck/selector.c:876
+#: libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "เลือกหน้าต่าง"
 
-#: libwnck/selector.c:877
+#: libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
 
@@ -57,17 +57,25 @@ msgstr "ลิสต์หน้าต่าง"
 msgid "Tool to switch between visible windows"
 msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
 
-#: libwnck/tasklist.c:2579
+#: libwnck/tasklist.c:2652
+msgid "Mi_nimize All"
+msgstr "_ย่อหายทั้งหมด"
+
+#: libwnck/tasklist.c:2663
+msgid "Un_minimize All"
+msgstr "เ_ลิกย่อหายทั้งหมด"
+
+#: libwnck/tasklist.c:2671
+msgid "Ma_ximize All"
+msgstr "_ขยายเต็มจอทั้งหมด"
+
+#: libwnck/tasklist.c:2682
+msgid "_Unmaximize All"
+msgstr "เลิ_กขยายเต็มจอทั้งหมด"
+
+#: libwnck/tasklist.c:2694
 msgid "_Close All"
 msgstr "ปิ_ดทั้งหมด"
-
-#: libwnck/tasklist.c:2594
-msgid "_Minimize All"
-msgstr "ย่_อหายทั้งหมด"
-
-#: libwnck/tasklist.c:2605
-msgid "_Unminimize All"
-msgstr "เลิกย่_อหายทั้งหมด"
 
 #: libwnck/test-pager.c:13
 msgid "Use N_ROWS rows"
@@ -81,7 +89,7 @@ msgstr "N_ROWS"
 msgid "Only show current workspace"
 msgstr "แสดงพื้นที่ทำงานปัจจุบันเท่านั้น"
 
-#: libwnck/test-pager.c:15 libwnck/test-tasklist.c:13
+#: libwnck/test-pager.c:15 libwnck/test-tasklist.c:16
 msgid "Use RTL as default direction"
 msgstr "เขียนข้อความแบบขวาไปซ้ายโดยปริยาย"
 
@@ -93,11 +101,19 @@ msgstr "แสดงชื่อพื้นที่ทำงานแทนเ
 msgid "Use a vertical orientation"
 msgstr "จัดวางในแนวตั้ง"
 
-#: libwnck/test-tasklist.c:11
+#: libwnck/test-selector.c:10 libwnck/test-tasklist.c:17
+msgid "Don't show window in tasklist"
+msgstr "ไม่ต้องแสดงหน้าต่างในรายการงาน"
+
+#: libwnck/test-tasklist.c:13
 msgid "Always group windows"
 msgstr "จัดกลุ่มหน้าต่างเสมอ"
 
-#: libwnck/test-tasklist.c:12
+#: libwnck/test-tasklist.c:14
+msgid "Never group windows"
+msgstr "ไม่ต้องจัดกลุ่มหน้าต่าง"
+
+#: libwnck/test-tasklist.c:15
 msgid "Display windows from all workspaces"
 msgstr "แสดงหน้าต่างของทุกพื้นที่ทำงาน"
 
@@ -139,41 +155,41 @@ msgstr "ย้า_ย"
 msgid "_Resize"
 msgstr "_ปรับขนาด"
 
-#: libwnck/window-action-menu.c:621
-msgid "_Close"
-msgstr "ปิ_ด"
-
-#: libwnck/window-action-menu.c:630
+#: libwnck/window-action-menu.c:617
 msgid "Always On _Top"
 msgstr "อยู่_บนสุด"
 
-#: libwnck/window-action-menu.c:638
+#: libwnck/window-action-menu.c:625
 msgid "_Always on Visible Workspace"
 msgstr "บน_ทุกพื้นที่ทำงานที่มองเห็น"
 
-#: libwnck/window-action-menu.c:643
+#: libwnck/window-action-menu.c:630
 msgid "_Only on This Workspace"
 msgstr "บน_พื้นที่ทำงานนี้เท่านั้น"
 
-#: libwnck/window-action-menu.c:669
+#: libwnck/window-action-menu.c:656
 msgid "Move to Workspace _Left"
 msgstr "ย้ายไปพื้นที่ทำงานซ้_าย"
 
-#: libwnck/window-action-menu.c:680
+#: libwnck/window-action-menu.c:667
 msgid "Move to Workspace R_ight"
 msgstr "ย้ายไปพื้นที่ทำงานข_วา"
 
-#: libwnck/window-action-menu.c:691
+#: libwnck/window-action-menu.c:678
 msgid "Move to Workspace _Up"
 msgstr "ย้ายไปพื้นที่ทำงาน_บน"
 
-#: libwnck/window-action-menu.c:703
+#: libwnck/window-action-menu.c:690
 msgid "Move to Workspace _Down"
 msgstr "ย้ายไปพื้นที่ทำงาน_ล่าง"
 
-#: libwnck/window-action-menu.c:710
+#: libwnck/window-action-menu.c:697
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
+
+#: libwnck/window-action-menu.c:739
+msgid "_Close"
+msgstr "ปิ_ด"
 
 #: libwnck/window.c:36
 msgid "Untitled window"
