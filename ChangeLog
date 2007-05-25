@@ -1,3 +1,10 @@
+2007-05-25  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_request): remove some
+	useless code, and also make sure we have size hints that make sense
+	when there's no window in always group mode
+	Should fix bug #440625
+
 2007-05-20  Vincent Untz  <vuntz@gnome.org>
 
 	Remove all reference to _NET_WM_WINDOW_TYPE_MODAL_DIALOG since it's

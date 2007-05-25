@@ -1200,11 +1200,9 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 	  val = n_cols * tasklist->priv->max_button_width;
 	  if (val >= lowest_range)
 	    { /* Overlaps old range */
+              g_assert (array->len > 0);
 	      lowest_range = n_cols * grouping_limit;
-	      if (array->len > 0)
-		g_array_index(array, int, array->len-1) = lowest_range;
-	      else
-		g_array_insert_val (array, 0, lowest_range);
+              g_array_index(array, int, array->len-1) = lowest_range;
 	    }
 	  else
 	    {
@@ -1227,6 +1225,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   else
     {
       val = 0;
+      g_array_insert_val (array, 0, val);
       g_array_insert_val (array, 0, val);
     }
   
