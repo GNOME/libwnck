@@ -79,6 +79,8 @@ window_weak_notify (gpointer data,
   g_object_weak_unref (G_OBJECT (data),
                        object_weak_notify,
                        window);
+
+  gtk_widget_destroy (GTK_WIDGET (data));
 }
 
 
@@ -91,29 +93,32 @@ object_weak_notify (gpointer data,
                        obj);
 }
 
-static void
-set_data (GObject        *obj,
-          ActionMenuData *amd)
-{
-  g_object_set_data (obj, "wnck-action-data", amd);
-  if (amd && amd->window)
-    {
-      g_object_weak_ref (G_OBJECT (amd->window), window_weak_notify, obj);
-      g_object_weak_ref (obj, object_weak_notify, amd->window);
-    }
-}
-
 static ActionMenuData*
-get_data (GObject *obj)
+get_data (GtkWidget *widget)
 {
-  return g_object_get_data (obj, "wnck-action-data");
+  ActionMenuData *retval;
+
+  while (widget) {
+    if (GTK_IS_MENU_ITEM (widget))
+      widget = widget->parent;
+
+    retval = g_object_get_data (G_OBJECT (widget), "wnck-action-data");
+    if (retval)
+      return retval;
+
+    widget = gtk_menu_get_attach_widget (GTK_MENU (widget));
+    if (widget == NULL)
+      break;
+  }
+
+  return NULL;
 }
 
 static void
 item_activated_callback (GtkWidget *menu_item,
                          gpointer   data)
 {
-  ActionMenuData *amd = get_data (G_OBJECT (menu_item));
+  ActionMenuData *amd = get_data (menu_item);
   WindowAction action = GPOINTER_TO_INT (data);
   
   if (amd == NULL)
@@ -403,8 +408,6 @@ make_check_menu_item (ActionMenuData *amd,
 
   mi = gtk_check_menu_item_new_with_mnemonic (mnemonic_text);
 
-  set_data (G_OBJECT (mi), amd);
-
   g_signal_connect (G_OBJECT (mi), "activate",
                     G_CALLBACK (item_activated_callback),
                     GINT_TO_POINTER (action));
@@ -421,8 +424,6 @@ make_menu_item (ActionMenuData *amd,
   GtkWidget *mi;
   
   mi = gtk_image_menu_item_new_with_label ("");
-  
-  set_data (G_OBJECT (mi), amd);
   
   g_signal_connect (G_OBJECT (mi), "activate",
                     G_CALLBACK (item_activated_callback),
