@@ -2,7 +2,7 @@ AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(libwnck, 2.18.2)
+AM_INIT_AUTOMAKE(libwnck, 2.18.3)
 AM_MAINTAINER_MODE
 
 dnl libtool versioning for libwnck
