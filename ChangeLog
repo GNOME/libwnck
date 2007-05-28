@@ -2,6 +2,14 @@
 
 	Backport from HEAD.
 
+	* libwnck-1.0.pc.in:
+	* libwnck-1.0-uninstalled.pc.in: require libstartup-notification-1.0
+	when we compile the library with sn
+
+2007-05-28  Vincent Untz  <vuntz@gnome.org>
+
+	Backport from HEAD.
+
 	* libwnck/pager.c: (get_workspace_rect): fix vertical pager in RTL
 	environments
 	Fix bug #431461
