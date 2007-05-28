@@ -2,6 +2,16 @@
 
 	Backport from HEAD.
 
+	* libwnck/pager.c: (wnck_update_drag_icon): fix typo which broke the
+	height of the icon (was the same as the width)
+	(wnck_drag_window_destroyed): don't reset to the default icon. This is
+	not what we should do. We should make the drag be impossible instead.
+	Side-effect is fix for bug #414967.
+
+2007-05-28  Vincent Untz  <vuntz@gnome.org>
+
+	Backport from HEAD.
+
 	* libwnck/pager.c: (wnck_pager_drag_data_received): return instead of
 	dumbly continuing in this function when we know that the drag doesn't
 	work
