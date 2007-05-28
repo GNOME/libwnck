@@ -2,6 +2,15 @@
 
 	Backport from HEAD.
 
+	* libwnck/tasklist.c: (wnck_tasklist_size_request): remove some
+	useless code, and also make sure we have size hints that make sense
+	when there's no window in always group mode
+	Should fix bug #440625
+
+2007-05-28  Vincent Untz  <vuntz@gnome.org>
+
+	Backport from HEAD.
+
 	* libwnck-1.0.pc.in:
 	* libwnck-1.0-uninstalled.pc.in: require libstartup-notification-1.0
 	when we compile the library with sn
