@@ -1,5 +1,10 @@
 2007-05-28  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.18.2
+
+2007-05-28  Vincent Untz  <vuntz@gnome.org>
+
 	Backport from HEAD.
 
 	* libwnck/tasklist.c: (wnck_tasklist_size_request): remove some

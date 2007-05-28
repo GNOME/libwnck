@@ -1,3 +1,34 @@
+2.18.2
+======
+
+ Fixes
+
+  - Add small missing bit forgotten for move/resize window API (Elijah)
+  - Plug leak (Matthias Clasen) [#428056]
+  - Check whether window manager supports _NET_WM_ACTION_ABOVE and
+    _NET_WM_ACTION_BELOW instead of guessing whether these are supported
+    (Elijah) [#352383, #115247]
+  - Fix crash on startup in the pager (Kim Woelders) [#403377]
+  - Fix crash when dragging small windows in the pager (Vincent) [#428280]
+  - Fix compilation warnings (Bernard Leak, Vincent) [#431175]
+  - Fix crash when a menu is opening for a window being destroyed (Vincent)
+    [#410133]
+  - Fix crash happening in some cases on drop on the pager (Vincent) [#415675]
+  - Don't reset the drag icon to the default one when dragging and the dragged
+    window is destroyed (Vincent) [#414967]
+  - Fix vertical pager in RTL environments (Vincent) [#431461]
+  - Fix size hints set by the tasklist when there's no window and the mode is
+    "always group". This was causing a crash in the panel. (Vincent) [#440625]
+
+ Misc
+
+  - Require libstartup-notification-1.0 in the pkg-config files
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Ignacio Casal Quinteiro (gl)
+
 2.18.0
 ======
 
