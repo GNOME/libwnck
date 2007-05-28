@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-14 05:40+0300\n"
-"PO-Revision-Date: 2007-05-14 05:43+0300\n"
+"POT-Creation-Date: 2007-05-27 23:56+0300\n"
+"PO-Revision-Date: 2007-05-27 23:57+0300\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian Latin <i18n@mova.org>\n"
 "MIME-Version: 1.0\n"
@@ -33,19 +33,19 @@ msgstr "Pryłada dla pieraklučeńnia pracoŭnych abšaraŭ"
 msgid "Click this to switch to workspace %s"
 msgstr "Klikni, kab pieraklučycca na pracoŭny abšar %s"
 
-#: ../libwnck/selector.c:221
+#: ../libwnck/selector.c:326
 msgid "Unknown Window"
 msgstr "Nieviadomaje akno"
 
-#: ../libwnck/selector.c:772
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "Niama adčynienych voknaŭ"
 
-#: ../libwnck/selector.c:876
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "Vybar voknaŭ"
 
-#: ../libwnck/selector.c:877
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "Pryłada pieraklučeńnia pamiž voknami"
 
@@ -57,17 +57,25 @@ msgstr "Śpis voknaŭ"
 msgid "Tool to switch between visible windows"
 msgstr "Pryłada dla pieraklučeńnia pamiž bačnymi voknami"
 
-#: ../libwnck/tasklist.c:2579
-msgid "_Close All"
-msgstr "_Začyni ŭsie"
-
-#: ../libwnck/tasklist.c:2594
-msgid "_Minimize All"
+#: ../libwnck/tasklist.c:2651
+msgid "Mi_nimize All"
 msgstr "_Minimalizuj usie"
 
-#: ../libwnck/tasklist.c:2605
-msgid "_Unminimize All"
+#: ../libwnck/tasklist.c:2662
+msgid "Un_minimize All"
 msgstr "_Anuluj minimalizacyju ŭsich voknaŭ"
+
+#: ../libwnck/tasklist.c:2670
+msgid "Ma_ximize All"
+msgstr "Ma_ksymalizuj usie"
+
+#: ../libwnck/tasklist.c:2681
+msgid "_Unmaximize All"
+msgstr "_Anuluj maksymalizacyju ŭsich voknaŭ"
+
+#: ../libwnck/tasklist.c:2693
+msgid "_Close All"
+msgstr "_Začyni ŭsie"
 
 #: ../libwnck/test-pager.c:13
 msgid "Use N_ROWS rows"
@@ -82,7 +90,7 @@ msgid "Only show current workspace"
 msgstr "Pakazvaj tolki hety pracoŭny abšar"
 
 #: ../libwnck/test-pager.c:15
-#: ../libwnck/test-tasklist.c:13
+#: ../libwnck/test-tasklist.c:16
 msgid "Use RTL as default direction"
 msgstr "Užyj aryjentacyju sprava ŭleva jak zmoŭčanuju"
 
@@ -94,11 +102,20 @@ msgstr "Pakazvaj nazvy rabočych abšaraŭ, a nia ichnaje źmieściva"
 msgid "Use a vertical orientation"
 msgstr "Užyj vertykalnuju aryjentacyju"
 
-#: ../libwnck/test-tasklist.c:11
+#: ../libwnck/test-selector.c:10
+#: ../libwnck/test-tasklist.c:17
+msgid "Don't show window in tasklist"
+msgstr "Nie pakazvaj vakno na paneli zadač"
+
+#: ../libwnck/test-tasklist.c:13
 msgid "Always group windows"
 msgstr "Zaŭsiody hrupuj vokny"
 
-#: ../libwnck/test-tasklist.c:12
+#: ../libwnck/test-tasklist.c:14
+msgid "Never group windows"
+msgstr "Nikoli nie hrupuj vokny"
+
+#: ../libwnck/test-tasklist.c:15
 msgid "Display windows from all workspaces"
 msgstr "Pakazvaj vokny z usich rabočych abšaraŭ"
 
@@ -141,41 +158,41 @@ msgstr "_Pierasuń"
 msgid "_Resize"
 msgstr "Źm_iani pamier"
 
-#: ../libwnck/window-action-menu.c:621
-msgid "_Close"
-msgstr "Za_čyni"
-
-#: ../libwnck/window-action-menu.c:630
+#: ../libwnck/window-action-menu.c:617
 msgid "Always On _Top"
 msgstr "Zaŭsiody _ŭhary"
 
-#: ../libwnck/window-action-menu.c:638
+#: ../libwnck/window-action-menu.c:625
 msgid "_Always on Visible Workspace"
 msgstr "_Zaŭsiody na bačnym pracoŭnym abšary"
 
-#: ../libwnck/window-action-menu.c:643
+#: ../libwnck/window-action-menu.c:630
 msgid "_Only on This Workspace"
 msgstr "_Tolki na hetym pracoŭnym abšary"
 
-#: ../libwnck/window-action-menu.c:669
+#: ../libwnck/window-action-menu.c:656
 msgid "Move to Workspace _Left"
 msgstr "Pierasuń na _levy pracoŭny abšar"
 
-#: ../libwnck/window-action-menu.c:680
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Workspace R_ight"
 msgstr "Pierasuń na _pravy pracoŭny abšar"
 
-#: ../libwnck/window-action-menu.c:691
+#: ../libwnck/window-action-menu.c:678
 msgid "Move to Workspace _Up"
 msgstr "Pierasuń na _vierchni pracoŭny abšar"
 
-#: ../libwnck/window-action-menu.c:703
+#: ../libwnck/window-action-menu.c:690
 msgid "Move to Workspace _Down"
 msgstr "Pierasuń na _nižni pracoŭny abšar"
 
-#: ../libwnck/window-action-menu.c:710
+#: ../libwnck/window-action-menu.c:697
 msgid "Move to Another _Workspace"
 msgstr "Pierasuń na _inšy pracoŭny abšar"
+
+#: ../libwnck/window-action-menu.c:739
+msgid "_Close"
+msgstr "Za_čyni"
 
 #: ../libwnck/window.c:36
 msgid "Untitled window"
