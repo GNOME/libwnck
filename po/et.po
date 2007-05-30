@@ -7,14 +7,14 @@
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
 # Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
 # Priit Laes <amd@store20.com>, 2005, 2006
-# Ivar Smolin <okul@linux.ee>, 2005, 2006.
+# Ivar Smolin <okul@linux.ee>, 2005-2007.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-02-09 09:01+0100\n"
-"PO-Revision-Date: 2006-08-09 18:25+0300\n"
+"POT-Creation-Date: 2007-05-20 04:06+0100\n"
+"PO-Revision-Date: 2007-05-29 20:38+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -22,139 +22,181 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../libwnck/application.c:26
-msgid "untitled application"
-msgstr "pealkirjata rakendus"
+#: ../libwnck/application.c:29
+msgid "Untitled application"
+msgstr "Pealkirjata rakendus"
 
-#: ../libwnck/pager-accessible.c:318
+#: ../libwnck/pager-accessible.c:321
 msgid "Workspace Switcher"
 msgstr "Tööalade vahetaja"
 
-#: ../libwnck/pager-accessible.c:329
+#: ../libwnck/pager-accessible.c:332
 msgid "Tool to switch between workspaces"
 msgstr "Vahend tööalade vahel lülitumiseks"
 
-#: ../libwnck/pager-accessible.c:433
+#: ../libwnck/pager-accessible.c:436
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klõpsa siin, et liikuda tööalale %s"
 
-#: ../libwnck/selector.c:218
+#: ../libwnck/selector.c:326
 msgid "Unknown Window"
 msgstr "Tundmatu aken"
 
-#: ../libwnck/selector.c:726
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "Aknaid pole lahti"
 
-#: ../libwnck/selector.c:830
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "Aknavalija"
 
-#: ../libwnck/selector.c:831
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "Vahend akende vahel lülitumiseks"
 
-#: ../libwnck/tasklist.c:664
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "Akende nimekiri"
 
-#: ../libwnck/tasklist.c:665
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "Vahend nähtavate akende vahetamiseks"
 
-#: ../libwnck/tasklist.c:2462
+#: ../libwnck/tasklist.c:2652
+msgid "Mi_nimize All"
+msgstr "_Minimeeri kõik"
+
+#: ../libwnck/tasklist.c:2663
+msgid "Un_minimize All"
+msgstr "_Taasta kõik"
+
+#: ../libwnck/tasklist.c:2671
+msgid "Ma_ximize All"
+msgstr "Ma_ksimeeri"
+
+#: ../libwnck/tasklist.c:2682
+msgid "_Unmaximize All"
+msgstr "_Taasta kõik"
+
+#: ../libwnck/tasklist.c:2694
 msgid "_Close All"
 msgstr "_Sulge kõik"
 
-#: ../libwnck/tasklist.c:2477
-msgid "_Minimize All"
-msgstr "_Minimeeri kõik"
+#: ../libwnck/test-pager.c:13
+msgid "Use N_ROWS rows"
+msgstr ""
 
-#: ../libwnck/tasklist.c:2488
-msgid "_Unminimize All"
-msgstr "_Taasta kõik"
+#: ../libwnck/test-pager.c:13
+msgid "N_ROWS"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:257
+#: ../libwnck/test-pager.c:14
+msgid "Only show current workspace"
+msgstr "_Ainult sellel tööalal"
+
+#: ../libwnck/test-pager.c:15 ../libwnck/test-tasklist.c:16
+msgid "Use RTL as default direction"
+msgstr "Paremalt-vasakule suuna kasutamine vaikimisi suunana"
+
+#: ../libwnck/test-pager.c:16
+msgid "Show workspace names instead of workspace contents"
+msgstr "Töölaua sisu asemel töölaua nimede näitamine"
+
+#: ../libwnck/test-pager.c:17
+msgid "Use a vertical orientation"
+msgstr "Püstise suuna kasutamine"
+
+#: ../libwnck/test-selector.c:10 ../libwnck/test-tasklist.c:17
+msgid "Don't show window in tasklist"
+msgstr "Akent ei näidata akende nimekirjas"
+
+#: ../libwnck/test-tasklist.c:13
+msgid "Always group windows"
+msgstr "Aknad grupeeritakse alati"
+
+#: ../libwnck/test-tasklist.c:14
+msgid "Never group windows"
+msgstr "Aknad ei grupeerita kunagi"
+
+#: ../libwnck/test-tasklist.c:15
+msgid "Display windows from all workspaces"
+msgstr "Aknaid näidatakse kõigil tööaladel"
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "_Taasta"
 
-#: ../libwnck/window-action-menu.c:264
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "_Minimeeri"
 
-#: ../libwnck/window-action-menu.c:272
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "Taasta s_uurus"
 
-#: ../libwnck/window-action-menu.c:279
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "Ma_ksimeeri"
 
-#: ../libwnck/window-action-menu.c:299
-msgid "_Only on This Workspace"
-msgstr "_Ainult sellel tööalal"
-
-#: ../libwnck/window-action-menu.c:306
-msgid "_Always on Visible Workspace"
-msgstr "_Alati nähtaval tööalal"
-
-#: ../libwnck/window-action-menu.c:460
-#: ../libwnck/workspace.c:236
+#: ../libwnck/window-action-menu.c:498 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "Tööala %d"
 
-#: ../libwnck/window-action-menu.c:468
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "Tööala 1_0"
 
-#: ../libwnck/window-action-menu.c:470
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Tööala %s%d"
 
-#: ../libwnck/window-action-menu.c:560
-msgid "On _Top"
-msgstr "Kõige p_ealmine"
-
-#: ../libwnck/window-action-menu.c:569
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "_Liiguta"
 
-#: ../libwnck/window-action-menu.c:576
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "Muuda suu_rust"
 
-#: ../libwnck/window-action-menu.c:589
-msgid "_Close"
-msgstr "_Sulge"
-
 #: ../libwnck/window-action-menu.c:617
+msgid "Always On _Top"
+msgstr "Alati kõige p_ealmine"
+
+#: ../libwnck/window-action-menu.c:625
+msgid "_Always on Visible Workspace"
+msgstr "_Alati nähtaval tööalal"
+
+#: ../libwnck/window-action-menu.c:630
+msgid "_Only on This Workspace"
+msgstr "_Ainult sellel tööalal"
+
+#: ../libwnck/window-action-menu.c:656
 msgid "Move to Workspace _Left"
 msgstr "Tõsta _vasakpoolsele tööalale"
 
-#: ../libwnck/window-action-menu.c:628
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Workspace R_ight"
 msgstr "Tõsta _parempoolsele tööalale"
 
-#: ../libwnck/window-action-menu.c:639
+#: ../libwnck/window-action-menu.c:678
 msgid "Move to Workspace _Up"
 msgstr "Tõsta _ülemisele tööalale"
 
-#: ../libwnck/window-action-menu.c:651
+#: ../libwnck/window-action-menu.c:690
 msgid "Move to Workspace _Down"
 msgstr "Tõsta _alumisele tööalale"
 
-#: ../libwnck/window-action-menu.c:665
+#: ../libwnck/window-action-menu.c:697
 msgid "Move to Another _Workspace"
 msgstr "Tõsta mõ_nele teisele tööalale"
 
-#: ../libwnck/window-action-menu.c:681
-#, c-format
-msgid "%s"
-msgstr "%s"
+#: ../libwnck/window-action-menu.c:739
+msgid "_Close"
+msgstr "_Sulge"
 
-#: ../libwnck/window.c:32
-msgid "untitled window"
-msgstr "pealkirjata aken"
+#: ../libwnck/window.c:36
+msgid "Untitled window"
+msgstr "Pealkirjata aken"
