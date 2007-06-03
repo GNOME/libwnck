@@ -1,3 +1,52 @@
+2.19.3
+======
+
+ This release breaks API compatibility.
+
+ Features
+
+  - Show workspace names in the window selector (Vincent) [#354667]
+  - Make it possible to activate the next window in a class group by clicking
+    with the middle button on the group in the tasklist (Vincent) [#342707]
+  - Add Maximize all and Unmaximize all to the context menu of group buttons in
+    the tasklist (Vincent) [#155875]
+
+ Fixes
+
+  - Improve fallback title for windows and applications (Vincent)
+  - Fix vertical pager in RTL environments (Vincent) [#431461]
+  - Move the Close mneu item at the bottom of the action menu (Vincent)
+    [#104026]
+  - Change API for wnck_selector_new(): we don't need the screen argument
+    (Vincent) [#164474]
+  - Code cleanups, especially in the selector (Vincent)
+  - Put pinned windows in the current workspace in the selector (Vincent)
+  - Fix selector when the last window disappears while the selector is opened,
+    and handle other similar issues (Vincent) [#156918]
+  - Add missing signals for WnckScreen (Vincent)
+  - Sort the windows in the window selector (Vincent)
+  - Fix potential crash when a window disappears from the tasklist and its
+    context menu was opened (Vincent)
+  - Remove all reference to _NET_WM_WINDOW_TYPE_MODAL_DIALOG since it's not in
+    the EWMH spec. This breaks API. (Vincent) [#124332]
+  - Make sure the size hints of the tasklist are sane when there's no window in
+    always group mode (Vincent) [#440625]
+
+ Misc
+
+  - Add useful command-line options for test programs (Vincent)
+  - Require libstartup-notification-1.0 in the pkg-config file when startup
+    notification support is enabled (Vincent)
+
+ Translators
+
+  - Ihar Hrachyshka (be@latin)
+  - David Lodge (en_GB)
+  - Jorge González (es)
+  - Ivar Smolin (et)
+  - Daniel Nylander (sv)
+  - Theppitak Karoonboonyanan (th)
+
 2.19.2
 ======
 
