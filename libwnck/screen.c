@@ -144,7 +144,8 @@ static void unqueue_update          (WnckScreen      *screen);
 static void do_update_now           (WnckScreen      *screen);
 
 static void emit_active_window_changed    (WnckScreen      *screen);
-static void emit_active_workspace_changed (WnckScreen      *screen);
+static void emit_active_workspace_changed (WnckScreen      *screen,
+                                           WnckWorkspace   *previous_space);
 static void emit_window_stacking_changed  (WnckScreen      *screen);
 static void emit_window_opened            (WnckScreen      *screen,
                                            WnckWindow      *window);
@@ -224,8 +225,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, active_window_changed),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
   signals[ACTIVE_WORKSPACE_CHANGED] =
     g_signal_new ("active_workspace_changed",
@@ -233,8 +234,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, active_workspace_changed),
                   NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);
+                  g_cclosure_marshal_VOID__OBJECT,
+                  G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
   
   signals[WINDOW_STACKING_CHANGED] =
     g_signal_new ("window_stacking_changed",
@@ -1499,7 +1500,7 @@ update_workspace_list (WnckScreen *screen)
       if (space == screen->priv->active_workspace)
         {
           screen->priv->active_workspace = NULL;
-          emit_active_workspace_changed (screen);
+          emit_active_workspace_changed (screen, space);
         }
       
       emit_workspace_destroyed (screen, space);
@@ -1653,6 +1654,7 @@ static void
 update_active_workspace (WnckScreen *screen)
 {
   int number;
+  WnckWorkspace *previous_space;
   WnckWorkspace *space;
   
   if (!screen->priv->need_update_active_workspace)
@@ -1671,9 +1673,10 @@ update_active_workspace (WnckScreen *screen)
   if (space == screen->priv->active_workspace)
     return;
   
+  previous_space = screen->priv->active_workspace;
   screen->priv->active_workspace = space;
 
-  emit_active_workspace_changed (screen);
+  emit_active_workspace_changed (screen, previous_space);
 }
 
 static void
@@ -1942,15 +1945,16 @@ emit_active_window_changed (WnckScreen *screen)
 {
   g_signal_emit (G_OBJECT (screen),
                  signals[ACTIVE_WINDOW_CHANGED],
-                 0);
+                 0, screen->priv->previously_active_window);
 }
 
 static void
-emit_active_workspace_changed (WnckScreen *screen)
+emit_active_workspace_changed (WnckScreen    *screen,
+                               WnckWorkspace *previous_space)
 {
   g_signal_emit (G_OBJECT (screen),
                  signals[ACTIVE_WORKSPACE_CHANGED],
-                 0);
+                 0, previous_space);
 }
 
 static void

@@ -7,8 +7,10 @@ static GtkTreeModel *global_tree_model;
 static guint refill_idle;
 
 static void active_window_changed_callback    (WnckScreen      *screen,
+                                               WnckWindow      *previous_window,
                                                gpointer         data);
 static void active_workspace_changed_callback (WnckScreen      *screen,
+                                               WnckWorkspace   *previous_workspace,
                                                gpointer         data);
 static void window_stacking_changed_callback  (WnckScreen      *screen,
                                                gpointer         data);
@@ -127,6 +129,7 @@ main (int argc, char **argv)
 
 static void
 active_window_changed_callback    (WnckScreen    *screen,
+                                   WnckWindow    *previous_window,
                                    gpointer       data)
 {
   WnckWindow *window;
@@ -141,6 +144,7 @@ active_window_changed_callback    (WnckScreen    *screen,
 
 static void
 active_workspace_changed_callback (WnckScreen    *screen,
+                                   WnckWorkspace *previous_workspace,
                                    gpointer       data)
 {
   g_print ("Active workspace changed\n");

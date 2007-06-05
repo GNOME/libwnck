@@ -261,8 +261,10 @@ static int      wnck_tasklist_layout        (GtkAllocation  *allocation,
 					     int            *n_rows_out);
 
 static void     wnck_tasklist_active_window_changed    (WnckScreen   *screen,
+                                                        WnckWindow   *previous_window,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
+                                                        WnckWorkspace *previous_workspace,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_window_added             (WnckScreen   *screen,
 							WnckWindow   *win,
@@ -2049,7 +2051,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 
   
   /* since we cleared active_window we need to reset it */
-  wnck_tasklist_active_window_changed (tasklist->priv->screen, tasklist);
+  wnck_tasklist_active_window_changed (tasklist->priv->screen, NULL, tasklist);
 
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
@@ -2149,6 +2151,7 @@ wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
 
 static void
 wnck_tasklist_active_window_changed (WnckScreen   *screen,
+                                     WnckWindow   *previous_window,
 				     WnckTasklist *tasklist)
 {
   WnckWindow *active_window;
@@ -2172,8 +2175,9 @@ wnck_tasklist_active_window_changed (WnckScreen   *screen,
 }
 
 static void
-wnck_tasklist_active_workspace_changed (WnckScreen   *screen,
-					WnckTasklist *tasklist)
+wnck_tasklist_active_workspace_changed (WnckScreen    *screen,
+                                        WnckWorkspace *previous_workspace,
+					WnckTasklist  *tasklist)
 {
   wnck_tasklist_update_lists (tasklist);
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
@@ -2365,7 +2369,7 @@ wnck_tasklist_change_active_timeout (gpointer data)
 
   tasklist->priv->activate_timeout_id = 0;
 
-  wnck_tasklist_active_window_changed (tasklist->priv->screen, tasklist);
+  wnck_tasklist_active_window_changed (tasklist->priv->screen, NULL, tasklist);
 
   return FALSE;
 }

@@ -1777,6 +1777,7 @@ wnck_pager_set_shadow_type (WnckPager *   pager,
 
 static void
 active_window_changed_callback    (WnckScreen      *screen,
+                                   WnckWindow      *previous_window,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
@@ -1785,6 +1786,7 @@ active_window_changed_callback    (WnckScreen      *screen,
 
 static void
 active_workspace_changed_callback (WnckScreen      *screen,
+                                   WnckWorkspace   *previous_workspace,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);

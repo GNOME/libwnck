@@ -57,9 +57,11 @@ struct _WnckScreenClass
   GObjectClass parent_class;
 
   /* focused window changed */
-  void (* active_window_changed)    (WnckScreen *screen);
+  void (* active_window_changed)    (WnckScreen *screen,
+                                     WnckWindow *previous_window);
   /* current workspace changed */
-  void (* active_workspace_changed) (WnckScreen *screen);
+  void (* active_workspace_changed) (WnckScreen *screen,
+                                     WnckWorkspace *previous_workspace);
   /* stacking order changed */
   void (* window_stacking_changed)  (WnckScreen *screen);
   /* window added */

@@ -1,3 +1,26 @@
+2007-06-05  Vincent Untz  <vuntz@gnome.org>
+
+	Add previous window/workspace to signal handlers for
+	active-window-changed and active-workspace-changed WnckScreen signals.
+	Fix bug #136858.
+
+	* libwnck/pager.c: (active_window_changed_callback): updated for signal change
+	(active_workspace_changed_callback): updated for signal change
+	* libwnck/screen.[ch]: (wnck_screen_class_init): updated for signal change
+	(update_workspace_list): updated
+	(update_active_workspace): updated
+	(emit_active_window_changed): emit signal with previous window
+	(emit_active_workspace_changed): emit signal with previous workspace
+	* libwnck/selector.c: (wnck_selector_active_window_changed): updated
+	for signal change
+	* libwnck/tasklist.c: (wnck_tasklist_update_lists): updated
+	(wnck_tasklist_active_window_changed): updated for signal change
+	(wnck_tasklist_active_workspace_changed): updated for signal change
+	(wnck_tasklist_change_active_timeout): updated
+	* libwnck/test-wnck.c: (active_window_changed_callback): updated for
+	signal change
+	(active_workspace_changed_callback): ditto
+
 2007-06-03  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.19.4

@@ -480,7 +480,8 @@ wnck_selector_window_workspace_changed (WnckWindow   *window,
 }
 
 static void
-wnck_selector_active_window_changed (WnckScreen *screen,
+wnck_selector_active_window_changed (WnckScreen   *screen,
+                                     WnckWindow   *previous_window,
                                      WnckSelector *selector)
 {
   WnckWindow *window;
