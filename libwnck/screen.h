@@ -98,16 +98,13 @@ struct _WnckScreenClass
   /* Viewport stuff changed */
   void (* viewports_changed)        (WnckScreen      *screen);
   
-#if 0
+  /* Padding for future expansion */
   void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);
   void (* pad4) (void);
   void (* pad5) (void);
   void (* pad6) (void);
-  void (* pad7) (void);
-  void (* pad8) (void);
-#endif
 };
 
 typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;

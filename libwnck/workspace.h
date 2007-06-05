@@ -49,6 +49,12 @@ struct _WnckWorkspaceClass
   GObjectClass parent_class;
 
   void (* name_changed) (WnckWorkspace *space);
+  
+  /* Padding for future expansion */
+  void (* pad1) (void);
+  void (* pad2) (void);
+  void (* pad3) (void);
+  void (* pad4) (void);
 };
 
 GType wnck_workspace_get_type (void) G_GNUC_CONST;

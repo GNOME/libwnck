@@ -150,6 +150,12 @@ struct _WnckWindowClass
 
   /* Changed size/position */
   void (* geometry_changed)      (WnckWindow       *window);
+  
+  /* Padding for future expansion */
+  void (* pad1) (void);
+  void (* pad2) (void);
+  void (* pad3) (void);
+  void (* pad4) (void);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;

@@ -1,12 +1,29 @@
 2007-06-05  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/application.h:
+	* libwnck/class-group.h:
+	* libwnck/pager.h:
+	* libwnck/screen.h:
+	* libwnck/selector.h:
+	* libwnck/tasklist.h:
+	* libwnck/window-menu.c:
+	* libwnck/window-menu.h:
+	* libwnck/window.h:
+	* libwnck/workspace.h: Add padding to classes so we can add signals in
+	the future, without breaking ABI.
+	* libwnck/window-menu.[ch]: kill useless files
+
+2007-06-05  Vincent Untz  <vuntz@gnome.org>
+
 	Add previous window/workspace to signal handlers for
 	active-window-changed and active-workspace-changed WnckScreen signals.
 	Fix bug #136858.
 
-	* libwnck/pager.c: (active_window_changed_callback): updated for signal change
+	* libwnck/pager.c: (active_window_changed_callback): updated for
+	signal change
 	(active_workspace_changed_callback): updated for signal change
-	* libwnck/screen.[ch]: (wnck_screen_class_init): updated for signal change
+	* libwnck/screen.[ch]: (wnck_screen_class_init): updated for signal
+	change
 	(update_workspace_list): updated
 	(update_active_workspace): updated
 	(emit_active_window_changed): emit signal with previous window

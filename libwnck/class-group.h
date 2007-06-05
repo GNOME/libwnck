@@ -52,6 +52,12 @@ struct _WnckClassGroupClass
 
   void (* name_changed) (WnckApplication *app);
   void (* icon_changed) (WnckApplication *app);
+  
+  /* Padding for future expansion */
+  void (* pad1) (void);
+  void (* pad2) (void);
+  void (* pad3) (void);
+  void (* pad4) (void);
 };
 
 GType wnck_class_group_get_type (void) G_GNUC_CONST;

@@ -48,6 +48,12 @@ struct _WnckTasklist
 struct _WnckTasklistClass
 {
   GtkContainerClass parent_class;
+  
+  /* Padding for future expansion */
+  void (* pad1) (void);
+  void (* pad2) (void);
+  void (* pad3) (void);
+  void (* pad4) (void);
 };
 
 typedef enum {
