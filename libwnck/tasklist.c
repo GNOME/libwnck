@@ -3323,7 +3323,7 @@ wnck_task_button_press_event (GtkWidget	      *widget,
                           event->button,
                           gtk_get_current_event_time ());
 
-          g_signal_connect (task->action_menu, "deactivate",
+          g_signal_connect (task->action_menu, "selection-done",
                             G_CALLBACK (gtk_widget_destroy), NULL);
       
           return TRUE;
