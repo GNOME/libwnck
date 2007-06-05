@@ -17,19 +17,11 @@ WnckPager
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### STRUCT WnckPagerPrivate ##### -->
+<!-- ##### STRUCT WnckPager ##### -->
 <para>
 
 </para>
 
-
-<!-- ##### ENUM WnckPagerDisplayMode ##### -->
-<para>
-
-</para>
-
-@WNCK_PAGER_DISPLAY_NAME: 
-@WNCK_PAGER_DISPLAY_CONTENT: 
 
 <!-- ##### FUNCTION wnck_pager_new ##### -->
 <para>
@@ -66,6 +58,14 @@ WnckPager
 @pager: 
 @n_rows: 
 
+
+<!-- ##### ENUM WnckPagerDisplayMode ##### -->
+<para>
+
+</para>
+
+@WNCK_PAGER_DISPLAY_NAME: 
+@WNCK_PAGER_DISPLAY_CONTENT: 
 
 <!-- ##### FUNCTION wnck_pager_set_display_mode ##### -->
 <para>

@@ -17,43 +17,119 @@ WnckScreen
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### STRUCT WnckApplication ##### -->
+<!-- ##### STRUCT WnckScreen ##### -->
 <para>
 
 </para>
 
-@parent_instance: 
-@priv: 
 
-<!-- ##### STRUCT WnckClassGroup ##### -->
+<!-- ##### SIGNAL WnckScreen::active-window-changed ##### -->
 <para>
 
 </para>
 
-@parent_instance: 
-@priv: 
+@wnckscreen: the object which received the signal.
+@arg1: 
 
-<!-- ##### STRUCT WnckWindow ##### -->
+<!-- ##### SIGNAL WnckScreen::active-workspace-changed ##### -->
 <para>
 
 </para>
 
-@parent_instance: 
-@priv: 
+@wnckscreen: the object which received the signal.
+@arg1: 
 
-<!-- ##### STRUCT WnckWorkspace ##### -->
+<!-- ##### SIGNAL WnckScreen::application-closed ##### -->
 <para>
 
 </para>
 
-@parent_instance: 
-@priv: 
+@wnckscreen: the object which received the signal.
+@arg1: 
 
-<!-- ##### STRUCT WnckScreenPrivate ##### -->
+<!-- ##### SIGNAL WnckScreen::application-opened ##### -->
 <para>
 
 </para>
 
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::background-changed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+
+<!-- ##### SIGNAL WnckScreen::class-group-closed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::class-group-opened ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::showing-desktop-changed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+
+<!-- ##### SIGNAL WnckScreen::viewports-changed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+
+<!-- ##### SIGNAL WnckScreen::window-closed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::window-opened ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::window-stacking-changed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+
+<!-- ##### SIGNAL WnckScreen::workspace-created ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
+
+<!-- ##### SIGNAL WnckScreen::workspace-destroyed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+@arg1: 
 
 <!-- ##### FUNCTION wnck_screen_get_default ##### -->
 <para>
@@ -81,6 +157,15 @@ WnckScreen
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_screen_get_workspace_count ##### -->
+<para>
+
+</para>
+
+@screen: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_screen_get_workspace ##### -->
 <para>
 
@@ -88,6 +173,37 @@ WnckScreen
 
 @screen: 
 @workspace: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_screen_get_workspace_index ##### -->
+<para>
+
+</para>
+
+@screen: 
+@workspace: 
+@Returns: 
+
+
+<!-- ##### ENUM WnckMotionDirection ##### -->
+<para>
+
+</para>
+
+@WNCK_MOTION_UP: 
+@WNCK_MOTION_DOWN: 
+@WNCK_MOTION_LEFT: 
+@WNCK_MOTION_RIGHT: 
+
+<!-- ##### FUNCTION wnck_screen_get_workspace_neighbor ##### -->
+<para>
+
+</para>
+
+@screen: 
+@workspace: 
+@direction: 
 @Returns: 
 
 
@@ -142,15 +258,6 @@ WnckScreen
 </para>
 
 @screen: 
-
-
-<!-- ##### FUNCTION wnck_screen_get_workspace_count ##### -->
-<para>
-
-</para>
-
-@screen: 
-@Returns: 
 
 
 <!-- ##### FUNCTION wnck_screen_change_workspace_count ##### -->
@@ -227,6 +334,29 @@ WnckScreen
 @y: 
 
 
+<!-- ##### STRUCT WnckWorkspaceLayout ##### -->
+<para>
+
+</para>
+
+@rows: 
+@cols: 
+@grid: 
+@grid_area: 
+@current_row: 
+@current_col: 
+
+<!-- ##### FUNCTION wnck_screen_calc_workspace_layout ##### -->
+<para>
+
+</para>
+
+@screen: 
+@num_workspaces: 
+@current_space: 
+@layout: 
+
+
 <!-- ##### FUNCTION wnck_screen_try_set_workspace_layout ##### -->
 <para>
 
@@ -246,5 +376,13 @@ WnckScreen
 
 @screen: 
 @current_token: 
+
+
+<!-- ##### FUNCTION wnck_screen_free_workspace_layout ##### -->
+<para>
+
+</para>
+
+@layout: 
 
 

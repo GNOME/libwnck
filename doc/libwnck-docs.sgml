@@ -2,6 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" 
                "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
 <book id="index" xmlns:xi="http://www.w3.org/2003/XInclude">
+
   <bookinfo>
     <title>Libwnck Reference Manual</title>
   </bookinfo>
@@ -10,24 +11,21 @@
    <title>Libwnck Overview</title>
    <partintro>
     <para>
-libwnck is the Window Navigator Construction Kit, a library for use in
-writing pagers, taskslists etc.
+     libwnck is the Window Navigator Construction Kit, a library for use in writing pagers, tasklists, and more generally applications that are dealing with window management.
     </para>
     <para>
-Libwnck depends on the following libraries:
+     libwnck depends on the following libraries:
      <variablelist>
       <varlistentry>
        <term>GTK+</term>
        <listitem><para>
-The GTK+ GUI library.
+        The GTK+ GUI library.
        </para></listitem>
       </varlistentry>
       <varlistentry>
        <term>libstartupnotification</term>
        <listitem><para>
-A library which allows providing visual feedback to the user that an
-application or operation is being launched (typically through a "busy"
-cursor).
+        A library which allows providing visual feedback to the user that an application or operation is being launched (typically through a "busy" cursor).
        </para></listitem>
       </varlistentry>
      </variablelist>
@@ -35,24 +33,37 @@ cursor).
    </partintro>
   </part>
 
-  <chapter>
-    <title>API reference</title>
+  <part id="core">
+    <title>Libwnck Core Window Management Support</title>
+    <xi:include href="xml/window.xml"/>
+    <xi:include href="xml/class-group.xml"/>
     <xi:include href="xml/application.xml"/>
     <xi:include href="xml/workspace.xml"/>
+    <xi:include href="xml/screen.xml"/>
+  </part>
+
+  <part id="widgets">
+    <title>Libwnck Widgets</title>
+    <xi:include href="xml/pager.xml"/>
+    <xi:include href="xml/selector.xml"/>
+    <xi:include href="xml/tasklist.xml"/>
+  </part>
+
+  <part id="utils">
+    <title>Libwnck Utilities</title>
+    <xi:include href="xml/window-action-menu.xml"/>
+    <xi:include href="xml/util.xml"/>
+  </part>
+
+    <!-- Things that should not be in documentation because it's private
+         or it's not interesting
     <xi:include href="xml/pager-accessible-factory.xml"/>
     <xi:include href="xml/pager-accessible.xml"/>
     <xi:include href="xml/workspace-accessible-factory.xml"/>
-    <xi:include href="xml/screen.xml"/>
     <xi:include href="xml/workspace-accessible.xml"/>
-    <xi:include href="xml/class-group.xml"/>
-    <xi:include href="xml/tasklist.xml"/>
-    <xi:include href="xml/window.xml"/>
-    <xi:include href="xml/pager.xml"/>
     <xi:include href="xml/private.xml"/>
     <xi:include href="xml/xutils.xml"/>
-    <xi:include href="xml/window-action-menu.xml"/>
     <xi:include href="xml/wnck-enum-types.xml"/>
-    <xi:include href="xml/window-menu.xml"/>
-    <xi:include href="xml/util.xml"/>
-  </chapter>
+    -->
+
 </book>

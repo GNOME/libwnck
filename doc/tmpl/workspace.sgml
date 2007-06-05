@@ -17,11 +17,18 @@ WnckWorkspace
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### STRUCT WnckWorkspacePrivate ##### -->
+<!-- ##### STRUCT WnckWorkspace ##### -->
 <para>
 
 </para>
 
+
+<!-- ##### SIGNAL WnckWorkspace::name-changed ##### -->
+<para>
+
+</para>
+
+@wnckworkspace: the object which received the signal.
 
 <!-- ##### FUNCTION wnck_workspace_get_number ##### -->
 <para>
@@ -48,15 +55,6 @@ WnckWorkspace
 
 @space: 
 @name: 
-
-
-<!-- ##### FUNCTION wnck_workspace_activate ##### -->
-<para>
-
-</para>
-
-@space: 
-@timestamp: 
 
 
 <!-- ##### FUNCTION wnck_workspace_get_width ##### -->
@@ -102,5 +100,14 @@ WnckWorkspace
 
 @space: 
 @Returns: 
+
+
+<!-- ##### FUNCTION wnck_workspace_activate ##### -->
+<para>
+
+</para>
+
+@space: 
+@timestamp: 
 
 

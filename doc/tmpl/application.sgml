@@ -17,11 +17,25 @@ WnckApplication
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### STRUCT WnckApplicationPrivate ##### -->
+<!-- ##### STRUCT WnckApplication ##### -->
 <para>
 
 </para>
 
+
+<!-- ##### SIGNAL WnckApplication::icon-changed ##### -->
+<para>
+
+</para>
+
+@wnckapplication: the object which received the signal.
+
+<!-- ##### SIGNAL WnckApplication::name-changed ##### -->
+<para>
+
+</para>
+
+@wnckapplication: the object which received the signal.
 
 <!-- ##### FUNCTION wnck_application_get ##### -->
 <para>
@@ -33,24 +47,6 @@ WnckApplication
 
 
 <!-- ##### FUNCTION wnck_application_get_xid ##### -->
-<para>
-
-</para>
-
-@app: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_application_get_windows ##### -->
-<para>
-
-</para>
-
-@app: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_application_get_n_windows ##### -->
 <para>
 
 </para>
@@ -114,6 +110,24 @@ WnckApplication
 
 
 <!-- ##### FUNCTION wnck_application_get_startup_id ##### -->
+<para>
+
+</para>
+
+@app: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_application_get_windows ##### -->
+<para>
+
+</para>
+
+@app: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_application_get_n_windows ##### -->
 <para>
 
 </para>

@@ -1,3 +1,9 @@
+2007-06-06  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/*: rework the documentation. They're now nicely organized, and
+	don't contain non-useful stuff for libwnck users. A small FAQ and 100%
+	symbol coverage are the next steps :-)
+
 2007-06-05  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.19.4
