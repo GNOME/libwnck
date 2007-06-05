@@ -1,5 +1,10 @@
 2007-06-05  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.19.3.1
+
+2007-06-05  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_button_press_event): connect to
 	selection-done signal on the action menu instead of deactivate signal.
 	The latter made the action menu useless since it didn't work before.

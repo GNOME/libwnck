@@ -1,3 +1,24 @@
+2.19.3.1
+========
+
+ This release breaks API compatibility again (it contains changes that should
+ have been in 2.19.3).
+
+ Features
+
+  - The active-window-changed and active-workspace-changed signals for
+    WnckScreen now provides the previously active window/workspace (Vincent)
+
+ Fixes
+
+  - Add some padding in classes to make it possible to add new signals without
+    breaking ABI in the future (Vincent)
+  - Make the action menu work again on tasklist buttons (Vincent)
+
+ Misc
+
+  - Remove old files from svn (Vincent)
+
 2.19.3
 ======
 
