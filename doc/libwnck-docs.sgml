@@ -32,38 +32,39 @@
     </para>
    </partintro>
   </part>
+  <!-- TODO
+  wnck_set_client_type() for pagers-like
+  -->
 
   <part id="core">
     <title>Libwnck Core Window Management Support</title>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/window.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/class-group.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/application.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/workspace.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/screen.xml"/>
   </part>
 
   <part id="widgets">
     <title>Libwnck Widgets</title>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/pager.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/selector.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/tasklist.xml"/>
   </part>
 
   <part id="utils">
     <title>Libwnck Utilities</title>
     <xi:include href="xml/window-action-menu.xml"/>
+    <!-- TODO proofread + consistency -->
     <xi:include href="xml/util.xml"/>
   </part>
-
-    <!-- Things that should not be in documentation because it's private
-         or it's not interesting
-    <xi:include href="xml/pager-accessible-factory.xml"/>
-    <xi:include href="xml/pager-accessible.xml"/>
-    <xi:include href="xml/workspace-accessible-factory.xml"/>
-    <xi:include href="xml/workspace-accessible.xml"/>
-    <xi:include href="xml/private.xml"/>
-    <xi:include href="xml/xutils.xml"/>
-    <xi:include href="xml/wnck-enum-types.xml"/>
-    -->
 
 </book>

@@ -1,5 +1,11 @@
 2007-06-06  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/util.[ch]:
+	* libwnck/window-action-menu.c:
+	* doc/*: small improvements to documentation
+
+2007-06-06  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/*: rework the documentation. They're now nicely organized, and
 	don't contain non-useful stuff for libwnck users. A small FAQ and 100%
 	symbol coverage are the next steps :-)

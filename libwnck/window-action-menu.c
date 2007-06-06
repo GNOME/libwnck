@@ -28,6 +28,17 @@
 #include "window-action-menu.h"
 #include "private.h"
 
+/**
+ * SECTION:window-action-menu
+ * @short_description: context menu used to manipulate a window.
+ * @see_also: #WnckWindow
+ * @stability: Unstable
+ *
+ * These functions are related to the context menu that is usually used to
+ * manipulate a window (closing it, minimizing it, maximizing it, moving it to
+ * another workspace, etc.).
+ */
+
 typedef enum
 {
   CLOSE,
@@ -551,11 +562,12 @@ get_workspace_name_with_accel (WnckWindow *window,
 
 /**
  * wnck_create_window_action_menu:
- * @window: a #WnckWindow
+ * @window: the #WnckWindow for which a menu will be created.
  * 
  * Creates a menu of window operations for @window.
  * 
- * Return value: a new menu of window operations
+ * Return value: a new GtkMenu, filled with menu items for window operations on
+ * @window.
  **/
 GtkWidget*
 wnck_create_window_action_menu (WnckWindow *window)

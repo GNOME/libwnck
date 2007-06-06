@@ -31,6 +31,17 @@
 #include <X11/extensions/XRes.h>
 #endif
 
+/**
+ * SECTION:util
+ * @short_description: reading resource usage of X clients, and other
+ * additional features.
+ * @see_also: wnck_window_get_xid(), wnck_application_get_xid(), wnck_window_get_pid(), wnck_application_get_pid()
+ * @stability: Unstable
+ *
+ * These functions are utility functions providing some additional features to
+ * libwcnk users, like functions to read resource usage of X clients.
+ */
+
 static void
 set_dock_realize_handler (GtkWidget *widget, gpointer data)
 {

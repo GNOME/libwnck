@@ -1,5 +1,5 @@
 <!-- ##### SECTION Title ##### -->
-util
+Miscellaneous Functions
 
 <!-- ##### SECTION Short_Description ##### -->
 
@@ -40,6 +40,22 @@ util
 
 @ewmh_sourceindication_client_type: 
 
+
+<!-- ##### STRUCT WnckResourceUsage ##### -->
+<para>
+
+</para>
+
+@n_pixmaps: 
+@n_windows: 
+@n_gcs: 
+@n_pictures: 
+@n_glyphsets: 
+@n_fonts: 
+@n_colormap_entries: 
+@n_passive_grabs: 
+@n_cursors: 
+@n_other: 
 
 <!-- ##### FUNCTION wnck_xid_read_resource_usage ##### -->
 <para>

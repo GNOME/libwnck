@@ -1,3 +1,4 @@
+<INCLUDE>libwnck/libwnck.h</INCLUDE>
 # Core
 
 <SECTION>
@@ -95,8 +96,8 @@ WnckWindowClass
 
 <SECTION>
 <FILE>class-group</FILE>
-<TITLE>Wnck</TITLE>
 <TITLE>WnckClassGroup</TITLE>
+<INCLUDE>libwnck/libwnck.h, libwnck/class-group.h</INCLUDE>
 WnckClassGroup
 wnck_class_group_get
 wnck_class_group_get_res_class
@@ -296,14 +297,17 @@ WnckTasklistClass
 
 <SECTION>
 <FILE>window-action-menu</FILE>
+<TITLE>Window Action Menu</TITLE>
 wnck_create_window_action_menu
 </SECTION>
 
 <SECTION>
 <FILE>util</FILE>
+<TITLE>Miscellaneous Functions</TITLE>
 WnckClientType
 wnck_gtk_window_set_dock_type
 wnck_set_client_type
+WnckResourceUsage
 wnck_xid_read_resource_usage
 wnck_pid_read_resource_usage
 #</SECTION>
@@ -364,7 +368,6 @@ WnckWorkspaceAccessibleFactoryClass
 #
 #<SECTION>
 #<FILE>workspace-accessible</FILE>
-WNCK_WORKSPACE_TYPE_ACCESSIBLE
 #<TITLE>WnckWorkspaceAccessible</TITLE>
 WnckWorkspaceAccessible
 wnck_workspace_accessible_new
@@ -373,6 +376,7 @@ wnck_workspace_accessible_get_type
 #<SUBSECTION Standard>
 WNCK_WORKSPACE_ACCESSIBLE
 WNCK_IS_WORKSPACE_ACCESSIBLE
+WNCK_WORKSPACE_TYPE_ACCESSIBLE
 WNCK_WORKSPACE_ACCESSIBLE_CLASS
 WNCK_IS_WORKSPACE_ACCESSIBLE_CLASS
 WNCK_WORKSPACE_ACCESSIBLE_GET_CLASS

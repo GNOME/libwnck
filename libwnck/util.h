@@ -25,7 +25,30 @@
 
 #include <gtk/gtk.h>
 
-typedef struct
+typedef struct _WnckResourceUsage WnckResourceUsage;
+
+/**
+ * WnckResourceUsage:
+ * @total_bytes_estimate: estimation of the total number of bytes allocated in
+ * the X server.
+ * @pixmap_bytes: number of bytes allocated in the X server for resources of
+ * type PIXMAP.
+ * @n_pixmaps: number of PIXMAP resources allocated.
+ * @n_windows: 
+ * @n_gcs: 
+ * @n_pictures: 
+ * @n_glyphsets: 
+ * @n_fonts: 
+ * @n_colormap_entries: 
+ * @n_passive_grabs: 
+ * @n_cursors: 
+ * @n_other: 
+ *
+ * The WnckResourceUsage struct contains information about the total resource
+ * usage of an X client, and the number of resources allocated for each
+ * resource type.
+ */
+struct _WnckResourceUsage
 {
   unsigned long total_bytes_estimate;
   
@@ -42,6 +65,7 @@ typedef struct
   unsigned int n_cursors;
   unsigned int n_other;
 
+  /*< private >*/
   unsigned int pad1;
   unsigned int pad2;
   unsigned int pad3;
@@ -52,8 +76,16 @@ typedef struct
   unsigned long pad8;
   unsigned long pad9;
   
-} WnckResourceUsage;
+};
 
+/**
+ * WnckClientType:
+ * @WNCK_CLIENT_TYPE_APPLICATION: the libwnck user is a normal application.
+ * @WNCK_CLIENT_TYPE_PAGER: the libwnck user is an utility application dealing
+ * with window management, like pagers and taskbars.
+ *
+ * Type describing the role of the libwnck user.
+ */
 typedef enum {
   WNCK_CLIENT_TYPE_APPLICATION = 1,
   WNCK_CLIENT_TYPE_PAGER = 2
