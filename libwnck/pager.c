@@ -32,6 +32,27 @@
 #include "private.h"
 #include <math.h>
 
+/**
+ * SECTION:pager
+ * @short_description: a pager widget, showing the content of workspaces.
+ * @see_also: #WnckScreen
+ * @stability: Unstable
+ *
+ * A #WnckPager shows a miniature view of the workspaces, representing managed
+ * windows by small rectangles, and allows the user to initiate various window
+ * manager actions by manipulating these representations.
+ *
+ * Alternatively, a #WnckPager can be configured to only show the names of the
+ * workspace instead of their contents.
+ *
+ * The #WnckPager is also responsible for setting the layout of the workspaces.
+ * Since only one application can be responsible for setting the layout on a
+ * screen, the #WnckPager automatically tries to obtain the manager selection
+ * for the screen and only sets the layout if it owns the manager selection.
+ * See wnck_pager_set_orientation() and wnck_pager_set_n_rows() to change the
+ * layout.
+ */
+
 #define N_SCREEN_CONNECTIONS 11
 
 struct _WnckPagerPrivate

@@ -29,6 +29,16 @@
 #include "private.h"
 #include <string.h>
 
+/**
+ * SECTION:workspace
+ * @short_description: an object representing a workspace.
+ * @see_also:
+ * @stability: Unstable
+ *
+ * The #WnckWorkspace objects are always owned by libwnck and must not be
+ * unreferenced.
+ */
+
 struct _WnckWorkspacePrivate
 {
   WnckScreen *screen;
@@ -102,6 +112,12 @@ wnck_workspace_class_init (WnckWorkspaceClass *klass)
   
   object_class->finalize = wnck_workspace_finalize;
 
+  /**
+   * WnckWorkspace::name-changed:
+   * @space: the #WnckWorkspace which emitted the signal.
+   *
+   * Emitted when the name of @space changes.
+   */
   signals[NAME_CHANGED] =
     g_signal_new ("name_changed",
                   G_OBJECT_CLASS_TYPE (object_class),

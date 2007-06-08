@@ -33,6 +33,16 @@
 #include "wnck-enum-types.h"
 #include "wnck-marshal.h"
 
+/**
+ * SECTION:window
+ * @short_description: an object representing a window.
+ * @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
+ * @stability: Unstable
+ *
+ * The #WnckWindow objects are always owned by libwnck and must not be
+ * unreferenced.
+ */
+
 #define FALLBACK_NAME _("Untitled window")
 #define ALL_WORKSPACES (0xFFFFFFFF)
 
@@ -237,6 +247,12 @@ wnck_window_class_init (WnckWindowClass *klass)
 
   object_class->finalize = wnck_window_finalize;
 
+  /**
+   * WnckWindow::name-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the name of @window changes.
+   */
   signals[NAME_CHANGED] =
     g_signal_new ("name_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -246,6 +262,18 @@ wnck_window_class_init (WnckWindowClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckWindow::state-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   * @changed_mask: the mask containing bits set for all states of @window that
+   * have changed. 
+   * @new_state: the new state of @window.
+   *
+   * Emitted when the state of @window changes. This can happen when @window is
+   * (un)minimized, (un)maximized, (un)sticked, (un)shaded, (un)made above,
+   * (un)set fullscreen, when it needs attention, etc. See #WnckWindowState for
+   * the complete list of states that might have changed.
+   */
   signals[STATE_CHANGED] =
     g_signal_new ("state_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -256,6 +284,13 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_TYPE_NONE, 2,
                   WNCK_TYPE_WINDOW_STATE, WNCK_TYPE_WINDOW_STATE);
 
+  /**
+   * WnckWindow::workspace-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the current workspace of @window changes, or if @window has
+   * been pinned or unpinned.
+   */
   signals[WORKSPACE_CHANGED] =
     g_signal_new ("workspace_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -265,6 +300,12 @@ wnck_window_class_init (WnckWindowClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckWindow::icon-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the icon of @window changes.
+   */
   signals[ICON_CHANGED] =
     g_signal_new ("icon_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -274,6 +315,15 @@ wnck_window_class_init (WnckWindowClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckWindow::actions-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   * @changed_mask: the mask containing bits set for all actions availabilities
+   * for @window that have changed. 
+   * @new_state: the new actions availabilities for @window.
+   *
+   * Emitted when the actions availabilities for @window change.
+   */
   signals[ACTIONS_CHANGED] =
     g_signal_new ("actions_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -285,6 +335,12 @@ wnck_window_class_init (WnckWindowClass *klass)
                   WNCK_TYPE_WINDOW_ACTIONS,
                   WNCK_TYPE_WINDOW_ACTIONS);
 
+  /**
+   * WnckWindow::geometry-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the geometry of @window changes.
+   */
   signals[GEOMETRY_CHANGED] =
     g_signal_new ("geometry_changed",
                   G_OBJECT_CLASS_TYPE (object_class),

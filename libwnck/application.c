@@ -26,6 +26,17 @@
 #include "application.h"
 #include "private.h"
 
+/**
+ * SECTION:application
+ * @short_description: an object representing a group of windows of the same
+ * application.
+ * @see_also: wnck_window_get_application()
+ * @stability: Unstable
+ *
+ * The #WnckApplication objects are always owned by libwnck and must not be
+ * unreferenced.
+ */
+
 #define FALLBACK_NAME _("Untitled application")
 
 static GHashTable *app_hash = NULL;
@@ -125,6 +136,12 @@ wnck_application_class_init (WnckApplicationClass *klass)
 
   object_class->finalize = wnck_application_finalize;
   
+  /**
+   * WnckApplication::name-changed:
+   * @app: the #WnckApplication which emitted the signal.
+   *
+   * Emitted when the name of @app changes.
+   */
   signals[NAME_CHANGED] =
     g_signal_new ("name_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -134,6 +151,12 @@ wnck_application_class_init (WnckApplicationClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckApplication::icon-changed:
+   * @app: the #WnckApplication which emitted the signal.
+   *
+   * Emitted when the icon of @app changes.
+   */
   signals[ICON_CHANGED] =
     g_signal_new ("icon_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -179,9 +202,9 @@ wnck_application_get (gulong xwindow)
  * wnck_application_get_xid:
  * @app: a #WnckApplication
  * 
- * Gets the X id of the group leader window for the app.
+ * Gets the X id of the group leader window for @app.
  * 
- * Return value: X id for the app
+ * Return value: X id for @app.
  **/
 gulong
 wnck_application_get_xid (WnckApplication *app)
@@ -193,12 +216,13 @@ wnck_application_get_xid (WnckApplication *app)
 
 /**
  * wnck_application_get_windows:
- * @app: a #WnckApplication
+ * @app: a #WnckApplication.
  * 
- * Gets a list of all windows belonging to @app. The list
- * is returned by reference and should not be freed.
+ * Returns the list of #WnckWindow belonging to @app.
  * 
- * Return value: list of #WnckWindow in this app
+ * Return value: the list of #WnckWindow belonging to @app, or NULL if the
+ * application contains no window. The list should not be modified nor freed,
+ * as it is owned by @app.
  **/
 GList*
 wnck_application_get_windows (WnckApplication *app)
@@ -208,6 +232,14 @@ wnck_application_get_windows (WnckApplication *app)
   return app->priv->windows;
 }
 
+/**
+ * wnck_application_get_n_windows:
+ * @app: a #WnckApplication.
+ * 
+ * Returns the number of #WnckWindow belonging to @app.
+ * 
+ * Return value: the number of #WnckWindow belonging to @app.
+ **/
 int
 wnck_application_get_n_windows (WnckApplication *app)
 {
@@ -220,14 +252,15 @@ wnck_application_get_n_windows (WnckApplication *app)
  * wnck_application_get_name:
  * @app: a #WnckApplication
  * 
- * Gets the name of an application, employing various
- * suboptimal heuristics to try to figure it out.
- * Probably GTK should have a function to allow apps to
- * set _NET_WM_NAME on the group leader as the app name,
- * and the WM spec should say that's where the app name
- * goes.
+ * Returns the name of @app, employing various suboptimal heuristics to try to
+ * figure it out.
+ * GTK+ should probably have a function to allow applications to set the
+ * _NET_WM_NAME property on the group leader as the application name, and the
+ * <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>
+ * should say that this is where the application name goes.
  * 
- * Return value: name of the application
+ * Return value: the name of @app, or a fallback name if none is available.
  **/
 const char*
 wnck_application_get_name (WnckApplication *app)
@@ -244,10 +277,11 @@ wnck_application_get_name (WnckApplication *app)
  * wnck_application_get_icon_name:
  * @app: a #WnckApplication
  * 
- * Gets the icon name of an application, employing various
- * suboptimal heuristics to try to figure it out.
+ * Returns the icon name of @app, employing various suboptimal heuristics to
+ * try to figure it out.
  * 
- * Return value: name of the application when minimized
+ * Return value: the name of @app when minimized, or a fallback name if none is
+ * available.
  **/
 const char*
 wnck_application_get_icon_name (WnckApplication *app)
@@ -268,10 +302,9 @@ wnck_application_get_icon_name (WnckApplication *app)
  * wnck_application_get_pid:
  * @app: a #WnckApplication
  * 
- * Gets the process ID of an application, or 0 if none
- * is available.
+ * Returns the process ID of @app.
  * 
- * Return value: process ID or 0
+ * Return value: process ID of @app, or 0 if none is available.
  **/
 int
 wnck_application_get_pid (WnckApplication *app)
@@ -344,6 +377,16 @@ find_icon_window (WnckApplication *app)
     return NULL;
 }
 
+/**
+ * wnck_application_get_icon:
+ * @app: a #WnckApplication.
+ * 
+ * Returns the icon to be used for @app.
+ * 
+ * Return value: the icon for @app. The caller should increase the
+ * reference count of the returned <classname>GdkPixbuf</classname> if it needs
+ * to keep the icon around.
+ **/
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
 {
@@ -363,6 +406,16 @@ wnck_application_get_icon (WnckApplication *app)
     }
 }
 
+/**
+ * wnck_application_get_mini_icon:
+ * @app: a #WnckApplication.
+ * 
+ * Returns the mini-icon to be used for @app.
+ * 
+ * Return value: the mini-icon for @app. The caller should increase the
+ * reference count of the returned <classname>GdkPixbuf</classname> if it needs
+ * to keep the mini-icon around.
+ **/
 GdkPixbuf*
 wnck_application_get_mini_icon (WnckApplication *app)
 {

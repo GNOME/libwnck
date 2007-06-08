@@ -25,6 +25,29 @@
 #include "window.h"
 #include "private.h"
 
+/**
+ * SECTION:class-group
+ * @short_description: an object representing a group of windows of the same
+ * class.
+ * @see_also: wnck_window_get_class_group()
+ * @stability: Unstable
+ *
+ * The #WnckClassGroup is a group of #WnckWindow that are all in the same
+ * class. It can be used to represent windows by classes, group windows by
+ * classes or to manipulate all windows of a particular class.
+ *
+ * The class of a window is defined by the WM_CLASS property of this window.
+ * More information about the WM_CLASS property is available in the <ulink
+ * url="http://tronche.com/gui/x/icccm/sec-4.html">WM_CLASS Property</ulink>
+ * section (section 4.1.2.5) of the <ulink
+ * url="http://tronche.com/gui/x/icccm/">ICCCM</ulink>.
+ *
+ * The #WnckClassGroup objects are always owned by libwnck and must not be
+ * unreferenced.
+ */
+ /* FIXME: the ulink should be a link to
+  * http://tronche.com/gui/x/icccm/sec-4.html#s-4.1.2.5 but gtk-doc fails
+  * because it thinks the doc should link to the s-4 symbol */
 
 /* Private part of the WnckClassGroup structure */
 struct _WnckClassGroupPrivate {
@@ -98,6 +121,12 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
 
   gobject_class->finalize = wnck_class_group_finalize;
 
+  /**
+   * WnckClassGroup::name-changed:
+   * @class_group: the #WnckClassGroup which emitted the signal.
+   *
+   * Emitted when the name of @class_group changes.
+   */
   signals[NAME_CHANGED] =
     g_signal_new ("name_changed",
                   G_OBJECT_CLASS_TYPE (gobject_class),
@@ -106,6 +135,12 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+  /**
+   * WnckClassGroup::icon-changed:
+   * @class_group: the #WnckClassGroup which emitted the signal.
+   *
+   * Emitted when the icon of @class_group changes.
+   */
   signals[ICON_CHANGED] =
     g_signal_new ("icon_changed",
                   G_OBJECT_CLASS_TYPE (gobject_class),
@@ -162,11 +197,11 @@ wnck_class_group_finalize (GObject *object)
 
 /**
  * wnck_class_group_get:
- * @res_class: Name of the sought resource class.
+ * @res_class: name of the sought resource class.
  *
- * Gets an existing class group based on its resource class name.
+ * Returns an existing class group based on its resource class name.
  *
- * Return value: An existing #WnckClassGroup, or NULL if there is no groups with
+ * Return value: an existing #WnckClassGroup, or NULL if there is no group with
  * the specified @res_class.
  **/
 WnckClassGroup *
@@ -180,13 +215,13 @@ wnck_class_group_get (const char *res_class)
 
 /**
  * _wnck_class_group_create:
- * @res_class: Name of the resource class for the group.
+ * @res_class: name of the resource class for the group.
  *
  * Creates a new WnckClassGroup with the specified resource class name.  If
  * @res_class is #NULL, then windows without a resource class name will get
  * grouped under this class group.
  *
- * Return value: A newly-created #WnckClassGroup, or an existing one that
+ * Return value: a newly-created #WnckClassGroup, or an existing one that
  * matches the @res_class.
  **/
 WnckClassGroup *
@@ -214,7 +249,7 @@ _wnck_class_group_create (const char *res_class)
 
 /**
  * _wnck_class_group_destroy:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  *
  * Destroys the specified @class_group.
  **/
@@ -458,10 +493,10 @@ set_icon (WnckClassGroup *class_group)
 
 /**
  * _wnck_class_group_add_window:
- * @class_group: A window class group.
- * @window: A window.
+ * @class_group: a #WnckClassGroup.
+ * @window: a #WnckWindow.
  *
- * Adds a window to a class group.  You should only do this if the resource
+ * Adds a window to @class_group.  You should only do this if the resource
  * class of the window matches the @class_group<!-- -->'s.
  **/
 void
@@ -489,8 +524,8 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
 
 /**
  * _wnck_class_group_remove_window:
- * @class_group: A window class group.
- * @window: A window.
+ * @class_group: a #WnckClassGroup.
+ * @window: a #WnckWindow.
  * 
  * Removes a window from the list of windows that are grouped under the
  * specified @class_group.
@@ -516,12 +551,13 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
 
 /**
  * wnck_class_group_get_windows:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  * 
- * Gets the list of windows that are grouped in a @class_group.
+ * Returns the list of #WnckWindow that are grouped in @class_group.
  * 
- * Return value: A list of windows, or NULL if the group contains no windows.
- * The list should not be freed, as it belongs to the @class_group.
+ * Return value: the list of #WnckWindow grouped in @class_group, or NULL if
+ * the group contains no window. The list should not be modified nor freed, as
+ * it is owned by @class_group.
  **/
 GList *
 wnck_class_group_get_windows (WnckClassGroup *class_group)
@@ -536,12 +572,12 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
 
 /**
  * wnck_class_group_get_res_class:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  * 
- * Queries the resource class name for a class group.
+ * Returns the resource class name for @class_group.
  * 
- * Return value: The resource class name of the specified @class_group, or the
- * empty string if the group has no name.  The string should not be freed.
+ * Return value: the resource class name of @class_group, or an
+ * empty string if the group has no resource class name.
  **/
 const char *
 wnck_class_group_get_res_class (WnckClassGroup *class_group)
@@ -556,11 +592,17 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
 
 /**
  * wnck_class_group_get_name:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  * 
- * Queries the human-readable name for a class group.
+ * Returns an human-readable name for @class_group. Since there is no way to
+ * properly find this name, a suboptimal heuristic is used to find it. The name
+ * is the name of all #WnckApplication for each #WnckWindow in @class_group if
+ * they all have the same name. If all #WnckApplication don't have the same
+ * name, the name is the name of all #WnckWindow in @class_group if they all
+ * have the same name. If all #WnckWindow don't have the same name, the
+ * resource class name is used.
  * 
- * Return value: Name of the class group.
+ * Return value: an human-readable name for @class_group.
  **/
 const char *
 wnck_class_group_get_name (WnckClassGroup *class_group)
@@ -576,11 +618,17 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
 
 /**
  * wnck_class_group_get_icon:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  * 
- * Queries the icon to be used for a class group.
+ * Returns the icon to be used for @class_group. Since there is no way to
+ * properly find the icon, a suboptimal heuristic is used to find it. The icon
+ * is the first icon found by looking at all the #WnckApplication for each
+ * #WnckWindow in @class_group, then at all the #WnckWindow in @class_group. If
+ * no icon was found, a fallback icon is used.
  * 
- * Return value: The icon to use.
+ * Return value: the icon for @class_group. The caller should increase the
+ * reference count of the returned <classname>GdkPixbuf</classname> if it needs
+ * to keep the icon around.
  **/
 GdkPixbuf *
 wnck_class_group_get_icon (WnckClassGroup *class_group)
@@ -596,11 +644,15 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
 
 /**
  * wnck_class_group_get_mini_icon:
- * @class_group: A window class group.
+ * @class_group: a #WnckClassGroup.
  * 
- * Queries the mini-icon to be used for a class group.
+ * Returns the mini-icon to be used for @class_group. Since there is no way to
+ * properly find the mini-icon, the same suboptimal heuristic as the one for
+ * wnck_class_group_get_icon() is used to find it.
  * 
- * Return value: The mini-icon to use.
+ * Return value: the mini-icon for @class_group. The caller should increase the
+ * reference count of the returned <classname>GdkPixbuf</classname> if it needs
+ * to keep the mini-icon around.
  **/
 GdkPixbuf *
 wnck_class_group_get_mini_icon (WnckClassGroup *class_group)

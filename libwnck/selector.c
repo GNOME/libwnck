@@ -35,6 +35,21 @@
 #include "screen.h"
 #include "private.h"
 
+/**
+ * SECTION:selector
+ * @short_description: a window selector widget, showing the list of windows as
+ * a menu.
+ * @see_also: #WnckTasklist
+ * @stability: Unstable
+ *
+ * The #WnckSelector represents client windows on a screen as a menu, where
+ * menu items are labelled with the window titles and icons. Activating a menu
+ * item activates the represented window.
+ *
+ * The #WnckSelector will automatically detect the screen it is on, and will
+ * represent windows of this screen only.
+ */
+
 typedef struct
 {
   GtkWidget *item;

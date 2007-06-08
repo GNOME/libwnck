@@ -56,6 +56,15 @@ struct _WnckPagerClass
   void (* pad4) (void);
 };
 
+/**
+ * WnckPagerDisplayMode:
+ * @WNCK_PAGER_DISPLAY_NAME: the #WnckPager will only display the names of the
+ * workspaces.
+ * @WNCK_PAGER_DISPLAY_CONTENT: the #WnckPager will display a representation
+ * for each window in the workspaces.
+ *
+ * Mode defining what a #WnckPager will display.
+ */
 typedef enum {
   WNCK_PAGER_DISPLAY_NAME,
   WNCK_PAGER_DISPLAY_CONTENT

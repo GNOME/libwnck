@@ -85,6 +85,16 @@ gint wnck_tasklist_get_minimum_width (WnckTasklist *tasklist);
 void wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size);
 gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
 
+/**
+ * WnckLoadIconFunction:
+ * @icon_name: an icon name as in the Icon field in a .desktop file.
+ * @size:
+ * @flags: not defined to do anything yet.
+ * @data:
+ *
+ *
+ * Returns:
+ */
 typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
                                             int           size,
                                             unsigned int  flags,

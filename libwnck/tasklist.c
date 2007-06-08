@@ -35,6 +35,31 @@
 #include "xutils.h"
 #include "private.h"
 
+/**
+ * SECTION:tasklist
+ * @short_description: a tasklist widget, showing the list of windows as a list
+ * of buttons.
+ * @see_also: #WnckScreen, #WnckSelector
+ * @stability: Unstable
+ *
+ * The #WnckTasklist represents client windows on a screen as a list of buttons
+ * labelled with the window titles and icons. Pressing a button can activate or
+ * minimize the represented window, and other typical actions are available
+ * through a popup menu.
+ *
+ * The behavior of the #WnckTasklist can be customized in various ways, like
+ * grouping multiple windows of the same application in one button (see
+ * wnck_tasklist_set_grouping() and wnck_tasklist_set_grouping_limit()), or
+ * showing windows from all workspaces (see
+ * wnck_tasklist_set_include_all_workspaces()).
+ *
+ * The tasklist also acts as iconification destination. If there are multiple
+ * #WnckTasklist or other applications setting the iconification destination
+ * for windows, the iconification destinations might not be consistent among
+ * windows and it is not possible to determine which #WnckTasklist (or which
+ * other application) owns this propriety.
+ */
+
 /* TODO:
  * 
  *  Add total focused time to the grouping score function
@@ -909,10 +934,7 @@ wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
  * @data: data for icon loader function
  * @free_data_func: function to free the data
  *
- * Sets a function to be used for loading icons. The icon
- * loader function takes an icon name as in the Icon field
- * in a .desktop file. The "flags" field for the function
- * is not defined to do anything yet.
+ * Sets a function to be used for loading icons.
  * 
  **/
 void

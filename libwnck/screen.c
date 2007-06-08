@@ -36,6 +36,16 @@
 #include <string.h>
 #include <stdlib.h>
 
+/**
+ * SECTION:screen
+ * @short_description: an object representing a screen.
+ * @see_also: #WnckWindow, #WnckWorkspace
+ * @stability: Unstable
+ *
+ * The #WnckScreen objects are always owned by libwnck and must not be
+ * unreferenced.
+ */
+
 #define _NET_WM_ORIENTATION_HORZ 0
 #define _NET_WM_ORIENTATION_VERT 1
 

@@ -74,15 +74,6 @@ WnckTasklist
 @grouping: 
 
 
-<!-- ##### FUNCTION wnck_tasklist_set_switch_workspace_on_unminimize ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@switch_workspace_on_unminimize: 
-
-
 <!-- ##### FUNCTION wnck_tasklist_set_grouping_limit ##### -->
 <para>
 
@@ -99,6 +90,15 @@ WnckTasklist
 
 @tasklist: 
 @include_all_workspaces: 
+
+
+<!-- ##### FUNCTION wnck_tasklist_set_switch_workspace_on_unminimize ##### -->
+<para>
+
+</para>
+
+@tasklist: 
+@switch_workspace_on_unminimize: 
 
 
 <!-- ##### FUNCTION wnck_tasklist_set_button_relief ##### -->

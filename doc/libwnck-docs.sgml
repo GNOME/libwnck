@@ -11,7 +11,7 @@
    <title>Libwnck Overview</title>
    <partintro>
     <para>
-     libwnck is the Window Navigator Construction Kit, a library for use in writing pagers, tasklists, and more generally applications that are dealing with window management.
+     libwnck is the Window Navigator Construction Kit, a library for use in writing pagers, tasklists, and more generally applications that are dealing with window management. It tries hard to respect the <ulink url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">Extended Window Manager Hints specification</ulink> (EWMH). The <ulink url="http://tronche.com/gui/x/icccm/">Inter-Client Communication Conventions Manual</ulink> (ICCCM) is also a useful resource.
     </para>
     <para>
      libwnck depends on the following libraries:
@@ -34,13 +34,15 @@
   </part>
   <!-- TODO
   wnck_set_client_type() for pagers-like
+  add link to ewmh spec
+  mention that the window/classgroup/application/workspace/screen are owned by libwnck and should not be unref'ed.
+  mention wnck_screen_force_update()
   -->
 
   <part id="core">
     <title>Libwnck Core Window Management Support</title>
     <!-- TODO proofread + consistency -->
     <xi:include href="xml/window.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/class-group.xml"/>
     <!-- TODO proofread + consistency -->
     <xi:include href="xml/application.xml"/>
