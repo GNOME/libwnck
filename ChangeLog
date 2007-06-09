@@ -1,6 +1,22 @@
 2007-06-09  Vincent Untz  <vuntz@gnome.org>
 
 	* doc/libwnck-docs.sgml:
+	* doc/tmpl/util.sgml:
+	* libwnck/application.c:
+	* libwnck/pager.c:
+	* libwnck/screen.c:
+	* libwnck/selector.c:
+	* libwnck/tasklist.[ch]:
+	* libwnck/util.[ch]:
+	* libwnck/window.c: woohoo, 100% symbol coverage for the API doc!
+
+	* libwnck/util.[ch]: (wnck_xid_read_resource_usage),
+	(wnck_pid_read_resource_usage): s/unsigned long/gulong/ to please
+	gtk-doc.
+
+2007-06-09  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/libwnck-docs.sgml:
 	* doc/libwnck-sections.txt:
 	* doc/tmpl/screen.sgml:
 	* libwnck/application.c:

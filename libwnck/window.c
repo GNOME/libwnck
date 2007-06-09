@@ -817,9 +817,9 @@ wnck_window_get_window_type (WnckWindow *window)
 /**
  * wnck_window_set_window_type:
  * @window: a #WnckWindow.
- * @wintype: the new semantic type for @window.
+ * @wintype: a semantic type.
  * 
- * Sets the semantic type of @window.
+ * Sets the semantic type of @window to @wintype.
  **/
 void
 wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)

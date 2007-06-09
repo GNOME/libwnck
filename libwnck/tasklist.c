@@ -801,6 +801,13 @@ wnck_tasklist_finalize (GObject *object)
   G_OBJECT_CLASS (tasklist_parent_class)->finalize (object);
 }
 
+/**
+ * wnck_tasklist_set_grouping:
+ * @tasklist: a #WnckTasklist.
+ * @grouping: a grouping policy.
+ *
+ * Sets the grouping policy for @tasklist to @grouping.
+ */
 void
 wnck_tasklist_set_grouping (WnckTasklist            *tasklist,
 			    WnckTasklistGroupingType grouping)
@@ -822,6 +829,15 @@ wnck_tasklist_set_relief_callback (WnckWindow   *win,
   gtk_button_set_relief (GTK_BUTTON (task->button), tasklist->priv->relief);
 }
 
+/**
+ * wnck_tasklist_set_button_relief:
+ * @tasklist: a #WnckTasklist.
+ * @relief: a relief type.
+ *
+ * Sets the relief type of the buttons in @tasklist to @relief. The main use of
+ * this function is proper integration of #WnckTasklist in panels with
+ * non-system backgrounds.
+ */
 void
 wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
 {
@@ -839,6 +855,17 @@ wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
     gtk_button_set_relief (GTK_BUTTON (WNCK_TASK (walk->data)->button), relief);
 }
 
+/**
+ * wnck_tasklist_set_switch_workspace_on_unminimize:
+ * @tasklist: a #WnckTasklist.
+ * @switch_workspace_on_unminimize: whether to activate the #WnckWorkspace a
+ * #WnckWindow is on when unminimizing it.
+ *
+ * Sets @tasklist to activate or not the #WnckWorkspace a #WnckWindow is on
+ * when unminimizing it, according to @switch_workspace_on_unminimize.
+ *
+ * FIXME: does it still work?
+ */
 void
 wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
 						  gboolean       switch_workspace_on_unminimize)
@@ -848,6 +875,15 @@ wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
   tasklist->priv->switch_workspace_on_unminimize = switch_workspace_on_unminimize;
 }
 
+/**
+ * wnck_tasklist_set_include_all_workspaces:
+ * @tasklist: a #WnckTasklist.
+ * @include_all_workspaces: whether to display #WnckWindow from all
+ * #WnckWorkspace in @tasklist.
+ *
+ * Sets @tasklist to display #WnckWindow from all #WnckWorkspace or not,
+ * according to @include_all_workspaces.
+ */
 void
 wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					  gboolean      include_all_workspaces)
@@ -864,6 +900,16 @@ wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
+/**
+ * wnck_tasklist_set_grouping_limit:
+ * @tasklist: a #WnckTasklist.
+ * @limit: a size in pixels.
+ *
+ * Sets the maximum size of buttons in @tasklist before @tasklist tries to
+ * group #WnckWindow in the same #WnckApplication in only one button. This
+ * limit is valid only when the grouping policy of @tasklist is
+ * %WNCK_TASKLIST_AUTO_GROUP.
+ */
 void
 wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				  gint          limit)
@@ -877,8 +923,14 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
-/* set the minimum width 
- * use -1 to unset it (resulting in the default width */
+/**
+ * wnck_tasklist_set_minimum_width:
+ * @tasklist: a #WnckTasklist.
+ * @size: a minimum width in pixels.
+ *
+ * Sets the minimum width to use for @tasklist to @size pixels. If @size is -1,
+ * sets the minimum width to a default.
+ */
 void 
 wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
 {
@@ -893,7 +945,14 @@ wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
  
-/* get the minimum width */
+/**
+ * wnck_tasklist_get_minimum_width:
+ * @tasklist: a #WnckTasklist.
+ *
+ * Returns the minimum width of @tasklist.
+ *
+ * Return value: the minimum width of @tasklist.
+ */
 gint
 wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
 {
@@ -902,8 +961,14 @@ wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
   return tasklist->priv->minimum_width;
 }
 
-/* set the minimum height
- * use -1 to unset it (resulting in the default height */
+/**
+ * wnck_tasklist_set_minimum_height:
+ * @tasklist: a #WnckTasklist.
+ * @size: a minimum height in pixels.
+ *
+ * Sets the minimum height to use for @tasklist to @size pixels. If @size is -1,
+ * sets the minimum height to a default.
+ */
 void 
 wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
 {
@@ -918,7 +983,14 @@ wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
  
-/* get the minimum height */
+/**
+ * wnck_tasklist_get_minimum_height:
+ * @tasklist: a #WnckTasklist.
+ *
+ * Returns the minimum height of @tasklist.
+ *
+ * Return value: the minimum height of @tasklist.
+ */
 gint
 wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
 {
@@ -1261,6 +1333,21 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
 }
 
+/**
+ * wnck_tasklist_get_size_hint_list:
+ * @tasklist: a #WnckTasklist.
+ * @n_elements: return location for the number of elements in the array
+ * returned by this function. This number should always be pair.
+ *
+ * Since a #WnckTasklist does not have a fixed size (#WnckWindow can be grouped
+ * when needed, for example), the standard size request mechanism in GTK+ is
+ * not enough to announce what sizes can be used by @tasklist. The size hints
+ * mechanism is a solution for this. See panel_applet_set_size_hints() for more
+ * information.
+ *
+ * Return value: a list of size hints that can be used to allocate an
+ * appropriate size for @tasklist.
+ */
 const int *
 wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 				  int           *n_elements)
@@ -1693,6 +1780,13 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 #endif
 }
 
+/**
+ * wnck_tasklist_set_screen:
+ * @tasklist: a #WnckTasklist.
+ * @screen: a #WnckScreen.
+ *
+ * Sets the #WnckScreen for which @tasklist should list the #WnckWindow.
+ */
 void
 wnck_tasklist_set_screen (WnckTasklist *tasklist,
 			  WnckScreen   *screen)
@@ -1832,6 +1926,16 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
   return TRUE;
 }
 
+/**
+ * wnck_tasklist_new:
+ * @screen: a #WnckScreen.
+ *
+ * Creates a new #WnckTasklist listing #WnckWindow of @screen.
+ *
+ * Return value: a newly created #WnckTasklist listing #WnckWindow of @screen.
+ */
+/* TODO: when we break API again, remove the screen from here and do what we do
+ * in #WnckSelector */
 GtkWidget*
 wnck_tasklist_new (WnckScreen *screen)
 {

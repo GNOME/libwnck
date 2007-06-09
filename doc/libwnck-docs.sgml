@@ -33,7 +33,7 @@
    </partintro>
   </part>
   <!-- TODO
-  wnck_set_client_type() for pagers-like
+  tell that wnck_set_client_type() should be used for pagers-like users
   mention that the window/classgroup/application/workspace/screen are owned by libwnck and should not be ref'ed/unref'ed.
   mention wnck_screen_force_update()
   -->
@@ -49,18 +49,14 @@
 
   <part id="widgets">
     <title>Libwnck Widgets</title>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/pager.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/selector.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/tasklist.xml"/>
   </part>
 
   <part id="utils">
     <title>Libwnck Utilities</title>
     <xi:include href="xml/window-action-menu.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/util.xml"/>
   </part>
 

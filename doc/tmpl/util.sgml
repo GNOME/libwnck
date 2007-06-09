@@ -46,6 +46,8 @@ Miscellaneous Functions
 
 </para>
 
+@total_bytes_estimate: 
+@pixmap_bytes: 
 @n_pixmaps: 
 @n_windows: 
 @n_gcs: 
@@ -63,7 +65,7 @@ Miscellaneous Functions
 </para>
 
 @gdk_display: 
-@Param2: 
+@xid: 
 @usage: 
 
 
@@ -73,7 +75,7 @@ Miscellaneous Functions
 </para>
 
 @gdk_display: 
-@Param2: 
+@pid: 
 @usage: 
 
 

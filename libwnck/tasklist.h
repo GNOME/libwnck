@@ -62,6 +62,19 @@ struct _WnckTasklistClass
   void (* pad4) (void);
 };
 
+/**
+ * WnckTasklistGroupingType:
+ * @WNCK_TASKLIST_NEVER_GROUP: never group multiple #WnckWindow of the same
+ * #WnckApplication.
+ * @WNCK_TASKLIST_AUTO_GROUP: group multiple #WnckWindow of the same
+ * #WnckApplication for some #WnckApplication, when there is not enough place
+ * to have a good-looking list of all #WnckWindow.
+ * @WNCK_TASKLIST_ALWAYS_GROUP: always group multiple #WnckWindow of the same
+ * #WnckApplication, for all #WnckApplication.
+ *
+ * Type defining the policy of the #WnckTasklist for grouping multiple
+ * #WnckWindow of the same #WnckApplication.
+ */
 typedef enum {
   WNCK_TASKLIST_NEVER_GROUP,
   WNCK_TASKLIST_AUTO_GROUP,
@@ -93,13 +106,18 @@ gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
 
 /**
  * WnckLoadIconFunction:
- * @icon_name: an icon name as in the Icon field in a .desktop file.
- * @size:
+ * @icon_name: an icon name as in the Icon field in a .desktop file for the
+ * icon to load.
+ * @size: the desired icon size.
  * @flags: not defined to do anything yet.
- * @data:
+ * @data: data passed to the function, set when the #WnckLoadIconFunction has
+ * been set for the #WnckTasklist.
  *
+ * Specifies the type of function passed to wnck_tasklist_set_icon_loader().
  *
- * Returns:
+ * Returns: it should return a <classname>GdkPixbuf</classname> of @icon_name
+ * at size @size, or %NULL if no icon for @icon_name at size @size could be
+ * loaded.
  */
 typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
                                             int           size,

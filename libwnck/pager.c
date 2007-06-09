@@ -1668,6 +1668,13 @@ wnck_pager_focus (GtkWidget        *widget,
   return GTK_WIDGET_CLASS (parent_class)->focus (widget, direction);
 }
 
+/**
+ * wnck_pager_set_screen:
+ * @pager: a #WnckPager.
+ * @screen: a #WnckScreen.
+ *
+ * Sets the #WnckScreen for which @pager should display the #WnckWorkspace.
+ */
 void
 wnck_pager_set_screen (WnckPager  *pager,
 		       WnckScreen *screen)
@@ -1681,6 +1688,17 @@ wnck_pager_set_screen (WnckPager  *pager,
   wnck_pager_connect_screen (pager, screen);
 }
 
+/**
+ * wnck_pager_new:
+ * @screen: a #WnckScreen.
+ *
+ * Creates a new #WnckPager showing the #WnckWorkspace of @screen.
+ *
+ * Return value: a newly created #WnckPager showing the #WnckWorkspace of
+ * @screen.
+ */
+/* TODO: when we break API again, remove the screen from here and do what we do
+ * in #WnckSelector */
 GtkWidget*
 wnck_pager_new (WnckScreen *screen)
 {
@@ -1725,6 +1743,26 @@ wnck_pager_set_layout_hint (WnckPager *pager)
                                           layout_cols);
 }
 
+/**
+ * wnck_pager_set_orientation:
+ * @pager: a #WnckPager.
+ * @orientation: orientation to use for the layout of #WnckWorkspace on the
+ * #WnckScreen @pager is watching.
+ *
+ * Tries to change the orientation of the layout of #WnckWorkspace on the
+ * #WnckScreen @pager is watching. Since no more than one application should
+ * set this property of a #WnckScreen at a time, setting the layout is not
+ * guaranteed to work. 
+ *
+ * If @orientation is %GTK_ORIENTATION_HORIZONTAL, the #WnckWorkspace will be
+ * laid out in rows, with the first #WnckWorkspace in the top left corner.
+ *
+ * If @orientation is %GTK_ORIENTATION_VERTICAL, the #WnckWorkspace will be
+ * laid out in columns, with the first #WnckWorkspace in the top left corner.
+ *
+ * For example, if the layout contains one row, but the orientation of the
+ * layout is vertical, the #WnckPager will display a column of #WnckWorkspace.
+ */
 void
 wnck_pager_set_orientation (WnckPager     *pager,
                             GtkOrientation orientation)
@@ -1740,6 +1778,17 @@ wnck_pager_set_orientation (WnckPager     *pager,
   wnck_pager_set_layout_hint (pager);
 }
 
+/**
+ * wnck_pager_set_n_rows:
+ * @pager: a #WnckPager.
+ * @n_rows: the number of rows to use for the layout of #WnckWorkspace on the
+ * #WnckScreen @pager is watching.
+ *
+ * Tries to change the number of rows in the layout of #WnckWorkspace on the
+ * #WnckScreen @pager is watching. Since no more than one application should
+ * set this property of a #WnckScreen at a time, setting the layout is not
+ * guaranteed to work. 
+ */
 void
 wnck_pager_set_n_rows (WnckPager *pager,
 		       int        n_rows)
@@ -1756,6 +1805,13 @@ wnck_pager_set_n_rows (WnckPager *pager,
   wnck_pager_set_layout_hint (pager);
 }
 
+/**
+ * wnck_pager_set_display_mode:
+ * @pager: a #WnckPager.
+ * @mode: a display mode.
+ *
+ * Sets the display mode for @pager to @mode.
+ */
 void
 wnck_pager_set_display_mode (WnckPager            *pager,
 			     WnckPagerDisplayMode  mode)
@@ -1769,6 +1825,14 @@ wnck_pager_set_display_mode (WnckPager            *pager,
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 
+/**
+ * wnck_pager_set_show_all:
+ * @pager: a #WnckPager.
+ * @show_all_workspaces: whether to display all #WnckWorkspace in @pager.
+ *
+ * Sets @pager to display all #WnckWorkspace or not, according to
+ * @show_all_workspaces.
+ */
 void
 wnck_pager_set_show_all (WnckPager *pager,
 			 gboolean   show_all_workspaces)
@@ -1784,6 +1848,15 @@ wnck_pager_set_show_all (WnckPager *pager,
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 
+/**
+ * wnck_pager_set_shadow_type:
+ * @pager: a #WnckPager.
+ * @shadow_type: a shadow type.
+ *
+ * Sets the shadow type for @pager to @shadow_type. The main use of this
+ * function is proper integration of #WnckPager in panels with non-system
+ * backgrounds.
+ */
 void
 wnck_pager_set_shadow_type (WnckPager *   pager,
 			    GtkShadowType shadow_type)

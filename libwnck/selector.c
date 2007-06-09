@@ -1338,6 +1338,14 @@ wnck_selector_unrealize (GtkWidget *widget)
   GTK_WIDGET_CLASS (wnck_selector_parent_class)->unrealize (widget);
 }
 
+/**
+ * wnck_selector_new:
+ *
+ * Creates a new #WnckSelector. The #WnckSelector will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Return value: a newly created #WnckSelector.
+ */
 GtkWidget *
 wnck_selector_new (void)
 {

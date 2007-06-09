@@ -32,17 +32,17 @@ typedef struct _WnckResourceUsage WnckResourceUsage;
  * @total_bytes_estimate: estimation of the total number of bytes allocated in
  * the X server.
  * @pixmap_bytes: number of bytes allocated in the X server for resources of
- * type PIXMAP.
- * @n_pixmaps: number of PIXMAP resources allocated.
- * @n_windows: 
- * @n_gcs: 
- * @n_pictures: 
- * @n_glyphsets: 
- * @n_fonts: 
- * @n_colormap_entries: 
- * @n_passive_grabs: 
- * @n_cursors: 
- * @n_other: 
+ * type Pixmap.
+ * @n_pixmaps: number of Pixmap resources allocated.
+ * @n_windows: number of Window resources allocated.
+ * @n_gcs: number of GContext resources allocated.
+ * @n_pictures: number of Picture resources allocated.
+ * @n_glyphsets: number of Glyphset resources allocated.
+ * @n_fonts: number of Font resources allocated.
+ * @n_colormap_entries: number of Colormap resources allocated.
+ * @n_passive_grabs: number of PassiveGrab resources allocated.
+ * @n_cursors: number of Cursor resources allocated.
+ * @n_other: number of other resources allocated.
  *
  * The #WnckResourceUsage struct contains information about the total resource
  * usage of an X client, and the number of resources allocated for each
@@ -50,9 +50,9 @@ typedef struct _WnckResourceUsage WnckResourceUsage;
  */
 struct _WnckResourceUsage
 {
-  unsigned long total_bytes_estimate;
+  gulong        total_bytes_estimate;
   
-  unsigned long pixmap_bytes;
+  gulong        pixmap_bytes;
 
   unsigned int n_pixmaps;
   unsigned int n_windows;
@@ -75,7 +75,6 @@ struct _WnckResourceUsage
   unsigned long pad7;
   unsigned long pad8;
   unsigned long pad9;
-  
 };
 
 /**
@@ -96,11 +95,11 @@ void wnck_gtk_window_set_dock_type (GtkWindow *window);
 void wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type);
 
 void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
-                                   unsigned long      xid,
+                                   gulong             xid,
                                    WnckResourceUsage *usage);
 
 void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
-                                   unsigned long      pid,
+                                   gulong             pid,
                                    WnckResourceUsage *usage);
 
 #endif /* WNCK_UTIL_H */

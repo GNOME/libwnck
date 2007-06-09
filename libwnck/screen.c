@@ -1027,7 +1027,7 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
  * the row and column of the #WnckWorkspace with index @space_index.
  *
  */
-/* FIXME: when we break API again, remove num_workspaces since we can get it
+/* TODO: when we break API again, remove num_workspaces since we can get it
  * from screen! */
 void
 wnck_screen_calc_workspace_layout (WnckScreen          *screen,

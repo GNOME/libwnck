@@ -33,6 +33,15 @@
  * @see_also: wnck_window_get_application()
  * @stability: Unstable
  *
+ * The #WnckApplication is a group of #WnckWindow that are all in the same
+ * application. It can be used to represent windows by applications, group
+ * windows by applications or to manipulate all windows of a particular
+ * application.
+ *
+ * A #WnckApplication is identified by the group leader of the #WnckWindow
+ * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+ * only if they have the group leader of the #WnckApplication.
+ *
  * The #WnckApplication objects are always owned by libwnck and must not be
  * referenced or unreferenced.
  */

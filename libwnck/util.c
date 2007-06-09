@@ -48,6 +48,14 @@ set_dock_realize_handler (GtkWidget *widget, gpointer data)
   _wnck_set_dock_type_hint (GDK_WINDOW_XWINDOW (widget->window));
 }
 
+/**
+ * wnck_gtk_window_set_dock_type:
+ * @window: a <classname>GtkWindow</classname>.
+ *
+ * Sets the semantic type of @window to %WNCK_WINDOW_DOCK.
+ */
+/* TODO: when we break API again, remove this: nothing is using it, and it
+ * looks useless... */
 void
 wnck_gtk_window_set_dock_type (GtkWindow *window)
 {
@@ -65,9 +73,21 @@ typedef enum
   WNCK_EXT_MISSING = 2
 } WnckExtStatus;
 
+/**
+ * wnck_xid_read_resource_usage:
+ * @gdk_display: a <classname>GdkDisplay</classname>.
+ * @xid: an X window ID.
+ * @usage: return location for the X resource usage of the application owning
+ * the X window ID @xid.
+ *
+ * Looks for the X resource usage of the application owning the X window ID
+ * @xid on display @gdisplay.
+ *
+ * To properly work, this function requires the XRes extension on the X server.
+ */
 void
 wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
-                              unsigned long      xid,
+                              gulong             xid,
                               WnckResourceUsage *usage)
 {
   int event, error;
@@ -197,9 +217,26 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
 #endif /* HAVE_XRES */
 }
 
+/**
+ * wnck_pid_read_resource_usage:
+ * @gdk_display: a <classname>GdkDisplay</classname>.
+ * @pid: a process ID.
+ * @usage: return location for the X resource usage of the application with
+ * process ID @pid.
+ *
+ * Looks for the X resource usage of the application with process ID @pid on
+ * display @gdisplay.
+ *
+ * To properly work, this function requires the XRes extension on the X server.
+ *
+ * A current limitation of this function is that this does not work for
+ * processes that do not have an X window visible to libwnck. This includes
+ * processes that do not have any toplevel windows (panel applets, for
+ * example).
+ */
 void
 wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
-                              unsigned long      pid,
+                              gulong             pid,
                               WnckResourceUsage *usage)
 {
   Display *xdisplay;
@@ -249,6 +286,14 @@ wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
 
 static WnckClientType client_type = 0;
 
+/**
+ * wnck_set_client_type:
+ * @ewmh_sourceindication_client_type: a role for the client.
+ *
+ * Sets the role of the libwnck user. For applications providing some window
+ * management features, like pagers or tasklists, it is important to set the
+ * role to %WNCK_CLIENT_TYPE_PAGER for libwnck to properly work.
+ */
 void
 wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
 {
