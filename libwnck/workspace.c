@@ -1,4 +1,5 @@
 /* workspace object */
+/* vim: set sw=2 et: */
 
 /*
  * Copyright (C) 2001 Havoc Pennington
@@ -35,16 +36,18 @@
  * @see_also: #WnckScreen
  * @stability: Unstable
  *
- * The #WnckWorkspace represents what is called "virtual desktops" in the
- * <ulink
+ * The #WnckWorkspace represents what is called <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html&num;largedesks">virtual
+ * desktops</ulink> in the <ulink
  * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>.
  * A workspace is a virtualization of a #WnckScreen<!-- -->: only one workspace
  * can be shown on a #WnckScreen at a time. It makes it possible, for example,
  * to put windows on different workspaces to organize them.
  *
  * If the #WnckWorkspace size is bigger that the #WnckScreen size, the
- * workspace contains a viewport. Viewports are defined in the "large desktops"
- * section of the <ulink
+ * workspace contains a viewport. Viewports are defined in the <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html&num;id2457064">large
+ * desktops</ulink> section of the <ulink
  * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>.
  * The notion of workspaces and viewports are quite similar, and generally both
  * are not used at the same time: there are generally either multiple
@@ -59,8 +62,6 @@
  * The #WnckWorkspace objects are always owned by libwnck and must not be
  * referenced or unreferenced.
  */
- /* FIXME: make "large desktops" and "virtual desktops" links to the EWMH
-  * sections when gtk-doc doesn't fail on # in links */
 
 struct _WnckWorkspacePrivate
 {

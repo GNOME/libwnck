@@ -1,3 +1,4 @@
+/* vim: set sw=2 et: */
 /*
  * Copyright 2002 Sun Microsystems Inc.
  *

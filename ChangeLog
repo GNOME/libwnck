@@ -1,3 +1,14 @@
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/class-group.c:
+	* libwnck/workspace.c: use &num; to put anchors in links for
+	documentation. Thanks Matthias!
+
+	* libwnck/workspace-accessible-factory.[ch]:
+	* libwnck/workspace-accessible.[ch]:
+	* libwnck/workspace.[ch]:
+	* libwnck/xutils.[ch]: add /* vim: set sw=2 et: */
+
 2007-06-09  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/*.[ch]: add /* vim: set sw=2 et: */

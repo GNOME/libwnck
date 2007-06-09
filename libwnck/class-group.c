@@ -39,16 +39,13 @@
  *
  * The class of a window is defined by the WM_CLASS property of this window.
  * More information about the WM_CLASS property is available in the <ulink
- * url="http://tronche.com/gui/x/icccm/sec-4.html">WM_CLASS Property</ulink>
+ * url="http://tronche.com/gui/x/icccm/sec-4.html&num;s-4.1.2.5">WM_CLASS Property</ulink>
  * section (section 4.1.2.5) of the <ulink
  * url="http://tronche.com/gui/x/icccm/">ICCCM</ulink>.
  *
  * The #WnckClassGroup objects are always owned by libwnck and must not be
  * referenced or unreferenced.
  */
- /* FIXME: the ulink should be a link to
-  * http://tronche.com/gui/x/icccm/sec-4.html#s-4.1.2.5 but gtk-doc fails
-  * because it thinks the doc should link to the s-4 symbol */
 
 /* Private part of the WnckClassGroup structure */
 struct _WnckClassGroupPrivate {
