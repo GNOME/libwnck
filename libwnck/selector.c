@@ -1,3 +1,5 @@
+/* selector */
+/* vim: set sw=2 et: */
 /*
  * Copyright (C) 2003 Sun Microsystems, Inc.
  * Copyright (C) 2001 Free Software Foundation, Inc.

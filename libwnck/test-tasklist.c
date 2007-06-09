@@ -1,3 +1,5 @@
+/* vim: set sw=2 et: */
+
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 

@@ -1,4 +1,5 @@
 /* pager object */
+/* vim: set sw=2 et: */
 
 /*
  * Copyright (C) 2001 Havoc Pennington

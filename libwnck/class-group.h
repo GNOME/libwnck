@@ -1,4 +1,5 @@
 /* class group object */
+/* vim: set sw=2 et: */
 
 /*
  * Copyright (C) 2003 Ximian, Inc.

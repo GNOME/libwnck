@@ -1,5 +1,9 @@
 2007-06-09  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/*.[ch]: add /* vim: set sw=2 et: */
+
+2007-06-09  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/screen.c:
 	* libwnck/window.c: add some "Since: 2.20" items to doc.
 	* libwnck/util.c: (set_dock_realize_handler): kill,
