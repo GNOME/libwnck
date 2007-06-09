@@ -1,3 +1,13 @@
+2007-06-09  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/libwnck-docs.sgml:
+	* libwnck/application.c:
+	* libwnck/class-group.c:
+	* libwnck/pager.c:
+	* libwnck/screen.c:
+	* libwnck/window.c:
+	* libwnck/workspace.c: add more API documentation
+
 2007-06-08  Vincent Untz  <vuntz@gnome.org>
 
 	* doc/*:

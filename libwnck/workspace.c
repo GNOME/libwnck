@@ -32,12 +32,35 @@
 /**
  * SECTION:workspace
  * @short_description: an object representing a workspace.
- * @see_also:
+ * @see_also: #WnckScreen
  * @stability: Unstable
  *
+ * The #WnckWorkspace represents what is called "virtual desktops" in the
+ * <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>.
+ * A workspace is a virtualization of a #WnckScreen<!-- -->: only one workspace
+ * can be shown on a #WnckScreen at a time. It makes it possible, for example,
+ * to put windows on different workspaces to organize them.
+ *
+ * If the #WnckWorkspace size is bigger that the #WnckScreen size, the
+ * workspace contains a viewport. Viewports are defined in the "large desktops"
+ * section of the <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>.
+ * The notion of workspaces and viewports are quite similar, and generally both
+ * are not used at the same time: there are generally either multiple
+ * workspaces with no viewport, or one workspace with a viewport. libwnck
+ * supports all situations, even multiple workspaces with viewports.
+ *
+ * Workspaces are organized according to a layout set on the #WnckScreen. See
+ * wnck_screen_calc_workspace_layout(), wnck_screen_try_set_workspace_layout(),
+ * wnck_screen_release_workspace_layout() and
+ * wnck_screen_free_workspace_layout() for more information about the layout.
+ *
  * The #WnckWorkspace objects are always owned by libwnck and must not be
- * unreferenced.
+ * referenced or unreferenced.
  */
+ /* FIXME: make "large desktops" and "virtual desktops" links to the EWMH
+  * sections when gtk-doc doesn't fail on # in links */
 
 struct _WnckWorkspacePrivate
 {
@@ -144,11 +167,12 @@ wnck_workspace_finalize (GObject *object)
 
 /**
  * wnck_workspace_get_number:
- * @space: a #WnckWorkspace
+ * @space: a #WnckWorkspace.
  * 
+ * Returns the index of @space in its #WnckScreen. The first workspace has an
+ * index of 0.
  * 
- * 
- * Return value: get the index of the workspace
+ * Return value: the index of @space in its #WnckScreen.
  **/
 int
 wnck_workspace_get_number (WnckWorkspace *space)
@@ -160,14 +184,13 @@ wnck_workspace_get_number (WnckWorkspace *space)
 
 /**
  * wnck_workspace_get_name:
- * @space: a #WnckWorkspace
+ * @space: a #WnckWorkspace.
  * 
- * Gets the name that should be used to refer to the workspace
- * in the user interface. If the user hasn't set a special name,
- * will be something like "Workspace 3" - otherwise whatever name
- * the user set.
+ * Returns the human-readable name that should be used to refer to @space. If
+ * the user has not set a special name, a fallback like "Workspace 3" will be
+ * used.
  * 
- * Return value: workspace name, never %NULL 
+ * Return value: the name of @space.
  **/
 const char*
 wnck_workspace_get_name (WnckWorkspace *space)
@@ -179,10 +202,10 @@ wnck_workspace_get_name (WnckWorkspace *space)
 
 /**
  * wnck_workspace_change_name:
- * @space: a #WnckWorkspace
- * @name: new workspace name
+ * @space: a #WnckWorkspace.
+ * @name: new name for @space.
  *
- * Try changing the name of the workspace.
+ * Changes the name of @space.
  * 
  **/
 void
@@ -199,9 +222,12 @@ wnck_workspace_change_name (WnckWorkspace *space,
 
 /**
  * wnck_workspace_activate:
- * @space: a #WnckWorkspace
+ * @space: a #WnckWorkspace.
+ * @timestamp: last user activity timestamp at the time of this request.
  * 
- * Ask window manager to make @space the active workspace.
+ * Ask window manager to make @space the active workspace. The window manager
+ * may decide to refuse the request (to not steal the focus if there is a more
+ * recent user activity, for example).
  * 
  **/
 void
@@ -304,30 +330,72 @@ _wnck_workspace_set_viewport (WnckWorkspace *space,
     return FALSE;
 }
 
+/**
+ * wnck_workspace_get_width:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns the width of @space.
+ *
+ * Returns: the width of @space.
+ */
 int
 wnck_workspace_get_width (WnckWorkspace *space)
 {
   return space->priv->width;
 }
 
+/**
+ * wnck_workspace_get_height:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns the height of @space.
+ *
+ * Returns: the height of @space.
+ */
 int
 wnck_workspace_get_height (WnckWorkspace *space)
 {
   return space->priv->height;
 }
 
+/**
+ * wnck_workspace_get_viewport_x:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns the X coordinate of the viewport in @space.
+ *
+ * Returns: the X coordinate of the viewport in @space, or 0 if @space does not
+ * contain a viewport.
+ */
 int
 wnck_workspace_get_viewport_x (WnckWorkspace *space)
 {
   return space->priv->viewport_x;
 }
 
+/**
+ * wnck_workspace_get_viewport_y:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns the Y coordinate of the viewport in @space.
+ *
+ * Returns: the Y coordinate of the viewport in @space, or 0 if @space does not
+ * contain a viewport.
+ */
 int
 wnck_workspace_get_viewport_y (WnckWorkspace *space)
 {
   return space->priv->viewport_y;
 }
 
+/**
+ * wnck_workspace_is_virtual:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns whether @space contains a viewport.
+ *
+ * Returns: TRUE if @space contains a viewport, FALSE otherwise.
+ */
 gboolean
 wnck_workspace_is_virtual (WnckWorkspace *space)
 {

@@ -34,7 +34,7 @@
  * @stability: Unstable
  *
  * The #WnckApplication objects are always owned by libwnck and must not be
- * unreferenced.
+ * referenced or unreferenced.
  */
 
 #define FALLBACK_NAME _("Untitled application")
@@ -220,7 +220,7 @@ wnck_application_get_xid (WnckApplication *app)
  * 
  * Returns the list of #WnckWindow belonging to @app.
  * 
- * Return value: the list of #WnckWindow belonging to @app, or NULL if the
+ * Return value: the list of #WnckWindow belonging to @app, or %NULL if the
  * application contains no window. The list should not be modified nor freed,
  * as it is owned by @app.
  **/

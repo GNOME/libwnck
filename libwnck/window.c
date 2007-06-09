@@ -40,7 +40,7 @@
  * @stability: Unstable
  *
  * The #WnckWindow objects are always owned by libwnck and must not be
- * unreferenced.
+ * referenced or unreferenced.
  */
 
 #define FALLBACK_NAME _("Untitled window")

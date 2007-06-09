@@ -43,7 +43,7 @@
  * @stability: Unstable
  *
  * The #WnckScreen objects are always owned by libwnck and must not be
- * unreferenced.
+ * referenced or unreferenced.
  */
 
 #define _NET_WM_ORIENTATION_HORZ 0

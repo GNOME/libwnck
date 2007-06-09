@@ -40,7 +40,8 @@
  *
  * A #WnckPager shows a miniature view of the workspaces, representing managed
  * windows by small rectangles, and allows the user to initiate various window
- * manager actions by manipulating these representations.
+ * manager actions by manipulating these representations. The #WnckPager offers
+ * ways to move windows between workspaces and to change the current workspace.
  *
  * Alternatively, a #WnckPager can be configured to only show the names of the
  * workspace instead of their contents.

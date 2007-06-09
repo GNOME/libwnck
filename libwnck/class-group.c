@@ -43,7 +43,7 @@
  * url="http://tronche.com/gui/x/icccm/">ICCCM</ulink>.
  *
  * The #WnckClassGroup objects are always owned by libwnck and must not be
- * unreferenced.
+ * referenced or unreferenced.
  */
  /* FIXME: the ulink should be a link to
   * http://tronche.com/gui/x/icccm/sec-4.html#s-4.1.2.5 but gtk-doc fails
@@ -201,8 +201,9 @@ wnck_class_group_finalize (GObject *object)
  *
  * Returns an existing class group based on its resource class name.
  *
- * Return value: an existing #WnckClassGroup, or NULL if there is no group with
- * the specified @res_class.
+ * Return value: an existing #WnckClassGroup, or %NULL if there is no group
+ * with the specified @res_class. The returned #WnckClassGroup is owned by
+ * libwnck and must not be referenced or unreferenced.
  **/
 WnckClassGroup *
 wnck_class_group_get (const char *res_class)
@@ -555,7 +556,7 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
  * 
  * Returns the list of #WnckWindow that are grouped in @class_group.
  * 
- * Return value: the list of #WnckWindow grouped in @class_group, or NULL if
+ * Return value: the list of #WnckWindow grouped in @class_group, or %NULL if
  * the group contains no window. The list should not be modified nor freed, as
  * it is owned by @class_group.
  **/
