@@ -42,28 +42,21 @@
  * libwcnk users, like functions to read resource usage of X clients.
  */
 
-static void
-set_dock_realize_handler (GtkWidget *widget, gpointer data)
-{
-  _wnck_set_dock_type_hint (GDK_WINDOW_XWINDOW (widget->window));
-}
-
 /**
  * wnck_gtk_window_set_dock_type:
  * @window: a <classname>GtkWindow</classname>.
  *
  * Sets the semantic type of @window to %WNCK_WINDOW_DOCK.
+ *
+ * Deprecated: Use gdk_window_set_type_hint() instead.
  */
 /* TODO: when we break API again, remove this: nothing is using it, and it
  * looks useless... */
 void
 wnck_gtk_window_set_dock_type (GtkWindow *window)
 {
-  /*  FIXME don't set it 10 times if this function is called 10 times */
-  g_signal_connect (G_OBJECT (window),
-                    "realize",
-                    G_CALLBACK (set_dock_realize_handler),
-                    NULL);
+  gdk_window_set_type_hint (GTK_WIDGET (window)->window,
+		  	    GDK_WINDOW_TYPE_HINT_DOCK);
 }
 
 typedef enum

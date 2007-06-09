@@ -182,8 +182,6 @@ void _wnck_set_icon_geometry  (Window xwindow,
 			       int    width,
 			       int    height);
 
-void _wnck_set_dock_type_hint (Window xwindow);
-
 void _wnck_set_desktop_layout (Screen *xscreen,
                                int     rows,
                                int     columns);

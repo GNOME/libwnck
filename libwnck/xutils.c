@@ -2321,24 +2321,6 @@ _wnck_set_icon_geometry  (Window xwindow,
   _wnck_error_trap_pop ();
 }
 
-void
-_wnck_set_dock_type_hint (Window xwindow)
-{
-  Atom atom;
-
-  atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_DOCK");
-  
-  _wnck_error_trap_push ();
-
-  XChangeProperty (gdk_display,
-                   xwindow, 
-                   _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
-		   XA_ATOM, 32, PropModeReplace,
-		   (guchar *)&atom, 1);
-
-  _wnck_error_trap_pop ();
-}
-
 /* orientation of pager */
 #define _NET_WM_ORIENTATION_HORZ 0
 #define _NET_WM_ORIENTATION_VERT 1

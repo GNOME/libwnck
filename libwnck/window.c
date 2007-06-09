@@ -788,6 +788,8 @@ wnck_window_get_sort_order (WnckWindow *window)
  *
  * Sets the sort order of @window. The sort order is used for ordering of
  * @window in #WnckSelector and #WnckTasklist.
+ *
+ * Since: 2.20
  **/
 void        wnck_window_set_sort_order        (WnckWindow *window, 
 					       gint order)

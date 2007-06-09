@@ -1,5 +1,14 @@
 2007-06-09  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/screen.c:
+	* libwnck/window.c: add some "Since: 2.20" items to doc.
+	* libwnck/util.c: (set_dock_realize_handler): kill,
+	(wnck_gtk_window_set_dock_type): deprecate, and make it use
+	gdk_window_set_type_hint()
+	* libwnck/xutils.[ch]: (_wnck_set_dock_type_hint): kill
+
+2007-06-09  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-docs.sgml:
 	* doc/tmpl/util.sgml:
 	* libwnck/application.c:

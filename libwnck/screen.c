@@ -389,6 +389,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
    * @class_group: the opened #WnckClassGroup.
    *
    * Emitted when a new #WnckClassGroup is opened on @screen.
+   *
+   * Since: 2.20
    */
   signals[CLASS_GROUP_OPENED] =
     g_signal_new ("class_group_opened",
@@ -405,6 +407,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
    * @class_group: the closed #WnckClassGroup.
    *
    * Emitted when a #WnckClassGroup is closed on @screen.
+   *
+   * Since: 2.20
    */
   signals[CLASS_GROUP_CLOSED] =
     g_signal_new ("class_group_closed",
@@ -435,6 +439,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
    * @screen: the #WnckScreen which emitted the signal.
    *
    * Emitted when "showing the desktop" mode of @screen is toggled.
+   *
+   * Since: 2.20
    */
   signals[SHOWING_DESKTOP_CHANGED] =
     g_signal_new ("showing_desktop_changed",
@@ -451,6 +457,8 @@ wnck_screen_class_init (WnckScreenClass *klass)
    *
    * Emitted when a viewport position has changed in a #WnckWorkspace of
    * @screen or when a #WnckWorkspace of @screen gets or loses its viewport.
+   *
+   * Since: 2.20
    */
     signals[VIEWPORTS_CHANGED] =
     g_signal_new ("viewports_changed",
