@@ -199,11 +199,12 @@ wnck_class_group_finalize (GObject *object)
  * wnck_class_group_get:
  * @res_class: name of the sought resource class.
  *
- * Returns an existing class group based on its resource class name.
+ * Returns the #WnckClassGroup corresponding to @res_class.
  *
- * Return value: an existing #WnckClassGroup, or %NULL if there is no group
- * with the specified @res_class. The returned #WnckClassGroup is owned by
- * libwnck and must not be referenced or unreferenced.
+ * Return value: the #WnckClassGroup corresponding to @res_class, or %NULL if
+ * there is no #WnckClassGroup with the specified @res_class. The returned
+ * #WnckClassGroup is owned by libwnck and must not be referenced or
+ * unreferenced.
  **/
 WnckClassGroup *
 wnck_class_group_get (const char *res_class)

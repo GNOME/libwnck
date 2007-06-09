@@ -182,7 +182,7 @@ WnckScreen
 </para>
 
 @screen: 
-@workspace: 
+@space: 
 @Returns: 
 
 
@@ -202,7 +202,7 @@ WnckScreen
 </para>
 
 @screen: 
-@workspace: 
+@space: 
 @direction: 
 @Returns: 
 
@@ -334,29 +334,6 @@ WnckScreen
 @y: 
 
 
-<!-- ##### STRUCT WnckWorkspaceLayout ##### -->
-<para>
-
-</para>
-
-@rows: 
-@cols: 
-@grid: 
-@grid_area: 
-@current_row: 
-@current_col: 
-
-<!-- ##### FUNCTION wnck_screen_calc_workspace_layout ##### -->
-<para>
-
-</para>
-
-@screen: 
-@num_workspaces: 
-@current_space: 
-@layout: 
-
-
 <!-- ##### FUNCTION wnck_screen_try_set_workspace_layout ##### -->
 <para>
 
@@ -376,6 +353,29 @@ WnckScreen
 
 @screen: 
 @current_token: 
+
+
+<!-- ##### STRUCT WnckWorkspaceLayout ##### -->
+<para>
+
+</para>
+
+@rows: 
+@cols: 
+@grid: 
+@grid_area: 
+@current_row: 
+@current_col: 
+
+<!-- ##### FUNCTION wnck_screen_calc_workspace_layout ##### -->
+<para>
+
+</para>
+
+@screen: 
+@num_workspaces: 
+@space_index: 
+@layout: 
 
 
 <!-- ##### FUNCTION wnck_screen_free_workspace_layout ##### -->

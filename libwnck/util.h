@@ -44,7 +44,7 @@ typedef struct _WnckResourceUsage WnckResourceUsage;
  * @n_cursors: 
  * @n_other: 
  *
- * The WnckResourceUsage struct contains information about the total resource
+ * The #WnckResourceUsage struct contains information about the total resource
  * usage of an X client, and the number of resources allocated for each
  * resource type.
  */

@@ -115,6 +115,23 @@ struct _WnckScreenClass
 
 typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
 
+/**
+ * WnckWorkspaceLayout:
+ * @rows: number of rows in the layout grid.
+ * @cols: number of columns in the layout grid.
+ * @grid: array of size @grid_area containing the index (starting from 0) of
+ * the #WnckWorkspace for each position in the layout grid, or -1 if the
+ * position does not correspond to any #WnckWorkspace.
+ * @grid_area: size of the grid containing all #WnckWorkspace. This can be
+ * bigger than the number of #WnckWorskpace because the grid might not be
+ * filled.
+ * @current_row: row of the specific #WnckWorkspace, starting from 0.
+ * @current_col: column of the specific #WnckWorkspace, starting from 0.
+ *
+ * The #WnckWorkspaceLayout struct contains information about the layout of
+ * #WnckWorkspace on a #WnckScreen, and the exact position of a specific
+ * #WnckWorkspace.
+ */
 struct _WnckWorkspaceLayout
 {
   int rows;
@@ -125,6 +142,19 @@ struct _WnckWorkspaceLayout
   int current_col;
 };
 
+/**
+ * WnckMotionDirection:
+ * @WNCK_MOTION_UP: search a neighbor #WnckWorkspace above another
+ * #WnckWorkspace. 
+ * @WNCK_MOTION_DOWN: search a neighbor #WnckWorkspace below another
+ * #WnckWorkspace.
+ * @WNCK_MOTION_LEFT: search a neighbor #WnckWorkspace at the left of another
+ * #WnckWorkspace.
+ * @WNCK_MOTION_RIGHT: search a neighbor #WnckWorkspace at the right of another
+ * #WnckWorkspace.
+ *
+ * Type defining a direction in which to search a neighbor #WnckWorkspace.
+ */
 typedef enum
 {
   WNCK_MOTION_UP = -1,
@@ -141,9 +171,9 @@ WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id)
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
 int            wnck_screen_get_workspace_index      (WnckScreen    *screen,
-                                                     WnckWorkspace *workspace);
+                                                     WnckWorkspace *space);
 WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
-                                                     WnckWorkspace      *workspace,
+                                                     WnckWorkspace      *space,
                                                      WnckMotionDirection direction);
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
@@ -173,7 +203,7 @@ void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
 void           wnck_screen_calc_workspace_layout    (WnckScreen          *screen,
                                                      int                  num_workspaces,
-                                                     int                  current_space,
+                                                     int                  space_index,
                                                      WnckWorkspaceLayout *layout);
 void           wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout);
 

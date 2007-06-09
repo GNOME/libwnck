@@ -189,6 +189,17 @@ wnck_application_finalize (GObject *object)
   G_OBJECT_CLASS (parent_class)->finalize (object);
 }
 
+/**
+ * wnck_application_get:
+ * @xwindow: the X window ID of a group leader.
+ *
+ * Returns the #WnckApplication corresponding to the group leader with @xwindow
+ * as X window ID.
+ *
+ * Return value: the #WnckApplication corresponding to @xwindow, or %NULL if
+ * there no such #WnckApplication could be found. The returned #WnckApplication
+ * is owned by libwnck and must not be referenced or unreferenced.
+ */
 WnckApplication*
 wnck_application_get (gulong xwindow)
 {
@@ -200,11 +211,11 @@ wnck_application_get (gulong xwindow)
 
 /**
  * wnck_application_get_xid:
- * @app: a #WnckApplication
+ * @app: a #WnckApplication.
  * 
- * Gets the X id of the group leader window for @app.
+ * Returns the X window ID of the group leader window for @app.
  * 
- * Return value: X id for @app.
+ * Return value: the X window ID of the group leader window for @app.
  **/
 gulong
 wnck_application_get_xid (WnckApplication *app)
@@ -250,17 +261,16 @@ wnck_application_get_n_windows (WnckApplication *app)
 
 /**
  * wnck_application_get_name:
- * @app: a #WnckApplication
+ * @app: a #WnckApplication.
  * 
- * Returns the name of @app, employing various suboptimal heuristics to try to
- * figure it out.
- * GTK+ should probably have a function to allow applications to set the
- * _NET_WM_NAME property on the group leader as the application name, and the
- * <ulink
+ * Returns the name of @app. Since there is no way to properly find this name,
+ * various suboptimal heuristics are used to find it. GTK+ should probably have
+ * a function to allow applications to set the _NET_WM_NAME property on the
+ * group leader as the application name, and the <ulink
  * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>
  * should say that this is where the application name goes.
  * 
- * Return value: the name of @app, or a fallback name if none is available.
+ * Return value: the name of @app, or a fallback name if no name is available.
  **/
 const char*
 wnck_application_get_name (WnckApplication *app)
@@ -277,11 +287,12 @@ wnck_application_get_name (WnckApplication *app)
  * wnck_application_get_icon_name:
  * @app: a #WnckApplication
  * 
- * Returns the icon name of @app, employing various suboptimal heuristics to
- * try to figure it out.
+ * Returns the icon name of @app (to be used when @app is minimized). Since
+ * there is no way to properly find this name, various suboptimal heuristics
+ * are used to find it.
  * 
- * Return value: the name of @app when minimized, or a fallback name if none is
- * available.
+ * Return value: the icon name of @app, or a fallback icon name if no icon name
+ * is available.
  **/
 const char*
 wnck_application_get_icon_name (WnckApplication *app)
@@ -300,7 +311,7 @@ wnck_application_get_icon_name (WnckApplication *app)
 
 /**
  * wnck_application_get_pid:
- * @app: a #WnckApplication
+ * @app: a #WnckApplication.
  * 
  * Returns the process ID of @app.
  * 
@@ -381,7 +392,9 @@ find_icon_window (WnckApplication *app)
  * wnck_application_get_icon:
  * @app: a #WnckApplication.
  * 
- * Returns the icon to be used for @app.
+ * Returns the icon to be used for @app. Since there is no way to
+ * properly find the icon, a suboptimal heuristic is used to find it. If
+ * no icon was found, a fallback icon is used.
  * 
  * Return value: the icon for @app. The caller should reference the returned
  * <classname>GdkPixbuf</classname> if it needs to keep the icon around.
@@ -409,7 +422,9 @@ wnck_application_get_icon (WnckApplication *app)
  * wnck_application_get_mini_icon:
  * @app: a #WnckApplication.
  * 
- * Returns the mini-icon to be used for @app.
+ * Returns the mini-icon to be used for @app. Since there is no way to
+ * properly find the mini-icon, a suboptimal heuristic is used to find it. If
+ * no mini-icon was found, a fallback mini-icon is used.
  * 
  * Return value: the mini-icon for @app. The caller should reference the
  * returned <classname>GdkPixbuf</classname> if it needs to keep the mini-icon
@@ -438,10 +453,10 @@ wnck_application_get_mini_icon (WnckApplication *app)
  * wnck_application_get_icon_is_fallback:
  * @app: a #WnckApplication
  *
- * Checks if we are using a default fallback icon because
- * none was set on the application.
+ * Returns whether a default fallback icon is used for @app (because none
+ * was set on @app).
  * 
- * Return value: %TRUE if icon is a fallback, %FALSE otherwise.
+ * Return value: %TRUE if the icon for @app is a fallback, %FALSE otherwise.
  **/
 gboolean
 wnck_application_get_icon_is_fallback (WnckApplication *app)
@@ -451,6 +466,15 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
   return _wnck_icon_cache_get_is_fallback (app->priv->icon_cache);
 }
 
+/**
+ * wnck_application_get_startup_id:
+ * @app: a #WnckApplication.
+ *
+ * Returns the startup sequence ID used for startup notification of @app.
+ *
+ * Return value: the startup sequence ID used for startup notification of @app,
+ * or %NULL if none is available.
+ */
 const char*
 wnck_application_get_startup_id (WnckApplication *app)
 {

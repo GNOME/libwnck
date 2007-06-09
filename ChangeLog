@@ -1,6 +1,28 @@
 2007-06-09  Vincent Untz  <vuntz@gnome.org>
 
 	* doc/libwnck-docs.sgml:
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/screen.sgml:
+	* libwnck/application.c:
+	* libwnck/class-group.c:
+	* libwnck/screen.[ch]:
+	* libwnck/util.h:
+	* libwnck/window.c:
+	* libwnck/workspace.c: writing API doc is fun!
+
+	* libwnck/screen.c: (wnck_screen_get_workspace_index): updated for
+	some clarity
+	(wnck_screen_get_workspace_neighbor): ditto
+	(wnck_screen_calc_workspace_layout): ditto, and if the number of
+	workspaces is negative, calculate it
+	(wnck_screen_net_wm_supports): make it really work on all screens, and
+	not just the default screen
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):
+	updated for some clarity
+
+2007-06-09  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/libwnck-docs.sgml:
 	* libwnck/application.[ch]:
 	* libwnck/class-group.[ch]:
 	* libwnck/pager.h:

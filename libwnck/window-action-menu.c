@@ -575,7 +575,7 @@ wnck_create_window_action_menu (WnckWindow *window)
   GtkWidget *menu, *submenu;
   ActionMenuData *amd;
   GtkWidget *separator;
-  int num_workspaces, present_workspace, i;
+  int num_workspaces, window_space, i;
   WnckWorkspace *workspace;
   WnckWorkspaceLayout layout;
   GSList *pin_group;
@@ -649,13 +649,13 @@ wnck_create_window_action_menu (WnckWindow *window)
   num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (amd->window));
 
   if (workspace)
-    present_workspace = wnck_workspace_get_number (workspace);
+    window_space = wnck_workspace_get_number (workspace);
   else
-    present_workspace = -1;
+    window_space = -1; //FIXME: this probably causes weird results. How to verify?
 
   wnck_screen_calc_workspace_layout (wnck_window_get_screen (amd->window),
                                      num_workspaces,
-                                     present_workspace,
+                                     window_space,
                                      &layout);
 
   if (!wnck_window_is_pinned (amd->window))
@@ -727,7 +727,7 @@ wnck_create_window_action_menu (WnckWindow *window)
       item = make_menu_item (amd, MOVE_TO_WORKSPACE);
       g_object_set_data (G_OBJECT (item), "workspace", GINT_TO_POINTER (i));
 
-      if (i == present_workspace)
+      if (i == window_space)
         gtk_widget_set_sensitive (item, FALSE);
 
       gtk_menu_shell_append (GTK_MENU_SHELL (submenu), item);

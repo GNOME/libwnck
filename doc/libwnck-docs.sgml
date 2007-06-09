@@ -34,20 +34,16 @@
   </part>
   <!-- TODO
   wnck_set_client_type() for pagers-like
-  add link to ewmh spec
   mention that the window/classgroup/application/workspace/screen are owned by libwnck and should not be ref'ed/unref'ed.
   mention wnck_screen_force_update()
   -->
 
   <part id="core">
     <title>Libwnck Core Window Management Support</title>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/window.xml"/>
     <xi:include href="xml/class-group.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/application.xml"/>
     <xi:include href="xml/workspace.xml"/>
-    <!-- TODO proofread + consistency -->
     <xi:include href="xml/screen.xml"/>
   </part>
 
