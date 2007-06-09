@@ -38,6 +38,12 @@ G_BEGIN_DECLS
 typedef struct _WnckApplicationClass   WnckApplicationClass;
 typedef struct _WnckApplicationPrivate WnckApplicationPrivate;
 
+/**
+ * WnckApplication:
+ *
+ * The #WnckApplication struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckApplication
 {
   GObject parent_instance;

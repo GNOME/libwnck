@@ -223,11 +223,12 @@ wnck_workspace_change_name (WnckWorkspace *space,
 /**
  * wnck_workspace_activate:
  * @space: a #WnckWorkspace.
- * @timestamp: last user activity timestamp at the time of this request.
+ * @timestamp: the X server timestamp of the user interaction event that caused
+ * this call to occur.
  * 
- * Ask window manager to make @space the active workspace. The window manager
- * may decide to refuse the request (to not steal the focus if there is a more
- * recent user activity, for example).
+ * Asks the window manager to make @space the active workspace. The window
+ * manager may decide to refuse the request (to not steal the focus if there is
+ * a more recent user activity, for example).
  * 
  **/
 void
@@ -394,7 +395,7 @@ wnck_workspace_get_viewport_y (WnckWorkspace *space)
  *
  * Returns whether @space contains a viewport.
  *
- * Returns: TRUE if @space contains a viewport, FALSE otherwise.
+ * Returns: %TRUE if @space contains a viewport, %FALSE otherwise.
  */
 gboolean
 wnck_workspace_is_virtual (WnckWorkspace *space)

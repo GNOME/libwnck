@@ -32,6 +32,30 @@
 
 G_BEGIN_DECLS
 
+/**
+ * WnckWindowState:
+ * @WNCK_WINDOW_STATE_MINIMIZED: the window is minimized.
+ * @WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY: the window is horizontically
+ * maximized.
+ * @WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY: the window is vertically maximized.
+ * @WNCK_WINDOW_STATE_SHADED: the window is shaded.
+ * @WNCK_WINDOW_STATE_SKIP_PAGER: the window should not be included on pagers.
+ * @WNCK_WINDOW_STATE_SKIP_TASKLIST: the window should not be included on
+ * tasklists.
+ * @WNCK_WINDOW_STATE_STICKY: the window is sticky (see
+ * wnck_window_is_sticky()).
+ * @WNCK_WINDOW_STATE_HIDDEN: the window is not visible on its #WnckWorkspace
+ * and viewport (when minimized, for example).
+ * @WNCK_WINDOW_STATE_FULLSCREEN: the window is fullscreen.
+ * @WNCK_WINDOW_STATE_DEMANDS_ATTENTION: the window needs attention (because
+ * the window requested activation but the window manager refused it, for
+ * example).
+ * @WNCK_WINDOW_STATE_URGENT: the window requires a response from the user.
+ * @WNCK_WINDOW_STATE_ABOVE: the window is above other windows (see
+ * wnck_window_make_above()).
+ *
+ * Type used as a bitmask to describe the state of a #WnckWindow.
+ */
 typedef enum
 {
   WNCK_WINDOW_STATE_MINIMIZED              = 1 << 0,
@@ -48,6 +72,36 @@ typedef enum
   WNCK_WINDOW_STATE_ABOVE                  = 1 << 11
 } WnckWindowState;
 
+/**
+ * WnckWindowActions:
+ * @WNCK_WINDOW_ACTION_MOVE: the window may be moved around the screen. 
+ * @WNCK_WINDOW_ACTION_RESIZE: the window may be resized.
+ * @WNCK_WINDOW_ACTION_SHADE: the window may be shaded.
+ * @WNCK_WINDOW_ACTION_STICK: the window may be sticked.
+ * @WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY: the window may be maximized
+ * horizontally.
+ * @WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY: the window may be maximized
+ * vertically.
+ * @WNCK_WINDOW_ACTION_CHANGE_WORKSPACE: the window may be moved between
+ * workspaces, or (un)pinned.
+ * @WNCK_WINDOW_ACTION_CLOSE: the window may be closed.
+ * @WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY: the window may be unmaximized
+ * horizontally.
+ * @WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY: the window may be maximized
+ * vertically.
+ * @WNCK_WINDOW_ACTION_UNSHADE: the window may be unshaded.
+ * @WNCK_WINDOW_ACTION_UNSTICK: the window may be unsticked.
+ * @WNCK_WINDOW_ACTION_MINIMIZE: the window may be minimized.
+ * @WNCK_WINDOW_ACTION_UNMINIMIZE: the window may be unminimized.
+ * @WNCK_WINDOW_ACTION_MAXIMIZE: the window may be maximized.
+ * @WNCK_WINDOW_ACTION_UNMAXIMIZE: the window may be unmaximized.
+ * @WNCK_WINDOW_ACTION_FULLSCREEN: the window may be brought to fullscreen.
+ * @WNCK_WINDOW_ACTION_ABOVE: the window may be made above other windows.
+ * @WNCK_WINDOW_ACTION_BELOW: the window may be made below other windows.
+ *
+ * Type used as a bitmask to describe the actions that can be done for a
+ * #WnckWindow.
+ */
 typedef enum
 {
   WNCK_WINDOW_ACTION_MOVE                    = 1 << 0,
@@ -71,6 +125,21 @@ typedef enum
   WNCK_WINDOW_ACTION_BELOW                   = 1 << 18
 } WnckWindowActions;
 
+/**
+ * WnckWindowType:
+ * @WNCK_WINDOW_NORMAL: the window is a normal window.
+ * @WNCK_WINDOW_DESKTOP: the window is a desktop.
+ * @WNCK_WINDOW_DOCK: the window is a dock or a panel.
+ * @WNCK_WINDOW_DIALOG: the window is a dialog window.
+ * @WNCK_WINDOW_TOOLBAR: the window is a tearoff toolbar.
+ * @WNCK_WINDOW_MENU: the window is a tearoff menu.
+ * @WNCK_WINDOW_UTILITY: the window is a small persistent utility window, such
+ * as a palette or toolbox.
+ * @WNCK_WINDOW_SPLASHSCREEN: the window is a splash screen displayed as an
+ * application is starting up.
+ *
+ * Type describing the semantic type of a #WnckWindow.
+ */
 typedef enum
 {
   WNCK_WINDOW_NORMAL,       /* document/app window */
@@ -83,6 +152,33 @@ typedef enum
   WNCK_WINDOW_SPLASHSCREEN  /* splash screen */
 } WnckWindowType;
 
+/**
+ * WnckWindowGravity:
+ * @WNCK_WINDOW_GRAVITY_CURRENT: keep the current gravity point.
+ * @WNCK_WINDOW_GRAVITY_NORTHWEST: use the left top corner of the frame window
+ * as gravity point.
+ * @WNCK_WINDOW_GRAVITY_NORTH: use the center of the frame window's top side as
+ * gravity point.
+ * @WNCK_WINDOW_GRAVITY_NORTHEAST: use the right top corner of the frame window
+ * as gravity point.
+ * @WNCK_WINDOW_GRAVITY_WEST: use the center of the frame window's left side as
+ * gravity point.
+ * @WNCK_WINDOW_GRAVITY_CENTER: use the center of the frame window as gravity
+ * point.
+ * @WNCK_WINDOW_GRAVITY_EAST: use the center of the frame window's right side
+ * as gravity point.
+ * @WNCK_WINDOW_GRAVITY_SOUTHWEST: use the left bottom corner of the frame
+ * window as gravity point.
+ * @WNCK_WINDOW_GRAVITY_SOUTH: use the center of the frame window's bottom side
+ * as gravity point.
+ * @WNCK_WINDOW_GRAVITY_SOUTHEAST: use the right bottom corner of the frame
+ * window as gravity point.
+ * @WNCK_WINDOW_GRAVITY_STATIC: use the left top corner of the client window as
+ * gravity point.
+ *
+ * Flag used when changing the geometry of a #WnckWindow. This is the gravity
+ * point to use as a reference for the new position.
+ */
 typedef enum
 {
   WNCK_WINDOW_GRAVITY_CURRENT   = 0,
@@ -98,6 +194,16 @@ typedef enum
   WNCK_WINDOW_GRAVITY_STATIC    = 10
 } WnckWindowGravity;
 
+/**
+ * WnckWindowMoveResizeMask:
+ * @WNCK_WINDOW_CHANGE_X: X coordinate of the window should be changed.
+ * @WNCK_WINDOW_CHANGE_Y: Y coordinate of the window should be changed.
+ * @WNCK_WINDOW_CHANGE_WIDTH: width of the window should be changed.
+ * @WNCK_WINDOW_CHANGE_HEIGHT: height of the window should be changed.
+ *
+ * Flag used as a bitmask when changing the geometry of a #WnckWindow. This
+ * indicates which part of the geometry should be changed.
+ */
 typedef enum
 {
   WNCK_WINDOW_CHANGE_X      = 1 << 0,
@@ -116,6 +222,12 @@ typedef enum
 typedef struct _WnckWindowClass   WnckWindowClass;
 typedef struct _WnckWindowPrivate WnckWindowPrivate;
 
+/**
+ * WnckWindow:
+ *
+ * The #WnckWindow struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckWindow
 {
   GObject parent_instance;

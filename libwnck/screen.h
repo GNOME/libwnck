@@ -45,6 +45,12 @@ typedef struct _WnckScreen        WnckScreen;
 typedef struct _WnckScreenClass   WnckScreenClass;
 typedef struct _WnckScreenPrivate WnckScreenPrivate;
 
+/**
+ * WnckScreen:
+ *
+ * The #WnckScreen struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckScreen
 {
   GObject parent_instance;

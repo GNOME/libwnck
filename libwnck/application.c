@@ -304,7 +304,7 @@ wnck_application_get_icon_name (WnckApplication *app)
  * 
  * Returns the process ID of @app.
  * 
- * Return value: process ID of @app, or 0 if none is available.
+ * Return value: the process ID of @app, or 0 if none is available.
  **/
 int
 wnck_application_get_pid (WnckApplication *app)
@@ -383,9 +383,8 @@ find_icon_window (WnckApplication *app)
  * 
  * Returns the icon to be used for @app.
  * 
- * Return value: the icon for @app. The caller should increase the
- * reference count of the returned <classname>GdkPixbuf</classname> if it needs
- * to keep the icon around.
+ * Return value: the icon for @app. The caller should reference the returned
+ * <classname>GdkPixbuf</classname> if it needs to keep the icon around.
  **/
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
@@ -412,9 +411,9 @@ wnck_application_get_icon (WnckApplication *app)
  * 
  * Returns the mini-icon to be used for @app.
  * 
- * Return value: the mini-icon for @app. The caller should increase the
- * reference count of the returned <classname>GdkPixbuf</classname> if it needs
- * to keep the mini-icon around.
+ * Return value: the mini-icon for @app. The caller should reference the
+ * returned <classname>GdkPixbuf</classname> if it needs to keep the mini-icon
+ * around.
  **/
 GdkPixbuf*
 wnck_application_get_mini_icon (WnckApplication *app)
@@ -442,7 +441,7 @@ wnck_application_get_mini_icon (WnckApplication *app)
  * Checks if we are using a default fallback icon because
  * none was set on the application.
  * 
- * Return value: %TRUE if icon is a fallback
+ * Return value: %TRUE if icon is a fallback, %FALSE otherwise.
  **/
 gboolean
 wnck_application_get_icon_is_fallback (WnckApplication *app)

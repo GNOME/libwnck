@@ -37,6 +37,12 @@ G_BEGIN_DECLS
 typedef struct _WnckWorkspaceClass   WnckWorkspaceClass;
 typedef struct _WnckWorkspacePrivate WnckWorkspacePrivate;
 
+/**
+ * WnckWorkspace:
+ *
+ * The #WnckWorkspace struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckWorkspace
 {
   GObject parent_instance;

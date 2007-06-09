@@ -38,6 +38,12 @@ typedef struct _WnckPager        WnckPager;
 typedef struct _WnckPagerClass   WnckPagerClass;
 typedef struct _WnckPagerPrivate WnckPagerPrivate;
 
+/**
+ * WnckPager:
+ *
+ * The #WnckPager struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckPager
 {
   GtkContainer parent_instance;

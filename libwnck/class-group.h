@@ -39,6 +39,12 @@ G_BEGIN_DECLS
 typedef struct _WnckClassGroupClass   WnckClassGroupClass;
 typedef struct _WnckClassGroupPrivate WnckClassGroupPrivate;
 
+/**
+ * WnckClassGroup:
+ *
+ * The #WnckClassGroup struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckClassGroup
 {
   GObject parent_instance;

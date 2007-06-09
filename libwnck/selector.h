@@ -35,6 +35,12 @@ typedef struct _WnckSelector WnckSelector;
 typedef struct _WnckSelectorClass WnckSelectorClass;
 typedef struct _WnckSelectorPrivate WnckSelectorPrivate;
 
+/**
+ * WnckSelector:
+ *
+ * The #WnckSelector struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckSelector
 {
   GtkMenuBar parent_instance;

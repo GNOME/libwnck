@@ -38,6 +38,12 @@ typedef struct _WnckTasklist        WnckTasklist;
 typedef struct _WnckTasklistClass   WnckTasklistClass;
 typedef struct _WnckTasklistPrivate WnckTasklistPrivate;
 
+/**
+ * WnckTasklist:
+ *
+ * The #WnckTasklist struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckTasklist
 {
   GtkContainer parent_instance;

@@ -42,6 +42,15 @@
  * @see_also: #WnckWindow, #WnckWorkspace
  * @stability: Unstable
  *
+ * The #WnckScreen represents a physical screen. A screen may consist of
+ * multiple monitors which are merged to form a large screen area. The
+ * #WnckScreen is at the bottom of the libwnck stack of objects: #WnckWorkspace
+ * objects exist a #WnckScreen and #WnckWindow objects are displayed on a
+ * #WnckWorkspace.
+ *
+ * The #WnckScreen corresponds to the notion of
+ * <classname>GdkScreen</classname> in GDK.
+ *
  * The #WnckScreen objects are always owned by libwnck and must not be
  * referenced or unreferenced.
  */
@@ -229,6 +238,14 @@ wnck_screen_class_init (WnckScreenClass *klass)
   
   object_class->finalize = wnck_screen_finalize;
 
+  /**
+   * WnckScreen::active-window-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @previously_active_window: the previously active #WnckWindow before this
+   * change.
+   *
+   * Emitted when the active window on @screen has changed.
+   */
   signals[ACTIVE_WINDOW_CHANGED] =
     g_signal_new ("active_window_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -238,6 +255,14 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
+  /**
+   * WnckScreen::active-workspace-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @previously_active_space: the previously active #WnckWorkspace before this
+   * change.
+   *
+   * Emitted when the active workspace on @screen has changed.
+   */
   signals[ACTIVE_WORKSPACE_CHANGED] =
     g_signal_new ("active_workspace_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -247,6 +272,12 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
   
+  /**
+   * WnckScreen::window-stacking-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   *
+   * Emitted when the stacking order of #WnckWindow on @screen has changed.
+   */
   signals[WINDOW_STACKING_CHANGED] =
     g_signal_new ("window_stacking_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -256,6 +287,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckScreen::window-opened:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @window: the opened #WnckWindow.
+   *
+   * Emitted when a new #WnckWindow is opened on @screen.
+   */
   signals[WINDOW_OPENED] =
     g_signal_new ("window_opened",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -265,6 +303,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
+  /**
+   * WnckScreen::window-closed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @window: the closed #WnckWindow.
+   *
+   * Emitted when a #WnckWindow is closed on @screen.
+   */
   signals[WINDOW_CLOSED] =
     g_signal_new ("window_closed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -274,6 +319,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
   
+  /**
+   * WnckScreen::workspace-created:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @space: the workspace that has been created. 
+   *
+   * Emitted when a #WnckWorkspace is created on @screen.
+   */
   signals[WORKSPACE_CREATED] =
     g_signal_new ("workspace_created",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -283,6 +335,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
   
+  /**
+   * WnckScreen::workspace-destroyed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @space: the workspace that has been destroyed. 
+   *
+   * Emitted when a #WnckWorkspace is destroyed on @screen.
+   */
   signals[WORKSPACE_DESTROYED] =
     g_signal_new ("workspace_destroyed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -292,6 +351,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
 
+  /**
+   * WnckScreen::application-opened:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @app: the opened #WnckApplication.
+   *
+   * Emitted when a new #WnckApplication is opened on @screen.
+   */
   signals[APPLICATION_OPENED] =
     g_signal_new ("application_opened",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -301,6 +367,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
 
+  /**
+   * WnckScreen::application-closed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @app: the closed #WnckApplication.
+   *
+   * Emitted when a #WnckApplication is closed on @screen.
+   */
   signals[APPLICATION_CLOSED] =
     g_signal_new ("application_closed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -310,6 +383,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
 
+  /**
+   * WnckScreen::class-group-opened:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @class_group: the opened #WnckClassGroup.
+   *
+   * Emitted when a new #WnckClassGroup is opened on @screen.
+   */
   signals[CLASS_GROUP_OPENED] =
     g_signal_new ("class_group_opened",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -319,6 +399,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
 
+  /**
+   * WnckScreen::class-group-closed:
+   * @screen: the #WnckScreen which emitted the signal.
+   * @class_group: the closed #WnckClassGroup.
+   *
+   * Emitted when a #WnckClassGroup is closed on @screen.
+   */
   signals[CLASS_GROUP_CLOSED] =
     g_signal_new ("class_group_closed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -328,6 +415,12 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
 
+  /**
+   * WnckScreen::background-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   *
+   * Emitted when the background on the root window of @screen has changed.
+   */
   signals[BACKGROUND_CHANGED] =
     g_signal_new ("background_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -336,6 +429,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+  /**
+   * WnckScreen::showing-desktop-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   *
+   * Emitted when "showing the desktop" mode of @screen is toggled.
+   */
   signals[SHOWING_DESKTOP_CHANGED] =
     g_signal_new ("showing_desktop_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -345,6 +445,13 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
+  /**
+   * WnckScreen::viewports-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   *
+   * Emitted when a viewport position has changed in a #WnckWorkspace of
+   * @screen or when a #WnckWorkspace of @screen gets or loses its viewport.
+   */
     signals[VIEWPORTS_CHANGED] =
     g_signal_new ("viewports_changed",
                   G_OBJECT_CLASS_TYPE (object_class),
@@ -493,7 +600,7 @@ wnck_screen_get_default (void)
 
 /**
  * wnck_screen_get_for_root:
- * @root_window_id: an Xlib window ID
+ * @root_window_id: an X window ID
  * 
  * Gets the #WnckScreen for the root window at @root_window_id, or
  * returns %NULL if no #WnckScreen exists for this root window. Never
