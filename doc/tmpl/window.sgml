@@ -123,6 +123,33 @@ WnckWindow
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_window_get_icon_is_fallback ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_get_icon ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_get_mini_icon ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_window_get_application ##### -->
 <para>
 
@@ -245,6 +272,33 @@ WnckWindow
 @wintype: 
 
 
+<!-- ##### ENUM WnckWindowState ##### -->
+<para>
+
+</para>
+
+@WNCK_WINDOW_STATE_MINIMIZED: 
+@WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY: 
+@WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY: 
+@WNCK_WINDOW_STATE_SHADED: 
+@WNCK_WINDOW_STATE_SKIP_PAGER: 
+@WNCK_WINDOW_STATE_SKIP_TASKLIST: 
+@WNCK_WINDOW_STATE_STICKY: 
+@WNCK_WINDOW_STATE_HIDDEN: 
+@WNCK_WINDOW_STATE_FULLSCREEN: 
+@WNCK_WINDOW_STATE_DEMANDS_ATTENTION: 
+@WNCK_WINDOW_STATE_URGENT: 
+@WNCK_WINDOW_STATE_ABOVE: 
+
+<!-- ##### FUNCTION wnck_window_get_state ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_window_is_minimized ##### -->
 <para>
 
@@ -290,22 +344,6 @@ WnckWindow
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_window_shade ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unshade ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
 <!-- ##### FUNCTION wnck_window_is_pinned ##### -->
 <para>
 
@@ -313,22 +351,6 @@ WnckWindow
 
 @window: 
 @Returns: 
-
-
-<!-- ##### FUNCTION wnck_window_pin ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unpin ##### -->
-<para>
-
-</para>
-
-@window: 
 
 
 <!-- ##### FUNCTION wnck_window_is_sticky ##### -->
@@ -340,22 +362,6 @@ WnckWindow
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_window_stick ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unstick ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
 <!-- ##### FUNCTION wnck_window_is_above ##### -->
 <para>
 
@@ -363,22 +369,6 @@ WnckWindow
 
 @window: 
 @Returns: 
-
-
-<!-- ##### FUNCTION wnck_window_make_above ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unmake_above ##### -->
-<para>
-
-</para>
-
-@window: 
 
 
 <!-- ##### FUNCTION wnck_window_is_skip_pager ##### -->
@@ -390,15 +380,6 @@ WnckWindow
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_window_set_skip_pager ##### -->
-<para>
-
-</para>
-
-@window: 
-@skip: 
-
-
 <!-- ##### FUNCTION wnck_window_is_skip_tasklist ##### -->
 <para>
 
@@ -408,15 +389,6 @@ WnckWindow
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_window_set_skip_tasklist ##### -->
-<para>
-
-</para>
-
-@window: 
-@skip: 
-
-
 <!-- ##### FUNCTION wnck_window_is_fullscreen ##### -->
 <para>
 
@@ -424,15 +396,6 @@ WnckWindow
 
 @window: 
 @Returns: 
-
-
-<!-- ##### FUNCTION wnck_window_set_fullscreen ##### -->
-<para>
-
-</para>
-
-@window: 
-@fullscreen: 
 
 
 <!-- ##### FUNCTION wnck_window_needs_attention ##### -->
@@ -451,6 +414,205 @@ WnckWindow
 
 @window: 
 @Returns: 
+
+
+<!-- ##### ENUM WnckWindowActions ##### -->
+<para>
+
+</para>
+
+@WNCK_WINDOW_ACTION_MOVE: 
+@WNCK_WINDOW_ACTION_RESIZE: 
+@WNCK_WINDOW_ACTION_SHADE: 
+@WNCK_WINDOW_ACTION_STICK: 
+@WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY: 
+@WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY: 
+@WNCK_WINDOW_ACTION_CHANGE_WORKSPACE: 
+@WNCK_WINDOW_ACTION_CLOSE: 
+@WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY: 
+@WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY: 
+@WNCK_WINDOW_ACTION_UNSHADE: 
+@WNCK_WINDOW_ACTION_UNSTICK: 
+@WNCK_WINDOW_ACTION_MINIMIZE: 
+@WNCK_WINDOW_ACTION_UNMINIMIZE: 
+@WNCK_WINDOW_ACTION_MAXIMIZE: 
+@WNCK_WINDOW_ACTION_UNMAXIMIZE: 
+@WNCK_WINDOW_ACTION_FULLSCREEN: 
+@WNCK_WINDOW_ACTION_ABOVE: 
+@WNCK_WINDOW_ACTION_BELOW: 
+
+<!-- ##### FUNCTION wnck_window_get_actions ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_minimize ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unminimize ##### -->
+<para>
+
+</para>
+
+@window: 
+@timestamp: 
+
+
+<!-- ##### FUNCTION wnck_window_maximize_horizontally ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unmaximize_horizontally ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_maximize_vertically ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unmaximize_vertically ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_maximize ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unmaximize ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_shade ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unshade ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_pin ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unpin ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_stick ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unstick ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_make_above ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unmake_above ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_set_skip_pager ##### -->
+<para>
+
+</para>
+
+@window: 
+@skip: 
+
+
+<!-- ##### FUNCTION wnck_window_set_skip_tasklist ##### -->
+<para>
+
+</para>
+
+@window: 
+@skip: 
+
+
+<!-- ##### FUNCTION wnck_window_set_fullscreen ##### -->
+<para>
+
+</para>
+
+@window: 
+@fullscreen: 
+
+
+<!-- ##### FUNCTION wnck_window_close ##### -->
+<para>
+
+</para>
+
+@window: 
+@timestamp: 
 
 
 <!-- ##### FUNCTION wnck_window_get_workspace ##### -->
@@ -546,33 +708,6 @@ WnckWindow
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_window_get_icon ##### -->
-<para>
-
-</para>
-
-@window: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_window_get_mini_icon ##### -->
-<para>
-
-</para>
-
-@window: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_window_get_icon_is_fallback ##### -->
-<para>
-
-</para>
-
-@window: 
-@Returns: 
-
-
 <!-- ##### FUNCTION wnck_window_set_icon_geometry ##### -->
 <para>
 
@@ -583,67 +718,6 @@ WnckWindow
 @y: 
 @width: 
 @height: 
-
-
-<!-- ##### ENUM WnckWindowActions ##### -->
-<para>
-
-</para>
-
-@WNCK_WINDOW_ACTION_MOVE: 
-@WNCK_WINDOW_ACTION_RESIZE: 
-@WNCK_WINDOW_ACTION_SHADE: 
-@WNCK_WINDOW_ACTION_STICK: 
-@WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY: 
-@WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY: 
-@WNCK_WINDOW_ACTION_CHANGE_WORKSPACE: 
-@WNCK_WINDOW_ACTION_CLOSE: 
-@WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY: 
-@WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY: 
-@WNCK_WINDOW_ACTION_UNSHADE: 
-@WNCK_WINDOW_ACTION_UNSTICK: 
-@WNCK_WINDOW_ACTION_MINIMIZE: 
-@WNCK_WINDOW_ACTION_UNMINIMIZE: 
-@WNCK_WINDOW_ACTION_MAXIMIZE: 
-@WNCK_WINDOW_ACTION_UNMAXIMIZE: 
-@WNCK_WINDOW_ACTION_FULLSCREEN: 
-@WNCK_WINDOW_ACTION_ABOVE: 
-@WNCK_WINDOW_ACTION_BELOW: 
-
-<!-- ##### FUNCTION wnck_window_get_actions ##### -->
-<para>
-
-</para>
-
-@window: 
-@Returns: 
-
-
-<!-- ##### ENUM WnckWindowState ##### -->
-<para>
-
-</para>
-
-@WNCK_WINDOW_STATE_MINIMIZED: 
-@WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY: 
-@WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY: 
-@WNCK_WINDOW_STATE_SHADED: 
-@WNCK_WINDOW_STATE_SKIP_PAGER: 
-@WNCK_WINDOW_STATE_SKIP_TASKLIST: 
-@WNCK_WINDOW_STATE_STICKY: 
-@WNCK_WINDOW_STATE_HIDDEN: 
-@WNCK_WINDOW_STATE_FULLSCREEN: 
-@WNCK_WINDOW_STATE_DEMANDS_ATTENTION: 
-@WNCK_WINDOW_STATE_URGENT: 
-@WNCK_WINDOW_STATE_ABOVE: 
-
-<!-- ##### FUNCTION wnck_window_get_state ##### -->
-<para>
-
-</para>
-
-@window: 
-@Returns: 
 
 
 <!-- ##### ENUM WnckWindowGravity ##### -->
@@ -697,80 +771,6 @@ WnckWindow
 @y: 
 @width: 
 @height: 
-
-
-<!-- ##### FUNCTION wnck_window_close ##### -->
-<para>
-
-</para>
-
-@window: 
-@timestamp: 
-
-
-<!-- ##### FUNCTION wnck_window_minimize ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unminimize ##### -->
-<para>
-
-</para>
-
-@window: 
-@timestamp: 
-
-
-<!-- ##### FUNCTION wnck_window_maximize ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unmaximize ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_maximize_horizontally ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unmaximize_horizontally ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_maximize_vertically ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
-<!-- ##### FUNCTION wnck_window_unmaximize_vertically ##### -->
-<para>
-
-</para>
-
-@window: 
 
 
 <!-- ##### FUNCTION wnck_window_keyboard_move ##### -->

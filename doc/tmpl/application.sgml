@@ -82,6 +82,15 @@ WnckApplication
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_application_get_icon_is_fallback ##### -->
+<para>
+
+</para>
+
+@app: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_application_get_icon ##### -->
 <para>
 
@@ -92,15 +101,6 @@ WnckApplication
 
 
 <!-- ##### FUNCTION wnck_application_get_mini_icon ##### -->
-<para>
-
-</para>
-
-@app: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_application_get_icon_is_fallback ##### -->
 <para>
 
 </para>

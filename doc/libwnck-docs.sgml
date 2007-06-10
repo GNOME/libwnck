@@ -36,6 +36,16 @@
   tell that wnck_set_client_type() should be used for pagers-like users
   mention that the window/classgroup/application/workspace/screen are owned by libwnck and should not be ref'ed/unref'ed.
   mention wnck_screen_force_update()
+
+Comment from Havoc:
+One thing you might emphasize is that libwnck is a very expensive
+library in some sense; every app using it is going to ask for a bunch of
+info from the X server, then use substantial resources continuing to
+mirror that info as it changes - pretty much every time anything changes
+on the display, every libwnck app will wake up.
+
+All panel applets share the same copy of libwnck so it isn't so bad in
+that case.
   -->
 
   <part id="core">

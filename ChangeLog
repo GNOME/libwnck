@@ -1,5 +1,9 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	* doc/*: reorganize a bit some of the functions.
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/libwnck/wnckprop.c:
 	* libwnck/Makefile.am: add a wnckprop utility, similar to xprop, but
 	giving information about a WnckWindow. The output is nicer, although
