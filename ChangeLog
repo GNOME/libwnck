@@ -1,5 +1,16 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/libwnck/wnckprop.c:
+	* libwnck/Makefile.am: add a wnckprop utility, similar to xprop, but
+	giving information about a WnckWindow. The output is nicer, although
+	we can't show as much information as xprop. This will hopefully be
+	useful for debugging. It's not installed when running "make install",
+	but maybe we want to do this?
+	Also this is GPL for now, because it uses code from the panel. We can
+	ask Mark McLoughlin to relicense it if necessary.
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/class-group.c:
 	* libwnck/workspace.c: use &num; to put anchors in links for
 	documentation. Thanks Matthias!

@@ -59,6 +59,12 @@ libwnck_1_la_SOURCES= 		\
 
 $(libwnck_1_la_OBJECTS): inlinepixbufs.h
 
+wnckprop_SOURCES=		\
+	wnckprop.c
+
+wnckprop_LDADD=   \
+	@LIBWNCK_LIBS@ @X_LIBS@ ./$(lib_LTLIBRARIES)
+
 test_wnck_SOURCES=		\
 	test-wnck.c
 
@@ -72,6 +78,7 @@ test_pager_SOURCES=		\
 	test-pager.c
 
 noinst_PROGRAMS=		\
+	wnckprop		\
 	test-pager		\
 	test-wnck		\
 	test-selector		\
