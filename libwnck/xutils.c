@@ -2450,21 +2450,20 @@ timestamp_predicate (Display *display,
  * Return value: the time stamp.
  **/
 static Time
-get_server_time (Display *display,
-		 Window   window)
+get_server_time (Window window)
 {
   unsigned char c = 'a';
   XEvent xevent;
   TimeStampInfo info;
 
-  info.timestamp_prop_atom = XInternAtom  (display, "_TIMESTAMP_PROP", False);
+  info.timestamp_prop_atom = _wnck_atom_get ("_TIMESTAMP_PROP");
   info.window = window;
 
-  XChangeProperty (display, window,
+  XChangeProperty (gdk_display, window,
 		   info.timestamp_prop_atom, info.timestamp_prop_atom,
 		   8, PropModeReplace, &c, 1);
 
-  XIfEvent (display, &xevent,
+  XIfEvent (gdk_display, &xevent,
 	    timestamp_predicate, (XPointer)&info);
 
   return xevent.xproperty.time;
@@ -2482,18 +2481,34 @@ typedef struct
 static GSList *layout_managers = NULL;
 static int next_token = 1;
 
+static void
+_wnck_free_layout_manager (LayoutManager *lm)
+{
+  XDestroyWindow (gdk_display, lm->window);
+  g_free (lm);
+
+  layout_managers = g_slist_remove (layout_managers, lm);
+}
+
 int
 _wnck_try_desktop_layout_manager (Screen *xscreen,
                                   int     current_token)
 {
+  Atom selection_atom;
+  Window owner;
   GSList *tmp;
   int number;
   Time timestamp;
   XClientMessageEvent xev;  
   char buffer[256];
   LayoutManager *lm;
-  
+
   number = XScreenNumberOfScreen (xscreen);
+  
+  sprintf (buffer, "_NET_DESKTOP_LAYOUT_S%d", number);
+  selection_atom = _wnck_atom_get (buffer);
+
+  owner = XGetSelectionOwner (gdk_display, selection_atom);
   
   tmp = layout_managers;
   while (tmp != NULL)
@@ -2503,7 +2518,15 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
       if (number == lm->screen_number)
         {
           if (current_token == lm->token)
-            return current_token; /* we still have the selection */
+            {
+              if (owner == lm->window)
+                return current_token; /* we still have the selection */
+              else
+                { /* we lost the selection */
+                  _wnck_free_layout_manager (lm);
+                  break;
+                }
+            }
           else
             return WNCK_NO_MANAGER_TOKEN; /* someone else has it */
         }
@@ -2511,7 +2534,10 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
       tmp = tmp->next;
     }
   
-  /* No one in-process has the selection at the moment */
+  if (owner != None)
+    return WNCK_NO_MANAGER_TOKEN; /* someone else has the selection */
+
+  /* No one has the selection at the moment */
 
   lm = g_new0 (LayoutManager, 1);
 
@@ -2519,9 +2545,8 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   lm->token = next_token;
   ++next_token;
 
-  sprintf (buffer, "_NET_DESKTOP_LAYOUT_S%d", number);
-  lm->selection_atom = XInternAtom (gdk_display, buffer, False);
-  lm->manager_atom = XInternAtom (gdk_display, "MANAGER", False);
+  lm->selection_atom = selection_atom;
+  lm->manager_atom = _wnck_atom_get ("MANAGER");
 
   lm->window = XCreateSimpleWindow (gdk_display,
                                     RootWindowOfScreen (xscreen),
@@ -2530,7 +2555,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
                                     WhitePixel (gdk_display, number));
 
   XSelectInput (gdk_display, lm->window, PropertyChangeMask);
-  timestamp = get_server_time (gdk_display, lm->window);
+  timestamp = get_server_time (lm->window);
 
   XSetSelectionOwner (gdk_display, lm->selection_atom,
 		      lm->window, timestamp);
@@ -2582,12 +2607,7 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
         {
           if (current_token == lm->token)
             {
-              XDestroyWindow (gdk_display,
-                              lm->window);
-
-              g_free (lm);
-              layout_managers = g_slist_remove (layout_managers, lm);
-              
+              _wnck_free_layout_manager (lm);
               return;
             }
         }
@@ -2613,12 +2633,7 @@ _wnck_desktop_layout_manager_process_event (XEvent *xev)
       if (xev->xany.window == lm->window &&
           xev->xselectionclear.selection == lm->selection_atom)
         {
-          XDestroyWindow (gdk_display,
-                          lm->window);
-          
-          g_free (lm);
-          layout_managers = g_slist_remove (layout_managers, lm);
-          
+          _wnck_free_layout_manager (lm);
           return TRUE;
         }
       

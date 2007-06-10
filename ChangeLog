@@ -1,5 +1,20 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	Improve a bit selection ownership for the desktop layout.
+
+	* libwnck/xutils.c: (get_server_time): don't require a display
+	argument since we're using gdk_display all over the place already,
+	this makes possible to use _wnck_atom_get() instead of XInternAtom()
+	(_wnck_free_layout_manager): new, to share code
+	(_wnck_try_desktop_layout_manager): makes more robust wrt selection
+	ownership, and stop stealing selection ownership from other processes.
+	(_wnck_release_desktop_layout_manager): use
+	_wnck_free_layout_manager()
+	(_wnck_desktop_layout_manager_process_event): use
+	_wnck_free_layout_manager()
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	Add support for _NET_FRAME_EXTENTS. This adds a new API.
 	Fix bug #351055.
 
