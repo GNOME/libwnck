@@ -2527,7 +2527,6 @@ update_actions (WnckWindow *window)
                 WNCK_WINDOW_ACTION_MOVE                    |
                 WNCK_WINDOW_ACTION_RESIZE                  |
                 WNCK_WINDOW_ACTION_SHADE                   |
-                WNCK_WINDOW_ACTION_ABOVE                   |
                 WNCK_WINDOW_ACTION_STICK                   |
                 WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   |
                 WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     |
@@ -2537,11 +2536,13 @@ update_actions (WnckWindow *window)
                 WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   |
                 WNCK_WINDOW_ACTION_UNSHADE                 |
                 WNCK_WINDOW_ACTION_UNSTICK                 |
-                WNCK_WINDOW_ACTION_MAXIMIZE                |
-                WNCK_WINDOW_ACTION_UNMAXIMIZE              |
                 WNCK_WINDOW_ACTION_MINIMIZE                |
                 WNCK_WINDOW_ACTION_UNMINIMIZE              |
-                WNCK_WINDOW_ACTION_FULLSCREEN;
+                WNCK_WINDOW_ACTION_MAXIMIZE                |
+                WNCK_WINDOW_ACTION_UNMAXIMIZE              |
+                WNCK_WINDOW_ACTION_FULLSCREEN              |
+                WNCK_WINDOW_ACTION_ABOVE                   |
+                WNCK_WINDOW_ACTION_BELOW;
       return;
     }
 

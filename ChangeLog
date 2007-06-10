@@ -1,5 +1,10 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window.c: (update_actions): add WNCK_WINDOW_ACTION_BELOW to
+	the available actions if we couldn't get the list of available actions.
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/*: reorganize a bit some of the functions.
 
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
