@@ -1,5 +1,34 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	Add support for _NET_FRAME_EXTENTS. This adds a new API.
+	Fix bug #351055.
+
+	* doc/libwnck-sections.txt: updated for
+	wnck_window_get_client_window_geometry()
+	* doc/tmpl/window.sgml: ditto
+	* libwnck/window.[ch]: (_wnck_window_create): we need to update the
+	information about frame.
+	(wnck_window_get_client_window_geometry): new, returns the geometry of
+	the window without the frame (that's the "real" X geometry)
+	(wnck_window_get_geometry): changed to return the geometry of the
+	window with its frame. That's a small change in the API meaning, but
+	we're unstable, aren't we? :-)
+	(wnck_window_is_in_viewport): take into account the frame of the
+	window
+	(_wnck_window_process_property_notify): check if we need to update the
+	frame info
+	(update_icon_name): move some code into xutils.c, to make this
+	function more like update_name()
+	(update_frame_extents): new, gets the frame info and emit a geometry
+	changed signal if the info changed
+	(force_update_now): 
+	* libwnck/xutils.[ch]: (_wnck_get_icon_name): new, works like
+	_wnck_get_name()
+	(_wnck_get_frame_extents): new, gets the frame info from the
+	_NET_FRAME_EXTENTS hint
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/window.c: (update_actions): add WNCK_WINDOW_ACTION_BELOW to
 	the available actions if we couldn't get the list of available actions.
 

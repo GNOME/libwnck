@@ -77,6 +77,7 @@ wnck_window_transient_is_most_recently_activated
 wnck_window_set_icon_geometry
 WnckWindowGravity
 WnckWindowMoveResizeMask
+wnck_window_get_client_window_geometry
 wnck_window_get_geometry
 wnck_window_set_geometry
 wnck_window_keyboard_move

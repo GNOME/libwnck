@@ -371,6 +371,11 @@ void wnck_window_set_icon_geometry        (WnckWindow *window,
 WnckWindowActions wnck_window_get_actions (WnckWindow *window);
 WnckWindowState   wnck_window_get_state   (WnckWindow *window);
 
+void wnck_window_get_client_window_geometry (WnckWindow *window,
+                                             int        *xp,
+                                             int        *yp,
+                                             int        *widthp,
+                                             int        *heightp);
 void wnck_window_get_geometry (WnckWindow *window,
                                int        *xp,
                                int        *yp,

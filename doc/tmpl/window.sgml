@@ -747,6 +747,18 @@ WnckWindow
 @WNCK_WINDOW_CHANGE_WIDTH: 
 @WNCK_WINDOW_CHANGE_HEIGHT: 
 
+<!-- ##### FUNCTION wnck_window_get_client_window_geometry ##### -->
+<para>
+
+</para>
+
+@window: 
+@xp: 
+@yp: 
+@widthp: 
+@heightp: 
+
+
 <!-- ##### FUNCTION wnck_window_get_geometry ##### -->
 <para>
 

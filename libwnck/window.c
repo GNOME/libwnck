@@ -97,6 +97,11 @@ struct _WnckWindowPrivate
   int width;
   int height;
 
+  int left_frame;
+  int right_frame;
+  int top_frame;
+  int bottom_frame;
+
   char *startup_id;
 
   char *res_class;
@@ -145,6 +150,7 @@ struct _WnckWindowPrivate
   guint need_update_startup_id : 1;
   guint need_update_wmclass : 1;
   guint need_update_wmhints : 1;
+  guint need_update_frame_extents : 1;
 
   guint need_emit_name_changed : 1;
   guint need_emit_icon_changed : 1;
@@ -185,6 +191,7 @@ static void update_wintype   (WnckWindow *window);
 static void update_transient_for (WnckWindow *window);
 static void update_startup_id (WnckWindow *window);
 static void update_wmclass    (WnckWindow *window);
+static void update_frame_extents (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -480,6 +487,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_startup_id = TRUE;
   window->priv->need_update_wmclass = TRUE;
   window->priv->need_update_wmhints = TRUE;
+  window->priv->need_update_frame_extents = TRUE;
   window->priv->need_emit_name_changed = FALSE;
   window->priv->need_emit_icon_changed = FALSE;
   force_update_now (window);
@@ -1946,7 +1954,7 @@ wnck_window_get_state (WnckWindow *window)
 }
 
 /**
- * wnck_window_get_geometry:
+ * wnck_window_get_client_window_geometry:
  * @window: a #WnckWindow.
  * @xp: return location for X coordinate in pixels of @window.
  * @yp: return location for Y coordinate in pixels of @window.
@@ -1957,13 +1965,19 @@ wnck_window_get_state (WnckWindow *window)
  * in a ConfigureNotify event (i.e. this call does not round-trip
  * to the server, just gets the last size we were notified of).
  * The X and Y coordinates are relative to the root window.
+ *
+ * The window manager usually adds a frame around windows. If
+ * you need to know the size of @window with the frame, use
+ * wnck_window_get_geometry().
+ *
+ * Since: 2.20
  **/
 void
-wnck_window_get_geometry (WnckWindow *window,
-                          int        *xp,
-                          int        *yp,
-                          int        *widthp,
-                          int        *heightp)
+wnck_window_get_client_window_geometry (WnckWindow *window,
+                                        int        *xp,
+					int        *yp,
+					int        *widthp,
+					int        *heightp)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
@@ -1978,6 +1992,43 @@ wnck_window_get_geometry (WnckWindow *window,
 }
 
 /**
+ * wnck_window_get_geometry:
+ * @window: a #WnckWindow.
+ * @xp: return location for X coordinate in pixels of @window.
+ * @yp: return location for Y coordinate in pixels of @window.
+ * @widthp: return location for width in pixels of @window.
+ * @heightp: return location for height in pixels of @window.
+ *
+ * Gets the size and position of @window, including decorations. This
+ * function uses the information last received in a ConfigureNotify
+ * event and adjusts it according to the size of the frame that is
+ * added by the window manager (this call does not round-trip to the
+ * server, it just gets the last sizes that were notified). The
+ * X and Y coordinates are relative to the root window.
+ *
+ * If you need to know the actual size of @window ignoring the frame
+ * added by the window manager, use wnck_window_get_client_window_geometry().
+ **/
+void
+wnck_window_get_geometry (WnckWindow *window,
+                          int        *xp,
+                          int        *yp,
+                          int        *widthp,
+                          int        *heightp)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  if (xp)
+    *xp = window->priv->x - window->priv->left_frame;
+  if (yp)
+    *yp = window->priv->y - window->priv->top_frame;
+  if (widthp)
+    *widthp = window->priv->width + window->priv->left_frame + window->priv->right_frame;
+  if (heightp)
+    *heightp = window->priv->height + window->priv->top_frame + window->priv->bottom_frame;
+}
+
+/**
  * wnck_window_set_geometry:
  * @window: a #WnckWindow.
  * @gravity: the gravity point to use as a reference for the new position.
@@ -1989,6 +2040,13 @@ wnck_window_get_geometry (WnckWindow *window,
  *
  * Sets the size and position of @window. The X and Y coordinates should be
  * relative to the root window.
+ *
+ * Note that the new size and position apply to @window with its frame added
+ * by the window manager. Therefore, using wnck_window_set_geometry() with
+ * the values returned by wnck_window_get_geometry() should be a no-op, while
+ * using wnck_window_set_geometry() with the values returned by
+ * wnck_window_get_client_window_geometry() should reduce the size of @window
+ * and move it.
  **/
 void
 wnck_window_set_geometry (WnckWindow               *window,
@@ -2126,10 +2184,10 @@ wnck_window_is_in_viewport (WnckWindow    *window,
   viewport_rect.width = wnck_screen_get_width (window->priv->screen);
   viewport_rect.height = wnck_screen_get_height (window->priv->screen);
 
-  window_rect.x = window->priv->x + viewport_rect.x;
-  window_rect.y = window->priv->y + viewport_rect.y;
-  window_rect.width = window->priv->width;
-  window_rect.height = window->priv->height;
+  window_rect.x = window->priv->x - window->priv->left_frame + viewport_rect.x;
+  window_rect.y = window->priv->y - window->priv->top_frame + viewport_rect.y;
+  window_rect.width = window->priv->width + window->priv->left_frame + window->priv->right_frame;
+  window_rect.height = window->priv->height + window->priv->top_frame + window->priv->bottom_frame;
 
   return gdk_rectangle_intersect (&viewport_rect, &window_rect, &window_rect);
 }
@@ -2247,6 +2305,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
   	   _wnck_atom_get ("WM_HINTS"))
     {
       window->priv->need_update_wmhints = TRUE;
+      queue_update (window);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_FRAME_EXTENTS"))
+    {
+      window->priv->need_update_frame_extents = TRUE;
       queue_update (window);
     }
 }
@@ -2461,17 +2525,7 @@ update_icon_name (WnckWindow *window)
 
   window->priv->need_update_icon_name = FALSE;
 
-  if (new_name == NULL)
-    new_name = _wnck_get_utf8_property (window->priv->xwindow,
-                                        _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
-
-  if (new_name == NULL)
-    new_name = _wnck_get_utf8_property (window->priv->xwindow,
-                                        _wnck_atom_get ("_NET_WM_ICON_NAME"));
-
-  if (new_name == NULL)
-    new_name = _wnck_get_text_property (window->priv->xwindow,
-                                        XA_WM_ICON_NAME);
+  new_name = _wnck_get_icon_name (window->priv->xwindow);
 
   if (!nullstr_equal (window->priv->icon_name, new_name))
     window->priv->need_emit_name_changed = TRUE;
@@ -2772,6 +2826,34 @@ update_wmhints (WnckWindow *window)
 }
 
 static void
+update_frame_extents (WnckWindow *window)
+{
+  int left, right, top, bottom;
+
+  if (!window->priv->need_update_frame_extents)
+    return;
+
+  window->priv->need_update_frame_extents = FALSE;
+
+  if (!_wnck_get_frame_extents (window->priv->xwindow,
+                                &left, &right, &top, &bottom))
+    return;
+
+  if (left   != window->priv->left_frame ||
+      right  != window->priv->right_frame ||
+      top    != window->priv->top_frame ||
+      bottom != window->priv->bottom_frame)
+    {
+      window->priv->left_frame   = left;
+      window->priv->right_frame  = right;
+      window->priv->top_frame    = top;
+      window->priv->bottom_frame = bottom;
+
+      emit_geometry_changed (window);
+    }
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -2806,6 +2888,7 @@ force_update_now (WnckWindow *window)
                               */
   update_workspace (window); /* emits signals */
   update_actions (window);
+  update_frame_extents (window); /* emits signals */
 
   get_icons (window);
   

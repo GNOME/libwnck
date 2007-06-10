@@ -113,10 +113,16 @@ void _wnck_change_viewport (Screen *screen,
 char*  _wnck_get_session_id     (Window xwindow);
 int    _wnck_get_pid            (Window xwindow);
 char*  _wnck_get_name           (Window xwindow);
+char*  _wnck_get_icon_name      (Window xwindow);
 char*  _wnck_get_res_class_utf8 (Window xwindow);
 void   _wnck_get_wmclass        (Window xwindow,
                                  char **res_class,
                                  char **res_name);
+gboolean _wnck_get_frame_extents  (Window  xwindow,
+                                   int    *left_frame,
+                                   int    *right_frame,
+                                   int    *top_frame,
+                                   int    *bottom_frame);
 
 void   _wnck_select_input     (Window xwindow,
                                int    mask);

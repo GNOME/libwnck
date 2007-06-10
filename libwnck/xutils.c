@@ -1141,6 +1141,25 @@ _wnck_get_name (Window xwindow)
   return name;
 }
 
+char*
+_wnck_get_icon_name (Window xwindow)
+{
+  char *name;
+  
+  name = _wnck_get_utf8_property (xwindow,
+                                  _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
+
+  if (name == NULL)
+    name = _wnck_get_utf8_property (xwindow,
+                                    _wnck_atom_get ("_NET_WM_ICON_NAME"));
+
+  if (name == NULL)
+    name = _wnck_get_text_property (xwindow,
+                                    XA_WM_ICON_NAME);
+
+  return name;
+}
+
 static char*
 latin1_to_utf8 (const char *latin1)
 {
@@ -1210,6 +1229,41 @@ _wnck_get_wmclass (Window xwindow,
       
       XFree (ch.res_class);
     }
+}
+
+gboolean
+_wnck_get_frame_extents (Window  xwindow,
+                         int    *left_frame,
+                         int    *right_frame,
+                         int    *top_frame,
+                         int    *bottom_frame)
+{
+  gulong   *p_size;
+  int       n_size;
+  gboolean  retval;
+
+  retval = FALSE;
+  p_size = NULL;
+  n_size = 0;
+
+  _wnck_get_cardinal_list (xwindow,
+                           _wnck_atom_get ("_NET_FRAME_EXTENTS"),
+                           &p_size, &n_size);
+
+  if (p_size != NULL && n_size == 4)
+    {
+      *left_frame   = p_size[0];
+      *right_frame  = p_size[1];
+      *top_frame    = p_size[2];
+      *bottom_frame = p_size[3];
+
+      retval = TRUE;
+    }
+
+  if (p_size != NULL)
+    g_free (p_size);
+
+  return retval;
 }
 
 void
