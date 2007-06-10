@@ -9,4 +9,5 @@ libwnck/test-selector.c
 libwnck/test-tasklist.c
 libwnck/window-action-menu.c
 libwnck/window.c
+libwnck/wnckprop.c
 libwnck/workspace.c
