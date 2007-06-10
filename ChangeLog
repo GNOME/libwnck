@@ -1,5 +1,20 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	Do not change the layout shown in the pager if the the pager couldn't
+	update the layout hint.
+	Fix bug #445686.
+
+	* libwnck/pager.[ch]: (wnck_pager_set_layout_hint): return the
+	information about the success/failure of the layout change
+	(wnck_pager_set_orientation): reset the pager orientation if the
+	layout could not be changed, and add a return value about the
+	success/failure of the layout change
+	(wnck_pager_set_n_rows): reset the pager number of rows if the
+	layout could not be changed, and add a return value about the
+	success/failure of the layout change
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/xutils.c: (_wnck_release_desktop_layout_manager): release
 	the selection ownership for the desktop layout.
 

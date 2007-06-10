@@ -83,9 +83,9 @@ GtkWidget* wnck_pager_new (WnckScreen *screen);
 
 void wnck_pager_set_screen       (WnckPager            *pager,
 				  WnckScreen           *screen);
-void wnck_pager_set_orientation  (WnckPager            *pager,
-				  GtkOrientation        orientation);
-void wnck_pager_set_n_rows       (WnckPager            *pager,
+gboolean wnck_pager_set_orientation (WnckPager         *pager,
+				     GtkOrientation     orientation);
+gboolean wnck_pager_set_n_rows   (WnckPager            *pager,
 				  int                   n_rows);
 void wnck_pager_set_display_mode (WnckPager            *pager,
 				  WnckPagerDisplayMode  mode);

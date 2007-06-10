@@ -163,7 +163,7 @@ static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
 
-static void wnck_pager_set_layout_hint   (WnckPager  *pager);
+static gboolean wnck_pager_set_layout_hint (WnckPager  *pager);
 
 static void wnck_pager_clear_drag (WnckPager *pager);
 static void wnck_pager_check_prelight (WnckPager *pager,
@@ -1712,7 +1712,7 @@ wnck_pager_new (WnckScreen *screen)
   return GTK_WIDGET (pager);
 }
 
-static void
+static gboolean
 wnck_pager_set_layout_hint (WnckPager *pager)
 {
   int layout_rows;
@@ -1724,7 +1724,7 @@ wnck_pager_set_layout_hint (WnckPager *pager)
    * to the n_rows setting on this pager.
    */
   if (!pager->priv->show_all_workspaces)
-    return;
+    return FALSE;
 
   if (pager->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
     {
@@ -1742,6 +1742,8 @@ wnck_pager_set_layout_hint (WnckPager *pager)
                                           pager->priv->layout_manager_token,
                                           layout_rows,
                                           layout_cols);
+
+  return (pager->priv->layout_manager_token != WNCK_NO_MANAGER_TOKEN);
 }
 
 /**
@@ -1763,20 +1765,34 @@ wnck_pager_set_layout_hint (WnckPager *pager)
  *
  * For example, if the layout contains one row, but the orientation of the
  * layout is vertical, the #WnckPager will display a column of #WnckWorkspace.
+ *
+ * Return value: %TRUE if the layout of #WnckWorkspace has been successfully
+ * changed or did not need to be changed, %FALSE otherwise.
  */
-void
+gboolean
 wnck_pager_set_orientation (WnckPager     *pager,
                             GtkOrientation orientation)
 {
-  g_return_if_fail (WNCK_IS_PAGER (pager));
+  GtkOrientation old_orientation;
+
+  g_return_val_if_fail (WNCK_IS_PAGER (pager), FALSE);
 
   if (pager->priv->orientation == orientation)
-    return;
+    return TRUE;
 
+  old_orientation = pager->priv->orientation;
   pager->priv->orientation = orientation;
-  gtk_widget_queue_resize (GTK_WIDGET (pager));
 
-  wnck_pager_set_layout_hint (pager);
+  if (wnck_pager_set_layout_hint (pager))
+    {
+      gtk_widget_queue_resize (GTK_WIDGET (pager));
+      return TRUE;
+    }
+  else
+    {
+      pager->priv->orientation = old_orientation;
+      return FALSE;
+    }
 }
 
 /**
@@ -1789,21 +1805,35 @@ wnck_pager_set_orientation (WnckPager     *pager,
  * #WnckScreen @pager is watching. Since no more than one application should
  * set this property of a #WnckScreen at a time, setting the layout is not
  * guaranteed to work. 
+ *
+ * Return value: %TRUE if the layout of #WnckWorkspace has been successfully
+ * changed or did not need to be changed, %FALSE otherwise.
  */
-void
+gboolean
 wnck_pager_set_n_rows (WnckPager *pager,
 		       int        n_rows)
 {
-  g_return_if_fail (WNCK_IS_PAGER (pager));
-  g_return_if_fail (n_rows > 0);
+  int old_n_rows;
+
+  g_return_val_if_fail (WNCK_IS_PAGER (pager), FALSE);
+  g_return_val_if_fail (n_rows > 0, FALSE);
 
   if (pager->priv->n_rows == n_rows)
-    return;
+    return TRUE;
 
+  old_n_rows = pager->priv->n_rows;
   pager->priv->n_rows = n_rows;
-  gtk_widget_queue_resize (GTK_WIDGET (pager));
 
-  wnck_pager_set_layout_hint (pager);
+  if (wnck_pager_set_layout_hint (pager))
+    {
+      gtk_widget_queue_resize (GTK_WIDGET (pager));
+      return TRUE;
+    }
+  else
+    {
+      pager->priv->n_rows = old_n_rows;
+      return FALSE;
+    }
 }
 
 /**
