@@ -1,5 +1,10 @@
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/xutils.c: (_wnck_release_desktop_layout_manager): release
+	the selection ownership for the desktop layout.
+
+2007-06-10  Vincent Untz  <vuntz@gnome.org>
+
 	Improve a bit selection ownership for the desktop layout.
 
 	* libwnck/xutils.c: (get_server_time): don't require a display

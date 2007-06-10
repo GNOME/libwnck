@@ -2607,6 +2607,17 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
         {
           if (current_token == lm->token)
             {
+              /* release selection ownership */
+              if (XGetSelectionOwner (gdk_display, lm->selection_atom) !=
+                  lm->window)
+                {
+                  Time timestamp;
+
+                  timestamp = get_server_time (lm->window);
+                  XSetSelectionOwner (gdk_display, lm->selection_atom,
+                                      None, timestamp);
+                }
+
               _wnck_free_layout_manager (lm);
               return;
             }
