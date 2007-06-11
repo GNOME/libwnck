@@ -48,6 +48,7 @@ WnckPager
 
 @pager: 
 @orientation: 
+@Returns: 
 
 
 <!-- ##### FUNCTION wnck_pager_set_n_rows ##### -->
@@ -57,6 +58,7 @@ WnckPager
 
 @pager: 
 @n_rows: 
+@Returns: 
 
 
 <!-- ##### ENUM WnckPagerDisplayMode ##### -->

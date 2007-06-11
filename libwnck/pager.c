@@ -321,8 +321,6 @@ wnck_pager_realize (GtkWidget *widget)
 
   widget->style = gtk_style_attach (widget->style, widget->window);
   gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
-
-  wnck_pager_set_layout_hint (pager);
 }
 
 static void
@@ -1687,6 +1685,27 @@ wnck_pager_set_screen (WnckPager  *pager,
     wnck_pager_disconnect_screen (pager);
 
   wnck_pager_connect_screen (pager, screen);
+
+  if (!wnck_pager_set_layout_hint (pager))
+    {
+      _WnckLayoutOrientation orientation;
+
+      /* we couldn't set the layout on the screen. This means someone else owns
+       * it. Let's at least show the correct layout. */
+      _wnck_screen_get_workspace_layout (screen,
+                                         &orientation,
+                                         &pager->priv->n_rows,
+                                         NULL, NULL);
+
+      /* test in this order to default to horizontal in case there was in issue
+       * when fetching the layout */
+      if (orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL)
+        pager->priv->orientation = GTK_ORIENTATION_VERTICAL;
+      else
+        pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+
+      gtk_widget_queue_resize (GTK_WIDGET (pager));
+    }
 }
 
 /**
@@ -1707,7 +1726,7 @@ wnck_pager_new (WnckScreen *screen)
   
   pager = g_object_new (WNCK_TYPE_PAGER, NULL);
 
-  wnck_pager_connect_screen (pager, screen);
+  wnck_pager_set_screen (pager, screen);
 
   return GTK_WIDGET (pager);
 }

@@ -64,14 +64,6 @@
 #define _NET_WM_BOTTOMRIGHT 2
 #define _NET_WM_BOTTOMLEFT  3
 
-typedef enum
-{
-  SCREEN_TOPLEFT,
-  SCREEN_TOPRIGHT,
-  SCREEN_BOTTOMLEFT,
-  SCREEN_BOTTOMRIGHT
-} ScreenCorner;
-
 static WnckScreen** screens = NULL;
 
 struct _WnckScreenPrivate
@@ -110,7 +102,7 @@ struct _WnckScreenPrivate
   guint showing_desktop : 1;
   
   guint vertical_workspaces : 1;
-  ScreenCorner starting_corner;
+  _WnckLayoutCorner starting_corner;
   gint rows_of_workspaces;
   gint columns_of_workspaces;  
 
@@ -528,7 +520,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->rows_of_workspaces = 1;
   screen->priv->columns_of_workspaces = -1;
   screen->priv->vertical_workspaces = FALSE;
-  screen->priv->starting_corner = SCREEN_TOPLEFT;
+  screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   screen->priv->sn_display = sn_display_new (gdk_display,
@@ -1036,8 +1028,8 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
  * the row and column of the #WnckWorkspace with index @space_index.
  *
  */
-/* TODO: when we break API again, remove num_workspaces since we can get it
- * from screen! */
+/* TODO: when we break API again, make this function (and WnckWorkspaceLayout)
+ * private. Also remove num_workspaces since we can get it from screen! */
 void
 wnck_screen_calc_workspace_layout (WnckScreen          *screen,
                                    int                  num_workspaces,
@@ -1082,7 +1074,7 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
 
   switch (screen->priv->starting_corner)
     {
-    case SCREEN_TOPLEFT:
+    case WNCK_LAYOUT_CORNER_TOPLEFT:
       if (screen->priv->vertical_workspaces)
         {
           c = 0;
@@ -1114,7 +1106,7 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
             }
         }
       break;
-    case SCREEN_TOPRIGHT:
+    case WNCK_LAYOUT_CORNER_TOPRIGHT:
       if (screen->priv->vertical_workspaces)
         {
           c = cols - 1;
@@ -1146,7 +1138,7 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
             }
         }
       break;
-    case SCREEN_BOTTOMLEFT:
+    case WNCK_LAYOUT_CORNER_BOTTOMLEFT:
       if (screen->priv->vertical_workspaces)
         {
           c = 0;
@@ -1178,7 +1170,7 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
             }
         }
       break;
-    case SCREEN_BOTTOMRIGHT:
+    case WNCK_LAYOUT_CORNER_BOTTOMRIGHT:
       if (screen->priv->vertical_workspaces)
         {
           c = cols - 1;
@@ -1249,6 +1241,8 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
  * Frees the content of @layout. This does not free @layout itself, so you
  * might want to free @layout yourself after calling this.
  */
+/* TODO: when we break API again, make this function (and WnckWorkspaceLayout)
+ * private. */
 void
 wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout)
 {
@@ -1963,16 +1957,16 @@ update_workspace_layout (WnckScreen *screen)
               switch (list[3])
                 {
                   case _NET_WM_TOPLEFT:
-                    screen->priv->starting_corner = SCREEN_TOPLEFT;
+                    screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
                     break;
                   case _NET_WM_TOPRIGHT:
-                    screen->priv->starting_corner = SCREEN_TOPRIGHT;
+                    screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPRIGHT;
                     break;
                   case _NET_WM_BOTTOMRIGHT:
-                    screen->priv->starting_corner = SCREEN_BOTTOMRIGHT;
+                    screen->priv->starting_corner = WNCK_LAYOUT_CORNER_BOTTOMRIGHT;
                     break;
                   case _NET_WM_BOTTOMLEFT:
-                    screen->priv->starting_corner = SCREEN_BOTTOMLEFT;
+                    screen->priv->starting_corner = WNCK_LAYOUT_CORNER_BOTTOMLEFT;
                     break;
                   default:
                     g_warning ("Someone set a weird starting corner in _NET_DESKTOP_LAYOUT\n");
@@ -1980,7 +1974,7 @@ update_workspace_layout (WnckScreen *screen)
                 }
             }
           else
-            screen->priv->starting_corner = SCREEN_TOPLEFT;
+            screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
         }
       else
         {
@@ -2349,6 +2343,47 @@ _wnck_screen_get_number (WnckScreen *screen)
 }
 
 /**
+ * wnck_screen_get_workspace_layout:
+ * @screen: a #WnckScreen.
+ * @orientation: return location for the orientation used in the #WnckWorkspace
+ * layout. See wnck_pager_set_orientation() for more information.
+ * @rows: return location for the number of rows in the #WnckWorkspace layout.
+ * @columns: return location for the number of columns in the #WnckWorkspace
+ * layout.
+ * @starting_corner: return location for the starting corner in the
+ * #WnckWorkspace layout (i.e. the corner containing the first #WnckWorkspace).
+ *
+ * Returns the layout of #WnckWorkspace on @screen.
+ */
+/* TODO: when we are sure about this API, add this function,
+ * WnckLayoutOrientation, WnckLayoutCorner and a "layout-changed" signal. But
+ * to make it really better, use a WnckScreenLayout struct. We might also want
+ * to wait for deprecation of WnckWorkspaceLayout. */
+void
+_wnck_screen_get_workspace_layout (WnckScreen             *screen,
+                                   _WnckLayoutOrientation *orientation,
+                                   int                    *rows,
+                                   int                    *columns,
+                                   _WnckLayoutCorner      *starting_corner)
+{
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+  
+  if (orientation)
+    *orientation = screen->priv->vertical_workspaces ?
+                       WNCK_LAYOUT_ORIENTATION_VERTICAL :
+                       WNCK_LAYOUT_ORIENTATION_HORIZONTAL;
+
+  if (rows)
+    *rows = screen->priv->rows_of_workspaces;
+
+  if (columns)
+    *columns = screen->priv->columns_of_workspaces;
+
+  if (starting_corner)
+    *starting_corner = screen->priv->starting_corner;
+}
+
+/**
  * wnck_screen_try_set_workspace_layout:
  * @screen: a #WnckScreen.
  * @current_token: a token. Use 0 if you do not called
@@ -2363,6 +2398,11 @@ _wnck_screen_get_number (WnckScreen *screen)
  * (there might be more than one part of the same process trying to set the
  * layout). Since no more than one application should set this property of
  * @screen at a time, setting the layout is not guaranteed to work.
+ *
+ * If @rows is 0, the actual number of rows will be determined based on
+ * @columns and the number of #WnckWorkspace. If @columns is 0, the actual
+ * number of columns will be determined based on @rows and the number of
+ * #WnckWorkspace. @rows and @columns must not be 0 at the same time.
  *
  * You have to release the ownership of the layout with
  * wnck_screen_release_workspace_layout() when you do not need it anymore.
@@ -2380,6 +2420,8 @@ wnck_screen_try_set_workspace_layout (WnckScreen *screen,
   int retval;
   
   g_return_val_if_fail (WNCK_IS_SCREEN (screen),
+                        WNCK_NO_MANAGER_TOKEN);
+  g_return_val_if_fail (rows != 0 || columns != 0,
                         WNCK_NO_MANAGER_TOKEN);
   
   retval = _wnck_try_desktop_layout_manager (screen->priv->xscreen, current_token);

@@ -207,6 +207,12 @@ wnck_screen_toggle_showing_desktop
 <SUBSECTION Private>
 WnckScreenPrivate
 wnck_screen_get_type
+# FIXME: the first two WNCK_TYPE_ are dummy stuff gtk-doc generates, the other
+# two should be added when _wnck_screen_get_workspace_layout becomes public
+WNCK_TYPE___WNCK_LAYOUT_CORNER
+WNCK_TYPE___WNCK_LAYOUT_ORIENTATION
+_WnckLayoutCorner
+_WnckLayoutOrientation
 <SUBSECTION Standard>
 WNCK_SCREEN
 WNCK_IS_SCREEN

@@ -1,5 +1,32 @@
 2007-06-11  Vincent Untz  <vuntz@gnome.org>
 
+	If the pager can't set the layout, make it use the real layout of the
+	screen.
+	Fix second part of bug #445686.
+
+	* doc/libwnck-sections.txt: updated for not-yet public API
+	* doc/tmpl/pager.sgml: updated
+	* libwnck/pager.c: (wnck_pager_realize): don't set the layout hint
+	here
+	(wnck_pager_set_screen): try to set the layout hint on the screen, and
+	if it failed, gets the actual layout from the screen
+	(wnck_pager_new): call wnck_pager_set_screen() instead of
+	wnck_pager_connect_screen()
+	* libwnck/screen.[ch]: change WnckScreen to use WnckLayoutCorner
+	instead of ScreenCorner
+	(wnck_screen_construct): ditto
+	(wnck_screen_calc_workspace_layout): ditto, and mention that we should
+	remove this from the API next time we break API
+	(wnck_screen_free_workspace_layout): add comment to mention that we
+	should remove this API
+	(update_workspace_layout): use WnckLayoutCorner instead of ScreenCorner
+	(_wnck_screen_get_workspace_layout): new private function to get the
+	layout on the screen. Should probably be public in the future.
+	(wnck_screen_try_set_workspace_layout): update a bit the doc, and add
+	a guard againt bogus parameters
+
+2007-06-11  Vincent Untz  <vuntz@gnome.org>
+
 	* wnckprop.c: Glynn Foster said was Sun is okay to relicense the GPL
 	code to LGPL. Add a comment about this.
 
