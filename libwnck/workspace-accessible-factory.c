@@ -22,35 +22,12 @@
 #include "workspace-accessible-factory.h"
 #include "workspace-accessible.h"
 
-static void       wnck_workspace_accessible_factory_class_init        (WnckWorkspaceAccessibleFactoryClass *klass);
-static AtkObject* wnck_workspace_accessible_factory_create_accessible (GObject                          *obj);
+G_DEFINE_TYPE (WnckWorkspaceAccessibleFactory,
+               wnck_workspace_accessible_factory, ATK_TYPE_OBJECT_FACTORY);
+
+static AtkObject* wnck_workspace_accessible_factory_create_accessible (GObject *obj);
 
 static GType wnck_workspace_accessible_factory_get_accessible_type (void);
-
-GType
-wnck_workspace_accessible_factory_get_type (void)
-{
-  static GType type = 0;
-
-  if (!type) 
-    {
-      const GTypeInfo tinfo = 
-      {
-        sizeof (WnckWorkspaceAccessibleFactoryClass),
-        (GBaseInitFunc) NULL, /* base init */
-        (GBaseFinalizeFunc) NULL, /* base finalize */
-        (GClassInitFunc) wnck_workspace_accessible_factory_class_init,
-        (GClassFinalizeFunc) NULL, /* class finalize */
-        NULL, /* class data */
-        sizeof (WnckWorkspaceAccessibleFactory),
-        0, /* nb preallocs */
-        (GInstanceInitFunc) NULL, /* instance init */
-        NULL /* value table */
-      };
-      type = g_type_register_static (ATK_TYPE_OBJECT_FACTORY, "WnckWorkspaceAccessibleFactory" , &tinfo, 0);
-    }
-  return type;
-}
 
 static void
 wnck_workspace_accessible_factory_class_init (WnckWorkspaceAccessibleFactoryClass *klass)
@@ -59,6 +36,11 @@ wnck_workspace_accessible_factory_class_init (WnckWorkspaceAccessibleFactoryClas
 
   class->create_accessible = wnck_workspace_accessible_factory_create_accessible;
   class->get_accessible_type = wnck_workspace_accessible_factory_get_accessible_type;
+}
+
+static void
+wnck_workspace_accessible_factory_init (WnckWorkspaceAccessibleFactory *factory)
+{
 }
 
 AtkObjectFactory*

@@ -232,6 +232,10 @@ struct _WnckTasklistPrivate
   GdkPixmap *background;
 };
 
+static GType wnck_task_get_type (void);
+
+G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
+G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 
 static void wnck_task_init        (WnckTask      *task);
 static void wnck_task_class_init  (WnckTaskClass *klass);
@@ -322,9 +326,6 @@ static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist
 #endif
 
 
-static gpointer task_parent_class;
-static gpointer tasklist_parent_class;
-
 /*
  * Keep track of all tasklist instances so we can decide
  * whether to show windows from all monitors in the
@@ -350,37 +351,6 @@ cleanup_screenshots (WnckTask *task)
     }
 }
 
-static GType
-wnck_task_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckTaskClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_task_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckTask),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_task_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckTask",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
-}
-
 static void
 wnck_task_init (WnckTask *task)
 {  
@@ -394,8 +364,6 @@ static void
 wnck_task_class_init (WnckTaskClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  
-  task_parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_task_finalize;
 
@@ -603,38 +571,7 @@ wnck_task_finalize (GObject *object)
 
   wnck_task_stop_glow (task);
 
-  G_OBJECT_CLASS (task_parent_class)->finalize (object);
-}
-
-GType
-wnck_tasklist_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckTasklistClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_tasklist_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckTasklist),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_tasklist_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (GTK_TYPE_CONTAINER,
-                                            "WnckTasklist",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
+  G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
 }
 
 static void
@@ -680,8 +617,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
-  
-  tasklist_parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_tasklist_finalize;
 
@@ -796,7 +731,7 @@ wnck_tasklist_finalize (GObject *object)
   g_free (tasklist->priv);
   tasklist->priv = NULL;  
   
-  G_OBJECT_CLASS (tasklist_parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
 }
 
 /**
@@ -1522,7 +1457,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   g_list_free (ungrouped_class_groups);
   tasklist->priv->windows = windows_sorted;
  
-  GTK_WIDGET_CLASS (tasklist_parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->size_allocate (widget,
+                                                                allocation);
 }
 
 static void
@@ -1546,7 +1482,7 @@ wnck_tasklist_realize (GtkWidget *widget)
                             NULL);
 #endif
   
-  (* GTK_WIDGET_CLASS (tasklist_parent_class)->realize) (widget);
+  (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->realize) (widget);
 
   tasklist_instances = g_slist_append (tasklist_instances, tasklist);
   g_slist_foreach (tasklist_instances,
@@ -1573,7 +1509,7 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   tasklist->priv->sn_context = NULL;
 #endif
   
-  (* GTK_WIDGET_CLASS (tasklist_parent_class)->unrealize) (widget);
+  (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->unrealize) (widget);
   
   tasklist_instances = g_slist_remove (tasklist_instances, tasklist);
   g_slist_foreach (tasklist_instances,
@@ -1611,7 +1547,7 @@ wnck_tasklist_expose (GtkWidget      *widget,
       g_object_unref (gc);
     }
   
-  return (* GTK_WIDGET_CLASS (tasklist_parent_class)->expose_event) (widget, event);
+  return (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->expose_event) (widget, event);
 }
 
 static void

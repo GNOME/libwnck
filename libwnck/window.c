@@ -156,6 +156,8 @@ struct _WnckWindowPrivate
   guint need_emit_icon_changed : 1;
 };
 
+G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
+
 enum {
   NAME_CHANGED,
   STATE_CHANGED,
@@ -199,39 +201,7 @@ static void force_update_now (WnckWindow *window);
 static WnckWindow* find_last_transient_for (GList *windows,
                                             Window xwindow);
 
-static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
-
-GType
-wnck_window_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckWindowClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_window_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckWindow),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_window_init,
-        NULL            /* value_table */
-      };
-
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckWindow",
-                                            &object_info, 0);
-    }
-
-  return object_type;
-}
 
 static void
 wnck_window_init (WnckWindow *window)
@@ -250,8 +220,6 @@ static void
 wnck_window_class_init (WnckWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  parent_class = g_type_class_peek_parent (klass);
 
   object_class->finalize = wnck_window_finalize;
 
@@ -388,7 +356,7 @@ wnck_window_finalize (GObject *object)
 
   g_free (window->priv);
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_window_parent_class)->finalize (object);
 }
 
 /**

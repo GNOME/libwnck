@@ -76,6 +76,8 @@ struct _WnckApplicationPrivate
   guint need_emit_icon_changed : 1;
 };
 
+G_DEFINE_TYPE (WnckApplication, wnck_application, G_TYPE_OBJECT);
+
 enum {
   NAME_CHANGED,
   ICON_CHANGED,
@@ -93,39 +95,7 @@ static void wnck_application_class_init  (WnckApplicationClass *klass);
 static void wnck_application_finalize    (GObject        *object);
 
 
-static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
-
-GType
-wnck_application_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckApplicationClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_application_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckApplication),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_application_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckApplication",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
-}
 
 static void
 wnck_application_init (WnckApplication *application)
@@ -142,8 +112,6 @@ wnck_application_class_init (WnckApplicationClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   
-  parent_class = g_type_class_peek_parent (klass);
-
   object_class->finalize = wnck_application_finalize;
   
   /**
@@ -196,7 +164,7 @@ wnck_application_finalize (GObject *object)
   
   g_free (application->priv);
   
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_application_parent_class)->finalize (object);
 }
 
 /**

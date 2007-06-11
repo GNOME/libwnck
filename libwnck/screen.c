@@ -120,6 +120,8 @@ struct _WnckScreenPrivate
   guint need_update_showing_desktop : 1;
 };
 
+G_DEFINE_TYPE (WnckScreen, wnck_screen, G_TYPE_OBJECT);
+
 enum {
   ACTIVE_WINDOW_CHANGED,
   ACTIVE_WORKSPACE_CHANGED,
@@ -179,39 +181,7 @@ static void emit_background_changed       (WnckScreen      *screen);
 static void emit_showing_desktop_changed  (WnckScreen      *screen);
 static void emit_viewports_changed        (WnckScreen      *screen);
 
-static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
-
-GType
-wnck_screen_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckScreenClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_screen_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckScreen),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_screen_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckScreen",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
-}
 
 static void
 wnck_screen_init (WnckScreen *screen)
@@ -226,8 +196,6 @@ wnck_screen_class_init (WnckScreenClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   _wnck_init ();
-  
-  parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_screen_finalize;
 
@@ -488,7 +456,7 @@ wnck_screen_finalize (GObject *object)
   
   g_free (screen->priv);
   
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_screen_parent_class)->finalize (object);
 }
 
 #ifdef HAVE_STARTUP_NOTIFICATION

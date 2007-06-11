@@ -73,6 +73,8 @@ struct _WnckWorkspacePrivate
   gboolean is_virtual;
 };
 
+G_DEFINE_TYPE (WnckWorkspace, wnck_workspace, G_TYPE_OBJECT);
+
 enum {
   NAME_CHANGED,
   LAST_SIGNAL
@@ -85,39 +87,7 @@ static void wnck_workspace_finalize    (GObject        *object);
 
 static void emit_name_changed (WnckWorkspace *space);
 
-static gpointer parent_class;
 static guint signals[LAST_SIGNAL] = { 0 };
-
-GType
-wnck_workspace_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckWorkspaceClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_workspace_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckWorkspace),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_workspace_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckWorkspace",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
-}
 
 static void
 wnck_workspace_init (WnckWorkspace *workspace)
@@ -131,8 +101,6 @@ static void
 wnck_workspace_class_init (WnckWorkspaceClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  
-  parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_workspace_finalize;
 
@@ -163,7 +131,7 @@ wnck_workspace_finalize (GObject *object)
   
   g_free (workspace->priv);
   
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_workspace_parent_class)->finalize (object);
 }
 
 /**

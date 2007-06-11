@@ -85,6 +85,8 @@ struct _WnckPagerPrivate
   guint dnd_time; /* time of last event during dnd (for delayed workspace activation) */
 };
 
+G_DEFINE_TYPE (WnckPager, wnck_pager, GTK_TYPE_WIDGET);
+
 enum
 {
   dummy, /* remove this when you add more signals */
@@ -177,39 +179,6 @@ static GdkPixbuf* wnck_pager_get_background (WnckPager *pager,
 static AtkObject* wnck_pager_get_accessible (GtkWidget *widget);
 
 
-static gpointer parent_class;
-
-GType
-wnck_pager_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-  
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckPagerClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_pager_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckPager),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_pager_init,
-        NULL            /* value_table */
-      };
-      
-      object_type = g_type_register_static (GTK_TYPE_WIDGET,
-                                            "WnckPager",
-                                            &object_info, 0);
-    }
-  
-  return object_type;
-}
-
 static void
 wnck_pager_init (WnckPager *pager)
 {  
@@ -238,8 +207,6 @@ wnck_pager_class_init (WnckPagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  
-  parent_class = g_type_class_peek_parent (klass);
   
   object_class->finalize = wnck_pager_finalize;
 
@@ -283,7 +250,7 @@ wnck_pager_finalize (GObject *object)
 
   g_free (pager->priv);
   
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_pager_parent_class)->finalize (object);
 }
 
 static void
@@ -304,7 +271,6 @@ _wnck_pager_set_screen (WnckPager *pager)
                                          &orientation,
                                          &pager->priv->n_rows,
                                          NULL, NULL);
-      g_print ("set screen n: %d\n", pager->priv->n_rows);
 
       /* test in this order to default to horizontal in case there was in issue
        * when fetching the layout */
@@ -377,7 +343,7 @@ wnck_pager_unrealize (GtkWidget *widget)
   wnck_pager_disconnect_screen (pager);
   pager->priv->screen = NULL;
 
-  GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
+  GTK_WIDGET_CLASS (wnck_pager_parent_class)->unrealize (widget);
 }
 
 static void
@@ -401,7 +367,6 @@ wnck_pager_size_request  (GtkWidget      *widget,
     _wnck_pager_set_screen (pager);
   g_assert (pager->priv->screen != NULL);
 
-      g_print ("size request n: %d\n", pager->priv->n_rows);
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
   g_assert (pager->priv->n_rows > 0);
@@ -559,7 +524,8 @@ wnck_pager_size_allocate (GtkWidget      *widget,
       return;
     }
 
-  GTK_WIDGET_CLASS (parent_class)->size_allocate (widget, allocation);
+  GTK_WIDGET_CLASS (wnck_pager_parent_class)->size_allocate (widget,
+                                                             allocation);
 }
 
 static void
@@ -1711,7 +1677,7 @@ wnck_pager_focus (GtkWidget        *widget,
 
   pager = WNCK_PAGER (widget);
   
-  return GTK_WIDGET_CLASS (parent_class)->focus (widget, direction);
+  return GTK_WIDGET_CLASS (wnck_pager_parent_class)->focus (widget, direction);
 }
 
 /**
@@ -2359,7 +2325,7 @@ wnck_pager_get_accessible (GtkWidget *widget)
         }
       first_time = FALSE;
     }
-  return GTK_WIDGET_CLASS (parent_class)->get_accessible (widget);
+  return GTK_WIDGET_CLASS (wnck_pager_parent_class)->get_accessible (widget);
 }
 
 int 

@@ -57,6 +57,8 @@ struct _WnckClassGroupPrivate {
   GdkPixbuf *mini_icon;
 };
 
+G_DEFINE_TYPE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
+
 #define ICON_SIZE 32
 #define MINI_ICON_SIZE 16
 
@@ -77,45 +79,10 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-static gpointer *parent_class;
-
-
-GType
-wnck_class_group_get_type (void)
-{
-  static GType object_type = 0;
-
-  g_type_init ();
-
-  if (!object_type)
-    {
-      const GTypeInfo object_info =
-      {
-        sizeof (WnckClassGroupClass),
-        (GBaseInitFunc) NULL,
-        (GBaseFinalizeFunc) NULL,
-        (GClassInitFunc) wnck_class_group_class_init,
-        NULL,           /* class_finalize */
-        NULL,           /* class_data */
-        sizeof (WnckClassGroup),
-        0,              /* n_preallocs */
-        (GInstanceInitFunc) wnck_class_group_init,
-      };
-
-      object_type = g_type_register_static (G_TYPE_OBJECT,
-                                            "WnckClassGroup",
-                                            &object_info, 0);
-    }
-
-  return object_type;
-}
-
 static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-
-  parent_class = g_type_class_peek_parent (class);
 
   gobject_class->finalize = wnck_class_group_finalize;
 
@@ -190,7 +157,7 @@ wnck_class_group_finalize (GObject *object)
 
   g_free (priv);
 
-  G_OBJECT_CLASS (parent_class)->finalize (object);
+  G_OBJECT_CLASS (wnck_class_group_parent_class)->finalize (object);
 }
 
 /**

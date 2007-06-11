@@ -22,35 +22,12 @@
 #include "pager-accessible-factory.h"
 #include "pager-accessible.h"
 
-static void       wnck_pager_accessible_factory_class_init          (WnckPagerAccessibleFactoryClass *klass);
-static AtkObject* wnck_pager_accessible_factory_create_accessible   (GObject                         *obj);
+G_DEFINE_TYPE (WnckPagerAccessibleFactory,
+               wnck_pager_accessible_factory, ATK_TYPE_OBJECT_FACTORY);
+
+static AtkObject* wnck_pager_accessible_factory_create_accessible (GObject *obj);
 
 static GType      wnck_pager_accessible_factory_get_accessible_type (void);
-
-GType
-wnck_pager_accessible_factory_get_type (void)
-{
-  static GType type = 0;
-
-  if (!type) 
-    {
-      const GTypeInfo tinfo = 
-        {
-          sizeof (WnckPagerAccessibleFactoryClass),
-          (GBaseInitFunc) NULL, /* base init */
-          (GBaseFinalizeFunc) NULL, /* base finalize */
-          (GClassInitFunc) wnck_pager_accessible_factory_class_init,
-          (GClassFinalizeFunc) NULL, /* class finalize */
-          NULL, /* class data */
-          sizeof (WnckPagerAccessibleFactory),
-          0, /* nb preallocs */
-          (GInstanceInitFunc) NULL, /* instance init */
-          NULL /* value table */
-        };
-      type = g_type_register_static (ATK_TYPE_OBJECT_FACTORY, "WnckPagerAccessibleFactory", &tinfo, 0);
-    }
-  return type;
-}
 
 static void
 wnck_pager_accessible_factory_class_init (WnckPagerAccessibleFactoryClass *klass)
@@ -59,6 +36,11 @@ wnck_pager_accessible_factory_class_init (WnckPagerAccessibleFactoryClass *klass
 
   class->create_accessible = wnck_pager_accessible_factory_create_accessible;
   class->get_accessible_type = wnck_pager_accessible_factory_get_accessible_type;
+}
+
+static void
+wnck_pager_accessible_factory_init (WnckPagerAccessibleFactory *factory)
+{
 }
 
 AtkObjectFactory*

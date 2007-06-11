@@ -1,3 +1,32 @@
+2007-06-12  Vincent Untz  <vuntz@gnome.org>
+
+	Use G_DEFINE_TYPE.
+
+	* libwnck/application.c: (wnck_application_class_init),
+	(wnck_application_finalize):
+	* libwnck/class-group.c: (wnck_class_group_class_init),
+	(wnck_class_group_finalize):
+	* libwnck/pager-accessible-factory.c:
+	(wnck_pager_accessible_factory_init):
+	* libwnck/pager.c: (wnck_pager_class_init), (wnck_pager_finalize),
+	(_wnck_pager_set_screen), (wnck_pager_unrealize),
+	(wnck_pager_size_request), (wnck_pager_size_allocate),
+	(wnck_pager_focus), (wnck_pager_get_accessible):
+	* libwnck/screen.c: (wnck_screen_class_init),
+	(wnck_screen_finalize):
+	* libwnck/tasklist.c: (wnck_task_class_init), (wnck_task_finalize),
+	(wnck_tasklist_class_init), (wnck_tasklist_finalize),
+	(wnck_tasklist_size_allocate), (wnck_tasklist_realize),
+	(wnck_tasklist_unrealize), (wnck_tasklist_expose):
+	* libwnck/window.c: (wnck_window_class_init),
+	(wnck_window_finalize):
+	* libwnck/workspace-accessible-factory.c:
+	(wnck_workspace_accessible_factory_init):
+	* libwnck/workspace.c: (wnck_workspace_class_init),
+	(wnck_workspace_finalize):
+	Remove the get_type() functions, and update all the parent_class
+	references.
+
 2007-06-11  Vincent Untz  <vuntz@gnome.org>
 
 	Make WnckPager and WnckTasklist always display the screen they're on.
