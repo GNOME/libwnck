@@ -311,8 +311,7 @@ static void     wnck_tasklist_activate_task_window     (WnckTask *task,
 
 static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist,
 							GList        *visible_tasks);
-static void     wnck_tasklist_connect_screen           (WnckTasklist *tasklist,
-                                                        WnckScreen   *screen);
+static void     wnck_tasklist_connect_screen           (WnckTasklist *tasklist);
 static void     wnck_tasklist_disconnect_screen        (WnckTasklist *tasklist);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -752,8 +751,6 @@ wnck_tasklist_finalize (GObject *object)
       tasklist->priv->skipped_windows = NULL;
     }
   
-  wnck_tasklist_disconnect_screen (tasklist);
-
   /* Tasks should have gone away due to removing their
    * buttons in container destruction
    */
@@ -1532,8 +1529,13 @@ static void
 wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
+  GdkScreen *gdkscreen;
 
   tasklist = WNCK_TASKLIST (widget);  
+
+  gdkscreen = gtk_widget_get_screen (widget);
+  tasklist->priv->screen = wnck_screen_get (gdk_screen_get_number (gdkscreen));
+  g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   tasklist->priv->sn_context =
@@ -1550,6 +1552,10 @@ wnck_tasklist_realize (GtkWidget *widget)
   g_slist_foreach (tasklist_instances,
 		   (GFunc) wnck_tasklist_update_lists,
 		   NULL);
+
+  wnck_tasklist_update_lists (tasklist);
+
+  wnck_tasklist_connect_screen (tasklist);
 }
 
 static void
@@ -1558,6 +1564,9 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   WnckTasklist *tasklist;
 
   tasklist = WNCK_TASKLIST (widget);
+
+  wnck_tasklist_disconnect_screen (tasklist);
+  tasklist->priv->screen = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   sn_monitor_context_unref (tasklist->priv->sn_context);
@@ -1718,12 +1727,16 @@ wnck_tasklist_remove (GtkContainer   *container,
 }
 
 static void
-wnck_tasklist_connect_screen (WnckTasklist *tasklist,
-			      WnckScreen   *screen)
+wnck_tasklist_connect_screen (WnckTasklist *tasklist)
 {
   GList *windows;
   guint *c;
   int    i;
+  WnckScreen *screen;
+
+  g_return_if_fail (tasklist->priv->screen != NULL);
+
+  screen = tasklist->priv->screen;
 
   i = 0;
   c = tasklist->priv->screen_connections;
@@ -1786,23 +1799,14 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
  * @tasklist: a #WnckTasklist.
  * @screen: a #WnckScreen.
  *
- * Sets the #WnckScreen for which @tasklist should list the #WnckWindow.
+ * Does nothing.
+ *
+ * Deprecated:
  */
 void
 wnck_tasklist_set_screen (WnckTasklist *tasklist,
 			  WnckScreen   *screen)
 {
-  if (tasklist->priv->screen == screen)
-    return;
-
-  if (tasklist->priv->screen)
-    wnck_tasklist_disconnect_screen (tasklist);
-
-  tasklist->priv->screen = screen;
-
-  wnck_tasklist_update_lists (tasklist);
-
-  wnck_tasklist_connect_screen (tasklist, screen);
 }
 
 static gboolean
@@ -1929,14 +1933,14 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
 
 /**
  * wnck_tasklist_new:
- * @screen: a #WnckScreen.
+ * @screen: deprecated argument, can be %NULL.
  *
- * Creates a new #WnckTasklist listing #WnckWindow of @screen.
+ * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
+ * #WnckScreen it is on.
  *
- * Return value: a newly created #WnckTasklist listing #WnckWindow of @screen.
+ * Return value: a newly created #WnckTasklist.
  */
-/* TODO: when we break API again, remove the screen from here and do what we do
- * in #WnckSelector */
+/* TODO: when we break API again, remove the screen from here */
 GtkWidget*
 wnck_tasklist_new (WnckScreen *screen)
 {
@@ -1946,8 +1950,6 @@ wnck_tasklist_new (WnckScreen *screen)
 
   tasklist->priv->tooltips = gtk_tooltips_new ();
   g_object_ref_sink (G_OBJECT (tasklist->priv->tooltips));
-
-  wnck_tasklist_set_screen (tasklist, screen);
 
   /* callback when there is a scroll-event for switching to the next window  */
   g_signal_connect_object (G_OBJECT (tasklist),
@@ -2085,6 +2087,10 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   WnckTask *class_group_task;
 
   wnck_tasklist_free_tasks (tasklist);
+
+  /* wnck_tasklist_update_lists() will be called on realize */
+  if (!GTK_WIDGET_REALIZED (tasklist))
+    return;
   
   if (GTK_WIDGET (tasklist)->window != NULL)
     {

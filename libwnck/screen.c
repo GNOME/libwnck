@@ -657,6 +657,8 @@ wnck_screen_get_workspace (WnckScreen *screen,
 			   int         workspace)
 {
   GList *list;
+
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
   
   /* We trust this function with property-provided numbers, it
    * must reliably return NULL on bad data
@@ -677,7 +679,7 @@ wnck_screen_get_workspace (WnckScreen *screen,
  * Returns the index of @space on @screen. The first workspace has an
  * index of 0. See also wnck_workspace_get_number().
  * 
- * Return value: the index of @space on @screen.
+ * Return value: the index of @space on @screen, or -1 on errors.
  **/
 int
 wnck_screen_get_workspace_index (WnckScreen    *screen,
@@ -685,6 +687,8 @@ wnck_screen_get_workspace_index (WnckScreen    *screen,
 {
   GList *tmp;
   int i;
+
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), -1);
 
   i = 0;
   tmp = screen->priv->workspaces;
@@ -741,6 +745,8 @@ wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
 {
   WnckWorkspaceLayout layout;
   int i, space_index;
+
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
   space_index = wnck_screen_get_workspace_index (screen, space);
 
@@ -2278,6 +2284,8 @@ gboolean
 wnck_screen_net_wm_supports (WnckScreen *screen,
                              const char *atom)
 {
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), FALSE);
+
   return gdk_x11_screen_supports_net_wm_hint (_wnck_screen_get_gdk_screen (screen),
                                               gdk_atom_intern (atom, FALSE));
 }
@@ -2448,6 +2456,8 @@ void
 wnck_screen_release_workspace_layout (WnckScreen *screen,
                                       int         current_token)
 {
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+
   _wnck_release_desktop_layout_manager (screen->priv->xscreen,
                                         current_token);
 

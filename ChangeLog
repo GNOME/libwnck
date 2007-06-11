@@ -1,5 +1,49 @@
 2007-06-11  Vincent Untz  <vuntz@gnome.org>
 
+	Make WnckPager and WnckTasklist always display the screen they're on.
+	This deprecates wnck_pager_set_screen() and
+	wnck_tasklist_set_screen(), and also makes the screen argument of
+	wnck_pager_new() and of wnck_tasklist_new() useless.
+
+	* libwnck/pager.c: (wnck_pager_finalize): don't disconnect from the
+	screen. That's done in wnck_pager_unrealize() now.
+	(_wnck_pager_set_screen): new helper to automatically set the screen,
+	based on what wnck_pager_set_screen() was doing
+	(wnck_pager_realize): document a bit, and set the screen if it wasn't
+	set before
+	(wnck_pager_unrealize): disconnect the screen
+	(wnck_pager_size_request): set the screen if it wasn't set before
+	(wnck_pager_set_screen): deprecate
+	(wnck_pager_new): don't call wnck_pager_set_screen()
+	(wnck_pager_set_layout_hint): set the screen if it wasn't set before.
+	It's useful if users are calling set_n_rows() before the widget is
+	shown.
+	(wnck_pager_set_orientation): don't reset orientation in case of
+	failure if we didn't know about our screen before we tried changing
+	the layout (and thus didn't know about the real orientation)
+	(wnck_pager_set_n_rows): don't reset n_rows in case of failure if we
+	didn't know about our screen before we tried changing the layout (and
+	thus didn't know about the real n_rows)
+	(wnck_pager_connect_screen): we don't need the screen argument here
+	(wnck_pager_disconnect_screen): small update
+	* libwnck/tasklist.c: (wnck_tasklist_finalize): don't disconnect from
+	the screen. That's done in wnck_tasklist_unrealize() now.
+	(wnck_tasklist_realize): do what the wnck_tasklist_set_screen() used
+	to do 
+	(wnck_tasklist_unrealize): disconnect from the screen
+	(wnck_tasklist_connect_screen): we don't need a screen argument here
+	(wnck_tasklist_set_screen): deprecated
+	(wnck_tasklist_new): don't call wnck_tasklist_set_screen()
+	(wnck_tasklist_update_lists): don't do anything if the widget is not
+	realized yet, which means we don't know about our screen.
+	* libwnck/screen.c: (wnck_screen_get_workspace): add soft assertion
+	(wnck_screen_get_workspace_index): add soft assertion
+	(wnck_screen_get_workspace_neighbor): add soft assertion
+	(wnck_screen_net_wm_supports): add soft assertion
+	(wnck_screen_release_workspace_layout): add soft assertion
+
+2007-06-11  Vincent Untz  <vuntz@gnome.org>
+
 	If the pager can't set the layout, make it use the real layout of the
 	screen.
 	Fix second part of bug #445686.

@@ -157,8 +157,7 @@ static void wnck_pager_queue_draw_workspace   (WnckPager   *pager,
 static void wnck_pager_queue_draw_window (WnckPager	   *pager,
 					  WnckWindow	   *window);
 
-static void wnck_pager_connect_screen    (WnckPager  *pager,
-                                          WnckScreen *screen);
+static void wnck_pager_connect_screen    (WnckPager  *pager);
 static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
@@ -270,8 +269,6 @@ wnck_pager_finalize (GObject *object)
 
   pager = WNCK_PAGER (object);
 
-  wnck_pager_disconnect_screen (pager);
-
   if (pager->priv->bg_cache)
     {
       g_object_unref (G_OBJECT (pager->priv->bg_cache));
@@ -290,6 +287,39 @@ wnck_pager_finalize (GObject *object)
 }
 
 static void
+_wnck_pager_set_screen (WnckPager *pager)
+{
+  GdkScreen *gdkscreen;
+
+  gdkscreen = gtk_widget_get_screen (GTK_WIDGET (pager));
+  pager->priv->screen = wnck_screen_get (gdk_screen_get_number (gdkscreen));
+
+  if (!wnck_pager_set_layout_hint (pager))
+    {
+      _WnckLayoutOrientation orientation;
+
+      /* we couldn't set the layout on the screen. This means someone else owns
+       * it. Let's at least show the correct layout. */
+      _wnck_screen_get_workspace_layout (pager->priv->screen,
+                                         &orientation,
+                                         &pager->priv->n_rows,
+                                         NULL, NULL);
+      g_print ("set screen n: %d\n", pager->priv->n_rows);
+
+      /* test in this order to default to horizontal in case there was in issue
+       * when fetching the layout */
+      if (orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL)
+        pager->priv->orientation = GTK_ORIENTATION_VERTICAL;
+      else
+        pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+
+      gtk_widget_queue_resize (GTK_WIDGET (pager));
+    }
+
+  wnck_pager_connect_screen (pager);
+}
+
+static void
 wnck_pager_realize (GtkWidget *widget)
 {
 
@@ -299,6 +329,8 @@ wnck_pager_realize (GtkWidget *widget)
 
   pager = WNCK_PAGER (widget);
 
+  /* do not call the parent class realize since we're doing things a bit
+   * differently here */
   GTK_WIDGET_SET_FLAGS (widget, GTK_REALIZED);
 
   attributes.window_type = GDK_WINDOW_CHILD;
@@ -321,6 +353,12 @@ wnck_pager_realize (GtkWidget *widget)
 
   widget->style = gtk_style_attach (widget->style, widget->window);
   gtk_style_set_background (widget->style, widget->window, GTK_STATE_NORMAL);
+
+  /* connect to the screen of this pager. In theory, this will already have
+   * been done in wnck_pager_size_request() */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
 }
 
 static void
@@ -336,6 +374,9 @@ wnck_pager_unrealize (GtkWidget *widget)
   wnck_screen_release_workspace_layout (pager->priv->screen,
                                         pager->priv->layout_manager_token);
   
+  wnck_pager_disconnect_screen (pager);
+  pager->priv->screen = NULL;
+
   GTK_WIDGET_CLASS (parent_class)->unrealize (widget);
 }
 
@@ -355,6 +396,12 @@ wnck_pager_size_request  (GtkWidget      *widget,
 
   pager = WNCK_PAGER (widget);
   
+  /* if we're not realized, we don't know about our screen yet */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
+
+      g_print ("size request n: %d\n", pager->priv->n_rows);
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
 
   g_assert (pager->priv->n_rows > 0);
@@ -1672,61 +1719,32 @@ wnck_pager_focus (GtkWidget        *widget,
  * @pager: a #WnckPager.
  * @screen: a #WnckScreen.
  *
- * Sets the #WnckScreen for which @pager should display the #WnckWorkspace.
+ * Does nothing.
+ *
+ * Deprecated:
  */
 void
 wnck_pager_set_screen (WnckPager  *pager,
 		       WnckScreen *screen)
 {
-  if (pager->priv->screen == screen)
-    return;
-
-  if (pager->priv->screen)
-    wnck_pager_disconnect_screen (pager);
-
-  wnck_pager_connect_screen (pager, screen);
-
-  if (!wnck_pager_set_layout_hint (pager))
-    {
-      _WnckLayoutOrientation orientation;
-
-      /* we couldn't set the layout on the screen. This means someone else owns
-       * it. Let's at least show the correct layout. */
-      _wnck_screen_get_workspace_layout (screen,
-                                         &orientation,
-                                         &pager->priv->n_rows,
-                                         NULL, NULL);
-
-      /* test in this order to default to horizontal in case there was in issue
-       * when fetching the layout */
-      if (orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL)
-        pager->priv->orientation = GTK_ORIENTATION_VERTICAL;
-      else
-        pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
-
-      gtk_widget_queue_resize (GTK_WIDGET (pager));
-    }
 }
 
 /**
  * wnck_pager_new:
- * @screen: a #WnckScreen.
+ * @screen: deprecated argument, can be %NULL.
  *
- * Creates a new #WnckPager showing the #WnckWorkspace of @screen.
+ * Creates a new #WnckPager. The #WnckPager will show the #WnckWorkspace of the
+ * #WnckScreen it is on.
  *
- * Return value: a newly created #WnckPager showing the #WnckWorkspace of
- * @screen.
+ * Return value: a newly created #WnckPager.
  */
-/* TODO: when we break API again, remove the screen from here and do what we do
- * in #WnckSelector */
+/* TODO: when we break API again, remove the screen from here */
 GtkWidget*
 wnck_pager_new (WnckScreen *screen)
 {
   WnckPager *pager;
   
   pager = g_object_new (WNCK_TYPE_PAGER, NULL);
-
-  wnck_pager_set_screen (pager, screen);
 
   return GTK_WIDGET (pager);
 }
@@ -1736,6 +1754,11 @@ wnck_pager_set_layout_hint (WnckPager *pager)
 {
   int layout_rows;
   int layout_cols;
+
+  /* if we're not realized, we don't know about our screen yet */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
 
   /* The visual representation of the pager doesn't
    * correspond to the layout of the workspaces
@@ -1793,6 +1816,7 @@ wnck_pager_set_orientation (WnckPager     *pager,
                             GtkOrientation orientation)
 {
   GtkOrientation old_orientation;
+  gboolean       old_orientation_is_valid;
 
   g_return_val_if_fail (WNCK_IS_PAGER (pager), FALSE);
 
@@ -1800,6 +1824,8 @@ wnck_pager_set_orientation (WnckPager     *pager,
     return TRUE;
 
   old_orientation = pager->priv->orientation;
+  old_orientation_is_valid = pager->priv->screen != NULL;
+
   pager->priv->orientation = orientation;
 
   if (wnck_pager_set_layout_hint (pager))
@@ -1809,7 +1835,8 @@ wnck_pager_set_orientation (WnckPager     *pager,
     }
   else
     {
-      pager->priv->orientation = old_orientation;
+      if (old_orientation_is_valid)
+        pager->priv->orientation = old_orientation;
       return FALSE;
     }
 }
@@ -1832,7 +1859,8 @@ gboolean
 wnck_pager_set_n_rows (WnckPager *pager,
 		       int        n_rows)
 {
-  int old_n_rows;
+  int      old_n_rows;
+  gboolean old_n_rows_is_valid;
 
   g_return_val_if_fail (WNCK_IS_PAGER (pager), FALSE);
   g_return_val_if_fail (n_rows > 0, FALSE);
@@ -1841,6 +1869,8 @@ wnck_pager_set_n_rows (WnckPager *pager,
     return TRUE;
 
   old_n_rows = pager->priv->n_rows;
+  old_n_rows_is_valid = pager->priv->screen != NULL;
+
   pager->priv->n_rows = n_rows;
 
   if (wnck_pager_set_layout_hint (pager))
@@ -1850,7 +1880,8 @@ wnck_pager_set_n_rows (WnckPager *pager,
     }
   else
     {
-      pager->priv->n_rows = old_n_rows;
+      if (old_n_rows_is_valid)
+        pager->priv->n_rows = old_n_rows;
       return FALSE;
     }
 }
@@ -2080,17 +2111,17 @@ viewports_changed_callback (WnckWorkspace *space,
 }
 
 static void
-wnck_pager_connect_screen (WnckPager  *pager,
-                           WnckScreen *screen)
+wnck_pager_connect_screen (WnckPager *pager)
 {
   int i;
   guint *c;
   GList *tmp;
+  WnckScreen *screen;
   
-  g_return_if_fail (pager->priv->screen == NULL);
-  
-  pager->priv->screen = screen;
+  g_return_if_fail (pager->priv->screen != NULL);
 
+  screen = pager->priv->screen;
+  
   for (tmp = wnck_screen_get_windows (screen); tmp; tmp = tmp->next)
     {
       wnck_pager_connect_window (pager, WNCK_WINDOW (tmp->data));
@@ -2213,8 +2244,6 @@ wnck_pager_disconnect_screen (WnckPager  *pager)
       space = wnck_screen_get_workspace (pager->priv->screen, i);
       g_signal_handlers_disconnect_by_func (space, G_CALLBACK (workspace_name_changed_callback), pager);
     }
-
-  pager->priv->screen = NULL;
 }
 
 static void
