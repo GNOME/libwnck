@@ -1,5 +1,10 @@
 2007-06-12  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/class-group.c: (set_icon): use default sizes defined in
+	private.h for icons instead of redefining the sizes here
+
+2007-06-12  Vincent Untz  <vuntz@gnome.org>
+
 	Use G_DEFINE_TYPE.
 
 	* libwnck/application.c: (wnck_application_class_init),

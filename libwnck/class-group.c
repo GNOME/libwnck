@@ -59,9 +59,6 @@ struct _WnckClassGroupPrivate {
 
 G_DEFINE_TYPE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
 
-#define ICON_SIZE 32
-#define MINI_ICON_SIZE 16
-
 /* Hash table that maps res_class strings -> WnckClassGroup instances */
 static GHashTable *class_group_hash = NULL;
 
@@ -441,8 +438,12 @@ set_icon (WnckClassGroup *class_group)
     get_icons_from_windows (class_group, &icon, &mini_icon);
 
   if (!icon || !mini_icon)
-      _wnck_get_fallback_icons (&icon, ICON_SIZE, ICON_SIZE,
-				&mini_icon, MINI_ICON_SIZE, MINI_ICON_SIZE);
+      _wnck_get_fallback_icons (&icon,
+                                DEFAULT_ICON_WIDTH,
+                                DEFAULT_ICON_HEIGHT,
+                                &mini_icon,
+                                DEFAULT_MINI_ICON_WIDTH,
+                                DEFAULT_MINI_ICON_HEIGHT);
 
   g_assert (icon && mini_icon);
 
