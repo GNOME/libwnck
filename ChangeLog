@@ -1,3 +1,8 @@
+2007-06-11  Vincent Untz  <vuntz@gnome.org>
+
+	* wnckprop.c: Glynn Foster said was Sun is okay to relicense the GPL
+	code to LGPL. Add a comment about this.
+
 2007-06-10  Vincent Untz  <vuntz@gnome.org>
 
 	Do not change the layout shown in the pager if the the pager couldn't

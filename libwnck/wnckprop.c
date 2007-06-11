@@ -22,7 +22,8 @@
  *
  * Some of this code is based on code from gnome-panel/panel-force-quit.c
  * This part of the code was written by Mark McLoughlin <mark@skynet.ie> and
- * is GPL. Thus, this program is licensed under the GPL.
+ * copyrighted by Sun. Sun (through Glynn Foster <glynn.foster@sun.com>)
+ * agreed to relicense it from the GPL to the LGPL.
  */
 
 #include <string.h>
