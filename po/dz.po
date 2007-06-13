@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.gnome-2-14.dz\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-04-04 22:40+0200\n"
+"POT-Creation-Date: 2007-05-20 04:06+0100\n"
 "PO-Revision-Date: 2006-04-14 16:10+0530\n"
 "Last-Translator: Mindu Dorji\n"
 "Language-Team: DZONGKHA <pgeyleg@dit.gov.bt>\n"
@@ -19,7 +19,8 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 
 #: ../libwnck/application.c:29
-msgid "untitled application"
+#, fuzzy
+msgid "Untitled application"
 msgstr "མགོ་མིང་མ་བཏགས་པའི་གློག་རིམ།"
 
 #: ../libwnck/pager-accessible.c:321
@@ -35,128 +36,180 @@ msgstr "ལཱ་གི་ས་སྒོའི་བར་ན་ སོར་�
 msgid "Click this to switch to workspace %s"
 msgstr "ལཱ་གི་ས་སྒོ་%sལུ་ སོར་བསྒྱུར་འབད་ནི་ལུ་ འདི་ལུ་ཨེབ་གཏང་འབད།"
 
-#: ../libwnck/selector.c:221
+#: ../libwnck/selector.c:326
 msgid "Unknown Window"
 msgstr "ངོ་མ་ཤེས་པའི་སྒོ་སྒྲིག།"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "སྒོ་སྒྲིག་གཅིག་ཡང་ ཁ་མ་ཕྱེ་བས།"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "སྒོ་སྒྲིག་སེལ་བྱེད།"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "སྒོ་སྒྲིག་གི་བར་ན་ སོར་བསྒྱུར་འབད་ནིའི་ལག་ཆས།"
 
-#: ../libwnck/tasklist.c:673
+#: ../libwnck/tasklist.c:646
 msgid "Window List"
 msgstr "སྒོ་སྒྲིག་གི་ཐོ་ཡིག།"
 
-#: ../libwnck/tasklist.c:674
+#: ../libwnck/tasklist.c:647
 msgid "Tool to switch between visible windows"
 msgstr "མཐོང་ཚུགས་པའི་ སྒོ་སྒྲིག་གི་བར་ན་ སོར་བསྒྱུར་འབད་ནིའི་ལག་ཆས།"
 
-#: ../libwnck/tasklist.c:2476
+#: ../libwnck/tasklist.c:2652
+#, fuzzy
+msgid "Mi_nimize All"
+msgstr "ཆ་མཉམ་ཆུང་ཀུ་བཟོ།(_M)"
+
+#: ../libwnck/tasklist.c:2663
+#, fuzzy
+msgid "Un_minimize All"
+msgstr "ཆ་མཉམ་ཆུང་བཟོ་བཤོལ།(_U)"
+
+#: ../libwnck/tasklist.c:2671
+#, fuzzy
+msgid "Ma_ximize All"
+msgstr "སྦོམ་བཟོ།(_x)"
+
+#: ../libwnck/tasklist.c:2682
+#, fuzzy
+msgid "_Unmaximize All"
+msgstr "ཆ་མཉམ་ཆུང་བཟོ་བཤོལ།(_U)"
+
+#: ../libwnck/tasklist.c:2694
 msgid "_Close All"
 msgstr "ཆ་མཉམ་ཁ་བསྡམས།(_C)"
 
-#: ../libwnck/tasklist.c:2491
-msgid "_Minimize All"
-msgstr "ཆ་མཉམ་ཆུང་ཀུ་བཟོ།(_M)"
+#: ../libwnck/test-pager.c:13
+msgid "Use N_ROWS rows"
+msgstr ""
 
-#: ../libwnck/tasklist.c:2502
-msgid "_Unminimize All"
-msgstr "ཆ་མཉམ་ཆུང་བཟོ་བཤོལ།(_U)"
+#: ../libwnck/test-pager.c:13
+msgid "N_ROWS"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-pager.c:14
+#, fuzzy
+msgid "Only show current workspace"
+msgstr "ལཱ་གི་ས་སྒོ་འདི་གུ་རྐྱངམ་གཅིག།(_O)"
+
+#: ../libwnck/test-pager.c:15 ../libwnck/test-tasklist.c:16
+msgid "Use RTL as default direction"
+msgstr ""
+
+#: ../libwnck/test-pager.c:16
+msgid "Show workspace names instead of workspace contents"
+msgstr ""
+
+#: ../libwnck/test-pager.c:17
+msgid "Use a vertical orientation"
+msgstr ""
+
+#: ../libwnck/test-selector.c:10 ../libwnck/test-tasklist.c:17
+msgid "Don't show window in tasklist"
+msgstr ""
+
+#: ../libwnck/test-tasklist.c:13
+msgid "Always group windows"
+msgstr ""
+
+#: ../libwnck/test-tasklist.c:14
+msgid "Never group windows"
+msgstr ""
+
+#: ../libwnck/test-tasklist.c:15
+msgid "Display windows from all workspaces"
+msgstr ""
+
+#: ../libwnck/window-action-menu.c:267
 msgid "Unmi_nimize"
 msgstr "ཆུང་བཟོ་བཤོལ།(_n)"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:274
 msgid "Mi_nimize"
 msgstr "ཆུང་ཀུ་བཟོ།(_n)"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:282
 msgid "Unma_ximize"
 msgstr "སྦོམ་བཟོ་བཤོལ།(_x)"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:289
 msgid "Ma_ximize"
 msgstr "སྦོམ་བཟོ།(_x)"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "ལཱ་གི་ས་སྒོ་འདི་གུ་རྐྱངམ་གཅིག།(_O)"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "ཨ་རྟག་རང་ མཐོང་ཚུགས་པའི་ ལཱ་གི་ས་སྒོ་གུ(_A)"
-
-#: ../libwnck/window-action-menu.c:463
-#: ../libwnck/workspace.c:237
+#: ../libwnck/window-action-menu.c:498 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
 msgstr "ལཱ་གི་ས་སྒོ་%d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:506
 msgid "Workspace 1_0"
 msgstr "ལཱ་གི་ས་སྒོ་ ༡ ༠།(_0)"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:508
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ལཱ་གི་ས་སྒོ་ %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "མགོ་ལུ།(_T)"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:601
 msgid "_Move"
 msgstr "སྤོ།(_M)"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:608
 msgid "_Resize"
 msgstr "ཚད་སླར་སྒྲིག(_R)"
 
-#: ../libwnck/window-action-menu.c:592
-msgid "_Close"
-msgstr "ཁ་བསྡམས།(_C)"
+#: ../libwnck/window-action-menu.c:617
+#, fuzzy
+msgid "Always On _Top"
+msgstr "མགོ་ལུ།(_T)"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:625
+msgid "_Always on Visible Workspace"
+msgstr "ཨ་རྟག་རང་ མཐོང་ཚུགས་པའི་ ལཱ་གི་ས་སྒོ་གུ(_A)"
+
+#: ../libwnck/window-action-menu.c:630
+msgid "_Only on This Workspace"
+msgstr "ལཱ་གི་ས་སྒོ་འདི་གུ་རྐྱངམ་གཅིག།(_O)"
+
+#: ../libwnck/window-action-menu.c:656
 msgid "Move to Workspace _Left"
 msgstr "ས་སྒོ་གཡོན་ལུ་སྤོ།(_L)"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:667
 msgid "Move to Workspace R_ight"
 msgstr "ལཱ་གི་ས་སྒོ་གཡས་ལུ་སྤོ།(_i)"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:678
 msgid "Move to Workspace _Up"
 msgstr "ལཱ་གི་ས་སྒོ་ལྟགམ་ལུ་སྤོ།(_U)"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:690
 msgid "Move to Workspace _Down"
 msgstr "ལཱ་གི་ས་སྒོ་འོགམ་ལུ་སྤོ།(_D)"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:697
 msgid "Move to Another _Workspace"
 msgstr "ལཱ་གི་ས་སྒོ་གཞན་ལུ་སྤོ།(_W)"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
+#: ../libwnck/window-action-menu.c:739
+msgid "_Close"
+msgstr "ཁ་བསྡམས།(_C)"
 
-#: ../libwnck/window.c:35
-msgid "untitled window"
+#: ../libwnck/window.c:36
+#, fuzzy
+msgid "Untitled window"
 msgstr "མགོ་མིང་མ་བཏགས་པའི་སྒོ་སྒྲིག།"
+
+#~ msgid "%s"
+#~ msgstr "%s"
 
 #~ msgid "_Unroll"
 #~ msgstr "སྒྲིལ་བཤོལ་འབད།(_U)"
+
 #~ msgid "Roll _Up"
 #~ msgstr "སྒྲིལ།(_U)"
-
