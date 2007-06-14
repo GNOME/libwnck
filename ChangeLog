@@ -1,5 +1,17 @@
 2007-06-14  Vincent Untz  <vuntz@gnome.org>
 
+	Migrate from GtkTooltips to GtkTooltip.
+
+	* configure.in: require GTK+ 2.11.3
+	* libwnck/tasklist.c: (wnck_tasklist_finalize): we don't have a
+	GtkTooltips anymore
+	(wnck_tasklist_new): ditto
+	(wnck_task_update_visible_state): use the "tooltip-markup" property on
+	the button
+	(wnck_task_create_widgets): ditto
+
+2007-06-14  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-sections.txt:
 	* doc/tmpl/screen.sgml: update for new API
 	* libwnck/screen.[ch]: (wnck_screen_get_number): new API

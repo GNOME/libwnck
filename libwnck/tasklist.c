@@ -195,8 +195,6 @@ struct _WnckTasklistPrivate
   GHashTable *class_group_hash;
   GHashTable *win_hash;
   
-  GtkTooltips *tooltips;
-
   gint max_button_width;
   gint max_button_height;
 
@@ -712,12 +710,6 @@ wnck_tasklist_finalize (GObject *object)
       tasklist->priv->idle_callback_tag = 0;
     }
     
-  if (tasklist->priv->tooltips)
-    {
-      g_object_unref (tasklist->priv->tooltips);
-      tasklist->priv->tooltips = NULL;
-    }
-
   g_free (tasklist->priv->size_hints);
   tasklist->priv->size_hints = NULL;
   tasklist->priv->size_hints_len = 0;
@@ -1883,9 +1875,6 @@ wnck_tasklist_new (WnckScreen *screen)
   WnckTasklist *tasklist;
 
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
-
-  tasklist->priv->tooltips = gtk_tooltips_new ();
-  g_object_ref_sink (G_OBJECT (tasklist->priv->tooltips));
 
   /* callback when there is a scroll-event for switching to the next window  */
   g_signal_connect_object (G_OBJECT (tasklist),
@@ -3074,11 +3063,17 @@ wnck_task_update_visible_state (WnckTask *task)
           wnck_task_stop_glow (task);
         }
       g_free (text);
+
       text = wnck_task_get_text (task, FALSE);
       if (text != NULL)
         {
-          gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
+          char *markup;
+
+          markup = g_markup_escape_text (text, -1);
           g_free (text);
+
+          g_object_set (task->button, "tooltip-markup", markup, NULL);
+          g_free (markup);
         }
     }
 
@@ -3416,6 +3411,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
+  char *markup;
   static GQuark disable_sound_quark = 0;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
@@ -3489,8 +3485,10 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   g_free (text);
   
   text = wnck_task_get_text (task, FALSE);
-  gtk_tooltips_set_tip (task->tasklist->priv->tooltips, task->button, text, NULL);
+  markup = g_markup_escape_text (text, -1);
   g_free (text);
+  g_object_set (task->button, "tooltip-markup", markup, "image-position", GTK_POS_RIGHT, NULL);
+  g_free (markup);
   
   /* Set up signals */
   if (GTK_IS_TOGGLE_BUTTON (task->button))
