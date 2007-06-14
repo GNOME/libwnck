@@ -207,6 +207,7 @@ GType wnck_screen_get_type (void) G_GNUC_CONST;
 WnckScreen*    wnck_screen_get_default              (void);
 WnckScreen*    wnck_screen_get                      (int         index);
 WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id);
+int            wnck_screen_get_number               (WnckScreen *screen);
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
 int            wnck_screen_get_workspace_index      (WnckScreen    *screen,

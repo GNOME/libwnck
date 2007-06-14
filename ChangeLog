@@ -1,5 +1,16 @@
 2007-06-14  Vincent Untz  <vuntz@gnome.org>
 
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/screen.sgml: update for new API
+	* libwnck/screen.[ch]: (wnck_screen_get_number): new API
+	* libwnck/workspace.c: small API doc update for
+	wnck_workspace_get_number()
+	* libwnck/wnckprop.c: (print_props): print the screen number
+	Fix bug #169590, based on API suggestion by
+	Mark McLoughlin <mark@skynet.ie>.
+
+2007-06-14  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in: require glib 2.13.0
 	* libwnck/tasklist.c: (wnck_tasklist_sn_event): use
 	g_timeout_add_seconds()

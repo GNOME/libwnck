@@ -610,6 +610,23 @@ wnck_screen_get_for_root (gulong root_window_id)
 }
 
 /**
+ * wnck_screen_get_number:
+ * @screen: a #WnckScreen.
+ * 
+ * Returns the index of @screen on the display to which it belongs. The first
+ * #WnckScreen has an index of 0.
+ * 
+ * Return value: the index of @space on @screen, or -1 on errors.
+ **/
+int
+wnck_screen_get_number (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), -1);
+
+  return screen->priv->number;
+}
+
+/**
  * wnck_screen_get_workspace:
  * @screen: a #WnckScreen.
  * @workspace: a workspace index, starting from 0.
@@ -644,7 +661,7 @@ wnck_screen_get_workspace (WnckScreen *screen,
  * @screen: a #WnckScreen.
  * @space: a #WnckWorkspace.
  * 
- * Returns the index of @space on @screen. The first workspace has an
+ * Returns the index of @space on @screen. The first #WnckWorkspace has an
  * index of 0. See also wnck_workspace_get_number().
  * 
  * Return value: the index of @space on @screen, or -1 on errors.

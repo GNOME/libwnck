@@ -180,6 +180,7 @@ WnckScreen
 wnck_screen_get_default
 wnck_screen_get
 wnck_screen_get_for_root
+wnck_screen_get_number
 wnck_screen_get_width
 wnck_screen_get_height
 wnck_screen_force_update

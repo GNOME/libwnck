@@ -54,6 +54,7 @@ print_props (WnckWindow *window)
   int                x, y, w, h;
   WnckClassGroup    *class_group;
   WnckWorkspace     *space;
+  WnckScreen        *screen;
   WnckWindowActions  actions;
 
   g_print ("Name: ");
@@ -83,6 +84,9 @@ print_props (WnckWindow *window)
       g_print ("all workspaces\n");
   else
       g_print ("none\n");
+
+  screen = wnck_window_get_screen (window);
+  g_print ("On Screen: %d\n", wnck_screen_get_number (screen));
 
   type = wnck_window_get_window_type (window);
   g_print ("Window Type: ");

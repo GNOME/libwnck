@@ -138,8 +138,8 @@ wnck_workspace_finalize (GObject *object)
  * wnck_workspace_get_number:
  * @space: a #WnckWorkspace.
  * 
- * Returns the index of @space on its #WnckScreen. The first workspace has an
- * index of 0.
+ * Returns the index of @space on the #WnckScreen to which it belongs. The
+ * first workspace has an index of 0.
  * 
  * Return value: the index of @space on its #WnckScreen.
  **/

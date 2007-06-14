@@ -157,6 +157,15 @@ WnckScreen
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_screen_get_number ##### -->
+<para>
+
+</para>
+
+@screen: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_screen_get_width ##### -->
 <para>
 
