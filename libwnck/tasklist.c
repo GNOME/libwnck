@@ -3992,8 +3992,8 @@ wnck_tasklist_sn_event (SnMonitorEvent *event,
         if (tasklist->priv->startup_sequence_timeout == 0)
           {
             tasklist->priv->startup_sequence_timeout =
-              g_timeout_add (1000, sequence_timeout_callback,
-                             tasklist);
+              g_timeout_add_seconds (1, sequence_timeout_callback,
+                                     tasklist);
           }
         
         gtk_widget_queue_resize (GTK_WIDGET (tasklist));

@@ -1,3 +1,9 @@
+2007-06-14  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in: require glib 2.13.0
+	* libwnck/tasklist.c: (wnck_tasklist_sn_event): use
+	g_timeout_add_seconds()
+
 2007-06-12  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/class-group.c: (set_icon): use default sizes defined in
