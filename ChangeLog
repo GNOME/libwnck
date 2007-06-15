@@ -1,5 +1,12 @@
 2007-06-15  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/private.h: add _wnck_stock_icons_init()
+	* libwnck/util.c: (_wnck_stock_icons_init): moved from xutils.c
+	* libwnck/xutils.[ch]: (_wnck_stock_icons_init): moved away, since
+	this has nothing to do in this file
+
+2007-06-15  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_update_drag_icon): improve relative position
 	of the drag icon. Fix bug #446531
 

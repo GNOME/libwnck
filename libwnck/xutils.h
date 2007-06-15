@@ -210,8 +210,6 @@ void     _wnck_release_desktop_layout_manager       (Screen *xscreen,
                                                      int     current_token);
 gboolean _wnck_desktop_layout_manager_process_event (XEvent *xev);
 
-void _wnck_stock_icons_init (void);
-
 G_END_DECLS
 
 #endif /* WNCK_XUTILS_H */
