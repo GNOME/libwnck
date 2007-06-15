@@ -105,8 +105,10 @@ struct _WnckScreenClass
   /* Viewport stuff changed */
   void (* viewports_changed)        (WnckScreen      *screen);
   
+  /* Window manager changed */
+  void (* window_manager_changed)   (WnckScreen      *screen);
+
   /* Padding for future expansion */
-  void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);
   void (* pad4) (void);
@@ -224,6 +226,7 @@ void           wnck_screen_force_update             (WnckScreen *screen);
 int            wnck_screen_get_workspace_count      (WnckScreen *screen);
 void           wnck_screen_change_workspace_count   (WnckScreen *screen,
                                                      int         count);
+const char*    wnck_screen_get_window_manager_name  (WnckScreen *screen);
 gboolean       wnck_screen_net_wm_supports          (WnckScreen *screen,
                                                      const char *atom);
 gulong         wnck_screen_get_background_pixmap    (WnckScreen *screen);

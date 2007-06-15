@@ -86,7 +86,13 @@ print_props (WnckWindow *window)
       g_print ("none\n");
 
   screen = wnck_window_get_screen (window);
-  g_print ("On Screen: %d\n", wnck_screen_get_number (screen));
+  g_print ("On Screen: %d", wnck_screen_get_number (screen));
+  if (wnck_screen_get_window_manager_name (screen) != NULL)
+    g_print (" (Window Manager: %s)",
+             wnck_screen_get_window_manager_name (screen));
+  else
+    g_print (" (Window Manager: <no EWMH-compliant window manager>)");
+  g_print ("\n");
 
   type = wnck_window_get_window_type (window);
   g_print ("Window Type: ");

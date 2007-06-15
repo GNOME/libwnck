@@ -184,6 +184,7 @@ wnck_screen_get_number
 wnck_screen_get_width
 wnck_screen_get_height
 wnck_screen_force_update
+wnck_screen_get_window_manager_name
 wnck_screen_net_wm_supports
 wnck_screen_get_active_window
 wnck_screen_get_previously_active_window

@@ -1,3 +1,23 @@
+2007-06-16  Vincent Untz  <vuntz@gnome.org>
+
+	Add API to get the name of the running window manager.
+	Fix bug #448043.
+
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/screen.sgml: updated
+	* libwnck/screen.[ch]: (wnck_screen_class_init): add new
+	window_manager_changed signal
+	(wnck_screen_finalize): free wm name
+	(wnck_screen_construct): we need to update information about the wm
+	(_wnck_screen_process_property_notify): queue update for wm if the
+	hint is _NET_SUPPORTING_WM_CHECK
+	(update_wm): new, get the wm name
+	(do_update_now): update the wm information
+	(emit_wm_changed): new, emit window_manager_changed signal
+	(wnck_screen_get_window_manager_name): new
+	* libwnck/wnckprop.c: (print_props): print the name of the window
+	manager running on the screen
+
 2007-06-15  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/private.h: add _wnck_stock_icons_init()

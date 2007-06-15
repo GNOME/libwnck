@@ -92,6 +92,8 @@ struct _WnckScreenPrivate
   gint window_order;
 
   Pixmap bg_pixmap;
+
+  char *wm_name;
   
   guint update_handler;  
 
@@ -118,6 +120,7 @@ struct _WnckScreenPrivate
   guint need_update_workspace_names : 1;
   guint need_update_bg_pixmap : 1;
   guint need_update_showing_desktop : 1;
+  guint need_update_wm : 1;
 };
 
 G_DEFINE_TYPE (WnckScreen, wnck_screen, G_TYPE_OBJECT);
@@ -137,6 +140,7 @@ enum {
   BACKGROUND_CHANGED,
   SHOWING_DESKTOP_CHANGED,
   VIEWPORTS_CHANGED,
+  WM_CHANGED,
   LAST_SIGNAL
 };
 
@@ -180,6 +184,7 @@ static void emit_class_group_closed       (WnckScreen      *screen,
 static void emit_background_changed       (WnckScreen      *screen);
 static void emit_showing_desktop_changed  (WnckScreen      *screen);
 static void emit_viewports_changed        (WnckScreen      *screen);
+static void emit_wm_changed               (WnckScreen *screen);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
@@ -429,6 +434,23 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
+
+  /**
+   * WnckScreen::window-manager-changed:
+   * @screen: the #WnckScreen which emitted the signal.
+   *
+   * Emitted when the window manager on @screen has changed.
+   *
+   * Since: 2.20
+   */
+    signals[WM_CHANGED] =
+    g_signal_new ("window_manager_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckScreenClass, window_manager_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -447,6 +469,8 @@ wnck_screen_finalize (GObject *object)
   g_list_free (screen->priv->mapped_windows);
   g_list_free (screen->priv->stacked_windows);
   g_list_free (screen->priv->workspaces);
+
+  g_free (screen->priv->wm_name);
 
   screens[screen->priv->number] = NULL;
 
@@ -510,6 +534,7 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->need_update_workspace_names = TRUE;
   screen->priv->need_update_bg_pixmap = TRUE;
   screen->priv->need_update_showing_desktop = TRUE;
+  screen->priv->need_update_wm = TRUE;
   
   queue_update (screen);
 }
@@ -1002,6 +1027,12 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
            _wnck_atom_get ("_NET_SHOWING_DESKTOP"))
     {
       screen->priv->need_update_showing_desktop = TRUE;
+      queue_update (screen);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("_NET_SUPPORTING_WM_CHECK"))
+    {
+      screen->priv->need_update_wm = TRUE;
       queue_update (screen);
     }
 }
@@ -2060,6 +2091,32 @@ update_showing_desktop (WnckScreen *screen)
 }
 
 static void
+update_wm (WnckScreen *screen)
+{
+  Window  wm_window;
+  
+  if (!screen->priv->need_update_wm)
+    return;
+  
+  screen->priv->need_update_wm = FALSE;
+
+  wm_window = None;
+  _wnck_get_window (screen->priv->xroot,
+                    _wnck_atom_get ("_NET_SUPPORTING_WM_CHECK"),
+                    &wm_window);
+
+  g_free (screen->priv->wm_name);
+
+  if (wm_window != None)
+    screen->priv->wm_name = _wnck_get_utf8_property (wm_window,
+                                                     _wnck_atom_get ("_NET_WM_NAME"));
+  else
+    screen->priv->wm_name = NULL;
+
+  emit_wm_changed (screen);
+}
+
+static void
 do_update_now (WnckScreen *screen)
 {
   if (screen->priv->update_handler)
@@ -2090,6 +2147,7 @@ do_update_now (WnckScreen *screen)
   update_workspace_layout (screen);
   update_workspace_names (screen);
   update_showing_desktop (screen);
+  update_wm (screen);
   
   update_bg_pixmap (screen);
 }
@@ -2246,6 +2304,33 @@ emit_viewports_changed (WnckScreen *screen)
   g_signal_emit (G_OBJECT (screen),
                  signals[VIEWPORTS_CHANGED],
                  0);
+}
+
+static void
+emit_wm_changed (WnckScreen *screen)
+{
+  g_signal_emit (G_OBJECT (screen),
+                 signals[WM_CHANGED],
+                 0);
+}
+
+/**
+ * wnck_screen_get_window_manager_name:
+ * @screen: a #WnckScreen.
+ *
+ * Returns the name of the window manager.
+ *
+ * Return value: the name of the window manager, or %NULL if the window manager
+ * does not comply with the <ulink
+ * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>
+ * specification.
+ */
+const char *
+wnck_screen_get_window_manager_name (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->wm_name;
 }
 
 /**

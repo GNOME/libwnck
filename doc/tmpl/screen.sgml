@@ -100,6 +100,13 @@ WnckScreen
 @wnckscreen: the object which received the signal.
 @arg1: 
 
+<!-- ##### SIGNAL WnckScreen::window-manager-changed ##### -->
+<para>
+
+</para>
+
+@wnckscreen: the object which received the signal.
+
 <!-- ##### SIGNAL WnckScreen::window-opened ##### -->
 <para>
 
@@ -190,6 +197,15 @@ WnckScreen
 </para>
 
 @screen: 
+
+
+<!-- ##### FUNCTION wnck_screen_get_window_manager_name ##### -->
+<para>
+
+</para>
+
+@screen: 
+@Returns: 
 
 
 <!-- ##### FUNCTION wnck_screen_net_wm_supports ##### -->
