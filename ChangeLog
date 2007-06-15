@@ -1,5 +1,28 @@
 2007-06-15  Vincent Untz  <vuntz@gnome.org>
 
+	Add lots of g_return_if_fail() and g_return_val_if_fail() for our
+	public API.
+
+	* libwnck/application.c: (wnck_application_get_icon),
+	(wnck_application_get_mini_icon):
+	* libwnck/screen.c: (wnck_screen_calc_workspace_layout),
+	(wnck_screen_free_workspace_layout):
+	* libwnck/tasklist.c: (wnck_tasklist_set_button_relief),
+	(wnck_tasklist_set_icon_loader),
+	(wnck_tasklist_get_size_hint_list):
+	* libwnck/util.c: (wnck_gtk_window_set_dock_type):
+	* libwnck/window-action-menu.c: (wnck_create_window_action_menu):
+	* libwnck/window.c: (wnck_window_get_window_type),
+	(wnck_window_get_workspace),
+	(wnck_window_transient_is_most_recently_activated),
+	(wnck_window_set_icon_geometry):
+	* libwnck/workspace.c: (wnck_workspace_get_number),
+	(wnck_workspace_get_width), (wnck_workspace_get_height),
+	(wnck_workspace_get_viewport_x), (wnck_workspace_get_viewport_y),
+	(wnck_workspace_is_virtual):
+
+2007-06-15  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/Makefile.am:
 	* libwnck/pager.h:
 	* libwnck/tasklist.h:

@@ -380,6 +380,8 @@ find_icon_window (WnckApplication *app)
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
 {
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
+
   get_icons (app);
   if (app->priv->need_emit_icon_changed)
     emit_icon_changed (app);
@@ -411,6 +413,8 @@ wnck_application_get_icon (WnckApplication *app)
 GdkPixbuf*
 wnck_application_get_mini_icon (WnckApplication *app)
 {
+  g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
+
   get_icons (app);
   if (app->priv->need_emit_icon_changed)
     emit_icon_changed (app);

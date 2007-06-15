@@ -788,6 +788,7 @@ void        wnck_window_set_sort_order        (WnckWindow *window,
 WnckWindowType
 wnck_window_get_window_type (WnckWindow *window)
 {
+  /* FIXME: should we have an invalid window type for this? */
   g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
   
   return window->priv->wintype;
@@ -1506,6 +1507,8 @@ wnck_window_keyboard_size (WnckWindow *window)
 WnckWorkspace*
 wnck_window_get_workspace (WnckWindow *window)
 {
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
   if (window->priv->workspace == ALL_WORKSPACES)
     return NULL;
   else
@@ -1767,8 +1770,7 @@ wnck_window_transient_is_most_recently_activated (WnckWindow *window)
   GList *windows;
   WnckWindow *transient;
   
-  if (!WNCK_IS_WINDOW (window))
-    return FALSE;
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   windows = wnck_screen_get_windows_stacked (window->priv->screen);
 
@@ -2086,6 +2088,8 @@ wnck_window_set_icon_geometry (WnckWindow *window,
 			       int         width,
 			       int         height)
 {
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
   if (window->priv->icon_geometry.x == x &&
       window->priv->icon_geometry.y == y &&
       window->priv->icon_geometry.width == width &&

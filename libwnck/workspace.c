@@ -141,12 +141,12 @@ wnck_workspace_finalize (GObject *object)
  * Returns the index of @space on the #WnckScreen to which it belongs. The
  * first workspace has an index of 0.
  * 
- * Return value: the index of @space on its #WnckScreen.
+ * Return value: the index of @space on its #WnckScreen, or -1 on errors.
  **/
 int
 wnck_workspace_get_number (WnckWorkspace *space)
 {
-  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
   
   return space->priv->number;
 }
@@ -311,6 +311,8 @@ _wnck_workspace_set_viewport (WnckWorkspace *space,
 int
 wnck_workspace_get_width (WnckWorkspace *space)
 {
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
+
   return space->priv->width;
 }
 
@@ -325,6 +327,8 @@ wnck_workspace_get_width (WnckWorkspace *space)
 int
 wnck_workspace_get_height (WnckWorkspace *space)
 {
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
+
   return space->priv->height;
 }
 
@@ -340,6 +344,8 @@ wnck_workspace_get_height (WnckWorkspace *space)
 int
 wnck_workspace_get_viewport_x (WnckWorkspace *space)
 {
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
+
   return space->priv->viewport_x;
 }
 
@@ -355,6 +361,8 @@ wnck_workspace_get_viewport_x (WnckWorkspace *space)
 int
 wnck_workspace_get_viewport_y (WnckWorkspace *space)
 {
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), 0);
+
   return space->priv->viewport_y;
 }
 
@@ -369,5 +377,7 @@ wnck_workspace_get_viewport_y (WnckWorkspace *space)
 gboolean
 wnck_workspace_is_virtual (WnckWorkspace *space)
 {
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), FALSE);
+
   return space->priv->is_virtual;
 }

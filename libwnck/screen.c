@@ -1033,6 +1033,9 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
   int i, r, c;
   int current_row, current_col;
 
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+  g_return_if_fail (layout != NULL);
+
   if (num_workspaces < 0)
     num_workspaces = wnck_screen_get_workspace_count (screen);
 
@@ -1237,6 +1240,8 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
 void
 wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout)
 {
+  g_return_if_fail (layout != NULL);
+
   g_free (layout->grid);
 }
 

@@ -581,6 +581,8 @@ wnck_create_window_action_menu (WnckWindow *window)
   WnckWorkspaceLayout layout;
   GSList *pin_group;
 
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
   _wnck_stock_icons_init ();
   
   amd = g_new0 (ActionMenuData, 1);

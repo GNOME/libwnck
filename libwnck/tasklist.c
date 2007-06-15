@@ -768,6 +768,8 @@ wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
 {
   GList *walk;
 
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
   if (relief == tasklist->priv->relief)
     return;
 
@@ -940,6 +942,8 @@ wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
                                void                 *data,
                                GDestroyNotify        free_data_func)
 {
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
   if (tasklist->priv->free_icon_loader_data != NULL)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
 
@@ -1277,6 +1281,7 @@ const int *
 wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 				  int           *n_elements)
 {
+  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), NULL);
   g_return_val_if_fail (n_elements != NULL, NULL);
 
   *n_elements = tasklist->priv->size_hints_len;
