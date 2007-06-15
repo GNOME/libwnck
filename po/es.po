@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-20 04:06+0100\n"
-"PO-Revision-Date: 2007-05-22 17:18+0200\n"
+"POT-Creation-Date: 2007-06-11 03:48+0100\n"
+"PO-Revision-Date: 2007-06-15 11:48+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -21,182 +21,218 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: ../libwnck/application.c:29
+#. *
+#. * SECTION:application
+#. * @short_description: an object representing a group of windows of the same
+#. * application.
+#. * @see_also: wnck_window_get_application()
+#. * @stability: Unstable
+#. *
+#. * The #WnckApplication is a group of #WnckWindow that are all in the same
+#. * application. It can be used to represent windows by applications, group
+#. * windows by applications or to manipulate all windows of a particular
+#. * application.
+#. *
+#. * A #WnckApplication is identified by the group leader of the #WnckWindow
+#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+#. * only if they have the group leader of the #WnckApplication.
+#. *
+#. * The #WnckApplication objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#: ../libwnck/application.c:50
 msgid "Untitled application"
 msgstr "Aplicación sin título"
 
-#: ../libwnck/pager-accessible.c:321
+#: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
 msgstr "Selector de áreas de trabajo"
 
-#: ../libwnck/pager-accessible.c:332
+#: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
 msgstr "Herramienta para cambiar entre áreas de trabajo"
 
-#: ../libwnck/pager-accessible.c:436
+#: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Pulse aquí para cambiar al área de trabajo %s"
 
-#: ../libwnck/selector.c:326
+#: ../libwnck/selector.c:343
 msgid "Unknown Window"
 msgstr "Ventana desconocida"
 
-#: ../libwnck/selector.c:1171
+#: ../libwnck/selector.c:1189
 msgid "No Windows Open"
 msgstr "No hay ventanas abiertas"
 
-#: ../libwnck/selector.c:1224
+#: ../libwnck/selector.c:1242
 msgid "Window Selector"
 msgstr "Selector de ventanas"
 
-#: ../libwnck/selector.c:1225
+#: ../libwnck/selector.c:1243
 msgid "Tool to switch between windows"
 msgstr "Herramienta para cambiar entre ventanas"
 
-#: ../libwnck/tasklist.c:646
+#: ../libwnck/tasklist.c:674
 msgid "Window List"
 msgstr "Lista de ventanas"
 
-#: ../libwnck/tasklist.c:647
+#: ../libwnck/tasklist.c:675
 msgid "Tool to switch between visible windows"
 msgstr "Herramienta para cambiar entre ventanas visibles"
 
-#: ../libwnck/tasklist.c:2652
+#: ../libwnck/tasklist.c:2782
 msgid "Mi_nimize All"
 msgstr "Mi_nimizar todo"
 
-#: ../libwnck/tasklist.c:2663
+#: ../libwnck/tasklist.c:2793
 msgid "Un_minimize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:2671
+#: ../libwnck/tasklist.c:2801
 msgid "Ma_ximize All"
 msgstr "Ma_ximizar todo"
 
-#: ../libwnck/tasklist.c:2682
+#: ../libwnck/tasklist.c:2812
 msgid "_Unmaximize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:2694
+#: ../libwnck/tasklist.c:2824
 msgid "_Close All"
 msgstr "Cerrar _todo"
 
-#: ../libwnck/test-pager.c:13
+#: ../libwnck/test-pager.c:15
 msgid "Use N_ROWS rows"
 msgstr "Usar columnas N_COLUMNAS"
 
-#: ../libwnck/test-pager.c:13
+#: ../libwnck/test-pager.c:15
 msgid "N_ROWS"
 msgstr "N_COLUMNAS"
 
-#: ../libwnck/test-pager.c:14
+#: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
 msgstr "Sólo mostrar esta área de trabajo"
 
-#: ../libwnck/test-pager.c:15 ../libwnck/test-tasklist.c:16
+#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:18
 msgid "Use RTL as default direction"
 msgstr "Usar la dirección D-->I como predeterminada"
 
-#: ../libwnck/test-pager.c:16
+#: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
 msgstr "Mostrar los nombres de las áreas de trabajo en lugar del contenido"
 
-#: ../libwnck/test-pager.c:17
+#: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
 msgstr "Usar orientación vertical"
 
-#: ../libwnck/test-selector.c:10 ../libwnck/test-tasklist.c:17
+#: ../libwnck/test-selector.c:11 ../libwnck/test-tasklist.c:19
 msgid "Don't show window in tasklist"
 msgstr "No mostrar una ventana en la lista de tareas"
 
-#: ../libwnck/test-tasklist.c:13
+#: ../libwnck/test-tasklist.c:15
 msgid "Always group windows"
 msgstr "Siempre agrupar ventanas"
 
-#: ../libwnck/test-tasklist.c:14
+#: ../libwnck/test-tasklist.c:16
 msgid "Never group windows"
 msgstr "No agrupar ventanas nunca"
 
-#: ../libwnck/test-tasklist.c:15
+#: ../libwnck/test-tasklist.c:17
 msgid "Display windows from all workspaces"
 msgstr "Mostrar las ventanas de todas las áreas de trabajo"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:279
 msgid "Unmi_nimize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:274
+#: ../libwnck/window-action-menu.c:286
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:294
 msgid "Unma_ximize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:289
+#: ../libwnck/window-action-menu.c:301
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../libwnck/window-action-menu.c:498 ../libwnck/workspace.c:237
+#: ../libwnck/window-action-menu.c:510 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
-#: ../libwnck/window-action-menu.c:506
+#: ../libwnck/window-action-menu.c:518
 msgid "Workspace 1_0"
 msgstr "Área de trabajo 1_0"
 
-#: ../libwnck/window-action-menu.c:508
+#: ../libwnck/window-action-menu.c:520
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Área de trabajo %s%d"
 
-#: ../libwnck/window-action-menu.c:601
+#: ../libwnck/window-action-menu.c:614
 msgid "_Move"
 msgstr "_Mover"
 
-#: ../libwnck/window-action-menu.c:608
+#: ../libwnck/window-action-menu.c:621
 msgid "_Resize"
 msgstr "Re_dimensionar"
 
-#: ../libwnck/window-action-menu.c:617
+#: ../libwnck/window-action-menu.c:630
 msgid "Always On _Top"
 msgstr "Siempre en_cima"
 
-#: ../libwnck/window-action-menu.c:625
+#: ../libwnck/window-action-menu.c:638
 msgid "_Always on Visible Workspace"
 msgstr "_Siempre en el área de trabajo visible"
 
-#: ../libwnck/window-action-menu.c:630
+#: ../libwnck/window-action-menu.c:643
 msgid "_Only on This Workspace"
 msgstr "_Sólo en este área de trabajo"
 
-#: ../libwnck/window-action-menu.c:656
+#: ../libwnck/window-action-menu.c:669
 msgid "Move to Workspace _Left"
 msgstr "Mover a al área de trabajo de la _izquierda"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:680
 msgid "Move to Workspace R_ight"
 msgstr "Mover al área de trabajo de la _derecha"
 
-#: ../libwnck/window-action-menu.c:678
+#: ../libwnck/window-action-menu.c:691
 msgid "Move to Workspace _Up"
 msgstr "Mover al área de trabajo de a_rriba"
 
-#: ../libwnck/window-action-menu.c:690
+#: ../libwnck/window-action-menu.c:703
 msgid "Move to Workspace _Down"
 msgstr "Mover al área de trabajo de a_bajo"
 
-#: ../libwnck/window-action-menu.c:697
+#: ../libwnck/window-action-menu.c:710
 msgid "Move to Another _Workspace"
 msgstr "Mover a _otro área de trabajo"
 
-#: ../libwnck/window-action-menu.c:739
+#: ../libwnck/window-action-menu.c:752
 msgid "_Close"
 msgstr "_Cerrar"
 
-#: ../libwnck/window.c:36
+#. *
+#. * SECTION:window
+#. * @short_description: an object representing a window.
+#. * @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
+#. * @stability: Unstable
+#. *
+#. * The #WnckWindow objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#: ../libwnck/window.c:47
 msgid "Untitled window"
 msgstr "Ventana sin título"
+
+#: ../libwnck/wnckprop.c:42
+msgid "X window ID of the window to examine"
+msgstr "El ID del servidor X window de la ventana a examinar"
+
+#: ../libwnck/wnckprop.c:42
+msgid "XID"
+msgstr "XID"
 
