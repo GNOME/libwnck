@@ -1,5 +1,10 @@
 2007-06-15  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_update_drag_icon): improve relative position
+	of the drag icon. Fix bug #446531
+
+2007-06-15  Vincent Untz  <vuntz@gnome.org>
+
 	Add lots of g_return_if_fail() and g_return_val_if_fail() for our
 	public API.
 

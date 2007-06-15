@@ -1495,7 +1495,7 @@ wnck_update_drag_icon (WnckWindow     *window,
   gtk_drag_set_icon_pixmap (context, 
                             gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap)),
 			    pixmap, NULL,
-			    rect.width / 4, 0);
+			    -2, -2);
 
   g_object_unref (pixmap);
 }
