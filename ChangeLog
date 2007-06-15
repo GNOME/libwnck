@@ -1,3 +1,10 @@
+2007-06-15  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/Makefile.am:
+	* libwnck/pager.h:
+	* libwnck/tasklist.h:
+	* libwnck/util.h: add WNCK_DISABLE_DEPRECATED
+
 2007-06-14  Vincent Untz  <vuntz@gnome.org>
 
 	Migrate from GtkTooltips to GtkTooltip.

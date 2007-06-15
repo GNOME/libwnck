@@ -85,8 +85,6 @@ typedef enum {
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (WnckScreen *screen);
-void       wnck_tasklist_set_screen (WnckTasklist *tasklist,
-				     WnckScreen   *screen);
 const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 					      int           *n_elements);
 
@@ -131,6 +129,10 @@ void wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
                                     GDestroyNotify        free_data_func);
 
 
+#ifndef WNCK_DISABLE_DEPRECATED
+void       wnck_tasklist_set_screen (WnckTasklist *tasklist,
+				     WnckScreen   *screen);
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 G_END_DECLS
 

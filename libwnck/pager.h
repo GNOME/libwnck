@@ -81,8 +81,6 @@ GType wnck_pager_get_type (void) G_GNUC_CONST;
 
 GtkWidget* wnck_pager_new (WnckScreen *screen);
 
-void wnck_pager_set_screen       (WnckPager            *pager,
-				  WnckScreen           *screen);
 gboolean wnck_pager_set_orientation (WnckPager         *pager,
 				     GtkOrientation     orientation);
 gboolean wnck_pager_set_n_rows   (WnckPager            *pager,
@@ -93,6 +91,12 @@ void wnck_pager_set_show_all     (WnckPager            *pager,
 				  gboolean              show_all_workspaces);
 void wnck_pager_set_shadow_type  (WnckPager	       *pager,
 				  GtkShadowType		shadow_type);
+
+
+#ifndef WNCK_DISABLE_DEPRECATED
+void wnck_pager_set_screen       (WnckPager            *pager,
+				  WnckScreen           *screen);
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 G_END_DECLS
 
