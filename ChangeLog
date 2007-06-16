@@ -1,5 +1,29 @@
 2007-06-16  Vincent Untz  <vuntz@gnome.org>
 
+	Make wnck_pid_read_resource_usage() work for more X clients.
+	Fix bug #150153.
+
+	* libwnck/util.c: (_wnck_print_resource_usage): new, useful for
+	debugging
+	(wnck_xid_read_resource_usage): improve doc, add guard against bad
+	argument, fix small bug where font and picture were swapped
+	(wnck_pid_read_resource_usage_free_hash), (wnck_gulong_hash),
+	(wnck_gulong_equal), (wnck_check_window_for_pid),
+	(wnck_find_pid_for_resource_r),
+	(wnck_pid_read_resource_usage_xres_state_free),
+	(wnck_pid_read_resource_usage_fill_cache),
+	(wnck_pid_read_resource_usage_start_build_cache),
+	(wnck_pid_read_resource_usage_destroy_hash_table),
+	(wnck_pid_read_resource_usage_from_cache): new stuff, to build a cache
+	of PID<->XID associations, to help when an X client doesn't have a
+	toplevel window that libwnck can see. This has the nice side-effect of
+	removing a FIXME :-)
+	(wnck_pid_read_resource_usage_no_cache): based on the old
+	wnck_pid_read_resource_usage()
+	(wnck_pid_read_resource_usage): updated
+
+2007-06-16  Vincent Untz  <vuntz@gnome.org>
+
 	Add API to get the name of the running window manager.
 	Fix bug #448043.
 

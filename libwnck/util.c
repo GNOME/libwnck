@@ -70,6 +70,42 @@ typedef enum
   WNCK_EXT_MISSING = 2
 } WnckExtStatus;
 
+
+#if 0
+/* useful for debugging */
+static void
+_wnck_print_resource_usage (WnckResourceUsage *usage)
+{
+  if (!usage)
+    return;
+
+  g_print ("\twindows       : %d\n"
+           "\tGCs           : %d\n"
+           "\tfonts         : %d\n"
+           "\tpixmaps       : %d\n"
+           "\tpictures      : %d\n"
+           "\tglyphsets     : %d\n"
+           "\tcolormaps     : %d\n"
+           "\tpassive grabs : %d\n"
+           "\tcursors       : %d\n"
+           "\tunknowns      : %d\n"
+           "\tpixmap bytes  : %ld\n"
+           "\ttotal bytes   : ~%ld\n",
+           usage->n_windows, 
+           usage->n_gcs, 
+           usage->n_fonts,
+           usage->n_pixmaps,  
+           usage->n_pictures,
+           usage->n_glyphsets,
+           usage->n_colormap_entries,
+           usage->n_passive_grabs,
+           usage->n_cursors,
+           usage->n_other, 
+           usage->pixmap_bytes,
+           usage->total_bytes_estimate);
+}
+#endif
+
 /**
  * wnck_xid_read_resource_usage:
  * @gdk_display: a <classname>GdkDisplay</classname>.
@@ -78,7 +114,8 @@ typedef enum
  * the X window ID @xid.
  *
  * Looks for the X resource usage of the application owning the X window ID
- * @xid on display @gdisplay.
+ * @xid on display @gdisplay. If no resource usage can be found, then all
+ * fields of @usage are set to 0.
  *
  * To properly work, this function requires the XRes extension on the X server.
  */
@@ -90,6 +127,8 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
   int event, error;
   Display *xdisplay;
   WnckExtStatus status;
+
+  g_return_if_fail (usage != NULL);
 
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
@@ -154,9 +193,9 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    pixmap_atom = _wnck_atom_get ("PIXMAP");
    window_atom = _wnck_atom_get ("WINDOW");
    gc_atom = _wnck_atom_get ("GC");
-   picture_atom = _wnck_atom_get ("FONT");
+   font_atom = _wnck_atom_get ("FONT");
    glyphset_atom = _wnck_atom_get ("GLYPHSET");
-   font_atom = _wnck_atom_get ("PICTURE");
+   picture_atom = _wnck_atom_get ("PICTURE");
    colormap_entry_atom = _wnck_atom_get ("COLORMAP ENTRY");
    passive_grab_atom = _wnck_atom_get ("PASSIVE GRAB");
    cursor_atom = _wnck_atom_get ("CURSOR");
@@ -214,41 +253,287 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
 #endif /* HAVE_XRES */
 }
 
-/**
- * wnck_pid_read_resource_usage:
- * @gdk_display: a <classname>GdkDisplay</classname>.
- * @pid: a process ID.
- * @usage: return location for the X resource usage of the application with
- * process ID @pid.
- *
- * Looks for the X resource usage of the application with process ID @pid on
- * display @gdisplay.
- *
- * To properly work, this function requires the XRes extension on the X server.
- *
- * A current limitation of this function is that this does not work for
- * processes that do not have an X window visible to libwnck. This includes
- * processes that do not have any toplevel windows (panel applets, for
- * example).
- */
-void
-wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
-                              gulong             pid,
-                              WnckResourceUsage *usage)
+#ifdef HAVE_XRES
+static void
+wnck_pid_read_resource_usage_free_hash (gpointer data)
+{
+  g_slice_free (gulong, data);
+}
+
+static guint
+wnck_gulong_hash (gconstpointer v)
+{
+  /* FIXME: this is obvioulsy wrong, but nearly 100% of the time, the gulong
+   * only contains guint values */
+  return *(const guint *) v;
+}
+
+static gboolean
+wnck_gulong_equal (gconstpointer a,
+                   gconstpointer b)
+{
+  return *((const gulong *) a) == *((const gulong *) b);
+}
+
+static gulong
+wnck_check_window_for_pid (Window win,
+                           XID    match_xid,
+                           XID    mask)
+{
+  if ((win & ~mask) == match_xid) {
+    return _wnck_get_pid (win);
+  }
+
+  return 0;
+}
+
+static void
+wnck_find_pid_for_resource_r (Display *xdisplay,
+                              Window   win_top,
+                              XID      match_xid,
+                              XID      mask,
+                              gulong  *xid,
+                              gulong  *pid)
+{
+  Status   qtres;
+  int      err;
+  Window   dummy;
+  Window  *children;
+  guint    n_children;
+  int      i;
+  gulong   found_pid = 0;
+
+  while (gtk_events_pending ())
+    gtk_main_iteration ();
+
+  found_pid = wnck_check_window_for_pid (win_top, match_xid, mask);
+  if (found_pid != 0)
+    {
+      *xid = win_top;
+      *pid = found_pid;
+    }
+
+  _wnck_error_trap_push ();
+  qtres = XQueryTree (xdisplay, win_top, &dummy, &dummy,
+                      &children, &n_children);
+  err = _wnck_error_trap_pop ();   
+
+  if (!qtres || err != Success)
+    return;
+
+  for (i = 0; i < n_children; i++) 
+    {
+      wnck_find_pid_for_resource_r (xdisplay, children[i],
+                                    match_xid, mask, xid, pid);
+
+      if (*pid != 0)
+	break;
+    }
+
+  if (children)
+    XFree ((char *)children);
+}
+
+struct xresclient_state
+{
+  XResClient *clients;
+  int         n_clients;
+  int         next;
+  Display    *xdisplay;
+  GHashTable *hashtable_pid;
+};
+
+static struct xresclient_state xres_state = { NULL, 0, -1, NULL, NULL };
+static guint       xres_idleid = 0;
+static GHashTable *xres_hashtable = NULL;
+static time_t      start_update = 0;
+static time_t      end_update = 0;
+static guint       xres_removeid = 0;
+
+static void
+wnck_pid_read_resource_usage_xres_state_free (gpointer data)
+{
+  struct xresclient_state *state;
+
+  state = (struct xresclient_state *) data;
+
+  if (state->clients)
+    XFree (state->clients);
+  state->clients = NULL;
+
+  state->n_clients = 0;
+  state->next = -1;
+  state->xdisplay = NULL;
+
+  if (state->hashtable_pid)
+    g_hash_table_destroy (state->hashtable_pid);
+  state->hashtable_pid = NULL;
+}
+
+static gboolean
+wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
+{
+  int    i;
+  gulong pid;
+  gulong xid;
+  XID    match_xid;
+
+  if (state->next >= state->n_clients)
+    {
+      if (xres_hashtable)
+        g_hash_table_destroy (xres_hashtable);
+      xres_hashtable = state->hashtable_pid;
+      state->hashtable_pid = NULL;
+
+      time (&end_update);
+
+      xres_idleid = 0;
+      return FALSE;
+    }
+
+  match_xid = (state->clients[state->next].resource_base &
+               ~state->clients[state->next].resource_mask);
+
+  for (i = 0; i < ScreenCount (state->xdisplay); i++)
+    {
+      Window root;
+
+      root = RootWindow (state->xdisplay, i);
+
+      if (root == None)
+        continue;
+
+      pid = 0;
+      xid = 0;
+      wnck_find_pid_for_resource_r (state->xdisplay, root, match_xid,
+                                    state->clients[state->next].resource_mask,
+                                    &xid, &pid);
+
+      if (pid != 0 && xid != 0)
+        break;
+    }
+
+  if (pid != 0 && xid != 0)
+    {
+      gulong *key;
+      gulong *value;
+
+      key = g_slice_new (gulong);
+      value = g_slice_new (gulong);
+      *key = pid;
+      *value = xid;
+      g_hash_table_insert (state->hashtable_pid, key, value);
+    }
+
+  state->next++;
+
+  return TRUE;
+}
+
+static void
+wnck_pid_read_resource_usage_start_build_cache (GdkDisplay *gdisplay)
+{
+  Display *xdisplay;
+  int      err;
+
+  if (xres_idleid != 0)
+    return;
+
+  time (&start_update);
+
+  xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
+
+  _wnck_error_trap_push ();
+  XResQueryClients (xdisplay, &xres_state.n_clients, &xres_state.clients); 
+  err = _wnck_error_trap_pop ();
+
+  if (err != Success)
+    return;
+
+  xres_state.next = (xres_state.n_clients > 0) ? 0 : -1;
+  xres_state.xdisplay = xdisplay;
+  xres_state.hashtable_pid = g_hash_table_new_full (
+                                     wnck_gulong_hash,
+                                     wnck_gulong_equal,
+                                     wnck_pid_read_resource_usage_free_hash,
+                                     wnck_pid_read_resource_usage_free_hash);
+
+  xres_idleid = g_idle_add_full (
+                        G_PRIORITY_HIGH_IDLE,
+                        (GSourceFunc) wnck_pid_read_resource_usage_fill_cache,
+                        &xres_state, wnck_pid_read_resource_usage_xres_state_free);
+}
+
+static gboolean
+wnck_pid_read_resource_usage_destroy_hash_table (gpointer data)
+{
+  xres_removeid = 0;
+
+  if (xres_hashtable)
+    g_hash_table_destroy (xres_hashtable);
+
+  xres_hashtable = NULL;
+
+  return FALSE;
+}
+
+#define XRES_UPDATE_RATE_SEC 30
+static gboolean
+wnck_pid_read_resource_usage_from_cache (GdkDisplay        *gdisplay,
+                                         gulong             pid,
+                                         WnckResourceUsage *usage)
+{
+  gboolean  need_rebuild;
+  gulong   *xid_p;
+  int       cache_validity;
+
+  if (end_update == 0)
+    time (&end_update);
+
+  cache_validity = MAX (XRES_UPDATE_RATE_SEC, (end_update - start_update) * 2);
+
+  /* we rebuild the cache if it was never built or if it's old */
+  need_rebuild = (xres_hashtable == NULL ||
+                  (end_update < time (NULL) - cache_validity));
+
+  if (xres_hashtable)
+    {
+      /* clear the cache after quite some time, because it might not be used
+       * anymore */
+      if (xres_removeid != 0)
+        g_source_remove (xres_removeid);
+      xres_removeid = g_timeout_add_seconds (cache_validity * 2,
+                                             wnck_pid_read_resource_usage_destroy_hash_table,
+                                             NULL);
+    }
+
+  if (need_rebuild)
+    wnck_pid_read_resource_usage_start_build_cache (gdisplay);
+
+  if (xres_hashtable)
+    xid_p = g_hash_table_lookup (xres_hashtable, &pid);
+  else
+    xid_p = NULL;
+
+  if (xid_p)
+    {
+      wnck_xid_read_resource_usage (gdisplay, *xid_p, usage);
+      return TRUE;
+    }
+
+  return FALSE;
+}
+
+static void
+wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
+                                       gulong             pid,
+                                       WnckResourceUsage *usage)
 {
   Display *xdisplay;
   int i;
 
-  /* FIXME to be fast and correct, we need to avoid the linear search and
-   * we should assume a process ID can have more than one X connection.
-   * So we would essentially want to maintain a map from process ID
-   * to the X resource base/mask, and query resources for the base/mask.
-   */
-  
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
-  memset (usage, '\0', sizeof (*usage));
-  
   i = 0;
   while (i < ScreenCount (xdisplay))
     {
@@ -279,6 +564,49 @@ wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
       
       ++i;
     }
+}
+#endif /* HAVE_XRES */
+
+/**
+ * wnck_pid_read_resource_usage:
+ * @gdk_display: a <classname>GdkDisplay</classname>.
+ * @pid: a process ID.
+ * @usage: return location for the X resource usage of the application with
+ * process ID @pid.
+ *
+ * Looks for the X resource usage of the application with process ID @pid on
+ * display @gdisplay. If no resource usage can be found, then all fields of
+ * @usage are set to 0.
+ *
+ * In order to find the resource usage of an application that does not have an
+ * X window visible to libwnck (panel applets do not have any toplevel windows,
+ * for example), wnck_pid_read_resource_usage() walks through the whole tree of
+ * X windows. Since this walk is expensive in CPU, a cache is created. This
+ * cache is updated in the background. This means there is a non-null
+ * probability that no resource usage will be found for an application, even if
+ * it is an X client. If this happens, calling wnck_pid_read_resource_usage()
+ * again after a few seconds should work.
+ *
+ * To properly work, this function requires the XRes extension on the X server.
+ */
+void
+wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
+                              gulong             pid,
+                              WnckResourceUsage *usage)
+{
+  g_return_if_fail (usage != NULL);
+
+#ifndef HAVE_XRES
+  memset (usage, '\0', sizeof (*usage));
+  return;
+#else
+  memset (usage, '\0', sizeof (*usage));
+
+  if (!wnck_pid_read_resource_usage_from_cache (gdisplay, pid, usage))
+    /* the cache might not be built, might be outdated or might not contain
+     * data for a new X client, so try to fallback to something else */
+    wnck_pid_read_resource_usage_no_cache (gdisplay, pid, usage);
+#endif /* HAVE_XRES */
 }
 
 static WnckClientType client_type = 0;
