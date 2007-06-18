@@ -1,5 +1,11 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in: post-release bump to 2.19.5
+
+==================== 2.19.4 ====================
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in:
 	* NEWS: version 2.19.4
 
