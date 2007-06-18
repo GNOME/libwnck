@@ -1,5 +1,10 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.19.4
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	Fix crash on multihead setups, when closing a window. The active
 	window and previously active window are generally the same for all
 	screens (since there's only one focus), and they could be invalid for

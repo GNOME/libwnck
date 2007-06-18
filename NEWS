@@ -1,3 +1,69 @@
+2.19.4
+======
+
+ Features
+
+  - Show workspace names in the window selector (Vincent) [#354667]
+  - Add support for _NET_FRAME_EXTENTS.
+    wnck_window_get_client_window_geometry() is a new API and
+    wnck_window_get_geometry() now returns the geometry including the window
+    manager decorations (Vincent) [#351055]
+  - Add wnck_screen_get_number() API (Vincent) [#169590]
+  - Add wnck_screen_get_window_manager_name() API and window-manager-changed
+    signal (Vincent) [#448043]
+
+ Deprecations
+
+  - Deprecate wnck_gtk_window_set_dock_type() (Vincent)
+  - Deprecate wnck_pager_set_screen() (Vincent)
+  - Deprecate wnck_tasklist_set_screen() (Vincent)
+  - Deprecate the screen argument of wnck_pager_new() and of
+    wnck_tasklist_new() (Vincent)
+
+ Fixes
+
+  - Code cleanups (Vincent)
+  - Make wnck_screen_net_wm_supports() work on all screens (Vincent)
+  - Do not forget about the "Make below" action for the default possible
+    actions (Vincent)
+  - Rework selection ownership for the desktop layout: do not steal it and
+    release it (Vincent)
+  - Do not change the layout shown in the pager if the the pager couldn't
+    update the layout hint (Vincent) [#445686]
+  - Make the pager use the real layout of the screen when it cannot set the
+    layout (Vincent)
+  - Use g_timeout_add_seconds() when possible (Vincent)
+  - Migrate to new GtkTooltip API (Vincent)
+  - Add some safety guards to the public API (Vincent)
+  - Improve position of the drag icon when dragging a window (Vincent)
+    [#446531]
+  - Make wnck_pid_read_resource_usage() work for more X clients (Vincent)
+    [#150153]
+  - Fix a crash happening sometimes when a tasklist is destroyed (Vincent)
+  - Be more solid against invalid values for _NET_NUMBER_OF_DESKTOPS (Vincent)
+  - Do not skip taskbar for transient windows if the window they're transient
+    for don't exist (Vincent)
+  - Fix a crash when dragging a window to somewhere like another
+    workspace/viewport (Vincent) [#420713]
+  - Make WnckSelector and WnckTasklist correctly work from bindings (Vincent)
+  - Fix crash on multihead setups introduced in 2.19.3 (Vincent)
+  - Fix potential invalidity of the previously active window when there are
+    multiple screens (Vincent)
+
+ Misc
+
+  - Totally rework API documentation (Vincent)
+  - New wnckprop utility, not installed by default (Vincent)
+  - Require glib 2.13.0 (Vincent)
+  - Require GTK+ 2.11.3 (Vincent)
+
+ Translators
+
+  - Mindu Dorji (dz)
+  - Jorge González (es)
+  - Ivar Smolin (et)
+  - Wang Jian (zh_CN)
+
 2.19.3.1
 ========
 
