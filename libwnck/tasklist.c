@@ -3096,13 +3096,8 @@ wnck_task_update_visible_state (WnckTask *task)
       text = wnck_task_get_text (task, FALSE);
       if (text != NULL)
         {
-          char *markup;
-
-          markup = g_markup_escape_text (text, -1);
+          gtk_widget_set_tooltip_text (task->button, text);
           g_free (text);
-
-          g_object_set (task->button, "tooltip-markup", markup, NULL);
-          g_free (markup);
         }
     }
 
@@ -3440,7 +3435,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
-  char *markup;
   static GQuark disable_sound_quark = 0;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
@@ -3514,10 +3508,8 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   g_free (text);
   
   text = wnck_task_get_text (task, FALSE);
-  markup = g_markup_escape_text (text, -1);
+  gtk_widget_set_tooltip_text (task->button, text);
   g_free (text);
-  g_object_set (task->button, "tooltip-markup", markup, "image-position", GTK_POS_RIGHT, NULL);
-  g_free (markup);
   
   /* Set up signals */
   if (GTK_IS_TOGGLE_BUTTON (task->button))
