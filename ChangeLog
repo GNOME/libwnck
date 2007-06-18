@@ -1,5 +1,17 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/screen.c: (update_client_list), (update_workspace_list),
+	(update_viewport_settings), (update_workspace_layout):
+	* libwnck/window.c: (_wnck_window_create), (update_actions),
+	(update_wintype), (update_transient_for), (update_wmclass),
+	(update_frame_extents): initializes data to some good values before
+	fetching information from hints, since the fetches might fail.
+
+	* libwnck/screen.c: (update_workspace_list): be more solid against
+	invalid values of _NET_NUMBER_OF_DESKTOPS
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_tasklist_disconnect_screen): disconnect
 	signal handlers for all windows
 	(wnck_tasklist_disconnect_window): new

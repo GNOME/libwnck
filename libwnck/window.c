@@ -435,6 +435,10 @@ _wnck_window_create (Window      xwindow,
   window->priv->pid =
     _wnck_get_pid (window->priv->xwindow);
 
+  window->priv->x = 0;
+  window->priv->y = 0;
+  window->priv->width = 0;
+  window->priv->height = 0;
   _wnck_get_window_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
 			     xwindow,
                              &window->priv->x,
@@ -2544,6 +2548,8 @@ update_actions (WnckWindow *window)
 
   window->priv->actions = 0;
 
+  atoms = NULL;
+  n_atoms = 0;
   if (!_wnck_get_atom_list (window->priv->xwindow,
                             _wnck_atom_get ("_NET_WM_ALLOWED_ACTIONS"),
                             &atoms,
@@ -2650,6 +2656,8 @@ update_wintype (WnckWindow *window)
   found_type = FALSE;
   type = WNCK_WINDOW_NORMAL;
   
+  atoms = NULL;
+  n_atoms = 0;
   if (_wnck_get_atom_list (window->priv->xwindow,
                            _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
                            &atoms,
@@ -2715,6 +2723,7 @@ update_transient_for (WnckWindow *window)
 
   window->priv->need_update_transient_for = FALSE;
   
+  parent = None;
   if (_wnck_get_window (window->priv->xwindow,
                         _wnck_atom_get ("WM_TRANSIENT_FOR"),
                         &parent) &&
@@ -2758,6 +2767,9 @@ update_wmclass (WnckWindow *window)
 
   g_free (window->priv->res_class);
   g_free (window->priv->res_name);
+
+  window->priv->res_class = NULL;
+  window->priv->res_name = NULL;
 
   _wnck_get_wmclass (window->priv->xwindow,
                      &window->priv->res_class,
@@ -2806,6 +2818,8 @@ update_frame_extents (WnckWindow *window)
     return;
 
   window->priv->need_update_frame_extents = FALSE;
+
+  left = right = top = bottom = 0;
 
   if (!_wnck_get_frame_extents (window->priv->xwindow,
                                 &left, &right, &top, &bottom))

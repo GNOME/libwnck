@@ -1354,11 +1354,11 @@ static void
 update_client_list (WnckScreen *screen)
 {
   /* stacking order */
-  Window *stack = NULL;
-  int stack_length = 0;
+  Window *stack;
+  int stack_length;
   /* mapping order */
-  Window *mapping = NULL;
-  int mapping_length = 0;
+  Window *mapping;
+  int mapping_length;
   GList *new_stack_list;
   GList *new_list;
   GList *created;
@@ -1382,11 +1382,15 @@ update_client_list (WnckScreen *screen)
   
   screen->priv->need_update_stack_list = FALSE;
   
+  stack = NULL;
+  stack_length = 0;
   _wnck_get_window_list (screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST_STACKING"),
                          &stack,
                          &stack_length);
 
+  mapping = NULL;
+  mapping_length = 0;
   _wnck_get_window_list (screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST"),
                          &mapping,
@@ -1657,9 +1661,16 @@ update_workspace_list (WnckScreen *screen)
   ++reentrancy_guard;
   
   n_spaces = 0;
-  _wnck_get_cardinal (screen->priv->xroot,
-                      _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS"),
-                      &n_spaces);
+  if (!_wnck_get_cardinal (screen->priv->xroot,
+                           _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS"),
+                           &n_spaces))
+    n_spaces = 1;
+
+  if (n_spaces <= 0)
+    {
+      g_warning ("Someone set a weird number of desktops in _NET_NUMBER_OF_DESKTOPS, assuming the value is 1\n");
+      n_spaces = 1;
+    }
   
   old_n_spaces = g_list_length (screen->priv->workspaces);
 
@@ -1780,6 +1791,8 @@ update_viewport_settings (WnckScreen *screen)
   space_width = wnck_screen_get_width (screen);
   space_height = wnck_screen_get_height (screen);
   
+  p_coord = NULL;
+  n_coord = 0;
   if (_wnck_get_cardinal_list (screen->priv->xroot,
 			       _wnck_atom_get ("_NET_DESKTOP_GEOMETRY"),
                                &p_coord, &n_coord) &&
@@ -1811,6 +1824,8 @@ update_viewport_settings (WnckScreen *screen)
 
   got_viewport_prop = FALSE;
   
+  p_coord = NULL;
+  n_coord = 0;
   if (_wnck_get_cardinal_list (screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_VIEWPORT"),
                                &p_coord, &n_coord) &&
@@ -1930,14 +1945,13 @@ update_workspace_layout (WnckScreen *screen)
   gulong *list;
   int n_items;
 
-  list = NULL;
-  n_items = 0;
-
   if (!screen->priv->need_update_workspace_layout)
     return;
 
   screen->priv->need_update_workspace_layout = FALSE;
 
+  list = NULL;
+  n_items = 0;
   if (_wnck_get_cardinal_list (screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
                                &list, 
