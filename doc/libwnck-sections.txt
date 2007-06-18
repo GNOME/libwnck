@@ -98,7 +98,6 @@ WnckWindowClass
 <SECTION>
 <FILE>class-group</FILE>
 <TITLE>WnckClassGroup</TITLE>
-<INCLUDE>libwnck/libwnck.h, libwnck/class-group.h</INCLUDE>
 WnckClassGroup
 wnck_class_group_get
 wnck_class_group_get_res_class

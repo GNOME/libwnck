@@ -23,16 +23,20 @@
 #ifndef WNCK_LIB_H
 #define WNCK_LIB_H
 
-#include <libwnck/application.h>
-#include <libwnck/screen.h>
-#include <libwnck/util.h>
-#include <libwnck/window.h>
-#include <libwnck/workspace.h>
 #include <libwnck/wnck-enum-types.h>
+
+#include <libwnck/window.h>
+#include <libwnck/application.h>
+#include <libwnck/class-group.h>
+#include <libwnck/workspace.h>
+#include <libwnck/screen.h>
 
 #include <libwnck/pager.h>
 #include <libwnck/tasklist.h>
 #include <libwnck/selector.h>
+
+#include <libwnck/window-action-menu.h>
+#include <libwnck/util.h>
 
 #endif /* WNCK_LIB_H */
 
