@@ -1,5 +1,10 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_drag_clean_up): fix commit for bug #420713.
+	There was probably a crasher.
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	Be a bit more friendly to people who want to use our widgets through
 	bindings.
 
