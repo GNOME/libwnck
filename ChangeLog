@@ -1,3 +1,10 @@
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_tasklist_disconnect_screen): disconnect
+	signal handlers for all windows
+	(wnck_tasklist_disconnect_window): new
+	Fix a crash that can happen when destroying the tasklist.
+
 2007-06-16  Vincent Untz  <vuntz@gnome.org>
 
 	Make wnck_pid_read_resource_usage() work for more X clients.

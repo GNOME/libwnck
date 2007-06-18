@@ -304,6 +304,8 @@ static void     wnck_tasklist_viewports_changed        (WnckScreen   *screen,
 							WnckTasklist *tasklist);
 static void     wnck_tasklist_connect_window           (WnckTasklist *tasklist,
 							WnckWindow   *window);
+static void     wnck_tasklist_disconnect_window        (WnckTasklist *tasklist,
+							WnckWindow   *window);
 
 static void     wnck_tasklist_change_active_task       (WnckTasklist *tasklist,
 							WnckTask *active_task);
@@ -1704,7 +1706,15 @@ wnck_tasklist_connect_screen (WnckTasklist *tasklist)
 static void
 wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 {
-  int i;
+  GList *windows;
+  int    i;
+
+  windows = wnck_screen_get_windows (tasklist->priv->screen);
+  while (windows != NULL)
+    {
+      wnck_tasklist_disconnect_window (tasklist, windows->data);
+      windows = windows->next;
+    }
 
   i = 0;
   while (i < N_SCREEN_CONNECTIONS)
@@ -1717,6 +1727,8 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 
       ++i;
     }
+
+  g_assert (i == N_SCREEN_CONNECTIONS);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   if (tasklist->priv->startup_sequence_timeout != 0)
@@ -2356,6 +2368,18 @@ wnck_tasklist_connect_window (WnckTasklist *tasklist,
   g_signal_connect_object (window, "geometry_changed",
 			   G_CALLBACK (wnck_tasklist_window_changed_geometry),
 			   tasklist, 0);
+}
+
+static void
+wnck_tasklist_disconnect_window (WnckTasklist *tasklist,
+			         WnckWindow   *window)
+{
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_tasklist_window_changed_workspace,
+                                        tasklist);
+  g_signal_handlers_disconnect_by_func (window,
+                                        wnck_tasklist_window_changed_geometry,
+                                        tasklist);
 }
 
 static void
