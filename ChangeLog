@@ -1,5 +1,19 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	Be a bit more friendly to people who want to use our widgets through
+	bindings.
+
+	* libwnck/selector.c: (wnck_selector_class_init): add constructor
+	(wnck_selector_constructor): new, move what we did in
+	wnck_selector_new() here
+	(wnck_selector_new): updated
+	* libwnck/tasklist.c: (wnck_tasklist_class_init): add constructor
+	(wnck_tasklist_constructor): new, move what we did in
+	wnck_tasklist_new() here
+	(wnck_tasklist_new): updated
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	Fix a crash when dragging a window to somewhere like another
 	workspace/viewport. The original drag source widget might have been
 	destroyed. We're now more solid against this, and use another drag

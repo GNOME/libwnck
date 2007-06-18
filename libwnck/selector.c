@@ -74,6 +74,9 @@ struct _WnckSelectorPrivate {
 
 G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
 
+static GObject *wnck_selector_constructor (GType                  type,
+                                           guint                  n_construct_properties,
+                                           GObjectConstructParam *construct_properties);
 static void wnck_selector_finalize          (GObject           *object);
 static void wnck_selector_realize           (GtkWidget *widget);
 static void wnck_selector_unrealize         (GtkWidget *widget);
@@ -1271,6 +1274,7 @@ wnck_selector_class_init (WnckSelectorClass *klass)
   GtkObjectClass *gtk_object_class = GTK_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class     = GTK_WIDGET_CLASS (klass);
 
+  object_class->constructor = wnck_selector_constructor;
   object_class->finalize = wnck_selector_finalize;
 
   gtk_object_class->destroy = wnck_selector_destroy;
@@ -1279,6 +1283,23 @@ wnck_selector_class_init (WnckSelectorClass *klass)
   widget_class->unrealize = wnck_selector_unrealize;
 
   g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
+}
+
+static GObject *
+wnck_selector_constructor (GType                  type,
+                           guint                  n_construct_properties,
+                           GObjectConstructParam *construct_properties)
+{
+  GObject *obj;
+
+  obj = G_OBJECT_CLASS (wnck_selector_parent_class)->constructor (
+                                                      type,
+                                                      n_construct_properties,
+                                                      construct_properties);
+
+  wnck_selector_fill (WNCK_SELECTOR (obj));
+
+  return obj;
 }
 
 static void
@@ -1368,8 +1389,6 @@ wnck_selector_new (void)
   WnckSelector *selector;
 
   selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
-
-  wnck_selector_fill (selector);
 
   return GTK_WIDGET (selector);
 }
