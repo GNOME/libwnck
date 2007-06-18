@@ -80,10 +80,13 @@ struct _WnckScreenPrivate
   GList *workspaces;
 
   /* previously_active_window is used in tandem with active_window to
-   * determine return status of meta_window_is_most_recently_actived().
+   * determine return status of wnck_window_is_most_recently_actived().
+   * These are usually shared for all screens, although this is not guaranteed
+   * to be true.
    */
   WnckWindow *active_window;
   WnckWindow *previously_active_window;
+
   WnckWorkspace *active_workspace;
 
   /* Provides the sorting order number for the next window, to make
@@ -457,6 +460,7 @@ static void
 wnck_screen_finalize (GObject *object)
 {
   WnckScreen *screen;
+  gpointer weak_pointer;
 
   screen = WNCK_SCREEN (object);
   
@@ -469,6 +473,18 @@ wnck_screen_finalize (GObject *object)
   g_list_free (screen->priv->mapped_windows);
   g_list_free (screen->priv->stacked_windows);
   g_list_free (screen->priv->workspaces);
+
+  weak_pointer = &screen->priv->active_window;
+  if (screen->priv->active_window != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (screen->priv->active_window),
+                                  weak_pointer);
+  screen->priv->active_window = NULL;
+
+  weak_pointer = &screen->priv->previously_active_window;
+  if (screen->priv->previously_active_window != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (screen->priv->previously_active_window),
+                                  weak_pointer);
+  screen->priv->previously_active_window = NULL;
 
   g_free (screen->priv->wm_name);
 
@@ -1290,6 +1306,48 @@ wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout)
   g_free (layout->grid);
 }
 
+static void
+set_active_window (WnckScreen *screen,
+                   WnckWindow *window)
+{
+  gpointer weak_pointer;
+
+  weak_pointer = &screen->priv->active_window;
+
+  /* we need the weak pointer since the active window might be shared between
+   * two screens, and so the value for one screen might become invalid when
+   * the window is destroyed on another screen */
+  if (screen->priv->active_window != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (screen->priv->active_window),
+                                  weak_pointer);
+
+  screen->priv->active_window = window;
+  if (screen->priv->active_window != NULL)
+    g_object_add_weak_pointer (G_OBJECT (screen->priv->active_window),
+                               weak_pointer);
+}
+
+static void
+set_previously_active_window (WnckScreen *screen,
+                              WnckWindow *window)
+{
+  gpointer weak_pointer;
+
+  weak_pointer = &screen->priv->previously_active_window;
+
+  /* we need the weak pointer since the active window might be shared between
+   * two screens, and so the value for one screen might become invalid when
+   * the window is destroyed on another screen */
+  if (screen->priv->previously_active_window != NULL)
+    g_object_remove_weak_pointer (G_OBJECT (screen->priv->previously_active_window),
+                                  weak_pointer);
+
+  screen->priv->previously_active_window = window;
+  if (screen->priv->previously_active_window != NULL)
+    g_object_add_weak_pointer (G_OBJECT (screen->priv->previously_active_window),
+                               weak_pointer);
+}
+
 static gboolean
 lists_equal (GList *a,
              GList *b)
@@ -1599,18 +1657,18 @@ update_client_list (WnckScreen *screen)
 
       window = WNCK_WINDOW (tmp->data);
 
+      if (window == screen->priv->previously_active_window)
+        {
+          set_previously_active_window (screen, NULL);
+        }
+      
       if (window == screen->priv->active_window)
         {
-          screen->priv->previously_active_window = screen->priv->active_window;
-          screen->priv->active_window = NULL;
+          set_previously_active_window (screen, screen->priv->active_window);
+          set_active_window (screen, NULL);
           active_changed = TRUE;
         }
 
-      if (window == screen->priv->previously_active_window)
-        {
-          screen->priv->previously_active_window = NULL;
-        }
-      
       emit_window_closed (screen, window);
     }
 
@@ -1947,8 +2005,8 @@ update_active_window (WnckScreen *screen)
   if (window == screen->priv->active_window)
     return;
 
-  screen->priv->previously_active_window = screen->priv->active_window;
-  screen->priv->active_window = window;
+  set_previously_active_window (screen, screen->priv->active_window);
+  set_active_window (screen, window);
 
   emit_active_window_changed (screen);
 }
