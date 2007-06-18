@@ -764,6 +764,8 @@ wnck_tasklist_set_relief_callback (WnckWindow   *win,
  * Sets the relief type of the buttons in @tasklist to @relief. The main use of
  * this function is proper integration of #WnckTasklist in panels with
  * non-system backgrounds.
+ *
+ * Since: 2.12
  */
 void
 wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
@@ -937,6 +939,7 @@ wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
  *
  * Sets a function to be used for loading icons.
  * 
+ * Since: 2.2
  **/
 void
 wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
@@ -1746,6 +1749,7 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
  *
  * Does nothing.
  *
+ * Since: 2.2
  * Deprecated:
  */
 void

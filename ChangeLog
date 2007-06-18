@@ -1,5 +1,24 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/tasklist.sgml:
+	* doc/tmpl/util.sgml:
+	* libwnck/application.c:
+	* libwnck/class-group.c:
+	* libwnck/pager.c:
+	* libwnck/screen.c:
+	* libwnck/screen.h:
+	* libwnck/selector.c:
+	* libwnck/tasklist.c:
+	* libwnck/tasklist.h:
+	* libwnck/util.c:
+	* libwnck/util.h:
+	* libwnck/window.c:
+	* libwnck/window.h:
+	* libwnck/workspace.c: add lots of Since: tags.
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_update_visible_state),
 	(wnck_task_create_widgets): use gtk_widget_set_tooltip_text()
 

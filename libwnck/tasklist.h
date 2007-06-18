@@ -117,6 +117,8 @@ gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
  * Returns: it should return a <classname>GdkPixbuf</classname> of @icon_name
  * at size @size, or %NULL if no icon for @icon_name at size @size could be
  * loaded.
+ *
+ * Since: 2.2
  */
 typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
                                             int           size,

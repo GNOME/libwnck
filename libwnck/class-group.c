@@ -167,6 +167,8 @@ wnck_class_group_finalize (GObject *object)
  * there is no #WnckClassGroup with the specified @res_class. The returned
  * #WnckClassGroup is owned by libwnck and must not be referenced or
  * unreferenced.
+ *
+ * Since: 2.2
  **/
 WnckClassGroup *
 wnck_class_group_get (const char *res_class)
@@ -526,6 +528,8 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
  * Return value: the list of #WnckWindow grouped in @class_group, or %NULL if
  * the group contains no window. The list should not be modified nor freed, as
  * it is owned by @class_group.
+ *
+ * Since: 2.2
  **/
 GList *
 wnck_class_group_get_windows (WnckClassGroup *class_group)
@@ -546,6 +550,8 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
  * 
  * Return value: the resource class name of @class_group, or an
  * empty string if the group has no resource class name.
+ *
+ * Since: 2.2
  **/
 const char *
 wnck_class_group_get_res_class (WnckClassGroup *class_group)
@@ -571,6 +577,8 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
  * resource class name is used.
  * 
  * Return value: an human-readable name for @class_group.
+ *
+ * Since: 2.2
  **/
 const char *
 wnck_class_group_get_name (WnckClassGroup *class_group)
@@ -597,6 +605,8 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
  * Return value: the icon for @class_group. The caller should reference the
  * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
  * around.
+ *
+ * Since: 2.2
  **/
 GdkPixbuf *
 wnck_class_group_get_icon (WnckClassGroup *class_group)
@@ -621,6 +631,8 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
  * Return value: the mini-icon for @class_group. The caller should reference
  * the returned <classname>GdkPixbuf</classname> if it needs to keep the
  * mini-icon around.
+ *
+ * Since: 2.2
  **/
 GdkPixbuf *
 wnck_class_group_get_mini_icon (WnckClassGroup *class_group)

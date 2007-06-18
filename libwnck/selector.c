@@ -1347,6 +1347,8 @@ wnck_selector_unrealize (GtkWidget *widget)
  * #WnckScreen it is on.
  *
  * Return value: a newly created #WnckSelector.
+ *
+ * Since: 2.10
  */
 GtkWidget *
 wnck_selector_new (void)

@@ -456,6 +456,8 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
  *
  * Return value: the startup sequence ID used for startup notification of @app,
  * or %NULL if none is available.
+ *
+ * Since: 2.2
  */
 const char*
 wnck_application_get_startup_id (WnckApplication *app)

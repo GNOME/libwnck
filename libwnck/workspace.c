@@ -176,6 +176,7 @@ wnck_workspace_get_name (WnckWorkspace *space)
  *
  * Changes the name of @space.
  * 
+ * Since: 2.2
  **/
 void
 wnck_workspace_change_name (WnckWorkspace *space,
@@ -199,6 +200,7 @@ wnck_workspace_change_name (WnckWorkspace *space,
  * manager may decide to refuse the request (to not steal the focus if there is
  * a more recent user activity, for example).
  * 
+ * Since: 2.10 (@timestamp argument was missing in earlier versions)
  **/
 void
 wnck_workspace_activate (WnckWorkspace *space,
@@ -307,6 +309,8 @@ _wnck_workspace_set_viewport (WnckWorkspace *space,
  * Returns the width of @space.
  *
  * Returns: the width of @space.
+ *
+ * Since: 2.4
  */
 int
 wnck_workspace_get_width (WnckWorkspace *space)
@@ -323,6 +327,8 @@ wnck_workspace_get_width (WnckWorkspace *space)
  * Returns the height of @space.
  *
  * Returns: the height of @space.
+ *
+ * Since: 2.4
  */
 int
 wnck_workspace_get_height (WnckWorkspace *space)
@@ -340,6 +346,8 @@ wnck_workspace_get_height (WnckWorkspace *space)
  *
  * Returns: the X coordinate of the viewport in @space, or 0 if @space does not
  * contain a viewport.
+ *
+ * Since: 2.4
  */
 int
 wnck_workspace_get_viewport_x (WnckWorkspace *space)
@@ -357,6 +365,8 @@ wnck_workspace_get_viewport_x (WnckWorkspace *space)
  *
  * Returns: the Y coordinate of the viewport in @space, or 0 if @space does not
  * contain a viewport.
+ *
+ * Since: 2.4
  */
 int
 wnck_workspace_get_viewport_y (WnckWorkspace *space)
@@ -373,6 +383,8 @@ wnck_workspace_get_viewport_y (WnckWorkspace *space)
  * Returns whether @space contains a viewport.
  *
  * Returns: %TRUE if @space contains a viewport, %FALSE otherwise.
+ *
+ * Since: 2.4
  */
 gboolean
 wnck_workspace_is_virtual (WnckWorkspace *space)

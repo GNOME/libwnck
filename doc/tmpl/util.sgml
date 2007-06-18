@@ -17,14 +17,6 @@ Miscellaneous Functions
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### ENUM WnckClientType ##### -->
-<para>
-
-</para>
-
-@WNCK_CLIENT_TYPE_APPLICATION: 
-@WNCK_CLIENT_TYPE_PAGER: 
-
 <!-- ##### FUNCTION wnck_gtk_window_set_dock_type ##### -->
 <para>
 
@@ -32,6 +24,14 @@ Miscellaneous Functions
 
 @window: 
 
+
+<!-- ##### ENUM WnckClientType ##### -->
+<para>
+
+</para>
+
+@WNCK_CLIENT_TYPE_APPLICATION: 
+@WNCK_CLIENT_TYPE_PAGER: 
 
 <!-- ##### FUNCTION wnck_set_client_type ##### -->
 <para>

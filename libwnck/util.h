@@ -48,6 +48,8 @@ typedef struct _WnckResourceUsage WnckResourceUsage;
  * The #WnckResourceUsage struct contains information about the total resource
  * usage of an X client, and the number of resources allocated for each
  * resource type.
+ *
+ * Since: 2.6
  */
 struct _WnckResourceUsage
 {
@@ -85,6 +87,8 @@ struct _WnckResourceUsage
  * with window management, like pagers and taskbars.
  *
  * Type describing the role of the libwnck user.
+ *
+ * Since: 2.14
  */
 typedef enum {
   WNCK_CLIENT_TYPE_APPLICATION = 1,

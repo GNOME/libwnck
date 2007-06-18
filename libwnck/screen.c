@@ -642,6 +642,8 @@ wnck_screen_get_for_root (gulong root_window_id)
  * #WnckScreen has an index of 0.
  * 
  * Return value: the index of @space on @screen, or -1 on errors.
+ *
+ * Since: 2.20
  **/
 int
 wnck_screen_get_number (WnckScreen *screen)
@@ -690,7 +692,10 @@ wnck_screen_get_workspace (WnckScreen *screen,
  * index of 0. See also wnck_workspace_get_number().
  * 
  * Return value: the index of @space on @screen, or -1 on errors.
+ *
+ * Since: 2.14
  **/
+/* TODO: when we break API again, kill this function */
 int
 wnck_screen_get_workspace_index (WnckScreen    *screen,
                                  WnckWorkspace *space)
@@ -747,6 +752,8 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
  * direction on @screen, or %NULL if no such neighbor #WnckWorkspace exists.
  * The returned #WnckWorkspace is owned by libwnck and must not be referenced
  * or unreferenced.
+ *
+ * Since: 2.14
  **/
 WnckWorkspace*
 wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
@@ -826,6 +833,8 @@ wnck_screen_get_active_window (WnckScreen *screen)
  * Return value: the previously active #WnckWindow on @screen, or %NULL. The
  * returned #WnckWindow is owned by libwnck and must not be referenced or
  * unreferenced.
+ *
+ * Since: 2.8
  **/
 WnckWindow*
 wnck_screen_get_previously_active_window (WnckScreen *screen)
@@ -936,6 +945,8 @@ wnck_screen_get_workspace_count (WnckScreen *screen)
  * @count: the number of #WnckWorkspace to request.
  * 
  * Asks the window manager to change the number of #WnckWorkspace on @screen.
+ *
+ * Since: 2.2
  **/
 void
 wnck_screen_change_workspace_count (WnckScreen *screen,
@@ -1049,6 +1060,7 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
  * Calculates the layout of #WnckWorkspace, with additional information like
  * the row and column of the #WnckWorkspace with index @space_index.
  *
+ * Since: 2.12
  */
 /* TODO: when we break API again, make this function (and WnckWorkspaceLayout)
  * private. Also remove num_workspaces since we can get it from screen! */
@@ -1265,6 +1277,8 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
  *
  * Frees the content of @layout. This does not free @layout itself, so you
  * might want to free @layout yourself after calling this.
+ *
+ * Since: 2.12
  */
 /* TODO: when we break API again, make this function (and WnckWorkspaceLayout)
  * private. */
@@ -2338,6 +2352,8 @@ emit_wm_changed (WnckScreen *screen)
  * does not comply with the <ulink
  * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink>
  * specification.
+ *
+ * Since: 2.20
  */
 const char *
 wnck_screen_get_window_manager_name (WnckScreen *screen)
@@ -2560,6 +2576,8 @@ wnck_screen_release_workspace_layout (WnckScreen *screen,
  * changed when a #WnckScreen::showing-desktop-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is fullscreen, %FALSE otherwise.
+ *
+ * Since: 2.2
  **/
 gboolean
 wnck_screen_get_showing_desktop (WnckScreen *screen)
@@ -2576,6 +2594,8 @@ wnck_screen_get_showing_desktop (WnckScreen *screen)
  *
  * Asks the window manager to set the "showing the desktop" mode on @screen
  * according to @show.
+ *
+ * Since: 2.2
  **/
 void
 wnck_screen_toggle_showing_desktop (WnckScreen *screen,
@@ -2596,6 +2616,8 @@ wnck_screen_toggle_showing_desktop (WnckScreen *screen,
  *
  * Asks the window manager to move the viewport of the current #WnckWorkspace
  * on @screen.
+ *
+ * Since: 2.4
  */
 void
 wnck_screen_move_viewport (WnckScreen *screen,

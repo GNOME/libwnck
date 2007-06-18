@@ -118,6 +118,8 @@ _wnck_print_resource_usage (WnckResourceUsage *usage)
  * fields of @usage are set to 0.
  *
  * To properly work, this function requires the XRes extension on the X server.
+ *
+ * Since: 2.6
  */
 void
 wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
@@ -588,6 +590,8 @@ wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
  * again after a few seconds should work.
  *
  * To properly work, this function requires the XRes extension on the X server.
+ *
+ * Since: 2.6
  */
 void
 wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
@@ -618,6 +622,8 @@ static WnckClientType client_type = 0;
  * Sets the role of the libwnck user. For applications providing some window
  * management features, like pagers or tasklists, it is important to set the
  * role to %WNCK_CLIENT_TYPE_PAGER for libwnck to properly work.
+ *
+ * Since: 2.14
  */
 void
 wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)

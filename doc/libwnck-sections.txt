@@ -274,9 +274,9 @@ WnckSelectorClass
 <FILE>tasklist</FILE>
 <TITLE>WnckTasklist</TITLE>
 WnckTasklist
-WnckTasklistGroupingType
 wnck_tasklist_new
 wnck_tasklist_set_screen
+WnckTasklistGroupingType
 wnck_tasklist_set_grouping
 wnck_tasklist_set_grouping_limit
 wnck_tasklist_set_include_all_workspaces
@@ -313,8 +313,8 @@ wnck_create_window_action_menu
 <SECTION>
 <FILE>util</FILE>
 <TITLE>Miscellaneous Functions</TITLE>
-WnckClientType
 wnck_gtk_window_set_dock_type
+WnckClientType
 wnck_set_client_type
 WnckResourceUsage
 wnck_xid_read_resource_usage

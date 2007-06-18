@@ -1687,6 +1687,7 @@ wnck_pager_focus (GtkWidget        *widget,
  *
  * Does nothing.
  *
+ * Since: 2.2
  * Deprecated:
  */
 void
@@ -1903,6 +1904,8 @@ wnck_pager_set_show_all (WnckPager *pager,
  * Sets the shadow type for @pager to @shadow_type. The main use of this
  * function is proper integration of #WnckPager in panels with non-system
  * backgrounds.
+ *
+ * Since: 2.2
  */
 void
 wnck_pager_set_shadow_type (WnckPager *   pager,

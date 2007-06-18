@@ -134,6 +134,8 @@ typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
  * The #WnckWorkspaceLayout struct contains information about the layout of
  * #WnckWorkspace on a #WnckScreen, and the exact position of a specific
  * #WnckWorkspace.
+ *
+ * Since: 2.12
  */
 struct _WnckWorkspaceLayout
 {
@@ -157,6 +159,8 @@ struct _WnckWorkspaceLayout
  * #WnckWorkspace.
  *
  * Type defining a direction in which to search a neighbor #WnckWorkspace.
+ *
+ * Since: 2.14
  */
 typedef enum
 {

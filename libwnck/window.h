@@ -179,6 +179,8 @@ typedef enum
  *
  * Flag used when changing the geometry of a #WnckWindow. This is the gravity
  * point to use as a reference for the new position.
+ *
+ * Since: 2.16
  */
 typedef enum
 {
@@ -204,6 +206,8 @@ typedef enum
  *
  * Flag used as a bitmask when changing the geometry of a #WnckWindow. This
  * indicates which part of the geometry should be changed.
+ *
+ * Since: 2.16
  */
 typedef enum
 {

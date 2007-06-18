@@ -38,15 +38,6 @@ WnckTasklist
 
 </para>
 
-<!-- ##### ENUM WnckTasklistGroupingType ##### -->
-<para>
-
-</para>
-
-@WNCK_TASKLIST_NEVER_GROUP: 
-@WNCK_TASKLIST_AUTO_GROUP: 
-@WNCK_TASKLIST_ALWAYS_GROUP: 
-
 <!-- ##### FUNCTION wnck_tasklist_new ##### -->
 <para>
 
@@ -64,6 +55,15 @@ WnckTasklist
 @tasklist: 
 @screen: 
 
+
+<!-- ##### ENUM WnckTasklistGroupingType ##### -->
+<para>
+
+</para>
+
+@WNCK_TASKLIST_NEVER_GROUP: 
+@WNCK_TASKLIST_AUTO_GROUP: 
+@WNCK_TASKLIST_ALWAYS_GROUP: 
 
 <!-- ##### FUNCTION wnck_tasklist_set_grouping ##### -->
 <para>

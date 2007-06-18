@@ -495,6 +495,8 @@ _wnck_window_destroy (WnckWindow *window)
  *
  * Return value: %TRUE if wnck_window_get_name() returns @window<!-- -->'s
  * name, %FALSE if it returns a fallback name.
+ *
+ * Since: 2.16
  **/
 gboolean
 wnck_window_has_name (WnckWindow *window)
@@ -546,6 +548,8 @@ wnck_window_get_name (WnckWindow *window)
  *
  * Return value: %TRUE if wnck_window_get_icon_name() returns
  * @window<!-- -->'s icon name, %FALSE if it returns a fallback name.
+ *
+ * Since: 2.16
  **/
 gboolean
 wnck_window_has_icon_name (WnckWindow *window)
@@ -609,6 +613,8 @@ wnck_window_get_application  (WnckWindow *window)
  *
  * Return value: the #WnckWindow for which @window is transient, or %NULL if
  * @window is not transient for any #WnckWindow.
+ *
+ * Since: 2.12
  **/
 WnckWindow*
 wnck_window_get_transient (WnckWindow *window)
@@ -661,6 +667,8 @@ wnck_window_get_xid (WnckWindow *window)
  * Return value: the #WnckClassGroup to which @window belongs. The returned
  * #WnckClassGroup is owned by libwnck and must not be referenced or
  * unreferenced.
+ *
+ * Since: 2.2
  **/
 WnckClassGroup *
 wnck_window_get_class_group (WnckWindow *window)
@@ -753,6 +761,8 @@ wnck_window_get_pid (WnckWindow *window)
  * libwnck. The initial value is defined when the window is created.
  *
  * Return value: the sort order of @window, or G_MAXINT if none is available.
+ *
+ * Since: 2.10
  **/
 gint
 wnck_window_get_sort_order (WnckWindow *window)
@@ -804,6 +814,8 @@ wnck_window_get_window_type (WnckWindow *window)
  * @wintype: a semantic type.
  * 
  * Sets the semantic type of @window to @wintype.
+ *
+ * Since: 2.12
  **/
 void
 wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
@@ -879,6 +891,8 @@ wnck_window_is_minimized (WnckWindow *window)
  * hints.
  *
  * Return value: %TRUE if @window needs attention, %FALSE otherwise.
+ *
+ * Since: 2.12
  **/
 gboolean
 wnck_window_needs_attention (WnckWindow *window)
@@ -923,6 +937,8 @@ transient_needs_attention (WnckWindow *window)
  *
  * Return value: %TRUE if @window or one of its transients needs attention,
  * %FALSE otherwise.
+ *
+ * Since: 2.12
  **/
 gboolean
 wnck_window_or_transient_needs_attention (WnckWindow *window)
@@ -1055,6 +1071,8 @@ wnck_window_is_shaded                 (WnckWindow *window)
  * See wnck_window_make_above() for more details on this state.
  *
  * Return value: %TRUE if @window is above other windows, %FALSE otherwise.
+ *
+ * Since: 2.14
  **/
 gboolean
 wnck_window_is_above                  (WnckWindow *window)
@@ -1125,6 +1143,8 @@ wnck_window_is_skip_tasklist          (WnckWindow *window)
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is fullscreen, %FALSE otherwise.
+ *
+ * Since: 2.8
  **/
 gboolean
 wnck_window_is_fullscreen                 (WnckWindow *window)
@@ -1161,6 +1181,8 @@ wnck_window_set_skip_tasklist (WnckWindow *window,
  *
  * Asks the window manager to set the fullscreen state of @window according to
  * @fullscreen.
+ *
+ * Since: 2.8
  **/
 void
 wnck_window_set_fullscreen (WnckWindow *window,
@@ -1203,6 +1225,8 @@ wnck_window_is_sticky                 (WnckWindow *window)
  * this call to occur.
  *
  * Closes @window.
+ *
+ * Since: 2.6 (@timestamp argument was missing in earlier versions)
  **/
 void
 wnck_window_close (WnckWindow *window,
@@ -1397,6 +1421,8 @@ wnck_window_unshade                 (WnckWindow *window)
  * Asks the window manager to put @window on top of most windows (@window will
  * not be on top of focused fullscreen windows, of other windows with this
  * setting and of dock windows).
+ *
+ * Since: 2.14
  **/
 void
 wnck_window_make_above (WnckWindow *window)
@@ -1416,6 +1442,8 @@ wnck_window_make_above (WnckWindow *window)
  *
  * Asks the window manager to not put @window on top of most windows, and to
  * put it again in the stack with other windows.
+ *
+ * Since: 2.14
  **/
 void
 wnck_window_unmake_above (WnckWindow *window)
@@ -1611,6 +1639,8 @@ wnck_window_unpin (WnckWindow *window)
  * window manager may choose to raise @window along with focusing it, and may
  * decide to refuse the request (to not steal the focus if there is a more
  * recent user activity, for example).
+ *
+ * Since: 2.10 (@timestamp argument was missing in earlier versions)
  **/
 void
 wnck_window_activate (WnckWindow *window,
@@ -1654,6 +1684,8 @@ wnck_window_is_active (WnckWindow *window)
  *
  * Return value: %TRUE if @window was the most recently activated window on its
  * #WnckScreen, %FALSE otherwise.
+ *
+ * Since: 2.8
  **/
 gboolean
 wnck_window_is_most_recently_activated (WnckWindow *window)
@@ -1714,6 +1746,7 @@ find_last_transient_for (GList *windows,
  * the most recently active window among @window and its transients.
  * This is probably best implemented on the window manager side.
  * 
+ * Since: 2.10 (@timestamp argument was missing in earlier versions)
  **/
 void
 wnck_window_activate_transient (WnckWindow *window,
@@ -1767,6 +1800,8 @@ wnck_window_activate_transient (WnckWindow *window,
  * 
  * Return value: %TRUE if one of the transients of @window is the most recently
  * activated window, %FALSE otherwise.
+ *
+ * Since: 2.12
  **/
 gboolean
 wnck_window_transient_is_most_recently_activated (WnckWindow *window)
@@ -2021,6 +2056,8 @@ wnck_window_get_geometry (WnckWindow *window,
  * using wnck_window_set_geometry() with the values returned by
  * wnck_window_get_client_window_geometry() should reduce the size of @window
  * and move it.
+ *
+ * Since: 2.16
  **/
 void
 wnck_window_set_geometry (WnckWindow               *window,
@@ -2138,6 +2175,8 @@ wnck_window_is_on_workspace (WnckWindow    *window,
  * 
  * Return value: %TRUE if @window appears in current viewport of @workspace,
  * %FALSE otherwise.
+ *
+ * Since: 2.4
  **/
 gboolean
 wnck_window_is_in_viewport (WnckWindow    *window,
