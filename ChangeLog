@@ -1,5 +1,9 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/Makefile.am: install wnckprop
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_drag_clean_up): fix critical warning. Things
 	were done in the wrong if () {} part.
 

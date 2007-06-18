@@ -62,9 +62,6 @@ $(libwnck_1_la_OBJECTS): inlinepixbufs.h
 wnckprop_SOURCES=		\
 	wnckprop.c
 
-wnckprop_LDADD=   \
-	@LIBWNCK_LIBS@ @X_LIBS@ ./$(lib_LTLIBRARIES)
-
 test_wnck_SOURCES=		\
 	test-wnck.c
 
@@ -76,6 +73,9 @@ test_selector_SOURCES=		\
 
 test_pager_SOURCES=		\
 	test-pager.c
+
+bin_PROGRAMS=			\
+	wnckprop
 
 noinst_PROGRAMS=		\
 	wnckprop		\
@@ -92,10 +92,13 @@ libwnck_1_la_LDFLAGS=								    \
 libwnck_1_la_LIBADD=   \
 	@LIBWNCK_LIBS@ @X_LIBS@
 
-test_wnck_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
-test_tasklist_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
-test_selector_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
-test_pager_LDADD=@LIBWNCK_LIBS@ libwnck-1.la
+wnckprop_LDADD=   \
+	@LIBWNCK_LIBS@ @X_LIBS@ ./$(lib_LTLIBRARIES)
+
+test_wnck_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
+test_tasklist_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
+test_selector_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
+test_pager_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
 
 wnck-marshal.h: stamp-wnck-marshal.h
 	@true
