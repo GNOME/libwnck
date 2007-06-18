@@ -2454,7 +2454,7 @@ update_state (WnckWindow *window)
       /* Skip taskbar if the window is transient
        * for some main application window
        */
-      if (window->priv->transient_for != None &&
+      if (wnck_window_get_transient (window) != NULL &&
           !window->priv->transient_for_root)
         window->priv->skip_taskbar = TRUE;
       break;

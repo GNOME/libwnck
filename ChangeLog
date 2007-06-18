@@ -1,5 +1,11 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window.c: (update_state): only skip taskbar for transient
+	windows if the window they're transient for actually exists.
+	* libwnck/libwnck.h: fix compilation
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-sections.txt:
 	* libwnck/libwnck.h: add missing includes of our public API
 
