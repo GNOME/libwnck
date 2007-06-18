@@ -1464,6 +1464,9 @@ wnck_update_drag_icon (WnckWindow     *window,
   GtkWidget *widget;
 
   widget = g_object_get_data (G_OBJECT (context), "wnck-drag-source-widget");
+  if (!widget)
+    return;
+
   if (!gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (widget),
 					  GTK_ICON_SIZE_DND, &dnd_w, &dnd_h))
     dnd_w = dnd_h = 32;
@@ -1508,6 +1511,13 @@ wnck_drag_window_destroyed (gpointer  contextp,
                       FALSE, TRUE);
 }
 
+static void
+wnck_drag_source_destroyed (gpointer  contextp,
+                            GObject  *drag_source)
+{
+  g_object_steal_data (G_OBJECT (contextp), "wnck-drag-source-widget");
+}
+
 /* CAREFUL: This function is a bit brittle, because the pointers given may be
  * finalized already */
 static void
@@ -1537,7 +1547,8 @@ wnck_drag_clean_up (WnckWindow     *window,
  * wnck_window_set_as_drag_icon:
  * @window: #WnckWindow to use as drag icon
  * @context: #GdkDragContext to set the icon on
- * @drag_source: #GtkWidget that started the drag
+ * @drag_source: #GtkWidget that started the drag, or one of its parent. This
+ * widget needs to stay alive as long as possible during the drag.
  *
  * Sets the given @window as the drag icon for @context.
  **/
@@ -1556,6 +1567,8 @@ _wnck_window_set_as_drag_icon (WnckWindow     *window,
                     G_CALLBACK (wnck_update_drag_icon), context);
 
   g_object_set_data (G_OBJECT (context), "wnck-drag-source-widget", drag_source);
+  g_object_weak_ref (G_OBJECT (drag_source), wnck_drag_source_destroyed, context);
+
   g_object_weak_ref (G_OBJECT (context), wnck_drag_context_destroyed, window);
 
   wnck_update_drag_icon (window, context);

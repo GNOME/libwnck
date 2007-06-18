@@ -569,7 +569,19 @@ wnck_selector_drag_begin (GtkWidget          *widget,
 			  GdkDragContext     *context,
 			  WnckWindow         *window)
 {
-  _wnck_window_set_as_drag_icon (window, context, widget);
+  while (widget)
+    {
+      if (WNCK_IS_SELECTOR (widget))
+        break;
+
+      if (GTK_IS_MENU (widget))
+        widget = gtk_menu_get_attach_widget (GTK_MENU (widget));
+      else
+        widget = widget->parent;
+    }
+
+  if (widget)
+    _wnck_window_set_as_drag_icon (window, context, widget);
 }
 
 static void  
