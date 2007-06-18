@@ -974,7 +974,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     }
   else if (active_space)
     {
-      int vx, vy, vw, vh; /* viewport */
+      double vx, vy, vw, vh; /* viewport */
       double width_ratio, height_ratio;
       cairo_t *cr;
       

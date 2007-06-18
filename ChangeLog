@@ -1,5 +1,11 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_draw_workspace): use double instead of
+	int to compute the x, y, width and height to pass to cairo. Improves
+	the look of the pager a bit.
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in: post-release bump to 2.19.5
 
 ==================== 2.19.4 ====================
