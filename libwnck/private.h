@@ -104,7 +104,6 @@ void _wnck_init (void);
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 
 Screen    *_wnck_screen_get_xscreen    (WnckScreen *screen);
-int        _wnck_screen_get_number     (WnckScreen *screen);
 GdkScreen *_wnck_screen_get_gdk_screen (WnckScreen *screen);
 
 #ifdef HAVE_STARTUP_NOTIFICATION

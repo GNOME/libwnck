@@ -2449,12 +2449,6 @@ _wnck_screen_get_xscreen (WnckScreen *screen)
   return screen->priv->xscreen;
 }
 
-int
-_wnck_screen_get_number (WnckScreen *screen)
-{
-  return screen->priv->number;
-}
-
 /**
  * wnck_screen_get_workspace_layout:
  * @screen: a #WnckScreen.

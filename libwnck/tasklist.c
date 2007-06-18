@@ -1478,7 +1478,7 @@ wnck_tasklist_realize (GtkWidget *widget)
 #ifdef HAVE_STARTUP_NOTIFICATION
   tasklist->priv->sn_context =
     sn_monitor_context_new (_wnck_screen_get_sn_display (tasklist->priv->screen),
-                            _wnck_screen_get_number (tasklist->priv->screen),
+                            wnck_screen_get_number (tasklist->priv->screen),
                             wnck_tasklist_sn_event,
                             tasklist,
                             NULL);

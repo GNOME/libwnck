@@ -1,5 +1,12 @@
 2007-06-18  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/private.h:
+	* libwnck/screen.c: (_wnck_screen_get_number): kill
+	* libwnck/tasklist.c: (wnck_tasklist_realize): updated to use
+	wnck_screen_get_number()
+
+2007-06-18  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-sections.txt:
 	* doc/tmpl/tasklist.sgml:
 	* doc/tmpl/util.sgml:
