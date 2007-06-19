@@ -7,6 +7,9 @@ Sticky/Pinned/whatever-its-called windows only appear in one workspace:
   http://bugzilla.gnome.org/show_bug.cgi?id=156182
   http://bugzilla.gnome.org/show_bug.cgi?id=87531
 
+Use icon name in tasklist:
+  http://bugzilla.gnome.org/show_bug.cgi?id=321915
+
 <We need to fill this in more...>
 
 

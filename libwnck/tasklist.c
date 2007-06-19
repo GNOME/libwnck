@@ -2716,6 +2716,10 @@ wnck_task_popup_menu (WnckTask *task,
       if (wnck_task_get_needs_attention (win_task)) 
         _make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
       g_free (text);
+
+      text = wnck_task_get_text (win_task, FALSE, FALSE);
+      gtk_widget_set_tooltip_text (menu_item, text);
+      g_free (text);
       
       pixbuf = wnck_task_get_icon (win_task);
       if (pixbuf)
