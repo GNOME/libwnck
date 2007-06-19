@@ -74,6 +74,7 @@ struct _WnckWorkspacePrivate
 };
 
 G_DEFINE_TYPE (WnckWorkspace, wnck_workspace, G_TYPE_OBJECT);
+#define WNCK_WORKSPACE_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_WORKSPACE, WnckWorkspacePrivate))
 
 enum {
   NAME_CHANGED,
@@ -92,16 +93,25 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 wnck_workspace_init (WnckWorkspace *workspace)
 {
-  workspace->priv = g_new0 (WnckWorkspacePrivate, 1);
+  workspace->priv = WNCK_WORKSPACE_GET_PRIVATE (workspace);
 
+  workspace->priv->screen = NULL;
   workspace->priv->number = -1;
+  workspace->priv->name = NULL;
+  workspace->priv->width = 0;
+  workspace->priv->height = 0;
+  workspace->priv->viewport_x = 0;
+  workspace->priv->viewport_y = 0;
+  workspace->priv->is_virtual = FALSE;
 }
 
 static void
 wnck_workspace_class_init (WnckWorkspaceClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  
+
+  g_type_class_add_private (klass, sizeof (WnckWorkspacePrivate));
+
   object_class->finalize = wnck_workspace_finalize;
 
   /**
@@ -128,8 +138,7 @@ wnck_workspace_finalize (GObject *object)
   workspace = WNCK_WORKSPACE (object);
 
   g_free (workspace->priv->name);
-  
-  g_free (workspace->priv);
+  workspace->priv->name = NULL;
   
   G_OBJECT_CLASS (wnck_workspace_parent_class)->finalize (object);
 }

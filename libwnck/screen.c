@@ -127,6 +127,7 @@ struct _WnckScreenPrivate
 };
 
 G_DEFINE_TYPE (WnckScreen, wnck_screen, G_TYPE_OBJECT);
+#define WNCK_SCREEN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SCREEN, WnckScreenPrivate))
 
 enum {
   ACTIVE_WINDOW_CHANGED,
@@ -194,8 +195,50 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 wnck_screen_init (WnckScreen *screen)
 {  
-  screen->priv = g_new0 (WnckScreenPrivate, 1);
+  screen->priv = WNCK_SCREEN_GET_PRIVATE (screen);
 
+  screen->priv->number = -1;
+  screen->priv->xroot = None;
+  screen->priv->xscreen = NULL;
+
+  screen->priv->mapped_windows = NULL;
+  screen->priv->stacked_windows = NULL;
+  screen->priv->workspaces = NULL;
+
+  screen->priv->active_window = NULL;
+  screen->priv->previously_active_window = NULL;
+
+  screen->priv->active_workspace = NULL;
+
+  screen->priv->window_order = 0;
+
+  screen->priv->bg_pixmap = None;
+
+  screen->priv->wm_name = NULL;
+
+  screen->priv->update_handler = 0;
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+  screen->priv->sn_display = NULL;
+#endif
+
+  screen->priv->showing_desktop = FALSE;
+
+  screen->priv->vertical_workspaces = FALSE;
+  screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
+  screen->priv->rows_of_workspaces = 1;
+  screen->priv->columns_of_workspaces = -1;
+
+  screen->priv->need_update_stack_list = FALSE;
+  screen->priv->need_update_workspace_list = FALSE;
+  screen->priv->need_update_viewport_settings = FALSE;
+  screen->priv->need_update_active_workspace = FALSE;
+  screen->priv->need_update_active_window = FALSE;
+  screen->priv->need_update_workspace_layout = FALSE;
+  screen->priv->need_update_workspace_names = FALSE;
+  screen->priv->need_update_bg_pixmap = FALSE;
+  screen->priv->need_update_showing_desktop = FALSE;
+  screen->priv->need_update_wm = FALSE;
 }
 
 static void
@@ -204,7 +247,9 @@ wnck_screen_class_init (WnckScreenClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   _wnck_init ();
-  
+
+  g_type_class_add_private (klass, sizeof (WnckScreenPrivate));
+
   object_class->finalize = wnck_screen_finalize;
 
   /**
@@ -460,19 +505,33 @@ static void
 wnck_screen_finalize (GObject *object)
 {
   WnckScreen *screen;
+  GList *tmp;
   gpointer weak_pointer;
 
   screen = WNCK_SCREEN (object);
   
   unqueue_update (screen);
 
-  /* FIXME this isn't right, we need to destroy the items
-   * in the list. But it doesn't matter at the
-   * moment since we never finalize screens anyway.
-   */
+  for (tmp = screen->priv->stacked_windows; tmp; tmp = tmp->next)
+    {
+      screen->priv->mapped_windows = g_list_remove (screen->priv->mapped_windows,
+                                                    tmp->data);
+      _wnck_window_destroy (WNCK_WINDOW (tmp->data));
+    }
+
+  for (tmp = screen->priv->mapped_windows; tmp; tmp = tmp->next)
+    _wnck_window_destroy (WNCK_WINDOW (tmp->data));
+
+  for (tmp = screen->priv->workspaces; tmp; tmp = tmp->next)
+    g_object_unref (tmp->data);
+
   g_list_free (screen->priv->mapped_windows);
+  screen->priv->mapped_windows = NULL;
   g_list_free (screen->priv->stacked_windows);
+  screen->priv->stacked_windows = NULL;
+
   g_list_free (screen->priv->workspaces);
+  screen->priv->workspaces = NULL;
 
   weak_pointer = &screen->priv->active_window;
   if (screen->priv->active_window != NULL)
@@ -487,14 +546,14 @@ wnck_screen_finalize (GObject *object)
   screen->priv->previously_active_window = NULL;
 
   g_free (screen->priv->wm_name);
+  screen->priv->wm_name = NULL;
 
   screens[screen->priv->number] = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   sn_display_unref (screen->priv->sn_display);
+  screen->priv->sn_display = NULL;
 #endif
-  
-  g_free (screen->priv);
   
   G_OBJECT_CLASS (wnck_screen_parent_class)->finalize (object);
 }
@@ -523,12 +582,6 @@ wnck_screen_construct (WnckScreen *screen,
   screen->priv->xroot = RootWindow (gdk_display, number);
   screen->priv->xscreen = ScreenOfDisplay (gdk_display, number);
   screen->priv->number = number;
-  screen->priv->window_order = 0;
-
-  screen->priv->rows_of_workspaces = 1;
-  screen->priv->columns_of_workspaces = -1;
-  screen->priv->vertical_workspaces = FALSE;
-  screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
   screen->priv->sn_display = sn_display_new (gdk_display,

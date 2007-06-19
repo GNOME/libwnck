@@ -90,6 +90,7 @@ struct _WnckPagerPrivate
 };
 
 G_DEFINE_TYPE (WnckPager, wnck_pager, GTK_TYPE_WIDGET);
+#define WNCK_PAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_PAGER, WnckPagerPrivate))
 
 enum
 {
@@ -191,21 +192,38 @@ static AtkObject* wnck_pager_get_accessible (GtkWidget *widget);
 static void
 wnck_pager_init (WnckPager *pager)
 {  
+  int i;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0}
   };
 
-  pager->priv = g_new0 (WnckPagerPrivate, 1);
+  pager->priv = WNCK_PAGER_GET_PRIVATE (pager);
 
   pager->priv->n_rows = 1;
   pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
   pager->priv->show_all_workspaces = TRUE;
   pager->priv->shadow_type = GTK_SHADOW_NONE;
+
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
-  pager->priv->bg_cache = NULL;
-  pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
+
+  for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
+    pager->priv->screen_connections[i] = 0;
+
   pager->priv->prelight = -1;
+  pager->priv->prelight_dnd = FALSE;
+
+  pager->priv->dragging = FALSE;
+  pager->priv->drag_start_x = 0;
+  pager->priv->drag_start_y = 0;
+  pager->priv->drag_window = NULL;
+
+  pager->priv->bg_cache = NULL;
+
+  pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
+
+  pager->priv->dnd_activate = 0;
+  pager->priv->dnd_time = 0;
 
   g_object_set (pager, "has-tooltip", TRUE, NULL);
 
@@ -218,7 +236,9 @@ wnck_pager_class_init (WnckPagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-  
+
+  g_type_class_add_private (klass, sizeof (WnckPagerPrivate));
+
   object_class->finalize = wnck_pager_finalize;
 
   widget_class->realize = wnck_pager_realize;
@@ -259,8 +279,6 @@ wnck_pager_finalize (GObject *object)
       g_source_remove (pager->priv->dnd_activate);
       pager->priv->dnd_activate = 0;
     }
-
-  g_free (pager->priv);
   
   G_OBJECT_CLASS (wnck_pager_parent_class)->finalize (object);
 }
@@ -348,9 +366,11 @@ wnck_pager_unrealize (GtkWidget *widget)
 
   wnck_pager_clear_drag (pager);
   pager->priv->prelight = -1;
+  pager->priv->prelight_dnd = FALSE;
 
   wnck_screen_release_workspace_layout (pager->priv->screen,
                                         pager->priv->layout_manager_token);
+  pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
   
   wnck_pager_disconnect_screen (pager);
   pager->priv->screen = NULL;

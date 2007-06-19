@@ -157,6 +157,7 @@ struct _WnckWindowPrivate
 };
 
 G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
+#define WNCK_WINDOW_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_WINDOW, WnckWindowPrivate))
 
 enum {
   NAME_CHANGED,
@@ -206,20 +207,91 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 wnck_window_init (WnckWindow *window)
 {
-  window->priv = g_new0 (WnckWindowPrivate, 1);
+  window->priv = WNCK_WINDOW_GET_PRIVATE (window);
 
+  window->priv->xwindow = None;
+  window->priv->name = NULL;
+  window->priv->app = NULL;
+  window->priv->class_group = NULL;
+  window->priv->group_leader = None;
+  window->priv->transient_for = None;
+  window->priv->icon_geometry.width = -1; /* invalid cached value */
   window->priv->name = NULL;
   window->priv->icon_name = NULL;
-  window->priv->workspace = ALL_WORKSPACES;
-  window->priv->icon_geometry.width = -1; /* invalid cached value */
+  window->priv->session_id = NULL;
+  window->priv->session_id_utf8 = NULL;
+  window->priv->pid = 0;
+  window->priv->workspace = -1;
+  window->priv->sort_order = G_MAXINT;
+
+  /* FIXME: should we have an invalid window type for this? */
+  window->priv->wintype = 0;
+
+  window->priv->icon = NULL;
+  window->priv->mini_icon = NULL;
 
   window->priv->icon_cache = _wnck_icon_cache_new ();
+
+  window->priv->actions = 0;
+
+  window->priv->x = 0;
+  window->priv->y = 0;
+  window->priv->width = 0;
+  window->priv->height = 0;
+
+  window->priv->left_frame = 0;
+  window->priv->right_frame = 0;
+  window->priv->top_frame = 0;
+  window->priv->bottom_frame = 0;
+
+  window->priv->startup_id = NULL;
+
+  window->priv->res_class = NULL;
+  window->priv->res_name = NULL;
+
+  window->priv->transient_for_root = FALSE;
+
+  window->priv->is_minimized = FALSE;
+  window->priv->is_maximized_horz = FALSE;
+  window->priv->is_maximized_vert = FALSE;
+  window->priv->is_shaded = FALSE;
+  window->priv->is_above = FALSE;
+  window->priv->skip_pager = FALSE;
+  window->priv->skip_taskbar = FALSE;
+  window->priv->is_sticky = FALSE;
+  window->priv->is_hidden = FALSE;
+  window->priv->is_fullscreen = FALSE;
+  window->priv->demands_attention = FALSE;
+  window->priv->is_urgent = FALSE;
+
+  window->priv->net_wm_state_hidden = FALSE;
+  window->priv->wm_state_iconic = FALSE;
+
+  window->priv->update_handler = 0;
+
+  window->priv->need_update_name = FALSE;
+  window->priv->need_update_state = FALSE;
+  window->priv->need_update_wm_state = FALSE;
+  window->priv->need_update_icon_name = FALSE;
+  window->priv->need_update_workspace = FALSE;
+  window->priv->need_update_actions = FALSE;
+  window->priv->need_update_wintype = FALSE;
+  window->priv->need_update_transient_for = FALSE;
+  window->priv->need_update_startup_id = FALSE;
+  window->priv->need_update_wmclass = FALSE;
+  window->priv->need_update_wmhints = FALSE;
+  window->priv->need_update_frame_extents = FALSE;
+
+  window->priv->need_emit_name_changed = FALSE;
+  window->priv->need_emit_icon_changed = FALSE;
 }
 
 static void
 wnck_window_class_init (WnckWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  g_type_class_add_private (klass, sizeof (WnckWindowPrivate));
 
   object_class->finalize = wnck_window_finalize;
 
@@ -336,25 +408,40 @@ wnck_window_finalize (GObject *object)
 
   unqueue_update (window);
 
+  if (window->priv->app)
+    g_object_unref (G_OBJECT (window->priv->app));
+  window->priv->app = NULL;
+
+  if (window->priv->class_group)
+    g_object_unref (G_OBJECT (window->priv->class_group));
+  window->priv->class_group = NULL;
+
+  g_free (window->priv->name);
+  window->priv->name = NULL;
+  g_free (window->priv->icon_name);
+  window->priv->icon_name = NULL;
+  g_free (window->priv->session_id);
+  window->priv->session_id = NULL;
+  g_free (window->priv->session_id_utf8);
+  window->priv->session_id_utf8 = NULL;
+
   if (window->priv->icon)
     g_object_unref (G_OBJECT (window->priv->icon));
+  window->priv->icon = NULL;
 
   if (window->priv->mini_icon)
     g_object_unref (G_OBJECT (window->priv->mini_icon));
+  window->priv->mini_icon = NULL;
   
   _wnck_icon_cache_free (window->priv->icon_cache);
+  window->priv->icon_cache = NULL;
 
-  g_free (window->priv->name);
-  g_free (window->priv->icon_name);
-  g_free (window->priv->session_id);
   g_free (window->priv->startup_id);
+  window->priv->startup_id = NULL;
   g_free (window->priv->res_class);
+  window->priv->res_class = NULL;
   g_free (window->priv->res_name);
-  
-  if (window->priv->app)
-    g_object_unref (G_OBJECT (window->priv->app));
-
-  g_free (window->priv);
+  window->priv->res_name = NULL;
 
   G_OBJECT_CLASS (wnck_window_parent_class)->finalize (object);
 }

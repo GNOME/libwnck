@@ -58,8 +58,6 @@ typedef struct
   GtkWidget *label;
 } window_hash_item;
 
-#define WNCK_SELECTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SELECTOR, WnckSelectorPrivate))
-
 struct _WnckSelectorPrivate {
   GtkWidget  *image;
   WnckWindow *icon_window;
@@ -73,6 +71,7 @@ struct _WnckSelectorPrivate {
 };
 
 G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
+#define WNCK_SELECTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SELECTOR, WnckSelectorPrivate))
 
 static GObject *wnck_selector_constructor (GType                  type,
                                            guint                  n_construct_properties,
@@ -1228,9 +1227,11 @@ wnck_selector_init (WnckSelector *selector)
 
   selector->priv->image           = NULL;
   selector->priv->icon_window     = NULL;
+
   selector->priv->menu            = NULL;
   selector->priv->no_windows_item = NULL;
   selector->priv->window_hash     = NULL;
+
   selector->priv->size            = -1;
 }
 
@@ -1241,6 +1242,8 @@ wnck_selector_class_init (WnckSelectorClass *klass)
   GtkObjectClass *gtk_object_class = GTK_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class     = GTK_WIDGET_CLASS (klass);
 
+  g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
+
   object_class->constructor = wnck_selector_constructor;
   object_class->finalize = wnck_selector_finalize;
 
@@ -1248,8 +1251,6 @@ wnck_selector_class_init (WnckSelectorClass *klass)
 
   widget_class->realize   = wnck_selector_realize;
   widget_class->unrealize = wnck_selector_unrealize;
-
-  g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
 }
 
 static GObject *

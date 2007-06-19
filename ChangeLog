@@ -1,5 +1,41 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/application.c: (wnck_application_init),
+	(wnck_application_class_init), (wnck_application_finalize),
+	(_wnck_application_destroy):
+	* libwnck/class-group.c: (wnck_class_group_class_init),
+	(wnck_class_group_init), (wnck_class_group_finalize),
+	(_wnck_class_group_create), (_wnck_class_group_destroy),
+	(get_name_from_applications), (get_name_from_windows), (set_name),
+	(get_icons_from_applications), (get_icons_from_windows),
+	(set_icon), (_wnck_class_group_add_window),
+	(_wnck_class_group_remove_window), (wnck_class_group_get_windows),
+	(wnck_class_group_get_res_class), (wnck_class_group_get_name),
+	(wnck_class_group_get_icon), (wnck_class_group_get_mini_icon):
+	* libwnck/pager.c: (wnck_pager_init), (wnck_pager_class_init),
+	(wnck_pager_finalize), (wnck_pager_unrealize):
+	* libwnck/screen.c: (wnck_screen_init), (wnck_screen_class_init),
+	(wnck_screen_finalize), (wnck_screen_construct):
+	* libwnck/selector.c: (wnck_selector_init),
+	(wnck_selector_class_init):
+	* libwnck/tasklist.c: (wnck_task_init), (wnck_task_finalize),
+	(wnck_tasklist_init), (wnck_tasklist_class_init),
+	(wnck_tasklist_finalize):
+	* libwnck/window.c: (wnck_window_init), (wnck_window_class_init),
+	(wnck_window_finalize):
+	* libwnck/workspace.c: (wnck_workspace_init),
+	(wnck_workspace_class_init), (wnck_workspace_finalize):
+	Use g_type_class_add_private(), initialize all private fields in
+	_init() functions, and make sure to clean up everything in _finalize()
+	functions.
+
+	Also, some more details:
+	* libwnck/screen.c: (wnck_screen_finalize): fix a FIXME
+	* libwnck/pager.c: (wnck_pager_unrealize): reset some more data
+	* libwnck/class-group.c: code cleanups
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_draw_workspace): be a bit safer when
 	calling cairo_rectangle()
 	* libwnck/tasklist.c: (wnck_tasklist_size_allocate): add a FIXME

@@ -77,6 +77,7 @@ struct _WnckApplicationPrivate
 };
 
 G_DEFINE_TYPE (WnckApplication, wnck_application, G_TYPE_OBJECT);
+#define WNCK_APPLICATION_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_APPLICATION, WnckApplicationPrivate))
 
 enum {
   NAME_CHANGED,
@@ -100,18 +101,40 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 wnck_application_init (WnckApplication *application)
 {  
-  application->priv = g_new0 (WnckApplicationPrivate, 1);
+  application->priv = WNCK_APPLICATION_GET_PRIVATE (application);
+
+  application->priv->xwindow = None;
+  application->priv->screen = NULL;
+  application->priv->windows = NULL;
+  application->priv->pid = 0;
+  application->priv->name = NULL;
+
+  application->priv->name_window = NULL;
+
+  application->priv->icon = NULL;
+  application->priv->mini_icon = NULL;
 
   application->priv->icon_cache = _wnck_icon_cache_new ();
   _wnck_icon_cache_set_want_fallback (application->priv->icon_cache,
                                       FALSE);
+
+  application->priv->icon_window = NULL;
+
+  application->priv->startup_id = NULL;
+
+  application->priv->name_from_leader = FALSE;
+  application->priv->icon_from_leader = FALSE;
+
+  application->priv->need_emit_icon_changed = FALSE;
 }
 
 static void
 wnck_application_class_init (WnckApplicationClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-  
+
+  g_type_class_add_private (klass, sizeof (WnckApplicationPrivate));
+
   object_class->finalize = wnck_application_finalize;
   
   /**
@@ -152,18 +175,28 @@ wnck_application_finalize (GObject *object)
 
   application = WNCK_APPLICATION (object);
 
+  application->priv->xwindow = None;
+
+  g_list_free (application->priv->windows);
+  application->priv->windows = NULL;
+  
+  g_free (application->priv->name);
+  application->priv->name = NULL;
+
   if (application->priv->icon)
     g_object_unref (G_OBJECT (application->priv->icon));
+  application->priv->icon = NULL;
 
   if (application->priv->mini_icon)
     g_object_unref (G_OBJECT (application->priv->mini_icon));
+  application->priv->mini_icon = NULL;
   
   _wnck_icon_cache_free (application->priv->icon_cache);
+  application->priv->icon_cache = NULL;
   
-  g_free (application->priv->name);
-  
-  g_free (application->priv);
-  
+  g_free (application->priv->startup_id);
+  application->priv->startup_id = NULL;
+
   G_OBJECT_CLASS (wnck_application_parent_class)->finalize (object);
 }
 
@@ -518,10 +551,6 @@ _wnck_application_destroy (WnckApplication *application)
   g_hash_table_remove (app_hash, &application->priv->xwindow);
 
   g_return_if_fail (wnck_application_get (application->priv->xwindow) == NULL);
-
-  application->priv->xwindow = None;
-  
-  g_free (application->priv->startup_id);
 
   /* remove hash's ref on the application */
   g_object_unref (G_OBJECT (application));

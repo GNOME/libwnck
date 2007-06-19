@@ -129,11 +129,11 @@ struct _WnckTask
 
   GList *windows; /* List of the WnckTask for the window,
 		     if this is a class group */
-  gulong state_changed_tag;
-  gulong icon_changed_tag;
-  gulong name_changed_tag;
-  gulong class_name_changed_tag;
-  gulong class_icon_changed_tag;
+  guint state_changed_tag;
+  guint icon_changed_tag;
+  guint name_changed_tag;
+  guint class_name_changed_tag;
+  guint class_icon_changed_tag;
   
   /* task menu */
   GtkWidget *menu;
@@ -234,6 +234,7 @@ static GType wnck_task_get_type (void);
 
 G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
 G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
+#define WNCK_TASKLIST_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_TASKLIST, WnckTasklistPrivate))
 
 static void wnck_task_init        (WnckTask      *task);
 static void wnck_task_class_init  (WnckTaskClass *klass);
@@ -361,11 +362,51 @@ cleanup_screenshots (WnckTask *task)
 
 static void
 wnck_task_init (WnckTask *task)
-{  
-  task->glow_start_time = 0.0;
-  task->button_glow = 0;
+{
+  task->tasklist = NULL;
+
+  task->button = NULL;
+  task->image = NULL;
+  task->label = NULL;
+
+  task->type = WNCK_TASK_WINDOW;
+
+  task->class_group = NULL;
+  task->window = NULL;
+#ifdef HAVE_STARTUP_NOTIFICATION
+  task->startup_sequence = NULL;
+#endif
+
+  task->grouping_score = 0;
+
+  task->windows = NULL;
+
+  task->state_changed_tag = 0;
+  task->icon_changed_tag = 0;
+  task->name_changed_tag = 0;
+  task->class_name_changed_tag = 0;
+  task->class_icon_changed_tag = 0;
+
+  task->menu = NULL;
+  task->action_menu = NULL;
+
+  task->really_toggling = FALSE;
+
+  task->was_active = FALSE;
+
+  task->button_activate = 0;
+
+  task->dnd_timestamp = 0;
+
   task->screenshot = NULL;
   task->screenshot_faded = NULL;
+
+  task->glow_start_time = 0.0;
+
+  task->button_glow = 0;
+
+  task->row = 0;
+  task->col = 0;
 }
 
 static void
@@ -497,68 +538,8 @@ wnck_task_finalize (GObject *object)
     {
       gtk_widget_destroy (task->button);
       task->button = NULL;
-    }
-
-  g_list_free (task->windows);
-  task->windows = NULL;
-
-  if (task->state_changed_tag)
-    {
-      g_signal_handler_disconnect (task->window,
-				   task->state_changed_tag);
-      task->state_changed_tag = 0;
-    }
-
-  if (task->icon_changed_tag)
-    {
-      g_signal_handler_disconnect (task->window,
-				   task->icon_changed_tag);
-      task->icon_changed_tag = 0;
-    }
-  
-  if (task->name_changed_tag)
-    {
-      g_signal_handler_disconnect (task->window,
-				   task->name_changed_tag);
-      task->name_changed_tag = 0;
-    }
-
-  if (task->class_name_changed_tag)
-    {
-      g_signal_handler_disconnect (task->class_group,
-				   task->class_name_changed_tag);
-      task->class_name_changed_tag = 0;
-    }
-
-  if (task->class_icon_changed_tag)
-    {
-      g_signal_handler_disconnect (task->class_group,
-				   task->class_icon_changed_tag);
-      task->class_icon_changed_tag = 0;
-    }
-
-  if (task->menu)
-    {
-      g_object_unref (task->menu);
-      task->menu = NULL;
-    }
-
-  if (task->action_menu)
-    {
-      gtk_widget_destroy (task->action_menu);
-      task->action_menu = NULL;
-    }
-
-  if (task->window)
-    {
-      g_object_unref (task->window);
-      task->window = NULL;
-    }
-
-  if (task->class_group)
-    {
-      g_object_unref (task->class_group);
-      task->class_group = NULL;
+      task->image = NULL;
+      task->label = NULL;
     }
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -568,16 +549,78 @@ wnck_task_finalize (GObject *object)
       task->startup_sequence = NULL;
     }
 #endif
+
+  g_list_free (task->windows);
+  task->windows = NULL;
+
+  if (task->state_changed_tag != 0)
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->state_changed_tag);
+      task->state_changed_tag = 0;
+    }
+
+  if (task->icon_changed_tag != 0)
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->icon_changed_tag);
+      task->icon_changed_tag = 0;
+    }
   
+  if (task->name_changed_tag != 0)
+    {
+      g_signal_handler_disconnect (task->window,
+				   task->name_changed_tag);
+      task->name_changed_tag = 0;
+    }
+
+  if (task->class_name_changed_tag != 0)
+    {
+      g_signal_handler_disconnect (task->class_group,
+				   task->class_name_changed_tag);
+      task->class_name_changed_tag = 0;
+    }
+
+  if (task->class_icon_changed_tag != 0)
+    {
+      g_signal_handler_disconnect (task->class_group,
+				   task->class_icon_changed_tag);
+      task->class_icon_changed_tag = 0;
+    }
+
+  if (task->class_group)
+    {
+      g_object_unref (task->class_group);
+      task->class_group = NULL;
+    }
+
+  if (task->window)
+    {
+      g_object_unref (task->window);
+      task->window = NULL;
+    }
+
+  if (task->menu)
+    {
+      gtk_widget_destroy (task->menu);
+      task->menu = NULL;
+    }
+
+  if (task->action_menu)
+    {
+      gtk_widget_destroy (task->action_menu);
+      task->action_menu = NULL;
+    }
+
   if (task->button_activate != 0)
     {
       g_source_remove (task->button_activate);
       task->button_activate = 0;
     } 
 
-  cleanup_screenshots (task);
-
   wnck_task_stop_glow (task);
+
+  cleanup_screenshots (task);
 
   G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
 }
@@ -585,6 +628,7 @@ wnck_task_finalize (GObject *object)
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
+  int i;
   GtkWidget *widget;
   AtkObject *atk_obj;
 
@@ -592,27 +636,59 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   GTK_WIDGET_SET_FLAGS (widget, GTK_NO_WINDOW);
   
-  tasklist->priv = g_new0 (WnckTasklistPrivate, 1);
+  tasklist->priv = WNCK_TASKLIST_GET_PRIVATE (tasklist);
+
+  tasklist->priv->screen = NULL;
+
+  tasklist->priv->active_task = NULL;
+  tasklist->priv->active_class_group = NULL;
 
   tasklist->priv->include_all_workspaces = FALSE;
-  
-  tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
+
+  tasklist->priv->class_groups = NULL;
+  tasklist->priv->windows = NULL;
+
+  tasklist->priv->startup_sequences = NULL;
+
+  tasklist->priv->skipped_windows = NULL;
+
   tasklist->priv->class_group_hash = g_hash_table_new (NULL, NULL);
-  
+  tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
+
+  tasklist->priv->max_button_width = 0;
+  tasklist->priv->max_button_height = 0;
+
+  tasklist->priv->switch_workspace_on_unminimize = FALSE;
+
   tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
+
+  tasklist->priv->activate_timeout_id = 0;
+  for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
+    tasklist->priv->screen_connections[i] = 0;
+
+  tasklist->priv->idle_callback_tag = 0;
+
+  tasklist->priv->size_hints = NULL;
+  tasklist->priv->size_hints_len = 0;
 
   tasklist->priv->minimum_width = DEFAULT_WIDTH;
   tasklist->priv->minimum_height = DEFAULT_HEIGHT;
 
-  tasklist->priv->idle_callback_tag = 0;
+  tasklist->priv->icon_loader = NULL;
+  tasklist->priv->icon_loader_data = NULL;
+  tasklist->priv->free_icon_loader_data = NULL;
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+  tasklist->priv->sn_context = NULL;
+  tasklist->priv->startup_sequence_timeout = 0;
+#endif
 
   tasklist->priv->monitor_num = -1;
+  tasklist->priv->monitor_geometry.width = -1; /* invalid value */
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   
   tasklist->priv->background = NULL;
-
-  tasklist->priv->skipped_windows = NULL;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -625,7 +701,9 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
-  
+
+  g_type_class_add_private (klass, sizeof (WnckTasklistPrivate));
+
   object_class->constructor = wnck_tasklist_constructor;
   object_class->finalize = wnck_tasklist_finalize;
 
@@ -704,54 +782,53 @@ wnck_tasklist_finalize (GObject *object)
 
   tasklist = WNCK_TASKLIST (object);
 
-  if (tasklist->priv->free_icon_loader_data != NULL)
-    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
-  
+  /* Tasks should have gone away due to removing their
+   * buttons in container destruction
+   */
+  g_assert (tasklist->priv->class_groups == NULL);
+  g_assert (tasklist->priv->windows == NULL);
+  g_assert (tasklist->priv->startup_sequences == NULL);
+  /* wnck_tasklist_free_tasks (tasklist); */
+
   if (tasklist->priv->skipped_windows)
     {
       wnck_tasklist_free_skipped_windows (tasklist);
       tasklist->priv->skipped_windows = NULL;
     }
-  
-  /* Tasks should have gone away due to removing their
-   * buttons in container destruction
-   */
-  g_assert (tasklist->priv->windows == NULL);
-  g_assert (tasklist->priv->class_groups == NULL);
-  g_assert (tasklist->priv->startup_sequences == NULL);
-  /* wnck_tasklist_free_tasks (tasklist); */
-  
-  g_hash_table_destroy (tasklist->priv->win_hash);
-  tasklist->priv->win_hash = NULL;
-  
+
   g_hash_table_destroy (tasklist->priv->class_group_hash);
   tasklist->priv->class_group_hash = NULL;
-  
+
+  g_hash_table_destroy (tasklist->priv->win_hash);
+  tasklist->priv->win_hash = NULL;
+
   if (tasklist->priv->activate_timeout_id != 0)
     {
       g_source_remove (tasklist->priv->activate_timeout_id);
       tasklist->priv->activate_timeout_id = 0;
     }
-  
+
   if (tasklist->priv->idle_callback_tag != 0)
     {
       g_source_remove (tasklist->priv->idle_callback_tag);
       tasklist->priv->idle_callback_tag = 0;
     }
-    
+
   g_free (tasklist->priv->size_hints);
   tasklist->priv->size_hints = NULL;
   tasklist->priv->size_hints_len = 0;
+
+  if (tasklist->priv->free_icon_loader_data != NULL)
+    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
+  tasklist->priv->free_icon_loader_data = NULL;
+  tasklist->priv->icon_loader_data = NULL;
 
   if (tasklist->priv->background)
     {
       g_object_unref (tasklist->priv->background);
       tasklist->priv->background = NULL;
     }
-  
-  g_free (tasklist->priv);
-  tasklist->priv = NULL;  
-  
+
   G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
 }
 

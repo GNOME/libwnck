@@ -58,6 +58,7 @@ struct _WnckClassGroupPrivate {
 };
 
 G_DEFINE_TYPE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
+#define WNCK_CLASS_GROUP_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_CLASS_GROUP, WnckClassGroupPrivate))
 
 /* Hash table that maps res_class strings -> WnckClassGroup instances */
 static GHashTable *class_group_hash = NULL;
@@ -80,6 +81,8 @@ static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
+
+  g_type_class_add_private (class, sizeof (WnckClassGroupPrivate));
 
   gobject_class->finalize = wnck_class_group_finalize;
 
@@ -116,43 +119,41 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
 static void
 wnck_class_group_init (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
+  class_group->priv = WNCK_CLASS_GROUP_GET_PRIVATE (class_group);
 
-  priv = g_new (WnckClassGroupPrivate, 1);
-  class_group->priv = priv;
+  class_group->priv->res_class = NULL;
+  class_group->priv->name = NULL;
+  class_group->priv->windows = NULL;
 
-  priv->res_class = NULL;
-  priv->name = NULL;
-  priv->windows = NULL;
-
-  priv->icon = NULL;
-  priv->mini_icon = NULL;
+  class_group->priv->icon = NULL;
+  class_group->priv->mini_icon = NULL;
 }
 
 static void
 wnck_class_group_finalize (GObject *object)
 {
   WnckClassGroup *class_group;
-  WnckClassGroupPrivate *priv;
 
   class_group = WNCK_CLASS_GROUP (object);
-  priv = class_group->priv;
 
-  if (priv->res_class)
-    g_free (priv->res_class);
+  if (class_group->priv->res_class)
+    g_free (class_group->priv->res_class);
+  class_group->priv->res_class = NULL;
 
-  if (priv->name)
-    g_free (priv->name);
+  if (class_group->priv->name)
+    g_free (class_group->priv->name);
+  class_group->priv->name = NULL;
 
-  g_list_free (priv->windows);
+  g_list_free (class_group->priv->windows);
+  class_group->priv->windows = NULL;
 
-  if (priv->icon)
-    g_object_unref (priv->icon);
+  if (class_group->priv->icon)
+    g_object_unref (class_group->priv->icon);
+  class_group->priv->icon = NULL;
 
-  if (priv->mini_icon)
-    g_object_unref (priv->mini_icon);
-
-  g_free (priv);
+  if (class_group->priv->mini_icon)
+    g_object_unref (class_group->priv->mini_icon);
+  class_group->priv->mini_icon = NULL;
 
   G_OBJECT_CLASS (wnck_class_group_parent_class)->finalize (object);
 }
@@ -194,7 +195,6 @@ WnckClassGroup *
 _wnck_class_group_create (const char *res_class)
 {
   WnckClassGroup *class_group;
-  WnckClassGroupPrivate *priv;
 
   if (class_group_hash == NULL)
     class_group_hash = g_hash_table_new (g_str_hash, g_str_equal);
@@ -203,11 +203,11 @@ _wnck_class_group_create (const char *res_class)
 			NULL);
 
   class_group = g_object_new (WNCK_TYPE_CLASS_GROUP, NULL);
-  priv = class_group->priv;
 
-  priv->res_class = g_strdup (res_class ? res_class : "");
+  class_group->priv->res_class = g_strdup (res_class ? res_class : "");
 
-  g_hash_table_insert (class_group_hash, priv->res_class, class_group);
+  g_hash_table_insert (class_group_hash,
+                       class_group->priv->res_class, class_group);
   /* Hash now owns one ref, caller gets none */
 
   return class_group;
@@ -222,16 +222,12 @@ _wnck_class_group_create (const char *res_class)
 void
 _wnck_class_group_destroy (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
 
-  priv = class_group->priv;
+  g_hash_table_remove (class_group_hash, class_group->priv->res_class);
 
-  g_hash_table_remove (class_group_hash, priv->res_class);
-
-  g_free (priv->res_class);
-  priv->res_class = NULL;
+  g_free (class_group->priv->res_class);
+  class_group->priv->res_class = NULL;
 
   /* remove hash's ref on the class group */
   g_object_unref (class_group);
@@ -240,11 +236,8 @@ _wnck_class_group_destroy (WnckClassGroup *class_group)
 static const char *
 get_name_from_applications (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
   const char *first_name;
   GList *l;
-
-  priv = class_group->priv;
 
   /* Try to get the name from the group leaders.  If all have the same name, we
    * can use that.
@@ -252,7 +245,7 @@ get_name_from_applications (WnckClassGroup *class_group)
 
   first_name = NULL;
 
-  for (l = priv->windows; l; l = l->next)
+  for (l = class_group->priv->windows; l; l = l->next)
     {
       WnckWindow *w;
       WnckApplication *app;
@@ -284,11 +277,8 @@ get_name_from_applications (WnckClassGroup *class_group)
 static const char *
 get_name_from_windows (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
   const char *first_name;
   GList *l;
-
-  priv = class_group->priv;
 
   /* Try to get the name from windows, following the same rationale as
    * get_name_from_applications()
@@ -296,7 +286,7 @@ get_name_from_windows (WnckClassGroup *class_group)
 
   first_name = NULL;
 
-  for (l = priv->windows; l; l = l->next)
+  for (l = class_group->priv->windows; l; l = l->next)
     {
       WnckWindow *window;
 
@@ -325,15 +315,12 @@ get_name_from_windows (WnckClassGroup *class_group)
 static void
 set_name (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
   const char *new_name;
 
-  priv = class_group->priv;
-
-  if (priv->name)
+  if (class_group->priv->name)
     {
-      g_free (priv->name);
-      priv->name = NULL;
+      g_free (class_group->priv->name);
+      class_group->priv->name = NULL;
     }
 
   new_name = get_name_from_applications (class_group);
@@ -343,15 +330,16 @@ set_name (WnckClassGroup *class_group)
       new_name = get_name_from_windows (class_group);
 
       if (!new_name)
-	new_name = priv->res_class;
+	new_name = class_group->priv->res_class;
     }
 
   g_assert (new_name != NULL);
 
-  if (!priv->name || strcmp (priv->name, new_name) != 0)
+  if (!class_group->priv->name ||
+      strcmp (class_group->priv->name, new_name) != 0)
     {
-      g_free (priv->name);
-      priv->name = g_strdup (new_name);
+      g_free (class_group->priv->name);
+      class_group->priv->name = g_strdup (new_name);
 
       g_signal_emit (G_OBJECT (class_group), signals[NAME_CHANGED], 0);
     }
@@ -361,15 +349,12 @@ set_name (WnckClassGroup *class_group)
 static void
 get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
 {
-  WnckClassGroupPrivate *priv;
   GList *l;
-
-  priv = class_group->priv;
 
   *icon = NULL;
   *mini_icon = NULL;
 
-  for (l = priv->windows; l; l = l->next)
+  for (l = class_group->priv->windows; l; l = l->next)
     {
       WnckWindow *window;
       WnckApplication *app;
@@ -396,15 +381,12 @@ get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkP
 static void
 get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
 {
-  WnckClassGroupPrivate *priv;
   GList *l;
-
-  priv = class_group->priv;
 
   *icon = NULL;
   *mini_icon = NULL;
 
-  for (l = priv->windows; l; l = l->next)
+  for (l = class_group->priv->windows; l; l = l->next)
     {
       WnckWindow *window;
 
@@ -429,10 +411,7 @@ get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf
 static void
 set_icon (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
   GdkPixbuf *icon, *mini_icon;
-
-  priv = class_group->priv;
 
   get_icons_from_applications (class_group, &icon, &mini_icon);
 
@@ -449,14 +428,14 @@ set_icon (WnckClassGroup *class_group)
 
   g_assert (icon && mini_icon);
 
-  if (priv->icon)
-    g_object_unref (priv->icon);
+  if (class_group->priv->icon)
+    g_object_unref (class_group->priv->icon);
 
-  if (priv->mini_icon)
-    g_object_unref (priv->mini_icon);
+  if (class_group->priv->mini_icon)
+    g_object_unref (class_group->priv->mini_icon);
 
-  priv->icon = g_object_ref (icon);
-  priv->mini_icon = g_object_ref (mini_icon);
+  class_group->priv->icon = g_object_ref (icon);
+  class_group->priv->mini_icon = g_object_ref (mini_icon);
 
   g_signal_emit (G_OBJECT (class_group), signals[ICON_CHANGED], 0);
 }
@@ -473,15 +452,13 @@ void
 _wnck_class_group_add_window (WnckClassGroup *class_group,
                               WnckWindow     *window)
 {
-  WnckClassGroupPrivate *priv;
 
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (wnck_window_get_class_group (window) == NULL);
 
-  priv = class_group->priv;
-
-  priv->windows = g_list_prepend (priv->windows, window);
+  class_group->priv->windows = g_list_prepend (class_group->priv->windows,
+                                               window);
   _wnck_window_set_class_group (window, class_group);
 
   set_name (class_group);
@@ -504,15 +481,12 @@ void
 _wnck_class_group_remove_window (WnckClassGroup *class_group,
 				 WnckWindow     *window)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (wnck_window_get_class_group (window) == class_group);
 
-  priv = class_group->priv;
-
-  priv->windows = g_list_remove (priv->windows, window);
+  class_group->priv->windows = g_list_remove (class_group->priv->windows,
+                                              window);
   _wnck_window_set_class_group (window, NULL);
 
   set_name (class_group);
@@ -534,12 +508,9 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
 GList *
 wnck_class_group_get_windows (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  priv = class_group->priv;
-  return priv->windows;
+  return class_group->priv->windows;
 }
 
 /**
@@ -556,12 +527,9 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
 const char *
 wnck_class_group_get_res_class (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  priv = class_group->priv;
-  return priv->res_class;
+  return class_group->priv->res_class;
 }
 
 /**
@@ -583,13 +551,9 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
 const char *
 wnck_class_group_get_name (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  priv = class_group->priv;
-
-  return priv->name;
+  return class_group->priv->name;
 }
 
 /**
@@ -611,13 +575,9 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
 GdkPixbuf *
 wnck_class_group_get_icon (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  priv = class_group->priv;
-
-  return priv->icon;
+  return class_group->priv->icon;
 }
 
 /**
@@ -637,11 +597,7 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
 GdkPixbuf *
 wnck_class_group_get_mini_icon (WnckClassGroup *class_group)
 {
-  WnckClassGroupPrivate *priv;
-
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  priv = class_group->priv;
-
-  return priv->mini_icon;
+  return class_group->priv->mini_icon;
 }
