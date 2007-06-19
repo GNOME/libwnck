@@ -2711,7 +2711,7 @@ wnck_task_popup_menu (WnckTask *task,
     {
       win_task = WNCK_TASK (l->data);
       
-      text = wnck_task_get_text (win_task, FALSE, TRUE);
+      text = wnck_task_get_text (win_task, TRUE, TRUE);
       menu_item = gtk_image_menu_item_new_with_label (text);
       if (wnck_task_get_needs_attention (win_task)) 
         _make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
@@ -3096,14 +3096,13 @@ wnck_task_update_visible_state (WnckTask *task)
           wnck_task_stop_glow (task);
         }
       g_free (text);
-
-      text = wnck_task_get_text (task, FALSE, FALSE);
-      if (text != NULL)
-        {
-          gtk_widget_set_tooltip_text (task->button, text);
-          g_free (text);
-        }
     }
+
+  text = wnck_task_get_text (task, FALSE, FALSE);
+  /* if text is NULL, this unsets the tooltip, which is probably what we'd want
+   * to do */
+  gtk_widget_set_tooltip_text (task->button, text);
+  g_free (text);
 
   gtk_widget_queue_resize (GTK_WIDGET (task->tasklist));
 }
@@ -3770,8 +3769,8 @@ wnck_task_compare_alphabetically (gconstpointer a,
   char *text2;
   gint  result;
 
-  text1 = wnck_task_get_text (WNCK_TASK (a), FALSE, FALSE);
-  text2 = wnck_task_get_text (WNCK_TASK (b), FALSE, FALSE);
+  text1 = wnck_task_get_text (WNCK_TASK (a), TRUE, FALSE);
+  text2 = wnck_task_get_text (WNCK_TASK (b), TRUE, FALSE);
 
   result= g_utf8_collate (text1, text2);
 

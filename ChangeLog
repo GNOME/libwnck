@@ -1,5 +1,16 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_popup_menu): use icon names, to be
+	consistent (to not have the text changed when tasks are being grouped)
+	(wnck_task_update_visible_state): always set tooltip
+	(wnck_task_compare_alphabetically): updated
+	* libwnck/util.c: moved _wnck_window_get_name_for_display() to
+	window.c where it makes more sense
+	* libwnck/window.c: (_wnck_window_get_name_for_display): new
+	* libwnck/private.h: move _wnck_window_get_name_for_display() around
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_query_tooltip): use name, not the icon
 	name of the window
 	* libwnck/private.h: updated

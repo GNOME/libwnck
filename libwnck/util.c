@@ -695,35 +695,6 @@ _make_gtk_label_normal (GtkLabel *label)
   pango_font_description_free (font_desc);
 }
 
-char *
-_wnck_window_get_name_for_display (WnckWindow *window,
-                                   gboolean    use_icon_name,
-                                   gboolean    use_state_decorations)
-{
-  const char *name;
-  
-  if (use_icon_name && wnck_window_has_icon_name (window))
-    name = wnck_window_get_icon_name (window);
-  else 
-    name = wnck_window_get_name (window);
-  
-  if (use_state_decorations)
-    {
-      WnckWindowState state;
-
-      state = wnck_window_get_state (window);
-
-      if (state & WNCK_WINDOW_STATE_SHADED)
-        return g_strdup_printf ("=%s=", name);
-      else if (state & WNCK_WINDOW_STATE_MINIMIZED)
-        return g_strdup_printf ("[%s]", name);
-      else
-        return g_strdup (name);
-    }
-  else
-    return g_strdup (name);
-}
-
 void
 _wnck_init (void)
 {

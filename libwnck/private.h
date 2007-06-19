@@ -55,6 +55,9 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   gint        sort_order);
 void        _wnck_window_destroy (WnckWindow *window);
 
+char*       _wnck_window_get_name_for_display (WnckWindow *window,
+                                               gboolean    use_icon_name,
+                                               gboolean    use_state_decorations);
 const char* _wnck_window_get_startup_id (WnckWindow *window);
 
 const char* _wnck_window_get_resource_class (WnckWindow *window);
@@ -126,9 +129,6 @@ void           _wnck_pager_get_workspace_rect   (WnckPager     *pager,
 
 void           _make_gtk_label_bold   (GtkLabel *label);
 void           _make_gtk_label_normal (GtkLabel *label);
-char*          _wnck_window_get_name_for_display (WnckWindow *window,
-                                                  gboolean    use_icon_name,
-                                                  gboolean    use_state_decorations);
 
 void           _wnck_stock_icons_init (void);
 
