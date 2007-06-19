@@ -28,6 +28,7 @@
 
 #include <string.h>
 #include <X11/Xlib.h>
+#include <X11/keysym.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>

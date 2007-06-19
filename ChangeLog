@@ -1,5 +1,9 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/wnckprop.c: add missing include. Fix bug #449186.
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_popup_menu): add tooltip
 	* rationales.txt: add link for icon name vs name in tasklist
 
