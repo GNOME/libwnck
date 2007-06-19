@@ -1426,6 +1426,9 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   i = 0;
   total_width = tasklist->priv->max_button_width * n_cols;
   total_width = MIN (total_width, allocation->width);
+  /* FIXME: this is obviously wrong, but if we don't this, some space that the
+   * panel allocated to us won't have the panel popup menu, but the tasklist
+   * popup menu */
   total_width = allocation->width;
   while (l != NULL)
     {
@@ -2903,6 +2906,8 @@ wnck_dimm_icon (GdkPixbuf *pixbuf)
   guchar *row, *pixels;
   int w, h;
 
+  g_assert (pixbuf != NULL);
+
   w = gdk_pixbuf_get_width (pixbuf);
   h = gdk_pixbuf_get_height (pixbuf);
 
@@ -2934,6 +2939,9 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   int w, h;
   GdkPixbuf *pixbuf;
   
+  if (!orig)
+    return NULL;
+
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 

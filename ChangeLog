@@ -1,5 +1,15 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_draw_workspace): be a bit safer when
+	calling cairo_rectangle()
+	* libwnck/tasklist.c: (wnck_tasklist_size_allocate): add a FIXME
+	(wnck_dimm_icon): add assertion
+	(wnck_task_scale_icon): return if the pixbuf is NULL
+	* libwnck/xutils.c: (get_cmap): fix small leak
+	Those changes are inspired by the XFCE fork.
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/wnckprop.c: add missing include. Fix bug #449186.
 
 2007-06-19  Vincent Untz  <vuntz@gnome.org>

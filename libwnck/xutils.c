@@ -1648,7 +1648,10 @@ get_cmap (GdkPixmap *pixmap)
   if (cmap &&
       (gdk_colormap_get_visual (cmap)->depth !=
        gdk_drawable_get_depth (pixmap)))
-    cmap = NULL;
+    {
+      g_object_unref (G_OBJECT (cmap));
+      cmap = NULL;
+    }
   
   return cmap;
 }

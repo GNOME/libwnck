@@ -1108,7 +1108,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
       cairo_set_line_width (cr, 1.0);
       cairo_rectangle (cr,
 		       rect->x + 0.5, rect->y + 0.5,
-		       rect->width - 1, rect->height - 1);
+		       MAX (0, rect->width - 1), MAX (0, rect->height - 1));
       cairo_stroke (cr);
       cairo_destroy (cr);
     }
