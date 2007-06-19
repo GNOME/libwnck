@@ -1,5 +1,12 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (tasklist_include_window_impl): always show
+	window needing attention. This worked with multiple workspace, but the
+	code didn't seem to work when the user is using viewports (in compiz,
+	eg). I can't test this change, but it should work.
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/window-action-menu.c: (amd_free),
 	(wnck_create_window_action_menu):
 	* libwnck/xutils.c: (_wnck_icon_cache_new),

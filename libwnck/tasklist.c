@@ -2086,8 +2086,10 @@ tasklist_include_window_impl (WnckTasklist *tasklist,
   if (active_workspace == NULL)
     return TRUE;
 
-  if (active_workspace != wnck_window_get_workspace (win) &&
-      !wnck_window_or_transient_needs_attention (win))
+  if (wnck_window_or_transient_needs_attention (win))
+    return TRUE;
+
+  if (active_workspace != wnck_window_get_workspace (win))
     return FALSE;
 
   if (!wnck_workspace_is_virtual (active_workspace))
