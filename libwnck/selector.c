@@ -333,36 +333,6 @@ wnck_selector_make_menu_consistent (WnckSelector *selector)
     gtk_widget_show (selector->priv->no_windows_item);
 }
 
-/* The results of this function will need to be freed. */
-static char *
-wnck_selector_get_window_name (WnckWindow *window)
-{
-  const char *const_name;
-  char *return_value;
-  char *name;
-
-  const_name = wnck_window_get_name (window);
-  if (!const_name)
-    name = g_strdup (_("Unknown Window"));
-  else
-    name = g_strdup (const_name);
-
-  if (wnck_window_is_shaded (window))
-    {
-      return_value = g_strdup_printf ("=%s=", name);
-      g_free (name);
-    }
-  else if (wnck_window_is_minimized (window))
-    {
-      return_value = g_strdup_printf ("[%s]", name);
-      g_free (name);
-    }
-  else
-    return_value = name;
-
-  return return_value;
-}
-
 static void
 wnck_selector_window_icon_changed (WnckWindow *window,
                                    WnckSelector *selector)
@@ -405,10 +375,9 @@ wnck_selector_window_name_changed (WnckWindow *window,
   item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (item != NULL)
     {
-      window_name = wnck_selector_get_window_name (window);
+      window_name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
       gtk_label_set_text (GTK_LABEL (item->label), window_name);
-      if (window_name != NULL)
-        g_free (window_name);
+      g_free (window_name);
     }
 }
 
@@ -463,10 +432,9 @@ wnck_selector_window_state_changed (WnckWindow *window,
   if (changed_mask &
       (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED))
     {
-      window_name = wnck_selector_get_window_name (window);
+      window_name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
       gtk_label_set_text (GTK_LABEL (item->label), window_name);
-      if (window_name != NULL)
-        g_free (window_name);
+      g_free (window_name);
     }
 }
 
@@ -742,12 +710,11 @@ wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
   GtkWidget *image;
   char *name;
 
-  name = wnck_selector_get_window_name (window);
+  name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
 
   item = wnck_selector_item_new (selector, name, window);
 
-  if (name != NULL)
-    g_free (name);
+  g_free (name);
 
   image = gtk_image_new ();
 

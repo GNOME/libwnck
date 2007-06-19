@@ -1781,7 +1781,7 @@ wnck_pager_query_tooltip (GtkWidget  *widget,
 
       if (window)
         name = g_strdup_printf (_("Click to start dragging \"%s\""),
-                                wnck_window_get_icon_name (window));
+                                wnck_window_get_name (window));
       else
         name = g_strdup_printf (_("Current workspace: \"%s\""),
                                 wnck_workspace_get_name (space));

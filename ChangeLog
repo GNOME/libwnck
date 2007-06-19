@@ -1,5 +1,24 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_query_tooltip): use name, not the icon
+	name of the window
+	* libwnck/private.h: updated
+	* libwnck/util.c: (_wnck_window_get_name_for_display): new, since this
+	is something that WnckSelector and WnckTasklist are both doing
+	* libwnck/selector.c: (wnck_selector_get_window_name): kill
+	(wnck_selector_window_name_changed),
+	(wnck_selector_window_state_changed),
+	(wnck_selector_create_window): use _wnck_window_get_name_for_display()
+	* libwnck/tasklist.c: (wnck_tasklist_score_groups): use name if the
+	windows don't have an icon name
+	(wnck_task_popup_menu): updated
+	(wnck_task_get_text): add an argument to get the text without the
+	state indicators, updated to use _wnck_window_get_name_for_display()
+	(wnck_task_update_visible_state), (wnck_task_create_widgets),
+	(wnck_task_compare_alphabetically): updated
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	Use a tooltip for the workspace switcher.
 	Fix bug #125644.
 

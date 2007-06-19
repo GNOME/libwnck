@@ -250,7 +250,9 @@ static WnckTask *wnck_task_new_from_startup_sequence (WnckTasklist      *tasklis
 static gboolean wnck_task_get_needs_attention (WnckTask *task);
 
 
-static char      *wnck_task_get_text (WnckTask *task, gboolean icon_text);
+static char      *wnck_task_get_text (WnckTask *task,
+                                      gboolean  icon_text,
+                                      gboolean  include_state);
 static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
 static gint       wnck_task_compare_alphabetically (gconstpointer  a,
                                                     gconstpointer  b);
@@ -1043,13 +1045,22 @@ wnck_tasklist_score_groups (WnckTasklist *tasklist,
 
 	  if (first_name == NULL)
 	    {
-	      first_name = wnck_window_get_icon_name (win_task->window);
+              if (wnck_window_has_icon_name (win_task->window))
+                first_name = wnck_window_get_icon_name (win_task->window);
+              else
+                first_name = wnck_window_get_name (win_task->window);
 	      n_same_title++;
 	    }
 	  else
 	    {
-	      if (strcmp (wnck_window_get_icon_name (win_task->window),
-			  first_name) == 0)
+              const char *name;
+
+              if (wnck_window_has_icon_name (win_task->window))
+                name = wnck_window_get_icon_name (win_task->window);
+              else
+                name = wnck_window_get_name (win_task->window);
+
+	      if (strcmp (name, first_name) == 0)
 		n_same_title++;
 	    }
 	  
@@ -2700,7 +2711,7 @@ wnck_task_popup_menu (WnckTask *task,
     {
       win_task = WNCK_TASK (l->data);
       
-      text = wnck_task_get_text (win_task, FALSE);
+      text = wnck_task_get_text (win_task, FALSE, TRUE);
       menu_item = gtk_image_menu_item_new_with_label (text);
       if (wnck_task_get_needs_attention (win_task)) 
         _make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
@@ -2840,9 +2851,10 @@ wnck_task_button_toggled (GtkButton *button,
 }
 
 static char *
-wnck_task_get_text (WnckTask *task, gboolean icon_text)
+wnck_task_get_text (WnckTask *task,
+                    gboolean  icon_text,
+                    gboolean  include_state)
 {
-  WnckWindowState state;
   const char *name;
   
   switch (task->type)
@@ -2858,19 +2870,8 @@ wnck_task_get_text (WnckTask *task, gboolean icon_text)
 				g_list_length (task->windows));
 
     case WNCK_TASK_WINDOW:
-      if (icon_text)
-        name = wnck_window_get_icon_name (task->window);
-      else 
-        name = wnck_window_get_name (task->window);
-       
-      state = wnck_window_get_state (task->window);
-      
-      if (state & WNCK_WINDOW_STATE_SHADED)
-	return g_strdup_printf ("=%s=", name);
-      else if (state & WNCK_WINDOW_STATE_MINIMIZED)
-	return g_strdup_printf ("[%s]", name);
-      else
-	return g_strdup (name);
+      return _wnck_window_get_name_for_display (task->window,
+                                                icon_text, include_state);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3080,7 +3081,7 @@ wnck_task_update_visible_state (WnckTask *task)
   if (pixbuf)
     g_object_unref (pixbuf);
 
-  text = wnck_task_get_text (task, TRUE);
+  text = wnck_task_get_text (task, TRUE, TRUE);
   if (text != NULL)
     {
       gtk_label_set_text (GTK_LABEL (task->label), text);
@@ -3096,7 +3097,7 @@ wnck_task_update_visible_state (WnckTask *task)
         }
       g_free (text);
 
-      text = wnck_task_get_text (task, FALSE);
+      text = wnck_task_get_text (task, FALSE, FALSE);
       if (text != NULL)
         {
           gtk_widget_set_tooltip_text (task->button, text);
@@ -3489,7 +3490,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   
   gtk_widget_show (task->image);
 
-  text = wnck_task_get_text (task, TRUE);
+  text = wnck_task_get_text (task, TRUE, TRUE);
   task->label = gtk_label_new (text);
   gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
   gtk_label_set_ellipsize (GTK_LABEL (task->label),
@@ -3511,7 +3512,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   gtk_widget_show (hbox);
   g_free (text);
   
-  text = wnck_task_get_text (task, FALSE);
+  text = wnck_task_get_text (task, FALSE, FALSE);
   gtk_widget_set_tooltip_text (task->button, text);
   g_free (text);
   
@@ -3769,8 +3770,8 @@ wnck_task_compare_alphabetically (gconstpointer a,
   char *text2;
   gint  result;
 
-  text1 = wnck_task_get_text (WNCK_TASK (a), FALSE);
-  text2 = wnck_task_get_text (WNCK_TASK (b), FALSE);
+  text1 = wnck_task_get_text (WNCK_TASK (a), FALSE, FALSE);
+  text2 = wnck_task_get_text (WNCK_TASK (b), FALSE, FALSE);
 
   result= g_utf8_collate (text1, text2);
 
