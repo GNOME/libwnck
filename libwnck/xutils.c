@@ -1861,7 +1861,7 @@ _wnck_icon_cache_new (void)
 {
   WnckIconCache *icon_cache;
 
-  icon_cache = g_new0 (WnckIconCache, 1);
+  icon_cache = g_slice_new0 (WnckIconCache);
 
   icon_cache->origin = USING_NO_ICON;
   icon_cache->prev_pixmap = None;
@@ -1906,7 +1906,7 @@ _wnck_icon_cache_free (WnckIconCache *icon_cache)
 {
   clear_icon_cache (icon_cache, FALSE);
   
-  g_free (icon_cache);
+  g_slice_free (WnckIconCache, icon_cache);
 }
 
 void
@@ -2488,7 +2488,7 @@ static void
 _wnck_free_layout_manager (LayoutManager *lm)
 {
   XDestroyWindow (gdk_display, lm->window);
-  g_free (lm);
+  g_slice_free (LayoutManager, lm);
 
   layout_managers = g_slist_remove (layout_managers, lm);
 }
@@ -2542,7 +2542,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
 
   /* No one has the selection at the moment */
 
-  lm = g_new0 (LayoutManager, 1);
+  lm = g_slice_new0 (LayoutManager);
 
   lm->screen_number = number;
   lm->token = next_token;

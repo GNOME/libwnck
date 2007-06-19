@@ -486,7 +486,7 @@ amd_free (ActionMenuData *amd)
   if (amd->idle_handler)
     g_source_remove (amd->idle_handler);
 
-  g_free (amd);
+  g_slice_free (ActionMenuData, amd);
 }
 
 static char *
@@ -585,7 +585,7 @@ wnck_create_window_action_menu (WnckWindow *window)
 
   _wnck_stock_icons_init ();
   
-  amd = g_new0 (ActionMenuData, 1);
+  amd = g_slice_new0 (ActionMenuData);
   amd->window = window;
   
   menu = gtk_menu_new ();
