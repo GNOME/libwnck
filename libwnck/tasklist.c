@@ -1170,32 +1170,13 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   tasklist->priv->max_button_width = max_width;
   tasklist->priv->max_button_height = max_height;
 
-
-  /* this snippet of code seems to want to allocate at least
-   * four buttons' worth of height for the widget.  I think this isn't
-   * necessary any more now that we have the minimum_size option, so
-   * I'm commenting this out - thomasvs */
-  /*
-  gtk_widget_get_size_request (widget, &u_width, &u_height);
-
-  if (u_height != -1)
-    {
-      requisition->height = u_height;
-    }
-  else if (u_width != -1)
-    {
-      requisition->width = u_width;
-      requisition->height = 4 * max_height;
-    }
-  
-  requisition->width = MAX(requisition->width, tasklist->priv->minimum_width);
-  requisition->height = MAX(requisition->height, tasklist->priv->minimum_height);
-  */
   requisition->width = tasklist->priv->minimum_width;
   requisition->height = tasklist->priv->minimum_height;
   
-  fake_allocation.width = requisition->width;
-  fake_allocation.height = requisition->height;
+  fake_allocation.width = MAX (requisition->width,
+                               GTK_WIDGET (tasklist)->allocation.width);
+  fake_allocation.height = MAX (requisition->height,
+                                GTK_WIDGET (tasklist)->allocation.height);
 
   array = g_array_new (FALSE, FALSE, sizeof (int));
 
