@@ -23,6 +23,11 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#include <config.h>
+
+#include <math.h>
+#include <glib/gi18n-lib.h>
+
 #include "pager.h"
 #include "workspace.h"
 #include "window.h"
@@ -31,7 +36,6 @@
 #include "pager-accessible-factory.h"
 #include "workspace-accessible-factory.h"
 #include "private.h"
-#include <math.h>
 
 /**
  * SECTION:pager
@@ -149,6 +153,11 @@ static gboolean wnck_pager_button_release (GtkWidget        *widget,
                                            GdkEventButton   *event);
 static gboolean wnck_pager_focus         (GtkWidget        *widget,
                                           GtkDirectionType  direction);
+static gboolean wnck_pager_query_tooltip (GtkWidget  *widget,
+                                          gint        x,
+                                          gint        y,
+                                          gboolean    keyboard_tip,
+                                          GtkTooltip *tooltip);
 static void workspace_name_changed_callback (WnckWorkspace *workspace,
                                              gpointer       data);
 
@@ -198,6 +207,8 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
   pager->priv->prelight = -1;
 
+  g_object_set (pager, "has-tooltip", TRUE, NULL);
+
   gtk_drag_dest_set (GTK_WIDGET (pager), 0, targets, G_N_ELEMENTS (targets), GDK_ACTION_MOVE);
   GTK_WIDGET_SET_FLAGS (GTK_WIDGET (pager), GTK_CAN_FOCUS);
 }
@@ -227,6 +238,7 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->drag_data_received = wnck_pager_drag_data_received;
   widget_class->drag_data_get = wnck_pager_drag_data_get;
   widget_class->drag_end = wnck_pager_drag_end;
+  widget_class->query_tooltip = wnck_pager_query_tooltip;
 }
 
 static void
@@ -830,6 +842,45 @@ draw_window (GdkDrawable        *drawable,
   cairo_destroy (cr);
 }            
 
+static WnckWindow *
+window_at_point (WnckPager     *pager,
+                 WnckWorkspace *space,
+                 GdkRectangle  *space_rect,
+                 int            x,
+                 int            y)
+{
+  WnckWindow *window;
+  GList *windows;
+  GList *tmp;
+
+  window = NULL;
+
+  windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
+                                                        space);
+
+  /* clicks on top windows first */
+  windows = g_list_reverse (windows);
+
+  for (tmp = windows; tmp != NULL; tmp = tmp->next)
+    {
+      WnckWindow *win = WNCK_WINDOW (tmp->data);
+      GdkRectangle winrect;
+
+      get_window_rect (win, space_rect, &winrect);
+
+      if (POINT_IN_RECT (x, y, winrect))
+        {
+          /* wnck_window_activate (win); */
+          window = win;
+          break;
+        }
+    }
+
+  g_list_free (windows);
+
+  return window;
+}
+
 static int
 workspace_at_point (WnckPager *pager,
                     int        x,
@@ -1177,33 +1228,11 @@ wnck_pager_button_press (GtkWidget      *widget,
     }
 
   if (space && (pager->priv->display_mode != WNCK_PAGER_DISPLAY_NAME))
-  {
-    GList *windows;
-    GList *tmp;
-
-    windows = get_windows_for_workspace_in_bottom_to_top (pager->priv->screen,
-                                                          space);
- 
-    /* clicks on top windows first */
-    windows = g_list_reverse (windows);
-
-    for (tmp = windows; tmp != NULL; tmp = tmp->next)
-      {
-        WnckWindow *win = WNCK_WINDOW (tmp->data);
-        GdkRectangle winrect;
-
-        get_window_rect (win, &workspace_rect, &winrect);
-
-        if (POINT_IN_RECT (event->x, event->y, winrect))
-          {
-            /* wnck_window_activate (win); */
-            pager->priv->drag_window = win;
-            break;
-          }
-      }
-
-    g_list_free (windows);
-  }
+    {
+      pager->priv->drag_window = window_at_point (pager, space,
+                                                  &workspace_rect,
+                                                  event->x, event->y);
+    }
 
   return TRUE;
 }
@@ -1717,6 +1746,59 @@ wnck_pager_set_screen (WnckPager  *pager,
 {
 }
 
+static gboolean
+wnck_pager_query_tooltip (GtkWidget  *widget,
+                          gint        x,
+                          gint        y,
+                          gboolean    keyboard_tip,
+                          GtkTooltip *tooltip)
+{
+  int i;
+  WnckPager *pager;
+  WnckScreen *screen;
+  WnckWorkspace *space;
+  char *name;
+
+  pager = WNCK_PAGER (widget);
+  screen = pager->priv->screen;
+
+  i = workspace_at_point (pager, x, y, NULL, NULL);
+  space = wnck_screen_get_workspace (screen, i);
+  if (!space)
+    return GTK_WIDGET_CLASS (wnck_pager_parent_class)->query_tooltip (widget,
+                                                                      x, y,
+                                                                      keyboard_tip,
+                                                                      tooltip);
+
+  if (wnck_screen_get_active_workspace (screen) == space)
+    {
+      WnckWindow *window;
+      GdkRectangle workspace_rect;
+
+      get_workspace_rect (pager, i, &workspace_rect);
+
+      window = window_at_point (pager, space, &workspace_rect, x, y);
+
+      if (window)
+        name = g_strdup_printf (_("Click to start dragging \"%s\""),
+                                wnck_window_get_icon_name (window));
+      else
+        name = g_strdup_printf (_("Current workspace: \"%s\""),
+                                wnck_workspace_get_name (space));
+    }
+  else
+    {
+      name = g_strdup_printf (_("Click to switch to \"%s\""),
+                              wnck_workspace_get_name (space));
+    }
+
+  gtk_tooltip_set_text (tooltip, name);
+
+  g_free (name);
+
+  return TRUE;
+}
+
 /**
  * wnck_pager_new:
  * @screen: deprecated argument, can be %NULL.
@@ -1889,6 +1971,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
 
   if (pager->priv->display_mode == mode)
     return;
+
+  g_object_set (pager, "has-tooltip", mode != WNCK_PAGER_DISPLAY_NAME, NULL);
 
   pager->priv->display_mode = mode;
   gtk_widget_queue_resize (GTK_WIDGET (pager));

@@ -1,5 +1,18 @@
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
+	Use a tooltip for the workspace switcher.
+	Fix bug #125644.
+
+	* libwnck/pager.c: (wnck_pager_init): set "has-tooltip" to TRUE
+	(wnck_pager_class_init): set the query_tooltip handler
+	(window_at_point): new, based on code from wnck_pager_button_press()
+	(wnck_pager_button_press): updated
+	(wnck_pager_query_tooltip): set a tooltip
+	(wnck_pager_set_display_mode): set "has-tooltip" to FALSE if we
+	display the name of the workspaces
+
+2007-06-19  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_tasklist_size_request): use the last
 	allocation as a basis for the fake allocation used to compute the size
 	hints
