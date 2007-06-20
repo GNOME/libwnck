@@ -149,8 +149,8 @@ struct _WnckTask
 
   guint32 dnd_timestamp;
 
-  GdkPixbuf *screenshot;
-  GdkPixbuf *screenshot_faded;
+  GdkPixmap *screenshot;
+  GdkPixmap *screenshot_faded;
 
   time_t  start_needs_attention;
   gdouble glow_start_time;
@@ -431,34 +431,15 @@ wnck_task_class_init (WnckTaskClass *klass)
     "\n");
 }
 
-static GdkPixbuf *
-glow_pixbuf (WnckTask        *task,
-             gdouble          factor)
-{
-  GdkPixbuf *destination;
-  
-  destination = gdk_pixbuf_copy (task->screenshot);
-  if (destination == NULL)
-    return NULL;
-
-  gdk_pixbuf_composite (task->screenshot_faded, destination, 0, 0,
-                        gdk_pixbuf_get_width (task->screenshot),
-                        gdk_pixbuf_get_height (task->screenshot),
-                        0, 0, 1, 1, GDK_INTERP_NEAREST,
-                        ABS((int)(factor * G_MAXUINT8)));
-  
-  return destination;
-}
-
 static gboolean
 wnck_task_button_glow (WnckTask *task)
 {
-  GdkPixbuf *glowing_screenshot;
   GTimeVal tv;
   gdouble glow_factor, now;
   gfloat fade_opacity, loop_time;
   gint fade_max_loops;
   gboolean stopped;
+  cairo_t *cr;
 
   if (task->screenshot == NULL)
     return TRUE;
@@ -493,20 +474,29 @@ wnck_task_button_glow (WnckTask *task)
         stopped = FALSE;
     }
 
-  glowing_screenshot = glow_pixbuf (task, glow_factor);
-  if (glowing_screenshot == NULL)
-    return TRUE;
+  gdk_window_begin_paint_rect (task->button->window,
+                               &task->button->allocation);
 
-  gdk_draw_pixbuf (task->button->window,
-                   task->button->style->fg_gc[GTK_WIDGET_STATE (task->button)],
-                   glowing_screenshot,
-                   0, 0, 
-                   task->button->allocation.x, 
-                   task->button->allocation.y,
-                   gdk_pixbuf_get_width (glowing_screenshot),
-                   gdk_pixbuf_get_height (glowing_screenshot),
-                   GDK_RGB_DITHER_NORMAL, 0, 0);
-  g_object_unref (glowing_screenshot);
+  cr = gdk_cairo_create (task->button->window);
+  gdk_cairo_rectangle (cr, &task->button->allocation);
+  cairo_translate (cr, task->button->allocation.x, task->button->allocation.y);
+  cairo_clip (cr);
+
+  cairo_save (cr);
+
+  gdk_cairo_set_source_pixmap (cr, task->screenshot, 0., 0.);
+  cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+  cairo_paint (cr);
+
+  cairo_restore (cr);
+
+  gdk_cairo_set_source_pixmap (cr, task->screenshot_faded, 0., 0.);
+  cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
+  cairo_paint_with_alpha (cr, glow_factor);
+
+  cairo_destroy (cr);
+
+  gdk_window_end_paint (task->button->window);
 
   if (stopped)
     wnck_task_stop_glow (task);
@@ -3747,13 +3737,12 @@ fake_expose_widget (GtkWidget *widget,
   widget->allocation.y -= y;
 }
 
-static GdkPixbuf*
+static GdkPixmap *
 take_screenshot (WnckTask *task)
 {
   WnckTasklist *tasklist;
   GtkWidget    *tasklist_widget;
   GdkPixmap *pixmap;
-  GdkPixbuf *screenshot;
   gint width, height;
   gboolean overlay_rect;
   
@@ -3807,12 +3796,26 @@ take_screenshot (WnckTask *task)
   fake_expose_widget (task->label, pixmap,
                       -task->button->allocation.x, -task->button->allocation.y);
   
-  /* get the screenshot, and return */
-  screenshot = gdk_pixbuf_get_from_drawable (NULL, pixmap, NULL, 0, 0,
-                                             0, 0, width, height);
-  g_object_unref (pixmap);
-  
-  return screenshot;
+  return pixmap;
+}
+
+static GdkPixmap *
+copy_pixmap (GtkWidget *widget)
+{
+  GdkPixmap *pixmap;
+
+  pixmap = gdk_pixmap_new (widget->window,
+                           widget->allocation.width,
+                           widget->allocation.height, -1);
+
+  gdk_draw_drawable (pixmap,
+                     widget->style->bg_gc[GTK_STATE_NORMAL],
+                     widget->window,
+                     widget->allocation.x, widget->allocation.y,
+                     0, 0,
+                     widget->allocation.width, widget->allocation.height);
+
+  return pixmap;
 }
 
 static gboolean
@@ -3855,16 +3858,7 @@ wnck_task_expose (GtkWidget        *widget,
         {
           if (task->start_needs_attention)
             {
-              task->screenshot = gdk_pixbuf_get_from_drawable (NULL,
-                                                               widget->window,
-                                                               NULL,
-                                                               widget->allocation.x, 
-                                                               widget->allocation.y,
-                                                               0, 0,
-                                                               widget->allocation.width, 
-                                                               widget->allocation.height);
-              
-              /* we also need to take a screenshot for the faded state */
+              task->screenshot = copy_pixmap (widget);
               task->screenshot_faded = take_screenshot (task);
 
               wnck_task_button_glow (task);

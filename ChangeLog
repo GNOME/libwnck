@@ -1,3 +1,14 @@
+2007-06-21  Vincent Untz  <vuntz@gnome.org>
+
+	Make the glowing effect use cairo. This makes it work with RGBA.
+	Patch by Ryan Lortie <desrt@desrt.ca>. Fix bug #439417
+
+	* libwnck/tasklist.c: (glow_pixbuf): kill
+	(wnck_task_button_glow): cairo love!
+	(take_screenshot): just return the pixmap
+	(copy_pixmap): new, copy the window of a widget in a pixmap
+	(wnck_task_expose): updated
+
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/tasklist.c: (draw_dot): killed
