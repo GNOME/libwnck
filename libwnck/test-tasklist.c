@@ -10,6 +10,7 @@ static gboolean never_group = FALSE;
 static gboolean always_group = FALSE;
 static gboolean rtl = FALSE;
 static gboolean skip_tasklist = FALSE;
+static gboolean transparent = FALSE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
@@ -17,8 +18,37 @@ static GOptionEntry entries[] = {
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
 	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, N_("Don't show window in tasklist"), NULL},
+	{"transparent", 't', 0, G_OPTION_ARG_NONE, &transparent, N_("Enable Transparency"), NULL},
 	{NULL }
 };
+
+static gboolean
+window_expose_event (GtkWidget      *widget,
+		     GdkEventExpose *event,
+		     gpointer        user_data)
+{
+  cairo_t *cr;
+
+  cr = gdk_cairo_create (widget->window);
+  cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+  gdk_cairo_region (cr, event->region);
+  cairo_set_source_rgba (cr, 1., 1., 1., .5);
+  cairo_fill (cr);
+  cairo_destroy (cr);
+
+  return FALSE;
+}
+
+static void
+window_composited_changed (GtkWidget *widget,
+                           gpointer   user_data)
+{
+  gboolean composited;
+
+  composited = gtk_widget_is_composited (widget);
+
+  gtk_widget_set_app_paintable (widget, composited);
+}
 
 int
 main (int argc, char **argv)
@@ -71,6 +101,34 @@ main (int argc, char **argv)
   else
     wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
                                 WNCK_TASKLIST_AUTO_GROUP);
+
+  if (transparent)
+    {
+      GdkColormap *map;
+
+      map = gdk_screen_get_rgba_colormap (gtk_widget_get_screen (win));
+
+      if (map != NULL)
+        {
+          gtk_widget_set_colormap (win, map);
+
+          g_signal_connect (win, "composited-changed",
+                            G_CALLBACK (window_composited_changed),
+                            NULL);
+
+          /* draw even if we are not app-painted.
+           * this just makes my life a lot easier :)
+           */
+          g_signal_connect (win, "expose-event",
+                            G_CALLBACK (window_expose_event),
+                            NULL);
+
+          window_composited_changed (win, NULL);
+        }
+
+        wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist),
+                                         GTK_RELIEF_NONE);
+    }
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);

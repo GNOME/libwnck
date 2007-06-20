@@ -1,5 +1,14 @@
 2007-06-21  Vincent Untz  <vuntz@gnome.org>
 
+	Add a --transparent command line for test-tasklist
+	Patch by Ryan Lortie <desrt@desrt.ca>. Fix bug #439417
+
+	* libwnck/test-tasklist.c: (window_expose_event): new
+	(window_composited_changed): new
+	(main): updated
+
+2007-06-21  Vincent Untz  <vuntz@gnome.org>
+
 	Make the glowing effect use cairo. This makes it work with RGBA.
 	Patch by Ryan Lortie <desrt@desrt.ca>. Fix bug #439417
 
