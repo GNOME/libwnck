@@ -1341,7 +1341,10 @@ wnck_window_is_sticky                 (WnckWindow *window)
  *
  * Closes @window.
  *
- * Since: 2.6 (@timestamp argument was missing in earlier versions)
+ * This function existed before 2.6, but the @timestamp argument was missing
+ * in earlier versions.
+ * 
+ * Since: 2.6
  **/
 void
 wnck_window_close (WnckWindow *window,
@@ -1755,7 +1758,10 @@ wnck_window_unpin (WnckWindow *window)
  * decide to refuse the request (to not steal the focus if there is a more
  * recent user activity, for example).
  *
- * Since: 2.10 (@timestamp argument was missing in earlier versions)
+ * This function existed before 2.10, but the @timestamp argument was missing
+ * in earlier versions.
+ * 
+ * Since: 2.10
  **/
 void
 wnck_window_activate (WnckWindow *window,
@@ -1861,7 +1867,10 @@ find_last_transient_for (GList *windows,
  * the most recently active window among @window and its transients.
  * This is probably best implemented on the window manager side.
  * 
- * Since: 2.10 (@timestamp argument was missing in earlier versions)
+ * This function existed before 2.10, but the @timestamp argument was missing
+ * in earlier versions.
+ * 
+ * Since: 2.10
  **/
 void
 wnck_window_activate_transient (WnckWindow *window,

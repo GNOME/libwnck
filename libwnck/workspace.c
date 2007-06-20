@@ -208,8 +208,11 @@ wnck_workspace_change_name (WnckWorkspace *space,
  * Asks the window manager to make @space the active workspace. The window
  * manager may decide to refuse the request (to not steal the focus if there is
  * a more recent user activity, for example).
+ *
+ * This function existed before 2.10, but the @timestamp argument was missing
+ * in earlier versions.
  * 
- * Since: 2.10 (@timestamp argument was missing in earlier versions)
+ * Since: 2.10
  **/
 void
 wnck_workspace_activate (WnckWorkspace *space,

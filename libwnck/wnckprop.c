@@ -35,6 +35,8 @@
  *   --keyboard-move and --keyboard-resize
  *
  *  uncomment code that prints the workspace layout when API is public.
+ *
+ *  add --list-screen
  */
 #include <config.h>
 

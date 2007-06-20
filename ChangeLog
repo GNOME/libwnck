@@ -1,5 +1,12 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	* doc/libwnck-docs.sgml:
+	* libwnck/window.c:
+	* libwnck/workspace.c: update docs to have indexes of symbols.
+	* libwnck/wnckprop.c: add TODO
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/wnckprop.c: (update_screen_props), (update_window_props),
 	(print_screen_props): rework TODO list
 
