@@ -63,6 +63,9 @@ const char* _wnck_window_get_startup_id (WnckWindow *window);
 const char* _wnck_window_get_resource_class (WnckWindow *window);
 const char* _wnck_window_get_resource_name  (WnckWindow *window);
 
+time_t      _wnck_window_get_needs_attention_time (WnckWindow *window);
+time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);
+
 WnckWorkspace* _wnck_workspace_create  (int            number,
 					WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);

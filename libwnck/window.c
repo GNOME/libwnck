@@ -26,6 +26,8 @@
 
 #include <glib/gi18n-lib.h>
 #include <string.h>
+#include <time.h>
+
 #include "window.h"
 #include "class-group.h"
 #include "util.h"
@@ -125,6 +127,8 @@ struct _WnckWindowPrivate
   guint is_fullscreen : 1;
   guint demands_attention : 1;
   guint is_urgent : 1;
+
+  time_t needs_attention_time;
 
   /* _NET_WM_STATE_HIDDEN doesn't map directly into an
    * externally-visible state (it determines the WM_STATE
@@ -263,6 +267,8 @@ wnck_window_init (WnckWindow *window)
   window->priv->is_fullscreen = FALSE;
   window->priv->demands_attention = FALSE;
   window->priv->is_urgent = FALSE;
+
+  window->priv->needs_attention_time = 0;
 
   window->priv->net_wm_state_hidden = FALSE;
   window->priv->wm_state_iconic = FALSE;
@@ -1017,15 +1023,23 @@ wnck_window_needs_attention (WnckWindow *window)
   return window->priv->demands_attention || window->priv->is_urgent;
 }
 
-/* Return whether one of the transients of @window needs attention */
-static gboolean
+time_t
+_wnck_window_get_needs_attention_time (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+
+  return window->priv->needs_attention_time;
+}
+
+/* Return whether the transient of @window needs attention */
+static WnckWindow *
 transient_needs_attention (WnckWindow *window)
 {
   GList *windows;
   WnckWindow *transient;
   
   if (!WNCK_IS_WINDOW (window))
-    return FALSE;
+    return NULL;
 
   windows = wnck_screen_get_windows_stacked (window->priv->screen);
 
@@ -1034,13 +1048,32 @@ transient_needs_attention (WnckWindow *window)
     {
       /* catch transient cycles */
       if (transient == window)
-        return FALSE;
+        return NULL;
 
       if (wnck_window_needs_attention (transient))
-        return TRUE;
+        return transient;
     }
 
   return FALSE;
+}
+
+time_t
+_wnck_window_or_transient_get_needs_attention_time (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
+
+  if (_wnck_window_get_needs_attention_time (window) == 0)
+    {
+      WnckWindow *transient;
+
+      transient = transient_needs_attention (window);
+      if (transient)
+        return _wnck_window_get_needs_attention_time (transient);
+      else
+        return 0;
+    }
+  else
+    return _wnck_window_get_needs_attention_time (window);
 }
 
 /**
@@ -1059,7 +1092,7 @@ gboolean
 wnck_window_or_transient_needs_attention (WnckWindow *window)
 {
   return wnck_window_needs_attention (window) || 
-         transient_needs_attention (window);
+         transient_needs_attention (window) != NULL;
 }
 
 /**
@@ -2516,6 +2549,10 @@ update_state (WnckWindow *window)
   
   if (reread_net_wm_state)
     {
+      gboolean demanded_attention;
+
+      demanded_attention = window->priv->demands_attention;
+
       window->priv->is_maximized_horz = FALSE;
       window->priv->is_maximized_vert = FALSE;
       window->priv->is_sticky = FALSE;
@@ -2558,6 +2595,14 @@ update_state (WnckWindow *window)
             window->priv->demands_attention = TRUE;
 
           ++i;
+        }
+
+      if (window->priv->demands_attention != demanded_attention)
+        {
+          if (window->priv->demands_attention)
+            time (&window->priv->needs_attention_time);
+          else if (!window->priv->is_urgent)
+            window->priv->needs_attention_time = 0;
         }
 
       g_free (atoms);
@@ -2962,9 +3007,16 @@ update_wmhints (WnckWindow *window)
           window->priv->group_leader = hints->window_group;
 
       if (hints->flags & XUrgencyHint)
-        window->priv->is_urgent = TRUE;
+        {
+          window->priv->is_urgent = TRUE;
+          time (&window->priv->needs_attention_time);
+        }
       else
-        window->priv->is_urgent = FALSE;
+        {
+          window->priv->is_urgent = FALSE;
+          if (!window->priv->demands_attention)
+            window->priv->needs_attention_time = 0;
+        }
 
       XFree (hints);
     }

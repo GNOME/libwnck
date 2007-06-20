@@ -152,6 +152,7 @@ struct _WnckTask
   GdkPixbuf *screenshot;
   GdkPixbuf *screenshot_faded;
 
+  time_t  start_needs_attention;
   gdouble glow_start_time;
   
   guint button_glow;
@@ -239,6 +240,8 @@ G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 static void wnck_task_init        (WnckTask      *task);
 static void wnck_task_class_init  (WnckTaskClass *klass);
 static void wnck_task_finalize    (GObject       *object);
+
+static void wnck_task_stop_glow   (WnckTask *task);
 
 static WnckTask *wnck_task_new_from_window      (WnckTasklist    *tasklist,
 						 WnckWindow      *window);
@@ -401,6 +404,7 @@ wnck_task_init (WnckTask *task)
   task->screenshot = NULL;
   task->screenshot_faded = NULL;
 
+  task->start_needs_attention = 0;
   task->glow_start_time = 0.0;
 
   task->button_glow = 0;
@@ -453,6 +457,8 @@ wnck_task_button_glow (WnckTask *task)
   GTimeVal tv;
   gdouble glow_factor, now;
   gfloat fade_opacity, loop_time;
+  gint fade_max_loops;
+  gboolean stopped;
 
   if (task->screenshot == NULL)
     return TRUE;
@@ -466,9 +472,26 @@ wnck_task_button_glow (WnckTask *task)
 
   gtk_widget_style_get (GTK_WIDGET (task->tasklist), "fade-opacity", &fade_opacity,
                                                      "fade-loop-time", &loop_time,
+                                                     "fade-max-loops", &fade_max_loops,
                                                      NULL);
-  
-  glow_factor = fade_opacity * (0.5 - 0.5 * cos ((now - task->glow_start_time) * M_PI * 2.0 / loop_time));
+
+  if (task->button_glow == 0)
+    {
+      /* we're in "has stopped glowing" mode */
+      glow_factor = fade_opacity * 0.5;
+      stopped = TRUE;
+    }
+  else
+    {
+      glow_factor = fade_opacity * (0.5 - 
+                                    0.5 * cos ((now - task->glow_start_time) *
+                                               M_PI * 2.0 / loop_time));
+
+      if (now - task->start_needs_attention > loop_time * 1.0 * fade_max_loops)
+        stopped = ABS (glow_factor - fade_opacity * 0.5) < 0.05;
+      else
+        stopped = FALSE;
+    }
 
   glowing_screenshot = glow_pixbuf (task, glow_factor);
   if (glowing_screenshot == NULL)
@@ -485,7 +508,10 @@ wnck_task_button_glow (WnckTask *task)
                    GDK_RGB_DITHER_NORMAL, 0, 0);
   g_object_unref (glowing_screenshot);
 
-  return TRUE;
+  if (stopped)
+    wnck_task_stop_glow (task);
+
+  return !stopped;
 }
 
 static void
@@ -517,11 +543,7 @@ static void
 wnck_task_stop_glow (WnckTask *task)
 {
   if (task->button_glow != 0)
-    {
-      g_source_remove (task->button_glow);
-      task->button_glow = 0;
-      task->glow_start_time = 0.0;
-    }
+    g_source_remove (task->button_glow);
 }
 
 static void
@@ -721,6 +743,13 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                               "Loop time",
                                                               "The time one loop takes when fading, in seconds. Default: 3.0",
                                                               0.2, 10.0, 3.0,
+                                                              G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+
+  gtk_widget_class_install_style_property (widget_class,
+                                           g_param_spec_int ("fade-max-loops",
+                                                              "Loop time",
+                                                              "The number of fading loops. 0 means the button will only fade to the final color. Default: 5",
+                                                              0, 50, 5,
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
   gtk_widget_class_install_style_property (widget_class,
@@ -3133,6 +3162,7 @@ wnck_task_get_needs_attention (WnckTask *task)
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
+      task->start_needs_attention = 0;
       l = task->windows;
       while (l)
 	{
@@ -3141,6 +3171,7 @@ wnck_task_get_needs_attention (WnckTask *task)
 	  if (wnck_window_or_transient_needs_attention (win_task->window))
 	    {
 	      needs_attention = TRUE;
+              task->start_needs_attention = MAX (task->start_needs_attention, _wnck_window_or_transient_get_needs_attention_time (win_task->window));
 	      break;
 	    }
 
@@ -3151,6 +3182,7 @@ wnck_task_get_needs_attention (WnckTask *task)
     case WNCK_TASK_WINDOW:
       needs_attention =
 	wnck_window_or_transient_needs_attention (task->window);
+      task->start_needs_attention = _wnck_window_or_transient_get_needs_attention_time (task->window);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3829,7 +3861,7 @@ wnck_task_expose (GtkWidget        *widget,
           (event->area.width >= widget->allocation.width) &&
           (event->area.height >= widget->allocation.height))
         {
-          if (task->button_glow != 0)
+          if (task->start_needs_attention)
             {
               task->screenshot = gdk_pixbuf_get_from_drawable (NULL,
                                                                widget->window,
@@ -3843,6 +3875,8 @@ wnck_task_expose (GtkWidget        *widget,
               /* we also need to take a screenshot for the faded state */
               task->screenshot_faded = take_screenshot (task);
             }
+
+          wnck_task_button_glow (task);
         }
 
     case WNCK_TASK_STARTUP_SEQUENCE:
