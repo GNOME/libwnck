@@ -1,5 +1,16 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_pager_window_get_workspace): add a new
+	is_state_relevant argument
+	(get_windows_for_workspace_in_bottom_to_top): updated
+	(wnck_pager_queue_draw_window): updated
+	(window_state_changed_callback): if the state change is about
+	visibility in the pager, we need to force the redraw of the workspace
+	* libwnck/wnckprop.c: (update_window_props): remove FIXME
+	(print_screen_props): fix in commented code
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	Add new features to wnckprop: it can now change properties of windows,
 	but also of screens, and display information about a screen. And it's
 	more l10n-friendly.

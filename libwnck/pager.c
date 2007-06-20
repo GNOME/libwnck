@@ -163,7 +163,8 @@ static void workspace_name_changed_callback (WnckWorkspace *workspace,
                                              gpointer       data);
 
 static gboolean wnck_pager_window_state_is_relevant (int state);
-static gint wnck_pager_window_get_workspace   (WnckWindow  *window);
+static gint wnck_pager_window_get_workspace   (WnckWindow  *window,
+                                               gboolean     is_state_relevant);
 static void wnck_pager_queue_draw_workspace   (WnckPager   *pager,
 					       gint	    i);
 static void wnck_pager_queue_draw_window (WnckPager	   *pager,
@@ -682,13 +683,14 @@ wnck_pager_window_state_is_relevant (int state)
 }
 
 static gint
-wnck_pager_window_get_workspace (WnckWindow *window)
+wnck_pager_window_get_workspace (WnckWindow *window,
+                                 gboolean    is_state_relevant)
 {
   gint state;
   WnckWorkspace *workspace;
 
   state = wnck_window_get_state (window);
-  if (!wnck_pager_window_state_is_relevant (state))
+  if (is_state_relevant && !wnck_pager_window_state_is_relevant (state))
     return -1;
   workspace = wnck_window_get_workspace (window);
   if (workspace == NULL && wnck_window_is_pinned (window))
@@ -713,7 +715,7 @@ get_windows_for_workspace_in_bottom_to_top (WnckScreen    *screen,
   for (tmp = windows; tmp != NULL; tmp = tmp->next)
     {
       WnckWindow *win = WNCK_WINDOW (tmp->data);
-      if (wnck_pager_window_get_workspace (win) == workspace_num)
+      if (wnck_pager_window_get_workspace (win, TRUE) == workspace_num)
 	result = g_list_prepend (result, win);
     }
 
@@ -1296,7 +1298,7 @@ wnck_pager_queue_draw_window (WnckPager  *pager,
 {
   gint workspace;
 
-  workspace = wnck_pager_window_get_workspace (window);
+  workspace = wnck_pager_window_get_workspace (window, TRUE);
   if (workspace == -1)
     return;
 
@@ -2147,7 +2149,16 @@ window_state_changed_callback     (WnckWindow      *window,
                                    gpointer         data)
 {
   WnckPager *pager = WNCK_PAGER (data);
-  wnck_pager_queue_draw_window (pager, window);
+
+  /* if the changed state changes the visibility in the pager, we need to
+   * redraw the whole workspace. wnck_pager_queue_draw_window() might not be
+   * enough */
+  if (!wnck_pager_window_state_is_relevant (changed))
+    wnck_pager_queue_draw_workspace (pager,
+                                     wnck_pager_window_get_workspace (window,
+                                                                      FALSE));
+  else
+    wnck_pager_queue_draw_window (pager, window);
 }
 
 static void

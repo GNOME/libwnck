@@ -544,7 +544,6 @@ update_window_props (WnckWindow *window)
                      WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY,
                      WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY)
 
-  //FIXME: unfullscreen does not work. Action is not allowed?
   SET_PROPERTY_BOOLEAN (fullscreen,
                         WNCK_WINDOW_ACTION_FULLSCREEN,
                         WNCK_WINDOW_ACTION_FULLSCREEN)
@@ -554,7 +553,6 @@ update_window_props (WnckWindow *window)
                      WNCK_WINDOW_ACTION_SHADE, WNCK_WINDOW_ACTION_UNSHADE)
   SET_PROPERTY_DUAL (stick,
                      WNCK_WINDOW_ACTION_STICK, WNCK_WINDOW_ACTION_UNSTICK)
-  //FIXME: skip pager is not updated immediately in the pager
   SET_PROPERTY_BOOLEAN (skip_pager, actions, actions)
   SET_PROPERTY_BOOLEAN (skip_tasklist, actions, actions)
   SET_PROPERTY_DUAL (pin,
@@ -709,8 +707,8 @@ print_screen_props (WnckScreen *screen)
 #if 0
       _wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
                                          NULL);
-      g_print ("Workspace Layout (rows, columns, orientation):
-               %d, %d, %s\n",
+      g_print (_("Workspace Layout (rows, columns, orientation): "
+                 "%d, %d, %s\n"),
                rows, columns,
                orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL ? "vertical" :
                                                                  "horizontal");
