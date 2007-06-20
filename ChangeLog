@@ -1,5 +1,22 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	Add new features to wnckprop: it can now change properties of windows,
+	but also of screens, and display information about a screen. And it's
+	more l10n-friendly.
+
+	* libwnck/screen.c: (wnck_screen_get): do not print a warning if
+	there's no screen for the index
+	* libwnck/window.c: improved a bit doc
+	* libwnck/wnckprop.c: (validate_options): new
+	(update_screen_props): new
+	(update_window_props): new
+	(print_screen_props): new
+	(print_window_props): improved i18n
+	(handle_button_press_event): updated
+	(main): updated
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (tasklist_include_window_impl): always show
 	window needing attention. This worked with multiple workspace, but the
 	code didn't seem to work when the user is using viewports (in compiz,

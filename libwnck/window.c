@@ -1614,7 +1614,7 @@ wnck_window_unstick                 (WnckWindow *window)
  * wnck_window_keyboard_move:
  * @window: a #WnckWindow.
  *
- * Asks the window manager to start moving @window via keyboard.
+ * Asks the window manager to start moving @window via the keyboard.
  **/
 void
 wnck_window_keyboard_move (WnckWindow *window)
@@ -1629,7 +1629,7 @@ wnck_window_keyboard_move (WnckWindow *window)
  * wnck_window_keyboard_size:
  * @window: a #WnckWindow.
  *
- * Asks the window manager to start resizing @window via keyboard.
+ * Asks the window manager to start resizing @window via the keyboard.
  **/
 void
 wnck_window_keyboard_size (WnckWindow *window)

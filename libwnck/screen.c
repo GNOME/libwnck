@@ -614,14 +614,17 @@ wnck_screen_construct (WnckScreen *screen,
  * 
  * Returns the #WnckScreen for a given screen on the default display.
  * 
- * Return value: the #WnckScreen for screen @index. The returned #WnckScreen is
- * owned by libwnck and must not be referenced or unreferenced.
+ * Return value: the #WnckScreen for screen @index, or %NULL if no such screen
+ * exists. The returned #WnckScreen is owned by libwnck and must not be
+ * referenced or unreferenced.
  **/
 WnckScreen*
 wnck_screen_get (int index)
 {
   g_return_val_if_fail (gdk_display != NULL, NULL);
-  g_return_val_if_fail (index < ScreenCount (gdk_display), NULL);
+
+  if (index >= ScreenCount (gdk_display))
+    return NULL;
   
   if (screens == NULL)
     {
