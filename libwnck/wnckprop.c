@@ -26,6 +26,16 @@
  * agreed to relicense it from the GPL to the LGPL.
  */
 
+/* TODO:
+ *  investigate why those doesn't work:
+ *   --set-n-workspaces
+ *   --activate-workspace (timestamp related?)
+ *   --activate (and probably --unminimize) (timestamp related?)
+ *   --show-desktop and --unshow-desktop
+ *   --keyboard-move and --keyboard-resize
+ *
+ *  uncomment code that prints the workspace layout when API is public.
+ */
 #include <config.h>
 
 #include <string.h>
@@ -386,7 +396,6 @@ update_screen_props (WnckScreen *screen)
   // TODO: get a valid timestamp
   timestamp = gdk_x11_display_get_user_time (gdk_display_get_default ());
 
-  //FIXME: does not work?
   if (set_n_workspaces > 0)
     wnck_screen_change_workspace_count (screen, set_n_workspaces);
 
@@ -405,7 +414,6 @@ update_screen_props (WnckScreen *screen)
     }
 
   /* now, the workspace number/layout won't change again */
-  //FIXME: does not work?
   if (set_activate_workspace != -1)
     {
       WnckWorkspace *space;
@@ -422,7 +430,6 @@ update_screen_props (WnckScreen *screen)
                     set_activate_workspace);
     }
 
-  //FIXME: does not work?
   if (set_show_desktop)
     wnck_screen_toggle_showing_desktop (screen, TRUE);
   else if (set_unshow_desktop)
@@ -613,11 +620,9 @@ update_window_props (WnckWindow *window)
     wnck_window_set_window_type (window, set_window_type_t);
 
   /* interactive actions at the end */
-  //FIXME: does not work?
   SET_PROPERTY (keyboard_move, WNCK_WINDOW_ACTION_MOVE)
   /* FIXME: hack: we should rename the API */
   #define wnck_window_keyboard_resize wnck_window_keyboard_size
-  //FIXME: does not work?
   SET_PROPERTY (keyboard_resize, WNCK_WINDOW_ACTION_RESIZE)
   SET_PROPERTY_TIMESTAMP (close, WNCK_WINDOW_ACTION_CLOSE)
 }
@@ -690,7 +695,7 @@ print_screen_props (WnckScreen *screen)
       WnckWorkspace *space;
       WnckWindow    *window;
 #if 0
-      _WnckLayoutOrientation orientation;
+      WnckLayoutOrientation orientation;
       int            rows;
       int            columns;
 #endif
@@ -703,10 +708,9 @@ print_screen_props (WnckScreen *screen)
       g_print (_("Number of Workspaces: %d\n"),
           wnck_screen_get_workspace_count (screen));
 
-      /*TODO*/
 #if 0
-      _wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
-                                         NULL);
+      wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
+                                        NULL);
       g_print (_("Workspace Layout (rows, columns, orientation): "
                  "%d, %d, %s\n"),
                rows, columns,
