@@ -1,5 +1,12 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (draw_dot): killed
+	(wnck_task_expose): don't draw small dots that people don't see, but
+	use gtk_paint_tab()
+	Fix bug #139523
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_expose): only make the button glow if
 	the task needs attention. It doesn't change anything in the end. But
 	still (since there's no timeout involved), it's better :-)

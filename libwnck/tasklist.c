@@ -3719,13 +3719,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 }
 
 static void
-draw_dot (GdkWindow *window, GdkGC *lgc, GdkGC *dgc, int x, int y)
-{
-  gdk_draw_point (window, dgc, x,   y);
-  gdk_draw_point (window, lgc, x+1, y+1);
-}
-
-static void
 fake_expose_widget (GtkWidget *widget,
                     GdkPixmap *pixmap,
                     gint       x,
@@ -3829,7 +3822,7 @@ wnck_task_expose (GtkWidget        *widget,
 {
   GtkStyle *style;
   GdkGC *lgc, *dgc;
-  int x, y, i, j;
+  int x, y;
   WnckTask *task;
 
   task = WNCK_TASK (data);
@@ -3844,14 +3837,13 @@ wnck_task_expose (GtkWidget        *widget,
       dgc = style->dark_gc[GTK_STATE_NORMAL];
 
       x = widget->allocation.x + widget->allocation.width -
-          (GTK_CONTAINER (widget)->border_width + style->ythickness + 10);
-      y = widget->allocation.y + style->xthickness + 2;
+          (GTK_CONTAINER (widget)->border_width + style->ythickness + 12);
+      y = widget->allocation.y + widget->allocation.height / 2 - 5;
 
-      for (i = 0; i < 3; i++) {
-            for (j = i; j < 3; j++) {
-                  draw_dot (widget->window, lgc, dgc, x + j*3, y + i*3);
-            }
-      }
+      gtk_paint_tab (widget->style, widget->window,
+		     task->tasklist->priv->active_class_group == task ?
+		       GTK_STATE_ACTIVE : GTK_STATE_NORMAL,
+		     GTK_SHADOW_NONE, NULL, widget, NULL, x, y, 10, 10);
 
       /* Fall through to get screenshot
        */
