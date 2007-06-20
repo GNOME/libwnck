@@ -1,5 +1,11 @@
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_expose): only make the button glow if
+	the task needs attention. It doesn't change anything in the end. But
+	still (since there's no timeout involved), it's better :-)
+
+2007-06-20  Vincent Untz  <vuntz@gnome.org>
+
 	Stop the glowing effect in the tasklist for urgent windows after a
 	while. This fixes bug #327870.
 	Also, a new fade-max-loops controls the number of loops before this

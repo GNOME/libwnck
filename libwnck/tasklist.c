@@ -3874,9 +3874,9 @@ wnck_task_expose (GtkWidget        *widget,
               
               /* we also need to take a screenshot for the faded state */
               task->screenshot_faded = take_screenshot (task);
-            }
 
-          wnck_task_button_glow (task);
+              wnck_task_button_glow (task);
+            }
         }
 
     case WNCK_TASK_STARTUP_SEQUENCE:
