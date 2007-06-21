@@ -1,5 +1,10 @@
 2007-06-21  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_task_popup_menu): add dragging of windows
+	from a grouped task menu
+
+2007-06-21  Vincent Untz  <vuntz@gnome.org>
+
 	Add a --transparent command line for test-tasklist
 	Patch by Ryan Lortie <desrt@desrt.ca>. Fix bug #439417
 

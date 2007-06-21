@@ -267,6 +267,17 @@ static void       wnck_task_state_changed        (WnckWindow      *window,
                                                   WnckWindowState  changed_mask, 
                                                   WnckWindowState  new_state,
                                                   gpointer         data);
+
+static void       wnck_task_drag_begin    (GtkWidget          *widget,
+                                           GdkDragContext     *context,
+                                           WnckTask           *task);
+static void       wnck_task_drag_data_get (GtkWidget          *widget,
+                                           GdkDragContext     *context,
+                                           GtkSelectionData   *selection_data,
+                                           guint               info,
+                                           guint               time,
+                                           WnckTask           *task);
+
 static void     wnck_tasklist_init          (WnckTasklist      *tasklist);
 static void     wnck_tasklist_class_init    (WnckTasklistClass *klass);
 static GObject *wnck_tasklist_constructor   (GType              type,
@@ -2838,10 +2849,28 @@ wnck_task_popup_menu (WnckTask *task,
         gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
                                    wnck_create_window_action_menu (win_task->window));
       else
-        g_signal_connect_object (G_OBJECT (menu_item), "activate",
-                                 G_CALLBACK (wnck_task_menu_activated),
-                                 G_OBJECT (win_task),
-                                 0);
+        {
+          static const GtkTargetEntry targets[] = {
+            { "application/x-wnck-window-id", 0, 0 }
+          };
+
+          g_signal_connect_object (G_OBJECT (menu_item), "activate",
+                                   G_CALLBACK (wnck_task_menu_activated),
+                                   G_OBJECT (win_task),
+                                   0);
+
+
+          gtk_drag_source_set (menu_item, GDK_BUTTON1_MASK,
+                               targets, 1, GDK_ACTION_MOVE);
+          g_signal_connect_object (G_OBJECT(menu_item), "drag_begin",
+                                   G_CALLBACK (wnck_task_drag_begin),
+                                   G_OBJECT (win_task),
+                                   0); 
+          g_signal_connect_object (G_OBJECT(menu_item), "drag_data_get",
+                                   G_CALLBACK (wnck_task_drag_data_get),
+                                   G_OBJECT (win_task),
+                                   0); 
+        }
       
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       
