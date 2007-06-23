@@ -2203,20 +2203,33 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 	  /* Class group */
 
 	  class_group = wnck_window_get_class_group (win);
-	  class_group_task = g_hash_table_lookup (tasklist->priv->class_group_hash, class_group);
+          /* don't group windows if they do not belong to any class */
+          if (strcmp (wnck_class_group_get_res_class (class_group), "") != 0)
+            {
+              class_group_task =
+                        g_hash_table_lookup (tasklist->priv->class_group_hash,
+                                             class_group);
 
-	  if (class_group_task == NULL)
-	    {
-	      class_group_task = wnck_task_new_from_class_group (tasklist, class_group);
-	      gtk_widget_set_parent (class_group_task->button, GTK_WIDGET (tasklist));
-	      gtk_widget_show (class_group_task->button);
+              if (class_group_task == NULL)
+                {
+                  class_group_task =
+                                  wnck_task_new_from_class_group (tasklist,
+                                                                  class_group);
+                  gtk_widget_set_parent (class_group_task->button,
+                                         GTK_WIDGET (tasklist));
+                  gtk_widget_show (class_group_task->button);
 
-	      tasklist->priv->class_groups = g_list_prepend (tasklist->priv->class_groups,
-							     class_group_task);
-	      g_hash_table_insert (tasklist->priv->class_group_hash, class_group, class_group_task);
-	    }
-	  
-	  class_group_task->windows = g_list_prepend (class_group_task->windows, win_task);
+                  tasklist->priv->class_groups =
+                                  g_list_prepend (tasklist->priv->class_groups,
+                                                  class_group_task);
+                  g_hash_table_insert (tasklist->priv->class_group_hash,
+                                       class_group, class_group_task);
+                }
+              
+              class_group_task->windows =
+                                    g_list_prepend (class_group_task->windows,
+                                                    win_task);
+            }
 	}
       else if (tasklist_include_in_skipped_list (tasklist, win))
         {

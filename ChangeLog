@@ -1,5 +1,10 @@
 2007-06-23  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.c: (wnck_tasklist_update_lists): do not group
+	together windows without a class. Fix bug #165075.
+
+2007-06-23  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_popup_menu): add a small assertion
 
 2007-06-21  Vincent Untz  <vuntz@gnome.org>
