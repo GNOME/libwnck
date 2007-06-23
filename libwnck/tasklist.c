@@ -2796,6 +2796,8 @@ wnck_task_popup_menu (WnckTask *task,
   GtkWidget *image;
   GList *l, *list;
   
+  g_return_if_fail (task->type == WNCK_TASK_CLASS_GROUP);
+
   if (task->class_group == NULL)
     return;
   
