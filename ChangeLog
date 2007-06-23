@@ -72,12 +72,6 @@
 
 2007-06-20  Vincent Untz  <vuntz@gnome.org>
 
-	* libwnck/tasklist.c: (wnck_tasklist_init),
-	(wnck_tasklist_finalize), (wnck_tasklist_scroll_cb),
-	(wnck_tasklist_activate_task_window):
-
-2007-06-20  Vincent Untz  <vuntz@gnome.org>
-
 	* doc/libwnck-docs.sgml:
 	* libwnck/window.c:
 	* libwnck/workspace.c: update docs to have indexes of symbols.
@@ -186,10 +180,6 @@
 
 	* libwnck/tasklist.c: (wnck_task_popup_menu): add tooltip
 	* rationales.txt: add link for icon name vs name in tasklist
-
-2007-06-19  Vincent Untz  <vuntz@gnome.org>
-
-	* libwnck/tasklist.c: (wnck_task_popup_menu):
 
 2007-06-19  Vincent Untz  <vuntz@gnome.org>
 
