@@ -1,5 +1,25 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	Make it possible to print information about a class group or an
+	application by selecting a window. Also, if no argument is specified
+	for --screen or --workspace, use the default screen or the active
+	workspace.
+
+	* libwnck/wnckprop.c: force no conflict resolution for --activate
+	(used in --workspace and --window)
+	(option_parse): new, we need this since we have optional arguments for
+	some options
+	(validate_options): updated
+	(handle_button_press_event): updated, since we'll return to main()
+	which will handle everything
+	(main): updated to use the active workspace if no number is specified
+	after --workspace, and to let the user select a window for a class
+	group or an application
+
+	* doc/tmpl/workspace.sgml: forgot to update this
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-sections.txt:
 	* libwnck/workspace.[ch]: (wnck_workspace_get_screen): add
 	wnck_workspace_get_screen() API, for consistency

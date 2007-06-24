@@ -36,12 +36,11 @@
  *  uncomment code that prints the workspace layout when API is public.
  *  uncomment code for wnck_class_group_get_icon_is_fallback() when API is done
  *
- *  make --application and --class also work by selecting a window
- *
  *  add --list-screen
  */
 #include <config.h>
 
+#include <stdlib.h>
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
@@ -69,6 +68,15 @@ enum {
   WINDOW_READ_MODE,
   WINDOW_WRITE_MODE
 } mode = INVALID_MODE;
+
+gboolean option_xid = FALSE;
+gboolean option_application = FALSE;
+gboolean option_class_group = FALSE;
+gboolean option_workspace = FALSE;
+gboolean option_screen = FALSE;
+
+gboolean get_from_user = TRUE;
+WnckWindow *got_from_user = NULL;
 
 gulong   xid = 0;
 gulong   interact_app_xid = 0;
@@ -124,19 +132,25 @@ int      set_height = -1;
 char     *set_window_type = NULL;
 WnckWindowType set_window_type_t = WNCK_WINDOW_NORMAL;
 
+static gboolean
+option_parse (const char  *option_name,
+              const char  *value,
+              gpointer     data,
+              GError     **error);
+
 static GOptionEntry main_entries[] = {
-	{ "window", 0, 0, G_OPTION_ARG_INT, &xid,
+	{ "window", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("X window ID of the window to examine or modify"), N_("XID") },
-	{ "application", 0, 0, G_OPTION_ARG_INT, &interact_app_xid,
+	{ "application", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("X window ID of the group leader of an application to examine"),
           N_("XID") },
-	{ "class", 0, 0, G_OPTION_ARG_STRING, &interact_class_group,
+	{ "class", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("Class resource of the class group to examine"), N_("CLASS") },
-	{ "workspace", 0, 0, G_OPTION_ARG_INT, &interact_space,
+	{ "workspace", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("NUMBER of the workspace to examine or modify"), N_("NUMBER") },
-	{ "screen", 0, 0, G_OPTION_ARG_INT, &interact_screen,
+	{ "screen", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("NUMBER of the screen to examine or modify"), N_("NUMBER") },
-	{ "xid", 0, 0, G_OPTION_ARG_INT, &xid,
+	{ "xid", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("Alias of --window"), N_("XID") },
 	{ NULL }
 };
@@ -188,7 +202,7 @@ static GOptionEntry window_entries[] = {
           N_("Start moving the window via the keyboard"), NULL },
 	{ "keyboard-resize", 0, 0, G_OPTION_ARG_NONE, &set_keyboard_resize,
           N_("Start resizing the window via the keyboard"), NULL },
-	{ "activate", 0, 0, G_OPTION_ARG_NONE, &set_activate,
+	{ "activate", 0, G_OPTION_FLAG_NOALIAS, G_OPTION_ARG_NONE, &set_activate,
           N_("Activate the window"), NULL },
 	{ "close", 0, 0, G_OPTION_ARG_NONE, &set_close,
           N_("Close the window"), NULL },
@@ -240,12 +254,136 @@ static GOptionEntry window_entries[] = {
 static GOptionEntry space_entries[] = {
 	{ "change-name", 0, 0, G_OPTION_ARG_STRING, &set_change_name,
           N_("Change the name of the workspace to NAME"), N_("NAME") },
-	{ "activate", 0, 0, G_OPTION_ARG_NONE, &set_activate,
+	{ "activate", 0, G_OPTION_FLAG_NOALIAS, G_OPTION_ARG_NONE, &set_activate,
           N_("Activate the workspace"), NULL },
 	{ NULL }
 };
 
 static void clean_up (void);
+
+static gboolean
+option_parse (const char  *option_name,
+              const char  *value,
+              gpointer     data,
+              GError     **error)
+{
+  char *end;
+
+  /* skip "--" */
+  option_name += 2;
+
+  if (strcmp (option_name, "window") == 0 || strcmp (option_name, "xid") == 0)
+    {
+      gulong xid_buf;
+
+      option_xid = TRUE;
+
+      if (value)
+        {
+          get_from_user = FALSE;
+
+          xid_buf = strtoul (value, &end, 10);
+          if (end && end[0] == '\0')
+            xid = xid_buf;
+          else
+            {
+              g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_FAILED,
+                           _("Invalid value \"%s\" for --%s"),
+                           value, option_name);
+              return FALSE;
+            }
+        }
+
+      return TRUE;
+    }
+  else if (strcmp (option_name, "application") == 0)
+    {
+      gulong xid_buf;
+
+      option_application = TRUE;
+
+      if (value)
+        {
+          get_from_user = FALSE;
+
+          xid_buf = strtoul (value, &end, 10);
+          if (end && end[0] == '\0')
+            interact_app_xid = xid_buf;
+          else
+            {
+              g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_FAILED,
+                           _("Invalid value \"%s\" for --%s"),
+                           value, option_name);
+              return FALSE;
+            }
+        }
+
+      return TRUE;
+    }
+  else if (strcmp (option_name, "class") == 0)
+    {
+      option_class_group = TRUE;
+
+      if (value)
+        {
+          get_from_user = FALSE;
+
+          interact_class_group = g_strdup (value);
+        }
+
+      return TRUE;
+    }
+  else if (strcmp (option_name, "workspace") == 0)
+    {
+      int space_buf;
+
+      option_workspace = TRUE;
+      get_from_user = FALSE;
+
+      if (value)
+        {
+          space_buf = strtol (value, &end, 10);
+          if (end && end[0] == '\0')
+            interact_space = space_buf;
+          else
+            {
+              g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_FAILED,
+                           _("Invalid value \"%s\" for --%s"),
+                           value, option_name);
+              return FALSE;
+            }
+        }
+
+      return TRUE;
+    }
+  else if (strcmp (option_name, "screen") == 0)
+    {
+      int screen_buf;
+
+      option_screen = TRUE;
+      get_from_user = FALSE;
+
+      if (value)
+        {
+          screen_buf = strtol (value, &end, 10);
+          if (end && end[0] == '\0')
+            interact_screen = screen_buf;
+          else
+            {
+              g_set_error (error, G_OPTION_ERROR, G_OPTION_ERROR_FAILED,
+                           _("Invalid value \"%s\" for --%s"),
+                           value, option_name);
+              return FALSE;
+            }
+        }
+
+      return TRUE;
+    }
+  else
+    g_assert_not_reached ();
+
+  return FALSE;
+}
 
 static gboolean
 set_mode (int         new_mode,
@@ -465,16 +603,20 @@ validate_options (void)
         return FALSE;                                                   \
     }
 
-  if (xid > 0)
+  if (option_xid)
     mode = WINDOW_READ_MODE;
-  if (interact_app_xid > 0)
+  if (option_application)
     if (!set_mode (APPLICATION_READ_MODE, "application", FALSE))
       return FALSE;
-  if (interact_class_group != NULL)
+  if (option_class_group)
     if (!set_mode (CLASS_GROUP_READ_MODE, "class", FALSE))
       return FALSE;
-  CHECK_POSITIVE_INT (interact_space, "workspace", WORKSPACE_READ_MODE)
-  CHECK_POSITIVE_INT (interact_screen, "screen", SCREEN_READ_MODE)
+  if (option_workspace)
+    if (!set_mode (WORKSPACE_READ_MODE, "workspace", FALSE))
+      return FALSE;
+  if (option_screen)
+    if (!set_mode (SCREEN_READ_MODE, "screen", FALSE))
+      return FALSE;
 
   CHECK_BOOL_REAL (list_workspaces, "list-workspaces", SCREEN_LIST_MODE)
 
@@ -1425,22 +1567,10 @@ find_managed_window (Window window)
 static void 
 handle_button_press_event (XKeyEvent *event)
 {
-  WnckWindow *window;
-
   if (event->subwindow == None)
     return;
 
-  window = find_managed_window (event->subwindow);
-
-  if (window)
-    {
-      if (mode == WINDOW_WRITE_MODE)
-        update_window (window);
-      else if (mode == WINDOW_READ_MODE)
-        print_window (window);
-      else
-        g_assert_not_reached ();
-    }
+  got_from_user = find_managed_window (event->subwindow);
 }
 
 static GdkFilterReturn
@@ -1592,7 +1722,9 @@ main (int argc, char **argv)
 
   wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
 
-  if (interact_screen >= 0)
+  if ((option_screen && interact_screen < 0) || !option_screen)
+    screen = wnck_screen_get_default ();
+  else
     {
       screen = wnck_screen_get (interact_screen);
       if (!screen)
@@ -1602,11 +1734,29 @@ main (int argc, char **argv)
           return 0;
         }
     }
-  else
-    screen = wnck_screen_get_default ();
 
   /* because we don't respond to signals at the moment */
   wnck_screen_force_update (screen);
+
+  if (option_workspace && interact_space < 0)
+    {
+      WnckWorkspace *space;
+      space = wnck_screen_get_active_workspace (screen);
+      if (space == NULL)
+        interact_space = 0;
+      else
+        interact_space = wnck_workspace_get_number (space);
+    }
+
+  if (get_from_user)
+    {
+      g_idle_add (get_target, NULL);
+
+      gtk_main ();
+
+      if (!got_from_user)
+        return 0;
+    }
   
   if (mode == SCREEN_READ_MODE)
     print_screen (screen);
@@ -1642,7 +1792,11 @@ main (int argc, char **argv)
     {
       WnckClassGroup *class_group;
 
-      class_group = wnck_class_group_get (interact_class_group);
+      if (got_from_user)
+        class_group = wnck_window_get_class_group (got_from_user);
+      else
+        class_group = wnck_class_group_get (interact_class_group);
+
       if (class_group)
         {
           if (mode == CLASS_GROUP_READ_MODE)
@@ -1661,7 +1815,11 @@ main (int argc, char **argv)
     {
       WnckApplication *app;
 
-      app = wnck_application_get (interact_app_xid);
+      if (got_from_user)
+        app = wnck_window_get_application (got_from_user);
+      else
+        app = wnck_application_get (interact_app_xid);
+
       if (app)
         {
           if (mode == APPLICATION_READ_MODE)
@@ -1678,30 +1836,25 @@ main (int argc, char **argv)
     }
   else
     {
-      if (xid != 0)
-        {
-          WnckWindow *window;
+      WnckWindow *window;
 
-          window = wnck_window_get (xid);
-          if (window)
-            {
-              if (mode == WINDOW_WRITE_MODE)
-                update_window (window);
-              else if (mode == WINDOW_READ_MODE)
-                print_window (window);
-              else
-                g_assert_not_reached ();
-            }
+      if (got_from_user)
+        window = got_from_user;
+      else
+        window = wnck_window_get (xid);
+
+      if (window)
+        {
+          if (mode == WINDOW_WRITE_MODE)
+            update_window (window);
+          else if (mode == WINDOW_READ_MODE)
+            print_window (window);
           else
-            g_printerr (_("Cannot interact with window with XID %lu: "
-                          "the window cannot be found\n"), xid);
+            g_assert_not_reached ();
         }
       else
-        {
-          g_idle_add (get_target, NULL);
-          
-          gtk_main ();
-        }
+        g_printerr (_("Cannot interact with window with XID %lu: "
+                      "the window cannot be found\n"), xid);
     }
   
   return 0;

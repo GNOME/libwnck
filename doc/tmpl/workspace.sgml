@@ -30,6 +30,15 @@ WnckWorkspace
 
 @wnckworkspace: the object which received the signal.
 
+<!-- ##### FUNCTION wnck_workspace_get_screen ##### -->
+<para>
+
+</para>
+
+@space: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_workspace_get_number ##### -->
 <para>
 
