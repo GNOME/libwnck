@@ -1,3 +1,24 @@
+2007-06-25  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/screen.c: (wnck_screen_change_workspace_count): call
+	_wnck_error_trap_push() and _wnck_error_trap_pop() (mainly for the
+	XSync() call in _wnck_error_trap_push())
+	* libwnck/xutils.c: (_wnck_close), (_wnck_keyboard_move),
+	(_wnck_keyboard_size), (_wnck_change_state),
+	(_wnck_change_workspace), (_wnck_activate),
+	(_wnck_activate_workspace), (_wnck_change_viewport),
+	(_wnck_toggle_showing_desktop), (_wnck_gdk_pixbuf_get_from_pixmap),
+	(_wnck_set_window_geometry), (_wnck_free_layout_manager),
+	(_wnck_try_desktop_layout_manager),
+	(_wnck_release_desktop_layout_manager): ditto.
+	This is needed for wnckprop to correctly work.
+
+	* libwnck/wnckprop.c: (timestamp_predicate),
+	(get_xserver_timestamp): new, stolen from xutils.c
+	(update_screen): we don't need the timestamp here
+	(update_workspace): get a real xserver timestamp
+	(update_window): ditto
+
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/wnckprop.c: (validate_options): make "wnckprop --list" (and

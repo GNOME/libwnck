@@ -27,12 +27,6 @@
  */
 
 /* TODO:
- *  investigate why those doesn't work:
- *   --set-n-workspaces
- *   --activate (and probably --unminimize) (timestamp related?)
- *   --show-desktop and --unshow-desktop
- *   --keyboard-move and --keyboard-resize
- *
  *  uncomment code that prints the workspace layout when API is public.
  *  uncomment code for wnck_class_group_get_icon_is_fallback() when API is done
  *
@@ -260,6 +254,65 @@ static GOptionEntry space_entries[] = {
 };
 
 static void clean_up (void);
+
+/* this part is mostly stolen from xutils.c */
+typedef struct 
+{
+  Window window;
+  Atom timestamp_prop_atom;
+} TimeStampInfo;
+
+static Bool
+timestamp_predicate (Display *display,
+		     XEvent  *xevent,
+		     XPointer arg)
+{
+  TimeStampInfo *info = (TimeStampInfo *)arg;
+
+  if (xevent->type == PropertyNotify &&
+      xevent->xproperty.window == info->window &&
+      xevent->xproperty.atom == info->timestamp_prop_atom)
+    return True;
+
+  return False;
+}
+
+static guint32
+get_xserver_timestamp (WnckScreen *screen)
+{
+  int number;
+  Screen *xscreen;
+  TimeStampInfo info;
+  unsigned char c = 'a';
+  XEvent xevent;
+
+  number = wnck_screen_get_number (screen);
+  xscreen = ScreenOfDisplay (gdk_display, number);
+
+  info.window = XCreateSimpleWindow (gdk_display,
+                                     RootWindowOfScreen (xscreen),
+                                     0, 0, 10, 10, 0,
+                                     WhitePixel (gdk_display, number),
+                                     WhitePixel (gdk_display, number));
+  info.timestamp_prop_atom = XInternAtom (gdk_display, "_TIMESTAMP_PROP",
+                                          FALSE);
+
+  XSelectInput (gdk_display, info.window, PropertyChangeMask);
+
+  XChangeProperty (gdk_display, info.window,
+		   info.timestamp_prop_atom, info.timestamp_prop_atom,
+		   8, PropModeReplace, &c, 1);
+
+  XIfEvent (gdk_display, &xevent,
+	    timestamp_predicate, (XPointer)&info);
+
+  XDestroyWindow (gdk_display, info.window);
+
+  XSync (gdk_display, False);
+
+  return xevent.xproperty.time;
+}
+/* end of stolen code */
 
 static gboolean
 option_parse (const char  *option_name,
@@ -748,10 +801,6 @@ update_screen (WnckScreen *screen)
 {
   int viewport_x;
   int viewport_y;
-  unsigned int timestamp;
-
-  // TODO: get a valid timestamp
-  timestamp = gdk_x11_display_get_user_time (gdk_display_get_default ());
 
   if (set_n_workspaces > 0)
     wnck_screen_change_workspace_count (screen, set_n_workspaces);
@@ -812,8 +861,7 @@ update_workspace (WnckWorkspace *space)
 {
   unsigned int timestamp;
 
-  // TODO: get a valid timestamp
-  timestamp = gdk_x11_display_get_user_time (gdk_display_get_default ());
+  timestamp = get_xserver_timestamp (wnck_workspace_get_screen (space));
 
   if (set_activate)
     wnck_workspace_activate (space, timestamp);
@@ -829,10 +877,9 @@ update_window (WnckWindow *window)
   WnckWindowActions        actions;
   WnckWindowMoveResizeMask geometry_mask;
   unsigned int             timestamp;
-  // TODO: get a valid timestamp
 
   actions = wnck_window_get_actions (window);
-  timestamp = gdk_x11_display_get_user_time (gdk_display_get_default ());
+  timestamp = get_xserver_timestamp (wnck_window_get_screen (window));
 
 #define SET_PROPERTY(name, action)                                      \
   if (set_##name)                                                       \

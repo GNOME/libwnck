@@ -850,11 +850,13 @@ _wnck_close (Screen *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
+  _wnck_error_trap_pop ();
 }
 
 #define _NET_WM_MOVERESIZE_SIZE_TOPLEFT      0
@@ -888,11 +890,13 @@ _wnck_keyboard_move (Screen *screen,
   xev.xclient.data.l[3] = 0; /* unused */
   xev.xclient.data.l[4] = _wnck_get_client_type ();
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev); 
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -914,11 +918,13 @@ _wnck_keyboard_size (Screen *screen,
   xev.xclient.data.l[3] = 0; /* unused */
   xev.xclient.data.l[4] = _wnck_get_client_type ();
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev); 
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -947,11 +953,13 @@ _wnck_change_state (Screen  *screen,
   xev.xclient.data.l[3] = _wnck_get_client_type ();
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -974,11 +982,13 @@ _wnck_change_workspace (Screen     *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -1005,11 +1015,13 @@ _wnck_activate (Screen *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -1032,11 +1044,13 @@ _wnck_activate_workspace (Screen *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -1059,11 +1073,13 @@ _wnck_change_viewport (Screen *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+  _wnck_error_trap_pop ();
 }
 
 void
@@ -1085,11 +1101,13 @@ _wnck_toggle_showing_desktop (Screen  *screen,
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
 
+  _wnck_error_trap_push ();
   XSendEvent (DisplayOfScreen (screen),
 	      RootWindowOfScreen (screen),
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
+  _wnck_error_trap_pop ();
 }
 
 char*
@@ -1682,22 +1700,22 @@ _wnck_gdk_pixbuf_get_from_pixmap (GdkPixbuf   *dest,
 
   if (drawable)
     {
-			cmap = get_cmap (drawable);
+      cmap = get_cmap (drawable);
 
-			/* GDK is supposed to do this but doesn't in GTK 2.0.2,
-			 * fixed in 2.0.3
-			 */
-			if (width < 0)
-				gdk_drawable_get_size (drawable, &width, NULL);
-			if (height < 0)
-				gdk_drawable_get_size (drawable, NULL, &height);
-			
-			retval = gdk_pixbuf_get_from_drawable (dest,
-																						 drawable,
-																						 cmap,
-																						 src_x, src_y,
-																						 dest_x, dest_y,
-																						 width, height);
+      /* GDK is supposed to do this but doesn't in GTK 2.0.2,
+       * fixed in 2.0.3
+       */
+      if (width < 0)
+        gdk_drawable_get_size (drawable, &width, NULL);
+      if (height < 0)
+        gdk_drawable_get_size (drawable, NULL, &height);
+
+      retval = gdk_pixbuf_get_from_drawable (dest,
+                                             drawable,
+                                             cmap,
+                                             src_x, src_y,
+                                             dest_x, dest_y,
+                                             width, height);
     }
 
   if (cmap)
@@ -2321,11 +2339,13 @@ void _wnck_set_window_geometry (Screen *screen,
   xev.xclient.data.l[3] = width;
   xev.xclient.data.l[4] = height;
 
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display,
               RootWindowOfScreen (screen),
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev);
+  _wnck_error_trap_push ();
 }
 
 void
@@ -2487,7 +2507,10 @@ static int next_token = 1;
 static void
 _wnck_free_layout_manager (LayoutManager *lm)
 {
+  _wnck_error_trap_push ();
   XDestroyWindow (gdk_display, lm->window);
+  _wnck_error_trap_pop ();
+
   g_slice_free (LayoutManager, lm);
 
   layout_managers = g_slist_remove (layout_managers, lm);
@@ -2551,6 +2574,8 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   lm->selection_atom = selection_atom;
   lm->manager_atom = _wnck_atom_get ("MANAGER");
 
+  _wnck_error_trap_push ();
+
   lm->window = XCreateSimpleWindow (gdk_display,
                                     RootWindowOfScreen (xscreen),
                                     0, 0, 10, 10, 0,
@@ -2562,6 +2587,8 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
 
   XSetSelectionOwner (gdk_display, lm->selection_atom,
 		      lm->window, timestamp);
+
+  _wnck_error_trap_pop ();
 
   /* Check to see if we managed to claim the selection. */
 
@@ -2582,8 +2609,10 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   xev.data.l[3] = 0;	/* manager specific data */
   xev.data.l[4] = 0;	/* manager specific data */
   
+  _wnck_error_trap_push ();
   XSendEvent (gdk_display, RootWindow (gdk_display, number),
               False, StructureNotifyMask, (XEvent *)&xev);
+  _wnck_error_trap_pop ();
 
   layout_managers = g_slist_prepend (layout_managers,
                                      lm);
@@ -2610,6 +2639,8 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
         {
           if (current_token == lm->token)
             {
+              _wnck_error_trap_push ();
+
               /* release selection ownership */
               if (XGetSelectionOwner (gdk_display, lm->selection_atom) !=
                   lm->window)
@@ -2620,6 +2651,8 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
                   XSetSelectionOwner (gdk_display, lm->selection_atom,
                                       None, timestamp);
                 }
+
+              _wnck_error_trap_pop ();
 
               _wnck_free_layout_manager (lm);
               return;

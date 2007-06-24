@@ -1059,11 +1059,13 @@ wnck_screen_change_workspace_count (WnckScreen *screen,
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = count;
   
+  _wnck_error_trap_push ();
   XSendEvent (DisplayOfScreen (screen->priv->xscreen),
               screen->priv->xroot,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev);
+  _wnck_error_trap_pop ();
 }
 
 void
