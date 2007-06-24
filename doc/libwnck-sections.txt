@@ -158,6 +158,9 @@ wnck_workspace_get_height
 wnck_workspace_get_viewport_x
 wnck_workspace_get_viewport_y
 wnck_workspace_is_virtual
+wnck_workspace_get_layout_row
+wnck_workspace_get_layout_column
+wnck_workspace_get_neighbor
 wnck_workspace_activate
 <SUBSECTION Private>
 WnckWorkspacePrivate
