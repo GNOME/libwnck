@@ -263,6 +263,15 @@ WnckScreen
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_screen_get_workspaces ##### -->
+<para>
+
+</para>
+
+@screen: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_screen_get_workspace ##### -->
 <para>
 

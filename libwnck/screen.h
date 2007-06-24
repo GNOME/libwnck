@@ -227,6 +227,7 @@ WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
                                                      WnckWorkspace      *space,
                                                      WnckMotionDirection direction);
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
+GList*         wnck_screen_get_workspaces           (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_previously_active_window (WnckScreen *screen);
 GList*         wnck_screen_get_windows              (WnckScreen *screen);

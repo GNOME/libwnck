@@ -1,5 +1,13 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/screen.sgml:
+	* libwnck/screen.[ch]: (wnck_screen_get_workspaces): new API, for
+	consistency.
+	Fix also two API docs.
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	Cleanups and deprecate some WnckScreen functions that shouldn't have
 	been made public when they were added.
 

@@ -726,6 +726,24 @@ wnck_screen_get_number (WnckScreen *screen)
 }
 
 /**
+ * wnck_screen_get_workspaces:
+ * @screen: a #WnckScreen.
+ * 
+ * Returns the list of #WnckWorkspace on @screen. The list is ordered: the
+ * first element in the list is the first #WnckWorkspace, etc..
+ * 
+ * Return value: the list of #WnckWorkspace on @screen. The list should not be
+ * modified nor freed, as it is owned by @screen.
+ **/
+GList*
+wnck_screen_get_workspaces (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+  
+  return screen->priv->workspaces;
+}
+
+/**
  * wnck_screen_get_workspace:
  * @screen: a #WnckScreen.
  * @workspace: a workspace index, starting from 0.
@@ -920,7 +938,7 @@ wnck_screen_get_previously_active_window (WnckScreen *screen)
  * wnck_screen_get_windows:
  * @screen: a #WnckScreen.
  * 
- * Returns the list of #WnckWindow on #WnckScreen. The list is not in a defined
+ * Returns the list of #WnckWindow on @screen. The list is not in a defined
  * order, but should be "stable" (windows should not be reordered in it).
  * However, the stability of the list is established by the window manager, so
  * don't blame libwnck if it breaks down.
@@ -941,7 +959,7 @@ wnck_screen_get_windows (WnckScreen *screen)
  * wnck_screen_get_windows_stacked:
  * @screen: a #WnckScreen.
  * 
- * Returns the list of #WnckWindow on #WnckScreen in bottom-to-top order.
+ * Returns the list of #WnckWindow on @screen in bottom-to-top order.
  * 
  * Return value: the list of #WnckWindow in stacking order on @screen, or %NULL
  * if there is no window on @screen. The list should not be modified nor freed,
