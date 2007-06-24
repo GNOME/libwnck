@@ -1,6 +1,17 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
 	* doc/libwnck-sections.txt:
+	* libwnck/workspace.[ch]: (wnck_workspace_get_screen): add
+	wnck_workspace_get_screen() API, for consistency
+
+	* libwnck/wnckprop.c: add parameters to print information about a
+	class group and an application,
+	make --list list windows for a screen, workspace, class group or
+	application. This removes --list-windows and friends.
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
+	* doc/libwnck-sections.txt:
 	* doc/tmpl/workspace.sgml: forgot to commit the doc changes for the
 	new API
 

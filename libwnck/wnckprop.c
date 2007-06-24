@@ -34,6 +34,9 @@
  *   --keyboard-move and --keyboard-resize
  *
  *  uncomment code that prints the workspace layout when API is public.
+ *  uncomment code for wnck_class_group_get_icon_is_fallback() when API is done
+ *
+ *  make --application and --class also work by selecting a window
  *
  *  add --list-screen
  */
@@ -54,20 +57,28 @@
 enum {
   INVALID_MODE,
   SCREEN_READ_MODE,
+  SCREEN_LIST_MODE,
   SCREEN_WRITE_MODE,
   WORKSPACE_READ_MODE,
+  WORKSPACE_LIST_MODE,
   WORKSPACE_WRITE_MODE,
+  APPLICATION_READ_MODE,
+  APPLICATION_LIST_MODE,
+  CLASS_GROUP_READ_MODE,
+  CLASS_GROUP_LIST_MODE,
   WINDOW_READ_MODE,
   WINDOW_WRITE_MODE
 } mode = INVALID_MODE;
 
 gulong   xid = 0;
+gulong   interact_app_xid = 0;
+char     *interact_class_group = NULL;
 int      interact_space = -1;
 int      interact_screen = -1;
 
-gboolean list_windows = FALSE;
-int      list_windows_workspace = -1;
+gboolean list = FALSE;
 gboolean list_workspaces = FALSE;
+
 int      set_n_workspaces = -1;
 int      set_workspace_rows = 0;
 int      set_workspace_cols = 0;
@@ -114,22 +125,27 @@ char     *set_window_type = NULL;
 WnckWindowType set_window_type_t = WNCK_WINDOW_NORMAL;
 
 static GOptionEntry main_entries[] = {
-	{ "xid", 0, 0, G_OPTION_ARG_INT, &xid,
+	{ "window", 0, 0, G_OPTION_ARG_INT, &xid,
           N_("X window ID of the window to examine or modify"), N_("XID") },
+	{ "application", 0, 0, G_OPTION_ARG_INT, &interact_app_xid,
+          N_("X window ID of the group leader of an application to examine"),
+          N_("XID") },
+	{ "class", 0, 0, G_OPTION_ARG_STRING, &interact_class_group,
+          N_("Class resource of the class group to examine"), N_("CLASS") },
 	{ "workspace", 0, 0, G_OPTION_ARG_INT, &interact_space,
           N_("NUMBER of the workspace to examine or modify"), N_("NUMBER") },
 	{ "screen", 0, 0, G_OPTION_ARG_INT, &interact_screen,
           N_("NUMBER of the screen to examine or modify"), N_("NUMBER") },
+	{ "xid", 0, 0, G_OPTION_ARG_INT, &xid,
+          N_("Alias of --window"), N_("XID") },
 	{ NULL }
 };
 
 static GOptionEntry list_entries[] = {
-	{ "list-windows", 0, 0, G_OPTION_ARG_NONE, &list_windows,
-          N_("List windows of the screen (format: \"XID: Window Name\")"), NULL },
-	{ "list-windows-workspace", 0, 0, G_OPTION_ARG_INT, &list_windows_workspace,
-          N_("List windows of the screen in workspace NUMBER (format: \"XID: Window Name\")"), N_("NUMBER") },
+	{ "list", 0, 0, G_OPTION_ARG_NONE, &list,
+          N_("List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"), NULL },
 	{ "list-workspaces", 0, 0, G_OPTION_ARG_NONE, &list_workspaces,
-          N_("List workspaces of the screen (format: \"Number: Workspace Name\")"), NULL },
+          N_("List workspaces of the screen (output format: \"Number: Workspace Name\")"), NULL },
 	{ NULL }
 };
 
@@ -233,20 +249,36 @@ static void clean_up (void);
 
 static gboolean
 set_mode (int         new_mode,
-          const char *option)
+          const char *option,
+          gboolean    list)
 {
   switch (mode)
     {
       case INVALID_MODE:
+        if (list)
+          g_assert_not_reached ();
+
         mode = new_mode;
         break;
       case SCREEN_READ_MODE:
         if (new_mode == SCREEN_READ_MODE || new_mode == SCREEN_WRITE_MODE)
           mode = new_mode;
+        else if (list)
+          mode = SCREEN_LIST_MODE;
         else
           {
             g_printerr (_("Conflicting options are present: screen %d should "
                           "be interacted with, but --%s has been used\n"),
+                        interact_screen, option);
+            return FALSE;
+          }
+        break;
+      case SCREEN_LIST_MODE:
+        if (new_mode != SCREEN_LIST_MODE)
+          {
+            g_printerr (_("Conflicting options are present: windows or "
+                          "workspaces of screen %d should be listed, "
+                          "but --%s has been used\n"),
                         interact_screen, option);
             return FALSE;
           }
@@ -263,10 +295,22 @@ set_mode (int         new_mode,
       case WORKSPACE_READ_MODE:
         if (new_mode == WORKSPACE_READ_MODE || new_mode == WORKSPACE_WRITE_MODE)
           mode = new_mode;
+        else if (list)
+          mode = WORKSPACE_LIST_MODE;
         else
           {
             g_printerr (_("Conflicting options are present: workspace %d "
                           "should be interacted with, but --%s has been "
+                          "used\n"),
+                        interact_space, option);
+            return FALSE;
+          }
+        break;
+      case WORKSPACE_LIST_MODE:
+        if (new_mode != WORKSPACE_LIST_MODE)
+          {
+            g_printerr (_("Conflicting options are present: windows of "
+                          "workspace %d should be listed, but --%s has been "
                           "used\n"),
                         interact_space, option);
             return FALSE;
@@ -279,6 +323,50 @@ set_mode (int         new_mode,
                           "should be interacted with, but --%s has been "
                           "used\n"),
                         interact_space, option);
+            return FALSE;
+          }
+        break;
+      case APPLICATION_READ_MODE:
+        if (list)
+          mode = APPLICATION_LIST_MODE;
+        else if (new_mode != APPLICATION_READ_MODE)
+          {
+            g_printerr (_("Conflicting options are present: an application "
+                          "should be interacted with, but --%s has been "
+                          "used\n"),
+                        option);
+            return FALSE;
+          }
+        break;
+      case APPLICATION_LIST_MODE:
+        if (new_mode != APPLICATION_LIST_MODE)
+          {
+            g_printerr (_("Conflicting options are present: windows of an "
+                          "application should be listed, but --%s has been "
+                          "used\n"),
+                        option);
+            return FALSE;
+          }
+        break;
+      case CLASS_GROUP_READ_MODE:
+        if (list)
+          mode = CLASS_GROUP_LIST_MODE;
+        else if (new_mode != CLASS_GROUP_READ_MODE)
+          {
+            g_printerr (_("Conflicting options are present: class group "
+                          "\"%s\" should be interacted with, but --%s has "
+                          "been used\n"),
+                        interact_class_group, option);
+            return FALSE;
+          }
+        break;
+      case CLASS_GROUP_LIST_MODE:
+        if (new_mode != CLASS_GROUP_LIST_MODE)
+          {
+            g_printerr (_("Conflicting options are present: windows of class "
+                          "group \"%s\" should be listed, but --%s has "
+                          "been used\n"),
+                        interact_class_group, option);
             return FALSE;
           }
         break;
@@ -321,33 +409,33 @@ validate_options (void)
     }                                                                   \
   if (set_##shortvar)                                                   \
     {                                                                   \
-      if (!set_mode (mode, #shortvar))                                  \
+      if (!set_mode (mode, #shortvar, FALSE))                           \
         return FALSE;                                                   \
     }                                                                   \
   if (set_un##shortvar)                                                 \
     {                                                                   \
-      if (!set_mode (mode, "un"#shortvar))                              \
+      if (!set_mode (mode, "un"#shortvar, FALSE))                       \
         return FALSE;                                                   \
     }
 
 #define CHECK_BOOL(shortvar, name, mode)                                \
   if (set_##shortvar)                                                   \
     {                                                                   \
-      if (!set_mode (mode, name))                                       \
+      if (!set_mode (mode, name, FALSE))                                \
         return FALSE;                                                   \
     }
 
 #define CHECK_BOOL_REAL(var, name, mode)                                \
   if (var)                                                              \
     {                                                                   \
-      if (!set_mode (mode, name))                                       \
+      if (!set_mode (mode, name, FALSE))                                \
         return FALSE;                                                   \
     }
 
 #define CHECK_INT(var, name, mode)                                      \
   if (var != G_MAXINT)                                                  \
     {                                                                   \
-      if (!set_mode (mode, name))                                       \
+      if (!set_mode (mode, name, FALSE))                                \
         return FALSE;                                                   \
     }
 
@@ -360,7 +448,7 @@ validate_options (void)
     }                                                                   \
   if (var != -1)                                                        \
     {                                                                   \
-      if (!set_mode (mode, name))                                       \
+      if (!set_mode (mode, name, FALSE))                                \
         return FALSE;                                                   \
     }
 
@@ -373,55 +461,49 @@ validate_options (void)
     }                                                                   \
   if (var != -1)                                                        \
     {                                                                   \
-      if (!set_mode (mode, name))                                       \
+      if (!set_mode (mode, name, FALSE))                                \
         return FALSE;                                                   \
     }
 
   if (xid > 0)
     mode = WINDOW_READ_MODE;
+  if (interact_app_xid > 0)
+    if (!set_mode (APPLICATION_READ_MODE, "application", FALSE))
+      return FALSE;
+  if (interact_class_group != NULL)
+    if (!set_mode (CLASS_GROUP_READ_MODE, "class", FALSE))
+      return FALSE;
   CHECK_POSITIVE_INT (interact_space, "workspace", WORKSPACE_READ_MODE)
   CHECK_POSITIVE_INT (interact_screen, "screen", SCREEN_READ_MODE)
+
+  CHECK_BOOL_REAL (list_workspaces, "list-workspaces", SCREEN_LIST_MODE)
+
+  if (list && list_workspaces)
+    {
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
+                  "list", "list-workspaces");
+      return FALSE;
+    }
+
+  /* if there's just --list, then we list windows of the default screen */
+  if (list && mode == INVALID_MODE)
+    mode = SCREEN_LIST_MODE;
+  else if (list)
+    if (!set_mode (INVALID_MODE, "list", TRUE))
+      return FALSE;
 
   /* screen options can work by assuming it's on the default screen */
   CHECK_POSITIVE_STRICT_INT (set_n_workspaces, "set-n-workspaces",
                              SCREEN_WRITE_MODE)
   if (set_workspace_rows > 0)
-    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-rows"))
+    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-rows", FALSE))
       return FALSE;
   if (set_workspace_cols > 0)
-    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-columns"))
+    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-columns", FALSE))
       return FALSE;
   CHECK_DUAL_OPTIONS (show_desktop, SCREEN_WRITE_MODE)
   CHECK_POSITIVE_INT (set_viewport_x, "move-viewport-x", SCREEN_WRITE_MODE)
   CHECK_POSITIVE_INT (set_viewport_y, "move-viewport-y", SCREEN_WRITE_MODE)
-
-  /* do this after all SCREEN_WRITE_MODE */
-  CHECK_BOOL_REAL (list_windows, "list-windows", SCREEN_READ_MODE)
-  CHECK_BOOL_REAL (list_workspaces, "list-workspaces", SCREEN_READ_MODE)
-  CHECK_POSITIVE_INT (list_windows_workspace, "list-windows-workspace",
-                      SCREEN_READ_MODE)
-
-  if (list_windows_workspace != -1 && list_windows)
-    {
-      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
-                  "list-windows", "list-windows-workspace");
-      return FALSE;
-    }
-  if (list_windows_workspace != -1 && list_workspaces)
-    {
-      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
-                  "list-windows-workspace", "list-workspaces");
-      return FALSE;
-    }
-  if (list_windows_workspace != -1)
-    list_windows = TRUE;
-
-  if (list_windows && list_workspaces)
-    {
-      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
-                  "list-windows", "list-workspaces");
-      return FALSE;
-    }
 
   /* no command line option specifying the mode => the user will choose a
    * window */
@@ -429,7 +511,7 @@ validate_options (void)
     mode = WINDOW_READ_MODE;
 
   if (set_change_name != NULL)
-    if (!set_mode (WORKSPACE_WRITE_MODE, "change-name"))
+    if (!set_mode (WORKSPACE_WRITE_MODE, "change-name", FALSE))
       return FALSE;
 
   CHECK_DUAL_OPTIONS (minimize, WINDOW_WRITE_MODE)
@@ -495,26 +577,25 @@ validate_options (void)
                       "splash");
         }
 
-      if (!set_mode (WINDOW_WRITE_MODE, "set-window-type"))
+      if (!set_mode (WINDOW_WRITE_MODE, "set-window-type", FALSE))
         return FALSE;
     }
 
   if (set_activate)
     {
       if (mode == WORKSPACE_READ_MODE || mode == WORKSPACE_WRITE_MODE)
-        set_mode (WORKSPACE_WRITE_MODE, "activate");
+        set_mode (WORKSPACE_WRITE_MODE, "activate", FALSE);
       else if (mode == WINDOW_READ_MODE || mode == WINDOW_WRITE_MODE)
-        set_mode (WINDOW_WRITE_MODE, "activate");
+        set_mode (WINDOW_WRITE_MODE, "activate", FALSE);
       else
-        //TODO
-        return set_mode (INVALID_MODE, "activate");
+        return set_mode (INVALID_MODE, "activate", FALSE);
     }
 
   return TRUE;
 }
 
 static void
-update_screen_props (WnckScreen *screen)
+update_screen (WnckScreen *screen)
 {
   int viewport_x;
   int viewport_y;
@@ -578,7 +659,7 @@ update_screen_props (WnckScreen *screen)
 }
 
 static void
-update_space_props (WnckWorkspace *space)
+update_workspace (WnckWorkspace *space)
 {
   unsigned int timestamp;
 
@@ -594,7 +675,7 @@ update_space_props (WnckWorkspace *space)
 
 
 static void
-update_window_props (WnckWindow *window)
+update_window (WnckWindow *window)
 {
   WnckWindowActions        actions;
   WnckWindowMoveResizeMask geometry_mask;
@@ -754,148 +835,185 @@ update_window_props (WnckWindow *window)
 }
 
 static void
-print_screen_props (WnckScreen *screen)
+list_windows (GList *windows)
 {
+  WnckWindow *window;
+  GList      *l;
   const char *buf;
-  char       *free_buf;
 
-  if (list_workspaces)
+  for (l = windows; l; l = l->next)
     {
-      WnckWorkspace *space;
-      int            i;
+      window = WNCK_WINDOW (l->data);
 
-      for (i = 0; i < wnck_screen_get_workspace_count (screen); i++)
-        {
-          space = wnck_screen_get_workspace (screen, i);
-          if (space)
-            buf = wnck_workspace_get_name (space);
-          else
-            buf = _("<unexisting workspace?>");
-
-          /* Translators: %d is a workspace number and %s a workspace name */
-          g_print (_("%d: %s\n"), i, buf);
-        }
-    }
-  else if (list_windows)
-    {
-      WnckWorkspace *space;
-      WnckWindow    *window;
-      GList         *windows;
-      GList         *l;
-
-      if (list_windows_workspace != -1)
-        {
-          space = wnck_screen_get_workspace (screen, list_windows_workspace);
-          if (!space)
-            {
-              g_printerr (_("Cannot list windows in workspace %d: "
-                            "the workspace does not exist\n"),
-                          list_windows_workspace);
-              return;
-            }
-        }
+      if (wnck_window_has_name (window))
+        buf = wnck_window_get_name (window);
       else
-        space = NULL;
+        buf = _("<name unset>");
 
-      windows = wnck_screen_get_windows (screen);
-
-      for (l = windows; l; l = l->next)
-        {
-          window = WNCK_WINDOW (l->data);
-
-          if (space && (wnck_window_get_workspace (window) != NULL &&
-                        wnck_window_get_workspace (window) != space))
-            continue;
-
-          if (wnck_window_has_name (window))
-            buf = wnck_window_get_name (window);
-          else
-            buf = _("<name unset>");
-
-          /* Translators: %lu is a window number and %s a window name */
-          g_print (_("%lu: %s\n"), wnck_window_get_xid (window), buf);
-        }
-    }
-  else
-    {
-      WnckWorkspace *space;
-      WnckWindow    *window;
-#if 0
-      WnckLayoutOrientation orientation;
-      int            rows;
-      int            columns;
-#endif
-
-      g_print (_("Screen Number: %d\n"), wnck_screen_get_number (screen));
-
-      g_print (_("Geometry (width, height): %d, %d\n"),
-               wnck_screen_get_width (screen),
-               wnck_screen_get_height (screen));
-
-      g_print (_("Number of Workspaces: %d\n"),
-               wnck_screen_get_workspace_count (screen));
-
-#if 0
-      wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
-                                        NULL);
-      g_print (_("Workspace Layout (rows, columns, orientation): "
-                 "%d, %d, %s\n"),
-               rows, columns,
-               orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL ? "vertical" :
-                                                                 "horizontal");
-#endif
-
-      if (wnck_screen_get_window_manager_name (screen) != NULL)
-        buf = wnck_screen_get_window_manager_name (screen);
-      else
-        buf = _("<no EWMH-compliant window manager>");
-      g_print (_("Window Manager: %s\n"), buf);
-
-      space = wnck_screen_get_active_workspace (screen);
-      if (space)
-        /* Translators: %d is a workspace number and %s a workspace name */
-        free_buf = g_strdup_printf (_("%d (\"%s\")"),
-                                    wnck_workspace_get_number (space),
-                                    wnck_workspace_get_name (space));
-      else
-        free_buf = g_strdup (_("none"));
-      g_print (_("Active Workspace: %s\n"), free_buf);
-      g_free (free_buf);
-
-      window = wnck_screen_get_active_window (screen);
-      if (window)
-        {
-          char *name;
-
-          if (wnck_window_has_name (window))
-            name = g_strdup_printf (_("\"%s\""), wnck_window_get_name (window));
-          else
-            name = g_strdup (_("<name unset>"));
-
-          /* Translators: %lu is a window number and %s a window name */
-          free_buf = g_strdup_printf (_("%lu (%s)"),
-                                      wnck_window_get_xid (window), name);
-          g_free (name);
-        }
-      else
-        free_buf = g_strdup (_("none"));
-      g_print (_("Active Window: %s\n"), free_buf);
-      g_free (free_buf);
-
-      g_print (_("Showing the desktop: %s\n"),
-               wnck_screen_get_showing_desktop (screen) ?
-                 _("true") : _("false"));
+      /* Translators: %lu is a window number and %s a window name */
+      g_print (_("%lu: %s\n"), wnck_window_get_xid (window), buf);
     }
 }
 
 static void
-print_space_props (WnckWorkspace *space)
+list_screen (WnckScreen *screen)
 {
+  if (list_workspaces)
+    {
+      WnckWorkspace *space;
+      GList         *spaces;
+      GList         *l;
+
+      spaces = wnck_screen_get_workspaces (screen);
+
+      for (l = spaces; l; l = l->next)
+        {
+          space = WNCK_WORKSPACE (l->data);
+
+          /* Translators: %d is a workspace number and %s a workspace name */
+          g_print (_("%d: %s\n"),
+                   wnck_workspace_get_number (space),
+                   wnck_workspace_get_name (space));
+        }
+    }
+  else
+    list_windows (wnck_screen_get_windows (screen));
+}
+
+static void
+list_workspace (WnckWorkspace *space)
+{
+  WnckWindow *window;
+  GList      *all_windows;
+  GList      *l;
+  GList      *space_windows;
+
+  all_windows = wnck_screen_get_windows (wnck_workspace_get_screen (space));
+  space_windows = NULL;
+
+  for (l = all_windows; l; l = l->next)
+    {
+      window = WNCK_WINDOW (l->data);
+
+      if (wnck_window_get_workspace (window) != NULL &&
+          wnck_window_get_workspace (window) != space)
+        continue;
+
+      space_windows = g_list_prepend (space_windows, window);
+    }
+
+  space_windows = g_list_reverse (space_windows);
+
+  list_windows (space_windows);
+
+  g_list_free (space_windows);
+}
+
+static void
+list_class_group (WnckClassGroup *class_group)
+{
+  list_windows (wnck_class_group_get_windows (class_group));
+}
+
+static void
+list_application (WnckApplication *app)
+{
+  list_windows (wnck_application_get_windows (app));
+}
+
+static void
+print_screen (WnckScreen *screen)
+{
+  WnckWorkspace *space;
+  WnckWindow    *window;
+  const char    *buf;
+  char          *free_buf;
+#if 0
+  WnckLayoutOrientation orientation;
+  int            rows;
+  int            columns;
+#endif
+
+  g_print (_("Screen Number: %d\n"), wnck_screen_get_number (screen));
+
+  g_print (_("Geometry (width, height): %d, %d\n"),
+           wnck_screen_get_width (screen),
+           wnck_screen_get_height (screen));
+
+  g_print (_("Number of Workspaces: %d\n"),
+           wnck_screen_get_workspace_count (screen));
+
+#if 0
+  wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
+                                    NULL);
+  g_print (_("Workspace Layout (rows, columns, orientation): "
+             "%d, %d, %s\n"),
+           rows, columns,
+           orientation == WNCK_LAYOUT_ORIENTATION_VERTICAL ? "vertical" :
+                                                             "horizontal");
+#endif
+
+  if (wnck_screen_get_window_manager_name (screen) != NULL)
+    buf = wnck_screen_get_window_manager_name (screen);
+  else
+    buf = _("<no EWMH-compliant window manager>");
+  g_print (_("Window Manager: %s\n"), buf);
+
+  space = wnck_screen_get_active_workspace (screen);
+  if (space)
+    /* Translators: %d is a workspace number and %s a workspace name */
+    free_buf = g_strdup_printf (_("%d (\"%s\")"),
+                                wnck_workspace_get_number (space),
+                                wnck_workspace_get_name (space));
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Active Workspace: %s\n"), free_buf);
+  g_free (free_buf);
+
+  window = wnck_screen_get_active_window (screen);
+  if (window)
+    {
+      char *name;
+
+      if (wnck_window_has_name (window))
+        name = g_strdup_printf (_("\"%s\""), wnck_window_get_name (window));
+      else
+        name = g_strdup (_("<name unset>"));
+
+      /* Translators: %lu is a window number and %s a window name */
+      free_buf = g_strdup_printf (_("%lu (%s)"),
+                                  wnck_window_get_xid (window), name);
+      g_free (name);
+    }
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Active Window: %s\n"), free_buf);
+  g_free (free_buf);
+
+  g_print (_("Showing the desktop: %s\n"),
+           wnck_screen_get_showing_desktop (screen) ?
+             _("true") : _("false"));
+}
+
+static void
+print_workspace (WnckWorkspace *space)
+{
+  WnckScreen    *screen;
   WnckWorkspace *neighbor;
+  const char    *buf;
   char          *free_buf;
 
   g_print (_("Workspace Name: %s\n"), wnck_workspace_get_name (space));
   g_print (_("Workspace Number: %d\n"), wnck_workspace_get_number (space));
+
+  screen = wnck_workspace_get_screen (space);
+  if (wnck_screen_get_window_manager_name (screen) != NULL)
+    buf = wnck_screen_get_window_manager_name (screen);
+  else
+    buf = _("<no EWMH-compliant window manager>");
+  g_print (_("On Screen: %d (Window Manager: %s)\n"),
+           wnck_screen_get_number (screen), buf);
+
   g_print (_("Geometry (width, height): %d, %d\n"),
            wnck_workspace_get_width (space),
            wnck_workspace_get_height (space));
@@ -959,7 +1077,64 @@ print_space_props (WnckWorkspace *space)
 }
 
 static void
-print_window_props (WnckWindow *window)
+print_class_group (WnckClassGroup *class_group)
+{
+  GList *windows;
+
+  windows = wnck_class_group_get_windows (class_group);
+
+  g_print (_("Resource Class: %s\n"),
+           wnck_class_group_get_res_class (class_group));
+  g_print (_("Group Name: %s\n"), wnck_class_group_get_name (class_group));
+
+  /* TODO: missing API */
+#if 0
+  if (!wnck_class_group_get_icon_is_fallback (class_group))
+    buf = _("set");
+  else
+    buf = _("<unset>");
+  g_print (_("Icons: %s\n"), buf);
+#endif
+
+  g_print (_("Number of Windows: %d\n"), g_list_length (windows));
+}
+
+static void
+print_application (WnckApplication *app)
+{
+  const char *buf;
+  char       *free_buf;
+  GList      *windows;
+
+  windows = wnck_application_get_windows (app);
+
+  g_print (_("Name: %s\n"), wnck_application_get_name (app));
+  g_print (_("Icon Name: %s\n"), wnck_application_get_icon_name (app));
+
+  if (!wnck_application_get_icon_is_fallback (app))
+    buf = _("set");
+  else
+    buf = _("<unset>");
+  g_print (_("Icons: %s\n"), buf);
+
+  if (wnck_application_get_pid (app) != 0)
+    free_buf = g_strdup_printf ("%d", wnck_application_get_pid (app));
+  else
+    free_buf = g_strdup (_("<unset>"));
+  g_print (_("PID: %s\n"), free_buf);
+  g_free (free_buf);
+
+  if (wnck_application_get_startup_id (app) != NULL)
+    buf = wnck_application_get_startup_id (app);
+  else
+    buf = _("none");
+  g_print (_("Startup ID: %s\n"), buf);
+
+  g_print (_("Number of Windows: %d\n"), g_list_length (windows));
+}
+
+static void
+print_window (WnckWindow *window)
 {
   WnckWindowType     type;
   int                x, y, w, h;
@@ -1260,9 +1435,9 @@ handle_button_press_event (XKeyEvent *event)
   if (window)
     {
       if (mode == WINDOW_WRITE_MODE)
-        update_window_props (window);
+        update_window (window);
       else if (mode == WINDOW_READ_MODE)
-        print_window_props (window);
+        print_window (window);
       else
         g_assert_not_reached ();
     }
@@ -1434,10 +1609,13 @@ main (int argc, char **argv)
   wnck_screen_force_update (screen);
   
   if (mode == SCREEN_READ_MODE)
-    print_screen_props (screen);
+    print_screen (screen);
+  else if (mode == SCREEN_LIST_MODE)
+    list_screen (screen);
   else if (mode == SCREEN_WRITE_MODE)
-    update_screen_props (screen);
-  else if (mode == WORKSPACE_READ_MODE || mode == WORKSPACE_WRITE_MODE)
+    update_screen (screen);
+  else if (mode == WORKSPACE_READ_MODE || mode == WORKSPACE_LIST_MODE ||
+           mode == WORKSPACE_WRITE_MODE)
     {
       WnckWorkspace *space;
 
@@ -1448,15 +1626,55 @@ main (int argc, char **argv)
       if (space)
         {
           if (mode == WORKSPACE_READ_MODE)
-            print_space_props (space);
+            print_workspace (space);
+          else if (mode == WORKSPACE_LIST_MODE)
+            list_workspace (space);
           else if (mode == WORKSPACE_WRITE_MODE)
-            update_space_props (space);
+            update_workspace (space);
           else
             g_assert_not_reached ();
         }
       else
         g_printerr (_("Cannot interact with workspace %d: "
                       "the workspace cannot be found\n"), interact_space);
+    }
+  else if (mode == CLASS_GROUP_READ_MODE || mode == CLASS_GROUP_LIST_MODE)
+    {
+      WnckClassGroup *class_group;
+
+      class_group = wnck_class_group_get (interact_class_group);
+      if (class_group)
+        {
+          if (mode == CLASS_GROUP_READ_MODE)
+            print_class_group (class_group);
+          else if (mode == CLASS_GROUP_LIST_MODE)
+            list_class_group (class_group);
+          else
+            g_assert_not_reached ();
+        }
+      else
+        g_printerr (_("Cannot interact with class group \"%s\": "
+                      "the class group cannot be found\n"),
+                    interact_class_group);
+    }
+  else if (mode == APPLICATION_READ_MODE || mode == APPLICATION_LIST_MODE)
+    {
+      WnckApplication *app;
+
+      app = wnck_application_get (interact_app_xid);
+      if (app)
+        {
+          if (mode == APPLICATION_READ_MODE)
+            print_application (app);
+          else if (mode == APPLICATION_LIST_MODE)
+            list_application (app);
+          else
+            g_assert_not_reached ();
+        }
+      else
+        g_printerr (_("Cannot interact with application having its group "
+                      "leader with XID %lu: the application cannot be found\n"),
+                    interact_app_xid);
     }
   else
     {
@@ -1468,9 +1686,9 @@ main (int argc, char **argv)
           if (window)
             {
               if (mode == WINDOW_WRITE_MODE)
-                update_window_props (window);
+                update_window (window);
               else if (mode == WINDOW_READ_MODE)
-                print_window_props (window);
+                print_window (window);
               else
                 g_assert_not_reached ();
             }

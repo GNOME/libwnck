@@ -200,6 +200,23 @@ wnck_workspace_change_name (WnckWorkspace *space,
 }
 
 /**
+ * wnck_workspace_get_screen:
+ * @space: a #WnckWorkspace.
+ *
+ * Returns the #WnckScreen @space is on.
+ *
+ * Return value: the #WnckScreen @space is on. The returned #WnckScreen is
+ * owned by libwnck and must not be referenced or unreferenced.
+ **/
+WnckScreen*
+wnck_workspace_get_screen (WnckWorkspace *space)
+{
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), NULL);
+
+  return space->priv->screen;
+}
+
+/**
  * wnck_workspace_activate:
  * @space: a #WnckWorkspace.
  * @timestamp: the X server timestamp of the user interaction event that caused

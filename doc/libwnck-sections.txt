@@ -150,6 +150,7 @@ WnckApplicationClass
 <FILE>workspace</FILE>
 <TITLE>WnckWorkspace</TITLE>
 WnckWorkspace
+wnck_workspace_get_screen
 wnck_workspace_get_number
 wnck_workspace_get_name
 wnck_workspace_change_name
