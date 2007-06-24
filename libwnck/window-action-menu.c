@@ -179,36 +179,32 @@ item_activated_callback (GtkWidget *menu_item,
     case LEFT:
       {
         WnckWorkspace *workspace;
-        workspace = wnck_screen_get_workspace_neighbor (wnck_window_get_screen (amd->window),
-                                                        wnck_window_get_workspace (amd->window), 
-                                                        WNCK_MOTION_LEFT);
+        workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window), 
+                                                 WNCK_MOTION_LEFT);
         wnck_window_move_to_workspace (amd->window, workspace);
         break;
       }
     case RIGHT:
       {
         WnckWorkspace *workspace;
-        workspace = wnck_screen_get_workspace_neighbor (wnck_window_get_screen ( amd->window),
-                                                        wnck_window_get_workspace (amd->window),
-                                                        WNCK_MOTION_RIGHT);
+        workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window), 
+                                                 WNCK_MOTION_RIGHT);
         wnck_window_move_to_workspace (amd->window, workspace);
         break;
       }
     case UP:
       {
         WnckWorkspace *workspace;
-        workspace = wnck_screen_get_workspace_neighbor (wnck_window_get_screen (amd->window),
-                                                        wnck_window_get_workspace (amd->window),
-                                                        WNCK_MOTION_UP);
+        workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window), 
+                                                 WNCK_MOTION_UP);
         wnck_window_move_to_workspace (amd->window, workspace);
         break;
       }
     case DOWN:
       {
         WnckWorkspace *workspace;
-        workspace = wnck_screen_get_workspace_neighbor (wnck_window_get_screen (amd->window),
-                                                        wnck_window_get_workspace (amd->window),
-                                                        WNCK_MOTION_DOWN);
+        workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window), 
+                                                 WNCK_MOTION_DOWN);
         wnck_window_move_to_workspace (amd->window, workspace);
         break;
       }
@@ -219,8 +215,9 @@ item_activated_callback (GtkWidget *menu_item,
         workspace_index = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (menu_item), "workspace"));
 
         wnck_window_move_to_workspace (amd->window,
-                                       wnck_screen_get_workspace (wnck_window_get_screen (amd->window),
-                                       workspace_index));
+                                       wnck_screen_get_workspace (
+                                           wnck_window_get_screen (amd->window),
+                                           workspace_index));
         break;
       }
     }
@@ -578,7 +575,6 @@ wnck_create_window_action_menu (WnckWindow *window)
   GtkWidget *separator;
   int num_workspaces, window_space, i;
   WnckWorkspace *workspace;
-  WnckWorkspaceLayout layout;
   GSList *pin_group;
 
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
@@ -654,16 +650,11 @@ wnck_create_window_action_menu (WnckWindow *window)
   if (workspace)
     window_space = wnck_workspace_get_number (workspace);
   else
-    window_space = -1; //FIXME: this probably causes weird results. How to verify?
+    window_space = -1;
 
-  wnck_screen_calc_workspace_layout (wnck_window_get_screen (amd->window),
-                                     num_workspaces,
-                                     window_space,
-                                     &layout);
-
-  if (!wnck_window_is_pinned (amd->window))
+  if (workspace && !wnck_window_is_pinned (amd->window))
     {
-      if (layout.current_col > 0)
+      if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_LEFT))
         {
           amd->left_item = make_menu_item (amd, LEFT);
           gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -674,7 +665,7 @@ wnck_create_window_action_menu (WnckWindow *window)
       else 
          amd->left_item = NULL;
 
-      if ((layout.current_col < layout.cols - 1) && (layout.current_row * layout.cols + (layout.current_col + 1) < num_workspaces ))
+      if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_RIGHT))
         {
           amd->right_item = make_menu_item (amd, RIGHT);
           gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -685,7 +676,7 @@ wnck_create_window_action_menu (WnckWindow *window)
       else 
          amd->right_item = NULL;       
        
-      if (layout.current_row > 0)
+      if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_UP))
         {
           amd->up_item = make_menu_item (amd, UP);
           gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -697,7 +688,7 @@ wnck_create_window_action_menu (WnckWindow *window)
          amd->up_item = NULL; 
 
 
-      if ((layout.current_row < layout.rows - 1) && ((layout.current_row + 1) * layout.cols + layout.current_col) < num_workspaces)
+      if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_DOWN))
         {
           amd->down_item = make_menu_item (amd, DOWN);
           gtk_menu_shell_append (GTK_MENU_SHELL (menu),
@@ -767,7 +758,6 @@ wnck_create_window_action_menu (WnckWindow *window)
                            0);
 
   update_menu_state (amd);
-  wnck_screen_free_workspace_layout (&layout);
   
   return menu;
 }

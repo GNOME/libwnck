@@ -1,5 +1,13 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window-action-menu.c: (item_activated_callback): updated to
+	use wnck_workspace_get_neighbor()
+	(wnck_create_window_action_menu): don't use
+	wnck_screen_calc_workspace_layout(), and just check if neighbors exist
+	with wnck_workspace_get_neighbor()
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	Add new API to get layout information about a workspace.
 	Also add a mode to wnckprop to interact with workspaces.
 
