@@ -846,6 +846,7 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
  * or unreferenced.
  *
  * Since: 2.14
+ * Deprecated: Use wnck_workspace_get_neighbor() instead.
  **/
 WnckWorkspace*
 wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
@@ -2131,15 +2132,23 @@ update_workspace_layout (WnckScreen *screen)
             }
           else
             {
+              int num_workspaces;
+
+              num_workspaces = wnck_screen_get_workspace_count (screen);
+
               if (rows > 0)
                 screen->priv->rows_of_workspaces = rows;
               else
-                screen->priv->rows_of_workspaces = -1;
+                screen->priv->rows_of_workspaces =
+                                      num_workspaces / cols
+                                      + ((num_workspaces % cols) > 0 ? 1 : 0);
 
               if (cols > 0)
                 screen->priv->columns_of_workspaces = cols;
               else
-                screen->priv->columns_of_workspaces = -1;
+                screen->priv->columns_of_workspaces =
+                                      num_workspaces / rows
+                                      + ((num_workspaces % rows) > 0 ? 1 : 0);
             }
           if (n_items == 4)
             {

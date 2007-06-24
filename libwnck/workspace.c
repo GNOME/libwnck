@@ -405,3 +405,192 @@ wnck_workspace_is_virtual (WnckWorkspace *space)
 
   return space->priv->is_virtual;
 }
+
+/**
+ * wnck_workspace_get_layout_row:
+ * @space: a #WnckWorkspace.
+ * 
+ * Returns the row of @space in the #WnckWorkspace layout. The first row has an
+ * index of 0 and is always the top row, regardless of the starting corner set
+ * for the layout.
+ * 
+ * Return value: the row of @space in the #WnckWorkspace layout, or -1 on
+ * errors.
+ *
+ * Since: 2.20
+ **/
+int
+wnck_workspace_get_layout_row (WnckWorkspace *space)
+{
+  _WnckLayoutOrientation orientation;
+  _WnckLayoutCorner corner;
+  int n_rows;
+  int n_cols;
+  int row;
+
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
+
+  _wnck_screen_get_workspace_layout (space->priv->screen,
+                                     &orientation, &n_rows, &n_cols, &corner);
+
+  if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+    row = space->priv->number / n_cols;
+  else
+    row = space->priv->number % n_rows;
+
+  if (corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT ||
+      corner == WNCK_LAYOUT_CORNER_BOTTOMLEFT)
+    row = n_rows - row;
+
+  return row;
+}
+
+/**
+ * wnck_workspace_get_layout_column:
+ * @space: a #WnckWorkspace.
+ * 
+ * Returns the column of @space in the #WnckWorkspace layout. The first column
+ * has an index of 0 and is always the left column, regardless of the starting
+ * corner set for the layout and regardless of the default direction of the
+ * environment (i.e., in both Left-To-Right and Right-To-Left environments).
+ * 
+ * Return value: the column of @space in the #WnckWorkspace layout, or -1 on
+ * errors.
+ *
+ * Since: 2.20
+ **/
+int
+wnck_workspace_get_layout_column (WnckWorkspace *space)
+{
+  _WnckLayoutOrientation orientation;
+  _WnckLayoutCorner corner;
+  int n_rows;
+  int n_cols;
+  int col;
+
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
+
+  _wnck_screen_get_workspace_layout (space->priv->screen,
+                                     &orientation, &n_rows, &n_cols, &corner);
+
+  if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+    col = space->priv->number % n_cols;
+  else
+    col = space->priv->number / n_rows;
+
+  if (corner == WNCK_LAYOUT_CORNER_TOPRIGHT ||
+      corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT)
+    col = n_cols - col;
+
+  return col;
+}
+
+/**
+ * wnck_workspace_get_neighbor:
+ * @space: a #WnckWorkspace.
+ * @direction: direction in which to search the neighbor.
+ * 
+ * Returns the neighbor #WnckWorkspace of @space in the @direction direction.
+ *
+ * Return value: the neighbor #WnckWorkspace of @space in the @direction
+ * direction, or %NULL if no such neighbor #WnckWorkspace exists. The returned
+ * #WnckWorkspace is owned by libwnck and must not be referenced or
+ * unreferenced.
+ *
+ * Since: 2.20
+ **/
+WnckWorkspace*
+wnck_workspace_get_neighbor (WnckWorkspace       *space,
+                             WnckMotionDirection  direction)
+{
+  _WnckLayoutOrientation orientation;
+  _WnckLayoutCorner corner;
+  int n_rows;
+  int n_cols;
+  int row;
+  int col;
+  int add;
+  int index;
+
+  g_return_val_if_fail (WNCK_IS_WORKSPACE (space), NULL);
+
+  _wnck_screen_get_workspace_layout (space->priv->screen,
+                                     &orientation, &n_rows, &n_cols, &corner);
+
+  row = wnck_workspace_get_layout_row (space);
+  col = wnck_workspace_get_layout_column (space);
+
+  index = space->priv->number;
+
+  switch (direction)
+    {
+    case WNCK_MOTION_LEFT:
+      if (col == 0)
+        return NULL;
+
+      if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+        add = 1;
+      else
+        add = n_rows;
+
+      if (corner == WNCK_LAYOUT_CORNER_TOPRIGHT ||
+          corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT)
+        index += add;
+      else
+        index -= add;
+      break;
+
+    case WNCK_MOTION_RIGHT:
+      if (col == n_cols - 1)
+        return NULL;
+
+      if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+        add = 1;
+      else
+        add = n_rows;
+
+      if (corner == WNCK_LAYOUT_CORNER_TOPRIGHT ||
+          corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT)
+        index -= add;
+      else
+        index += add;
+      break;
+
+    case WNCK_MOTION_UP:
+      if (row == 0)
+        return NULL;
+
+      if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+        add = n_cols;
+      else
+        add = 1;
+
+      if (corner == WNCK_LAYOUT_CORNER_BOTTOMLEFT ||
+          corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT)
+        index += add;
+      else
+        index -= add;
+      break;
+
+    case WNCK_MOTION_DOWN:
+      if (row == n_rows - 1)
+        return NULL;
+
+      if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
+        add = n_cols;
+      else
+        add = 1;
+
+      if (corner == WNCK_LAYOUT_CORNER_BOTTOMLEFT ||
+          corner == WNCK_LAYOUT_CORNER_BOTTOMRIGHT)
+        index -= add;
+      else
+        index += add;
+      break;
+    }
+
+  if (index == space->priv->number)
+    return NULL;
+
+  return wnck_screen_get_workspace (space->priv->screen, index);
+}

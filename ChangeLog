@@ -1,5 +1,29 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	Add new API to get layout information about a workspace.
+	Also add a mode to wnckprop to interact with workspaces.
+
+	* libwnck/workspace.[ch]: (wnck_workspace_get_layout_row),
+	(wnck_workspace_get_layout_column), (wnck_workspace_get_neighbor): 3
+	new API, that are useful for knowing more about the layout
+	* libwnck/screen.[ch]: (wnck_screen_get_workspace_neighbor): deprecate
+	this function, wnck_workspace_get_neighbor() is simpler and should be
+	used instead
+	(update_workspace_layout): if the number of rows (or columns) is not
+	set on the screen, compute it using the number of columns (or rows)
+	and the number of workspaces
+
+	* libwnck/wnckprop.c: (set_mode): new
+	(validate_options): updated
+	(update_screen_props): remove the part about workspace activation
+	(update_space_props): new
+	(print_screen_props): indentation fixes
+	(print_space_props): new
+	(handle_button_press_event): updated
+	(main): updated
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/class-group.h:
 	* libwnck/private.h: move private WnckClassGroup functions to
 	private.h

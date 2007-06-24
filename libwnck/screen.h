@@ -165,6 +165,8 @@ struct _WnckWorkspaceLayout
  *
  * Since: 2.14
  */
+/* TODO: move this to workspace.h when we break API and remove
+ * wnck_screen_get_workspace_neighbor() */
 typedef enum
 {
   WNCK_MOTION_UP = -1,
@@ -222,10 +224,10 @@ WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
 #ifndef WNCK_DISABLE_DEPRECATED
 int            wnck_screen_get_workspace_index      (WnckScreen    *screen,
                                                      WnckWorkspace *space);
-#endif /* WNCK_DISABLE_DEPRECATED */
 WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
                                                      WnckWorkspace      *space,
                                                      WnckMotionDirection direction);
+#endif /* WNCK_DISABLE_DEPRECATED */
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
 GList*         wnck_screen_get_workspaces           (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);

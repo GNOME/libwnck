@@ -29,7 +29,6 @@
 /* TODO:
  *  investigate why those doesn't work:
  *   --set-n-workspaces
- *   --activate-workspace (timestamp related?)
  *   --activate (and probably --unminimize) (timestamp related?)
  *   --show-desktop and --unshow-desktop
  *   --keyboard-move and --keyboard-resize
@@ -52,17 +51,23 @@
 #include <libwnck/libwnck.h>
 #include <libwnck/class-group.h>
 
-gboolean screen_mode  = FALSE;
-gboolean screen_props = FALSE;
-gboolean window_props = FALSE;
+enum {
+  INVALID_MODE,
+  SCREEN_READ_MODE,
+  SCREEN_WRITE_MODE,
+  WORKSPACE_READ_MODE,
+  WORKSPACE_WRITE_MODE,
+  WINDOW_READ_MODE,
+  WINDOW_WRITE_MODE
+} mode = INVALID_MODE;
 
 gulong   xid = 0;
+int      interact_space = -1;
 int      interact_screen = -1;
 
 gboolean list_windows = FALSE;
 int      list_windows_workspace = -1;
 gboolean list_workspaces = FALSE;
-int      set_activate_workspace = -1;
 int      set_n_workspaces = -1;
 int      set_workspace_rows = 0;
 int      set_workspace_cols = 0;
@@ -70,6 +75,9 @@ gboolean set_show_desktop = FALSE;
 gboolean set_unshow_desktop = FALSE;
 int      set_viewport_x = -1;
 int      set_viewport_y = -1;
+
+gboolean set_activate = FALSE;
+char     *set_change_name = NULL;
 
 gboolean set_minimize = FALSE;
 gboolean set_unminimize = FALSE;
@@ -81,7 +89,6 @@ gboolean set_maximize_vertically = FALSE;
 gboolean set_unmaximize_vertically = FALSE;
 gboolean set_keyboard_move = FALSE;
 gboolean set_keyboard_resize = FALSE;
-gboolean set_activate = FALSE;
 gboolean set_close = FALSE;
 
 gboolean set_fullscreen = FALSE;
@@ -109,6 +116,8 @@ WnckWindowType set_window_type_t = WNCK_WINDOW_NORMAL;
 static GOptionEntry main_entries[] = {
 	{ "xid", 0, 0, G_OPTION_ARG_INT, &xid,
           N_("X window ID of the window to examine or modify"), N_("XID") },
+	{ "workspace", 0, 0, G_OPTION_ARG_INT, &interact_space,
+          N_("NUMBER of the workspace to examine or modify"), N_("NUMBER") },
 	{ "screen", 0, 0, G_OPTION_ARG_INT, &interact_screen,
           N_("NUMBER of the screen to examine or modify"), N_("NUMBER") },
 	{ NULL }
@@ -125,8 +134,6 @@ static GOptionEntry list_entries[] = {
 };
 
 static GOptionEntry screen_entries[] = {
-	{ "activate-workspace", 0, 0, G_OPTION_ARG_INT, &set_activate_workspace,
-          N_("Change the current workspace to workspace NUMBER"), N_("NUMBER") },
 	{ "set-n-workspaces", 0, 0, G_OPTION_ARG_INT, &set_n_workspaces,
           N_("Change the number of workspaces of the screen to NUMBER"), N_("NUMBER") },
 	{ "set-workspace-rows", 0, 0, G_OPTION_ARG_INT, &set_workspace_rows,
@@ -214,90 +221,195 @@ static GOptionEntry window_entries[] = {
 	{ NULL }
 };
 
+static GOptionEntry space_entries[] = {
+	{ "change-name", 0, 0, G_OPTION_ARG_STRING, &set_change_name,
+          N_("Change the name of the workspace to NAME"), N_("NAME") },
+	{ "activate", 0, 0, G_OPTION_ARG_NONE, &set_activate,
+          N_("Activate the workspace"), NULL },
+	{ NULL }
+};
+
 static void clean_up (void);
+
+static gboolean
+set_mode (int         new_mode,
+          const char *option)
+{
+  switch (mode)
+    {
+      case INVALID_MODE:
+        mode = new_mode;
+        break;
+      case SCREEN_READ_MODE:
+        if (new_mode == SCREEN_READ_MODE || new_mode == SCREEN_WRITE_MODE)
+          mode = new_mode;
+        else
+          {
+            g_printerr (_("Conflicting options are present: screen %d should "
+                          "be interacted with, but --%s has been used\n"),
+                        interact_screen, option);
+            return FALSE;
+          }
+        break;
+      case SCREEN_WRITE_MODE:
+        if (new_mode != SCREEN_WRITE_MODE)
+          {
+            g_printerr (_("Conflicting options are present: screen %d should "
+                          "be interacted with, but --%s has been used\n"),
+                        interact_screen, option);
+            return FALSE;
+          }
+        break;
+      case WORKSPACE_READ_MODE:
+        if (new_mode == WORKSPACE_READ_MODE || new_mode == WORKSPACE_WRITE_MODE)
+          mode = new_mode;
+        else
+          {
+            g_printerr (_("Conflicting options are present: workspace %d "
+                          "should be interacted with, but --%s has been "
+                          "used\n"),
+                        interact_space, option);
+            return FALSE;
+          }
+        break;
+      case WORKSPACE_WRITE_MODE:
+        if (new_mode != WORKSPACE_WRITE_MODE)
+          {
+            g_printerr (_("Conflicting options are present: workspace %d "
+                          "should be interacted with, but --%s has been "
+                          "used\n"),
+                        interact_space, option);
+            return FALSE;
+          }
+        break;
+      case WINDOW_READ_MODE:
+        if (new_mode == WINDOW_READ_MODE || new_mode == WINDOW_WRITE_MODE)
+          mode = new_mode;
+        else
+          {
+            g_printerr (_("Conflicting options are present: a window should "
+                          "be interacted with, but --%s has been used\n"),
+                        option);
+            return FALSE;
+          }
+        break;
+      case WINDOW_WRITE_MODE:
+        if (new_mode != WINDOW_WRITE_MODE)
+          {
+            g_printerr (_("Conflicting options are present: a window should "
+                          "be interacted with, but --%s has been used\n"),
+                        option);
+            return FALSE;
+          }
+        break;
+      default:
+        g_assert_not_reached ();
+    }
+
+  return TRUE;
+}
 
 static gboolean
 validate_options (void)
 {
-#define CHECK_DUAL_OPTIONS(name, props)                                 \
-  if (set_##name && set_un##name)                                       \
+#define CHECK_DUAL_OPTIONS(shortvar, mode)                              \
+  if (set_##shortvar && set_un##shortvar)                               \
     {                                                                   \
-      g_printerr (_("Conflicting options are present: %s and %s\n"),    \
-                  #name, "un"#name);                                    \
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),\
+                  #shortvar, "un"#shortvar);                            \
       return FALSE;                                                     \
     }                                                                   \
-  if (set_##name || set_un##name)                                       \
-    props = TRUE;
-
-#define CHECK_BOOL(name, props)                                         \
-  if (set_##name)                                                       \
-    props = TRUE;
-
-#define CHECK_INT(var, props, name)                                     \
-  if (var != G_MAXINT)                                                  \
-    props = TRUE;
-
-#define CHECK_POSITIVE_STRICT_INT(var, props, name)                     \
-  if (var != -1 && var <= 0)                                            \
+  if (set_##shortvar)                                                   \
     {                                                                   \
-      g_printerr (_("Invalid argument \"%d\" for %s: the argument must be strictly positive\n"), \
-                  var, name);                                           \
-      return FALSE;                                                     \
+      if (!set_mode (mode, #shortvar))                                  \
+        return FALSE;                                                   \
     }                                                                   \
-  if (var != -1)                                                        \
-    props = TRUE;
-
-#define CHECK_POSITIVE_INT(var, props, name)                            \
-  if (var != -1 && var < 0)                                             \
+  if (set_un##shortvar)                                                 \
     {                                                                   \
-      g_printerr (_("Invalid argument \"%d\" for %s: the argument must be positive\n"), \
-                  var, name);                                           \
-      return FALSE;                                                     \
-    }                                                                   \
-  if (var != -1)                                                        \
-    props = TRUE;
-
-#define CHECK_BOOL_NO_SCREEN_PROPS(var, name)                           \
-  if (var)                                                              \
-    {                                                                   \
-      if (screen_props)                                                 \
-        {                                                               \
-          g_printerr (_("Conflicting options are present: an "          \
-                        "option to modify a property of the screen and %s\n"), \
-                      name);                                            \
-          return FALSE;                                                 \
-        }                                                               \
-      screen_mode = TRUE;                                               \
+      if (!set_mode (mode, "un"#shortvar))                              \
+        return FALSE;                                                   \
     }
 
-  CHECK_POSITIVE_INT (interact_screen, screen_mode, "screen")
-  CHECK_POSITIVE_INT (set_activate_workspace, screen_props,
-                      "activate-workspace")
-  CHECK_POSITIVE_STRICT_INT (set_n_workspaces, screen_props,
-                             "set-n-workspaces")
-  if (set_workspace_rows > 0)
-    screen_props = TRUE;
-  if (set_workspace_cols > 0)
-    screen_props = TRUE;
-  CHECK_DUAL_OPTIONS (show_desktop, screen_props)
-  CHECK_POSITIVE_INT (set_viewport_x, screen_props, "move-viewport-x")
-  CHECK_POSITIVE_INT (set_viewport_y, screen_props, "move-viewport-y")
+#define CHECK_BOOL(shortvar, name, mode)                                \
+  if (set_##shortvar)                                                   \
+    {                                                                   \
+      if (!set_mode (mode, name))                                       \
+        return FALSE;                                                   \
+    }
 
-  /* do this after all setters of screen_props */
-  CHECK_BOOL_NO_SCREEN_PROPS (list_windows, "list-windows")
-  CHECK_BOOL_NO_SCREEN_PROPS (list_workspaces, "list-workspaces")
-  CHECK_POSITIVE_INT (list_windows_workspace, screen_mode,
-                      "list-windows-workspace")
+#define CHECK_BOOL_REAL(var, name, mode)                                \
+  if (var)                                                              \
+    {                                                                   \
+      if (!set_mode (mode, name))                                       \
+        return FALSE;                                                   \
+    }
+
+#define CHECK_INT(var, name, mode)                                      \
+  if (var != G_MAXINT)                                                  \
+    {                                                                   \
+      if (!set_mode (mode, name))                                       \
+        return FALSE;                                                   \
+    }
+
+#define CHECK_POSITIVE_STRICT_INT(var, name, mode)                      \
+  if (var != -1 && var <= 0)                                            \
+    {                                                                   \
+      g_printerr (_("Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"), \
+                  var, name);                                           \
+      return FALSE;                                                     \
+    }                                                                   \
+  if (var != -1)                                                        \
+    {                                                                   \
+      if (!set_mode (mode, name))                                       \
+        return FALSE;                                                   \
+    }
+
+#define CHECK_POSITIVE_INT(var, name, mode)                             \
+  if (var != -1 && var < 0)                                             \
+    {                                                                   \
+      g_printerr (_("Invalid argument \"%d\" for --%s: the argument must be positive\n"), \
+                  var, name);                                           \
+      return FALSE;                                                     \
+    }                                                                   \
+  if (var != -1)                                                        \
+    {                                                                   \
+      if (!set_mode (mode, name))                                       \
+        return FALSE;                                                   \
+    }
+
+  if (xid > 0)
+    mode = WINDOW_READ_MODE;
+  CHECK_POSITIVE_INT (interact_space, "workspace", WORKSPACE_READ_MODE)
+  CHECK_POSITIVE_INT (interact_screen, "screen", SCREEN_READ_MODE)
+
+  /* screen options can work by assuming it's on the default screen */
+  CHECK_POSITIVE_STRICT_INT (set_n_workspaces, "set-n-workspaces",
+                             SCREEN_WRITE_MODE)
+  if (set_workspace_rows > 0)
+    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-rows"))
+      return FALSE;
+  if (set_workspace_cols > 0)
+    if (!set_mode (SCREEN_WRITE_MODE, "set-workspace-columns"))
+      return FALSE;
+  CHECK_DUAL_OPTIONS (show_desktop, SCREEN_WRITE_MODE)
+  CHECK_POSITIVE_INT (set_viewport_x, "move-viewport-x", SCREEN_WRITE_MODE)
+  CHECK_POSITIVE_INT (set_viewport_y, "move-viewport-y", SCREEN_WRITE_MODE)
+
+  /* do this after all SCREEN_WRITE_MODE */
+  CHECK_BOOL_REAL (list_windows, "list-windows", SCREEN_READ_MODE)
+  CHECK_BOOL_REAL (list_workspaces, "list-workspaces", SCREEN_READ_MODE)
+  CHECK_POSITIVE_INT (list_windows_workspace, "list-windows-workspace",
+                      SCREEN_READ_MODE)
 
   if (list_windows_workspace != -1 && list_windows)
     {
-      g_printerr (_("Conflicting options are present: %s and %s\n"),
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
                   "list-windows", "list-windows-workspace");
       return FALSE;
     }
   if (list_windows_workspace != -1 && list_workspaces)
     {
-      g_printerr (_("Conflicting options are present: %s and %s\n"),
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
                   "list-windows-workspace", "list-workspaces");
       return FALSE;
     }
@@ -306,46 +418,55 @@ validate_options (void)
 
   if (list_windows && list_workspaces)
     {
-      g_printerr (_("Conflicting options are present: %s and %s\n"),
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
                   "list-windows", "list-workspaces");
       return FALSE;
     }
 
-  CHECK_DUAL_OPTIONS (minimize, window_props)
-  CHECK_DUAL_OPTIONS (maximize, window_props)
-  CHECK_DUAL_OPTIONS (maximize_horizontally, window_props)
-  CHECK_DUAL_OPTIONS (maximize_vertically, window_props)
+  /* no command line option specifying the mode => the user will choose a
+   * window */
+  if (mode == INVALID_MODE)
+    mode = WINDOW_READ_MODE;
+
+  if (set_change_name != NULL)
+    if (!set_mode (WORKSPACE_WRITE_MODE, "change-name"))
+      return FALSE;
+
+  CHECK_DUAL_OPTIONS (minimize, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (maximize, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (maximize_horizontally, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (maximize_vertically, WINDOW_WRITE_MODE)
   if (set_keyboard_move && set_keyboard_resize)
     {
-      g_printerr (_("Conflicting options are present: %s and %s\n"),
+      g_printerr (_("Conflicting options are present: --%s and --%s\n"),
                   "keyboard-move", "keyboard-resize");
       return FALSE;
     }
-  CHECK_BOOL (keyboard_move, window_props)
-  CHECK_BOOL (keyboard_resize, window_props)
-  CHECK_BOOL (activate, window_props)
-  CHECK_BOOL (close, window_props)
+  CHECK_BOOL (keyboard_move, "keyboard-move", WINDOW_WRITE_MODE)
+  CHECK_BOOL (keyboard_resize, "keyboard-resize", WINDOW_WRITE_MODE)
+  CHECK_BOOL (close, "close", WINDOW_WRITE_MODE)
 
-  CHECK_DUAL_OPTIONS (fullscreen, window_props)
-  CHECK_DUAL_OPTIONS (make_above, window_props)
-  CHECK_DUAL_OPTIONS (shade, window_props)
-  CHECK_DUAL_OPTIONS (stick, window_props)
-  CHECK_DUAL_OPTIONS (skip_pager, window_props)
-  CHECK_DUAL_OPTIONS (skip_tasklist, window_props)
-  CHECK_DUAL_OPTIONS (pin, window_props)
+  CHECK_DUAL_OPTIONS (fullscreen, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (make_above, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (shade, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (stick, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (skip_pager, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (skip_tasklist, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (pin, WINDOW_WRITE_MODE)
 
   if ((set_pin || set_unpin) && set_workspace != -1)
     {
-      g_printerr (_("Conflicting options are present: %s or %s, and %s\n"),
+      g_printerr (_("Conflicting options are present: --%s or --%s, "
+                    "and --%s\n"),
                   "pin", "unpin", "set-workspace");
       return FALSE;
     }
 
-  CHECK_POSITIVE_INT (set_workspace, window_props, "set-workspace")
-  CHECK_INT (set_x, window_props, "set-x")
-  CHECK_INT (set_y, window_props, "set-y")
-  CHECK_POSITIVE_INT (set_width, window_props, "set-width")
-  CHECK_POSITIVE_INT (set_height, window_props, "set-height")
+  CHECK_POSITIVE_INT (set_workspace, "set-workspace", WINDOW_WRITE_MODE)
+  CHECK_INT (set_x, "set-x", WINDOW_WRITE_MODE)
+  CHECK_INT (set_y, "set-y", WINDOW_WRITE_MODE)
+  CHECK_POSITIVE_INT (set_width, "set-width", WINDOW_WRITE_MODE)
+  CHECK_POSITIVE_INT (set_height, "set-height", WINDOW_WRITE_MODE)
 
   if (set_window_type != NULL)
     {
@@ -367,22 +488,26 @@ validate_options (void)
         set_window_type_t = WNCK_WINDOW_SPLASHSCREEN;
       else
         {
-          g_printerr (_("Invalid argument \"%s\" for %s, valid values are: %s\n"),
+          g_printerr (_("Invalid argument \"%s\" for --%s, valid values are: "
+                        "%s\n"),
                       set_window_type, "set-window-type",
-                      "normal, desktop, dock, dialog, toolbar, menu, utility, splash");
+                      "normal, desktop, dock, dialog, toolbar, menu, utility, "
+                      "splash");
         }
 
-      window_props = TRUE;
+      if (!set_mode (WINDOW_WRITE_MODE, "set-window-type"))
+        return FALSE;
     }
 
-  if (screen_props)
-    screen_mode = TRUE;
-
-  if (screen_mode && (window_props || xid != 0))
+  if (set_activate)
     {
-      g_printerr (_("Options for window and screen are present: the options "
-                    "cannot be mixed\n"));
-      return FALSE;
+      if (mode == WORKSPACE_READ_MODE || mode == WORKSPACE_WRITE_MODE)
+        set_mode (WORKSPACE_WRITE_MODE, "activate");
+      else if (mode == WINDOW_READ_MODE || mode == WINDOW_WRITE_MODE)
+        set_mode (WINDOW_WRITE_MODE, "activate");
+      else
+        //TODO
+        return set_mode (INVALID_MODE, "activate");
     }
 
   return TRUE;
@@ -413,23 +538,6 @@ update_screen_props (WnckScreen *screen)
       else
         g_printerr (_("Cannot change the workspace layout on the screen: "
                       "the layout is already owned\n"));
-    }
-
-  /* now, the workspace number/layout won't change again */
-  if (set_activate_workspace != -1)
-    {
-      WnckWorkspace *space;
-      WnckWorkspace *active_space;
-
-      space = wnck_screen_get_workspace (screen, set_activate_workspace);
-      active_space = wnck_screen_get_active_workspace (screen);
-
-      if (space && space != active_space)
-        wnck_workspace_activate (space, timestamp);
-      else
-        g_printerr (_("Workspace %d cannot be activated: "
-                      "the workspace does not exist\n"),
-                    set_activate_workspace);
     }
 
   if (set_show_desktop)
@@ -468,6 +576,22 @@ update_screen_props (WnckScreen *screen)
                        "there is no current workspace\n"));
     }
 }
+
+static void
+update_space_props (WnckWorkspace *space)
+{
+  unsigned int timestamp;
+
+  // TODO: get a valid timestamp
+  timestamp = gdk_x11_display_get_user_time (gdk_display_get_default ());
+
+  if (set_activate)
+    wnck_workspace_activate (space, timestamp);
+
+  if (set_change_name)
+    wnck_workspace_change_name (space, set_change_name);
+}
+
 
 static void
 update_window_props (WnckWindow *window)
@@ -705,10 +829,11 @@ print_screen_props (WnckScreen *screen)
       g_print (_("Screen Number: %d\n"), wnck_screen_get_number (screen));
 
       g_print (_("Geometry (width, height): %d, %d\n"),
-          wnck_screen_get_width (screen), wnck_screen_get_height (screen));
+               wnck_screen_get_width (screen),
+               wnck_screen_get_height (screen));
 
       g_print (_("Number of Workspaces: %d\n"),
-          wnck_screen_get_workspace_count (screen));
+               wnck_screen_get_workspace_count (screen));
 
 #if 0
       wnck_screen_get_workspace_layout (screen, &orientation, &rows, &columns,
@@ -758,8 +883,79 @@ print_screen_props (WnckScreen *screen)
       g_free (free_buf);
 
       g_print (_("Showing the desktop: %s\n"),
-          wnck_screen_get_showing_desktop (screen) ? _("true") : _("false"));
+               wnck_screen_get_showing_desktop (screen) ?
+                 _("true") : _("false"));
     }
+}
+
+static void
+print_space_props (WnckWorkspace *space)
+{
+  WnckWorkspace *neighbor;
+  char          *free_buf;
+
+  g_print (_("Workspace Name: %s\n"), wnck_workspace_get_name (space));
+  g_print (_("Workspace Number: %d\n"), wnck_workspace_get_number (space));
+  g_print (_("Geometry (width, height): %d, %d\n"),
+           wnck_workspace_get_width (space),
+           wnck_workspace_get_height (space));
+
+  if (wnck_workspace_is_virtual (space))
+    free_buf = g_strdup_printf ("%d, %d",
+                                wnck_workspace_get_viewport_x (space),
+                                wnck_workspace_get_viewport_y (space));
+  else
+    free_buf = g_strdup (_("<no viewport>"));
+  g_print (_("Viewport position (x, y): %s\n"), free_buf);
+  g_free (free_buf);
+
+  g_print (_("Position in Layout (row, column): %d, %d\n"),
+           wnck_workspace_get_layout_row (space),
+           wnck_workspace_get_layout_column (space));
+
+  neighbor = wnck_workspace_get_neighbor (space, WNCK_MOTION_LEFT);
+  if (neighbor)
+    /* Translators: %d is a workspace number and %s a workspace name */
+    free_buf = g_strdup_printf (_("%d (\"%s\")"),
+                                wnck_workspace_get_number (neighbor),
+                                wnck_workspace_get_name (neighbor));
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Left Neighbor: %s\n"), free_buf);
+  g_free (free_buf);
+
+  neighbor = wnck_workspace_get_neighbor (space, WNCK_MOTION_RIGHT);
+  if (neighbor)
+    /* Translators: %d is a workspace number and %s a workspace name */
+    free_buf = g_strdup_printf (_("%d (\"%s\")"),
+                                wnck_workspace_get_number (neighbor),
+                                wnck_workspace_get_name (neighbor));
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Right Neighbor: %s\n"), free_buf);
+  g_free (free_buf);
+
+  neighbor = wnck_workspace_get_neighbor (space, WNCK_MOTION_UP);
+  if (neighbor)
+    /* Translators: %d is a workspace number and %s a workspace name */
+    free_buf = g_strdup_printf (_("%d (\"%s\")"),
+                                wnck_workspace_get_number (neighbor),
+                                wnck_workspace_get_name (neighbor));
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Top Neighbor: %s\n"), free_buf);
+  g_free (free_buf);
+
+  neighbor = wnck_workspace_get_neighbor (space, WNCK_MOTION_DOWN);
+  if (neighbor)
+    /* Translators: %d is a workspace number and %s a workspace name */
+    free_buf = g_strdup_printf (_("%d (\"%s\")"),
+                                wnck_workspace_get_number (neighbor),
+                                wnck_workspace_get_name (neighbor));
+  else
+    free_buf = g_strdup (_("none"));
+  g_print (_("Bottom Neighbor: %s\n"), free_buf);
+  g_free (free_buf);
 }
 
 static void
@@ -1063,10 +1259,12 @@ handle_button_press_event (XKeyEvent *event)
 
   if (window)
     {
-      if (window_props)
+      if (mode == WINDOW_WRITE_MODE)
         update_window_props (window);
-      else
+      else if (mode == WINDOW_READ_MODE)
         print_window_props (window);
+      else
+        g_assert_not_reached ();
     }
 }
 
@@ -1162,9 +1360,8 @@ main (int argc, char **argv)
   ctxt = g_option_context_new ("");
   g_option_context_set_summary (ctxt,
                                 N_("Print or modify the properties of a "
-                                   "screen or a window, or interact with a "
-                                   "screen or a window, "
-                                   "following the EWMH specification.\n"
+                                   "screen/workspace/window, or interact with "
+                                   "it, following the EWMH specification.\n"
                                    "For information about this specification, "
                                    "see:\n\t"
                                    "http://freedesktop.org/wiki/Specifications/wm-spec"));
@@ -1183,6 +1380,13 @@ main (int argc, char **argv)
                               N_("Show options to modify properties of a window"),
                               NULL, NULL);
   g_option_group_add_entries (group, window_entries);
+  g_option_context_add_group (ctxt, group);
+
+  group = g_option_group_new ("workspace",
+                              N_("Options to modify properties of a workspace"),
+                              N_("Show options to modify properties of a workspace"),
+                              NULL, NULL);
+  g_option_group_add_entries (group, space_entries);
   g_option_context_add_group (ctxt, group);
 
   group = g_option_group_new ("screen",
@@ -1229,12 +1433,30 @@ main (int argc, char **argv)
   /* because we don't respond to signals at the moment */
   wnck_screen_force_update (screen);
   
-  if (screen_mode)
+  if (mode == SCREEN_READ_MODE)
+    print_screen_props (screen);
+  else if (mode == SCREEN_WRITE_MODE)
+    update_screen_props (screen);
+  else if (mode == WORKSPACE_READ_MODE || mode == WORKSPACE_WRITE_MODE)
     {
-      if (screen_props)
-        update_screen_props (screen);
+      WnckWorkspace *space;
+
+      g_assert (interact_space != -1);
+
+      space = wnck_screen_get_workspace (screen, interact_space);
+
+      if (space)
+        {
+          if (mode == WORKSPACE_READ_MODE)
+            print_space_props (space);
+          else if (mode == WORKSPACE_WRITE_MODE)
+            update_space_props (space);
+          else
+            g_assert_not_reached ();
+        }
       else
-        print_screen_props (screen);
+        g_printerr (_("Cannot interact with workspace %d: "
+                      "the workspace cannot be found\n"), interact_space);
     }
   else
     {
@@ -1245,14 +1467,16 @@ main (int argc, char **argv)
           window = wnck_window_get (xid);
           if (window)
             {
-              if (window_props)
+              if (mode == WINDOW_WRITE_MODE)
                 update_window_props (window);
-              else
+              else if (mode == WINDOW_READ_MODE)
                 print_window_props (window);
+              else
+                g_assert_not_reached ();
             }
           else
-            g_printerr ("Cannot interact with window with XID %lu: "
-                        "the window cannot be found\n", xid);
+            g_printerr (_("Cannot interact with window with XID %lu: "
+                          "the window cannot be found\n"), xid);
         }
       else
         {

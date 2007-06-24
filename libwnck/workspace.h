@@ -79,6 +79,11 @@ int         wnck_workspace_get_viewport_y (WnckWorkspace *space);
 gboolean    wnck_workspace_is_virtual     (WnckWorkspace *space);
 
 
+int wnck_workspace_get_layout_row          (WnckWorkspace       *space);
+int wnck_workspace_get_layout_column       (WnckWorkspace       *space);
+WnckWorkspace* wnck_workspace_get_neighbor (WnckWorkspace       *space,
+                                            WnckMotionDirection  direction);
+
 G_END_DECLS
 
 #endif /* WNCK_WORKSPACE_H */
