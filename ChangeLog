@@ -1,5 +1,10 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/application.c: fix the doc API for
+	wnck_application_get_icon() and wnck_application_get_mini_icon()
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	Make it possible to print information about a class group or an
 	application by selecting a window. Also, if no argument is specified
 	for --screen or --workspace, use the default screen or the active
