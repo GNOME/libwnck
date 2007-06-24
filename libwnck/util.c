@@ -52,8 +52,6 @@
  *
  * Deprecated: Use gdk_window_set_type_hint() instead.
  */
-/* TODO: when we break API again, remove this: nothing is using it, and it
- * looks useless... */
 void
 wnck_gtk_window_set_dock_type (GtkWindow *window)
 {

@@ -55,9 +55,9 @@
  * supports all situations, even multiple workspaces with viewports.
  *
  * Workspaces are organized according to a layout set on the #WnckScreen. See
- * wnck_screen_calc_workspace_layout(), wnck_screen_try_set_workspace_layout(),
- * wnck_screen_release_workspace_layout() and
- * wnck_screen_free_workspace_layout() for more information about the layout.
+ * wnck_screen_try_set_workspace_layout() and
+ * wnck_screen_release_workspace_layout() for more information about the
+ * layout.
  *
  * The #WnckWorkspace objects are always owned by libwnck and must not be
  * referenced or unreferenced.

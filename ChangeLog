@@ -1,3 +1,26 @@
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
+	Cleanups and deprecate some WnckScreen functions that shouldn't have
+	been made public when they were added.
+
+	* doc/tmpl/tasklist.sgml:
+	* libwnck/tasklist.c: improve a bit documentation
+	(wnck_tasklist_class_init): add doc for the style properties
+	(wnck_tasklist_size_request): remove spurious spaces
+	(wnck_tasklist_free_tasks): move some assertions around, since it's a
+	bit clearer
+	(wnck_tasklist_update_lists): remove empty line
+	(wnck_task_create_widgets): use a define instead of magic values for
+	the padding
+	* libwnck/screen.[ch]: deprecate wnck_screen_get_workspace_index() (we
+	have wnck_workspace_get_number()),
+	wnck_screen_calc_workspace_layout(),
+	wnck_screen_free_workspace_layout() and WnckWorkspaceLayout
+	* libwnck/util.c: remove useless TODO (since the function is already
+	deprecated)
+	* libwnck/workspace.c: update doc to not refer to
+	wnck_screen_calc_workspace_layout()
+
 2007-06-23  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/tasklist.c: (wnck_tasklist_update_lists): do not group

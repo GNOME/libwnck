@@ -46,13 +46,17 @@
  * The #WnckTasklist represents client windows on a screen as a list of buttons
  * labelled with the window titles and icons. Pressing a button can activate or
  * minimize the represented window, and other typical actions are available
- * through a popup menu.
+ * through a popup menu. Windows needing attention can also be distinguished
+ * by a fade effect on the buttons representing them, to help attract the
+ * user's attention.
  *
  * The behavior of the #WnckTasklist can be customized in various ways, like
  * grouping multiple windows of the same application in one button (see
  * wnck_tasklist_set_grouping() and wnck_tasklist_set_grouping_limit()), or
  * showing windows from all workspaces (see
- * wnck_tasklist_set_include_all_workspaces()).
+ * wnck_tasklist_set_include_all_workspaces()). The fade effect for windows
+ * needing attention can be controlled by various style properties like
+ * #WnckTasklist:fade-max-loops and #WnckTasklist:fade-opacity.
  *
  * The tasklist also acts as iconification destination. If there are multiple
  * #WnckTasklist or other applications setting the iconification destination
@@ -84,12 +88,13 @@
 typedef struct _WnckTask        WnckTask;
 typedef struct _WnckTaskClass   WnckTaskClass;
 
-#define MINI_ICON_SIZE 16
+#define MINI_ICON_SIZE DEFAULT_MINI_ICON_WIDTH
 #define DEFAULT_GROUPING_LIMIT 80
 
 #define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
+#define TASKLIST_BUTTON_PADDING 4
 #define MAX_WIDTH_CHARS 250
 
 #define N_SCREEN_CONNECTIONS 5
@@ -739,6 +744,15 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   container_class->forall = wnck_tasklist_forall;
   container_class->remove = wnck_tasklist_remove;
   
+  /**
+   * WnckTasklist:fade-loop-time:
+   *
+   * When a window needs attention, a fade effect is drawn on the button
+   * representing the window. This property controls the time one loop of this
+   * fade effect takes, in seconds.
+   *
+   * Since: 2.16
+   */
   gtk_widget_class_install_style_property (widget_class,
                                            g_param_spec_float ("fade-loop-time",
                                                               "Loop time",
@@ -746,13 +760,33 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                               0.2, 10.0, 3.0,
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
+  /**
+   * WnckTasklist:fade-max-loops:
+   *
+   * When a window needs attention, a fade effect is drawn on the button
+   * representing the window. This property controls the number of loops for
+   * this fade effect. 0 means the button will only fade to the final color.
+   *
+   * Since: 2.20
+   */
   gtk_widget_class_install_style_property (widget_class,
                                            g_param_spec_int ("fade-max-loops",
-                                                              "Loop time",
+                                                              "Maximum number of loops",
                                                               "The number of fading loops. 0 means the button will only fade to the final color. Default: 5",
                                                               0, 50, 5,
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
+  /**
+   * WnckTasklist:fade-overlay-rect:
+   *
+   * When a window needs attention, a fade effect is drawn on the button
+   * representing the window. Set this property to %TRUE to enable a
+   * compatibility mode for pixbuf engine themes that cannot react to color
+   * changes. If enabled, a rectangle with the correct color will be drawn on
+   * top of the button.
+   *
+   * Since: 2.16
+   */
   gtk_widget_class_install_style_property (widget_class,
                                            g_param_spec_boolean ("fade-overlay-rect",
                                                                  "Overlay a rectangle, instead of modifying the background.",
@@ -760,6 +794,15 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                                  TRUE,
                                                                  G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
+  /**
+   * WnckTasklist:fade-opacity:
+   *
+   * When a window needs attention, a fade effect is drawn on the button
+   * representing the window. This property controls the final opacity that
+   * will be reached by the fade effect.
+   *
+   * Since: 2.16
+   */
   gtk_widget_class_install_style_property (widget_class,
                                            g_param_spec_float ("fade-opacity",
                                                               "Final opacity",
@@ -1290,7 +1333,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 
   requisition->width = tasklist->priv->minimum_width;
   requisition->height = tasklist->priv->minimum_height;
-  
+
   fake_allocation.width = MAX (requisition->width,
                                GTK_WIDGET (tasklist)->allocation.width);
   fake_allocation.height = MAX (requisition->height,
@@ -2034,7 +2077,7 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
   
   tasklist->priv->active_task = NULL;
   tasklist->priv->active_class_group = NULL;
-  
+
   if (tasklist->priv->windows)
     {
       l = tasklist->priv->windows;
@@ -2065,14 +2108,14 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 	}
     }
   
+  g_assert (tasklist->priv->class_groups == NULL);
+  g_assert (g_hash_table_size (tasklist->priv->class_group_hash) == 0);
+  
   if (tasklist->priv->skipped_windows)
     {
       wnck_tasklist_free_skipped_windows (tasklist);
       tasklist->priv->skipped_windows = NULL;
     }
-  
-  g_assert (tasklist->priv->class_groups == NULL);
-  g_assert (g_hash_table_size (tasklist->priv->class_group_hash) == 0);
 }
 
 
@@ -2263,7 +2306,6 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
       l = l->next;
     }
 
-  
   /* since we cleared active_window we need to reset it */
   wnck_tasklist_active_window_changed (tasklist->priv->screen, NULL, tasklist);
 
@@ -3661,8 +3703,10 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   gtk_widget_show (task->label);
 
-  gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE, 4);
-  gtk_box_pack_start (GTK_BOX (hbox), task->label, TRUE, TRUE, 2);
+  gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE,
+		      TASKLIST_BUTTON_PADDING);
+  gtk_box_pack_start (GTK_BOX (hbox), task->label, TRUE, TRUE,
+		      TASKLIST_BUTTON_PADDING);
 
   gtk_container_add (GTK_CONTAINER (task->button), hbox);
   gtk_widget_show (hbox);

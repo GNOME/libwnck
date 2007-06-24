@@ -116,6 +116,7 @@ struct _WnckScreenClass
   void (* pad6) (void);
 };
 
+#ifndef WNCK_DISABLE_DEPRECATED
 typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
 
 /**
@@ -136,6 +137,7 @@ typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
  * #WnckWorkspace.
  *
  * Since: 2.12
+ * Deprecated:
  */
 struct _WnckWorkspaceLayout
 {
@@ -146,6 +148,7 @@ struct _WnckWorkspaceLayout
   int current_row;
   int current_col;
 };
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 /**
  * WnckMotionDirection:
@@ -216,8 +219,10 @@ WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id)
 int            wnck_screen_get_number               (WnckScreen *screen);
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
+#ifndef WNCK_DISABLE_DEPRECATED
 int            wnck_screen_get_workspace_index      (WnckScreen    *screen,
                                                      WnckWorkspace *space);
+#endif /* WNCK_DISABLE_DEPRECATED */
 WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
                                                      WnckWorkspace      *space,
                                                      WnckMotionDirection direction);
@@ -253,11 +258,13 @@ int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                                      int         columns);
 void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
+#ifndef WNCK_DISABLE_DEPRECATED
 void           wnck_screen_calc_workspace_layout    (WnckScreen          *screen,
                                                      int                  num_workspaces,
                                                      int                  space_index,
                                                      WnckWorkspaceLayout *layout);
 void           wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout);
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 
 G_END_DECLS
