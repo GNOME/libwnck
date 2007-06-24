@@ -634,7 +634,6 @@ validate_options (void)
     if (!set_mode (INVALID_MODE, "list", TRUE))
       return FALSE;
 
-  /* screen options can work by assuming it's on the default screen */
   CHECK_POSITIVE_STRICT_INT (set_n_workspaces, "set-n-workspaces",
                              SCREEN_WRITE_MODE)
   if (set_workspace_rows > 0)
@@ -646,6 +645,14 @@ validate_options (void)
   CHECK_DUAL_OPTIONS (show_desktop, SCREEN_WRITE_MODE)
   CHECK_POSITIVE_INT (set_viewport_x, "move-viewport-x", SCREEN_WRITE_MODE)
   CHECK_POSITIVE_INT (set_viewport_y, "move-viewport-y", SCREEN_WRITE_MODE)
+
+  /* screen options can work by assuming it's on the default screen */
+  if (mode == SCREEN_READ_MODE || mode == SCREEN_LIST_MODE ||
+      mode == SCREEN_WRITE_MODE)
+    {
+      get_from_user = FALSE;
+      option_screen = TRUE;
+    }
 
   /* no command line option specifying the mode => the user will choose a
    * window */
