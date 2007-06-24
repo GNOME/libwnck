@@ -79,11 +79,6 @@ const char * wnck_class_group_get_name (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
 
-WnckClassGroup *_wnck_class_group_create (const char *res_class);
-void _wnck_class_group_destroy (WnckClassGroup *class_group);
-void _wnck_class_group_add_window (WnckClassGroup *class_group, WnckWindow *window);
-void _wnck_class_group_remove_window (WnckClassGroup *class_group, WnckWindow *window);
-
 G_END_DECLS
 
 #endif

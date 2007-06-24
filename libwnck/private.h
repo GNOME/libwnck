@@ -91,6 +91,14 @@ WnckApplication* _wnck_application_create  (Window           xwindow,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
 
+
+WnckClassGroup*  _wnck_class_group_create        (const char     *res_class);
+void             _wnck_class_group_destroy       (WnckClassGroup *class_group);
+void             _wnck_class_group_add_window    (WnckClassGroup *class_group,
+                                                  WnckWindow     *window);
+void             _wnck_class_group_remove_window (WnckClassGroup *class_group,
+                                                  WnckWindow     *window);
+
 void _wnck_workspace_update_name (WnckWorkspace *workspace,
                                   const char    *name);
 void _wnck_screen_change_workspace_name (WnckScreen *screen,

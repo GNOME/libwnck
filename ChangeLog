@@ -1,5 +1,11 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/class-group.h:
+	* libwnck/private.h: move private WnckClassGroup functions to
+	private.h
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/screen.c: (wnck_screen_get_workspaces): forgot the
 	"Since:" for documentation
 
