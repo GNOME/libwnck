@@ -734,6 +734,8 @@ wnck_screen_get_number (WnckScreen *screen)
  * 
  * Return value: the list of #WnckWorkspace on @screen. The list should not be
  * modified nor freed, as it is owned by @screen.
+ *
+ * Since: 2.20
  **/
 GList*
 wnck_screen_get_workspaces (WnckScreen *screen)

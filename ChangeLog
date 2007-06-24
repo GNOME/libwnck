@@ -1,5 +1,10 @@
 2007-06-24  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/screen.c: (wnck_screen_get_workspaces): forgot the
+	"Since:" for documentation
+
+2007-06-24  Vincent Untz  <vuntz@gnome.org>
+
 	* doc/libwnck-sections.txt:
 	* doc/tmpl/screen.sgml:
 	* libwnck/screen.[ch]: (wnck_screen_get_workspaces): new API, for
