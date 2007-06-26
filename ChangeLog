@@ -1,5 +1,16 @@
 2007-06-26  Vincent Untz  <vuntz@gnome.org>
 
+	Fix bug #308552.
+
+	* libwnck/tasklist.c: (wnck_tasklist_size_request): some clean up, and
+	add a comment about wnck_task_size_allocated()
+	(wnck_task_size_allocated): new, hide widget the image or label in the
+	task button if the width is really small
+	(wnck_task_create_widgets): connect to the size-allocate signal of the
+	buttons
+
+2007-06-26  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.[ch]: (wnck_tasklist_init): updated
 	(wnck_tasklist_set_minimum_width),
 	(wnck_tasklist_get_minimum_width),

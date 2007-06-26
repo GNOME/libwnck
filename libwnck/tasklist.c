@@ -1278,55 +1278,36 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   WnckTask *class_group_task;
   int lowest_range;
   int grouping_limit;
-  
+
   tasklist = WNCK_TASKLIST (widget);
 
   /* Calculate max needed height and width of the buttons */
-  l = tasklist->priv->windows;
-  while (l != NULL)
-    {
-      WnckTask *task = WNCK_TASK (l->data);
-
-      gtk_widget_size_request (task->button, &child_req);
-      
-      max_height = MAX (child_req.height,
-			max_height);
-      max_width = MAX (child_req.width,
-		       max_width);
-      
-      l = l->next;
+#define GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS(list)                 \
+  l = list;                                                     \
+  while (l != NULL)                                             \
+    {                                                           \
+      WnckTask *task = WNCK_TASK (l->data);                     \
+                                                                \
+      gtk_widget_size_request (task->button, &child_req);       \
+                                                                \
+      max_height = MAX (child_req.height,                       \
+			max_height);                            \
+      max_width = MAX (child_req.width,                         \
+		       max_width);                              \
+                                                                \
+      l = l->next;                                              \
     }
 
-  l = tasklist->priv->class_groups;
-  while (l != NULL)
-    {
-      WnckTask *task = WNCK_TASK (l->data);
-      
-      gtk_widget_size_request (task->button, &child_req);
-      
-      max_height = MAX (child_req.height,
-			max_height);
-      max_width = MAX (child_req.width,
-		       max_width);
-      
-      l = l->next;
-    }
-
-  l = tasklist->priv->startup_sequences;
-  while (l != NULL)
-    {
-      WnckTask *task = WNCK_TASK (l->data);
-      
-      gtk_widget_size_request (task->button, &child_req);
-      
-      max_height = MAX (child_req.height,
-			max_height);
-      max_width = MAX (child_req.width,
-		       max_width);
-      
-      l = l->next;
-    }
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->windows)
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->class_groups)
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->startup_sequences)
   
+  /* Note that the fact that we nearly don't care about the width/height
+   * requested by the buttons makes it possible to hide/show the label/image
+   * in wnck_task_size_allocated(). If we really cared about those, this
+   * wouldn't work since our call to gtk_widget_size_request() does not take
+   * into account the hidden widgets.
+   */
   tasklist->priv->max_button_width = wnck_tasklist_get_button_size (widget);
   tasklist->priv->max_button_height = max_height;
 
@@ -1457,6 +1438,31 @@ wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
   return tasklist->priv->size_hints;
 }
   
+static void
+wnck_task_size_allocated (GtkWidget     *widget,
+                          GtkAllocation *allocation,
+                          gpointer       data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  int       min_image_width;
+
+  min_image_width = MINI_ICON_SIZE +
+                    2 * widget->style->xthickness +
+                    2 * TASKLIST_BUTTON_PADDING;
+
+  if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
+      (allocation->width >= min_image_width)) {
+    gtk_widget_show (task->image);
+    gtk_widget_hide (task->label);
+  } else if (allocation->width < min_image_width) {
+    gtk_widget_hide (task->image);
+    gtk_widget_show (task->label);
+  } else {
+    gtk_widget_show (task->image);
+    gtk_widget_show (task->label);
+  }
+}
+
 static void
 wnck_tasklist_size_allocate (GtkWidget      *widget,
                              GtkAllocation  *allocation)
@@ -3719,6 +3725,10 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
                              G_OBJECT (task),
                              0);
 
+  g_signal_connect_object (G_OBJECT (task->button), "size_allocate",
+                           G_CALLBACK (wnck_task_size_allocated),
+                           G_OBJECT (task),
+                           0);
   
   g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
                            G_CALLBACK (wnck_task_button_press_event),
