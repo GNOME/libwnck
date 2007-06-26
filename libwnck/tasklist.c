@@ -88,14 +88,13 @@
 typedef struct _WnckTask        WnckTask;
 typedef struct _WnckTaskClass   WnckTaskClass;
 
-#define MINI_ICON_SIZE DEFAULT_MINI_ICON_WIDTH
 #define DEFAULT_GROUPING_LIMIT 80
-
 #define DEFAULT_WIDTH 1
 #define DEFAULT_HEIGHT 48
 
+#define MINI_ICON_SIZE DEFAULT_MINI_ICON_WIDTH
 #define TASKLIST_BUTTON_PADDING 4
-#define MAX_WIDTH_CHARS 250
+#define TASKLIST_TEXT_MAX_WIDTH 25 /* maximum width in characters */
 
 #define N_SCREEN_CONNECTIONS 5
 
@@ -1256,6 +1255,30 @@ wnck_task_get_highest_scored (GList     *ungrouped_class_groups,
   return g_list_remove (ungrouped_class_groups, best_task);
 }
 
+static int
+wnck_tasklist_get_button_size (GtkWidget *widget)
+{
+  PangoContext *context;
+  PangoFontMetrics *metrics;
+  gint char_width;
+  gint text_width;
+  gint width;
+
+  gtk_widget_ensure_style (widget);
+
+  context = gtk_widget_get_pango_context (widget);
+  metrics = pango_context_get_metrics (context, widget->style->font_desc,
+                                       pango_context_get_language (context));
+  char_width = pango_font_metrics_get_approximate_char_width (metrics);
+  pango_font_metrics_unref (metrics);
+  text_width = PANGO_PIXELS (TASKLIST_TEXT_MAX_WIDTH * char_width);
+
+  width = text_width + 2 * TASKLIST_BUTTON_PADDING
+	  + MINI_ICON_SIZE + 2 * TASKLIST_BUTTON_PADDING;
+
+  return width;
+}
+
 static void
 wnck_tasklist_size_request  (GtkWidget      *widget,
                              GtkRequisition *requisition)
@@ -1328,16 +1351,11 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
       l = l->next;
     }
   
-  tasklist->priv->max_button_width = max_width;
+  tasklist->priv->max_button_width = wnck_tasklist_get_button_size (widget);
   tasklist->priv->max_button_height = max_height;
 
-  requisition->width = tasklist->priv->minimum_width;
-  requisition->height = tasklist->priv->minimum_height;
-
-  fake_allocation.width = MAX (requisition->width,
-                               GTK_WIDGET (tasklist)->allocation.width);
-  fake_allocation.height = MAX (requisition->height,
-                                GTK_WIDGET (tasklist)->allocation.height);
+  fake_allocation.width = GTK_WIDGET (tasklist)->allocation.width;
+  fake_allocation.height = GTK_WIDGET (tasklist)->allocation.height;
 
   array = g_array_new (FALSE, FALSE, sizeof (int));
 
@@ -1432,6 +1450,9 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   tasklist->priv->size_hints_len = array->len;
     
   tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
+
+  requisition->width = tasklist->priv->size_hints[0];
+  requisition->height = fake_allocation.height;
 }
 
 /**
@@ -3693,7 +3714,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
   gtk_label_set_ellipsize (GTK_LABEL (task->label),
                           PANGO_ELLIPSIZE_END);
-  gtk_label_set_max_width_chars (GTK_LABEL (task->label), MAX_WIDTH_CHARS);
 
   if (wnck_task_get_needs_attention (task))
     {

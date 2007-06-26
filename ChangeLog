@@ -1,3 +1,17 @@
+2007-06-26  Vincent Untz  <vuntz@gnome.org>
+
+	Fix size of buttons in tasklist changing with the text.
+	Fix bug #310809.
+
+	* libwnck/tasklist.c: (wnck_tasklist_get_button_size): new, get the
+	ideal button size based on the icon size and a maximum number of
+	characters for the text
+	(wnck_tasklist_size_request): use wnck_tasklist_get_button_size() for
+	the maximum button width, ignore the minimum width/height since
+	they're useless and making things more complex than they should be,
+	use the maximum size hint for the requested width
+	(wnck_task_create_widgets): don't call gtk_label_set_max_width_chars()
+
 2007-06-25  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/screen.c: (wnck_screen_change_workspace_count): call
