@@ -1,5 +1,15 @@
 2007-06-26  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/tasklist.[ch]: (wnck_tasklist_init): updated
+	(wnck_tasklist_set_minimum_width),
+	(wnck_tasklist_get_minimum_width),
+	(wnck_tasklist_set_minimum_height),
+	(wnck_tasklist_get_minimum_height): deprecate those functions, since
+	the new size algorithm makes them more or less useless now. So they
+	don't do anything anymore.
+
+2007-06-26  Vincent Untz  <vuntz@gnome.org>
+
 	Fix size of buttons in tasklist changing with the text.
 	Fix bug #310809.
 

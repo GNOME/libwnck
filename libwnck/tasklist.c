@@ -89,8 +89,6 @@ typedef struct _WnckTask        WnckTask;
 typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define DEFAULT_GROUPING_LIMIT 80
-#define DEFAULT_WIDTH 1
-#define DEFAULT_HEIGHT 48
 
 #define MINI_ICON_SIZE DEFAULT_MINI_ICON_WIDTH
 #define TASKLIST_BUTTON_PADDING 4
@@ -215,9 +213,6 @@ struct _WnckTasklistPrivate
 
   int *size_hints;
   int size_hints_len;
-
-  gint minimum_width;
-  gint minimum_height;
 
   WnckLoadIconFunction icon_loader;
   void *icon_loader_data;
@@ -699,9 +694,6 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->size_hints = NULL;
   tasklist->priv->size_hints_len = 0;
 
-  tasklist->priv->minimum_width = DEFAULT_WIDTH;
-  tasklist->priv->minimum_height = DEFAULT_HEIGHT;
-
   tasklist->priv->icon_loader = NULL;
   tasklist->priv->icon_loader_data = NULL;
   tasklist->priv->free_icon_loader_data = NULL;
@@ -1035,37 +1027,29 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
  * @tasklist: a #WnckTasklist.
  * @size: a minimum width in pixels.
  *
- * Sets the minimum width to use for @tasklist to @size pixels. If @size is -1,
- * sets the minimum width to a default.
+ * Does nothing.
+ *
+ * Deprecated:
  */
 void 
 wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
 {
-  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
-
-  if (size == -1) size = DEFAULT_WIDTH;
-
-  if (tasklist->priv->minimum_width == size)
-    return;
-
-  tasklist->priv->minimum_width = size;
-  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
  
 /**
  * wnck_tasklist_get_minimum_width:
  * @tasklist: a #WnckTasklist.
  *
- * Returns the minimum width of @tasklist.
+ * Returns -1.
  *
- * Return value: the minimum width of @tasklist.
+ * Return value: -1.
+ *
+ * Deprecated:
  */
 gint
 wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
 {
-  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
-	
-  return tasklist->priv->minimum_width;
+  return -1;
 }
 
 /**
@@ -1073,37 +1057,29 @@ wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
  * @tasklist: a #WnckTasklist.
  * @size: a minimum height in pixels.
  *
- * Sets the minimum height to use for @tasklist to @size pixels. If @size is -1,
- * sets the minimum height to a default.
+ * Does nothing.
+ *
+ * Deprecated:
  */
 void 
 wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
 {
-  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
-
-  if (size == -1) size = DEFAULT_HEIGHT;
-
-  if (tasklist->priv->minimum_height == size)
-    return;
-
-  tasklist->priv->minimum_height = size;
-  gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
  
 /**
  * wnck_tasklist_get_minimum_height:
  * @tasklist: a #WnckTasklist.
  *
- * Returns the minimum height of @tasklist.
+ * Returns -1.
  *
- * Return value: the minimum height of @tasklist.
+ * Return value: -1.
+ *
+ * Deprecated:
  */
 gint
 wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
 {
-  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), 0);
-	
-  return tasklist->priv->minimum_height;
+  return -1;
 }
 
 /**

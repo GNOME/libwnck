@@ -98,10 +98,12 @@ void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					       gboolean      include_all_workspaces);
 void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
                                       GtkReliefStyle relief);
+#ifndef WNCK_DISABLE_DEPRECATED
 void wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size);
 gint wnck_tasklist_get_minimum_width (WnckTasklist *tasklist);
 void wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size);
 gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 /**
  * WnckLoadIconFunction:
