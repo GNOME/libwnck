@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-25 03:51+0100\n"
-"PO-Revision-Date: 2007-06-27 00:39+0200\n"
+"POT-Creation-Date: 2007-06-27 04:02+0100\n"
+"PO-Revision-Date: 2007-06-27 11:30+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -84,31 +84,31 @@ msgstr "Selector de ventanas"
 msgid "Tool to switch between windows"
 msgstr "Herramienta para cambiar entre ventanas"
 
-#: ../libwnck/tasklist.c:722
+#: ../libwnck/tasklist.c:713
 msgid "Window List"
 msgstr "Lista de ventanas"
 
-#: ../libwnck/tasklist.c:723
+#: ../libwnck/tasklist.c:714
 msgid "Tool to switch between visible windows"
 msgstr "Herramienta para cambiar entre ventanas visibles"
 
-#: ../libwnck/tasklist.c:2947
+#: ../libwnck/tasklist.c:2950
 msgid "Mi_nimize All"
 msgstr "Mi_nimizar todo"
 
-#: ../libwnck/tasklist.c:2958
+#: ../libwnck/tasklist.c:2961
 msgid "Un_minimize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:2966
+#: ../libwnck/tasklist.c:2969
 msgid "Ma_ximize All"
 msgstr "Ma_ximizar todo"
 
-#: ../libwnck/tasklist.c:2977
+#: ../libwnck/tasklist.c:2980
 msgid "_Unmaximize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:2989
+#: ../libwnck/tasklist.c:2992
 msgid "_Close All"
 msgstr "Cerrar _todo"
 
@@ -258,7 +258,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:142
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Recurso del grupo de clase a examinar"
 
 #: ../libwnck/wnckprop.c:142
 msgid "CLASS"
@@ -286,11 +286,13 @@ msgstr "Alias de --window"
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr "Listar las ventanas de la aplicación/clase de grupo/área de trabajo/pantalla (formato de salida: «XID: nombre de la ventana»)"
+msgstr "Listar las ventanas de la aplicación/grupo de clase/área de trabajo/pantalla (formato de salida: «XID: nombre de la ventana»)"
 
 #: ../libwnck/wnckprop.c:156
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr "Listar las áreas de trabajo de la pantalla (formato de salida: «Número: nombre del área de trabajo»)"
+msgstr ""
+"Listar las áreas de trabajo de la pantalla (formato de salida: «Número: "
+"nombre del área de trabajo»)"
 
 #: ../libwnck/wnckprop.c:162
 msgid "Change the number of workspaces of the screen to NUMBER"
@@ -318,7 +320,7 @@ msgstr "Dejar de mostrar el escritorio"
 
 #: ../libwnck/wnckprop.c:172
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Mover el puerto de vista del área de trabajo actual a X coordenada X"
 
 #: ../libwnck/wnckprop.c:172 ../libwnck/wnckprop.c:235
 msgid "X"
@@ -326,7 +328,7 @@ msgstr "X"
 
 #: ../libwnck/wnckprop.c:174
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Mover el puerto de vista del área de trabajo actual a Y coordenada Y"
 
 #: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:237
 msgid "Y"
@@ -503,14 +505,16 @@ msgstr "Valor «%s» no válido para --%s"
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con la pantalla %d pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería interactuar con la pantalla %d "
+"pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:470
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr ""
+msgstr "Existen opciones en conflicto: se debería listar las ventanas o áreas de trabajo de la pantalla %d pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:493 ../libwnck/wnckprop.c:513
 #, c-format
@@ -524,42 +528,50 @@ msgstr "Existen opciones en conflicto: se debería interactuar con el área de t
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se deberían listar las ventanas del área de trabajo %d pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se deberían listar las ventanas del área de "
+"trabajo %d pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:525
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con una aplicación pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería interactuar con una aplicación "
+"pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:535
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se deberían listar las ventanas de una aplicación pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se deberían listar las ventanas de una "
+"aplicación pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:547
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con la clase de grupo «%s» pero se ha usado --%s\n"
+msgstr "Existen opciones en conflicto: se debería interactuar con el grupo de clase «%s» pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:557
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se deberían listar las ventanas de la clase de grupo «%s» pero se ha usado --%s\n"
+msgstr "Existen opciones en conflicto: se deberían listar las ventanas del grupo de clase «%s» pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:569 ../libwnck/wnckprop.c:578
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con una ventana pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería interactuar con una ventana pero "
+"se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:597 ../libwnck/wnckprop.c:678
 #: ../libwnck/wnckprop.c:725
@@ -570,7 +582,9 @@ msgstr "Existen opciones en conflicto: --%s y --%s\n"
 #: ../libwnck/wnckprop.c:636
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr "Argumento «%d» no válido para --%s: el argumento debe ser estrictamente positivo\n"
+msgstr ""
+"Argumento «%d» no válido para --%s: el argumento debe ser estrictamente "
+"positivo\n"
 
 #: ../libwnck/wnckprop.c:649
 #, c-format
@@ -874,7 +888,7 @@ msgstr "Geometría (x, y, anchura, altura): %d, %d, %d, %d\n"
 #: ../libwnck/wnckprop.c:1425
 #, c-format
 msgid "Class Group: %s\n"
-msgstr "Grupo de la clase: %s\n"
+msgstr "Grupo de clase: %s\n"
 
 #: ../libwnck/wnckprop.c:1427
 #, c-format
@@ -1071,8 +1085,8 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"Imprimir o modificar las propiedades de una pantalla/área de trabajo/ventana o interactuar con una ellas, siguiendo la especificación "
-"EWMH.\n"
+"Imprimir o modificar las propiedades de una pantalla/área de trabajo/ventana "
+"o interactuar con una ellas, siguiendo la especificación EWMH.\n"
 "Para obtener más información acerca de esta especificación vea:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
@@ -1121,22 +1135,28 @@ msgstr "No se puede interactuar con la pantalla %d: la pantalla no existe\n"
 #: ../libwnck/wnckprop.c:1842
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr "No se puede interactuar con el área de trabajo %d: no se puede encontrar el área de trabajo\n"
+msgstr ""
+"No se puede interactuar con el área de trabajo %d: no se puede encontrar el "
+"área de trabajo\n"
 
 #: ../libwnck/wnckprop.c:1864
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "No se puede interactuar con la clase de grupo «%s»: no se puede encontrar la clase de grupo\n"
+msgstr "No se puede interactuar con el grupo de clase «%s»: no se puede encontrar el grupo de clase\n"
 
 #: ../libwnck/wnckprop.c:1887
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr "No se puede interactuar con la aplicación cuyo líder de grupo tiene el XID %lu: no se puede encontrar la aplicación\n"
+msgstr ""
+"No se puede interactuar con la aplicación cuyo líder de grupo tiene el XID %"
+"lu: no se puede encontrar la aplicación\n"
 
 #: ../libwnck/wnckprop.c:1910
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr "No se puede interactuar con la ventana de XID %lu: no se puede encontrar la ventana\n"
+msgstr ""
+"No se puede interactuar con la ventana de XID %lu: no se puede encontrar la "
+"ventana\n"
 
