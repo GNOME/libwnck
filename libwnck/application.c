@@ -687,6 +687,8 @@ reset_name  (WnckApplication *app)
 static void
 update_name (WnckApplication *app)
 {
+  g_assert (app->priv->name_from_leader || app->priv->name == NULL);
+
   if (app->priv->name == NULL)
     {
       /* if only one window, get name from there. If more than one and

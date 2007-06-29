@@ -1,3 +1,10 @@
+2007-06-29  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/application.c: (update_name): add assertion to make it clear
+	how this works.
+	Makes it possible to close bug #77942, since people were not
+	understanding this right.
+
 2007-06-26  Vincent Untz  <vuntz@gnome.org>
 
 	Fix bug #308552.
