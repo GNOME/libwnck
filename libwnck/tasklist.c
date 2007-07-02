@@ -3076,7 +3076,8 @@ wnck_task_drag_begin (GtkWidget          *widget,
 		      GdkDragContext     *context,
 		      WnckTask           *task)
 {
-  _wnck_window_set_as_drag_icon (task->window, context, widget);
+  _wnck_window_set_as_drag_icon (task->window, context,
+                                 GTK_WIDGET (task->tasklist));
 }
 
 void  

@@ -1,3 +1,20 @@
+2007-07-02  Vincent Untz  <vuntz@gnome.org>
+
+	Fix a crash when dragging a window to somewhere like another
+	workspace/viewport. The original drag source widget might have been
+	destroyed. We're now more solid against this, and use another drag
+	source widget which lives longer.
+	Fix bug #420713.
+
+	* libwnck/pager.c: (wnck_update_drag_icon): return if the drag source
+	widget is NULL
+	(wnck_drag_source_destroyed): new, set the drag source widget to NULL,
+	instead of keeping an invalid pointer
+	(_wnck_window_set_as_drag_icon): connect to the finalization for
+	drag_source. This way, we're more solid.
+	* libwnck/tasklist.c: (wnck_task_drag_begin): use a more long-lived
+	widget for setting up the drag icon, ie the WnckTasklist
+
 2007-05-28  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.18.3
