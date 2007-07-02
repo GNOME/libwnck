@@ -1,5 +1,23 @@
 2007-07-02  Vincent Untz  <vuntz@gnome.org>
 
+	Fix crash on multihead setups, when closing a window. The active
+	window and previously active window are generally the same for all
+	screens (since there's only one focus), and they could be invalid for
+	one screen in some cases.
+	Fix bug #447387
+
+	* libwnck/screen.c: (wnck_screen_finalize): remove weak pointers
+	(set_active_window): new, remove the weak pointer on the old active
+	window and set a new weak pointer to the new active window so that our
+	variable is reset to NULL when the active window is destroyed
+	(set_previously_active_window): ditto for previously active window
+	(update_client_list): use new functions, and first check if the closed
+	window was previously active window (else, it could have been the
+	active window, and then previously active window, which was wrong)
+	(update_active_window): use new functions
+
+2007-07-02  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_drag_clean_up): fix commit for bug #420713.
 	There was probably a crasher.
 
