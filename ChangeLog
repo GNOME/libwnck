@@ -1,5 +1,10 @@
 2007-07-02  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_drag_clean_up): fix commit for bug #420713.
+	There was probably a crasher.
+
+2007-07-02  Vincent Untz  <vuntz@gnome.org>
+
 	Fix a crash when dragging a window to somewhere like another
 	workspace/viewport. The original drag source widget might have been
 	destroyed. We're now more solid against this, and use another drag

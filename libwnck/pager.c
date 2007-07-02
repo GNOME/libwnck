@@ -1503,7 +1503,17 @@ wnck_drag_clean_up (WnckWindow     *window,
 
   if (clean_up_context)
     {
-      g_object_steal_data (G_OBJECT (context), "wnck-drag-source-widget");
+      GtkWidget *drag_source;
+
+      drag_source = g_object_get_data (G_OBJECT (context),
+                                       "wnck-drag-source-widget");
+      if (drag_source)
+        {
+          g_object_steal_data (G_OBJECT (context), "wnck-drag-source-widget");
+          g_object_weak_unref (G_OBJECT (drag_source),
+                               wnck_drag_source_destroyed, context);
+        }
+
       g_object_weak_unref (G_OBJECT (context),
                            wnck_drag_context_destroyed, window);
     }
