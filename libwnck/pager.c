@@ -1409,8 +1409,8 @@ wnck_pager_drag_motion_leave (GtkWidget          *widget,
 static void
 wnck_drag_clean_up (WnckWindow     *window,
 		    GdkDragContext *context,
-		    gboolean	    clean_up_window,
-		    gboolean	    clean_up_context);
+		    gboolean	    clean_up_for_context_destroy,
+		    gboolean	    clean_up_for_window_destroy);
 
 static void
 wnck_drag_context_destroyed (gpointer  windowp,
@@ -1489,11 +1489,19 @@ wnck_drag_source_destroyed (gpointer  contextp,
 static void
 wnck_drag_clean_up (WnckWindow     *window,
 		    GdkDragContext *context,
-		    gboolean	    clean_up_window,
-		    gboolean	    clean_up_context)
+		    gboolean	    clean_up_for_context_destroy,
+		    gboolean	    clean_up_for_window_destroy)
 {
-  if (clean_up_window)
+  if (clean_up_for_context_destroy)
     {
+      GtkWidget *drag_source;
+
+      drag_source = g_object_get_data (G_OBJECT (context),
+                                       "wnck-drag-source-widget");
+      if (drag_source)
+        g_object_weak_unref (G_OBJECT (drag_source),
+                             wnck_drag_source_destroyed, context);
+
       g_object_weak_unref (G_OBJECT (window),
                            wnck_drag_window_destroyed, context);
       if (g_signal_handlers_disconnect_by_func (window,
@@ -1501,19 +1509,9 @@ wnck_drag_clean_up (WnckWindow     *window,
 	g_assert_not_reached ();
     }
 
-  if (clean_up_context)
+  if (clean_up_for_window_destroy)
     {
-      GtkWidget *drag_source;
-
-      drag_source = g_object_get_data (G_OBJECT (context),
-                                       "wnck-drag-source-widget");
-      if (drag_source)
-        {
-          g_object_steal_data (G_OBJECT (context), "wnck-drag-source-widget");
-          g_object_weak_unref (G_OBJECT (drag_source),
-                               wnck_drag_source_destroyed, context);
-        }
-
+      g_object_steal_data (G_OBJECT (context), "wnck-drag-source-widget");
       g_object_weak_unref (G_OBJECT (context),
                            wnck_drag_context_destroyed, window);
     }

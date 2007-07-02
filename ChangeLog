@@ -1,5 +1,10 @@
 2007-07-02  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: (wnck_drag_clean_up): fix again commit for bug
+	#420713.
+
+2007-07-02  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_pager_draw_workspace): use double instead of
 	int to compute the x, y, width and height to pass to cairo. Improves
 	the look of the pager a bit.
