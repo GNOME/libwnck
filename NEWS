@@ -1,3 +1,13 @@
+2.18.3
+======
+
+ Fixes
+
+  - Fix a crash when dragging a window to somewhere like another
+    workspace/viewport (Vincent) [#420713]
+  - Fix crash on multihead setups (Vincent)
+  - Improve a bit the drawing of the workspaces in the pager (Vincent)
+
 2.18.2
 ======
 

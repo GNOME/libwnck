@@ -1,5 +1,10 @@
 2007-07-02  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.18.3
+
+2007-07-02  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: (wnck_drag_clean_up): fix again commit for bug
 	#420713.
 
