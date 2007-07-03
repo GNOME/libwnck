@@ -1,6 +1,6 @@
 # Vietnamese translation for Libwnck
 # Copyright © 2007 Gnome i18n Project for Vietnamese.
-# Nguyễn Thái Ngọc Duy <pclouds@gmx.net>, 2002, 2005.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002, 2005, 2007.
 # Clytie Siddall <clytie@riverland.net.au>, 2006-2007.
 # 
 msgid ""
@@ -94,7 +94,7 @@ msgstr "Thu _nhỏ tất cả"
 
 #: ../libwnck/tasklist.c:2958
 msgid "Un_minimize All"
-msgstr "Hủ_y thu nhỏ tất cả"
+msgstr "_Bỏ thu nhỏ tất cả"
 
 #: ../libwnck/tasklist.c:2966
 msgid "Ma_ximize All"
@@ -102,7 +102,7 @@ msgstr "_Phóng to tất cả"
 
 #: ../libwnck/tasklist.c:2977
 msgid "_Unmaximize All"
-msgstr "_Hủy phóng to tất cả"
+msgstr "_Bỏ phóng to tất cả"
 
 #: ../libwnck/tasklist.c:2989
 msgid "_Close All"
@@ -152,11 +152,11 @@ msgstr "Hiển thị cửa sổ từ mọi vùng làm việc"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
-msgstr "Bật khả năng trong suốt"
+msgstr "Bật trong suốt"
 
 #: ../libwnck/window-action-menu.c:276
 msgid "Unmi_nimize"
-msgstr "Hủy thu _nhỏ"
+msgstr "Bỏ thu _nhỏ"
 
 #: ../libwnck/window-action-menu.c:283
 msgid "Mi_nimize"
@@ -164,7 +164,7 @@ msgstr "Thu _nhỏ"
 
 #: ../libwnck/window-action-menu.c:291
 msgid "Unma_ximize"
-msgstr "Hủy phóng t_o"
+msgstr "Bỏ phóng t_o"
 
 #: ../libwnck/window-action-menu.c:298
 msgid "Ma_ximize"
@@ -340,7 +340,7 @@ msgstr "Thu nhỏ cửa sổ"
 
 #: ../libwnck/wnckprop.c:182
 msgid "Unminimize the window"
-msgstr "Hủy thu nhỏ cửa sổ"
+msgstr "Bỏ thu nhỏ cửa sổ"
 
 #: ../libwnck/wnckprop.c:184
 msgid "Maximize the window"
@@ -348,7 +348,7 @@ msgstr "Phóng to cửa sổ"
 
 #: ../libwnck/wnckprop.c:186
 msgid "Unmaximize the window"
-msgstr "Hủy phóng to cửa sổ"
+msgstr "Bỏ phóng to cửa sổ"
 
 #: ../libwnck/wnckprop.c:188
 msgid "Maximize horizontally the window"
@@ -356,7 +356,7 @@ msgstr "Phóng to cửa sổ theo chiều ngang"
 
 #: ../libwnck/wnckprop.c:190
 msgid "Unmaximize horizontally the window"
-msgstr "Hủy phóng to cửa sổ theo chiều ngang"
+msgstr "Bỏ phóng to cửa sổ theo chiều ngang"
 
 #: ../libwnck/wnckprop.c:192
 msgid "Maximize vertically the window"
@@ -364,7 +364,7 @@ msgstr "Phóng to cửa sổ theo chiều dọc"
 
 #: ../libwnck/wnckprop.c:194
 msgid "Unmaximize vertically the window"
-msgstr "Hủy phóng to cửa sổ theo chiều dọc"
+msgstr "Bỏ phóng to cửa sổ theo chiều dọc"
 
 #: ../libwnck/wnckprop.c:196
 msgid "Start moving the window via the keyboard"
@@ -392,11 +392,11 @@ msgstr "Làm cho cửa sổ rời chế độ toàn màn hình"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Make the window always on top"
-msgstr "Làm cho cửa sổ nằm ở trên luôn"
+msgstr "Làm cho cửa sổ luôn nằm ở trên"
 
 #: ../libwnck/wnckprop.c:211
 msgid "Make the window not always on top"
-msgstr "Làm cho cửa sổ không nằm ở trên luôn"
+msgstr "Làm cho cửa sổ luôn không nằm ở trên"
 
 #: ../libwnck/wnckprop.c:213
 msgid "Shade the window"
@@ -404,15 +404,15 @@ msgstr "Tạo bóng trên cửa sổ"
 
 #: ../libwnck/wnckprop.c:215
 msgid "Unshade the window"
-msgstr "Bỏ bóng ra cửa sổ"
+msgstr "Bỏ bóng cửa sổ"
 
 #: ../libwnck/wnckprop.c:217
 msgid "Make the window have a fixed position in the viewport"
-msgstr "Làm cho cửa sổ có vị trí cố định trong cổng xem"
+msgstr "Làm cho cửa sổ có vị trí cố định trong tầm nhìn"
 
 #: ../libwnck/wnckprop.c:219
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "Làm cho cửa sổ không có vị trí cố định trong cổng xem"
+msgstr "Làm cho cửa sổ không có vị trí cố định trong tầm nhìn"
 
 #: ../libwnck/wnckprop.c:221
 msgid "Make the window not appear in pagers"
@@ -657,7 +657,7 @@ msgstr "Số hiệu màn hình: %d\n"
 #: ../libwnck/wnckprop.c:1213
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr "Dạng hình (rộng, cao): %d, %d\n"
+msgstr "Kích thước (rộng, cao): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1139
 #, c-format
@@ -875,7 +875,7 @@ msgstr "neo hay bảng"
 
 #: ../libwnck/wnckprop.c:1398
 msgid "dialog window"
-msgstr "cửa sổ thoại"
+msgstr "hộp thoại"
 
 #: ../libwnck/wnckprop.c:1401
 msgid "tearoff toolbar"
@@ -891,7 +891,7 @@ msgstr "cửa sổ tiện ích"
 
 #: ../libwnck/wnckprop.c:1410
 msgid "splash screen"
-msgstr "màn hình giật gân"
+msgstr "màn hình giới thiệu"
 
 #: ../libwnck/wnckprop.c:1415
 #, c-format
@@ -901,12 +901,12 @@ msgstr "Kiểu cửa sổ : %s\n"
 #: ../libwnck/wnckprop.c:1418
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr "Dạng hình (x, y, rộng, cao): %d, %d, %d, %d\n"
+msgstr "Vị trí (x, y, rộng, cao): %d, %d, %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1425
 #, c-format
 msgid "Class Group: %s\n"
-msgstr "Nhóm hạng: %s\n"
+msgstr "Nhóm lớp: %s\n"
 
 #: ../libwnck/wnckprop.c:1427
 #, c-format
@@ -921,7 +921,7 @@ msgstr "ID phiên chạy: %s\n"
 #: ../libwnck/wnckprop.c:1443
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr "Nhóm đầu : %lu\n"
+msgstr "Trưởng nhóm: %lu\n"
 
 #: ../libwnck/wnckprop.c:1446
 #, c-format
@@ -1019,7 +1019,7 @@ msgstr "dính"
 
 #: ../libwnck/wnckprop.c:1511
 msgid "unstick"
-msgstr "hủy dính"
+msgstr "bỏ dính"
 
 #: ../libwnck/wnckprop.c:1513
 msgid "maximize horizontally"
@@ -1027,7 +1027,7 @@ msgstr "phóng to theo chiều ngang"
 
 #: ../libwnck/wnckprop.c:1515
 msgid "unmaximize horizontally"
-msgstr "hủy phóng to theo chiều ngang"
+msgstr "bỏ phóng to theo chiều ngang"
 
 #: ../libwnck/wnckprop.c:1517
 msgid "maximize vertically"
@@ -1035,7 +1035,7 @@ msgstr "phóng to theo chiều dọc"
 
 #: ../libwnck/wnckprop.c:1519
 msgid "unmaximize vertically"
-msgstr "hủy phóng to theo chiều dọc"
+msgstr "bỏ phóng to theo chiều dọc"
 
 #: ../libwnck/wnckprop.c:1522
 msgid "change workspace"
@@ -1047,7 +1047,7 @@ msgstr "ghim"
 
 #: ../libwnck/wnckprop.c:1526
 msgid "unpin"
-msgstr "hủy ghim"
+msgstr "bỏ ghim"
 
 #: ../libwnck/wnckprop.c:1527
 msgid "minimize"
@@ -1055,7 +1055,7 @@ msgstr "thu nhỏ"
 
 #: ../libwnck/wnckprop.c:1528
 msgid "unminimize"
-msgstr "hủy thu nhỏ"
+msgstr "bỏ thu nhỏ"
 
 #: ../libwnck/wnckprop.c:1529
 msgid "maximize"
@@ -1063,7 +1063,7 @@ msgstr "phóng to"
 
 #: ../libwnck/wnckprop.c:1530
 msgid "unmaximize"
-msgstr "hủy phóng to"
+msgstr "bỏ phóng to"
 
 #: ../libwnck/wnckprop.c:1532
 msgid "change fullscreen mode"
@@ -1079,7 +1079,7 @@ msgstr "tạo bên trên"
 
 #: ../libwnck/wnckprop.c:1537
 msgid "unmake above"
-msgstr "hủy tạo bên trên"
+msgstr "bỏ tạo bên trên"
 
 #: ../libwnck/wnckprop.c:1539
 msgid "make below"
@@ -1087,7 +1087,7 @@ msgstr "tạo bên dưới"
 
 #: ../libwnck/wnckprop.c:1541
 msgid "unmake below"
-msgstr "hủy tạo bên dưới"
+msgstr "bỏ tạo bên dưới"
 
 #: ../libwnck/wnckprop.c:1543
 msgid "no action possible"
