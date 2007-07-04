@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-27 04:02+0100\n"
-"PO-Revision-Date: 2007-06-27 11:30+0200\n"
+"POT-Creation-Date: 2007-06-29 03:45+0100\n"
+"PO-Revision-Date: 2007-07-04 16:59+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -286,7 +286,9 @@ msgstr "Alias de --window"
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr "Listar las ventanas de la aplicación/grupo de clase/área de trabajo/pantalla (formato de salida: «XID: nombre de la ventana»)"
+msgstr ""
+"Listar las ventanas de la aplicación/grupo de clase/área de trabajo/pantalla "
+"(formato de salida: «XID: nombre de la ventana»)"
 
 #: ../libwnck/wnckprop.c:156
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
@@ -514,14 +516,18 @@ msgstr ""
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se debería listar las ventanas o áreas de trabajo de la pantalla %d pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería listar las ventanas o áreas de "
+"trabajo de la pantalla %d pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:493 ../libwnck/wnckprop.c:513
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con el área de trabajo %d pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería interactuar con el área de trabajo "
+"%d pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:503
 #, c-format
@@ -555,14 +561,18 @@ msgstr ""
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se debería interactuar con el grupo de clase «%s» pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se debería interactuar con el grupo de clase "
+"«%s» pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:557
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr "Existen opciones en conflicto: se deberían listar las ventanas del grupo de clase «%s» pero se ha usado --%s\n"
+msgstr ""
+"Existen opciones en conflicto: se deberían listar las ventanas del grupo de "
+"clase «%s» pero se ha usado --%s\n"
 
 #: ../libwnck/wnckprop.c:569 ../libwnck/wnckprop.c:578
 #, c-format
@@ -723,11 +733,11 @@ msgstr "Mostrando el escritorio: %s\n"
 
 #: ../libwnck/wnckprop.c:1191
 msgid "true"
-msgstr ""
+msgstr "true"
 
 #: ../libwnck/wnckprop.c:1191
 msgid "false"
-msgstr ""
+msgstr "false"
 
 #: ../libwnck/wnckprop.c:1202
 #, c-format
@@ -942,7 +952,7 @@ msgstr "enrollada"
 
 #: ../libwnck/wnckprop.c:1476
 msgid "pinned"
-msgstr ""
+msgstr "pinchada"
 
 #: ../libwnck/wnckprop.c:1477
 msgid "sticky"
@@ -1023,11 +1033,11 @@ msgstr "cambiar área de trabajo"
 
 #: ../libwnck/wnckprop.c:1524
 msgid "pin"
-msgstr ""
+msgstr "pinchar"
 
 #: ../libwnck/wnckprop.c:1526
 msgid "unpin"
-msgstr ""
+msgstr "despinchar"
 
 #: ../libwnck/wnckprop.c:1527
 msgid "minimize"
@@ -1142,7 +1152,9 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1864
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "No se puede interactuar con el grupo de clase «%s»: no se puede encontrar el grupo de clase\n"
+msgstr ""
+"No se puede interactuar con el grupo de clase «%s»: no se puede encontrar el "
+"grupo de clase\n"
 
 #: ../libwnck/wnckprop.c:1887
 #, c-format
