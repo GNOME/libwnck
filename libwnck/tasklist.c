@@ -186,6 +186,7 @@ struct _WnckTasklistPrivate
   /* Calculated by update_lists */
   GList *class_groups;
   GList *windows;
+  GList *windows_without_class_group;
 
   /* Not handled by update_lists */
   GList *startup_sequences;
@@ -669,6 +670,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   tasklist->priv->class_groups = NULL;
   tasklist->priv->windows = NULL;
+  tasklist->priv->windows_without_class_group = NULL;
 
   tasklist->priv->startup_sequences = NULL;
 
@@ -851,6 +853,7 @@ wnck_tasklist_finalize (GObject *object)
    */
   g_assert (tasklist->priv->class_groups == NULL);
   g_assert (tasklist->priv->windows == NULL);
+  g_assert (tasklist->priv->windows_without_class_group == NULL);
   g_assert (tasklist->priv->startup_sequences == NULL);
   /* wnck_tasklist_free_tasks (tasklist); */
 
@@ -1568,6 +1571,19 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
       l = l->next;
     }
 
+  /* Add all windows that are ungrouped because they don't belong to any class
+   * group */
+  l = tasklist->priv->windows_without_class_group;
+  while (l != NULL)
+    {
+      WnckTask *task;
+
+      task = WNCK_TASK (l->data);
+      visible_tasks = g_list_append (visible_tasks, task);
+
+      l = l->next;
+    }
+
   /* Add all startup sequences */
   visible_tasks = g_list_concat (visible_tasks, g_list_copy (tasklist->priv->startup_sequences));
 
@@ -1775,6 +1791,23 @@ wnck_tasklist_remove (GtkContainer   *container,
   g_return_if_fail (widget != NULL);
 
   tasklist = WNCK_TASKLIST (container);
+
+  /* it's safer to handle windows_without_class_group before windows */
+  tmp = tasklist->priv->windows_without_class_group;
+  while (tmp != NULL)
+    {
+      WnckTask *task = WNCK_TASK (tmp->data);
+      tmp = tmp->next;
+
+      if (task->button == widget)
+	{
+	  tasklist->priv->windows_without_class_group =
+	    g_list_remove (tasklist->priv->windows_without_class_group,
+			   task);
+          g_object_unref (task);
+	  break;
+	}
+    }
 
   tmp = tasklist->priv->windows;
   while (tmp != NULL)
@@ -2095,6 +2128,7 @@ wnck_tasklist_free_tasks (WnckTasklist *tasklist)
 	}
     }
   g_assert (tasklist->priv->windows == NULL);
+  g_assert (tasklist->priv->windows_without_class_group == NULL);
   g_assert (g_hash_table_size (tasklist->priv->win_hash) == 0);
 
   if (tasklist->priv->class_groups)
@@ -2275,6 +2309,13 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
               class_group_task->windows =
                                     g_list_prepend (class_group_task->windows,
                                                     win_task);
+            }
+          else
+            {
+              g_object_ref (win_task);
+              tasklist->priv->windows_without_class_group =
+                              g_list_prepend (tasklist->priv->windows_without_class_group,
+                                              win_task);
             }
 	}
       else if (tasklist_include_in_skipped_list (tasklist, win))

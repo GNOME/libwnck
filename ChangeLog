@@ -1,3 +1,19 @@
+2007-07-07  Vincent Untz  <vuntz@gnome.org>
+
+	Keep a list of tasks that don't belong to any class group.
+	Fix bug #453777. And complete fix for bug #165075.
+
+	* libwnck/tasklist.c: (wnck_tasklist_init): initialize new
+	windows_without_class_group field.
+	(wnck_tasklist_finalize): add new assertion
+	(wnck_tasklist_size_allocate): append the tasks from
+	windows_without_class_group to the list of visible tasks
+	(wnck_tasklist_remove): remove the task from
+	windows_without_class_group when it's needed
+	(wnck_tasklist_free_tasks): add assertion
+	(wnck_tasklist_update_lists): if there's no class group for the
+	window, add it to windows_without_class_group
+
 2007-06-29  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/application.c: (update_name): add assertion to make it clear
