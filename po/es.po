@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-29 03:45+0100\n"
-"PO-Revision-Date: 2007-07-04 16:59+0200\n"
+"POT-Creation-Date: 2007-07-04 16:04+0100\n"
+"PO-Revision-Date: 2007-07-07 18:49+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -245,7 +245,7 @@ msgstr "Ventana sin título"
 
 #: ../libwnck/wnckprop.c:137
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "ID X window de la ventana a examinar o modificar"
 
 #: ../libwnck/wnckprop.c:137 ../libwnck/wnckprop.c:140
 #: ../libwnck/wnckprop.c:148
@@ -254,7 +254,7 @@ msgstr "XID"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "ID X window del líder del grupo de ventanas de una aplicación a examinar"
 
 #: ../libwnck/wnckprop.c:142
 msgid "Class resource of the class group to examine"
@@ -1065,19 +1065,19 @@ msgstr "cerrar"
 
 #: ../libwnck/wnckprop.c:1535
 msgid "make above"
-msgstr ""
+msgstr "poner encima"
 
 #: ../libwnck/wnckprop.c:1537
 msgid "unmake above"
-msgstr ""
+msgstr "no poner encima"
 
 #: ../libwnck/wnckprop.c:1539
 msgid "make below"
-msgstr ""
+msgstr "poner debajo"
 
 #: ../libwnck/wnckprop.c:1541
 msgid "unmake below"
-msgstr ""
+msgstr "no poner debajo"
 
 #: ../libwnck/wnckprop.c:1543
 msgid "no action possible"
