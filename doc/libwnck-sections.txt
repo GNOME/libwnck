@@ -37,6 +37,7 @@ wnck_window_is_shaded
 wnck_window_is_pinned
 wnck_window_is_sticky
 wnck_window_is_above
+wnck_window_is_below
 wnck_window_is_skip_pager
 wnck_window_is_skip_tasklist
 wnck_window_is_fullscreen
@@ -60,6 +61,8 @@ wnck_window_stick
 wnck_window_unstick
 wnck_window_make_above
 wnck_window_unmake_above
+wnck_window_make_below
+wnck_window_unmake_below
 wnck_window_set_skip_pager
 wnck_window_set_skip_tasklist
 wnck_window_set_fullscreen

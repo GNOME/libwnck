@@ -66,7 +66,8 @@ static GHashTable *window_hash = NULL;
     ((window)->priv->is_fullscreen       << 8) |        \
     ((window)->priv->demands_attention   << 9) |        \
     ((window)->priv->is_urgent           << 10)|        \
-    ((window)->priv->is_above            << 11))
+    ((window)->priv->is_above            << 11)|        \
+    ((window)->priv->is_below            << 12))
 
 struct _WnckWindowPrivate
 {
@@ -120,6 +121,7 @@ struct _WnckWindowPrivate
   guint is_maximized_vert : 1;
   guint is_shaded : 1;
   guint is_above : 1;
+  guint is_below : 1;
   guint skip_pager : 1;
   guint skip_taskbar : 1;
   guint is_sticky : 1;
@@ -260,6 +262,7 @@ wnck_window_init (WnckWindow *window)
   window->priv->is_maximized_vert = FALSE;
   window->priv->is_shaded = FALSE;
   window->priv->is_above = FALSE;
+  window->priv->is_below = FALSE;
   window->priv->skip_pager = FALSE;
   window->priv->skip_taskbar = FALSE;
   window->priv->is_sticky = FALSE;
@@ -325,8 +328,8 @@ wnck_window_class_init (WnckWindowClass *klass)
    *
    * Emitted when the state of @window changes. This can happen when @window is
    * (un)minimized, (un)maximized, (un)sticked, (un)shaded, (un)made above,
-   * (un)set fullscreen, when it needs attention, etc. See #WnckWindowState for
-   * the complete list of states that might have changed.
+   * (un)made below, (un)set fullscreen, when it needs attention, etc. See
+   * #WnckWindowState for the complete list of states that might have changed.
    */
   signals[STATE_CHANGED] =
     g_signal_new ("state_changed",
@@ -1231,6 +1234,27 @@ wnck_window_is_above                  (WnckWindow *window)
 }
 
 /**
+ * wnck_window_is_below:
+ * @window: a #WnckWindow.
+ *
+ * Returns whether @window is below other windows. This state may change
+ * anytime a #WnckWindow::state-changed signal gets emitted.
+ *
+ * See wnck_window_make_below() for more details on this state.
+ *
+ * Return value: %TRUE if @window is below other windows, %FALSE otherwise.
+ *
+ * Since: 2.20
+ **/
+gboolean
+wnck_window_is_below                  (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
+
+  return window->priv->is_below;
+}
+
+/**
  * wnck_window_is_skip_pager:
  * @window: a #WnckWindow.
  *
@@ -1605,6 +1629,47 @@ wnck_window_unmake_above (WnckWindow *window)
                       window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_ABOVE"),
+                      0);
+}
+
+/**
+ * wnck_window_make_below:
+ * @window: a #WnckWindow.
+ *
+ * Asks the window manager to put @window below most windows.
+ *
+ * Since: 2.20
+ **/
+void
+wnck_window_make_below (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
+                      TRUE,
+                      _wnck_atom_get ("_NET_WM_STATE_BELOW"),
+                      0);
+}
+
+/**
+ * wnck_window_unmake_below:
+ * @window: a #WnckWindow.
+ *
+ * Asks the window manager to not put @window below most windows, and to
+ * put it again in the stack with other windows.
+ *
+ * Since: 2.20
+ **/
+void
+wnck_window_unmake_below (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
+                      FALSE,
+                      _wnck_atom_get ("_NET_WM_STATE_BELOW"),
                       0);
 }
 
@@ -2558,6 +2623,7 @@ update_state (WnckWindow *window)
       window->priv->is_sticky = FALSE;
       window->priv->is_shaded = FALSE;
       window->priv->is_above = FALSE;
+      window->priv->is_below = FALSE;
       window->priv->skip_taskbar = FALSE;
       window->priv->skip_pager = FALSE;
       window->priv->net_wm_state_hidden = FALSE;
@@ -2585,6 +2651,8 @@ update_state (WnckWindow *window)
             window->priv->is_shaded = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_ABOVE"))
             window->priv->is_above = TRUE;
+          else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_BELOW"))
+            window->priv->is_below = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_FULLSCREEN"))
             window->priv->is_fullscreen = TRUE;
           else if (atoms[i] == _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"))

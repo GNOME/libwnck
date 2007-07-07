@@ -108,6 +108,8 @@ gboolean set_fullscreen = FALSE;
 gboolean set_unfullscreen = FALSE;
 gboolean set_make_above = FALSE;
 gboolean set_unmake_above = FALSE;
+gboolean set_make_below = FALSE;
+gboolean set_unmake_below = FALSE;
 gboolean set_shade = FALSE;
 gboolean set_unshade = FALSE;
 gboolean set_stick = FALSE;
@@ -209,6 +211,10 @@ static GOptionEntry window_entries[] = {
           N_("Make the window always on top"), NULL },
 	{ "unmake-above", 0, 0, G_OPTION_ARG_NONE, &set_unmake_above,
           N_("Make the window not always on top"), NULL },
+	{ "make-below", 0, 0, G_OPTION_ARG_NONE, &set_make_below,
+          N_("Make the window below other windows"), NULL },
+	{ "unmake-below", 0, 0, G_OPTION_ARG_NONE, &set_unmake_below,
+          N_("Make the window not below other windows"), NULL },
 	{ "shade", 0, 0, G_OPTION_ARG_NONE, &set_shade,
           N_("Shade the window"), NULL },
 	{ "unshade", 0, 0, G_OPTION_ARG_NONE, &set_unshade,
@@ -732,6 +738,7 @@ validate_options (void)
 
   CHECK_DUAL_OPTIONS (fullscreen, WINDOW_WRITE_MODE)
   CHECK_DUAL_OPTIONS (make_above, WINDOW_WRITE_MODE)
+  CHECK_DUAL_OPTIONS (make_below, WINDOW_WRITE_MODE)
   CHECK_DUAL_OPTIONS (shade, WINDOW_WRITE_MODE)
   CHECK_DUAL_OPTIONS (stick, WINDOW_WRITE_MODE)
   CHECK_DUAL_OPTIONS (skip_pager, WINDOW_WRITE_MODE)
@@ -959,6 +966,8 @@ update_window (WnckWindow *window)
                         WNCK_WINDOW_ACTION_FULLSCREEN)
   SET_PROPERTY_DUAL (make_above,
                      WNCK_WINDOW_ACTION_ABOVE, WNCK_WINDOW_ACTION_ABOVE)
+  SET_PROPERTY_DUAL (make_below,
+                     WNCK_WINDOW_ACTION_BELOW, WNCK_WINDOW_ACTION_BELOW)
   SET_PROPERTY_DUAL (shade,
                      WNCK_WINDOW_ACTION_SHADE, WNCK_WINDOW_ACTION_UNSHADE)
   SET_PROPERTY_DUAL (stick,
@@ -1441,10 +1450,12 @@ print_window (WnckWindow *window)
 
   if (wnck_window_get_group_leader (window) != wnck_window_get_xid (window))
     g_print (_("Group Leader: %lu\n"), wnck_window_get_group_leader (window));
+  //FIXME: else print something?
 
   if (wnck_window_get_transient (window))
     g_print (_("Transient for: %lu\n"),
              wnck_window_get_xid (wnck_window_get_transient (window)));
+  //FIXME: else print something?
 
 #define PRINT_LIST_ITEM(func, string)                           \
   if (func (window))                                            \
@@ -1476,6 +1487,7 @@ print_window (WnckWindow *window)
   PRINT_LIST_ITEM (wnck_window_is_pinned, _("pinned"));
   PRINT_LIST_ITEM (wnck_window_is_sticky, _("sticky"));
   PRINT_LIST_ITEM (wnck_window_is_above, _("above"));
+  PRINT_LIST_ITEM (wnck_window_is_below, _("below"));
   PRINT_LIST_ITEM (wnck_window_is_fullscreen, _("fullscreen"));
   PRINT_LIST_ITEM (wnck_window_needs_attention, _("needs attention"));
   PRINT_LIST_ITEM (wnck_window_is_skip_pager, _("skip pager"));

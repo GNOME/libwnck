@@ -54,6 +54,8 @@ G_BEGIN_DECLS
  * @WNCK_WINDOW_STATE_URGENT: the window requires a response from the user.
  * @WNCK_WINDOW_STATE_ABOVE: the window is above other windows (see
  * wnck_window_make_above()).
+ * @WNCK_WINDOW_STATE_BELOW: the window is below other windows (see
+ * wnck_window_make_below()).
  *
  * Type used as a bitmask to describe the state of a #WnckWindow.
  */
@@ -70,7 +72,8 @@ typedef enum
   WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8,
   WNCK_WINDOW_STATE_DEMANDS_ATTENTION      = 1 << 9,
   WNCK_WINDOW_STATE_URGENT                 = 1 << 10,
-  WNCK_WINDOW_STATE_ABOVE                  = 1 << 11
+  WNCK_WINDOW_STATE_ABOVE                  = 1 << 11,
+  WNCK_WINDOW_STATE_BELOW                  = 1 << 12
 } WnckWindowState;
 
 /**
@@ -310,6 +313,7 @@ gboolean wnck_window_is_maximized_vertically   (WnckWindow *window);
 gboolean wnck_window_is_maximized              (WnckWindow *window);
 gboolean wnck_window_is_shaded                 (WnckWindow *window);
 gboolean wnck_window_is_above                  (WnckWindow *window);
+gboolean wnck_window_is_below                  (WnckWindow *window);
 gboolean wnck_window_is_skip_pager             (WnckWindow *window);
 gboolean wnck_window_is_skip_tasklist          (WnckWindow *window);
 gboolean wnck_window_is_fullscreen             (WnckWindow *window);
@@ -339,6 +343,8 @@ void wnck_window_shade                   (WnckWindow *window);
 void wnck_window_unshade                 (WnckWindow *window);
 void wnck_window_make_above              (WnckWindow *window);
 void wnck_window_unmake_above            (WnckWindow *window);
+void wnck_window_make_below              (WnckWindow *window);
+void wnck_window_unmake_below            (WnckWindow *window);
 void wnck_window_stick                   (WnckWindow *window);
 void wnck_window_unstick                 (WnckWindow *window);
 void wnck_window_keyboard_move           (WnckWindow *window);

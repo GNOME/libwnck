@@ -289,6 +289,7 @@ WnckWindow
 @WNCK_WINDOW_STATE_DEMANDS_ATTENTION: 
 @WNCK_WINDOW_STATE_URGENT: 
 @WNCK_WINDOW_STATE_ABOVE: 
+@WNCK_WINDOW_STATE_BELOW: 
 
 <!-- ##### FUNCTION wnck_window_get_state ##### -->
 <para>
@@ -363,6 +364,15 @@ WnckWindow
 
 
 <!-- ##### FUNCTION wnck_window_is_above ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_is_below ##### -->
 <para>
 
 </para>
@@ -572,6 +582,22 @@ WnckWindow
 
 
 <!-- ##### FUNCTION wnck_window_unmake_above ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_make_below ##### -->
+<para>
+
+</para>
+
+@window: 
+
+
+<!-- ##### FUNCTION wnck_window_unmake_below ##### -->
 <para>
 
 </para>
