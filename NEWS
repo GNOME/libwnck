@@ -1,3 +1,95 @@
+2.19.5
+======
+
+ Features
+
+  - Install wnckprop utility (Vincent)
+  - Add tooltips for workspaces in the pager (Vincent) [#125644]
+  - New wnck_screen_get_workspaces() API (Vincent)
+  - New wnck_workspace_get_layout_row(), wnck_workspace_get_layout_column() and
+    wnck_workspace_get_neighbor() API, to get layout information about a
+    workspace (Vincent)
+  - New wnck_workspace_get_screen() API (Vincent)
+  - New wnck_window_is_below(), wnck_window_make_below() and
+    wnck_window_unmake_below() API (Vincent) [#453982]
+
+ Deprecations
+
+  - Deprecate wnck_screen_get_workspace_index(). wnck_workspace_get_number()
+    should be used (Vincent)
+  - Deprecate wnck_screen_calc_workspace_layout(),
+    wnck_screen_free_workspace_layout() and WnckWorkspaceLayout (Vincent)
+  - Deprecate wnck_screen_get_workspace_neighbor().
+    wnck_workspace_get_neighbor() should be used (Vincent)
+  - Deprecate wnck_tasklist_set_minimum_width(),
+    wnck_tasklist_get_minimum_width(), wnck_tasklist_set_minimum_height(),
+    wnck_tasklist_get_minimum_height(). They are useless with the new sizing
+    algorithm (Vincent)
+
+ Fixes
+
+  - Improve a bit drawing of the pager (Vincent)
+  - Fix logic when cleaning up after dragging a window from the pager (Vincent)
+  - Use the last allocation of the tasklist as a basis for the fake allocation
+    used to compute the size hints. This gives better results. (Joe Shaw,
+    Vincent)
+  - Rationalize the using of icon names/names in the tasklist and the pager
+    (Vincent)
+  - Do not put state indicators in the tooltip text of tasklist buttons
+    (Vincent)
+  - Fix compilation of wnckprop (Vincent) [#449186]
+  - Import minor fixes from the XFCE fork (small leak, and safety checks)
+    (Vincent)
+  - Code cleanups (Vincent)
+  - Use g_type_class_add_private() everywhere (Vincent)
+  - Use GSlice when it makes sense (Vincent)
+  - Probable fix to show windows needing attention not shown in the viewport
+    (Vincent)
+  - Make wnckprop able to change properties of windows and screens (Vincent)
+  - Make wnckprop translatable (Vincent)
+  - Redraw a workspace in the pager when the state of a window changes and is
+    relevant (Vincent)
+  - Stop the glowing effect in the tasklist for urgent windows after a while
+    (Vincent) [#327870]
+  - Add new fade-max-loops to control the number of loops before the glowing
+    effect stops. Makes it possible to nearly disable the effect. (Vincent)
+    [#356452]
+  - Don't draw dots for group buttons in the tasklist, but use gtk_paint_tab()
+    (Vincent) [#139523]
+  - Make the glowing effect in the tasklist use cairo. This also makes it work
+    with RGBA. (Ryan Lortie) [#439417]
+  - Makes it possible to drag a window from a grouped task menu of the tasklist
+    (Vincent)
+  - Never group together in the tasklist windows without a class (Vincent)
+    [#165075]
+  - Add new mode to wnckprop to interact with a workspace (Vincent)
+  - Add new modes to wnckprop to interact with a class group or an application
+    (Vincent)
+  - Improve wnckprop command line arguments (Vincent)
+  - Add some XSync calls where needed in libwnck for wnckprop to work (Vincent)
+  - Make wnckprop use the real X server timestamp when needed (Vincent)
+  - Fix size of buttons in tasklist changing with the text. This should be an
+    important usability improvement. (Vincent) [#310809]
+  - Fix image of tasklist buttons floating outside of the buttons when buttons
+    are small (Vincent) [#308552]
+  - Update the window action menu when a workspace is created/destroyed, and
+    when the window has changed workspace (Vincent)
+
+ Misc
+
+  - Improve API documentation (Vincent)
+  - Add a --transparent command line for test-tasklist (Ryan Lortie)
+
+ Translators
+
+  - Jorge González (es)
+  - Luca Ferretti (it)
+  - Takeshi AIHANA (ja)
+  - Kjartan Maraas (nb)
+  - Danishka Navin (si)
+  - Daniel Nylander (sv)
+  - Clytie Siddall (vi)
+
 2.19.4
 ======
 

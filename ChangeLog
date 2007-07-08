@@ -1,5 +1,10 @@
 2007-07-08  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.19.5
+
+2007-07-08  Vincent Untz  <vuntz@gnome.org>
+
 	Make the window action menu work when more things change.
 
 	* libwnck/window-action-menu.c: (update_menu_state): hide/show
