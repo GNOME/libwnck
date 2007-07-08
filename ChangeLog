@@ -1,3 +1,37 @@
+2007-07-08  Vincent Untz  <vuntz@gnome.org>
+
+	Make the window action menu work when more things change.
+
+	* libwnck/window-action-menu.c: (update_menu_state): hide/show
+	left/right/up/down items, refill the workspace submenu when needed,
+	hide the unpin item and popdown the workspace submenu when there is
+	only one workspace
+	(workspace_changed_callback): new, update the menu when the window is
+	on another workspace
+	(screen_workspace_callback): new, update the menu when a workspace is
+	created/destroyed
+	(refill_submenu): new, from code from wnck_create_window_action_menu()
+	(wnck_create_window_action_menu): always create left/right/up/down
+	items, don't create the workspace submenu here, connect to
+	workspace_changed, workspace_created and workspace_destroyed
+
+2007-07-07  Vincent Untz  <vuntz@gnome.org>
+
+	Add wnck_window_is_below()/make_below()/unmake_below()
+	Fix bug #453982.
+
+	* doc/libwnck-sections.txt:
+	* doc/tmpl/window.sgml: update doc
+	* libwnck/window.c: (wnck_window_init): init new field
+	(wnck_window_class_init): update doc
+	(wnck_window_is_below), (wnck_window_make_below),
+	(wnck_window_unmake_below): new
+	(update_state): handle below
+	* libwnck/window.h: updated
+	* libwnck/wnckprop.c: add --make-below and --unmake-below
+	(validate_options), (update_window): handle new options
+	(print_window): print below state, and add FIXME
+
 2007-07-07  Vincent Untz  <vuntz@gnome.org>
 
 	Keep a list of tasks that don't belong to any class group.
