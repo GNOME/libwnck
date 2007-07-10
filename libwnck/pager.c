@@ -1015,14 +1015,16 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   GList *windows;
   GList *tmp;
   gboolean is_current;
-  WnckWorkspace *active_space;
+  WnckWorkspace *space;
   GtkWidget *widget;
   GtkStateType state;
   
+  space = wnck_screen_get_workspace (pager->priv->screen, workspace);
+  if (!space)
+    return;
+
   widget = GTK_WIDGET (pager);
-  active_space = wnck_screen_get_active_workspace (pager->priv->screen);
-  is_current = active_space &&
-    workspace == wnck_workspace_get_number (active_space);
+  is_current = (space == wnck_screen_get_active_workspace (pager->priv->screen));
 
   if (is_current)
     state = GTK_STATE_SELECTED;
@@ -1045,23 +1047,119 @@ wnck_pager_draw_workspace (WnckPager    *pager,
                        GDK_RGB_DITHER_MAX,
                        0, 0);
     }
-  else if (active_space)
+  else
     {
-      double vx, vy, vw, vh; /* viewport */
-      double width_ratio, height_ratio;
       cairo_t *cr;
-      
-      width_ratio = rect->width / (double) wnck_workspace_get_width (active_space);
-      height_ratio = rect->height / (double) wnck_workspace_get_height (active_space);
-      vx = rect->x + width_ratio * wnck_workspace_get_viewport_x (active_space);
-      vy = rect->y + height_ratio * wnck_workspace_get_viewport_y (active_space);
-      vw = width_ratio * wnck_screen_get_width (pager->priv->screen);
-      vh = height_ratio * wnck_screen_get_height (pager->priv->screen);
 
       cr = gdk_cairo_create (widget->window);
-      gdk_cairo_set_source_color (cr, &widget->style->dark[state]);
-      cairo_rectangle (cr, vx, vy, vw, vh);
-      cairo_fill (cr);
+
+      if (!wnck_workspace_is_virtual (space))
+        {
+          gdk_cairo_set_source_color (cr, &widget->style->dark[state]);
+          cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
+          cairo_fill (cr);
+        }
+      else
+        {
+          //FIXME prelight for dnd in the viewport?
+          int workspace_width, workspace_height;
+          int screen_width, screen_height;
+          double width_ratio, height_ratio;
+          double vx, vy, vw, vh; /* viewport */
+
+          workspace_width = wnck_workspace_get_width (space);
+          workspace_height = wnck_workspace_get_height (space);
+          screen_width = wnck_screen_get_width (pager->priv->screen);
+          screen_height = wnck_screen_get_height (pager->priv->screen);
+
+          if ((workspace_width % screen_width == 0) &&
+              (workspace_height % screen_height == 0))
+            {
+              int i, j;
+              int active_i, active_j;
+              int horiz_views;
+              int verti_views;
+
+              horiz_views = workspace_width / screen_width;
+              verti_views = workspace_height / screen_height;
+
+              /* do not forget thin lines to delimit "workspaces" */
+              width_ratio = (rect->width - (horiz_views - 1)) /
+                            (double) workspace_width;
+              height_ratio = (rect->height - (verti_views - 1)) /
+                             (double) workspace_height;
+
+              if (is_current)
+                {
+                  active_i =
+                    wnck_workspace_get_viewport_x (space) / screen_width;
+                  active_j =
+                    wnck_workspace_get_viewport_y (space) / screen_height;
+                }
+              else
+                {
+                  active_i = -1;
+                  active_j = -1;
+                }
+
+              for (i = 0; i < horiz_views; i++)
+                {
+                  /* "+ i" is for the thin lines */
+                  vx = rect->x + (width_ratio * screen_width) * i + i;
+
+                  if (i == horiz_views - 1)
+                    vw = rect->width + rect->x - vx;
+                  else
+                    vw = width_ratio * screen_width;
+
+                  vh = height_ratio * screen_height;
+
+                  for (j = 0; j < verti_views; j++)
+                    {
+                      /* "+ j" is for the thin lines */
+                      vy = rect->y + (height_ratio * screen_height) * j + j;
+
+                      if (j == verti_views - 1)
+                        vh = rect->height + rect->y - vy;
+
+                      if (active_i == i && active_j == j)
+                        gdk_cairo_set_source_color (cr,
+                                                    &widget->style->dark[GTK_STATE_SELECTED]);
+                      else
+                        gdk_cairo_set_source_color (cr,
+                                                    &widget->style->dark[GTK_STATE_NORMAL]);
+                      cairo_rectangle (cr, vx, vy, vw, vh);
+                      cairo_fill (cr);
+                    }
+                }
+            }
+          else
+            {
+              width_ratio = rect->width / (double) workspace_width;
+              height_ratio = rect->height / (double) workspace_height;
+
+              /* first draw non-active part of the viewport */
+              gdk_cairo_set_source_color (cr, &widget->style->dark[GTK_STATE_NORMAL]);
+              cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
+              cairo_fill (cr);
+
+              if (is_current)
+                {
+                  /* draw the active part of the viewport */
+                  vx = rect->x +
+                    width_ratio * wnck_workspace_get_viewport_x (space);
+                  vy = rect->y +
+                    height_ratio * wnck_workspace_get_viewport_y (space);
+                  vw = width_ratio * screen_width;
+                  vh = height_ratio * screen_height;
+
+                  gdk_cairo_set_source_color (cr, &widget->style->dark[GTK_STATE_SELECTED]);
+                  cairo_rectangle (cr, vx, vy, vw, vh);
+                  cairo_fill (cr);
+                }
+            }
+        }
+
       cairo_destroy (cr);
     }
 

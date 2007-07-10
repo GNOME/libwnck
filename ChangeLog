@@ -1,5 +1,15 @@
 2007-07-10  Vincent Untz  <vuntz@gnome.org>
 
+	Correctly draw workspaces with viewport in the pager. As a special
+	case, when the width/height of the workspace allows to have a round
+	number of viewports, draw the various viewports as if they were
+	workspaces.
+
+	* libwnck/pager.c: (wnck_pager_draw_workspace): add lot of code to
+	handle the viewport case
+
+2007-07-10  Vincent Untz  <vuntz@gnome.org>
+
 	Make the window action menu work with viewport, for our compiz
 	friends. This mode is active when there's only one workspace with a
 	viewport.
