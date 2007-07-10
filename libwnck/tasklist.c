@@ -985,6 +985,15 @@ wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
  *
  * Sets @tasklist to display #WnckWindow from all #WnckWorkspace or not,
  * according to @include_all_workspaces.
+ *
+ * Note that if the active #WnckWorkspace has a viewport and if
+ * @include_all_workspaces is %FALSE, then only the #WnckWindow visible in the
+ * viewport are displayed in @tasklist. The rationale for this is that the
+ * viewport is generally used to implement workspace-like behavior. A
+ * side-effect of this is that, when using multiple #WnckWorkspace with
+ * viewport, it is not possible to show all #WnckWindow from a #WnckWorkspace
+ * (even those that are not visible in the viewport) in @tasklist without
+ * showing all #WnckWindow from all #WnckWorkspace.
  */
 void
 wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,

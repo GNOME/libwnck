@@ -1,5 +1,10 @@
 2007-07-10  Vincent Untz  <vuntz@gnome.org>
 
+	* tasklist.c: (wnck_tasklist_set_include_all_workspaces): mention that
+	it works as expected with viewport.
+
+2007-07-10  Vincent Untz  <vuntz@gnome.org>
+
 	Correctly draw workspaces with viewport in the pager. As a special
 	case, when the width/height of the workspace allows to have a round
 	number of viewports, draw the various viewports as if they were
