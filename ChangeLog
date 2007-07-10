@@ -1,3 +1,24 @@
+2007-07-10  Vincent Untz  <vuntz@gnome.org>
+
+	Make the window action menu work with viewport, for our compiz
+	friends. This mode is active when there's only one workspace with a
+	viewport.
+	Fix part of bug #352383.
+
+	* libwnck/window-action-menu.c: (item_activated_callback): make
+	pin/unpin stick/unstick the window, make the switch workspace items
+	work with viewport
+	(update_menu_state): update for the viewport mode
+	(viewports_changed_callback): if the viewport has changed, update the
+	menu
+	(get_workspace_name_with_accel): add a comment to keep in sync with
+	strings for the viewport
+	(refill_submenu_workspace): remove useless stuff
+	(refill_submenu_viewport): new
+	(wnck_create_window_action_menu): update API doc to tell about the new
+	behavior for viewport, rename the pin/unpin to have the right name for
+	the right item, connect to the viewports_changed signal
+
 2007-07-08  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.19.6
