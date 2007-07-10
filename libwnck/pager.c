@@ -1859,7 +1859,7 @@ wnck_pager_focus (GtkWidget        *widget,
  * Does nothing.
  *
  * Since: 2.2
- * Deprecated:
+ * Deprecated:2.20:
  */
 void
 wnck_pager_set_screen (WnckPager  *pager,

@@ -1042,7 +1042,7 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
  *
  * Does nothing.
  *
- * Deprecated:
+ * Deprecated:2.20:
  */
 void 
 wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
@@ -1057,7 +1057,7 @@ wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
  *
  * Return value: -1.
  *
- * Deprecated:
+ * Deprecated:2.20:
  */
 gint
 wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
@@ -1072,7 +1072,7 @@ wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
  *
  * Does nothing.
  *
- * Deprecated:
+ * Deprecated:2.20:
  */
 void 
 wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
@@ -1087,7 +1087,7 @@ wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
  *
  * Return value: -1.
  *
- * Deprecated:
+ * Deprecated:2.20:
  */
 gint
 wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
@@ -1966,7 +1966,7 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
  * Does nothing.
  *
  * Since: 2.2
- * Deprecated:
+ * Deprecated:2.20:
  */
 void
 wnck_tasklist_set_screen (WnckTasklist *tasklist,

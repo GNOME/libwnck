@@ -787,7 +787,7 @@ wnck_screen_get_workspace (WnckScreen *screen,
  * Return value: the index of @space on @screen, or -1 on errors.
  *
  * Since: 2.14
- * Deprecated: Use wnck_workspace_get_number() instead.
+ * Deprecated:2.20: Use wnck_workspace_get_number() instead.
  **/
 int
 wnck_screen_get_workspace_index (WnckScreen    *screen,
@@ -847,7 +847,7 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
  * or unreferenced.
  *
  * Since: 2.14
- * Deprecated: Use wnck_workspace_get_neighbor() instead.
+ * Deprecated:2.20: Use wnck_workspace_get_neighbor() instead.
  **/
 WnckWorkspace*
 wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
@@ -1157,7 +1157,7 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
  * the row and column of the #WnckWorkspace with index @space_index.
  *
  * Since: 2.12
- * Deprecated:
+ * Deprecated:2.20:
  */
 /* TODO: when we make this private, remove num_workspaces since we can get it
  * from screen! */
@@ -1376,7 +1376,7 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
  * might want to free @layout yourself after calling this.
  *
  * Since: 2.12
- * Deprecated:
+ * Deprecated:2.20:
  */
 void
 wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout)

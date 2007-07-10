@@ -1,5 +1,12 @@
 2007-07-10  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c:
+	* libwcnk/screen.[ch]:
+	* libwnck/tasklist.c:
+	* libwnck/util.c: use Deprecated:2.20: instead of just Deprecated:
+
+2007-07-10  Vincent Untz  <vuntz@gnome.org>
+
 	* AUTHORS: add myself
 	* libwnck/*: add myself for the copyright of relevant files
 

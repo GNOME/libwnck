@@ -138,7 +138,7 @@ typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
  * #WnckWorkspace.
  *
  * Since: 2.12
- * Deprecated:
+ * Deprecated:2.20:
  */
 struct _WnckWorkspaceLayout
 {

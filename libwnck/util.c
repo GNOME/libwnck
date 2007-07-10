@@ -60,7 +60,7 @@
  *
  * Sets the semantic type of @window to %WNCK_WINDOW_DOCK.
  *
- * Deprecated: Use gdk_window_set_type_hint() instead.
+ * Deprecated:2.20: Use gdk_window_set_type_hint() instead.
  */
 void
 wnck_gtk_window_set_dock_type (GtkWindow *window)
