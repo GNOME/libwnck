@@ -1,5 +1,14 @@
 2007-07-10  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/doc/libwnck-docs.sgml:
+	* libwnck/doc/libwnck-sections.txt:
+	* libwnck/doc/tmpl/misc.sgml:
+	* libwnck/doc/tmpl/resource.sgml:
+	* libwnck/libwnck/util.c: reorganize a bit some part of the API
+	documentation
+
+2007-07-10  Vincent Untz  <vuntz@gnome.org>
+
 	* tasklist.c: (wnck_tasklist_set_include_all_workspaces): mention that
 	it works as expected with viewport.
 

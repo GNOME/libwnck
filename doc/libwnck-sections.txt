@@ -318,14 +318,19 @@ wnck_create_window_action_menu
 </SECTION>
 
 <SECTION>
-<FILE>util</FILE>
+<FILE>resource</FILE>
+<TITLE>Resource Usage of X Clients</TITLE>
+WnckResourceUsage
+wnck_xid_read_resource_usage
+wnck_pid_read_resource_usage
+</SECTION>
+
+<SECTION>
+<FILE>misc</FILE>
 <TITLE>Miscellaneous Functions</TITLE>
 wnck_gtk_window_set_dock_type
 WnckClientType
 wnck_set_client_type
-WnckResourceUsage
-wnck_xid_read_resource_usage
-wnck_pid_read_resource_usage
 #</SECTION>
 
 # Ignored

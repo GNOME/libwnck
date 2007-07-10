@@ -34,14 +34,23 @@
 #endif
 
 /**
- * SECTION:util
- * @short_description: reading resource usage of X clients, and other
- * additional features.
+ * SECTION:resource
+ * @short_description: reading resource usage of X clients.
  * @see_also: wnck_window_get_xid(), wnck_application_get_xid(), wnck_window_get_pid(), wnck_application_get_pid()
  * @stability: Unstable
  *
+ * libwnck provides an easy-to-use interface to the XRes X server extension to
+ * read resource usage of X clients, which can be defined either by the X
+ * window ID of one of their windows or by the process ID of their process.
+ */
+
+/**
+ * SECTION:misc
+ * @short_description: other additional features.
+ * @stability: Unstable
+ *
  * These functions are utility functions providing some additional features to
- * libwcnk users, like functions to read resource usage of X clients.
+ * libwcnk users.
  */
 
 /**
@@ -617,9 +626,12 @@ static WnckClientType client_type = 0;
  * wnck_set_client_type:
  * @ewmh_sourceindication_client_type: a role for the client.
  *
- * Sets the role of the libwnck user. For applications providing some window
- * management features, like pagers or tasklists, it is important to set the
- * role to %WNCK_CLIENT_TYPE_PAGER for libwnck to properly work.
+ * Sets the role of the libwnck user.
+ *
+ * The default role is %WNCK_CLIENT_TYPE_APPLICATION. Therefore, for
+ * applications providing some window management features, like pagers or
+ * tasklists, it is important to set the role to %WNCK_CLIENT_TYPE_PAGER for
+ * libwnck to properly work.
  *
  * Since: 2.14
  */

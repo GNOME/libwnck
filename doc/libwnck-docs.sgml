@@ -67,7 +67,8 @@ that case.
   <part id="utils">
     <title>Libwnck Utilities</title>
     <xi:include href="xml/window-action-menu.xml"/>
-    <xi:include href="xml/util.xml"/>
+    <xi:include href="xml/resource.xml"/>
+    <xi:include href="xml/misc.xml"/>
   </part>
 
   <part id="indexes">
