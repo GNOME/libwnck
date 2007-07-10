@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-07 17:54+0100\n"
-"PO-Revision-Date: 2007-07-07 19:08+0200\n"
+"POT-Creation-Date: 2007-07-10 16:51+0100\n"
+"PO-Revision-Date: 2007-07-10 20:54+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/application.c:50
+#: ../libwnck/application.c:51
 msgid "Untitled application"
 msgstr "Aplicación sin título"
 
@@ -57,58 +57,58 @@ msgstr "Herramienta para cambiar entre áreas de trabajo"
 msgid "Click this to switch to workspace %s"
 msgstr "Pulse aquí para cambiar al área de trabajo %s"
 
-#: ../libwnck/pager.c:1805
+#: ../libwnck/pager.c:1904
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Pulse para comenzar a arrastrar «%s»"
 
-#: ../libwnck/pager.c:1808
+#: ../libwnck/pager.c:1907
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Área de trabajo actual: «%s»"
 
-#: ../libwnck/pager.c:1813
+#: ../libwnck/pager.c:1912
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Pulse para cambiar a «%s»"
 
-#: ../libwnck/selector.c:1170
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "No hay ventanas abiertas"
 
-#: ../libwnck/selector.c:1223
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "Selector de ventanas"
 
-#: ../libwnck/selector.c:1224
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "Herramienta para cambiar entre ventanas"
 
-#: ../libwnck/tasklist.c:715
+#: ../libwnck/tasklist.c:716
 msgid "Window List"
 msgstr "Lista de ventanas"
 
-#: ../libwnck/tasklist.c:716
+#: ../libwnck/tasklist.c:717
 msgid "Tool to switch between visible windows"
 msgstr "Herramienta para cambiar entre ventanas visibles"
 
-#: ../libwnck/tasklist.c:2991
+#: ../libwnck/tasklist.c:3001
 msgid "Mi_nimize All"
 msgstr "Mi_nimizar todo"
 
-#: ../libwnck/tasklist.c:3002
+#: ../libwnck/tasklist.c:3012
 msgid "Un_minimize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:3010
+#: ../libwnck/tasklist.c:3020
 msgid "Ma_ximize All"
 msgstr "Ma_ximizar todo"
 
-#: ../libwnck/tasklist.c:3021
+#: ../libwnck/tasklist.c:3031
 msgid "_Unmaximize All"
 msgstr "Res_taurar todo"
 
-#: ../libwnck/tasklist.c:3033
+#: ../libwnck/tasklist.c:3043
 msgid "_Close All"
 msgstr "Cerrar _todo"
 
@@ -156,77 +156,77 @@ msgstr "Mostrar las ventanas de todas las áreas de trabajo"
 msgid "Enable Transparency"
 msgstr "Activar transparencias"
 
-#: ../libwnck/window-action-menu.c:276
+#: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:283
+#: ../libwnck/window-action-menu.c:394
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: ../libwnck/window-action-menu.c:291
+#: ../libwnck/window-action-menu.c:402
 msgid "Unma_ximize"
 msgstr "_Restaurar"
 
-#: ../libwnck/window-action-menu.c:298
+#: ../libwnck/window-action-menu.c:409
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../libwnck/window-action-menu.c:507 ../libwnck/workspace.c:280
+#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Área de trabajo %d"
 
-#: ../libwnck/window-action-menu.c:515
+#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
 msgid "Workspace 1_0"
 msgstr "Área de trabajo 1_0"
 
-#: ../libwnck/window-action-menu.c:517
+#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Área de trabajo %s%d"
 
-#: ../libwnck/window-action-menu.c:612
+#: ../libwnck/window-action-menu.c:995
 msgid "_Move"
 msgstr "_Mover"
 
-#: ../libwnck/window-action-menu.c:619
+#: ../libwnck/window-action-menu.c:1002
 msgid "_Resize"
 msgstr "Re_dimensionar"
 
-#: ../libwnck/window-action-menu.c:628
+#: ../libwnck/window-action-menu.c:1011
 msgid "Always On _Top"
 msgstr "Siempre en_cima"
 
-#: ../libwnck/window-action-menu.c:636
+#: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
 msgstr "_Siempre en el área de trabajo visible"
 
-#: ../libwnck/window-action-menu.c:641
+#: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
 msgstr "_Sólo en este área de trabajo"
 
-#: ../libwnck/window-action-menu.c:662
+#: ../libwnck/window-action-menu.c:1031
 msgid "Move to Workspace _Left"
 msgstr "Mover a al área de trabajo de la _izquierda"
 
-#: ../libwnck/window-action-menu.c:673
+#: ../libwnck/window-action-menu.c:1037
 msgid "Move to Workspace R_ight"
 msgstr "Mover al área de trabajo de la _derecha"
 
-#: ../libwnck/window-action-menu.c:684
+#: ../libwnck/window-action-menu.c:1043
 msgid "Move to Workspace _Up"
 msgstr "Mover al área de trabajo de a_rriba"
 
-#: ../libwnck/window-action-menu.c:696
+#: ../libwnck/window-action-menu.c:1049
 msgid "Move to Workspace _Down"
 msgstr "Mover al área de trabajo de a_bajo"
 
-#: ../libwnck/window-action-menu.c:703
+#: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
 msgstr "Mover a _otro área de trabajo"
 
-#: ../libwnck/window-action-menu.c:745
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Close"
 msgstr "_Cerrar"
 
@@ -239,7 +239,7 @@ msgstr "_Cerrar"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:49
+#: ../libwnck/window.c:50
 msgid "Untitled window"
 msgstr "Ventana sin título"
 
@@ -482,11 +482,10 @@ msgstr "ALTURA"
 #: ../libwnck/wnckprop.c:250
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash"
+"dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"Cambiar el tipo de la ventana al TIPO (los valores válidos son: normal, "
-"escritorio, empotrable, diálogo, barra de herramientas, menú, utilidad, "
-"pantalla de bienvenida)"
+"Cambiar el tipo de la ventana al TIPO (los valores válidos son: normal, desktop, dock, "
+"dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:250
 msgid "TYPE"
