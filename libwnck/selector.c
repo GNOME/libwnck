@@ -4,6 +4,7 @@
  * Copyright (C) 2003 Sun Microsystems, Inc.
  * Copyright (C) 2001 Free Software Foundation, Inc.
  * Copyright (C) 2000 Helix Code, Inc.
+ * Copyright (C) 2005-2007 Vincent Untz
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public

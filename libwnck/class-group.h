@@ -4,6 +4,7 @@
 /*
  * Copyright (C) 2003 Ximian, Inc.
  * Authors: Federico Mena-Quintero <federico@ximian.com>
+ * Copyright (C) 2006-2007 Vincent Untz
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
