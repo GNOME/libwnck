@@ -247,7 +247,7 @@ static GOptionEntry window_entries[] = {
           N_("Change the height of the window to HEIGHT"), N_("HEIGHT") },
 	{ "set-window-type", 0, 0, G_OPTION_ARG_STRING, &set_window_type,
           /* Translators: do not translate "normal, desktop, dock..." */
-          N_("Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash"), N_("TYPE") },
+          N_("Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"), N_("TYPE") },
 	{ NULL }
 };
 
