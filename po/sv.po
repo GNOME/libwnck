@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-21 13:33+0200\n"
-"PO-Revision-Date: 2007-06-21 13:33+0200\n"
+"POT-Creation-Date: 2007-07-17 17:30+0200\n"
+"PO-Revision-Date: 2007-07-17 15:29+0100\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr ""
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/application.c:50
+#: ../libwnck/application.c:51
 msgid "Untitled application"
 msgstr "Namnlöst program"
 
@@ -53,58 +53,58 @@ msgstr "Verktyg för att växla mellan arbetsytor"
 msgid "Click this to switch to workspace %s"
 msgstr "Klicka på detta för att byta till arbetsyta %s"
 
-#: ../libwnck/pager.c:1805
+#: ../libwnck/pager.c:1904
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Klicka för att börja dra \"%s\""
 
-#: ../libwnck/pager.c:1808
+#: ../libwnck/pager.c:1907
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Aktuell arbetsyta: \"%s\""
 
-#: ../libwnck/pager.c:1813
+#: ../libwnck/pager.c:1912
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Klicka för att byta till \"%s\""
 
-#: ../libwnck/selector.c:1170
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "Inga fönster öppna"
 
-#: ../libwnck/selector.c:1223
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "Fönsterväljare"
 
-#: ../libwnck/selector.c:1224
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "Verktyg för att växla mellan fönster"
 
-#: ../libwnck/tasklist.c:706
+#: ../libwnck/tasklist.c:716
 msgid "Window List"
 msgstr "Fönsterlista"
 
-#: ../libwnck/tasklist.c:707
+#: ../libwnck/tasklist.c:717
 msgid "Tool to switch between visible windows"
 msgstr "Verktyg för att växla mellan synliga fönster"
 
-#: ../libwnck/tasklist.c:2861
+#: ../libwnck/tasklist.c:3001
 msgid "Mi_nimize All"
 msgstr "Mi_nimera alla"
 
-#: ../libwnck/tasklist.c:2872
+#: ../libwnck/tasklist.c:3012
 msgid "Un_minimize All"
 msgstr "Av_minimera alla"
 
-#: ../libwnck/tasklist.c:2880
+#: ../libwnck/tasklist.c:3020
 msgid "Ma_ximize All"
 msgstr "Ma_ximera alla"
 
-#: ../libwnck/tasklist.c:2891
+#: ../libwnck/tasklist.c:3031
 msgid "_Unmaximize All"
 msgstr "_Avminimera alla"
 
-#: ../libwnck/tasklist.c:2903
+#: ../libwnck/tasklist.c:3043
 msgid "_Close All"
 msgstr "_Stäng alla"
 
@@ -152,77 +152,77 @@ msgstr "Visa fönster från alla arbetsytor"
 msgid "Enable Transparency"
 msgstr "Aktivera genomskinlighet"
 
-#: ../libwnck/window-action-menu.c:279
+#: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
 msgstr "Avmi_nimera"
 
-#: ../libwnck/window-action-menu.c:286
+#: ../libwnck/window-action-menu.c:394
 msgid "Mi_nimize"
 msgstr "_Minimera"
 
-#: ../libwnck/window-action-menu.c:294
+#: ../libwnck/window-action-menu.c:402
 msgid "Unma_ximize"
 msgstr "Avma_ximera"
 
-#: ../libwnck/window-action-menu.c:301
+#: ../libwnck/window-action-menu.c:409
 msgid "Ma_ximize"
 msgstr "Ma_ximera"
 
-#: ../libwnck/window-action-menu.c:510 ../libwnck/workspace.c:263
+#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbetsyta %d"
 
-#: ../libwnck/window-action-menu.c:518
+#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
 msgid "Workspace 1_0"
 msgstr "Arbetsyta 1_0"
 
-#: ../libwnck/window-action-menu.c:520
+#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbetsyta %s%d"
 
-#: ../libwnck/window-action-menu.c:616
+#: ../libwnck/window-action-menu.c:995
 msgid "_Move"
 msgstr "_Flytta"
 
-#: ../libwnck/window-action-menu.c:623
+#: ../libwnck/window-action-menu.c:1002
 msgid "_Resize"
 msgstr "_Ändra storlek"
 
-#: ../libwnck/window-action-menu.c:632
+#: ../libwnck/window-action-menu.c:1011
 msgid "Always On _Top"
 msgstr "Alltid _överst"
 
-#: ../libwnck/window-action-menu.c:640
+#: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
 msgstr "_Alltid på synlig arbetsyta"
 
-#: ../libwnck/window-action-menu.c:645
+#: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
 msgstr "_Endast på denna arbetsyta"
 
-#: ../libwnck/window-action-menu.c:671
+#: ../libwnck/window-action-menu.c:1031
 msgid "Move to Workspace _Left"
 msgstr "Flytta till arbetsyta till _vänster"
 
-#: ../libwnck/window-action-menu.c:682
+#: ../libwnck/window-action-menu.c:1037
 msgid "Move to Workspace R_ight"
 msgstr "Flytta till arbetsyta till _höger"
 
-#: ../libwnck/window-action-menu.c:693
+#: ../libwnck/window-action-menu.c:1043
 msgid "Move to Workspace _Up"
 msgstr "Flytta till arbetsyta _uppåt"
 
-#: ../libwnck/window-action-menu.c:705
+#: ../libwnck/window-action-menu.c:1049
 msgid "Move to Workspace _Down"
 msgstr "Flytta till arbetsyta _nedanför"
 
-#: ../libwnck/window-action-menu.c:712
+#: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
 msgstr "Flytta till en annan _arbetsyta"
 
-#: ../libwnck/window-action-menu.c:754
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Close"
 msgstr "_Stäng"
 
@@ -235,732 +235,960 @@ msgstr "_Stäng"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:49
+#: ../libwnck/window.c:50
 msgid "Untitled window"
 msgstr "Namnlöst fönster"
 
-#: ../libwnck/wnckprop.c:111
+#: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
 msgstr "X-fönster-id för fönstret att undersöka eller ändra"
 
-#: ../libwnck/wnckprop.c:111
+#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:142
+#: ../libwnck/wnckprop.c:150
 msgid "XID"
 msgstr "XID"
 
-#: ../libwnck/wnckprop.c:113
-msgid "NUMBER of the screen to examine or modify"
-msgstr "NUMMER på skärmen som ska undersökas eller ändras"
+#: ../libwnck/wnckprop.c:141
+msgid "X window ID of the group leader of an application to examine"
+msgstr "X-fönster-id för gruppledaren för ett program att undersöka"
 
-#: ../libwnck/wnckprop.c:113 ../libwnck/wnckprop.c:121
-#: ../libwnck/wnckprop.c:129 ../libwnck/wnckprop.c:131
-#: ../libwnck/wnckprop.c:133 ../libwnck/wnckprop.c:135
-#: ../libwnck/wnckprop.c:202
+#: ../libwnck/wnckprop.c:144
+msgid "Class resource of the class group to examine"
+msgstr "Klassresurs för klassgruppen att undersöka"
+
+#: ../libwnck/wnckprop.c:144
+msgid "CLASS"
+msgstr "KLASS"
+
+#: ../libwnck/wnckprop.c:146
+msgid "NUMBER of the workspace to examine or modify"
+msgstr "NUMMER på arbetsytan som ska undersökas eller ändras"
+
+#: ../libwnck/wnckprop.c:146 ../libwnck/wnckprop.c:148
+#: ../libwnck/wnckprop.c:164 ../libwnck/wnckprop.c:166
+#: ../libwnck/wnckprop.c:168 ../libwnck/wnckprop.c:239
 msgid "NUMBER"
 msgstr "NUMMER"
 
-#: ../libwnck/wnckprop.c:119
-msgid "List windows of the screen (format: \"XID: Window Name\")"
-msgstr "Lista fönstren på skärmen (format: \"XID: fönsternamn\")"
+#: ../libwnck/wnckprop.c:148
+msgid "NUMBER of the screen to examine or modify"
+msgstr "NUMMER på skärmen som ska undersökas eller ändras"
 
-#: ../libwnck/wnckprop.c:121
+#: ../libwnck/wnckprop.c:150
+msgid "Alias of --window"
+msgstr "Alias för --window"
+
+#: ../libwnck/wnckprop.c:156
 msgid ""
-"List windows of the screen in workspace NUMBER (format: \"XID: Window Name\")"
+"List windows of the application/class group/workspace/screen (output format: "
+"\"XID: Window Name\")"
 msgstr ""
-"Lista fönstren på skärmen i arbetsyta NUMMER (format: \"XID: fönsternamn\")"
+"Lista fönstren för programmet/klassgrupp/arbetsyta/skärm (utdataformat: "
+"\"XID: Fönsternamn\")"
 
-#: ../libwnck/wnckprop.c:123
-msgid "List workspaces of the screen (format: \"Number: Workspace Name\")"
-msgstr "Lista arbetsytor på skärmen (format: \"Nummer: namn på arbetsyta\")"
+#: ../libwnck/wnckprop.c:158
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr ""
+"Lista arbetsytor på skärmen (utdataformat: \"Nummer: Namn på arbetsyta\")"
 
-#: ../libwnck/wnckprop.c:129
-msgid "Change the current workspace to workspace NUMBER"
-msgstr "Ändra den aktuella arbetsytan till arbetsyta NUMMER"
-
-#: ../libwnck/wnckprop.c:131
+#: ../libwnck/wnckprop.c:164
 msgid "Change the number of workspaces of the screen to NUMBER"
 msgstr "Ändra antalet arbetsytor på skärmen till NUMMER"
 
-#: ../libwnck/wnckprop.c:133
+#: ../libwnck/wnckprop.c:166
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr "Ändra layout på arbetsytan på skärmen till att använda NUMMER rader"
 
-#: ../libwnck/wnckprop.c:135
+#: ../libwnck/wnckprop.c:168
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr "Ändra layout på arbetsytan på skärmen till att använda NUMMER kolumner"
 
-#: ../libwnck/wnckprop.c:137
+#: ../libwnck/wnckprop.c:170
 msgid "Show the desktop"
 msgstr "Visa skrivbordet"
 
-#: ../libwnck/wnckprop.c:139
+#: ../libwnck/wnckprop.c:172
 msgid "Stop showing the desktop"
 msgstr "Sluta visa skrivbordet"
 
-#: ../libwnck/wnckprop.c:141
+#: ../libwnck/wnckprop.c:174
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "Flytta skrivbordsvyn på aktuell arbetsyta till X-koordinat X"
 
-#: ../libwnck/wnckprop.c:141 ../libwnck/wnckprop.c:204
+#: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:241
 msgid "X"
 msgstr "X"
 
-#: ../libwnck/wnckprop.c:143
+#: ../libwnck/wnckprop.c:176
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "Flytta skrivbordsvyn på aktuell arbetsyta till Y-koordinat Y"
 
-#: ../libwnck/wnckprop.c:143 ../libwnck/wnckprop.c:206
+#: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:243
 msgid "Y"
 msgstr "Y"
 
-#: ../libwnck/wnckprop.c:149
+#: ../libwnck/wnckprop.c:182
 msgid "Minimize the window"
 msgstr "Minimera fönstret"
 
-#: ../libwnck/wnckprop.c:151
+#: ../libwnck/wnckprop.c:184
 msgid "Unminimize the window"
 msgstr "Avminimera fönstret"
 
-#: ../libwnck/wnckprop.c:153
+#: ../libwnck/wnckprop.c:186
 msgid "Maximize the window"
 msgstr "Maximera fönstret"
 
-#: ../libwnck/wnckprop.c:155
+#: ../libwnck/wnckprop.c:188
 msgid "Unmaximize the window"
 msgstr "Avmaximera fönstret"
 
-#: ../libwnck/wnckprop.c:157
+#: ../libwnck/wnckprop.c:190
 msgid "Maximize horizontally the window"
 msgstr "Maximera fönstret horisontellt"
 
-#: ../libwnck/wnckprop.c:159
+#: ../libwnck/wnckprop.c:192
 msgid "Unmaximize horizontally the window"
 msgstr "Avmaximera fönstret horisontellt"
 
-#: ../libwnck/wnckprop.c:161
+#: ../libwnck/wnckprop.c:194
 msgid "Maximize vertically the window"
 msgstr "Maximera fönstret vertikalt"
 
-#: ../libwnck/wnckprop.c:163
+#: ../libwnck/wnckprop.c:196
 msgid "Unmaximize vertically the window"
 msgstr "Avmaximera fönstret vertikalt"
 
-#: ../libwnck/wnckprop.c:165
+#: ../libwnck/wnckprop.c:198
 msgid "Start moving the window via the keyboard"
 msgstr "Börja flytta fönstret via tangentbordet"
 
-#: ../libwnck/wnckprop.c:167
+#: ../libwnck/wnckprop.c:200
 msgid "Start resizing the window via the keyboard"
 msgstr "Börja ändra storlek på fönstret via tangentbordet"
 
-#: ../libwnck/wnckprop.c:169
+#: ../libwnck/wnckprop.c:202
 msgid "Activate the window"
 msgstr "Aktivera fönstret"
 
-#: ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:204
 msgid "Close the window"
 msgstr "Stäng fönstret"
 
-#: ../libwnck/wnckprop.c:174
+#: ../libwnck/wnckprop.c:207
 msgid "Make the window fullscreen"
 msgstr "Gör så fönstret använder helskärmsläget"
 
-#: ../libwnck/wnckprop.c:176
+#: ../libwnck/wnckprop.c:209
 msgid "Make the window quit fullscreen mode"
 msgstr "Gör så fönstret slutar använda helskärmsläget"
 
-#: ../libwnck/wnckprop.c:178
+#: ../libwnck/wnckprop.c:211
 msgid "Make the window always on top"
 msgstr "Gör så fönstret alltid ligger överst"
 
-#: ../libwnck/wnckprop.c:180
+#: ../libwnck/wnckprop.c:213
 msgid "Make the window not always on top"
 msgstr "Gör så fönstret inte alltid är överst"
 
-#: ../libwnck/wnckprop.c:182
+#: ../libwnck/wnckprop.c:215
+msgid "Make the window below other windows"
+msgstr "Gör så fönstret ligger under andra fönster"
+
+#: ../libwnck/wnckprop.c:217
+msgid "Make the window not below other windows"
+msgstr "Gör så fönstret inte ligger under andra fönster"
+
+#: ../libwnck/wnckprop.c:219
 msgid "Shade the window"
 msgstr "Skugga fönstret"
 
-#: ../libwnck/wnckprop.c:184
+#: ../libwnck/wnckprop.c:221
 msgid "Unshade the window"
 msgstr "Avskugga fönstret"
 
-#: ../libwnck/wnckprop.c:186
+#: ../libwnck/wnckprop.c:223
 msgid "Make the window have a fixed position in the viewport"
 msgstr "Gör så fönstret har en fast position i skrivbordsvyn"
 
-#: ../libwnck/wnckprop.c:188
+#: ../libwnck/wnckprop.c:225
 msgid "Make the window not have a fixed position in the viewport"
 msgstr "Gör så fönstret inte har en fast position i skrivbordsvyn"
 
-#: ../libwnck/wnckprop.c:190
+#: ../libwnck/wnckprop.c:227
 msgid "Make the window not appear in pagers"
 msgstr "Gör så fönstret inte visas i visare"
 
-#: ../libwnck/wnckprop.c:192
+#: ../libwnck/wnckprop.c:229
 msgid "Make the window appear in pagers"
 msgstr "Gör så fönstret visas i visare"
 
-#: ../libwnck/wnckprop.c:194
+#: ../libwnck/wnckprop.c:231
 msgid "Make the window not appear in tasklists"
 msgstr "Gör så fönstret inte visas i fönsterlistor"
 
-#: ../libwnck/wnckprop.c:196
+#: ../libwnck/wnckprop.c:233
 msgid "Make the window appear in tasklists"
 msgstr "Gör så fönstret visas i fönsterlistor"
 
-#: ../libwnck/wnckprop.c:198
+#: ../libwnck/wnckprop.c:235
 msgid "Make the window visible on all workspaces"
 msgstr "Gör fönstret synligt på alla arbetsytor"
 
-#: ../libwnck/wnckprop.c:200
+#: ../libwnck/wnckprop.c:237
 msgid "Make the window visible on the current workspace only"
 msgstr "Gör fönstret endast synligt på den aktuella arbetsytan"
 
-#: ../libwnck/wnckprop.c:202
+#: ../libwnck/wnckprop.c:239
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
 msgstr "Flytta fönstret till arbetsyta NUMMER (första arbetsytan är 0)"
 
-#: ../libwnck/wnckprop.c:204
+#: ../libwnck/wnckprop.c:241
 msgid "Change the X coordinate of the window to X"
 msgstr "Ändra X-koordinaten för fönstret till X"
 
-#: ../libwnck/wnckprop.c:206
+#: ../libwnck/wnckprop.c:243
 msgid "Change the Y coordinate of the window to Y"
 msgstr "Ändra Y-koordinaten för fönstret till Y"
 
-#: ../libwnck/wnckprop.c:208
+#: ../libwnck/wnckprop.c:245
 msgid "Change the width of the window to WIDTH"
 msgstr "Ändra bredden på fönstret till BREDD"
 
-#: ../libwnck/wnckprop.c:208
+#: ../libwnck/wnckprop.c:245
 msgid "WIDTH"
 msgstr "BREDD"
 
-#: ../libwnck/wnckprop.c:210
+#: ../libwnck/wnckprop.c:247
 msgid "Change the height of the window to HEIGHT"
 msgstr "Ändra höjden på fönstret till HÖJD"
 
-#: ../libwnck/wnckprop.c:210
+#: ../libwnck/wnckprop.c:247
 msgid "HEIGHT"
 msgstr "HÖJD"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:213
+#: ../libwnck/wnckprop.c:250
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash"
+"dialog, toolbar, menu, utility, splash)"
 msgstr ""
 "Ändra typen för fönstret till TYP (giltiga värden: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash"
+"dialog, toolbar, menu, utility, splash)"
 
-#: ../libwnck/wnckprop.c:213
+#: ../libwnck/wnckprop.c:250
 msgid "TYPE"
 msgstr "TYP"
 
-#: ../libwnck/wnckprop.c:225 ../libwnck/wnckprop.c:294
-#: ../libwnck/wnckprop.c:300 ../libwnck/wnckprop.c:309
-#: ../libwnck/wnckprop.c:320
-#, c-format
-msgid "Conflicting options are present: %s and %s\n"
-msgstr "Flaggorna står i konflikt med varandra: %s och %s\n"
+#: ../libwnck/wnckprop.c:256
+msgid "Change the name of the workspace to NAME"
+msgstr "Ändra namnet på arbetsytan till NAMN"
 
-#: ../libwnck/wnckprop.c:243
+#: ../libwnck/wnckprop.c:256
+msgid "NAME"
+msgstr "NAMN"
+
+#: ../libwnck/wnckprop.c:258
+msgid "Activate the workspace"
+msgstr "Aktivera arbetsytan"
+
+#: ../libwnck/wnckprop.c:350 ../libwnck/wnckprop.c:374
+#: ../libwnck/wnckprop.c:410 ../libwnck/wnckprop.c:433
+#, c-format
+msgid "Invalid value \"%s\" for --%s"
+msgstr "Ogiltigt värde \"%s\" för --%s"
+
+#: ../libwnck/wnckprop.c:467 ../libwnck/wnckprop.c:486
 #, c-format
 msgid ""
-"Invalid argument \"%d\" for %s: the argument must be strictly positive\n"
+"Conflicting options are present: screen %d should be interacted with, but --%"
+"s has been used\n"
 msgstr ""
-"Ogiltigt argument \"%d\" för %s: argumentet måste vara absolut positivt\n"
+"Flaggorna står i konflikt med varandra: skärm %d ska interageras med, men --%"
+"s har använts\n"
 
-#: ../libwnck/wnckprop.c:253
-#, c-format
-msgid "Invalid argument \"%d\" for %s: the argument must be positive\n"
-msgstr "Ogiltigt argument \"%d\" för %s: argumentet måste vara positivt\n"
-
-#: ../libwnck/wnckprop.c:265
+#: ../libwnck/wnckprop.c:476
 #, c-format
 msgid ""
-"Conflicting options are present: an option to modify a property of the "
-"screen and %s\n"
+"Conflicting options are present: windows or workspaces of screen %d should "
+"be listed, but --%s has been used\n"
 msgstr ""
-"Flaggorna står i konflikt med varandra: en flagga för att ändra en egenskap "
-"på skärmen och %s\n"
+"Flaggor står i konflikt: fönster eller arbetsytor för skärm %d ska listas, "
+"men --%s har använts\n"
 
-#: ../libwnck/wnckprop.c:339
+#: ../libwnck/wnckprop.c:499 ../libwnck/wnckprop.c:519
 #, c-format
-msgid "Conflicting options are present: %s or %s, and %s\n"
-msgstr "Flaggorna står i konflikt med varandra: %s eller %s, och %s\n"
-
-#: ../libwnck/wnckprop.c:370
-#, c-format
-msgid "Invalid argument \"%s\" for %s, valid values are: %s\n"
-msgstr "Ogiltigt argument \"%s\" för %s, giltiga värden är: %s\n"
-
-#: ../libwnck/wnckprop.c:383
 msgid ""
-"Options for window and screen are present: the options cannot be mixed\n"
+"Conflicting options are present: workspace %d should be interacted with, but "
+"--%s has been used\n"
 msgstr ""
-"Flaggor för både fönster och skärm har angivits: flaggorna kan inte blandas\n"
+"Flaggorna står i konflikt med varandra: arbetsyta %d ska interageras med, "
+"men --%s har använts\n"
 
-#: ../libwnck/wnckprop.c:414
+#: ../libwnck/wnckprop.c:509
+#, c-format
+msgid ""
+"Conflicting options are present: windows of workspace %d should be listed, "
+"but --%s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: fönster på arbetsyta %d ska listas, "
+"men --%s har använts\n"
+
+#: ../libwnck/wnckprop.c:531
+#, c-format
+msgid ""
+"Conflicting options are present: an application should be interacted with, "
+"but --%s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: ett program ska interageras med, men "
+"--%s har använts\n"
+
+#: ../libwnck/wnckprop.c:541
+#, c-format
+msgid ""
+"Conflicting options are present: windows of an application should be listed, "
+"but --%s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: fönster för ett program ska listas, "
+"men --%s har använts\n"
+
+#: ../libwnck/wnckprop.c:553
+#, c-format
+msgid ""
+"Conflicting options are present: class group \"%s\" should be interacted "
+"with, but --%s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: klassgruppen \"%s\" ska interageras "
+"med, men --%s har använts\n"
+
+#: ../libwnck/wnckprop.c:563
+#, c-format
+msgid ""
+"Conflicting options are present: windows of class group \"%s\" should be "
+"listed, but --%s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: fönster för klassgruppen \"%s\" ska "
+"listas, men --%s har använts\n"
+
+#: ../libwnck/wnckprop.c:575 ../libwnck/wnckprop.c:584
+#, c-format
+msgid ""
+"Conflicting options are present: a window should be interacted with, but --%"
+"s has been used\n"
+msgstr ""
+"Flaggorna står i konflikt med varandra: ett fönster ska interageras med, men "
+"--%s har använts\n"
+
+#: ../libwnck/wnckprop.c:603 ../libwnck/wnckprop.c:684
+#: ../libwnck/wnckprop.c:731
+#, c-format
+msgid "Conflicting options are present: --%s and --%s\n"
+msgstr "Flaggorna står i konflikt med varandra: --%s och --%s\n"
+
+#: ../libwnck/wnckprop.c:642
+#, c-format
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgstr ""
+"Ogiltigt argument \"%d\" för --%s: argumentet måste vara absolut positivt\n"
+
+#: ../libwnck/wnckprop.c:655
+#, c-format
+msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
+msgstr "Ogiltigt argument \"%d\" för --%s: argumentet måste vara positivt\n"
+
+#: ../libwnck/wnckprop.c:750
+#, c-format
+msgid "Conflicting options are present: --%s or --%s, and --%s\n"
+msgstr "Flaggorna står i konflikt med varandra: --%s eller --%s, och --%s\n"
+
+#: ../libwnck/wnckprop.c:782
+#, c-format
+msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
+msgstr "Ogiltigt argument \"%s\" för --%s, giltiga värden är: %s\n"
+
+#: ../libwnck/wnckprop.c:825
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr "Kan inte ändra layout på arbetsytan på skärmen: layouten ägs redan\n"
 
-#: ../libwnck/wnckprop.c:430
-#, c-format
-msgid "Workspace %d cannot be activated: the workspace does not exist\n"
-msgstr "Arbetsyta %d kan inte aktiveras: arbetsytan finns inte\n"
-
-#: ../libwnck/wnckprop.c:463
+#: ../libwnck/wnckprop.c:857
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 "Skrivbordsvyn kan inte flyttas: den aktuella arbetsytan innehåller ingen "
 "skrivbordsvy\n"
 
-#: ../libwnck/wnckprop.c:467
+#: ../libwnck/wnckprop.c:861
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "Skrivbordsvyn kan inte flyttas: det finns ingen aktuell arbetsyta\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:489 ../libwnck/wnckprop.c:498
-#: ../libwnck/wnckprop.c:507 ../libwnck/wnckprop.c:514
-#: ../libwnck/wnckprop.c:524 ../libwnck/wnckprop.c:531
-#: ../libwnck/wnckprop.c:540 ../libwnck/wnckprop.c:587
+#: ../libwnck/wnckprop.c:897 ../libwnck/wnckprop.c:906
+#: ../libwnck/wnckprop.c:915 ../libwnck/wnckprop.c:922
+#: ../libwnck/wnckprop.c:932 ../libwnck/wnckprop.c:939
+#: ../libwnck/wnckprop.c:948 ../libwnck/wnckprop.c:997
 msgid "Action not allowed\n"
 msgstr "Åtgärden tillåts inte\n"
 
-#: ../libwnck/wnckprop.c:583
+#: ../libwnck/wnckprop.c:993
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr "Fönstret kan inte flyttas till arbetsyta %d: arbetsytan finns inte\n"
 
-#: ../libwnck/wnckprop.c:649
-msgid "<unexisting workspace?>"
-msgstr "<obefintlig arbetsyta?>"
-
-#. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:652
-#, c-format
-msgid "%d: %s\n"
-msgstr "%d: %s\n"
-
-#: ../libwnck/wnckprop.c:667
-#, c-format
-msgid "Cannot list windows in workspace %d: the workspace does not exist\n"
-msgstr "Kan inte lista fönster i arbetsyta %d: arbetsytan finns inte\n"
-
-#: ../libwnck/wnckprop.c:689 ../libwnck/wnckprop.c:748
+#: ../libwnck/wnckprop.c:1056 ../libwnck/wnckprop.c:1186
 msgid "<name unset>"
 msgstr "<namnet inte inställt>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:692
+#: ../libwnck/wnckprop.c:1059
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
-#: ../libwnck/wnckprop.c:705
+#. Translators: %d is a workspace number and %s a workspace name
+#: ../libwnck/wnckprop.c:1079
+#, c-format
+msgid "%d: %s\n"
+msgstr "%d: %s\n"
+
+#: ../libwnck/wnckprop.c:1142
 #, c-format
 msgid "Screen Number: %d\n"
 msgstr "Skärmnummer: %d\n"
 
-#: ../libwnck/wnckprop.c:707
+#: ../libwnck/wnckprop.c:1144 ../libwnck/wnckprop.c:1222
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "Geometri (bredd, höjd): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:710
+#: ../libwnck/wnckprop.c:1148
 #, c-format
 msgid "Number of Workspaces: %d\n"
 msgstr "Antal arbetsytor: %d\n"
 
-#: ../libwnck/wnckprop.c:716
+#: ../libwnck/wnckprop.c:1154
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "Layout för arbetsyta (rader, kolumner, orientering): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:726 ../libwnck/wnckprop.c:814
+#: ../libwnck/wnckprop.c:1164 ../libwnck/wnckprop.c:1218
+#: ../libwnck/wnckprop.c:1390
 msgid "<no EWMH-compliant window manager>"
 msgstr "<ingen EWMH-godkänd fönsterhanterare>"
 
-#: ../libwnck/wnckprop.c:727
+#: ../libwnck/wnckprop.c:1165
 #, c-format
 msgid "Window Manager: %s\n"
 msgstr "Fönsterhanterare: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:732 ../libwnck/wnckprop.c:800
+#: ../libwnck/wnckprop.c:1170 ../libwnck/wnckprop.c:1242
+#: ../libwnck/wnckprop.c:1253 ../libwnck/wnckprop.c:1264
+#: ../libwnck/wnckprop.c:1275 ../libwnck/wnckprop.c:1376
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
-#: ../libwnck/wnckprop.c:736 ../libwnck/wnckprop.c:756
-#: ../libwnck/wnckprop.c:806
+#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1194
+#: ../libwnck/wnckprop.c:1246 ../libwnck/wnckprop.c:1257
+#: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1279
+#: ../libwnck/wnckprop.c:1335 ../libwnck/wnckprop.c:1382
 msgid "none"
 msgstr "ingen"
 
-#: ../libwnck/wnckprop.c:737
+#: ../libwnck/wnckprop.c:1175
 #, c-format
 msgid "Active Workspace: %s\n"
 msgstr "Aktiv arbetsyta: %s\n"
 
-#: ../libwnck/wnckprop.c:746
+#: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "\"%s\""
 msgstr "\"%s\""
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:751
+#: ../libwnck/wnckprop.c:1189
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
-#: ../libwnck/wnckprop.c:757
+#: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Active Window: %s\n"
 msgstr "Aktivt fönster: %s\n"
 
-#: ../libwnck/wnckprop.c:760
+#: ../libwnck/wnckprop.c:1198
 #, c-format
 msgid "Showing the desktop: %s\n"
 msgstr "Visar skrivbordet: %s\n"
 
-#: ../libwnck/wnckprop.c:761
+#: ../libwnck/wnckprop.c:1200
 msgid "true"
 msgstr "sant"
 
-#: ../libwnck/wnckprop.c:761
+#: ../libwnck/wnckprop.c:1200
 msgid "false"
 msgstr "falskt"
 
-#: ../libwnck/wnckprop.c:780 ../libwnck/wnckprop.c:786
-#: ../libwnck/wnckprop.c:794 ../libwnck/wnckprop.c:857
-#: ../libwnck/wnckprop.c:865 ../libwnck/wnckprop.c:872
+#: ../libwnck/wnckprop.c:1211
+#, c-format
+msgid "Workspace Name: %s\n"
+msgstr "Arbetsytans namn: %s\n"
+
+#: ../libwnck/wnckprop.c:1212
+#, c-format
+msgid "Workspace Number: %d\n"
+msgstr "Arbetsyta nummer: %d\n"
+
+#: ../libwnck/wnckprop.c:1219 ../libwnck/wnckprop.c:1391
+#, c-format
+msgid "On Screen: %d (Window Manager: %s)\n"
+msgstr "På skärm: %d (Fönsterhanterare: %s)\n"
+
+#: ../libwnck/wnckprop.c:1231
+msgid "<no viewport>"
+msgstr "<ingen skrivbordsvy>"
+
+#: ../libwnck/wnckprop.c:1232
+#, c-format
+msgid "Viewport position (x, y): %s\n"
+msgstr "Position för skrivbordsvy (x, y): %s\n"
+
+#: ../libwnck/wnckprop.c:1235
+#, c-format
+msgid "Position in Layout (row, column): %d, %d\n"
+msgstr "Position i layout (rad, kolumn): %d, %d\n"
+
+#: ../libwnck/wnckprop.c:1247
+#, c-format
+msgid "Left Neighbor: %s\n"
+msgstr "Vänstra granne: %s\n"
+
+#: ../libwnck/wnckprop.c:1258
+#, c-format
+msgid "Right Neighbor: %s\n"
+msgstr "Högra granne: %s\n"
+
+#: ../libwnck/wnckprop.c:1269
+#, c-format
+msgid "Top Neighbor: %s\n"
+msgstr "Övre granne: %s\n"
+
+#: ../libwnck/wnckprop.c:1280
+#, c-format
+msgid "Bottom Neighbor: %s\n"
+msgstr "Nedre granne: %s\n"
+
+#: ../libwnck/wnckprop.c:1291
+#, c-format
+msgid "Resource Class: %s\n"
+msgstr "Resursklass: %s\n"
+
+#: ../libwnck/wnckprop.c:1293
+#, c-format
+msgid "Group Name: %s\n"
+msgstr "Gruppnamn: %s\n"
+
+#: ../libwnck/wnckprop.c:1298 ../libwnck/wnckprop.c:1320
+#: ../libwnck/wnckprop.c:1368
+msgid "set"
+msgstr "inställt"
+
+#: ../libwnck/wnckprop.c:1300 ../libwnck/wnckprop.c:1322
+#: ../libwnck/wnckprop.c:1328 ../libwnck/wnckprop.c:1356
+#: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1370
+#: ../libwnck/wnckprop.c:1433 ../libwnck/wnckprop.c:1441
+#: ../libwnck/wnckprop.c:1448
 msgid "<unset>"
 msgstr "<inte inställt>"
 
-#: ../libwnck/wnckprop.c:781
+#: ../libwnck/wnckprop.c:1301 ../libwnck/wnckprop.c:1323
+#: ../libwnck/wnckprop.c:1371
+#, c-format
+msgid "Icons: %s\n"
+msgstr "Ikoner: %s\n"
+
+#: ../libwnck/wnckprop.c:1304 ../libwnck/wnckprop.c:1338
+#, c-format
+msgid "Number of Windows: %d\n"
+msgstr "Antal fönster: %d\n"
+
+#: ../libwnck/wnckprop.c:1316 ../libwnck/wnckprop.c:1357
 #, c-format
 msgid "Name: %s\n"
 msgstr "Namn: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:789
+#: ../libwnck/wnckprop.c:1317 ../libwnck/wnckprop.c:1365
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "Ikonnamn: %s\n"
 
-#: ../libwnck/wnckprop.c:792
-msgid "set"
-msgstr "inställt"
-
-#: ../libwnck/wnckprop.c:795
-#, c-format
-msgid "Icons: %s\n"
-msgstr "Ikoner: %s\n"
-
-#: ../libwnck/wnckprop.c:804
-msgid "all workspaces"
-msgstr "alla arbetsytor"
-
-#: ../libwnck/wnckprop.c:807
-#, c-format
-msgid "On Workspace: %s\n"
-msgstr "På arbetsyta: %s\n"
-
-#: ../libwnck/wnckprop.c:815
-#, c-format
-msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr "På skärm: %d (Fönsterhanterare: %s)\n"
-
-#: ../libwnck/wnckprop.c:822
-msgid "normal window"
-msgstr "normalt fönster"
-
-#: ../libwnck/wnckprop.c:825
-msgid "desktop"
-msgstr "skrivbord"
-
-#: ../libwnck/wnckprop.c:828
-msgid "dock or panel"
-msgstr "docka eller panel"
-
-#: ../libwnck/wnckprop.c:831
-msgid "dialog window"
-msgstr "dialogfönster"
-
-#: ../libwnck/wnckprop.c:834
-msgid "tearoff toolbar"
-msgstr "frikoppla verktygsrad"
-
-#: ../libwnck/wnckprop.c:837
-msgid "tearoff menu"
-msgstr "frikoppla meny"
-
-#: ../libwnck/wnckprop.c:840
-msgid "utility window"
-msgstr "verktygsfönster"
-
-#: ../libwnck/wnckprop.c:843
-msgid "splash screen"
-msgstr "startskärm"
-
-#: ../libwnck/wnckprop.c:848
-#, c-format
-msgid "Window Type: %s\n"
-msgstr "Fönstertyp: %s\n"
-
-#: ../libwnck/wnckprop.c:851
-#, c-format
-msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr "Geometri (x, y, bredd, höjd): %d, %d, %d, %d\n"
-
-#: ../libwnck/wnckprop.c:858
-#, c-format
-msgid "Class Group: %s\n"
-msgstr "Klassgrupp: %s\n"
-
-#: ../libwnck/wnckprop.c:860
-#, c-format
-msgid "XID: %lu\n"
-msgstr "XID: %lu\n"
-
-#: ../libwnck/wnckprop.c:866
+#: ../libwnck/wnckprop.c:1329 ../libwnck/wnckprop.c:1442
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
-#: ../libwnck/wnckprop.c:873
+#: ../libwnck/wnckprop.c:1336
+#, c-format
+msgid "Startup ID: %s\n"
+msgstr "Uppstarts-id: %s\n"
+
+#: ../libwnck/wnckprop.c:1380
+msgid "all workspaces"
+msgstr "alla arbetsytor"
+
+#: ../libwnck/wnckprop.c:1383
+#, c-format
+msgid "On Workspace: %s\n"
+msgstr "På arbetsyta: %s\n"
+
+#: ../libwnck/wnckprop.c:1398
+msgid "normal window"
+msgstr "normalt fönster"
+
+#: ../libwnck/wnckprop.c:1401
+msgid "desktop"
+msgstr "skrivbord"
+
+#: ../libwnck/wnckprop.c:1404
+msgid "dock or panel"
+msgstr "docka eller panel"
+
+#: ../libwnck/wnckprop.c:1407
+msgid "dialog window"
+msgstr "dialogfönster"
+
+#: ../libwnck/wnckprop.c:1410
+msgid "tearoff toolbar"
+msgstr "frikoppla verktygsrad"
+
+#: ../libwnck/wnckprop.c:1413
+msgid "tearoff menu"
+msgstr "frikoppla meny"
+
+#: ../libwnck/wnckprop.c:1416
+msgid "utility window"
+msgstr "verktygsfönster"
+
+#: ../libwnck/wnckprop.c:1419
+msgid "splash screen"
+msgstr "startskärm"
+
+#: ../libwnck/wnckprop.c:1424
+#, c-format
+msgid "Window Type: %s\n"
+msgstr "Fönstertyp: %s\n"
+
+#: ../libwnck/wnckprop.c:1427
+#, c-format
+msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
+msgstr "Geometri (x, y, bredd, höjd): %d, %d, %d, %d\n"
+
+#: ../libwnck/wnckprop.c:1434
+#, c-format
+msgid "Class Group: %s\n"
+msgstr "Klassgrupp: %s\n"
+
+#: ../libwnck/wnckprop.c:1436
+#, c-format
+msgid "XID: %lu\n"
+msgstr "XID: %lu\n"
+
+#: ../libwnck/wnckprop.c:1449
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "Sessions-id: %s\n"
 
-#: ../libwnck/wnckprop.c:876
+#: ../libwnck/wnckprop.c:1452
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "Gruppledare: %lu\n"
 
-#: ../libwnck/wnckprop.c:879
+#: ../libwnck/wnckprop.c:1456
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "Transient för: %lu\n"
 
+#. FIXME: else print something?
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:891 ../libwnck/wnckprop.c:930
+#: ../libwnck/wnckprop.c:1469 ../libwnck/wnckprop.c:1509
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
-#: ../libwnck/wnckprop.c:893 ../libwnck/wnckprop.c:932
+#: ../libwnck/wnckprop.c:1471 ../libwnck/wnckprop.c:1511
 msgid ", "
 msgstr ", "
 
-#: ../libwnck/wnckprop.c:899
+#: ../libwnck/wnckprop.c:1477
 msgid "minimized"
 msgstr "minimerat"
 
-#: ../libwnck/wnckprop.c:900
+#: ../libwnck/wnckprop.c:1478
 msgid "maximized"
 msgstr "maximerat"
 
-#: ../libwnck/wnckprop.c:904
+#: ../libwnck/wnckprop.c:1482
 msgid "maximized horizontally"
 msgstr "maximerat horisontellt"
 
-#: ../libwnck/wnckprop.c:906
+#: ../libwnck/wnckprop.c:1484
 msgid "maximized vertically"
 msgstr "maximerat vertikalt"
 
-#: ../libwnck/wnckprop.c:908
+#: ../libwnck/wnckprop.c:1486
 msgid "shaded"
 msgstr "skuggat"
 
-#: ../libwnck/wnckprop.c:909
+#: ../libwnck/wnckprop.c:1487
 msgid "pinned"
 msgstr "nålat"
 
-#: ../libwnck/wnckprop.c:910
+#: ../libwnck/wnckprop.c:1488
 msgid "sticky"
 msgstr "klistrigt"
 
-#: ../libwnck/wnckprop.c:911
+#: ../libwnck/wnckprop.c:1489
 msgid "above"
 msgstr "ovanför"
 
-#: ../libwnck/wnckprop.c:912
+#: ../libwnck/wnckprop.c:1490
+msgid "below"
+msgstr "under"
+
+#: ../libwnck/wnckprop.c:1491
 msgid "fullscreen"
 msgstr "helskärm"
 
-#: ../libwnck/wnckprop.c:913
+#: ../libwnck/wnckprop.c:1492
 msgid "needs attention"
 msgstr "behöver uppmärksamhet"
 
-#: ../libwnck/wnckprop.c:914
+#: ../libwnck/wnckprop.c:1493
 msgid "skip pager"
 msgstr "hoppa över visare"
 
-#: ../libwnck/wnckprop.c:915
+#: ../libwnck/wnckprop.c:1494
 msgid "skip tasklist"
 msgstr "hoppa över fönsterlista"
 
-#: ../libwnck/wnckprop.c:917
+#: ../libwnck/wnckprop.c:1496
 msgid "normal"
 msgstr "normalt"
 
-#: ../libwnck/wnckprop.c:918
+#: ../libwnck/wnckprop.c:1497
 #, c-format
 msgid "State: %s\n"
 msgstr "Tillstånd: %s\n"
 
-#: ../libwnck/wnckprop.c:939
+#: ../libwnck/wnckprop.c:1518
 msgid "move"
 msgstr "flytta"
 
-#: ../libwnck/wnckprop.c:940
+#: ../libwnck/wnckprop.c:1519
 msgid "resize"
 msgstr "ändra storlek"
 
-#: ../libwnck/wnckprop.c:941
+#: ../libwnck/wnckprop.c:1520
 msgid "shade"
 msgstr "skugga"
 
-#: ../libwnck/wnckprop.c:942
+#: ../libwnck/wnckprop.c:1521
 msgid "unshade"
 msgstr "avskugga"
 
-#: ../libwnck/wnckprop.c:943
+#: ../libwnck/wnckprop.c:1522
 msgid "stick"
 msgstr "klistra"
 
-#: ../libwnck/wnckprop.c:944
+#: ../libwnck/wnckprop.c:1523
 msgid "unstick"
 msgstr "avklistra"
 
-#: ../libwnck/wnckprop.c:946
+#: ../libwnck/wnckprop.c:1525
 msgid "maximize horizontally"
 msgstr "maximera horisontellt"
 
-#: ../libwnck/wnckprop.c:948
+#: ../libwnck/wnckprop.c:1527
 msgid "unmaximize horizontally"
 msgstr "avmaximera horisontellt"
 
-#: ../libwnck/wnckprop.c:950
+#: ../libwnck/wnckprop.c:1529
 msgid "maximize vertically"
 msgstr "maximera vertikalt"
 
-#: ../libwnck/wnckprop.c:952
+#: ../libwnck/wnckprop.c:1531
 msgid "unmaximize vertically"
 msgstr "avmaximera vertikalt"
 
-#: ../libwnck/wnckprop.c:955
+#: ../libwnck/wnckprop.c:1534
 msgid "change workspace"
 msgstr "byt arbetsyta"
 
-#: ../libwnck/wnckprop.c:957
+#: ../libwnck/wnckprop.c:1536
 msgid "pin"
 msgstr "nåla"
 
-#: ../libwnck/wnckprop.c:959
+#: ../libwnck/wnckprop.c:1538
 msgid "unpin"
 msgstr "avnåla"
 
-#: ../libwnck/wnckprop.c:960
+#: ../libwnck/wnckprop.c:1539
 msgid "minimize"
 msgstr "minimera"
 
-#: ../libwnck/wnckprop.c:961
+#: ../libwnck/wnckprop.c:1540
 msgid "unminimize"
 msgstr "avminimera"
 
-#: ../libwnck/wnckprop.c:962
+#: ../libwnck/wnckprop.c:1541
 msgid "maximize"
 msgstr "maximera"
 
-#: ../libwnck/wnckprop.c:963
+#: ../libwnck/wnckprop.c:1542
 msgid "unmaximize"
 msgstr "avmaximera"
 
-#: ../libwnck/wnckprop.c:965
+#: ../libwnck/wnckprop.c:1544
 msgid "change fullscreen mode"
 msgstr "ändra helskärmsläge"
 
-#: ../libwnck/wnckprop.c:966
+#: ../libwnck/wnckprop.c:1545
 msgid "close"
 msgstr "stäng"
 
-#: ../libwnck/wnckprop.c:968
+#: ../libwnck/wnckprop.c:1547
 msgid "make above"
 msgstr "lägg ovanför"
 
-#: ../libwnck/wnckprop.c:970
+#: ../libwnck/wnckprop.c:1549
 msgid "unmake above"
 msgstr "inaktivera ovanför"
 
-#: ../libwnck/wnckprop.c:972
+#: ../libwnck/wnckprop.c:1551
 msgid "make below"
 msgstr "lägg under"
 
-#: ../libwnck/wnckprop.c:974
+#: ../libwnck/wnckprop.c:1553
 msgid "unmake below"
 msgstr "inaktivera under"
 
-#: ../libwnck/wnckprop.c:976
+#: ../libwnck/wnckprop.c:1555
 msgid "no action possible"
 msgstr "ingen åtgärd är möjlig"
 
-#: ../libwnck/wnckprop.c:977
+#: ../libwnck/wnckprop.c:1556
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr "Möjliga åtgärder: %s\n"
 
-#: ../libwnck/wnckprop.c:1164
+#: ../libwnck/wnckprop.c:1733
 msgid ""
-"Print or modify the properties of a screen or a window, or interact with a "
-"screen or a window, following the EWMH specification.\n"
+"Print or modify the properties of a screen/workspace/window, or interact "
+"with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"Skriv ut eller ändra egenskaperna för en skärm eller ett fönster, eller "
-"interagera med en skärm eller ett fönster enligt EWMH-specifikationen.\n"
+"Skriv ut eller ändra egenskaperna för en skärm/arbetsyta/fönster, eller "
+"interagera med den/det, enligt EWMH-specifikationen.\n"
 "För information om den här specifikationen, se:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1175
+#: ../libwnck/wnckprop.c:1743
 msgid "Options to list windows or workspaces"
 msgstr "Flaggor för att lista fönster eller arbetsytor"
 
-#: ../libwnck/wnckprop.c:1176
+#: ../libwnck/wnckprop.c:1744
 msgid "Show options to list windows or workspaces"
 msgstr "Visa flaggor för att lista fönster eller arbetsytor"
 
-#: ../libwnck/wnckprop.c:1182
+#: ../libwnck/wnckprop.c:1750
 msgid "Options to modify properties of a window"
 msgstr "Flaggor för att ändra egenskaper för ett fönster"
 
-#: ../libwnck/wnckprop.c:1183
+#: ../libwnck/wnckprop.c:1751
 msgid "Show options to modify properties of a window"
 msgstr "Visa flaggor för att ändra egenskaper för ett fönster"
 
-#: ../libwnck/wnckprop.c:1189
+#: ../libwnck/wnckprop.c:1757
+msgid "Options to modify properties of a workspace"
+msgstr "Flaggor för att ändra egenskaper för en arbetsyta"
+
+#: ../libwnck/wnckprop.c:1758
+msgid "Show options to modify properties of a workspace"
+msgstr "Visa flaggor för att ändra egenskaper för en arbetsyta"
+
+#: ../libwnck/wnckprop.c:1764
 msgid "Options to modify properties of a screen"
 msgstr "Flaggor för att ändra egenskaper för en skärm"
 
-#: ../libwnck/wnckprop.c:1190
+#: ../libwnck/wnckprop.c:1765
 msgid "Show options to modify properties of a screen"
 msgstr "Visa flaggor för att ändra egenskaper för en skärm"
 
-#: ../libwnck/wnckprop.c:1200
+#: ../libwnck/wnckprop.c:1775
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "Fel vid tolkning av argument: %s\n"
 
-#: ../libwnck/wnckprop.c:1221
+#: ../libwnck/wnckprop.c:1798
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "Kan inte interagera med skärm %d: skärmen finns inte\n"
+
+#: ../libwnck/wnckprop.c:1854
+#, c-format
+msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
+msgstr "Kan inte interagera med arbetsyta %d: arbetsytan kan inte hittas\n"
+
+#: ../libwnck/wnckprop.c:1876
+#, c-format
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr ""
+"Kan inte interagera med klassgruppen \"%s\": klassgruppen kan inte hittas\n"
+
+#: ../libwnck/wnckprop.c:1899
+#, c-format
+msgid ""
+"Cannot interact with application having its group leader with XID %lu: the "
+"application cannot be found\n"
+msgstr ""
+"Kan inte interagera med program som har sin gruppledare med XID %lu: "
+"programmet kan inte hittas\n"
+
+#: ../libwnck/wnckprop.c:1922
+#, c-format
+msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
+msgstr ""
+"Kan inte interagera med fönstret med XID %lu: fönstret kan inte hittas\n"
+
+#~ msgid ""
+#~ "List windows of the screen in workspace NUMBER (format: \"XID: Window Name"
+#~ "\")"
+#~ msgstr ""
+#~ "Lista fönstren på skärmen i arbetsyta NUMMER (format: \"XID: fönsternamn"
+#~ "\")"
+
+#~ msgid "Change the current workspace to workspace NUMBER"
+#~ msgstr "Ändra den aktuella arbetsytan till arbetsyta NUMMER"
+
+#~ msgid ""
+#~ "Options for window and screen are present: the options cannot be mixed\n"
+#~ msgstr ""
+#~ "Flaggor för både fönster och skärm har angivits: flaggorna kan inte "
+#~ "blandas\n"
+
+#~ msgid "Workspace %d cannot be activated: the workspace does not exist\n"
+#~ msgstr "Arbetsyta %d kan inte aktiveras: arbetsytan finns inte\n"
+
+#~ msgid "<unexisting workspace?>"
+#~ msgstr "<obefintlig arbetsyta?>"
 
 #~ msgid "Unknown Window"
 #~ msgstr "Okänt fönster"
