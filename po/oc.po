@@ -60,7 +60,7 @@ msgstr ""
 
 #: ../libwnck/tasklist.c:2536
 msgid "_Close All"
-msgstr "Tot _barrar"
+msgstr "Tot _Tampar"
 
 #: ../libwnck/tasklist.c:2551
 msgid "_Minimize All"
@@ -122,7 +122,7 @@ msgstr ""
 
 #: ../libwnck/window-action-menu.c:592
 msgid "_Close"
-msgstr "_Barrar"
+msgstr "_Tampar"
 
 #: ../libwnck/window-action-menu.c:626
 msgid "Move to Workspace _Left"
