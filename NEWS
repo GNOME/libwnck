@@ -1,3 +1,27 @@
+2.19.6
+======
+
+ Fixes
+
+  - Make the window action menu work with viewport (Vincent) [#352383]
+  - Correctly draw workspaces with viewport in the pager (Vincent)
+  - Fix typo in a string of wnckprop (Theppitak Karoonboonyanan)
+
+ Misc
+
+  - Various API documentation improvements (Vincent)
+
+ Translators
+
+  - Alexander Shopov (bg)
+  - Jorge González (es)
+  - Pauli Virtanen (fi)
+  - Kjartan Maraas (nb)
+  - Vincent van Adrighem (nl)
+  - Daniel Nylander (sv)
+  - Theppitak Karoonboonyanan (th)
+  - Wang Jian (zh_CN)
+
 2.19.5
 ======
 
