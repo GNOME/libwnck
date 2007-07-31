@@ -1,3 +1,9 @@
+2007-07-30  Ray Strode  <rstrode@redhat.com>
+
+	* libwnck/tasklist.c (wnck_task_finalize): remove weak 
+	pointers on fields in task structure before freeing task
+	block (bug 139080)
+
 2007-07-30  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.19.90
