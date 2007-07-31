@@ -492,6 +492,8 @@ wnck_task_finalize (GObject *object)
 
   if (task->button)
     {
+      g_object_remove_weak_pointer (G_OBJECT (task->button),
+                                    (void**) &task->button);
       gtk_widget_destroy (task->button);
       task->button = NULL;
     }
@@ -542,6 +544,8 @@ wnck_task_finalize (GObject *object)
 
   if (task->action_menu)
     {
+      g_object_remove_weak_pointer (G_OBJECT (task->action_menu),
+                                    (void**) &task->action_menu);
       g_object_unref (task->action_menu);
       task->action_menu = NULL;
     }
