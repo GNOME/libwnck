@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-15 19:57+0100\n"
+"POT-Creation-Date: 2007-08-06 16:40+0300\n"
 "PO-Revision-Date: 2006-09-13 18:23+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -79,31 +79,31 @@ msgstr "Ikkunanvalitsin"
 msgid "Tool to switch between windows"
 msgstr "Työkalu, jolla voi siirtyä ikkunoiden välillä"
 
-#: ../libwnck/tasklist.c:716
+#: ../libwnck/tasklist.c:720
 msgid "Window List"
 msgstr "Ikkunaluettelo"
 
-#: ../libwnck/tasklist.c:717
+#: ../libwnck/tasklist.c:721
 msgid "Tool to switch between visible windows"
 msgstr "Työkalu, jolla voi siirtyä näkyvien ikkunoiden välillä"
 
-#: ../libwnck/tasklist.c:3001
+#: ../libwnck/tasklist.c:3005
 msgid "Mi_nimize All"
 msgstr "_Pienennä kaikki"
 
-#: ../libwnck/tasklist.c:3012
+#: ../libwnck/tasklist.c:3016
 msgid "Un_minimize All"
 msgstr "_Palauta kaikki"
 
-#: ../libwnck/tasklist.c:3020
+#: ../libwnck/tasklist.c:3024
 msgid "Ma_ximize All"
 msgstr "S_uurenna kaikki"
 
-#: ../libwnck/tasklist.c:3031
+#: ../libwnck/tasklist.c:3035
 msgid "_Unmaximize All"
 msgstr "_Palauta kaikki"
 
-#: ../libwnck/tasklist.c:3043
+#: ../libwnck/tasklist.c:3047
 msgid "_Close All"
 msgstr "_Sulje kaikki"
 
@@ -271,7 +271,7 @@ msgstr "NUMERO"
 
 #: ../libwnck/wnckprop.c:148
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "Tutkittavan tai muokattavan näytön NUMERO"
 
 #: ../libwnck/wnckprop.c:150
 msgid "Alias of --window"
@@ -282,23 +282,25 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
+"Näytä sovelluksen/luokan, ryhmän/työpöydän/ruudun ikkunat (näyttömuoto: "
+"\"XID: Window Name\")"
 
 #: ../libwnck/wnckprop.c:158
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgstr "Näytä ruudun työtilat (näyttömuoto: \"Numero: Työtilan nimi\")"
 
 #: ../libwnck/wnckprop.c:164
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Muuta ruudun työtilojen lukumääräksi NUMERO"
 
 #: ../libwnck/wnckprop.c:166
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "Muuta työtilojen asettelu käyttämään NUMEROa riviä"
 
 #: ../libwnck/wnckprop.c:168
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "Muuta työtilojen asettelu käyttämään NUMEROa saraketta"
 
 #: ../libwnck/wnckprop.c:170
 msgid "Show the desktop"
@@ -310,7 +312,7 @@ msgstr "Lopeta työpöydän näyttäminen"
 
 #: ../libwnck/wnckprop.c:174
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Siirrä nykyisen työtilan katselunäkymä X-koordinaattin X"
 
 #: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:241
 msgid "X"
@@ -318,11 +320,11 @@ msgstr "X"
 
 #: ../libwnck/wnckprop.c:176
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Siirrä nykyisen työtilan katselunäkymä Y-koordinaattin Y"
 
 #: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:243
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../libwnck/wnckprop.c:182
 msgid "Minimize the window"
@@ -334,7 +336,7 @@ msgstr "Palauta ikkuna"
 
 #: ../libwnck/wnckprop.c:186
 msgid "Maximize the window"
-msgstr ""
+msgstr "Suurenna ikkuna"
 
 #: ../libwnck/wnckprop.c:188
 msgid "Unmaximize the window"
@@ -342,27 +344,27 @@ msgstr "Pa_lauta ikkunan koko"
 
 #: ../libwnck/wnckprop.c:190
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "Suurenna ikkuna vaakasuunnassa"
 
 #: ../libwnck/wnckprop.c:192
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "Peru ikkunan suurennus vaakasuunnassa"
 
 #: ../libwnck/wnckprop.c:194
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "Suurenna ikkunan pystysuunnassa"
 
 #: ../libwnck/wnckprop.c:196
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "Peru ikkunan suurennus pystysuunnassa"
 
 #: ../libwnck/wnckprop.c:198
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "Aloita ikkunan siirtäminen näppäimistöltä"
 
 #: ../libwnck/wnckprop.c:200
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "Aloita ikkunan koon muuttaminen näppäimistöltä"
 
 #: ../libwnck/wnckprop.c:202
 msgid "Activate the window"
@@ -374,27 +376,27 @@ msgstr "Sulje ikkuna"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Tee ikkunasta koko ruudun kokoinen"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "Palauta ikkuna kokoruututilasta"
 
 #: ../libwnck/wnckprop.c:211
 msgid "Make the window always on top"
-msgstr ""
+msgstr "Pidä ikkuna aina päällimmäisenä"
 
 #: ../libwnck/wnckprop.c:213
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "Peru ikkunan olo aina päällimmäisenä"
 
 #: ../libwnck/wnckprop.c:215
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "Pidä ikkuna aina muiden ikkunoiden alla"
 
 #: ../libwnck/wnckprop.c:217
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "Peru ikkunan olo aina muiden alla"
 
 #: ../libwnck/wnckprop.c:219
 msgid "Shade the window"
@@ -406,63 +408,63 @@ msgstr "Avaa rullattu ikkuna"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Kiinnitä ikkuna tiettyyn paikkaan katselunäkymässä"
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "Irrota ikkunan kiinnitys tiettyyn paikkaan katselunäkymässä"
 
 #: ../libwnck/wnckprop.c:227
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "Piilota ikkuna työtilanäkymistä"
 
 #: ../libwnck/wnckprop.c:229
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "Näytä ikkuna työtilanäkymissä"
 
 #: ../libwnck/wnckprop.c:231
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Piilota ikkuna tehtävälistoista"
 
 #: ../libwnck/wnckprop.c:233
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Näytä ikkuna tehtävälistoissa"
 
 #: ../libwnck/wnckprop.c:235
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "Näytä ikkuna kaikissa työtiloissa"
 
 #: ../libwnck/wnckprop.c:237
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Näytä ikkunan vain tässä työtilassa"
 
 #: ../libwnck/wnckprop.c:239
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Siirrä ikkuna työtilaan NUMERO (ensimmäinen on numero 0)"
 
 #: ../libwnck/wnckprop.c:241
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "Muuta ikkunan X-koordinaatti arvoon X"
 
 #: ../libwnck/wnckprop.c:243
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "Muuta ikkunan Y-koordinaatti arvoon Y"
 
 #: ../libwnck/wnckprop.c:245
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "Muuta ikkunan leveys arvoon LEVEYS"
 
 #: ../libwnck/wnckprop.c:245
 msgid "WIDTH"
-msgstr ""
+msgstr "LEVEYS"
 
 #: ../libwnck/wnckprop.c:247
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "Muuta ikkunan korkeus arvoon KORKEUS"
 
 #: ../libwnck/wnckprop.c:247
 msgid "HEIGHT"
-msgstr ""
+msgstr "KORKEUS"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:250
@@ -470,18 +472,20 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"Muuta ikkunan tyypiksi TYYPPI (kelvolliset arvot: normal, desktop, dock, "
+"dialog, toolbar, menu, utility tai splash)"
 
 #: ../libwnck/wnckprop.c:250
 msgid "TYPE"
-msgstr ""
+msgstr "TYYPPI"
 
 #: ../libwnck/wnckprop.c:256
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "Muuta työtilan nimi arvoon NIMI"
 
 #: ../libwnck/wnckprop.c:256
 msgid "NAME"
-msgstr ""
+msgstr "NIMI"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Activate the workspace"
@@ -491,7 +495,7 @@ msgstr "Siirry työtilaan"
 #: ../libwnck/wnckprop.c:410 ../libwnck/wnckprop.c:433
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "Virheellinen arvo \"%s\" valitsimelle --%s"
 
 #: ../libwnck/wnckprop.c:467 ../libwnck/wnckprop.c:486
 #, c-format
@@ -499,6 +503,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti käsitellä ruutua %d, mutta havaittiin "
+"valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:476
 #, c-format
@@ -506,6 +512,8 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti näyttää ruudun %d ikkunoita tai työtiloja, "
+"mutta havaittiin valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:499 ../libwnck/wnckprop.c:519
 #, c-format
@@ -513,6 +521,8 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti käsitellä työtilaa %d, mutta havaittiin "
+"valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:509
 #, c-format
@@ -520,6 +530,8 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti näyttää työtilan %d ikkunat, mutta "
+"havaittiin valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:531
 #, c-format
@@ -527,6 +539,8 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti käsitellä sovellusta, mutta havaittiin "
+"valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:541
 #, c-format
@@ -534,6 +548,8 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti näyttää sovelluksen ikkunat, mutta "
+"havaittiin valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:553
 #, c-format
@@ -541,6 +557,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti käsitellä luokkaryhmää \"%s\", mutta "
+"havaittiin valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:563
 #, c-format
@@ -548,6 +566,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti näyttää luokkaryhmää \"%s\" ikkunat, mutta "
+"havaittiin valitsin --%s\n"
 
 #: ../libwnck/wnckprop.c:575 ../libwnck/wnckprop.c:584
 #, c-format
@@ -555,48 +575,55 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Ristiriitaisia valitsimia: piti käsitellä ikkunaa, mutta havaittiin valitsin "
+"--%s\n"
 
 #: ../libwnck/wnckprop.c:603 ../libwnck/wnckprop.c:684
 #: ../libwnck/wnckprop.c:731
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Ristiriitaisia valitsimia: --%s ja --%s\n"
 
 #: ../libwnck/wnckprop.c:642
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
+"Virheellinen arvo \"%d\" valitsimelle --%s: arvon tulee olla positiivinen "
+"kokonaisluku\n"
 
 #: ../libwnck/wnckprop.c:655
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr ""
+"virheellinen arvo \"%d\" valitsimelle --%s: arvon tulee olla positiivinen\n"
 
 #: ../libwnck/wnckprop.c:750
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Ristiriitaisia valitsimia: --%s tai --%s ja --%s\n"
 
 #: ../libwnck/wnckprop.c:782
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr ""
+"Virheellinen arvo \"%s\" valitsimelle --%s, kelvolliset arvot ovat: %s\n"
 
 #: ../libwnck/wnckprop.c:825
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr ""
+msgstr "Ruudun työtilojen asettelua ei voi muuttaa: asettelu on jo omistettu\n"
 
 #: ../libwnck/wnckprop.c:857
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
+"Katselunäkymää ei voi siirtää: nykyisessä työtilassa ei ole katselunäkymää\n"
 
 #: ../libwnck/wnckprop.c:861
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "Katselunäkymää ei voi siirtää: nykyistä työtilaa ei ole määritelty\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:897 ../libwnck/wnckprop.c:906
@@ -604,38 +631,38 @@ msgstr ""
 #: ../libwnck/wnckprop.c:932 ../libwnck/wnckprop.c:939
 #: ../libwnck/wnckprop.c:948 ../libwnck/wnckprop.c:997
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "Toiminto ei ole sallittu\n"
 
 #: ../libwnck/wnckprop.c:993
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "Ikkunaa ei voi siirtää työtilaan %d: työtilaa ei ole olemassa\n"
 
 #: ../libwnck/wnckprop.c:1056 ../libwnck/wnckprop.c:1186
 msgid "<name unset>"
-msgstr ""
+msgstr "<nimeä ei ole asetettu>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1059
 #, c-format
 msgid "%lu: %s\n"
-msgstr ""
+msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1079
 #, c-format
 msgid "%d: %s\n"
-msgstr ""
+msgstr "%d: %s\n"
 
 #: ../libwnck/wnckprop.c:1142
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "Ruudun numero: %d\n"
 
 #: ../libwnck/wnckprop.c:1144 ../libwnck/wnckprop.c:1222
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr ""
+msgstr "Geometria (leveys, korkeus): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1148
 #, c-format
@@ -896,7 +923,7 @@ msgstr "%1$s%2$s%3$s"
 
 #: ../libwnck/wnckprop.c:1471 ../libwnck/wnckprop.c:1511
 msgid ", "
-msgstr ","
+msgstr ", "
 
 #: ../libwnck/wnckprop.c:1477
 msgid "minimized"
@@ -920,7 +947,7 @@ msgstr "rullattu"
 
 #: ../libwnck/wnckprop.c:1487
 msgid "pinned"
-msgstr ""
+msgstr "kiinnitetty"
 
 #: ../libwnck/wnckprop.c:1488
 msgid "sticky"
@@ -1005,11 +1032,11 @@ msgstr "vaihda työtilaa"
 
 #: ../libwnck/wnckprop.c:1536
 msgid "pin"
-msgstr ""
+msgstr "kiinnitä"
 
 #: ../libwnck/wnckprop.c:1538
 msgid "unpin"
-msgstr ""
+msgstr "irrota"
 
 #: ../libwnck/wnckprop.c:1539
 msgid "minimize"
@@ -1067,6 +1094,10 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Tulosta tai muokkaa näytön, työtilan tai ikkunan ominaisuuksia, tai "
+"käsittele niitä interaktiivisesti EWMH-määrittelyn mukaan.\n"
+"Lisätietoja tästä määrittelystä:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1743
 msgid "Options to list windows or workspaces"
@@ -1078,27 +1109,27 @@ msgstr "Näytä valitsimet, joilla listataan ikkunoita tai työpöytiä"
 
 #: ../libwnck/wnckprop.c:1750
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "Valitsimet ikkunan ominaisuuksien muuttamiseksi"
 
 #: ../libwnck/wnckprop.c:1751
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Näytä valitsimet, joilla muutetaan ikkunan ominaisuuksia"
 
 #: ../libwnck/wnckprop.c:1757
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Valitsimet työtilan ominaisuuksien muuttamiseksi"
 
 #: ../libwnck/wnckprop.c:1758
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "Näytä valitsimet, joilla muutetaan työtilan ominaisuuksia"
 
 #: ../libwnck/wnckprop.c:1764
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "Valitsimet ruudun ominaisuuksien muuttamiseksi"
 
 #: ../libwnck/wnckprop.c:1765
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "Näytä valitsimet, joilla muutetaan ruudun ominaisuuksia"
 
 #: ../libwnck/wnckprop.c:1775
 #, c-format
@@ -1108,18 +1139,18 @@ msgstr "Virhe tulkittaessa argumentteja: %s\n"
 #: ../libwnck/wnckprop.c:1798
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "Ruutua %d ei voi käsitellä: ruutua ei ole olemassa\n"
 
 #: ../libwnck/wnckprop.c:1854
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "Työtilaa %d ei voi käsitellä: työtilaa ei löydy\n"
 
 #: ../libwnck/wnckprop.c:1876
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgstr "Luokkaryhmää \"%s\" ei voi käsitellä: luokkaryhmää ei löydy\n"
 
 #: ../libwnck/wnckprop.c:1899
 #, c-format
@@ -1127,11 +1158,13 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
+"Sovellusta, jonka ryhmänjohtajan XID on %lu, ei voi käsitellä: sovellusta ei "
+"löydy\n"
 
 #: ../libwnck/wnckprop.c:1922
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "Ikkunaa, jonka XID on %lu, ei voi käsitellä: ikkunaa ei löydy\n"
 
 #~ msgid "Unknown Window"
 #~ msgstr "Tuntematon ikkuna"
