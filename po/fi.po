@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-06 16:40+0300\n"
+"POT-Creation-Date: 2007-08-13 19:50+0300\n"
 "PO-Revision-Date: 2006-09-13 18:23+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -173,6 +173,7 @@ msgid "Workspace %d"
 msgstr "Työtila %d"
 
 #: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
+#, c-format
 msgid "Workspace 1_0"
 msgstr "Työtila 1_0"
 
@@ -610,18 +611,21 @@ msgstr ""
 "Virheellinen arvo \"%s\" valitsimelle --%s, kelvolliset arvot ovat: %s\n"
 
 #: ../libwnck/wnckprop.c:825
+#, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr "Ruudun työtilojen asettelua ei voi muuttaa: asettelu on jo omistettu\n"
 
 #: ../libwnck/wnckprop.c:857
+#, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 "Katselunäkymää ei voi siirtää: nykyisessä työtilassa ei ole katselunäkymää\n"
 
 #: ../libwnck/wnckprop.c:861
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "Katselunäkymää ei voi siirtää: nykyistä työtilaa ei ole määritelty\n"
 
@@ -630,6 +634,7 @@ msgstr "Katselunäkymää ei voi siirtää: nykyistä työtilaa ei ole määrite
 #: ../libwnck/wnckprop.c:915 ../libwnck/wnckprop.c:922
 #: ../libwnck/wnckprop.c:932 ../libwnck/wnckprop.c:939
 #: ../libwnck/wnckprop.c:948 ../libwnck/wnckprop.c:997
+#, c-format
 msgid "Action not allowed\n"
 msgstr "Toiminto ei ole sallittu\n"
 
@@ -912,7 +917,7 @@ msgstr "Ryhmänjohtaja: %lu\n"
 #: ../libwnck/wnckprop.c:1456
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "Ali-ikkuna tunnisteelle: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
@@ -951,7 +956,7 @@ msgstr "kiinnitetty"
 
 #: ../libwnck/wnckprop.c:1488
 msgid "sticky"
-msgstr ""
+msgstr "tahmea"
 
 #: ../libwnck/wnckprop.c:1489
 msgid "above"
@@ -1004,11 +1009,11 @@ msgstr "peru rullaus"
 
 #: ../libwnck/wnckprop.c:1522
 msgid "stick"
-msgstr ""
+msgstr "tee tahmeaksi"
 
 #: ../libwnck/wnckprop.c:1523
 msgid "unstick"
-msgstr ""
+msgstr "peru tahmeus"
 
 #: ../libwnck/wnckprop.c:1525
 msgid "maximize horizontally"
@@ -1036,7 +1041,7 @@ msgstr "kiinnitä"
 
 #: ../libwnck/wnckprop.c:1538
 msgid "unpin"
-msgstr "irrota"
+msgstr "vapauta"
 
 #: ../libwnck/wnckprop.c:1539
 msgid "minimize"
