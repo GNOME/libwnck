@@ -1,3 +1,21 @@
+2.19.90
+=======
+
+ Fixes
+
+  - Remove weak pointers on fields in task structure before freeing 
+    task block (Ray Strode) [#139080]
+
+ Translators
+
+  - Ihar Hrachyshka (be@latin)
+  - Takeshi Aihana (ja)
+  - Inaki Larranaga Murgoitio (eu)
+  - Ilkka Tuohela (fi)
+  - Ankit Patel (gu)
+  - I. Felix (ta)
+  - Žygimantas Beručka (lt)
+
 2.19.6
 ======
 

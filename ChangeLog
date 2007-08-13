@@ -1,3 +1,10 @@
+==================== 2.19.90 ====================
+
+2007-08-13  Lucas Rocha  <lucasr@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.19.90
+
 2007-07-30  Ray Strode  <rstrode@redhat.com>
 
 	* libwnck/tasklist.c (wnck_task_finalize): remove weak 
