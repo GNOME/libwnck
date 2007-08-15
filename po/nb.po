@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-15 19:27+0200\n"
-"PO-Revision-Date: 2007-07-15 19:30+0200\n"
+"POT-Creation-Date: 2007-08-15 12:50+0200\n"
+"PO-Revision-Date: 2007-08-15 12:57+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian <i18n-nb@lister.ping.uio.n>\n"
 "MIME-Version: 1.0\n"
@@ -77,31 +77,31 @@ msgstr "Vinduvelger"
 msgid "Tool to switch between windows"
 msgstr "Verktøy for å bytte mellom vinduer"
 
-#: ../libwnck/tasklist.c:716
+#: ../libwnck/tasklist.c:720
 msgid "Window List"
 msgstr "Vinduliste"
 
-#: ../libwnck/tasklist.c:717
+#: ../libwnck/tasklist.c:721
 msgid "Tool to switch between visible windows"
 msgstr "Verktøy for å bytte mellom synlige vinduer"
 
-#: ../libwnck/tasklist.c:3002
+#: ../libwnck/tasklist.c:3006
 msgid "Mi_nimize All"
 msgstr "Mi_nimer alle"
 
-#: ../libwnck/tasklist.c:3013
+#: ../libwnck/tasklist.c:3017
 msgid "Un_minimize All"
 msgstr "Gjen_opprett alle"
 
-#: ../libwnck/tasklist.c:3021
+#: ../libwnck/tasklist.c:3025
 msgid "Ma_ximize All"
 msgstr "Ma_ksimer alle"
 
-#: ../libwnck/tasklist.c:3032
+#: ../libwnck/tasklist.c:3036
 msgid "_Unmaximize All"
 msgstr "Gjeno_pprett alle"
 
-#: ../libwnck/tasklist.c:3044
+#: ../libwnck/tasklist.c:3048
 msgid "_Close All"
 msgstr "_Lukk alle"
 
@@ -119,7 +119,7 @@ msgstr "Kun vis aktivt arbeidsområde"
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr ""
+msgstr "Bruk RTL som forvalgt retning"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
@@ -127,11 +127,11 @@ msgstr ""
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr ""
+msgstr "Bruk vertikal orientering"
 
 #: ../libwnck/test-selector.c:11 ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr ""
+msgstr "Ikke vis vindu i oppgavelisten"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
@@ -171,6 +171,7 @@ msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
 
 #: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
+#, c-format
 msgid "Workspace 1_0"
 msgstr "Arbeidsområde 1_0"
 
@@ -255,7 +256,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:144
 msgid "CLASS"
-msgstr ""
+msgstr "KLASSE"
 
 #: ../libwnck/wnckprop.c:146
 msgid "NUMBER of the workspace to examine or modify"
@@ -300,11 +301,11 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:170
 msgid "Show the desktop"
-msgstr ""
+msgstr "Vis skrivebordet"
 
 #: ../libwnck/wnckprop.c:172
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "Ikke vis skrivebordet"
 
 #: ../libwnck/wnckprop.c:174
 msgid "Move the viewport of the current workspace to X coordinate X"
@@ -312,7 +313,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:241
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #: ../libwnck/wnckprop.c:176
 msgid "Move the viewport of the current workspace to Y coordinate Y"
@@ -320,7 +321,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:243
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../libwnck/wnckprop.c:182
 msgid "Minimize the window"
@@ -372,7 +373,7 @@ msgstr "Lukk vinduet"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Gjør vinduet fullskjerm"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Make the window quit fullscreen mode"
@@ -387,27 +388,24 @@ msgid "Make the window not always on top"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:215
-#, fuzzy
 msgid "Make the window below other windows"
-msgstr "Vis vinduer fra alle arbeidsområder"
+msgstr "Plasser vinduet under andre vinduer"
 
 #: ../libwnck/wnckprop.c:217
-#, fuzzy
 msgid "Make the window not below other windows"
-msgstr "Vis vinduer fra alle arbeidsområder"
+msgstr "Ikke plasser vinduet under andre vinduer"
 
 #: ../libwnck/wnckprop.c:219
 msgid "Shade the window"
-msgstr ""
+msgstr "Rull opp vinduet"
 
 #: ../libwnck/wnckprop.c:221
-#, fuzzy
 msgid "Unshade the window"
-msgstr "vindu uten tittel"
+msgstr "Rull ned vinduet"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Plassert vinduet med en fast plass i visningsområdet"
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window not have a fixed position in the viewport"
@@ -423,16 +421,15 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:231
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Ikke gjør vinduet synlig i oppgavelisten"
 
 #: ../libwnck/wnckprop.c:233
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Gjør vinduet synlig i oppgavelisten"
 
 #: ../libwnck/wnckprop.c:235
-#, fuzzy
 msgid "Make the window visible on all workspaces"
-msgstr "Vis vinduer fra alle arbeidsområder"
+msgstr "Gjør vinduet synlig på alle arbeidsområder"
 
 #: ../libwnck/wnckprop.c:237
 msgid "Make the window visible on the current workspace only"
@@ -456,7 +453,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:245
 msgid "WIDTH"
-msgstr ""
+msgstr "BREDDE"
 
 #: ../libwnck/wnckprop.c:247
 msgid "Change the height of the window to HEIGHT"
@@ -464,7 +461,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:247
 msgid "HEIGHT"
-msgstr ""
+msgstr "HØYDE"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:250
@@ -479,7 +476,7 @@ msgstr "TYPE"
 
 #: ../libwnck/wnckprop.c:256
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "Endre navn på arbeidsområdet til NAVN"
 
 #: ../libwnck/wnckprop.c:256
 msgid "NAME"
@@ -493,7 +490,7 @@ msgstr "Aktiver arbeidsområdet"
 #: ../libwnck/wnckprop.c:410 ../libwnck/wnckprop.c:433
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "Ugyldig verdi «%s» for --%s"
 
 #: ../libwnck/wnckprop.c:467 ../libwnck/wnckprop.c:486
 #, c-format
@@ -586,17 +583,20 @@ msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:825
+#, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:857
+#, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:861
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr ""
 
@@ -605,6 +605,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:915 ../libwnck/wnckprop.c:922
 #: ../libwnck/wnckprop.c:932 ../libwnck/wnckprop.c:939
 #: ../libwnck/wnckprop.c:948 ../libwnck/wnckprop.c:997
+#, c-format
 msgid "Action not allowed\n"
 msgstr "Handling ikke tillatt\n"
 
@@ -615,7 +616,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1056 ../libwnck/wnckprop.c:1186
 msgid "<name unset>"
-msgstr ""
+msgstr "<navn ikke satt>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1059
@@ -632,7 +633,7 @@ msgstr "%d: %s\n"
 #: ../libwnck/wnckprop.c:1142
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "Skjermnummer: %d\n"
 
 #: ../libwnck/wnckprop.c:1144 ../libwnck/wnckprop.c:1222
 #, c-format
@@ -657,7 +658,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1165
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr ""
+msgstr "Vindushåndterer: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1170 ../libwnck/wnckprop.c:1242
@@ -665,7 +666,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1275 ../libwnck/wnckprop.c:1376
 #, c-format
 msgid "%d (\"%s\")"
-msgstr ""
+msgstr "%d («%s»)"
 
 #: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1194
 #: ../libwnck/wnckprop.c:1246 ../libwnck/wnckprop.c:1257
@@ -709,23 +710,23 @@ msgid "false"
 msgstr "usnn"
 
 #: ../libwnck/wnckprop.c:1211
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace Name: %s\n"
-msgstr "På arbeidsområde %s\n"
+msgstr "Navn på arbeidsområde: %s\n"
 
 #: ../libwnck/wnckprop.c:1212
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace Number: %d\n"
-msgstr "Arbeidsområde %d"
+msgstr "Arbeidsområde nummer: %d\n"
 
 #: ../libwnck/wnckprop.c:1219 ../libwnck/wnckprop.c:1391
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "På skjerm: %d (Vindushåndterer: %s)\n"
 
 #: ../libwnck/wnckprop.c:1231
 msgid "<no viewport>"
-msgstr ""
+msgstr "<ikke noe visningområde>"
 
 #: ../libwnck/wnckprop.c:1232
 #, c-format
@@ -763,9 +764,9 @@ msgid "Resource Class: %s\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1293
-#, fuzzy, c-format
+#, c-format
 msgid "Group Name: %s\n"
-msgstr "Ikonnavn: %s\n"
+msgstr "Gruppenavn: %s\n"
 
 #: ../libwnck/wnckprop.c:1298 ../libwnck/wnckprop.c:1320
 #: ../libwnck/wnckprop.c:1368
@@ -832,7 +833,7 @@ msgstr "skrivebord"
 
 #: ../libwnck/wnckprop.c:1404
 msgid "dock or panel"
-msgstr ""
+msgstr "dokk eller panel"
 
 #: ../libwnck/wnckprop.c:1407
 msgid "dialog window"
@@ -840,20 +841,19 @@ msgstr "dialogvindu"
 
 #: ../libwnck/wnckprop.c:1410
 msgid "tearoff toolbar"
-msgstr ""
+msgstr "avtagbar verktøylinje"
 
 #: ../libwnck/wnckprop.c:1413
 msgid "tearoff menu"
-msgstr ""
+msgstr "avtagbar meny"
 
 #: ../libwnck/wnckprop.c:1416
-#, fuzzy
 msgid "utility window"
-msgstr "vindu uten tittel"
+msgstr "verktøyvindu"
 
 #: ../libwnck/wnckprop.c:1419
 msgid "splash screen"
-msgstr ""
+msgstr "oppstartsskjerm"
 
 #: ../libwnck/wnckprop.c:1424
 #, c-format
@@ -873,17 +873,17 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "XID: %lu\n"
-msgstr ""
+msgstr "XID: %lu\n"
 
 #: ../libwnck/wnckprop.c:1449
 #, c-format
 msgid "Session ID: %s\n"
-msgstr ""
+msgstr "Sesjons-ID: %s\n"
 
 #: ../libwnck/wnckprop.c:1452
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "Gruppeleder: %lu\n"
 
 #: ../libwnck/wnckprop.c:1456
 #, c-format
@@ -895,7 +895,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1469 ../libwnck/wnckprop.c:1509
 #, c-format
 msgid "%1$s%2$s%3$s"
-msgstr ""
+msgstr "%1$s%2$s%3$s"
 
 #: ../libwnck/wnckprop.c:1471 ../libwnck/wnckprop.c:1511
 msgid ", "
@@ -911,11 +911,11 @@ msgstr "maksimert"
 
 #: ../libwnck/wnckprop.c:1482
 msgid "maximized horizontally"
-msgstr ""
+msgstr "maksimert horisontalt"
 
 #: ../libwnck/wnckprop.c:1484
 msgid "maximized vertically"
-msgstr ""
+msgstr "maksimert vertikalt"
 
 #: ../libwnck/wnckprop.c:1486
 msgid "shaded"
@@ -927,7 +927,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1488
 msgid "sticky"
-msgstr ""
+msgstr "klebrig"
 
 #: ../libwnck/wnckprop.c:1489
 msgid "above"
@@ -935,7 +935,7 @@ msgstr "over"
 
 #: ../libwnck/wnckprop.c:1490
 msgid "below"
-msgstr ""
+msgstr "under"
 
 #: ../libwnck/wnckprop.c:1491
 msgid "fullscreen"
@@ -988,7 +988,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1525
 msgid "maximize horizontally"
-msgstr ""
+msgstr "maksimer horisontalt"
 
 #: ../libwnck/wnckprop.c:1527
 msgid "unmaximize horizontally"
@@ -996,7 +996,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1529
 msgid "maximize vertically"
-msgstr ""
+msgstr "maksimer vertikalt"
 
 #: ../libwnck/wnckprop.c:1531
 msgid "unmaximize vertically"
@@ -1004,7 +1004,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1534
 msgid "change workspace"
-msgstr ""
+msgstr "endre arbeidsområde"
 
 #: ../libwnck/wnckprop.c:1536
 msgid "pin"
@@ -1032,7 +1032,7 @@ msgstr "gjenopprett"
 
 #: ../libwnck/wnckprop.c:1544
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "endre fullskjermmodus"
 
 #: ../libwnck/wnckprop.c:1545
 msgid "close"
@@ -1040,7 +1040,7 @@ msgstr "lukk"
 
 #: ../libwnck/wnckprop.c:1547
 msgid "make above"
-msgstr ""
+msgstr "plasser over"
 
 #: ../libwnck/wnckprop.c:1549
 msgid "unmake above"
@@ -1048,7 +1048,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1551
 msgid "make below"
-msgstr ""
+msgstr "plasser under"
 
 #: ../libwnck/wnckprop.c:1553
 msgid "unmake below"
@@ -1056,12 +1056,12 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1555
 msgid "no action possible"
-msgstr ""
+msgstr "ingen handling mulig"
 
 #: ../libwnck/wnckprop.c:1556
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "Mulige handlinger: %s\n"
 
 #: ../libwnck/wnckprop.c:1733
 msgid ""
