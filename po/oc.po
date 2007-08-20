@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libwnck 2.16.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2006-10-22 17:27+0200\n"
-"PO-Revision-Date: 2007-05-16 19:01+0200\n"
+"PO-Revision-Date: 2007-08-20 15:37+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -97,16 +97,16 @@ msgstr "_Totjorn sul espaci de trabalh visible"
 #: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
 #, c-format
 msgid "Workspace %d"
-msgstr ""
+msgstr "Espaci de trabalh %d"
 
 #: ../libwnck/window-action-menu.c:471
 msgid "Workspace 1_0"
-msgstr ""
+msgstr "Espaci de trabalh 1_0"
 
 #: ../libwnck/window-action-menu.c:473
 #, c-format
 msgid "Workspace %s%d"
-msgstr ""
+msgstr "Espaci de trabalh %s%d"
 
 #: ../libwnck/window-action-menu.c:563
 msgid "On _Top"
