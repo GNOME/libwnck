@@ -1,3 +1,9 @@
+2007-08-21  Andre Klapper  <a9016009@gmx.de>
+
+	* libwnck/wnckprop.c:
+	* libwnck/test-selector.c:
+	Add translator comments. Fixes bug #468320.
+
 2007-08-13  Lucas Rocha  <lucasr@gnome.org>
 
 	* configure.in: post-release bump to 2.19.91
