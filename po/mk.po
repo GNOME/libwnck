@@ -1,161 +1,1154 @@
-# translation of mk.po to Macedonian
 # translation of libwnck.HEAD.mk.po to
 # translation of libwnck.HEAD.mk.po to Macedonian
-# translation of libwnck.HEAD.po to Macedonian
 # This file is distributed under the same license as the libwnck.HEAD.mk package.
 # Copyright (C) 2004 THE libwnck.HEAD.mk'S COPYRIGHT HOLDER
+#
+#
 # Ivan Stojmirov <stojmir@linux.net.mk>, 2002.
 # Vladislav Bidikov <bidikovi@mail.com.mk>, 2003.
 # Arangel Angov <ufo@linux.net.mk>, 2003, 2004, 2006.
 #  <tome@users.ossm.org.mk>, 2004.
-#
-#
+# Jovan Naumovski <jovan@lugola.net>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: mk\n"
+"Project-Id-Version: libwnck.HEAD.mk\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2006-03-02 07:18+0100\n"
-"PO-Revision-Date: 2006-03-02 15:06+0100\n"
-"Last-Translator: Arangel Angov <ufo@linux.net.mk>\n"
+"POT-Creation-Date: 2007-07-10 16:51+0100\n"
+"PO-Revision-Date: 2007-08-23 14:57+0200\n"
+"Last-Translator: Jovan Naumovski <jovan@lugola.net>\n"
 "Language-Team: Macedonian <ossm-members@hedona.on.net.mk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"Content-Transfer-Encoding: 8bit"
 
-#: ../libwnck/application.c:29
-msgid "untitled application"
+#. *
+#. * SECTION:application
+#. * @short_description: an object representing a group of windows of the same
+#. * application.
+#. * @see_also: wnck_window_get_application()
+#. * @stability: Unstable
+#. *
+#. * The #WnckApplication is a group of #WnckWindow that are all in the same
+#. * application. It can be used to represent windows by applications, group
+#. * windows by applications or to manipulate all windows of a particular
+#. * application.
+#. *
+#. * A #WnckApplication is identified by the group leader of the #WnckWindow
+#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+#. * only if they have the group leader of the #WnckApplication.
+#. *
+#. * The #WnckApplication objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#: ../libwnck/application.c:51
+msgid "Untitled application"
 msgstr "Aпликација без наслов"
 
-#: ../libwnck/pager-accessible.c:321
+#: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
 msgstr "Менувач на работно место"
 
-#: ../libwnck/pager-accessible.c:332
+#: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
 msgstr "Алатка за менување на работното место"
 
-#: ../libwnck/pager-accessible.c:436
+#: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Кликни го ова за да го смениш работното место %s"
 
-#: ../libwnck/selector.c:221
-msgid "Unknown Window"
-msgstr "Непознат прозорец"
+#: ../libwnck/pager.c:1904
+#, c-format
+msgid "Click to start dragging \"%s\""
+msgstr "Кликнете за да започнете да го влечкате „%s“"
 
-#: ../libwnck/selector.c:729
+#: ../libwnck/pager.c:1907
+#, c-format
+msgid "Current workspace: \"%s\""
+msgstr "Тековен работен простор: „%s“"
+
+#: ../libwnck/pager.c:1912
+#, c-format
+msgid "Click to switch to \"%s\""
+msgstr "Кликнете да преминете на „%s“"
+
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
 msgstr "Нема отворени прозорци"
 
-#: ../libwnck/selector.c:833
+#: ../libwnck/selector.c:1224
 msgid "Window Selector"
 msgstr "Одбирач на прозорци"
 
-#: ../libwnck/selector.c:834
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
 msgstr "Алатка за менување помеѓу прозорци"
 
-#: ../libwnck/tasklist.c:667
+#: ../libwnck/tasklist.c:716
 msgid "Window List"
 msgstr "Листа на прозорци"
 
-#: ../libwnck/tasklist.c:668
+#: ../libwnck/tasklist.c:717
 msgid "Tool to switch between visible windows"
 msgstr "Алатка за менување помеѓу прозорците"
 
-#: ../libwnck/tasklist.c:2465
+#: ../libwnck/tasklist.c:3001
+msgid "Mi_nimize All"
+msgstr "Ми_нимизирај сѐ"
+
+#: ../libwnck/tasklist.c:3012
+msgid "Un_minimize All"
+msgstr "Вр_ати минимизирани"
+
+#: ../libwnck/tasklist.c:3020
+msgid "Ma_ximize All"
+msgstr "Ма_ксимизирај сѐ"
+
+#: ../libwnck/tasklist.c:3031
+msgid "_Unmaximize All"
+msgstr "В_рати минимизирани"
+
+#: ../libwnck/tasklist.c:3043
 msgid "_Close All"
 msgstr "_Затвори сѐ"
 
-#: ../libwnck/tasklist.c:2480
-msgid "_Minimize All"
-msgstr "_Минимизирај сѐ"
+#: ../libwnck/test-pager.c:15
+msgid "Use N_ROWS rows"
+msgstr "Користи N_ROWS редови"
 
-#: ../libwnck/tasklist.c:2491
-msgid "_Unminimize All"
-msgstr "_Врати минимизирани"
+#: ../libwnck/test-pager.c:15
+msgid "N_ROWS"
+msgstr "N_ROWS"
 
-#: ../libwnck/window-action-menu.c:260
+#: ../libwnck/test-pager.c:16
+msgid "Only show current workspace"
+msgstr "Покажи го само тековниот работен простор"
+
+#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
+msgid "Use RTL as default direction"
+msgstr "Користи RTL како стандардна насока"
+
+#: ../libwnck/test-pager.c:18
+msgid "Show workspace names instead of workspace contents"
+msgstr "Покажи ги имињата на работните простори, наместо содржината на работните простори"
+
+#: ../libwnck/test-pager.c:19
+msgid "Use a vertical orientation"
+msgstr "Користи вертикална поставеност"
+
+#: ../libwnck/test-selector.c:11 ../libwnck/test-tasklist.c:20
+msgid "Don't show window in tasklist"
+msgstr "Не прикажувај го прозорецот во листата на прозорци"
+
+#: ../libwnck/test-tasklist.c:16
+msgid "Always group windows"
+msgstr "Секогаш групирај ги прозорците"
+
+#: ../libwnck/test-tasklist.c:17
+msgid "Never group windows"
+msgstr "Никогаш не ги групирај прозорците"
+
+#: ../libwnck/test-tasklist.c:18
+msgid "Display windows from all workspaces"
+msgstr "Прикажи ги прозорците од сите работни простори"
+
+#: ../libwnck/test-tasklist.c:21
+msgid "Enable Transparency"
+msgstr "Овозможи транспарентност"
+
+#: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
 msgstr "_Врати минимизирано"
 
-#: ../libwnck/window-action-menu.c:267
+#: ../libwnck/window-action-menu.c:394
 msgid "Mi_nimize"
 msgstr "_Минимизирај"
 
-#: ../libwnck/window-action-menu.c:275
+#: ../libwnck/window-action-menu.c:402
 msgid "Unma_ximize"
 msgstr "_Врати максимизирано"
 
-#: ../libwnck/window-action-menu.c:282
+#: ../libwnck/window-action-menu.c:409
 msgid "Ma_ximize"
 msgstr "Ма_ксимизирај"
 
-#: ../libwnck/window-action-menu.c:302
-msgid "_Only on This Workspace"
-msgstr "_Само на овој работен простор"
-
-#: ../libwnck/window-action-menu.c:309
-msgid "_Always on Visible Workspace"
-msgstr "_Секогаш на тековниот работен простор"
-
-#: ../libwnck/window-action-menu.c:463 ../libwnck/workspace.c:237
+#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Работно место %d"
 
-#: ../libwnck/window-action-menu.c:471
+#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
 msgid "Workspace 1_0"
 msgstr "Работно место 1_0"
 
-#: ../libwnck/window-action-menu.c:473
+#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Работно место %s%d"
 
-#: ../libwnck/window-action-menu.c:563
-msgid "On _Top"
-msgstr "Нај_горе"
-
-#: ../libwnck/window-action-menu.c:572
+#: ../libwnck/window-action-menu.c:995
 msgid "_Move"
 msgstr "_Помести"
 
-#: ../libwnck/window-action-menu.c:579
+#: ../libwnck/window-action-menu.c:1002
 msgid "_Resize"
 msgstr "_Промени големина"
 
-#: ../libwnck/window-action-menu.c:592
-msgid "_Close"
-msgstr "_Затвори"
+#: ../libwnck/window-action-menu.c:1011
+msgid "Always On _Top"
+msgstr "Нај_горе"
 
-#: ../libwnck/window-action-menu.c:626
+#: ../libwnck/window-action-menu.c:1019
+msgid "_Always on Visible Workspace"
+msgstr "_Секогаш на тековниот работен простор"
+
+#: ../libwnck/window-action-menu.c:1024
+msgid "_Only on This Workspace"
+msgstr "_Само на овој работен простор"
+
+#: ../libwnck/window-action-menu.c:1031
 msgid "Move to Workspace _Left"
 msgstr "Помести на левото _работно место"
 
-#: ../libwnck/window-action-menu.c:637
+#: ../libwnck/window-action-menu.c:1037
 msgid "Move to Workspace R_ight"
 msgstr "Помести на десното _работно место"
 
-#: ../libwnck/window-action-menu.c:648
+#: ../libwnck/window-action-menu.c:1043
 msgid "Move to Workspace _Up"
 msgstr "Помести на горното _работно место"
 
-#: ../libwnck/window-action-menu.c:660
+#: ../libwnck/window-action-menu.c:1049
 msgid "Move to Workspace _Down"
 msgstr "Помести на долното _работно место"
 
-#: ../libwnck/window-action-menu.c:667
+#: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
 msgstr "Помести на друго _работно место"
 
-#: ../libwnck/window-action-menu.c:683
-#, c-format
-msgid "%s"
-msgstr "%s"
+#: ../libwnck/window-action-menu.c:1072
+msgid "_Close"
+msgstr "_Затвори"
 
-#: ../libwnck/window.c:35
-msgid "untitled window"
+#. *
+#. * SECTION:window
+#. * @short_description: an object representing a window.
+#. * @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
+#. * @stability: Unstable
+#. *
+#. * The #WnckWindow objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#: ../libwnck/window.c:50
+msgid "Untitled window"
 msgstr "Прозорец без наслов"
+
+#: ../libwnck/wnckprop.c:139
+msgid "X window ID of the window to examine or modify"
+msgstr "X window ID на прозорецот кој се испитува или изменува"
+
+#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:142
+#: ../libwnck/wnckprop.c:150
+msgid "XID"
+msgstr "XID"
+
+#: ../libwnck/wnckprop.c:141
+msgid "X window ID of the group leader of an application to examine"
+msgstr "X window ID на водичот на групата на апликацијата за испитување"
+
+#: ../libwnck/wnckprop.c:144
+msgid "Class resource of the class group to examine"
+msgstr "Ресурс на класата на групата на класи кои ќе се испитуваат"
+
+#: ../libwnck/wnckprop.c:144
+msgid "CLASS"
+msgstr "CLASS"
+
+#: ../libwnck/wnckprop.c:146
+msgid "NUMBER of the workspace to examine or modify"
+msgstr "NUMBER на работниот простор кој ќе се испитува или изменува"
+
+#: ../libwnck/wnckprop.c:146 ../libwnck/wnckprop.c:148
+#: ../libwnck/wnckprop.c:164 ../libwnck/wnckprop.c:166
+#: ../libwnck/wnckprop.c:168 ../libwnck/wnckprop.c:239
+msgid "NUMBER"
+msgstr "NUMBER"
+
+#: ../libwnck/wnckprop.c:148
+msgid "NUMBER of the screen to examine or modify"
+msgstr "NUMBER на екранот кој ќе се испитува или изменува"
+
+#: ../libwnck/wnckprop.c:150
+msgid "Alias of --window"
+msgstr "Алијас на --window"
+
+#: ../libwnck/wnckprop.c:156
+msgid ""
+"List windows of the application/class group/workspace/screen (output format: "
+"\"XID: Window Name\")"
+msgstr ""
+"Прозорци со листа на групата/работниот простор/екранот на апликацијата/класата (формат на излез: "
+"„XID: име на прозорец“)"
+
+#: ../libwnck/wnckprop.c:158
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr "Листа на работни простори на екранот (излезен формат: „Број: име на работен простор“)"
+
+#: ../libwnck/wnckprop.c:164
+msgid "Change the number of workspaces of the screen to NUMBER"
+msgstr "Промени го бројот на работните простори на екранот во NUMBER"
+
+#: ../libwnck/wnckprop.c:166
+msgid "Change the workspace layout of the screen to use NUMBER rows"
+msgstr "Промени го распоредот на работниот простор на екранот да користи NUMBER редови"
+
+#: ../libwnck/wnckprop.c:168
+msgid "Change the workspace layout of the screen to use NUMBER columns"
+msgstr "Промени го распоредот на работниот простор на екранот да користи NUMBER колони"
+
+#: ../libwnck/wnckprop.c:170
+msgid "Show the desktop"
+msgstr "Покажи ја работната површина"
+
+#: ../libwnck/wnckprop.c:172
+msgid "Stop showing the desktop"
+msgstr "Престани со прикажувањето на работната површина"
+
+#: ../libwnck/wnckprop.c:174
+msgid "Move the viewport of the current workspace to X coordinate X"
+msgstr "Помести го гледиштето на тековниот работен простор на X координатата X"
+
+#: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:241
+msgid "X"
+msgstr "X"
+
+#: ../libwnck/wnckprop.c:176
+msgid "Move the viewport of the current workspace to Y coordinate Y"
+msgstr "Помести го гледиштето на тековниот работен простор на Y координатата Y"
+
+#: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:243
+msgid "Y"
+msgstr "Y"
+
+#: ../libwnck/wnckprop.c:182
+msgid "Minimize the window"
+msgstr "Минимизирај го прозорецот"
+
+#: ../libwnck/wnckprop.c:184
+msgid "Unminimize the window"
+msgstr "Врати минимизирано"
+
+#: ../libwnck/wnckprop.c:186
+msgid "Maximize the window"
+msgstr "Максимизирај го прозорецот"
+
+#: ../libwnck/wnckprop.c:188
+msgid "Unmaximize the window"
+msgstr "Врати ја старата големина на прозорецот"
+
+#: ../libwnck/wnckprop.c:190
+msgid "Maximize horizontally the window"
+msgstr "Максимизирај го хоризонтално прозорецот"
+
+#: ../libwnck/wnckprop.c:192
+msgid "Unmaximize horizontally the window"
+msgstr "Врати ја старата хоризонтална големина на прозорецот"
+
+#: ../libwnck/wnckprop.c:194
+msgid "Maximize vertically the window"
+msgstr "Максимизирај го прозорецот вертикално"
+
+#: ../libwnck/wnckprop.c:196
+msgid "Unmaximize vertically the window"
+msgstr "Врати ја старата вертикалната големина на прозорецот"
+
+#: ../libwnck/wnckprop.c:198
+msgid "Start moving the window via the keyboard"
+msgstr "Започни со поместување на прозорецот преку тастатура"
+
+#: ../libwnck/wnckprop.c:200
+msgid "Start resizing the window via the keyboard"
+msgstr "Започни со промена на големината на прозорецот преку тастатура"
+
+#: ../libwnck/wnckprop.c:202
+msgid "Activate the window"
+msgstr "Активирај го прозорецот"
+
+#: ../libwnck/wnckprop.c:204
+msgid "Close the window"
+msgstr "Затвори го прозорецот"
+
+#: ../libwnck/wnckprop.c:207
+msgid "Make the window fullscreen"
+msgstr "Рашири го прозорецот на целиот екран"
+
+#: ../libwnck/wnckprop.c:209
+msgid "Make the window quit fullscreen mode"
+msgstr "Прекини го режимот на цел екран"
+
+#: ../libwnck/wnckprop.c:211
+msgid "Make the window always on top"
+msgstr "Направи го прозорецот секогаш да биде најгоре"
+
+#: ../libwnck/wnckprop.c:213
+msgid "Make the window not always on top"
+msgstr "Направи го прозорецот да не е секогаш најгоре"
+
+#: ../libwnck/wnckprop.c:215
+msgid "Make the window below other windows"
+msgstr "Постави го прозорецот под другите прозорци"
+
+#: ../libwnck/wnckprop.c:217
+msgid "Make the window not below other windows"
+msgstr "Постави го прозорецот да не е под другите прозорци"
+
+#: ../libwnck/wnckprop.c:219
+msgid "Shade the window"
+msgstr "Засени го прозорецот"
+
+#: ../libwnck/wnckprop.c:221
+msgid "Unshade the window"
+msgstr "Одзасени го прозорецот"
+
+#: ../libwnck/wnckprop.c:223
+msgid "Make the window have a fixed position in the viewport"
+msgstr "Направи го прозорецот да има фиксна позиција на гледиштето"
+
+#: ../libwnck/wnckprop.c:225
+msgid "Make the window not have a fixed position in the viewport"
+msgstr "Направи го прозорецот да нема фиксна позиција на гледиштето"
+
+#: ../libwnck/wnckprop.c:227
+msgid "Make the window not appear in pagers"
+msgstr "Направи го прозорецот да не се појавува во скокачот на работни површини"
+
+#: ../libwnck/wnckprop.c:229
+msgid "Make the window appear in pagers"
+msgstr "Направи го прозорецот да се појавува во скокачот на работни површини"
+
+#: ../libwnck/wnckprop.c:231
+msgid "Make the window not appear in tasklists"
+msgstr "Направи го прозорецот да не се појавува во листите на прозорци"
+
+#: ../libwnck/wnckprop.c:233
+msgid "Make the window appear in tasklists"
+msgstr "Направи го прозорецот да се појавува во листите на прозорци"
+
+#: ../libwnck/wnckprop.c:235
+msgid "Make the window visible on all workspaces"
+msgstr "Направи го прозорецот видлив на сите работни површини"
+
+#: ../libwnck/wnckprop.c:237
+msgid "Make the window visible on the current workspace only"
+msgstr "Направи го прозорецот видлив само на тековниот работен простор"
+
+#: ../libwnck/wnckprop.c:239
+msgid "Move the window to workspace NUMBER (first workspace is 0)"
+msgstr "Помести го прозорецот на работниот простор NUMBER (првиот е 0)"
+
+#: ../libwnck/wnckprop.c:241
+msgid "Change the X coordinate of the window to X"
+msgstr "Промени ја X координатата на прозорецот на X"
+
+#: ../libwnck/wnckprop.c:243
+msgid "Change the Y coordinate of the window to Y"
+msgstr "Промени ја Y координатата на прозорецот на Y"
+
+#: ../libwnck/wnckprop.c:245
+msgid "Change the width of the window to WIDTH"
+msgstr "Промени ја широчината на прозорецот на WIDTH"
+
+#: ../libwnck/wnckprop.c:245
+msgid "WIDTH"
+msgstr "WIDTH"
+
+#: ../libwnck/wnckprop.c:247
+msgid "Change the height of the window to HEIGHT"
+msgstr "Промени ја височината на прозорецот на HEIGHT"
+
+#: ../libwnck/wnckprop.c:247
+msgid "HEIGHT"
+msgstr "HEIGHT"
+
+#. Translators: do not translate "normal, desktop, dock..."
+#: ../libwnck/wnckprop.c:250
+msgid ""
+"Change the type of the window to TYPE (valid values: normal, desktop, dock, "
+"dialog, toolbar, menu, utility, splash)"
+msgstr ""
+"Промени го типот на прозорецот во TYPE (валидни вредности: нормален, работна површина, вграден, "
+"дијалог, лента со алатки, мени, алатка, поздравен екран)"
+
+#: ../libwnck/wnckprop.c:250
+msgid "TYPE"
+msgstr "TYPE"
+
+#: ../libwnck/wnckprop.c:256
+msgid "Change the name of the workspace to NAME"
+msgstr "Промени го името на работниот простор на NAME"
+
+#: ../libwnck/wnckprop.c:256
+msgid "NAME"
+msgstr "NAME"
+
+#: ../libwnck/wnckprop.c:258
+msgid "Activate the workspace"
+msgstr "Активирај го работниот простор"
+
+#: ../libwnck/wnckprop.c:350 ../libwnck/wnckprop.c:374
+#: ../libwnck/wnckprop.c:410 ../libwnck/wnckprop.c:433
+#, c-format
+msgid "Invalid value \"%s\" for --%s"
+msgstr "Невалидна вредност „%s“ за --%s"
+
+#: ../libwnck/wnckprop.c:467 ../libwnck/wnckprop.c:486
+#, c-format
+msgid ""
+"Conflicting options are present: screen %d should be interacted with, but --%"
+"s has been used\n"
+msgstr "Постојат конфликтни опции: треба да се врши интеракција со екранот %d, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:476
+#, c-format
+msgid ""
+"Conflicting options are present: windows or workspaces of screen %d should "
+"be listed, but --%s has been used\n"
+msgstr "Постојат конфликтни опции: треба да се излистаат прозорците од работната површина %d, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:499 ../libwnck/wnckprop.c:519
+#, c-format
+msgid ""
+"Conflicting options are present: workspace %d should be interacted with, but "
+"--%s has been used\n"
+msgstr "Постојат конфликтни опции: треба да се врши интеракција со работниот простор %d, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:509
+#, c-format
+msgid ""
+"Conflicting options are present: windows of workspace %d should be listed, "
+"but --%s has been used\n"
+msgstr "Постојат конфликтни опции: треба да се листаат прозорците од %d, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:531
+#, c-format
+msgid ""
+"Conflicting options are present: an application should be interacted with, "
+"but --%s has been used\n"
+msgstr "Постојат конфликтни опции: терба да се врши интеракција со апликација, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:541
+#, c-format
+msgid ""
+"Conflicting options are present: windows of an application should be listed, "
+"but --%s has been used\n"
+msgstr "Постојат конфликтни опции: терба да се листаат прозорците на апликација, но се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:553
+#, c-format
+msgid ""
+"Conflicting options are present: class group \"%s\" should be interacted "
+"with, but --%s has been used\n"
+msgstr ""
+"Постојат конфликтни опции: треба да се врши интеракција со групата на класата „%s“, но "
+"се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:563
+#, c-format
+msgid ""
+"Conflicting options are present: windows of class group \"%s\" should be "
+"listed, but --%s has been used\n"
+msgstr ""
+"Постојат конфликтни опции: прозорците групата на класата „%s“ треба да се листаат, но "
+"се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:575 ../libwnck/wnckprop.c:584
+#, c-format
+msgid ""
+"Conflicting options are present: a window should be interacted with, but --%"
+"s has been used\n"
+msgstr ""
+"Постојат конфликтни опции: треба да се врши интеракција со прозорец, но "
+"се користи --%s\n"
+
+#: ../libwnck/wnckprop.c:603 ../libwnck/wnckprop.c:684
+#: ../libwnck/wnckprop.c:731
+#, c-format
+msgid "Conflicting options are present: --%s and --%s\n"
+msgstr "Постојат конфликтни опции: --%s и --%s\n"
+
+#: ../libwnck/wnckprop.c:642
+#, c-format
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgstr "Невалиден аргумент „%d“ за --%s: аргументот треба да е стриктно позитивен\n"
+
+#: ../libwnck/wnckprop.c:655
+#, c-format
+msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
+msgstr "Невалиден аргумент „%d“ за --%s: аргументот мора да е позитивиен\n"
+
+#: ../libwnck/wnckprop.c:750
+#, c-format
+msgid "Conflicting options are present: --%s or --%s, and --%s\n"
+msgstr "Постојат конфликтни опции: --%s или --%s и --%s\n"
+
+#: ../libwnck/wnckprop.c:782
+#, c-format
+msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
+msgstr "Невалиден аргумент „%s“ за --%s, валидни вредности се: %s\n"
+
+#: ../libwnck/wnckprop.c:825
+msgid ""
+"Cannot change the workspace layout on the screen: the layout is already "
+"owned\n"
+msgstr ""
+"Не можам да го променам распоредот на работните простори на екранот: распоредот "
+"веќе има сопственик\n"
+
+#: ../libwnck/wnckprop.c:857
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "Гледиштето не може да се помести: тековниот работен простор не содржи гледиште\n"
+
+#: ../libwnck/wnckprop.c:861
+msgid "Viewport cannot be moved: there is no current workspace\n"
+msgstr "Гледиштето не може да се помести: нема тековен работен простор\n"
+
+#. FIXME: why do we have dual & boolean API. This is not consistent!
+#: ../libwnck/wnckprop.c:897 ../libwnck/wnckprop.c:906
+#: ../libwnck/wnckprop.c:915 ../libwnck/wnckprop.c:922
+#: ../libwnck/wnckprop.c:932 ../libwnck/wnckprop.c:939
+#: ../libwnck/wnckprop.c:948 ../libwnck/wnckprop.c:997
+msgid "Action not allowed\n"
+msgstr "Дејството не е дозволено\n"
+
+#: ../libwnck/wnckprop.c:993
+#, c-format
+msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
+msgstr "Прозорецот не може да се помести на работниот простор %d: работниот простор не постои\n"
+
+#: ../libwnck/wnckprop.c:1056 ../libwnck/wnckprop.c:1186
+msgid "<name unset>"
+msgstr "<името не е поставено>"
+
+#. Translators: %lu is a window number and %s a window name
+#: ../libwnck/wnckprop.c:1059
+#, c-format
+msgid "%lu: %s\n"
+msgstr "%lu: %s\n"
+
+#. Translators: %d is a workspace number and %s a workspace name
+#: ../libwnck/wnckprop.c:1079
+#, c-format
+msgid "%d: %s\n"
+msgstr "%d: %s\n"
+
+#: ../libwnck/wnckprop.c:1142
+#, c-format
+msgid "Screen Number: %d\n"
+msgstr "Број на екран: %d\n"
+
+#: ../libwnck/wnckprop.c:1144 ../libwnck/wnckprop.c:1222
+#, c-format
+msgid "Geometry (width, height): %d, %d\n"
+msgstr "Димензии (широчина, висина): %d, %d\n"
+
+#: ../libwnck/wnckprop.c:1148
+#, c-format
+msgid "Number of Workspaces: %d\n"
+msgstr "Број на работни места: %d\n"
+
+#: ../libwnck/wnckprop.c:1154
+#, c-format
+msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
+msgstr "Распоред на работните места (редови, колони, поставеност): %d, %d, %s\n"
+
+#: ../libwnck/wnckprop.c:1164 ../libwnck/wnckprop.c:1218
+#: ../libwnck/wnckprop.c:1390
+msgid "<no EWMH-compliant window manager>"
+msgstr "<нема менаџер на прозорци кој е во согласност со EWMH>"
+
+#: ../libwnck/wnckprop.c:1165
+#, c-format
+msgid "Window Manager: %s\n"
+msgstr "Менаџер на прозорци: %s\n"
+
+#. Translators: %d is a workspace number and %s a workspace name
+#: ../libwnck/wnckprop.c:1170 ../libwnck/wnckprop.c:1242
+#: ../libwnck/wnckprop.c:1253 ../libwnck/wnckprop.c:1264
+#: ../libwnck/wnckprop.c:1275 ../libwnck/wnckprop.c:1376
+#, c-format
+msgid "%d (\"%s\")"
+msgstr "%d („%s“)"
+
+#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1194
+#: ../libwnck/wnckprop.c:1246 ../libwnck/wnckprop.c:1257
+#: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1279
+#: ../libwnck/wnckprop.c:1335 ../libwnck/wnckprop.c:1382
+msgid "none"
+msgstr "ништо"
+
+#: ../libwnck/wnckprop.c:1175
+#, c-format
+msgid "Active Workspace: %s\n"
+msgstr "Активно работно место: %s\n"
+
+#: ../libwnck/wnckprop.c:1184
+#, c-format
+msgid "\"%s\""
+msgstr "„%s“"
+
+#. Translators: %lu is a window number and %s a window name
+#: ../libwnck/wnckprop.c:1189
+#, c-format
+msgid "%lu (%s)"
+msgstr "%lu (%s)"
+
+#: ../libwnck/wnckprop.c:1195
+#, c-format
+msgid "Active Window: %s\n"
+msgstr "Активен прозорец: %s\n"
+
+#: ../libwnck/wnckprop.c:1198
+#, c-format
+msgid "Showing the desktop: %s\n"
+msgstr "Ја прикажувам работната површина: %s\n"
+
+#: ../libwnck/wnckprop.c:1200
+msgid "true"
+msgstr "true"
+
+#: ../libwnck/wnckprop.c:1200
+msgid "false"
+msgstr "false"
+
+#: ../libwnck/wnckprop.c:1211
+#, c-format
+msgid "Workspace Name: %s\n"
+msgstr "Име на работно место: %s\n"
+
+#: ../libwnck/wnckprop.c:1212
+#, c-format
+msgid "Workspace Number: %d\n"
+msgstr "Број на работно место: %d\n"
+
+#: ../libwnck/wnckprop.c:1219 ../libwnck/wnckprop.c:1391
+#, c-format
+msgid "On Screen: %d (Window Manager: %s)\n"
+msgstr "На екранот: %d (менаџер на прозорци: %s)\n"
+
+#: ../libwnck/wnckprop.c:1231
+msgid "<no viewport>"
+msgstr "<нема гледиште>"
+
+#: ../libwnck/wnckprop.c:1232
+#, c-format
+msgid "Viewport position (x, y): %s\n"
+msgstr "Позиција на гледиштето (x, y): %s\n"
+
+#: ../libwnck/wnckprop.c:1235
+#, c-format
+msgid "Position in Layout (row, column): %d, %d\n"
+msgstr "Позиција во гледиштето (ред, колона): %d, %d\n"
+
+#: ../libwnck/wnckprop.c:1247
+#, c-format
+msgid "Left Neighbor: %s\n"
+msgstr "Лев сосед: %s\n"
+
+#: ../libwnck/wnckprop.c:1258
+#, c-format
+msgid "Right Neighbor: %s\n"
+msgstr "Десен сосед: %s\n"
+
+#: ../libwnck/wnckprop.c:1269
+#, c-format
+msgid "Top Neighbor: %s\n"
+msgstr "Горен сосед: %s\n"
+
+#: ../libwnck/wnckprop.c:1280
+#, c-format
+msgid "Bottom Neighbor: %s\n"
+msgstr "Долен сосед: %s\n"
+
+#: ../libwnck/wnckprop.c:1291
+#, c-format
+msgid "Resource Class: %s\n"
+msgstr "Класа на ресурс: %s\n"
+
+#: ../libwnck/wnckprop.c:1293
+#, c-format
+msgid "Group Name: %s\n"
+msgstr "Име на група: %s\n"
+
+#: ../libwnck/wnckprop.c:1298 ../libwnck/wnckprop.c:1320
+#: ../libwnck/wnckprop.c:1368
+msgid "set"
+msgstr "постави"
+
+#: ../libwnck/wnckprop.c:1300 ../libwnck/wnckprop.c:1322
+#: ../libwnck/wnckprop.c:1328 ../libwnck/wnckprop.c:1356
+#: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1370
+#: ../libwnck/wnckprop.c:1433 ../libwnck/wnckprop.c:1441
+#: ../libwnck/wnckprop.c:1448
+msgid "<unset>"
+msgstr "<не е поставено>"
+
+#: ../libwnck/wnckprop.c:1301 ../libwnck/wnckprop.c:1323
+#: ../libwnck/wnckprop.c:1371
+#, c-format
+msgid "Icons: %s\n"
+msgstr "Икони: %s\n"
+
+#: ../libwnck/wnckprop.c:1304 ../libwnck/wnckprop.c:1338
+#, c-format
+msgid "Number of Windows: %d\n"
+msgstr "Број на прозорци: %d\n"
+
+#: ../libwnck/wnckprop.c:1316 ../libwnck/wnckprop.c:1357
+#, c-format
+msgid "Name: %s\n"
+msgstr "Име: %s\n"
+
+#. Translators: note that "Icon" here has a specific window
+#. * management-related meaning. It means minimized.
+#: ../libwnck/wnckprop.c:1317 ../libwnck/wnckprop.c:1365
+#, c-format
+msgid "Icon Name: %s\n"
+msgstr "Име на икона: %s\n"
+
+#: ../libwnck/wnckprop.c:1329 ../libwnck/wnckprop.c:1442
+#, c-format
+msgid "PID: %s\n"
+msgstr "PID: %s\n"
+
+#: ../libwnck/wnckprop.c:1336
+#, c-format
+msgid "Startup ID: %s\n"
+msgstr "Почетно ID: %s\n"
+
+#: ../libwnck/wnckprop.c:1380
+msgid "all workspaces"
+msgstr "сите работни места"
+
+#: ../libwnck/wnckprop.c:1383
+#, c-format
+msgid "On Workspace: %s\n"
+msgstr "На работното место: %s\n"
+
+#: ../libwnck/wnckprop.c:1398
+msgid "normal window"
+msgstr "нормален прозорец"
+
+#: ../libwnck/wnckprop.c:1401
+msgid "desktop"
+msgstr "работна површина"
+
+#: ../libwnck/wnckprop.c:1404
+msgid "dock or panel"
+msgstr "место за известување или панел"
+
+#: ../libwnck/wnckprop.c:1407
+msgid "dialog window"
+msgstr "дијалог прозорец"
+
+#: ../libwnck/wnckprop.c:1410
+msgid "tearoff toolbar"
+msgstr "откината лента со алатки"
+
+#: ../libwnck/wnckprop.c:1413
+msgid "tearoff menu"
+msgstr "откинато мени"
+
+#: ../libwnck/wnckprop.c:1416
+msgid "utility window"
+msgstr "прозорец за алатка"
+
+#: ../libwnck/wnckprop.c:1419
+msgid "splash screen"
+msgstr "поздравен екран"
+
+#: ../libwnck/wnckprop.c:1424
+#, c-format
+msgid "Window Type: %s\n"
+msgstr "Тип на прозорец: %s\n"
+
+#: ../libwnck/wnckprop.c:1427
+#, c-format
+msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
+msgstr "Димензии (x, y, широчина, висина): %d, %d, %d, %d\n"
+
+#: ../libwnck/wnckprop.c:1434
+#, c-format
+msgid "Class Group: %s\n"
+msgstr "Група на класи: %s\n"
+
+#: ../libwnck/wnckprop.c:1436
+#, c-format
+msgid "XID: %lu\n"
+msgstr "XID: %lu\n"
+
+#: ../libwnck/wnckprop.c:1449
+#, c-format
+msgid "Session ID: %s\n"
+msgstr "ID на сесија: %s\n"
+
+#: ../libwnck/wnckprop.c:1452
+#, c-format
+msgid "Group Leader: %lu\n"
+msgstr "Водич на групата: %lu\n"
+
+#: ../libwnck/wnckprop.c:1456
+#, c-format
+msgid "Transient for: %lu\n"
+msgstr "Привремен за: %lu\n"
+
+#. FIXME: else print something?
+#. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
+#: ../libwnck/wnckprop.c:1469 ../libwnck/wnckprop.c:1509
+#, c-format
+msgid "%1$s%2$s%3$s"
+msgstr "%1$s%2$s%3$s"
+
+#: ../libwnck/wnckprop.c:1471 ../libwnck/wnckprop.c:1511
+msgid ", "
+msgstr ", "
+
+#: ../libwnck/wnckprop.c:1477
+msgid "minimized"
+msgstr "минимизирано"
+
+#: ../libwnck/wnckprop.c:1478
+msgid "maximized"
+msgstr "максимизирано"
+
+#: ../libwnck/wnckprop.c:1482
+msgid "maximized horizontally"
+msgstr "максимизирано хоризонтално"
+
+#: ../libwnck/wnckprop.c:1484
+msgid "maximized vertically"
+msgstr "максимизирано вертикално"
+
+#: ../libwnck/wnckprop.c:1486
+msgid "shaded"
+msgstr "засенето"
+
+#: ../libwnck/wnckprop.c:1487
+msgid "pinned"
+msgstr "прикачено"
+
+#: ../libwnck/wnckprop.c:1488
+msgid "sticky"
+msgstr "лепливо"
+
+#: ../libwnck/wnckprop.c:1489
+msgid "above"
+msgstr "над"
+
+#: ../libwnck/wnckprop.c:1490
+msgid "below"
+msgstr "под"
+
+#: ../libwnck/wnckprop.c:1491
+msgid "fullscreen"
+msgstr "на цел екран"
+
+#: ../libwnck/wnckprop.c:1492
+msgid "needs attention"
+msgstr "му треба внимание"
+
+#: ../libwnck/wnckprop.c:1493
+msgid "skip pager"
+msgstr "прескокни го избирачот на работни простори"
+
+#: ../libwnck/wnckprop.c:1494
+msgid "skip tasklist"
+msgstr "прескокни ја листата со задачи"
+
+#: ../libwnck/wnckprop.c:1496
+msgid "normal"
+msgstr "нормален"
+
+#: ../libwnck/wnckprop.c:1497
+#, c-format
+msgid "State: %s\n"
+msgstr "Состојба: %s\n"
+
+#: ../libwnck/wnckprop.c:1518
+msgid "move"
+msgstr "помести"
+
+#: ../libwnck/wnckprop.c:1519
+msgid "resize"
+msgstr "промени големина"
+
+#: ../libwnck/wnckprop.c:1520
+msgid "shade"
+msgstr "засени"
+
+#: ../libwnck/wnckprop.c:1521
+msgid "unshade"
+msgstr "одзасени"
+
+#: ../libwnck/wnckprop.c:1522
+msgid "stick"
+msgstr "залепи"
+
+#: ../libwnck/wnckprop.c:1523
+msgid "unstick"
+msgstr "одлепи"
+
+#: ../libwnck/wnckprop.c:1525
+msgid "maximize horizontally"
+msgstr "максимизирај хоризонтално"
+
+#: ../libwnck/wnckprop.c:1527
+msgid "unmaximize horizontally"
+msgstr "одмаксимизирај хоризонтално"
+
+#: ../libwnck/wnckprop.c:1529
+msgid "maximize vertically"
+msgstr "максимизирај вертикално"
+
+#: ../libwnck/wnckprop.c:1531
+msgid "unmaximize vertically"
+msgstr "одмаксимизирај вертикално"
+
+#: ../libwnck/wnckprop.c:1534
+msgid "change workspace"
+msgstr "промени го работниот простор"
+
+#: ../libwnck/wnckprop.c:1536
+msgid "pin"
+msgstr "прикачи"
+
+#: ../libwnck/wnckprop.c:1538
+msgid "unpin"
+msgstr "откачи"
+
+#: ../libwnck/wnckprop.c:1539
+msgid "minimize"
+msgstr "минимизирај"
+
+#: ../libwnck/wnckprop.c:1540
+msgid "unminimize"
+msgstr "мрати минимизирано"
+
+#: ../libwnck/wnckprop.c:1541
+msgid "maximize"
+msgstr "максимизирај"
+
+#: ../libwnck/wnckprop.c:1542
+msgid "unmaximize"
+msgstr "врати максимизирано"
+
+#: ../libwnck/wnckprop.c:1544
+msgid "change fullscreen mode"
+msgstr "промени го режимот на цел екран"
+
+#: ../libwnck/wnckprop.c:1545
+msgid "close"
+msgstr "затвори"
+
+#: ../libwnck/wnckprop.c:1547
+msgid "make above"
+msgstr "однеси го погоре"
+
+#: ../libwnck/wnckprop.c:1549
+msgid "unmake above"
+msgstr "врати го од погоре"
+
+#: ../libwnck/wnckprop.c:1551
+msgid "make below"
+msgstr "однеси го подолу"
+
+#: ../libwnck/wnckprop.c:1553
+msgid "unmake below"
+msgstr "врати го погоре"
+
+#: ../libwnck/wnckprop.c:1555
+msgid "no action possible"
+msgstr "нема можни дејства"
+
+#: ../libwnck/wnckprop.c:1556
+#, c-format
+msgid "Possible Actions: %s\n"
+msgstr "Можни дејства: %s\n"
+
+#: ../libwnck/wnckprop.c:1733
+msgid ""
+"Print or modify the properties of a screen/workspace/window, or interact "
+"with it, following the EWMH specification.\n"
+"For information about this specification, see:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
+msgstr ""
+"Печати ги или измени ги совјствата на екран/работен простор/прозорец или врши"
+"интеракција според EWMH спецификацијата.\n"
+"За повеќе информации за оваа спецификација постете ја:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
+
+#: ../libwnck/wnckprop.c:1743
+msgid "Options to list windows or workspaces"
+msgstr "Опции за листите со прозорци или работните простори"
+
+#: ../libwnck/wnckprop.c:1744
+msgid "Show options to list windows or workspaces"
+msgstr "Покажи опции за листите со прозорци или работните простори"
+
+#: ../libwnck/wnckprop.c:1750
+msgid "Options to modify properties of a window"
+msgstr "Опции за изменување на својствата на прозорец"
+
+#: ../libwnck/wnckprop.c:1751
+msgid "Show options to modify properties of a window"
+msgstr "Покажи опции за изменување на својствата на екранот"
+
+#: ../libwnck/wnckprop.c:1757
+msgid "Options to modify properties of a workspace"
+msgstr "Опции за изменување на својствата на екранот"
+
+#: ../libwnck/wnckprop.c:1758
+msgid "Show options to modify properties of a workspace"
+msgstr "Покажи ги опциите за изменување на својствата на екранот"
+
+#: ../libwnck/wnckprop.c:1764
+msgid "Options to modify properties of a screen"
+msgstr "Опции за изменување на својствата на екранот"
+
+#: ../libwnck/wnckprop.c:1765
+msgid "Show options to modify properties of a screen"
+msgstr "Покажи ги опциите за изменување на својствата на екранот"
+
+#: ../libwnck/wnckprop.c:1775
+#, c-format
+msgid "Error while parsing arguments: %s\n"
+msgstr "Грешка во парсирањето на документите: %s\n"
+
+#: ../libwnck/wnckprop.c:1798
+#, c-format
+msgid "Cannot interact with screen %d: the screen does not exist\n"
+msgstr "Не можам да вршам интеракција со екранот %d: екранот не постои\n"
+
+#: ../libwnck/wnckprop.c:1854
+#, c-format
+msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
+msgstr "Не можам да вршам интеракција со работниот простор %d: работниот простор не може да се пронајде\n"
+
+#: ../libwnck/wnckprop.c:1876
+#, c-format
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr "Не можам да вршам интеракција со групата на класи „%s“: групата на класи не може да се пронајде\n"
+
+#: ../libwnck/wnckprop.c:1899
+#, c-format
+msgid ""
+"Cannot interact with application having its group leader with XID %lu: the "
+"application cannot be found\n"
+msgstr ""
+"Не можам да вршам интеракција со апликацијата чиј лидер е со XID %lu: "
+"апликацијата не може да се пронајде\n"
+
+#: ../libwnck/wnckprop.c:1922
+#, c-format
+msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
+msgstr "Не можам да вршам интеракција со прозорецот со XID %lu: прозорецот не може да се пронајде\n"
 
