@@ -1,3 +1,7 @@
+2007-08-31  Vincent Untz  <vuntz@gnome.org>
+
+	* MAINTAINERS: update to new format
+
 2007-08-21  Andre Klapper  <a9016009@gmx.de>
 
 	* libwnck/wnckprop.c:
