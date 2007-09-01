@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.16.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-08-20 17:57+0100\n"
-"PO-Revision-Date: 2007-08-21 10:55+0200\n"
+"POT-Creation-Date: 2007-08-21 12:14+0100\n"
+"PO-Revision-Date: 2007-09-01 19:19+0200\n"
 "Last-Translator: Yannig MARCHEGAY (Kokoyaya) <yannig@marchegay.org>\n"
 "Language-Team: Occitan (post 1500) <ubuntu-l10n-oci@lists.ubuntu.com>\n"
 "MIME-Version: 1.0\n"
@@ -463,7 +463,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:247
 msgid "HEIGHT"
-msgstr ""
+msgstr "NAUTOR"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:250
@@ -827,7 +827,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1401
 msgid "desktop"
-msgstr ""
+msgstr "burèu"
 
 #: ../libwnck/wnckprop.c:1404
 msgid "dock or panel"
