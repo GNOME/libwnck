@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: el\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-03 20:25+0300\n"
-"PO-Revision-Date: 2007-09-03 20:31+0300\n"
+"PO-Revision-Date: 2007-09-04 19:36+0300\n"
 "Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);"
 
 #. *
 #. * SECTION:application
@@ -48,7 +47,7 @@ msgstr "Εφαρμογή χωρίς τίτλο"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
-msgstr "Εναλλάκτης Χώρων Εργασίας"
+msgstr "Εναλλαγή χώρων εργασίας"
 
 #: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
@@ -80,7 +79,7 @@ msgstr "Δεν υπάρχουν ανοικτά παράθυρα"
 
 #: ../libwnck/selector.c:1224
 msgid "Window Selector"
-msgstr "Επιλογέας Παραθύρων"
+msgstr "Επιλογέας παραθύρων"
 
 #: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
@@ -88,7 +87,7 @@ msgstr "Εργαλείο για εναλλαγή μεταξύ παραθύρων
 
 #: ../libwnck/tasklist.c:720
 msgid "Window List"
-msgstr "Λίστα Παραθύρων"
+msgstr "Λίστα παραθύρων"
 
 #: ../libwnck/tasklist.c:721
 msgid "Tool to switch between visible windows"
@@ -203,7 +202,7 @@ msgstr "Πάνω μπ_ροστά"
 
 #: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
-msgstr "_Πάντοτε σε Ορατό Χώρο Εργασίας"
+msgstr "_Πάντοτε σε ορατό χώρο εργασίας"
 
 #: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
@@ -227,7 +226,7 @@ msgstr "Μετακίνηση σε χώρο εργασίας _κάτω"
 
 #: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
-msgstr "Μετακίνηση σε Άλλο Χώρο Ερ_γασίας"
+msgstr "Μετακίνηση σε άλλο χώρο ερ_γασίας"
 
 #: ../libwnck/window-action-menu.c:1072
 msgid "_Close"
@@ -301,7 +300,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:163
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
-"Λίστα από χ'ωρους εργασίας της οθόνης (μορφή εξόδου: \"Number: Workspace Name"
+"Λίστα από χώρους εργασίας της οθόνης (μορφή εξόδου: \"Number: Workspace Name"
 "\")"
 
 #: ../libwnck/wnckprop.c:169
@@ -764,7 +763,7 @@ msgstr "%lu (%s)"
 #: ../libwnck/wnckprop.c:1226
 #, c-format
 msgid "Active Window: %s\n"
-msgstr "Ενεργό Παράθυρο: %s\n"
+msgstr "Ενεργό παράθυρο: %s\n"
 
 #: ../libwnck/wnckprop.c:1229
 #, c-format
@@ -898,7 +897,7 @@ msgstr "όλοι οι χώροι εργασίας"
 #: ../libwnck/wnckprop.c:1428
 #, c-format
 msgid "On Workspace: %s\n"
-msgstr "Σε χώρος εργασίας : %s\n"
+msgstr "Σε χώρο εργασίας : %s\n"
 
 #: ../libwnck/wnckprop.c:1443
 msgid "normal window"
