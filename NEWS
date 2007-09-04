@@ -1,3 +1,20 @@
+2.19.92
+=======
+
+ Fixes
+
+  - Add translator comments for wnckprop (Andre Klapper) [#468320]
+
+ Translators
+
+  - Ask Hjorth Larsen (da)
+  - Andre Klapper (de)
+  - Kostas Papadimas (el)
+  - Jovan Naumovski (mk)
+  - Kjartan Maraas (nb)
+  - Og Maciel (pt_BR)
+  - Clytie Siddall (vi)
+
 2.19.90
 =======
 
