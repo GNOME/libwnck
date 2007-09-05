@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ka\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-05 00:54+0200\n"
-"PO-Revision-Date: 2007-09-05 02:14+0200\n"
+"PO-Revision-Date: 2007-09-05 02:23+0200\n"
 "Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
 "Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-list>\n"
 "MIME-Version: 1.0\n"
@@ -142,7 +142,7 @@ msgstr ""
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
-msgstr ""
+msgstr "ფანჯრების დაჯგუფება ყოველთვის"
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
@@ -396,11 +396,11 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
-msgstr ""
+msgstr "ფანჯრის ყოველთვის წინა პლანზე გამოჩენა"
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "ფანჯრის არასოდეს წინაპლანზე გამოჩენა"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
