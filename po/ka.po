@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ka\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-05 00:54+0200\n"
-"PO-Revision-Date: 2007-09-05 02:23+0200\n"
+"PO-Revision-Date: 2007-09-07 13:50+0200\n"
 "Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
 "Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-list>\n"
 "MIME-Version: 1.0\n"
@@ -326,7 +326,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -336,7 +336,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../libwnck/wnckprop.c:191
 msgid "Minimize the window"
@@ -741,7 +741,7 @@ msgstr "true"
 
 #: ../libwnck/wnckprop.c:1231
 msgid "false"
-msgstr ""
+msgstr "false"
 
 #: ../libwnck/wnckprop.c:1242
 #, c-format
@@ -843,7 +843,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1355 ../libwnck/wnckprop.c:1408
 #, c-format
 msgid "Icon Name: %s\n"
-msgstr ""
+msgstr "ხატულას სახელი: %s\n"
 
 #: ../libwnck/wnckprop.c:1370 ../libwnck/wnckprop.c:1490
 #, c-format
@@ -857,7 +857,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1425
 msgid "all workspaces"
-msgstr "ყველა სამუშაო გარემო"
+msgstr "ყველა სამუშაო გარემოში"
 
 #: ../libwnck/wnckprop.c:1428
 #, c-format
@@ -890,7 +890,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1461
 msgid "utility window"
-msgstr "ხელსაწყოების ფანჯარა"
+msgstr "ხელსაწყოთა ფანჯარა"
 
 #: ../libwnck/wnckprop.c:1464
 msgid "splash screen"
