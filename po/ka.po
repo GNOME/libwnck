@@ -1,15 +1,14 @@
 # translation of ka.po to Georgian
 # Georgian translation of libwnck.
-# Copyright © 2004 Aiet Kolkhi.
 # This file is distributed under the same license as the libwnck package.
-#
 # Aiet Kolkhi <aiet@qartuli.net>, 2004.
 # Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2007.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ka\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-05 00:54+0200\n"
+"POT-Creation-Date: 2007-09-07 13:53+0200\n"
 "PO-Revision-Date: 2007-09-07 13:50+0200\n"
 "Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
 "Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-list>\n"
@@ -295,7 +294,8 @@ msgid ""
 msgstr ""
 
 #: ../libwnck/wnckprop.c:163
-msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:169
@@ -594,7 +594,8 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:680
@@ -623,7 +624,8 @@ msgstr ""
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
 #, c-format
-msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
@@ -746,7 +748,7 @@ msgstr "false"
 #: ../libwnck/wnckprop.c:1242
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr "სამუშაო სივრცის სახელწოდება: %s\n"
+msgstr "სამუშაო გარემოს სახელწოდება: %s\n"
 
 #: ../libwnck/wnckprop.c:1243
 #, c-format
@@ -1174,7 +1176,8 @@ msgstr ""
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1939
 #, c-format
-msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1962
@@ -1188,4 +1191,3 @@ msgstr ""
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
-
