@@ -767,7 +767,7 @@ msgstr "Назва робочої області: %s\n"
 #: ../libwnck/wnckprop.c:1243
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr "Номер робочої області: %s\n"
+msgstr "Номер робочої області: %d\n"
 
 #: ../libwnck/wnckprop.c:1250 ../libwnck/wnckprop.c:1436
 #, c-format
