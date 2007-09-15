@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-09-15 16:06+0200\n"
-"PO-Revision-Date: 2007-09-15 15:59+0200\n"
+"PO-Revision-Date: 2007-09-15 17:02+0200\n"
 "Last-Translator: Robert-André-Mauchin <zebob.m@pengzone.org>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -123,24 +123,24 @@ msgstr "N_LIGNES"
 
 #: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
-msgstr "Afficher uniquement l'espace de travail actuel"
+msgstr "Affiche uniquement l'espace de travail actuel"
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr "Utiliser RTL comme direction par défaut"
+msgstr "Utilise RTL comme direction par défaut"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
-msgstr "Afficher les noms des espaces de travail plutôt que leur contenu"
+msgstr "Affiche les noms des espaces de travail plutôt que leur contenu"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr "Utiliser une orientation verticale"
+msgstr "Utilise une orientation verticale"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr "Masquer la fenêtre dans la liste des tâches"
+msgstr "N'affiche pas la fenêtre dans la liste des tâches"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
@@ -152,11 +152,11 @@ msgstr "Ne jamais grouper les fenêtres"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
-msgstr "Afficher les fenêtres de tous les espaces de travail"
+msgstr "Affiche les fenêtres de tous les espaces de travail"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
-msgstr "Activer la transparence"
+msgstr "Active la transparence"
 
 #: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
@@ -409,11 +409,11 @@ msgstr "Quitte le mode plein écran de la fenêtre"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
-msgstr "Place la fenêtre toujours au premier plan"
+msgstr "Place toujours la fenêtre au premier plan"
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr "Ne pas toujours placer la fenêtre au premier plan"
+msgstr "Ne place pas toujours la fenêtre au premier plan"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
@@ -421,7 +421,7 @@ msgstr "Place la fenêtre au dessous des autres"
 
 #: ../libwnck/wnckprop.c:226
 msgid "Make the window not below other windows"
-msgstr "Ne pas placer la fenêtre au dessous des autres"
+msgstr "Ne place pas la fenêtre au dessous des autres"
 
 #: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
@@ -441,7 +441,7 @@ msgstr "Donne une position fixe à la fenêtre dans la vue"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "Donne une position variable à la fenêtre dans la vue"
+msgstr "Donne une position non fixe à la fenêtre dans la vue"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
