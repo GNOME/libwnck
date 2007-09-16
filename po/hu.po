@@ -1122,7 +1122,7 @@ msgstr "Nem lehet együttműködni a(z) %d. munkaterülettel: a munkaterület ne
 #: ../libwnck/wnckprop.c:1876
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "Nem lehet együttműködni a(z) %d. osztálycsoporttal: az osztálycsoport nem található\n"
+msgstr "Nem lehet együttműködni a(z) \"%s\" osztálycsoporttal: az osztálycsoport nem található\n"
 
 #: ../libwnck/wnckprop.c:1899
 #, c-format
