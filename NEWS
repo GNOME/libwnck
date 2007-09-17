@@ -1,3 +1,23 @@
+2.20.0
+======
+
+ The 2.19/2.20 releases have broken API and ABI compatibility with 2.18
+ releases. Read the various entries for 2.19.x releases to learn more about the
+ breaks.
+
+ Translators
+
+  - Khaled Hosny (ar)
+  - Runa Bhattacharjee (bn_IN)
+  - Sílvia Miranda (ca)
+  - Robert-André-Mauchin (fr)
+  - Gabor Kelemen (hu)
+  - Luca Ferretti (it)
+  - Žygimantas Beručka (lt)
+  - Duarte Loreto (pt)
+  - Nickolay V. Shmyrev (ru)
+  - Maxim Dziumanenko (uk)
+
 2.19.92
 =======
 
