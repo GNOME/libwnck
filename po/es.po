@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-10 16:51+0100\n"
-"PO-Revision-Date: 2007-07-10 20:54+0200\n"
+"POT-Creation-Date: 2007-07-10 19:55+0100\n"
+"PO-Revision-Date: 2007-10-03 01:20+0200\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -70,7 +70,7 @@ msgstr "Área de trabajo actual: «%s»"
 #: ../libwnck/pager.c:1912
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Pulse para cambiar a «%s»"
+msgstr "Pulse para cambiar al «%s»"
 
 #: ../libwnck/selector.c:1171
 msgid "No Windows Open"
@@ -484,8 +484,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"Cambiar el tipo de la ventana al TIPO (los valores válidos son: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
+"Cambiar el tipo de la ventana al TIPO (los valores válidos son: normal, "
+"desktop, dock, dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:250
 msgid "TYPE"
