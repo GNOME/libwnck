@@ -818,6 +818,8 @@ static void
 wnck_selector_window_opened (WnckScreen *screen,
                              WnckWindow *window, WnckSelector *selector)
 {
+  wnck_selector_connect_to_window (selector, window);
+
   if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
     return;
 
@@ -828,8 +830,6 @@ wnck_selector_window_opened (WnckScreen *screen,
   wnck_selector_make_menu_consistent (selector);
 
   gtk_menu_reposition (GTK_MENU (selector->priv->menu));
-
-  wnck_selector_connect_to_window (selector, window);
 }
 
 static void
