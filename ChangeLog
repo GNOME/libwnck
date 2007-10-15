@@ -1,3 +1,9 @@
+2007-10-16  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/tasklist.c: (wnck_task_get_text): validate the strings
+	coming from libsn so we're sure they're UTF-8.
+	Fix bug #476299.
+
 2007-10-10  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/selector.c: (wnck_selector_window_opened): always connect to

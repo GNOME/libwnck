@@ -3126,12 +3126,21 @@ wnck_task_get_text (WnckTask *task,
     case WNCK_TASK_STARTUP_SEQUENCE:
 #ifdef HAVE_STARTUP_NOTIFICATION
       name = sn_startup_sequence_get_description (task->startup_sequence);
+      if (name && !g_utf8_validate (name, -1, NULL))
+        name = NULL;
+
       if (name == NULL)
         name = sn_startup_sequence_get_name (task->startup_sequence);
+      if (name && !g_utf8_validate (name, -1, NULL))
+        name = NULL;
+
       if (name == NULL)
         name = sn_startup_sequence_get_binary_name (task->startup_sequence);
+      if (name && !g_utf8_validate (name, -1, NULL))
+        name = NULL;
       
-      return g_strdup (name);
+      if (name != NULL)
+        return g_strdup (name);
 #else
       return NULL;
 #endif
