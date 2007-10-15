@@ -706,6 +706,15 @@ _make_gtk_label_normal (GtkLabel *label)
   pango_font_description_free (font_desc);
 }
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+static gboolean
+_wnck_util_sn_utf8_validator (const char *str,
+                              int         max_len)
+{
+  return g_utf8_validate (str, max_len, NULL);
+}
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
 void
 _wnck_init (void)
 {
@@ -715,6 +724,11 @@ _wnck_init (void)
     {
       bindtextdomain (GETTEXT_PACKAGE, WNCK_LOCALEDIR);
       bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+      sn_set_utf8_validator (_wnck_util_sn_utf8_validator);
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
       done = TRUE;
     }
 }

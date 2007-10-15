@@ -1,5 +1,13 @@
 2007-10-16  Vincent Untz  <vuntz@gnome.org>
 
+	Better fix for bug #476299.
+
+	* libwnck/tasklist.c: (wnck_task_get_text): revert the change here
+	* libwnck/util.c: (_wnck_util_sn_utf8_validator): new
+	(_wnck_init): tell libsn to use the glib utf-8 validator
+
+2007-10-16  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/tasklist.c: (wnck_task_get_text): validate the strings
 	coming from libsn so we're sure they're UTF-8.
 	Fix bug #476299.
