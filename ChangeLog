@@ -1,5 +1,10 @@
 2007-10-16  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.20.1
+
+2007-10-16  Vincent Untz  <vuntz@gnome.org>
+
 	Better fix for bug #476299.
 
 	* libwnck/tasklist.c: (wnck_task_get_text): revert the change here

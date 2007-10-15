@@ -1,3 +1,18 @@
+2.20.1
+======
+
+ Fixes
+
+  - Fix icon of the active window not changing in the selector (Vincent)
+  - Fix crash when startup notification messages are not encoded in UTF-8
+    (Vincent) [#476299]
+
+ Translators
+
+  - Jorge González (es)
+  - Changwoo Ryu (ko)
+  - Baris Cicek (tr)
+
 2.20.0
 ======
 
