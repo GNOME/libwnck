@@ -114,31 +114,12 @@ _wnck_print_resource_usage (WnckResourceUsage *usage)
 }
 #endif
 
-/**
- * wnck_xid_read_resource_usage:
- * @gdk_display: a <classname>GdkDisplay</classname>.
- * @xid: an X window ID.
- * @usage: return location for the X resource usage of the application owning
- * the X window ID @xid.
- *
- * Looks for the X resource usage of the application owning the X window ID
- * @xid on display @gdisplay. If no resource usage can be found, then all
- * fields of @usage are set to 0.
- *
- * To properly work, this function requires the XRes extension on the X server.
- *
- * Since: 2.6
- */
-void
-wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
-                              gulong             xid,
-                              WnckResourceUsage *usage)
+static WnckExtStatus
+wnck_init_resource_usage (GdkDisplay *gdisplay)
 {
   int event, error;
   Display *xdisplay;
   WnckExtStatus status;
-
-  g_return_if_fail (usage != NULL);
 
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
@@ -163,13 +144,39 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
 
   g_assert (status != WNCK_EXT_UNKNOWN);
 
+  return status;
+}
+
+/**
+ * wnck_xid_read_resource_usage:
+ * @gdk_display: a <classname>GdkDisplay</classname>.
+ * @xid: an X window ID.
+ * @usage: return location for the X resource usage of the application owning
+ * the X window ID @xid.
+ *
+ * Looks for the X resource usage of the application owning the X window ID
+ * @xid on display @gdisplay. If no resource usage can be found, then all
+ * fields of @usage are set to 0.
+ *
+ * To properly work, this function requires the XRes extension on the X server.
+ *
+ * Since: 2.6
+ */
+void
+wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
+                              gulong             xid,
+                              WnckResourceUsage *usage)
+{
+  g_return_if_fail (usage != NULL);
+
   memset (usage, '\0', sizeof (*usage));
-  
-  if (status == WNCK_EXT_MISSING)
+
+  if (wnck_init_resource_usage (gdisplay) == WNCK_EXT_MISSING)
     return;
 
 #ifdef HAVE_XRES
  {
+   Display *xdisplay;
    XResType *types;
    int n_types;
    unsigned long pixmap_bytes;
@@ -189,6 +196,8 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    pixmap_bytes = 0;
    
   _wnck_error_trap_push ();
+
+  xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
   XResQueryClientResources (xdisplay,
                              xid, &n_types,
@@ -608,12 +617,12 @@ wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
 {
   g_return_if_fail (usage != NULL);
 
-#ifndef HAVE_XRES
-  memset (usage, '\0', sizeof (*usage));
-  return;
-#else
   memset (usage, '\0', sizeof (*usage));
 
+  if (wnck_init_resource_usage (gdisplay) == WNCK_EXT_MISSING)
+    return;
+
+#ifdef HAVE_XRES
   if (!wnck_pid_read_resource_usage_from_cache (gdisplay, pid, usage))
     /* the cache might not be built, might be outdated or might not contain
      * data for a new X client, so try to fallback to something else */
