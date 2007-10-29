@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-10 16:51+0100\n"
-"PO-Revision-Date: 2007-10-25 15:06+0100\n"
+"PO-Revision-Date: 2007-10-29 12:00+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -377,9 +377,8 @@ msgid "Start resizing the window via the keyboard"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:202
-#, fuzzy
 msgid "Activate the window"
-msgstr "neimenovano okno"
+msgstr "Vključi okno"
 
 #: ../libwnck/wnckprop.c:204
 msgid "Close the window"
@@ -414,9 +413,8 @@ msgid "Shade the window"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:221
-#, fuzzy
 msgid "Unshade the window"
-msgstr "neimenovano okno"
+msgstr "Odstrani senčenje okna"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window have a fixed position in the viewport"
@@ -489,16 +487,15 @@ msgstr "VRSTA"
 
 #: ../libwnck/wnckprop.c:256
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "Spremeni ime delovne površine v IME"
 
 #: ../libwnck/wnckprop.c:256
 msgid "NAME"
 msgstr "IME"
 
 #: ../libwnck/wnckprop.c:258
-#, fuzzy
 msgid "Activate the workspace"
-msgstr "Premakni na drugo _delovno površino"
+msgstr "Vklopi delovno površino"
 
 #: ../libwnck/wnckprop.c:350
 #: ../libwnck/wnckprop.c:374
@@ -548,40 +545,40 @@ msgstr ""
 #: ../libwnck/wnckprop.c:563
 #, c-format
 msgid "Conflicting options are present: windows of class group \"%s\" should be listed, but --%s has been used\n"
-msgstr ""
+msgstr "Prisotne so nasprotujoče si možnosti: izpisane bi morale biti skupine razreda \"%s\", vendar so uporabljene --%s\n"
 
 #: ../libwnck/wnckprop.c:575
 #: ../libwnck/wnckprop.c:584
 #, c-format
 msgid "Conflicting options are present: a window should be interacted with, but --%s has been used\n"
-msgstr ""
+msgstr "Prisotne so nasprotujoče si možnosti: okno bi moralo biti uporabljeno z, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:603
 #: ../libwnck/wnckprop.c:684
 #: ../libwnck/wnckprop.c:731
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Prisotne so nasprotujoče si možnosti: --%s in --%s\n"
 
 #: ../libwnck/wnckprop.c:642
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr ""
+msgstr "Neveljaven argument \"%d\" za --%s: argument mora nujno biti pozitiven\n"
 
 #: ../libwnck/wnckprop.c:655
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
+msgstr "Neveljaven argument \"%d\" za --%s: argument mora biti pozitiven\n"
 
 #: ../libwnck/wnckprop.c:750
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Prisotne so nasprotujoče si možnosti: --%s ali --%s, in --%s\n"
 
 #: ../libwnck/wnckprop.c:782
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "Neveljaven argument \"%s\" za --%s, veljavne vrednosti so: %s\n"
 
 #: ../libwnck/wnckprop.c:825
 msgid "Cannot change the workspace layout on the screen: the layout is already owned\n"
@@ -615,7 +612,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1056
 #: ../libwnck/wnckprop.c:1186
 msgid "<name unset>"
-msgstr ""
+msgstr "<ime nedoločeno>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1059
@@ -707,16 +704,15 @@ msgstr "Dejano okno: %s\n"
 #: ../libwnck/wnckprop.c:1198
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr ""
+msgstr "Prikaz namizja: %s\n"
 
 #: ../libwnck/wnckprop.c:1200
 msgid "true"
-msgstr ""
+msgstr "pravilno"
 
 #: ../libwnck/wnckprop.c:1200
-#, fuzzy
 msgid "false"
-msgstr "_Neresnično"
+msgstr "neresnično"
 
 #: ../libwnck/wnckprop.c:1211
 #, c-format
@@ -793,9 +789,8 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1433
 #: ../libwnck/wnckprop.c:1441
 #: ../libwnck/wnckprop.c:1448
-#, fuzzy
 msgid "<unset>"
-msgstr "Odnastavi"
+msgstr "<nedoločeno>"
 
 #: ../libwnck/wnckprop.c:1301
 #: ../libwnck/wnckprop.c:1323
@@ -1055,7 +1050,7 @@ msgstr "pomanjšaj"
 
 #: ../libwnck/wnckprop.c:1544
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "zamenjaj celozaslonski način"
 
 #: ../libwnck/wnckprop.c:1545
 msgid "close"
@@ -1079,7 +1074,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1555
 msgid "no action possible"
-msgstr ""
+msgstr "ni ustreznega dejanja"
 
 #: ../libwnck/wnckprop.c:1556
 #, c-format
@@ -1103,57 +1098,57 @@ msgstr "Pokažite možnosti za seznam oken in delovnih površin"
 
 #: ../libwnck/wnckprop.c:1750
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "M možnosti za spreminjanje lastnosti oken"
 
 #: ../libwnck/wnckprop.c:1751
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Pokaži možnosti za spreminjanje lastnosti oken"
 
 #: ../libwnck/wnckprop.c:1757
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Možnosti za spreminjanje lastnosti delovne površine"
 
 #: ../libwnck/wnckprop.c:1758
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "Pokaži možnosti za spreminjanje lastnosti delovne površine"
 
 #: ../libwnck/wnckprop.c:1764
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "Možnosti za spreminjanje lastnosti zaslona"
 
 #: ../libwnck/wnckprop.c:1765
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "Pokaži možnosti za spreminjanje lastnosti zaslona"
 
 #: ../libwnck/wnckprop.c:1775
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr ""
+msgstr "Napaka med razčlenjevanjem argumentov: %s\n"
 
 #: ../libwnck/wnckprop.c:1798
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "Ni mogoča uporaba zaslona %d: zaslon ne obstaja\n"
 
 #: ../libwnck/wnckprop.c:1854
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "Ni mogoča uporaba delovno površino %d: delovne površine ni mogoče najti\n"
 
 #: ../libwnck/wnckprop.c:1876
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgstr "Ni mogoča uporaba skupine razreda \"%s\": skupine razreda ni mogoče najti\n"
 
 #: ../libwnck/wnckprop.c:1899
 #, c-format
 msgid "Cannot interact with application having its group leader with XID %lu: the application cannot be found\n"
-msgstr ""
+msgstr "Ni mogoča uporaba programa s vodjo skupine z XID %lu: programa ni mogoče najti\n"
 
 #: ../libwnck/wnckprop.c:1922
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "Ni mogoča uporaba okna z XID %lu: okna ni mogoče najti\n"
 
 #~ msgid "Unknown Window"
 #~ msgstr "Neznano okno"
