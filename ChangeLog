@@ -1,5 +1,13 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	Add a context for some strings. This is needed by French at least. Fix
+	bug #476512.
+
+	* libwnck/wnckprop.c: (print_screen), (print_workspace),
+	(print_application), (print_window):
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/screen.c: (update_viewport_settings): remove dead
 	conditions.
 	Patch by Roland Bär <roland@verifysoft.de>. Fix bug #494077.

@@ -1201,7 +1201,8 @@ print_screen (WnckScreen *screen)
                                 wnck_workspace_get_number (space),
                                 wnck_workspace_get_name (space));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("Active Workspace: %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1222,7 +1223,8 @@ print_screen (WnckScreen *screen)
       g_free (name);
     }
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no window" */
+    free_buf = g_strdup (Q_("window|none"));
   g_print (_("Active Window: %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1278,7 +1280,8 @@ print_workspace (WnckWorkspace *space)
                                 wnck_workspace_get_number (neighbor),
                                 wnck_workspace_get_name (neighbor));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("Left Neighbor: %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1289,7 +1292,8 @@ print_workspace (WnckWorkspace *space)
                                 wnck_workspace_get_number (neighbor),
                                 wnck_workspace_get_name (neighbor));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("Right Neighbor: %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1300,7 +1304,8 @@ print_workspace (WnckWorkspace *space)
                                 wnck_workspace_get_number (neighbor),
                                 wnck_workspace_get_name (neighbor));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("Top Neighbor: %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1311,7 +1316,8 @@ print_workspace (WnckWorkspace *space)
                                 wnck_workspace_get_number (neighbor),
                                 wnck_workspace_get_name (neighbor));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("Bottom Neighbor: %s\n"), free_buf);
   g_free (free_buf);
 }
@@ -1373,7 +1379,8 @@ print_application (WnckApplication *app)
   if (wnck_application_get_startup_id (app) != NULL)
     buf = wnck_application_get_startup_id (app);
   else
-    buf = _("none");
+    /* Translators: "none" here means "no startup ID" */
+    buf = Q_("startupID|none");
   g_print (_("Startup ID: %s\n"), buf);
 
   g_print (_("Number of Windows: %d\n"), g_list_length (windows));
@@ -1424,7 +1431,8 @@ print_window (WnckWindow *window)
   else if (wnck_window_is_pinned (window))
     free_buf = g_strdup (_("all workspaces"));
   else
-    free_buf = g_strdup (_("none"));
+    /* Translators: "none" here means "no workspace" */
+    free_buf = g_strdup (Q_("workspace|none"));
   g_print (_("On Workspace: %s\n"), free_buf);
   g_free (free_buf);
 
