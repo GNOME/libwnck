@@ -32,7 +32,6 @@
 #include "pager.h"
 #include "workspace.h"
 #include "window.h"
-#include "window-action-menu.h"
 #include "xutils.h"
 #include "pager-accessible-factory.h"
 #include "workspace-accessible-factory.h"

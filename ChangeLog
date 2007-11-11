@@ -1,5 +1,12 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/pager.c: remove useless include
+	* libwnck/tasklist.c: (wnck_task_popup_menu),
+	(wnck_task_button_press_event): use wnck_action_menu_new() instead of
+	deprecated wnck_create_window_action_menu()
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	Objectify window-action-menu.c so that we have a real WnckActionMenu
 	widget.
 

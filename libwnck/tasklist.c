@@ -2962,7 +2962,7 @@ wnck_task_popup_menu (WnckTask *task,
 
       if (action_submenu)
         gtk_menu_item_set_submenu (GTK_MENU_ITEM (menu_item),
-                                   wnck_create_window_action_menu (win_task->window));
+                                   wnck_action_menu_new (win_task->window));
       else
         {
           static const GtkTargetEntry targets[] = {
@@ -3657,7 +3657,7 @@ wnck_task_button_press_event (GtkWidget	      *widget,
 
           g_assert (task->action_menu == NULL);
       
-          task->action_menu = wnck_create_window_action_menu (task->window);
+          task->action_menu = wnck_action_menu_new (task->window);
 
           g_object_add_weak_pointer (G_OBJECT (task->action_menu),
                                      (void**) &task->action_menu);
