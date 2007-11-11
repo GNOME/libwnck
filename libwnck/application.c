@@ -205,7 +205,7 @@ wnck_application_finalize (GObject *object)
  * wnck_application_get:
  * @xwindow: the X window ID of a group leader.
  *
- * Returns the #WnckApplication corresponding to the group leader with @xwindow
+ * Gets the #WnckApplication corresponding to the group leader with @xwindow
  * as X window ID.
  *
  * Return value: the #WnckApplication corresponding to @xwindow, or %NULL if
@@ -225,7 +225,7 @@ wnck_application_get (gulong xwindow)
  * wnck_application_get_xid:
  * @app: a #WnckApplication.
  * 
- * Returns the X window ID of the group leader window for @app.
+ * Gets the X window ID of the group leader window for @app.
  * 
  * Return value: the X window ID of the group leader window for @app.
  **/
@@ -241,7 +241,7 @@ wnck_application_get_xid (WnckApplication *app)
  * wnck_application_get_windows:
  * @app: a #WnckApplication.
  * 
- * Returns the list of #WnckWindow belonging to @app.
+ * Gets the list of #WnckWindow belonging to @app.
  * 
  * Return value: the list of #WnckWindow belonging to @app, or %NULL if the
  * application contains no window. The list should not be modified nor freed,
@@ -259,7 +259,7 @@ wnck_application_get_windows (WnckApplication *app)
  * wnck_application_get_n_windows:
  * @app: a #WnckApplication.
  * 
- * Returns the number of #WnckWindow belonging to @app.
+ * Gets the number of #WnckWindow belonging to @app.
  * 
  * Return value: the number of #WnckWindow belonging to @app.
  **/
@@ -275,7 +275,7 @@ wnck_application_get_n_windows (WnckApplication *app)
  * wnck_application_get_name:
  * @app: a #WnckApplication.
  * 
- * Returns the name of @app. Since there is no way to properly find this name,
+ * Gets the name of @app. Since there is no way to properly find this name,
  * various suboptimal heuristics are used to find it. GTK+ should probably have
  * a function to allow applications to set the _NET_WM_NAME property on the
  * group leader as the application name, and the <ulink
@@ -299,7 +299,7 @@ wnck_application_get_name (WnckApplication *app)
  * wnck_application_get_icon_name:
  * @app: a #WnckApplication
  * 
- * Returns the icon name of @app (to be used when @app is minimized). Since
+ * Gets the icon name of @app (to be used when @app is minimized). Since
  * there is no way to properly find this name, various suboptimal heuristics
  * are used to find it.
  * 
@@ -325,7 +325,7 @@ wnck_application_get_icon_name (WnckApplication *app)
  * wnck_application_get_pid:
  * @app: a #WnckApplication.
  * 
- * Returns the process ID of @app.
+ * Gets the process ID of @app.
  * 
  * Return value: the process ID of @app, or 0 if none is available.
  **/
@@ -404,7 +404,7 @@ find_icon_window (WnckApplication *app)
  * wnck_application_get_icon:
  * @app: a #WnckApplication.
  * 
- * Returns the icon to be used for @app. If no icon is set for @app, a
+ * Gets the icon to be used for @app. If no icon is set for @app, a
  * suboptimal heuristic is used to find an appropriate icon. If no icon was
  * found, a fallback icon is used.
  * 
@@ -436,7 +436,7 @@ wnck_application_get_icon (WnckApplication *app)
  * wnck_application_get_mini_icon:
  * @app: a #WnckApplication.
  * 
- * Returns the mini-icon to be used for @app. If no mini-icon is set for @app,
+ * Gets the mini-icon to be used for @app. If no mini-icon is set for @app,
  * a suboptimal heuristic is used to find an appropriate icon. If no mini-icon
  * was found, a fallback mini-icon is used.
  * 
@@ -469,7 +469,7 @@ wnck_application_get_mini_icon (WnckApplication *app)
  * wnck_application_get_icon_is_fallback:
  * @app: a #WnckApplication
  *
- * Returns whether a default fallback icon is used for @app (because none
+ * Gets whether a default fallback icon is used for @app (because none
  * was set on @app).
  * 
  * Return value: %TRUE if the icon for @app is a fallback, %FALSE otherwise.
@@ -486,7 +486,7 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
  * wnck_application_get_startup_id:
  * @app: a #WnckApplication.
  *
- * Returns the startup sequence ID used for startup notification of @app.
+ * Gets the startup sequence ID used for startup notification of @app.
  *
  * Return value: the startup sequence ID used for startup notification of @app,
  * or %NULL if none is available.

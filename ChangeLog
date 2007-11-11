@@ -1,5 +1,16 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	Change API doc to use Gets instead of Returns in the description of
+	the functions. Fix bug #477847.
+
+	* libwnck/application.c:
+	* libwnck/class-group.c:
+	* libwnck/screen.c:
+	* libwnck/window.c:
+	* libwnck/workspace.c:
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	Add a context for some strings. This is needed by French at least. Fix
 	bug #476512.
 

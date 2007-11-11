@@ -163,7 +163,7 @@ wnck_class_group_finalize (GObject *object)
  * wnck_class_group_get:
  * @res_class: name of the sought resource class.
  *
- * Returns the #WnckClassGroup corresponding to @res_class.
+ * Gets the #WnckClassGroup corresponding to @res_class.
  *
  * Return value: the #WnckClassGroup corresponding to @res_class, or %NULL if
  * there is no #WnckClassGroup with the specified @res_class. The returned
@@ -498,7 +498,7 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
  * wnck_class_group_get_windows:
  * @class_group: a #WnckClassGroup.
  * 
- * Returns the list of #WnckWindow that are grouped in @class_group.
+ * Gets the list of #WnckWindow that are grouped in @class_group.
  * 
  * Return value: the list of #WnckWindow grouped in @class_group, or %NULL if
  * the group contains no window. The list should not be modified nor freed, as
@@ -518,7 +518,7 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
  * wnck_class_group_get_res_class:
  * @class_group: a #WnckClassGroup.
  * 
- * Returns the resource class name for @class_group.
+ * Gets the resource class name for @class_group.
  * 
  * Return value: the resource class name of @class_group, or an
  * empty string if the group has no resource class name.
@@ -537,7 +537,7 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
  * wnck_class_group_get_name:
  * @class_group: a #WnckClassGroup.
  * 
- * Returns an human-readable name for @class_group. Since there is no way to
+ * Gets an human-readable name for @class_group. Since there is no way to
  * properly find this name, a suboptimal heuristic is used to find it. The name
  * is the name of all #WnckApplication for each #WnckWindow in @class_group if
  * they all have the same name. If all #WnckApplication don't have the same
@@ -561,7 +561,7 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
  * wnck_class_group_get_icon:
  * @class_group: a #WnckClassGroup.
  * 
- * Returns the icon to be used for @class_group. Since there is no way to
+ * Gets the icon to be used for @class_group. Since there is no way to
  * properly find the icon, a suboptimal heuristic is used to find it. The icon
  * is the first icon found by looking at all the #WnckApplication for each
  * #WnckWindow in @class_group, then at all the #WnckWindow in @class_group. If
@@ -585,7 +585,7 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
  * wnck_class_group_get_mini_icon:
  * @class_group: a #WnckClassGroup.
  * 
- * Returns the mini-icon to be used for @class_group. Since there is no way to
+ * Gets the mini-icon to be used for @class_group. Since there is no way to
  * properly find the mini-icon, the same suboptimal heuristic as the one for
  * wnck_class_group_get_icon() is used to find it.
  * 

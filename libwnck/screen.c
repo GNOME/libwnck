@@ -613,7 +613,7 @@ wnck_screen_construct (WnckScreen *screen,
  * wnck_screen_get:
  * @index: screen number, starting from 0.
  * 
- * Returns the #WnckScreen for a given screen on the default display.
+ * Gets the #WnckScreen for a given screen on the default display.
  * 
  * Return value: the #WnckScreen for screen @index, or %NULL if no such screen
  * exists. The returned #WnckScreen is owned by libwnck and must not be
@@ -658,7 +658,7 @@ _wnck_screen_get_existing (int number)
 /**
  * wnck_screen_get_default:
  * 
- * Returns the default #WnckScreen on the default display.
+ * Gets the default #WnckScreen on the default display.
  * 
  * Return value: the default #WnckScreen. The returned #WnckScreen is
  * owned by libwnck and must not be referenced or unreferenced.
@@ -677,7 +677,7 @@ wnck_screen_get_default (void)
  * wnck_screen_get_for_root:
  * @root_window_id: an X window ID.
  * 
- * Returns the #WnckScreen for the root window at @root_window_id, or
+ * Gets the #WnckScreen for the root window at @root_window_id, or
  * %NULL if no #WnckScreen exists for this root window.
  *
  * This function does not work if wnck_screen_get() was not called for the
@@ -711,7 +711,7 @@ wnck_screen_get_for_root (gulong root_window_id)
  * wnck_screen_get_number:
  * @screen: a #WnckScreen.
  * 
- * Returns the index of @screen on the display to which it belongs. The first
+ * Gets the index of @screen on the display to which it belongs. The first
  * #WnckScreen has an index of 0.
  * 
  * Return value: the index of @space on @screen, or -1 on errors.
@@ -730,7 +730,7 @@ wnck_screen_get_number (WnckScreen *screen)
  * wnck_screen_get_workspaces:
  * @screen: a #WnckScreen.
  * 
- * Returns the list of #WnckWorkspace on @screen. The list is ordered: the
+ * Gets the list of #WnckWorkspace on @screen. The list is ordered: the
  * first element in the list is the first #WnckWorkspace, etc..
  * 
  * Return value: the list of #WnckWorkspace on @screen. The list should not be
@@ -751,7 +751,7 @@ wnck_screen_get_workspaces (WnckScreen *screen)
  * @screen: a #WnckScreen.
  * @workspace: a workspace index, starting from 0.
  * 
- * Returns the #WnckWorkspace numbered @workspace on @screen.
+ * Gets the #WnckWorkspace numbered @workspace on @screen.
  * 
  * Return value: the #WnckWorkspace numbered @workspace on @screen, or
  * %NULL if no such workspace exists. The returned #WnckWorkspace is owned by
@@ -781,7 +781,7 @@ wnck_screen_get_workspace (WnckScreen *screen,
  * @screen: a #WnckScreen.
  * @space: a #WnckWorkspace.
  * 
- * Returns the index of @space on @screen. The first #WnckWorkspace has an
+ * Gets the index of @space on @screen. The first #WnckWorkspace has an
  * index of 0. See also wnck_workspace_get_number().
  * 
  * Return value: the index of @space on @screen, or -1 on errors.
@@ -816,7 +816,7 @@ wnck_screen_get_workspace_index (WnckScreen    *screen,
  * wnck_screen_get_active_workspace:
  * @screen: a #WnckScreen.
  * 
- * Returns the active #WnckWorkspace on @screen. May return %NULL sometimes,
+ * Gets the active #WnckWorkspace on @screen. May return %NULL sometimes,
  * if libwnck is in a weird state due to the asynchronous nature of the
  * interaction with the window manager.
  * 
@@ -838,7 +838,7 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
  * @space: a #WnckWorkspace.
  * @direction: direction in which to search the neighbor.
  * 
- * Returns the neighbor #WnckWorkspace of @space in the @direction direction on
+ * Gets the neighbor #WnckWorkspace of @space in the @direction direction on
  * @screen.
  * 
  * Return value: the neighbor #WnckWorkspace of @space in the @direction
@@ -902,7 +902,7 @@ wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
  * wnck_screen_get_active_window:
  * @screen: a #WnckScreen.
  * 
- * Returns the active #WnckWindow on @screen. May return %NULL sometimes, since
+ * Gets the active #WnckWindow on @screen. May return %NULL sometimes, since
  * not all window managers guarantee that a window is always active.
  * 
  * Return value: the active #WnckWindow on @screen, or %NULL. The returned
@@ -920,7 +920,7 @@ wnck_screen_get_active_window (WnckScreen *screen)
  * wnck_screen_get_previously_active_window:
  * @screen: a #WnckScreen.
  * 
- * Returns the previously active #WnckWindow on @screen. May return %NULL
+ * Gets the previously active #WnckWindow on @screen. May return %NULL
  * sometimes, since not all window managers guarantee that a window is always
  * active.
  * 
@@ -942,7 +942,7 @@ wnck_screen_get_previously_active_window (WnckScreen *screen)
  * wnck_screen_get_windows:
  * @screen: a #WnckScreen.
  * 
- * Returns the list of #WnckWindow on @screen. The list is not in a defined
+ * Gets the list of #WnckWindow on @screen. The list is not in a defined
  * order, but should be "stable" (windows should not be reordered in it).
  * However, the stability of the list is established by the window manager, so
  * don't blame libwnck if it breaks down.
@@ -963,7 +963,7 @@ wnck_screen_get_windows (WnckScreen *screen)
  * wnck_screen_get_windows_stacked:
  * @screen: a #WnckScreen.
  * 
- * Returns the list of #WnckWindow on @screen in bottom-to-top order.
+ * Gets the list of #WnckWindow on @screen in bottom-to-top order.
  * 
  * Return value: the list of #WnckWindow in stacking order on @screen, or %NULL
  * if there is no window on @screen. The list should not be modified nor freed,
@@ -981,7 +981,7 @@ wnck_screen_get_windows_stacked (WnckScreen *screen)
  * _wnck_screen_get_gdk_screen:
  * @screen: a #WnckScreen.
  * 
- * Returns the <classname>GdkScreen</classname referring to the same screen as
+ * Gets the <classname>GdkScreen</classname referring to the same screen as
  * @screen.
  * 
  * Return value: the <classname>GdkScreen</classname referring to the same
@@ -1021,7 +1021,7 @@ wnck_screen_force_update (WnckScreen *screen)
  * wnck_screen_get_workspace_count:
  * @screen: a #WnckScreen.
  * 
- * Returns the number of #WnckWorkspace on @screen.
+ * Gets the number of #WnckWorkspace on @screen.
  * 
  * Return value: the number of #WnckWorkspace on @screen.
  **/
@@ -2490,7 +2490,7 @@ emit_wm_changed (WnckScreen *screen)
  * wnck_screen_get_window_manager_name:
  * @screen: a #WnckScreen.
  *
- * Returns the name of the window manager.
+ * Gets the name of the window manager.
  *
  * Return value: the name of the window manager, or %NULL if the window manager
  * does not comply with the <ulink
@@ -2512,7 +2512,7 @@ wnck_screen_get_window_manager_name (WnckScreen *screen)
  * @screen: a #WnckScreen.
  * @atom: a property atom.
  *
- * Returns whether the window manager for @screen supports a certain hint from
+ * Gets whether the window manager for @screen supports a certain hint from
  * the <ulink
  * url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">Extended
  * Window Manager Hints specification</ulink> (EWMH).
@@ -2543,7 +2543,7 @@ wnck_screen_net_wm_supports (WnckScreen *screen,
  * wnck_screen_get_background_pixmap:
  * @screen: a #WnckScreen.
  *
- * Returns the X window ID of the background pixmap of @screen.
+ * Gets the X window ID of the background pixmap of @screen.
  *
  * Returns: the X window ID of the background pixmap of @screen.
  */
@@ -2559,7 +2559,7 @@ wnck_screen_get_background_pixmap (WnckScreen *screen)
  * wnck_screen_get_width:
  * @screen: a #WnckScreen.
  *
- * Returns the width of @screen.
+ * Gets the width of @screen.
  *
  * Returns: the width of @screen.
  */
@@ -2575,7 +2575,7 @@ wnck_screen_get_width (WnckScreen *screen)
  * wnck_screen_get_height:
  * @screen: a #WnckScreen.
  *
- * Returns the height of @screen.
+ * Gets the height of @screen.
  *
  * Returns: the height of @screen.
  */
@@ -2604,7 +2604,7 @@ _wnck_screen_get_xscreen (WnckScreen *screen)
  * @starting_corner: return location for the starting corner in the
  * #WnckWorkspace layout (i.e. the corner containing the first #WnckWorkspace).
  *
- * Returns the layout of #WnckWorkspace on @screen.
+ * Gets the layout of #WnckWorkspace on @screen.
  */
 /* TODO: when we are sure about this API, add this function,
  * WnckLayoutOrientation, WnckLayoutCorner and a "layout-changed" signal. But
@@ -2710,7 +2710,7 @@ wnck_screen_release_workspace_layout (WnckScreen *screen,
  * wnck_screen_get_showing_desktop:
  * @screen: a #WnckScreen.
  *
- * Returns whether @screen is in the "showing the desktop" mode. This mode is
+ * Gets whether @screen is in the "showing the desktop" mode. This mode is
  * changed when a #WnckScreen::showing-desktop-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is fullscreen, %FALSE otherwise.

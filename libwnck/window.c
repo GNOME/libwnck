@@ -460,7 +460,7 @@ wnck_window_finalize (GObject *object)
  * wnck_window_get:
  * @xwindow: an X window ID.
  *
- * Returns a preexisting #WnckWindow for the X window @xwindow. This will not
+ * Gets a preexisting #WnckWindow for the X window @xwindow. This will not
  * create a #WnckWindow if none exists. The function is robust against bogus
  * window IDs.
  *
@@ -480,7 +480,7 @@ wnck_window_get (gulong xwindow)
  * wnck_window_get_screen:
  * @window: a #WnckWindow.
  *
- * Returns the #WnckScreen @window is on.
+ * Gets the #WnckScreen @window is on.
  *
  * Return value: the #WnckScreen @window is on. The returned #WnckScreen is
  * owned by libwnck and must not be referenced or unreferenced.
@@ -607,7 +607,7 @@ wnck_window_has_name (WnckWindow *window)
  * wnck_window_get_name:
  * @window: a #WnckWindow.
  *
- * Returns the name of @window, as it should be displayed in a pager
+ * Gets the name of @window, as it should be displayed in a pager
  * or tasklist. Always returns some value, even if @window has no name
  * set; use wnck_window_has_name() if you need to know whether the returned
  * name is "real" or not.
@@ -660,7 +660,7 @@ wnck_window_has_icon_name (WnckWindow *window)
  * wnck_window_get_icon_name:
  * @window: a #WnckWindow
  *
- * Returns the icon name of @window, as it should be displayed for an icon
+ * Gets the icon name of @window, as it should be displayed for an icon
  * (minimized state). Always returns some value, even if @window has no icon
  * name set; use wnck_window_has_icon_name() if you need to know whether the
  * returned icon name is "real" or not.
@@ -716,7 +716,7 @@ _wnck_window_get_name_for_display (WnckWindow *window,
  * wnck_window_get_application:
  * @window: a #WnckWindow.
  *
- * Returns the #WnckApplication to which @window belongs.
+ * Gets the #WnckApplication to which @window belongs.
  *
  * Return value: the #WnckApplication to which @window belongs. The returned
  * #WnckApplication is owned by libwnck and must not be referenced or
@@ -734,7 +734,7 @@ wnck_window_get_application  (WnckWindow *window)
  * wnck_window_get_transient:
  * @window: a #WnckWindow.
  *
- * Returns the #WnckWindow for which @window is transient.
+ * Gets the #WnckWindow for which @window is transient.
  *
  * Return value: the #WnckWindow for which @window is transient, or %NULL if
  * @window is not transient for any #WnckWindow.
@@ -753,7 +753,7 @@ wnck_window_get_transient (WnckWindow *window)
  * wnck_window_get_group_leader:
  * @window: a #WnckWindow.
  *
- * Returns the group leader of the group of windows to which @window belongs.
+ * Gets the group leader of the group of windows to which @window belongs.
  *
  * Return value: the group leader of the group of windows to which @window
  * belongs, or the X window ID of @window if @window does not belong to any
@@ -771,7 +771,7 @@ wnck_window_get_group_leader (WnckWindow *window)
  * wnck_window_get_xid:
  * @window: a #WnckWindow.
  *
- * Returns the X window ID of @window.
+ * Gets the X window ID of @window.
  *
  * Return value: the X window ID of @window.
  **/
@@ -787,7 +787,7 @@ wnck_window_get_xid (WnckWindow *window)
  * wnck_window_get_class_group:
  * @window: a #WnckWindow.
  *
- * Returns the #WnckClassGroup to which @window belongs.
+ * Gets the #WnckClassGroup to which @window belongs.
  *
  * Return value: the #WnckClassGroup to which @window belongs. The returned
  * #WnckClassGroup is owned by libwnck and must not be referenced or
@@ -807,7 +807,7 @@ wnck_window_get_class_group (WnckWindow *window)
  * wnck_window_get_session_id:
  * @window: a #WnckWindow.
  *
- * Returns the session ID for @window in Latin-1 encoding.
+ * Gets the session ID for @window in Latin-1 encoding.
  * NOTE: this is invalid UTF-8. You can't display this
  * string in a GTK+ widget without converting to UTF-8.
  * See wnck_window_get_session_id_utf8().
@@ -827,7 +827,7 @@ wnck_window_get_session_id (WnckWindow *window)
  * wnck_window_get_session_id_utf8:
  * @window: a #WnckWindow.
  *
- * Returns the session ID for @window in UTF-8 encoding.
+ * Gets the session ID for @window in UTF-8 encoding.
  * The session ID should be in Latin-1 encoding, so the conversion should work,
  * but a broken client could set a session ID that might not be convertable to
  * UTF-8.
@@ -865,7 +865,7 @@ wnck_window_get_session_id_utf8 (WnckWindow *window)
  * wnck_window_get_pid:
  * @window: a #WnckWindow.
  *
- * Returns the process ID of @window.
+ * Gets the process ID of @window.
  *
  * Return value: the process ID of @window, or 0 if none is available.
  **/
@@ -881,7 +881,7 @@ wnck_window_get_pid (WnckWindow *window)
  * wnck_window_get_sort_order:
  * @window: a #WnckWindow.
  *
- * Returns the sort order of @window, used for ordering of @window in
+ * Gets the sort order of @window, used for ordering of @window in
  * #WnckSelector and #WnckTasklist. The sort order is an internal state in
  * libwnck. The initial value is defined when the window is created.
  *
@@ -920,7 +920,7 @@ void        wnck_window_set_sort_order        (WnckWindow *window,
  * wnck_window_get_window_type:
  * @window: a #WnckWindow.
  * 
- * Returns the semantic type of @window.
+ * Gets the semantic type of @window.
  * 
  * Return value: the semantic type of @window.
  **/
@@ -992,7 +992,7 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
  * wnck_window_is_minimized:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is minimized. Minimization state may change anytime
+ * Gets whether @window is minimized. Minimization state may change anytime
  * a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is minimized, %FALSE otherwise.
@@ -1009,7 +1009,7 @@ wnck_window_is_minimized (WnckWindow *window)
  * wnck_window_needs_attention:
  * @window: a #WnckWindow.
  *
- * Returns whether @window needs attention. This state may change anytime
+ * Gets whether @window needs attention. This state may change anytime
  * a #WnckWindow::state-changed signal gets emitted.
  *
  * This state depends on flags such as the demands_attention and is_urgent
@@ -1084,7 +1084,7 @@ _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window)
  * wnck_window_or_transient_needs_attention:
  * @window: a #WnckWindow.
  *
- * Returns whether @window or one of its transients needs attention. This state
+ * Gets whether @window or one of its transients needs attention. This state
  * may change anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window or one of its transients needs attention,
@@ -1103,7 +1103,7 @@ wnck_window_or_transient_needs_attention (WnckWindow *window)
  * wnck_window_is_maximized_horizontally:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is maximized horizontally. Horizontal maximization
+ * Gets whether @window is maximized horizontally. Horizontal maximization
  * state may change anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is maximized horizontally, %FALSE otherwise.
@@ -1120,7 +1120,7 @@ wnck_window_is_maximized_horizontally (WnckWindow *window)
  * wnck_window_is_maximized_vertically:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is maximized vertically. vertiVal maximization
+ * Gets whether @window is maximized vertically. vertiVal maximization
  * state may change anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is maximized vertically, %FALSE otherwise.
@@ -1176,7 +1176,7 @@ _wnck_window_get_resource_name (WnckWindow *window)
  * wnck_window_is_maximized:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is maximized. Maximization state may change
+ * Gets whether @window is maximized. Maximization state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * As for GDK, "maximized" means both vertically and horizontally. If @window
@@ -1200,7 +1200,7 @@ wnck_window_is_maximized (WnckWindow *window)
  * wnck_window_is_shaded:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is shaded. Shade state may change anytime
+ * Gets whether @window is shaded. Shade state may change anytime
  * a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is shaded, %FALSE otherwise.
@@ -1217,7 +1217,7 @@ wnck_window_is_shaded                 (WnckWindow *window)
  * wnck_window_is_above:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is above other windows. This state may change
+ * Gets whether @window is above other windows. This state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * See wnck_window_make_above() for more details on this state.
@@ -1238,7 +1238,7 @@ wnck_window_is_above                  (WnckWindow *window)
  * wnck_window_is_below:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is below other windows. This state may change
+ * Gets whether @window is below other windows. This state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * See wnck_window_make_below() for more details on this state.
@@ -1259,7 +1259,7 @@ wnck_window_is_below                  (WnckWindow *window)
  * wnck_window_is_skip_pager:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is included on pagers. This state may change
+ * Gets whether @window is included on pagers. This state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is included on pagers, %FALSE otherwise.
@@ -1295,7 +1295,7 @@ wnck_window_set_skip_pager (WnckWindow *window,
  * wnck_window_is_skip_tasklist:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is included on tasklists. This state may change
+ * Gets whether @window is included on tasklists. This state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is included on tasklists, %FALSE otherwise.
@@ -1312,7 +1312,7 @@ wnck_window_is_skip_tasklist          (WnckWindow *window)
  * wnck_window_is_fullscreen:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is fullscreen. Fullscreen state may change
+ * Gets whether @window is fullscreen. Fullscreen state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Return value: %TRUE if @window is fullscreen, %FALSE otherwise.
@@ -1373,7 +1373,7 @@ wnck_window_set_fullscreen (WnckWindow *window,
  * wnck_window_is_sticky:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is sticky. Sticky state may change
+ * Gets whether @window is sticky. Sticky state may change
  * anytime a #WnckWindow::state-changed signal gets emitted.
  *
  * Sticky here means "stuck to the glass", i.e. does not scroll with the
@@ -1746,7 +1746,7 @@ wnck_window_keyboard_size (WnckWindow *window)
  * wnck_window_get_workspace:
  * @window: a #WnckWindow.
  *
- * Returns the current workspace @window is on. If the window is pinned (on all
+ * Gets the current workspace @window is on. If the window is pinned (on all
  * workspaces), or not on any workspaces, %NULL may be returned.
  *
  * Return value: the single current workspace @window is on, or %NULL. The
@@ -1789,7 +1789,7 @@ wnck_window_move_to_workspace (WnckWindow    *window,
  * wnck_window_is_pinned:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is on all workspace. Pinned state may change
+ * Gets whether @window is on all workspace. Pinned state may change
  * anytime a #WnckWindow::workspace-changed signal gets emitted, but not when
  * a #WnckWindow::state-changed gets emitted.
  *
@@ -1877,7 +1877,7 @@ wnck_window_activate (WnckWindow *window,
  * wnck_window_is_active:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is the active window on its #WnckScreen.
+ * Gets whether @window is the active window on its #WnckScreen.
  *
  * Return value: %TRUE if @window is the active window on its #WnckScreen,
  * %FALSE otherwise.
@@ -1894,7 +1894,7 @@ wnck_window_is_active (WnckWindow *window)
  * wnck_window_is_most_recently_activated:
  * @window: a #WnckWindow.
  *
- * Returns whether @window is the most recently activated window on its
+ * Gets whether @window is the most recently activated window on its
  * #WnckScreen.
  *
  * The most recently activated window is identical to the active
@@ -2010,7 +2010,7 @@ wnck_window_activate_transient (WnckWindow *window,
  * wnck_window_transient_is_most_recently_activated:
  * @window: a #WnckWindow.
  *
- * Returns whether one of the transients of @window is the most
+ * Gets whether one of the transients of @window is the most
  * recently activated window. See
  * wnck_window_is_most_recently_activated() for a more complete
  * description of what is meant by most recently activated.  This
@@ -2087,7 +2087,7 @@ get_icons (WnckWindow *window)
  * wnck_window_get_icon:
  * @window: a #WnckWindow.
  * 
- * Returns the icon to be used for @window. If no icon was found, a fallback
+ * Gets the icon to be used for @window. If no icon was found, a fallback
  * icon is used. wnck_window_get_icon_is_fallback() can be used to tell if the
  * icon is the fallback icon. 
  * 
@@ -2113,7 +2113,7 @@ wnck_window_get_icon (WnckWindow *window)
  * wnck_window_get_mini_icon:
  * @window: a #WnckWindow.
  * 
- * Returns the mini-icon to be used for @window. If no mini-icon was found, a
+ * Gets the mini-icon to be used for @window. If no mini-icon was found, a
  * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
  * to tell if the mini-icon is the fallback mini-icon. 
  * 
@@ -2139,7 +2139,7 @@ wnck_window_get_mini_icon (WnckWindow *window)
  * wnck_window_get_icon_is_fallback:
  * @window: a #WnckWindow.
  *
- * Returns whether a default fallback icon is used for @window (because none
+ * Gets whether a default fallback icon is used for @window (because none
  * was set on @window).
  * 
  * Return value: %TRUE if the icon for @window is a fallback, %FALSE otherwise.
@@ -2156,7 +2156,7 @@ wnck_window_get_icon_is_fallback (WnckWindow *window)
  * wnck_window_get_actions:
  * @window: a #WnckWindow.
  * 
- * Returns the actions that can be done for @window.
+ * Gets the actions that can be done for @window.
  * 
  * Return value: bitmask of actions that can be done for @window.
  **/
@@ -2173,7 +2173,7 @@ wnck_window_get_actions (WnckWindow *window)
  * wnck_window_get_state:
  * @window: a #WnckWindow.
  * 
- * Returns the state of @window.
+ * Gets the state of @window.
  * 
  * Return value: bitmask of active states for @window.
  **/
@@ -2374,7 +2374,7 @@ wnck_window_set_icon_geometry (WnckWindow *window,
  * @window: a #WnckWindow.
  * @workspace: a #WnckWorkspace.
  * 
- * Returns whether @window appears on @workspace.
+ * Gets whether @window appears on @workspace.
  *
  * Return value: %TRUE if @window appears on @workspace, %FALSE otherwise.
  **/
@@ -2394,7 +2394,7 @@ wnck_window_is_on_workspace (WnckWindow    *window,
  * @window: a #WnckWindow.
  * @workspace: a #WnckWorkspace.
  * 
- * Returns %TRUE if @window appears in the current viewport of @workspace.
+ * Gets %TRUE if @window appears in the current viewport of @workspace.
  * 
  * Return value: %TRUE if @window appears in current viewport of @workspace,
  * %FALSE otherwise.

@@ -148,7 +148,7 @@ wnck_workspace_finalize (GObject *object)
  * wnck_workspace_get_number:
  * @space: a #WnckWorkspace.
  * 
- * Returns the index of @space on the #WnckScreen to which it belongs. The
+ * Gets the index of @space on the #WnckScreen to which it belongs. The
  * first workspace has an index of 0.
  * 
  * Return value: the index of @space on its #WnckScreen, or -1 on errors.
@@ -165,7 +165,7 @@ wnck_workspace_get_number (WnckWorkspace *space)
  * wnck_workspace_get_name:
  * @space: a #WnckWorkspace.
  * 
- * Returns the human-readable name that should be used to refer to @space. If
+ * Gets the human-readable name that should be used to refer to @space. If
  * the user has not set a special name, a fallback like "Workspace 3" will be
  * used.
  * 
@@ -204,7 +204,7 @@ wnck_workspace_change_name (WnckWorkspace *space,
  * wnck_workspace_get_screen:
  * @space: a #WnckWorkspace.
  *
- * Returns the #WnckScreen @space is on.
+ * Gets the #WnckScreen @space is on.
  *
  * Return value: the #WnckScreen @space is on. The returned #WnckScreen is
  * owned by libwnck and must not be referenced or unreferenced.
@@ -336,7 +336,7 @@ _wnck_workspace_set_viewport (WnckWorkspace *space,
  * wnck_workspace_get_width:
  * @space: a #WnckWorkspace.
  *
- * Returns the width of @space.
+ * Gets the width of @space.
  *
  * Returns: the width of @space.
  *
@@ -354,7 +354,7 @@ wnck_workspace_get_width (WnckWorkspace *space)
  * wnck_workspace_get_height:
  * @space: a #WnckWorkspace.
  *
- * Returns the height of @space.
+ * Gets the height of @space.
  *
  * Returns: the height of @space.
  *
@@ -372,7 +372,7 @@ wnck_workspace_get_height (WnckWorkspace *space)
  * wnck_workspace_get_viewport_x:
  * @space: a #WnckWorkspace.
  *
- * Returns the X coordinate of the viewport in @space.
+ * Gets the X coordinate of the viewport in @space.
  *
  * Returns: the X coordinate of the viewport in @space, or 0 if @space does not
  * contain a viewport.
@@ -391,7 +391,7 @@ wnck_workspace_get_viewport_x (WnckWorkspace *space)
  * wnck_workspace_get_viewport_y:
  * @space: a #WnckWorkspace.
  *
- * Returns the Y coordinate of the viewport in @space.
+ * Gets the Y coordinate of the viewport in @space.
  *
  * Returns: the Y coordinate of the viewport in @space, or 0 if @space does not
  * contain a viewport.
@@ -410,7 +410,7 @@ wnck_workspace_get_viewport_y (WnckWorkspace *space)
  * wnck_workspace_is_virtual:
  * @space: a #WnckWorkspace.
  *
- * Returns whether @space contains a viewport.
+ * Gets whether @space contains a viewport.
  *
  * Returns: %TRUE if @space contains a viewport, %FALSE otherwise.
  *
@@ -428,7 +428,7 @@ wnck_workspace_is_virtual (WnckWorkspace *space)
  * wnck_workspace_get_layout_row:
  * @space: a #WnckWorkspace.
  * 
- * Returns the row of @space in the #WnckWorkspace layout. The first row has an
+ * Gets the row of @space in the #WnckWorkspace layout. The first row has an
  * index of 0 and is always the top row, regardless of the starting corner set
  * for the layout.
  * 
@@ -467,7 +467,7 @@ wnck_workspace_get_layout_row (WnckWorkspace *space)
  * wnck_workspace_get_layout_column:
  * @space: a #WnckWorkspace.
  * 
- * Returns the column of @space in the #WnckWorkspace layout. The first column
+ * Gets the column of @space in the #WnckWorkspace layout. The first column
  * has an index of 0 and is always the left column, regardless of the starting
  * corner set for the layout and regardless of the default direction of the
  * environment (i.e., in both Left-To-Right and Right-To-Left environments).
@@ -508,7 +508,7 @@ wnck_workspace_get_layout_column (WnckWorkspace *space)
  * @space: a #WnckWorkspace.
  * @direction: direction in which to search the neighbor.
  * 
- * Returns the neighbor #WnckWorkspace of @space in the @direction direction.
+ * Gets the neighbor #WnckWorkspace of @space in the @direction direction.
  *
  * Return value: the neighbor #WnckWorkspace of @space in the @direction
  * direction, or %NULL if no such neighbor #WnckWorkspace exists. The returned
