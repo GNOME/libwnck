@@ -1,5 +1,22 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	Activate the window when the user drags and drops it quickly on
+	itself. "Quickly" is defined by gtk-double-click-time.
+	Based on patch by Jan Niklas Hasse <jhasse@gmail.com>
+	Fix bug #460403.
+
+	* libwnck/tasklist.c: add a new drag_start_time field per tasklist
+	(wnck_tasklist_init): initialize the new field
+	(wnck_task_popup_menu): connect to drag_end
+	(wnck_task_drag_begin): set drag_start_time too
+	(wnck_task_drag_end): (new) reset drag_start_time to 0
+	(wnck_task_drag_data_received): if the found window is the same as the
+	dragged one, then check if it was dropped quickly. If yes, then
+	activate it and make the drag and drop a success
+	(wnck_task_create_widgets): connect to drag end
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	Be more paranoid about the fact that the window of the WnckActionMenu
 	might have been not set. This case can probably happen in bindings...
 

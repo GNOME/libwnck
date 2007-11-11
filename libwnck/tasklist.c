@@ -230,6 +230,8 @@ struct _WnckTasklistPrivate
   GtkReliefStyle relief;
   
   GdkPixmap *background;
+
+  guint drag_start_time;
 };
 
 static GType wnck_task_get_type (void);
@@ -270,6 +272,9 @@ static void       wnck_task_state_changed        (WnckWindow      *window,
                                                   gpointer         data);
 
 static void       wnck_task_drag_begin    (GtkWidget          *widget,
+                                           GdkDragContext     *context,
+                                           WnckTask           *task);
+static void       wnck_task_drag_end      (GtkWidget          *widget,
                                            GdkDragContext     *context,
                                            WnckTask           *task);
 static void       wnck_task_drag_data_get (GtkWidget          *widget,
@@ -715,6 +720,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   
   tasklist->priv->background = NULL;
+
+  tasklist->priv->drag_start_time = 0;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -2981,6 +2988,10 @@ wnck_task_popup_menu (WnckTask *task,
                                    G_CALLBACK (wnck_task_drag_begin),
                                    G_OBJECT (win_task),
                                    0); 
+          g_signal_connect_object (G_OBJECT(menu_item), "drag_end",
+                                   G_CALLBACK (wnck_task_drag_end),
+                                   G_OBJECT (win_task),
+                                   0); 
           g_signal_connect_object (G_OBJECT(menu_item), "drag_data_get",
                                    G_CALLBACK (wnck_task_drag_data_get),
                                    G_OBJECT (win_task),
@@ -3532,6 +3543,16 @@ wnck_task_drag_begin (GtkWidget          *widget,
 {
   _wnck_window_set_as_drag_icon (task->window, context,
                                  GTK_WIDGET (task->tasklist));
+
+  task->tasklist->priv->drag_start_time = gtk_get_current_event_time ();
+}
+
+static void
+wnck_task_drag_end (GtkWidget      *widget,
+		    GdkDragContext *context,
+		    WnckTask       *task)
+{
+  task->tasklist->priv->drag_start_time = 0;
 }
 
 static void
@@ -3592,6 +3613,25 @@ wnck_task_drag_data_received (GtkWidget          *widget,
          }
     }
 
+  if (target_task->window == found_window)
+    {
+      GtkSettings  *settings;
+      gint          double_click_time;
+
+      settings = gtk_settings_get_for_screen (gtk_widget_get_screen (GTK_WIDGET (tasklist)));
+      double_click_time = 0;
+      g_object_get (G_OBJECT (settings),
+                    "gtk-double-click-time", &double_click_time,
+                    NULL);
+
+      if ((time - tasklist->priv->drag_start_time) < double_click_time)
+        {
+          wnck_tasklist_activate_task_window (target_task, time);
+          gtk_drag_finish (context, TRUE, FALSE, time);
+          return;
+        }
+    }
+        
   if (found_window)
     {
        for (l = windows; l; l = l->next)
@@ -3822,6 +3862,11 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
       g_signal_connect_object (G_OBJECT(task->button), "drag_begin",
                                G_CALLBACK (wnck_task_drag_begin),
+                               G_OBJECT (task),
+                               0); 
+
+      g_signal_connect_object (G_OBJECT(task->button), "drag_end",
+                               G_CALLBACK (wnck_task_drag_end),
                                G_OBJECT (task),
                                0); 
   }
