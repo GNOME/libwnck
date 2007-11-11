@@ -413,6 +413,9 @@ wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
   match_xid = (state->clients[state->next].resource_base &
                ~state->clients[state->next].resource_mask);
 
+  pid = 0;
+  xid = 0;
+
   for (i = 0; i < ScreenCount (state->xdisplay); i++)
     {
       Window root;
@@ -422,8 +425,6 @@ wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
       if (root == None)
         continue;
 
-      pid = 0;
-      xid = 0;
       wnck_find_pid_for_resource_r (state->xdisplay, root, match_xid,
                                     state->clients[state->next].resource_mask,
                                     &xid, &pid);

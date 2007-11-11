@@ -1,3 +1,9 @@
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/util.c: (wnck_pid_read_resource_usage_fill_cache): correctly
+	initialize some variables.
+	Patch by Roland Bär <roland@verifysoft.de>. Fix bug #494077.
+
 2007-10-22  Matthias Clasen <mclasen@redhat.com>
 
 	* libwnck/util.c: Avoid crashing if the X Resource extension
