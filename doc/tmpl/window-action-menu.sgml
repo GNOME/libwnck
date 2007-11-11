@@ -1,5 +1,5 @@
 <!-- ##### SECTION Title ##### -->
-Window Action Menu
+WnckActionMenu
 
 <!-- ##### SECTION Short_Description ##### -->
 
@@ -17,7 +17,27 @@ Window Action Menu
 <!-- ##### SECTION Stability_Level ##### -->
 
 
-<!-- ##### FUNCTION wnck_create_window_action_menu ##### -->
+<!-- ##### STRUCT WnckActionMenu ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG WnckActionMenu:window ##### -->
+<para>
+
+</para>
+
+<!-- ##### FUNCTION wnck_action_menu_new ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### MACRO wnck_create_window_action_menu ##### -->
 <para>
 
 </para>

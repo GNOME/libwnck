@@ -1,5 +1,29 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	Objectify window-action-menu.c so that we have a real WnckActionMenu
+	widget.
+
+	* doc/libwnck-docs.sgml:
+	* doc/libwnck-sections.txt:
+	* doc/libwnck.types:
+	* doc/tmpl/window-action-menu.sgml: doc updates for the change
+	* libwnck/window-action-menu.[ch]: (window_weak_notify),
+	(get_action_menu), (item_activated_callback), (update_menu_state),
+	(queue_update), (state_changed_callback),
+	(actions_changed_callback), (workspace_changed_callback),
+	(screen_workspace_callback), (viewports_changed_callback),
+	(make_radio_menu_item), (make_check_menu_item), (make_menu_item),
+	(refill_submenu_workspace), (refill_submenu_viewport),
+	(wnck_action_menu_get_property), (wnck_action_menu_set_property),
+	(wnck_action_menu_init), (wnck_action_menu_constructor),
+	(wnck_action_menu_class_init), (wnck_action_menu_finalize),
+	(wnck_action_menu_new): many changes, but nothing really interesting
+	since it's only about making this an object.
+	Deprecate wnck_create_window_action_menu() in favor of
+	wnck_action_menu_new()
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	Change API doc to use Gets instead of Returns in the description of
 	the functions. Fix bug #477847.
 

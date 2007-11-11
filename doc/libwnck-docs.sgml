@@ -59,6 +59,7 @@ that case.
 
   <part id="widgets">
     <title>Libwnck Widgets</title>
+    <xi:include href="xml/window-action-menu.xml"/>
     <xi:include href="xml/pager.xml"/>
     <xi:include href="xml/selector.xml"/>
     <xi:include href="xml/tasklist.xml"/>
@@ -66,7 +67,6 @@ that case.
 
   <part id="utils">
     <title>Libwnck Utilities</title>
-    <xi:include href="xml/window-action-menu.xml"/>
     <xi:include href="xml/resource.xml"/>
     <xi:include href="xml/misc.xml"/>
   </part>

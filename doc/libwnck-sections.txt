@@ -314,7 +314,20 @@ WnckTasklistClass
 <SECTION>
 <FILE>window-action-menu</FILE>
 <TITLE>Window Action Menu</TITLE>
+WnckActionMenu
+wnck_action_menu_new
 wnck_create_window_action_menu
+<SUBSECTION Private>
+WnckActionMenuPrivate
+wnck_action_menu_get_type
+<SUBSECTION Standard>
+WNCK_ACTION_MENU
+WNCK_IS_ACTION_MENU
+WNCK_TYPE_ACTION_MENU
+WNCK_ACTION_MENU_CLASS
+WNCK_IS_ACTION_MENU_CLASS
+WNCK_ACTION_MENU_GET_CLASS
+WnckActionMenuClass
 </SECTION>
 
 <SECTION>

@@ -32,13 +32,29 @@
 
 /**
  * SECTION:window-action-menu
- * @short_description: context menu used to manipulate a window.
+ * @short_description: a menu widget, used to manipulate a window.
  * @see_also: #WnckWindow
  * @stability: Unstable
  *
- * These functions are related to the context menu that is usually used to
- * manipulate a window (closing it, minimizing it, maximizing it, moving it to
- * another workspace, etc.).
+ * A #WnckActionMenu is a menu containing items to manipulate a window.
+ * Relevant actions are displayed in the menu, and updated if the window state
+ * changes. The content of this menu is synchronized with the similar menu
+ * available in Metacity.
+ *
+ * <note>
+ *  <para>
+ * If there is only one workspace with a viewport, the #WnckActionMenu will
+ * contain items to move the window in the viewport as if the viewport feature
+ * was used to create workspaces. This is useful since viewport is generally
+ * used as an alternative way to create virtual desktops.
+ *  </para>
+ *  <para>
+ * The #WnckActionMenu does not support moving the window in the viewport if
+ * there are multiple workspaces on the screen: those two notions are so
+ * similar that having both at the same time would result in a menu which would
+ * be confusing to the user.
+ *  </para>
+ * </note>
  */
 
 typedef enum
@@ -58,12 +74,9 @@ typedef enum
   MOVE_TO_WORKSPACE
 } WindowAction;
 
-typedef struct _ActionMenuData ActionMenuData;
-
-struct _ActionMenuData
+struct _WnckActionMenuPrivate
 {
   WnckWindow *window;
-  GtkWidget *menu;
   GtkWidget *minimize_item;
   GtkWidget *maximize_item;
   GtkWidget *above_item;
@@ -81,19 +94,28 @@ struct _ActionMenuData
   guint idle_handler;
 };
 
+enum {
+	PROP_0,
+	PROP_WINDOW
+};
+
+G_DEFINE_TYPE (WnckActionMenu, wnck_action_menu, GTK_TYPE_MENU);
+#define WNCK_ACTION_MENU_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_ACTION_MENU, WnckActionMenuPrivate))
+
+static void wnck_action_menu_finalize (GObject *object);
+
 static void object_weak_notify (gpointer data,
                                 GObject *obj);
 static void window_weak_notify (gpointer data,
                                 GObject *window);
 
-static void refill_submenu_workspace (ActionMenuData *amd);
-static void refill_submenu_viewport (ActionMenuData *amd);
+static void refill_submenu_workspace (WnckActionMenu *menu);
+static void refill_submenu_viewport (WnckActionMenu *menu);
 
 static void
 window_weak_notify (gpointer data,
                     GObject *window)
 {
-  g_object_set_data (G_OBJECT (data), "wnck-action-data", NULL);
   g_object_weak_unref (G_OBJECT (data),
                        object_weak_notify,
                        window);
@@ -111,18 +133,15 @@ object_weak_notify (gpointer data,
                        obj);
 }
 
-static ActionMenuData*
-get_data (GtkWidget *widget)
+static WnckActionMenu*
+get_action_menu (GtkWidget *widget)
 {
-  ActionMenuData *retval;
-
   while (widget) {
     if (GTK_IS_MENU_ITEM (widget))
       widget = widget->parent;
 
-    retval = g_object_get_data (G_OBJECT (widget), "wnck-action-data");
-    if (retval)
-      return retval;
+    if (WNCK_IS_ACTION_MENU (widget))
+      return WNCK_ACTION_MENU (widget);
 
     widget = gtk_menu_get_attach_widget (GTK_MENU (widget));
     if (widget == NULL)
@@ -136,15 +155,19 @@ static void
 item_activated_callback (GtkWidget *menu_item,
                          gpointer   data)
 {
-  ActionMenuData *amd = get_data (menu_item);
+  WnckActionMenu *menu;
+  WnckWindow *window;
   WindowAction action = GPOINTER_TO_INT (data);
   WnckScreen *screen;
   gboolean viewport_mode;
 
-  if (amd == NULL)
+  menu = get_action_menu (menu_item);
+  if (menu == NULL)
     return;
 
-  screen = wnck_window_get_screen (amd->window);
+  window = menu->priv->window;
+
+  screen = wnck_window_get_screen (window);
   viewport_mode = wnck_screen_get_workspace_count (screen) == 1 &&
                   wnck_workspace_is_virtual (wnck_screen_get_workspace (screen,
                                                                         0));
@@ -153,61 +176,61 @@ item_activated_callback (GtkWidget *menu_item,
     {
     case CLOSE:
       /* In an activate callback, so gtk_get_current_event_time() suffices */
-      wnck_window_close (amd->window,
+      wnck_window_close (window,
 			 gtk_get_current_event_time ());
       break;
     case MINIMIZE:
-      if (wnck_window_is_minimized (amd->window))
-        wnck_window_unminimize (amd->window,
+      if (wnck_window_is_minimized (window))
+        wnck_window_unminimize (window,
                                 gtk_get_current_event_time ());
       else
-        wnck_window_minimize (amd->window);
+        wnck_window_minimize (window);
       break;
     case MAXIMIZE:
-      if (wnck_window_is_maximized (amd->window))
-        wnck_window_unmaximize (amd->window);
+      if (wnck_window_is_maximized (window))
+        wnck_window_unmaximize (window);
       else
-        wnck_window_maximize (amd->window);
+        wnck_window_maximize (window);
       break;
     case ABOVE:
-      if (wnck_window_is_above (amd->window))
-        wnck_window_unmake_above (amd->window);
+      if (wnck_window_is_above (window))
+        wnck_window_unmake_above (window);
       else
-        wnck_window_make_above (amd->window);
+        wnck_window_make_above (window);
       break;
     case MOVE:
-      wnck_window_keyboard_move (amd->window);
+      wnck_window_keyboard_move (window);
       break;
     case RESIZE:
-      wnck_window_keyboard_size (amd->window);
+      wnck_window_keyboard_size (window);
       break;
     case PIN:
       if (!viewport_mode)
-        wnck_window_pin (amd->window);
+        wnck_window_pin (window);
       else
-        wnck_window_stick(amd->window);
+        wnck_window_stick(window);
       break;
     case UNPIN:
       if (!viewport_mode)
-        wnck_window_unpin (amd->window);
+        wnck_window_unpin (window);
       else
-        wnck_window_unstick(amd->window);
+        wnck_window_unstick(window);
       break;
     case LEFT:
       if (!viewport_mode)
         {
           WnckWorkspace *workspace;
-          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window),
+          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (window),
                                                    WNCK_MOTION_LEFT);
-          wnck_window_move_to_workspace (amd->window, workspace);
+          wnck_window_move_to_workspace (window, workspace);
         }
       else
         {
           int width, xw, yw, ww, hw;
 
           width = wnck_screen_get_width (screen);
-          wnck_window_get_geometry (amd->window, &xw, &yw, &ww, &hw);
-          wnck_window_set_geometry (amd->window, 0,
+          wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw - width, yw,
                                     ww, hw);
@@ -217,17 +240,17 @@ item_activated_callback (GtkWidget *menu_item,
       if (!viewport_mode)
         {
           WnckWorkspace *workspace;
-          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window),
+          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (window),
                                                    WNCK_MOTION_RIGHT);
-          wnck_window_move_to_workspace (amd->window, workspace);
+          wnck_window_move_to_workspace (window, workspace);
         }
       else
         {
           int width, xw, yw, ww, hw;
 
           width = wnck_screen_get_width (screen);
-          wnck_window_get_geometry (amd->window, &xw, &yw, &ww, &hw);
-          wnck_window_set_geometry (amd->window, 0,
+          wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw + width, yw,
                                     ww, hw);
@@ -237,17 +260,17 @@ item_activated_callback (GtkWidget *menu_item,
       if (!viewport_mode)
         {
           WnckWorkspace *workspace;
-          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window),
+          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (window),
                                                    WNCK_MOTION_UP);
-          wnck_window_move_to_workspace (amd->window, workspace);
+          wnck_window_move_to_workspace (window, workspace);
         }
       else
         {
           int height, xw, yw, ww, hw;
 
           height = wnck_screen_get_height (screen);
-          wnck_window_get_geometry (amd->window, &xw, &yw, &ww, &hw);
-          wnck_window_set_geometry (amd->window, 0,
+          wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw, yw - height,
                                     ww, hw);
@@ -257,17 +280,17 @@ item_activated_callback (GtkWidget *menu_item,
       if (!viewport_mode)
         {
           WnckWorkspace *workspace;
-          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (amd->window),
+          workspace = wnck_workspace_get_neighbor (wnck_window_get_workspace (window),
                                                    WNCK_MOTION_DOWN);
-          wnck_window_move_to_workspace (amd->window, workspace);
+          wnck_window_move_to_workspace (window, workspace);
         }
       else
         {
           int height, xw, yw, ww, hw;
 
           height = wnck_screen_get_height (screen);
-          wnck_window_get_geometry (amd->window, &xw, &yw, &ww, &hw);
-          wnck_window_set_geometry (amd->window, 0,
+          wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw, yw + height,
                                     ww, hw);
@@ -283,7 +306,7 @@ item_activated_callback (GtkWidget *menu_item,
                                                                 "workspace"));
 
           workspace = wnck_screen_get_workspace (screen, workspace_index);
-          wnck_window_move_to_workspace (amd->window, workspace);
+          wnck_window_move_to_workspace (window, workspace);
         }
       else
         {
@@ -305,7 +328,7 @@ item_activated_callback (GtkWidget *menu_item,
           width = wnck_screen_get_width (screen);
           height = wnck_screen_get_height (screen);
 
-          wnck_window_get_geometry (amd->window, &xw, &yw, &ww, &hw);
+          wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
 
           viewport_x = wnck_workspace_get_viewport_x (workspace);
           viewport_y = wnck_workspace_get_viewport_y (workspace);
@@ -313,7 +336,7 @@ item_activated_callback (GtkWidget *menu_item,
           xw += viewport_x;
           yw += viewport_y;
 
-          wnck_window_set_geometry (amd->window, 0,
+          wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw + new_viewport_x,
                                     yw + new_viewport_y,
@@ -363,18 +386,21 @@ set_item_stock (GtkWidget  *mi,
 }
 
 static gboolean
-update_menu_state (ActionMenuData *amd)
+update_menu_state (WnckActionMenu *menu)
 {
-  WnckWindowActions  actions;
-  WnckScreen        *screen;
-  WnckWorkspace     *workspace;
-  gboolean           viewport_mode;
-  gboolean           move_workspace_sensitive;
+  WnckActionMenuPrivate *priv;
+  WnckWindowActions      actions;
+  WnckScreen            *screen;
+  WnckWorkspace         *workspace;
+  gboolean               viewport_mode;
+  gboolean               move_workspace_sensitive;
 
-  amd->idle_handler = 0;
+  priv = menu->priv;
 
-  actions = wnck_window_get_actions (amd->window);
-  screen  = wnck_window_get_screen  (amd->window);
+  priv->idle_handler = 0;
+
+  actions = wnck_window_get_actions (priv->window);
+  screen  = wnck_window_get_screen  (priv->window);
 
   viewport_mode = wnck_screen_get_workspace_count (screen) == 1 &&
                   wnck_workspace_is_virtual (wnck_screen_get_workspace (screen,
@@ -382,98 +408,98 @@ update_menu_state (ActionMenuData *amd)
   move_workspace_sensitive = viewport_mode ||
                              (actions & WNCK_WINDOW_ACTION_CHANGE_WORKSPACE) != 0;
 
-  if (wnck_window_is_minimized (amd->window))
+  if (wnck_window_is_minimized (priv->window))
     {
-      set_item_text (amd->minimize_item, _("Unmi_nimize"));
-      set_item_stock (amd->minimize_item, NULL);
-      gtk_widget_set_sensitive (amd->minimize_item,
+      set_item_text (priv->minimize_item, _("Unmi_nimize"));
+      set_item_stock (priv->minimize_item, NULL);
+      gtk_widget_set_sensitive (priv->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMINIMIZE) != 0);
     }
   else
     {
-      set_item_text (amd->minimize_item, _("Mi_nimize"));
-      set_item_stock (amd->minimize_item, WNCK_STOCK_MINIMIZE);
-      gtk_widget_set_sensitive (amd->minimize_item,
+      set_item_text (priv->minimize_item, _("Mi_nimize"));
+      set_item_stock (priv->minimize_item, WNCK_STOCK_MINIMIZE);
+      gtk_widget_set_sensitive (priv->minimize_item,
                                 (actions & WNCK_WINDOW_ACTION_MINIMIZE) != 0);
     }
 
-  if (wnck_window_is_maximized (amd->window))
+  if (wnck_window_is_maximized (priv->window))
     {
-      set_item_text (amd->maximize_item, _("Unma_ximize"));
-      set_item_stock (amd->maximize_item, NULL);
-      gtk_widget_set_sensitive (amd->maximize_item,
+      set_item_text (priv->maximize_item, _("Unma_ximize"));
+      set_item_stock (priv->maximize_item, NULL);
+      gtk_widget_set_sensitive (priv->maximize_item,
                                 (actions & WNCK_WINDOW_ACTION_UNMAXIMIZE) != 0);
     }
   else
     {
-      set_item_text (amd->maximize_item, _("Ma_ximize"));
-      set_item_stock (amd->maximize_item, WNCK_STOCK_MAXIMIZE);
-      gtk_widget_set_sensitive (amd->maximize_item,
+      set_item_text (priv->maximize_item, _("Ma_ximize"));
+      set_item_stock (priv->maximize_item, WNCK_STOCK_MAXIMIZE);
+      gtk_widget_set_sensitive (priv->maximize_item,
                                 (actions & WNCK_WINDOW_ACTION_MAXIMIZE) != 0);
     }
 
-  g_signal_handlers_block_by_func (G_OBJECT (amd->above_item),
+  g_signal_handlers_block_by_func (G_OBJECT (priv->above_item),
                                    item_activated_callback,
                                    GINT_TO_POINTER (ABOVE));
-  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (amd->above_item),
-                                  wnck_window_is_above (amd->window));
-  g_signal_handlers_unblock_by_func (G_OBJECT (amd->above_item),
+  gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (priv->above_item),
+                                  wnck_window_is_above (priv->window));
+  g_signal_handlers_unblock_by_func (G_OBJECT (priv->above_item),
                                      item_activated_callback,
                                      GINT_TO_POINTER (ABOVE));
 
-  gtk_widget_set_sensitive (amd->above_item,
+  gtk_widget_set_sensitive (priv->above_item,
                             (actions & WNCK_WINDOW_ACTION_ABOVE) != 0);
 
-  g_signal_handlers_block_by_func (G_OBJECT (amd->pin_item),
+  g_signal_handlers_block_by_func (G_OBJECT (priv->pin_item),
                                    item_activated_callback,
                                    GINT_TO_POINTER (PIN));
-  g_signal_handlers_block_by_func (G_OBJECT (amd->unpin_item),
+  g_signal_handlers_block_by_func (G_OBJECT (priv->unpin_item),
                                    item_activated_callback,
                                    GINT_TO_POINTER (UNPIN));
-  if ((viewport_mode  && wnck_window_is_sticky (amd->window)) ||
-      (!viewport_mode && wnck_window_is_pinned (amd->window)))
-          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (amd->pin_item),
+  if ((viewport_mode  && wnck_window_is_sticky (priv->window)) ||
+      (!viewport_mode && wnck_window_is_pinned (priv->window)))
+          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (priv->pin_item),
                                           TRUE);
   else
-          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (amd->unpin_item),
+          gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (priv->unpin_item),
                                           TRUE);
-  g_signal_handlers_unblock_by_func (G_OBJECT (amd->pin_item),
+  g_signal_handlers_unblock_by_func (G_OBJECT (priv->pin_item),
                                      item_activated_callback,
                                      GINT_TO_POINTER (PIN));
-  g_signal_handlers_unblock_by_func (G_OBJECT (amd->unpin_item),
+  g_signal_handlers_unblock_by_func (G_OBJECT (priv->unpin_item),
                                      item_activated_callback,
                                      GINT_TO_POINTER (UNPIN));
 
-  gtk_widget_set_sensitive (amd->pin_item,
+  gtk_widget_set_sensitive (priv->pin_item,
                             move_workspace_sensitive);
 
-  gtk_widget_set_sensitive (amd->unpin_item,
+  gtk_widget_set_sensitive (priv->unpin_item,
                             move_workspace_sensitive);
 
-  gtk_widget_set_sensitive (amd->close_item,
+  gtk_widget_set_sensitive (priv->close_item,
                             (actions & WNCK_WINDOW_ACTION_CLOSE) != 0);
 
-  gtk_widget_set_sensitive (amd->move_item,
+  gtk_widget_set_sensitive (priv->move_item,
                             (actions & WNCK_WINDOW_ACTION_MOVE) != 0);
 
-  gtk_widget_set_sensitive (amd->resize_item,
+  gtk_widget_set_sensitive (priv->resize_item,
                             (actions & WNCK_WINDOW_ACTION_RESIZE) != 0);
 
-  gtk_widget_set_sensitive (amd->workspace_item,
+  gtk_widget_set_sensitive (priv->workspace_item,
                             move_workspace_sensitive);
 
-  gtk_widget_set_sensitive (amd->left_item,
+  gtk_widget_set_sensitive (priv->left_item,
                             move_workspace_sensitive);
-  gtk_widget_set_sensitive (amd->right_item,
+  gtk_widget_set_sensitive (priv->right_item,
                             move_workspace_sensitive);
-  gtk_widget_set_sensitive (amd->up_item,
+  gtk_widget_set_sensitive (priv->up_item,
                             move_workspace_sensitive);
-  gtk_widget_set_sensitive (amd->down_item,
+  gtk_widget_set_sensitive (priv->down_item,
                             move_workspace_sensitive);
 
-  workspace = wnck_window_get_workspace (amd->window);
+  workspace = wnck_window_get_workspace (priv->window);
 
-  if (viewport_mode && !wnck_window_is_sticky (amd->window))
+  if (viewport_mode && !wnck_window_is_sticky (priv->window))
     {
       int window_x, window_y;
       int viewport_x, viewport_y;
@@ -483,7 +509,7 @@ update_menu_state (ActionMenuData *amd)
       if (!workspace)
         workspace = wnck_screen_get_workspace (screen, 0);
 
-      wnck_window_get_geometry (amd->window, &window_x, &window_y, NULL, NULL);
+      wnck_window_get_geometry (priv->window, &window_x, &window_y, NULL, NULL);
 
       viewport_x = wnck_workspace_get_viewport_x (workspace);
       viewport_y = wnck_workspace_get_viewport_y (workspace);
@@ -498,53 +524,53 @@ update_menu_state (ActionMenuData *amd)
       screen_height = wnck_screen_get_height (screen);
 
       if (window_x >= screen_width)
-        gtk_widget_show (amd->left_item);
+        gtk_widget_show (priv->left_item);
       else
-        gtk_widget_hide (amd->left_item);
+        gtk_widget_hide (priv->left_item);
 
       if (window_x < viewport_width - screen_width)
-        gtk_widget_show (amd->right_item);
+        gtk_widget_show (priv->right_item);
       else
-        gtk_widget_hide (amd->right_item);
+        gtk_widget_hide (priv->right_item);
 
       if (window_y >= screen_height)
-        gtk_widget_show (amd->up_item);
+        gtk_widget_show (priv->up_item);
       else
-        gtk_widget_hide (amd->up_item);
+        gtk_widget_hide (priv->up_item);
 
       if (window_y < viewport_height - screen_height)
-        gtk_widget_show (amd->down_item);
+        gtk_widget_show (priv->down_item);
       else
-        gtk_widget_hide (amd->down_item);
+        gtk_widget_hide (priv->down_item);
     }
-  else if (!viewport_mode && workspace && !wnck_window_is_pinned (amd->window))
+  else if (!viewport_mode && workspace && !wnck_window_is_pinned (priv->window))
     {
       if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_LEFT))
-        gtk_widget_show (amd->left_item);
+        gtk_widget_show (priv->left_item);
       else
-        gtk_widget_hide (amd->left_item);
+        gtk_widget_hide (priv->left_item);
 
       if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_RIGHT))
-        gtk_widget_show (amd->right_item);
+        gtk_widget_show (priv->right_item);
       else
-        gtk_widget_hide (amd->right_item);
+        gtk_widget_hide (priv->right_item);
 
       if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_UP))
-        gtk_widget_show (amd->up_item);
+        gtk_widget_show (priv->up_item);
       else
-        gtk_widget_hide (amd->up_item);
+        gtk_widget_hide (priv->up_item);
 
       if (wnck_workspace_get_neighbor (workspace, WNCK_MOTION_DOWN))
-        gtk_widget_show (amd->down_item);
+        gtk_widget_show (priv->down_item);
       else
-        gtk_widget_hide (amd->down_item);
+        gtk_widget_hide (priv->down_item);
     }
   else
     {
-      gtk_widget_hide (amd->left_item);
-      gtk_widget_hide (amd->right_item);
-      gtk_widget_hide (amd->up_item);
-      gtk_widget_hide (amd->down_item);
+      gtk_widget_hide (priv->left_item);
+      gtk_widget_hide (priv->right_item);
+      gtk_widget_hide (priv->up_item);
+      gtk_widget_hide (priv->down_item);
     }
 
   if (viewport_mode)
@@ -558,48 +584,49 @@ update_menu_state (ActionMenuData *amd)
       screen_width = wnck_screen_get_width (screen);
       screen_height = wnck_screen_get_height (screen);
 
-      gtk_widget_show (amd->workspace_separator);
-      gtk_widget_show (amd->pin_item);
-      gtk_widget_show (amd->unpin_item);
+      gtk_widget_show (priv->workspace_separator);
+      gtk_widget_show (priv->pin_item);
+      gtk_widget_show (priv->unpin_item);
       if (viewport_width  >= 2 * screen_width ||
           viewport_height >= 2 * screen_height)
         {
-          gtk_widget_show (amd->workspace_item);
-          refill_submenu_viewport (amd);
+          gtk_widget_show (priv->workspace_item);
+          refill_submenu_viewport (menu);
         }
       else
         {
-          gtk_widget_hide (amd->workspace_item);
-          gtk_menu_popdown (GTK_MENU (gtk_menu_item_get_submenu (GTK_MENU_ITEM (amd->workspace_item))));
+          gtk_widget_hide (priv->workspace_item);
+          gtk_menu_popdown (GTK_MENU (gtk_menu_item_get_submenu (GTK_MENU_ITEM (priv->workspace_item))));
         }
     }
   else if (wnck_screen_get_workspace_count (screen) > 1)
     {
-      gtk_widget_show (amd->workspace_separator);
-      gtk_widget_show (amd->pin_item);
-      gtk_widget_show (amd->unpin_item);
-      gtk_widget_show (amd->workspace_item);
-      refill_submenu_workspace (amd);
+      gtk_widget_show (priv->workspace_separator);
+      gtk_widget_show (priv->pin_item);
+      gtk_widget_show (priv->unpin_item);
+      gtk_widget_show (priv->workspace_item);
+      refill_submenu_workspace (menu);
     }
   else
     {
-      gtk_widget_hide (amd->workspace_separator);
-      gtk_widget_hide (amd->pin_item);
-      gtk_widget_hide (amd->unpin_item);
-      gtk_widget_hide (amd->workspace_item);
-      gtk_menu_popdown (GTK_MENU (gtk_menu_item_get_submenu (GTK_MENU_ITEM (amd->workspace_item))));
+      gtk_widget_hide (priv->workspace_separator);
+      gtk_widget_hide (priv->pin_item);
+      gtk_widget_hide (priv->unpin_item);
+      gtk_widget_hide (priv->workspace_item);
+      gtk_menu_popdown (GTK_MENU (gtk_menu_item_get_submenu (GTK_MENU_ITEM (priv->workspace_item))));
     }
 
-  gtk_menu_reposition (GTK_MENU (amd->menu));
+  gtk_menu_reposition (GTK_MENU (menu));
 
   return FALSE;
 }
 
 static void
-queue_update (ActionMenuData *amd)
+queue_update (WnckActionMenu *menu)
 {
-  if (amd->idle_handler == 0)
-    amd->idle_handler = g_idle_add ((GSourceFunc)update_menu_state, amd);
+  if (menu->priv->idle_handler == 0)
+    menu->priv->idle_handler = g_idle_add ((GSourceFunc)update_menu_state,
+                                           menu);
 }
 
 static void
@@ -608,12 +635,7 @@ state_changed_callback (WnckWindow     *window,
                         WnckWindowState new_state,
                         gpointer        data)
 {
-  ActionMenuData *amd;
-
-  amd = get_data (data);
-
-  if (amd)
-    queue_update (amd);
+  queue_update (WNCK_ACTION_MENU (data));
 }
 
 static void
@@ -622,24 +644,14 @@ actions_changed_callback (WnckWindow       *window,
                           WnckWindowActions new_actions,
                           gpointer          data)
 {
-  ActionMenuData *amd;
-
-  amd = get_data (data);
-
-  if (amd)
-    queue_update (amd);
+  queue_update (WNCK_ACTION_MENU (data));
 }
 
 static void
 workspace_changed_callback (WnckWindow *window,
                             gpointer    data)
 {
-  ActionMenuData *amd;
-
-  amd = get_data (data);
-
-  if (amd)
-    queue_update (amd);
+  queue_update (WNCK_ACTION_MENU (data));
 }
 
 static void
@@ -647,31 +659,20 @@ screen_workspace_callback (WnckWindow    *window,
                            WnckWorkspace *space,
                            gpointer       data)
 {
-  ActionMenuData *amd;
-
-  amd = get_data (data);
-
-  if (amd)
-    queue_update (amd);
+  queue_update (WNCK_ACTION_MENU (data));
 }
 
 static void
 viewports_changed_callback (WnckWindow *window,
                             gpointer    data)
 {
-  ActionMenuData *amd;
-
-  amd = get_data (data);
-
-  if (amd)
-    queue_update (amd);
+  queue_update (WNCK_ACTION_MENU (data));
 }
 
 static GtkWidget*
-make_radio_menu_item (ActionMenuData  *amd,
-                      WindowAction     action,
-                      GSList         **group,
-                      const gchar     *mnemonic_text)
+make_radio_menu_item (WindowAction   action,
+                      GSList       **group,
+                      const gchar   *mnemonic_text)
 {
   GtkWidget *mi;
 
@@ -688,9 +689,8 @@ make_radio_menu_item (ActionMenuData  *amd,
 }
 
 static GtkWidget*
-make_check_menu_item (ActionMenuData *amd,
-                      WindowAction    action,
-                      const gchar    *mnemonic_text)
+make_check_menu_item (WindowAction  action,
+                      const gchar  *mnemonic_text)
 {
   GtkWidget *mi;
 
@@ -706,8 +706,7 @@ make_check_menu_item (ActionMenuData *amd,
 }
 
 static GtkWidget*
-make_menu_item (ActionMenuData *amd,
-                WindowAction    action)
+make_menu_item (WindowAction action)
 {
   GtkWidget *mi;
 
@@ -720,15 +719,6 @@ make_menu_item (ActionMenuData *amd,
   gtk_widget_show (mi);
 
   return mi;
-}
-
-static void
-amd_free (ActionMenuData *amd)
-{
-  if (amd->idle_handler)
-    g_source_remove (amd->idle_handler);
-
-  g_slice_free (ActionMenuData, amd);
 }
 
 static char *
@@ -805,7 +795,7 @@ get_workspace_name_with_accel (WnckWindow *window,
 }
 
 static void
-refill_submenu_workspace (ActionMenuData *amd)
+refill_submenu_workspace (WnckActionMenu *menu)
 {
   GtkWidget *submenu;
   GList *children;
@@ -813,7 +803,7 @@ refill_submenu_workspace (ActionMenuData *amd)
   int num_workspaces, window_space, i;
   WnckWorkspace *workspace;
 
-  submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (amd->workspace_item));
+  submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (menu->priv->workspace_item));
 
   /* Remove existing items */
   children = gtk_container_get_children (GTK_CONTAINER (submenu));
@@ -821,9 +811,9 @@ refill_submenu_workspace (ActionMenuData *amd)
     gtk_container_remove (GTK_CONTAINER (submenu), l->data);
   g_list_free (children);
 
-  workspace = wnck_window_get_workspace (amd->window);
+  workspace = wnck_window_get_workspace (menu->priv->window);
 
-  num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (amd->window));
+  num_workspaces = wnck_screen_get_workspace_count (wnck_window_get_screen (menu->priv->window));
 
   if (workspace)
     window_space = wnck_workspace_get_number (workspace);
@@ -835,9 +825,9 @@ refill_submenu_workspace (ActionMenuData *amd)
       char      *name;
       GtkWidget *item;
 	
-      name = get_workspace_name_with_accel (amd->window, i);
+      name = get_workspace_name_with_accel (menu->priv->window, i);
 
-      item = make_menu_item (amd, MOVE_TO_WORKSPACE);
+      item = make_menu_item (MOVE_TO_WORKSPACE);
       g_object_set_data (G_OBJECT (item), "workspace", GINT_TO_POINTER (i));
 
       if (i == window_space)
@@ -854,7 +844,7 @@ refill_submenu_workspace (ActionMenuData *amd)
 }
 
 static void
-refill_submenu_viewport (ActionMenuData *amd)
+refill_submenu_viewport (WnckActionMenu *menu)
 {
   GtkWidget *submenu;
   GList *children;
@@ -868,7 +858,7 @@ refill_submenu_viewport (ActionMenuData *amd)
   int x, y;
   int number;
 
-  submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (amd->workspace_item));
+  submenu = gtk_menu_item_get_submenu (GTK_MENU_ITEM (menu->priv->workspace_item));
 
   /* Remove existing items */
   children = gtk_container_get_children (GTK_CONTAINER (submenu));
@@ -876,10 +866,11 @@ refill_submenu_viewport (ActionMenuData *amd)
     gtk_container_remove (GTK_CONTAINER (submenu), l->data);
   g_list_free (children);
 
-  screen = wnck_window_get_screen (amd->window);
+  screen = wnck_window_get_screen (menu->priv->window);
   workspace = wnck_screen_get_workspace (screen, 0);
 
-  wnck_window_get_geometry (amd->window, &window_x, &window_y, NULL, NULL);
+  wnck_window_get_geometry (menu->priv->window,
+                            &window_x, &window_y, NULL, NULL);
 
   viewport_x = wnck_workspace_get_viewport_x (workspace);
   viewport_y = wnck_workspace_get_viewport_y (workspace);
@@ -911,7 +902,7 @@ refill_submenu_viewport (ActionMenuData *amd)
                                      number);
           number++;
 
-          item = make_menu_item (amd, MOVE_TO_WORKSPACE);
+          item = make_menu_item (MOVE_TO_WORKSPACE);
           g_object_set_data (G_OBJECT (item), "viewport_x",
                              GINT_TO_POINTER (x));
           g_object_set_data (G_OBJECT (item), "viewport_y",
@@ -932,165 +923,214 @@ refill_submenu_viewport (ActionMenuData *amd)
   gtk_menu_reposition (GTK_MENU (submenu));
 }
 
-/**
- * wnck_create_window_action_menu:
- * @window: the #WnckWindow for which a menu will be created.
- *
- * Creates a menu of window operations for @window.
- *
- * If there is only one workspace with a viewport, the menu will contain items
- * to move @window in the viewport as if the viewport feature was used to
- * create workspaces. This is useful since viewport is generally used as an
- * alternative way to create virtual desktops.
- *
- * The menu does not support moving @window in the viewport if there are
- * multiple workspaces on the screen: those two notions are so similar that
- * having both at the same time would result in a menu which would be confusing
- * to the user.
- *
- * Return value: a new GtkMenu, filled with menu items for window operations on
- * @window.
- **/
-GtkWidget*
-wnck_create_window_action_menu (WnckWindow *window)
+static void
+wnck_action_menu_get_property (GObject    *object,
+                               guint       prop_id,
+                               GValue     *value,
+                               GParamSpec *pspec)
 {
-  GtkWidget *menu, *submenu;
-  ActionMenuData *amd;
-  GtkWidget *separator;
-  GSList *pin_group;
-  WnckScreen *screen;
+  WnckActionMenu *menu;
 
-  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+  g_return_if_fail (WNCK_IS_ACTION_MENU (object));
 
-  _wnck_stock_icons_init ();
+  menu = WNCK_ACTION_MENU (object);
 
-  amd = g_slice_new0 (ActionMenuData);
-  amd->window = window;
+  switch (prop_id)
+    {
+      case PROP_WINDOW:
+        g_value_set_pointer (value, menu->priv->window);
+        break;
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
 
-  menu = gtk_menu_new ();
-  g_object_ref_sink (menu);
 
-  amd->menu = menu;
+static void
+wnck_action_menu_set_property (GObject      *object,
+                               guint         prop_id,
+                               const GValue *value,
+                               GParamSpec   *pspec)
+{
+  WnckActionMenu *menu;
 
-  g_object_set_data_full (G_OBJECT (menu), "wnck-action-data",
-                          amd, (GDestroyNotify) amd_free);
+  g_return_if_fail (WNCK_IS_ACTION_MENU (object));
 
-  g_object_weak_ref (G_OBJECT (window), window_weak_notify, menu);
-  g_object_weak_ref (G_OBJECT (menu), object_weak_notify, window);
+  menu = WNCK_ACTION_MENU (object);
 
-  amd->minimize_item = make_menu_item (amd, MINIMIZE);
+  switch (prop_id)
+    {
+      case PROP_WINDOW:
+        menu->priv->window = g_value_get_pointer (value);
+        g_object_notify (G_OBJECT (menu), "window");
+        break;
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+        break;
+    }
+}
+
+static void
+wnck_action_menu_init (WnckActionMenu *menu)
+{
+  menu->priv = WNCK_ACTION_MENU_GET_PRIVATE (menu);
+
+  menu->priv->window = NULL;
+  menu->priv->minimize_item = NULL;
+  menu->priv->maximize_item = NULL;
+  menu->priv->above_item = NULL;
+  menu->priv->move_item = NULL;
+  menu->priv->resize_item = NULL;
+  menu->priv->close_item = NULL;
+  menu->priv->workspace_separator = NULL;
+  menu->priv->pin_item = NULL;
+  menu->priv->unpin_item = NULL;
+  menu->priv->left_item = NULL;
+  menu->priv->right_item = NULL;
+  menu->priv->up_item = NULL;
+  menu->priv->down_item = NULL;
+  menu->priv->workspace_item = NULL;
+  menu->priv->idle_handler = 0;
+}
+
+static GObject *
+wnck_action_menu_constructor (GType                  type,
+                              guint                  n_construct_properties,
+                              GObjectConstructParam *construct_properties)
+{
+  GObject               *obj;
+  WnckActionMenu        *menu;
+  WnckActionMenuPrivate *priv;
+  GtkWidget             *submenu;
+  GtkWidget             *separator;
+  GSList                *pin_group;
+  WnckScreen            *screen;
+
+
+  obj = G_OBJECT_CLASS (wnck_action_menu_parent_class)->constructor (type,
+                                                                     n_construct_properties,
+                                                                     construct_properties);
+
+  menu = WNCK_ACTION_MENU (obj);
+  priv = menu->priv;
+
+  g_object_weak_ref (G_OBJECT (priv->window), window_weak_notify, menu);
+  g_object_weak_ref (G_OBJECT (menu), object_weak_notify, priv->window);
+
+  priv->minimize_item = make_menu_item (MINIMIZE);
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->minimize_item);
+                         priv->minimize_item);
 
-  amd->maximize_item = make_menu_item (amd, MAXIMIZE);
+  priv->maximize_item = make_menu_item (MAXIMIZE);
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->maximize_item);
+                         priv->maximize_item);
 
-  amd->move_item = make_menu_item (amd, MOVE);
+  priv->move_item = make_menu_item (MOVE);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->move_item);
+                         priv->move_item);
 
-  set_item_text (amd->move_item, _("_Move"));
-  set_item_stock (amd->move_item, NULL);
+  set_item_text (priv->move_item, _("_Move"));
+  set_item_stock (priv->move_item, NULL);
 
-  amd->resize_item = make_menu_item (amd, RESIZE);
+  priv->resize_item = make_menu_item (RESIZE);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->resize_item);
+                         priv->resize_item);
 
-  set_item_text (amd->resize_item, _("_Resize"));
-  set_item_stock (amd->move_item, NULL);
+  set_item_text (priv->resize_item, _("_Resize"));
+  set_item_stock (priv->move_item, NULL);
 
-  amd->workspace_separator = separator = gtk_separator_menu_item_new ();
+  priv->workspace_separator = separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          separator);
 
-  amd->above_item = make_check_menu_item (amd, ABOVE,
+  priv->above_item = make_check_menu_item (ABOVE,
                                           _("Always On _Top"));
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->above_item);
+                         priv->above_item);
 
   pin_group = NULL;
 
-  amd->pin_item = make_radio_menu_item (amd, PIN, &pin_group,
+  priv->pin_item = make_radio_menu_item (PIN, &pin_group,
                                         _("_Always on Visible Workspace"));
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->pin_item);
+                         priv->pin_item);
 
-  amd->unpin_item = make_radio_menu_item (amd, UNPIN, &pin_group,
+  priv->unpin_item = make_radio_menu_item (UNPIN, &pin_group,
                                           _("_Only on This Workspace"));
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->unpin_item);
+                         priv->unpin_item);
 
-  amd->left_item = make_menu_item (amd, LEFT);
+  priv->left_item = make_menu_item (LEFT);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->left_item);
-  set_item_text (amd->left_item, _("Move to Workspace _Left"));
-  set_item_stock (amd->left_item, NULL);
+                         priv->left_item);
+  set_item_text (priv->left_item, _("Move to Workspace _Left"));
+  set_item_stock (priv->left_item, NULL);
 
-  amd->right_item = make_menu_item (amd, RIGHT);
+  priv->right_item = make_menu_item (RIGHT);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->right_item);
-  set_item_text (amd->right_item, _("Move to Workspace R_ight"));
-  set_item_stock (amd->right_item, NULL);
+                         priv->right_item);
+  set_item_text (priv->right_item, _("Move to Workspace R_ight"));
+  set_item_stock (priv->right_item, NULL);
 
-  amd->up_item = make_menu_item (amd, UP);
+  priv->up_item = make_menu_item (UP);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->up_item);
-  set_item_text (amd->up_item, _("Move to Workspace _Up"));
-  set_item_stock (amd->up_item, NULL);
+                         priv->up_item);
+  set_item_text (priv->up_item, _("Move to Workspace _Up"));
+  set_item_stock (priv->up_item, NULL);
 
-  amd->down_item = make_menu_item (amd, DOWN);
+  priv->down_item = make_menu_item (DOWN);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->down_item);
-  set_item_text (amd->down_item, _("Move to Workspace _Down"));
-  set_item_stock (amd->down_item, NULL);
+                         priv->down_item);
+  set_item_text (priv->down_item, _("Move to Workspace _Down"));
+  set_item_stock (priv->down_item, NULL);
 
-  amd->workspace_item = gtk_menu_item_new_with_mnemonic (_("Move to Another _Workspace"));
-  gtk_widget_show (amd->workspace_item);
+  priv->workspace_item = gtk_menu_item_new_with_mnemonic (_("Move to Another _Workspace"));
+  gtk_widget_show (priv->workspace_item);
 
   submenu = gtk_menu_new ();
-  gtk_menu_item_set_submenu (GTK_MENU_ITEM (amd->workspace_item),
+  gtk_menu_item_set_submenu (GTK_MENU_ITEM (priv->workspace_item),
                              submenu);
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->workspace_item);
+                         priv->workspace_item);
 
   separator = gtk_separator_menu_item_new ();
   gtk_widget_show (separator);
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
                          separator);
 
-  amd->close_item = make_menu_item (amd, CLOSE);
+  priv->close_item = make_menu_item (CLOSE);
 
   gtk_menu_shell_append (GTK_MENU_SHELL (menu),
-                         amd->close_item);
+                         priv->close_item);
 
-  set_item_text (amd->close_item, _("_Close"));
-  set_item_stock (amd->close_item, WNCK_STOCK_DELETE);
+  set_item_text (priv->close_item, _("_Close"));
+  set_item_stock (priv->close_item, WNCK_STOCK_DELETE);
 
-  g_signal_connect_object (G_OBJECT (amd->window),
+  g_signal_connect_object (G_OBJECT (priv->window),
                            "state_changed",
                            G_CALLBACK (state_changed_callback),
                            G_OBJECT (menu),
                            0);
 
-  g_signal_connect_object (G_OBJECT (amd->window),
+  g_signal_connect_object (G_OBJECT (priv->window),
                            "actions_changed",
                            G_CALLBACK (actions_changed_callback),
                            G_OBJECT (menu),
                            0);
 
-  g_signal_connect_object (G_OBJECT (amd->window),
+  g_signal_connect_object (G_OBJECT (priv->window),
                            "workspace_changed",
                            G_CALLBACK (workspace_changed_callback),
                            G_OBJECT (menu),
                            0);
 
-  screen = wnck_window_get_screen (amd->window);
+  screen = wnck_window_get_screen (priv->window);
 
   g_signal_connect_object (G_OBJECT (screen),
                            "workspace_created",
@@ -1110,8 +1150,64 @@ wnck_create_window_action_menu (WnckWindow *window)
                            G_OBJECT (menu),
                            0);
 
-  update_menu_state (amd);
+  update_menu_state (menu);
 
-  return menu;
+  return obj;
 }
 
+static void
+wnck_action_menu_class_init (WnckActionMenuClass *klass)
+{
+  GObjectClass *object_class = G_OBJECT_CLASS (klass);
+
+  _wnck_stock_icons_init ();
+
+  g_type_class_add_private (klass, sizeof (WnckActionMenuPrivate));
+
+  object_class->constructor = wnck_action_menu_constructor;
+  object_class->get_property = wnck_action_menu_get_property;
+  object_class->set_property = wnck_action_menu_set_property;
+  object_class->finalize = wnck_action_menu_finalize;
+
+  g_object_class_install_property (object_class,
+                                   PROP_WINDOW,
+                                   g_param_spec_pointer ("window",
+                                                         "Window",
+                                                         "The window that will be manipulated through this menu",
+                                                         G_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
+}
+
+static void
+wnck_action_menu_finalize (GObject *object)
+{
+  WnckActionMenu *menu;
+
+  menu = WNCK_ACTION_MENU (object);
+
+  if (menu->priv->idle_handler)
+    g_source_remove (menu->priv->idle_handler);
+  menu->priv->idle_handler = 0;
+
+  G_OBJECT_CLASS (wnck_action_menu_parent_class)->finalize (object);
+}
+
+/**
+ * wnck_action_menu_new:
+ * @window: the #WnckWindow for which a menu will be created.
+ *
+ * Creates a new #WnckActionMenu. The #WnckActionMenu will be filled with menu
+ * items for window operations on @window.
+ *
+ * Return value: a newly created #WnckActionMenu.
+ *
+ * Since: 2.22
+ **/
+GtkWidget*
+wnck_action_menu_new (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return g_object_new (WNCK_TYPE_ACTION_MENU,
+                       "window", window,
+                       NULL);
+}

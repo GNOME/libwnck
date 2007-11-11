@@ -7,6 +7,7 @@ wnck_application_get_type
 wnck_workspace_get_type
 wnck_screen_get_type
 
+wnck_action_menu_get_type
 wnck_pager_get_type
 wnck_selector_get_type
 wnck_tasklist_get_type

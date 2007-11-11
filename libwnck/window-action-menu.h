@@ -29,7 +29,59 @@
 
 G_BEGIN_DECLS
 
-GtkWidget* wnck_create_window_action_menu (WnckWindow *window);
+#define WNCK_TYPE_ACTION_MENU              (wnck_action_menu_get_type ())
+#define WNCK_ACTION_MENU(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_ACTION_MENU, WnckActionMenu))
+#define WNCK_ACTION_MENU_CLASS(klass)      (G_TYPE_CHECK_CLASS_CAST ((klass), WNCK_TYPE_ACTION_MENU, WnckActionMenuClass))
+#define WNCK_IS_ACTION_MENU(object)        (G_TYPE_CHECK_INSTANCE_TYPE ((object), WNCK_TYPE_ACTION_MENU))
+#define WNCK_IS_ACTION_MENU_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), WNCK_TYPE_ACTION_MENU))
+#define WNCK_ACTION_MENU_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), WNCK_TYPE_ACTION_MENU, WnckActionMenuClass))
+
+typedef struct _WnckActionMenu        WnckActionMenu;
+typedef struct _WnckActionMenuClass   WnckActionMenuClass;
+typedef struct _WnckActionMenuPrivate WnckActionMenuPrivate;
+
+/**
+ * WnckActionMenu:
+ *
+ * The #WnckActionMenu struct contains only private fields and should not be
+ * directly accessed.
+ */
+struct _WnckActionMenu
+{
+  GtkMenu parent_instance;
+
+  WnckActionMenuPrivate *priv;
+};
+
+struct _WnckActionMenuClass
+{
+  GtkMenuClass parent_class;
+
+  /* Padding for future expansion */
+  void (* pad1) (void);
+  void (* pad2) (void);
+  void (* pad3) (void);
+  void (* pad4) (void);
+};
+
+GType wnck_action_menu_get_type (void) G_GNUC_CONST;
+
+GtkWidget* wnck_action_menu_new (WnckWindow *window);
+
+#ifndef WNCK_DISABLE_DEPRECATED
+/**
+ * wnck_create_window_action_menu:
+ * @window: the #WnckWindow for which a menu will be created.
+ *
+ * Creates a new #WnckActionMenu. The #WnckActionMenu will be filled with menu
+ * items for window operations on @window.
+ *
+ * Return value: a newly created #WnckActionMenu.
+ *
+ * Deprecated:2.22: Use wnck_action_menu_new() instead.
+ */
+#define wnck_create_window_action_menu(window) wnck_action_menu_new (window)
+#endif /* WNCK_DISABLE_DEPRECATED */
 
 G_END_DECLS
 
