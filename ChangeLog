@@ -1,3 +1,17 @@
+2007-11-12  Vincent Untz  <vuntz@gnome.org>
+
+	Clean up the autotools and the pkg-config files.
+	We now require a x11.pc file, and optionally a xres.pc file. This
+	might break on some systems with old X, but I'm not sure we still
+	support those. Let's see if it breaks :-)
+	(and fix bug #332264)
+
+	* configure.in: use AC_MSG_CHECKING/AC_MSG_RESULT instead of echo'ing,
+	remove old X libraries detection method and use pkg-config
+	* libwnck/Makefile.am: remove useless X_LIBS
+	* libwnck-1.0-uninstalled.pc.in:
+	* libwnck-1.0.pc.in: add lots of Requires and Requires.private
+
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
 	Activate the window when the user drags and drops it quickly on

@@ -79,56 +79,31 @@ AC_SUBST(wncklocaledir)
 
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 
+AC_MSG_CHECKING([if building with libstartup-notification])
 STARTUP_NOTIFICATION_REQUIRED=0.4
 if $PKG_CONFIG --atleast-version $STARTUP_NOTIFICATION_REQUIRED libstartup-notification-1.0; then
-  echo "Building with libstartup-notification"
-  AC_DEFINE(HAVE_STARTUP_NOTIFICATION, , [Define if we have libstartup-notification])
+  AC_MSG_RESULT([yes])
+  AC_DEFINE_UNQUOTED(HAVE_STARTUP_NOTIFICATION, 1, [Define if you have libstartup-notification])
   STARTUP_NOTIFICATION_PACKAGE=libstartup-notification-1.0
 else
-  echo "Building without libstartup-notification"
+  AC_MSG_RESULT([no])
   STARTUP_NOTIFICATION_PACKAGE=
 fi
 
-dnl X development libraries check
-
-#
-# If Pango included the shared library dependencies from X11 in
-# the pkg-config output, then we use that (to avoid duplicates).
-# but if they were omitted to avoid binary compatibility problems
-# then we need to repeat the checks.
-#
-if $PKG_CONFIG --exists pangoxft ; then
-  PANGO_PACKAGES="pangox pangoxft"
+AC_MSG_CHECKING([if building with X Resource Information Extension Library])
+if $PKG_CONFIG xres; then
+  AC_MSG_RESULT([yes])
+  AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [Define if you have the XRes library])
+  XRES_PACKAGE=xres
 else
-  PANGO_PACKAGES="pangox"
+  AC_MSG_RESULT([no])
+  XRES_PACKAGE=
 fi
-
-x_libs="`$PKG_CONFIG --libs $PANGO_PACKAGES`"
-case x_libs in
-  *-lX11*) pango_omitted_x_deps=no ;;
-  *)       pango_omitted_x_deps=yes ;;
-esac
-
-if test $pango_omitted_x_deps = yes ; then
-  AC_PATH_XTRA
-
-  if test x$no_x = xyes ; then
-    AC_MSG_ERROR([X development libraries not found])
-  else
-    X_LIBS="$X_PRE_LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
-  fi
-fi
-
-## Check for XRes
-AC_CHECK_LIB(XRes, XResQueryExtension,
-             X_LIBS="$X_LIBS -lXRes -lXext" ; AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [define if you have the XRes library]), ,
-             $X_LIBS -lXext)
-
-AC_SUBST(X_LIBS)
 
 AC_SUBST(STARTUP_NOTIFICATION_PACKAGE)
+AC_SUBST(XRES_PACKAGE)
 
-PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.11.3 glib-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE)
+PKG_CHECK_MODULES(LIBWNCK, x11 gtk+-2.0 >= 2.11.3 glib-2.0 >= 2.13.0 gobject-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE $XRES_PACKAGE)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 
