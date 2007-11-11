@@ -962,6 +962,8 @@ wnck_action_menu_set_property (GObject      *object,
   switch (prop_id)
     {
       case PROP_WINDOW:
+        g_return_if_fail (WNCK_IS_WINDOW (g_value_get_pointer (value)));
+
         menu->priv->window = g_value_get_pointer (value);
         g_object_notify (G_OBJECT (menu), "window");
         break;
@@ -1014,6 +1016,12 @@ wnck_action_menu_constructor (GType                  type,
 
   menu = WNCK_ACTION_MENU (obj);
   priv = menu->priv;
+
+  if (priv->window == NULL)
+    {
+      g_warning ("No window specified during creation of the action menu");
+      return obj;
+    }
 
   g_object_weak_ref (G_OBJECT (priv->window), window_weak_notify, menu);
   g_object_weak_ref (G_OBJECT (menu), object_weak_notify, priv->window);

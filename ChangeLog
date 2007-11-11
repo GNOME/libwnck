@@ -1,5 +1,17 @@
 2007-11-11  Vincent Untz  <vuntz@gnome.org>
 
+	Be more paranoid about the fact that the window of the WnckActionMenu
+	might have been not set. This case can probably happen in bindings...
+
+	* libwnck/window-action-menu.c: (wnck_action_menu_set_property): check
+	that the window is really a WnckWindow
+	(wnck_action_menu_constructor): handle the case and print a warning
+	when the window has not been set
+
+	* doc/libwnck-docs.sgml: add index of new symbols in 2.22
+
+2007-11-11  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/pager.c: remove useless include
 	* libwnck/tasklist.c: (wnck_task_popup_menu),
 	(wnck_task_button_press_event): use wnck_action_menu_new() instead of
