@@ -77,8 +77,8 @@ void     _wnck_set_utf8_list     (Window   xwindow,
 void _wnck_error_trap_push (void);
 int  _wnck_error_trap_pop  (void);
 
-Atom        _wnck_atom_get  (const char *atom_name);
-const char* _wnck_atom_name (Atom        atom);
+#define _wnck_atom_get(atom_name) gdk_x11_get_xatom_by_name (atom_name)
+#define _wnck_atom_name(atom)     gdk_x11_get_xatom_name (atom)
 
 void _wnck_event_filter_init (void);
 

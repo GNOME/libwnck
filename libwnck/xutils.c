@@ -649,54 +649,6 @@ _wnck_error_trap_pop (void)
   return gdk_error_trap_pop ();
 }
 
-static GHashTable *atom_hash = NULL;
-static GHashTable *reverse_atom_hash = NULL;
-
-Atom
-_wnck_atom_get (const char *atom_name)
-{
-  Atom retval;
-  
-  g_return_val_if_fail (atom_name != NULL, None);
-
-  if (!atom_hash)
-    {
-      atom_hash = g_hash_table_new (g_str_hash, g_str_equal);
-      reverse_atom_hash = g_hash_table_new (NULL, NULL);
-    }
-      
-  retval = GPOINTER_TO_UINT (g_hash_table_lookup (atom_hash, atom_name));
-  if (!retval)
-    {
-      retval = XInternAtom (gdk_display, atom_name, FALSE);
-
-      if (retval != None)
-        {
-          char *name_copy;
-
-          name_copy = g_strdup (atom_name);
-          
-          g_hash_table_insert (atom_hash,
-                               name_copy,
-                               GUINT_TO_POINTER (retval));
-          g_hash_table_insert (reverse_atom_hash,
-                               GUINT_TO_POINTER (retval),
-                               name_copy);
-        }
-    }
-
-  return retval;
-}
-
-const char*
-_wnck_atom_name (Atom atom)
-{
-  if (reverse_atom_hash)
-    return g_hash_table_lookup (reverse_atom_hash, GUINT_TO_POINTER (atom));
-  else
-    return NULL;
-}
-
 static GdkFilterReturn
 filter_func (GdkXEvent  *gdkxevent,
              GdkEvent   *event,

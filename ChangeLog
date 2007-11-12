@@ -1,5 +1,11 @@
 2007-11-12  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/xutils.[ch]: change _wnck_atom_get() and _wnck_atom_name()
+	to be #define for gdk_x11_get_xatom_by_name() and
+	gdk_x11_get_xatom_name(). No need to duplicate what's GDK is doing.
+
+2007-11-12  Vincent Untz  <vuntz@gnome.org>
+
 	Clean up the autotools and the pkg-config files.
 	We now require a x11.pc file, and optionally a xres.pc file. This
 	might break on some systems with old X, but I'm not sure we still
