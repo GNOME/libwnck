@@ -1,3 +1,35 @@
+2.21.2
+======
+
+ Features
+  - Make the window action menu a WnckActionMenu widget (Vincent)
+
+ Fixes
+
+  - Avoid crashing if the X Resource extension is not present (Matthias Clasen)
+    [#489087]
+  - Code cleanups (Roland Bär, Vincent) [#494077]
+  - Add context for some strings to help translators (Vincent) [#476512]
+  - Activate the window when the user drags and drops it quickly on itself
+    (Jan Niklas Hasse, Vincent) [#460403]
+  - Do not re-implement some functions GDK has (Vincent)
+
+ Misc
+
+  - API doc improvements (Vincent) [parts of this fix #477847]
+  - Clean up the configure script for X libraries detection (Vincent) [#332264]
+  - Be more complete in the requirements in the pkg-config files (Vincent)
+
+ Translators
+
+  - Anas Husseini (ar)
+  - Jorge González (es)
+  - Ivar Smolin (et)
+  - Robert-André-Mauchin (fr)
+  - Gil Osher (he)
+  - Matej Urbančič (sl)
+  - Daniel Nylander (sv)
+
 2.20.1
 ======
 

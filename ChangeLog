@@ -1,5 +1,10 @@
 2007-11-12  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.21.2
+
+2007-11-12  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/xutils.[ch]: change _wnck_atom_get() and _wnck_atom_name()
 	to be #define for gdk_x11_get_xatom_by_name() and
 	gdk_x11_get_xatom_name(). No need to duplicate what's GDK is doing.
