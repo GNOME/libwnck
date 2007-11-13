@@ -37,7 +37,7 @@ WnckActionMenu
 @Returns: 
 
 
-<!-- ##### MACRO wnck_create_window_action_menu ##### -->
+<!-- ##### FUNCTION wnck_create_window_action_menu ##### -->
 <para>
 
 </para>

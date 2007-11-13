@@ -1,5 +1,5 @@
 
-INCLUDES=@LIBWNCK_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
+INCLUDES=@LIBWNCK_CFLAGS@ @XLIB_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE -DWNCK_LOCALEDIR=\"$(wncklocaledir)\" \
 	-DSN_API_NOT_YET_FROZEN=1 $(DISABLE_DEPRECATED_CFLAGS) $(WARN_CFLAGS)
 
@@ -90,7 +90,7 @@ libwnck_1_la_LDFLAGS=								    \
         -export-symbols-regex "^[^_].*"
 
 libwnck_1_la_LIBADD=   \
-	@LIBWNCK_LIBS@
+	@LIBWNCK_LIBS@ @XLIB_LIBS@
 
 wnckprop_LDADD=   \
 	@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)

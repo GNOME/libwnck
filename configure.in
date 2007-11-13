@@ -89,6 +89,19 @@ else
   AC_MSG_RESULT([no])
   STARTUP_NOTIFICATION_PACKAGE=
 fi
+AC_SUBST(STARTUP_NOTIFICATION_PACKAGE)
+
+PKG_CHECK_MODULES(XLIB, x11,
+    X11_PACKAGE=x11,
+    [X11_PACKAGE=
+     AC_PATH_XTRA
+     if test "x$no_x" = xyes; then
+       AC_MSG_ERROR("no (requires X development libraries)")
+     else
+       XLIB_LIBS="$X_PRE_LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+       XLIB_CFLAGS=$X_CFLAGS
+     fi])
+AC_SUBST(X11_PACKAGE)
 
 AC_MSG_CHECKING([if building with X Resource Information Extension Library])
 if $PKG_CONFIG xres; then
@@ -96,14 +109,19 @@ if $PKG_CONFIG xres; then
   AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [Define if you have the XRes library])
   XRES_PACKAGE=xres
 else
-  AC_MSG_RESULT([no])
+  AC_CHECK_LIB(XRes, XResQueryExtension,          
+               [XLIB_LIBS="$XLIB_LIBS -lXRes -lXext"
+                AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [Define if you have the XRes library])
+                AC_MSG_RESULT([yes])],
+               AC_MSG_RESULT([no]),
+               $XLIB_LIBS -lXext)
   XRES_PACKAGE=
 fi
-
-AC_SUBST(STARTUP_NOTIFICATION_PACKAGE)
 AC_SUBST(XRES_PACKAGE)
+AC_SUBST(XLIB_CFLAGS)
+AC_SUBST(XLIB_LIBS)
 
-PKG_CHECK_MODULES(LIBWNCK, x11 gtk+-2.0 >= 2.11.3 glib-2.0 >= 2.13.0 gobject-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE $XRES_PACKAGE)
+PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.11.3 glib-2.0 >= 2.13.0 gobject-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE $XRES_PACKAGE)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 

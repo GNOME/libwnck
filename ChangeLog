@@ -1,5 +1,17 @@
 2007-11-13  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* libwnck-1.0-uninstalled.pc.in:
+	* libwnck-1.0.pc.in:
+	* libwnck/Makefile.am:
+	Rework again so that we also work with Xorg 6.8, which doesn't have
+	.pc files. I'm sure it's a bit broken in a corner case for Xorg 6.8,
+	but it should work anyway. Keep using .pc files when available.
+
+	* doc/tmpl/window-action-menu.sgml: updated
+
+2007-11-13  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/window-action-menu.[ch]: (wnck_create_window_action_menu):
 	don't make this function a define. We need the symbol for now, if we
 	don't want to break the ABI...
