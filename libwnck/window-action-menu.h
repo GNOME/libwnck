@@ -69,18 +69,7 @@ GType wnck_action_menu_get_type (void) G_GNUC_CONST;
 GtkWidget* wnck_action_menu_new (WnckWindow *window);
 
 #ifndef WNCK_DISABLE_DEPRECATED
-/**
- * wnck_create_window_action_menu:
- * @window: the #WnckWindow for which a menu will be created.
- *
- * Creates a new #WnckActionMenu. The #WnckActionMenu will be filled with menu
- * items for window operations on @window.
- *
- * Return value: a newly created #WnckActionMenu.
- *
- * Deprecated:2.22: Use wnck_action_menu_new() instead.
- */
-#define wnck_create_window_action_menu(window) wnck_action_menu_new (window)
+GtkWidget* wnck_create_window_action_menu (WnckWindow *window);
 #endif /* WNCK_DISABLE_DEPRECATED */
 
 G_END_DECLS
