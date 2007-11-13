@@ -1,3 +1,18 @@
+2.21.2.1
+========
+
+ Fixes
+
+  - Fix accidental ABI break in 2.21.2 (Vincent)
+
+ Misc
+
+  - Fix for X libraries detection to work with Xorg 6.8 (Vincent)
+
+ Translators
+
+  - Daniel Nylander (sv)
+
 2.21.2
 ======
 

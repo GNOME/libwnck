@@ -1,6 +1,11 @@
 2007-11-13  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in:
+	* NEWS: version 2.21.2.1
+
+2007-11-13  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
 	* libwnck-1.0-uninstalled.pc.in:
 	* libwnck-1.0.pc.in:
 	* libwnck/Makefile.am:
