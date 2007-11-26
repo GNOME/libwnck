@@ -1,3 +1,19 @@
+2.20.2
+======
+
+ Fixes
+
+  - Avoid crashing if the X Resource extension is not present (Matthias Clasen)
+    [#489087]
+
+ Translators
+
+  - Anas Husseini (ar)
+  - Ivar Smolin (et)
+  - Robert-André-Mauchin (fr)
+  - Gil Osher (he)
+  - Matej Urbančič (sl)
+
 2.20.1
 ======
 

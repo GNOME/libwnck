@@ -1,3 +1,8 @@
+2007-11-27  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.20.2
+
 2007-10-22  Matthias Clasen <mclasen@redhat.com>
 
 	* libwnck/util.c: Avoid crashing if the X Resource extension
