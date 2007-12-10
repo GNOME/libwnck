@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-12 17:47+0000\n"
-"PO-Revision-Date: 2007-12-10 14:59+0100\n"
+"POT-Creation-Date: 2007-12-10 14:04+0000\n"
+"PO-Revision-Date: 2007-12-10 16:23+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -193,15 +193,15 @@ msgstr "_Mover"
 
 #: ../libwnck/window-action-menu.c:1050
 msgid "_Resize"
-msgstr "Re_dimensionar"
+msgstr "_Redimensionar"
 
 #: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
-msgstr "Siempre en_cima"
+msgstr "Siempre _encima"
 
 #: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
-msgstr "_Siempre en el área de trabajo visible"
+msgstr "Siempre en el área de trabajo _visible"
 
 #: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
@@ -217,7 +217,7 @@ msgstr "Mover al área de trabajo de la _derecha"
 
 #: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
-msgstr "Mover al área de trabajo de a_rriba"
+msgstr "Mover al área de trabajo de _arriba"
 
 #: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
