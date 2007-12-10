@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-12 17:47+0000\n"
-"PO-Revision-Date: 2007-12-09 21:41+0100\n"
+"PO-Revision-Date: 2007-12-10 14:59+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -159,7 +159,7 @@ msgstr "Activar transparencias"
 
 #: ../libwnck/window-action-menu.c:413
 msgid "Unmi_nimize"
-msgstr "_Restaurar"
+msgstr "Desmi_nimizar"
 
 #: ../libwnck/window-action-menu.c:420
 msgid "Mi_nimize"
@@ -167,7 +167,7 @@ msgstr "Mi_nimizar"
 
 #: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
-msgstr "_Restaurar"
+msgstr "Desma_ximizar"
 
 #: ../libwnck/window-action-menu.c:435
 msgid "Ma_ximize"
@@ -197,7 +197,7 @@ msgstr "Re_dimensionar"
 
 #: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
-msgstr "Siempre _encima"
+msgstr "Siempre en_cima"
 
 #: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
@@ -205,7 +205,7 @@ msgstr "_Siempre en el área de trabajo visible"
 
 #: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
-msgstr "S_ólo en este área de trabajo"
+msgstr "_Sólo en este área de trabajo"
 
 #: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
@@ -368,7 +368,7 @@ msgstr "Maximizar horizontalmente la ventana"
 
 #: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr "Desmaximizar horizontalmente la ventnaa"
+msgstr "Desmaximizar horizontalmente la ventana"
 
 #: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
