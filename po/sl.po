@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-10 16:51+0100\n"
-"PO-Revision-Date: 2007-11-28 16:25+0100\n"
+"PO-Revision-Date: 2007-12-11 18:07+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Kliknite sem za preklop na delovno površino %s"
 #: ../libwnck/pager.c:1903
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr ""
+msgstr "Kliknite za premikanje \"%s\""
 
 #: ../libwnck/pager.c:1906
 #, c-format
@@ -140,7 +140,7 @@ msgstr "Uporabi navpično postavitev"
 #: ../libwnck/test-selector.c:12
 #: ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr ""
+msgstr "Ne prikaži okna v seznamu opravil"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
@@ -250,7 +250,7 @@ msgstr "Neimenovano okno"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "ID okna, ki ga želite spremeniti ali preveriti"
 
 #: ../libwnck/wnckprop.c:139
 #: ../libwnck/wnckprop.c:145
@@ -263,12 +263,12 @@ msgstr "XID"
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "ID lastnika skupine okna, ki ga želite preveriti"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Vir skupine, ki jo želite preveriti"
 
 #: ../libwnck/wnckprop.c:148
 msgid "CLASS"
@@ -293,28 +293,28 @@ msgstr "ŠTEVILO zaslonov za pregledovanje ali spreminjanje"
 
 #: ../libwnck/wnckprop.c:154
 msgid "Alias of --window"
-msgstr ""
+msgstr "Oznaka --window"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:161
 msgid "List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"
-msgstr ""
+msgstr "Seznam oken programa/skupine/delovne površine/zaslona (odvodni izpis: \"XID: Ime okna\")"
 
 #: ../libwnck/wnckprop.c:163
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgstr "Seznam delovnih površin (odvodni izpis: \"Število: Ime delovne površine\")"
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Spremeni število delovnih površin zaslona na ŠTEVILO"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "Spremeni razporeditev delovnih površin zaslona na ŠTEVILO vrstic"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "Spremeni razporeditev delovnih površin zaslona na ŠTEVILO stolpcev"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
@@ -322,13 +322,13 @@ msgstr "Pokaži namizje"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "Prenehaj prikazovati namizje"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Premakni gledišče trenutne delovne površine na X koordinato X"
 
 #: ../libwnck/wnckprop.c:181
 #: ../libwnck/wnckprop.c:264
@@ -339,7 +339,7 @@ msgstr "X"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Premakni gledišče trenutne delovne površine na Y koordinato Y"
 
 #: ../libwnck/wnckprop.c:185
 #: ../libwnck/wnckprop.c:266
@@ -380,11 +380,11 @@ msgstr "Okno pomanjšaj navpično"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "Začni premikati okno s tipkovnico"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "Začni spreminjati velikost okna s tipkovnico"
 
 #: ../libwnck/wnckprop.c:211
 msgid "Activate the window"
@@ -396,27 +396,27 @@ msgstr "Zapri okno"
 
 #: ../libwnck/wnckprop.c:216
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Razpri okno čez cel zaslon"
 
 #: ../libwnck/wnckprop.c:218
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "Skrči okno iz celotnega zaslona"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
-msgstr ""
+msgstr "Postavi okno vedno v ospredje"
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "Ne postavi okna vedno v ospredje"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "Postavi okno pod druga okna"
 
 #: ../libwnck/wnckprop.c:226
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "Ne postavi okna pod druga okna"
 
 #: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
@@ -430,13 +430,13 @@ msgstr "Odstrani senčenje okna"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Okno ima določeno lego gledišča"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "Okno nima določene lege gledišča"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -444,7 +444,7 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "Okno se ne pojavi v preklopniku delovnih površin"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -452,29 +452,29 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "Okno se pojavi v preklopniku delovnih površin"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Ne objavi okna v seznamu opravil"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Objavi okno v seznamu opravil"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "Okno je vidno na vseh delovnih površinah"
 
 #: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Okno je vidno le na trenutni delovni površini"
 
 #: ../libwnck/wnckprop.c:262
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Premakni okno na delovno površino ŠTEVILO (prva delovna površina ima vrednost 0)"
 
 #: ../libwnck/wnckprop.c:264
 msgid "Change the X coordinate of the window to X"
@@ -503,7 +503,7 @@ msgstr "VIŠINA"
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:273
 msgid "Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
-msgstr ""
+msgstr "Spremeni vrsto okna v VRSTO (veljavne vrednosti so: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
@@ -533,39 +533,39 @@ msgstr "Neveljavna vrednost \"%s\" za --%s"
 #: ../libwnck/wnckprop.c:509
 #, c-format
 msgid "Conflicting options are present: screen %d should be interacted with, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: zaslon %d bi moral biti povezan, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
 msgid "Conflicting options are present: windows or workspaces of screen %d should be listed, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: okno ali delovna površina zaslona %d bi moral zapisan, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:522
 #: ../libwnck/wnckprop.c:542
 #, c-format
 msgid "Conflicting options are present: workspace %d should be interacted with, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: delovna površina %d bi morala biti povezana, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
 msgid "Conflicting options are present: windows of workspace %d should be listed, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: okna delovne površine %d bi morala biti zapisana, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
 msgid "Conflicting options are present: an application should be interacted with, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: program bi moral biti povezan, vendar je uporabljen --%s\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
 msgid "Conflicting options are present: windows of an application should be listed, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: okna programa bi morala biti zapisana, vendar je uporabljen --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
 #, c-format
 msgid "Conflicting options are present: class group \"%s\" should be interacted with, but --%s has been used\n"
-msgstr ""
+msgstr "Ugotovljeni nasprotujoči si nastavitvi: skupina \"%s\" bi moral biti povezana, vendar je uporabljen --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
@@ -608,19 +608,19 @@ msgstr "Neveljaven argument \"%s\" za --%s, veljavne vrednosti so: %s\n"
 
 #: ../libwnck/wnckprop.c:850
 msgid "Cannot change the workspace layout on the screen: the layout is already owned\n"
-msgstr ""
+msgstr "Ni mogoče zamenjati razporeda delovne površine na zaslonu: razpored je že določen\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
 msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
+msgstr "Gledišča ni mogoče premakniti: trenutna delovna površina ne vsebuje gledišča\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "Gledišča ni mogoče premakniti: ni trenutne delovne površine\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:926
@@ -637,7 +637,7 @@ msgstr "Dejanje ni dovoljeno\n"
 #: ../libwnck/wnckprop.c:1022
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "Okna ni mogoče premakniti na delovno površino %d: delovna površina ne obstaja\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1086
@@ -676,7 +676,7 @@ msgstr "Število _delovnih površin: %d\n"
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "Razpored delovnih površin (vrstice, stolpci, postavitev): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194
 #: ../libwnck/wnckprop.c:1251
@@ -763,20 +763,20 @@ msgstr "Številka delovne površine: %d\n"
 #: ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "Na zaslonu: %d (Upravljavec oken: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
-msgstr ""
+msgstr "<ni gledišča>"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "Lega gledišča (x, y): %s\n"
 
 #: ../libwnck/wnckprop.c:1272
 #, c-format
@@ -956,7 +956,7 @@ msgstr "Vodja skupine: %lu\n"
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "Prehoden za  %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
@@ -995,7 +995,7 @@ msgstr "senčeno"
 
 #: ../libwnck/wnckprop.c:1552
 msgid "pinned"
-msgstr ""
+msgstr "pripeto"
 
 #: ../libwnck/wnckprop.c:1553
 msgid "sticky"
@@ -1015,7 +1015,7 @@ msgstr "celoten zaslon"
 
 #: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
-msgstr ""
+msgstr "zahteva pozornost"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -1023,12 +1023,12 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
-msgstr ""
+msgstr "preskoči preklopnik delovnih površin"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
-msgstr ""
+msgstr "preskoči seznam opravil"
 
 #: ../libwnck/wnckprop.c:1566
 msgid "normal"
@@ -1081,15 +1081,15 @@ msgstr "pomanjšaj navpično"
 
 #: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
-msgstr ""
+msgstr "zamenjaj delovno površino"
 
 #: ../libwnck/wnckprop.c:1606
 msgid "pin"
-msgstr ""
+msgstr "pripni"
 
 #: ../libwnck/wnckprop.c:1608
 msgid "unpin"
-msgstr ""
+msgstr "odpni"
 
 #: ../libwnck/wnckprop.c:1609
 msgid "minimize"
@@ -1117,19 +1117,19 @@ msgstr "zapri"
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "postavi nad"
 
 #: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "ne postavi nad"
 
 #: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "postavi pod"
 
 #: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "ne postavi pod"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
@@ -1146,6 +1146,9 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Natisni ali spremeni lastnosti zaslona/delovne površine, ali pa se z njo poveži, sledeč EWMH določilom.\n"
+"Za več podrobnosti o doličilih si oglejte:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1813
 msgid "Options to list windows or workspaces"
