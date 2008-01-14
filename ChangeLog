@@ -1,3 +1,8 @@
+2008-01-14  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.21.5
+
 2007-11-13  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.21.3
