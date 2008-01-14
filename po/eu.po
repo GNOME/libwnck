@@ -188,11 +188,11 @@ msgstr "%s%d laneko area"
 
 #: ../libwnck/window-action-menu.c:1043
 msgid "_Move"
-msgstr "_Mugitu"
+msgstr "Aldatu _lekuz"
 
 #: ../libwnck/window-action-menu.c:1050
 msgid "_Resize"
-msgstr "_Aldatu tamaina"
+msgstr "Aldatu _tamaina"
 
 #: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
@@ -204,23 +204,23 @@ msgstr "Laneko area ikusgaian _beti"
 
 #: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
-msgstr "Laneko a_rea honetan bakarrik"
+msgstr "Laneko area _honetan bakarrik"
 
 #: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
-msgstr "Aldatu e_zkerreko laneko areara"
+msgstr "Eraman e_zkerreko laneko areara"
 
 #: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace R_ight"
-msgstr "Aldatu e_skuineko laneko areara"
+msgstr "Eraman e_skuineko laneko areara"
 
 #: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
-msgstr "Aldatu _gaineko laneko areara"
+msgstr "Eraman _gaineko laneko areara"
 
 #: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
-msgstr "Aldatu _beheko laneko areara"
+msgstr "Eraman _azpiko laneko areara"
 
 #: ../libwnck/window-action-menu.c:1100
 msgid "Move to Another _Workspace"
