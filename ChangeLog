@@ -1,3 +1,20 @@
+2008-01-21  Vincent Untz  <vuntz@gnome.org>
+
+	Make the pager always work in multiscreen environment.
+	Fix bug #479959.
+	Thanks go to David Sundqvist <bugzilla@dystopic.org> for the help in
+	debugging this.
+
+	* libwnck/pager.c: (_wnck_pager_set_screen): do nothing if the pager
+	is not on a screen. Else, we might work on the default screen, which
+	is bad in a multiscreen environment.
+	(wnck_pager_set_layout_hint): do not assume that
+	_wnck_pager_set_screen() worked. Someone can call this function before
+	the pager has been added to a widget hierarchy, and so before we know
+	the screen the pager will work on.
+	(wnck_pager_set_orientation): document this specific case of failure
+	(wnck_pager_set_n_rows): ditto
+
 2008-01-14  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.21.90

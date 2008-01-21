@@ -289,6 +289,9 @@ _wnck_pager_set_screen (WnckPager *pager)
 {
   GdkScreen *gdkscreen;
 
+  if (!gtk_widget_has_screen (GTK_WIDGET (pager)))
+    return;
+
   gdkscreen = gtk_widget_get_screen (GTK_WIDGET (pager));
   pager->priv->screen = wnck_screen_get (gdk_screen_get_number (gdkscreen));
 
@@ -1948,7 +1951,9 @@ wnck_pager_set_layout_hint (WnckPager *pager)
   /* if we're not realized, we don't know about our screen yet */
   if (pager->priv->screen == NULL)
     _wnck_pager_set_screen (pager);
-  g_assert (pager->priv->screen != NULL);
+  /* can still happen if the pager was not added to a widget hierarchy */
+  if (pager->priv->screen == NULL)
+    return FALSE;
 
   /* The visual representation of the pager doesn't
    * correspond to the layout of the workspaces
@@ -1998,6 +2003,9 @@ wnck_pager_set_layout_hint (WnckPager *pager)
  * For example, if the layout contains one row, but the orientation of the
  * layout is vertical, the #WnckPager will display a column of #WnckWorkspace.
  *
+ * If @pager has not been added to a widget hierarchy, the call will fail
+ * because @pager can't know the screen on which to modify the orientation.
+ *
  * Return value: %TRUE if the layout of #WnckWorkspace has been successfully
  * changed or did not need to be changed, %FALSE otherwise.
  */
@@ -2041,6 +2049,9 @@ wnck_pager_set_orientation (WnckPager     *pager,
  * #WnckScreen @pager is watching. Since no more than one application should
  * set this property of a #WnckScreen at a time, setting the layout is not
  * guaranteed to work. 
+ *
+ * If @pager has not been added to a widget hierarchy, the call will fail
+ * because @pager can't know the screen on which to modify the layout.
  *
  * Return value: %TRUE if the layout of #WnckWorkspace has been successfully
  * changed or did not need to be changed, %FALSE otherwise.
