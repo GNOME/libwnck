@@ -142,7 +142,7 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ##################################################
 # Checks for gtk-doc and docbook-tools
 ##################################################
-GTK_DOC_CHECK([1.0])
+GTK_DOC_CHECK([1.9])
 
 AC_OUTPUT([
 Makefile
