@@ -1,3 +1,21 @@
+2.21.91
+=======
+
+Misc
+
+  - Require gtk-doc 1.9 (Vincent) [#511414]
+
+ Translators
+
+  - Djihed Afifi (ar)
+  - Takeshi AIHANA (ja)
+  - Arangel Angov (mk)
+  - sandeep shedmake (mr)
+  - Tomasz Dominikowski (pl)
+  - Duarte Loreto (pt)
+  - Pavol Šimo (sk)
+  - Theppitak Karoonboonyanan (th)
+
 2.21.90
 =======
 

@@ -1,5 +1,10 @@
 2008-02-09  Vincent Untz  <vuntz@gnome.org>
 
+	* configure.in:
+	* NEWS: version 2.21.91
+
+2008-02-09  Vincent Untz  <vuntz@gnome.org>
+
 	* configure.in: require gtk-doc 1.9
 	Fix bug #511414.
 
