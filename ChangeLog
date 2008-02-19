@@ -1,3 +1,10 @@
+2008-02-20  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/xutils.c: (_wnck_set_window_geometry): don't push twice the
+	error trap, pop it the second time!
+	Should fix bug #517570 (wnck_window_set_geometry() not working in some
+	cases).
+
 2008-02-09  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.21.92

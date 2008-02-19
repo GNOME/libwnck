@@ -2298,7 +2298,7 @@ void _wnck_set_window_geometry (Screen *screen,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev);
-  _wnck_error_trap_push ();
+  _wnck_error_trap_pop ();
 }
 
 void
