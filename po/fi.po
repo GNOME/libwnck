@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-14 07:36+0300\n"
+"POT-Creation-Date: 2008-02-22 13:39+0300\n"
 "PO-Revision-Date: 2006-09-13 18:23+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -55,7 +55,7 @@ msgstr "Napsauta tätä vaihtaaksesi työtilaan %s"
 #: ../libwnck/pager.c:1906
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "Aloita ikkunan \"%s\" raahaus napsauttamalla"
+msgstr "Raahaa ikkunaa \"%s\" napsauttamalla"
 
 #: ../libwnck/pager.c:1909
 #, c-format
@@ -65,7 +65,7 @@ msgstr "Nykyinen työpöytä: \"%s\""
 #: ../libwnck/pager.c:1914
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Vaihda työtilaan \"%s\" napsauttamalla tästä"
+msgstr "Siirry työtilaan \"%s\" napsauttamalla"
 
 #: ../libwnck/selector.c:1171
 msgid "No Windows Open"
