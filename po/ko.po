@@ -1,13 +1,13 @@
 # libwnck 
 # Young-Ho, Cha <ganadist@chollian.net>, 2002.
-# Changwoo Ryu <cwryu@debian.org>, 2002-2005, 2007.
+# Changwoo Ryu <cwryu@debian.org>, 2002-2005, 2007, 2008.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-22 16:05+0900\n"
-"PO-Revision-Date: 2007-09-29 16:10+0900\n"
+"POT-Creation-Date: 2008-02-24 23:57+0900\n"
+"PO-Revision-Date: 2008-02-24 23:57+0900\n"
 "Last-Translator: Changwoo Ryu <cwryu@debian.org>\n"
 "Language-Team: GNOME Korea <gnome-kr-hackers@lists.kldp.net>\n"
 "MIME-Version: 1.0\n"
@@ -51,17 +51,17 @@ msgstr "작업 공간을 바꾸는 도구"
 msgid "Click this to switch to workspace %s"
 msgstr "작업 공간 %s(으)로 바꾸려면 누르십시오"
 
-#: ../libwnck/pager.c:1904
+#: ../libwnck/pager.c:1906
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\"을(를) 끌어 옮기려면 누르십시오"
 
-#: ../libwnck/pager.c:1907
+#: ../libwnck/pager.c:1909
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "현재 작업 공간: \"%s\""
 
-#: ../libwnck/pager.c:1912
+#: ../libwnck/pager.c:1914
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "\"%s\"(으)로 바꾸려면 누르십시오"
@@ -78,31 +78,31 @@ msgstr "창 선택"
 msgid "Tool to switch between windows"
 msgstr "창 사이로 옮겨 다니는 도구"
 
-#: ../libwnck/tasklist.c:720
+#: ../libwnck/tasklist.c:727
 msgid "Window List"
 msgstr "창 목록"
 
-#: ../libwnck/tasklist.c:721
+#: ../libwnck/tasklist.c:728
 msgid "Tool to switch between visible windows"
 msgstr "창 사이로 옮겨 다니는 도구"
 
-#: ../libwnck/tasklist.c:3005
+#: ../libwnck/tasklist.c:3016
 msgid "Mi_nimize All"
 msgstr "모두 최소화(_N)"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3027
 msgid "Un_minimize All"
 msgstr "모두 최소화 취소(_M)"
 
-#: ../libwnck/tasklist.c:3024
+#: ../libwnck/tasklist.c:3035
 msgid "Ma_ximize All"
 msgstr "모두 최대화(_X)"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3046
 msgid "_Unmaximize All"
 msgstr "모두 최대화 취소(_U)"
 
-#: ../libwnck/tasklist.c:3047
+#: ../libwnck/tasklist.c:3058
 msgid "_Close All"
 msgstr "모두 닫기(_C)"
 
@@ -151,78 +151,78 @@ msgstr "모든 작업 공간의 창 표시"
 msgid "Enable Transparency"
 msgstr "투명 사용"
 
-#: ../libwnck/window-action-menu.c:387
+#: ../libwnck/window-action-menu.c:413
 msgid "Unmi_nimize"
 msgstr "최소화 취소(_N)"
 
-#: ../libwnck/window-action-menu.c:394
+#: ../libwnck/window-action-menu.c:420
 msgid "Mi_nimize"
 msgstr "최소화(_N)"
 
-#: ../libwnck/window-action-menu.c:402
+#: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
 msgstr "최대화 취소(_X)"
 
-#: ../libwnck/window-action-menu.c:409
+#: ../libwnck/window-action-menu.c:435
 msgid "Ma_ximize"
 msgstr "최대화(_X)"
 
-#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "작업 공간 %d"
 
-#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
+#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
 #, c-format
 msgid "Workspace 1_0"
 msgstr "작업 공간 1_0"
 
-#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
+#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
 #, c-format
 msgid "Workspace %s%d"
 msgstr "작업 공간 %s%d"
 
-#: ../libwnck/window-action-menu.c:995
+#: ../libwnck/window-action-menu.c:1043
 msgid "_Move"
 msgstr "옮기기(_M)"
 
-#: ../libwnck/window-action-menu.c:1002
+#: ../libwnck/window-action-menu.c:1050
 msgid "_Resize"
 msgstr "크기 조정(_R)"
 
-#: ../libwnck/window-action-menu.c:1011
+#: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
 msgstr "항상 위(_T)"
 
-#: ../libwnck/window-action-menu.c:1019
+#: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
 msgstr "항상 보고 있는 작업 공간에 놓기(_A)"
 
-#: ../libwnck/window-action-menu.c:1024
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
 msgstr "이 작업 공간에만 놓기(_O)"
 
-#: ../libwnck/window-action-menu.c:1031
+#: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
 msgstr "작업 공간 왼쪽으로 옮기기(_L)"
 
-#: ../libwnck/window-action-menu.c:1037
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace R_ight"
 msgstr "작업 공간 오른쪽으로 옮기기(_I)"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
 msgstr "작업 공간 위로 옮기기(_U)"
 
-#: ../libwnck/window-action-menu.c:1049
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
 msgstr "작업 공간 아래로 옮기기(_D)"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1100
 msgid "Move to Another _Workspace"
 msgstr "다른 작업 공간으로 옮기기(_W)"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1120
 msgid "_Close"
 msgstr "닫기(_C)"
 
@@ -287,7 +287,8 @@ msgstr "--window와 동일"
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr "프로그램/클래스 그룹/작업 공간/스크린의 창 목록 (출력 형식: \"XID: 창 이름\")"
+msgstr ""
+"프로그램/클래스 그룹/작업 공간/스크린의 창 목록 (출력 형식: \"XID: 창 이름\")"
 
 #: ../libwnck/wnckprop.c:163
 msgid ""
@@ -493,7 +494,9 @@ msgstr "<높이>"
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
-msgstr "창의 종류를 <종류>로 바꿉니다 (가능한 값: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
+msgstr ""
+"창의 종류를 <종류>로 바꿉니다 (가능한 값: normal, desktop, dock, dialog, "
+"toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
@@ -522,42 +525,54 @@ msgstr "--%2$s 옵션에 대해 \"%1$s\" 값이 잘못되었습니다"
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 스크린 %d번과 통신하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 스크린 %d번과 통신하지만, --%s "
+"옵션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 스크린 %d번의 창이나 작업 공간의 목록을 표시해야 하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 스크린 %d번의 창이나 작업 공간"
+"의 목록을 표시해야 하지만, --%s 옵션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 작업 공간 %d번과 통신하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 작업 공간 %d번과 통신하지만, --"
+"%s 옵션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 작업 공간 %d번의 창 목록을 표시해야 하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 작업 공간 %d번의 창 목록을 표시"
+"해야 하지만, --%s 옵션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 프로그램과 통신하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 프로그램과 통신하지만, --%s 옵"
+"션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 프로그램의 창 목록을 표시해야 하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 프로그램의 창 목록을 표시해야 "
+"하지만, --%s 옵션을 사용했습니다\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
@@ -565,7 +580,9 @@ msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 프로�
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: \"%s\" 클래스 그룹과 통신하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: \"%s\" 클래스 그룹과 통신하지"
+"만, --%s 옵션을 사용했습니다\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
@@ -573,14 +590,18 @@ msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: \"%s\" 
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: \"%s\" 클래스 그룹의 창 목록을 표시해야 하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: \"%s\" 클래스 그룹의 창 목록을 "
+"표시해야 하지만, --%s 옵션을 사용했습니다\n"
 
 #: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: 창과 통신하지만, --%s 옵션을 사용했습니다\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: 창과 통신하지만, --%s 옵션을 사"
+"용했습니다\n"
 
 #: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
 #: ../libwnck/wnckprop.c:756
@@ -592,17 +613,23 @@ msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: --%s �
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr "--%2$s 옵션에 대해 \"%1$d\" 인자가 잘못되었습니다: 옵션의 인자는 0보다 커야 합니다\n"
+msgstr ""
+"--%2$s 옵션에 대해 \"%1$d\" 인자가 잘못되었습니다: 옵션의 인자는 0보다 커야 "
+"합니다\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "--%2$s 옵션에 대해 \"%1$d\" 인자가 잘못되었습니다: 옵션의 인자는 0보다 같거나 커야 합니다\n"
+msgstr ""
+"--%2$s 옵션에 대해 \"%1$d\" 인자가 잘못되었습니다: 옵션의 인자는 0보다 같거"
+"나 커야 합니다\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr "같이 사용할 수 없는 옵션을 같이 사용했습니다: --%s 혹은 --%s 옵션과 --%s 옵션\n"
+msgstr ""
+"같이 사용할 수 없는 옵션을 같이 사용했습니다: --%s 혹은 --%s 옵션과 --%s 옵"
+"션\n"
 
 #: ../libwnck/wnckprop.c:807
 #, c-format
@@ -614,7 +641,9 @@ msgstr "--%2$s 옵션에 대해 \"%1$s\" 인자가 잘못되었습니다. 올바
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr "스크린의 작업 공간 배치를 바꿀 수 없습니다: 다른 프로그램이 작업 공간 배치를 사용 중입니다\n"
+msgstr ""
+"스크린의 작업 공간 배치를 바꿀 수 없습니다: 다른 프로그램이 작업 공간 배치를 "
+"사용 중입니다\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -646,7 +675,7 @@ msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr "창을 작업 공간 %d번으로 옮길 수 없습니다: 그 작업 공간이 없습니다\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1217
+#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
 msgid "<name unset>"
 msgstr "<이름 설정 취소>"
 
@@ -667,7 +696,7 @@ msgstr "%d: %s\n"
 msgid "Screen Number: %d\n"
 msgstr "스크린 번호: %d\n"
 
-#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1253
+#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1255
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "크기 (너비, 높이): %d, %d\n"
@@ -682,8 +711,8 @@ msgstr "작업 공간 개수: %d\n"
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "작업 공간 배치 (열, 행, 방향): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1249
-#: ../libwnck/wnckprop.c:1435
+#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
+#: ../libwnck/wnckprop.c:1443
 msgid "<no EWMH-compliant window manager>"
 msgstr "<EWMH 호환 창 관리자 없음>"
 
@@ -693,229 +722,239 @@ msgid "Window Manager: %s\n"
 msgstr "창 관리자: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1277
-#: ../libwnck/wnckprop.c:1288 ../libwnck/wnckprop.c:1299
-#: ../libwnck/wnckprop.c:1310 ../libwnck/wnckprop.c:1421
+#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1279
+#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1303
+#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1428
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
-#: ../libwnck/wnckprop.c:1204 ../libwnck/wnckprop.c:1225
-#: ../libwnck/wnckprop.c:1281 ../libwnck/wnckprop.c:1292
-#: ../libwnck/wnckprop.c:1303 ../libwnck/wnckprop.c:1314
-#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1427
-msgid "none"
+#. Translators: "none" here means "no workspace"
+#: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
+#: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
+#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
+msgid "workspace|none"
 msgstr "없음"
 
-#: ../libwnck/wnckprop.c:1205
+#: ../libwnck/wnckprop.c:1206
 #, c-format
 msgid "Active Workspace: %s\n"
 msgstr "활성화한 작업 공간: %s\n"
 
-#: ../libwnck/wnckprop.c:1214
+#: ../libwnck/wnckprop.c:1215
 #, c-format
 msgid "\"%s\""
 msgstr "\"%s\""
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1220
+#: ../libwnck/wnckprop.c:1221
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
-#: ../libwnck/wnckprop.c:1226
+#. Translators: "none" here means "no window"
+#: ../libwnck/wnckprop.c:1227
+msgid "window|none"
+msgstr "없음"
+
+#: ../libwnck/wnckprop.c:1228
 #, c-format
 msgid "Active Window: %s\n"
 msgstr "활성 창: %s\n"
 
-#: ../libwnck/wnckprop.c:1229
+#: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "Showing the desktop: %s\n"
 msgstr "바탕 화면 표시: %s\n"
 
-#: ../libwnck/wnckprop.c:1231
+#: ../libwnck/wnckprop.c:1233
 msgid "true"
 msgstr "참"
 
-#: ../libwnck/wnckprop.c:1231
+#: ../libwnck/wnckprop.c:1233
 msgid "false"
 msgstr "거짓"
 
-#: ../libwnck/wnckprop.c:1242
+#: ../libwnck/wnckprop.c:1244
 #, c-format
 msgid "Workspace Name: %s\n"
 msgstr "작업 공간 이름: %s\n"
 
-#: ../libwnck/wnckprop.c:1243
+#: ../libwnck/wnckprop.c:1245
 #, c-format
 msgid "Workspace Number: %d\n"
 msgstr "작업 공간 번호: %d\n"
 
-#: ../libwnck/wnckprop.c:1250 ../libwnck/wnckprop.c:1436
+#: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "스크린: %d (창 관리자: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1264
+#: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
 msgstr "<뷰포트 없음>"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1267
+#: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
 msgstr "뷰포트 위치 (가로, 세로): %s\n"
 
-#: ../libwnck/wnckprop.c:1270
+#: ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
 msgstr "배치 상의 위치 (줄, 열): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1282
+#: ../libwnck/wnckprop.c:1285
 #, c-format
 msgid "Left Neighbor: %s\n"
 msgstr "왼쪽 이웃: %s\n"
 
-#: ../libwnck/wnckprop.c:1293
+#: ../libwnck/wnckprop.c:1297
 #, c-format
 msgid "Right Neighbor: %s\n"
 msgstr "오른쪽 이웃: %s\n"
 
-#: ../libwnck/wnckprop.c:1304
+#: ../libwnck/wnckprop.c:1309
 #, c-format
 msgid "Top Neighbor: %s\n"
 msgstr "위 이웃: %s\n"
 
-#: ../libwnck/wnckprop.c:1315
+#: ../libwnck/wnckprop.c:1321
 #, c-format
 msgid "Bottom Neighbor: %s\n"
 msgstr "아래 이웃: %s\n"
 
 #. Translators: Ressource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1327
+#: ../libwnck/wnckprop.c:1333
 #, c-format
 msgid "Resource Class: %s\n"
 msgstr "리소스 클래스: %s\n"
 
-#: ../libwnck/wnckprop.c:1329
+#: ../libwnck/wnckprop.c:1335
 #, c-format
 msgid "Group Name: %s\n"
 msgstr "그룹 이름: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1335 ../libwnck/wnckprop.c:1359
-#: ../libwnck/wnckprop.c:1412
+#: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
+#: ../libwnck/wnckprop.c:1419
 msgid "set"
 msgstr "설정"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1338 ../libwnck/wnckprop.c:1362
-#: ../libwnck/wnckprop.c:1369 ../libwnck/wnckprop.c:1398
-#: ../libwnck/wnckprop.c:1405 ../libwnck/wnckprop.c:1415
-#: ../libwnck/wnckprop.c:1479 ../libwnck/wnckprop.c:1489
-#: ../libwnck/wnckprop.c:1497
+#: ../libwnck/wnckprop.c:1344 ../libwnck/wnckprop.c:1368
+#: ../libwnck/wnckprop.c:1375 ../libwnck/wnckprop.c:1405
+#: ../libwnck/wnckprop.c:1412 ../libwnck/wnckprop.c:1422
+#: ../libwnck/wnckprop.c:1487 ../libwnck/wnckprop.c:1497
+#: ../libwnck/wnckprop.c:1505
 msgid "<unset>"
 msgstr "<설정취소>"
 
-#: ../libwnck/wnckprop.c:1339 ../libwnck/wnckprop.c:1363
-#: ../libwnck/wnckprop.c:1416
+#: ../libwnck/wnckprop.c:1345 ../libwnck/wnckprop.c:1369
+#: ../libwnck/wnckprop.c:1423
 #, c-format
 msgid "Icons: %s\n"
 msgstr "아이콘: %s\n"
 
-#: ../libwnck/wnckprop.c:1342 ../libwnck/wnckprop.c:1379
+#: ../libwnck/wnckprop.c:1348 ../libwnck/wnckprop.c:1386
 #, c-format
 msgid "Number of Windows: %d\n"
 msgstr "창 개수: %d\n"
 
-#: ../libwnck/wnckprop.c:1354 ../libwnck/wnckprop.c:1399
+#: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1406
 #, c-format
 msgid "Name: %s\n"
 msgstr "이름: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1355 ../libwnck/wnckprop.c:1408
+#: ../libwnck/wnckprop.c:1361 ../libwnck/wnckprop.c:1415
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "아이콘 이름: %s\n"
 
-#: ../libwnck/wnckprop.c:1370 ../libwnck/wnckprop.c:1490
+#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1498
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
-#: ../libwnck/wnckprop.c:1377
+#. Translators: "none" here means "no startup ID"
+#: ../libwnck/wnckprop.c:1383
+msgid "startupID|none"
+msgstr "없음"
+
+#: ../libwnck/wnckprop.c:1384
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr "시작 ID: %s\n"
 
-#: ../libwnck/wnckprop.c:1425
+#: ../libwnck/wnckprop.c:1432
 msgid "all workspaces"
 msgstr "모든 작업 공간"
 
-#: ../libwnck/wnckprop.c:1428
+#: ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "On Workspace: %s\n"
 msgstr "작업 공간: %s\n"
 
-#: ../libwnck/wnckprop.c:1443
+#: ../libwnck/wnckprop.c:1451
 msgid "normal window"
 msgstr "일반 창"
 
-#: ../libwnck/wnckprop.c:1446
+#: ../libwnck/wnckprop.c:1454
 msgid "desktop"
 msgstr "바탕 화면"
 
-#: ../libwnck/wnckprop.c:1449
+#: ../libwnck/wnckprop.c:1457
 msgid "dock or panel"
 msgstr "도크 혹은 패널"
 
-#: ../libwnck/wnckprop.c:1452
+#: ../libwnck/wnckprop.c:1460
 msgid "dialog window"
 msgstr "대화 창"
 
-#: ../libwnck/wnckprop.c:1455
+#: ../libwnck/wnckprop.c:1463
 msgid "tearoff toolbar"
 msgstr "떼어낸 툴바"
 
-#: ../libwnck/wnckprop.c:1458
+#: ../libwnck/wnckprop.c:1466
 msgid "tearoff menu"
 msgstr "떼어낸 메뉴"
 
-#: ../libwnck/wnckprop.c:1461
+#: ../libwnck/wnckprop.c:1469
 msgid "utility window"
 msgstr "유틸리티 창"
 
-#: ../libwnck/wnckprop.c:1464
+#: ../libwnck/wnckprop.c:1472
 msgid "splash screen"
 msgstr "스플래시 창"
 
-#: ../libwnck/wnckprop.c:1469
+#: ../libwnck/wnckprop.c:1477
 #, c-format
 msgid "Window Type: %s\n"
 msgstr "창 종류: %s\n"
 
-#: ../libwnck/wnckprop.c:1472
+#: ../libwnck/wnckprop.c:1480
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "위치 및 크기 (가로, 세로, 너비, 높이): %d, %d, %d, %d\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1481
+#: ../libwnck/wnckprop.c:1489
 #, c-format
 msgid "Class Group: %s\n"
 msgstr "클래스 그룹: %s\n"
 
-#: ../libwnck/wnckprop.c:1483
+#: ../libwnck/wnckprop.c:1491
 #, c-format
 msgid "XID: %lu\n"
 msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1498
+#: ../libwnck/wnckprop.c:1506
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "세션 ID: %s\n"
@@ -923,13 +962,13 @@ msgstr "세션 ID: %s\n"
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one window
 #. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:1504
+#: ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "그룹 리더: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's on top of it
-#: ../libwnck/wnckprop.c:1509
+#: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "아래 놓임: %lu\n"
@@ -937,57 +976,57 @@ msgstr "아래 놓임: %lu\n"
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1524 ../libwnck/wnckprop.c:1571
+#: ../libwnck/wnckprop.c:1532 ../libwnck/wnckprop.c:1579
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1528 ../libwnck/wnckprop.c:1573
+#: ../libwnck/wnckprop.c:1536 ../libwnck/wnckprop.c:1581
 msgid ", "
 msgstr ", "
 
-#: ../libwnck/wnckprop.c:1534
+#: ../libwnck/wnckprop.c:1542
 msgid "minimized"
 msgstr "최소화"
 
-#: ../libwnck/wnckprop.c:1535
+#: ../libwnck/wnckprop.c:1543
 msgid "maximized"
 msgstr "최대화"
 
-#: ../libwnck/wnckprop.c:1539
+#: ../libwnck/wnckprop.c:1547
 msgid "maximized horizontally"
 msgstr "가로 최대화"
 
-#: ../libwnck/wnckprop.c:1541
+#: ../libwnck/wnckprop.c:1549
 msgid "maximized vertically"
 msgstr "세로 최대화"
 
-#: ../libwnck/wnckprop.c:1543
+#: ../libwnck/wnckprop.c:1551
 msgid "shaded"
 msgstr "말아올림"
 
-#: ../libwnck/wnckprop.c:1544
+#: ../libwnck/wnckprop.c:1552
 msgid "pinned"
 msgstr "위치 고정"
 
-#: ../libwnck/wnckprop.c:1545
+#: ../libwnck/wnckprop.c:1553
 msgid "sticky"
 msgstr "고정"
 
-#: ../libwnck/wnckprop.c:1546
+#: ../libwnck/wnckprop.c:1554
 msgid "above"
 msgstr "위"
 
-#: ../libwnck/wnckprop.c:1547
+#: ../libwnck/wnckprop.c:1555
 msgid "below"
 msgstr "아래"
 
-#: ../libwnck/wnckprop.c:1548
+#: ../libwnck/wnckprop.c:1556
 msgid "fullscreen"
 msgstr "전체 화면"
 
-#: ../libwnck/wnckprop.c:1549
+#: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
 msgstr "주의 필요"
 
@@ -995,198 +1034,204 @@ msgstr "주의 필요"
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1554
+#: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
 msgstr "작업 공간 표시 건너뛰기"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:1556
+#: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
 msgstr "작업 목록 건너뛰기"
 
-#: ../libwnck/wnckprop.c:1558
+#: ../libwnck/wnckprop.c:1566
 msgid "normal"
 msgstr "일반"
 
-#: ../libwnck/wnckprop.c:1559
+#: ../libwnck/wnckprop.c:1567
 #, c-format
 msgid "State: %s\n"
 msgstr "상태: %s\n"
 
-#: ../libwnck/wnckprop.c:1580
+#: ../libwnck/wnckprop.c:1588
 msgid "move"
 msgstr "옮기기"
 
-#: ../libwnck/wnckprop.c:1581
+#: ../libwnck/wnckprop.c:1589
 msgid "resize"
 msgstr "크기 조정"
 
-#: ../libwnck/wnckprop.c:1582
+#: ../libwnck/wnckprop.c:1590
 msgid "shade"
 msgstr "말아올리기"
 
-#: ../libwnck/wnckprop.c:1583
+#: ../libwnck/wnckprop.c:1591
 msgid "unshade"
 msgstr "끌어내리기"
 
-#: ../libwnck/wnckprop.c:1584
+#: ../libwnck/wnckprop.c:1592
 msgid "stick"
 msgstr "고정"
 
-#: ../libwnck/wnckprop.c:1585
+#: ../libwnck/wnckprop.c:1593
 msgid "unstick"
 msgstr "고정 취소"
 
-#: ../libwnck/wnckprop.c:1587
+#: ../libwnck/wnckprop.c:1595
 msgid "maximize horizontally"
 msgstr "가로 최대화"
 
-#: ../libwnck/wnckprop.c:1589
+#: ../libwnck/wnckprop.c:1597
 msgid "unmaximize horizontally"
 msgstr "가로 최대화 취소"
 
-#: ../libwnck/wnckprop.c:1591
+#: ../libwnck/wnckprop.c:1599
 msgid "maximize vertically"
 msgstr "세로 최대화"
 
-#: ../libwnck/wnckprop.c:1593
+#: ../libwnck/wnckprop.c:1601
 msgid "unmaximize vertically"
 msgstr "세로 최대화 취소"
 
-#: ../libwnck/wnckprop.c:1596
+#: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
 msgstr "작업 공간 바꾸기"
 
-#: ../libwnck/wnckprop.c:1598
+#: ../libwnck/wnckprop.c:1606
 msgid "pin"
 msgstr "위치 고정"
 
-#: ../libwnck/wnckprop.c:1600
+#: ../libwnck/wnckprop.c:1608
 msgid "unpin"
 msgstr "위치 고정 해제"
 
-#: ../libwnck/wnckprop.c:1601
+#: ../libwnck/wnckprop.c:1609
 msgid "minimize"
 msgstr "최소화"
 
-#: ../libwnck/wnckprop.c:1602
+#: ../libwnck/wnckprop.c:1610
 msgid "unminimize"
 msgstr "최소화 취소"
 
-#: ../libwnck/wnckprop.c:1603
+#: ../libwnck/wnckprop.c:1611
 msgid "maximize"
 msgstr "최대화"
 
-#: ../libwnck/wnckprop.c:1604
+#: ../libwnck/wnckprop.c:1612
 msgid "unmaximize"
 msgstr "최대화 취소"
 
-#: ../libwnck/wnckprop.c:1606
+#: ../libwnck/wnckprop.c:1614
 msgid "change fullscreen mode"
 msgstr "전체 화면 모드 바꾸기"
 
-#: ../libwnck/wnckprop.c:1607
+#: ../libwnck/wnckprop.c:1615
 msgid "close"
 msgstr "닫기"
 
-#: ../libwnck/wnckprop.c:1609
+#: ../libwnck/wnckprop.c:1617
 msgid "make above"
 msgstr "위로 놓기"
 
-#: ../libwnck/wnckprop.c:1611
+#: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
 msgstr "위로 놓기 취소"
 
-#: ../libwnck/wnckprop.c:1613
+#: ../libwnck/wnckprop.c:1621
 msgid "make below"
 msgstr "아래로 놓기"
 
-#: ../libwnck/wnckprop.c:1615
+#: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
 msgstr "아래로 놓기 취소"
 
-#: ../libwnck/wnckprop.c:1617
+#: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
 msgstr "가능한 동작 없음"
 
-#: ../libwnck/wnckprop.c:1618
+#: ../libwnck/wnckprop.c:1626
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr "가능한 동작: %s\n"
 
-#: ../libwnck/wnckprop.c:1795
+#: ../libwnck/wnckprop.c:1803
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"스크린/작업 공간/창의 속성을 표시하거나 바꿉니다. 혹은 EWMH 명세에 따라 스크린/작업 공간/창과 통신합니다.\n"
+"스크린/작업 공간/창의 속성을 표시하거나 바꿉니다. 혹은 EWMH 명세에 따라 스크"
+"린/작업 공간/창과 통신합니다.\n"
 "EWMH 명세에 관한 정보는 다음을 참고하십시오:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1805
+#: ../libwnck/wnckprop.c:1813
 msgid "Options to list windows or workspaces"
 msgstr "창이나 작업 공간 목록이 들어 있는 옵션"
 
-#: ../libwnck/wnckprop.c:1806
+#: ../libwnck/wnckprop.c:1814
 msgid "Show options to list windows or workspaces"
 msgstr "창이나 작업 공간 목록이 들어 있는 옵션을 표시합니다"
 
-#: ../libwnck/wnckprop.c:1812
+#: ../libwnck/wnckprop.c:1820
 msgid "Options to modify properties of a window"
 msgstr "창의 속성을 바꾸는 옵션"
 
-#: ../libwnck/wnckprop.c:1813
+#: ../libwnck/wnckprop.c:1821
 msgid "Show options to modify properties of a window"
 msgstr "창의 속성을 바꾸는 옵션 표시"
 
-#: ../libwnck/wnckprop.c:1819
+#: ../libwnck/wnckprop.c:1827
 msgid "Options to modify properties of a workspace"
 msgstr "작업 공간의 속성을 바꾸는 옵션"
 
-#: ../libwnck/wnckprop.c:1820
+#: ../libwnck/wnckprop.c:1828
 msgid "Show options to modify properties of a workspace"
 msgstr "작업 공간의 속성을 바꾸는 옵션 표시"
 
-#: ../libwnck/wnckprop.c:1826
+#: ../libwnck/wnckprop.c:1834
 msgid "Options to modify properties of a screen"
 msgstr "화면의 속성을 바꾸는 옵션"
 
-#: ../libwnck/wnckprop.c:1827
+#: ../libwnck/wnckprop.c:1835
 msgid "Show options to modify properties of a screen"
 msgstr "화면의 속성을 바꾸는 옵션 표시"
 
-#: ../libwnck/wnckprop.c:1837
+#: ../libwnck/wnckprop.c:1845
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "인자를 파싱하는 데 오류가 발생했습니다: %s\n"
 
-#: ../libwnck/wnckprop.c:1860
+#: ../libwnck/wnckprop.c:1868
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "스크린 %d번과 통신할 수 없습니다: 그 스크린이 없습니다\n"
 
-#: ../libwnck/wnckprop.c:1916
+#: ../libwnck/wnckprop.c:1924
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "작업 공간 %d번과 통신할 수 없습니다: 그 작업 공간이 없습니다\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1939
+#: ../libwnck/wnckprop.c:1947
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "\"%s\" 클래스 그룹과 통신할 수 없습니다: 그 클래스 그룹이 없습니다\n"
 
-#: ../libwnck/wnckprop.c:1962
+#: ../libwnck/wnckprop.c:1970
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr "그룹 리더의 XID가 %lu인 프로그램과 통신할 수 없습니다: 그 프로그램이 없습니다\n"
+msgstr ""
+"그룹 리더의 XID가 %lu인 프로그램과 통신할 수 없습니다: 그 프로그램이 없습니"
+"다\n"
 
-#: ../libwnck/wnckprop.c:1985
+#: ../libwnck/wnckprop.c:1993
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "XID가 %lu인 창과 통신할 수 없습니다: 그 창이 없습니다\n"
+
+#~ msgid "none"
+#~ msgstr "없음"
