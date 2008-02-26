@@ -1,3 +1,25 @@
+2.21.92
+=======
+
+Fixes
+
+  - Fix wnck_window_set_geometry() not working without a main loop
+
+ Translators
+
+  - Sílvia Miranda (ca)
+  - Pauli Virtanen (fi)
+  - Robert-André-Mauchin (fr)
+  - Ignacio Casal Quinteiro (gl)
+  - Gil Osher (he)
+  - Luca Ferretti (it)
+  - Changwoo Ryu (ko)
+  - Nabin Gautam (ne)
+  - Tino Meinen (nl)
+  - Jonh Wendell (pt_BR)
+  - Woodman Tuen (zh_HK)
+  - Woodman Tuen (zh_TW)
+
 2.21.91
 =======
 

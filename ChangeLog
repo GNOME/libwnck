@@ -1,3 +1,8 @@
+2008-02-26  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.21.92
+
 2008-02-20  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/xutils.c: (_wnck_set_window_geometry): don't push twice the
