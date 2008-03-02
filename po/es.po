@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-12-10 14:04+0000\n"
+"POT-Creation-Date: 2007-12-10 15:26+0000\n"
 "PO-Revision-Date: 2007-12-10 16:23+0100\n"
 "Last-Translator: Jorge González <jorgegonz@svn.gnome.org>\n"
 "Language-Team: Spanish <traductores@es.gnome.org>\n"
@@ -258,7 +258,8 @@ msgstr "XID"
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr "ID X window del líder del grupo de ventanas de una aplicación a examinar"
+msgstr ""
+"ID X window del líder del grupo de ventanas de una aplicación a examinar"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
@@ -297,7 +298,8 @@ msgstr ""
 "(formato de salida: «XID: nombre de la ventana»)"
 
 #: ../libwnck/wnckprop.c:163
-msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 "Listar las áreas de trabajo de la pantalla (formato de salida: «Número: "
 "nombre del área de trabajo»)"
@@ -624,7 +626,8 @@ msgstr "Existen opciones en conflicto: --%s y --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 "Argumento «%d» no válido para --%s: el argumento debe ser estrictamente "
 "positivo\n"
@@ -632,7 +635,8 @@ msgstr ""
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "Argumento «%d» no válido para --%s: los argumentos deben ser positivos\n"
+msgstr ""
+"Argumento «%d» no válido para --%s: los argumentos deben ser positivos\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -655,7 +659,8 @@ msgstr ""
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
-msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 "No se puede mover el puerto de visión: el área de trabajo actual no tiene un "
 "puerto de visión\n"
@@ -716,7 +721,8 @@ msgstr "Número de áreas de de trabajo: %d\n"
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr "Disposición del área de trabajo (filas, columnas, orientación): %d, %d, %s\n"
+msgstr ""
+"Disposición del área de trabajo (filas, columnas, orientación): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
@@ -1194,7 +1200,8 @@ msgstr "Opciones para modificar las propiedades de un área de trabajo"
 
 #: ../libwnck/wnckprop.c:1828
 msgid "Show options to modify properties of a workspace"
-msgstr "Mostrar las opciones para modificar las propiedades de un área de trabajo"
+msgstr ""
+"Mostrar las opciones para modificar las propiedades de un área de trabajo"
 
 #: ../libwnck/wnckprop.c:1834
 msgid "Options to modify properties of a screen"
@@ -1224,7 +1231,8 @@ msgstr ""
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1947
 #, c-format
-msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
 "No se puede interactuar con el grupo de clase «%s»: no se puede encontrar el "
 "grupo de clase\n"
@@ -1244,4 +1252,3 @@ msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
 "No se puede interactuar con la ventana de XID %lu: no se puede encontrar la "
 "ventana\n"
-
