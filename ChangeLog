@@ -1,3 +1,10 @@
+2008-03-04  Mikkel Kamstrup Erlandsen  <kamstrup@cvs.gnome.org>
+
+	* libwnck/window.c: (wnck_window_set_geometry): fix
+	wnck_window_set_geometry() (again). The top frame was not taken
+	correctly into account. This was only evident when aligning to a
+	top panel or screen edge. Should close bug #518606.
+
 2008-03-03  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/window.c: (wnck_window_set_geometry): fix

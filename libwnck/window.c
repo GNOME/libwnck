@@ -2302,7 +2302,7 @@ wnck_window_set_geometry (WnckWindow               *window,
   gravity_and_flags |= source << 12;
   
   x += window->priv->left_frame;
-  y -= window->priv->top_frame;
+  y += window->priv->top_frame;
   width -= window->priv->left_frame + window->priv->right_frame;
   height -= window->priv->top_frame + window->priv->bottom_frame;
 
