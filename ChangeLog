@@ -1,5 +1,14 @@
 2008-03-03  Vincent Untz  <vuntz@gnome.org>
 
+	* libwnck/window.c: (wnck_window_set_geometry): fix
+	wnck_window_set_geometry() to really work as intended, ie including
+	decorations. The _NET_MOVERESIZE_WINDOW message do not include
+	decorations.
+	Fix part of bug #518606, patch by Mikkel Kamstrup Erlandsen
+	<mikkel.kamstrup@gmail.com>, with feedback from Elijah & Vincent.
+
+2008-03-03  Vincent Untz  <vuntz@gnome.org>
+
 	* libwnck/wnckprop.c: (main): have the --help output translated. The
 	strings were marked for translations before, but some steps were
 	forgotten.

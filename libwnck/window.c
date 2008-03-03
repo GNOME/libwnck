@@ -2300,6 +2300,11 @@ wnck_window_set_geometry (WnckWindow               *window,
   gravity_and_flags = gravity;
   gravity_and_flags |= geometry_mask << 8;
   gravity_and_flags |= source << 12;
+  
+  x += window->priv->left_frame;
+  y -= window->priv->top_frame;
+  width -= window->priv->left_frame + window->priv->right_frame;
+  height -= window->priv->top_frame + window->priv->bottom_frame;
 
   _wnck_set_window_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
                              window->priv->xwindow,
