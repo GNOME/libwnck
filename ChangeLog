@@ -1,3 +1,10 @@
+2008-03-03  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/wnckprop.c: (main): have the --help output translated. The
+	strings were marked for translations before, but some steps were
+	forgotten.
+	Fix bug #518070
+
 2008-02-26  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.22.0

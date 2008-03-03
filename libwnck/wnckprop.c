@@ -1798,7 +1798,9 @@ main (int argc, char **argv)
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   textdomain (GETTEXT_PACKAGE);
 
-  ctxt = g_option_context_new ("");
+  ctxt = g_option_context_new (NULL);
+  g_option_context_set_translation_domain (ctxt, GETTEXT_PACKAGE);
+
   g_option_context_set_summary (ctxt,
                                 N_("Print or modify the properties of a "
                                    "screen/workspace/window, or interact with "
@@ -1814,6 +1816,7 @@ main (int argc, char **argv)
                               N_("Show options to list windows or workspaces"),
                               NULL, NULL);
   g_option_group_add_entries (group, list_entries);
+  g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   g_option_context_add_group (ctxt, group);
 
   group = g_option_group_new ("window",
@@ -1821,6 +1824,7 @@ main (int argc, char **argv)
                               N_("Show options to modify properties of a window"),
                               NULL, NULL);
   g_option_group_add_entries (group, window_entries);
+  g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   g_option_context_add_group (ctxt, group);
 
   group = g_option_group_new ("workspace",
@@ -1828,6 +1832,7 @@ main (int argc, char **argv)
                               N_("Show options to modify properties of a workspace"),
                               NULL, NULL);
   g_option_group_add_entries (group, space_entries);
+  g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   g_option_context_add_group (ctxt, group);
 
   group = g_option_group_new ("screen",
@@ -1835,6 +1840,7 @@ main (int argc, char **argv)
                               N_("Show options to modify properties of a screen"),
                               NULL, NULL);
   g_option_group_add_entries (group, screen_entries);
+  g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   g_option_context_add_group (ctxt, group);
 
   g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
