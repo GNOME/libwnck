@@ -1,20 +1,22 @@
-# translation of bn_IN.po to Bengali INDIA
+# translation of libwnck.HEAD.po to Bengali (India)
 # Bengali India translation of libwnck
-# Copyright (C) 2002, 2006, 2007 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2006, 2007, 2008 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 #
 # Jamil Ahmed <jamil@bengalinux.org>, 2003.
 # Mahay Alam Khan <makl10n@yahoo.com>, 2005.
 # Samia Niamatullah <mailsamia2001@yahoo.com>, 2005.
 # Runa Bhattacharjee <runabh@gmail.com>, 2007.
+# Sankarshan Mukhopadhyay <sankarshan.mukhopadhyay@gmail.com>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: bn_IN\n"
+"Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-10 16:51+0100\n"
-"PO-Revision-Date: 2007-09-17 17:53+0530\n"
-"Last-Translator: Runa Bhattacharjee <runabh@gmail.com>\n"
-"Language-Team: Bengali INDIA\n"
+"PO-Revision-Date: 2008-03-05 00:10+0530\n"
+"Last-Translator: Sankarshan Mukhopadhyay <sankarshan.mukhopadhyay@gmail."
+"com>\n"
+"Language-Team: Bengali (India) <discuss@ankur.co.in>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +45,7 @@ msgstr ""
 #.
 #: ../libwnck/application.c:51
 msgid "Untitled application"
-msgstr "নামবিহীন অ্যাপ্লিকেশন"
+msgstr "নামহীন অ্যাপ্লিকেশন"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
@@ -61,7 +63,7 @@ msgstr "কর্মক্ষেত্র %s-এ পরিবর্তন কর
 #: ../libwnck/pager.c:1904
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "\"%s\" টানা আরম্ভ করার জন্য ক্লিক করুন"
+msgstr "\"%s\" তে ক্লিক করুন টানার জন্য"
 
 #: ../libwnck/pager.c:1907
 #, c-format
@@ -87,7 +89,7 @@ msgstr "উইন্ডো পরিবর্তন করতে ব্যবহ
 
 #: ../libwnck/tasklist.c:716
 msgid "Window List"
-msgstr "উইন্ডোর তালিকা"
+msgstr "উইন্ডো তালিকা"
 
 #: ../libwnck/tasklist.c:717
 msgid "Tool to switch between visible windows"
@@ -127,7 +129,7 @@ msgstr "শুধুমাত্র বর্তমান কর্মক্ষ�
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr "ডিফল্টরূপে ডান-থেকে-বাঁদিক (RTL) দিশা ব্যবহার করা হবে"
+msgstr "Use RTL as default direction"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
@@ -135,7 +137,7 @@ msgstr "কর্মক্ষেত্রের বিষয়বস্তুর �
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr ""
+msgstr "Use a vertical orientation"
 
 #: ../libwnck/test-selector.c:11 ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
@@ -143,7 +145,7 @@ msgstr "কর্মতালিকায় উইন্ডো প্রদর্�
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
-msgstr "উইন্ডো সর্বদা দলভুক্ত করা হবে"
+msgstr "সবসময় উইন্ডোসমূহ দলভুক্ত্র করুন"
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
@@ -255,11 +257,11 @@ msgstr "XID"
 
 #: ../libwnck/wnckprop.c:141
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "যে অ্যাপ্লিকেশন পরীক্ষা করা হবে সেটির গ্রুপ প্রমূখের X window ID"
 
 #: ../libwnck/wnckprop.c:144
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "যে ক্লাস গ্রুপ পরীক্ষা করা হবে সেটির ক্লাস রিসোর্স"
 
 #: ../libwnck/wnckprop.c:144
 msgid "CLASS"
@@ -288,24 +290,27 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"অ্যাপ্লিকেশন/ক্লাস দল/কর্মক্ষেত্র/পর্দায় উপস্থিত উইন্ডোর তালিকা নির্মাণ করুন (ফলাফলের বিন্যাস: "
-"\"XID: উইন্ডোর নাম\")"
+"অ্যাপ্লিকেশন/ক্লাস দল/কর্মক্ষেত্র/পর্দায় উপস্থিত উইন্ডোর তালিকা নির্মাণ করুন (ফলাফলের "
+"বিন্যাস: \"XID: উইন্ডোর নাম\")"
 
 #: ../libwnck/wnckprop.c:158
-msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr "পর্দায় কর্মক্ষেত্রের তালিকা নির্মাণ করুন (ফলাফলের বিন্যাস: \"সংখ্যা: কর্মক্ষেত্রের নাম\")"
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr ""
+"পর্দায় কর্মক্ষেত্রের তালিকা নির্মাণ করুন (ফলাফলের বিন্যাস: \"সংখ্যা: কর্মক্ষেত্রের নাম"
+"\")"
 
 #: ../libwnck/wnckprop.c:164
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "স্ক্রিনের কর্মক্ষেত্রের সংখ্যাকে NUMBER এ পরিবর্তন করুন"
 
 #: ../libwnck/wnckprop.c:166
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "স্ক্রিনের কর্মক্ষেত্রের বিন্যাসকে NUMBER সারি ব্যবহার করতে পরিবর্তন করুন"
 
 #: ../libwnck/wnckprop.c:168
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "স্ক্রিনের কর্মক্ষেত্রের বিন্যাসকে NUMBER কলাম ব্যবহার করতে পরিবর্তন করুন"
 
 #: ../libwnck/wnckprop.c:170
 msgid "Show the desktop"
@@ -317,7 +322,7 @@ msgstr "ডেস্কটপ প্রদর্শন বন্ধ করা �
 
 #: ../libwnck/wnckprop.c:174
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "বর্তমান ওয়ার্কস্পেসের দৃষ্টিপটভূমিকে X coordinate X এ সরিয়ে নিন"
 
 #: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:241
 msgid "X"
@@ -325,7 +330,7 @@ msgstr "X"
 
 #: ../libwnck/wnckprop.c:176
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "বর্তমান ওয়ার্কস্পেসের দৃষ্টিপটভূমিকে Y coordinate Y এ সরিয়ে নিন"
 
 #: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:243
 msgid "Y"
@@ -349,19 +354,19 @@ msgstr "উইন্ডো সর্বোচ্চ মাপ থেকে ছ�
 
 #: ../libwnck/wnckprop.c:190
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "উইন্ডোকে অনুভূমিক ভাবে সর্বাধিক মাপে করুন"
 
 #: ../libwnck/wnckprop.c:192
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "উইন্ডোকে অনুভূমিক ভাবে সর্বাধিক মাপ থেকে সরিয়ে নিন"
 
 #: ../libwnck/wnckprop.c:194
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "উইন্ডোকে উল্লম্ব ভাবে সর্বাধিক মাপের করুন"
 
 #: ../libwnck/wnckprop.c:196
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "উইন্ডোকে উল্লম্ব ভাবে সর্বাধিক মাপ থেকে সরিয়ে নিন"
 
 #: ../libwnck/wnckprop.c:198
 msgid "Start moving the window via the keyboard"
@@ -413,27 +418,27 @@ msgstr "উইন্ডো থেকে ছায়া সরানো হবে"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "উইন্ডোকে দৃষ্টিপটভূমিতে একটি নির্দিষ্ট স্থানে রাখুন"
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "উইন্ডোকে দৃষ্টিপটভূমিতে কোন নির্দিষ্ট স্থানে রাখবেন না"
 
 #: ../libwnck/wnckprop.c:227
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "কর্মক্ষেত্র অদলবদলকারি উইন্ডোকে প্রদর্শন হওয়া থেকে বন্ধ করুন"
 
 #: ../libwnck/wnckprop.c:229
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "কর্মক্ষেত্র অদলবদলকারিতে উইন্ডোকে প্রদর্শন করুন"
 
 #: ../libwnck/wnckprop.c:231
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "উইন্ডোকে টাস্কতালিকাতে প্রদর্শন হওয়া বন্ধ করুন"
 
 #: ../libwnck/wnckprop.c:233
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "টাস্কতালিকাতে উইন্ডো প্রদর্শন হতে দিন"
 
 #: ../libwnck/wnckprop.c:235
 msgid "Make the window visible on all workspaces"
@@ -445,7 +450,7 @@ msgstr "উইন্ডোটি শুধুমাত্র বর্তমা�
 
 #: ../libwnck/wnckprop.c:239
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "উইন্ডোকে NUMBER কর্মক্ষেত্রে সরিয়ে নিন (প্রথম কর্মক্ষেত্র 0)"
 
 #: ../libwnck/wnckprop.c:241
 msgid "Change the X coordinate of the window to X"
@@ -477,6 +482,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"উইন্ডোর প্রকারকে TYPE এ পরিবর্তন করুন (বিধিসন্মত মান: নর্মাল, ডেস্কটপ, ডক, ডায়লগ, "
+"টুলবার, মেনু ইউটিলিটি, স্প্ল্যাস)"
 
 #: ../libwnck/wnckprop.c:250
 msgid "TYPE"
@@ -484,7 +491,7 @@ msgstr "TYPE"
 
 #: ../libwnck/wnckprop.c:256
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "কর্মক্ষেত্রের নাম NAME এ পরিবর্তন করুন"
 
 #: ../libwnck/wnckprop.c:256
 msgid "NAME"
@@ -571,7 +578,8 @@ msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্�
 
 #: ../libwnck/wnckprop.c:642
 #, c-format
-msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:655
@@ -594,14 +602,16 @@ msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
+"স্ক্রিনে কর্মক্ষেত্রের বিন্যাস পরিবর্তন করা সম্ভব নয় কারণ বিন্যাস পূর্বে ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:857
-msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "বর্তমান কর্মক্ষেত্রে দৃষ্টিপটভূমি নেই এই কারণে দৃষ্টিপটভূমি সরিয়ে রাখা সম্ভব নয়\n"
 
 #: ../libwnck/wnckprop.c:861
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "বর্তমানে কোন কর্মক্ষেত্র নেই তাই দৃষ্টিপটভূমি সরিয়ে আনা সম্ভব নয়\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:897 ../libwnck/wnckprop.c:906
@@ -614,7 +624,7 @@ msgstr "কর্ম সঞ্চালনের অনুমতি\n"
 #: ../libwnck/wnckprop.c:993
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "কর্মক্ষেত্র %d অবস্থিত নয় তাই উইন্ডো সরিয়ে আনা সম্ভব নয়\n"
 
 #: ../libwnck/wnckprop.c:1056 ../libwnck/wnckprop.c:1186
 msgid "<name unset>"
@@ -1122,7 +1132,8 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1876
 #, c-format
-msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1899
@@ -1137,3 +1148,6 @@ msgstr ""
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
 
+#, fuzzy
+#~ msgid "workspace|none"
+#~ msgstr "সকল কর্মক্ষেত্র"
