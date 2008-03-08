@@ -3,18 +3,19 @@
 # Amanpreet Singh Alam <amanpreetalam@yahoo.com>, 2005.
 # A S Alam <apbrar@gmail.com>, 2006.
 # A S Alam <aalam@users.sf.net>, 2007.
+# Amanpreet Singh Alam <aalam@users.sf.net>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-25 03:51+0100\n"
-"PO-Revision-Date: 2007-02-25 18:43+0530\n"
-"Last-Translator: A S Alam <aalam@users.sf.net>\n"
-"Language-Team: Punjabi <punjabi-l10n@lists.sf.net>\n"
+"POT-Creation-Date: 2007-11-11 19:24+0000\n"
+"PO-Revision-Date: 2008-03-08 07:19+0530\n"
+"Last-Translator: Amanpreet Singh Alam <aalam@users.sf.net>\n"
+"Language-Team: Punjabi/Panjabi <punjabi-users@lists.sf.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: LoKalize 0.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 
@@ -37,9 +38,9 @@ msgstr ""
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/application.c:50
+#: ../libwnck/application.c:51
 msgid "Untitled application"
-msgstr "ਬਿਨਾਂ-ਨਾਂ ਕਾਰਜ"
+msgstr "ਬਿਨਾਂ-ਨਾਂ ਐਪਲੀਕੇਸ਼ਨ"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
@@ -47,65 +48,65 @@ msgstr "ਵਰਕਸਪੇਸ ਸਵਿੱਚਰ"
 
 #: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
-msgstr "ਵਰਕਸਪੇਸ ਬਦਲਣਾ ਵਾਲਾ ਸਹਾਇਕ"
+msgstr "ਵਰਕਸਪੇਸ ਸਵਿੱਚ ਕਰਨ ਲਈ ਟੂਲ"
 
 #: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "ਵਰਕਸਪੇਸ %s ਨੂੰ ਖੋਲ੍ਹਣ ਲਈ ਇਸ ਨੂੰ ਦਬਾਓ"
+msgstr "ਵਰਕਸਪੇਸ %s ਉੱਤੇ ਸਵਿੱਚ ਕਰਨ ਲਈ ਇਹ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../libwnck/pager.c:1805
+#: ../libwnck/pager.c:1904
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "\"%s\" ਚੁੱਕਣਾ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਦਬਾਓ"
+msgstr "\"%s\" ਡਰੈੱਗ ਕਰਨ ਵਾਸਤੇ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../libwnck/pager.c:1808
+#: ../libwnck/pager.c:1907
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ: \"%s\""
 
-#: ../libwnck/pager.c:1813
+#: ../libwnck/pager.c:1912
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "\"%s\" ਬਦਲਣ ਵਾਸਤੇ ਕਲਿੱਕ ਕਰੋ"
 
-#: ../libwnck/selector.c:1170
+#: ../libwnck/selector.c:1171
 msgid "No Windows Open"
-msgstr "ਕੋਈ ਝਰੋਖਾ ਖੁੱਲਾ ਨਹੀਂ"
-
-#: ../libwnck/selector.c:1223
-msgid "Window Selector"
-msgstr "ਝਰੋਖਾ ਚੋਣਕਾਰ"
+msgstr "ਕੋਈ ਵਿੰਡੋ ਨਹੀਂ ਖੁੱਲ੍ਹੀ"
 
 #: ../libwnck/selector.c:1224
+msgid "Window Selector"
+msgstr "ਵਿੰਡੋ ਚੋਣਕਾਰ"
+
+#: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
-msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆਂ ਵਿਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+msgstr "ਵਿੰਡੋਜ਼ ਵਿੱਚ ਸਵਿੱਚ ਕਰਨ ਲਈ ਟੂਲ"
 
-#: ../libwnck/tasklist.c:722
+#: ../libwnck/tasklist.c:720
 msgid "Window List"
-msgstr "ਝਰੋਖਾ ਲਿਸਟ"
+msgstr "ਵਿੰਡੋ ਲਿਸਟ"
 
-#: ../libwnck/tasklist.c:723
+#: ../libwnck/tasklist.c:721
 msgid "Tool to switch between visible windows"
-msgstr "ਦਿੱਖ ਰਹੇ ਝਰੋਖਿਆਂ ਵਿੱਚ ਫਿਰਨ ਲਈ ਸੰਦ"
+msgstr "ਦਿੱਖ ਰਹੀਆਂ ਵਿੰਡੋਜ਼ ਵਿੱਚ ਸਵਿੱਚ ਕਰਨ ਲਈ ਟੂਲ"
 
-#: ../libwnck/tasklist.c:2947
+#: ../libwnck/tasklist.c:3005
 msgid "Mi_nimize All"
-msgstr "ਸਭ ਅਪਲੀਕਰਨ(_n)"
+msgstr "ਸਭ ਮਿੰਨੀ-ਮਾਈਜ਼(_n)"
 
-#: ../libwnck/tasklist.c:2958
+#: ../libwnck/tasklist.c:3016
 msgid "Un_minimize All"
-msgstr "ਸਭ ਅਣ-ਅਲਪੀਕਰਨ(_m)"
+msgstr "ਸਭ ਅਣ-ਮਿੰਨੀਮਾਈਜ਼(_m)"
 
-#: ../libwnck/tasklist.c:2966
+#: ../libwnck/tasklist.c:3024
 msgid "Ma_ximize All"
-msgstr "ਸਭ ਅਧਿਕਤਮ(_x)"
+msgstr "ਸਭ ਮੈਕਸੀਮਾਈਜ਼(_x)"
 
-#: ../libwnck/tasklist.c:2977
+#: ../libwnck/tasklist.c:3035
 msgid "_Unmaximize All"
-msgstr "ਸਭ ਅਣ-ਅਧਿਕਤਮ(_U)"
+msgstr "ਸਭ ਅਣ-ਮੈਕਸੀਮਾਈਜ਼(_U)"
 
-#: ../libwnck/tasklist.c:2989
+#: ../libwnck/tasklist.c:3047
 msgid "_Close All"
 msgstr "ਸਭ ਬੰਦ ਕਰੋ(_C)"
 
@@ -119,111 +120,112 @@ msgstr "N_ROWS"
 
 #: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
-msgstr "ਕੇਵਲ ਮੌਜੂਦ ਵਰਕਸਪੇਸ ਵੇਖਾਓ"
+msgstr "ਕੇਵਲ ਮੌਜੂਦ ਵਰਕਸਪੇਸ ਵੇਖੋ"
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr "ਮੂਲ ਦਿਸ਼ਾ RTL ਵਰਤੋਂ"
+msgstr "ਡਿਫਾਲਟ ਦਿਸ਼ਾ RTL ਵਰਤੋਂ"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
-msgstr "ਵਰਕਸਪੇਸ ਸਮੱਗਰੀ ਦੀ ਬਜਾਏ ਵਰਕਸਪੇਸ ਨਾਂ ਵੇਖਾਓ"
+msgstr "ਵਰਕਸਪੇਸ ਸਮੱਗਰੀ ਦੀ ਬਜਾਏ ਵਰਕਸਪੇਸ ਨਾਂ ਵੇਖੋ"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr "ਇੱਕ ਲੰਬਕਾਰੀ ਸਥਿਤੀ ਵਰਤੋਂ"
+msgstr "ਇੱਕ ਵਰਟੀਕਲ ਸਥਿਤੀ ਵਰਤੋਂ"
 
-#: ../libwnck/test-selector.c:11 ../libwnck/test-tasklist.c:20
+#. Translators: "tasklist" is the list of running applications (the window list)
+#: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr "ਝਰੋਖਾ ਟਾਸਕ-ਲਿਸਟ 'ਚ ਨਾ ਵੇਖਾਓ"
+msgstr "ਵਿੰਡੋ ਟਾਸਕ-ਲਿਸਟ 'ਚ ਨਾ ਵੇਖੋ"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
-msgstr "ਹਮੇਸ਼ਾ ਝਰੋਖਿਆਂ ਦੇ ਗਰੁੱਪ ਬਣਾਓ"
+msgstr "ਹਮੇਸ਼ਾਂ ਵਿੰਡੋ ਗਰੁੱਪ ਬਣਾਓ"
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
-msgstr "ਝਰੋਖੇ ਕਦੇ ਗਰੁੱਪ ਨਾ ਬਣਾਓ"
+msgstr "ਕਦੇ ਵੀ ਵਿੰਡੋ ਗਰੁੱਪ ਨਾ ਬਣਾਓ"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
-msgstr "ਸਭ ਵਰਕਸਪੇਸ ਤੋਂ ਝਰੋਖੇ ਵੇਖਾਓ"
+msgstr "ਸਭ ਵਰਕਸਪੇਸ ਤੋਂ ਵਿੰਡੋਜ਼ ਵੇਖੋ"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
-msgstr "ਪਾਰਦਰਸ਼ਤਾ ਯੋਗ ਕਰੋ"
+msgstr "ਟਰਾਸਪਰੇਸੀ ਯੋਗ"
 
-#: ../libwnck/window-action-menu.c:276
+#: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
-msgstr "ਅਣ-ਅਲਪੀਕਰਨ(_n)"
+msgstr "ਅਣ-ਮਿੰਨੀਮਾਈਜ਼(_n)"
 
-#: ../libwnck/window-action-menu.c:283
+#: ../libwnck/window-action-menu.c:394
 msgid "Mi_nimize"
-msgstr "ਅਲਪੀਕਰਨ(_n)"
+msgstr "ਮਿੰਨੀਮਾਈਜ਼(_n)"
 
-#: ../libwnck/window-action-menu.c:291
+#: ../libwnck/window-action-menu.c:402
 msgid "Unma_ximize"
-msgstr "ਅਣ-ਅਧਿਕਤਮ(_x)"
+msgstr "ਅਣ-ਮੈਕਸੀਮਾਈਜ਼(_x)"
 
-#: ../libwnck/window-action-menu.c:298
+#: ../libwnck/window-action-menu.c:409
 msgid "Ma_ximize"
-msgstr "ਅਧਿਕਤਮ(_x)"
+msgstr "ਮੈਕਸੀਮਾਈਜ਼(_x)"
 
-#: ../libwnck/window-action-menu.c:507 ../libwnck/workspace.c:280
+#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "ਵਰਕਸਪੇਸ %d"
 
-#: ../libwnck/window-action-menu.c:515
+#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
 msgid "Workspace 1_0"
 msgstr "ਵਰਕਸਪੇਸ 1_0"
 
-#: ../libwnck/window-action-menu.c:517
+#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
 #, c-format
 msgid "Workspace %s%d"
 msgstr "ਵਰਕਸਪੇਸ %s%d"
 
-#: ../libwnck/window-action-menu.c:612
+#: ../libwnck/window-action-menu.c:995
 msgid "_Move"
 msgstr "ਏਧਰ-ਓਧਰ(_M)"
 
-#: ../libwnck/window-action-menu.c:619
+#: ../libwnck/window-action-menu.c:1002
 msgid "_Resize"
-msgstr "ਮੁਡ਼-ਅਕਾਰ(_R)"
+msgstr "ਰੀ-ਸਾਈਜ਼(_R)"
 
-#: ../libwnck/window-action-menu.c:628
+#: ../libwnck/window-action-menu.c:1011
 msgid "Always On _Top"
 msgstr "ਹਮੇਸ਼ਾਂ ਉੱਤੇ(_T)"
 
-#: ../libwnck/window-action-menu.c:636
+#: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
 msgstr "ਸਿਰਫ਼ ਦਿੱਖ ਵਰਕਸਪੇਸ ਲਈ(_A)"
 
-#: ../libwnck/window-action-menu.c:641
+#: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
 msgstr "ਸਿਰਫ਼ ਇਸ ਵਰਕਸਪੇਸ ਲਈ(_O)"
 
-#: ../libwnck/window-action-menu.c:662
+#: ../libwnck/window-action-menu.c:1031
 msgid "Move to Workspace _Left"
 msgstr "ਖੱਬੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_L)"
 
-#: ../libwnck/window-action-menu.c:673
+#: ../libwnck/window-action-menu.c:1037
 msgid "Move to Workspace R_ight"
 msgstr "ਸੱਜੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_i)"
 
-#: ../libwnck/window-action-menu.c:684
+#: ../libwnck/window-action-menu.c:1043
 msgid "Move to Workspace _Up"
 msgstr "ਉੱਤਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_U)"
 
-#: ../libwnck/window-action-menu.c:696
+#: ../libwnck/window-action-menu.c:1049
 msgid "Move to Workspace _Down"
 msgstr "ਹੇਠਲੇ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_D)"
 
-#: ../libwnck/window-action-menu.c:703
+#: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
 msgstr "ਹੋਰ ਵਰਕਸਪੇਸ ਵਿੱਚ ਭੇਜੋ(_W)"
 
-#: ../libwnck/window-action-menu.c:745
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Close"
 msgstr "ਬੰਦ ਕਰੋ(_C)"
 
@@ -236,817 +238,889 @@ msgstr "ਬੰਦ ਕਰੋ(_C)"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:49
+#: ../libwnck/window.c:50
 msgid "Untitled window"
-msgstr "ਬਿਨਾਂ-ਨਾਂ ਝਰੋਖਾ"
+msgstr "ਬਿਨਾਂ-ਨਾਂ ਵਿੰਡੋ"
 
-#: ../libwnck/wnckprop.c:137
+#: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:137 ../libwnck/wnckprop.c:140
-#: ../libwnck/wnckprop.c:148
+#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
+#: ../libwnck/wnckprop.c:154
 msgid "XID"
 msgstr "XID"
 
-#: ../libwnck/wnckprop.c:139
+#. Translators: A group leader is the window that is the "owner" of a group
+#. * of windows, ie: if you have multiple windows in one application, one window
+#. * has some information about the application (like the application name).
+#: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:142
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:142
+#: ../libwnck/wnckprop.c:148
 msgid "CLASS"
 msgstr "ਕਲਾਸ"
 
-#: ../libwnck/wnckprop.c:144
+#: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:144 ../libwnck/wnckprop.c:146
-#: ../libwnck/wnckprop.c:162 ../libwnck/wnckprop.c:164
-#: ../libwnck/wnckprop.c:166 ../libwnck/wnckprop.c:233
+#: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
+#: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
 msgid "NUMBER"
 msgstr "ਨੰਬਰ"
 
-#: ../libwnck/wnckprop.c:146
+#: ../libwnck/wnckprop.c:152
 msgid "NUMBER of the screen to examine or modify"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:148
-msgid "Alias of --window"
-msgstr "--window ਦਾ ਉਪ-ਨਾਂ"
-
 #: ../libwnck/wnckprop.c:154
+msgid "Alias of --window"
+msgstr "--window ਦਾ ਏਲੀਆਸ"
+
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:161
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:156
+#: ../libwnck/wnckprop.c:163
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgstr "ਸਕਰੀਨ ਦੇ ਵਰਕਸਪੇਸ ਵੇਖੋ (ਆਉਟਪੁੱਟ ਫਾਰਮੈਟ: \"Number: ਵਰਕਸਪੇਸ ਨਾਂ\")"
 
-#: ../libwnck/wnckprop.c:162
+#: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "ਸਕਰੀਨ ਦੇ ਵਰਕਸਪੇਸ ਗਿਣਤੀ ਨੂੰ NUMBER ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:164
+#: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "ਸਕਰੀਨ ਦੇ ਵਰਕਸਪੇਸ ਲੇਆਉਟ ਨੂੰ NUMBER ਕਤਾਰ ਵਰਤਣ ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:166
+#: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "ਸਕਰੀਨ ਦੇ ਵਰਕਸਪੇਸ ਲੇਆਉਟ ਨੂੰ NUMBER ਕਾਲਮ ਵਰਤਣ ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:168
+#: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
-msgstr "ਡੈਸਕਟਾਪ ਵੇਖਾਓ"
+msgstr "ਡੈਸਕਟਾਪ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:170
+#: ../libwnck/wnckprop.c:177
 msgid "Stop showing the desktop"
 msgstr "ਡੈਸਕਟਾਪ ਵੇਖਾਉਣਾ ਬੰਦ ਕਰੋ"
 
-#: ../libwnck/wnckprop.c:172
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਦੀ ਵਿਊਪੋਰਟ X ਕੋਆਰਡੀਨੇਟ X ਉੱਤੇ ਭੇਜੋ"
 
-#: ../libwnck/wnckprop.c:172 ../libwnck/wnckprop.c:235
+#: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
 msgstr "X"
 
-#: ../libwnck/wnckprop.c:174
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਦੀ ਵਿਊਪੋਰਟ Y ਕੋਆਰਡੀਨੇਟ Y ਉੱਤੇ ਭੇਜੋ"
 
-#: ../libwnck/wnckprop.c:174 ../libwnck/wnckprop.c:237
+#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
 msgstr "Y"
 
-#: ../libwnck/wnckprop.c:180
+#: ../libwnck/wnckprop.c:191
 msgid "Minimize the window"
-msgstr "ਅਪਲੀਕ੍ਰਿਤ ਝਰੋਖਾ"
+msgstr "ਵਿੰਡੋ ਮਿੰਨੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:182
+#: ../libwnck/wnckprop.c:193
 msgid "Unminimize the window"
-msgstr "ਝਰੋਖਾ ਅਣ-ਅਲਪੀਕ੍ਰਿਤ"
+msgstr "ਵਿੰਡੋ ਅਣ-ਮਿੰਨੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:184
+#: ../libwnck/wnckprop.c:195
 msgid "Maximize the window"
-msgstr "ਝਰੋਖਾ ਅਧਿਕਤਮ"
+msgstr "ਵਿੰਡੋ ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:186
+#: ../libwnck/wnckprop.c:197
 msgid "Unmaximize the window"
-msgstr "ਝਰੋਖਾ ਅਣ-ਅਧਿਕਤਮ"
+msgstr "ਵਿੰਡੋ ਅਣ-ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:188
+#: ../libwnck/wnckprop.c:199
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਨੂੰ ਹਰੀਜੱਟਲੀ ਵੱਧੋ-ਵੱਧ ਬਣਾਓ"
 
-#: ../libwnck/wnckprop.c:190
+#: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਨੂੰ ਹਰੀਜੱਟਲੀ ਅਣ-ਅਧਿਕਤਮ ਬਣਾਓ"
 
-#: ../libwnck/wnckprop.c:192
+#: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
-msgstr ""
-
-#: ../libwnck/wnckprop.c:194
-msgid "Unmaximize vertically the window"
-msgstr ""
-
-#: ../libwnck/wnckprop.c:196
-msgid "Start moving the window via the keyboard"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਕੀ-ਬੋਰਡ ਨਾਲ ਏਧਰ-ਓਧਰ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ"
-
-#: ../libwnck/wnckprop.c:198
-msgid "Start resizing the window via the keyboard"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਕੀ-ਬੋਰਡ ਰਾਹੀਂ ਮੁੜ-ਆਕਾਰ ਸ਼ੁਰੂ ਕਰੋ"
-
-#: ../libwnck/wnckprop.c:200
-msgid "Activate the window"
-msgstr "ਝਰੋਖਾ ਸਰਗਰਮ ਕਰੋ"
-
-#: ../libwnck/wnckprop.c:202
-msgid "Close the window"
-msgstr "ਝਰੋਖਾ ਬੰਦ ਕਰੋ"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਟੀਕਲੀ ਵੱਧੋ-ਵੱਧ ਬਣਾਓ"
 
 #: ../libwnck/wnckprop.c:205
-msgid "Make the window fullscreen"
-msgstr "ਝਰੋਖਾ ਪੂਰੀ ਸਕਰੀਨ ਉੱਤੇ ਲੈ ਜਾਓ"
+msgid "Unmaximize vertically the window"
+msgstr "ਵਿੰਡੋ ਵਰਟੀਕਲੀ ਅਣ-ਅਧਿਕਤਮ ਬਣਾਓ"
 
 #: ../libwnck/wnckprop.c:207
-msgid "Make the window quit fullscreen mode"
-msgstr "ਝਰੋਖੇ ਨੂੰ ਪੂਰੀ ਸਕਰੀਨ ਢੰਗ ਤੋਂ ਬਾਹਰ ਲੈ ਆਉਦਾ ਹੈ।"
+msgid "Start moving the window via the keyboard"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਕੀ-ਬੋਰਡ ਨਾਲ ਏਧਰ-ਓਧਰ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ"
 
 #: ../libwnck/wnckprop.c:209
-msgid "Make the window always on top"
-msgstr "ਝਰੋਖਾ ਹਮੇਸ਼ਾਂ ਉੱਤੇ ਵੇਖਾਓ"
+msgid "Start resizing the window via the keyboard"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਕੀ-ਬੋਰਡ ਰਾਹੀਂ ਰੀ-ਸਾਈਜ਼ ਕਰਨਾ ਸ਼ੁਰੂ ਕਰੋ"
 
 #: ../libwnck/wnckprop.c:211
-msgid "Make the window not always on top"
-msgstr "ਝਰੋਖਾ ਹਮੇਸ਼ਾਂ ਉੱਤੇ ਨਾ ਵੇਖਾਓ"
+msgid "Activate the window"
+msgstr "ਵਿੰਡੋ ਐਕਟੀਵੇਟ"
 
 #: ../libwnck/wnckprop.c:213
+msgid "Close the window"
+msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ"
+
+#: ../libwnck/wnckprop.c:216
+msgid "Make the window fullscreen"
+msgstr "ਵਿੰਡੋ ਪੂਰੀ ਸਰਕੀਨ ਉੱਤੇ ਬਣਾਓ"
+
+#: ../libwnck/wnckprop.c:218
+msgid "Make the window quit fullscreen mode"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਪੂਰੀ ਸਕਰੀਨ ਢੰਗ ਤੋਂ ਬਾਹਰ ਲਿਆਓ"
+
+#: ../libwnck/wnckprop.c:220
+msgid "Make the window always on top"
+msgstr "ਵਿੰਡੋ ਹਮੇਸ਼ਾਂ ਸਭ ਤੋਂ ਉੱਤੇ ਰੱਖੋ"
+
+#: ../libwnck/wnckprop.c:222
+msgid "Make the window not always on top"
+msgstr "ਵਿੰਡੋ ਹਮੇਸ਼ਾਂ ਉੱਤੇ ਨਾ ਰੱਖੋ"
+
+#: ../libwnck/wnckprop.c:224
+msgid "Make the window below other windows"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋ ਦੇ ਹੇਠ ਰੱਖੋ"
+
+#: ../libwnck/wnckprop.c:226
+msgid "Make the window not below other windows"
+msgstr "ਵਿੰਡੋ ਨੂੰ ਹੋਰ ਵਿੰਡੋਜ਼ ਦੇ ਹੇਠ ਨਾ ਰੱਖੋ"
+
+#: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
-msgstr "ਝਰੋਖਾ ਛਾਂ"
+msgstr "ਵਿੰਡੋ ਸ਼ੇਡ"
 
-#: ../libwnck/wnckprop.c:215
+#: ../libwnck/wnckprop.c:230
 msgid "Unshade the window"
-msgstr "ਝਰੋਖਾ ਬਿਨ-ਛਾਂ"
+msgstr "ਵਿੰਡੋ ਅਣ-ਸ਼ੇਡ"
 
-#: ../libwnck/wnckprop.c:217
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਿਊਪੋਰਟ ਵਿੱਚ ਸਥਿਰ ਸਥਿਤੀ ਦਿਓ"
 
-#: ../libwnck/wnckprop.c:219
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਦੀ ਵਿਊਪੋਰਟ ਵਿੱਚ ਸਥਿਰ ਸਥਿਤੀ ਨਾ ਦਿਓ"
 
-#: ../libwnck/wnckprop.c:221
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
+#: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr "ਝਰੋਖਾ ਪੇਜ਼ਰ ਵਿੱਚ ਨਾ ਵੇਖਾਓ"
+msgstr "ਪੇਜ਼ਰ ਵਿੱਚ ਵਿੰਡੋ ਨਾ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:223
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
+#: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr "ਝਰੋਖਾ ਪੇਜ਼ਰ ਵਿੱਚ ਵੇਖਾਓ"
+msgstr "ਪੇਜ਼ਰ ਵਿੱਚ ਵਿੰਡੋ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:225
+#. Translators: "tasklist" is the list of running applications (the window list)
+#: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr "ਝਰੋਖਾ ਟਾਸਕ-ਲਿਸਟ ਵਿੱਚ ਨਾ ਵੇਖਾਓ"
+msgstr "ਟਾਸਕ-ਲਿਸਟ ਵਿੱਚ ਵਿੰਡੋ ਨਾ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:227
+#. Translators: "tasklist" is the list of running applications (the window list)
+#: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr "ਝਰੋਖਾ ਟਾਸਕ-ਲਿਸਟ ਵਿੱਚ ਵੇਖਾਓ"
+msgstr "ਟਾਸਕ-ਲਿਸਟ ਵਿੱਚ ਵਿੰਡੋ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:229
+#: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
-msgstr "ਝਰੋਖਾ ਸਭ ਵਰਕਸਪੇਸਾਂ ਵਿੱਚ ਵੇਖਾਓ"
+msgstr "ਸਭ ਵਰਕਸਪੇਸ ਵਿੱਚ ਵਿੰਡੋ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:231
+#: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਨੂੰ ਕੇਵਲ ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਉੱਤੇ ਹੀ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:233
+#: ../libwnck/wnckprop.c:262
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਨੂੰ ਵਰਕਸਪੇਸ NUMBER ਉੱਤੇ ਭੇਜੋ (ਪਹਿਲਾਂ ਵਰਕਸਪੇਸ 0 ਹੈ)"
 
-#: ../libwnck/wnckprop.c:235
+#: ../libwnck/wnckprop.c:264
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਦੇ X ਕੋਆਰਡੀਨੇਟ ਨੂੰ X ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:237
+#: ../libwnck/wnckprop.c:266
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਦੇ Y ਕੋਆਰਡੀਨੇਟ ਨੂੰ Y ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:239
+#: ../libwnck/wnckprop.c:268
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਦੀ ਚੌੜਾਈ WIDTH ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:239
+#: ../libwnck/wnckprop.c:268
 msgid "WIDTH"
 msgstr "ਚੌੜਾਈ"
 
-#: ../libwnck/wnckprop.c:241
+#: ../libwnck/wnckprop.c:270
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਦੀ ਉਚਾਈ HEIGHT ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:241
+#: ../libwnck/wnckprop.c:270
 msgid "HEIGHT"
 msgstr "ਉਚਾਈ"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:244
+#: ../libwnck/wnckprop.c:273
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash"
+"dialog, toolbar, menu, utility, splash)"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:244
+#: ../libwnck/wnckprop.c:273
 msgid "TYPE"
-msgstr "ਕਿਸਮ"
+msgstr "ਟਾਈਪ"
 
-#: ../libwnck/wnckprop.c:250
+#: ../libwnck/wnckprop.c:279
 msgid "Change the name of the workspace to NAME"
 msgstr "ਵਰਕਸਪੇਸ ਦਾ ਨਾਂ NAME ਲਈ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:250
+#: ../libwnck/wnckprop.c:279
 msgid "NAME"
 msgstr "ਨਾਂ"
 
-#: ../libwnck/wnckprop.c:252
+#: ../libwnck/wnckprop.c:281
 msgid "Activate the workspace"
-msgstr "ਵਰਕਸਪੇਸ ਸਰਗਰਮ ਕਰੋ"
+msgstr "ਵਰਕਸਪੇਸ ਐਕਟਿਵੇਟ"
 
-#: ../libwnck/wnckprop.c:344 ../libwnck/wnckprop.c:368
-#: ../libwnck/wnckprop.c:404 ../libwnck/wnckprop.c:427
+#: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
+#: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
 msgstr "--%2$s ਲਈ ਗਲਤ \"%1$s\" ਮੁੱਲ"
 
-#: ../libwnck/wnckprop.c:461 ../libwnck/wnckprop.c:480
+#: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
 #, c-format
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:470
+#: ../libwnck/wnckprop.c:499
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:493 ../libwnck/wnckprop.c:513
+#: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:503
+#: ../libwnck/wnckprop.c:532
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:525
+#: ../libwnck/wnckprop.c:554
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:535
+#: ../libwnck/wnckprop.c:564
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:547
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:577
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:557
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:588
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:569 ../libwnck/wnckprop.c:578
+#: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr ""
+msgstr "ਮੌਜੂਦਾ ਚੋਣਾਂ ਵਿੱਚ ਅਪਵਾਦ: ਇੱਕ ਵਿੰਡੋ ਨਾਲ ਇੰਟਰੈਕਟ ਕਰਨਾ ਚਾਹੀਦਾ ਸੀ, ਪਰ --%s ਵਰਤਿਆ ਗਿਆ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:597 ../libwnck/wnckprop.c:678
-#: ../libwnck/wnckprop.c:725
+#: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
+#: ../libwnck/wnckprop.c:756
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "ਮੌਜੂਦਾ ਚੋਣਾਂ ਲਈ ਅਪਵਾਦ ਹੈ: --%s ਅਤੇ --%s\n"
 
-#: ../libwnck/wnckprop.c:636
+#: ../libwnck/wnckprop.c:667
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr ""
+msgstr "--%2$s ਲਈ ਗਲਤ ਆਰਗੂਮੈਂਟ \"%1$d\": ਆਰਗੂਮੈਂਟ ਪੱਕਾ ਪੌਜ਼ੀਟਵ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:649
+#: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
-
-#: ../libwnck/wnckprop.c:743
-#, c-format
-msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "--%2$s ਲਈ ਗਲਤ ਆਰਗੂਮੈਂਟ \"%1$d\": ਆਰਗੂਮੈਂਟ ਪੌਜ਼ੀਟਵ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
-msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgid "Conflicting options are present: --%s or --%s, and --%s\n"
+msgstr "ਅਪਵਾਦ ਵਾਲੀਆਂ ਚੋਣਾਂ ਹਨ: --%s ਜਾਂ --%s, ਅਤੇ --%s\n"
 
-#: ../libwnck/wnckprop.c:818
+#: ../libwnck/wnckprop.c:807
+#, c-format
+msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
+msgstr "--%s ਲਈ ਗਲਤ ਆਰਗੂਮੈਂਟ \"%s\", ਢੁੱਕਵੇਂ ਮੁੱਲ ਹਨ: %s\n"
+
+#: ../libwnck/wnckprop.c:850
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr ""
+msgstr "ਸਕਰੀਨ ਉੱਤੇ ਵਰਕਸਪੇਸ ਲੇਆਉਟ ਨੂੰ ਬਦਲਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ: ਲੇਆਉਟ ਪਹਿਲਾਂ ਹੀ ਰੱਖਿਆ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:850
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:884
 msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
+msgstr "ਵਿਊਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕਦੀ: ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਇੱਕ ਵਿਊਪੋਰਟ ਨਹੀਂ ਰੱਖਦਾ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:854
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:890
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "ਵਿਊਪੋਰਟ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕਦੀ ਹੈ: ਕੋਈ ਮੌਜੂਦਾ ਵਰਕਸਪੇਸ ਨਹੀਂ ਹੈ\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:890 ../libwnck/wnckprop.c:899
-#: ../libwnck/wnckprop.c:908 ../libwnck/wnckprop.c:915
-#: ../libwnck/wnckprop.c:925 ../libwnck/wnckprop.c:932
-#: ../libwnck/wnckprop.c:941 ../libwnck/wnckprop.c:988
+#: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
+#: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
+#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
+#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
 msgid "Action not allowed\n"
-msgstr "ਕਾਰਵਾਈ ਮਨਜ਼ੂਰ ਨਹੀਂ ਹੈ\n"
+msgstr "ਐਕਸ਼ਨ ਮਨਜ਼ੂਰ ਨਹੀਂ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:984
+#: ../libwnck/wnckprop.c:1022
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "ਵਿੰਡੋ ਵਰਕਸਪੇਸ %d ਵਿੱਚ ਭੇਜੀ ਨਹੀਂ ਜਾ ਸਕਦੀ ਹੈ: ਵਰਕਸਪੇਸ ਮੌਜੂਦ ਨਹੀਂ ਹੈ।\n"
 
-#: ../libwnck/wnckprop.c:1047 ../libwnck/wnckprop.c:1177
+#. Translators: 'unset' in the sense of "something has not been set".
+#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
 msgid "<name unset>"
-msgstr ""
+msgstr "<ਨਾਂ ਅਣ-ਸੈੱਟ>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1050
+#: ../libwnck/wnckprop.c:1089
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1070
+#: ../libwnck/wnckprop.c:1109
 #, c-format
 msgid "%d: %s\n"
 msgstr "%d: %s\n"
 
-#: ../libwnck/wnckprop.c:1133
+#: ../libwnck/wnckprop.c:1172
 #, c-format
 msgid "Screen Number: %d\n"
 msgstr "ਸਕਰੀਨ ਨੰਬਰ: %d\n"
 
-#: ../libwnck/wnckprop.c:1135 ../libwnck/wnckprop.c:1213
+#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1255
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "ਜੁਮੈਟਰੀ (ਚੌੜਾਈ, ਉਚਾਈ): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1139
+#: ../libwnck/wnckprop.c:1178
 #, c-format
 msgid "Number of Workspaces: %d\n"
 msgstr "ਵਰਕਸਪੇਸਾਂ ਦੀ ਗਿਣਤੀ: %d\n"
 
-#: ../libwnck/wnckprop.c:1145
+#: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "ਵਰਕਸਪੇਸ ਲੇਆਉਟ (ਕਤਾਰ, ਕਾਲਮ, ਸਥਿਤੀ): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1155 ../libwnck/wnckprop.c:1209
-#: ../libwnck/wnckprop.c:1381
+#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
+#: ../libwnck/wnckprop.c:1443
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<ਕੋਈ EWMH-ਅਨੁਕੂਲ ਵਿੰਡੋ ਮੈਨੇਜਰ ਨਹੀਂ>"
 
-#: ../libwnck/wnckprop.c:1156
+#: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr "ਝਰੋਖਾ ਮੈਨੇਜਰ: %s\n"
+msgstr "ਵਿੰਡੋ ਮੈਨੇਜਰ: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1161 ../libwnck/wnckprop.c:1233
-#: ../libwnck/wnckprop.c:1244 ../libwnck/wnckprop.c:1255
-#: ../libwnck/wnckprop.c:1266 ../libwnck/wnckprop.c:1367
+#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1279
+#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1303
+#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1428
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
-#: ../libwnck/wnckprop.c:1165 ../libwnck/wnckprop.c:1185
-#: ../libwnck/wnckprop.c:1237 ../libwnck/wnckprop.c:1248
-#: ../libwnck/wnckprop.c:1259 ../libwnck/wnckprop.c:1270
-#: ../libwnck/wnckprop.c:1326 ../libwnck/wnckprop.c:1373
-msgid "none"
+#. Translators: "none" here means "no workspace"
+#: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
+#: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
+#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
+msgid "workspace|none"
 msgstr "ਕੋਈ ਨਹੀਂ"
 
-#: ../libwnck/wnckprop.c:1166
+#: ../libwnck/wnckprop.c:1206
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr "ਸਰਗਰਮ ਵਰਕਸਪੇਸ: %s\n"
+msgstr "ਐਕਟਿਵ ਵਰਕਸਪੇਸ: %s\n"
 
-#: ../libwnck/wnckprop.c:1175
+#: ../libwnck/wnckprop.c:1215
 #, c-format
 msgid "\"%s\""
 msgstr "\"%s\""
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1180
+#: ../libwnck/wnckprop.c:1221
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
-#: ../libwnck/wnckprop.c:1186
+#. Translators: "none" here means "no window"
+#: ../libwnck/wnckprop.c:1227
+msgid "window|none"
+msgstr "ਕੋਈ ਨਹੀਂ"
+
+#: ../libwnck/wnckprop.c:1228
 #, c-format
 msgid "Active Window: %s\n"
-msgstr "ਸਰਗਰਮ ਝਰੋਖਾ: %s\n"
+msgstr "ਐਕਟਿਵ ਵਿੰਡੋ: %s\n"
 
-#: ../libwnck/wnckprop.c:1189
+#: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr "ਡੈਸਕਟਾਪ ਉੱਤੇ ਵੇਖਾਓ: %s\n"
+msgstr "ਡੈਸਕਟਾਪ ਵੇਖ ਰਹੇ ਹੋ: %s\n"
 
-#: ../libwnck/wnckprop.c:1191
+#: ../libwnck/wnckprop.c:1233
 msgid "true"
 msgstr "ਸਹੀ"
 
-#: ../libwnck/wnckprop.c:1191
+#: ../libwnck/wnckprop.c:1233
 msgid "false"
 msgstr "ਗਲਤ"
 
-#: ../libwnck/wnckprop.c:1202
+#: ../libwnck/wnckprop.c:1244
 #, c-format
 msgid "Workspace Name: %s\n"
 msgstr "ਵਰਕਸਪੇਸ ਨਾਂ: %s\n"
 
-#: ../libwnck/wnckprop.c:1203
+#: ../libwnck/wnckprop.c:1245
 #, c-format
 msgid "Workspace Number: %d\n"
 msgstr "ਵਰਕਸਪੇਸ ਗਿਣਤੀ: %d\n"
 
-#: ../libwnck/wnckprop.c:1210 ../libwnck/wnckprop.c:1382
+#: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr "ਸਕਰੀਨ ਉੱਤੇ: %d (ਝਰੋਖਾ ਮੈਨੇਜਰ: %s)\n"
+msgstr "%d: ਸਕਰੀਨ ਉੱਤੇ (ਵਿੰਡੋ ਮੈਨੇਜਰ: %s)\n"
 
-#: ../libwnck/wnckprop.c:1222
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
-msgstr ""
+msgstr "<ਵਿਊਪੋਰਟ ਨਹੀਂ>"
 
-#: ../libwnck/wnckprop.c:1223
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "ਵਿਊਪੋਰਟ ਸਥਿਤੀ (x, y): %s\n"
 
-#: ../libwnck/wnckprop.c:1226
+#: ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr ""
+msgstr "ਲੇਆਉਟ (ਕਤਾਰ, ਕਾਲਮ) ਵਿੱਚ ਸਥਿਤੀ: %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1238
+#: ../libwnck/wnckprop.c:1285
 #, c-format
 msgid "Left Neighbor: %s\n"
-msgstr "ਖੱਬੇ ਗੁਆਂਢੀ: %s\n"
+msgstr "ਖੱਬਾ ਗੁਆਂਢੀ: %s\n"
 
-#: ../libwnck/wnckprop.c:1249
+#: ../libwnck/wnckprop.c:1297
 #, c-format
 msgid "Right Neighbor: %s\n"
-msgstr "ਸੱਜੇ ਗੁਆਂਢੀ: %s\n"
+msgstr "ਸੱਜਾ ਗੁਆਂਢੀ: %s\n"
 
-#: ../libwnck/wnckprop.c:1260
+#: ../libwnck/wnckprop.c:1309
 #, c-format
 msgid "Top Neighbor: %s\n"
 msgstr "ਉੱਤੇ ਗੁਆਂਢੀ: %s\n"
 
-#: ../libwnck/wnckprop.c:1271
+#: ../libwnck/wnckprop.c:1321
 #, c-format
 msgid "Bottom Neighbor: %s\n"
 msgstr "ਬਟਨ ਗੁਆਂਢੀ: %s\n"
 
-#: ../libwnck/wnckprop.c:1282
+#. Translators: Ressource class is the name to identify a class.
+#: ../libwnck/wnckprop.c:1333
 #, c-format
 msgid "Resource Class: %s\n"
 msgstr "ਸਰੋਤ ਕਲਾਸ: %s\n"
 
-#: ../libwnck/wnckprop.c:1284
+#: ../libwnck/wnckprop.c:1335
 #, c-format
 msgid "Group Name: %s\n"
 msgstr "ਗਰੁੱਪ ਨਾਂ: %s\n"
 
-#: ../libwnck/wnckprop.c:1289 ../libwnck/wnckprop.c:1311
-#: ../libwnck/wnckprop.c:1359
+#. Translators: 'set' in the sense of "something has been set".
+#: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
+#: ../libwnck/wnckprop.c:1419
 msgid "set"
 msgstr "ਸੈੱਟ"
 
-#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1313
-#: ../libwnck/wnckprop.c:1319 ../libwnck/wnckprop.c:1347
-#: ../libwnck/wnckprop.c:1353 ../libwnck/wnckprop.c:1361
-#: ../libwnck/wnckprop.c:1424 ../libwnck/wnckprop.c:1432
-#: ../libwnck/wnckprop.c:1439
+#. Translators: 'unset' in the sense of "something has not been set".
+#: ../libwnck/wnckprop.c:1344 ../libwnck/wnckprop.c:1368
+#: ../libwnck/wnckprop.c:1375 ../libwnck/wnckprop.c:1405
+#: ../libwnck/wnckprop.c:1412 ../libwnck/wnckprop.c:1422
+#: ../libwnck/wnckprop.c:1487 ../libwnck/wnckprop.c:1497
+#: ../libwnck/wnckprop.c:1505
 msgid "<unset>"
-msgstr "<unset>"
+msgstr "<ਅਣ-ਸੈੱਟ>"
 
-#: ../libwnck/wnckprop.c:1292 ../libwnck/wnckprop.c:1314
-#: ../libwnck/wnckprop.c:1362
+#: ../libwnck/wnckprop.c:1345 ../libwnck/wnckprop.c:1369
+#: ../libwnck/wnckprop.c:1423
 #, c-format
 msgid "Icons: %s\n"
 msgstr "ਆਈਕਾਨ: %s\n"
 
-#: ../libwnck/wnckprop.c:1295 ../libwnck/wnckprop.c:1329
+#: ../libwnck/wnckprop.c:1348 ../libwnck/wnckprop.c:1386
 #, c-format
 msgid "Number of Windows: %d\n"
-msgstr "ਝਰੋਖਿਆਂ ਦੀ ਗਿਣਤੀ: %d\n"
+msgstr "%d: ਵਿੰਡੋਜ ਦੀ ਗਿਣਤੀ\n"
 
-#: ../libwnck/wnckprop.c:1307 ../libwnck/wnckprop.c:1348
+#: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1406
 #, c-format
 msgid "Name: %s\n"
 msgstr "ਨਾਂ: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1308 ../libwnck/wnckprop.c:1356
+#: ../libwnck/wnckprop.c:1361 ../libwnck/wnckprop.c:1415
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "ਆਈਕਾਨ ਨਾਂ: %s\n"
 
-#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1433
+#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1498
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
-#: ../libwnck/wnckprop.c:1327
+#. Translators: "none" here means "no startup ID"
+#: ../libwnck/wnckprop.c:1383
+msgid "startupID|none"
+msgstr "ਕੋਈ ਨਹੀਂ"
+
+#: ../libwnck/wnckprop.c:1384
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr "ਸ਼ੁਰੂਆਤੀ ID: %s\n"
 
-#: ../libwnck/wnckprop.c:1371
+#: ../libwnck/wnckprop.c:1432
 msgid "all workspaces"
 msgstr "ਸਭ ਵਰਕਸਪੇਸ"
 
-#: ../libwnck/wnckprop.c:1374
+#: ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "On Workspace: %s\n"
 msgstr "ਵਰਕਸਪੇਸ ਉੱਤੇ: %s\n"
 
-#: ../libwnck/wnckprop.c:1389
+#: ../libwnck/wnckprop.c:1451
 msgid "normal window"
-msgstr "ਆਮ ਝਰੋਖਾ"
+msgstr "ਨਾਰਮਲ ਵਿੰਡੋ"
 
-#: ../libwnck/wnckprop.c:1392
+#: ../libwnck/wnckprop.c:1454
 msgid "desktop"
 msgstr "ਡੈਸਕਟਾਪ"
 
-#: ../libwnck/wnckprop.c:1395
+#: ../libwnck/wnckprop.c:1457
 msgid "dock or panel"
 msgstr "ਡੌਕ ਜਾਂ ਪੈਨਲ"
 
-#: ../libwnck/wnckprop.c:1398
+#: ../libwnck/wnckprop.c:1460
 msgid "dialog window"
-msgstr "ਡਾਈਲਾਗ ਝਰੋਖਾ"
+msgstr "ਡਾਈਲਾਗ ਵਿੰਡੋ"
 
-#: ../libwnck/wnckprop.c:1401
+#: ../libwnck/wnckprop.c:1463
 msgid "tearoff toolbar"
 msgstr "ਵੱਖ-ਹੋਣਯੋਗ ਟੂਲਬਾਰ"
 
-#: ../libwnck/wnckprop.c:1404
+#: ../libwnck/wnckprop.c:1466
 msgid "tearoff menu"
 msgstr "ਵੱਖ-ਹੋਣਯੋਗ ਮੇਨੂ"
 
-#: ../libwnck/wnckprop.c:1407
+#: ../libwnck/wnckprop.c:1469
 msgid "utility window"
-msgstr "ਸਹੂਲਤ ਝਰੋਖਾ"
+msgstr "ਸਹੂਲਤ ਵਿੰਡੋ"
 
-#: ../libwnck/wnckprop.c:1410
+#: ../libwnck/wnckprop.c:1472
 msgid "splash screen"
 msgstr "ਸਪਲੈਸ਼ ਸਕਰੀਨ"
 
-#: ../libwnck/wnckprop.c:1415
+#: ../libwnck/wnckprop.c:1477
 #, c-format
 msgid "Window Type: %s\n"
-msgstr "ਝਰੋਖਾ ਕਿਸਮ: %s\n"
+msgstr "ਵਿੰਡੋ ਟਾਈਪ: %s\n"
 
-#: ../libwnck/wnckprop.c:1418
+#: ../libwnck/wnckprop.c:1480
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "ਜੁਮੈਟਰੀ(x, y, ਚੌੜਾਈ, ਉਚਾਈ): %d, %d, %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1425
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:1489
 #, c-format
 msgid "Class Group: %s\n"
 msgstr "ਕਲਾਸ ਗਰੁੱਪ: %s\n"
 
-#: ../libwnck/wnckprop.c:1427
+#: ../libwnck/wnckprop.c:1491
 #, c-format
 msgid "XID: %lu\n"
 msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1440
+#: ../libwnck/wnckprop.c:1506
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "ਸ਼ੈਸ਼ਨ ID: %s\n"
 
-#: ../libwnck/wnckprop.c:1443
+#. Translators: A group leader is the window that is the "owner" of a group
+#. * of windows, ie: if you have multiple windows in one application, one window
+#. * has some information about the application (like the application name).
+#: ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "ਗਰੁੱਪ ਲੀਡਰ: %lu\n"
 
-#: ../libwnck/wnckprop.c:1446
+#. Translators: A window can be transient for another window: it means it's on top of it
+#: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "%lu: ਲਈ ਟਰਾਂਸਿਨਟ\n"
 
+#. FIXME: else print something?
+#. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1458 ../libwnck/wnckprop.c:1497
+#: ../libwnck/wnckprop.c:1532 ../libwnck/wnckprop.c:1579
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
-#: ../libwnck/wnckprop.c:1460 ../libwnck/wnckprop.c:1499
+#. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
+#: ../libwnck/wnckprop.c:1536 ../libwnck/wnckprop.c:1581
 msgid ", "
 msgstr ", "
 
-#: ../libwnck/wnckprop.c:1466
+#: ../libwnck/wnckprop.c:1542
 msgid "minimized"
-msgstr "ਅਪਲੀਕ੍ਰਿਤ"
+msgstr "ਮਿੰਨੀਮਾਈਜ਼ ਕੀਤੇ"
 
-#: ../libwnck/wnckprop.c:1467
+#: ../libwnck/wnckprop.c:1543
 msgid "maximized"
-msgstr "ਅਧਿਕਤਮ"
+msgstr "ਮੈਕਸੀਮਾਈਜ਼ ਕੀਤੇ"
 
-#: ../libwnck/wnckprop.c:1471
+#: ../libwnck/wnckprop.c:1547
 msgid "maximized horizontally"
-msgstr "ਖਿਤਿਜੀ ਅਧਿਕਤਮ"
+msgstr "ਹਰੀਜੱਟਲ ਮੈਕਸੀਮਾਈਜ਼ ਕੀਤੇ"
 
-#: ../libwnck/wnckprop.c:1473
+#: ../libwnck/wnckprop.c:1549
 msgid "maximized vertically"
-msgstr "ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+msgstr "ਵਰਟੀਕਲੀ ਮੈਕਸੀਮਾਈਜ਼ ਕੀਤੇ"
 
-#: ../libwnck/wnckprop.c:1475
+#: ../libwnck/wnckprop.c:1551
 msgid "shaded"
-msgstr "ਛਾਂ"
+msgstr "ਸ਼ੇਡ"
 
-#: ../libwnck/wnckprop.c:1476
+#: ../libwnck/wnckprop.c:1552
 msgid "pinned"
 msgstr "ਪਿੰਨ ਕੀਤਾ"
 
-#: ../libwnck/wnckprop.c:1477
+#: ../libwnck/wnckprop.c:1553
 msgid "sticky"
 msgstr "ਸਟਿੱਕੀ"
 
-#: ../libwnck/wnckprop.c:1478
+#: ../libwnck/wnckprop.c:1554
 msgid "above"
 msgstr "ਉੱਤੇ"
 
-#: ../libwnck/wnckprop.c:1479
+#: ../libwnck/wnckprop.c:1555
+msgid "below"
+msgstr "ਹੇਠਾਂ"
+
+#: ../libwnck/wnckprop.c:1556
 msgid "fullscreen"
 msgstr "ਪੂਰੀ-ਸਕਰੀਨ"
 
-#: ../libwnck/wnckprop.c:1480
+#: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
 msgstr "ਧਿਆਨ ਦੀ ਲੋੜ ਹੈ"
 
-#: ../libwnck/wnckprop.c:1481
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
+#: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
 msgstr "ਪੇਜ਼ਰ ਛੱਡੋ"
 
-#: ../libwnck/wnckprop.c:1482
+#. Translators: "tasklist" is the list of running applications (the window list)
+#: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
 msgstr "ਟਾਸਕ-ਲਿਸਟ ਛੱਡੋ"
 
-#: ../libwnck/wnckprop.c:1484
+#: ../libwnck/wnckprop.c:1566
 msgid "normal"
 msgstr "ਸਧਾਰਨ"
 
-#: ../libwnck/wnckprop.c:1485
+#: ../libwnck/wnckprop.c:1567
 #, c-format
 msgid "State: %s\n"
 msgstr "ਹਾਲਤ: %s\n"
 
-#: ../libwnck/wnckprop.c:1506
+#: ../libwnck/wnckprop.c:1588
 msgid "move"
 msgstr "ਏਧਰ-ਓਧਰ"
 
-#: ../libwnck/wnckprop.c:1507
+#: ../libwnck/wnckprop.c:1589
 msgid "resize"
-msgstr "ਮੁਡ਼-ਅਕਾਰ"
+msgstr "ਰੀ-ਸਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1508
+#: ../libwnck/wnckprop.c:1590
 msgid "shade"
-msgstr "ਛਾਂ"
+msgstr "ਸ਼ੇਡ"
 
-#: ../libwnck/wnckprop.c:1509
+#: ../libwnck/wnckprop.c:1591
 msgid "unshade"
-msgstr "ਅਣ-ਛਾਂ"
+msgstr "ਅਣ-ਸ਼ੇਡ"
 
-#: ../libwnck/wnckprop.c:1510
+#: ../libwnck/wnckprop.c:1592
 msgid "stick"
 msgstr "ਸਟਿੱਕ"
 
-#: ../libwnck/wnckprop.c:1511
+#: ../libwnck/wnckprop.c:1593
 msgid "unstick"
 msgstr "ਅਣ-ਸਟਿੱਕ"
 
-#: ../libwnck/wnckprop.c:1513
+#: ../libwnck/wnckprop.c:1595
 msgid "maximize horizontally"
-msgstr "ਖਿਤਿਜੀ ਅਧਿਕਤਮ"
+msgstr "ਮੈਕਸੀਮਾਈਜ਼ ਹਰੀਜੱਟਲ"
 
-#: ../libwnck/wnckprop.c:1515
+#: ../libwnck/wnckprop.c:1597
 msgid "unmaximize horizontally"
-msgstr "ਖਿਤਿਜ ਅਣ-ਅਧਿਕਤਮ"
+msgstr "ਹਰੀਜੱਟਲੀ ਅਣ-ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1517
+#: ../libwnck/wnckprop.c:1599
 msgid "maximize vertically"
-msgstr "ਲੰਬਕਾਰੀ ਅਧਿਕਤਮ"
+msgstr "ਵਰਟੀਕਲੀ ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1519
+#: ../libwnck/wnckprop.c:1601
 msgid "unmaximize vertically"
-msgstr "ਲੰਬਕਾਰੀ ਅਣ-ਅਧਿਕਤਮ"
+msgstr "ਵਰਟੀਕਲ ਅਣ-ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1522
+#: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
 msgstr "ਵਰਕਸਪੇਸ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:1524
+#: ../libwnck/wnckprop.c:1606
 msgid "pin"
 msgstr "ਪਿੰਨ"
 
-#: ../libwnck/wnckprop.c:1526
+#: ../libwnck/wnckprop.c:1608
 msgid "unpin"
 msgstr "ਅਣ-ਪਿੰਨ"
 
-#: ../libwnck/wnckprop.c:1527
+#: ../libwnck/wnckprop.c:1609
 msgid "minimize"
-msgstr "ਅਲਪੀਕ੍ਰਿਤ"
+msgstr "ਮਿੰਨੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1528
+#: ../libwnck/wnckprop.c:1610
 msgid "unminimize"
-msgstr "ਅਣ-ਅਪਲੀਕ੍ਰਿਤ"
+msgstr "ਅਣ-ਮਿੰਨੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1529
+#: ../libwnck/wnckprop.c:1611
 msgid "maximize"
-msgstr "ਅਧਿਕਤਮ"
+msgstr "ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1530
+#: ../libwnck/wnckprop.c:1612
 msgid "unmaximize"
-msgstr "ਅਣ-ਅਧਿਕਤਮ"
+msgstr "ਅਣ-ਮੈਕਸੀਮਾਈਜ਼"
 
-#: ../libwnck/wnckprop.c:1532
+#: ../libwnck/wnckprop.c:1614
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "ਪੂਰੀ ਸਕਰੀਨ ਮੋਡ ਬਦਲੋ"
 
-#: ../libwnck/wnckprop.c:1533
+#: ../libwnck/wnckprop.c:1615
 msgid "close"
 msgstr "ਬੰਦ ਕਰੋ"
 
-#: ../libwnck/wnckprop.c:1535
+#: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "ਉੱਤੇ ਰੱਖੋ"
 
-#: ../libwnck/wnckprop.c:1537
+#: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "ਉੱਤੋਂ ਹਟਾਓ"
 
-#: ../libwnck/wnckprop.c:1539
+#: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "ਹੇਠਾਂ ਭੇਜੋ"
 
-#: ../libwnck/wnckprop.c:1541
+#: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "ਹੇਠਾਂ ਤੋਂ ਹਟਾਓ"
 
-#: ../libwnck/wnckprop.c:1543
+#: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
-msgstr ""
+msgstr "ਕੋਈ ਐਕਸ਼ਨ ਸੰਭਵ ਨਹੀਂ"
 
-#: ../libwnck/wnckprop.c:1544
+#: ../libwnck/wnckprop.c:1626
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "ਸੰਭਵ ਐਕਸ਼ਨ: %s\n"
 
-#: ../libwnck/wnckprop.c:1721
+#: ../libwnck/wnckprop.c:1803
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1054,67 +1128,71 @@ msgid ""
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1731
+#: ../libwnck/wnckprop.c:1813
 msgid "Options to list windows or workspaces"
-msgstr "ਝਰੋਖੇ ਜਾਂ ਵਰਕਸਪੇਸ ਵੇਖਣ ਲਈ ਚੋਣਾਂ"
+msgstr "ਵਿੰਡੋ ਜਾਂ ਵਰਕਸਪੇਸ ਵੇਖਣ ਲਈ ਚੋਣਾਂ"
 
-#: ../libwnck/wnckprop.c:1732
+#: ../libwnck/wnckprop.c:1814
 msgid "Show options to list windows or workspaces"
-msgstr "ਝਰੋਖੇ ਜਾਂ ਵਰਕਸਪੇਸ ਵੇਖਣ ਲਈ ਚੋਣਾਂ ਵੇਖੋ"
+msgstr "ਵਿੰਡੋਜ਼ ਜਾਂ ਵਰਕਸਪੇਸ ਵੇਖਣ ਲਈ ਚੋਣਾਂ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:1738
+#: ../libwnck/wnckprop.c:1820
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "ਇੱਕ ਵਿੰਡੋ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਸੋਧਣ ਵਾਸਤੇ ਚੋਣਾਂ"
 
-#: ../libwnck/wnckprop.c:1739
+#: ../libwnck/wnckprop.c:1821
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "ਇੱਕ ਵਿੰਡੋ ਦੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਸੋਧਣ ਲਈ ਚੋਣਾਂ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:1745
+#: ../libwnck/wnckprop.c:1827
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "ਇੱਕ ਵਰਕਸਪੇਸ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਸੋਧਣ ਵਾਸਤੇ ਚੋਣਾਂ"
 
-#: ../libwnck/wnckprop.c:1746
+#: ../libwnck/wnckprop.c:1828
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "ਇੱਕ ਵਰਕਸਪੇਸ ਦੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾ ਸੋਧਣ ਵਾਸਤੇ ਚੋਣਾਂ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:1752
+#: ../libwnck/wnckprop.c:1834
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "ਇੱਕ ਸਕਰੀਨ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਸੋਧਣ ਵਾਸਤੇ ਚੋਣਾਂ"
 
-#: ../libwnck/wnckprop.c:1753
+#: ../libwnck/wnckprop.c:1835
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "ਇੱਕ ਸਕਰੀਨ ਦੀ ਵਿਸ਼ੇਸ਼ਤਾ ਸੋਧਣ ਲਈ ਚੋਣਾਂ ਵੇਖੋ"
 
-#: ../libwnck/wnckprop.c:1763
+#: ../libwnck/wnckprop.c:1845
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr "ਆਰਗੂਮਿੰਟ ਪਾਰਸ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ: %s\n"
+msgstr "ਆਰਗੂਮੈਂਟ ਪਾਰਸ ਕਰਨ ਦੌਰਾਨ ਗਲਤੀ: %s\n"
 
-#: ../libwnck/wnckprop.c:1786
+#: ../libwnck/wnckprop.c:1868
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "%d ਸਕਰੀਨ ਨਾਲ ਇੰਟਰੈਕਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: ਸਕਰੀਨ ਮੌਜੂਦ ਨਹੀਂ ਹੈ।\n"
 
-#: ../libwnck/wnckprop.c:1842
+#: ../libwnck/wnckprop.c:1924
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "ਵਰਕਸਪੇਸ %d ਨਾਲ ਇੰਟਰੈਕਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: ਵਰਕਸਪੇਸ ਨਹੀਂ ਲੱਭਿਆ ਜਾ ਸਕਦਾ\n"
 
-#: ../libwnck/wnckprop.c:1864
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:1947
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgstr "ਕਲਾਸ ਗਰੁੱਪ \"%s\" ਨਾਲ ਇੰਟਰੈਕਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: ਕਲਾਸ ਗਰੁੱਪ ਨਹੀਂ ਲੱਭਿਆ ਜਾ ਸਕਦਾ\n"
 
-#: ../libwnck/wnckprop.c:1887
+#: ../libwnck/wnckprop.c:1970
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr ""
+msgstr "XID %lu ਵਾਲੇ ਗਰੁੱਪ ਲੀਡਰ ਦੀ ਐਪਲੀਕੇਸ਼ਨ ਨਾਲ ਇੰਟਰੈਕਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ: ਐਪਲੀਕੇਸ਼ਨ ਨਹੀਂ ਲੱਭੀ ਹੈ\n"
 
-#: ../libwnck/wnckprop.c:1910
+#: ../libwnck/wnckprop.c:1993
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "XID %lu ਵਿੰਡੋ ਨਾਲ ਇੰਟਰੈਕਟ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ: ਵਿੰਡੋ ਨਹੀਂ ਲੱਭੀ ਜਾ ਸਕਦੀ\n"
+
+#~ msgid "none"
+#~ msgstr "ਕੋਈ ਨਹੀਂ"
 
