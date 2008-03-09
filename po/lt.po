@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-08 00:15+0200\n"
-"PO-Revision-Date: 2008-03-08 00:15+0200\n"
+"POT-Creation-Date: 2008-03-09 14:27+0200\n"
+"PO-Revision-Date: 2008-03-09 14:27+0200\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -258,12 +258,12 @@ msgstr "XID"
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "Tikrinamo lango grupės lyderio X lango ID"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Tikrinamos klasės grupės klasės resursas"
 
 #: ../libwnck/wnckprop.c:148
 msgid "CLASS"
@@ -293,11 +293,15 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
+"Išvesti programos/klasės grupės/darbalaukio/ekrano langus (išvedimo "
+"formatas: „XID: Lango pavadinimas“)"
 
 #: ../libwnck/wnckprop.c:163
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
+"Išvesti ekrano darbalaukių sąrašą (išvedimo formatas: „Skaičius: Darbalaukio "
+"pavadinimas“)"
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
@@ -323,7 +327,7 @@ msgstr "Neberodyti darbastalio"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Pastumti esamo darbalaukio rodomą sritį į nurodytą X kordinatę"
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
@@ -333,7 +337,7 @@ msgstr "X"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Pastumti esamo darbalaukio rodomą sritį į nurodytą Y kordinatę"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
@@ -423,13 +427,13 @@ msgstr "Išvynioti langą"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Nustatyti lango fiksuotą poziciją rodomoje srityje"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "Atšaukti lango fiksuotos pozicijos rodomoje srityje nustatymą"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -437,26 +441,25 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "Nerodyti lango darbalaukių perjungiklyje"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
-#, fuzzy
 msgid "Make the window appear in pagers"
-msgstr "Rodyti langą darbastalio"
+msgstr "Rodyti langą darbalaukių perjungiklyje"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Nerodyti lango užduočių juostoje"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Rodyti langą užduočių juostoje"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
@@ -500,6 +503,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"Pakeisti lango tipą į TIPĄ (galimos reikšmės: normal, desktop, dock, dialog, "
+"toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
@@ -529,6 +534,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti keičiamas ekranas %d, bet nurodyta --%"
+"s\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
@@ -536,6 +543,8 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti išvedamas ekrano %d langų ar "
+"darbalaukių sąrašas, bet nurodyta --%s\n"
 
 #: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
@@ -543,6 +552,8 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti keičiamas darbalaukis %d, bet nurodyta "
+"--%s\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
@@ -550,6 +561,8 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti išvedamas darbalaukio %d langų sąrašas, "
+"bet nurodyta --%s\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
@@ -557,6 +570,7 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti keičiama programa, bet nurodyta --%s\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
@@ -564,6 +578,8 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti išvedamas programos langų sąrašas, bet "
+"nurodyta --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
@@ -572,6 +588,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti keičiama klasių grupė „%s“, bet "
+"nurodyta --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
@@ -580,6 +598,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti išvedamas klasių grupės „%s“ langų "
+"sąrašas, bet nurodyta --%s\n"
 
 #: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
 #, c-format
@@ -587,33 +607,38 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Nesuderinami parametrai: turėtų būti keičiamas langas, bet nurodyta --%s\n"
 
 #: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
 #: ../libwnck/wnckprop.c:756
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Nesuderinami parametrai: --%s ir --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
+"Netaisyklingas argumentas „%d“ parametrui --%s: argumentas turi būti "
+"teigiamas skaičius\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr ""
+"Netaisyklingas argumentas „%d“ parametrui --%s: argumentas turi būti "
+"neneigiamas skaičius\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Nesuderinami parametrai: --%s arba --%s ir --%s\n"
 
 #: ../libwnck/wnckprop.c:807
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "Netaisyklingas argumentas „%s“ parametrui --%s, galimos reikšmės: %s\n"
 
 #: ../libwnck/wnckprop.c:850
 #, c-format
@@ -621,6 +646,8 @@ msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
+"Nepavyko pakeisti darbalaukių išsidėstymo ekrane: išsidėstymas jau turi "
+"savininką\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -629,13 +656,15 @@ msgstr ""
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
+"Rodoma sritis negali būti pastumta: esamame darbalaukyje nėra rodomos "
+"srities\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "Rodoma sritis negali būti pastumta: nėra esamo darbalaukio\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
@@ -650,11 +679,12 @@ msgstr "Veiksmas neleidžiamas\n"
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
+"Nepavyko perkelti lango į darbalaukį %d: toks darbalaukis neegzistuoja\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
 msgid "<name unset>"
-msgstr ""
+msgstr "<vardas nenustatytas>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1089
@@ -692,7 +722,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<nėra langų valdyklės, suderinamos su EWMH>"
 
 #: ../libwnck/wnckprop.c:1195
 #, c-format
@@ -766,56 +796,56 @@ msgstr "Darbalaukio numeris: %d\n"
 #: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "Ekrane: %d (langų valdyklė: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
-msgstr ""
+msgstr "<nėra rodomos srities>"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "Rodomos srities pozicija (x, y): %s\n"
 
 #: ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr ""
+msgstr "Pozicija išsidėstyme (eilutė, stulpelis): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1285
 #, c-format
 msgid "Left Neighbor: %s\n"
-msgstr ""
+msgstr "Kairysis kaimynas: %s\n"
 
 #: ../libwnck/wnckprop.c:1297
 #, c-format
 msgid "Right Neighbor: %s\n"
-msgstr ""
+msgstr "Dešinysis kaimynas: %s\n"
 
 #: ../libwnck/wnckprop.c:1309
 #, c-format
 msgid "Top Neighbor: %s\n"
-msgstr ""
+msgstr "Viršutinis kaimynas: %s\n"
 
 #: ../libwnck/wnckprop.c:1321
 #, c-format
 msgid "Bottom Neighbor: %s\n"
-msgstr ""
+msgstr "Apatinis kaimynas: %s\n"
 
 #. Translators: Ressource class is the name to identify a class.
 #: ../libwnck/wnckprop.c:1333
 #, c-format
 msgid "Resource Class: %s\n"
-msgstr ""
+msgstr "Resursų klasė: %s\n"
 
 #: ../libwnck/wnckprop.c:1335
 #, c-format
 msgid "Group Name: %s\n"
-msgstr ""
+msgstr "Grupės pavadinimas: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
 #: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
@@ -919,13 +949,13 @@ msgstr "Lango tipas: %s\n"
 #: ../libwnck/wnckprop.c:1480
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr ""
+msgstr "Geometrija (x, y, plotis, aukštis): %d, %d, %d, %d\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1489
 #, c-format
 msgid "Class Group: %s\n"
-msgstr ""
+msgstr "Klasių grupė: %s\n"
 
 #: ../libwnck/wnckprop.c:1491
 #, c-format
@@ -943,13 +973,13 @@ msgstr "Sesijos ID: %s\n"
 #: ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "Grupės lyderis: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's on top of it
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "Virš: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
@@ -1014,12 +1044,12 @@ msgstr "reikia dėmesio"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
-msgstr ""
+msgstr "praleisti darbalaukių perjungiklį"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
-msgstr ""
+msgstr "praleisti langų sąrašą"
 
 #: ../libwnck/wnckprop.c:1566
 msgid "normal"
@@ -1108,28 +1138,28 @@ msgstr "užverti"
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "perkelti į viršų"
 
 #: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "atšaukti perkėlimą į viršų"
 
 #: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "nukelti žemyn"
 
 #: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "atšaukti perkėlimą žemyn"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
-msgstr ""
+msgstr "negalimas joks veiksmas"
 
 #: ../libwnck/wnckprop.c:1626
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "Galimi veiksmai: %s\n"
 
 #: ../libwnck/wnckprop.c:1805
 msgid ""
@@ -1138,69 +1168,73 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Spausdinti arba keisti ekrano/darbalaukio/lango savybes pagal EWMH "
+"specifikaciją.\n"
+"Daugiau informacijos apie šią specifikaciją rasite čia:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
-msgstr "Langų arba darbalaukių parodymo parinktys"
+msgstr "Langų arba darbalaukių sąrašo komandos"
 
 #: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
-msgstr "Rodyti langų arba darbalaukių parodymo parinktis"
+msgstr "Rodyti langų arba darbalaukių sąrašo komandas"
 
 #: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "Komandos, keičiančios langų savybes"
 
 #: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Rodyti komandas, keičiančias lango savybes"
 
 #: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Nustatymai, keičiantys darbalaukio savybes"
 
 #: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "Rodyti komandas, keičiančias darbalaukio savybes"
 
 #: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "Nustatymai, keičiantys ekrano savybes"
 
 #: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "Rodyti komandas, keičiančias ekrano savybes"
 
 #: ../libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr ""
+msgstr "Klaida apdorojant argumentus: %s\n"
 
 #: ../libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "Ekranas %d neegzistuoja\n"
 
 #: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "Darbalaukis %d nerastas\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1953
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgstr "Klasių grupė „%s“ nerasta\n"
 
 #: ../libwnck/wnckprop.c:1976
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr ""
+msgstr "Programa su grupės lyderiu, kurio XID %lu, nerasta\n"
 
 #: ../libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "Langas su XID %lu nerastas\n"
