@@ -1,3 +1,8 @@
+2008-03-10  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.22.0
+
 2008-03-04  Mikkel Kamstrup Erlandsen  <kamstrup@cvs.gnome.org>
 
 	* libwnck/window.c: (wnck_window_set_geometry): fix

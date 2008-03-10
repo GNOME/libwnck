@@ -1,3 +1,25 @@
+2.22.0
+======
+
+Fixes
+
+  - Properly translate --help output of wnckprop (Vincent) [#518070]
+  - Fix wnck_window_set_geometry() to work as intended, ie including
+    decorations (Mikkel Kamstrup Erlandsen, Elijah, Vincent) [#518606]
+
+ Translators
+
+  - Sankarshan Mukhopadhyay (bn_IN)
+  - Kenneth Nielsen (da)
+  - David Lodge (en_GB)
+  - Jorge González (es)
+  - Rajesh Ranjan (hi)
+  - Gabor Kelemen (hu)
+  - Žygimantas Beručka (lt)
+  - Vasiliy Faronov (ru)
+  - Dr.T.Vasudevan (ta)
+  - Maxim Dziumanenko (uk)
+
 2.21.92
 =======
 
