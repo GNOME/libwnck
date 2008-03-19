@@ -174,6 +174,8 @@ static void wnck_pager_connect_screen    (WnckPager  *pager);
 static void wnck_pager_connect_window    (WnckPager  *pager,
                                           WnckWindow *window);
 static void wnck_pager_disconnect_screen (WnckPager  *pager);
+static void wnck_pager_disconnect_window (WnckPager  *pager,
+                                          WnckWindow *window);
 
 static gboolean wnck_pager_set_layout_hint (WnckPager  *pager);
 
@@ -2415,27 +2417,28 @@ static void
 wnck_pager_connect_window (WnckPager  *pager,
                            WnckWindow *window)
 {
-  g_signal_connect_object (G_OBJECT (window), "name_changed",
-                           G_CALLBACK (window_name_changed_callback),
-                           pager, 0);
-  g_signal_connect_object (G_OBJECT (window), "state_changed",
-                           G_CALLBACK (window_state_changed_callback),
-                           pager, 0);
-  g_signal_connect_object (G_OBJECT (window), "workspace_changed",
-                           G_CALLBACK (window_workspace_changed_callback),
-                           pager, 0);
-  g_signal_connect_object (G_OBJECT (window), "icon_changed",
-                           G_CALLBACK (window_icon_changed_callback),
-                           pager, 0);
-  g_signal_connect_object (G_OBJECT (window), "geometry_changed",
-                           G_CALLBACK (window_geometry_changed_callback),
-                           pager, 0);
+  g_signal_connect (G_OBJECT (window), "name_changed",
+                    G_CALLBACK (window_name_changed_callback),
+                    pager);
+  g_signal_connect (G_OBJECT (window), "state_changed",
+                    G_CALLBACK (window_state_changed_callback),
+                    pager);
+  g_signal_connect (G_OBJECT (window), "workspace_changed",
+                    G_CALLBACK (window_workspace_changed_callback),
+                    pager);
+  g_signal_connect (G_OBJECT (window), "icon_changed",
+                    G_CALLBACK (window_icon_changed_callback),
+                    pager);
+  g_signal_connect (G_OBJECT (window), "geometry_changed",
+                    G_CALLBACK (window_geometry_changed_callback),
+                    pager);
 }
 
 static void
 wnck_pager_disconnect_screen (WnckPager  *pager)
 {
   int i;
+  GList *tmp;
 
   if (pager->priv->screen == NULL)
     return;
@@ -2458,6 +2461,32 @@ wnck_pager_disconnect_screen (WnckPager  *pager)
       space = wnck_screen_get_workspace (pager->priv->screen, i);
       g_signal_handlers_disconnect_by_func (space, G_CALLBACK (workspace_name_changed_callback), pager);
     }
+ 
+  for (tmp = wnck_screen_get_windows (pager->priv->screen); tmp; tmp = tmp->next)
+    {
+      wnck_pager_disconnect_window (pager, WNCK_WINDOW (tmp->data));
+    }
+}
+
+static void
+wnck_pager_disconnect_window (WnckPager  *pager,
+                              WnckWindow *window)
+{
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window),
+                                        G_CALLBACK (window_name_changed_callback),
+                                        pager);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window),
+                                        G_CALLBACK (window_state_changed_callback),
+                                        pager);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window),
+                                        G_CALLBACK (window_workspace_changed_callback),
+                                        pager);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window),
+                                        G_CALLBACK (window_icon_changed_callback),
+                                        pager);
+  g_signal_handlers_disconnect_by_func (G_OBJECT (window),
+                                        G_CALLBACK (window_geometry_changed_callback),
+                                        pager);
 }
 
 static void

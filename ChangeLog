@@ -1,3 +1,15 @@
+2008-03-19  Vincent Untz  <vuntz@gnome.org>
+
+	Fix crash on logout because of some race condition.
+	Fix bug #517750
+
+	* libwnck/pager.c: (wnck_pager_connect_window): use g_signal_connect()
+	instead of g_signal_connect_object() since we'll disconnect the
+	handlers
+	(wnck_pager_disconnect_screen): disconnect signal handlers for all
+	windows
+	(wnck_pager_disconnect_window): helper function
+
 2008-03-10  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.22.1
