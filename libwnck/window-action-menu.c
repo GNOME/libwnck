@@ -337,14 +337,11 @@ item_activated_callback (GtkWidget *menu_item,
           viewport_x = wnck_workspace_get_viewport_x (workspace);
           viewport_y = wnck_workspace_get_viewport_y (workspace);
 
-          xw += viewport_x;
-          yw += viewport_y;
-
           wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
-                                    xw + new_viewport_x,
-                                    yw + new_viewport_y,
+                                    xw + new_viewport_x - viewport_x,
+                                    yw + new_viewport_y - viewport_y,
                                     ww, hw);
         }
       break;

@@ -1,5 +1,13 @@
 2008-03-19  Vincent Untz  <vuntz@gnome.org>
 
+	Fix moving a window to an arbitrary workspace in viewport mode.
+	Fix bug #520726.
+
+	* libwnck/window-action-menu.c: (item_activated_callback): get the
+	maths right.
+
+2008-03-19  Vincent Untz  <vuntz@gnome.org>
+
 	Unstick windows when moving them in another workspace (viewport mode),
 	else the windows are just outside the visible screen.
 	Fix bug #520704.
