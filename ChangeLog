@@ -1,5 +1,13 @@
 2008-03-19  Vincent Untz  <vuntz@gnome.org>
 
+	List windows that demands attention in the tasklist when they're in the
+	current workspace but they're not visible in the viewport.
+	Fix bug #520124
+
+	* libwnck/tasklist.c: (wnck_task_state_changed): just do it
+
+2008-03-19  Vincent Untz  <vuntz@gnome.org>
+
 	Fix crash on logout because of some race condition.
 	Fix bug #517750
 

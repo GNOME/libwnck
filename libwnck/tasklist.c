@@ -3397,7 +3397,9 @@ wnck_task_state_changed (WnckWindow     *window,
         wnck_screen_get_active_workspace (tasklist->priv->screen);
 
       if (active_workspace                              &&
-          active_workspace != wnck_window_get_workspace (window))
+          (active_workspace != wnck_window_get_workspace (window) ||
+	   (wnck_workspace_is_virtual (active_workspace) &&
+	    !wnck_window_is_in_viewport (window, active_workspace))))
         {
           wnck_tasklist_update_lists (tasklist);
           gtk_widget_queue_resize (GTK_WIDGET (tasklist));
