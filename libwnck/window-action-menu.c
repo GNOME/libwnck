@@ -208,13 +208,13 @@ item_activated_callback (GtkWidget *menu_item,
       if (!viewport_mode)
         wnck_window_pin (window);
       else
-        wnck_window_stick(window);
+        wnck_window_stick (window);
       break;
     case UNPIN:
       if (!viewport_mode)
         wnck_window_unpin (window);
       else
-        wnck_window_unstick(window);
+        wnck_window_unstick (window);
       break;
     case LEFT:
       if (!viewport_mode)
@@ -230,6 +230,7 @@ item_activated_callback (GtkWidget *menu_item,
 
           width = wnck_screen_get_width (screen);
           wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw - width, yw,
@@ -250,6 +251,7 @@ item_activated_callback (GtkWidget *menu_item,
 
           width = wnck_screen_get_width (screen);
           wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw + width, yw,
@@ -270,6 +272,7 @@ item_activated_callback (GtkWidget *menu_item,
 
           height = wnck_screen_get_height (screen);
           wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw, yw - height,
@@ -290,6 +293,7 @@ item_activated_callback (GtkWidget *menu_item,
 
           height = wnck_screen_get_height (screen);
           wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
+          wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw, yw + height,
@@ -336,6 +340,7 @@ item_activated_callback (GtkWidget *menu_item,
           xw += viewport_x;
           yw += viewport_y;
 
+          wnck_window_unstick (window);
           wnck_window_set_geometry (window, 0,
                                     WNCK_WINDOW_CHANGE_X | WNCK_WINDOW_CHANGE_Y,
                                     xw + new_viewport_x,

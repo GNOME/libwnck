@@ -1,5 +1,15 @@
 2008-03-19  Vincent Untz  <vuntz@gnome.org>
 
+	Unstick windows when moving them in another workspace (viewport mode),
+	else the windows are just outside the visible screen.
+	Fix bug #520704.
+	Patch by Travis Watkins <amaranth@ubuntu.com>
+
+	* libwnck/window-action-menu.c: (item_activated_callback): well, do
+	what I already described
+
+2008-03-19  Vincent Untz  <vuntz@gnome.org>
+
 	List windows that demands attention in the tasklist when they're in the
 	current workspace but they're not visible in the viewport.
 	Fix bug #520124
