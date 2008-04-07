@@ -1,3 +1,23 @@
+2.22.1
+======
+
+Fixes
+
+  - Fix crash caused by a race condition when pager is destroyed (Vincent)
+    [#517750]
+  - List windows that demands attention in the tasklist when they're in the
+    current workspace but not visible in the viewport (Vincent) [#520124]
+  - Unstick windows when moving them in another workspace (viewport mode),
+    else the windows are just outside the visible screen (Travis Watkins)
+    [#520704]
+  - Fix moving a window to an arbitrary workspace in viewport mode (Vincent)
+    [#520726]
+
+ Translators
+
+  - Kostas Papadimas (el)
+  - Eskild Hustvedt (nn)
+
 2.22.0
 ======
 
