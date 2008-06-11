@@ -1,3 +1,12 @@
+2008-06-11  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/screen.c: (arrays_contain_same_windows): return TRUE when
+	both list of windows are empty. Fix a bug where when the last window
+	disappears, libwnck internals don't get updated and you still have a
+	window in the window list, eg.
+	See http://code.google.com/p/xmonad/issues/detail?id=195
+	Patch by Malebria <malebria@riseup.net>
+
 2008-04-07  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.22.2

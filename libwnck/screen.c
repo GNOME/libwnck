@@ -1481,9 +1481,8 @@ arrays_contain_same_windows (Window *a,
   if (a_len != b_len)
     return FALSE;
 
-  if (a_len == 0 ||
-      b_len == 0)
-    return FALSE; /* one was nonzero */
+  if (a_len == 0)
+    return TRUE; /* both are empty */
   
   a_tmp = g_new (Window, a_len);
   b_tmp = g_new (Window, b_len);
