@@ -9,12 +9,4 @@ EXTRA_DIST = \
 	MAINTAINERS			\
 	libwnck-1.0.pc.in		\
 	libwnck-1.0-uninstalled.pc.in	\
-	HACKING				\
-	intltool-extract.in		\
-	intltool-merge.in		\
-	intltool-update.in
-
-DISTCLEANFILES =		\
-        intltool-extract	\
-        intltool-merge		\
-        intltool-update
+	HACKING

@@ -1,3 +1,8 @@
+2008-06-17  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in: require intltool 0.40.0
+	* Makefile.am: remove old intltool cruft
+
 2008-06-11  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/screen.c: (arrays_contain_same_windows): return TRUE when
