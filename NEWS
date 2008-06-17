@@ -1,3 +1,20 @@
+2.23.4
+======
+
+ Fixes
+
+  - Fix a bug where when the last window disappears, libwnck internals don't
+    get updated and you still have a window in the window list, eg.  (Malebria)
+
+ Misc
+
+  - Require intltool 0.40.0 (Vincent)
+
+ Translators
+
+  - Djihed Afifi (ar)
+  - Yavor Doganov (bg)
+
 2.22.1
 ======
 
