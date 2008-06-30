@@ -1,3 +1,15 @@
+2.22.3
+======
+
+Fixes
+
+  - Fix a bug where when the last window disappears, libwnck internals don't
+    get updated and you still have a window in the window list, eg. (Malebria)
+
+ Translators
+
+  - Yavor Doganov (bg)
+
 2.22.1
 ======
 
