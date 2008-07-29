@@ -134,11 +134,11 @@ msgstr "استخدم اليمين-إلى-اليسار كاتجاه افتراض�
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
-msgstr "أظهر أسماء مساحات العمل عوضاً عن محتوياتها"
+msgstr "أظهر أسماء مساحات العمل عوضًا عن محتوياتها"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr "استخدم اتجاهاً عمودياً"
+msgstr "استخدم اتجاهًا عموديًا"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
@@ -147,11 +147,11 @@ msgstr "لا تظهر النافذة في قائمة المهمات"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
-msgstr "جمّع النوافذ دائماً"
+msgstr "جمّع النوافذ دائمًا"
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
-msgstr "لا تجمّع النوافذ أبداً"
+msgstr "لا تجمّع النوافذ أبدًا"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
@@ -201,7 +201,7 @@ msgstr "ت_حجيم"
 
 #: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
-msgstr "دائماً _فوق الكل"
+msgstr "دائمًا _فوق الكل"
 
 #: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
@@ -363,19 +363,19 @@ msgstr "ألغ تكبير النافذة"
 
 #: ../libwnck/wnckprop.c:199
 msgid "Maximize horizontally the window"
-msgstr "كبّر النافذة أفقياً"
+msgstr "كبّر النافذة أفقيًا"
 
 #: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr "ألغ تكبير النافذة أفقياً"
+msgstr "ألغ تكبير النافذة أفقيًا"
 
 #: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
-msgstr "كبّر النافذة عمودياً"
+msgstr "كبّر النافذة عموديًا"
 
 #: ../libwnck/wnckprop.c:205
 msgid "Unmaximize vertically the window"
-msgstr "ألغ تكبير النافذة عمودياً"
+msgstr "ألغ تكبير النافذة عموديًا"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Start moving the window via the keyboard"
@@ -403,11 +403,11 @@ msgstr "اجعل النافذة تخرج من نمط ملء الشاشة"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
-msgstr "اجعل النافذة في الأعلى دائماً"
+msgstr "اجعل النافذة في الأعلى دائمًا"
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr "اجعل النافذة ليست في الأعلى دائماً"
+msgstr "اجعل النافذة ليست في الأعلى دائمًا"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
@@ -429,13 +429,13 @@ msgstr "ألغ تظليل النافذة"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr "اجعل للنافذة موقعاً ثابتاً في منفذ العرض"
+msgstr "اجعل للنافذة موقعًا ثابتًا في منفذ العرض"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "لا تجعل للنافذة موقعاً ثابتاً في منفذ العرض"
+msgstr "لا تجعل للنافذة موقعًا ثابتًا في منفذ العرض"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -616,12 +616,12 @@ msgstr "هناك خيارات متضاربة: --%s و --%s\n"
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
-"المعطى \"%d\" غير صالح لـ --%s: المعطى يجب أن يكون رقماً إيجابياً غير الصفر\n"
+"المعطى \"%d\" غير صالح لـ --%s: المعطى يجب أن يكون رقمًا إيجابيًا غير الصفر\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "المعطى \"%d\" غير صالح لـ --%s: المعطى يجب أن يكون رقماً إيجابياً\n"
+msgstr "المعطى \"%d\" غير صالح لـ --%s: المعطى يجب أن يكون رقمًا إيجابيًا\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -637,7 +637,7 @@ msgstr "المعطى \"%s\" غير صالح لـ --%s، القيم الصالح�
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr "لا يمكن تغيير مخطط مساحة العمل على الشاشة: المخطط مملوك مسبقاً\n"
+msgstr "لا يمكن تغيير مخطط مساحة العمل على الشاشة: المخطط مملوك مسبقًا\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -987,11 +987,11 @@ msgstr "مكبّرة"
 
 #: ../libwnck/wnckprop.c:1547
 msgid "maximized horizontally"
-msgstr "مكبّرة أفقياً"
+msgstr "مكبّرة أفقيًا"
 
 #: ../libwnck/wnckprop.c:1549
 msgid "maximized vertically"
-msgstr "مكبّرة رأسياً"
+msgstr "مكبّرة رأسيًا"
 
 #: ../libwnck/wnckprop.c:1551
 msgid "shaded"
@@ -1019,7 +1019,7 @@ msgstr "ملء الشاشة"
 
 #: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
-msgstr "يتطلب انتباهاً"
+msgstr "يتطلب انتباهًا"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -1069,19 +1069,19 @@ msgstr "ألغ الإلصاق"
 
 #: ../libwnck/wnckprop.c:1595
 msgid "maximize horizontally"
-msgstr "كبّر أفقياً"
+msgstr "كبّر أفقيًا"
 
 #: ../libwnck/wnckprop.c:1597
 msgid "unmaximize horizontally"
-msgstr "ألغ التكبير أفقياً"
+msgstr "ألغ التكبير أفقيًا"
 
 #: ../libwnck/wnckprop.c:1599
 msgid "maximize vertically"
-msgstr "كبّر رأسياً"
+msgstr "كبّر رأسيًا"
 
 #: ../libwnck/wnckprop.c:1601
 msgid "unmaximize vertically"
-msgstr "ألغ التكبير رأسياً"
+msgstr "ألغ التكبير رأسيًا"
 
 #: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
@@ -1151,7 +1151,7 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"اطبع أو عدّل خصائص شاة/مساحة عمل/نافذة، أو تفاعل معها، متبعاً مواصفات EWMH.\n"
+"اطبع أو عدّل خصائص شاة/مساحة عمل/نافذة، أو تفاعل معها، متبعًا مواصفات EWMH.\n"
 "لمعلومات حول هذه المواصفات، راجع:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
