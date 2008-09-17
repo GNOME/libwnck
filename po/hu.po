@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-09 21:26+0000\n"
-"PO-Revision-Date: 2008-06-21 15:45+0200\n"
+"POT-Creation-Date: 2008-06-21 14:25+0000\n"
+"PO-Revision-Date: 2008-09-17 02:41+0200\n"
 "Last-Translator: Gabor Kelemen <kelemeng@gnome.hu>\n"
 "Language-Team: Hungarian <gnome@fsf.hu>\n"
 "MIME-Version: 1.0\n"
@@ -56,17 +56,17 @@ msgstr "Munkaterületek közötti váltást segítő eszköz"
 msgid "Click this to switch to workspace %s"
 msgstr "Kattintson ide a(z) %s. munkaterületre váltáshoz"
 
-#: ../libwnck/pager.c:1906
+#: ../libwnck/pager.c:1908
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Kattintson a(z) „%s” húzásának megkezdéséhez"
 
-#: ../libwnck/pager.c:1909
+#: ../libwnck/pager.c:1911
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Jelenlegi munkaterület: „%s”"
 
-#: ../libwnck/pager.c:1914
+#: ../libwnck/pager.c:1916
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Kattintson ide a következőre váltáshoz: „%s”"
@@ -156,78 +156,78 @@ msgstr "Az összes munkaterület ablakainak megjelenítése"
 msgid "Enable Transparency"
 msgstr "Átlátszóság engedélyezése"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:415
 msgid "Unmi_nimize"
 msgstr "_Eredeti méret"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:422
 msgid "Mi_nimize"
 msgstr "Mi_nimalizálás"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:430
 msgid "Unma_ximize"
 msgstr "_Eredeti méret"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:437
 msgid "Ma_ximize"
 msgstr "Ma_ximalizálás"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:744 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. munkaterület"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
 #, c-format
 msgid "Workspace 1_0"
 msgstr "1_0. munkaterület"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d. munkaterület"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1045
 msgid "_Move"
 msgstr "Át_helyezés"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1052
 msgid "_Resize"
 msgstr "Át_méretezés"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1061
 msgid "Always On _Top"
 msgstr "Mindig _felül"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1069
 msgid "_Always on Visible Workspace"
 msgstr "Mindig a látható m_unkaterületen"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1074
 msgid "_Only on This Workspace"
 msgstr "_Csak ezen a munkaterületen"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1081
 msgid "Move to Workspace _Left"
 msgstr "Áthelyezés a bal ol_dali munkaterületre"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1087
 msgid "Move to Workspace R_ight"
 msgstr "Áthelyezés a j_obb oldali munkaterületre"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1093
 msgid "Move to Workspace _Up"
 msgstr "Áthelyezés a fel_ső munkaterületre"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1099
 msgid "Move to Workspace _Down"
 msgstr "Áthelyezés az _alsó munkaterületre"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1102
 msgid "Move to Another _Workspace"
 msgstr "Áthelyezés mási_k munkaterületre"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1122
 msgid "_Close"
 msgstr "_Bezárás"
 
@@ -316,11 +316,11 @@ msgstr "A képernyő munkaterület-elrendezésének módosítása SZÁM oszlop h
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
-msgstr "A munkaasztal megjelenítése"
+msgstr "Az asztal megjelenítése"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Stop showing the desktop"
-msgstr "A munkaasztal megjelenítésének befejezése"
+msgstr "Az asztal megjelenítésének befejezése"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -774,7 +774,7 @@ msgstr "Aktív ablak: %s\n"
 #: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr "A munkaasztal megjelenítése: %s\n"
+msgstr "Az asztal megjelenítése: %s\n"
 
 #: ../libwnck/wnckprop.c:1233
 msgid "true"
@@ -916,7 +916,7 @@ msgstr "normál ablak"
 
 #: ../libwnck/wnckprop.c:1454
 msgid "desktop"
-msgstr "munkaasztal"
+msgstr "asztal"
 
 #: ../libwnck/wnckprop.c:1457
 msgid "dock or panel"
