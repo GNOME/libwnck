@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-11-11 19:24+0000\n"
-"PO-Revision-Date: 2007-11-26 18:33+0000\n"
+"PO-Revision-Date: 2008-09-19 08:37+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -69,9 +69,9 @@ msgid "Current workspace: \"%s\""
 msgstr "Praegune tööala: \"%s\""
 
 #: ../libwnck/pager.c:1912
-#, fuzzy, c-format
+#, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Klõpsa siin, et liikuda tööalale %s"
+msgstr "Klõpsa siin, et liikuda tööalale \"%s\""
 
 #: ../libwnck/selector.c:1171
 msgid "No Windows Open"
@@ -202,7 +202,7 @@ msgstr "Alati kõige p_ealmine"
 
 #: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
-msgstr "_Alati nähtaval tööalal"
+msgstr "Alati nä_htaval tööalal"
 
 #: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
@@ -246,9 +246,8 @@ msgid "Untitled window"
 msgstr "Pealkirjata aken"
 
 #: ../libwnck/wnckprop.c:139
-#, fuzzy
 msgid "X window ID of the window to examine or modify"
-msgstr "Uuritava X'i akna ID"
+msgstr "Uuritava või muudetava X'i akna ID"
 
 #: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
 #: ../libwnck/wnckprop.c:154
@@ -259,9 +258,8 @@ msgstr "XID"
 #. * of windows, ie: if you have multiple windows in one application, one window
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
-#, fuzzy
 msgid "X window ID of the group leader of an application to examine"
-msgstr "Uuritava X'i akna ID"
+msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
@@ -452,20 +450,17 @@ msgstr ""
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
-#, fuzzy
 msgid "Make the window not appear in tasklists"
-msgstr "Akent ei näidata akende nimekirjas"
+msgstr ""
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
-#, fuzzy
 msgid "Make the window appear in tasklists"
-msgstr "Akent ei näidata akende nimekirjas"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:258
-#, fuzzy
 msgid "Make the window visible on all workspaces"
-msgstr "Aknaid näidatakse kõigil tööaladel"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
@@ -1055,24 +1050,20 @@ msgid "unstick"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1595
-#, fuzzy
 msgid "maximize horizontally"
-msgstr "_Taasta kõik"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1597
-#, fuzzy
 msgid "unmaximize horizontally"
-msgstr "_Taasta kõik"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1599
-#, fuzzy
 msgid "maximize vertically"
-msgstr "_Taasta kõik"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1601
-#, fuzzy
 msgid "unmaximize vertically"
-msgstr "_Taasta kõik"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
@@ -1087,33 +1078,28 @@ msgid "unpin"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1609
-#, fuzzy
 msgid "minimize"
-msgstr "_Taasta"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1610
-#, fuzzy
 msgid "unminimize"
-msgstr "_Taasta"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1611
-#, fuzzy
 msgid "maximize"
-msgstr "Taasta s_uurus"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1612
-#, fuzzy
 msgid "unmaximize"
-msgstr "Taasta s_uurus"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1614
 msgid "change fullscreen mode"
 msgstr ""
 
 #: ../libwnck/wnckprop.c:1615
-#, fuzzy
 msgid "close"
-msgstr "_Sulge"
+msgstr ""
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
