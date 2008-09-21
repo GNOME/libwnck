@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-21 15:50+0700\n"
-"PO-Revision-Date: 2008-09-21 15:52+0700\n"
+"PO-Revision-Date: 2008-09-21 15:55+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -339,11 +339,11 @@ msgstr "Y"
 
 #: libwnck/wnckprop.c:191
 msgid "Minimize the window"
-msgstr "ย่อหน้าต่างหาย"
+msgstr "ย่อเก็บหน้าต่าง"
 
 #: libwnck/wnckprop.c:193
 msgid "Unminimize the window"
-msgstr "เลิกย่อหน้าต่างหาย"
+msgstr "เลิกย่อเก็บหน้าต่าง"
 
 #: libwnck/wnckprop.c:195
 msgid "Maximize the window"
