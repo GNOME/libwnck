@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-01 17:50+0700\n"
-"PO-Revision-Date: 2008-02-01 17:54+0700\n"
+"POT-Creation-Date: 2008-09-21 15:50+0700\n"
+"PO-Revision-Date: 2008-09-21 15:52+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -52,17 +52,17 @@ msgstr "ใช้สลับไปมาระหว่างพื้นที
 msgid "Click this to switch to workspace %s"
 msgstr "กดที่นี่แล้วจะสลับไปพื้นที่ทำงาน %s"
 
-#: libwnck/pager.c:1906
+#: libwnck/pager.c:1908
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "คลิกเพื่อเริ่มลาก \"%s\""
 
-#: libwnck/pager.c:1909
+#: libwnck/pager.c:1911
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "พื้นที่ทำงานปัจจุบัน: \"%s\""
 
-#: libwnck/pager.c:1914
+#: libwnck/pager.c:1916
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "คลิกเพื่อสลับไป %s"
@@ -89,11 +89,11 @@ msgstr "ใช้สลับไปมาระหว่างหน้าต่
 
 #: libwnck/tasklist.c:3016
 msgid "Mi_nimize All"
-msgstr "_ย่อหายทั้งหมด"
+msgstr "_ย่อเก็บทั้งหมด"
 
 #: libwnck/tasklist.c:3027
 msgid "Un_minimize All"
-msgstr "เ_ลิกย่อหายทั้งหมด"
+msgstr "เ_ลิกย่อเก็บทั้งหมด"
 
 #: libwnck/tasklist.c:3035
 msgid "Ma_ximize All"
@@ -152,78 +152,78 @@ msgstr "แสดงหน้าต่างของทุกพื้นที
 msgid "Enable Transparency"
 msgstr "เปิดใช้หน้าต่างโปร่งแสง"
 
-#: libwnck/window-action-menu.c:413
+#: libwnck/window-action-menu.c:415
 msgid "Unmi_nimize"
-msgstr "เลิกย่_อหาย"
+msgstr "เลิกย่_อเก็บ"
 
-#: libwnck/window-action-menu.c:420
+#: libwnck/window-action-menu.c:422
 msgid "Mi_nimize"
-msgstr "ย่_อหาย"
+msgstr "ย่_อเก็บ"
 
-#: libwnck/window-action-menu.c:428
+#: libwnck/window-action-menu.c:430
 msgid "Unma_ximize"
 msgstr "เลิกขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:435
+#: libwnck/window-action-menu.c:437
 msgid "Ma_ximize"
 msgstr "ขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:742 libwnck/workspace.c:281
+#: libwnck/window-action-menu.c:744 libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "พื้นที่ทำงาน %d"
 
-#: libwnck/window-action-menu.c:751 libwnck/window-action-menu.c:898
+#: libwnck/window-action-menu.c:753 libwnck/window-action-menu.c:900
 #, c-format
 msgid "Workspace 1_0"
 msgstr "พื้นที่ทำงาน 1_0"
 
-#: libwnck/window-action-menu.c:753 libwnck/window-action-menu.c:900
+#: libwnck/window-action-menu.c:755 libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace %s%d"
 msgstr "พื้นที่ทำงาน %s%d"
 
-#: libwnck/window-action-menu.c:1043
+#: libwnck/window-action-menu.c:1045
 msgid "_Move"
 msgstr "ย้า_ย"
 
-#: libwnck/window-action-menu.c:1050
+#: libwnck/window-action-menu.c:1052
 msgid "_Resize"
 msgstr "_ปรับขนาด"
 
-#: libwnck/window-action-menu.c:1059
+#: libwnck/window-action-menu.c:1061
 msgid "Always On _Top"
 msgstr "อยู่_บนสุด"
 
-#: libwnck/window-action-menu.c:1067
+#: libwnck/window-action-menu.c:1069
 msgid "_Always on Visible Workspace"
 msgstr "บน_ทุกพื้นที่ทำงานที่มองเห็น"
 
-#: libwnck/window-action-menu.c:1072
+#: libwnck/window-action-menu.c:1074
 msgid "_Only on This Workspace"
 msgstr "บน_พื้นที่ทำงานนี้เท่านั้น"
 
-#: libwnck/window-action-menu.c:1079
+#: libwnck/window-action-menu.c:1081
 msgid "Move to Workspace _Left"
 msgstr "ย้ายไปพื้นที่ทำงานซ้_าย"
 
-#: libwnck/window-action-menu.c:1085
+#: libwnck/window-action-menu.c:1087
 msgid "Move to Workspace R_ight"
 msgstr "ย้ายไปพื้นที่ทำงานข_วา"
 
-#: libwnck/window-action-menu.c:1091
+#: libwnck/window-action-menu.c:1093
 msgid "Move to Workspace _Up"
 msgstr "ย้ายไปพื้นที่ทำงาน_บน"
 
-#: libwnck/window-action-menu.c:1097
+#: libwnck/window-action-menu.c:1099
 msgid "Move to Workspace _Down"
 msgstr "ย้ายไปพื้นที่ทำงาน_ล่าง"
 
-#: libwnck/window-action-menu.c:1100
+#: libwnck/window-action-menu.c:1102
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
 
-#: libwnck/window-action-menu.c:1120
+#: libwnck/window-action-menu.c:1122
 msgid "_Close"
 msgstr "ปิ_ด"
 
@@ -968,7 +968,7 @@ msgstr ", "
 
 #: libwnck/wnckprop.c:1542
 msgid "minimized"
-msgstr "ย่อหาย"
+msgstr "ย่อเก็บ"
 
 #: libwnck/wnckprop.c:1543
 msgid "maximized"
@@ -1086,11 +1086,11 @@ msgstr "เลิกปักหมุด"
 
 #: libwnck/wnckprop.c:1609
 msgid "minimize"
-msgstr "ย่อหาย"
+msgstr "ย่อเก็บ"
 
 #: libwnck/wnckprop.c:1610
 msgid "unminimize"
-msgstr "เลิกย่อหาย"
+msgstr "เลิกย่อเก็บ"
 
 #: libwnck/wnckprop.c:1611
 msgid "maximize"
@@ -1133,7 +1133,7 @@ msgstr "ไม่มีปฏิบัติการที่ทำได้"
 msgid "Possible Actions: %s\n"
 msgstr "ปฏิบัติการที่ทำได้: %s\n"
 
-#: libwnck/wnckprop.c:1803
+#: libwnck/wnckprop.c:1805
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1145,68 +1145,68 @@ msgstr ""
 "สำหรับข้อมูลเกี่ยวกับข้อกำหนดเหล่านี้ โปรดอ่าน:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: libwnck/wnckprop.c:1813
+#: libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
 msgstr "ตัวเลือกสำหรับแสดงรายการหน้าต่างหรือพื้นที่ทำงาน"
 
-#: libwnck/wnckprop.c:1814
+#: libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
 msgstr "แสดงตัวเลือกสำหรับการแสดงรายการหน้าต่างหรือพื้นที่ทำงาน"
 
-#: libwnck/wnckprop.c:1820
+#: libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
 msgstr "ตัวเลือกสำหรับแก้ไขคุณสมบัติของหน้าต่าง"
 
-#: libwnck/wnckprop.c:1821
+#: libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
 msgstr "แสดงตัวเลือกสำหรับแก้ไขคุณสมบัติของหน้าต่าง"
 
-#: libwnck/wnckprop.c:1827
+#: libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
 msgstr "ตัวเลือกสำหรับแก้ไขคุณสมบัติของพื้นที่ทำงาน"
 
-#: libwnck/wnckprop.c:1828
+#: libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
 msgstr "แสดงตัวเลือกสำหรับแก้ไขคุณสมบัติของพื้นที่ทำงาน"
 
-#: libwnck/wnckprop.c:1834
+#: libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
 msgstr "ตัวเลือกสำหรับแก้ไขคุณสมบัติของสกรีน"
 
-#: libwnck/wnckprop.c:1835
+#: libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
 msgstr "แสดงตัวเลือกสำหรับแก้ไขคุณสมบัติของสกรีน"
 
-#: libwnck/wnckprop.c:1845
+#: libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "เกิดข้อผิดพลาดขณะแจงอาร์กิวเมนต์: %s\n"
 
-#: libwnck/wnckprop.c:1868
+#: libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "ไม่สามารถโต้ตอบกับสกรีน %d: ไม่มีสกรีนดังกล่าวอยู่\n"
 
-#: libwnck/wnckprop.c:1924
+#: libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "ไม่สามารถโต้ตอบกับพื้นที่ทำงาน %d: ไม่พบพื้นที่ทำงานดังกล่าว\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: libwnck/wnckprop.c:1947
+#: libwnck/wnckprop.c:1953
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "ไม่สามารถโต้ตอบกับกลุ่มคลาส \"%s\": ไม่พบกลุ่มคลาสดังกล่าว\n"
 
-#: libwnck/wnckprop.c:1970
+#: libwnck/wnckprop.c:1976
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr "ไม่สามารถโต้ตอบกับโปรแกรมที่มีหน้าต่างหลักที่มี XID เป็น %lu: ไม่พบโปรแกรมดังกล่าว\n"
 
-#: libwnck/wnckprop.c:1993
+#: libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "ไม่สามารถโต้ตอบกับหน้าต่างที่มี XID เป็น %lu: ไม่พบหน้าต่างดังกล่าว\n"
