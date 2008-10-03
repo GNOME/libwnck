@@ -2,16 +2,84 @@
 # This file is distributed under the same license as the libwnck package.
 # Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2007.
 #
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
+# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: ka\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-09-07 13:53+0200\n"
-"PO-Revision-Date: 2007-09-07 13:50+0200\n"
-"Last-Translator: Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
-"Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-list>\n"
+"POT-Creation-Date: 2008-09-30 11:39+0200\n"
+"PO-Revision-Date: 2008-09-30 12:59+0200\n"
+"Last-Translator: Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
+"Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-"
+"list>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type:  text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: KBabel 1.11.4\n"
@@ -41,7 +109,7 @@ msgstr "უსახელო პროგრამა"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
-msgstr "გარემოებს შორის გადამრთველი"
+msgstr "გარემოს გადამრთველი"
 
 #: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
@@ -55,7 +123,7 @@ msgstr "აქ დააწკაპუნეთ, %s გარემოში �
 #: ../libwnck/pager.c:1904
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr ""
+msgstr "დააწკაპეთ გადათრევის დაწყებისთვის \"%s\""
 
 #: ../libwnck/pager.c:1907
 #, c-format
@@ -88,9 +156,8 @@ msgid "Tool to switch between visible windows"
 msgstr "ხილულ ფანჯრებს შორის გადასვლის ხელსაწყო"
 
 #: ../libwnck/tasklist.c:3005
-#, fuzzy
 msgid "Mi_nimize All"
-msgstr "_ყველას მინიმიზირება"
+msgstr "ყველას მი_ნიმიზირება"
 
 #: ../libwnck/tasklist.c:3016
 msgid "Un_minimize All"
@@ -98,11 +165,11 @@ msgstr "ყველას მაქ_სიმიზირება"
 
 #: ../libwnck/tasklist.c:3024
 msgid "Ma_ximize All"
-msgstr "ყველას გაფა_რთოება"
+msgstr "ყველას მთლიან ეკრანზე გ_აშლა"
 
 #: ../libwnck/tasklist.c:3035
 msgid "_Unmaximize All"
-msgstr "ყველა პირვანდელი ზ_ომის დაბრუნება"
+msgstr "ყვ_ელასთვის თავდაპირველი ზომის დაბრუნება"
 
 #: ../libwnck/tasklist.c:3047
 msgid "_Close All"
@@ -110,11 +177,11 @@ msgstr "ყველას _დახურვა"
 
 #: ../libwnck/test-pager.c:15
 msgid "Use N_ROWS rows"
-msgstr ""
+msgstr "N_ROWS ხაზის გამოყენება"
 
 #: ../libwnck/test-pager.c:15
 msgid "N_ROWS"
-msgstr ""
+msgstr "N_ROWS"
 
 #: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
@@ -122,20 +189,22 @@ msgstr "მხოლოდ მიმდინარე გარემოს ჩ
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr ""
+msgstr "მარჯვნიდან მარცხნივ მიმართულების ნაგულისმევად გამოყენება"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
 msgstr ""
+"გარემოში გაშვებული პროგრამების მაგივრად სამუშაო გარემოთა სახელწოდებების "
+"ჩვენება"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr ""
+msgstr "ვერტიკალური ორიენტაციის გამოყენება"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr ""
+msgstr "ფანრის ფანჯრების სიაში არ გამოჩენა"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
@@ -143,15 +212,15 @@ msgstr "ფანჯრების დაჯგუფება ყოველ�
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
-msgstr ""
+msgstr "ფანჯრების არასდროს დაჯგუფება"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
-msgstr ""
+msgstr "ყველა გარემოდან ფანჯრების ჩვენება"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
-msgstr ""
+msgstr "გამჭვირვალე ეფექტის ჩართვა"
 
 #: ../libwnck/window-action-menu.c:387
 msgid "Unmi_nimize"
@@ -167,7 +236,7 @@ msgstr "თავდა_პირველი ზომის დაბრუნ
 
 #: ../libwnck/window-action-menu.c:409
 msgid "Ma_ximize"
-msgstr "გაფართო_ება"
+msgstr "მთელს ეკრანზე გაფართო_ება"
 
 #: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
 #, c-format
@@ -198,7 +267,7 @@ msgstr "ყოველთვის წინა _პლანზე"
 
 #: ../libwnck/window-action-menu.c:1019
 msgid "_Always on Visible Workspace"
-msgstr "_მიმდინ_არე გარემოში ჩვენება"
+msgstr "ყოვ_ელთვის ხილულ გარემოში ჩვენება"
 
 #: ../libwnck/window-action-menu.c:1024
 msgid "_Only on This Workspace"
@@ -214,11 +283,11 @@ msgstr "მარჯვენა გარემოშ_ი გადატან
 
 #: ../libwnck/window-action-menu.c:1043
 msgid "Move to Workspace _Up"
-msgstr "ქვემ_ო·გარემოში·გადატანა"
+msgstr "ზემ_ო·გარემოში·გადატანა"
 
 #: ../libwnck/window-action-menu.c:1049
 msgid "Move to Workspace _Down"
-msgstr "ქვედა გარემოში გა_დატანა"
+msgstr "ქვემო გარემოში გა_დატანა"
 
 #: ../libwnck/window-action-menu.c:1052
 msgid "Move to Another _Workspace"
@@ -243,46 +312,46 @@ msgstr "უსახელო ფანჯარა"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "X სერვერის ფანჯრის იდენტიფიკატორი, შემოწმება შეცვლისათვის"
 
 #: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
 #: ../libwnck/wnckprop.c:154
 msgid "XID"
-msgstr ""
+msgstr "XID"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one window
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "X სერვერის მთავარი ფანჯრის იდენტიფიკატორი, შემოწმება შეცვლისათვის"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "შესამოწმებელი კლასის ან ჯგუფტა კლასის რესურსი"
 
 #: ../libwnck/wnckprop.c:148
 msgid "CLASS"
-msgstr ""
+msgstr "კლასი"
 
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr ""
+msgstr "შესამოწმებელი ან შესაცვლელი სამუშაო გარემოთა რიცხვი"
 
 #: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
 #: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
 #: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
 msgid "NUMBER"
-msgstr ""
+msgstr "რიცხვი"
 
 #: ../libwnck/wnckprop.c:152
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "შესამოწმებელი ან შესაცვლელი ეკრანთა რიცხვი"
 
 #: ../libwnck/wnckprop.c:154
 msgid "Alias of --window"
-msgstr ""
+msgstr "იგივეა რაც --window"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:161
@@ -298,7 +367,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "ეკრანზე სამუშაო გარემოთა რიცხვის შეცვლა "
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
@@ -310,17 +379,18 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
-msgstr ""
+msgstr "სამუშაო მაგიდის ჩვენება"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "სამუშაო მაგიდის ჩვენების შეწყვეტა"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr ""
+"სამუშაო მაგიდის ხილული არის X-ის ჰორიზონტალურ კოორდინატთან გადაადგილება"
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
@@ -330,7 +400,7 @@ msgstr "X"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "სამუშაო მაგიდის ხილული არის Y-ის ვერტიკალურ კოორდინატთან გადაადგილება"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
@@ -346,35 +416,35 @@ msgstr "ფანჯრის გაშლა"
 
 #: ../libwnck/wnckprop.c:195
 msgid "Maximize the window"
-msgstr ""
+msgstr "მთელს ეკრანზე გაშლა"
 
 #: ../libwnck/wnckprop.c:197
 msgid "Unmaximize the window"
-msgstr "ფანჯრის პირვანდელი ზომა"
+msgstr "ფანჯრის თავდაპირველი ზომა"
 
 #: ../libwnck/wnckprop.c:199
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "ფანჯრის ჰორიზონტალურად გაშლა"
 
 #: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr "ფანჯრის პირვანდელი ზომა ჰორიზონტალურად"
+msgstr "ფანჯრის თავდაპირველი ჰორიზონტალური ზომის აღდგენა"
 
 #: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "ფანჯრის ვერტიკალურად გაშლა"
 
 #: ../libwnck/wnckprop.c:205
 msgid "Unmaximize vertically the window"
-msgstr "ფანჯრის პირვანდელი ზომა ვერტიკალურად"
+msgstr "ფანჯრის თავდაპირველი ვერტიკალური ზომის აღდგენა"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "ფანჯრის კლავიატურის მეშვეობით გადაადგილება"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "ფანჯრის ზომის კლავიატურის მეშვეობით შეცვლა"
 
 #: ../libwnck/wnckprop.c:211
 msgid "Activate the window"
@@ -382,15 +452,15 @@ msgstr "ფანჯრის გააქტიურება"
 
 #: ../libwnck/wnckprop.c:213
 msgid "Close the window"
-msgstr ""
+msgstr "ფანჯრის დახურვა"
 
 #: ../libwnck/wnckprop.c:216
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "ფანჯრის 'მთელს ეკრანზე' რეჟიმში გადაყვანა"
 
 #: ../libwnck/wnckprop.c:218
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "'მთელს ეკრანზე' რეჟიმიდან გამოსვლა"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
@@ -398,35 +468,35 @@ msgstr "ფანჯრის ყოველთვის წინა პლა
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr "ფანჯრის არასოდეს წინაპლანზე გამოჩენა"
+msgstr "ფანჯრის წინაპლანზე არასოდეს გამოჩენა"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "ფანჯრის დანარჩენებს ქვეშ ჩვენება"
 
 #: ../libwnck/wnckprop.c:226
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "ფანრის დანარჩენებს ქვეშ ჩვენების გაუქმება"
 
 #: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
-msgstr ""
+msgstr "ფანჯარა ჩარჩოში"
 
 #: ../libwnck/wnckprop.c:230
 msgid "Unshade the window"
-msgstr "ფანჯრის გააქტიურება"
+msgstr "ფანჯრის ჩარჩოს მოშორება"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "ხილულ გარემოში ფანჯრის მდებარეობის დაფიქსირება"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "ხილულ გარემოში ფანჯრის მდებარეობის ფიქსირების გაუქმება"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -434,7 +504,7 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "ფანჯრის სამუშაო გარემოს გადამრთველში არ გამოჩენა"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -442,53 +512,53 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "ფანჯრის სამუშაო გარემოს გადამრთველში გამოჩენა"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "ფანჯრების სიაში ფანჯრის დამალვა"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "ფანჯრების სიაში ფანჯრის ჩვენება"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "ფანჯრის ყველა სამუშაო გარემოში ჩვენება"
 
 #: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "ფანჯრის მხოლოდ მიმდინარე სამუშაო გარემოში ჩვენება"
 
 #: ../libwnck/wnckprop.c:262
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "ფანჯრის გადაადგილება სამუშაო გარემო ნომერი (პირველი სამუშაო გარემოა 0)"
 
 #: ../libwnck/wnckprop.c:264
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "ფანჯრის X კოორდინატის შეცვლა X-ზე"
 
 #: ../libwnck/wnckprop.c:266
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "ფანჯრის Y კოორდინატის შეცვლა Y-ზე"
 
 #: ../libwnck/wnckprop.c:268
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "ფანჯრის სიგანის შეცვლა სიგანე"
 
 #: ../libwnck/wnckprop.c:268
 msgid "WIDTH"
-msgstr ""
+msgstr "სიგანე"
 
 #: ../libwnck/wnckprop.c:270
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "ფანჯრის სიმაღლის შეცვლა სიმაღლე"
 
 #: ../libwnck/wnckprop.c:270
 msgid "HEIGHT"
-msgstr ""
+msgstr "სიმაღლე"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:273
@@ -496,6 +566,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"ფანჯრის ტიპის შეცვლა ტიპზე (შესაძლებელი მნიშვნელობები: normal, desktop, "
+"dock, dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
@@ -503,21 +575,21 @@ msgstr "ტიპი"
 
 #: ../libwnck/wnckprop.c:279
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "სამუშაო გარემოს სახელის შეცვლა სახელით"
 
 #: ../libwnck/wnckprop.c:279
 msgid "NAME"
-msgstr ""
+msgstr "სახელი"
 
 #: ../libwnck/wnckprop.c:281
 msgid "Activate the workspace"
-msgstr "სხვა გარემოში გადატანა"
+msgstr "სამუშაო გარემოს გააქტიურება"
 
 #: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
 #: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "მიუღებელი მნიშვნელობა \"%s\" --%s-თვის"
 
 #: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
 #, c-format
@@ -525,6 +597,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"გამოიყენება მიუღებელი პარამეტრი, მითითებულია ეკრანი %d, მაგრამ გამოიყენება --"
+"%s\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
@@ -588,7 +662,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:756
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "მოცემულია მიუღებელი პარამეტრები: --%s და --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
@@ -640,39 +714,41 @@ msgstr ""
 #: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
 #, c-format
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "დაუშვებელი ქმედება\n"
 
 #: ../libwnck/wnckprop.c:1022
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
+"შეუძლებელია ფანჯრის სამუშაო გარემო %d-ზე გადატანა: არ არსებული სამუშაო "
+"გარემო\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1217
 msgid "<name unset>"
-msgstr ""
+msgstr "<განუსაზღვრელი სახელწოდება>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1089
 #, c-format
 msgid "%lu: %s\n"
-msgstr ""
+msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1109
 #, c-format
 msgid "%d: %s\n"
-msgstr ""
+msgstr "%d: %s\n"
 
 #: ../libwnck/wnckprop.c:1172
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "ეკრანის ნომერი: %d\n"
 
 #: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1253
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr ""
+msgstr "ზომები (სიგანე, სიმაღლე): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1178
 #, c-format
@@ -682,7 +758,7 @@ msgstr "სამუშაო გარემოებების რაოდ�
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "სამუშაო გარემოებების განლაგება (რიგი, სვეტი, ორიენტაცია): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1249
 #: ../libwnck/wnckprop.c:1435
@@ -692,7 +768,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr ""
+msgstr "ფანჯრების მმართველი: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1277
@@ -700,14 +776,14 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1310 ../libwnck/wnckprop.c:1421
 #, c-format
 msgid "%d (\"%s\")"
-msgstr ""
+msgstr "%d (\"%s\")"
 
 #: ../libwnck/wnckprop.c:1204 ../libwnck/wnckprop.c:1225
 #: ../libwnck/wnckprop.c:1281 ../libwnck/wnckprop.c:1292
 #: ../libwnck/wnckprop.c:1303 ../libwnck/wnckprop.c:1314
 #: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1427
 msgid "none"
-msgstr ""
+msgstr "არა"
 
 #: ../libwnck/wnckprop.c:1205
 #, c-format
@@ -723,12 +799,12 @@ msgstr "\"%s\""
 #: ../libwnck/wnckprop.c:1220
 #, c-format
 msgid "%lu (%s)"
-msgstr ""
+msgstr "%lu (%s)"
 
 #: ../libwnck/wnckprop.c:1226
 #, c-format
 msgid "Active Window: %s\n"
-msgstr ""
+msgstr "აქტიური ფანჯარა: %s\n"
 
 #: ../libwnck/wnckprop.c:1229
 #, c-format
@@ -756,20 +832,20 @@ msgstr "სამუშაო გარემოებების რაოდ�
 #: ../libwnck/wnckprop.c:1250 ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "ეკრანზე: %d (ფანჯრების მმართველი: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1264
 msgid "<no viewport>"
-msgstr ""
+msgstr "<არავითარი ხილული არე>"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1267
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "ხილული გარემოს მდებარეობა (x, y): %s\n"
 
 #: ../libwnck/wnckprop.c:1270
 #, c-format
