@@ -103,7 +103,7 @@ msgstr "Ma_ximizar todas"
 
 #: ../libwnck/tasklist.c:3046
 msgid "_Unmaximize All"
-msgstr "Restaura_r todas"
+msgstr "Desfaze_r maximizar todas"
 
 #: ../libwnck/tasklist.c:3058
 msgid "_Close All"
@@ -164,7 +164,7 @@ msgstr "Mi_nimizar"
 
 #: ../libwnck/window-action-menu.c:430
 msgid "Unma_ximize"
-msgstr "Restaura_r"
+msgstr "Desfazer ma_ximizar"
 
 #: ../libwnck/window-action-menu.c:437
 msgid "Ma_ximize"

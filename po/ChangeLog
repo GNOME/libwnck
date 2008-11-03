@@ -1,3 +1,8 @@
+2008-11-03  Leonardo Ferreira Fontenelle  <leonardof@gnome.org>
+
+	* pt_BR.po: Minor fix in Brazilian Portuguese translation for better
+	coherence with metacity.
+
 2008-10-22  Jordi Mallach  <jordi@sindominio.net>
 
 	* ca@valencia.po: New Valencian (Southern Catalan) translation,
