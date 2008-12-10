@@ -3599,6 +3599,7 @@ wnck_task_drag_data_received (GtkWidget          *widget,
   tasklist = target_task->tasklist;
   xid = (gulong *)data->data;
   found_window = NULL;
+  new_order = 0;
   windows = wnck_screen_get_windows (tasklist->priv->screen);
 
   for (l = windows; l; l = l->next)

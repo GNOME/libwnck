@@ -21,7 +21,7 @@
 #ifndef __WNCK_WORKSPACE_ACCESSIBLE_H__
 #define __WNCK_WORKSPACE_ACCESSIBLE_H__
 
-#include <gtk/gtkaccessible.h>
+#include <gtk/gtk.h>
 #include <atk/atk.h>
 #include "workspace.h"
 #include "pager-accessible.h"

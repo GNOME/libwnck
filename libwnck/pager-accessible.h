@@ -21,7 +21,7 @@
 #ifndef __WNCK_PAGER_ACCESSIBLE_H__
 #define __WNCK_PAGER_ACCESSIBLE_H__
 
-#include <gtk/gtkaccessible.h>
+#include <gtk/gtk.h>
 #include <atk/atk.h>
 #include "pager.h"
 #include "screen.h"

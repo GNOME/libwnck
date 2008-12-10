@@ -1,3 +1,11 @@
+2008-12-10  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/pager-accessible.[ch]:
+	* libwnck/workspace-accessible.[ch]: single include for gtk+.
+	Patch by Pedro Fragoso <ember@ubuntu.com>, fix bug #563858.
+	* libwnck/tasklist.c: (wnck_task_drag_data_received): fix compiler
+	warning
+
 2008-11-25  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.24.3

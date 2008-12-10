@@ -20,7 +20,6 @@
 
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
-#include <gtk/gtkwidget.h>
 #include <errno.h>
 #include <unistd.h>
 #include "workspace-accessible.h"
