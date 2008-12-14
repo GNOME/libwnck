@@ -1,3 +1,8 @@
+2008-12-14  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.25.3
+
 2008-12-10  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/pager-accessible.[ch]:

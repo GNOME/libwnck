@@ -1,3 +1,11 @@
+2.25.3
+======
+
+ Fixes
+
+  - Use single include for GTK+ (Pedro Fragoso)
+  - Fix compiler warning (Vincent)
+
 2.24.2
 ======
 
