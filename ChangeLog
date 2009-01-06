@@ -1,3 +1,12 @@
+2009-01-06  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/pager.c:
+	* libwnck/screen.c:
+	* libwnck/tasklist.c:
+	* libwnck/util.c:
+	* libwnck/window-action-menu.c: undef WNCK_DISABLE_DEPRECATED, since
+	that's internal code.
+
 2008-12-14  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.25.4

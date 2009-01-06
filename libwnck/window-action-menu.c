@@ -21,6 +21,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#undef WNCK_DISABLE_DEPRECATED
+
 #include <config.h>
 
 #include <string.h>
