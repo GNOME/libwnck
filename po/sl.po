@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the libwnck package.
 #
 # Matic Žgur <mr.zgur@gmail.com>, 2006.
-# Matej Urbančič <mateju@svn.gnome.org>, 2007.
+# Matej Urbančič <mateju@svn.gnome.org>, 2007, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2007-07-10 16:51+0100\n"
-"PO-Revision-Date: 2007-12-11 18:07+0100\n"
+"PO-Revision-Date: 2009-01-07 16:09+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -708,7 +708,7 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1320
 #: ../libwnck/wnckprop.c:1435
 msgid "workspace|none"
-msgstr "workspace|brez"
+msgstr "brez"
 
 #: ../libwnck/wnckprop.c:1206
 #, c-format
@@ -729,7 +729,7 @@ msgstr "%lu (%s)"
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
 msgid "window|none"
-msgstr "window|brez"
+msgstr "brez"
 
 #: ../libwnck/wnckprop.c:1228
 #, c-format
@@ -870,7 +870,7 @@ msgstr "PID: %s\n"
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
 msgid "startupID|none"
-msgstr "startupID|brez"
+msgstr "brez"
 
 #: ../libwnck/wnckprop.c:1384
 #, c-format
@@ -908,7 +908,7 @@ msgstr "odtrgaj orodno vrstico"
 
 #: ../libwnck/wnckprop.c:1466
 msgid "tearoff menu"
-msgstr "odtrgaj menu"
+msgstr "odtrgaj meni"
 
 #: ../libwnck/wnckprop.c:1469
 msgid "utility window"
@@ -1147,7 +1147,7 @@ msgid ""
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
 "Natisni ali spremeni lastnosti zaslona/delovne površine, ali pa se z njo poveži, sledeč EWMH določilom.\n"
-"Za več podrobnosti o doličilih si oglejte:\n"
+"Za več podrobnosti o določilih si oglejte:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1813
