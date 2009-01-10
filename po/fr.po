@@ -1,5 +1,5 @@
 # French translation of libwnck.
-# Copyright (C) 2002-2008 Free Software Foundation, Inc.
+# Copyright (C) 2002-2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 #
 # Christophe Fergeau <teuf@users.sourceforge.net>, 2002.
@@ -9,7 +9,7 @@
 # Stéphane Raimbault <stephane.raimbault@gmail.com>, 2007.
 # Robert-André-Mauchin <zebob.m@pengzone.org>, 2007-2008.
 # Vincent Untz <vincent@vuntz.net>, 2007.
-# Claude Paroz <claude@2xlibre.net>, 2008.
+# Claude Paroz <claude@2xlibre.net>, 2008-2009.
 #
 # Unmaximize, unminimize -> restaurer
 # cf http://www.traduc.org/pipermail/gnomefr/2008-October/003765.html
@@ -19,8 +19,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-11 23:17+0200\n"
-"PO-Revision-Date: 2008-10-12 22:58+0200\n"
+"POT-Creation-Date: 2009-01-10 14:02+0100\n"
+"PO-Revision-Date: 2009-01-10 14:05+0100\n"
 "Last-Translator: Claude Paroz <claude@2xlibre.net>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -63,17 +63,17 @@ msgstr "Outil pour changer d'espace de travail"
 msgid "Click this to switch to workspace %s"
 msgstr "Cliquer ici pour atteindre l'espace de travail %s"
 
-#: ../libwnck/pager.c:1908
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Cliquer pour glisser « %s »"
 
-#: ../libwnck/pager.c:1911
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Espace de travail actuel : « %s »"
 
-#: ../libwnck/pager.c:1916
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Cliquer pour atteindre l'espace de travail %s"
@@ -90,31 +90,31 @@ msgstr "Sélecteur de fenêtres"
 msgid "Tool to switch between windows"
 msgstr "Outil pour basculer entre les fenêtres"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Liste des fenêtres"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Outil pour basculer entre les fenêtres visibles"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "Tout réd_uire"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "Tout r_estaurer"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "Tout ma_ximiser"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "Tout r_estaurer"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "Tout _fermer"
 
@@ -163,78 +163,78 @@ msgstr "Affiche les fenêtres de tous les espaces de travail"
 msgid "Enable Transparency"
 msgstr "Active la transparence"
 
-#: ../libwnck/window-action-menu.c:415
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "R_estaurer"
 
-#: ../libwnck/window-action-menu.c:422
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "Réd_uire"
 
-#: ../libwnck/window-action-menu.c:430
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "R_estaurer"
 
-#: ../libwnck/window-action-menu.c:437
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Ma_ximiser"
 
-#: ../libwnck/window-action-menu.c:744 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Espace de travail %d"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Espace de travail 1_0"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espace de travail %s%d"
 
-#: ../libwnck/window-action-menu.c:1045
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "Dé_placer"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_Redimensionner"
 
-#: ../libwnck/window-action-menu.c:1061
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Toujours au pre_mier plan"
 
-#: ../libwnck/window-action-menu.c:1069
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "_Toujours sur l'espace de travail visible"
 
-#: ../libwnck/window-action-menu.c:1074
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "_Seulement sur cet espace de travail"
 
-#: ../libwnck/window-action-menu.c:1081
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Déplacer vers l'espace de travail de _gauche"
 
-#: ../libwnck/window-action-menu.c:1087
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Déplacer vers l'espace de travail de _droite"
 
-#: ../libwnck/window-action-menu.c:1093
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Déplacer vers l'espace de travail du dess_us"
 
-#: ../libwnck/window-action-menu.c:1099
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Déplacer vers l'espace de travail du dess_ous"
 
-#: ../libwnck/window-action-menu.c:1102
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Déplacer vers un _autre espace de travail"
 
-#: ../libwnck/window-action-menu.c:1122
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "_Fermer"
 
@@ -644,7 +644,8 @@ msgstr ""
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "Paramètre « %d » non valide pour --%s : ce paramètre doit être positif\n"
+msgstr ""
+"Paramètre « %d » non valide pour --%s : ce paramètre doit être positif\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -761,7 +762,8 @@ msgstr "%d (« %s »)"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "aucun"
 
 #: ../libwnck/wnckprop.c:1206
@@ -782,7 +784,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "aucune"
 
 #: ../libwnck/wnckprop.c:1228
@@ -912,7 +915,8 @@ msgstr "PID : %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "aucun"
 
 #: ../libwnck/wnckprop.c:1384
@@ -1268,3 +1272,4 @@ msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
 "Impossible d'interagir avec la fenêtre ayant pour identifiant X %lu : cette "
 "fenêtre est introuvable\n"
+
