@@ -1,3 +1,9 @@
+2009-01-10  Vincent Untz  <vuntz@gnome.org>
+
+	* libwnck/wnckprop.c: (print_screen), (print_workspace),
+	(print_application), (print_window): use C_() instead of Q_().
+	Patch by Matthias Clasen <mclasen@redhat.com>, fix bug #558338.
+
 2009-01-06  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/pager.c:
