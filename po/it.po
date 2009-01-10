@@ -2,14 +2,14 @@
 # This file is distributed under the same license as libwnck package
 # Copyright (C) 2002-2008 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
-# Luca Ferretti <elle.uca@libero.it>, 2005-2008.
+# Luca Ferretti <elle.uca@libero.it>, 2005-2009.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.21.x\n"
+"Project-Id-Version: libwnck 2.25.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-28 16:30+0200\n"
-"PO-Revision-Date: 2008-09-28 16:34+0200\n"
+"POT-Creation-Date: 2009-01-10 14:35+0100\n"
+"PO-Revision-Date: 2009-01-10 14:37+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
 "Language-Team: Italiano <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -52,17 +52,17 @@ msgstr "Strumento per spostarsi tra le aree di lavoro"
 msgid "Click this to switch to workspace %s"
 msgstr "Fare clic qui per passare all'area di lavoro %s"
 
-#: ../libwnck/pager.c:1908
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Fare clic per iniziare a trascinare «%s»"
 
-#: ../libwnck/pager.c:1911
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Area di lavoro corrente: «%s»"
 
-#: ../libwnck/pager.c:1916
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Fare clic qui per passare a «%s»"
@@ -79,31 +79,31 @@ msgstr "Selettore finestra"
 msgid "Tool to switch between windows"
 msgstr "Strumento per spostarsi tra le finestre"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Elenco finestre"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Strumento per spostarsi tra le finestre visibili"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "_Minimizza tutto"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "_Deminimizza tutto"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "Ma_ssimizza"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "D_eminimizza tutto"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "_Chiudi tutto"
 
@@ -152,80 +152,80 @@ msgstr "Mostrare le finestre da tutte le aree di lavoro"
 msgid "Enable Transparency"
 msgstr "Abilitare la trasparenza"
 
-#: ../libwnck/window-action-menu.c:415
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "De_minimizza"
 
-#: ../libwnck/window-action-menu.c:422
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "_Minimizza"
 
-#: ../libwnck/window-action-menu.c:430
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "Dema_ssimizza"
 
-#: ../libwnck/window-action-menu.c:437
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Ma_ssimizza"
 
-#: ../libwnck/window-action-menu.c:744 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Area di lavoro %d"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Area di lavoro 1_0"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Area di lavoro %s%d"
 
-#: ../libwnck/window-action-menu.c:1045
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "M_uovi"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_Ridimensiona"
 
-#: ../libwnck/window-action-menu.c:1061
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Sempre in _primo piano"
 
 # GNOME-2-24
-#: ../libwnck/window-action-menu.c:1069
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "Sempre su area di lavoro _visibile"
 
-#: ../libwnck/window-action-menu.c:1074
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Solo su _questa area di lavoro"
 
-#: ../libwnck/window-action-menu.c:1081
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Sposta su area di lavoro a s_inistra"
 
-#: ../libwnck/window-action-menu.c:1087
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Sposta su area di lavoro a d_estra"
 
-#: ../libwnck/window-action-menu.c:1093
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Sposta su area di lavoro in alt_o"
 
-#: ../libwnck/window-action-menu.c:1099
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Sposta su area di lavoro in _basso"
 
 # GNOME-2-24
-#: ../libwnck/window-action-menu.c:1102
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Sposta su _altra area di lavoro"
 
-#: ../libwnck/window-action-menu.c:1122
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "_Chiudi"
 
@@ -749,7 +749,8 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "nessuna"
 
 #: ../libwnck/wnckprop.c:1206
@@ -770,7 +771,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "nessuna"
 
 #: ../libwnck/wnckprop.c:1228
@@ -904,7 +906,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "nessuno"
 
 #: ../libwnck/wnckprop.c:1384
@@ -1269,6 +1272,3 @@ msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
 "Impossibile interagire con la finestra con XID %lu: non è possibile trovare "
 "tale finestra\n"
-
-#~ msgid "none"
-#~ msgstr "nessuno"
