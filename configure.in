@@ -2,7 +2,7 @@ AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE(libwnck, 2.25.4)
+AM_INIT_AUTOMAKE(libwnck, 2.25.5)
 AM_MAINTAINER_MODE
 GNOME_COMMON_INIT
 GNOME_MAINTAINER_MODE_DEFINES
@@ -14,7 +14,7 @@ LIBWNCK_CURRENT=25
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=15
+LIBWNCK_REVISION=16
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has

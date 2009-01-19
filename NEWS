@@ -1,3 +1,22 @@
+2.25.5
+======
+
+ Fixes
+
+  - Make libwnck compile with gnome-common DEPRECATED variables (Vincent)
+  - Use C_() instead of Q_() (Matthias Clasen)
+
+ Translators
+
+  - Andre Klapper (de)
+  - Jorge González (es)
+  - Mattias Põldaru (et)
+  - Claude Paroz (fr)
+  - Luca Ferretti (it)
+  - Vladimir Melo (pt_BR)
+  - Matej Urbančič (sl)
+  - Daniel Nylander (sv)
+
 2.25.3
 ======
 

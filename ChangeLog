@@ -1,3 +1,8 @@
+2009-01-19  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in:
+	* NEWS: version 2.25.5
+
 2009-01-10  Vincent Untz  <vuntz@gnome.org>
 
 	* libwnck/wnckprop.c: (print_screen), (print_workspace),
