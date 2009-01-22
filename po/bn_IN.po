@@ -1,6 +1,6 @@
 # translation of bn_IN.po to Bengali INDIA
 # Bengali India translation of libwnck
-# Copyright (C) 2002, 2006, 2007, 2008 Free Software Foundation, Inc.
+# Copyright (C) 2002, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 #
 # Jamil Ahmed <jamil@bengalinux.org>, 2003.
@@ -8,13 +8,13 @@
 # Samia Niamatullah <mailsamia2001@yahoo.com>, 2005.
 # Runa Bhattacharjee <runabh@gmail.com>, 2007.
 # Sankarshan Mukhopadhyay <sankarshan.mukhopadhyay@gmail.com>, 2008.
-# Runa Bhattacharjee <runab@redhat.com>, 2008.
+# Runa Bhattacharjee <runab@redhat.com>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-05 18:17+0000\n"
-"PO-Revision-Date: 2008-09-08 17:45+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-01-10 12:36+0000\n"
+"PO-Revision-Date: 2009-01-22 16:05+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
 "Language-Team: Bengali INDIA <fedora-trans-bn_IN@redhat.com>\n"
 "MIME-Version: 1.0\n"
@@ -60,17 +60,17 @@ msgstr "কর্মক্ষেত্র পরিবর্তনের জন�
 msgid "Click this to switch to workspace %s"
 msgstr "কর্মক্ষেত্র %s-এ পরিবর্তন করতে এই স্থানে ক্লিক করুন"
 
-#: ../libwnck/pager.c:1906
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\" তে ক্লিক করুন টানার জন্য"
 
-#: ../libwnck/pager.c:1909
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "বর্তমান কর্মক্ষেত্রে: \"%s\""
 
-#: ../libwnck/pager.c:1914
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "%s-এ পরিবর্তন করতে এই স্থানে ক্লিক করুন"
@@ -87,31 +87,31 @@ msgstr "উইন্ডো নির্বাচন ব্যবস্থা"
 msgid "Tool to switch between windows"
 msgstr "উইন্ডো পরিবর্তন করতে ব্যবহৃত সামগ্রী"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "উইন্ডো তালিকা"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "দৃশ্যমান উইন্ডোর মধ্যে পরিবর্তন করতে ব্যবহৃত সামগ্রী"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "সব আড়াল করুন (_n)"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "সব প্রদর্শন করুন (_m)"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "সব বড় করুন (_x)"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "সব স্বাভাবিক মাপে প্রদর্শন করুন (_U)"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "সব বন্ধ করুন (_C)"
 
@@ -160,78 +160,78 @@ msgstr "সব কর্মক্ষেত্রের উইন্ডো প্
 msgid "Enable Transparency"
 msgstr "স্বচ্ছ প্রদর্শন সক্রিয় করা হবে"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "বড় করুন (_n)"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "আড়াল করুন (_n)"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "স্বাভাবিক মাপ (_x)"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "বড় করুন (_x)"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "কর্মক্ষেত্র %d"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "কর্মক্ষেত্র 1_0"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "কর্মক্ষেত্র %s%d"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "স্থানান্তরণ (_M)"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "মাপ পরিবর্তন (_R)"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "সর্বদা উপরে (_T)"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "দৃশ্যমান কর্মক্ষেত্রে সর্বদা উপস্থিত (_A)"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "শুধুমাত্র বর্তমান কর্মক্ষেত্রে (_O)"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "বাঁদিকের কর্মক্ষেত্রে স্থানান্তর করুন (_L)"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "ডান দিকের কর্মক্ষেত্রে স্থানান্তর করুন (_i)"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "উপরের কর্মক্ষেত্রে স্থানান্তরণ (_U)"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "নীচের কর্মক্ষেত্রে স্থানান্তরণ (_D)"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "পৃথক কর্মক্ষেত্রে স্থানান্তরণ (_W)"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "বন্ধ করুন (_C)"
 
@@ -536,42 +536,54 @@ msgstr "অবৈধ মান \"%s\", --%s-র জন্য"
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: পর্দা %d-র সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: পর্দা %d-র সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s "
+"ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: পর্দা %d-র উইন্ডো অথবা কর্মক্ষেত্র ব্যবহার করা উচিত, কিন্তু --%s ব্যবহার করা হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: পর্দা %d-র উইন্ডো অথবা কর্মক্ষেত্র ব্যবহার করা উচিত, "
+"কিন্তু --%s ব্যবহার করা হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: কর্মক্ষেত্র %d-র সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: কর্মক্ষেত্র %d-র সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%"
+"s ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: কর্মক্ষেত্র %d-র উইন্ডোগুলির তালিকা প্রদর্শিত হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: কর্মক্ষেত্র %d-র উইন্ডোগুলির তালিকা প্রদর্শিত হওয়া "
+"উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: একটি অ্যাপ্লিকেশনের সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: একটি অ্যাপ্লিকেশনের সাথে আদানপ্রদান হওয়া উচিত কিন্তু "
+"--%s ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: একটি অ্যাপ্লিকেশনের উইন্ডোর তালিকা প্রস্তুত হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: একটি অ্যাপ্লিকেশনের উইন্ডোর তালিকা প্রস্তুত হওয়া উচিত "
+"কিন্তু --%s ব্যবহৃত হয়েছে\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
@@ -579,7 +591,9 @@ msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্�
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: \"%s\" শ্রেণীর সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: \"%s\" শ্রেণীর সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%"
+"s ব্যবহৃত হয়েছে\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
@@ -587,14 +601,18 @@ msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্�
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: \"%s\" শ্রেণীভুক্ত উইন্ডোর তালিকা প্রস্তুত উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: \"%s\" শ্রেণীভুক্ত উইন্ডোর তালিকা প্রস্তুত উচিত কিন্তু --"
+"%s ব্যবহৃত হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: উইন্ডোর সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত হয়েছে\n"
+msgstr ""
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত রয়েছে: উইন্ডোর সাথে আদানপ্রদান হওয়া উচিত কিন্তু --%s ব্যবহৃত "
+"হয়েছে\n"
 
 #: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
 #: ../libwnck/wnckprop.c:756
@@ -605,12 +623,16 @@ msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্�
 #: ../libwnck/wnckprop.c:667
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr "অবৈধ আর্গুমেন্ট \"%d\", --%s-র সাথে ব্যবহৃত হয়েছে: আর্গুমেন্টের মান শূণ্যের অধিক হওয়া বাধ্যতামূলক\n"
+msgstr ""
+"অবৈধ আর্গুমেন্ট \"%d\", --%s-র সাথে ব্যবহৃত হয়েছে: আর্গুমেন্টের মান শূণ্যের অধিক হওয়া "
+"বাধ্যতামূলক\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "অবৈধ আর্গুমেন্ট \"%d\", --%s-র সাথে ব্যবহৃত হয়েছে: আর্গুমেন্টের মান শূণ্যের অধিক হওয়া উচিত\n"
+msgstr ""
+"অবৈধ আর্গুমেন্ট \"%d\", --%s-র সাথে ব্যবহৃত হয়েছে: আর্গুমেন্টের মান শূণ্যের অধিক হওয়া "
+"উচিত\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -716,8 +738,9 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
-msgstr "কর্মক্ষেত্র নেই"
+msgctxt "workspace"
+msgid "none"
+msgstr "শূণ্য"
 
 #: ../libwnck/wnckprop.c:1206
 #, c-format
@@ -737,8 +760,9 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
-msgstr "উইন্ডো নেই"
+msgctxt "window"
+msgid "none"
+msgstr "শূণ্যর"
 
 #: ../libwnck/wnckprop.c:1228
 #, c-format
@@ -867,7 +891,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "শূণ্য"
 
 #: ../libwnck/wnckprop.c:1384
@@ -894,7 +919,7 @@ msgstr "ডেস্কটপ"
 
 #: ../libwnck/wnckprop.c:1457
 msgid "dock or panel"
-msgstr ""
+msgstr "আটক করা হবে অথবা প্যানেল করা হবে"
 
 #: ../libwnck/wnckprop.c:1460
 msgid "dialog window"
@@ -1093,7 +1118,7 @@ msgstr "সর্বনিম্ন মাপে"
 
 #: ../libwnck/wnckprop.c:1610
 msgid "unminimize"
-msgstr ""
+msgstr "বড় করুন"
 
 #: ../libwnck/wnckprop.c:1611
 msgid "maximize"
@@ -1143,8 +1168,8 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"EWMH-র নির্দেশাবলী অনুযায়ী পর্দা/কর্মক্ষেত্রে/উইন্ডোর বৈশিষ্ট্য প্রিন্ট অথবা পরিবর্তন করুন "
-"অথবা এর সাথে ইন্টারেক্ট করুন।\n"
+"EWMH-র নির্দেশাবলী অনুযায়ী পর্দা/কর্মক্ষেত্রে/উইন্ডোর বৈশিষ্ট্য প্রিন্ট অথবা পরিবর্তন "
+"করুন অথবা এর সাথে ইন্টারেক্ট করুন।\n"
 "এই নির্দেশাবলী সম্পর্কে অধিক বিবরণ জানতে দেখুন:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
@@ -1206,7 +1231,9 @@ msgstr "শ্রেণী সংকলন \"%s\"-র সাথে ইন্ট�
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr "XID %lu নির্ধারিত দলের প্রধান উইন্ডো সহ অ্যাপ্লিকেশনের সাথে ইন্টারেক্ট করতে ব্যর্থ: অ্যাপ্লিকেশন পাওয়া যায়নি\n"
+msgstr ""
+"XID %lu নির্ধারিত দলের প্রধান উইন্ডো সহ অ্যাপ্লিকেশনের সাথে ইন্টারেক্ট করতে ব্যর্থ: "
+"অ্যাপ্লিকেশন পাওয়া যায়নি\n"
 
 #: ../libwnck/wnckprop.c:1999
 #, c-format
