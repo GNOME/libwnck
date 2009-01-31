@@ -1,3 +1,7 @@
+2009-01-31  Vincent Untz  <vuntz@gnome.org>
+
+	* configure.in: require glib 2.16.0 for C_(). Fix bug #569946.
+
 2009-01-19  Vincent Untz  <vuntz@gnome.org>
 
 	* configure.in: post-release bump to 2.25.90
