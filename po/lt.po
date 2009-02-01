@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-09 14:27+0200\n"
-"PO-Revision-Date: 2008-03-09 14:27+0200\n"
+"POT-Creation-Date: 2009-02-01 05:02+0200\n"
+"PO-Revision-Date: 2009-02-01 05:02+0200\n"
 "Last-Translator: Žygimantas Beručka <zygis@gnome.org>\n"
 "Language-Team: Lithuanian <gnome-lt@lists.akl.lt>\n"
 "MIME-Version: 1.0\n"
@@ -56,17 +56,17 @@ msgstr "Įrankis leidžiantis persijungti tarp darbalaukių"
 msgid "Click this to switch to workspace %s"
 msgstr "Spustelėkite norėdami perjungti į darbalaukį %s"
 
-#: ../libwnck/pager.c:1906
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Spustelėkite norėdami vilkti „%s“"
 
-#: ../libwnck/pager.c:1909
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Dabartinis darbalaukis: „%s“"
 
-#: ../libwnck/pager.c:1914
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Spustelėkite norėdami perjungti į „%s“"
@@ -83,31 +83,31 @@ msgstr "Langų parinkiklis"
 msgid "Tool to switch between windows"
 msgstr "Įrankis leidžiantis persijungti tarp langų"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Langų sąrašas"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Įrankis leidžiantis persijungti tarp matomų langų"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "_Sumažinti visus"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "Grąži_nti visus iš sumažinimo"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "Iš_didinti visus"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "Grąži_nti visus iš sumažinimo"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "_Užverti visus"
 
@@ -156,78 +156,78 @@ msgstr "Rodyti langus iš visų darbalaukių"
 msgid "Enable Transparency"
 msgstr "Įjungti permatomumą"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "G_rąžinti iš sumažinimo"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "Sumaži_nti"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "_Grąžinti iš išdidinimo"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Iš_didinti"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Darbalaukis %d"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "1_0-tas darbalaukis"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d darbalaukis"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "_Perkelti"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_Keisti dydį"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Visada virš_uje"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "_Visada matomame darbalaukyje"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "_Tik šiame darbalaukyje"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Perkelti į darbalaukį _kairėje"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Perkelti į darbalaukį _dešinėje"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Perkelti į darbalaukį _viršuje"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Perkelti į darbalaukį _apačioje"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Perkelti į kitą _darbalaukį"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "_Užverti"
 
@@ -741,7 +741,8 @@ msgstr "%d („%s“)"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "jokio"
 
 #: ../libwnck/wnckprop.c:1206
@@ -762,7 +763,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "jokio"
 
 #: ../libwnck/wnckprop.c:1228
@@ -892,7 +894,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "jokio"
 
 #: ../libwnck/wnckprop.c:1384
@@ -1238,3 +1241,12 @@ msgstr "Programa su grupės lyderiu, kurio XID %lu, nerasta\n"
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "Langas su XID %lu nerastas\n"
+
+#~ msgid "workspace|none"
+#~ msgstr "jokio"
+
+#~ msgid "window|none"
+#~ msgstr "jokio"
+
+#~ msgid "startupID|none"
+#~ msgstr "jokio"
