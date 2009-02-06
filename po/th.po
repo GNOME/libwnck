@@ -1,15 +1,15 @@
 # Thai translation for libwnck.
-# Copyright (C) 2003-2008 Free Software Foundation, Inc.
+# Copyright (C) 2003-2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 # Paisa Seeluangsawat <paisa@users.sf.net>, 2003.
-# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2008.
+# Theppitak Karoonboonyanan <thep@linux.thai.net>, 2005-2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-21 15:50+0700\n"
-"PO-Revision-Date: 2008-09-21 15:55+0700\n"
+"POT-Creation-Date: 2009-02-06 20:45+0700\n"
+"PO-Revision-Date: 2009-02-06 20:48+0700\n"
 "Last-Translator: Theppitak Karoonboonyanan <thep@linux.thai.net>\n"
 "Language-Team: Thai <thai-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -52,17 +52,17 @@ msgstr "ใช้สลับไปมาระหว่างพื้นที
 msgid "Click this to switch to workspace %s"
 msgstr "กดที่นี่แล้วจะสลับไปพื้นที่ทำงาน %s"
 
-#: libwnck/pager.c:1908
+#: libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "คลิกเพื่อเริ่มลาก \"%s\""
 
-#: libwnck/pager.c:1911
+#: libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "พื้นที่ทำงานปัจจุบัน: \"%s\""
 
-#: libwnck/pager.c:1916
+#: libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "คลิกเพื่อสลับไป %s"
@@ -79,31 +79,31 @@ msgstr "เลือกหน้าต่าง"
 msgid "Tool to switch between windows"
 msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
 
-#: libwnck/tasklist.c:727
+#: libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "ลิสต์หน้าต่าง"
 
-#: libwnck/tasklist.c:728
+#: libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "ใช้สลับไปมาระหว่างหน้าต่าง"
 
-#: libwnck/tasklist.c:3016
+#: libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "_ย่อเก็บทั้งหมด"
 
-#: libwnck/tasklist.c:3027
+#: libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "เ_ลิกย่อเก็บทั้งหมด"
 
-#: libwnck/tasklist.c:3035
+#: libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "_ขยายเต็มจอทั้งหมด"
 
-#: libwnck/tasklist.c:3046
+#: libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "เลิ_กขยายเต็มจอทั้งหมด"
 
-#: libwnck/tasklist.c:3058
+#: libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "ปิ_ดทั้งหมด"
 
@@ -152,78 +152,78 @@ msgstr "แสดงหน้าต่างของทุกพื้นที
 msgid "Enable Transparency"
 msgstr "เปิดใช้หน้าต่างโปร่งแสง"
 
-#: libwnck/window-action-menu.c:415
+#: libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "เลิกย่_อเก็บ"
 
-#: libwnck/window-action-menu.c:422
+#: libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "ย่_อเก็บ"
 
-#: libwnck/window-action-menu.c:430
+#: libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "เลิกขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:437
+#: libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "ขย_ายเต็มจอ"
 
-#: libwnck/window-action-menu.c:744 libwnck/workspace.c:281
+#: libwnck/window-action-menu.c:746 libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "พื้นที่ทำงาน %d"
 
-#: libwnck/window-action-menu.c:753 libwnck/window-action-menu.c:900
+#: libwnck/window-action-menu.c:755 libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "พื้นที่ทำงาน 1_0"
 
-#: libwnck/window-action-menu.c:755 libwnck/window-action-menu.c:902
+#: libwnck/window-action-menu.c:757 libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "พื้นที่ทำงาน %s%d"
 
-#: libwnck/window-action-menu.c:1045
+#: libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "ย้า_ย"
 
-#: libwnck/window-action-menu.c:1052
+#: libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_ปรับขนาด"
 
-#: libwnck/window-action-menu.c:1061
+#: libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "อยู่_บนสุด"
 
-#: libwnck/window-action-menu.c:1069
+#: libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "บน_ทุกพื้นที่ทำงานที่มองเห็น"
 
-#: libwnck/window-action-menu.c:1074
+#: libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "บน_พื้นที่ทำงานนี้เท่านั้น"
 
-#: libwnck/window-action-menu.c:1081
+#: libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "ย้ายไปพื้นที่ทำงานซ้_าย"
 
-#: libwnck/window-action-menu.c:1087
+#: libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "ย้ายไปพื้นที่ทำงานข_วา"
 
-#: libwnck/window-action-menu.c:1093
+#: libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "ย้ายไปพื้นที่ทำงาน_บน"
 
-#: libwnck/window-action-menu.c:1099
+#: libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "ย้ายไปพื้นที่ทำงาน_ล่าง"
 
-#: libwnck/window-action-menu.c:1102
+#: libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "ย้ายไป_พื้นที่ทำงานอื่น"
 
-#: libwnck/window-action-menu.c:1122
+#: libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "ปิ_ด"
 
@@ -713,7 +713,8 @@ msgstr "%d (\"%s\")"
 #: libwnck/wnckprop.c:1205 libwnck/wnckprop.c:1284
 #: libwnck/wnckprop.c:1296 libwnck/wnckprop.c:1308
 #: libwnck/wnckprop.c:1320 libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "ไม่มี"
 
 #: libwnck/wnckprop.c:1206
@@ -734,7 +735,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "ไม่มี"
 
 #: libwnck/wnckprop.c:1228
@@ -864,7 +866,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "ไม่มี"
 
 #: libwnck/wnckprop.c:1384
@@ -1210,9 +1213,6 @@ msgstr "ไม่สามารถโต้ตอบกับโปรแกร
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "ไม่สามารถโต้ตอบกับหน้าต่างที่มี XID เป็น %lu: ไม่พบหน้าต่างดังกล่าว\n"
-
-#~ msgid "none"
-#~ msgstr "ไม่มี"
 
 #~ msgid "Unknown Window"
 #~ msgstr "หน้าต่างไม่ทราบชื่อ"
