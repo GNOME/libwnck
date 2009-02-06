@@ -1,24 +1,24 @@
 # translation of or.po to Oriya
 # Oriya translation of libwnck.HEAD.pot.
-# Copyright (C) 2006, 2008, Free Software Foundation, Inc.
+# Copyright (C) 2006, 2008, 2009, Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 # $Id: or.po,v 1.1 2006/04/03 20:09:19 gmohanty Exp $
 #
 # Gora Mohanty <gora_mohanty@yahoo.co.in>, 2006.
-# Manoj Kumar Giri <mgiri@redhat.com>, 2008.
+# Manoj Kumar Giri <mgiri@redhat.com>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: or\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-11 19:24+0000\n"
-"PO-Revision-Date: 2008-09-02 19:32+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-01-10 12:36+0000\n"
+"PO-Revision-Date: 2009-02-06 15:30+0530\n"
 "Last-Translator: Manoj Kumar Giri <mgiri@redhat.com>\n"
-"Language-Team: Oriya\n"
+"Language-Team: Oriya <oriya-it@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2;plural=(n!=1)\n"
+"Plural-Forms:  nplurals=2; plural=(n!=1);\n\n"
 
 #. *
 #. * SECTION:application
@@ -56,17 +56,17 @@ msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର ମଧ୍ଯରେ ଘୁଞ�
 msgid "Click this to switch to workspace %s"
 msgstr "%s କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚିବା ପାଇଁ ଏହାକୁ ଦବାନ୍ତୁ"
 
-#: ../libwnck/pager.c:1904
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\"କୁ ଟାଣିବା ପାଇଁ ଦବାନ୍ତୁ"
 
-#: ../libwnck/pager.c:1907
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "ସାମ୍ପ୍ରତିକ କାର୍ଯ୍ୟସ୍ଥଳ: \"%s\""
 
-#: ../libwnck/pager.c:1912
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "\"%s\" କୁ ସ୍ଥାନାନ୍ତର ହେବା ପାଇଁ ଏହାକୁ ଦବାନ୍ତୁ"
@@ -83,31 +83,31 @@ msgstr "ୱିଣ୍ଡୋ ଚୟକ"
 msgid "Tool to switch between windows"
 msgstr "ୱିଣ୍ଡୋ ମଧ୍ଯରେ ଘୁଞ୍ଚାଇବା ପାଇଁ ସାଧନ"
 
-#: ../libwnck/tasklist.c:720
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "ୱିଣ୍ଡୋ ତାଲିକା"
 
-#: ../libwnck/tasklist.c:721
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "ଦୃଶ୍ଯମାନ ୱିଣ୍ଡୋ ମଧ୍ଯରେ ଘୁଞ୍ଚାଇବା ପାଇଁ ସାଧନ"
 
-#: ../libwnck/tasklist.c:3005
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "ସମସ୍ତଙ୍କୁ ଛୋଟ କରନ୍ତୁ (_n)"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "ସମସ୍ତଙ୍କୁ ଛୋଟ କରନ୍ତୁ ନାହିଁ (_m)"
 
-#: ../libwnck/tasklist.c:3024
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "ସମସ୍ତଙ୍କୁ ବଡ଼ କରନ୍ତୁ (_x)"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "ସମସ୍ତଙ୍କୁ ବଡ଼ କରନ୍ତୁ ନାହିଁ (_U)"
 
-#: ../libwnck/tasklist.c:3047
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "ସବୁ ବନ୍ଦ କରନ୍ତୁ (_C)"
 
@@ -156,77 +156,78 @@ msgstr "ସମସ୍ତ କାର୍ଯ୍ୟକ୍ଷେତ୍ରରୁ ୱି�
 msgid "Enable Transparency"
 msgstr "ସ୍ୱଚ୍ଛତାକୁ ସକ୍ରିୟ କରନ୍ତୁ"
 
-#: ../libwnck/window-action-menu.c:387
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "କ୍ଷୁଦ୍ରତମରୁ ବଢ଼ାନ୍ତୁ (_n)"
 
-#: ../libwnck/window-action-menu.c:394
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "ଯଥାସମ୍ଭବ ଛୋଟ କରନ୍ତୁ (_n)"
 
-#: ../libwnck/window-action-menu.c:402
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "ବୃହତ୍ତମରୁ ଛୋଟ କରନ୍ତୁ (_x)"
 
-#: ../libwnck/window-action-menu.c:409
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "ଯଥାସମ୍ଭବ ବଡ଼ କରନ୍ତୁ (_x)"
 
-#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର %d"
 
-#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#, c-format
 msgid "Workspace 1_0"
 msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର ୧_୦"
 
-#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର %s%d"
 
-#: ../libwnck/window-action-menu.c:995
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "ଘୁଞ୍ଚାନ୍ତୁ (_M)"
 
-#: ../libwnck/window-action-menu.c:1002
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "ଆକାର ବଦଳାନ୍ତୁ (_R)"
 
-#: ../libwnck/window-action-menu.c:1011
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "ସର୍ବଦା ଉପରେ (_T)"
 
-#: ../libwnck/window-action-menu.c:1019
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "ସଦାବେଳେ ଦୃଶ୍ଯମାନ କାର୍ଯ୍ଯକ୍ଷେତ୍ରରେ (_A)"
 
-#: ../libwnck/window-action-menu.c:1024
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "କେବଳ ଏହି କାର୍ଯ୍ଯକ୍ଷେତ୍ରରେ (_O)"
 
-#: ../libwnck/window-action-menu.c:1031
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "ବାମ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_L)"
 
-#: ../libwnck/window-action-menu.c:1037
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "ଡାହାଣ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_i)"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "ଉପର କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_U)"
 
-#: ../libwnck/window-action-menu.c:1049
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "ତଳ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_D)"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "ଅନ୍ଯ କାର୍ଯ୍ଯକ୍ଷେତ୍ରକୁ ଘୁଞ୍ଚାନ୍ତୁ (_W)"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "ବନ୍ଦ କରନ୍ତୁ (_C)"
 
@@ -498,7 +499,9 @@ msgstr "HEIGHT"
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
-msgstr "ୱିଣ୍ଡୋର ପ୍ରକାରକୁ TYPEକୁ ପରିବର୍ତ୍ତନ କରନ୍ତୁ (ବୈଧ ମୁଲ୍ୟ: ସାଧାରଣ, ଡେସ୍କଟପ, ଡକ, ସଂଳାପ, ସାଧନପଟି, ତାଲିକା, ଉପଯୋଗୀତା, ଛିଟା)"
+msgstr ""
+"ୱିଣ୍ଡୋର ପ୍ରକାରକୁ TYPEକୁ ପରିବର୍ତ୍ତନ କରନ୍ତୁ (ବୈଧ ମୁଲ୍ୟ: ସାଧାରଣ, ଡେସ୍କଟପ, ଡକ, ସଂଳାପ, ସାଧନପଟି, "
+"ତାଲିକା, ଉପଯୋଗୀତା, ଛିଟା)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
@@ -528,8 +531,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ପରଦା %d ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ପରଦା %d ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବ, କିନ୍ତୁ -- %s ବ୍ୟବହୃତ "
+"ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
@@ -537,8 +540,8 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ପରଦା %dର ୱିଣ୍ଡୋ କିମ୍ବା କାର୍ଯ୍ୟକ୍ଷେତ୍ରଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ପରଦା %dର ୱିଣ୍ଡୋ କିମ୍ବା କାର୍ଯ୍ୟକ୍ଷେତ୍ରଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, "
+"କିନ୍ତୁ -- %s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
@@ -546,8 +549,8 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: କାର୍ଯ୍ୟକ୍ଷେତ୍ର %dଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: କାର୍ଯ୍ୟକ୍ଷେତ୍ର %dଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବ, କିନ୍ତୁ -- %s ବ୍ୟବହୃତ "
+"ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
@@ -555,8 +558,8 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: କାର୍ଯ୍ୟକ୍ଷେତ୍ର %dର ୱିଣ୍ଡୋଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: କାର୍ଯ୍ୟକ୍ଷେତ୍ର %dର ୱିଣ୍ଡୋଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- %s "
+"ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
@@ -564,8 +567,8 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ପ୍ରୟୋଗ ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ପ୍ରୟୋଗ ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବା ଉଚିତ, କିନ୍ତୁ -- %s "
+"ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
@@ -573,8 +576,8 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ପ୍ରୟୋଗର ୱିଣ୍ଡୋଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ପ୍ରୟୋଗର ୱିଣ୍ଡୋଗୁଡ଼ିକ ତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- %s ବ୍ୟବହୃତ "
+"ହୋଇସାରିଛି\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
@@ -593,8 +596,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଶ୍ରେଣୀ ସମୁହ \"%s\"ର ୱିଣ୍ଡୋଗୁଡ଼ିକତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଶ୍ରେଣୀ ସମୁହ \"%s\"ର ୱିଣ୍ଡୋଗୁଡ଼ିକତାଲିକାଭୁକ୍ତ ହେବା ଉଚିତ, କିନ୍ତୁ -- %s "
+"ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
 #, c-format
@@ -602,8 +605,8 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ୱିଣ୍ଡୋ ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବା ଉଚିତ, କିନ୍ତୁ -- "
-"%s ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
+"ଦ୍ୱନ୍ଦମୟ ବିକଳ୍ପଗୁଡ଼ିକ ଉପସ୍ଥିତ: ଗୋଟିଏ ୱିଣ୍ଡୋ ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିବା ଉଚିତ, କିନ୍ତୁ -- %s "
+"ବ୍ୟବହୃତ ହୋଇସାରିଛି\n"
 
 #: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
 #: ../libwnck/wnckprop.c:756
@@ -632,6 +635,7 @@ msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "--%s ପାଇଁ ଅବୈଧ ସ୍ୱତନ୍ତ୍ରଚର \"%s\", ବୈଧ ମୂଲ୍ୟଗୁଡ଼ିକ ହେଲା: %s\n"
 
 #: ../libwnck/wnckprop.c:850
+#, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
@@ -640,12 +644,14 @@ msgstr "ପରଦାରେ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ବିନ�
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
+#, c-format
 msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr "ଦୃଶ୍ୟ ସଂଯୋଗୀକୁ ଗତିକରାଯାଇପାରିବ ନାହିଁ: ପ୍ରଚଳିତ କାର୍ଯ୍ୟକ୍ଷେତ୍ର କୌଣସି ଦୃଶ୍ୟ ସଂଯୋଗୀ ଧାରଣ କରିନାହିଁ\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "ଦୃଶ୍ୟ ସଂଯୋଗୀକୁ ଗତିକରାଯାଇପାରିବ ନାହିଁ: ଏଠାରେ କୌଣସି ପ୍ରଚଳିତ କାର୍ଯ୍ୟକ୍ଷେତ୍ର ନାହିଁ\n"
 
@@ -654,6 +660,7 @@ msgstr "ଦୃଶ୍ୟ ସଂଯୋଗୀକୁ ଗତିକରାଯାଇପ�
 #: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
 #: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
 #: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
+#, c-format
 msgid "Action not allowed\n"
 msgstr "କାର୍ଯ୍ୟ ଅନୁମୋଦିତ ନୁହଁ\n"
 
@@ -721,8 +728,9 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
-msgstr "କାର୍ଯ୍ଯକ୍ଷେତ୍ର|କେହି ନୁହଁ"
+msgctxt "workspace"
+msgid "none"
+msgstr "କେହି ନୁହଁ"
 
 #: ../libwnck/wnckprop.c:1206
 #, c-format
@@ -742,8 +750,9 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
-msgstr "ୱିଣ୍ଡୋ|କେହି ନୁହଁ"
+msgctxt "window"
+msgid "none"
+msgstr "କେହି ନୁହଁ"
 
 #: ../libwnck/wnckprop.c:1228
 #, c-format
@@ -872,8 +881,9 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
-msgstr "startupID|none"
+msgctxt "startupID"
+msgid "none"
+msgstr "କେହି ନୁହଁ"
 
 #: ../libwnck/wnckprop.c:1384
 #, c-format
@@ -1141,77 +1151,81 @@ msgstr "କୌଣସି କାର୍ଯ୍ୟ ସମ୍ଭବନୁହଁ"
 msgid "Possible Actions: %s\n"
 msgstr "ସମ୍ଭାବ୍ୟ କାର୍ଯ୍ୟ: %s\n"
 
-#: ../libwnck/wnckprop.c:1803
+#: ../libwnck/wnckprop.c:1805
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"ଗୋଟିଏ ପରଦା/ କାର୍ଯ୍ୟକ୍ଷେତ୍ର/ୱିଣ୍ଡୋର ଗୁଣଧର୍ମକୁ ମୁଦ୍ରଣ କିମ୍ବା ପରିବର୍ତ୍ତନ କରନ୍ତୁ, କିମ୍ବା ଏହା ସହିତ ପାରସ୍ପରିକ କ୍ରିୟାକରନ୍ତୁ, ନିମ୍ନଲିଖିତଗୁଡ଼ିକ ହେଲା  EWMH ନିର୍ଦ୍ଦିଷ୍ଟକ ସୂଚନା.\n ନିର୍ଦ୍ଦିଷ୍ଟକ ସୂଚନା ବିଷୟରେ ଅଧିକ ସୂଚନା ପାଇଁ:\n"
+"ଗୋଟିଏ ପରଦା/ କାର୍ଯ୍ୟକ୍ଷେତ୍ର/ୱିଣ୍ଡୋର ଗୁଣଧର୍ମକୁ ମୁଦ୍ରଣ କିମ୍ବା ପରିବର୍ତ୍ତନ କରନ୍ତୁ, କିମ୍ବା ଏହା ସହିତ "
+"ପାରସ୍ପରିକ କ୍ରିୟାକରନ୍ତୁ, ନିମ୍ନଲିଖିତଗୁଡ଼ିକ ହେଲା  EWMH ନିର୍ଦ୍ଦିଷ୍ଟକ ସୂଚନା.\n"
+" ନିର୍ଦ୍ଦିଷ୍ଟକ ସୂଚନା ବିଷୟରେ ଅଧିକ ସୂଚନା ପାଇଁ:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec ଦେଖନ୍ତୁ"
 
-#: ../libwnck/wnckprop.c:1813
+#: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
 msgstr "ତାଲିକା ୱିଣ୍ଡୋ କିମ୍ବା କାର୍ଯ୍ଯକ୍ଷେତ୍ରଗୁଡ଼ିକ ପାଇଁ ବିକଳ୍ପ"
 
-#: ../libwnck/wnckprop.c:1814
+#: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
 msgstr "ତାଲିକା ୱିଣ୍ଡୋ କିମ୍ବା କାର୍ଯ୍ଯକ୍ଷେତ୍ରଗୁଡ଼ିକ ପାଇଁ ବିକଳ୍ପ ଦେଖାନ୍ତୁ"
 
-#: ../libwnck/wnckprop.c:1820
+#: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
 msgstr "ଗୋଟିଏ ୱିଣ୍ଡୋର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ"
 
-#: ../libwnck/wnckprop.c:1821
+#: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
 msgstr "ଗୋଟିଏ ୱିଣ୍ଡୋର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ ଦର୍ଶାନ୍ତୁ"
 
-#: ../libwnck/wnckprop.c:1827
+#: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
 msgstr "ଗୋଟିଏ କାର୍ଯ୍ୟକ୍ଷେତ୍ରର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ"
 
-#: ../libwnck/wnckprop.c:1828
+#: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
 msgstr "ଗୋଟିଏ କାର୍ଯ୍ୟକ୍ଷେତ୍ରର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ ଦର୍ଶାନ୍ତୁ"
 
-#: ../libwnck/wnckprop.c:1834
+#: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
 msgstr "ଗୋଟିଏ ପରଦାର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ"
 
-#: ../libwnck/wnckprop.c:1835
+#: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
 msgstr "ଗୋଟିଏ ପରଦାର ଗୁଣଧର୍ମ ପରିବର୍ତ୍ତନ କରିବାକୁ ବିକଳ୍ପ ଦର୍ଶାନ୍ତୁ"
 
-#: ../libwnck/wnckprop.c:1845
+#: ../libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "ସ୍ୱତନ୍ତ୍ରଚର ବିଶ୍ଳେଷଣ କରିବା ସମୟରେ ତ୍ରୁଟି: %s\n"
 
-#: ../libwnck/wnckprop.c:1868
+#: ../libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "ପରଦା %d ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିପାରିବ ନାହିଁ: ସେହି ପରଦାଟି ଅବସ୍ଥିତ ନାହିଁ\n"
 
-#: ../libwnck/wnckprop.c:1924
+#: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "କାର୍ଯ୍ୟକ୍ଷେତ୍ର %d ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିପାରିବ ନାହିଁ: ସେହି କାର୍ଯ୍ୟକ୍ଷେତ୍ରଟି ମିଳୁନାହିଁ\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1947
+#: ../libwnck/wnckprop.c:1953
 #, c-format
 msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "ଶ୍ରେଣୀ ସମୁଦାୟ \"%s\" ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରିପାରିବ ନାହିଁ: ସେହି ଶ୍ରେଣୀ ସମୁଦାୟଟି ମିଳୁନାହିଁ\n"
 
-#: ../libwnck/wnckprop.c:1970
+#: ../libwnck/wnckprop.c:1976
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr "XID %lu ସହିତ ସମୁଦାୟର ନେତା ସହିତ ଥିବା ପ୍ରୟୋଗ ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରନ୍ତୁ ନାହିଁ: ପ୍ରୟୋଗ ମିଳିପାରିବ ନାହିଁ\n"
+msgstr ""
+"XID %lu ସହିତ ସମୁଦାୟର ନେତା ସହିତ ଥିବା ପ୍ରୟୋଗ ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରନ୍ତୁ ନାହିଁ: ପ୍ରୟୋଗ "
+"ମିଳିପାରିବ ନାହିଁ\n"
 
-#: ../libwnck/wnckprop.c:1993
+#: ../libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "XID %lu ସହିତ ଥିବା ୱିଣ୍ଡୋ ସହିତ ପାରସ୍ପରିକ କ୍ରିୟା କରନ୍ତୁ ନାହିଁ: ୱିଣ୍ଡୋ ମିଳିପାରିବ ନାହିଁ\n"
