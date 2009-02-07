@@ -1,40 +1,40 @@
 # Vietnamese translation for Libwnck
-# Copyright © 2008 Gnome i18n Project for Vietnamese.
+# Copyright © 2009 GNOME i18n Project for Vietnamese.
 # Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002, 2005, 2007.
-# Clytie Siddall <clytie@riverland.net.au>, 2006-2008.
-# 
+# Clytie Siddall <clytie@riverland.net.au>, 2006-2009.
+#
 msgid ""
-""
-msgstr "Project-Id-Version: libwnck 2.21.2.1\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-11 19:24+0000\n"
-"PO-Revision-Date: 2008-01-05 21:08+1030\n"
+msgstr ""
+"Project-Id-Version: libwnck 2.25.5\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-01-10 12:36+0000\n"
+"PO-Revision-Date: 2009-02-07 17:37+0930\n"
 "Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
-"Language-Team: Vietnamese <gnomevi-list@lists.sourceforge.net>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: LocFactoryEditor 1.7b1\n"
+"X-Generator: LocFactoryEditor 1.8\n"
 
-#.*
-#.* SECTION:application
-#.* @short_description: an object representing a group of windows of the same
-#.* application.
-#.* @see_also: wnck_window_get_application()
-#.* @stability: Unstable
-#.*
-#.* The #WnckApplication is a group of #WnckWindow that are all in the same
-#.* application. It can be used to represent windows by applications, group
-#.* windows by applications or to manipulate all windows of a particular
-#.* application.
-#.*
-#.* A #WnckApplication is identified by the group leader of the #WnckWindow
-#.* belonging to it, and new #WnckWindow are added to a #WnckApplication if and
-#.* only if they have the group leader of the #WnckApplication.
-#.*
-#.* The #WnckApplication objects are always owned by libwnck and must not be
-#.* referenced or unreferenced.
+#. *
+#. * SECTION:application
+#. * @short_description: an object representing a group of windows of the same
+#. * application.
+#. * @see_also: wnck_window_get_application()
+#. * @stability: Unstable
+#. *
+#. * The #WnckApplication is a group of #WnckWindow that are all in the same
+#. * application. It can be used to represent windows by applications, group
+#. * windows by applications or to manipulate all windows of a particular
+#. * application.
+#. *
+#. * A #WnckApplication is identified by the group leader of the #WnckWindow
+#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+#. * only if they have the group leader of the #WnckApplication.
+#. *
+#. * The #WnckApplication objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
 #.
 #: ../libwnck/application.c:51
 msgid "Untitled application"
@@ -53,17 +53,17 @@ msgstr "Công cụ để chuyển đổi giữa các vùng làm việc"
 msgid "Click this to switch to workspace %s"
 msgstr "Nhấn vào đây để chuyển qua vùng làm việc %s"
 
-#: ../libwnck/pager.c:1904
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Nhấn vào để bắt đầu kéo « %s »"
 
-#: ../libwnck/pager.c:1907
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Vùng làm việc đang dùng: « %s »"
 
-#: ../libwnck/pager.c:1912
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Nhấn vào để chuyển qua « %s »"
@@ -80,31 +80,31 @@ msgstr "Bộ chọn cửa sổ"
 msgid "Tool to switch between windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ"
 
-#: ../libwnck/tasklist.c:720
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Danh sách cửa sổ"
 
-#: ../libwnck/tasklist.c:721
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Công cụ để chuyển giữa các cửa sổ hiện rõ"
 
-#: ../libwnck/tasklist.c:3005
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "Thu _nhỏ tất cả"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "_Bỏ thu nhỏ tất cả"
 
-#: ../libwnck/tasklist.c:3024
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "_Phóng to tất cả"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "_Bỏ phóng to tất cả"
 
-#: ../libwnck/tasklist.c:3047
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "Đón_g tất cả"
 
@@ -133,7 +133,7 @@ msgstr "Hiển thị tên vùng làm việc thay cho nội dung vùng đó"
 msgid "Use a vertical orientation"
 msgstr "Hướng theo chiều dọc"
 
-#.Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/test-selector.c:12
 #: ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
@@ -155,91 +155,92 @@ msgstr "Hiển thị cửa sổ từ mọi vùng làm việc"
 msgid "Enable Transparency"
 msgstr "Bật trong suốt"
 
-#: ../libwnck/window-action-menu.c:387
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "Bỏ thu _nhỏ"
 
-#: ../libwnck/window-action-menu.c:394
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "Thu _nhỏ"
 
-#: ../libwnck/window-action-menu.c:402
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "Bỏ phóng t_o"
 
-#: ../libwnck/window-action-menu.c:409
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Phóng t_o"
 
-#: ../libwnck/window-action-menu.c:752
+#: ../libwnck/window-action-menu.c:746
 #: ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Vùng làm việc %d"
 
-#: ../libwnck/window-action-menu.c:761
-#: ../libwnck/window-action-menu.c:907
+#: ../libwnck/window-action-menu.c:755
+#: ../libwnck/window-action-menu.c:902
+#, c-format
 msgid "Workspace 1_0"
 msgstr "Vùng làm việc 1_0"
 
-#: ../libwnck/window-action-menu.c:763
-#: ../libwnck/window-action-menu.c:909
+#: ../libwnck/window-action-menu.c:757
+#: ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Vùng làm việc %s%d"
 
-#: ../libwnck/window-action-menu.c:995
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "_Di chuyển"
 
-#: ../libwnck/window-action-menu.c:1002
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "Đổi _cỡ"
 
-#: ../libwnck/window-action-menu.c:1011
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Luôn ở _trên"
 
-#: ../libwnck/window-action-menu.c:1019
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "_Luôn trong Vùng làm việc hiện rõ"
 
-#: ../libwnck/window-action-menu.c:1024
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Chỉ trong Vùng làm việc _này"
 
-#: ../libwnck/window-action-menu.c:1031
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Chuyển sang vùng làm việc bên t_rái"
 
-#: ../libwnck/window-action-menu.c:1037
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Chuyển sang vùng làm việc bên _phải"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Chuyển sang vùng làm việc bên _trên"
 
-#: ../libwnck/window-action-menu.c:1049
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Chuyển sang vùng làm việc bên _dưới"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Chuyển sang vùng làm việc _khác"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "Đón_g"
 
-#.*
-#.* SECTION:window
-#.* @short_description: an object representing a window.
-#.* @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
-#.* @stability: Unstable
-#.*
-#.* The #WnckWindow objects are always owned by libwnck and must not be
-#.* referenced or unreferenced.
+#. *
+#. * SECTION:window
+#. * @short_description: an object representing a window.
+#. * @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
+#. * @stability: Unstable
+#. *
+#. * The #WnckWindow objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
 #.
 #: ../libwnck/window.c:50
 msgid "Untitled window"
@@ -255,14 +256,14 @@ msgstr "ID cửa sổ X của cửa sổ cần kiểm tra hay sửa đổi"
 msgid "XID"
 msgstr "XID"
 
-#.Translators: A group leader is the window that is the "owner" of a group
-#.* of windows, ie: if you have multiple windows in one application, one window
-#.* has some information about the application (like the application name).
+#. Translators: A group leader is the window that is the "owner" of a group
+#. * of windows, ie: if you have multiple windows in one application, one window
+#. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
 msgstr "ID cửa sổ X của nhóm đầu của ứng dụng cần kiểm tra"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
 msgstr "Tài nguyên hạng của nhóm hạng cần kiểm tra"
@@ -292,19 +293,14 @@ msgstr "SỐ hiệu của màn hình cần kiểm tra hay sửa đổi"
 msgid "Alias of --window"
 msgstr "Bí danh của « --window »"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:161
-msgid ""
-"List windows of the application/class group/workspace/screen (output format: "
-"\"XID: Window Name\")"
-msgstr "Liệt kê các cửa sổ của ứng dụng/nhóm hạng/vùng làm việc/màn hình (định dạng "
-"xuất: « XID: Window Name »)"
+msgid "List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"
+msgstr "Liệt kê các cửa sổ của ứng dụng/nhóm hạng/vùng làm việc/màn hình (định dạng xuất: « XID: Window Name »)"
 
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr "Liệt kê các vùng làm việc của màn hình (định dạng xuất: « Number: Workspace "
-"Name »)"
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr "Liệt kê các vùng làm việc của màn hình (định dạng xuất: « Number: Workspace Name »)"
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
@@ -326,8 +322,8 @@ msgstr "Hiện màn hình nền"
 msgid "Stop showing the desktop"
 msgstr "Dừng hiện màn hình nền"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "Di chuyển cổng xem của vùng làm việc đang dùng thành toạ độ X X"
@@ -337,8 +333,8 @@ msgstr "Di chuyển cổng xem của vùng làm việc đang dùng thành toạ 
 msgid "X"
 msgstr "X"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "Di chuyển cổng xem của vùng làm việc đang dùng thành toạ độ Y Y"
@@ -428,40 +424,40 @@ msgstr "Tạo bóng trên cửa sổ"
 msgid "Unshade the window"
 msgstr "Bỏ bóng cửa sổ"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
 msgstr "Làm cho cửa sổ có vị trí cố định trong tầm nhìn"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
 msgstr "Làm cho cửa sổ không có vị trí cố định trong tầm nhìn"
 
-#.Translators: A pager is the technical term for the workspace switcher.
-#.* It's a representation of all workspaces with windows inside it.
-#.* Please make sure that the translation is in sync with gnome-panel,
-#.* where this term is also used in translatable strings
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
 msgstr "Làm cho cửa sổ xuất hiện trong bộ chuyển màn hình"
 
-#.Translators: A pager is the technical term for the workspace switcher.
-#.* It's a representation of all workspaces with windows inside it.
-#.* Please make sure that the translation is in sync with gnome-panel,
-#.* where this term is also used in translatable strings
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
 msgstr "Làm cho cửa sổ không xuất hiện trong bộ chuyển màn hình"
 
-#.Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
 msgstr "Làm cho cửa sổ không xuất hiện trong danh sách tác vụ"
 
-#.Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
 msgstr "Làm cho cửa sổ xuất hiện trong danh sách tác vụ"
@@ -502,12 +498,11 @@ msgstr "Thay đổi độ rộng của cửa sổ thành CAO"
 msgid "HEIGHT"
 msgstr "CAO"
 
-#.Translators: do not translate "normal, desktop, dock..."
+#. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:273
-msgid ""
-"Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
-msgstr "Thay đổi kiểu cửa sổ thành KIỂU (giá trị hợp lệ:\n"
+msgid "Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
+msgstr ""
+"Thay đổi kiểu cửa sổ thành KIỂU (giá trị hợp lệ:\n"
 " • normal\t\tchuẩn\n"
 " • desktop\tmàn hình nền\n"
 " • dock\t\tneo\n"
@@ -544,79 +539,52 @@ msgstr "Giá trị không hợp lệ « %s » cho « --%s »"
 #: ../libwnck/wnckprop.c:490
 #: ../libwnck/wnckprop.c:509
 #, c-format
-msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : màn hình %d nên nhận sự kiện tương tác, "
-"nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: screen %d should be interacted with, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : màn hình %d nên nhận sự kiện tương tác, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
-msgid ""
-"Conflicting options are present: windows or workspaces of screen %d should "
-"be listed, but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ hay vùng làm việc của màn "
-"hình %d nên được liệt kê, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: windows or workspaces of screen %d should be listed, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ hay vùng làm việc của màn hình %d nên được liệt kê, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:522
 #: ../libwnck/wnckprop.c:542
 #, c-format
-msgid ""
-"Conflicting options are present: workspace %d should be interacted with, but "
-"--%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : vùng làm việc %d nên nhận sự kiện tương "
-"tác, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: workspace %d should be interacted with, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : vùng làm việc %d nên nhận sự kiện tương tác, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
-msgid ""
-"Conflicting options are present: windows of workspace %d should be listed, "
-"but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của vùng làm việc %d nên được "
-"liệt kê, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: windows of workspace %d should be listed, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của vùng làm việc %d nên được liệt kê, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
-msgid ""
-"Conflicting options are present: an application should be interacted with, "
-"but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : một ứng dụng nên nhận sự kiện tương tác, "
-"nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: an application should be interacted with, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : một ứng dụng nên nhận sự kiện tương tác, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
-msgid ""
-"Conflicting options are present: windows of an application should be listed, "
-"but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của một ứng dụng nên được "
-"liệt kê, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: windows of an application should be listed, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của một ứng dụng nên được liệt kê, nhưng « --%s » đã được dùng\n"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
 #, c-format
-msgid ""
-"Conflicting options are present: class group \"%s\" should be interacted "
-"with, but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : nhóm hạng « %s » nên nhận sự kiện tương "
-"tác, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: class group \"%s\" should be interacted with, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : nhóm hạng « %s » nên nhận sự kiện tương tác, nhưng « --%s » đã được dùng\n"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
 #, c-format
-msgid ""
-"Conflicting options are present: windows of class group \"%s\" should be "
-"listed, but --%s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của nhóm hạng « %s » nên được "
-"liệt kê, nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: windows of class group \"%s\" should be listed, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : các cửa sổ của nhóm hạng « %s » nên được liệt kê, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:600
 #: ../libwnck/wnckprop.c:609
 #, c-format
-msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
-msgstr "Có các tùy chọn xung đột với nhau : một cửa sổ nên nhận sự kiện tương tác, "
-"nhưng « --%s » đã được dùng\n"
+msgid "Conflicting options are present: a window should be interacted with, but --%s has been used\n"
+msgstr "Có các tùy chọn xung đột với nhau : một cửa sổ nên nhận sự kiện tương tác, nhưng « --%s » đã được dùng\n"
 
 #: ../libwnck/wnckprop.c:628
 #: ../libwnck/wnckprop.c:709
@@ -627,8 +595,7 @@ msgstr "Có các tùy chọn xung đột với nhau : « --%s » và « --%s »\
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr "Đối số không hợp lệ « %d » cho « --%s »: đối số phải là số dương chính xác\n"
 
 #: ../libwnck/wnckprop.c:680
@@ -647,25 +614,25 @@ msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "Đối số không hợp lệ « %s » cho « --%s »: giá trị hợp lệ là: %s\n"
 
 #: ../libwnck/wnckprop.c:850
-msgid ""
-"Cannot change the workspace layout on the screen: the layout is already "
-"owned\n"
+#, c-format
+msgid "Cannot change the workspace layout on the screen: the layout is already owned\n"
 msgstr "Không thể thay đổi bố trí vùng làm việc trên màn hình: bố trí đã bị sở hữu\n"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+#, c-format
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr "Không thể di chuyển cổng xem: vùng làm việc đang dùng không chứa cổng xem\n"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "Không thể di chuyển cổng xem: không có vùng làm việc đang dùng\n"
 
-#.FIXME: why do we have dual & boolean API. This is not consistent!
+#. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:926
 #: ../libwnck/wnckprop.c:935
 #: ../libwnck/wnckprop.c:944
@@ -674,28 +641,28 @@ msgstr "Không thể di chuyển cổng xem: không có vùng làm việc đang 
 #: ../libwnck/wnckprop.c:968
 #: ../libwnck/wnckprop.c:977
 #: ../libwnck/wnckprop.c:1026
+#, c-format
 msgid "Action not allowed\n"
 msgstr "Hành động không được phép\n"
 
 #: ../libwnck/wnckprop.c:1022
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr "Cửa sổ không thể được di chuyển sang vùng làm việc %d: vùng làm việc không "
-"tồn tại\n"
+msgstr "Cửa sổ không thể được di chuyển sang vùng làm việc %d: vùng làm việc không tồn tại\n"
 
-#.Translators: 'unset' in the sense of "something has not been set".
+#. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1086
 #: ../libwnck/wnckprop.c:1218
 msgid "<name unset>"
 msgstr "<tên bị hủy đặt>"
 
-#.Translators: %lu is a window number and %s a window name
+#. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1089
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
-#.Translators: %d is a workspace number and %s a workspace name
+#. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1109
 #, c-format
 msgid "%d: %s\n"
@@ -733,7 +700,7 @@ msgstr "<không có bộ quản lý cửa sổ tùy theo EWMH>"
 msgid "Window Manager: %s\n"
 msgstr "Bộ quản lý cửa sổ : %s\n"
 
-#.Translators: %d is a workspace number and %s a workspace name
+#. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1200
 #: ../libwnck/wnckprop.c:1279
 #: ../libwnck/wnckprop.c:1291
@@ -744,14 +711,15 @@ msgstr "Bộ quản lý cửa sổ : %s\n"
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
-#.Translators: "none" here means "no workspace"
+#. Translators: "none" here means "no workspace"
 #: ../libwnck/wnckprop.c:1205
 #: ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296
 #: ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320
 #: ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "không có"
 
 #: ../libwnck/wnckprop.c:1206
@@ -764,15 +732,16 @@ msgstr "Vùng làm việc đang dùng: %s\n"
 msgid "\"%s\""
 msgstr "\"%s\""
 
-#.Translators: %lu is a window number and %s a window name
+#. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1221
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
-#.Translators: "none" here means "no window"
+#. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "không có"
 
 #: ../libwnck/wnckprop.c:1228
@@ -809,14 +778,14 @@ msgstr "Số hiệu vùng làm việc: %d\n"
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "Trên màn hình: %d (Bộ quản lý cửa sổ : %s)\n"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
 msgstr "<không có cổng xem>"
 
-#.Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#.a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
+#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
@@ -847,7 +816,7 @@ msgstr "Hàng xóm bên trên: %s\n"
 msgid "Bottom Neighbor: %s\n"
 msgstr "Hàng xóm bên dưới: %s\n"
 
-#.Translators: Ressource class is the name to identify a class.
+#. Translators: Ressource class is the name to identify a class.
 #: ../libwnck/wnckprop.c:1333
 #, c-format
 msgid "Resource Class: %s\n"
@@ -858,14 +827,14 @@ msgstr "Hạng tài nguyên: %s\n"
 msgid "Group Name: %s\n"
 msgstr "Tên nhóm: %s\n"
 
-#.Translators: 'set' in the sense of "something has been set".
+#. Translators: 'set' in the sense of "something has been set".
 #: ../libwnck/wnckprop.c:1341
 #: ../libwnck/wnckprop.c:1365
 #: ../libwnck/wnckprop.c:1419
 msgid "set"
 msgstr "đặt"
 
-#.Translators: 'unset' in the sense of "something has not been set".
+#. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1344
 #: ../libwnck/wnckprop.c:1368
 #: ../libwnck/wnckprop.c:1375
@@ -897,8 +866,8 @@ msgstr "Số cửa sổ : %d\n"
 msgid "Name: %s\n"
 msgstr "Tên: %s\n"
 
-#.Translators: note that "Icon" here has a specific window
-#.* management-related meaning. It means minimized.
+#. Translators: note that "Icon" here has a specific window
+#. * management-related meaning. It means minimized.
 #: ../libwnck/wnckprop.c:1361
 #: ../libwnck/wnckprop.c:1415
 #, c-format
@@ -911,9 +880,10 @@ msgstr "Tên biểu tượng: %s\n"
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
-#.Translators: "none" here means "no startup ID"
+#. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "không có"
 
 #: ../libwnck/wnckprop.c:1384
@@ -972,7 +942,7 @@ msgstr "Kiểu cửa sổ : %s\n"
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "Vị trí (x, y, rộng, cao): %d, %d, %d, %d\n"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1489
 #, c-format
 msgid "Class Group: %s\n"
@@ -988,30 +958,30 @@ msgstr "XID: %lu\n"
 msgid "Session ID: %s\n"
 msgstr "ID phiên chạy: %s\n"
 
-#.Translators: A group leader is the window that is the "owner" of a group
-#.* of windows, ie: if you have multiple windows in one application, one window
-#.* has some information about the application (like the application name).
+#. Translators: A group leader is the window that is the "owner" of a group
+#. * of windows, ie: if you have multiple windows in one application, one window
+#. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "Trưởng nhóm: %lu\n"
 
-#.Translators: A window can be transient for another window: it means it's on top of it
+#. Translators: A window can be transient for another window: it means it's on top of it
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "Chuyển tiếp cho : %lu\n"
 
-#.FIXME: else print something?
-#.Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
-#.Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
+#. FIXME: else print something?
+#. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
+#. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
 #: ../libwnck/wnckprop.c:1532
 #: ../libwnck/wnckprop.c:1579
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
-#.Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
+#. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
 #: ../libwnck/wnckprop.c:1536
 #: ../libwnck/wnckprop.c:1581
 msgid ", "
@@ -1061,15 +1031,15 @@ msgstr "toàn màn hình"
 msgid "needs attention"
 msgstr "cần sự chú ý"
 
-#.Translators: A pager is the technical term for the workspace switcher.
-#.* It's a representation of all workspaces with windows inside it.
-#.* Please make sure that the translation is in sync with gnome-panel,
-#.* where this term is also used in translatable strings
+#. Translators: A pager is the technical term for the workspace switcher.
+#. * It's a representation of all workspaces with windows inside it.
+#. * Please make sure that the translation is in sync with gnome-panel,
+#. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
 msgstr "bỏ qua bộ chuyển màn hình"
 
-#.Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
 msgstr "bỏ qua danh sách tác vụ"
@@ -1184,92 +1154,76 @@ msgstr "không thể làm gì"
 msgid "Possible Actions: %s\n"
 msgstr "Hành động có thể: %s\n"
 
-#: ../libwnck/wnckprop.c:1803
+#: ../libwnck/wnckprop.c:1805
 msgid ""
-"Print or modify the properties of a screen/workspace/window, or interact "
-"with it, following the EWMH specification.\n"
+"Print or modify the properties of a screen/workspace/window, or interact with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
-msgstr "In ra hay sửa đổi các thuộc tính của một màn hình/vùng làm việc/cửa sổ, hoặc "
-"tương tác với nó, tùy theo đặc tả EWMH.\n"
+msgstr ""
+"In ra hay sửa đổi các thuộc tính của một màn hình/vùng làm việc/cửa sổ, hoặc tương tác với nó, tùy theo đặc tả EWMH.\n"
 "Để tìm thông tin về đặc tả này, xem:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1813
+#: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
 msgstr "Tùy chọn để liệt kê cửa sổ hay vùng làm việc"
 
-#: ../libwnck/wnckprop.c:1814
+#: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
 msgstr "Hiển thị các tùy chọn để liệt kê cửa sổ hay vùng làm việc"
 
-#: ../libwnck/wnckprop.c:1820
+#: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
 msgstr "Tùy chọn để sửa đổi thuộc tính của cửa sổ"
 
-#: ../libwnck/wnckprop.c:1821
+#: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
 msgstr "Hiển thị các tùy chọn để sửa đổi thuộc tính của cửa sổ"
 
-#: ../libwnck/wnckprop.c:1827
+#: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
 msgstr "Tùy chọn để sửa đổi thuộc tính của vùng làm việc"
 
-#: ../libwnck/wnckprop.c:1828
+#: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
 msgstr "Hiển thị các tùy chọn để sửa đổi thuộc tính của vùng làm việc"
 
-#: ../libwnck/wnckprop.c:1834
+#: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
 msgstr "Tùy chọn để sửa đổi thuộc tính của màn hình"
 
-#: ../libwnck/wnckprop.c:1835
+#: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
 msgstr "Hiển thị các tùy chọn để sửa đổi thuộc tính của màn hình"
 
-#: ../libwnck/wnckprop.c:1845
+#: ../libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "Gặp lỗi khi phân tách các đối số : %s\n"
 
-#: ../libwnck/wnckprop.c:1868
+#: ../libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "Không thể tương tác với màn hình %d: màn hình không tồn tại\n"
 
-#: ../libwnck/wnckprop.c:1924
+#: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "Không thể tương tác với vùng làm việc %d: vùng làm việc không thể được tìm\n"
 
-#.Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1947
+#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#: ../libwnck/wnckprop.c:1953
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "Không thể tương tác với nhóm hạng « %s »: nhóm hạng không thể được tìm\n"
 
-#: ../libwnck/wnckprop.c:1970
+#: ../libwnck/wnckprop.c:1976
 #, c-format
-msgid ""
-"Cannot interact with application having its group leader with XID %lu: the "
-"application cannot be found\n"
-msgstr "Không thể tương tác với ứng dụng có nhóm đầu XID %lu: ứng dụng không thể "
-"được tìm\n"
+msgid "Cannot interact with application having its group leader with XID %lu: the application cannot be found\n"
+msgstr "Không thể tương tác với ứng dụng có nhóm đầu XID %lu: ứng dụng không thể được tìm\n"
 
-#: ../libwnck/wnckprop.c:1993
+#: ../libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "Không thể tương tác với cửa sổ có XID %lu: cửa sổ không thể được tìm\n"
 
-#~ msgid "none"
-#~ msgstr "không có"
-
-#~ msgid "Unknown Window"
-#~ msgstr "Cửa sổ lạ"
-
-#~ msgid "_Unroll"
-#~ msgstr "_Bỏ cuộn"
-
-#~ msgid "Roll _Up"
-#~ msgstr "Cuộn _lên"
