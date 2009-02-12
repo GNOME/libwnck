@@ -13,8 +13,8 @@ msgstr ""
 "Project-Id-Version: libwnck.HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
-"POT-Creation-Date: 2009-01-22 10:37+0000\n"
-"PO-Revision-Date: 2009-01-26 12:58+0100\n"
+"POT-Creation-Date: 2009-02-11 04:51+0000\n"
+"PO-Revision-Date: 2009-02-11 21:55+0100\n"
 "Last-Translator: Pavol Šimo <palo.simo@gmail.com>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
 "MIME-Version: 1.0\n"
@@ -198,7 +198,7 @@ msgstr "Zmeniť veľko_sť"
 
 #: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
-msgstr "Vždy na _vrchu"
+msgstr "Vždy na_vrchu"
 
 #: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
