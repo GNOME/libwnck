@@ -1,23 +1,23 @@
-# translation of libwnck.HEAD.po to Basque
+# translation of eu.po to Basque
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008, 2009.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-11 16:43+0100\n"
-"PO-Revision-Date: 2008-01-10 23:41+0100\n"
+"POT-Creation-Date: 2009-02-12 21:07+0100\n"
+"PO-Revision-Date: 2009-02-12 21:07+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 "\n"
 
 #. *
@@ -56,17 +56,17 @@ msgstr "Laneko area batetik bestera aldatzeko tresna"
 msgid "Click this to switch to workspace %s"
 msgstr "Egin klik hemen %s laneko areara aldatzeko"
 
-#: ../libwnck/pager.c:1903
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Egin klik \"%s\" arrastatzen hasteko"
 
-#: ../libwnck/pager.c:1906
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Uneko laneko area: \"%s\""
 
-#: ../libwnck/pager.c:1911
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Egin klik \"%s\"(e)ra aldatzeko"
@@ -83,31 +83,31 @@ msgstr "Leiho-hautatzailea"
 msgid "Tool to switch between windows"
 msgstr "Leiho batetik bestera aldatzeko tresna"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Leiho-zerrenda"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Leiho ikusgai batetik bestera aldatzeko tresna"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "M_inimizatu denak"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "_Leheneratu denak"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "M_aximizatu denak"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "_Leheneratu denak"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "It_xi denak"
 
@@ -156,77 +156,78 @@ msgstr "Bistaratu laneko areetako leiho guztiak"
 msgid "Enable Transparency"
 msgstr "Gaitu gardentasuna"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "Le_heneratu"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "_Ikonotu"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "Leh_eneratu"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "M_aximizatu"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "%d. laneko area"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#, c-format
 msgid "Workspace 1_0"
 msgstr "1_0 laneko area"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "%s%d laneko area"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "Aldatu _lekuz"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "Aldatu _tamaina"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Beti _goian"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "Laneko area ikusgaian _beti"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Laneko area _honetan bakarrik"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Eraman e_zkerreko laneko areara"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Eraman e_skuineko laneko areara"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Eraman _gaineko laneko areara"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Eraman _azpiko laneko areara"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Aldatu beste _laneko areara"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "It_xi"
 
@@ -296,8 +297,7 @@ msgstr ""
 "(irteerako formatua: \"XID: leiho-izena\")"
 
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 "Pantailako laneko areen zerrenda (irteerako formatua: \"Zenbakia: Laneko "
 "arearen izena\")"
@@ -308,13 +308,11 @@ msgstr "Aldatu pantailako laneko areen kopurua ZENBAKIra"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
-"Aldatu pantailako laneko arearen diseinua ZENBAKIA errenkadak erabiltzeko"
+msgstr "Aldatu pantailako laneko arearen diseinua ZENBAKIA errenkadak erabiltzeko"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
-"Aldatu pantailako laneko arearen diseinua ZENBAKIA zutabeak erabiltzeko"
+msgstr "Aldatu pantailako laneko arearen diseinua ZENBAKIA zutabeak erabiltzeko"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
@@ -621,8 +619,7 @@ msgstr "Gatazkan dauden aukerak agertu dira: --%s eta --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 "Baliogabeko \"%d\" argumentua --%s aukeran: argumentua derrigorrez positiboa "
 "izan behar da\n"
@@ -645,6 +642,7 @@ msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "Baliogabeko \"%s\" argumentua --%s aukeran. Baliozko balioak: %s\n"
 
 #: ../libwnck/wnckprop.c:850
+#, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
@@ -655,14 +653,14 @@ msgstr ""
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
-"Leihatila ezin da lekuz aldatu: uneko laneko areak ez du leihatilarik\n"
+#, c-format
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "Leihatila ezin da lekuz aldatu: uneko laneko areak ez du leihatilarik\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "Leihatila ezin da lakuz aldatu: ez dago uneko laneko arearik\n"
 
@@ -671,6 +669,7 @@ msgstr "Leihatila ezin da lakuz aldatu: ez dago uneko laneko arearik\n"
 #: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
 #: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
 #: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
+#, c-format
 msgid "Action not allowed\n"
 msgstr "Ekintza ez dago baimendua\n"
 
@@ -714,8 +713,7 @@ msgstr "Laneko areen kopurua: %d\n"
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
-"Laneko arearen diseinua (errenkadak, zutabeak, orientazioa): %d, %d, %s\n"
+msgstr "Laneko arearen diseinua (errenkadak, zutabeak, orientazioa): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
@@ -739,7 +737,8 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "bat ere ez"
 
 #: ../libwnck/wnckprop.c:1206
@@ -760,7 +759,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "bat ere ez"
 
 #: ../libwnck/wnckprop.c:1228
@@ -890,7 +890,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "bat ere ez"
 
 #: ../libwnck/wnckprop.c:1384
@@ -1159,7 +1160,7 @@ msgstr "ez dago ekintza posiblerik"
 msgid "Possible Actions: %s\n"
 msgstr "Ekintza posibleak: %s\n"
 
-#: ../libwnck/wnckprop.c:1803
+#: ../libwnck/wnckprop.c:1805
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1171,63 +1172,60 @@ msgstr ""
 "Zehaztapen honi buruzko informazio gehiago:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1813
+#: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
 msgstr "Aukerak leihoak edo laneko areak zerrendatzeko"
 
-#: ../libwnck/wnckprop.c:1814
+#: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
 msgstr "Erakutsi leihoak edo laneko areak zerrendatzeko aukerak"
 
-#: ../libwnck/wnckprop.c:1820
+#: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
 msgstr "Aukerak leihoaren propietateak aldatzeko"
 
-#: ../libwnck/wnckprop.c:1821
+#: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
 msgstr "Erakutsi leihoaren propietateak aldatzeko aukerak"
 
-#: ../libwnck/wnckprop.c:1827
+#: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
 msgstr "Aukerak laneko arearen propietateak aldatzeko"
 
-#: ../libwnck/wnckprop.c:1828
+#: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
 msgstr "Erakutsi laneko arearen propietateak aldatzeko aukerak"
 
-#: ../libwnck/wnckprop.c:1834
+#: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
 msgstr "Aukerak pantailaren propietateak aldatzeko"
 
-#: ../libwnck/wnckprop.c:1835
+#: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
 msgstr "Erakutsi pantailaren propietateak aldatzeko aukerak"
 
-#: ../libwnck/wnckprop.c:1845
+#: ../libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "Errorea argumentuak analizatzean: %s\n"
 
-#: ../libwnck/wnckprop.c:1868
+#: ../libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "Ezin da %d. pantailarekin elkarreragin: pantaila ez da existitzen\n"
 
-#: ../libwnck/wnckprop.c:1924
+#: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
-"Ezin da %d laneko arearekin elkarreragin: ezin da laneko area aurkitu\n"
+msgstr "Ezin da %d laneko arearekin elkarreragin: ezin da laneko area aurkitu\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1947
+#: ../libwnck/wnckprop.c:1953
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
-"Ezin da \"%s\" klase-taldearekin elkarreragin: ezin da klase-taldea aurkitu\n"
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr "Ezin da \"%s\" klase-taldearekin elkarreragin: ezin da klase-taldea aurkitu\n"
 
-#: ../libwnck/wnckprop.c:1970
+#: ../libwnck/wnckprop.c:1976
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
@@ -1236,7 +1234,8 @@ msgstr ""
 "Ezin da %lu XID talde-buruaren aplikazioarekin elkarreragin: ez da "
 "aplikazioa aurkitu\n"
 
-#: ../libwnck/wnckprop.c:1993
+#: ../libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "Ezin da %lu XID leihoarekin elkarreragin: ezin da leihoa aurkitu\n"
+
