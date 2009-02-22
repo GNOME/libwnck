@@ -4,20 +4,18 @@
 #
 # Mișu Moldovan <dumol@gnome.ro>, 2003 - 2005.
 # Mugurel Tudor <mugurelu@gnome.ro>, 2006.
+# Adi Roiban https://launchpad.net/~adiroiban, 2008, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.HEAD.ro\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-11 19:24+0000\n"
-"PO-Revision-Date: 2006-03-10 00:31+0200\n"
-"Last-Translator: Mugurel Tudor <mugurelu@gnome.ro>\n"
-"Language-Team: Română <gnomero@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2009-01-21 08:19+0000\n"
+"PO-Revision-Date: 2009-02-22 14:00+0200\n"
+"Last-Translator: Adi Roiban <adi@roiban.ro>\n"
+"Language-Team: Gnome Romanian Team <gnomero-list@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
-"Plural-Forms: nplurals=3;plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1))\n"
 
 #. *
 #. * SECTION:application
@@ -39,9 +37,8 @@ msgstr ""
 #. * referenced or unreferenced.
 #.
 #: ../libwnck/application.c:51
-#, fuzzy
 msgid "Untitled application"
-msgstr "aplicație fără nume"
+msgstr "Aplicație fără titlu"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
@@ -54,22 +51,22 @@ msgstr "Unealtă pentru comutarea între spații de lucru"
 #: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Apăsați aici pentru comutarea în spațiul de lucru %s"
+msgstr "Clic pentru comutarea în spațiul de lucru %s"
 
-#: ../libwnck/pager.c:1904
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr ""
+msgstr "Clic pentru a trage „%s”"
 
-#: ../libwnck/pager.c:1907
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr ""
+msgstr "Spațiul de lucru curent: „%s”"
 
-#: ../libwnck/pager.c:1912
-#, fuzzy, c-format
+#: ../libwnck/pager.c:1918
+#, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Apăsați aici pentru comutarea în spațiul de lucru %s"
+msgstr "Clic pentru a schimba la „%s”"
 
 #: ../libwnck/selector.c:1171
 msgid "No Windows Open"
@@ -83,156 +80,156 @@ msgstr "Selector ferestre"
 msgid "Tool to switch between windows"
 msgstr "Unealtă pentru comutarea între ferestre"
 
-#: ../libwnck/tasklist.c:720
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Listă ferestre"
 
-#: ../libwnck/tasklist.c:721
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Unealtă pentru comutarea între ferestrele vizibile"
 
-#: ../libwnck/tasklist.c:3005
-#, fuzzy
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
-msgstr "_Minimizează tot"
+msgstr "Mi_nimizează toate"
 
-#: ../libwnck/tasklist.c:3016
-#, fuzzy
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
-msgstr "Demi_nimizează tot"
+msgstr "De_minimizează toate"
 
-#: ../libwnck/tasklist.c:3024
-#, fuzzy
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
-msgstr "Ma_ximizează"
+msgstr "Ma_ximizează toate"
 
-#: ../libwnck/tasklist.c:3035
-#, fuzzy
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
-msgstr "Demi_nimizează tot"
+msgstr "_Demaximizează toate"
 
-#: ../libwnck/tasklist.c:3047
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
-msgstr "În_chide tot"
+msgstr "În_chide toate"
 
 #: ../libwnck/test-pager.c:15
 msgid "Use N_ROWS rows"
-msgstr ""
+msgstr "Foloseşte N_RÂNDURI rânduri"
 
 #: ../libwnck/test-pager.c:15
 msgid "N_ROWS"
-msgstr ""
+msgstr "N_RÂNDURI"
 
 #: ../libwnck/test-pager.c:16
-#, fuzzy
 msgid "Only show current workspace"
-msgstr "Doar în _acest spațiu de lucru"
+msgstr "Afişează doar spaţiul de lucru curent"
 
-#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
+#: ../libwnck/test-pager.c:17
+#: ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
-msgstr ""
+msgstr "Utilizează RTL ca și direcție implicită"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
-msgstr ""
+msgstr "Arată numele spațiilor de lucru în locul conținuturilor"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
-msgstr ""
+msgstr "Utilizează o orientare verticală"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
+#: ../libwnck/test-selector.c:12
+#: ../libwnck/test-tasklist.c:20
 msgid "Don't show window in tasklist"
-msgstr ""
+msgstr "Nu afișa în lista de ferestre"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
-msgstr ""
+msgstr "Grupează ferestrele întotdeauna"
 
 #: ../libwnck/test-tasklist.c:17
 msgid "Never group windows"
-msgstr ""
+msgstr "Nu grupa ferestrele niciodată"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
-msgstr ""
+msgstr "Afișează ferestre din toate spațiile de lucru"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
-msgstr ""
+msgstr "Activează transparența"
 
-#: ../libwnck/window-action-menu.c:387
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "Demi_nimizează"
 
-#: ../libwnck/window-action-menu.c:394
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "_Minimizează"
 
-#: ../libwnck/window-action-menu.c:402
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "_Demaximizează"
 
-#: ../libwnck/window-action-menu.c:409
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Ma_ximizează"
 
-#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746
+#: ../libwnck/workspace.c:281
 #, c-format
-msgid "Workspace %d"
-msgstr "Spațiul %d"
+msgid "Desk %d"
+msgstr "Birou %d"
 
-#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
-msgid "Workspace 1_0"
-msgstr "Spațiul 1_0"
-
-#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
+#: ../libwnck/window-action-menu.c:755
+#: ../libwnck/window-action-menu.c:902
 #, c-format
-msgid "Workspace %s%d"
-msgstr "Spațiul %s%d"
+msgid "Desk 1_0"
+msgstr "Birou 1_0"
 
-#: ../libwnck/window-action-menu.c:995
+#: ../libwnck/window-action-menu.c:757
+#: ../libwnck/window-action-menu.c:904
+#, c-format
+msgid "Desk %s%d"
+msgstr "Birou %s%d"
+
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
-msgstr "M_ută"
+msgstr "_Mută"
 
-#: ../libwnck/window-action-menu.c:1002
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_Redimensionează"
 
-#: ../libwnck/window-action-menu.c:1011
-#, fuzzy
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
-msgstr "_Deasupra"
+msgstr "Înto_tdeauna deasupra"
 
-#: ../libwnck/window-action-menu.c:1019
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "Întotde_auna în spațiul vizibil"
 
-#: ../libwnck/window-action-menu.c:1024
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Doar în _acest spațiu de lucru"
 
-#: ../libwnck/window-action-menu.c:1031
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
-msgstr "Mută în spațiul de lucru _stâng"
+msgstr "Mută în spațiul de _lucru de la stânga"
 
-#: ../libwnck/window-action-menu.c:1037
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
-msgstr "Mută în spațiul de lucru _drept"
+msgstr "Mută în spaț_iul de lucru de la dreapta"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
-msgstr "Mută în spațiul de lucru de s_us"
+msgstr "Mută în spațiul de lucru de mai s_us"
 
-#: ../libwnck/window-action-menu.c:1049
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
-msgstr "Mută în spațiul de lucru de _jos"
+msgstr "Mută în spațiul _de lucru de mai jos"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Mută în alt _spațiu"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "În_chide"
 
@@ -246,201 +243,198 @@ msgstr "În_chide"
 #. * referenced or unreferenced.
 #.
 #: ../libwnck/window.c:50
-#, fuzzy
 msgid "Untitled window"
-msgstr "fereastră fără titlu"
+msgstr "Fereastră fără titlu"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "ID fereastră X a ferestrei de examinat sau modificat"
 
-#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
+#: ../libwnck/wnckprop.c:139
+#: ../libwnck/wnckprop.c:145
 #: ../libwnck/wnckprop.c:154
 msgid "XID"
-msgstr ""
+msgstr "XID"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one window
 #. * has some information about the application (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "ID fereastră X a liderul grupului pentru aplicația de examinat"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Resursa de clasă a clasei grupului de examinat"
 
 #: ../libwnck/wnckprop.c:148
 msgid "CLASS"
-msgstr ""
+msgstr "CLASĂ"
 
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr ""
+msgstr "NUMĂRUL spațiilor de lucru ce se vor examina sau se vor modifica"
 
-#: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
-#: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
-#: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
+#: ../libwnck/wnckprop.c:150
+#: ../libwnck/wnckprop.c:152
+#: ../libwnck/wnckprop.c:169
+#: ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:173
+#: ../libwnck/wnckprop.c:262
 msgid "NUMBER"
-msgstr ""
+msgstr "NUMĂR"
 
 #: ../libwnck/wnckprop.c:152
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "NUMĂRUL ecranului ce se va examina sau se va modifica"
 
 #: ../libwnck/wnckprop.c:154
 msgid "Alias of --window"
-msgstr ""
+msgstr "Acelaşi cu --window"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:161
-msgid ""
-"List windows of the application/class group/workspace/screen (output format: "
-"\"XID: Window Name\")"
-msgstr ""
+msgid "List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"
+msgstr "Lista ferestrelor pentru aplicație/grup clasă/spațiu de lucru/ercan (fomat de ieșire: „XID: Nume fereastră”)"
 
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr "Lista spațiilor de lucru ale ecranului (fomat de ieșire: „Număr: Nume spațiu de lucru”)"
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Schimbă numărul spațiilor de lucru ale ecranului la NUMĂR"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "Schimbă aranjarea spațiilor de lucru ale ecranului pentru a folosi NUMĂR rânduri"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "Schimbă aranjarea spațiilor de lucru ale ecranului pentru a folosi NUMĂR coloane"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
-msgstr ""
+msgstr "Arată desktopul"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "Oprește afișarea desktopului"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Mută zona vizibilă a spațiului de lucru curent la valoarea X a coordonatei X"
 
-#: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
+#: ../libwnck/wnckprop.c:181
+#: ../libwnck/wnckprop.c:264
 msgid "X"
-msgstr ""
+msgstr "X"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Mută zona vizibilă a spațiului de lucru curent la valoarea Y a coordonatei Y"
 
-#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
+#: ../libwnck/wnckprop.c:185
+#: ../libwnck/wnckprop.c:266
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
 #: ../libwnck/wnckprop.c:191
-#, fuzzy
 msgid "Minimize the window"
-msgstr "fereastră fără titlu"
+msgstr "Minimizare fereastră"
 
 #: ../libwnck/wnckprop.c:193
-#, fuzzy
 msgid "Unminimize the window"
-msgstr "Demi_nimizează"
+msgstr "Deminimizare fereastră"
 
 #: ../libwnck/wnckprop.c:195
 msgid "Maximize the window"
-msgstr ""
+msgstr "Maximizare fereastră"
 
 #: ../libwnck/wnckprop.c:197
-#, fuzzy
 msgid "Unmaximize the window"
-msgstr "_Demaximizează"
+msgstr "Demaximizare fereastră"
 
 #: ../libwnck/wnckprop.c:199
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "Maximizare orizontală fereastră"
 
 #: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "Demaximizare orizontală fereastră"
 
 #: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "Maximizare verticală fereastră"
 
 #: ../libwnck/wnckprop.c:205
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "Demaximizare verticală fereastră"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "Pornește mutarea ferestrei cu ajutorul tastaturii"
 
 #: ../libwnck/wnckprop.c:209
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "Pornește redimensionarea ferestrei cu ajutorul tastaturii"
 
 #: ../libwnck/wnckprop.c:211
-#, fuzzy
 msgid "Activate the window"
-msgstr "fereastră fără titlu"
+msgstr "Activează fereastra"
 
 #: ../libwnck/wnckprop.c:213
 msgid "Close the window"
-msgstr ""
+msgstr "Închide fereastra"
 
 #: ../libwnck/wnckprop.c:216
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Fă fereastra pe tot ecranul"
 
 #: ../libwnck/wnckprop.c:218
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "Fă fereastră să părăsească modul pe tot ecranul"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window always on top"
-msgstr ""
+msgstr "Fă fereastră întotdeauna deasupra celorlalte"
 
 #: ../libwnck/wnckprop.c:222
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "Nu fă fereastră întotdeauna deasupra celorlalte"
 
 #: ../libwnck/wnckprop.c:224
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "Fă fereastră sub celelalte"
 
 #: ../libwnck/wnckprop.c:226
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "Fă fereastră să nu fie sub alte ferestre"
 
 #: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
-msgstr ""
+msgstr "Strânge fereastra"
 
 #: ../libwnck/wnckprop.c:230
-#, fuzzy
 msgid "Unshade the window"
-msgstr "fereastră fără titlu"
+msgstr "Desfă fereastra"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:234
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Fă ca fereastra să aibă o poziție fixă în zona vizibilă"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "Fă ca fereastra să nu aibă o poziție fixă în zona vizibilă"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -448,7 +442,7 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "Fă ca fereastra să nu apară în comutatorul de spații de lucru"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -456,497 +450,504 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "Fă ca fereastră să apară în comutatorul de spații de lucru"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Fă ca fereastra să nu apară în lista de ferestre"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Fă ca fereastra să apară în lista de ferestre"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "Fă fereastra vizibilă în toate spațiile de lucru"
 
 #: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Fă fereastra vizibilă doar în spațiul de lucru curent"
 
 #: ../libwnck/wnckprop.c:262
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Mute fereastra în spațiul de lucru NUMĂR (primul spațiu e 0)"
 
 #: ../libwnck/wnckprop.c:264
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "Schimbă coordonata X a ferestrei la X"
 
 #: ../libwnck/wnckprop.c:266
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "Schimbă coordonata Y a ferestrei la Y"
 
 #: ../libwnck/wnckprop.c:268
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "Schimbă lățimea ferestrei la LĂŢIME"
 
 #: ../libwnck/wnckprop.c:268
 msgid "WIDTH"
-msgstr ""
+msgstr "LĂŢIME"
 
 #: ../libwnck/wnckprop.c:270
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "Schimbă înălțimea ferestrei la ÎNĂLȚIME"
 
 #: ../libwnck/wnckprop.c:270
 msgid "HEIGHT"
-msgstr ""
+msgstr "ÎNĂLȚIME"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:273
-msgid ""
-"Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
-msgstr ""
+msgid "Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
+msgstr "Schimbă tipul ferestrei în TIP (valori valide: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:273
 msgid "TYPE"
-msgstr ""
+msgstr "TIP"
 
 #: ../libwnck/wnckprop.c:279
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "Schimbă numele spațiului de lucru la NUME"
 
 #: ../libwnck/wnckprop.c:279
 msgid "NAME"
-msgstr ""
+msgstr "NUME"
 
 #: ../libwnck/wnckprop.c:281
-#, fuzzy
 msgid "Activate the workspace"
-msgstr "Mută în alt _spațiu"
+msgstr "Activează spațiul de lucru"
 
-#: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
-#: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
+#: ../libwnck/wnckprop.c:373
+#: ../libwnck/wnckprop.c:397
+#: ../libwnck/wnckprop.c:433
+#: ../libwnck/wnckprop.c:456
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "Valoare nevalidă „%s” pentru --%s"
 
-#: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
+#: ../libwnck/wnckprop.c:490
+#: ../libwnck/wnckprop.c:509
 #, c-format
-msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: screen %d should be interacted with, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui să interacționeze cu ecranul %d, dar  a fost folosit --%s\n"
 
 #: ../libwnck/wnckprop.c:499
 #, c-format
-msgid ""
-"Conflicting options are present: windows or workspaces of screen %d should "
-"be listed, but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: windows or workspaces of screen %d should be listed, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: fereastre sau spații de lucru de pe ecranul %d ar trebui trecute. dar s-a folosit --%s\n"
 
-#: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
+#: ../libwnck/wnckprop.c:522
+#: ../libwnck/wnckprop.c:542
 #, c-format
-msgid ""
-"Conflicting options are present: workspace %d should be interacted with, but "
-"--%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: workspace %d should be interacted with, but --%s has been used\n"
+msgstr "Există opțiuni care intră în conflict: ar trebui lucrat cu spațiul de lucru %d, ar --%s a fost folosit\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
-msgid ""
-"Conflicting options are present: windows of workspace %d should be listed, "
-"but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: windows of workspace %d should be listed, but --%s has been used\n"
+msgstr "Există opțiuni care intră în conflict: ar trebui listate ferestre din spațiul de lucru %d, dar --%s a fost folosit\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
-msgid ""
-"Conflicting options are present: an application should be interacted with, "
-"but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: an application should be interacted with, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui să se lucreze cu o fereastră, dar a fost folosit --%s\n"
 
 #: ../libwnck/wnckprop.c:564
 #, c-format
-msgid ""
-"Conflicting options are present: windows of an application should be listed, "
-"but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: windows of an application should be listed, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui trecute ferestrele unei aplicații, dar a fost folosit --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:577
 #, c-format
-msgid ""
-"Conflicting options are present: class group \"%s\" should be interacted "
-"with, but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: class group \"%s\" should be interacted with, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui să se lucreze cu grupul de clase „%s”, dar a fost folosit --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:588
 #, c-format
-msgid ""
-"Conflicting options are present: windows of class group \"%s\" should be "
-"listed, but --%s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: windows of class group \"%s\" should be listed, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui să se lucreze cu ferestre din grupul de clase „%s”, dar a fost folosit --%s\n"
 
-#: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
+#: ../libwnck/wnckprop.c:600
+#: ../libwnck/wnckprop.c:609
 #, c-format
-msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
-msgstr ""
+msgid "Conflicting options are present: a window should be interacted with, but --%s has been used\n"
+msgstr "Sunt prezente opțiuni ce intră în conflict: ar trebui să se lucreze cu o fereastră, dar a fost folosit --%s\n"
 
-#: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
+#: ../libwnck/wnckprop.c:628
+#: ../libwnck/wnckprop.c:709
 #: ../libwnck/wnckprop.c:756
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Sunt prezente opțiuni ce intră în conflict: --%s și --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr ""
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgstr "Argument nevalid „%d” pentru --%s, valoare trebuie să fie strict pozitivă\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
+msgstr "Argument nevalid „%d” pentru --%s, valorile trebuie să fie pozitive\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Sunt prezente opțiuni ce intră în conflict: --%s sau --%s și --%s\n"
 
 #: ../libwnck/wnckprop.c:807
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "Argument nevalid „%s” pentru --%s, valorile valide sunt: %s\n"
 
 #: ../libwnck/wnckprop.c:850
-msgid ""
-"Cannot change the workspace layout on the screen: the layout is already "
-"owned\n"
-msgstr ""
+#, c-format
+msgid "Cannot change the workspace layout on the screen: the layout is already owned\n"
+msgstr "Nu se poate modifica aranjamentul spațiilor de lucru de pe acest ecran: aranjamentul este deja deținut\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
+#, c-format
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "Zona vizibilă nu poate fi mutată: spațiul de lucru curent nu conține o zonă vizibilă\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:890
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "Zona vizibilă nu poate fi mutată: spațiul de lucru curent nu există\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
-#: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
+#: ../libwnck/wnckprop.c:926
+#: ../libwnck/wnckprop.c:935
+#: ../libwnck/wnckprop.c:944
+#: ../libwnck/wnckprop.c:951
+#: ../libwnck/wnckprop.c:961
+#: ../libwnck/wnckprop.c:968
+#: ../libwnck/wnckprop.c:977
+#: ../libwnck/wnckprop.c:1026
+#, c-format
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "Acțiune nepermisă\n"
 
 #: ../libwnck/wnckprop.c:1022
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "Fereastra nu poate fi mutată în spațiul de lucru %d: spațiul de lucru nu există\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
+#: ../libwnck/wnckprop.c:1086
+#: ../libwnck/wnckprop.c:1218
 msgid "<name unset>"
-msgstr ""
+msgstr "<nume nedefinit>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1089
 #, c-format
 msgid "%lu: %s\n"
-msgstr ""
+msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1109
 #, c-format
 msgid "%d: %s\n"
-msgstr ""
+msgstr "%d: %s\n"
 
 #: ../libwnck/wnckprop.c:1172
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "Număr ecran: %d\n"
 
-#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1255
+#: ../libwnck/wnckprop.c:1174
+#: ../libwnck/wnckprop.c:1255
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr ""
+msgstr "Geometrie (lățime, înălțime): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1178
-#, fuzzy, c-format
+#, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr "Spațiul %d"
+msgstr "Număr spații de lucru: %d\n"
 
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "Aranjare spațiu de lucru (rânduri, coloane, orientare): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
+#: ../libwnck/wnckprop.c:1194
+#: ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<fără administrator de ferestre conform cu EWMH>"
 
 #: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr ""
+msgstr "Administrator ferestre: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1279
-#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1303
-#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1428
+#: ../libwnck/wnckprop.c:1200
+#: ../libwnck/wnckprop.c:1279
+#: ../libwnck/wnckprop.c:1291
+#: ../libwnck/wnckprop.c:1303
+#: ../libwnck/wnckprop.c:1315
+#: ../libwnck/wnckprop.c:1428
 #, c-format
 msgid "%d (\"%s\")"
-msgstr ""
+msgstr "%d („%s”)"
 
 #. Translators: "none" here means "no workspace"
-#: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
-#: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
-#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-#, fuzzy
-msgid "workspace|none"
-msgstr "Spațiul %d"
+#: ../libwnck/wnckprop.c:1205
+#: ../libwnck/wnckprop.c:1284
+#: ../libwnck/wnckprop.c:1296
+#: ../libwnck/wnckprop.c:1308
+#: ../libwnck/wnckprop.c:1320
+#: ../libwnck/wnckprop.c:1435
+msgctxt "workspace"
+msgid "none"
+msgstr "nici unul"
 
 #: ../libwnck/wnckprop.c:1206
-#, fuzzy, c-format
+#, c-format
 msgid "Active Workspace: %s\n"
-msgstr "Spațiul %s%d"
+msgstr "Spațiu de lucru activ: %s\n"
 
 #: ../libwnck/wnckprop.c:1215
-#, fuzzy, c-format
+#, c-format
 msgid "\"%s\""
-msgstr "%s"
+msgstr "„%s”"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1221
 #, c-format
 msgid "%lu (%s)"
-msgstr ""
+msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
-msgstr ""
+msgctxt "window"
+msgid "none"
+msgstr "nici una"
 
 #: ../libwnck/wnckprop.c:1228
 #, c-format
 msgid "Active Window: %s\n"
-msgstr ""
+msgstr "Fereastră activă: %s\n"
 
 #: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr ""
+msgstr "Este afișat desktopul: %s\n"
 
 #: ../libwnck/wnckprop.c:1233
 msgid "true"
-msgstr ""
+msgstr "adevărat"
 
 #: ../libwnck/wnckprop.c:1233
 msgid "false"
-msgstr ""
+msgstr "fals"
 
 #: ../libwnck/wnckprop.c:1244
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace Name: %s\n"
-msgstr "Spațiul %s%d"
+msgstr "Nume spațiu de lucru: %s\n"
 
 #: ../libwnck/wnckprop.c:1245
-#, fuzzy, c-format
+#, c-format
 msgid "Workspace Number: %d\n"
-msgstr "Spațiul %d"
+msgstr "Număr spațiu de lucru: %d\n"
 
-#: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
+#: ../libwnck/wnckprop.c:1252
+#: ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "Pe ecran: %d (Administrator ferestre: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1266
 msgid "<no viewport>"
-msgstr ""
+msgstr "<fără zonă vizibilă>"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:1269
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "Poziție zonă vizibilă (x,y): %s\n"
 
 #: ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr ""
+msgstr "Poziție în aranjament (rând coloană): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1285
 #, c-format
 msgid "Left Neighbor: %s\n"
-msgstr ""
+msgstr "Vecin stânga: %s\n"
 
 #: ../libwnck/wnckprop.c:1297
 #, c-format
 msgid "Right Neighbor: %s\n"
-msgstr ""
+msgstr "Vecin dreapta: %s\n"
 
 #: ../libwnck/wnckprop.c:1309
 #, c-format
 msgid "Top Neighbor: %s\n"
-msgstr ""
+msgstr "Vecin sus: %s\n"
 
 #: ../libwnck/wnckprop.c:1321
 #, c-format
 msgid "Bottom Neighbor: %s\n"
-msgstr ""
+msgstr "Vecin jos: %s\n"
 
 #. Translators: Ressource class is the name to identify a class.
 #: ../libwnck/wnckprop.c:1333
 #, c-format
 msgid "Resource Class: %s\n"
-msgstr ""
+msgstr "Clasă resursă: %s\n"
 
 #: ../libwnck/wnckprop.c:1335
 #, c-format
 msgid "Group Name: %s\n"
-msgstr ""
+msgstr "Nume grup: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
+#: ../libwnck/wnckprop.c:1341
+#: ../libwnck/wnckprop.c:1365
 #: ../libwnck/wnckprop.c:1419
 msgid "set"
-msgstr ""
+msgstr "definit"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1344 ../libwnck/wnckprop.c:1368
-#: ../libwnck/wnckprop.c:1375 ../libwnck/wnckprop.c:1405
-#: ../libwnck/wnckprop.c:1412 ../libwnck/wnckprop.c:1422
-#: ../libwnck/wnckprop.c:1487 ../libwnck/wnckprop.c:1497
+#: ../libwnck/wnckprop.c:1344
+#: ../libwnck/wnckprop.c:1368
+#: ../libwnck/wnckprop.c:1375
+#: ../libwnck/wnckprop.c:1405
+#: ../libwnck/wnckprop.c:1412
+#: ../libwnck/wnckprop.c:1422
+#: ../libwnck/wnckprop.c:1487
+#: ../libwnck/wnckprop.c:1497
 #: ../libwnck/wnckprop.c:1505
 msgid "<unset>"
-msgstr ""
+msgstr "<nedefinit>"
 
-#: ../libwnck/wnckprop.c:1345 ../libwnck/wnckprop.c:1369
+#: ../libwnck/wnckprop.c:1345
+#: ../libwnck/wnckprop.c:1369
 #: ../libwnck/wnckprop.c:1423
 #, c-format
 msgid "Icons: %s\n"
-msgstr ""
+msgstr "Iconițe: %s\n"
 
-#: ../libwnck/wnckprop.c:1348 ../libwnck/wnckprop.c:1386
+#: ../libwnck/wnckprop.c:1348
+#: ../libwnck/wnckprop.c:1386
 #, c-format
 msgid "Number of Windows: %d\n"
-msgstr ""
+msgstr "Număr ferestre: %d\n"
 
-#: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1406
+#: ../libwnck/wnckprop.c:1360
+#: ../libwnck/wnckprop.c:1406
 #, c-format
 msgid "Name: %s\n"
-msgstr ""
+msgstr "Nume: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1361 ../libwnck/wnckprop.c:1415
+#: ../libwnck/wnckprop.c:1361
+#: ../libwnck/wnckprop.c:1415
 #, c-format
 msgid "Icon Name: %s\n"
-msgstr ""
+msgstr "Nume iconiță: %s\n"
 
-#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1498
+#: ../libwnck/wnckprop.c:1376
+#: ../libwnck/wnckprop.c:1498
 #, c-format
 msgid "PID: %s\n"
-msgstr ""
+msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
-msgstr ""
+msgctxt "startupID"
+msgid "none"
+msgstr "nici unul"
 
 #: ../libwnck/wnckprop.c:1384
 #, c-format
 msgid "Startup ID: %s\n"
-msgstr ""
+msgstr "ID pornire: %s\n"
 
 #: ../libwnck/wnckprop.c:1432
-#, fuzzy
 msgid "all workspaces"
-msgstr "Spațiul %s%d"
+msgstr "toate spațiile de lucru"
 
 #: ../libwnck/wnckprop.c:1436
-#, fuzzy, c-format
+#, c-format
 msgid "On Workspace: %s\n"
-msgstr "Spațiul %s%d"
+msgstr "Pe stațiu de lucru: %s\n"
 
 #: ../libwnck/wnckprop.c:1451
-#, fuzzy
 msgid "normal window"
-msgstr "fereastră fără titlu"
+msgstr "fereastră normală"
 
 #: ../libwnck/wnckprop.c:1454
 msgid "desktop"
-msgstr ""
+msgstr "desktop"
 
 #: ../libwnck/wnckprop.c:1457
 msgid "dock or panel"
-msgstr ""
+msgstr "flotant sau panou"
 
 #: ../libwnck/wnckprop.c:1460
-#, fuzzy
 msgid "dialog window"
-msgstr "fereastră fără titlu"
+msgstr "fereastră dialog"
 
 #: ../libwnck/wnckprop.c:1463
 msgid "tearoff toolbar"
-msgstr ""
+msgstr "bară de unelte detașabilă"
 
 #: ../libwnck/wnckprop.c:1466
 msgid "tearoff menu"
-msgstr ""
+msgstr "meniu detașabil"
 
 #: ../libwnck/wnckprop.c:1469
-#, fuzzy
 msgid "utility window"
-msgstr "fereastră fără titlu"
+msgstr "fereastră utilitară"
 
 #: ../libwnck/wnckprop.c:1472
 msgid "splash screen"
-msgstr ""
+msgstr "ecran pornire"
 
 #: ../libwnck/wnckprop.c:1477
 #, c-format
 msgid "Window Type: %s\n"
-msgstr ""
+msgstr "Tip fereastră: %s\n"
 
 #: ../libwnck/wnckprop.c:1480
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr ""
+msgstr "Geometrie (x, y, lățime, înălțime): %d, %d, %d, %d\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1489
 #, c-format
 msgid "Class Group: %s\n"
-msgstr ""
+msgstr "Grup clasă: %s\n"
 
 #: ../libwnck/wnckprop.c:1491
 #, c-format
 msgid "XID: %lu\n"
-msgstr ""
+msgstr "XID: %lu\n"
 
 #: ../libwnck/wnckprop.c:1506
 #, c-format
 msgid "Session ID: %s\n"
-msgstr ""
+msgstr "ID sesiune: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one window
@@ -954,72 +955,72 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "Lider grup: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's on top of it
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "Transient pentru: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1532 ../libwnck/wnckprop.c:1579
+#: ../libwnck/wnckprop.c:1532
+#: ../libwnck/wnckprop.c:1579
 #, c-format
 msgid "%1$s%2$s%3$s"
-msgstr ""
+msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1536 ../libwnck/wnckprop.c:1581
+#: ../libwnck/wnckprop.c:1536
+#: ../libwnck/wnckprop.c:1581
 msgid ", "
-msgstr ""
+msgstr ", "
 
 #: ../libwnck/wnckprop.c:1542
-#, fuzzy
 msgid "minimized"
-msgstr "Demi_nimizează"
+msgstr "minimizat"
 
 #: ../libwnck/wnckprop.c:1543
-#, fuzzy
 msgid "maximized"
-msgstr "_Demaximizează"
+msgstr "maximizat"
 
 #: ../libwnck/wnckprop.c:1547
 msgid "maximized horizontally"
-msgstr ""
+msgstr "maximizat orizontal"
 
 #: ../libwnck/wnckprop.c:1549
 msgid "maximized vertically"
-msgstr ""
+msgstr "maximizat vertical"
 
 #: ../libwnck/wnckprop.c:1551
 msgid "shaded"
-msgstr ""
+msgstr "strâns"
 
 #: ../libwnck/wnckprop.c:1552
 msgid "pinned"
-msgstr ""
+msgstr "fixata"
 
 #: ../libwnck/wnckprop.c:1553
 msgid "sticky"
-msgstr ""
+msgstr "adeziv"
 
 #: ../libwnck/wnckprop.c:1554
 msgid "above"
-msgstr ""
+msgstr "deasupra"
 
 #: ../libwnck/wnckprop.c:1555
 msgid "below"
-msgstr ""
+msgstr "sub"
 
 #: ../libwnck/wnckprop.c:1556
 msgid "fullscreen"
-msgstr ""
+msgstr "pe tot ecranul"
 
 #: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
-msgstr ""
+msgstr "necesită atenție"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -1027,205 +1028,202 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
-msgstr ""
+msgstr "omite comutator spații de lucru"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:1564
 msgid "skip tasklist"
-msgstr ""
+msgstr "omite lista de ferestre"
 
 #: ../libwnck/wnckprop.c:1566
 msgid "normal"
-msgstr ""
+msgstr "normal"
 
 #: ../libwnck/wnckprop.c:1567
 #, c-format
 msgid "State: %s\n"
-msgstr ""
+msgstr "Stare: %s\n"
 
 #: ../libwnck/wnckprop.c:1588
-#, fuzzy
 msgid "move"
-msgstr "M_ută"
+msgstr "mută"
 
 #: ../libwnck/wnckprop.c:1589
-#, fuzzy
 msgid "resize"
-msgstr "_Redimensionează"
+msgstr "redimensionează"
 
 #: ../libwnck/wnckprop.c:1590
 msgid "shade"
-msgstr ""
+msgstr "strânge"
 
 #: ../libwnck/wnckprop.c:1591
 msgid "unshade"
-msgstr ""
+msgstr "desfă"
 
 #: ../libwnck/wnckprop.c:1592
 msgid "stick"
-msgstr ""
+msgstr "adeziv"
 
 #: ../libwnck/wnckprop.c:1593
 msgid "unstick"
-msgstr ""
+msgstr "neadeziv"
 
 #: ../libwnck/wnckprop.c:1595
 msgid "maximize horizontally"
-msgstr ""
+msgstr "maximizează orizontal"
 
 #: ../libwnck/wnckprop.c:1597
 msgid "unmaximize horizontally"
-msgstr ""
+msgstr "demaximizează orizontal"
 
 #: ../libwnck/wnckprop.c:1599
 msgid "maximize vertically"
-msgstr ""
+msgstr "maximizează vertical"
 
 #: ../libwnck/wnckprop.c:1601
 msgid "unmaximize vertically"
-msgstr ""
+msgstr "demaximizează vertical"
 
 #: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
-msgstr ""
+msgstr "schimbă spațiu de lucru"
 
 #: ../libwnck/wnckprop.c:1606
 msgid "pin"
-msgstr ""
+msgstr "fixează"
 
 #: ../libwnck/wnckprop.c:1608
 msgid "unpin"
-msgstr ""
+msgstr "defixează"
 
 #: ../libwnck/wnckprop.c:1609
-#, fuzzy
 msgid "minimize"
-msgstr "Demi_nimizează"
+msgstr "minimizat"
 
 #: ../libwnck/wnckprop.c:1610
-#, fuzzy
 msgid "unminimize"
-msgstr "Demi_nimizează"
+msgstr "deminimizat"
 
 #: ../libwnck/wnckprop.c:1611
-#, fuzzy
 msgid "maximize"
-msgstr "_Demaximizează"
+msgstr "maximizat"
 
 #: ../libwnck/wnckprop.c:1612
-#, fuzzy
 msgid "unmaximize"
-msgstr "_Demaximizează"
+msgstr "demaximizat"
 
 #: ../libwnck/wnckprop.c:1614
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "schimbă mod pe tot ecranul"
 
 #: ../libwnck/wnckprop.c:1615
-#, fuzzy
 msgid "close"
-msgstr "În_chide"
+msgstr "închide"
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "pune deasupra"
 
 #: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "refă deasupra"
 
 #: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "pune dedesupt"
 
 #: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "redă dedesupt"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
-msgstr ""
+msgstr "nicio acțiune posibilă"
 
 #: ../libwnck/wnckprop.c:1626
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "Acțiuni posibile: %s\n"
 
-#: ../libwnck/wnckprop.c:1803
+#: ../libwnck/wnckprop.c:1805
 msgid ""
-"Print or modify the properties of a screen/workspace/window, or interact "
-"with it, following the EWMH specification.\n"
+"Print or modify the properties of a screen/workspace/window, or interact with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Afișează sau modifică preprietățile unui ecran/spațiu de lucru/fereastră, sau interacționează urmând specificațiile EWMH.\n"
+"Pentru informații despre aceste specificații consulați:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1813
-#, fuzzy
+#: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
-msgstr "Apăsați aici pentru comutarea în spațiul de lucru %s"
+msgstr "Opțiuni pentru listare ferestre sau spații de lucru"
 
-#: ../libwnck/wnckprop.c:1814
-#, fuzzy
+#: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
-msgstr "Apăsați aici pentru comutarea în spațiul de lucru %s"
+msgstr "Afișare opțiuni pentru listare ferestre sau spații de lucru"
 
-#: ../libwnck/wnckprop.c:1820
+#: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "Opțiuni de modificare a proprietăților unei ferestre"
 
-#: ../libwnck/wnckprop.c:1821
+#: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Afișare opțiuni pentru modificare proprietăți fereastră"
 
-#: ../libwnck/wnckprop.c:1827
+#: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Opțiuni pentru modificarea proprietăților unui spațiu de lucru"
 
-#: ../libwnck/wnckprop.c:1828
+#: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "Afișare opțiuni pentru modificarea proprietăților unui spațiu de lucru"
 
-#: ../libwnck/wnckprop.c:1834
+#: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "Opțiuni pentru modificare proprietăți fereastră"
 
-#: ../libwnck/wnckprop.c:1835
+#: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "Afișare opțiuni pentru modificare proprietăți ecran"
 
-#: ../libwnck/wnckprop.c:1845
+#: ../libwnck/wnckprop.c:1851
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr ""
+msgstr "Eroare la analizarea argumentelor: %s\n"
 
-#: ../libwnck/wnckprop.c:1868
+#: ../libwnck/wnckprop.c:1874
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "Nu se poate interacționa cu ecranul %d: ecranul nu există\n"
 
-#: ../libwnck/wnckprop.c:1924
+#: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "Nu se poate interacționa cu spațiul de lucru %d: spațiul de lucru nu poate fi găsit\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1947
+#: ../libwnck/wnckprop.c:1953
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr "Nu se poate interacționa cu grupul de clasă „%s”: acest grup de clasă nu poate fi găsit\n"
 
-#: ../libwnck/wnckprop.c:1970
+#: ../libwnck/wnckprop.c:1976
 #, c-format
-msgid ""
-"Cannot interact with application having its group leader with XID %lu: the "
-"application cannot be found\n"
-msgstr ""
+msgid "Cannot interact with application having its group leader with XID %lu: the application cannot be found\n"
+msgstr "Nu s-a putut interacționa cu aplicația având liderul de grup cu XID-ul  %lu: aplicația nu a putut fi găsită\n"
 
-#: ../libwnck/wnckprop.c:1993
+#: ../libwnck/wnckprop.c:1999
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "Nu se poate interacționa cu fereastra cu XID %lu: fereastra nu poate fi găsită\n"
 
 #~ msgid "Unknown Window"
 #~ msgstr "Fereastră necunoscută"
+#~ msgid "Workspace %d"
+#~ msgstr "Spațiul %d"
+#~ msgid "Workspace 1_0"
+#~ msgstr "Spațiul 1_0"
+#~ msgid "Workspace %s%d"
+#~ msgstr "Spațiul %s%d"
+
