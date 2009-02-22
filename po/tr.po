@@ -3,13 +3,13 @@
 # Görkem Çetin <gorkem@gelecek.com.tr>, 2002.
 # Arman Aksoy <armish@linux-sevenler.de>, 2003.
 #
-# Baris Cicek <baris@teamforce.name.tr>, 2004, 2008.
+# Baris Cicek <baris@teamforce.name.tr>, 2004, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-13 06:44+0300\n"
-"PO-Revision-Date: 2008-09-13 06:45+0300\n"
+"POT-Creation-Date: 2009-02-22 19:40+0200\n"
+"PO-Revision-Date: 2009-02-22 19:40+0200\n"
 "Last-Translator: Baris Cicek <baris@teamforce.name.tr>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "MIME-Version: 1.0\n"
@@ -52,17 +52,17 @@ msgstr "Çalışma alanları arasında geçiş yapmaya yarayan bir araç"
 msgid "Click this to switch to workspace %s"
 msgstr "%s çalışma alanına geçmek için tıklayın"
 
-#: ../libwnck/pager.c:1908
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\" sürüklemeyi başlatmak için tıklayın"
 
-#: ../libwnck/pager.c:1911
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Mevcut çalışma alanı: \"%s\""
 
-#: ../libwnck/pager.c:1916
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "\"%s\" çalışma alanına geçmek için tıklayın"
@@ -79,31 +79,31 @@ msgstr "Pencere Seçici"
 msgid "Tool to switch between windows"
 msgstr "Pencereler arasında geçiş yapmak için araç"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Pencere Listesi"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Görünen pencereler arasında geçiş yapmak için araç"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "Hepsini _Küçült"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "Hepsinin Küçült_mesini Geri Al"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "Hepsini Bü_yült"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "Hepsinin Büyült_mesini Geri Al"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "Hepsini _Kapat"
 
@@ -152,78 +152,78 @@ msgstr "Tüm çalışma alanlarından pencereleri göster"
 msgid "Enable Transparency"
 msgstr "Saydamlığı Etkinleştir"
 
-#: ../libwnck/window-action-menu.c:415
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "Küçült_meyi geri al"
 
-#: ../libwnck/window-action-menu.c:422
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "_Küçült"
 
-#: ../libwnck/window-action-menu.c:430
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "_Büyültmeyi geri al"
 
-#: ../libwnck/window-action-menu.c:437
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Bü_yült"
 
-#: ../libwnck/window-action-menu.c:744 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Çalışma Alanı %d"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Çalışma Alanı 1_0"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Çalışma Alanı %s%d"
 
-#: ../libwnck/window-action-menu.c:1045
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "_Taşı"
 
-#: ../libwnck/window-action-menu.c:1052
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "_Yeniden boyutlandır"
 
-#: ../libwnck/window-action-menu.c:1061
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Her Zaman Ü_stte"
 
-#: ../libwnck/window-action-menu.c:1069
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "Her Zaman _Görünen Çalışma Alanında"
 
-#: ../libwnck/window-action-menu.c:1074
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Sadece _Bu Çalışma Alanında"
 
-#: ../libwnck/window-action-menu.c:1081
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "_Soldaki Çalışma Alanına Taşı"
 
-#: ../libwnck/window-action-menu.c:1087
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "S_ağdaki Çalışma Alanına Taşı"
 
-#: ../libwnck/window-action-menu.c:1093
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "_Yukarıdaki Çalışma Alanına Taşı"
 
-#: ../libwnck/window-action-menu.c:1099
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "_Aşağıdaki Çalışma Alanına Taşı"
 
-#: ../libwnck/window-action-menu.c:1102
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "_Başka bir Çalışma Alanına Taşı"
 
-#: ../libwnck/window-action-menu.c:1122
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "_Kapat"
 
@@ -733,8 +733,9 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
-msgstr "hiçbiri"
+msgctxt "workspace"
+msgid "none"
+msgstr "yok"
 
 #: ../libwnck/wnckprop.c:1206
 #, c-format
@@ -754,8 +755,9 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
-msgstr "hiçbiri"
+msgctxt "window"
+msgid "none"
+msgstr "yok"
 
 #: ../libwnck/wnckprop.c:1228
 #, c-format
@@ -884,8 +886,9 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
-msgstr "hiçbiri"
+msgctxt "startupID"
+msgid "none"
+msgstr "yok"
 
 #: ../libwnck/wnckprop.c:1384
 #, c-format
@@ -1233,8 +1236,14 @@ msgstr ""
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "XID %lu olan pencere ile etkileşim kurulamadı: pencere bulunamadı\n"
 
-#~ msgid "none"
-#~ msgstr "yok"
+#~ msgid "workspace|none"
+#~ msgstr "hiçbiri"
+
+#~ msgid "window|none"
+#~ msgstr "hiçbiri"
+
+#~ msgid "startupID|none"
+#~ msgstr "hiçbiri"
 
 #~ msgid "Unknown Window"
 #~ msgstr "Bilinmeyen Pencere"
