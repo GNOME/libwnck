@@ -2,16 +2,28 @@
 # This file is distributed under the same license as libwnck package
 # Copyright (C) 2002-2008 Free Software Foundation, Inc.
 # Pier Luigi Fiorini <plfiorini@supereva.it>, 2002.
-# Luca Ferretti <elle.uca@libero.it>, 2005-2009.
 #
+# Luca Ferretti <elle.uca@libero.it>, 2005, 2006, 2007, 2008, 2009.
+#
+# Per ogni dubbio fare riferimento alla fd.o WM spec
+# http://standards.freedesktop.org/wm-spec/wm-spec-1.4.html
+#
+# Nei messaggi del comando `wnckprop` è mantenuta la versione inglese
+# (pager, tasklist, workspace, viewport) perché considerato "tecnico"
+#
+# Nei messaggi che appaiono nella UI vale
+#   * workspace -> spazio di lavoro
+#   * viewport -> spazio visibile
+# come da discussione su TP
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.25.x\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-10 14:35+0100\n"
-"PO-Revision-Date: 2009-01-10 14:37+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-02-17 04:56+0000\n"
+"PO-Revision-Date: 2009-02-17 17:31+0100\n"
 "Last-Translator: Luca Ferretti <elle.uca@libero.it>\n"
-"Language-Team: Italiano <tp@lists.linux.it>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,16 +53,16 @@ msgstr "Applicazione senza titolo"
 
 #: ../libwnck/pager-accessible.c:322
 msgid "Workspace Switcher"
-msgstr "Selettore area di lavoro"
+msgstr "Selettore spazio di lavoro"
 
 #: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
-msgstr "Strumento per spostarsi tra le aree di lavoro"
+msgstr "Strumento per spostarsi tra gli spazi di lavoro"
 
 #: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Fare clic qui per passare all'area di lavoro %s"
+msgstr "Fare clic qui per passare allo spazio di lavoro %s"
 
 #: ../libwnck/pager.c:1910
 #, c-format
@@ -60,7 +72,7 @@ msgstr "Fare clic per iniziare a trascinare «%s»"
 #: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr "Area di lavoro corrente: «%s»"
+msgstr "Spazio di lavoro corrente: «%s»"
 
 #: ../libwnck/pager.c:1918
 #, c-format
@@ -97,7 +109,7 @@ msgstr "_Deminimizza tutto"
 
 #: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
-msgstr "Ma_ssimizza"
+msgstr "Ma_ssimizza tutto"
 
 #: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
@@ -117,7 +129,7 @@ msgstr "N_RIGHE"
 
 #: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
-msgstr "Solo sull'area di lavoro corrente"
+msgstr "Solo sullo spazio di lavoro corrente"
 
 #: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
 msgid "Use RTL as default direction"
@@ -125,7 +137,7 @@ msgstr "Usa RTL come direzione predefinita"
 
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
-msgstr "Mostra i nomi delle aree di lavoro invece del loro contenuto"
+msgstr "Mostra i nomi degli spazi di lavoro invece del loro contenuto"
 
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
@@ -146,7 +158,7 @@ msgstr "Non raggruppare in alcun caso le finestre"
 
 #: ../libwnck/test-tasklist.c:18
 msgid "Display windows from all workspaces"
-msgstr "Mostrare le finestre da tutte le aree di lavoro"
+msgstr "Mostrare le finestre da tutti gli spazi di lavoro"
 
 #: ../libwnck/test-tasklist.c:21
 msgid "Enable Transparency"
@@ -171,17 +183,17 @@ msgstr "Ma_ssimizza"
 #: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
-msgstr "Area di lavoro %d"
+msgstr "Spazio di lavoro %d"
 
 #: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
-msgstr "Area di lavoro 1_0"
+msgstr "Spazio di lavoro 1_0"
 
 #: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Area di lavoro %s%d"
+msgstr "Spazio di lavoro %s%d"
 
 #: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
@@ -198,32 +210,32 @@ msgstr "Sempre in _primo piano"
 # GNOME-2-24
 #: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
-msgstr "Sempre su area di lavoro _visibile"
+msgstr "Sempre su spazio di lavoro _visibile"
 
 #: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
-msgstr "Solo su _questa area di lavoro"
+msgstr "Solo su _questo spazio di lavoro"
 
 #: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
-msgstr "Sposta su area di lavoro a s_inistra"
+msgstr "Sposta su spazio di lavoro a s_inistra"
 
 #: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
-msgstr "Sposta su area di lavoro a d_estra"
+msgstr "Sposta su spazio di lavoro a d_estra"
 
 #: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
-msgstr "Sposta su area di lavoro in alt_o"
+msgstr "Sposta su spazio di lavoro in alt_o"
 
 #: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
-msgstr "Sposta su area di lavoro in _basso"
+msgstr "Sposta su spazio di lavoro in _basso"
 
 # GNOME-2-24
 #: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
-msgstr "Sposta su _altra area di lavoro"
+msgstr "Sposta su _altro spazio di lavoro"
 
 #: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
@@ -242,6 +254,9 @@ msgstr "_Chiudi"
 msgid "Untitled window"
 msgstr "Finestra senza titolo"
 
+# Da qui in poi appaiono i messaggi per
+# il programma a riga di comando
+# wnckprop, spiegazione --help e altro
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
 msgstr "ID X window della finestra da esaminare o modificare"
@@ -267,9 +282,11 @@ msgstr "Risorsa di classe del gruppo di classi da esaminare"
 msgid "CLASS"
 msgstr "CLASSE"
 
+# qui comincia l'uso "tecnico" di workspace/vieport
+# lasciati non tradotti
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "NUMERO dell'area di lavoro da esaminare o modificare"
+msgstr "NUMERO di workspace da esaminare o modificare"
 
 #: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
 #: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
@@ -291,31 +308,29 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"Elenca le finestre della applicazione/gruppo di classi/area di lavoro/"
-"schermo (formato: \"XID: Nome finestra\")"
+"Elenca le finestre della applicazione/gruppo di classi/workspace/schermo "
+"(formato: \"XID: Nome finestra\")"
 
 #: ../libwnck/wnckprop.c:163
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
-"Elenca le aree di lavoro dello schermo (formato: \"Numero: Nome area di "
-"lavoro\")"
+"Elenca le workspace dello schermo (formato: \"Numero: Nome spazio di lavoro"
+"\")"
 
 #: ../libwnck/wnckprop.c:169
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr "Cambia il numero di aree di lavoro dello schermo a NUMERO"
+msgstr "Cambia il numero di workspace dello schermo a NUMERO"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr ""
-"Cambia la disposizione dell'area di lavoro dello schermo per usare NUMERO "
-"righe"
+"Cambia la disposizione delle workspace dello schermo per usare NUMERO righe"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr ""
-"Cambia la disposizione dell'area di lavoro dello schermo per usare NUMERO "
-"colonne"
+"Cambia la disposizione delle workspace dello schermo per usare NUMERO colonne"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
@@ -330,7 +345,7 @@ msgstr "Termina di mostrare la scrivania"
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr ""
-"Sposta il viewport dell'area di lavoro corrente alla coordinata orizzontale X"
+"Sposta il viewport della workspace corrente alla coordinata orizzontale X"
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
@@ -341,7 +356,7 @@ msgstr "X"
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr ""
-"Sposta il viewport dell'area di lavoro corrente alla coordinata verticale Y"
+"Sposta il viewport della workspace corrente alla coordinata verticale Y"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
@@ -369,7 +384,7 @@ msgstr "Massimizza orizzontalmente la finestra"
 
 #: ../libwnck/wnckprop.c:201
 msgid "Unmaximize horizontally the window"
-msgstr "Damassimizza orizzontalmente la finestra"
+msgstr "Demassimizza orizzontalmente la finestra"
 
 #: ../libwnck/wnckprop.c:203
 msgid "Maximize vertically the window"
@@ -377,7 +392,7 @@ msgstr "Massimizza verticalmente la finestra"
 
 #: ../libwnck/wnckprop.c:205
 msgid "Unmaximize vertically the window"
-msgstr "Damassimizza verticalmente la finestra"
+msgstr "Demassimizza verticalmente la finestra"
 
 #: ../libwnck/wnckprop.c:207
 msgid "Start moving the window via the keyboard"
@@ -458,25 +473,24 @@ msgstr "Fa sì che la finestra appaia nei pager"
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
 msgid "Make the window not appear in tasklists"
-msgstr "Fa sì che la finestra non appaia nella tasklist"
+msgstr "Fa sì che la finestra non appaia nelle tasklist"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:256
 msgid "Make the window appear in tasklists"
-msgstr "Fa sì che la finestra appaia nella tasklist"
+msgstr "Fa sì che la finestra appaia nelle tasklist"
 
 #: ../libwnck/wnckprop.c:258
 msgid "Make the window visible on all workspaces"
-msgstr "Rende visibile la finestra su tutte le aree di lavoro"
+msgstr "Rende visibile la finestra su tutte le workspace"
 
 #: ../libwnck/wnckprop.c:260
 msgid "Make the window visible on the current workspace only"
-msgstr "Rende visibile la finestra solo sull'area di lavoro attuale"
+msgstr "Rende visibile la finestra solo sulla workspace attuale"
 
 #: ../libwnck/wnckprop.c:262
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
-"Sposta la finestra nell'area di lavoro NUMERO (prima area di lavoro è 0)"
+msgstr "Sposta la finestra sulla workspace NUMERO (la prima workspace è 0)"
 
 #: ../libwnck/wnckprop.c:264
 msgid "Change the X coordinate of the window to X"
@@ -517,7 +531,7 @@ msgstr "TIPO"
 
 #: ../libwnck/wnckprop.c:279
 msgid "Change the name of the workspace to NAME"
-msgstr "Cambia il nome dell'area di lavoro in NOME"
+msgstr "Cambia il nome della workspace in NOME"
 
 #: ../libwnck/wnckprop.c:279
 msgid "NAME"
@@ -525,7 +539,7 @@ msgstr "NOME"
 
 #: ../libwnck/wnckprop.c:281
 msgid "Activate the workspace"
-msgstr "Attiva l'area di lavoro"
+msgstr "Attiva la workspace"
 
 #: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
 #: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
@@ -549,7 +563,7 @@ msgid ""
 "be listed, but --%s has been used\n"
 msgstr ""
 "Sono presenti opzioni contraddittorie: si dovrebbero elencare le finestre o "
-"le aree di lavoro dello schermo %d, ma è stato usato --%s\n"
+"le workspace dello schermo %d, ma è stato usato --%s\n"
 
 #: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
 #, c-format
@@ -557,8 +571,8 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
-"Sono presenti opzioni contraddittorie: si dovrebbe interagire con l'area di "
-"lavoro %d, ma è stato usato --%s\n"
+"Sono presenti opzioni contraddittorie: si dovrebbe interagire con la "
+"workspace %d, ma è stato usato --%s\n"
 
 #: ../libwnck/wnckprop.c:532
 #, c-format
@@ -567,7 +581,7 @@ msgid ""
 "but --%s has been used\n"
 msgstr ""
 "Sono presenti opzioni contraddittorie: si dovrebbero elencare le finestre "
-"dell'area di lavoro %d, ma è stato usato --%s\n"
+"della workspace %d, ma è stato usato --%s\n"
 
 #: ../libwnck/wnckprop.c:554
 #, c-format
@@ -646,13 +660,16 @@ msgstr "Sono presenti opzioni contraddittorie: --%s o --%s insieme a --%s\n"
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "Argomento \"%s\" non valido per --%s, valori validi sono: %s\n"
 
+# credo che workspace sia da intendere
+# plurale qui, altrimenti non avrebbe
+# senso parlare di layout
 #: ../libwnck/wnckprop.c:850
 #, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
-"Impossibile cambiare la disposizione dell'area di lavoro sullo schermo: la "
+"Impossibile cambiare la disposizione delle workspace sullo schermo: la "
 "disposizione è già posseduta\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
@@ -662,7 +679,7 @@ msgstr ""
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
-"Impossibile muovere il viewport: l'area di lavoro attuale non contiene alcun "
+"Impossibile muovere il viewport: la workspace attuale non contiene alcun "
 "viewport\n"
 
 # current --> attuale --> in uso ??
@@ -671,8 +688,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:890
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
-"Impossibile muovere il viewport: non c'è alcuna area di lavoro in uso\n"
+msgstr "Impossibile muovere il viewport: non c'è alcuna workspace in uso\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
@@ -687,7 +703,7 @@ msgstr "Azione non consentita\n"
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
-"Impossibile muovere la finestra sull'area di lavoro %d: l'area non esiste\n"
+"Impossibile muovere la finestra sulla workspace %d: l'area non esiste\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
@@ -719,13 +735,13 @@ msgstr "Geometria (larghezza, altezza): %d, %d\n"
 #: ../libwnck/wnckprop.c:1178
 #, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr "Numero di aree di lavoro: %d\n"
+msgstr "Numero di workspace: %d\n"
 
 # accorciato per entrare negli 80 caratteri della console
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr "Disposizione aree di lavoro (rig, col, orient): %d, %d, %s\n"
+msgstr "Disposizione delle workspace (rig, col, orient): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
@@ -756,7 +772,7 @@ msgstr "nessuna"
 #: ../libwnck/wnckprop.c:1206
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr "Area di lavoro attiva: %s\n"
+msgstr "Workspace attiva: %s\n"
 
 #: ../libwnck/wnckprop.c:1215
 #, c-format
@@ -800,12 +816,13 @@ msgstr "falso"
 #: ../libwnck/wnckprop.c:1244
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr "Nome area di lavoro: %s\n"
+msgstr "Nome della workspace: %s\n"
 
+# controllato, è riferito a quella esaminata
 #: ../libwnck/wnckprop.c:1245
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr "Numero area di lavoro: %d\n"
+msgstr "Numero della workspace: %d\n"
 
 #: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
 #, c-format
@@ -923,7 +940,7 @@ msgstr "tutte"
 #: ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "On Workspace: %s\n"
-msgstr "Sull'area di lavoro: %s\n"
+msgstr "Sulla workspace: %s\n"
 
 #: ../libwnck/wnckprop.c:1451
 msgid "normal window"
@@ -1030,15 +1047,13 @@ msgstr "massimizzata verticalmente"
 msgid "shaded"
 msgstr "arrotolata"
 
-# FIXME!!
 #: ../libwnck/wnckprop.c:1552
 msgid "pinned"
-msgstr "appuntata"
+msgstr "pinned"
 
-# FIXME!!
 #: ../libwnck/wnckprop.c:1553
 msgid "sticky"
-msgstr "appiccicosa"
+msgstr "stiky"
 
 #: ../libwnck/wnckprop.c:1554
 msgid "above"
@@ -1094,15 +1109,13 @@ msgstr "arrotola"
 msgid "unshade"
 msgstr "srotola"
 
-# FIXME
 #: ../libwnck/wnckprop.c:1592
 msgid "stick"
-msgstr "appiccica"
+msgstr "stick"
 
-# FIXME
 #: ../libwnck/wnckprop.c:1593
 msgid "unstick"
-msgstr "de-appiccica"
+msgstr "unstick"
 
 #: ../libwnck/wnckprop.c:1595
 msgid "maximize horizontally"
@@ -1122,17 +1135,15 @@ msgstr "demassimizza verticalmente"
 
 #: ../libwnck/wnckprop.c:1604
 msgid "change workspace"
-msgstr "cambia area di lavoro"
+msgstr "cambia workspace"
 
-# FIXME
 #: ../libwnck/wnckprop.c:1606
 msgid "pin"
-msgstr "appunta"
+msgstr "pin"
 
-# FIXME
 #: ../libwnck/wnckprop.c:1608
 msgid "unpin"
-msgstr "de-appunta"
+msgstr "unpin"
 
 #: ../libwnck/wnckprop.c:1609
 msgid "minimize"
@@ -1194,18 +1205,18 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"Stampa o modifica le proprietà di uno schermo/area di lavoro/finestra, "
-"oppure interagisce con questi, seguendo le specifiche EWMH.\n"
+"Stampa o modifica le proprietà di uno schermo/workspace/finestra, oppure "
+"interagisce con questi, seguendo le specifiche EWMH.\n"
 "Per maggiori informazioni su tale specifica, consultare:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
-msgstr "Opzioni per elencare finestre e aree di lavoro"
+msgstr "Opzioni per elencare finestre o workspace"
 
 #: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
-msgstr "Mostra le opzioni per elencare finestre e aree di lavoro"
+msgstr "Mostra le opzioni per elencare finestre o workspace"
 
 #: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
@@ -1217,11 +1228,11 @@ msgstr "Mostra le opzioni per modificare le proprietà di una finestra"
 
 #: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
-msgstr "Opzioni per modificare le proprietà di un'area di lavoro"
+msgstr "Opzioni per modificare le proprietà di una workspace"
 
 #: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
-msgstr "Mostra le opzioni per modificare le proprietà di un'area di lavoro"
+msgstr "Mostra le opzioni per modificare le proprietà di una workspace"
 
 #: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
@@ -1245,8 +1256,8 @@ msgstr "Impossibile interagire con lo schermo %d: lo schermo non esiste\n"
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
-"Impossibile interagire con l'area di lavoro %d: non è possibile trovare tale "
-"area di lavoro\n"
+"Impossibile interagire con la workspace %d: non è possibile trovare tale "
+"workspace\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1953
