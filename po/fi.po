@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: libwnck 0.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-19 10:52+0300\n"
-"PO-Revision-Date: 2009-02-19 11:05+0300\n"
+"PO-Revision-Date: 2009-03-02 20:57+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -214,11 +214,11 @@ msgstr "Siirrä _oikeaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
-msgstr "Siirrä _ylläolevaan työtilaan"
+msgstr "Siirrä _yllä olevaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
-msgstr "Siirrä _allaolevaan työtilaan"
+msgstr "Siirrä _alla olevaan työtilaan"
 
 #: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
@@ -322,7 +322,7 @@ msgstr "Lopeta työpöydän näyttäminen"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr "Siirrä nykyisen työtilan katselunäkymä X-koordinaattin X"
+msgstr "Siirrä nykyisen työtilan katselunäkymä X-koordinaattiin X"
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
@@ -332,7 +332,7 @@ msgstr "X"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "Siirrä nykyisen työtilan katselunäkymä Y-koordinaattin Y"
+msgstr "Siirrä nykyisen työtilan katselunäkymä Y-koordinaattiin Y"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
@@ -922,11 +922,11 @@ msgstr "valintaikkuna"
 
 #: ../libwnck/wnckprop.c:1463
 msgid "tearoff toolbar"
-msgstr "irroitettu työkalupalkki"
+msgstr "irrotettu työkalupalkki"
 
 #: ../libwnck/wnckprop.c:1466
 msgid "tearoff menu"
-msgstr "irroitettu valikko"
+msgstr "irrotettu valikko"
 
 #: ../libwnck/wnckprop.c:1469
 msgid "utility window"
@@ -960,7 +960,7 @@ msgstr "XID: %lu\n"
 #: ../libwnck/wnckprop.c:1506
 #, c-format
 msgid "Session ID: %s\n"
-msgstr "Istuntutunniste: %s\n"
+msgstr "Istuntotunniste: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one window
