@@ -9,18 +9,20 @@
 # Simos Xenitellis <simos@hellug.gr>, 2002,2003.
 # Kostas Papadimas <pkst@gnome.org>, 2003,2004, 2006, 2007.
 # Nikos Charonitakis <charosn@her.forthnet.gr>, 2005.
+# Jennie Petoumenou <epetoumenou@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: el\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-03-16 17:00+0000\n"
-"PO-Revision-Date: 2007-09-04 19:36+0300\n"
-"Last-Translator: Kostas Papadimas <pkst@gnome.org>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-01-10 12:36+0000\n"
+"PO-Revision-Date: 2009-03-01 15:20+0100\n"
+"Last-Translator: Jennie Petoumenou <epetoumenou@gmail.com>\n"
 "Language-Team: Greek <team@gnome.gr>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 0.2\n"
 
 #. *
 #. * SECTION:application
@@ -58,17 +60,17 @@ msgstr "Εργαλείο για εναλλαγή μεταξύ χώρων εργ�
 msgid "Click this to switch to workspace %s"
 msgstr "Κάντε κλικ εδώ για να μεταφερθείτε στο χώρο εργασίας %s"
 
-#: ../libwnck/pager.c:1906
+#: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Κλικ για εκκίνηση της μεταφοράς του \"%s\""
 
-#: ../libwnck/pager.c:1909
+#: ../libwnck/pager.c:1913
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Τρέχων χώρος εργασίας: \"%s\""
 
-#: ../libwnck/pager.c:1914
+#: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Κάντε κλικ για να αλλάξετε στο %s"
@@ -85,31 +87,31 @@ msgstr "Επιλογέας παραθύρων"
 msgid "Tool to switch between windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ παραθύρων"
 
-#: ../libwnck/tasklist.c:727
+#: ../libwnck/tasklist.c:729
 msgid "Window List"
 msgstr "Λίστα παραθύρων"
 
-#: ../libwnck/tasklist.c:728
+#: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
 msgstr "Εργαλείο για εναλλαγή μεταξύ ορατών παραθύρων"
 
-#: ../libwnck/tasklist.c:3016
+#: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
 msgstr "Ελα_χιστοποίηση όλων"
 
-#: ../libwnck/tasklist.c:3027
+#: ../libwnck/tasklist.c:3029
 msgid "Un_minimize All"
 msgstr "Μεγιστο_ποίηση όλων"
 
-#: ../libwnck/tasklist.c:3035
+#: ../libwnck/tasklist.c:3037
 msgid "Ma_ximize All"
 msgstr "Με_γιστοποίηση όλων"
 
-#: ../libwnck/tasklist.c:3046
+#: ../libwnck/tasklist.c:3048
 msgid "_Unmaximize All"
 msgstr "Α_πομεγιστοποίηση Όλων"
 
-#: ../libwnck/tasklist.c:3058
+#: ../libwnck/tasklist.c:3060
 msgid "_Close All"
 msgstr "_Κλείσιμο Όλων"
 
@@ -158,78 +160,78 @@ msgstr "Εμφάνιση παραθύρων από όλους τους χώρο�
 msgid "Enable Transparency"
 msgstr "Ενεργοποίηση διαφάνειας"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:417
 msgid "Unmi_nimize"
 msgstr "Απελαχιστο_ποίηση"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
 msgstr "Ελα_χιστοποίηση"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
 msgstr "Απομεγιστο_ποίηση"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:439
 msgid "Ma_ximize"
 msgstr "Με_γιστοποίηση"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Χώρος Εργασίας %d"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Χώρος Εργασίας 1_0"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Χώρος Εργασίας %s%d"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1047
 msgid "_Move"
 msgstr "_Μετακίνηση"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1054
 msgid "_Resize"
 msgstr "Αλλαγή με_γέθους"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1063
 msgid "Always On _Top"
 msgstr "Πάνω μπ_ροστά"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1071
 msgid "_Always on Visible Workspace"
 msgstr "_Πάντοτε σε ορατό χώρο εργασίας"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1076
 msgid "_Only on This Workspace"
 msgstr "Μόνο σε αυ_τό το χώρο εργασίας"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1083
 msgid "Move to Workspace _Left"
 msgstr "Μετακίνηση σε χώρο ερ_γασίας αριστερά"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1089
 msgid "Move to Workspace R_ight"
 msgstr "Μετακίνηση σε χώρο εργασίας δε_ξιά"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
 msgstr "Μετακίνηση σε χώρο εργασίας _πάνω"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
 msgstr "Μετακίνηση σε χώρο εργασίας _κάτω"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
 msgstr "Μετακίνηση σε άλλο χώρο ερ_γασίας"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1124
 msgid "_Close"
 msgstr "_Κλείσιμο"
 
@@ -299,8 +301,7 @@ msgstr ""
 "εξόδου: \"XID: Window Name\")"
 
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 "Λίστα από χώρους εργασίας της οθόνης (μορφή εξόδου: \"Number: Workspace Name"
 "\")"
@@ -333,8 +334,7 @@ msgstr "Διακοπή προβολής της επιφάνειας εργασί
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:181
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
-"Μετακίνηση της θύρας όψης του τρέχοντα χώρου εργασίας σε Χ συντεταγμένη Χ"
+msgstr "Μετακίνηση της θύρας όψης του τρέχοντα χώρου εργασίας σε Χ συντεταγμένη Χ"
 
 #: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
 msgid "X"
@@ -344,8 +344,7 @@ msgstr "X"
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
-"Μετακίνηση της θύρας όψης του τρέχοντα χώρου εργασίας σε Y συντεταγμένη Y"
+msgstr "Μετακίνηση της θύρας όψης του τρέχοντα χώρου εργασίας σε Y συντεταγμένη Y"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
 msgid "Y"
@@ -629,8 +628,7 @@ msgstr "Υπάρχουν συγκρουόμενες επιλογές:--%s και
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 "Μη έγκυρο όρισμα  \"%d\"  για --%s, το όρισμα θα πρέπει να είναι αυστηρά "
 "θετικό\n"
@@ -638,8 +636,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
-"Μη έγκυρο όρισμα  \"%d\"  για --%s, το όρισμα θα πρέπει να είναι θετικό\n"
+msgstr "Μη έγκυρο όρισμα  \"%d\"  για --%s, το όρισμα θα πρέπει να είναι θετικό\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -664,8 +661,7 @@ msgstr ""
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
 #, c-format
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 "Αδυναμία μετακίνησης θύρας όψης: Ο τρέχων χώρος εργασίας δεν περιέχει μια "
 "θύρα όψης\n"
@@ -728,8 +724,7 @@ msgstr "Αριθμός χώρων εργασίας: %d\n"
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
-"Διάταξη χώρου εργασίας (γραμμές, στήλες, προσανατολισμός): %d, %d, %s\n"
+msgstr "Διάταξη χώρου εργασίας (γραμμές, στήλες, προσανατολισμός): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
@@ -753,7 +748,8 @@ msgstr "%d (\"%s\")"
 #: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
 #: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
 #: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
+msgctxt "workspace"
+msgid "none"
 msgstr "κανένας"
 
 #: ../libwnck/wnckprop.c:1206
@@ -774,7 +770,8 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1227
-msgid "window|none"
+msgctxt "window"
+msgid "none"
 msgstr "κανένα"
 
 #: ../libwnck/wnckprop.c:1228
@@ -904,7 +901,8 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
+msgctxt "startupID"
+msgid "none"
 msgstr "κανένα"
 
 #: ../libwnck/wnckprop.c:1384
@@ -1230,16 +1228,13 @@ msgstr "Αδυναμία επικοινωνίας με την οθόνη %d: η 
 #: ../libwnck/wnckprop.c:1930
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
-"Αδυναμία επικοινωνίας με το χώρο εργασίας %d: π χώρος εργασίας δεν υπάρχει\n"
+msgstr "Αδυναμία επικοινωνίας με το χώρο εργασίας %d: π χώρος εργασίας δεν υπάρχει\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1953
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
-"Αδυναμία επικοινωνίας με class group  \"%s\": το class group  δεν υπάρχει\n"
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr "Αδυναμία επικοινωνίας με class group  \"%s\": το class group  δεν υπάρχει\n"
 
 #: ../libwnck/wnckprop.c:1976
 #, c-format
@@ -1257,5 +1252,12 @@ msgstr ""
 "Αδυναμία επικοινωνίας με με παράθυρο με XID %lu: το παράθυρο δεν μπορεί να "
 "βρεθεί\n"
 
-#~ msgid "none"
+#~ msgid "workspace|none"
+#~ msgstr "κανένας"
+
+#~ msgid "window|none"
 #~ msgstr "κανένα"
+
+#~ msgid "startupID|none"
+#~ msgstr "κανένα"
+
