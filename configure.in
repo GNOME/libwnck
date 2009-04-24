@@ -1,6 +1,7 @@
 AC_INIT(libwnck/window.h)
 
 AM_CONFIG_HEADER(config.h)
+AC_CONFIG_MACRO_DIR([m4])
 
 AM_INIT_AUTOMAKE(libwnck, 2.26.2)
 AM_MAINTAINER_MODE
@@ -144,8 +145,12 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ##################################################
 GTK_DOC_CHECK([1.9])
 
+SHAVE_INIT([.], [enable])
+
 AC_OUTPUT([
 Makefile
+shave
+shave-libtool
 doc/Makefile
 po/Makefile.in
 libwnck/Makefile

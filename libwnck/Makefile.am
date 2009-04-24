@@ -1,3 +1,4 @@
+QUIET_GEN = $(Q:@=@echo '  GEN   '$@;)
 
 INCLUDES=@LIBWNCK_CFLAGS@ @XLIB_CFLAGS@ -DG_LOG_DOMAIN=\"Wnck\" -I$(top_srcdir) \
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE -DWNCK_LOCALEDIR=\"$(wncklocaledir)\" \
@@ -101,15 +102,15 @@ test_selector_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
 test_pager_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
 
 wnck-marshal.h: wnck-marshal.list
-	@GLIB_GENMARSHAL@ --prefix=_wnck_marshal $< --header > $@
+	$(QUIET_GEN)@GLIB_GENMARSHAL@ --prefix=_wnck_marshal $< --header > $@
 
 wnck-marshal.c: wnck-marshal.list wnck-marshal.h
-	echo "#include <libwnck/libwnck.h>" > $@ \
+	$(QUIET_GEN)echo "#include <libwnck/libwnck.h>" > $@ \
 	&& echo "#include \"wnck-marshal.h\"" >> $@ \
 	&& @GLIB_GENMARSHAL@ --prefix=_wnck_marshal $< --body >> $@
 
 wnck-enum-types.h: $(wnck_headers)
-	glib-mkenums \
+	$(QUIET_GEN)glib-mkenums \
 		--fhead "#ifndef __WNCK_ENUM_TYPES_H__\n" \
 		--fhead "#define __WNCK_ENUM_TYPES_H__\n\n" \
 		--fhead "G_BEGIN_DECLS\n\n" \
@@ -121,7 +122,7 @@ wnck-enum-types.h: $(wnck_headers)
 		$(wnck_headers) > $@
 
 wnck-enum-types.c: $(wnck_headers) wnck-enum-types.h
-	glib-mkenums \
+	$(QUIET_GEN)glib-mkenums \
 		--fhead "#include <libwnck/libwnck.h>\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
 		--vhead "static const GEnumValue _@enum_name@_values[] = {" \
@@ -147,7 +148,7 @@ CLEANFILES =			\
 	$(wnck_built_cfiles)
 
 inlinepixbufs.h: $(IMAGES)
-	$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
+	$(QUIET_GEN)$(GDK_PIXBUF_CSOURCE) --raw --build-list $(VARIABLES) >$(srcdir)/inlinepixbufs.h
 
 $(OBJECTS): inlinepixbufs.h
 
