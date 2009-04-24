@@ -49,3 +49,5 @@ include $(top_srcdir)/gtk-doc.make
 CLEANFILES += gsf-scan.*
 
 .PHONY : dist-hook-local
+
+-include $(top_srcdir)/git.mk

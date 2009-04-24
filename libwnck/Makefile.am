@@ -155,3 +155,5 @@ $(OBJECTS): inlinepixbufs.h
 EXTRA_DIST= 			\
 	wnck-marshal.list	\
 	$(IMAGES)
+
+-include $(top_srcdir)/git.mk
