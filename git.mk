@@ -28,8 +28,8 @@
 # ignore them.  See "man gitignore".
 #
 # If "make maintainer-clean" removes the files but they are not recognized
-# by this script (that is, if "git stat" shows untracked files still), send
-# me the output of "git stat" as well as your Makefile.am and Makefile for
+# by this script (that is, if "git status" shows untracked files still), send
+# me the output of "git status" as well as your Makefile.am and Makefile for
 # the directories involved.
 #
 # For a list of toplevel files that should be in MAINTAINERCLEANFILES, see
@@ -157,7 +157,7 @@ $(srcdir)/.gitignore: Makefile.am $(top_srcdir)/git.mk
 		"*.rej" \
 		"*.bak" \
 		"*~" \
-		".*.swp" \
+		".*.sw[nop]" \
 	; do echo /$$x; done | \
 	sed "s@^/`echo "$(srcdir)" | sed 's/\(.\)/[\1]/g'`/@/@" | \
 	sed 's@/[.]/@/@g' | \
@@ -171,8 +171,8 @@ gitignore-recurse:
 		  test "$$subdir" = . || (cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) .gitignore); \
 		done; \
 	fi;
-maintainer-clean-local: gitignore-clean
+maintainer-clean: gitignore-clean
 gitignore-clean:
-	rm -f $(srcdir)/.gitignore
+	-rm -f $(srcdir)/.gitignore
 .PHONY: gitignore-clean gitignore-recurse
 
