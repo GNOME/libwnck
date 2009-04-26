@@ -23,10 +23,7 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/missing \
 	$(srcdir)/mkinstalldirs \
 	`find "$(srcdir)" -type f -name Makefile.in -print` \
-	intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in \
-	`find "$(srcdir)" -type f -name .gitignore -print` \
+	$(srcdir)/configure \
 	$(srcdir)/gtk-doc.make \
 	$(srcdir)/m4/gtk-doc.m4 \
 	$(srcdir)/m4/intltool.m4
