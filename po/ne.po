@@ -591,11 +591,13 @@ msgstr "हाल विवादित विकल्प निम्न ह�
 
 #: ../libwnck/wnckprop.c:642
 #, c-format
+#, fuzzy
 msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr "अमान्य तर्क --%s का लागि \"%d\": तर्क धनात्मक हुनुपर्दछ\n"
 
 #: ../libwnck/wnckprop.c:655
 #, c-format
+#, fuzzy
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr " --%s का लागि अमान्य तर्क \"%d\": तर्क धनात्मक हुनुपर्दछ\n"
 
