@@ -12,11 +12,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bn_IN\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
-"POT-Creation-Date: 2009-01-10 12:36+0000\n"
-"PO-Revision-Date: 2009-01-22 16:05+0530\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libwnck&component=general\n"
+"POT-Creation-Date: 2009-06-04 15:06+0000\n"
+"PO-Revision-Date: 2009-06-12 19:51+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
-"Language-Team: Bengali INDIA <fedora-trans-bn_IN@redhat.com>\n"
+"Language-Team: Bengali INDIA <discuss@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -301,7 +302,8 @@ msgstr ""
 "বিন্যাস: \"XID: উইন্ডোর নাম\")"
 
 #: ../libwnck/wnckprop.c:163
-msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 "পর্দায় কর্মক্ষেত্রের তালিকা নির্মাণ করুন (ফলাফলের বিন্যাস: \"সংখ্যা: কর্মক্ষেত্রের নাম"
 "\")"
@@ -622,7 +624,8 @@ msgstr "দ্বন্দ্বযুক্ত বিকল্প উপস্�
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 "অবৈধ আর্গুমেন্ট \"%d\", --%s-র সাথে ব্যবহৃত হয়েছে: আর্গুমেন্টের মান শূণ্যের অধিক হওয়া "
 "বাধ্যতামূলক\n"
@@ -649,13 +652,15 @@ msgstr "অবৈধ আর্গুমেন্ট \"%s\", --%s-র সাথ�
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr "স্ক্রিনে কর্মক্ষেত্রের বিন্যাস পরিবর্তন করা সম্ভব নয় কারণ বিন্যাস পূর্বে ব্যবহৃত হয়েছে\n"
+msgstr ""
+"স্ক্রিনে কর্মক্ষেত্রের বিন্যাস পরিবর্তন করা সম্ভব নয় কারণ বিন্যাস পূর্বে ব্যবহৃত হয়েছে\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
 #, c-format
-msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr "বর্তমান কর্মক্ষেত্রে দৃষ্টিপটভূমি নেই এই কারণে দৃষ্টিপটভূমি সরিয়ে রাখা সম্ভব নয়\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
@@ -935,7 +940,7 @@ msgstr "টিয়ার-অফ মেনু"
 
 #: ../libwnck/wnckprop.c:1469
 msgid "utility window"
-msgstr ""
+msgstr "কার্যকারিতা সম্বলিত উইন্ডো"
 
 #: ../libwnck/wnckprop.c:1472
 msgid "splash screen"
@@ -979,7 +984,7 @@ msgstr "সংকলনের মূল উইন্ডো: %lu\n"
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "চিহ্নিত উইন্ডোর জন্য এটি সাময়িক: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
@@ -1138,19 +1143,19 @@ msgstr "বন্ধ করুন"
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "make above"
 
 #: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "unmake above"
 
 #: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "make below"
 
 #: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "unmake below"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
@@ -1223,8 +1228,10 @@ msgstr "কর্মক্ষেত্র %d-র সাথে ইন্টার
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1953
 #, c-format
-msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "শ্রেণী সংকলন \"%s\"-র সাথে ইন্টারেক্ট করতে ব্যর্থ: এই শ্রেণী সংকলনটি উপস্থিত নেই\n"
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr ""
+"শ্রেণী সংকলন \"%s\"-র সাথে ইন্টারেক্ট করতে ব্যর্থ: এই শ্রেণী সংকলনটি উপস্থিত নেই\n"
 
 #: ../libwnck/wnckprop.c:1976
 #, c-format
@@ -1239,4 +1246,3 @@ msgstr ""
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "XID %lu নির্ধারিত উইন্ডোর সাথে ইন্টারেক্ট করতে ব্যর্থ: উইন্ডো পাওয়া যায়নি\n"
-
