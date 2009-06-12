@@ -14,9 +14,9 @@ msgstr ""
 "Project-Id-Version: bn_IN\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-01-10 12:36+0000\n"
-"PO-Revision-Date: 2009-01-22 16:05+0530\n"
+"PO-Revision-Date: 2009-06-12 19:51+0530\n"
 "Last-Translator: Runa Bhattacharjee <runab@redhat.com>\n"
-"Language-Team: Bengali INDIA <fedora-trans-bn_IN@redhat.com>\n"
+"Language-Team: Bengali INDIA <discuss@lists.ankur.org.in>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -935,7 +935,7 @@ msgstr "টিয়ার-অফ মেনু"
 
 #: ../libwnck/wnckprop.c:1469
 msgid "utility window"
-msgstr ""
+msgstr "কার্যকারিতা সম্বলিত উইন্ডো"
 
 #: ../libwnck/wnckprop.c:1472
 msgid "splash screen"
@@ -979,7 +979,7 @@ msgstr "সংকলনের মূল উইন্ডো: %lu\n"
 #: ../libwnck/wnckprop.c:1517
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "চিহ্নিত উইন্ডোর জন্য এটি সাময়িক: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
@@ -1138,19 +1138,19 @@ msgstr "বন্ধ করুন"
 
 #: ../libwnck/wnckprop.c:1617
 msgid "make above"
-msgstr ""
+msgstr "make above"
 
 #: ../libwnck/wnckprop.c:1619
 msgid "unmake above"
-msgstr ""
+msgstr "unmake above"
 
 #: ../libwnck/wnckprop.c:1621
 msgid "make below"
-msgstr ""
+msgstr "make below"
 
 #: ../libwnck/wnckprop.c:1623
 msgid "unmake below"
-msgstr ""
+msgstr "unmake below"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "no action possible"
