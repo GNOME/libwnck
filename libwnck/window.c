@@ -2745,15 +2745,6 @@ update_state (WnckWindow *window)
     }
 }
 
-static gboolean
-nullstr_equal (const char *str1, const char *str2)
-{
-  if (str1 == NULL || str2 == NULL)
-    return str1 == str2;
-  else
-    return !strcmp (str1, str2);
-}
-
 static void
 update_name (WnckWindow *window)
 {
@@ -2766,7 +2757,7 @@ update_name (WnckWindow *window)
 
   new_name = _wnck_get_name (window->priv->xwindow);
 
-  if (!nullstr_equal (window->priv->name, new_name))
+  if (g_strcmp0 (window->priv->name, new_name) != 0)
     window->priv->need_emit_name_changed = TRUE;
 
   g_free (window->priv->name);
@@ -2785,7 +2776,7 @@ update_icon_name (WnckWindow *window)
 
   new_name = _wnck_get_icon_name (window->priv->xwindow);
 
-  if (!nullstr_equal (window->priv->icon_name, new_name))
+  if (g_strcmp0 (window->priv->icon_name, new_name) != 0)
     window->priv->need_emit_name_changed = TRUE;
 
   g_free (window->priv->icon_name);
