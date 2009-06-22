@@ -479,7 +479,16 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
 {
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), FALSE);
 
-  return _wnck_icon_cache_get_is_fallback (app->priv->icon_cache);
+  if (app->priv->icon)
+    return FALSE;
+  else
+    {
+      WnckWindow *w = find_icon_window (app);
+      if (w)
+        return wnck_window_get_icon_is_fallback (w);
+      else
+        return TRUE;
+    }
 }
 
 /**
