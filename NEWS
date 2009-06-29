@@ -1,3 +1,22 @@
+2.26.2
+======
+
+ Fixes
+
+  - Fix wnck_application_get_icon_is_fallback() to actually work (Vincent)
+  - Fix gtk-doc warning (Vincent)
+
+ Misc
+
+  - Use shave to improve build log readability (Vincent)
+  - Build system tweaks (Vincent)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Nabin Gautam (ne)
+  - Runa Bhattacharjee (bn_IN)
+
 2.26.1
 ======
 
