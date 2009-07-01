@@ -583,6 +583,7 @@ wnck_selector_item_new (WnckSelector *selector,
   };
 
   item = gtk_image_menu_item_new ();
+  gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
 
   ellipsizing_label = gtk_label_new (label);
   gtk_misc_set_alignment (GTK_MISC (ellipsizing_label), 0.0, 0.5);
