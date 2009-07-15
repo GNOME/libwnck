@@ -1,3 +1,25 @@
+==============
+Version 2.27.4
+==============
+
+ Fixes
+
+  - Fix wnck_application_get_icon_is_fallback() to actually work (Vincent)
+  - Fix gtk-doc warning (Vincent)
+  - Code cleanup (Vincent)
+  - Always show icons in selector menu (Vincent)
+
+ Misc
+
+  - Use shave to improve build log readability (Vincent)
+  - Build system tweaks (Vincent)
+
+ Translators
+
+  - Runa Bhattacharjee (bn_IN)
+  - Ivar Smolin (et)
+  - Nabin Gautam (ne)
+
 2.26.1
 ======
 
