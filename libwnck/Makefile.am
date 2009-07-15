@@ -61,6 +61,9 @@ $(libwnck_1_la_OBJECTS): inlinepixbufs.h
 wnckprop_SOURCES=		\
 	wnckprop.c
 
+wnck_urgency_monitor_SOURCES=	\
+	wnck-urgency-monitor.c
+
 test_wnck_SOURCES=		\
 	test-wnck.c
 
@@ -74,10 +77,10 @@ test_pager_SOURCES=		\
 	test-pager.c
 
 bin_PROGRAMS=			\
-	wnckprop
+	wnckprop		\
+	wnck-urgency-monitor
 
 noinst_PROGRAMS=		\
-	wnckprop		\
 	test-pager		\
 	test-wnck		\
 	test-selector		\
@@ -92,6 +95,9 @@ libwnck_1_la_LIBADD=   \
 	@LIBWNCK_LIBS@ @XLIB_LIBS@
 
 wnckprop_LDADD=   \
+	@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
+
+wnck_urgency_monitor_LDADD=   \
 	@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
 
 test_wnck_LDADD=@LIBWNCK_LIBS@ ./$(lib_LTLIBRARIES)
