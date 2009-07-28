@@ -8,7 +8,8 @@
 static gboolean skip_tasklist = FALSE;
 
 static GOptionEntry entries[] = {
-        /* Translators: "tasklist" is the list of running applications (the window list) */
+        /* Translators: "tasklist" is the list of running applications (the
+         * window list) */
 	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, N_("Don't show window in tasklist"), NULL},
 	{NULL }
 };

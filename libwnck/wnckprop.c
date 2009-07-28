@@ -138,13 +138,15 @@ static GOptionEntry main_entries[] = {
 	{ "window", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("X window ID of the window to examine or modify"), N_("XID") },
 	{ "application", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
-        /* Translators: A group leader is the window that is the "owner" of a group
-         * of windows, ie: if you have multiple windows in one application, one window
-         * has some information about the application (like the application name). */
+          /* Translators: A group leader is the window that is the "owner" of a
+           * group of windows, ie: if you have multiple windows in one
+           * application, one window has some information about the application
+           * (like the application name). */
           N_("X window ID of the group leader of an application to examine"),
           N_("XID") },
 	{ "class", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+          /* Translators: A class is like a "family". E.g., all gvim windows
+           * are of the same class. */
           N_("Class resource of the class group to examine"), N_("CLASS") },
 	{ "workspace", 0, G_OPTION_FLAG_OPTIONAL_ARG, G_OPTION_ARG_CALLBACK, option_parse,
           N_("NUMBER of the workspace to examine or modify"), N_("NUMBER") },
@@ -157,7 +159,8 @@ static GOptionEntry main_entries[] = {
 
 static GOptionEntry list_entries[] = {
 	{ "list", 0, 0, G_OPTION_ARG_NONE, &list,
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+          /* Translators: A class is like a "family". E.g., all gvim windows
+           * are of the same class. */
           N_("List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"), NULL },
 	{ "list-workspaces", 0, 0, G_OPTION_ARG_NONE, &list_workspaces,
           N_("List workspaces of the screen (output format: \"Number: Workspace Name\")"), NULL },
@@ -176,12 +179,14 @@ static GOptionEntry screen_entries[] = {
 	{ "unshow-desktop", 0, 0, G_OPTION_ARG_NONE, &set_unshow_desktop,
           N_("Stop showing the desktop"), NULL },
 	{ "move-viewport-x", 0, 0, G_OPTION_ARG_INT, &set_viewport_x,
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+          /* Translators: 'viewport' is kind of the viewable area. A viewport
+           * can be used to implement workspaces (e.g. compiz is an example);
+           * however it is not just the current workspace. */
           N_("Move the viewport of the current workspace to X coordinate X"), N_("X") },
 	{ "move-viewport-y", 0, 0, G_OPTION_ARG_INT, &set_viewport_y,
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+          /* Translators: 'viewport' is kind of the viewable area. A viewport
+           * can be used to implement workspaces (e.g. compiz is an example);
+           * however it is not just the current workspace. */
           N_("Move the viewport of the current workspace to Y coordinate Y"), N_("Y") },
 	{ NULL }
 };
@@ -229,30 +234,36 @@ static GOptionEntry window_entries[] = {
 	{ "unshade", 0, 0, G_OPTION_ARG_NONE, &set_unshade,
           N_("Unshade the window"), NULL },
 	{ "stick", 0, 0, G_OPTION_ARG_NONE, &set_stick,
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+          /* Translators: 'viewport' is kind of the viewable area. A viewport
+           * can be used to implement workspaces (e.g. compiz is an example);
+           * however it is not just the current workspace. */
           N_("Make the window have a fixed position in the viewport"), NULL },
 	{ "unstick", 0, 0, G_OPTION_ARG_NONE, &set_unstick,
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+          /* Translators: 'viewport' is kind of the viewable area. A viewport
+           * can be used to implement workspaces (e.g. compiz is an example);
+           * however it is not just the current workspace. */
           N_("Make the window not have a fixed position in the viewport"), NULL },
 	{ "skip-pager", 0, 0, G_OPTION_ARG_NONE, &set_skip_pager,
-  /* Translators: A pager is the technical term for the workspace switcher.
-   * It's a representation of all workspaces with windows inside it.
-   * Please make sure that the translation is in sync with gnome-panel,
-   * where this term is also used in translatable strings */
+          /* Translators: A pager is the technical term for the workspace
+           * switcher. It's a representation of all workspaces with windows
+           * inside it. Please make sure that the translation is in sync with
+           * gnome-panel, where this term is also used in translatable strings
+           */
           N_("Make the window not appear in pagers"), NULL },
 	{ "unskip-pager", 0, 0, G_OPTION_ARG_NONE, &set_unskip_pager,
-  /* Translators: A pager is the technical term for the workspace switcher.
-   * It's a representation of all workspaces with windows inside it.
-   * Please make sure that the translation is in sync with gnome-panel,
-   * where this term is also used in translatable strings */
+          /* Translators: A pager is the technical term for the workspace
+           * switcher. It's a representation of all workspaces with windows
+           * inside it. Please make sure that the translation is in sync with
+           * gnome-panel, where this term is also used in translatable strings
+           */
           N_("Make the window appear in pagers"), NULL },
 	{ "skip-tasklist", 0, 0, G_OPTION_ARG_NONE, &set_skip_tasklist,
-  /* Translators: "tasklist" is the list of running applications (the window list) */
+          /* Translators: "tasklist" is the list of running applications (the
+           * window list) */
           N_("Make the window not appear in tasklists"), NULL },
 	{ "unskip-tasklist", 0, 0, G_OPTION_ARG_NONE, &set_unskip_tasklist,
-  /* Translators: "tasklist" is the list of running applications (the window list) */
+          /* Translators: "tasklist" is the list of running applications (the
+           * window list) */
           N_("Make the window appear in tasklists"), NULL },
 	{ "pin", 0, 0, G_OPTION_ARG_NONE, &set_pin,
           N_("Make the window visible on all workspaces"), NULL },
@@ -573,7 +584,8 @@ set_mode (int         new_mode,
           mode = CLASS_GROUP_LIST_MODE;
         else if (new_mode != CLASS_GROUP_READ_MODE)
           {
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+            /* Translators: A class is like a "family". E.g., all gvim windows
+             * are of the same class. */
             g_printerr (_("Conflicting options are present: class group "
                           "\"%s\" should be interacted with, but --%s has "
                           "been used\n"),
@@ -584,7 +596,8 @@ set_mode (int         new_mode,
       case CLASS_GROUP_LIST_MODE:
         if (new_mode != CLASS_GROUP_LIST_MODE)
           {
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+            /* Translators: A class is like a "family". E.g., all gvim windows
+             * are of the same class. */
             g_printerr (_("Conflicting options are present: windows of class "
                           "group \"%s\" should be listed, but --%s has "
                           "been used\n"),
@@ -879,14 +892,16 @@ update_screen (WnckScreen *screen)
                wnck_screen_move_viewport (screen, viewport_x, viewport_y);
              }
            else
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+         /* Translators: 'viewport' is kind of the viewable area. A viewport
+          * can be used to implement workspaces (e.g. compiz is an example);
+          * however it is not just the current workspace. */
          g_printerr (_("Viewport cannot be moved: "
                        "the current workspace does not contain a viewport\n"));
          }
        else
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+         /* Translators: 'viewport' is kind of the viewable area. A viewport
+          * can be used to implement workspaces (e.g. compiz is an example);
+          * however it is not just the current workspace. */
          g_printerr (_("Viewport cannot be moved: "
                        "there is no current workspace\n"));
     }
@@ -1214,10 +1229,10 @@ print_screen (WnckScreen *screen)
       if (wnck_window_has_name (window))
         name = g_strdup_printf (_("\"%s\""), wnck_window_get_name (window));
       else
-      /* Translators: 'unset' in the sense of "something has not been set". */
+        /* Translators: 'unset' in the sense of "something has not been set". */
         name = g_strdup (_("<name unset>"));
 
-      /* Translators: %lu is a window number and %s a window name */
+      /* Translators: %lu is a window identifier (number) and %s a window name */
       free_buf = g_strdup_printf (_("%lu (%s)"),
                                   wnck_window_get_xid (window), name);
       g_free (name);
@@ -1261,11 +1276,13 @@ print_workspace (WnckWorkspace *space)
                                 wnck_workspace_get_viewport_x (space),
                                 wnck_workspace_get_viewport_y (space));
   else
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+    /* Translators: 'viewport' is kind of the viewable area. A viewport can be
+     * used to implement workspaces (e.g. compiz is an example); however it is
+     * not just the current workspace. */
     free_buf = g_strdup (_("<no viewport>"));
-        /* Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-        a workspace (e.g. compiz is an example); however it is not just the current workspace. */
+  /* Translators: 'viewport' is kind of the viewable area. A viewport can be
+   * used to implement workspaces (e.g. compiz is an example); however it is
+   * not just the current workspace. */
   g_print (_("Viewport position (x, y): %s\n"), free_buf);
   g_free (free_buf);
 
@@ -1329,7 +1346,7 @@ print_class_group (WnckClassGroup *class_group)
 
   windows = wnck_class_group_get_windows (class_group);
 
-  /* Translators: Ressource class is the name to identify a class. */
+  /* Translators: Resource class is the name to identify a class. */
   g_print (_("Resource Class: %s\n"),
            wnck_class_group_get_res_class (class_group));
   g_print (_("Group Name: %s\n"), wnck_class_group_get_name (class_group));
@@ -1485,7 +1502,8 @@ print_window (WnckWindow *window)
   else
     /* Translators: 'unset' in the sense of "something has not been set". */
     buf = _("<unset>");
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+  /* Translators: A class is like a "family". E.g., all gvim windows are of the
+   * same class. */
   g_print (_("Class Group: %s\n"), buf);
 
   g_print (_("XID: %lu\n"), wnck_window_get_xid (window));
@@ -1506,14 +1524,16 @@ print_window (WnckWindow *window)
   g_print (_("Session ID: %s\n"), buf);
 
   if (wnck_window_get_group_leader (window) != wnck_window_get_xid (window))
-        /* Translators: A group leader is the window that is the "owner" of a group
-         * of windows, ie: if you have multiple windows in one application, one window
-         * has some information about the application (like the application name). */
+    /* Translators: A group leader is the window that is the "owner" of a group
+     * of windows, ie: if you have multiple windows in one application, one
+     * window has some information about the application (like the application
+     * name). */
     g_print (_("Group Leader: %lu\n"), wnck_window_get_group_leader (window));
   //FIXME: else print something?
 
   if (wnck_window_get_transient (window))
-  /* Translators: A window can be transient for another window: it means it's on top of it */
+    /* Translators: A window can be transient for another window: it means it's
+     * on top of it */
     g_print (_("Transient for: %lu\n"),
              wnck_window_get_xid (wnck_window_get_transient (window)));
   //FIXME: else print something?
@@ -1560,7 +1580,8 @@ print_window (WnckWindow *window)
    * Please make sure that the translation is in sync with gnome-panel,
    * where this term is also used in translatable strings */
   PRINT_LIST_ITEM (wnck_window_is_skip_pager, _("skip pager"));
-  /* Translators: "tasklist" is the list of running applications (the window list) */
+  /* Translators: "tasklist" is the list of running applications (the window
+   * list) */
   PRINT_LIST_ITEM (wnck_window_is_skip_tasklist, _("skip tasklist"));
   if (!free_buf)
     free_buf = g_strdup (_("normal"));
@@ -1949,7 +1970,8 @@ main (int argc, char **argv)
             g_assert_not_reached ();
         }
       else
-        /* Translators: A class is like a "family". E.g., all gvim windows are of the same class. */
+        /* Translators: A class is like a "family". E.g., all gvim windows are
+         * of the same class. */
         g_printerr (_("Cannot interact with class group \"%s\": "
                       "the class group cannot be found\n"),
                     interact_class_group);
