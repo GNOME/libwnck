@@ -1,4 +1,17 @@
 ==============
+Version 2.27.5
+==============
+
+ Features
+
+  - New wnck-urgency-monitor utility to monitor windows with urgent hint
+    (Vincent)
+
+ Misc
+
+  - Use silent-rules with automake 1.11 (Vincent)
+
+==============
 Version 2.27.4
 ==============
 
