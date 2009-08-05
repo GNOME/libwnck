@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-05-07 22:01+0300\n"
+"PO-Revision-Date: 2009-08-05 11:42+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -222,13 +222,13 @@ msgid "CLASS"
 msgstr "KLASS"
 
 msgid "NUMBER of the workspace to examine or modify"
-msgstr ""
+msgstr "Uuritava või muudetava tööala NUMBER"
 
 msgid "NUMBER"
-msgstr ""
+msgstr "NUMBER"
 
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "Uuritava või muudetava ekraani NUMBER"
 
 msgid "Alias of --window"
 msgstr "Võtme --windows alias"
@@ -244,24 +244,24 @@ msgid ""
 msgstr ""
 
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Ekraani tööalade arvu muutmine"
 
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "Ekraani tööalade paigutuse ridade muutmine"
 
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "Ekraani tööalade paigutuse veergude muutmine"
 
 msgid "Show the desktop"
-msgstr "Näita töölauda"
+msgstr "Töölaua näitamine"
 
 msgid "Stop showing the desktop"
-msgstr "Ära näita töölauda"
+msgstr "Töölaua näitamise lõpetamine"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr "Liiguta selle tööala vaateava määratud X koordinaadile"
+msgstr "Selle tööala vaateava tõstmine määratud X koordinaadile"
 
 msgid "X"
 msgstr "X"
@@ -269,7 +269,7 @@ msgstr "X"
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "Liiguta selle tööala vaateava määratud Y koordinaadile"
+msgstr "Selle tööala vaateava tõstmine määratud Y koordinaadile"
 
 msgid "Y"
 msgstr "Y"
@@ -278,25 +278,25 @@ msgid "Minimize the window"
 msgstr "Akna minimeerimine"
 
 msgid "Unminimize the window"
-msgstr "Taasta aken"
+msgstr "Akna taastamine"
 
 msgid "Maximize the window"
 msgstr "Akna maksimeerimine"
 
 msgid "Unmaximize the window"
-msgstr "Taasta akna suurus"
+msgstr "Akna suuruse taastamine"
 
 msgid "Maximize horizontally the window"
 msgstr "Akna rõhtne maksimeerimine"
 
 msgid "Unmaximize horizontally the window"
-msgstr "Taasta akna laius"
+msgstr "Akna laiuse taastamine"
 
 msgid "Maximize vertically the window"
 msgstr "Akna püstine maksimeerimine"
 
 msgid "Unmaximize vertically the window"
-msgstr "Taasta akna kõrgus"
+msgstr "Akna kõrguse taastamine"
 
 msgid "Start moving the window via the keyboard"
 msgstr "Alusta akna liigutamist klaviatuurilt"
@@ -311,10 +311,10 @@ msgid "Close the window"
 msgstr "Akna sulgemine"
 
 msgid "Make the window fullscreen"
-msgstr "Määra aken täisekraanile"
+msgstr "Akna laotamine üle ekraani"
 
 msgid "Make the window quit fullscreen mode"
-msgstr "Määra, et aken pole täisekraanil"
+msgstr "Üle ekraani laotatud akna taastamine"
 
 msgid "Make the window always on top"
 msgstr "Määra aken alati kõige pealmiseks"
@@ -329,10 +329,10 @@ msgid "Make the window not below other windows"
 msgstr "Määra, et aken pole alati kõige alumine"
 
 msgid "Shade the window"
-msgstr "Keri aken kokku"
+msgstr "Akna kokkukerimine"
 
 msgid "Unshade the window"
-msgstr "Keri aken lahti"
+msgstr "Akna lahtikerimine"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -376,19 +376,19 @@ msgid "Move the window to workspace NUMBER (first workspace is 0)"
 msgstr ""
 
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "Akna X-koordinaadi määramine"
 
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "Akna Y-koordinaadi määramine"
 
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "Akna laiuse määramine"
 
 msgid "WIDTH"
 msgstr "LAIUS"
 
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "Akna kõrguse määramine"
 
 msgid "HEIGHT"
 msgstr "KÕRGUS"
