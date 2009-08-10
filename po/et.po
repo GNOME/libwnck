@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-05 11:42+0300\n"
+"PO-Revision-Date: 2009-08-06 10:56+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -216,7 +216,7 @@ msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Uuritava klasside grupi klassiressursi määramine"
 
 msgid "CLASS"
 msgstr "KLASS"
@@ -242,6 +242,7 @@ msgstr ""
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
+"Ekraani tööalade nimekiri (väljundvorming: \"Number: tööala nimi\")"
 
 msgid "Change the number of workspaces of the screen to NUMBER"
 msgstr "Ekraani tööalade arvu muutmine"
@@ -261,7 +262,7 @@ msgstr "Töölaua näitamise lõpetamine"
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr "Selle tööala vaateava tõstmine määratud X koordinaadile"
+msgstr "Selle tööala vaateava tõstmine määratud X-koordinaadile"
 
 msgid "X"
 msgstr "X"
@@ -269,7 +270,7 @@ msgstr "X"
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "Selle tööala vaateava tõstmine määratud Y koordinaadile"
+msgstr "Selle tööala vaateava tõstmine määratud Y-koordinaadile"
 
 msgid "Y"
 msgstr "Y"
@@ -299,10 +300,10 @@ msgid "Unmaximize vertically the window"
 msgstr "Akna kõrguse taastamine"
 
 msgid "Start moving the window via the keyboard"
-msgstr "Alusta akna liigutamist klaviatuurilt"
+msgstr "Akna liigutamise alustamine klaviatuurilt"
 
 msgid "Start resizing the window via the keyboard"
-msgstr "Alusta akna suuruse muutmist klaviatuurilt"
+msgstr "Akna suuruse muutmise alustamine klaviatuurilt"
 
 msgid "Activate the window"
 msgstr "Akna aktiveerimine"
@@ -317,16 +318,16 @@ msgid "Make the window quit fullscreen mode"
 msgstr "Üle ekraani laotatud akna taastamine"
 
 msgid "Make the window always on top"
-msgstr "Määra aken alati kõige pealmiseks"
+msgstr "Akna määramine alati kõige pealmiseks"
 
 msgid "Make the window not always on top"
-msgstr "Määra, et aken pole alati kõige pealmine"
+msgstr "Kõige pealmiseks määratud akna taastamine"
 
 msgid "Make the window below other windows"
-msgstr "Määra aken alati kõige alumiseks"
+msgstr "Akna määramine alati kõige alumiseks"
 
 msgid "Make the window not below other windows"
-msgstr "Määra, et aken pole alati kõige alumine"
+msgstr "Kõige alumiseks määratud akna taastamine"
 
 msgid "Shade the window"
 msgstr "Akna kokkukerimine"
@@ -337,12 +338,12 @@ msgstr "Akna lahtikerimine"
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Make the window have a fixed position in the viewport"
-msgstr "Määra aknale vaateavas püsiv asukoht"
+msgstr "Aknale vaateavas püsiva asukoha määramine"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "Määra, et akna asukoht vaateavas pole püsiv"
+msgstr "Vaateavas püsiva asukohaga aknalt asukoha püsivuse eemaldamine"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -356,24 +357,24 @@ msgstr "Määra, et aken pole töölalahalduris näha"
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
 msgid "Make the window appear in pagers"
-msgstr "Määra, et aken on näha tööalahalduris"
+msgstr "Akna nähtavakstegemine tööalahaldurites"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 msgid "Make the window not appear in tasklists"
-msgstr "Määra, et aken ei esine akende loendis"
+msgstr "Akna eemaldamine akende nimekirjast"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 msgid "Make the window appear in tasklists"
-msgstr "Määra, et aken esineb akende loendis"
+msgstr "Akna kaasamine akende nimekirja"
 
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "Akna nähtavakstegemine kõigil tööaladel"
 
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Akna nähtavakstegemine ainult praegusel tööalal"
 
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Akna tõstmine määratud tööalale (esimene tööala = 0)"
 
 msgid "Change the X coordinate of the window to X"
 msgstr "Akna X-koordinaadi määramine"
@@ -398,6 +399,7 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"Akna liigi muutmine (võimalikud väärtused: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
 
 msgid "TYPE"
 msgstr "LIIK"
@@ -473,24 +475,28 @@ msgstr ""
 
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Vastuolulised valikud: --%s ja --%s\n"
 
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
+"Vigane argument \"%d\" võtmele --%s: argumendi väärtus peab olema rangelt "
+"positiivne\n"
 
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr ""
+"Vigane argument \"%d\" võtmele --%s: argumendi väärtus peab olema "
+"positiivne\n"
 
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Vastuolulised valikud: --%s või --%s, ja --%s\n"
 
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "Vigane argument \"%s\" võtmele --%s. Võimalikud väärtused on: %s\n"
 
 #, c-format
 msgid ""
@@ -519,7 +525,7 @@ msgstr "Tegevus pole lubatud\n"
 
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr "Akent ei saa tõsta tööalale %d: tööala pole olemas\n"
+msgstr "Akent pole võimalik tööalale tõsta %d: tööala pole olemas\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 msgid "<name unset>"
@@ -552,7 +558,7 @@ msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "Tööala kujundus (read, veerud, suund); %d, %d, %s\n"
 
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<puudub EWMH-ühilduv aknahaldur>"
 
 #, c-format
 msgid "Window Manager: %s\n"
@@ -899,30 +905,34 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Ekraani, akna või tööala omaduste väljastamine või muutmine või nendega "
+"suhtlemine vastavalt EWMH spetsifikatsioonile.\n"
+"Nimetatud spetsifikatsiooni kohta saab teavet aadressilt:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 msgid "Options to list windows or workspaces"
-msgstr ""
+msgstr "Akende või tööalade nimekirja valikud"
 
 msgid "Show options to list windows or workspaces"
-msgstr ""
+msgstr "Akende või tööalade nimekirja valikute näitamine"
 
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "Akna omaduste muutmise valikud"
 
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Akna omaduste muutmise valikute näitamine"
 
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Tööala omaduste muutmise valikud"
 
 msgid "Show options to modify properties of a workspace"
-msgstr "Näita tööala omaduste muutmise valikuid"
+msgstr "Tööala omaduste muutmise valikute näitamine"
 
 msgid "Options to modify properties of a screen"
 msgstr "Ekraani omaduste muutmise valikud"
 
 msgid "Show options to modify properties of a screen"
-msgstr "Näita ekraani omaduste muutmise valikuid"
+msgstr "Ekraani omaduste muutmise valikute näitamine"
 
 #, c-format
 msgid "Error while parsing arguments: %s\n"
@@ -930,17 +940,17 @@ msgstr "Viga argumentide töötlemisel: %s\n"
 
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr "Ekraaniga %d ei saa suhelda: ekraani pole olemas\n"
+msgstr "Ekraaniga %d pole võimalik suhelda: ekraani pole olemas\n"
 
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr "Tööalaga %d ei saa suhelda: tööala ei leitud\n"
+msgstr "Tööalaga %d pole võimalik suhelda: tööala ei leitud\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "Klassi/grupiga \"%s\" ei saa suhelda: klassi/gruppi ei leitud\n"
+msgstr "Klassi/grupiga \"%s\" pole võimalik suhelda: klassi/gruppi ei leitud\n"
 
 #, c-format
 msgid ""
