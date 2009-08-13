@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-06 10:56+0300\n"
+"PO-Revision-Date: 2009-08-13 18:02+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,8 @@ msgstr "Töölaua sisu asemel töölaua nimede näitamine"
 msgid "Use a vertical orientation"
 msgstr "Püstise suuna kasutamine"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
 msgid "Don't show window in tasklist"
 msgstr "Akent ei näidata akende nimekirjas"
 
@@ -208,13 +209,15 @@ msgstr "Uuritava või muudetava X'i akna ID"
 msgid "XID"
 msgstr "XID"
 
-#. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
+#. Translators: A group leader is the window that is the "owner" of a
+#. * group of windows, ie: if you have multiple windows in one
+#. * application, one window has some information about the application
+#. * (like the application name).
 msgid "X window ID of the group leader of an application to examine"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
 msgid "Class resource of the class group to examine"
 msgstr "Uuritava klasside grupi klassiressursi määramine"
 
@@ -233,7 +236,8 @@ msgstr "Uuritava või muudetava ekraani NUMBER"
 msgid "Alias of --window"
 msgstr "Võtme --windows alias"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
@@ -241,8 +245,7 @@ msgstr ""
 
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
-"Ekraani tööalade nimekiri (väljundvorming: \"Number: tööala nimi\")"
+msgstr "Ekraani tööalade nimekiri (väljundvorming: \"Number: tööala nimi\")"
 
 msgid "Change the number of workspaces of the screen to NUMBER"
 msgstr "Ekraani tööalade arvu muutmine"
@@ -259,16 +262,18 @@ msgstr "Töölaua näitamine"
 msgid "Stop showing the desktop"
 msgstr "Töölaua näitamise lõpetamine"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "Selle tööala vaateava tõstmine määratud X-koordinaadile"
 
 msgid "X"
 msgstr "X"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "Selle tööala vaateava tõstmine määratud Y-koordinaadile"
 
@@ -335,35 +340,41 @@ msgstr "Akna kokkukerimine"
 msgid "Unshade the window"
 msgstr "Akna lahtikerimine"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 msgid "Make the window have a fixed position in the viewport"
 msgstr "Aknale vaateavas püsiva asukoha määramine"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 msgid "Make the window not have a fixed position in the viewport"
 msgstr "Vaateavas püsiva asukohaga aknalt asukoha püsivuse eemaldamine"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
 msgid "Make the window not appear in pagers"
 msgstr "Määra, et aken pole töölalahalduris näha"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
 msgid "Make the window appear in pagers"
 msgstr "Akna nähtavakstegemine tööalahaldurites"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
 msgid "Make the window not appear in tasklists"
 msgstr "Akna eemaldamine akende nimekirjast"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
 msgid "Make the window appear in tasklists"
 msgstr "Akna kaasamine akende nimekirja"
 
@@ -399,7 +410,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"Akna liigi muutmine (võimalikud väärtused: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
+"Akna liigi muutmine (võimalikud väärtused: normal, desktop, dock, dialog, "
+"toolbar, menu, utility, splash)"
 
 msgid "TYPE"
 msgstr "LIIK"
@@ -422,45 +434,59 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on suhtlus ekraaniga %d, kuid samas "
+"kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on ekraani %d akende või tööalade nimekirja "
+"näitamine, kuid samas kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on suhtlus tööalaga %d, kuid samas "
+"kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on tööala %d akende nimekirja näitamine, "
+"kuid samas kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud suhtlemine rakendusega, kuid samas "
+"kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on rakenduse akende nimekirja näitamine, "
+"kuid samas kasutatakse võtit --%s\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
@@ -472,6 +498,8 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud suhtlemine aknaga, kuid samas kasutatakse "
+"võtit --%s\n"
 
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
@@ -504,16 +532,18 @@ msgid ""
 "owned\n"
 msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 #, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 "Vaateava pole võimalik liigutada: aktiivne tööala ei sisalda vaateava\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "Vaateava pole võimalik liigutada: aktiivset tööala pole\n"
@@ -582,7 +612,7 @@ msgstr "Aktiivne tööala: %s\n"
 msgid "\"%s\""
 msgstr "\"%s\""
 
-#. Translators: %lu is a window number and %s a window name
+#. Translators: %lu is a window identifier (number) and %s a window name
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
@@ -618,13 +648,15 @@ msgstr "Tööala number: %d\n"
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "Ekraanil: %d (aknahaldur: %s)\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
 msgid "<no viewport>"
 msgstr "<vaateava pole>"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
 #, c-format
 msgid "Viewport position (x, y): %s\n"
 msgstr "Vaateava asukoht (x, y): %s\n"
@@ -649,7 +681,7 @@ msgstr "Ülemine naaber: %s\n"
 msgid "Bottom Neighbor: %s\n"
 msgstr "Alumine naaber: %s\n"
 
-#. Translators: Ressource class is the name to identify a class.
+#. Translators: Resource class is the name to identify a class.
 #, c-format
 msgid "Resource Class: %s\n"
 msgstr "Ressursi klass: %s\n"
@@ -736,7 +768,8 @@ msgstr "Akna liik: %s\n"
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "Geomeetria (x, y, laius, kõrgus): %d, %d, %d, %d\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
 #, c-format
 msgid "Class Group: %s\n"
 msgstr ""
@@ -750,13 +783,15 @@ msgid "Session ID: %s\n"
 msgstr "Seansi ID: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
+#. * of windows, ie: if you have multiple windows in one application, one
+#. * window has some information about the application (like the application
+#. * name).
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr ""
 
-#. Translators: A window can be transient for another window: it means it's on top of it
+#. Translators: A window can be transient for another window: it means it's
+#. * on top of it
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr ""
@@ -812,7 +847,8 @@ msgstr "vajab tähelepanu"
 msgid "skip pager"
 msgstr "pole tööala halduris"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
+#. Translators: "tasklist" is the list of running applications (the window
+#. * list)
 msgid "skip tasklist"
 msgstr "pole akende nimekirjas"
 
@@ -946,7 +982,8 @@ msgstr "Ekraaniga %d pole võimalik suhelda: ekraani pole olemas\n"
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "Tööalaga %d pole võimalik suhelda: tööala ei leitud\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
+#. Translators: A class is like a "family". E.g., all gvim windows are
+#. * of the same class.
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
