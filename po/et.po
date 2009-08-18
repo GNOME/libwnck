@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-13 18:02+0300\n"
+"PO-Revision-Date: 2009-08-18 09:49+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -100,10 +100,10 @@ msgid "_Close All"
 msgstr "_Sulge kõik"
 
 msgid "Use N_ROWS rows"
-msgstr ""
+msgstr "Veergude arvu määramine"
 
 msgid "N_ROWS"
-msgstr ""
+msgstr "VEERGE"
 
 msgid "Only show current workspace"
 msgstr "_Ainult sellel tööalal"
@@ -242,6 +242,8 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
+"Rakenduse, klassi grupi, tööala või ekraani akende nimekirja väljastamine "
+"(väljundvorming: \"XID: Akna nimi\")"
 
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
@@ -492,6 +494,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: peaks kuvama klassi grupi \"%s\" akende nimekirja, "
+"kuid samas kasutatakse võtit --%s\n"
 
 #, c-format
 msgid ""
@@ -755,7 +759,7 @@ msgid "tearoff menu"
 msgstr "küljestrebitav menüü"
 
 msgid "utility window"
-msgstr ""
+msgstr "utiliidi aken"
 
 msgid "splash screen"
 msgstr "käivitusekraan"
@@ -772,7 +776,7 @@ msgstr "Geomeetria (x, y, laius, kõrgus): %d, %d, %d, %d\n"
 #. * same class.
 #, c-format
 msgid "Class Group: %s\n"
-msgstr ""
+msgstr "Klassi grupp: %s\n"
 
 #, c-format
 msgid "XID: %lu\n"
@@ -794,7 +798,7 @@ msgstr ""
 #. * on top of it
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "On seondatud: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
@@ -997,4 +1001,4 @@ msgstr ""
 
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "Aknaga, mille XID on %lu, pole võimalik suhelda: akent ei leitud\n"
