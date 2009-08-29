@@ -13,11 +13,11 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck HEAD\n"
+"Project-Id-Version: libwnck master\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-18 09:49+0300\n"
+"PO-Revision-Date: 2009-08-28 11:22+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -234,7 +234,7 @@ msgid "NUMBER of the screen to examine or modify"
 msgstr "Uuritava või muudetava ekraani NUMBER"
 
 msgid "Alias of --window"
-msgstr "Võtme --windows alias"
+msgstr "Võtme --window alias"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
