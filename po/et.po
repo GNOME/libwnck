@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-28 11:22+0300\n"
+"PO-Revision-Date: 2009-08-31 07:17+0300\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -214,7 +214,7 @@ msgstr "XID"
 #. * application, one window has some information about the application
 #. * (like the application name).
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "Uuritava rakenduse grupi juhtakna X'i akna ID"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -468,7 +468,7 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
-"Vastuolulised valikud: määratud suhtlemine rakendusega, kuid samas "
+"Vastuolulised valikud: määratud on suhtlemine rakendusega, kuid samas "
 "kasutatakse võtit --%s\n"
 
 #, c-format
@@ -486,6 +486,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
+"Vastuolulised valikud: määratud on suhtlemine klassigrupiga \"%s\", kuid "
+"samas kasutatakse kuid samas kasutatakse võtit --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -502,7 +504,7 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"Vastuolulised valikud: määratud suhtlemine aknaga, kuid samas kasutatakse "
+"Vastuolulised valikud: määratud on suhtlemine aknaga, kuid samas kasutatakse "
 "võtit --%s\n"
 
 #, c-format
@@ -535,6 +537,8 @@ msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
+"Tööala paigutust ekraanil pole võimalik muuta: paigutus on juba millegi "
+"poolt kasutuses\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -792,7 +796,7 @@ msgstr "Seansi ID: %s\n"
 #. * name).
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "Grupi juhtaken: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's
 #. * on top of it
@@ -998,6 +1002,8 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
+"Rakendusega, milla juhtakna XID on %lu, pole võimalik suhelda: rakendust ei "
+"leitud\n"
 
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
