@@ -2949,9 +2949,13 @@ wnck_task_popup_menu (WnckTask *task,
       
       text = wnck_task_get_text (win_task, TRUE, TRUE);
       menu_item = gtk_image_menu_item_new_with_label (text);
+      g_free (text);
+
+      gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menu_item),
+                                                 TRUE);
+
       if (wnck_task_get_needs_attention (win_task)) 
         _make_gtk_label_bold (GTK_LABEL (GTK_BIN (menu_item)->child));
-      g_free (text);
 
       text = wnck_task_get_text (win_task, FALSE, FALSE);
       gtk_widget_set_tooltip_text (menu_item, text);
