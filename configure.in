@@ -92,7 +92,7 @@ if test "$enable_startup_notification" != "no"; then
    STARTUP_NOTIFICATION_REQUIRED=0.4
    PKG_CHECK_MODULES(STARTUP_NOTIFICATION,
       [libstartup-notification-1.0 >= $STARTUP_NOTIFICATION_REQUIRED],
-      [have_sn=yes]
+      [have_sn=yes],
       [have_sn=no])
 
    if test "$have_sn" = "no" -a "$enable_start_notification" = "yes"; then
