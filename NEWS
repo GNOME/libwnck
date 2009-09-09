@@ -1,3 +1,29 @@
+===============
+Version 2.27.92
+===============
+
+ Fixes
+
+  - Always show icons in tasklist group menu (Marcus Carlson)
+
+ Misc
+
+  - Make startup-notification non-automagic (Gilles Dartiguelongue, Vincent)
+
+ Translators
+
+  - Khaled Hosny (ar)
+  - Alexander Nyakhaychyk (be)
+  - Maruf Ovee (bn)
+  - Jorge González (es)
+  - Ivar Smolin (et)
+  - Seán de Búrca (ga)
+  - Antón Méixome (gl)
+  - Kjartan Maraas (nb)
+  - Vladimir Melo (pt_BR)
+  - Милош Поповић (sr)
+  - Miloš Popović (sr@latin)
+
 ==============
 Version 2.27.5
 ==============
