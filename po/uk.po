@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-17 19:01+0300\n"
+"POT-Creation-Date: 2009-09-17 21:44+0300\n"
 "PO-Revision-Date: 2008-03-07 07:22+0200\n"
 "Last-Translator: Maxim Dziumanenko <dziumanenko@gmail.com>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
@@ -772,7 +772,6 @@ msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
 #: ../libwnck/wnckprop.c:1242
-#, fuzzy
 msgctxt "window"
 msgid "none"
 msgstr "немає"
@@ -906,7 +905,6 @@ msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1400
-#, fuzzy
 msgctxt "startupID"
 msgid "none"
 msgstr "немає"
