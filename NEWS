@@ -1,4 +1,26 @@
 ==============
+Version 2.29.6
+==============
+
+ Fixes
+
+  - Fix generation of wnck-enum-types.c to not break bindings (Arun Raghavan)
+
+ Misc
+
+  - Modernize a bit the build system (Vincent)
+
+ Translators
+
+  - Khaled Hosny (ar)
+  - astur (ast)
+  - Sílvia Miranda (ca@valencia)
+  - Thomas Thurman (en@shaw)
+  - Andika Triwidada (id)
+  - Reinout van Schouwen (nl)
+  - Adi Roiban (ro)
+
+==============
 Version 2.28.0
 ==============
 
