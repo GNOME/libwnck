@@ -24,7 +24,7 @@
 #include <glib/gi18n-lib.h>
 #include <gtk/gtk.h>
 #include <string.h>
-#include <atk/atkobjectfactory.h>
+#include <atk/atk.h>
 #include "pager-accessible.h"
 #include "pager-accessible-factory.h"
 #include "workspace-accessible.h"
