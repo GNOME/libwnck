@@ -2,22 +2,22 @@
 # Estonian translation of libwnck.
 #
 # Copyright (C) 2002, 2003, 2005-2007 The Free Software Foundation
-# Copyright (C) 2009 The GNOME Project.
+# Copyright (C) 2009, 2010 The GNOME Project.
 # This file is distributed under the same license as the libwnck package.
 #
 # Ilmar Kerm <ikerm@hot.ee>, 2002.
 # Tõivo Leedjärv <toivo@linux.ee>, 2002, 2003.
 # Priit Laes <amd@store20.com>, 2005, 2006.
-# Ivar Smolin <okul@linux.ee>, 2005-2007, 2009.
+# Ivar Smolin <okul@linux.ee>, 2005–2007, 2009, 2010.
 # Mattias Põldaru <mahfiaz gmail com>, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck master\n"
+"Project-Id-Version: libwnck MASTER\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&component=general\n"
 "POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-08-31 07:17+0300\n"
+"PO-Revision-Date: 2010-02-14 09:52+0200\n"
 "Last-Translator: Ivar Smolin <okul@linux.ee>\n"
 "Language-Team: Estonian <gnome-et@linux.ee>\n"
 "MIME-Version: 1.0\n"
@@ -67,7 +67,7 @@ msgstr "Praegune tööala: \"%s\""
 
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Klõpsa siin, et liikuda tööalale \"%s\""
+msgstr "Tööalale \"%s\" lülitumiseks klõpsa siin"
 
 msgid "No Windows Open"
 msgstr "Aknaid pole lahti"
