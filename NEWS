@@ -1,3 +1,17 @@
+===============
+Version 2.29.91
+===============
+
+ Fixes
+
+  - Use single-include for atk (Vincent)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Fran Diéguez (gl)
+  - Matej Urbančič (sl)
+
 ==============
 Version 2.29.6
 ==============

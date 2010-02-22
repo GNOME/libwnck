@@ -1,4 +1,4 @@
-AC_INIT([libwnck], [2.29.90],
+AC_INIT([libwnck], [2.29.91],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
 AM_CONFIG_HEADER(config.h)
@@ -18,7 +18,7 @@ LIBWNCK_CURRENT=25
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=23
+LIBWNCK_REVISION=24
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has
