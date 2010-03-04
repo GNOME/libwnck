@@ -285,7 +285,7 @@ wnck_selector_make_menu_consistent (WnckSelector *selector)
           separator_is_last = TRUE;
           separator = GTK_WIDGET (l->data);
         }
-      else if (GTK_WIDGET_VISIBLE (l->data) &&
+      else if (gtk_widget_get_visible (l->data) &&
                l->data != selector->priv->no_windows_item)
         {
           separator_is_last = FALSE;
@@ -447,7 +447,7 @@ wnck_selector_window_workspace_changed (WnckWindow   *window,
 
   item = NULL;
 
-  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+  if (!selector->priv->menu || !gtk_widget_get_visible (selector->priv->menu))
     return;
 
   if (!selector->priv->window_hash)
@@ -821,7 +821,7 @@ wnck_selector_window_opened (WnckScreen *screen,
 {
   wnck_selector_connect_to_window (selector, window);
 
-  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+  if (!selector->priv->menu || !gtk_widget_get_visible (selector->priv->menu))
     return;
 
   if (!selector->priv->window_hash)
@@ -842,7 +842,7 @@ wnck_selector_window_closed (WnckScreen *screen,
   if (window == selector->priv->icon_window)
     wnck_selector_set_active_window (selector, NULL);
 
-  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+  if (!selector->priv->menu || !gtk_widget_get_visible (selector->priv->menu))
     return;
 
   if (!selector->priv->window_hash)
@@ -865,7 +865,7 @@ wnck_selector_workspace_created (WnckScreen    *screen,
                                  WnckWorkspace *workspace,
                                  WnckSelector  *selector)
 {
-  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+  if (!selector->priv->menu || !gtk_widget_get_visible (selector->priv->menu))
     return;
 
   /* this is assuming that the new workspace will have a higher number
@@ -888,7 +888,7 @@ wnck_selector_workspace_destroyed (WnckScreen    *screen,
   GtkWidget *destroy;
   int        i;
 
-  if (!selector->priv->menu || !GTK_WIDGET_VISIBLE (selector->priv->menu))
+  if (!selector->priv->menu || !gtk_widget_get_visible (selector->priv->menu))
     return;
 
   destroy = NULL;

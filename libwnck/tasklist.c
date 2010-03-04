@@ -1741,7 +1741,7 @@ wnck_tasklist_expose (GtkWidget      *widget,
   g_return_val_if_fail (WNCK_IS_TASKLIST (widget), FALSE);
   g_return_val_if_fail (event != NULL, FALSE);
   
-  if (GTK_WIDGET_DRAWABLE (widget))
+  if (gtk_widget_is_drawable (widget))
     {
       tasklist = WNCK_TASKLIST (widget);
       /* get a screenshot of the background */
@@ -2260,7 +2260,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
   wnck_tasklist_free_tasks (tasklist);
 
   /* wnck_tasklist_update_lists() will be called on realize */
-  if (!GTK_WIDGET_REALIZED (tasklist))
+  if (!gtk_widget_get_realized (GTK_WIDGET (tasklist)))
     return;
   
   if (GTK_WIDGET (tasklist)->window != NULL)
@@ -2446,7 +2446,7 @@ wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
 	for (l1 = visible_tasks; l1; l1 = l1->next) {
 		WnckTask *task = WNCK_TASK (l1->data);
 		
-		if (!GTK_WIDGET_REALIZED (task->button))
+		if (!gtk_widget_get_realized (task->button))
 			continue;
 
 		gdk_window_get_origin (GTK_BUTTON (task->button)->event_window,

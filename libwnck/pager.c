@@ -1264,7 +1264,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
 			"focus-line-width", &focus_width,
 			NULL);
 
-  if (GTK_WIDGET_HAS_FOCUS (widget))
+  if (gtk_widget_has_focus (widget))
     gtk_paint_focus (widget->style,
 		     widget->window,
 		     GTK_WIDGET_STATE (widget),
