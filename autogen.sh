@@ -6,6 +6,7 @@ test -z "$srcdir" && srcdir=.
 
 PKG_NAME="libwnck"
 REQUIRED_AUTOMAKE_VERSION=1.9
+REQUIRED_M4MACROS=introspection.m4
 
 (test -f $srcdir/configure.in \
   && test -f $srcdir/libwnck/libwnck.h) || {

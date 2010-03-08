@@ -1,3 +1,5 @@
+AC_PREREQ(2.62)
+
 AC_INIT([libwnck], [2.29.92],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
@@ -159,6 +161,8 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 # Checks for gtk-doc and docbook-tools
 ##################################################
 GTK_DOC_CHECK([1.9])
+
+GOBJECT_INTROSPECTION_CHECK([0.6.7])
 
 AC_OUTPUT([
 Makefile
