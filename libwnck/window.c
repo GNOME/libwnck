@@ -1769,9 +1769,8 @@ wnck_window_get_workspace (WnckWindow *window)
  * @window: a #WnckWindow.
  * @space: a #WnckWorkspace.
  *
- * Asks the window manager to move @window to @space.
- *
- * FIXME: what happens if @window is pinned?
+ * Asks the window manager to move @window to @space. If @window was pinned, it
+ * will also result in @window being visible only on @space.
  **/
 void
 wnck_window_move_to_workspace (WnckWindow    *window,
