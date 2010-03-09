@@ -1,4 +1,30 @@
 ===============
+Version 2.29.92
+===============
+
+ Feature
+
+  - Integrate gobject-introspection support (Vincent)
+
+ Fixes
+
+  - Build with latest GSeal'ed GTK+ (Vincent)
+  - Do not lose the pinned status when dragging a window in a tasklist
+    (Vincent)
+  - Use _NET_WM_WINDOW_TYPE_SPLASH instead of non-existing
+    _NET_WM_WINDOW_TYPE_SPLASHSCREEN (Vincent)
+
+ Misc
+
+  - Small documentation improvement for wnck_window_move_to_workspace() to
+    specify what happens to pinned windows (Vincent)
+  - Fix build when building out of source tree (Theppitak Karoonboonyanan)
+
+ Translators
+
+  - Tomasz Dominikowski (pl)
+
+===============
 Version 2.29.91
 ===============
 
