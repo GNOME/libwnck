@@ -60,7 +60,7 @@ libwnck_1_la_SOURCES= 		\
 	xutils.h		\
 	$(wnck_accessibility_files)
 
-$(libwnck_1_la_OBJECTS): inlinepixbufs.h
+$(libwnck_1_la_OBJECTS): $(wnck_built_headers) inlinepixbufs.h
 
 wnckprop_SOURCES=		\
 	wnckprop.c
@@ -127,9 +127,9 @@ wnck-enum-types.h: $(wnck_headers)
 		--fprod "\n/* enumerations from \"@filename@\" */\n" \
 		--eprod "#define WNCK_TYPE_@ENUMSHORT@ @enum_name@_get_type()\n" \
 		--eprod "GType @enum_name@_get_type (void);\n" \
-		$(wnck_headers) > $@
+		$^ > $@
 
-wnck-enum-types.c: $(wnck_headers) wnck-enum-types.h
+wnck-enum-types.c: $(wnck_headers)
 	$(AM_V_GEN)glib-mkenums \
 		--fhead "#include <libwnck/libwnck.h>\n" \
 		--fprod "\n/* enumerations from \"@filename@\" */" \
@@ -141,7 +141,7 @@ wnck-enum-types.c: $(wnck_headers) wnck-enum-types.h
 		--vtail "  if (!type)\n" \
 		--vtail "    type = g_@type@_register_static (\"@EnumName@\", _@enum_name@_values);\n\n" \
 		--vtail "  return type;\n}\n\n" \
-		$(wnck_headers) > $@
+		$^ > $@
 
 IMAGES=default_icon.png stock_delete.png stock_maximize.png stock_minimize.png
 VARIABLES=default_icon_data $(srcdir)/default_icon.png 		\
