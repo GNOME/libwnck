@@ -972,7 +972,7 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
     atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_UTILITY");
     break;
   case WNCK_WINDOW_SPLASHSCREEN:
-    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASHSCREEN");
+    atom = _wnck_atom_get ("_NET_WM_WINDOW_TYPE_SPLASH");
     break;
   default:
     return;
