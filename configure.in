@@ -64,7 +64,7 @@ GNOME_COMPILE_WARNINGS(maximum)
 
 AC_ARG_ENABLE(deprecations,
               [AC_HELP_STRING([--enable-deprecations],
-                              [warn about deprecated usages [default=no]])],,
+                              [warn about deprecated usages @<:@default=no@:>@])],,
               [enable_deprecations=no])
 
 if test "x$enable_deprecations" = "xyes"; then
