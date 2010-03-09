@@ -106,6 +106,8 @@ if test "$enable_startup_notification" != "no"; then
       AC_DEFINE_UNQUOTED(HAVE_STARTUP_NOTIFICATION, 1, [Define if you have libstartup-notification])
       STARTUP_NOTIFICATION_PACKAGE=libstartup-notification-1.0
    fi
+else
+   have_sn=no
 fi
 AC_SUBST(STARTUP_NOTIFICATION_PACKAGE)
 
@@ -124,14 +126,17 @@ AC_SUBST(X11_PACKAGE)
 AC_MSG_CHECKING([if building with X Resource Information Extension Library])
 if $PKG_CONFIG xres; then
   AC_MSG_RESULT([yes])
+  have_xres=yes
   AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [Define if you have the XRes library])
   XRES_PACKAGE=xres
 else
   AC_CHECK_LIB(XRes, XResQueryExtension,          
                [XLIB_LIBS="$XLIB_LIBS -lXRes -lXext"
+                have_xres=yes
                 AC_DEFINE_UNQUOTED(HAVE_XRES, 1, [Define if you have the XRes library])
                 AC_MSG_RESULT([yes])],
-               AC_MSG_RESULT([no]),
+               [have_xres=no
+                AC_MSG_RESULT([no])],
                $XLIB_LIBS -lXext)
   XRES_PACKAGE=
 fi
@@ -172,3 +177,32 @@ libwnck/Makefile
 libwnck-1.0.pc
 libwnck-1.0-uninstalled.pc
 ])
+
+dnl ---------------------------------------------------------------------------
+dnl - Show summary
+dnl ---------------------------------------------------------------------------
+
+echo "
+              libwnck $VERSION
+              `echo libwnck $VERSION | sed "s/./=/g"`
+
+        prefix:                       ${prefix}
+        exec_prefix:                  ${exec_prefix}
+        libdir:                       ${libdir}
+        bindir:                       ${bindir}
+        sbindir:                      ${sbindir}
+        sysconfdir:                   ${sysconfdir}
+        localstatedir:                ${localstatedir}
+        datadir:                      ${datadir}
+        source code location:         ${srcdir}
+        compiler:                     ${CC}
+        cflags:                       ${CFLAGS}
+        Maintainer mode:              ${USE_MAINTAINER_MODE}
+        Warn about deprecations:      ${enable_deprecations}
+
+        Startup notification support: ${have_sn}
+        XRes support:                 ${have_xres}
+        Build introspection support:  ${found_introspection}
+        Build gtk-doc documentation:  ${enable_gtk_doc}
+
+"
