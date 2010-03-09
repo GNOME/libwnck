@@ -3652,7 +3652,8 @@ wnck_task_drag_data_received (GtkWidget          *widget,
          }
        wnck_window_set_sort_order (found_window, new_order);
 
-       if (!tasklist->priv->include_all_workspaces)
+       if (!tasklist->priv->include_all_workspaces &&
+           !wnck_window_is_pinned (found_window))
          {
            WnckWorkspace *active_space;
            active_space = wnck_screen_get_active_workspace (tasklist->priv->screen);
