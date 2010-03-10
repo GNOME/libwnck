@@ -637,15 +637,6 @@ wnck_selector_item_new (WnckSelector *selector,
   return item;
 }
 
-static gboolean
-wnck_selector_workspace_label_exposed (GtkWidget *widget)
-{
-  /* Bad hack to make the label draw normally, instead of insensitive. */
-  widget->state = GTK_STATE_NORMAL;
-
-  return FALSE;
-}
-
 static void
 wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
                                       GtkLabel      *label)
@@ -686,14 +677,13 @@ wnck_selector_add_workspace (WnckSelector *selector,
 
   workspace = wnck_screen_get_workspace (screen, workspace_n);
 
-  item = gtk_menu_item_new ();
-  gtk_widget_set_sensitive (item, FALSE);
+  /* We use a separator in which we add a label. This makes the menu item not
+   * selectable without any hack. */
+  item = gtk_separator_menu_item_new ();
 
   label = gtk_label_new ("");
   gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
   gtk_widget_show (label);
-  g_signal_connect (G_OBJECT (label), "expose-event",
-                    G_CALLBACK (wnck_selector_workspace_label_exposed), NULL);
   /* the handler will also take care of setting the name for the first time,
    * and we'll be able to adapt to theme changes */
   g_signal_connect (G_OBJECT (label), "style-set",
