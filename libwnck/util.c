@@ -69,7 +69,7 @@ wnck_gtk_window_set_dock_type (GtkWindow *window)
 {
   g_return_if_fail (GTK_IS_WINDOW (window));
 
-  gdk_window_set_type_hint (GTK_WIDGET (window)->window,
+  gdk_window_set_type_hint (gtk_widget_get_window (GTK_WIDGET (window)),
 		  	    GDK_WINDOW_TYPE_HINT_DOCK);
 }
 

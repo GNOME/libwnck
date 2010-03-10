@@ -140,7 +140,7 @@ get_action_menu (GtkWidget *widget)
 {
   while (widget) {
     if (GTK_IS_MENU_ITEM (widget))
-      widget = widget->parent;
+      widget = gtk_widget_get_parent (widget);
 
     if (WNCK_IS_ACTION_MENU (widget))
       return WNCK_ACTION_MENU (widget);
@@ -356,9 +356,11 @@ static void
 set_item_text (GtkWidget  *mi,
                const char *text)
 {
-  gtk_label_set_text (GTK_LABEL (GTK_BIN (mi)->child),
-                      text);
-  gtk_label_set_use_underline (GTK_LABEL (GTK_BIN (mi)->child), TRUE);
+  GtkLabel *label;
+
+  label = GTK_LABEL (gtk_bin_get_child (GTK_BIN (mi)));
+  gtk_label_set_text (label, text);
+  gtk_label_set_use_underline (label, TRUE);
 }
 
 static void

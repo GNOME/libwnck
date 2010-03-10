@@ -244,7 +244,7 @@ wnck_selector_set_active_window (WnckSelector *selector, WnckWindow *window)
 static void
 wnck_selector_make_menu_consistent (WnckSelector *selector)
 {
-  GList     *l;
+  GList     *l, *children;
   int        workspace_n;
   GtkWidget *workspace_item;
   GtkWidget *separator;
@@ -261,7 +261,9 @@ wnck_selector_make_menu_consistent (WnckSelector *selector)
 
   visible_window = FALSE;
 
-  for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+  children = gtk_container_get_children (GTK_CONTAINER (selector->priv->menu));
+
+  for (l = children; l; l = l->next)
     {
       int i;
 
@@ -314,6 +316,8 @@ wnck_selector_make_menu_consistent (WnckSelector *selector)
             }
         } /* end if (normal item) */
     }
+
+  g_list_free (children);
 
   /* do we have a trailing workspace item to be hidden? */
   if (workspace_item)
@@ -505,6 +509,7 @@ wnck_selector_activate_window (WnckWindow *window)
 static gint
 wnck_selector_get_width (GtkWidget *widget, const char *text)
 {
+  GtkStyle *style;
   PangoContext *context;
   PangoFontMetrics *metrics;
   gint char_width;
@@ -515,9 +520,10 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   gint width;
 
   gtk_widget_ensure_style (widget);
+  style = gtk_widget_get_style (widget);
 
   context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context, widget->style->font_desc,
+  metrics = pango_context_get_metrics (context, style->font_desc,
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
@@ -548,7 +554,7 @@ wnck_selector_drag_begin (GtkWidget          *widget,
       if (GTK_IS_MENU (widget))
         widget = gtk_menu_get_attach_widget (GTK_MENU (widget));
       else
-        widget = widget->parent;
+        widget = gtk_widget_get_parent (widget);
     }
 
   if (widget)
@@ -567,7 +573,7 @@ wnck_selector_drag_data_get (GtkWidget          *widget,
 
   xid = wnck_window_get_xid (window);
   gtk_selection_data_set (selection_data,
- 		          selection_data->target,
+                          gtk_selection_data_get_target (selection_data),
 			  8, (guchar *)&xid, sizeof (gulong));
 }
 
@@ -644,11 +650,13 @@ static void
 wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
                                       GtkLabel      *label)
 {
+  GtkStyle *style;
   GdkColor *color;
   char     *name;
   char     *markup;
 
-  color = &GTK_WIDGET (label)->style->fg[GTK_STATE_INSENSITIVE];
+  style = gtk_widget_get_style (GTK_WIDGET (label));
+  color = &style->fg[GTK_STATE_INSENSITIVE];
 
   name = g_markup_escape_text (wnck_workspace_get_name (workspace), -1);
   markup = g_strdup_printf ("<span size=\"x-small\" style=\"italic\" foreground=\"#%.2x%.2x%.2x\">%s</span>",
@@ -761,16 +769,18 @@ wnck_selector_insert_window (WnckSelector *selector, WnckWindow *window)
     {
       /* window is pinned or in the current workspace
        * => insert before the separator */
-      GList *l;
+      GList *l, *children;
 
       i = 0;
 
-      for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+      children = gtk_container_get_children (GTK_CONTAINER (selector->priv->menu));
+      for (l = children; l; l = l->next)
         {
           if (GTK_IS_SEPARATOR_MENU_ITEM (l->data))
             break;
           i++;
         }
+      g_list_free (children);
 
       gtk_menu_shell_insert (GTK_MENU_SHELL (selector->priv->menu),
                              item, i);
@@ -785,12 +795,12 @@ wnck_selector_insert_window (WnckSelector *selector, WnckWindow *window)
       else
         {
           /* insert just before the next workspace item */
-          GList *l;
+          GList *l, *children;
 
           i = 0;
 
-          for (l = GTK_MENU_SHELL (selector->priv->menu)->children;
-               l; l = l->next)
+          children = gtk_container_get_children (GTK_CONTAINER (selector->priv->menu));
+          for (l = children; l; l = l->next)
             {
               int j;
               j = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (l->data),
@@ -799,6 +809,7 @@ wnck_selector_insert_window (WnckSelector *selector, WnckWindow *window)
                 break;
               i++;
             }
+          g_list_free (children);
 
           gtk_menu_shell_insert (GTK_MENU_SHELL (selector->priv->menu),
                                  item, i);
@@ -884,7 +895,7 @@ wnck_selector_workspace_destroyed (WnckScreen    *screen,
                                    WnckWorkspace *workspace,
                                    WnckSelector  *selector)
 {
-  GList     *l;
+  GList     *l, *children;
   GtkWidget *destroy;
   int        i;
 
@@ -896,7 +907,9 @@ wnck_selector_workspace_destroyed (WnckScreen    *screen,
   i = wnck_workspace_get_number (workspace);
 
   /* search for the item of this workspace so that we destroy it */
-  for (l = GTK_MENU_SHELL (selector->priv->menu)->children; l; l = l->next)
+  children = gtk_container_get_children (GTK_CONTAINER (selector->priv->menu));
+
+  for (l = children; l; l = l->next)
     {
       int j;
 
@@ -911,6 +924,8 @@ wnck_selector_workspace_destroyed (WnckScreen    *screen,
         g_object_set_data (G_OBJECT (l->data), "wnck-selector-workspace-n",
                            GINT_TO_POINTER (j - 1));
     }
+
+  g_list_free (children);
 
   if (destroy)
     gtk_widget_destroy (destroy);
