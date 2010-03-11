@@ -2471,12 +2471,20 @@ wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
 		if (!gtk_widget_get_realized (task->button))
 			continue;
 
+                /* Let's cheat with some internal knowledge of GtkButton: in a
+                 * GtkButton, the window is the same as the parent window. So
+                 * to know the position of the widget, we should use the
+                 * the position of the parent window and the allocation information. */
+
                 gtk_widget_get_allocation (task->button, &allocation);
 
-		gdk_window_get_origin (GTK_BUTTON (task->button)->event_window,
-				       &x, &y);
-		width = allocation.width;
-		height = allocation.height;
+                gdk_window_get_origin (gtk_widget_get_parent_window (task->button),
+                                       &x, &y);
+
+                x += allocation.x;
+                y += allocation.y;
+                width = allocation.width;
+                height = allocation.height;
 
 		if (task->window)
 			wnck_window_set_icon_geometry (task->window,
