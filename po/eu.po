@@ -1,16 +1,16 @@
-# translation of libwnck.HEAD.po to Basque
+# translation of eu.po to Basque
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck.HEAD\n"
+"Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-01-11 16:43+0100\n"
-"PO-Revision-Date: 2008-01-10 23:41+0100\n"
+"PO-Revision-Date: 2010-03-24 11:52+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgstr "Le_heneratu"
 
 #: ../libwnck/window-action-menu.c:420
 msgid "Mi_nimize"
-msgstr "_Ikonotu"
+msgstr "M_inimizatu"
 
 #: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
@@ -270,7 +270,7 @@ msgstr "KLASEA"
 
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "Laneko arearen ZENBAKIA atzertzeko edo eraldatzeko"
+msgstr "Laneko arearen ZENBAKIA aztertzeko edo eraldatzeko"
 
 #: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
 #: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
@@ -296,8 +296,7 @@ msgstr ""
 "(irteerako formatua: \"XID: leiho-izena\")"
 
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 "Pantailako laneko areen zerrenda (irteerako formatua: \"Zenbakia: Laneko "
 "arearen izena\")"
@@ -308,13 +307,11 @@ msgstr "Aldatu pantailako laneko areen kopurua ZENBAKIra"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
-"Aldatu pantailako laneko arearen diseinua ZENBAKIA errenkadak erabiltzeko"
+msgstr "Aldatu pantailako laneko arearen diseinua ZENBAKIA errenkadak erabiltzeko"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
-"Aldatu pantailako laneko arearen diseinua ZENBAKIA zutabeak erabiltzeko"
+msgstr "Aldatu pantailako laneko arearen diseinua ZENBAKIA zutabeak erabiltzeko"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Show the desktop"
@@ -346,7 +343,7 @@ msgstr "Y"
 
 #: ../libwnck/wnckprop.c:191
 msgid "Minimize the window"
-msgstr "Ikonotu leihoa"
+msgstr "Minimizatu leihoa"
 
 #: ../libwnck/wnckprop.c:193
 msgid "Unminimize the window"
@@ -418,7 +415,7 @@ msgstr "Leihoa beste leihoen azpian ez"
 
 #: ../libwnck/wnckprop.c:228
 msgid "Shade the window"
-msgstr "Itzaldu leihoa"
+msgstr "Itzaleztatu leihoa"
 
 #: ../libwnck/wnckprop.c:230
 msgid "Unshade the window"
@@ -442,7 +439,7 @@ msgstr "Leihoa posizio ez finkoarekin leihatilan"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr "Leihoa ez dadila orrialdekatzailetan agertu"
+msgstr "Leihoa ez dadila orrikatzailetan agertu"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -450,7 +447,7 @@ msgstr "Leihoa ez dadila orrialdekatzailetan agertu"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr "Leihoa agertu dadila orrialdekatzailetan"
+msgstr "Leihoa agertu dadila orrikatzailetan"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
@@ -621,8 +618,7 @@ msgstr "Gatazkan dauden aukerak agertu dira: --%s eta --%s\n"
 
 #: ../libwnck/wnckprop.c:667
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 "Baliogabeko \"%d\" argumentua --%s aukeran: argumentua derrigorrez positiboa "
 "izan behar da\n"
@@ -655,10 +651,8 @@ msgstr ""
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:884
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
-"Leihatila ezin da lekuz aldatu: uneko laneko areak ez du leihatilarik\n"
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "Leihatila ezin da lekuz aldatu: uneko laneko areak ez du leihatilarik\n"
 
 #. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
 #. a workspace (e.g. compiz is an example); however it is not just the current workspace.
@@ -714,8 +708,7 @@ msgstr "Laneko areen kopurua: %d\n"
 #: ../libwnck/wnckprop.c:1184
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
-"Laneko arearen diseinua (errenkadak, zutabeak, orientazioa): %d, %d, %s\n"
+msgstr "Laneko arearen diseinua (errenkadak, zutabeak, orientazioa): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
 #: ../libwnck/wnckprop.c:1443
@@ -1014,7 +1007,7 @@ msgstr "itzaldurarekin"
 
 #: ../libwnck/wnckprop.c:1552
 msgid "pinned"
-msgstr "orratzdunak"
+msgstr "sastatuta"
 
 #: ../libwnck/wnckprop.c:1553
 msgid "sticky"
@@ -1034,7 +1027,7 @@ msgstr "pantaila osoa"
 
 #: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
-msgstr "harreta behar du"
+msgstr "arreta behar du"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -1042,7 +1035,7 @@ msgstr "harreta behar du"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1562
 msgid "skip pager"
-msgstr "saltatu orrialdekatzailea"
+msgstr "saltatu orrikatzailea"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:1564
@@ -1112,7 +1105,7 @@ msgstr "orratz gabe"
 
 #: ../libwnck/wnckprop.c:1609
 msgid "minimize"
-msgstr "ikonotu"
+msgstr "minimizatu"
 
 #: ../libwnck/wnckprop.c:1610
 msgid "unminimize"
@@ -1216,16 +1209,13 @@ msgstr "Ezin da %d. pantailarekin elkarreragin: pantaila ez da existitzen\n"
 #: ../libwnck/wnckprop.c:1924
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
-"Ezin da %d laneko arearekin elkarreragin: ezin da laneko area aurkitu\n"
+msgstr "Ezin da %d laneko arearekin elkarreragin: ezin da laneko area aurkitu\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
 #: ../libwnck/wnckprop.c:1947
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
-"Ezin da \"%s\" klase-taldearekin elkarreragin: ezin da klase-taldea aurkitu\n"
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr "Ezin da \"%s\" klase-taldearekin elkarreragin: ezin da klase-taldea aurkitu\n"
 
 #: ../libwnck/wnckprop.c:1970
 #, c-format
@@ -1240,3 +1230,4 @@ msgstr ""
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "Ezin da %lu XID leihoarekin elkarreragin: ezin da leihoa aurkitu\n"
+
