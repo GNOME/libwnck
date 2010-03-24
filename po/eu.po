@@ -3,21 +3,21 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
 # Hizkuntza Politikarako Sailburuordetza <hizpol@ej-gv.es>, 2004.
-# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008, 2009.
+# Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>, 2004, 2006, 2008, 2009, 2010.
 # Iñaki Larrañaga Murgoitio <dooteo@zundan.com>, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-12 21:07+0100\n"
-"PO-Revision-Date: 2009-02-12 21:07+0100\n"
+"PO-Revision-Date: 2010-03-24 11:49+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "\n"
 
 #. *
@@ -162,7 +162,7 @@ msgstr "Le_heneratu"
 
 #: ../libwnck/window-action-menu.c:424
 msgid "Mi_nimize"
-msgstr "_Ikonotu"
+msgstr "M_inimizatu"
 
 #: ../libwnck/window-action-menu.c:432
 msgid "Unma_ximize"
@@ -271,7 +271,7 @@ msgstr "KLASEA"
 
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "Laneko arearen ZENBAKIA atzertzeko edo eraldatzeko"
+msgstr "Laneko arearen ZENBAKIA aztertzeko edo eraldatzeko"
 
 #: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
 #: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
@@ -344,7 +344,7 @@ msgstr "Y"
 
 #: ../libwnck/wnckprop.c:191
 msgid "Minimize the window"
-msgstr "Ikonotu leihoa"
+msgstr "Minimizatu leihoa"
 
 #: ../libwnck/wnckprop.c:193
 msgid "Unminimize the window"
@@ -440,7 +440,7 @@ msgstr "Leihoa posizio ez finkoarekin leihatilan"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:244
 msgid "Make the window not appear in pagers"
-msgstr "Leihoa ez dadila orrialdekatzailetan agertu"
+msgstr "Leihoa ez dadila orrikatzailetan agertu"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -448,7 +448,7 @@ msgstr "Leihoa ez dadila orrialdekatzailetan agertu"
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window appear in pagers"
-msgstr "Leihoa agertu dadila orrialdekatzailetan"
+msgstr "Leihoa agertu dadila orriatzailetan"
 
 #. Translators: "tasklist" is the list of running applications (the window list)
 #: ../libwnck/wnckprop.c:253
@@ -1035,7 +1035,7 @@ msgstr "pantaila osoa"
 
 #: ../libwnck/wnckprop.c:1557
 msgid "needs attention"
-msgstr "harreta behar du"
+msgstr "arreta behar du"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -1113,7 +1113,7 @@ msgstr "orratz gabe"
 
 #: ../libwnck/wnckprop.c:1609
 msgid "minimize"
-msgstr "ikonotu"
+msgstr "minimizatu"
 
 #: ../libwnck/wnckprop.c:1610
 msgid "unminimize"
