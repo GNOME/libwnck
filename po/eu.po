@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: eu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-12 21:07+0100\n"
-"PO-Revision-Date: 2010-03-24 11:44+0100\n"
+"PO-Revision-Date: 2010-03-24 11:50+0100\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -271,7 +271,7 @@ msgstr "KLASEA"
 
 #: ../libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "Laneko arearen ZENBAKIA atzertzeko edo eraldatzeko"
+msgstr "Laneko arearen ZENBAKIA aztertzeko edo eraldatzeko"
 
 #: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
 #: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
