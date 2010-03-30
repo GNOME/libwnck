@@ -1,3 +1,22 @@
+==============
+Version 2.30.0
+==============
+
+ Fixes
+
+  - Many GSeal-related fixes (Vincent)
+  - Use a GtkMenuSeparator with a label instead of a hack for workspace menu
+    items in selector (Vincent)
+
+ Misc
+
+  - Add configure summary (Vincent)
+
+ Translators
+
+  - Iñaki Larrañaga Murgoitio (eu)
+  - Ani Peter (ml)
+
 ===============
 Version 2.29.92
 ===============
