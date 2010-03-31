@@ -8,9 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: eu\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-27 18:29+0100\n"
-"PO-Revision-Date: 2010-03-27 18:29+0100\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2010-03-27 17:23+0000\n"
+"PO-Revision-Date: 2010-03-31 12:03+0200\n"
 "Last-Translator: Iñaki Larrañaga Murgoitio <dooteo@euskalgnu.org>\n"
 "Language-Team: Basque <itzulpena@euskalgnu.org>\n"
 "MIME-Version: 1.0\n"
@@ -749,6 +749,15 @@ msgstr "Leiho-kudeatzailea: %s\n"
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
+#. Translators: "none" here means "no workspace"
+#: ../libwnck/wnckprop.c:1220 ../libwnck/wnckprop.c:1301
+#: ../libwnck/wnckprop.c:1313 ../libwnck/wnckprop.c:1325
+#: ../libwnck/wnckprop.c:1337 ../libwnck/wnckprop.c:1452
+#| msgid "pinned"
+msgctxt "workspace"
+msgid "none"
+msgstr "bat ere ez"
+
 #: ../libwnck/wnckprop.c:1221
 #, c-format
 msgid "Active Workspace: %s\n"
@@ -764,6 +773,13 @@ msgstr "\"%s\""
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
+
+#. Translators: "none" here means "no window"
+#: ../libwnck/wnckprop.c:1242
+#| msgid "pinned"
+msgctxt "window"
+msgid "none"
+msgstr "bat ere ez"
 
 #: ../libwnck/wnckprop.c:1243
 #, c-format
@@ -891,6 +907,13 @@ msgstr "Ikono-izena: %s\n"
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
+
+#. Translators: "none" here means "no startup ID"
+#: ../libwnck/wnckprop.c:1400
+#| msgid "pinned"
+msgctxt "startupID"
+msgid "none"
+msgstr "bat ere ez"
 
 #: ../libwnck/wnckprop.c:1401
 #, c-format
