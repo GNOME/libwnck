@@ -29,7 +29,7 @@ window_expose_event (GtkWidget      *widget,
 {
   cairo_t *cr;
 
-  cr = gdk_cairo_create (widget->window);
+  cr = gdk_cairo_create (gtk_widget_get_window (widget));
   cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
   gdk_cairo_region (cr, event->region);
   cairo_set_source_rgba (cr, 1., 1., 1., .5);

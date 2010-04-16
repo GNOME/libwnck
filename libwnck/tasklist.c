@@ -3976,7 +3976,7 @@ fake_expose_widget (GtkWidget *widget,
   gtk_widget_set_window (widget, pixmap);
      but pixmap is not a GdkWindow...
    */
-  widget->window = pixmap;
+  gtk_widget_set_window (widget, pixmap);
   allocation.x += x;
   allocation.y += y;
   gtk_widget_set_allocation (widget, &allocation);

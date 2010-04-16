@@ -153,7 +153,11 @@ wnck_pager_add_selection (AtkSelection *selection,
   GtkWidget *widget;
   int n_spaces; 
 
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+#else
   widget = GTK_ACCESSIBLE (selection)->widget;
+#endif
 
   if (widget == NULL) 
     {
@@ -194,7 +198,11 @@ wnck_pager_ref_selection (AtkSelection *selection,
 
   g_return_val_if_fail (i == 0, NULL);
 
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+#else
   widget = GTK_ACCESSIBLE (selection)->widget;
+#endif
   if (widget == NULL) 
     {
       /*
@@ -221,7 +229,11 @@ wnck_pager_selection_count (AtkSelection *selection)
 {
   GtkWidget *widget;
 
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+#else
   widget = GTK_ACCESSIBLE (selection)->widget;
+#endif
   if (widget == NULL) 
     {
       /*
@@ -248,7 +260,11 @@ wnck_pager_is_child_selected (AtkSelection *selection,
   WnckWorkspace *active_wspace;
   int wsno;
 
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
+#else
   widget = GTK_ACCESSIBLE (selection)->widget;
+#endif
   if (widget == NULL) 
     {
       /*
@@ -378,7 +394,11 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
   g_return_val_if_fail (ATK_IS_OBJECT (obj), NULL);
 
   accessible = GTK_ACCESSIBLE (obj);
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (accessible);
+#else
   widget = accessible->widget;
+#endif
 
   if (widget == NULL)
     /* State is defunct */
