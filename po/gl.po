@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck-master-po-gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-15 17:46+0100\n"
-"PO-Revision-Date: 2010-01-18 18:58+0100\n"
+"POT-Creation-Date: 2010-04-25 16:33+0200\n"
+"PO-Revision-Date: 2010-04-25 16:33+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "MIME-Version: 1.0\n"
@@ -51,71 +51,71 @@ msgstr ""
 msgid "Untitled application"
 msgstr "Aplicativo sen título"
 
-#: ../libwnck/pager-accessible.c:322
+#: ../libwnck/pager-accessible.c:338
 msgid "Workspace Switcher"
 msgstr "Selector de espazo de traballo"
 
-#: ../libwnck/pager-accessible.c:333
+#: ../libwnck/pager-accessible.c:349
 msgid "Tool to switch between workspaces"
 msgstr "Ferramenta para intercambiar entre os espazos de traballo"
 
-#: ../libwnck/pager-accessible.c:437
+#: ../libwnck/pager-accessible.c:457
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Prema isto para cambiar ao espazo de traballo %s"
 
-#: ../libwnck/pager.c:1910
+#: ../libwnck/pager.c:1960
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Prema para comezar a arrastrar \"%s\""
 
-#: ../libwnck/pager.c:1913
+#: ../libwnck/pager.c:1963
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Espazo de traballo actual: \"%s\""
 
-#: ../libwnck/pager.c:1918
+#: ../libwnck/pager.c:1968
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Prema para cambiar a \"%s\""
 
-#: ../libwnck/selector.c:1172
+#: ../libwnck/selector.c:1177
 msgid "No Windows Open"
 msgstr "Non hai xanelas abertas"
 
-#: ../libwnck/selector.c:1225
+#: ../libwnck/selector.c:1230
 msgid "Window Selector"
 msgstr "Selector de xanelas"
 
-#: ../libwnck/selector.c:1226
+#: ../libwnck/selector.c:1231
 msgid "Tool to switch between windows"
 msgstr "Ferramenta para intercambiar entre xanelas"
 
-#: ../libwnck/tasklist.c:729
+#: ../libwnck/tasklist.c:733
 msgid "Window List"
 msgstr "Lista de xanelas"
 
-#: ../libwnck/tasklist.c:730
+#: ../libwnck/tasklist.c:734
 msgid "Tool to switch between visible windows"
 msgstr "Ferramenta para intercambiar entre xanelas visíbeis"
 
-#: ../libwnck/tasklist.c:3022
+#: ../libwnck/tasklist.c:3062
 msgid "Mi_nimize All"
 msgstr "Mi_nimizar todo"
 
-#: ../libwnck/tasklist.c:3033
+#: ../libwnck/tasklist.c:3073
 msgid "Un_minimize All"
 msgstr "_Restaurar todo"
 
-#: ../libwnck/tasklist.c:3041
+#: ../libwnck/tasklist.c:3081
 msgid "Ma_ximize All"
 msgstr "Ma_ximizar todo"
 
-#: ../libwnck/tasklist.c:3052
+#: ../libwnck/tasklist.c:3092
 msgid "_Unmaximize All"
 msgstr "Resta_urar todo"
 
-#: ../libwnck/tasklist.c:3064
+#: ../libwnck/tasklist.c:3104
 msgid "_Close All"
 msgstr "_Pechar todos"
 
@@ -165,78 +165,78 @@ msgstr "Mostrar as xanelas de todos os espazos de traballo"
 msgid "Enable Transparency"
 msgstr "Activar transparencia"
 
-#: ../libwnck/window-action-menu.c:417
+#: ../libwnck/window-action-menu.c:419
 msgid "Unmi_nimize"
 msgstr "Res_taurar"
 
-#: ../libwnck/window-action-menu.c:424
+#: ../libwnck/window-action-menu.c:426
 msgid "Mi_nimize"
 msgstr "Mi_nimizar"
 
-#: ../libwnck/window-action-menu.c:432
+#: ../libwnck/window-action-menu.c:434
 msgid "Unma_ximize"
 msgstr "Res_taurar"
 
-#: ../libwnck/window-action-menu.c:439
+#: ../libwnck/window-action-menu.c:441
 msgid "Ma_ximize"
 msgstr "Ma_ximizar"
 
-#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:748 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Espazo de traballo %d"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Espazo de traballo 1_0"
 
-#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
+#: ../libwnck/window-action-menu.c:759 ../libwnck/window-action-menu.c:906
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Espazo de traballo %s%d"
 
-#: ../libwnck/window-action-menu.c:1047
+#: ../libwnck/window-action-menu.c:1049
 msgid "_Move"
 msgstr "_Mover"
 
-#: ../libwnck/window-action-menu.c:1054
+#: ../libwnck/window-action-menu.c:1056
 msgid "_Resize"
 msgstr "_Redimensionar"
 
-#: ../libwnck/window-action-menu.c:1063
+#: ../libwnck/window-action-menu.c:1065
 msgid "Always On _Top"
-msgstr "Sempre na parte s_uperior"
+msgstr "Sempre _enriba das demais xanelas"
 
-#: ../libwnck/window-action-menu.c:1071
+#: ../libwnck/window-action-menu.c:1073
 msgid "_Always on Visible Workspace"
 msgstr "Se_mpre no espazo de traballo visíbel"
 
-#: ../libwnck/window-action-menu.c:1076
+#: ../libwnck/window-action-menu.c:1078
 msgid "_Only on This Workspace"
 msgstr "_Só neste espazo de traballo"
 
-#: ../libwnck/window-action-menu.c:1083
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace _Left"
 msgstr "Mover ao espazo de traballo da _esquerda"
 
-#: ../libwnck/window-action-menu.c:1089
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace R_ight"
 msgstr "Mover ao espazo de traballo da _dereita"
 
-#: ../libwnck/window-action-menu.c:1095
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Up"
 msgstr "Mover ao espazo de traballo de a_rriba"
 
-#: ../libwnck/window-action-menu.c:1101
+#: ../libwnck/window-action-menu.c:1103
 msgid "Move to Workspace _Down"
 msgstr "Mover ao espazo de traballo de a_baixo"
 
-#: ../libwnck/window-action-menu.c:1104
+#: ../libwnck/window-action-menu.c:1106
 msgid "Move to Another _Workspace"
 msgstr "Mover a outro espa_zo de traballo"
 
-#: ../libwnck/window-action-menu.c:1124
+#: ../libwnck/window-action-menu.c:1126
 msgid "_Close"
 msgstr "_Pechar"
 
