@@ -4,71 +4,107 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: metacity\n"
-"Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2009-11-06 19:17+0200\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
+"POT-Creation-Date: 2010-04-25 14:34+0000\n"
+"PO-Revision-Date: 2010-05-12 18:37 -0400\n"
 "Last-Translator: Thomas Thurman <tthurman@gnome.org>\n"
-"Language-Team: Shavian <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
+"Language-Team: Shavian <ubuntu-l10n-en-shaw@launchpad.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n!=1;\n"
 
-#: ../libwnck/pager-accessible.c:322
+#. *
+#. * SECTION:application
+#. * @short_description: an object representing a group of windows of the same
+#. * application.
+#. * @see_also: wnck_window_get_application()
+#. * @stability: Unstable
+#. *
+#. * The #WnckApplication is a group of #WnckWindow that are all in the same
+#. * application. It can be used to represent windows by applications, group
+#. * windows by applications or to manipulate all windows of a particular
+#. * application.
+#. *
+#. * A #WnckApplication is identified by the group leader of the #WnckWindow
+#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+#. * only if they have the group leader of the #WnckApplication.
+#. *
+#. * The #WnckApplication objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#, fuzzy
+#: ../libwnck/application.c:51
+msgid "Untitled application"
+msgstr "Untitled 𐑩𐑐𐑤𐑦𐑒𐑱𐑕𐑩𐑯"
+
+#: ../libwnck/pager-accessible.c:338
 msgid "Workspace Switcher"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑕𐑢𐑦𐑗𐑻"
 
-#: ../libwnck/pager-accessible.c:333
+#: ../libwnck/pager-accessible.c:349
 msgid "Tool to switch between workspaces"
 msgstr "𐑑𐑵𐑤 𐑑 𐑕𐑢𐑦𐑗 𐑚𐑦𐑑𐑢𐑰𐑯 𐑢𐑻𐑒𐑕𐑐𐑱𐑕𐑩𐑟"
 
-#: ../libwnck/pager-accessible.c:437
 #, c-format
+#: ../libwnck/pager-accessible.c:457
 msgid "Click this to switch to workspace %s"
 msgstr "𐑒𐑤𐑦𐑒 𐑞𐑦𐑕 𐑑 𐑕𐑢𐑦𐑗 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %s"
 
-#: ../libwnck/pager.c:1910
 #, c-format
+#: ../libwnck/pager.c:1960
 msgid "Click to start dragging \"%s\""
 msgstr "𐑒𐑤𐑦𐑒 𐑑 𐑕𐑑𐑸𐑑 𐑛𐑮𐑨𐑜𐑦𐑙 \"%s\""
 
-#: ../libwnck/pager.c:1913
 #, c-format
+#: ../libwnck/pager.c:1963
 msgid "Current workspace: \"%s\""
 msgstr "𐑒𐑳𐑮𐑩𐑯𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕: \"%s\""
 
-#: ../libwnck/pager.c:1918
 #, c-format
+#: ../libwnck/pager.c:1968
 msgid "Click to switch to \"%s\""
 msgstr "𐑒𐑤𐑦𐑒 𐑑 𐑕𐑢𐑦𐑗 𐑑 \"%s\""
 
-#: ../libwnck/selector.c:1172
+#: ../libwnck/selector.c:1177
 msgid "No Windows Open"
 msgstr "𐑯𐑴 𐑢𐑦𐑯𐑛𐑴𐑟 𐑴𐑐𐑩𐑯"
 
-#: ../libwnck/selector.c:1226
+#, fuzzy
+#: ../libwnck/selector.c:1230
+msgid "Window Selector"
+msgstr "𐑢𐑦𐑯𐑛𐑴 Selector"
+
+#: ../libwnck/selector.c:1231
 msgid "Tool to switch between windows"
 msgstr "𐑑𐑵𐑤 𐑑 𐑕𐑢𐑦𐑗 𐑚𐑦𐑑𐑢𐑰𐑯 𐑢𐑦𐑯𐑛𐑴𐑟"
 
-#: ../libwnck/tasklist.c:729
+#: ../libwnck/tasklist.c:733
 msgid "Window List"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑤𐑦𐑕𐑑"
 
-#: ../libwnck/tasklist.c:730
+#: ../libwnck/tasklist.c:734
 msgid "Tool to switch between visible windows"
 msgstr "𐑑𐑵𐑤 𐑑 𐑕𐑢𐑦𐑗 𐑚𐑦𐑑𐑢𐑰𐑯 𐑝𐑦𐑕𐑦𐑚𐑩𐑤 𐑢𐑦𐑯𐑛𐑴𐑟"
 
-#: ../libwnck/tasklist.c:3022
+#: ../libwnck/tasklist.c:3062
 msgid "Mi_nimize All"
 msgstr "𐑥𐑦_𐑯𐑦𐑥𐑲𐑟 𐑷𐑤"
 
-#: ../libwnck/tasklist.c:3033
+#: ../libwnck/tasklist.c:3073
 msgid "Un_minimize All"
 msgstr "𐑳𐑯_𐑥𐑦𐑯𐑦𐑥𐑲𐑟 𐑷𐑤"
 
-#: ../libwnck/tasklist.c:3041
+#: ../libwnck/tasklist.c:3081
 msgid "Ma_ximize All"
 msgstr "𐑥𐑨_𐑒𐑕𐑦𐑥𐑲𐑟 𐑷𐑤"
 
-#: ../libwnck/tasklist.c:3064
+#, fuzzy
+#: ../libwnck/tasklist.c:3092
+msgid "_Unmaximize All"
+msgstr "_Unmaximize 𐑷𐑤"
+
+#: ../libwnck/tasklist.c:3104
 msgid "_Close All"
 msgstr "_𐑒𐑤𐑴𐑕 𐑷𐑤"
 
@@ -84,6 +120,11 @@ msgstr "N_ROWS"
 msgid "Only show current workspace"
 msgstr "𐑴𐑯𐑤𐑦 𐑖𐑴 𐑒𐑳𐑮𐑩𐑯𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 
+#, fuzzy
+#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
+msgid "Use RTL as default direction"
+msgstr "𐑿𐑟 RTL 𐑨𐑟 𐑛𐑦𐑓𐑷𐑤𐑑 𐑛𐑦𐑮𐑧𐑒𐑖𐑩𐑯"
+
 #: ../libwnck/test-pager.c:18
 msgid "Show workspace names instead of workspace contents"
 msgstr "𐑖𐑴 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑯𐑱𐑥𐑟 𐑦𐑯𐑕𐑑𐑧𐑛 𐑝 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑒𐑪𐑯𐑑𐑩𐑯𐑑𐑕"
@@ -91,6 +132,13 @@ msgstr "𐑖𐑴 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑯𐑱𐑥𐑟 𐑦𐑯𐑕𐑑�
 #: ../libwnck/test-pager.c:19
 msgid "Use a vertical orientation"
 msgstr "𐑿𐑟 𐑩 𐑝𐑻𐑑𐑦𐑒𐑩𐑤 𐑪𐑮𐑦𐑩𐑯𐑑𐑱𐑖𐑩𐑯"
+
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#, fuzzy
+#: ../libwnck/test-selector.c:13 ../libwnck/test-tasklist.c:20
+msgid "Don't show window in tasklist"
+msgstr "𐑛𐑴𐑯𐑑 𐑖𐑴 𐑢𐑦𐑯𐑛𐑴 𐑦𐑯 tasklist"
 
 #: ../libwnck/test-tasklist.c:16
 msgid "Always group windows"
@@ -108,84 +156,104 @@ msgstr "𐑛𐑩𐑕𐑐𐑤𐑱 𐑢𐑦𐑯𐑛𐑴𐑟 𐑓𐑮𐑪𐑥 𐑷�
 msgid "Enable Transparency"
 msgstr "𐑦𐑯𐑱𐑚𐑩𐑤 𐑑𐑮𐑨𐑯𐑕𐑐𐑨𐑮𐑩𐑯𐑕𐑦"
 
-#: ../libwnck/window-action-menu.c:417
+#: ../libwnck/window-action-menu.c:419
 msgid "Unmi_nimize"
 msgstr "𐑳𐑯𐑥𐑦_𐑯𐑦𐑥𐑲𐑟"
 
-#: ../libwnck/window-action-menu.c:424
+#: ../libwnck/window-action-menu.c:426
 msgid "Mi_nimize"
 msgstr "𐑥𐑦_𐑯𐑦𐑥𐑲𐑟"
 
-#: ../libwnck/window-action-menu.c:432
+#: ../libwnck/window-action-menu.c:434
 msgid "Unma_ximize"
 msgstr "𐑳𐑯𐑥𐑨_𐑒𐑕𐑦𐑥𐑲𐑟"
 
-#: ../libwnck/window-action-menu.c:439
+#: ../libwnck/window-action-menu.c:441
 msgid "Ma_ximize"
 msgstr "𐑥𐑨_𐑒𐑕𐑦𐑥𐑲𐑟"
 
-#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
 #, c-format
+#: ../libwnck/window-action-menu.c:748 ../libwnck/workspace.c:281
 msgid "Workspace %d"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
 #, c-format
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 msgid "Workspace 1_0"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 1_0"
 
-#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
+#: ../libwnck/window-action-menu.c:759 ../libwnck/window-action-menu.c:906
 msgid "Workspace %s%d"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %s%d"
 
-#: ../libwnck/window-action-menu.c:1047
+#: ../libwnck/window-action-menu.c:1049
 msgid "_Move"
 msgstr "_𐑥𐑵𐑝"
 
-#: ../libwnck/window-action-menu.c:1054
+#: ../libwnck/window-action-menu.c:1056
 msgid "_Resize"
 msgstr "_𐑮𐑰𐑕𐑲𐑟"
 
-#: ../libwnck/window-action-menu.c:1063
+#: ../libwnck/window-action-menu.c:1065
 msgid "Always On _Top"
 msgstr "𐑷𐑤𐑢𐑱𐑟 𐑪𐑯 _𐑑𐑪𐑐"
 
-#: ../libwnck/window-action-menu.c:1071
+#: ../libwnck/window-action-menu.c:1073
 msgid "_Always on Visible Workspace"
 msgstr "_𐑷𐑤𐑢𐑱𐑟 𐑪𐑯 𐑝𐑦𐑕𐑦𐑚𐑩𐑤 𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 
-#: ../libwnck/window-action-menu.c:1076
+#: ../libwnck/window-action-menu.c:1078
 msgid "_Only on This Workspace"
 msgstr "_𐑴𐑯𐑤𐑦 𐑪𐑯 𐑞𐑦𐑕 𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 
-#: ../libwnck/window-action-menu.c:1083
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace _Left"
 msgstr "𐑥𐑵𐑝 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 _𐑤𐑧𐑓𐑑"
 
-#: ../libwnck/window-action-menu.c:1089
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace R_ight"
 msgstr "𐑥𐑵𐑝 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑮_𐑲𐑑"
 
-#: ../libwnck/window-action-menu.c:1095
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Up"
 msgstr "𐑥𐑵𐑝 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 _𐑳𐑐"
 
-#: ../libwnck/window-action-menu.c:1101
+#: ../libwnck/window-action-menu.c:1103
 msgid "Move to Workspace _Down"
 msgstr "𐑥𐑵𐑝 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 _𐑛𐑬𐑯"
 
-#: ../libwnck/window-action-menu.c:1104
+#: ../libwnck/window-action-menu.c:1106
 msgid "Move to Another _Workspace"
 msgstr "𐑥𐑵𐑝 𐑑 𐑩𐑯𐑳𐑞𐑼 _𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 
-#: ../libwnck/window-action-menu.c:1124
+#: ../libwnck/window-action-menu.c:1126
 msgid "_Close"
 msgstr "_𐑒𐑤𐑴𐑟"
+
+#. *
+#. * SECTION:window
+#. * @short_description: an object representing a window.
+#. * @see_also: #WnckWorkspace, #WnckApplication, #WnckClassGroup
+#. * @stability: Unstable
+#. *
+#. * The #WnckWindow objects are always owned by libwnck and must not be
+#. * referenced or unreferenced.
+#.
+#, fuzzy
+#: ../libwnck/window.c:50
+msgid "Untitled window"
+msgstr "Untitled 𐑢𐑦𐑯𐑛𐑴"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
 msgstr "X 𐑢𐑦𐑯𐑛𐑴 ID 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑑 𐑦𐑜𐑟𐑨𐑥𐑦𐑯 𐑹 𐑥𐑪𐑛𐑦𐑓𐑲"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:146
+#: ../libwnck/wnckprop.c:156
+msgid "XID"
+msgstr "XID"
 
 #. Translators: A group leader is the window that is the "owner" of a
 #. * group of windows, ie: if you have multiple windows in one
@@ -223,6 +291,17 @@ msgstr "𐑯𐑳𐑥𐑚𐑼 𐑝 𐑞 𐑕𐑒𐑮𐑰𐑯 𐑑 𐑦𐑜𐑟�
 msgid "Alias of --window"
 msgstr "𐑱𐑤𐑰𐑩𐑕 𐑝 --window"
 
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#, fuzzy
+#: ../libwnck/wnckprop.c:164
+msgid ""
+"List windows of the application/class group/workspace/screen (output format: "
+"\"XID: Window Name\")"
+msgstr ""
+"𐑤𐑦𐑕𐑑 𐑢𐑦𐑯𐑛𐑴𐑟 𐑝 𐑞 𐑩𐑐𐑤𐑦𐑒𐑱𐑕𐑩𐑯/𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐/𐑢𐑻𐑒𐑕𐑐𐑱𐑕/𐑕𐑒𐑮𐑰𐑯 (𐑬𐑑𐑐𐑫𐑑 𐑓𐑹𐑥𐑨𐑑: \"XID: 𐑢𐑦𐑯𐑛𐑴 "
+"𐑯𐑱𐑥\")"
+
 #: ../libwnck/wnckprop.c:166
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
@@ -248,9 +327,25 @@ msgstr "𐑖𐑴 𐑞 𐑛𐑧𐑕𐑒𐑑𐑪𐑐"
 msgid "Stop showing the desktop"
 msgstr "𐑕𐑑𐑪𐑐 𐑖𐑴𐑦𐑙 𐑞 𐑛𐑧𐑕𐑒𐑑𐑪𐑐"
 
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, fuzzy
+#: ../libwnck/wnckprop.c:185
+msgid "Move the viewport of the current workspace to X coordinate X"
+msgstr "𐑥𐑵𐑝 𐑞 viewport 𐑝 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑑 𐑧𐑒𐑕 𐑒𐑴𐑹𐑛𐑩𐑯𐑱𐑑 𐑧𐑒𐑕"
+
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:275
 msgid "X"
 msgstr "X"
+
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, fuzzy
+#: ../libwnck/wnckprop.c:190
+msgid "Move the viewport of the current workspace to Y coordinate Y"
+msgstr "𐑥𐑵𐑝 𐑞 viewport 𐑝 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑑 𐑢𐑲 𐑒𐑴𐑹𐑛𐑩𐑯𐑱𐑑 𐑢𐑲"
 
 #: ../libwnck/wnckprop.c:190 ../libwnck/wnckprop.c:277
 msgid "Y"
@@ -260,21 +355,46 @@ msgstr "Y"
 msgid "Minimize the window"
 msgstr "𐑥𐑦𐑯𐑩𐑥𐑲𐑟 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:198
+msgid "Unminimize the window"
+msgstr "Unminimize 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
 #: ../libwnck/wnckprop.c:200
 msgid "Maximize the window"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:202
+msgid "Unmaximize the window"
+msgstr "Unmaximize 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
 #: ../libwnck/wnckprop.c:204
 msgid "Maximize horizontally the window"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤𐑦 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:206
+msgid "Unmaximize horizontally the window"
+msgstr "Unmaximize 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤𐑦 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
 #: ../libwnck/wnckprop.c:208
 msgid "Maximize vertically the window"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟 𐑝𐑻𐑑𐑦𐑒𐑩𐑤𐑦 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:210
+msgid "Unmaximize vertically the window"
+msgstr "Unmaximize 𐑝𐑻𐑑𐑦𐑒𐑩𐑤𐑦 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
 #: ../libwnck/wnckprop.c:212
 msgid "Start moving the window via the keyboard"
 msgstr "𐑕𐑑𐑸𐑑 𐑥𐑵𐑝𐑦𐑙 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑝𐑲𐑩 𐑞 𐑒𐑰𐑚𐑪𐑮𐑛"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:214
+msgid "Start resizing the window via the keyboard"
+msgstr "𐑕𐑑𐑸𐑑 resizing 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑝𐑲𐑩 𐑞 𐑒𐑰𐑚𐑪𐑮𐑛"
 
 #: ../libwnck/wnckprop.c:216
 msgid "Activate the window"
@@ -283,6 +403,16 @@ msgstr "𐑨𐑒𐑑𐑦𐑝𐑱𐑑 𐑞 𐑢𐑦𐑯𐑛𐑴"
 #: ../libwnck/wnckprop.c:218
 msgid "Close the window"
 msgstr "𐑒𐑤𐑴𐑟 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:221
+msgid "Make the window fullscreen"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 fullscreen"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:223
+msgid "Make the window quit fullscreen mode"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑒𐑢𐑦𐑑 fullscreen 𐑥𐑴𐑛"
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window always on top"
@@ -304,6 +434,27 @@ msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑯𐑪𐑑 𐑚𐑩𐑤𐑴 �
 msgid "Shade the window"
 msgstr "𐑖𐑱𐑛 𐑞 𐑢𐑦𐑯𐑛𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:235
+msgid "Unshade the window"
+msgstr "Unshade 𐑞 𐑢𐑦𐑯𐑛𐑴"
+
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, fuzzy
+#: ../libwnck/wnckprop.c:240
+msgid "Make the window have a fixed position in the viewport"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑣𐑨𐑝 𐑩 𐑓𐑦𐑒𐑕𐑑 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑦𐑯 𐑞 viewport"
+
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, fuzzy
+#: ../libwnck/wnckprop.c:245
+msgid "Make the window not have a fixed position in the viewport"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑯𐑪𐑑 𐑣𐑨𐑝 𐑩 𐑓𐑦𐑒𐑕𐑑 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑦𐑯 𐑞 viewport"
+
 #. Translators: A pager is the technical term for the workspace
 #. * switcher. It's a representation of all workspaces with windows
 #. * inside it. Please make sure that the translation is in sync with
@@ -321,6 +472,20 @@ msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑯𐑪𐑑 𐑩𐑐𐑽 𐑦�
 #: ../libwnck/wnckprop.c:259
 msgid "Make the window appear in pagers"
 msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑩𐑐𐑽 𐑦𐑯 𐑐𐑱𐑡𐑻𐑟"
+
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#, fuzzy
+#: ../libwnck/wnckprop.c:263
+msgid "Make the window not appear in tasklists"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑯𐑪𐑑 𐑩𐑐𐑽 𐑦𐑯 tasklists"
+
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#, fuzzy
+#: ../libwnck/wnckprop.c:267
+msgid "Make the window appear in tasklists"
+msgstr "𐑥𐑱𐑒 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑩𐑐𐑽 𐑦𐑯 tasklists"
 
 #: ../libwnck/wnckprop.c:269
 msgid "Make the window visible on all workspaces"
@@ -364,8 +529,8 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"𐑗𐑱𐑯𐑡 𐑞 𐑑𐑲𐑐 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑑 𐑑𐑲𐑐 (𐑝𐑨𐑤𐑦𐑛 𐑝𐑨𐑤𐑿𐑟: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
+"𐑗𐑱𐑯𐑡 𐑞 𐑑𐑲𐑐 𐑝 𐑞 𐑢𐑦𐑯𐑛𐑴 𐑑 𐑑𐑲𐑐 (𐑝𐑨𐑤𐑦𐑛 𐑝𐑨𐑤𐑿𐑟: normal, desktop, dock, dialog, "
+"toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:284
 msgid "TYPE"
@@ -383,32 +548,32 @@ msgstr "𐑯𐑱𐑥"
 msgid "Activate the workspace"
 msgstr "𐑨𐑒𐑑𐑦𐑝𐑱𐑑 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 
+#, c-format
 #: ../libwnck/wnckprop.c:384 ../libwnck/wnckprop.c:408
 #: ../libwnck/wnckprop.c:444 ../libwnck/wnckprop.c:467
-#, c-format
 msgid "Invalid value \"%s\" for --%s"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑝𐑨𐑤𐑿 \"%s\" 𐑓𐑹 --%s"
 
+#, c-format
 #: ../libwnck/wnckprop.c:501 ../libwnck/wnckprop.c:520
-#, c-format
 msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: screen %d should be interacted with, but "
+"--%s has been used\n"
 msgstr ""
-"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑕𐑒𐑮𐑰𐑯 %d 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 "
-"𐑚𐑰𐑯 𐑿𐑟𐑛\n"
+"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑕𐑒𐑮𐑰𐑯 %d 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 𐑚𐑰𐑯 "
+"𐑿𐑟𐑛\n"
 
+#, c-format
 #: ../libwnck/wnckprop.c:510
-#, c-format
 msgid ""
-"Conflicting options are present: windows or workspaces of screen %d should "
-"be listed, but --%s has been used\n"
+"Conflicting options are present: windows or workspaces of screen %d should be "
+"listed, but --%s has been used\n"
 msgstr ""
-"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑹 𐑢𐑻𐑒𐑕𐑐𐑱𐑕𐑩𐑟 𐑝 𐑕𐑒𐑮𐑰𐑯 %d 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, "
-"𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑿𐑟𐑛\n"
+"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑹 𐑢𐑻𐑒𐑕𐑐𐑱𐑕𐑩𐑟 𐑝 𐑕𐑒𐑮𐑰𐑯 %d 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, 𐑚𐑳𐑑 "
+"--%s 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑿𐑟𐑛\n"
 
-#: ../libwnck/wnckprop.c:533 ../libwnck/wnckprop.c:553
 #, c-format
+#: ../libwnck/wnckprop.c:533 ../libwnck/wnckprop.c:553
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
@@ -416,17 +581,17 @@ msgstr ""
 "𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 "
 "𐑚𐑰𐑯 𐑿𐑟𐑛\n"
 
-#: ../libwnck/wnckprop.c:543
 #, c-format
+#: ../libwnck/wnckprop.c:543
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑝 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, 𐑚𐑳𐑑 --%s "
-"𐑣𐑨𐑟 𐑚𐑰𐑯 𐑿𐑟𐑛\n"
+"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑝 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 "
+"𐑚𐑰𐑯 𐑿𐑟𐑛\n"
 
-#: ../libwnck/wnckprop.c:565
 #, c-format
+#: ../libwnck/wnckprop.c:565
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
@@ -434,8 +599,8 @@ msgstr ""
 "𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑩𐑯 𐑩𐑐𐑤𐑦𐑒𐑱𐑕𐑩𐑯 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 "
 "𐑚𐑰𐑯 𐑿𐑟𐑛\n"
 
-#: ../libwnck/wnckprop.c:575
 #, c-format
+#: ../libwnck/wnckprop.c:575
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
@@ -445,8 +610,8 @@ msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:589
 #, c-format
+#: ../libwnck/wnckprop.c:589
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
@@ -456,69 +621,87 @@ msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:601
 #, c-format
+#: ../libwnck/wnckprop.c:601
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑝 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 \"%s\" 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, 𐑚𐑳𐑑 --%"
-"s 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑿𐑟𐑛\n"
+"𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑢𐑦𐑯𐑛𐑴𐑟 𐑝 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 \"%s\" 𐑖𐑫𐑛 𐑚𐑰 𐑤𐑦𐑕𐑑𐑩𐑛, 𐑚𐑳𐑑 "
+"--%s 𐑣𐑨𐑟 𐑚𐑰𐑯 𐑿𐑟𐑛\n"
 
-#: ../libwnck/wnckprop.c:613 ../libwnck/wnckprop.c:622
 #, c-format
+#: ../libwnck/wnckprop.c:613 ../libwnck/wnckprop.c:622
 msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: a window should be interacted with, but --%s "
+"has been used\n"
 msgstr ""
 "𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: 𐑩 𐑢𐑦𐑯𐑛𐑴 𐑖𐑫𐑛 𐑚𐑰 𐑦𐑯𐑑𐑻𐑨𐑒𐑑𐑩𐑛 𐑢𐑦𐑞, 𐑚𐑳𐑑 --%s 𐑣𐑨𐑟 𐑚𐑰𐑯 "
 "𐑿𐑟𐑛\n"
 
+#, c-format
 #: ../libwnck/wnckprop.c:641 ../libwnck/wnckprop.c:722
 #: ../libwnck/wnckprop.c:769
-#, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
 msgstr "𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: --%s 𐑯 --%s\n"
 
-#: ../libwnck/wnckprop.c:680
 #, c-format
+#: ../libwnck/wnckprop.c:680
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 \"%d\" 𐑓𐑹 --%s: 𐑞 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑕𐑑𐑮𐑦𐑒𐑑𐑤𐑦 𐑐𐑪𐑟𐑦𐑑𐑦𐑝\n"
 
-#: ../libwnck/wnckprop.c:693
 #, c-format
+#: ../libwnck/wnckprop.c:693
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 \"%d\" 𐑓𐑹 --%s: 𐑞 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 𐑥𐑳𐑕𐑑 𐑚𐑰 𐑐𐑪𐑟𐑦𐑑𐑦𐑝\n"
 
-#: ../libwnck/wnckprop.c:788
 #, c-format
+#: ../libwnck/wnckprop.c:788
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
 msgstr "𐑒𐑩𐑯𐑓𐑤𐑦𐑒𐑑𐑦𐑙 𐑪𐑐𐑖𐑩𐑯𐑟 𐑸 𐑐𐑮𐑩𐑟𐑧𐑯𐑑: --%s 𐑹 --%s, 𐑯 --%s\n"
 
-#: ../libwnck/wnckprop.c:820
 #, c-format
+#: ../libwnck/wnckprop.c:820
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "𐑦𐑯𐑝𐑨𐑤𐑦𐑛 𐑸𐑜𐑿𐑥𐑩𐑯𐑑 \"%s\" 𐑓𐑹 --%s, 𐑝𐑨𐑤𐑦𐑛 𐑝𐑨𐑤𐑿𐑟 𐑸: %s\n"
 
-#: ../libwnck/wnckprop.c:863
 #, c-format
+#: ../libwnck/wnckprop.c:863
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑗𐑱𐑯𐑡 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑤𐑱𐑬𐑑 𐑪𐑯 𐑞 𐑕𐑒𐑮𐑰𐑯: 𐑞 𐑤𐑱𐑬𐑑 𐑦𐑟 𐑷𐑤𐑮𐑧𐑛𐑦 𐑴𐑯𐑛\n"
 
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, fuzzy, c-format
+#: ../libwnck/wnckprop.c:898
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr "𐑢𐑦𐑯𐑛𐑴 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑥𐑵𐑝𐑛 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d: 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑧𐑒𐑟𐑦𐑕𐑑\n"
+
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#, c-format
+#, fuzzy
+#: ../libwnck/wnckprop.c:905
+msgid "Viewport cannot be moved: there is no current workspace\n"
+msgstr "Viewport 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑥𐑵𐑝𐑛: 𐑞𐑺 𐑦𐑟 𐑯𐑴 𐑒𐑳𐑮𐑩𐑯𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕\n"
+
 #. FIXME: why do we have dual & boolean API. This is not consistent!
+#, c-format
 #: ../libwnck/wnckprop.c:941 ../libwnck/wnckprop.c:950
 #: ../libwnck/wnckprop.c:959 ../libwnck/wnckprop.c:966
 #: ../libwnck/wnckprop.c:976 ../libwnck/wnckprop.c:983
 #: ../libwnck/wnckprop.c:992 ../libwnck/wnckprop.c:1041
-#, c-format
 msgid "Action not allowed\n"
 msgstr "𐑨𐑒𐑖𐑩𐑯 𐑯𐑪𐑑 𐑩𐑤𐑬𐑛\n"
 
-#: ../libwnck/wnckprop.c:1037
 #, c-format
+#: ../libwnck/wnckprop.c:1037
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑥𐑵𐑝𐑛 𐑑 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d: 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑧𐑒𐑟𐑦𐑕𐑑\n"
 
@@ -528,47 +711,53 @@ msgid "<name unset>"
 msgstr "<𐑯𐑱𐑥 𐑩𐑯𐑕𐑧𐑑>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1104
 #, c-format
+#: ../libwnck/wnckprop.c:1104
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1124
 #, c-format
+#: ../libwnck/wnckprop.c:1124
 msgid "%d: %s\n"
 msgstr "%d: %s\n"
 
-#: ../libwnck/wnckprop.c:1187
 #, c-format
+#: ../libwnck/wnckprop.c:1187
 msgid "Screen Number: %d\n"
 msgstr "𐑕𐑒𐑮𐑰𐑯 𐑯𐑳𐑥𐑚𐑼: %d\n"
 
-#: ../libwnck/wnckprop.c:1189 ../libwnck/wnckprop.c:1270
 #, c-format
+#: ../libwnck/wnckprop.c:1189 ../libwnck/wnckprop.c:1270
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "𐑡𐑦𐑪𐑥𐑩𐑑𐑮𐑦 (𐑢𐑦𐑛𐑔, 𐑣𐑲𐑑): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1193
 #, c-format
+#: ../libwnck/wnckprop.c:1193
 msgid "Number of Workspaces: %d\n"
 msgstr "𐑯𐑳𐑥𐑚𐑼 𐑝 𐑢𐑻𐑒𐑕𐑐𐑱𐑕𐑩𐑟: %d\n"
 
-#: ../libwnck/wnckprop.c:1199
 #, c-format
+#: ../libwnck/wnckprop.c:1199
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑤𐑱𐑬𐑑 (𐑮𐑴𐑟, 𐑒𐑪𐑤𐑩𐑥𐑟, 𐑪𐑮𐑦𐑩𐑯𐑑𐑱𐑖𐑩𐑯): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1210
+#, fuzzy
+#: ../libwnck/wnckprop.c:1209 ../libwnck/wnckprop.c:1266
+#: ../libwnck/wnckprop.c:1460
+msgid "<no EWMH-compliant window manager>"
+msgstr "<𐑯𐑴 EWMH-𐑒𐑩𐑥𐑐𐑤𐑲𐑩𐑯𐑑 𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼>"
+
 #, c-format
+#: ../libwnck/wnckprop.c:1210
 msgid "Window Manager: %s\n"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
+#, c-format
 #: ../libwnck/wnckprop.c:1215 ../libwnck/wnckprop.c:1296
 #: ../libwnck/wnckprop.c:1308 ../libwnck/wnckprop.c:1320
 #: ../libwnck/wnckprop.c:1332 ../libwnck/wnckprop.c:1445
-#, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
@@ -580,19 +769,19 @@ msgctxt "workspace"
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
-#: ../libwnck/wnckprop.c:1221
 #, c-format
+#: ../libwnck/wnckprop.c:1221
 msgid "Active Workspace: %s\n"
 msgstr "𐑨𐑒𐑑𐑦𐑝 𐑢𐑻𐑒𐑕𐑐𐑱𐑕: %s\n"
 
-#: ../libwnck/wnckprop.c:1230
 #, c-format
+#: ../libwnck/wnckprop.c:1230
 msgid "\"%s\""
 msgstr "\"%s\""
 
 #. Translators: %lu is a window identifier (number) and %s a window name
-#: ../libwnck/wnckprop.c:1236
 #, c-format
+#: ../libwnck/wnckprop.c:1236
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
@@ -602,13 +791,13 @@ msgctxt "window"
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
-#: ../libwnck/wnckprop.c:1243
 #, c-format
+#: ../libwnck/wnckprop.c:1243
 msgid "Active Window: %s\n"
 msgstr "𐑨𐑒𐑑𐑦𐑝 𐑢𐑦𐑯𐑛𐑴: %s\n"
 
-#: ../libwnck/wnckprop.c:1246
 #, c-format
+#: ../libwnck/wnckprop.c:1246
 msgid "Showing the desktop: %s\n"
 msgstr "𐑖𐑴𐑦𐑙 𐑞 𐑛𐑧𐑕𐑒𐑑𐑪𐑐: %s\n"
 
@@ -620,54 +809,71 @@ msgstr "𐑑𐑮𐑵"
 msgid "false"
 msgstr "𐑓𐑷𐑤𐑕"
 
-#: ../libwnck/wnckprop.c:1259
 #, c-format
+#: ../libwnck/wnckprop.c:1259
 msgid "Workspace Name: %s\n"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑯𐑱𐑥: %s\n"
 
-#: ../libwnck/wnckprop.c:1260
 #, c-format
+#: ../libwnck/wnckprop.c:1260
 msgid "Workspace Number: %d\n"
 msgstr "𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑯𐑳𐑥𐑚𐑼: %d\n"
 
-#: ../libwnck/wnckprop.c:1267 ../libwnck/wnckprop.c:1461
 #, c-format
+#: ../libwnck/wnckprop.c:1267 ../libwnck/wnckprop.c:1461
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "𐑪𐑯 𐑕𐑒𐑮𐑰𐑯: %d (𐑢𐑦𐑯𐑛𐑴 𐑥𐑨𐑯𐑩𐑡𐑼: %s)\n"
 
-#: ../libwnck/wnckprop.c:1289
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#, fuzzy
+#: ../libwnck/wnckprop.c:1282
+msgid "<no viewport>"
+msgstr "<𐑯𐑴 viewport>"
+
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
 #, c-format
+#, fuzzy
+#: ../libwnck/wnckprop.c:1286
+msgid "Viewport position (x, y): %s\n"
+msgstr "Viewport 𐑐𐑩𐑟𐑦𐑖𐑩𐑯 (𐑧𐑒𐑕, 𐑢𐑲): %s\n"
+
+#, c-format
+#: ../libwnck/wnckprop.c:1289
 msgid "Position in Layout (row, column): %d, %d\n"
 msgstr "𐑐𐑩𐑟𐑦𐑖𐑩𐑯 𐑦𐑯 𐑤𐑱𐑬𐑑 (𐑮𐑴, 𐑒𐑪𐑤𐑩𐑥): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1302
 #, c-format
+#: ../libwnck/wnckprop.c:1302
 msgid "Left Neighbor: %s\n"
 msgstr "𐑤𐑧𐑓𐑑 𐑯𐑱𐑚𐑼: %s\n"
 
-#: ../libwnck/wnckprop.c:1314
 #, c-format
+#: ../libwnck/wnckprop.c:1314
 msgid "Right Neighbor: %s\n"
 msgstr "𐑮𐑲𐑑 𐑯𐑱𐑚𐑼: %s\n"
 
-#: ../libwnck/wnckprop.c:1326
 #, c-format
+#: ../libwnck/wnckprop.c:1326
 msgid "Top Neighbor: %s\n"
 msgstr "𐑑𐑪𐑐 𐑯𐑱𐑚𐑼: %s\n"
 
-#: ../libwnck/wnckprop.c:1338
 #, c-format
+#: ../libwnck/wnckprop.c:1338
 msgid "Bottom Neighbor: %s\n"
 msgstr "𐑚𐑪𐑑𐑫𐑥 𐑯𐑱𐑚𐑼: %s\n"
 
 #. Translators: Resource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1350
 #, c-format
+#: ../libwnck/wnckprop.c:1350
 msgid "Resource Class: %s\n"
 msgstr "𐑮𐑦𐑟𐑹𐑕 𐑒𐑤𐑭𐑕: %s\n"
 
-#: ../libwnck/wnckprop.c:1352
 #, c-format
+#: ../libwnck/wnckprop.c:1352
 msgid "Group Name: %s\n"
 msgstr "𐑜𐑮𐑵𐑐 𐑯𐑱𐑥: %s\n"
 
@@ -686,28 +892,33 @@ msgstr "𐑕𐑧𐑑"
 msgid "<unset>"
 msgstr "<𐑩𐑯𐑕𐑧𐑑>"
 
+#, c-format
 #: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1386
 #: ../libwnck/wnckprop.c:1440
-#, c-format
 msgid "Icons: %s\n"
 msgstr "𐑲𐑒𐑪𐑯𐑟: %s\n"
 
-#: ../libwnck/wnckprop.c:1365 ../libwnck/wnckprop.c:1403
 #, c-format
+#: ../libwnck/wnckprop.c:1365 ../libwnck/wnckprop.c:1403
 msgid "Number of Windows: %d\n"
 msgstr "𐑯𐑳𐑥𐑚𐑼 𐑝 𐑢𐑦𐑯𐑛𐑴𐑟: %d\n"
 
-#: ../libwnck/wnckprop.c:1377 ../libwnck/wnckprop.c:1423
 #, c-format
+#: ../libwnck/wnckprop.c:1377 ../libwnck/wnckprop.c:1423
 msgid "Name: %s\n"
 msgstr "𐑯𐑱𐑥: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1378 ../libwnck/wnckprop.c:1432
 #, c-format
+#: ../libwnck/wnckprop.c:1378 ../libwnck/wnckprop.c:1432
 msgid "Icon Name: %s\n"
 msgstr "𐑲𐑒𐑪𐑯 𐑯𐑱𐑥: %s\n"
+
+#, fuzzy, c-format
+#: ../libwnck/wnckprop.c:1393 ../libwnck/wnckprop.c:1516
+msgid "PID: %s\n"
+msgstr "%d: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1400
@@ -715,8 +926,8 @@ msgctxt "startupID"
 msgid "none"
 msgstr "𐑯𐑳𐑯"
 
-#: ../libwnck/wnckprop.c:1401
 #, c-format
+#: ../libwnck/wnckprop.c:1401
 msgid "Startup ID: %s\n"
 msgstr "𐑕𐑑𐑸𐑑𐑳𐑐 ID: %s\n"
 
@@ -724,8 +935,8 @@ msgstr "𐑕𐑑𐑸𐑑𐑳𐑐 ID: %s\n"
 msgid "all workspaces"
 msgstr "𐑷𐑤 𐑢𐑻𐑒𐑕𐑐𐑱𐑕𐑩𐑟"
 
-#: ../libwnck/wnckprop.c:1453
 #, c-format
+#: ../libwnck/wnckprop.c:1453
 msgid "On Workspace: %s\n"
 msgstr "𐑪𐑯 𐑢𐑻𐑒𐑕𐑐𐑱𐑕: %s\n"
 
@@ -745,6 +956,16 @@ msgstr "𐑛𐑭𐑒 𐑹 𐑐𐑨𐑯𐑩𐑤"
 msgid "dialog window"
 msgstr "𐑛𐑲𐑩𐑤𐑪𐑜 𐑢𐑦𐑯𐑛𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1480
+msgid "tearoff toolbar"
+msgstr "tearoff 𐑑𐑵𐑤𐑚𐑸"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1483
+msgid "tearoff menu"
+msgstr "tearoff 𐑥𐑧𐑯𐑿"
+
 #: ../libwnck/wnckprop.c:1486
 msgid "utility window"
 msgstr "𐑘𐑵𐑑𐑦𐑤𐑩𐑑𐑰 𐑢𐑦𐑯𐑛𐑴"
@@ -753,25 +974,31 @@ msgstr "𐑘𐑵𐑑𐑦𐑤𐑩𐑑𐑰 𐑢𐑦𐑯𐑛𐑴"
 msgid "splash screen"
 msgstr "𐑕𐑐𐑤𐑨𐑖 𐑕𐑒𐑮𐑰𐑯"
 
-#: ../libwnck/wnckprop.c:1494
 #, c-format
+#: ../libwnck/wnckprop.c:1494
 msgid "Window Type: %s\n"
 msgstr "𐑢𐑦𐑯𐑛𐑴 𐑑𐑲𐑐: %s\n"
 
-#: ../libwnck/wnckprop.c:1497
 #, c-format
+#: ../libwnck/wnckprop.c:1497
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "𐑡𐑦𐑪𐑥𐑩𐑑𐑮𐑦 (x, y, 𐑢𐑦𐑛𐑔, 𐑣𐑲𐑑): %d, %d, %d, %d\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
-#: ../libwnck/wnckprop.c:1507
 #, c-format
+#: ../libwnck/wnckprop.c:1507
 msgid "Class Group: %s\n"
 msgstr "𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐: %s\n"
 
-#: ../libwnck/wnckprop.c:1524
 #, c-format
+#, fuzzy
+#: ../libwnck/wnckprop.c:1509
+msgid "XID: %lu\n"
+msgstr "XID: %lu\n"
+
+#, c-format
+#: ../libwnck/wnckprop.c:1524
 msgid "Session ID: %s\n"
 msgstr "𐑕𐑧𐑖𐑩𐑯 ID: %s\n"
 
@@ -779,23 +1006,23 @@ msgstr "𐑕𐑧𐑖𐑩𐑯 ID: %s\n"
 #. * of windows, ie: if you have multiple windows in one application, one
 #. * window has some information about the application (like the application
 #. * name).
-#: ../libwnck/wnckprop.c:1531
 #, c-format
+#: ../libwnck/wnckprop.c:1531
 msgid "Group Leader: %lu\n"
 msgstr "𐑜𐑮𐑵𐑐 𐑤𐑰𐑛𐑼: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's
 #. * on top of it
-#: ../libwnck/wnckprop.c:1537
 #, c-format
+#: ../libwnck/wnckprop.c:1537
 msgid "Transient for: %lu\n"
 msgstr "𐑑𐑮𐑨𐑯𐑠𐑩𐑯𐑑 𐑓𐑹: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1552 ../libwnck/wnckprop.c:1600
 #, c-format
+#: ../libwnck/wnckprop.c:1552 ../libwnck/wnckprop.c:1600
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
@@ -840,6 +1067,11 @@ msgstr "𐑩𐑚𐑳𐑝"
 msgid "below"
 msgstr "𐑚𐑩𐑤𐑴"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1576
+msgid "fullscreen"
+msgstr "fullscreen"
+
 #: ../libwnck/wnckprop.c:1577
 msgid "needs attention"
 msgstr "𐑯𐑰𐑛𐑟 𐑩𐑑𐑧𐑯𐑖𐑩𐑯"
@@ -852,12 +1084,19 @@ msgstr "𐑯𐑰𐑛𐑟 𐑩𐑑𐑧𐑯𐑖𐑩𐑯"
 msgid "skip pager"
 msgstr "𐑕𐑒𐑦𐑐 𐑐𐑱𐑡𐑻"
 
+#. Translators: "tasklist" is the list of running applications (the window
+#. * list)
+#, fuzzy
+#: ../libwnck/wnckprop.c:1585
+msgid "skip tasklist"
+msgstr "𐑕𐑒𐑦𐑐 tasklist"
+
 #: ../libwnck/wnckprop.c:1587
 msgid "normal"
 msgstr "𐑯𐑹𐑥𐑩𐑤"
 
-#: ../libwnck/wnckprop.c:1588
 #, c-format
+#: ../libwnck/wnckprop.c:1588
 msgid "State: %s\n"
 msgstr "𐑕𐑑𐑱𐑑: %s\n"
 
@@ -873,17 +1112,37 @@ msgstr "𐑮𐑰𐑕𐑲𐑟"
 msgid "shade"
 msgstr "𐑖𐑱𐑛"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1612
+msgid "unshade"
+msgstr "unshade"
+
 #: ../libwnck/wnckprop.c:1613
 msgid "stick"
 msgstr "𐑕𐑑𐑦𐑒"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1614
+msgid "unstick"
+msgstr "unstick"
 
 #: ../libwnck/wnckprop.c:1616
 msgid "maximize horizontally"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤𐑦"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1618
+msgid "unmaximize horizontally"
+msgstr "unmaximize 𐑣𐑪𐑮𐑦𐑟𐑪𐑯𐑑𐑩𐑤𐑦"
+
 #: ../libwnck/wnckprop.c:1620
 msgid "maximize vertically"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟 𐑝𐑻𐑑𐑦𐑒𐑩𐑤𐑦"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1622
+msgid "unmaximize vertically"
+msgstr "unmaximize 𐑝𐑻𐑑𐑦𐑒𐑩𐑤𐑦"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "change workspace"
@@ -893,13 +1152,33 @@ msgstr "𐑗𐑱𐑯𐑡 𐑢𐑻𐑒𐑕𐑐𐑱𐑕"
 msgid "pin"
 msgstr "𐑐𐑦𐑯"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1629
+msgid "unpin"
+msgstr "unpin"
+
 #: ../libwnck/wnckprop.c:1630
 msgid "minimize"
 msgstr "𐑥𐑦𐑯𐑩𐑥𐑲𐑟"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1631
+msgid "unminimize"
+msgstr "unminimize"
+
 #: ../libwnck/wnckprop.c:1632
 msgid "maximize"
 msgstr "𐑥𐑨𐑒𐑕𐑩𐑥𐑲𐑟"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1633
+msgid "unmaximize"
+msgstr "unmaximize"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1635
+msgid "change fullscreen mode"
+msgstr "𐑗𐑱𐑯𐑡 fullscreen 𐑥𐑴𐑛"
 
 #: ../libwnck/wnckprop.c:1636
 msgid "close"
@@ -909,18 +1188,39 @@ msgstr "𐑒𐑤𐑴𐑟"
 msgid "make above"
 msgstr "𐑥𐑱𐑒 𐑩𐑚𐑳𐑝"
 
+#, fuzzy
+#: ../libwnck/wnckprop.c:1640
+msgid "unmake above"
+msgstr "unmake 𐑩𐑚𐑳𐑝"
+
 #: ../libwnck/wnckprop.c:1642
 msgid "make below"
 msgstr "𐑥𐑱𐑒 𐑚𐑩𐑤𐑴"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1644
+msgid "unmake below"
+msgstr "unmake 𐑚𐑩𐑤𐑴"
 
 #: ../libwnck/wnckprop.c:1646
 msgid "no action possible"
 msgstr "𐑯𐑴 𐑨𐑒𐑖𐑩𐑯 𐑐𐑪𐑕𐑩𐑚𐑩𐑤"
 
-#: ../libwnck/wnckprop.c:1647
 #, c-format
+#: ../libwnck/wnckprop.c:1647
 msgid "Possible Actions: %s\n"
 msgstr "𐑐𐑪𐑕𐑩𐑚𐑩𐑤 𐑨𐑒𐑖𐑩𐑯𐑟: %s\n"
+
+#, fuzzy
+#: ../libwnck/wnckprop.c:1826
+msgid ""
+"Print or modify the properties of a screen/workspace/window, or interact with "
+"it, following the EWMH specification.\nFor information about this "
+"specification, see:\n\thttp://freedesktop.org/wiki/Specifications/wm-spec"
+msgstr ""
+"𐑐𐑮𐑦𐑯𐑑 𐑹 𐑥𐑪𐑛𐑦𐑓𐑲 𐑞 𐑐𐑮𐑪𐑐𐑼𐑑𐑦𐑟 𐑝 𐑩 𐑕𐑒𐑮𐑰𐑯/𐑢𐑻𐑒𐑕𐑐𐑱𐑕/𐑢𐑦𐑯𐑛𐑴, 𐑹 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑦𐑑, 𐑓𐑪𐑤𐑴𐑦𐑙 𐑞 "
+"EWMH 𐑕𐑐𐑧𐑕𐑦𐑓𐑦𐑒𐑱𐑖𐑩𐑯.\n𐑓𐑹 𐑦𐑯𐑓𐑼𐑥𐑱𐑖𐑩𐑯 𐑩𐑚𐑬𐑑 𐑞𐑦𐑕 𐑕𐑐𐑧𐑕𐑦𐑓𐑦𐑒𐑱𐑖𐑩𐑯, "
+"𐑕𐑰:\n\t·𐑣·𐑑·𐑑·𐑐://freedesktop.𐑹𐑜/𐑢𐑦𐑒𐑦/𐑕𐑐𐑧𐑕𐑩𐑓𐑩𐑒𐑱𐑖𐑩𐑯𐑟/𐑢𐑦𐑤𐑘𐑩𐑥-𐑕𐑐𐑧𐑒"
 
 #: ../libwnck/wnckprop.c:1836
 msgid "Options to list windows or workspaces"
@@ -954,25 +1254,38 @@ msgstr "𐑪𐑐𐑖𐑩𐑯𐑟 𐑑 𐑥𐑪𐑛𐑦𐑓𐑲 𐑐𐑮𐑪𐑐�
 msgid "Show options to modify properties of a screen"
 msgstr "𐑖𐑴 𐑪𐑐𐑖𐑩𐑯𐑟 𐑑 𐑥𐑪𐑛𐑦𐑓𐑲 𐑐𐑮𐑪𐑐𐑼𐑑𐑦𐑟 𐑝 𐑩 𐑕𐑒𐑮𐑰𐑯"
 
-#: ../libwnck/wnckprop.c:1872
 #, c-format
+#: ../libwnck/wnckprop.c:1872
 msgid "Error while parsing arguments: %s\n"
 msgstr "𐑻𐑼 𐑢𐑲𐑤 𐑐𐑸𐑕𐑦𐑙 𐑸𐑜𐑿𐑥𐑩𐑯𐑑𐑕: %s\n"
 
-#: ../libwnck/wnckprop.c:1895
 #, c-format
+#: ../libwnck/wnckprop.c:1895
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑕𐑒𐑮𐑰𐑯 %d: 𐑞 𐑕𐑒𐑮𐑰𐑯 𐑛𐑳𐑟 𐑯𐑪𐑑 𐑧𐑒𐑟𐑦𐑕𐑑\n"
 
-#: ../libwnck/wnckprop.c:1951
 #, c-format
+#: ../libwnck/wnckprop.c:1951
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d: 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑓𐑬𐑯𐑛\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: ../libwnck/wnckprop.c:1975
 #, c-format
+#: ../libwnck/wnckprop.c:1975
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "𐑒𐑨𐑯𐑪𐑑 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 \"%s\": 𐑞 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑓𐑬𐑯𐑛\n"
+
+#, fuzzy, c-format
+#: ../libwnck/wnckprop.c:1998
+msgid ""
+"Cannot interact with application having its group leader with XID %lu: the "
+"application cannot be found\n"
+msgstr "𐑒𐑨𐑯𐑪𐑑 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 \"%s\": 𐑞 𐑒𐑤𐑭𐑕 𐑜𐑮𐑵𐑐 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑓𐑬𐑯𐑛\n"
+
+#, fuzzy, c-format
+#: ../libwnck/wnckprop.c:2021
+msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
+msgstr "𐑒𐑨𐑯𐑪𐑑 𐑦𐑯𐑑𐑻𐑨𐑒𐑑 𐑢𐑦𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 %d: 𐑞 𐑢𐑻𐑒𐑕𐑐𐑱𐑕 𐑒𐑨𐑯𐑪𐑑 𐑚𐑰 𐑓𐑬𐑯𐑛\n"
+
