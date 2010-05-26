@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
 "POT-Creation-Date: 2010-05-12 22:49+0000\n"
-"PO-Revision-Date: 2010-05-24 22:19+0100\n"
+"PO-Revision-Date: 2010-05-26 22:19+0100\n"
 "Last-Translator: Denis <denisarnuad@yahoo.fr>\n"
 "Language-Team: Brenux <brenux@free.fr>\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr "Arload disanv"
 
 #: ../libwnck/pager-accessible.c:338
 msgid "Workspace Switcher"
-msgstr "Trec'haoler an dachennoù-labour"
+msgstr "Trec'haoler an tachennoù-labour"
 
 #: ../libwnck/pager-accessible.c:349
 msgid "Tool to switch between workspaces"
@@ -104,7 +104,7 @@ msgstr ""
 
 #: ../libwnck/tasklist.c:3104
 msgid "_Close All"
-msgstr ""
+msgstr "_Serriñ an holl anezho"
 
 #: ../libwnck/test-pager.c:15
 msgid "Use N_ROWS rows"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: ../libwnck/test-pager.c:16
 msgid "Only show current workspace"
-msgstr ""
+msgstr "Diskouez an dachenn-labour a-vremañ"
 
 #: ../libwnck/test-pager.c:17
 #: ../libwnck/test-tasklist.c:19
@@ -367,19 +367,20 @@ msgstr "Divrasaat ar prenestr"
 
 #: ../libwnck/wnckprop.c:204
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "Brasaat ar prenestr a-zremm"
 
 #: ../libwnck/wnckprop.c:206
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "Divrasaat ar prenestr a-zremm"
 
 #: ../libwnck/wnckprop.c:208
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "Brasaat ar prenestr a-serzh"
 
 #: ../libwnck/wnckprop.c:210
+#, fuzzy
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "Divrasaat ar prenestr a-serzh"
 
 #: ../libwnck/wnckprop.c:212
 msgid "Start moving the window via the keyboard"
@@ -649,7 +650,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1041
 #, c-format
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "Gwezh dizaotreet\n"
 
 #: ../libwnck/wnckprop.c:1037
 #, c-format
@@ -840,7 +841,7 @@ msgstr "Anv ar strollad : %s\n"
 #: ../libwnck/wnckprop.c:1382
 #: ../libwnck/wnckprop.c:1436
 msgid "set"
-msgstr ""
+msgstr "Arventenniñ"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1361
@@ -853,7 +854,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1515
 #: ../libwnck/wnckprop.c:1523
 msgid "<unset>"
-msgstr ""
+msgstr "<diarventenniñ>"
 
 #: ../libwnck/wnckprop.c:1362
 #: ../libwnck/wnckprop.c:1386
@@ -901,7 +902,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1449
 msgid "all workspaces"
-msgstr ""
+msgstr "an holl dachennoù-labour"
 
 #: ../libwnck/wnckprop.c:1453
 #, c-format
@@ -938,7 +939,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1489
 msgid "splash screen"
-msgstr ""
+msgstr "skrammad degemer"
 
 #: ../libwnck/wnckprop.c:1494
 #, c-format
@@ -1008,11 +1009,11 @@ msgstr "brasaet"
 
 #: ../libwnck/wnckprop.c:1567
 msgid "maximized horizontally"
-msgstr ""
+msgstr "brasaet a-zremm"
 
 #: ../libwnck/wnckprop.c:1569
 msgid "maximized vertically"
-msgstr ""
+msgstr "brasaet a-serzh"
 
 #: ../libwnck/wnckprop.c:1571
 msgid "shaded"
@@ -1024,7 +1025,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1573
 msgid "sticky"
-msgstr ""
+msgstr "pegus"
 
 #: ../libwnck/wnckprop.c:1574
 msgid "above"
@@ -1036,7 +1037,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1576
 msgid "fullscreen"
-msgstr ""
+msgstr "skrammad a-bezh"
 
 #: ../libwnck/wnckprop.c:1577
 msgid "needs attention"
@@ -1091,19 +1092,19 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1616
 msgid "maximize horizontally"
-msgstr ""
+msgstr "brasaat a-zremm"
 
 #: ../libwnck/wnckprop.c:1618
 msgid "unmaximize horizontally"
-msgstr ""
+msgstr "divrasaat a-zremm"
 
 #: ../libwnck/wnckprop.c:1620
 msgid "maximize vertically"
-msgstr ""
+msgstr "brasaat a-serzh"
 
 #: ../libwnck/wnckprop.c:1622
 msgid "unmaximize vertically"
-msgstr ""
+msgstr "divrasaat a-serzh"
 
 #: ../libwnck/wnckprop.c:1625
 msgid "change workspace"
@@ -1175,11 +1176,11 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1836
 msgid "Options to list windows or workspaces"
-msgstr "Dibarzhioù evit listennañ ar prenestroù pe an dachennoù-labour"
+msgstr "Dibarzhioù evit listennañ ar prenestroù pe an tachennoù-labour"
 
 #: ../libwnck/wnckprop.c:1837
 msgid "Show options to list windows or workspaces"
-msgstr "Diskouez an dibarzhioù evit listennañ ar prenestroù pe an dachennoù-labour"
+msgstr "Diskouez an dibarzhioù evit listennañ ar prenestroù pe an tachennoù-labour"
 
 #: ../libwnck/wnckprop.c:1844
 msgid "Options to modify properties of a window"
