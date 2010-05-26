@@ -1175,11 +1175,11 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1836
 msgid "Options to list windows or workspaces"
-msgstr "Dibarzhioù evit listennañ ar prenestroù pe tachennoù-labour"
+msgstr "Dibarzhioù evit listennañ ar prenestroù pe an dachennoù-labour"
 
 #: ../libwnck/wnckprop.c:1837
 msgid "Show options to list windows or workspaces"
-msgstr "Diskouez an dibarzhioù evit listennañ ar prenestroù pe tachennoù-labour"
+msgstr "Diskouez an dibarzhioù evit listennañ ar prenestroù pe an dachennoù-labour"
 
 #: ../libwnck/wnckprop.c:1844
 msgid "Options to modify properties of a window"
