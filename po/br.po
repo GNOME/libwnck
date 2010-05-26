@@ -771,7 +771,7 @@ msgstr "diwir"
 #: ../libwnck/wnckprop.c:1259
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr "Anv ar dachenn-labour : %s\n"
+msgstr "Anv an dachenn-labour : %s\n"
 
 #: ../libwnck/wnckprop.c:1260
 #, c-format
@@ -866,7 +866,7 @@ msgstr "Arlunioù : %s\n"
 #: ../libwnck/wnckprop.c:1403
 #, c-format
 msgid "Number of Windows: %d\n"
-msgstr "Niver a prenestroù : %d\n"
+msgstr "Niver a brenestroù : %d\n"
 
 #: ../libwnck/wnckprop.c:1377
 #: ../libwnck/wnckprop.c:1423
