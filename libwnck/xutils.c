@@ -1617,8 +1617,14 @@ get_cmap (GdkPixmap *pixmap)
 
   /* Be sure we aren't going to blow up due to visual mismatch */
   if (cmap &&
+#if GTK_CHECK_VERSION(2,21,0)
+      (gdk_visual_get_depth (gdk_colormap_get_visual (cmap)) !=
+       gdk_drawable_get_depth (pixmap))
+#else
       (gdk_colormap_get_visual (cmap)->depth !=
-       gdk_drawable_get_depth (pixmap)))
+       gdk_drawable_get_depth (pixmap))
+#endif
+     )
     {
       g_object_unref (G_OBJECT (cmap));
       cmap = NULL;

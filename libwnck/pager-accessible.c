@@ -364,7 +364,11 @@ wnck_pager_accessible_get_n_children (AtkObject* obj)
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), 0);
 
   accessible = GTK_ACCESSIBLE (obj);
+#if GTK_CHECK_VERSION(2,21,0)
+  widget = gtk_accessible_get_widget (accessible);
+#else
   widget = accessible->widget;
+#endif
 
   if (widget == NULL)
     /* State is defunct */

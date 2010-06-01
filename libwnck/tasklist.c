@@ -3569,7 +3569,12 @@ wnck_task_drag_motion (GtkWidget          *widget,
   if (gtk_drag_dest_find_target (widget, context, NULL))
     {
        gtk_drag_highlight (widget);
+#if GTK_CHECK_VERSION(2,21,0)
+       gdk_drag_status (context,
+                        gdk_drag_context_get_suggested_action (context), time);
+#else
        gdk_drag_status (context, context->suggested_action, time);
+#endif
     }
   else
     {
