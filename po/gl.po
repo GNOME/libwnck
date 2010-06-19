@@ -13,19 +13,20 @@
 # Suso Baleato <suso.baleato@xunta.es>, 2009.
 # Antón Méixome <meixome@mancomun.org>, 2009.
 # Fran Diéguez <frandieguez@ubuntu.com>, 2010.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck-master-po-gl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-25 16:33+0200\n"
-"PO-Revision-Date: 2010-04-25 16:33+0200\n"
+"POT-Creation-Date: 2010-06-19 03:34+0200\n"
+"PO-Revision-Date: 2010-06-20 01:03+0200\n"
 "Last-Translator: Fran Diéguez <frandieguez@ubuntu.com>\n"
-"Language-Team: Galician <proxecto@trasno.net>\n"
+"Language-Team: Galician <gnome@g11.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: gl\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\\\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #. *
@@ -59,25 +60,25 @@ msgstr "Selector de espazo de traballo"
 msgid "Tool to switch between workspaces"
 msgstr "Ferramenta para intercambiar entre os espazos de traballo"
 
-#: ../libwnck/pager-accessible.c:457
+#: ../libwnck/pager-accessible.c:461
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Prema isto para cambiar ao espazo de traballo %s"
 
-#: ../libwnck/pager.c:1960
+#: ../libwnck/pager.c:1965
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "Prema para comezar a arrastrar \"%s\""
-
-#: ../libwnck/pager.c:1963
-#, c-format
-msgid "Current workspace: \"%s\""
-msgstr "Espazo de traballo actual: \"%s\""
+msgstr "Prema para comezar a arrastrar «%s»"
 
 #: ../libwnck/pager.c:1968
 #, c-format
+msgid "Current workspace: \"%s\""
+msgstr "Espazo de traballo actual: «%s»"
+
+#: ../libwnck/pager.c:1973
+#, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Prema para cambiar a \"%s\""
+msgstr "Prema para cambiar a «%s»"
 
 #: ../libwnck/selector.c:1177
 msgid "No Windows Open"
@@ -553,7 +554,7 @@ msgstr "Activar o espazo de traballo"
 #: ../libwnck/wnckprop.c:444 ../libwnck/wnckprop.c:467
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr "Valor \"%s\" non válido para --%s"
+msgstr "Valor «%s» non válido para --%s"
 
 #: ../libwnck/wnckprop.c:501 ../libwnck/wnckprop.c:520
 #, c-format
@@ -617,8 +618,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
-"Preséntanse opcións en conflito: debería interactuarse co grupo de clase \"%s"
-"\", mais usouse --%s\n"
+"Preséntanse opcións en conflito: debería interactuarse co grupo de clase «%"
+"s», mais usouse --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -628,8 +629,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"Preséntanse opcións en conflito: as xanelas do grupo de clase \"%s\" "
-"deberían estar listadas, mais usouse --%s\n"
+"Preséntanse opcións en conflito: as xanelas do grupo de clase «%s» deberían "
+"estar listadas, mais usouse --%s\n"
 
 #: ../libwnck/wnckprop.c:613 ../libwnck/wnckprop.c:622
 #, c-format
@@ -668,8 +669,7 @@ msgstr "Preséntanse opcións en conflito: --%s ou --%s, e --%s\n"
 #: ../libwnck/wnckprop.c:820
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
-"O argumento \"%s\" non é válido para --%s, os valores válidos son: %s\n"
+msgstr "O argumento «%s» non é válido para --%s, os valores válidos son: %s\n"
 
 #: ../libwnck/wnckprop.c:863
 #, c-format
@@ -772,7 +772,7 @@ msgstr "Xestor de xanelas: %s\n"
 #: ../libwnck/wnckprop.c:1332 ../libwnck/wnckprop.c:1445
 #, c-format
 msgid "%d (\"%s\")"
-msgstr "%d (\"%s\")"
+msgstr "%d («%s»)"
 
 #. Translators: "none" here means "no workspace"
 #: ../libwnck/wnckprop.c:1220 ../libwnck/wnckprop.c:1301
@@ -790,7 +790,7 @@ msgstr "Espazo de traballo activo: %s\n"
 #: ../libwnck/wnckprop.c:1230
 #, c-format
 msgid "\"%s\""
-msgstr "\"%s\""
+msgstr "«%s»"
 
 #. Translators: %lu is a window identifier (number) and %s a window name
 #: ../libwnck/wnckprop.c:1236
@@ -1276,8 +1276,8 @@ msgstr ""
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
-"Non é posíbel interactuar co grupo de clase \"%s\": non é posíbel encontrar "
-"o grupo de clase\n"
+"Non é posíbel interactuar co grupo de clase «%s»: non é posíbel encontrar o "
+"grupo de clase\n"
 
 #: ../libwnck/wnckprop.c:1998
 #, c-format
