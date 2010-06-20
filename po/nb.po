@@ -1,13 +1,13 @@
 # Norwegian translation of libwnck
 # Copyright (C) 2001-2003 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2001-2009.
+# Kjartan Maraas <kmaraas@gnome.org>, 2001-2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: libwnck 2.27.x\n"
+"Project-Id-Version: libwnck 2.31.x\n"
 "Report-Msgid-Bugs-To:\n"
-"POT-Creation-Date: 2009-09-01 14:11+0200\n"
-"PO-Revision-Date: 2009-09-01 14:14+0200\n"
+"POT-Creation-Date: 2010-06-20 12:11+0200\n"
+"PO-Revision-Date: 2010-06-20 12:13+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.n>\n"
 "MIME-Version: 1.0\n"
@@ -37,71 +37,71 @@ msgstr ""
 msgid "Untitled application"
 msgstr "Program uten navn"
 
-#: ../libwnck/pager-accessible.c:322
+#: ../libwnck/pager-accessible.c:338
 msgid "Workspace Switcher"
 msgstr "Arbeidsområdebytter"
 
-#: ../libwnck/pager-accessible.c:333
+#: ../libwnck/pager-accessible.c:349
 msgid "Tool to switch between workspaces"
 msgstr "Verktøy for å bytte mellom arbeidsområder"
 
-#: ../libwnck/pager-accessible.c:437
+#: ../libwnck/pager-accessible.c:461
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "Klikk her for å bytte til arbeidsområde %s"
 
-#: ../libwnck/pager.c:1910
+#: ../libwnck/pager.c:1965
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Klikk for å dra «%s»"
 
-#: ../libwnck/pager.c:1913
+#: ../libwnck/pager.c:1968
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Aktivt arbeidsområde: «%s»"
 
-#: ../libwnck/pager.c:1918
+#: ../libwnck/pager.c:1973
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Klikk for å bytte til «%s»"
 
-#: ../libwnck/selector.c:1172
+#: ../libwnck/selector.c:1177
 msgid "No Windows Open"
 msgstr "Ingen åpne vinduer"
 
-#: ../libwnck/selector.c:1225
+#: ../libwnck/selector.c:1230
 msgid "Window Selector"
 msgstr "Vinduvelger"
 
-#: ../libwnck/selector.c:1226
+#: ../libwnck/selector.c:1231
 msgid "Tool to switch between windows"
 msgstr "Verktøy for å bytte mellom vinduer"
 
-#: ../libwnck/tasklist.c:729
+#: ../libwnck/tasklist.c:733
 msgid "Window List"
 msgstr "Vinduliste"
 
-#: ../libwnck/tasklist.c:730
+#: ../libwnck/tasklist.c:734
 msgid "Tool to switch between visible windows"
 msgstr "Verktøy for å bytte mellom synlige vinduer"
 
-#: ../libwnck/tasklist.c:3018
+#: ../libwnck/tasklist.c:3062
 msgid "Mi_nimize All"
 msgstr "Mi_nimer alle"
 
-#: ../libwnck/tasklist.c:3029
+#: ../libwnck/tasklist.c:3073
 msgid "Un_minimize All"
 msgstr "Gjen_opprett alle"
 
-#: ../libwnck/tasklist.c:3037
+#: ../libwnck/tasklist.c:3081
 msgid "Ma_ximize All"
 msgstr "Ma_ksimer alle"
 
-#: ../libwnck/tasklist.c:3048
+#: ../libwnck/tasklist.c:3092
 msgid "_Unmaximize All"
 msgstr "Gjeno_pprett alle"
 
-#: ../libwnck/tasklist.c:3060
+#: ../libwnck/tasklist.c:3104
 msgid "_Close All"
 msgstr "_Lukk alle"
 
@@ -151,78 +151,78 @@ msgstr "Vis vinduer fra alle arbeidsområder"
 msgid "Enable Transparency"
 msgstr "Aktiver gjennomsiktighet"
 
-#: ../libwnck/window-action-menu.c:417
+#: ../libwnck/window-action-menu.c:419
 msgid "Unmi_nimize"
 msgstr "Gje_nopprett"
 
-#: ../libwnck/window-action-menu.c:424
+#: ../libwnck/window-action-menu.c:426
 msgid "Mi_nimize"
 msgstr "Mi_nimer"
 
-#: ../libwnck/window-action-menu.c:432
+#: ../libwnck/window-action-menu.c:434
 msgid "Unma_ximize"
 msgstr "_Gjenopprett"
 
-#: ../libwnck/window-action-menu.c:439
+#: ../libwnck/window-action-menu.c:441
 msgid "Ma_ximize"
 msgstr "Ma_ksimer"
 
-#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:748 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "Arbeidsområde %d"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace 1_0"
 msgstr "Arbeidsområde 1_0"
 
-#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
+#: ../libwnck/window-action-menu.c:759 ../libwnck/window-action-menu.c:906
 #, c-format
 msgid "Workspace %s%d"
 msgstr "Arbeidsområde %s%d"
 
-#: ../libwnck/window-action-menu.c:1047
+#: ../libwnck/window-action-menu.c:1049
 msgid "_Move"
 msgstr "F_lytt"
 
-#: ../libwnck/window-action-menu.c:1054
+#: ../libwnck/window-action-menu.c:1056
 msgid "_Resize"
 msgstr "End_re størrelse"
 
-#: ../libwnck/window-action-menu.c:1063
+#: ../libwnck/window-action-menu.c:1065
 msgid "Always On _Top"
 msgstr "Alltid øvers_t"
 
-#: ../libwnck/window-action-menu.c:1071
+#: ../libwnck/window-action-menu.c:1073
 msgid "_Always on Visible Workspace"
 msgstr "_Alltid på synlig arbeidsområde"
 
-#: ../libwnck/window-action-menu.c:1076
+#: ../libwnck/window-action-menu.c:1078
 msgid "_Only on This Workspace"
 msgstr "K_un på dette arbeidsområdet"
 
-#: ../libwnck/window-action-menu.c:1083
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace _Left"
 msgstr "Flytt til arbeidsområdet til _venstre"
 
-#: ../libwnck/window-action-menu.c:1089
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace R_ight"
 msgstr "Flytt til arbeidsområdet til hø_yre"
 
-#: ../libwnck/window-action-menu.c:1095
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Up"
 msgstr "Flytt til et arbeidsområdet _over"
 
-#: ../libwnck/window-action-menu.c:1101
+#: ../libwnck/window-action-menu.c:1103
 msgid "Move to Workspace _Down"
 msgstr "Flytt til arbeidsområdet un_der"
 
-#: ../libwnck/window-action-menu.c:1104
+#: ../libwnck/window-action-menu.c:1106
 msgid "Move to Another _Workspace"
 msgstr "Flytt til et annet _arbeidsområde"
 
-#: ../libwnck/window-action-menu.c:1124
+#: ../libwnck/window-action-menu.c:1126
 msgid "_Close"
 msgstr "_Lukk"
 
@@ -299,7 +299,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:172
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Endre antall arbeidsområder på skjermen til TALL"
 
 #: ../libwnck/wnckprop.c:174
 msgid "Change the workspace layout of the screen to use NUMBER rows"
@@ -1210,7 +1210,9 @@ msgstr ""
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "Kan ikke ha interaksjon med klassegruppen «%s»: klassegruppen ble ikke funnet\n"
+msgstr ""
+"Kan ikke ha interaksjon med klassegruppen «%s»: klassegruppen ble ikke "
+"funnet\n"
 
 #: ../libwnck/wnckprop.c:1998
 #, c-format
