@@ -188,12 +188,12 @@ Wnck_1_0_gir_FILES = \
 INTROSPECTION_GIRS += Wnck-1.0.gir
 
 girdir = $(datadir)/gir-1.0
-dist_gir_DATA = $(INTROSPECTION_GIRS)
+gir_DATA = $(INTROSPECTION_GIRS)
 
 typelibdir = $(libdir)/girepository-1.0
 typelib_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 
-CLEANFILES += $(dist_gir_DATA) $(typelib_DATA)
+CLEANFILES += $(gir_DATA) $(typelib_DATA)
 endif
 
 -include $(top_srcdir)/git.mk
