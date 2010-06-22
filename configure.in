@@ -1,6 +1,6 @@
 AC_PREREQ(2.62)
 
-AC_INIT([libwnck], [2.30.2],
+AC_INIT([libwnck], [2.30.3],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
 AM_CONFIG_HEADER(config.h)
