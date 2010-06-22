@@ -293,7 +293,11 @@ wnck_pager_accessible_new (GtkWidget *widget)
   aobj_pager = ATK_OBJECT (object);
 
   gtk_accessible = GTK_ACCESSIBLE (aobj_pager);
+#if GTK_CHECK_VERSION(2,90,4)
+  gtk_accessible_set_widget (gtk_accessible, widget);
+#else
   gtk_accessible->widget = widget;
+#endif
 
   atk_object_initialize (aobj_pager, widget);
   aobj_pager->role = ATK_ROLE_PANEL;
