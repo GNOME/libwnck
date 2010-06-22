@@ -171,8 +171,7 @@ INTROSPECTION_SCANNER_ARGS = --add-include-path=$(srcdir)
 INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 
 if HAVE_INTROSPECTION
-introspection_sources = $(wnck_sources) $(wnck_headers)
-introspection_built_sources = $(wnck_built_installed_headers)
+introspection_sources = $(wnck_sources) $(libwnckinclude_HEADERS)
 
 Wnck-1.0.gir: libwnck-1.la Makefile
 Wnck_1_0_gir_INCLUDES = GObject-2.0 Gtk-2.0
@@ -182,9 +181,7 @@ Wnck_1_0_gir_CFLAGS =			\
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE	\
 	-DSN_API_NOT_YET_FROZEN=1
 Wnck_1_0_gir_LIBS = libwnck-1.la
-Wnck_1_0_gir_FILES = \
-	$(addprefix $(srcdir)/,$(introspection_sources))	\
-	$(introspection_built_sources)
+Wnck_1_0_gir_FILES = $(addprefix $(srcdir)/,$(introspection_sources))
 INTROSPECTION_GIRS += Wnck-1.0.gir
 
 girdir = $(datadir)/gir-1.0
