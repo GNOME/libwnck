@@ -1,4 +1,24 @@
 ==============
+Version 2.30.2
+==============
+
+ Fixes
+
+  - Many GSeal-related fixes (Andre Klapper, Vincent)
+  - Do not ship gir files in the tarball (Yaakov Selkowitz)
+
+ Translators
+
+  - Denis (br)
+  - Sílvia Miranda (ca)
+  - Thomas Thurman (en@shaw)
+  - Iñaki Larrañaga Murgoitio (eu)
+  - Fran Diéguez (gl)
+  - Shankar Prasad (kn)
+  - Rudols Mazurs (lv)
+  - Kjartan Maraas (nb)
+
+==============
 Version 2.30.0
 ==============
 
