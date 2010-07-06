@@ -167,7 +167,7 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ##################################################
 GTK_DOC_CHECK([1.9])
 
-GOBJECT_INTROSPECTION_CHECK([0.6.7])
+GOBJECT_INTROSPECTION_CHECK([0.6.14])
 
 AC_OUTPUT([
 Makefile

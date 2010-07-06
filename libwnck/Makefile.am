@@ -181,7 +181,7 @@ Wnck_1_0_gir_CFLAGS =			\
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE	\
 	-DSN_API_NOT_YET_FROZEN=1
 Wnck_1_0_gir_LIBS = libwnck-1.la
-Wnck_1_0_gir_FILES = $(addprefix $(srcdir)/,$(introspection_sources))
+Wnck_1_0_gir_FILES = $(introspection_sources)
 INTROSPECTION_GIRS += Wnck-1.0.gir
 
 girdir = $(datadir)/gir-1.0
