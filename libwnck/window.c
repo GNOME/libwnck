@@ -464,8 +464,8 @@ wnck_window_finalize (GObject *object)
  * create a #WnckWindow if none exists. The function is robust against bogus
  * window IDs.
  *
- * Return value: the #WnckWindow for @xwindow. The returned #WnckWindow is
- * owned by libwnck and must not be referenced or unreferenced.
+ * Return value: (transfer none): the #WnckWindow for @xwindow. The returned
+ * #WnckWindow is owned by libwnck and must not be referenced or unreferenced.
  **/
 WnckWindow*
 wnck_window_get (gulong xwindow)
@@ -482,8 +482,8 @@ wnck_window_get (gulong xwindow)
  *
  * Gets the #WnckScreen @window is on.
  *
- * Return value: the #WnckScreen @window is on. The returned #WnckScreen is
- * owned by libwnck and must not be referenced or unreferenced.
+ * Return value: (transfer none): the #WnckScreen @window is on. The returned
+ * #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
  **/
 WnckScreen*
 wnck_window_get_screen (WnckWindow *window)
@@ -718,9 +718,9 @@ _wnck_window_get_name_for_display (WnckWindow *window,
  *
  * Gets the #WnckApplication to which @window belongs.
  *
- * Return value: the #WnckApplication to which @window belongs. The returned
- * #WnckApplication is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the #WnckApplication to which @window belongs.
+ * The returned #WnckApplication is owned by libwnck and must not be referenced
+ * or unreferenced.
  **/
 WnckApplication*
 wnck_window_get_application  (WnckWindow *window)
@@ -789,9 +789,9 @@ wnck_window_get_xid (WnckWindow *window)
  *
  * Gets the #WnckClassGroup to which @window belongs.
  *
- * Return value: the #WnckClassGroup to which @window belongs. The returned
- * #WnckClassGroup is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the #WnckClassGroup to which @window belongs.
+ * The returned #WnckClassGroup is owned by libwnck and must not be referenced
+ * or unreferenced.
  *
  * Since: 2.2
  **/
@@ -1749,9 +1749,9 @@ wnck_window_keyboard_size (WnckWindow *window)
  * Gets the current workspace @window is on. If the window is pinned (on all
  * workspaces), or not on any workspaces, %NULL may be returned.
  *
- * Return value: the single current workspace @window is on, or %NULL. The
- * returned #WnckWorkspace is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the single current workspace @window is on, or
+ * %NULL. The returned #WnckWorkspace is owned by libwnck and must not be
+ * referenced or unreferenced.
  **/
 WnckWorkspace*
 wnck_window_get_workspace (WnckWindow *window)

@@ -617,7 +617,7 @@ wnck_screen_construct (WnckScreen *screen,
  * 
  * Gets the #WnckScreen for a given screen on the default display.
  * 
- * Return value: the #WnckScreen for screen @index, or %NULL if no such screen
+ * Return value: (transfer none): the #WnckScreen for screen @index, or %NULL if no such screen
  * exists. The returned #WnckScreen is owned by libwnck and must not be
  * referenced or unreferenced.
  **/
@@ -662,7 +662,7 @@ _wnck_screen_get_existing (int number)
  * 
  * Gets the default #WnckScreen on the default display.
  * 
- * Return value: the default #WnckScreen. The returned #WnckScreen is
+ * Return value: (transfer none): the default #WnckScreen. The returned #WnckScreen is
  * owned by libwnck and must not be referenced or unreferenced.
  **/
 WnckScreen*
@@ -685,7 +685,7 @@ wnck_screen_get_default (void)
  * This function does not work if wnck_screen_get() was not called for the
  * sought #WnckScreen before, and returns %NULL.
  * 
- * Return value: the #WnckScreen for the root window at @root_window_id, or
+ * Return value: (transfer none): the #WnckScreen for the root window at @root_window_id, or
  * %NULL. The returned #WnckScreen is owned by libwnck and must not be
  * referenced or unreferenced.
  **/
@@ -735,8 +735,8 @@ wnck_screen_get_number (WnckScreen *screen)
  * Gets the list of #WnckWorkspace on @screen. The list is ordered: the
  * first element in the list is the first #WnckWorkspace, etc..
  * 
- * Return value: the list of #WnckWorkspace on @screen. The list should not be
- * modified nor freed, as it is owned by @screen.
+ * Return value: (element-type WnckWorkspace) (transfer none): the list of #WnckWorkspace on @screen. The
+ * list should not be modified nor freed, as it is owned by @screen.
  *
  * Since: 2.20
  **/
@@ -755,7 +755,7 @@ wnck_screen_get_workspaces (WnckScreen *screen)
  * 
  * Gets the #WnckWorkspace numbered @workspace on @screen.
  * 
- * Return value: the #WnckWorkspace numbered @workspace on @screen, or
+ * Return value: (transfer none): the #WnckWorkspace numbered @workspace on @screen, or
  * %NULL if no such workspace exists. The returned #WnckWorkspace is owned by
  * libwnck and must not be referenced or unreferenced.
  **/
@@ -822,7 +822,7 @@ wnck_screen_get_workspace_index (WnckScreen    *screen,
  * if libwnck is in a weird state due to the asynchronous nature of the
  * interaction with the window manager.
  * 
- * Return value: the active #WnckWorkspace on @screen, or %NULL. The returned
+ * Return value: (transfer none): the active #WnckWorkspace on @screen, or %NULL. The returned
  * #WnckWorkspace is owned by libwnck and must not be referenced or
  * unreferenced.
  **/
@@ -843,10 +843,10 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
  * Gets the neighbor #WnckWorkspace of @space in the @direction direction on
  * @screen.
  * 
- * Return value: the neighbor #WnckWorkspace of @space in the @direction
- * direction on @screen, or %NULL if no such neighbor #WnckWorkspace exists.
- * The returned #WnckWorkspace is owned by libwnck and must not be referenced
- * or unreferenced.
+ * Return value: (transfer none): the neighbor #WnckWorkspace of @space in the
+ * @direction direction on @screen, or %NULL if no such neighbor #WnckWorkspace
+ * exists. The returned #WnckWorkspace is owned by libwnck and must not be
+ * referenced or unreferenced.
  *
  * Since: 2.14
  * Deprecated:2.20: Use wnck_workspace_get_neighbor() instead.
@@ -907,8 +907,9 @@ wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
  * Gets the active #WnckWindow on @screen. May return %NULL sometimes, since
  * not all window managers guarantee that a window is always active.
  * 
- * Return value: the active #WnckWindow on @screen, or %NULL. The returned
- * #WnckWindow is owned by libwnck and must not be referenced or unreferenced.
+ * Return value: (transfer none): the active #WnckWindow on @screen, or %NULL.
+ * The returned #WnckWindow is owned by libwnck and must not be referenced or
+ * unreferenced.
  **/
 WnckWindow*
 wnck_screen_get_active_window (WnckScreen *screen)
@@ -926,9 +927,9 @@ wnck_screen_get_active_window (WnckScreen *screen)
  * sometimes, since not all window managers guarantee that a window is always
  * active.
  * 
- * Return value: the previously active #WnckWindow on @screen, or %NULL. The
- * returned #WnckWindow is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the previously active #WnckWindow on @screen,
+ * or %NULL. The returned #WnckWindow is owned by libwnck and must not be
+ * referenced or unreferenced.
  *
  * Since: 2.8
  **/
@@ -949,7 +950,7 @@ wnck_screen_get_previously_active_window (WnckScreen *screen)
  * However, the stability of the list is established by the window manager, so
  * don't blame libwnck if it breaks down.
  * 
- * Return value: the list of #WnckWindow on @screen, or %NULL if there is no
+ * Return value: (element-type WnckWindow) (transfer none): the list of #WnckWindow on @screen, or %NULL if there is no
  * window on @screen. The list should not be modified nor freed, as it is owned
  * by @screen.
  **/
@@ -967,9 +968,10 @@ wnck_screen_get_windows (WnckScreen *screen)
  * 
  * Gets the list of #WnckWindow on @screen in bottom-to-top order.
  * 
- * Return value: the list of #WnckWindow in stacking order on @screen, or %NULL
- * if there is no window on @screen. The list should not be modified nor freed,
- * as it is owned by @screen.
+ * Return value: (element-type WnckWindow) (transfer none): the list of
+ * #WnckWindow in stacking order on @screen, or %NULL if there is no window on
+ * @screen. The list should not be modified nor freed, as it is owned by
+ * @screen.
  **/
 GList*
 wnck_screen_get_windows_stacked (WnckScreen *screen)

@@ -165,10 +165,10 @@ wnck_class_group_finalize (GObject *object)
  *
  * Gets the #WnckClassGroup corresponding to @res_class.
  *
- * Return value: the #WnckClassGroup corresponding to @res_class, or %NULL if
- * there is no #WnckClassGroup with the specified @res_class. The returned
- * #WnckClassGroup is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the #WnckClassGroup corresponding to
+ * @res_class, or %NULL if there is no #WnckClassGroup with the specified
+ * @res_class. The returned #WnckClassGroup is owned by libwnck and must not be
+ * referenced or unreferenced.
  *
  * Since: 2.2
  **/
@@ -500,9 +500,10 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
  * 
  * Gets the list of #WnckWindow that are grouped in @class_group.
  * 
- * Return value: the list of #WnckWindow grouped in @class_group, or %NULL if
- * the group contains no window. The list should not be modified nor freed, as
- * it is owned by @class_group.
+ * Return value: (element-type WnckWindow) (transfer none): the list of
+ * #WnckWindow grouped in @class_group, or %NULL if the group contains no
+ * window. The list should not be modified nor freed, as it is owned by
+ * @class_group.
  *
  * Since: 2.2
  **/
