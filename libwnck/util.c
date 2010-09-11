@@ -745,6 +745,14 @@ _wnck_init (void)
     }
 }
 
+Display *
+_wnck_get_default_display (void)
+{
+  /* FIXME: when we fix libwnck to not use the GDK default display, we will
+   * need to fix wnckprop accordingly. */
+  return GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+}
+
 /* stock icon code Copyright (C) 2002 Jorn Baayen <jorn@nl.linux.org> */
 typedef struct
 {

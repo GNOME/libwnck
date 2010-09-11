@@ -46,7 +46,7 @@ _wnck_get_cardinal (Window  xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -87,7 +87,7 @@ _wnck_get_wm_state (Window  xwindow)
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       wm_state,
 			       0, G_MAXLONG,
@@ -127,7 +127,7 @@ _wnck_get_window (Window  xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -167,7 +167,7 @@ _wnck_get_pixmap (Window  xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -207,7 +207,7 @@ _wnck_get_atom (Window  xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -269,7 +269,7 @@ _wnck_get_text_property (Window  xwindow,
   _wnck_error_trap_push ();
 
   text.nitems = 0;
-  if (XGetTextProperty (gdk_display,
+  if (XGetTextProperty (_wnck_get_default_display(),
                         xwindow,
                         &text,
                         atom))
@@ -303,7 +303,7 @@ _wnck_get_string_property_latin1 (Window  xwindow,
   
   _wnck_error_trap_push ();
   str = NULL;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow, atom,
 			       0, G_MAXLONG,
 			       False, XA_STRING, &type, &format, &nitems,
@@ -345,7 +345,7 @@ _wnck_get_utf8_property (Window  xwindow,
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -400,7 +400,7 @@ _wnck_get_window_list (Window   xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -444,7 +444,7 @@ _wnck_get_atom_list (Window   xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -488,7 +488,7 @@ _wnck_get_cardinal_list (Window   xwindow,
   
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -535,7 +535,7 @@ _wnck_get_utf8_list (Window   xwindow,
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -625,7 +625,7 @@ _wnck_set_utf8_list (Window   xwindow,
 
   _wnck_error_trap_push ();
   
-  XChangeProperty (gdk_display,
+  XChangeProperty (_wnck_get_default_display(),
 		   xwindow,
                    atom,
 		   utf8_string, 8, PropModeReplace,
@@ -645,7 +645,7 @@ _wnck_error_trap_push (void)
 int
 _wnck_error_trap_pop (void)
 {
-  XSync (gdk_display, False);
+  XSync (_wnck_get_default_display(), False);
   return gdk_error_trap_pop ();
 }
 
@@ -655,7 +655,10 @@ filter_func (GdkXEvent  *gdkxevent,
              gpointer    data)
 {
   XEvent *xevent = gdkxevent;
+#ifdef HAVE_STARTUP_NOTIFICATION
   int i;
+  Display *display;
+#endif /* HAVE_STARTUP_NOTIFICATION */
   
   switch (xevent->type)
     {
@@ -706,7 +709,9 @@ filter_func (GdkXEvent  *gdkxevent,
        * us to send all events through sn_display_process_event
        */
       i = 0;
-      while (i < ScreenCount (gdk_display))
+      display = _wnck_get_default_display ();
+
+      while (i < ScreenCount (display))
         {
           WnckScreen *s;
 
@@ -759,8 +764,12 @@ _wnck_xid_hash (gconstpointer v)
 void
 _wnck_iconify (Window xwindow)
 {
+  Display *display;
+
+  display = _wnck_get_default_display ();
+
   _wnck_error_trap_push ();
-  XIconifyWindow (gdk_display, xwindow, DefaultScreen (gdk_display));
+  XIconifyWindow (display, xwindow, DefaultScreen (display));
   _wnck_error_trap_pop ();
 }
 
@@ -779,7 +788,7 @@ _wnck_deiconify (Window xwindow)
   if (gdkwindow)
     gdk_window_show (gdkwindow);
   else
-    XMapRaised (gdk_display, xwindow);
+    XMapRaised (_wnck_get_default_display (), xwindow);
   _wnck_error_trap_pop ();
 }
 
@@ -788,12 +797,17 @@ _wnck_close (Screen *screen,
 	     Window  xwindow,
 	     Time    timestamp)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
   xev.xclient.format = 32;
@@ -804,8 +818,8 @@ _wnck_close (Screen *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-              RootWindowOfScreen (screen),
+  XSendEvent (display,
+              root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
@@ -828,12 +842,17 @@ void
 _wnck_keyboard_move (Screen *screen,
                      Window  xwindow)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_MOVERESIZE");
   xev.xclient.format = 32;
@@ -844,8 +863,8 @@ _wnck_keyboard_move (Screen *screen,
   xev.xclient.data.l[4] = _wnck_get_client_type ();
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-              RootWindowOfScreen (screen),
+  XSendEvent (display,
+              root,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev); 
@@ -856,12 +875,17 @@ void
 _wnck_keyboard_size (Screen *screen,
                      Window  xwindow)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_MOVERESIZE");
   xev.xclient.format = 32;
@@ -872,8 +896,8 @@ _wnck_keyboard_size (Screen *screen,
   xev.xclient.data.l[4] = _wnck_get_client_type ();
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-              RootWindowOfScreen (screen),
+  XSendEvent (display,
+              root,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev); 
@@ -887,16 +911,21 @@ _wnck_change_state (Screen  *screen,
                     Atom     state1,
                     Atom     state2)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
 
 #define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */  
   
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_STATE");
   xev.xclient.format = 32;
@@ -907,8 +936,8 @@ _wnck_change_state (Screen  *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -920,12 +949,17 @@ _wnck_change_workspace (Screen     *screen,
 			Window      xwindow,
                         int         new_space)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
   xev.xclient.format = 32;
@@ -936,8 +970,8 @@ _wnck_change_workspace (Screen     *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -949,16 +983,21 @@ _wnck_activate (Screen *screen,
                 Window  xwindow,
                 Time    timestamp)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
 
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
   
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
   xev.xclient.format = 32;
@@ -969,8 +1008,8 @@ _wnck_activate (Screen *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev); 
@@ -982,13 +1021,18 @@ _wnck_activate_workspace (Screen *screen,
                           int     new_active_space,
                           Time    timestamp)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
-  xev.xclient.window = RootWindowOfScreen (screen);
+  xev.xclient.display = display;
+  xev.xclient.window = root;
   xev.xclient.message_type = _wnck_atom_get ("_NET_CURRENT_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_active_space;
@@ -998,8 +1042,8 @@ _wnck_activate_workspace (Screen *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -1011,13 +1055,18 @@ _wnck_change_viewport (Screen *screen,
 		       int     x,
 		       int     y)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
-  xev.xclient.window = RootWindowOfScreen (screen);
+  xev.xclient.display = display;
+  xev.xclient.window = root;
   xev.xclient.message_type = _wnck_atom_get ("_NET_DESKTOP_VIEWPORT");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = x;
@@ -1027,8 +1076,8 @@ _wnck_change_viewport (Screen *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -1039,13 +1088,18 @@ void
 _wnck_toggle_showing_desktop (Screen  *screen,
                               gboolean show)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = DisplayOfScreen (screen);
-  xev.xclient.window = RootWindowOfScreen (screen);
+  xev.xclient.display = display;
+  xev.xclient.window = root;
   xev.xclient.message_type = _wnck_atom_get ("_NET_SHOWING_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = show != FALSE;
@@ -1055,8 +1109,8 @@ _wnck_toggle_showing_desktop (Screen  *screen,
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push ();
-  XSendEvent (DisplayOfScreen (screen),
-	      RootWindowOfScreen (screen),
+  XSendEvent (display,
+	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
 	      &xev);
@@ -1172,7 +1226,7 @@ _wnck_get_wmclass (Window xwindow,
   ch.res_name = NULL;
   ch.res_class = NULL;
 
-  XGetClassHint (gdk_display, xwindow,
+  XGetClassHint (_wnck_get_default_display (), xwindow,
                  &ch);
 
   _wnck_error_trap_pop ();
@@ -1254,11 +1308,11 @@ _wnck_select_input (Window xwindow,
        * and not changing them again
        */
       XWindowAttributes attrs;
-      XGetWindowAttributes (gdk_display, xwindow, &attrs);
+      XGetWindowAttributes (_wnck_get_default_display (), xwindow, &attrs);
       mask |= attrs.your_event_mask;
     }
   
-  XSelectInput (gdk_display, xwindow, mask);
+  XSelectInput (_wnck_get_default_display (), xwindow, mask);
   _wnck_error_trap_pop ();
 }
   
@@ -1455,7 +1509,7 @@ read_rgb_icon (Window         xwindow,
   _wnck_error_trap_push ();
   type = None;
   data = NULL;
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (_wnck_get_default_display (),
 			       xwindow,
 			       _wnck_atom_get ("_NET_WM_ICON"),
 			       0, G_MAXLONG,
@@ -1529,7 +1583,7 @@ get_pixmap_geometry (Pixmap       pixmap,
   if (d)
     *d = 1;
   
-  XGetGeometry (gdk_display,
+  XGetGeometry (_wnck_get_default_display (),
                 pixmap, &root_ignored, &x_ignored, &y_ignored,
                 &width, &height, &border_width_ignored, &depth);
 
@@ -1775,7 +1829,7 @@ get_kwm_win_icon (Window  xwindow,
   
   _wnck_error_trap_push ();
   icons = NULL;
-  result = XGetWindowProperty (gdk_display, xwindow,
+  result = XGetWindowProperty (_wnck_get_default_display (), xwindow,
 			       _wnck_atom_get ("KWM_WIN_ICON"),
 			       0, G_MAXLONG,
 			       False,
@@ -2092,7 +2146,7 @@ _wnck_read_icons (Window         xwindow,
       icon_cache->wm_hints_dirty = FALSE;
       
       _wnck_error_trap_push ();
-      hints = XGetWMHints (gdk_display, xwindow);
+      hints = XGetWMHints (_wnck_get_default_display (), xwindow);
       _wnck_error_trap_pop ();
       pixmap = None;
       mask = None;
@@ -2251,16 +2305,19 @@ _wnck_get_window_geometry (Screen *screen,
                            int    *widthp,
                            int    *heightp)
 {
+  Display *display;
   int x, y;
   unsigned int width, height, bw, depth;
   Window root_window;
 
   width = 1;
   height = 1;
+
+  display = DisplayOfScreen (screen);
   
   _wnck_error_trap_push ();
 
-  XGetGeometry (gdk_display,
+  XGetGeometry (display,
                 xwindow,
                 &root_window,
                 &x, &y, &width, &height, &bw, &depth);
@@ -2283,12 +2340,17 @@ void _wnck_set_window_geometry (Screen *screen,
                                 int     width,
                                 int     height)
 {
-  XEvent xev;
+  Display *display;
+  Window   root;
+  XEvent   xev;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
-  xev.xclient.display = gdk_display;
+  xev.xclient.display = display;
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_MOVERESIZE_WINDOW");
   xev.xclient.format = 32;
@@ -2299,8 +2361,8 @@ void _wnck_set_window_geometry (Screen *screen,
   xev.xclient.data.l[4] = height;
 
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display,
-              RootWindowOfScreen (screen),
+  XSendEvent (display,
+              root,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev);
@@ -2313,16 +2375,21 @@ _wnck_get_window_position (Screen *screen,
                            int    *xp,
                            int    *yp)
 {
-  int x, y;
-  Window child;
+  Display *display;
+  Window   root;
+  int      x, y;
+  Window   child;
 
   x = 0;
   y = 0;
+
+  display = DisplayOfScreen (screen);
+  root = RootWindowOfScreen (screen);
   
   _wnck_error_trap_push ();
-  XTranslateCoordinates (gdk_display,
+  XTranslateCoordinates (display,
                          xwindow,
-			 RootWindowOfScreen (screen),
+			 root,
                          0, 0,
                          &x, &y, &child);
   _wnck_error_trap_pop ();
@@ -2349,7 +2416,7 @@ _wnck_set_icon_geometry  (Window xwindow,
   
   _wnck_error_trap_push ();
 
-  XChangeProperty (gdk_display,
+  XChangeProperty (_wnck_get_default_display (),
 		   xwindow,
 		   _wnck_atom_get ("_NET_WM_ICON_GEOMETRY"),
 		   XA_CARDINAL, 32, PropModeReplace,
@@ -2373,7 +2440,9 @@ _wnck_set_desktop_layout (Screen *xscreen,
                           int     rows,
                           int     columns)
 {
-  gulong data[4];
+  Display *display;
+  Window   root;
+  gulong   data[4];
 
   /* FIXME: hack, hack, hack so as not
    * to have to add a orientation param
@@ -2383,6 +2452,9 @@ _wnck_set_desktop_layout (Screen *xscreen,
    */
   g_assert ((rows == 0) || (columns == 0));
 
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
+
   data[0] = (columns == 0) ? _NET_WM_ORIENTATION_HORZ : _NET_WM_ORIENTATION_VERT;
   data[1] = columns;
   data[2] = rows;
@@ -2390,8 +2462,8 @@ _wnck_set_desktop_layout (Screen *xscreen,
   
   _wnck_error_trap_push ();
 
-  XChangeProperty (gdk_display,
-                   RootWindowOfScreen (xscreen),
+  XChangeProperty (display,
+                   root,
 		   _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
 		   XA_CARDINAL, 32, PropModeReplace,
 		   (guchar *)&data, 4);
@@ -2441,11 +2513,11 @@ get_server_time (Window window)
   info.timestamp_prop_atom = _wnck_atom_get ("_TIMESTAMP_PROP");
   info.window = window;
 
-  XChangeProperty (gdk_display, window,
+  XChangeProperty (_wnck_get_default_display (), window,
 		   info.timestamp_prop_atom, info.timestamp_prop_atom,
 		   8, PropModeReplace, &c, 1);
 
-  XIfEvent (gdk_display, &xevent,
+  XIfEvent (_wnck_get_default_display (), &xevent,
 	    timestamp_predicate, (XPointer)&info);
 
   return xevent.xproperty.time;
@@ -2453,6 +2525,7 @@ get_server_time (Window window)
 
 typedef struct
 {
+  Display *display;
   int screen_number;
   int token;
   Window window;
@@ -2467,7 +2540,7 @@ static void
 _wnck_free_layout_manager (LayoutManager *lm)
 {
   _wnck_error_trap_push ();
-  XDestroyWindow (gdk_display, lm->window);
+  XDestroyWindow (lm->display, lm->window);
   _wnck_error_trap_pop ();
 
   g_slice_free (LayoutManager, lm);
@@ -2479,6 +2552,8 @@ int
 _wnck_try_desktop_layout_manager (Screen *xscreen,
                                   int     current_token)
 {
+  Display *display;
+  Window root;
   Atom selection_atom;
   Window owner;
   GSList *tmp;
@@ -2488,19 +2563,22 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   char buffer[256];
   LayoutManager *lm;
 
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
   number = XScreenNumberOfScreen (xscreen);
   
   sprintf (buffer, "_NET_DESKTOP_LAYOUT_S%d", number);
   selection_atom = _wnck_atom_get (buffer);
 
-  owner = XGetSelectionOwner (gdk_display, selection_atom);
+  owner = XGetSelectionOwner (display, selection_atom);
   
   tmp = layout_managers;
   while (tmp != NULL)
     {
       lm = tmp->data;
 
-      if (number == lm->screen_number)
+      if (display == lm->display &&
+          number == lm->screen_number)
         {
           if (current_token == lm->token)
             {
@@ -2535,23 +2613,23 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
 
   _wnck_error_trap_push ();
 
-  lm->window = XCreateSimpleWindow (gdk_display,
-                                    RootWindowOfScreen (xscreen),
+  lm->window = XCreateSimpleWindow (display,
+                                    root,
                                     0, 0, 10, 10, 0,
-                                    WhitePixel (gdk_display, number),
-                                    WhitePixel (gdk_display, number));
+                                    WhitePixel (display, number),
+                                    WhitePixel (display, number));
 
-  XSelectInput (gdk_display, lm->window, PropertyChangeMask);
+  XSelectInput (display, lm->window, PropertyChangeMask);
   timestamp = get_server_time (lm->window);
 
-  XSetSelectionOwner (gdk_display, lm->selection_atom,
+  XSetSelectionOwner (display, lm->selection_atom,
 		      lm->window, timestamp);
 
   _wnck_error_trap_pop ();
 
   /* Check to see if we managed to claim the selection. */
 
-  if (XGetSelectionOwner (gdk_display, lm->selection_atom) !=
+  if (XGetSelectionOwner (display, lm->selection_atom) !=
       lm->window)
     {
       g_free (lm);
@@ -2559,7 +2637,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
     }
   
   xev.type = ClientMessage;
-  xev.window = RootWindow (gdk_display, number);
+  xev.window = root;
   xev.message_type = lm->manager_atom;
   xev.format = 32;
   xev.data.l[0] = timestamp;
@@ -2569,7 +2647,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   xev.data.l[4] = 0;	/* manager specific data */
   
   _wnck_error_trap_push ();
-  XSendEvent (gdk_display, RootWindow (gdk_display, number),
+  XSendEvent (display, root,
               False, StructureNotifyMask, (XEvent *)&xev);
   _wnck_error_trap_pop ();
 
@@ -2583,10 +2661,12 @@ void
 _wnck_release_desktop_layout_manager (Screen *xscreen,
                                       int     current_token)
 {
+  Display *display;
   GSList *tmp;
   int number;
   LayoutManager *lm;
   
+  display = DisplayOfScreen (xscreen);
   number = XScreenNumberOfScreen (xscreen);
   
   tmp = layout_managers;
@@ -2594,20 +2674,21 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
     {
       lm = tmp->data;
 
-      if (number == lm->screen_number)
+      if (display == lm->display &&
+          number == lm->screen_number)
         {
           if (current_token == lm->token)
             {
               _wnck_error_trap_push ();
 
               /* release selection ownership */
-              if (XGetSelectionOwner (gdk_display, lm->selection_atom) !=
+              if (XGetSelectionOwner (display, lm->selection_atom) !=
                   lm->window)
                 {
                   Time timestamp;
 
                   timestamp = get_server_time (lm->window);
-                  XSetSelectionOwner (gdk_display, lm->selection_atom,
+                  XSetSelectionOwner (display, lm->selection_atom,
                                       None, timestamp);
                 }
 
@@ -2636,7 +2717,8 @@ _wnck_desktop_layout_manager_process_event (XEvent *xev)
     {
       lm = tmp->data;
 
-      if (xev->xany.window == lm->window &&
+      if (xev->xany.display == lm->display &&
+          xev->xany.window == lm->window &&
           xev->xselectionclear.selection == lm->selection_atom)
         {
           _wnck_free_layout_manager (lm);

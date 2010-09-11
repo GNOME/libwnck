@@ -320,35 +320,37 @@ timestamp_predicate (Display *display,
 static guint32
 get_xserver_timestamp (WnckScreen *screen)
 {
+  Display *display;
   int number;
   Screen *xscreen;
   TimeStampInfo info;
   unsigned char c = 'a';
   XEvent xevent;
 
+  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
   number = wnck_screen_get_number (screen);
-  xscreen = ScreenOfDisplay (gdk_display, number);
+  xscreen = ScreenOfDisplay (display, number);
 
-  info.window = XCreateSimpleWindow (gdk_display,
+  info.window = XCreateSimpleWindow (display,
                                      RootWindowOfScreen (xscreen),
                                      0, 0, 10, 10, 0,
-                                     WhitePixel (gdk_display, number),
-                                     WhitePixel (gdk_display, number));
-  info.timestamp_prop_atom = XInternAtom (gdk_display, "_TIMESTAMP_PROP",
+                                     WhitePixel (display, number),
+                                     WhitePixel (display, number));
+  info.timestamp_prop_atom = XInternAtom (display, "_TIMESTAMP_PROP",
                                           FALSE);
 
-  XSelectInput (gdk_display, info.window, PropertyChangeMask);
+  XSelectInput (display, info.window, PropertyChangeMask);
 
-  XChangeProperty (gdk_display, info.window,
+  XChangeProperty (display, info.window,
 		   info.timestamp_prop_atom, info.timestamp_prop_atom,
 		   8, PropModeReplace, &c, 1);
 
-  XIfEvent (gdk_display, &xevent,
+  XIfEvent (display, &xevent,
 	    timestamp_predicate, (XPointer)&info);
 
-  XDestroyWindow (gdk_display, info.window);
+  XDestroyWindow (display, info.window);
 
-  XSync (gdk_display, False);
+  XSync (display, False);
 
   return xevent.xproperty.time;
 }
@@ -1650,7 +1652,8 @@ print_window (WnckWindow *window)
 }
 
 static gboolean
-wm_state_set (Window window)
+wm_state_set (Display *display,
+              Window   window)
 {
   Atom    wm_state;
   gulong  nitems;
@@ -1663,7 +1666,7 @@ wm_state_set (Window window)
   wm_state = gdk_x11_get_xatom_by_name ("WM_STATE");
 
   gdk_error_trap_push ();
-  result = XGetWindowProperty (gdk_display,
+  result = XGetWindowProperty (display,
                                window,
                                wm_state,
                                0, G_MAXLONG,
@@ -1683,7 +1686,8 @@ wm_state_set (Window window)
 }
 
 static WnckWindow *
-find_managed_window (Window window)
+find_managed_window (Display *display,
+                     Window   window)
 {
   Window      root;
   Window      parent;
@@ -1692,11 +1696,11 @@ find_managed_window (Window window)
   guint       nkids;
   int         i, result;
 
-  if (wm_state_set (window))
+  if (wm_state_set (display, window))
     return wnck_window_get (window);
 
   gdk_error_trap_push ();
-  result = XQueryTree (gdk_display, window, &root, &parent, &kids, &nkids);
+  result = XQueryTree (display, window, &root, &parent, &kids, &nkids);
   if (gdk_error_trap_pop () || !result)
     return NULL;
 
@@ -1704,13 +1708,13 @@ find_managed_window (Window window)
 
   for (i = 0; i < nkids; i++)
     {
-      if (wm_state_set (kids [i]))
+      if (wm_state_set (display, kids [i]))
         {
           retval = wnck_window_get (kids [i]);
           break;
         }
 
-      retval = find_managed_window (kids [i]);
+      retval = find_managed_window (display, kids [i]);
       if (retval != NULL)
         break;
     }
@@ -1727,7 +1731,7 @@ handle_button_press_event (XKeyEvent *event)
   if (event->subwindow == None)
     return;
 
-  got_from_user = find_managed_window (event->subwindow);
+  got_from_user = find_managed_window (event->display, event->subwindow);
 }
 
 static GdkFilterReturn
@@ -1744,7 +1748,7 @@ target_filter (GdkXEvent *gdk_xevent,
         clean_up ();
         return GDK_FILTER_REMOVE;
       case KeyPress:
-        if (xevent->xkey.keycode == XKeysymToKeycode (gdk_display, XK_Escape))
+        if (xevent->xkey.keycode == XKeysymToKeycode (xevent->xany.display, XK_Escape))
           {
             clean_up ();
             return GDK_FILTER_REMOVE;

@@ -581,13 +581,17 @@ static void
 wnck_screen_construct (WnckScreen *screen,
                        int         number)
 {
+  Display *display;
+
+  display = _wnck_get_default_display ();
+
   /* Create the initial state of the screen. */
-  screen->priv->xroot = RootWindow (gdk_display, number);
-  screen->priv->xscreen = ScreenOfDisplay (gdk_display, number);
+  screen->priv->xroot = RootWindow (display, number);
+  screen->priv->xscreen = ScreenOfDisplay (display, number);
   screen->priv->number = number;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
-  screen->priv->sn_display = sn_display_new (gdk_display,
+  screen->priv->sn_display = sn_display_new (display,
                                              sn_error_trap_push,
                                              sn_error_trap_pop);
 #endif
@@ -624,14 +628,18 @@ wnck_screen_construct (WnckScreen *screen,
 WnckScreen*
 wnck_screen_get (int index)
 {
-  g_return_val_if_fail (gdk_display != NULL, NULL);
+  Display *display;
 
-  if (index >= ScreenCount (gdk_display))
+  display = _wnck_get_default_display ();
+
+  g_return_val_if_fail (display != NULL, NULL);
+
+  if (index >= ScreenCount (display))
     return NULL;
   
   if (screens == NULL)
     {
-      screens = g_new0 (WnckScreen*, ScreenCount (gdk_display));
+      screens = g_new0 (WnckScreen*, ScreenCount (display));
       _wnck_event_filter_init ();
     }
   
@@ -648,8 +656,12 @@ wnck_screen_get (int index)
 WnckScreen*
 _wnck_screen_get_existing (int number)
 {
-  g_return_val_if_fail (gdk_display != NULL, NULL);
-  g_return_val_if_fail (number < ScreenCount (gdk_display), NULL);
+  Display *display;
+
+  display = _wnck_get_default_display ();
+
+  g_return_val_if_fail (display != NULL, NULL);
+  g_return_val_if_fail (number < ScreenCount (display), NULL);
 
   if (screens != NULL)
     return screens[number];
@@ -670,7 +682,7 @@ wnck_screen_get_default (void)
 {
   int default_screen;
 
-  default_screen = DefaultScreen (gdk_display);
+  default_screen = DefaultScreen (_wnck_get_default_display ());
 
   return wnck_screen_get (default_screen);
 }
@@ -693,12 +705,15 @@ WnckScreen*
 wnck_screen_get_for_root (gulong root_window_id)
 {
   int i;
+  Display *display;
   
   if (screens == NULL)
     return NULL;
 
   i = 0;
-  while (i < ScreenCount (gdk_display))
+  display = _wnck_get_default_display ();
+
+  while (i < ScreenCount (display))
     {
       if (screens[i] != NULL && screens[i]->priv->xroot == root_window_id)
         return screens[i];

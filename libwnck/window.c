@@ -579,6 +579,12 @@ _wnck_window_destroy (WnckWindow *window)
   g_object_unref (G_OBJECT (window));
 }
 
+static Display *
+_wnck_window_get_display (WnckWindow *window)
+{
+  return DisplayOfScreen (WNCK_SCREEN_XSCREEN (window->priv->screen));
+}
+
 /**
  * wnck_window_has_name:
  * @window: a #WnckWindow.
@@ -979,7 +985,7 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
   }
   _wnck_error_trap_push ();
 
-  XChangeProperty (gdk_display,
+  XChangeProperty (_wnck_window_get_display (window),
                    window->priv->xwindow, 
                    _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
 		   XA_ATOM, 32, PropModeReplace,
@@ -3057,7 +3063,7 @@ update_wmhints (WnckWindow *window)
     return;
 
   _wnck_error_trap_push ();
-  hints = XGetWMHints (gdk_display, window->priv->xwindow);
+  hints = XGetWMHints (_wnck_window_get_display (window), window->priv->xwindow);
   _wnck_error_trap_pop ();
 
   if (hints)
