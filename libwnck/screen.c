@@ -566,14 +566,14 @@ static void
 sn_error_trap_push (SnDisplay *display,
                     Display   *xdisplay)
 {
-  gdk_error_trap_push ();
+  _wnck_error_trap_push ();
 }
 
 static void
 sn_error_trap_pop (SnDisplay *display,
                    Display   *xdisplay)
 {
-  gdk_error_trap_pop ();
+  _wnck_error_trap_pop ();
 }
 #endif /* HAVE_STARTUP_NOTIFICATION */
 
