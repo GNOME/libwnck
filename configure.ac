@@ -20,7 +20,7 @@ LIBWNCK_CURRENT=25
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=28
+LIBWNCK_REVISION=29
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has

@@ -1,4 +1,20 @@
 ==============
+Version 2.30.4
+==============
+
+ Fixes
+
+  - Stop using gdk_display (Vincent)
+
+ Misc
+
+  - Update information in README and other files (Vincent)
+
+ Translators
+
+  - Dirgita (id)
+
+==============
 Version 2.30.3
 ==============
 
