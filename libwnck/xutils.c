@@ -2604,6 +2604,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
 
   lm = g_slice_new0 (LayoutManager);
 
+  lm->display = display;
   lm->screen_number = number;
   lm->token = next_token;
   ++next_token;
