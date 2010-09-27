@@ -17,6 +17,9 @@ WnckScreen
 <!-- ##### SECTION Stability_Level ##### -->
 
 
+<!-- ##### SECTION Image ##### -->
+
+
 <!-- ##### STRUCT WnckScreen ##### -->
 <para>
 
@@ -143,6 +146,7 @@ WnckScreen
 
 </para>
 
+@void: 
 @Returns: 
 
 

@@ -1,4 +1,24 @@
 ==============
+Version 2.30.5
+==============
+
+ Fixes
+
+  - Fix pager with multiple rows, regression from 2.30.4 (Theppitak
+    Karoonboonyanan)
+
+ Misc
+
+  - Associate .gir with pkg-config file (Vincent)
+  - Rename --enable-deprecations configure option to --enable-deprecation-flags
+    (Vincent)
+
+ Translators
+
+  - Takeshi AIHANA (ja)
+  - Baurzhan Muftakhidinov (kk)
+
+==============
 Version 2.30.4
 ==============
 
