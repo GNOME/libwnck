@@ -168,6 +168,7 @@ Wnck-1.0.gir: libwnck-1.la
 Wnck_1_0_gir_INCLUDES = GObject-2.0 GdkPixbuf-2.0 Gtk-2.0
 Wnck_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
 Wnck_1_0_gir_LIBS = libwnck-1.la
+Wnck_1_0_gir_SCANNERFLAGS = --pkg-export=libwnck-1.0
 Wnck_1_0_gir_FILES = $(introspection_sources)
 INTROSPECTION_GIRS += Wnck-1.0.gir
 
