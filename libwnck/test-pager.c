@@ -3,8 +3,6 @@
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
-#include <glib/gi18n.h>
-
 static int n_rows = 1;
 static gboolean only_current = FALSE;
 static gboolean rtl = FALSE;
@@ -12,11 +10,11 @@ static gboolean show_name = FALSE;
 static gboolean vertical = FALSE;
 
 static GOptionEntry entries[] = {
-	{"n-rows", 'n', 0, G_OPTION_ARG_INT, &n_rows, N_("Use N_ROWS rows"), N_("N_ROWS")},
-	{"only-current", 'c', 0, G_OPTION_ARG_NONE, &only_current, N_("Only show current workspace"), NULL},
-	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
-	{"show-name", 's', 0, G_OPTION_ARG_NONE, &show_name, N_("Show workspace names instead of workspace contents"), NULL},
-	{"vertical-orientation", 'v', 0, G_OPTION_ARG_NONE, &vertical, N_("Use a vertical orientation"), NULL},
+	{"n-rows", 'n', 0, G_OPTION_ARG_INT, &n_rows, "Use N_ROWS rows", "N_ROWS"},
+	{"only-current", 'c', 0, G_OPTION_ARG_NONE, &only_current, "Only show current workspace", NULL},
+	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Use RTL as default direction", NULL},
+	{"show-name", 's', 0, G_OPTION_ARG_NONE, &show_name, "Show workspace names instead of workspace contents", NULL},
+	{"vertical-orientation", 'v', 0, G_OPTION_ARG_NONE, &vertical, "Use a vertical orientation", NULL},
 	{NULL }
 };
 

@@ -3,8 +3,6 @@
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
-#include <glib/gi18n.h>
-
 static gboolean display_all = FALSE;
 static gboolean never_group = FALSE;
 static gboolean always_group = FALSE;
@@ -13,12 +11,12 @@ static gboolean skip_tasklist = FALSE;
 static gboolean transparent = FALSE;
 
 static GOptionEntry entries[] = {
-	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, N_("Always group windows"), NULL},
-	{"never-group", 'n', 0, G_OPTION_ARG_NONE, &never_group, N_("Never group windows"), NULL},
-	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, N_("Display windows from all workspaces"), NULL},
-	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, N_("Use RTL as default direction"), NULL},
-	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, N_("Don't show window in tasklist"), NULL},
-	{"transparent", 't', 0, G_OPTION_ARG_NONE, &transparent, N_("Enable Transparency"), NULL},
+	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
+	{"never-group", 'n', 0, G_OPTION_ARG_NONE, &never_group, "Never group windows", NULL},
+	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
+	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Use RTL as default direction", NULL},
+	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, "Don't show window in tasklist", NULL},
+	{"transparent", 't', 0, G_OPTION_ARG_NONE, &transparent, "Enable Transparency", NULL},
 	{NULL }
 };
 
