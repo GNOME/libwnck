@@ -77,10 +77,10 @@ G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
 static GObject *wnck_selector_constructor (GType                  type,
                                            guint                  n_construct_properties,
                                            GObjectConstructParam *construct_properties);
+static void wnck_selector_dispose           (GObject           *object);
 static void wnck_selector_finalize          (GObject           *object);
 static void wnck_selector_realize           (GtkWidget *widget);
 static void wnck_selector_unrealize         (GtkWidget *widget);
-static void wnck_selector_destroy           (GtkObject *object);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
                                              WnckWindow        *window);
 
@@ -1246,15 +1246,13 @@ static void
 wnck_selector_class_init (WnckSelectorClass *klass)
 {
   GObjectClass   *object_class     = G_OBJECT_CLASS (klass);
-  GtkObjectClass *gtk_object_class = GTK_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class     = GTK_WIDGET_CLASS (klass);
 
   g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
 
   object_class->constructor = wnck_selector_constructor;
+  object_class->dispose = wnck_selector_dispose;
   object_class->finalize = wnck_selector_finalize;
-
-  gtk_object_class->destroy = wnck_selector_destroy;
 
   widget_class->realize   = wnck_selector_realize;
   widget_class->unrealize = wnck_selector_unrealize;
@@ -1292,7 +1290,7 @@ wnck_selector_finalize (GObject *object)
 }
 
 static void
-wnck_selector_destroy (GtkObject *object)
+wnck_selector_dispose (GObject *object)
 {
   WnckSelector *selector;
 
@@ -1305,7 +1303,7 @@ wnck_selector_destroy (GtkObject *object)
   selector->priv->image       = NULL;
   selector->priv->icon_window = NULL;
 
-  GTK_OBJECT_CLASS (wnck_selector_parent_class)->destroy (object);
+  G_OBJECT_CLASS (wnck_selector_parent_class)->dispose (object);
 }
 
 static void
