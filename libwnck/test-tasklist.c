@@ -21,18 +21,13 @@ static GOptionEntry entries[] = {
 };
 
 static gboolean
-window_expose_event (GtkWidget      *widget,
-		     GdkEventExpose *event,
-		     gpointer        user_data)
+window_draw (GtkWidget      *widget,
+	     cairo_t        *cr,
+	     gpointer        user_data)
 {
-  cairo_t *cr;
-
-  cr = gdk_cairo_create (gtk_widget_get_window (widget));
   cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
-  gdk_cairo_region (cr, event->region);
   cairo_set_source_rgba (cr, 1., 1., 1., .5);
   cairo_fill (cr);
-  cairo_destroy (cr);
 
   return FALSE;
 }
@@ -102,13 +97,13 @@ main (int argc, char **argv)
 
   if (transparent)
     {
-      GdkColormap *map;
+      GdkVisual *visual;
 
-      map = gdk_screen_get_rgba_colormap (gtk_widget_get_screen (win));
+      visual = gdk_screen_get_rgba_visual (gtk_widget_get_screen (win));
 
-      if (map != NULL)
+      if (visual != NULL)
         {
-          gtk_widget_set_colormap (win, map);
+          gtk_widget_set_visual (win, visual);
 
           g_signal_connect (win, "composited-changed",
                             G_CALLBACK (window_composited_changed),
@@ -117,8 +112,8 @@ main (int argc, char **argv)
           /* draw even if we are not app-painted.
            * this just makes my life a lot easier :)
            */
-          g_signal_connect (win, "expose-event",
-                            G_CALLBACK (window_expose_event),
+          g_signal_connect (win, "draw",
+                            G_CALLBACK (window_draw),
                             NULL);
 
           window_composited_changed (win, NULL);

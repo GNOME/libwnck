@@ -117,8 +117,8 @@ static void     wnck_pager_size_request  (GtkWidget        *widget,
                                           GtkRequisition   *requisition);
 static void     wnck_pager_size_allocate (GtkWidget        *widget,
                                           GtkAllocation    *allocation);
-static gboolean wnck_pager_expose_event  (GtkWidget        *widget,
-                                          GdkEventExpose   *event);
+static gboolean wnck_pager_draw          (GtkWidget        *widget,
+                                          cairo_t          *cr);
 static gboolean wnck_pager_button_press  (GtkWidget        *widget,
                                           GdkEventButton   *event);
 static gboolean wnck_pager_drag_motion   (GtkWidget        *widget,
@@ -250,7 +250,7 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->unrealize = wnck_pager_unrealize;
   widget_class->size_request = wnck_pager_size_request;
   widget_class->size_allocate = wnck_pager_size_allocate;
-  widget_class->expose_event = wnck_pager_expose_event;
+  widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
   widget_class->button_release_event = wnck_pager_button_release;
   widget_class->motion_notify_event = wnck_pager_motion;
@@ -350,13 +350,12 @@ wnck_pager_realize (GtkWidget *widget)
   attributes.height = allocation.height;
   attributes.wclass = GDK_INPUT_OUTPUT;
   attributes.visual = gtk_widget_get_visual (widget);
-  attributes.colormap = gtk_widget_get_colormap (widget);
   attributes.event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK |
 	  		  GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
 			  GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK |
 			  GDK_POINTER_MOTION_HINT_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
   window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
   gtk_widget_set_window (widget, window);
@@ -1061,7 +1060,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   WnckWorkspace *space;
   GtkWidget *widget;
   GtkStateType state;
-  GdkWindow *window;
   GtkStyle *style;
   
   space = wnck_screen_get_workspace (pager->priv->screen, workspace);
@@ -1078,7 +1076,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   else
     state = GTK_STATE_NORMAL;
 
-  window = gtk_widget_get_window (widget);
   style = gtk_widget_get_style (widget);
 
   /* FIXME in names mode, should probably draw things like a button.
@@ -1254,9 +1251,9 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   if (workspace == pager->priv->prelight && pager->priv->prelight_dnd)
     {
       /* stolen directly from gtk source so it matches nicely */
-      gtk_paint_shadow (style, window,
+      gtk_paint_shadow (style, cr,
 		        GTK_STATE_NORMAL, GTK_SHADOW_OUT,
-		        NULL, widget, "dnd",
+		        widget, "dnd",
 			rect->x, rect->y, rect->width, rect->height);
 
       cairo_set_source_rgb (cr, 0.0, 0.0, 0.0); /* black */
@@ -1269,8 +1266,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 }
 
 static gboolean
-wnck_pager_expose_event  (GtkWidget      *widget,
-                          GdkEventExpose *event)
+wnck_pager_draw (GtkWidget *widget,
+                 cairo_t   *cr)
 {
   WnckPager *pager;
   int i;
@@ -1278,11 +1275,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   WnckWorkspace *active_space;
   GdkPixbuf *bg_pixbuf;
   gboolean first;
-  GdkWindow *window;
-  GtkAllocation allocation;
   GtkStyle *style;
   int focus_width;
-  cairo_t *cr;
   
   pager = WNCK_PAGER (widget);
 
@@ -1291,40 +1285,33 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   bg_pixbuf = NULL;
   first = TRUE;
 
-  window = gtk_widget_get_window (widget);
-  gtk_widget_get_allocation (widget, &allocation);
-
   style = gtk_widget_get_style (widget);
   gtk_widget_style_get (widget,
 			"focus-line-width", &focus_width,
 			NULL);
 
-  cr = gdk_cairo_create (window);
-
   if (gtk_widget_has_focus (widget))
     gtk_paint_focus (style,
-		     window,
+		     cr,
 		     gtk_widget_get_state (widget),
-		     NULL,
 		     widget,
 		     "pager",
 		     0, 0,
-		     allocation.width,
-		     allocation.height);
+		     gtk_widget_get_allocated_width (widget),
+		     gtk_widget_get_allocated_height (widget));
 
   if (pager->priv->shadow_type != GTK_SHADOW_NONE)
     {
       gtk_paint_shadow (style,
-			window,
+			cr,
 			gtk_widget_get_state (widget),
 			pager->priv->shadow_type,
-			NULL,
 			widget,
 			"pager",
 			focus_width,
 			focus_width,
-			allocation.width - 2 * focus_width,
-			allocation.height - 2 * focus_width);
+                        gtk_widget_get_allocated_width (widget) - 2 * focus_width,
+                        gtk_widget_get_allocated_height (widget) - 2 * focus_width);
     }
   
   i = 0;
@@ -1659,7 +1646,7 @@ wnck_update_drag_icon (WnckWindow     *window,
   gint org_w, org_h, dnd_w, dnd_h;
   WnckWorkspace *workspace;
   GdkRectangle rect;
-  GdkPixmap *pixmap;
+  cairo_surface_t *surface;
   GtkWidget *widget;
   cairo_t *cr;
 
@@ -1690,19 +1677,18 @@ wnck_update_drag_icon (WnckWindow     *window,
   rect.width = MAX (rect.width, 3);
   rect.height = MAX (rect.height, 3);
 
-  pixmap = gdk_pixmap_new (gtk_widget_get_window (widget),
-                           rect.width, rect.height, -1);
-  cr = gdk_cairo_create (pixmap);
+  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+                                               CAIRO_CONTENT_COLOR,
+                                               rect.width, rect.height);
+  cr = cairo_create (surface);
   draw_window (cr, widget, window,
 	       &rect, GTK_STATE_NORMAL, FALSE);  
   cairo_destroy (cr);
+  cairo_surface_set_device_offset (surface, 2, 2);
 
-  gtk_drag_set_icon_pixmap (context, 
-                            gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap)),
-			    pixmap, NULL,
-			    -2, -2);
+  gtk_drag_set_icon_surface (context, surface);
 
-  g_object_unref (pixmap);
+  cairo_surface_destroy (surface);
 }
 
 static void
@@ -2589,10 +2575,7 @@ wnck_pager_get_background (WnckPager *pager,
   if (p != None)
     {
       _wnck_error_trap_push ();
-      pix = _wnck_gdk_pixbuf_get_from_pixmap (NULL,
-                                              p,
-                                              0, 0, 0, 0,
-                                              -1, -1);
+      pix = _wnck_gdk_pixbuf_get_from_pixmap (p);
       _wnck_error_trap_pop ();
     }
 

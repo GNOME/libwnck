@@ -154,8 +154,8 @@ struct _WnckTask
 
   guint32 dnd_timestamp;
 
-  GdkPixmap *screenshot;
-  GdkPixmap *screenshot_faded;
+  cairo_surface_t *screenshot;
+  cairo_surface_t *screenshot_faded;
 
   time_t  start_needs_attention;
   gdouble glow_start_time;
@@ -231,8 +231,6 @@ struct _WnckTasklistPrivate
   GdkRectangle monitor_geometry;
   GtkReliefStyle relief;
   
-  GdkPixmap *background;
-
   guint drag_start_time;
 };
 
@@ -299,8 +297,6 @@ static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
 static void     wnck_tasklist_unrealize     (GtkWidget        *widget);
-static gint     wnck_tasklist_expose        (GtkWidget        *widget,
-                                             GdkEventExpose    *event);
 static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gboolean	       include_internals,
                                              GtkCallback       callback,
@@ -372,12 +368,12 @@ cleanup_screenshots (WnckTask *task)
 {
   if (task->screenshot != NULL)
     {
-      g_object_unref (task->screenshot);
+      cairo_surface_destroy (task->screenshot);
       task->screenshot = NULL;
     }
   if (task->screenshot_faded != NULL)
     {
-      g_object_unref (task->screenshot_faded);
+      cairo_surface_destroy (task->screenshot_faded);
       task->screenshot_faded = NULL;
     }
 }
@@ -507,13 +503,12 @@ wnck_task_button_glow (WnckTask *task)
 
   cairo_save (cr);
 
-  gdk_cairo_set_source_pixmap (cr, task->screenshot, 0., 0.);
-  cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
+  cairo_set_source_surface (cr, task->screenshot, 0., 0.);
   cairo_paint (cr);
 
   cairo_restore (cr);
 
-  gdk_cairo_set_source_pixmap (cr, task->screenshot_faded, 0., 0.);
+  cairo_set_source_surface (cr, task->screenshot_faded, 0., 0.);
   cairo_set_operator (cr, CAIRO_OPERATOR_OVER);
   cairo_paint_with_alpha (cr, glow_factor);
 
@@ -725,8 +720,6 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->monitor_geometry.width = -1; /* invalid value */
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   
-  tasklist->priv->background = NULL;
-
   tasklist->priv->drag_start_time = 0;
 
   atk_obj = gtk_widget_get_accessible (widget);
@@ -750,7 +743,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
-  widget_class->expose_event = wnck_tasklist_expose;
   
   container_class->forall = wnck_tasklist_forall;
   container_class->remove = wnck_tasklist_remove;
@@ -907,12 +899,6 @@ wnck_tasklist_finalize (GObject *object)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
   tasklist->priv->free_icon_loader_data = NULL;
   tasklist->priv->icon_loader_data = NULL;
-
-  if (tasklist->priv->background)
-    {
-      g_object_unref (tasklist->priv->background);
-      tasklist->priv->background = NULL;
-    }
 
   G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
 }
@@ -1321,7 +1307,8 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
     {                                                           \
       WnckTask *task = WNCK_TASK (l->data);                     \
                                                                 \
-      gtk_widget_size_request (task->button, &child_req);       \
+      gtk_widget_get_preferred_size (task->button,              \
+                                     &child_req, NULL);         \
                                                                 \
       max_height = MAX (child_req.height,                       \
 			max_height);                            \
@@ -1741,45 +1728,6 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   g_slist_foreach (tasklist_instances,
 		   (GFunc) wnck_tasklist_update_lists,
 		   NULL);
-}
-
-static gint
-wnck_tasklist_expose (GtkWidget      *widget,
-                      GdkEventExpose *event)
-{
-  WnckTasklist *tasklist;
-  GdkGC *gc;
-  
-  g_return_val_if_fail (WNCK_IS_TASKLIST (widget), FALSE);
-  g_return_val_if_fail (event != NULL, FALSE);
-  
-  if (gtk_widget_is_drawable (widget))
-    {
-      GdkWindow *window;
-      GtkAllocation allocation;
-
-      window = gtk_widget_get_window (widget);
-      gtk_widget_get_allocation (widget, &allocation);
-
-      tasklist = WNCK_TASKLIST (widget);
-      /* get a screenshot of the background */
-      
-      if (tasklist->priv->background != NULL)
-        g_object_unref (tasklist->priv->background);
-      
-      tasklist->priv->background = gdk_pixmap_new (window,
-                                                   allocation.width,
-                                                   allocation.height,
-                                                   -1);
-      gc = gdk_gc_new (tasklist->priv->background);
-      gdk_draw_drawable (tasklist->priv->background, gc, window,
-                         allocation.x, allocation.y, 0, 0,
-                         allocation.width, allocation.height);
-      
-      g_object_unref (gc);
-    }
-  
-  return (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->expose_event) (widget, event);
 }
 
 static void
@@ -2713,7 +2661,7 @@ wnck_task_position_menu (GtkMenu   *menu,
   gint pointer_x;
   gint pointer_y;
   
-  gtk_widget_size_request (GTK_WIDGET (menu), &requisition);
+  gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition, NULL);
 
   window = gtk_widget_get_window (widget);
   gtk_widget_get_allocation (widget, &allocation);
@@ -3782,9 +3730,9 @@ wnck_task_button_press_event (GtkWidget	      *widget,
 }
 
 static gboolean
-wnck_task_expose (GtkWidget        *widget,
-                  GdkEventExpose   *event,
-                  gpointer          data);
+wnck_task_draw (GtkWidget *widget,
+                cairo_t   *cr,
+                gpointer   data);
 
 static void
 wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
@@ -3952,68 +3900,31 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
       g_assert_not_reached ();
     }
 
-  g_signal_connect_object (task->button, "expose_event",
-                           G_CALLBACK (wnck_task_expose),
+  g_signal_connect_object (task->button, "draw",
+                           G_CALLBACK (wnck_task_draw),
                            G_OBJECT (task),
                            G_CONNECT_AFTER);
 }
 
-static void
-fake_expose_widget (GtkWidget *widget,
-                    GdkPixmap *pixmap,
-                    gint       x,
-                    gint       y)
-{
-  GdkWindow *tmp_window;
-  GdkEventExpose event;
-  GtkAllocation allocation;
-
-  event.type = GDK_EXPOSE;
-  event.window = pixmap;
-  event.send_event = FALSE;
-  event.region = NULL;
-  event.count = 0;
-
-  tmp_window = gtk_widget_get_window (widget);
-  gtk_widget_get_allocation (widget, &allocation);
-
-  /* FIXME GSeal: we should use this:
-  gtk_widget_set_window (widget, pixmap);
-     but pixmap is not a GdkWindow...
-   */
-  widget->window = pixmap;
-  allocation.x += x;
-  allocation.y += y;
-  gtk_widget_set_allocation (widget, &allocation);
-
-  event.area = allocation;
-
-  gtk_widget_send_expose (widget, (GdkEvent *) &event);
-
-  gtk_widget_set_window (widget, tmp_window);
-  allocation.x -= x;
-  allocation.y -= y;
-  gtk_widget_set_allocation (widget, &allocation);
-}
-
-static GdkPixmap *
+static cairo_surface_t *
 take_screenshot (WnckTask *task)
 {
-  GtkAllocation allocation;
   WnckTasklist *tasklist;
   GtkWidget    *tasklist_widget;
-  GdkPixmap *pixmap;
+  cairo_surface_t *surface;
+  GtkAllocation allocation;
+  cairo_t *cr;
   gint width, height;
   gboolean overlay_rect;
 
-  gtk_widget_get_allocation (task->button, &allocation);
+  width = gtk_widget_get_allocated_width (task->button);
+  height = gtk_widget_get_allocated_height (task->button);
   
-  width = allocation.width;
-  height = allocation.height;
-  
-  pixmap = gdk_pixmap_new (gtk_widget_get_window (task->button),
-                           width, height, -1);
-  
+  surface = gdk_window_create_similar_surface (gtk_widget_get_window (task->button),
+                                               CAIRO_CONTENT_COLOR_ALPHA,
+                                               width, height);
+  cr = cairo_create (surface);
+                      
   tasklist = WNCK_TASKLIST (task->tasklist);
   tasklist_widget = GTK_WIDGET (task->tasklist);
 
@@ -4026,8 +3937,8 @@ take_screenshot (WnckTask *task)
       style = gtk_widget_get_style (task->button);
 
       /* Draw a rectangle with bg[SELECTED] */
-      gdk_draw_rectangle (pixmap, style->bg_gc[GTK_STATE_SELECTED],
-                          TRUE, 0, 0, width + 1, height + 1);
+      gdk_cairo_set_source_color (cr, &style->bg[GTK_STATE_SELECTED]);
+      cairo_paint (cr);
     }
   else
     {
@@ -4041,18 +3952,12 @@ take_screenshot (WnckTask *task)
       style = gtk_style_copy (gtk_widget_get_style (task->button));
       style->bg[state] = style->bg[GTK_STATE_SELECTED];
       /* Now attach it to the window */
-      attached_style = gtk_style_attach (style, pixmap);
+      attached_style = gtk_style_attach (style, gtk_widget_get_window (task->button));
       g_object_ref (attached_style);
       
-      /* copy the background */
-      gdk_draw_drawable (pixmap, attached_style->bg_gc[GTK_STATE_NORMAL],
-                         tasklist->priv->background,
-                         allocation.x, allocation.y,
-                         0, 0, width, height);
-      
       /* draw the button with our modified style instead of the real one. */
-      gtk_paint_box (attached_style, (GdkWindow*) pixmap, state,
-                     GTK_SHADOW_OUT, NULL, task->button, "button",
+      gtk_paint_box (attached_style, cr, state,
+                     GTK_SHADOW_OUT, task->button, "button",
                      0, 0, width, height);
 
       g_object_unref (style);
@@ -4061,54 +3966,47 @@ take_screenshot (WnckTask *task)
     }
   
   /* then the image and label */
-  fake_expose_widget (task->image, pixmap,
-                      -allocation.x, -allocation.y);
-  fake_expose_widget (task->label, pixmap,
-                      -allocation.x, -allocation.y);
+  cairo_save (cr);
+  gtk_widget_get_allocation (task->image, &allocation);
+  cairo_translate (cr, allocation.x, allocation.y);
+  gtk_widget_draw (task->image, cr);
+  cairo_restore (cr);
+
+  cairo_save (cr);
+  gtk_widget_get_allocation (task->label, &allocation);
+  cairo_translate (cr, allocation.x, allocation.y);
+  gtk_widget_draw (task->label, cr);
+  cairo_restore (cr);
   
-  return pixmap;
+  return surface;
 }
 
-static GdkPixmap *
-copy_pixmap (GtkWidget *widget)
+static cairo_surface_t *
+copy_surface (GtkWidget *widget)
 {
-  GdkWindow *window;
-  GtkAllocation allocation;
-  GdkPixmap *pixmap;
-  GtkStyle *style;
+  cairo_surface_t *surface;
+  cairo_t *cr;
 
-  window = gtk_widget_get_window (widget);
-  gtk_widget_get_allocation (widget, &allocation);
-  style = gtk_widget_get_style (widget);
+  surface = gdk_window_create_similar_surface (gtk_widget_get_window (widget),
+                                               CAIRO_CONTENT_COLOR_ALPHA,
+                                               gtk_widget_get_allocated_width (widget),
+                                               gtk_widget_get_allocated_height (widget));
 
-  pixmap = gdk_pixmap_new (window,
-                           allocation.width,
-                           allocation.height, -1);
+  cr = cairo_create (surface);
+  gtk_widget_draw (widget, cr);
+  cairo_destroy (cr);
 
-  gdk_draw_drawable (pixmap,
-                     style->bg_gc[GTK_STATE_NORMAL],
-                     window,
-                     allocation.x, allocation.y,
-                     0, 0,
-                     allocation.width, allocation.height);
-
-  return pixmap;
+  return surface;
 }
 
 static gboolean
-wnck_task_expose (GtkWidget        *widget,
-                  GdkEventExpose   *event,
-                  gpointer          data)
+wnck_task_draw (GtkWidget *widget,
+                cairo_t   *cr,
+                gpointer   data)
 {
-  GtkStyle *style;
-  GdkWindow *window;
-  GtkAllocation allocation;
-  GdkGC *lgc, *dgc;
   int x, y;
   WnckTask *task;
-
-  window = gtk_widget_get_window (widget);
-  gtk_widget_get_allocation (widget, &allocation);
+  GtkStyle *style;
 
   task = WNCK_TASK (data);
   
@@ -4118,33 +4016,32 @@ wnck_task_expose (GtkWidget        *widget,
     {
     case WNCK_TASK_CLASS_GROUP:
       style = gtk_widget_get_style (widget);
-      lgc = style->light_gc[GTK_STATE_NORMAL];
-      dgc = style->dark_gc[GTK_STATE_NORMAL];
 
-      x = allocation.x + allocation.width -
+      x = gtk_widget_get_allocated_width (widget) -
           (gtk_container_get_border_width (GTK_CONTAINER (widget)) + style->ythickness + 12);
-      y = allocation.y + allocation.height / 2 - 5;
+      y = gtk_widget_get_allocated_height (widget) / 2 - 5;
 
-      gtk_paint_tab (style, window,
+      gtk_paint_tab (style,
+                     cr,
 		     task->tasklist->priv->active_class_group == task ?
 		       GTK_STATE_ACTIVE : GTK_STATE_NORMAL,
-		     GTK_SHADOW_NONE, NULL, widget, NULL, x, y, 10, 10);
+		     GTK_SHADOW_NONE, widget, NULL, x, y, 10, 10);
 
       /* Fall through to get screenshot
        */
     case WNCK_TASK_WINDOW:
-      if ((event->area.x <= allocation.x) &&
-          (event->area.y <= allocation.y) &&
-          (event->area.width >= allocation.width) &&
-          (event->area.height >= allocation.height))
+      if (task->start_needs_attention)
         {
-          if (task->start_needs_attention)
-            {
-              task->screenshot = copy_pixmap (widget);
-              task->screenshot_faded = take_screenshot (task);
+          time_t attention = task->start_needs_attention;
+          
+          task->start_needs_attention = 0;
 
-              wnck_task_button_glow (task);
-            }
+          task->screenshot = copy_surface (widget);
+          task->screenshot_faded = take_screenshot (task);
+
+          task->start_needs_attention = attention;
+
+          wnck_task_button_glow (task);
         }
 
     case WNCK_TASK_STARTUP_SEQUENCE:
