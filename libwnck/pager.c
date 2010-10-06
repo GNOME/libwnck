@@ -803,7 +803,7 @@ get_window_rect (WnckWindow         *window,
 }
 
 static void
-draw_window (GdkDrawable        *drawable,
+draw_window (cairo_t            *cr,
              GtkWidget          *widget,
              WnckWindow         *win,
              const GdkRectangle *winrect,
@@ -811,7 +811,6 @@ draw_window (GdkDrawable        *drawable,
              gboolean            translucent)
 {
   GtkStyle *style;
-  cairo_t *cr;
   GdkPixbuf *icon;
   int icon_x, icon_y, icon_w, icon_h;
   gboolean is_active;
@@ -823,7 +822,7 @@ draw_window (GdkDrawable        *drawable,
   is_active = wnck_window_is_active (win);
   translucency = translucent ? 0.4 : 1.0;
 
-  cr = gdk_cairo_create (drawable);
+  cairo_save (cr);
   cairo_rectangle (cr, winrect->x, winrect->y, winrect->width, winrect->height);
   cairo_clip (cr);
 
@@ -899,7 +898,7 @@ draw_window (GdkDrawable        *drawable,
                    MAX (0, winrect->width - 1), MAX (0, winrect->height - 1));
   cairo_stroke (cr);
 
-  cairo_destroy (cr);
+  cairo_restore (cr);
 }            
 
 static WnckWindow *
@@ -1051,6 +1050,7 @@ workspace_at_point (WnckPager *pager,
 
 static void
 wnck_pager_draw_workspace (WnckPager    *pager,
+                           cairo_t      *cr,
 			   int           workspace,
 			   GdkRectangle *rect,
                            GdkPixbuf    *bg_pixbuf)
@@ -1063,7 +1063,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   GtkStateType state;
   GdkWindow *window;
   GtkStyle *style;
-  cairo_t *cr;
   
   space = wnck_screen_get_workspace (pager->priv->screen, workspace);
   if (!space)
@@ -1081,8 +1080,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 
   window = gtk_widget_get_window (widget);
   style = gtk_widget_get_style (widget);
-
-  cr = gdk_cairo_create (window);
 
   /* FIXME in names mode, should probably draw things like a button.
    */
@@ -1216,7 +1213,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 	  
 	  get_window_rect (win, rect, &winrect);
 	  
-	  draw_window (window,
+	  draw_window (cr,
 		       widget,
 		       win,
 		       &winrect,
@@ -1269,8 +1266,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 		       MAX (0, rect->width - 1), MAX (0, rect->height - 1));
       cairo_stroke (cr);
     }
-  
-  cairo_destroy (cr);
 }
 
 static gboolean
@@ -1287,6 +1282,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   GtkAllocation allocation;
   GtkStyle *style;
   int focus_width;
+  cairo_t *cr;
   
   pager = WNCK_PAGER (widget);
 
@@ -1302,6 +1298,8 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   gtk_widget_style_get (widget,
 			"focus-line-width", &focus_width,
 			NULL);
+
+  cr = gdk_cairo_create (window);
 
   if (gtk_widget_has_focus (widget))
     gtk_paint_focus (style,
@@ -1332,7 +1330,7 @@ wnck_pager_expose_event  (GtkWidget      *widget,
   i = 0;
   while (i < n_spaces)
     {
-      GdkRectangle rect, intersect;
+      GdkRectangle rect;
 
       if (pager->priv->show_all_workspaces ||
 	  (active_space && i == wnck_workspace_get_number (active_space)))
@@ -1352,12 +1350,13 @@ wnck_pager_expose_event  (GtkWidget      *widget,
               first = FALSE;
             }
           
-	  if (gdk_rectangle_intersect (&event->area, &rect, &intersect))
-	    wnck_pager_draw_workspace (pager, i, &rect, bg_pixbuf);
+	  wnck_pager_draw_workspace (pager, cr, i, &rect, bg_pixbuf);
 	}
  
       ++i;
     }
+
+  cairo_destroy (cr);
 
   return FALSE;
 }
@@ -1662,6 +1661,7 @@ wnck_update_drag_icon (WnckWindow     *window,
   GdkRectangle rect;
   GdkPixmap *pixmap;
   GtkWidget *widget;
+  cairo_t *cr;
 
   widget = g_object_get_data (G_OBJECT (context), "wnck-drag-source-widget");
   if (!widget)
@@ -1692,8 +1692,10 @@ wnck_update_drag_icon (WnckWindow     *window,
 
   pixmap = gdk_pixmap_new (gtk_widget_get_window (widget),
                            rect.width, rect.height, -1);
-  draw_window (GDK_DRAWABLE (pixmap), widget, window,
+  cr = gdk_cairo_create (pixmap);
+  draw_window (cr, widget, window,
 	       &rect, GTK_STATE_NORMAL, FALSE);  
+  cairo_destroy (cr);
 
   gtk_drag_set_icon_pixmap (context, 
                             gdk_drawable_get_colormap (GDK_DRAWABLE (pixmap)),
