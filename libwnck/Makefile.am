@@ -6,7 +6,8 @@ noinst_PROGRAMS =		\
 	test-pager		\
 	test-wnck		\
 	test-selector		\
-	test-tasklist
+	test-tasklist		\
+	test-urgent
 
 AM_CPPFLAGS =					\
 	$(LIBWNCK_CFLAGS)			\
@@ -95,6 +96,7 @@ test_wnck_SOURCES = test-wnck.c
 test_tasklist_SOURCES = test-tasklist.c
 test_selector_SOURCES = test-selector.c
 test_pager_SOURCES = test-pager.c
+test_urgent_SOURCES = test-urgent.c
 
 wnckprop_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 wnck_urgency_monitor_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
@@ -102,6 +104,7 @@ test_wnck_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_tasklist_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_selector_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_pager_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
+test_urgent_LDADD = $(LIBWNCK_LIBS)
 
 wnck-marshal.h: wnck-marshal.list
 	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=_wnck_marshal $< --header > $@
