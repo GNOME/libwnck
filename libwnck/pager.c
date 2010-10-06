@@ -1063,6 +1063,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   GtkStateType state;
   GdkWindow *window;
   GtkStyle *style;
+  cairo_t *cr;
   
   space = wnck_screen_get_workspace (pager->priv->screen, workspace);
   if (!space)
@@ -1081,26 +1082,18 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   window = gtk_widget_get_window (widget);
   style = gtk_widget_get_style (widget);
 
+  cr = gdk_cairo_create (window);
+
   /* FIXME in names mode, should probably draw things like a button.
    */
   
   if (bg_pixbuf)
     {
-      gdk_draw_pixbuf (window,
-                       style->dark_gc[state],
-                       bg_pixbuf,
-                       0, 0,
-                       rect->x, rect->y,
-                       -1, -1,
-                       GDK_RGB_DITHER_MAX,
-                       0, 0);
+      gdk_cairo_set_source_pixbuf (cr, bg_pixbuf, rect->x, rect->y);
+      cairo_paint (cr);
     }
   else
     {
-      cairo_t *cr;
-
-      cr = gdk_cairo_create (window);
-
       if (!wnck_workspace_is_virtual (space))
         {
           gdk_cairo_set_source_color (cr, &style->dark[state]);
@@ -1207,8 +1200,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
                 }
             }
         }
-
-      cairo_destroy (cr);
     }
 
   if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
@@ -1251,13 +1242,14 @@ wnck_pager_draw_workspace (WnckPager    *pager,
       
       pango_layout_get_pixel_size (layout, &w, &h);
       
-      gdk_draw_layout  (window,
-			is_current ?
-			style->fg_gc[GTK_STATE_SELECTED] :
-			style->fg_gc[GTK_STATE_NORMAL],
-			rect->x + (rect->width - w) / 2,
-			rect->y + (rect->height - h) / 2,
-			layout);
+      if (is_current)
+        gdk_cairo_set_source_color (cr, &style->fg[GTK_STATE_SELECTED]);
+      else
+        gdk_cairo_set_source_color (cr, &style->fg[GTK_STATE_NORMAL]);
+      cairo_move_to (cr, 
+                     rect->x + (rect->width - w) / 2,
+		     rect->y + (rect->height - h) / 2);
+      pango_cairo_show_layout (cr, layout);
 
       g_object_unref (layout);
     }
@@ -1265,21 +1257,20 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   if (workspace == pager->priv->prelight && pager->priv->prelight_dnd)
     {
       /* stolen directly from gtk source so it matches nicely */
-      cairo_t *cr;
       gtk_paint_shadow (style, window,
 		        GTK_STATE_NORMAL, GTK_SHADOW_OUT,
 		        NULL, widget, "dnd",
 			rect->x, rect->y, rect->width, rect->height);
 
-      cr = gdk_cairo_create (window);
       cairo_set_source_rgb (cr, 0.0, 0.0, 0.0); /* black */
       cairo_set_line_width (cr, 1.0);
       cairo_rectangle (cr,
 		       rect->x + 0.5, rect->y + 0.5,
 		       MAX (0, rect->width - 1), MAX (0, rect->height - 1));
       cairo_stroke (cr);
-      cairo_destroy (cr);
     }
+  
+  cairo_destroy (cr);
 }
 
 static gboolean
