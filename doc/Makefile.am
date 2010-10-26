@@ -2,6 +2,7 @@
 
 # The name of the module.
 DOC_MODULE=libwnck
+DOC_MODULE_VERSION=3.0
 
 # The top-level SGML file.
 DOC_MAIN_SGML_FILE=libwnck-docs.sgml
@@ -42,7 +43,7 @@ extra_files =
 # CFLAGS and LDFLAGS for compiling scan program. Only needed
 # if $(DOC_MODULE).types is non-empty.
 GTKDOC_CFLAGS = -I$(top_builddir) -I$(top_srcdir) $(LIBWNCK_CFLAGS) -DWNCK_I_KNOW_THIS_IS_UNSTABLE
-GTKDOC_LIBS = $(top_builddir)/libwnck/libwnck-1.la $(LIBWNCK_LIBS)
+GTKDOC_LIBS = $(top_builddir)/libwnck/libwnck-3.la $(LIBWNCK_LIBS)
 
 include $(top_srcdir)/gtk-doc.make
 

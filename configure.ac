@@ -174,8 +174,8 @@ Makefile
 doc/Makefile
 po/Makefile.in
 libwnck/Makefile
-libwnck-1.0.pc
-libwnck-1.0-uninstalled.pc
+libwnck-3.0.pc
+libwnck-3.0-uninstalled.pc
 ])
 
 dnl ---------------------------------------------------------------------------

@@ -5,13 +5,11 @@ ACLOCAL_AMFLAGS = -I m4
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-introspection
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libwnck-1.0.pc
+pkgconfig_DATA = libwnck-3.0.pc
 
 EXTRA_DIST = \
 	HACKING				\
-	MAINTAINERS			\
-	libwnck-1.0.pc.in		\
-	libwnck-1.0-uninstalled.pc.in
+	MAINTAINERS
 
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \
