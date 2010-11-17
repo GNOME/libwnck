@@ -1,4 +1,21 @@
 ==============
+Version 2.30.6
+==============
+
+ Fixes
+
+  - Adapt to GtkObject removal in GTK3 (Javier Jardón)
+
+ Misc
+
+  - Add a small test utility to make it easy to test urgency hints (Vincent)
+
+ Translators
+
+  - Sílvia Miranda (ca@valencia)
+  - Gheyret Kenji (ug)
+
+==============
 Version 2.30.5
 ==============
 
