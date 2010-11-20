@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
-"POT-Creation-Date: 2010-10-29 20:39+0000\n"
+"POT-Creation-Date: 2010-11-13 23:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -149,7 +149,7 @@ msgstr "چوڭلۇقىنى ئۆزگەرت(_R)"
 
 #: ../libwnck/window-action-menu.c:1065
 msgid "Always On _Top"
-msgstr ""
+msgstr "ھەمىشە ئەڭ ئۈستىدە"
 
 #: ../libwnck/window-action-menu.c:1073
 msgid "_Always on Visible Workspace"
@@ -338,7 +338,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:216
 msgid "Activate the window"
-msgstr ""
+msgstr "كۆزنەكنى ئاكتىپلايدۇ"
 
 #: ../libwnck/wnckprop.c:218
 msgid "Close the window"
@@ -477,7 +477,7 @@ msgstr "ئاتى"
 
 #: ../libwnck/wnckprop.c:292
 msgid "Activate the workspace"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنى ئاكتىپلايدۇ"
 
 #: ../libwnck/wnckprop.c:386 ../libwnck/wnckprop.c:410
 #: ../libwnck/wnckprop.c:446 ../libwnck/wnckprop.c:469
@@ -610,7 +610,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:994 ../libwnck/wnckprop.c:1043
 #, c-format
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "مەشغۇلاتقا يول قويۇلمايدۇ\n"
 
 #: ../libwnck/wnckprop.c:1039
 #, c-format
@@ -683,7 +683,7 @@ msgstr "يوق"
 #: ../libwnck/wnckprop.c:1223
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr ""
+msgstr "ئاكتىپ خىزمەت بوشلۇقى:  %s\n"
 
 #: ../libwnck/wnckprop.c:1232
 #, c-format
@@ -705,7 +705,7 @@ msgstr "يوق"
 #: ../libwnck/wnckprop.c:1245
 #, c-format
 msgid "Active Window: %s\n"
-msgstr ""
+msgstr "ئاكتىپ كۆزنەك: %s\n"
 
 #: ../libwnck/wnckprop.c:1248
 #, c-format
