@@ -1372,8 +1372,6 @@ wnck_pager_draw (GtkWidget *widget,
       ++i;
     }
 
-  cairo_destroy (cr);
-
   return FALSE;
 }
 
