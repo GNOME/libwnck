@@ -289,8 +289,12 @@ static GObject *wnck_tasklist_constructor   (GType              type,
                                              GObjectConstructParam *construct_properties);
 static void     wnck_tasklist_finalize      (GObject        *object);
 
-static void     wnck_tasklist_size_request  (GtkWidget        *widget,
-                                             GtkRequisition   *requisition);
+static void     wnck_tasklist_get_preferred_width (GtkWidget *widget,
+                                                   int       *minimum_width,
+                                                   int       *natural_width);
+static void     wnck_tasklist_get_preferred_height (GtkWidget *widget,
+                                                    int       *minimum_height,
+                                                    int       *natural_height);
 static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
@@ -689,7 +693,8 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   object_class->constructor = wnck_tasklist_constructor;
   object_class->finalize = wnck_tasklist_finalize;
 
-  widget_class->size_request = wnck_tasklist_size_request;
+  widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
+  widget_class->get_preferred_height = wnck_tasklist_get_preferred_height;
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
@@ -1383,6 +1388,31 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   requisition->width = tasklist->priv->size_hints[0];
   requisition->height = fake_allocation.height;
 }
+
+static void
+wnck_tasklist_get_preferred_width (GtkWidget *widget,
+                                   int       *minimum_width,
+                                   int       *natural_width)
+{
+  GtkRequisition req;
+
+  wnck_tasklist_size_request (widget, &req);
+
+  *minimum_width = *natural_width = req.width;
+}
+
+static void
+wnck_tasklist_get_preferred_height (GtkWidget *widget,
+                                   int       *minimum_height,
+                                   int       *natural_height)
+{
+  GtkRequisition req;
+
+  wnck_tasklist_size_request (widget, &req);
+
+  *minimum_height = *natural_height = req.height;
+}
+
 
 /**
  * wnck_tasklist_get_size_hint_list:

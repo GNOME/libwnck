@@ -113,8 +113,12 @@ static void wnck_pager_finalize    (GObject        *object);
 
 static void     wnck_pager_realize       (GtkWidget        *widget);
 static void     wnck_pager_unrealize     (GtkWidget        *widget);
-static void     wnck_pager_size_request  (GtkWidget        *widget,
-                                          GtkRequisition   *requisition);
+static void     wnck_pager_get_preferred_width (GtkWidget *widget,
+                                                int       *minimum_width,
+                                                int       *natural_width);
+static void     wnck_pager_get_preferred_height (GtkWidget *widget,
+                                                 int       *minimum_height,
+                                                 int       *natural_height);
 static void     wnck_pager_size_allocate (GtkWidget        *widget,
                                           GtkAllocation    *allocation);
 static gboolean wnck_pager_draw          (GtkWidget        *widget,
@@ -248,7 +252,8 @@ wnck_pager_class_init (WnckPagerClass *klass)
 
   widget_class->realize = wnck_pager_realize;
   widget_class->unrealize = wnck_pager_unrealize;
-  widget_class->size_request = wnck_pager_size_request;
+  widget_class->get_preferred_width = wnck_pager_get_preferred_width;
+  widget_class->get_preferred_height = wnck_pager_get_preferred_height;
   widget_class->size_allocate = wnck_pager_size_allocate;
   widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
@@ -531,6 +536,30 @@ wnck_pager_size_request  (GtkWidget      *widget,
                                                                                                              
   requisition->width  += 2 * focus_width;
   requisition->height += 2 * focus_width;
+}
+
+static void
+wnck_pager_get_preferred_width (GtkWidget *widget,
+                                int       *minimum_width,
+                                int       *natural_width)
+{
+  GtkRequisition req;
+
+  wnck_pager_size_request (widget, &req);
+
+  *minimum_width = *natural_width = req.width;
+}
+
+static void
+wnck_pager_get_preferred_height (GtkWidget *widget,
+                                 int       *minimum_height,
+                                 int       *natural_height)
+{
+  GtkRequisition req;
+
+  wnck_pager_size_request (widget, &req);
+
+  *minimum_height = *natural_height = req.height;
 }
 
 static void
