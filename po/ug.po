@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
-"POT-Creation-Date: 2010-11-13 23:06+0000\n"
+"POT-Creation-Date: 2010-11-20 11:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -61,7 +61,7 @@ msgstr ""
 #: ../libwnck/pager.c:1968
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr ""
+msgstr "ھازىرقى خىزمەت بوشلۇقى: «%s»"
 
 #: ../libwnck/pager.c:1973
 #, c-format
@@ -70,7 +70,7 @@ msgstr ""
 
 #: ../libwnck/selector.c:1177
 msgid "No Windows Open"
-msgstr ""
+msgstr "كۆزنەك ئېچىلمىدى"
 
 #: ../libwnck/selector.c:1230
 msgid "Window Selector"
@@ -268,7 +268,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:178
 msgid "Show the desktop"
-msgstr "ئۈستەل يۈزىنى كۆرسەت"
+msgstr "ئۈستەلۇستىنى كۆرسەت"
 
 #: ../libwnck/wnckprop.c:180
 msgid "Stop showing the desktop"
@@ -298,7 +298,7 @@ msgstr "Y"
 
 #: ../libwnck/wnckprop.c:196
 msgid "Minimize the window"
-msgstr ""
+msgstr "كۆزنەكنى ئەڭ كىچىك قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:198
 msgid "Unminimize the window"
@@ -346,7 +346,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:221
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "كۆزنەكنى ئەڭ چوڭ ھالەتتە كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window quit fullscreen mode"
@@ -354,19 +354,19 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window always on top"
-msgstr ""
+msgstr "كۆزنەكنى ھەمىشە ئۈستىدە كۆرۈنىدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:227
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "كۆزنەكنى ھەمىشە ئۈستىدە كۆرۈنمەيدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:229
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "كۆزنەكنى باشقا كۆزنەكنىڭ ئاستىدا كۆرۈنىدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:231
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "كۆزنەكنى باشقا كۆزنەكنىڭ ئاستىدا كۆرۈنمەيدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:233
 msgid "Shade the window"
@@ -397,7 +397,7 @@ msgstr ""
 #.
 #: ../libwnck/wnckprop.c:252
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "كۆزنەكنى pagers ئىچىدە كۆرۈنمەيدىغان قىلىدۇ"
 
 #. Translators: A pager is the technical term for the workspace
 #. * switcher. It's a representation of all workspaces with windows
@@ -406,27 +406,27 @@ msgstr ""
 #.
 #: ../libwnck/wnckprop.c:259
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "كۆزنەكنى pagers ئىچىدە كۆرۈنىدىغان قىلىدۇ"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
 #: ../libwnck/wnckprop.c:263
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "كۆزنەكنى tasklists ئىچىدە كۆرۈنمەيدىغان قىلىدۇ"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
 #: ../libwnck/wnckprop.c:267
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "كۆزنەكنى tasklists ئىچىدە كۆرۈنىدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:269
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "كۆزنەكنى ھەممە خىزمەت بوشلۇقىدا كۆرۈنىدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:271
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "كۆزنەكنى ھازىرقى خىزمەت بوشلۇقىدىلا كۆرۈنىدىغان قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:273
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
@@ -647,7 +647,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقى سانى: %d\n"
 
 #: ../libwnck/wnckprop.c:1201
 #, c-format
@@ -733,7 +733,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1269 ../libwnck/wnckprop.c:1463
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "ئېكراندا: %d(كۆزنەك باشقۇرغۇ: %s)\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport can be
 #. * used to implement workspaces (e.g. compiz is an example); however it is
@@ -784,7 +784,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1354
 #, c-format
 msgid "Group Name: %s\n"
-msgstr ""
+msgstr "گۇرۇپپا ئاتى: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
 #: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1384
@@ -805,24 +805,24 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1442
 #, c-format
 msgid "Icons: %s\n"
-msgstr ""
+msgstr "سىنبەلگىلەر: %s\n"
 
 #: ../libwnck/wnckprop.c:1367 ../libwnck/wnckprop.c:1405
 #, c-format
 msgid "Number of Windows: %d\n"
-msgstr ""
+msgstr "كۆزنەك سانى: %d\n"
 
 #: ../libwnck/wnckprop.c:1379 ../libwnck/wnckprop.c:1425
 #, c-format
 msgid "Name: %s\n"
-msgstr ""
+msgstr "ئات: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
 #: ../libwnck/wnckprop.c:1380 ../libwnck/wnckprop.c:1434
 #, c-format
 msgid "Icon Name: %s\n"
-msgstr ""
+msgstr "سىنبەلگە ئاتى: %s\n"
 
 #: ../libwnck/wnckprop.c:1395 ../libwnck/wnckprop.c:1518
 #, c-format
@@ -847,7 +847,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1455
 #, c-format
 msgid "On Workspace: %s\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىدا: %s\n"
 
 #: ../libwnck/wnckprop.c:1470
 msgid "normal window"
@@ -855,7 +855,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1473
 msgid "desktop"
-msgstr "ئۈستەل يۈزى"
+msgstr "ئۈستەلئۈستى"
 
 #: ../libwnck/wnckprop.c:1476
 msgid "dock or panel"
@@ -915,7 +915,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1533
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "گۇرۇپپا باشلىقى: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's
 #. * on top of it
