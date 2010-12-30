@@ -241,7 +241,8 @@ text_property_to_utf8 (const XTextProperty *prop)
   
   list = NULL;
 
-  count = gdk_text_property_to_utf8_list (gdk_x11_xatom_to_atom (prop->encoding),
+  count = gdk_text_property_to_utf8_list_for_display (gdk_display_get_default(),
+                                          gdk_x11_xatom_to_atom (prop->encoding),
                                           prop->format,
                                           prop->value,
                                           prop->nitems,
@@ -783,7 +784,8 @@ _wnck_deiconify (Window xwindow)
    */
   GdkWindow *gdkwindow;
 
-  gdkwindow = gdk_xid_table_lookup (xwindow);
+  gdkwindow = gdk_x11_window_lookup_for_display (gdk_display_get_default (),
+                                                 xwindow);
 
   _wnck_error_trap_push ();
   if (gdkwindow)
@@ -1298,7 +1300,8 @@ _wnck_select_input (Window xwindow,
 {
   GdkWindow *gdkwindow;
   
-  gdkwindow = gdk_xid_table_lookup (xwindow);
+  gdkwindow = gdk_x11_window_lookup_for_display (gdk_display_get_default (),
+                                                 xwindow);
 
   _wnck_error_trap_push ();
   if (gdkwindow)
