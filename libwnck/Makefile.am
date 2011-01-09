@@ -98,7 +98,7 @@ test_selector_SOURCES = test-selector.c
 test_pager_SOURCES = test-pager.c
 test_urgent_SOURCES = test-urgent.c
 
-wnckprop_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
+wnckprop_LDADD = $(LIBWNCK_LIBS) $(XLIB_LIBS) ./$(lib_LTLIBRARIES)
 wnck_urgency_monitor_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_wnck_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_tasklist_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
