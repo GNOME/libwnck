@@ -504,8 +504,17 @@ wnck_task_queue_glow (WnckTask *task)
 static void
 wnck_task_stop_glow (WnckTask *task)
 {
+  /* We stop glowing, but we might still have the task colored,
+   * so we don't reset the glow factor */
   if (task->button_glow != 0)
     g_source_remove (task->button_glow);
+}
+
+static void
+wnck_task_reset_glow (WnckTask *task)
+{
+  wnck_task_stop_glow (task);
+  task->glow_factor = 0.0;
 }
 
 static void
@@ -3249,8 +3258,7 @@ wnck_task_update_visible_state (WnckTask *task)
       else
         {
           _make_gtk_label_normal ((GTK_LABEL (task->label)));
-          wnck_task_stop_glow (task);
-          task->glow_factor = 0.0;
+          wnck_task_reset_glow (task);
         }
       g_free (text);
     }
@@ -3905,7 +3913,6 @@ wnck_task_draw (GtkWidget *widget,
 
   return FALSE;
 }
-
 
 static gint
 wnck_task_compare_alphabetically (gconstpointer a,
