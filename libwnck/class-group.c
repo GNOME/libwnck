@@ -474,7 +474,7 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
  * _wnck_class_group_remove_window:
  * @class_group: a #WnckClassGroup.
  * @window: a #WnckWindow.
- * 
+ *
  * Removes a window from the list of windows that are grouped under the
  * specified @class_group.
  **/
@@ -497,9 +497,9 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
 /**
  * wnck_class_group_get_windows:
  * @class_group: a #WnckClassGroup.
- * 
+ *
  * Gets the list of #WnckWindow that are grouped in @class_group.
- * 
+ *
  * Return value: (element-type WnckWindow) (transfer none): the list of
  * #WnckWindow grouped in @class_group, or %NULL if the group contains no
  * window. The list should not be modified nor freed, as it is owned by
@@ -518,9 +518,9 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
 /**
  * wnck_class_group_get_res_class:
  * @class_group: a #WnckClassGroup.
- * 
+ *
  * Gets the resource class name for @class_group.
- * 
+ *
  * Return value: the resource class name of @class_group, or an
  * empty string if the group has no resource class name.
  *
@@ -537,7 +537,7 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
 /**
  * wnck_class_group_get_name:
  * @class_group: a #WnckClassGroup.
- * 
+ *
  * Gets an human-readable name for @class_group. Since there is no way to
  * properly find this name, a suboptimal heuristic is used to find it. The name
  * is the name of all #WnckApplication for each #WnckWindow in @class_group if
@@ -545,7 +545,7 @@ wnck_class_group_get_res_class (WnckClassGroup *class_group)
  * name, the name is the name of all #WnckWindow in @class_group if they all
  * have the same name. If all #WnckWindow don't have the same name, the
  * resource class name is used.
- * 
+ *
  * Return value: an human-readable name for @class_group.
  *
  * Since: 2.2
@@ -561,13 +561,13 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
 /**
  * wnck_class_group_get_icon:
  * @class_group: a #WnckClassGroup.
- * 
+ *
  * Gets the icon to be used for @class_group. Since there is no way to
  * properly find the icon, a suboptimal heuristic is used to find it. The icon
  * is the first icon found by looking at all the #WnckApplication for each
  * #WnckWindow in @class_group, then at all the #WnckWindow in @class_group. If
  * no icon was found, a fallback icon is used.
- * 
+ *
  * Return value: the icon for @class_group. The caller should reference the
  * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
  * around.
@@ -585,11 +585,11 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
 /**
  * wnck_class_group_get_mini_icon:
  * @class_group: a #WnckClassGroup.
- * 
+ *
  * Gets the mini-icon to be used for @class_group. Since there is no way to
  * properly find the mini-icon, the same suboptimal heuristic as the one for
  * wnck_class_group_get_icon() is used to find it.
- * 
+ *
  * Return value: the mini-icon for @class_group. The caller should reference
  * the returned <classname>GdkPixbuf</classname> if it needs to keep the
  * mini-icon around.

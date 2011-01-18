@@ -88,12 +88,12 @@ struct _WnckWindowPrivate
   gint sort_order;
 
   WnckWindowType wintype;
-  
+
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
 
   WnckIconCache *icon_cache;
-  
+
   WnckWindowActions actions;
 
   int x;
@@ -110,12 +110,12 @@ struct _WnckWindowPrivate
 
   char *res_class;
   char *res_name;
-  
+
   /* true if transient_for points to root window,
    * not another app window
    */
   guint transient_for_root : 1;
-  
+
   /* window state */
   guint is_minimized : 1;
   guint is_maximized_horz : 1;
@@ -137,9 +137,9 @@ struct _WnckWindowPrivate
    * externally-visible state (it determines the WM_STATE
    * interpretation)
    */
-  guint net_wm_state_hidden : 1;  
+  guint net_wm_state_hidden : 1;
   guint wm_state_iconic : 1;
-  
+
   /* idle handler for updates */
   guint update_handler;
 
@@ -324,7 +324,7 @@ wnck_window_class_init (WnckWindowClass *klass)
    * WnckWindow::state-changed:
    * @window: the #WnckWindow which emitted the signal.
    * @changed_mask: the bitmask containing bits set for all states of @window
-   * that have changed. 
+   * that have changed.
    * @new_state: the new state of @window.
    *
    * Emitted when the state of @window changes. This can happen when @window is
@@ -377,7 +377,7 @@ wnck_window_class_init (WnckWindowClass *klass)
    * WnckWindow::actions-changed:
    * @window: the #WnckWindow which emitted the signal.
    * @changed_mask: the bitmask containing bits set for all actions
-   * availabilities for @window that have changed. 
+   * availabilities for @window that have changed.
    * @new_state: the new actions availabilities for @window.
    *
    * Emitted when the actions availabilities for @window change.
@@ -406,7 +406,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_STRUCT_OFFSET (WnckWindowClass, geometry_changed),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
-                  G_TYPE_NONE, 0);  
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -442,7 +442,7 @@ wnck_window_finalize (GObject *object)
   if (window->priv->mini_icon)
     g_object_unref (G_OBJECT (window->priv->mini_icon));
   window->priv->mini_icon = NULL;
-  
+
   _wnck_icon_cache_free (window->priv->icon_cache);
   window->priv->icon_cache = NULL;
 
@@ -544,7 +544,7 @@ _wnck_window_create (Window      xwindow,
                              &window->priv->height);
 
   window->priv->sort_order = sort_order;
-  
+
   window->priv->need_update_name = TRUE;
   window->priv->need_update_state = TRUE;
   window->priv->need_update_icon_name = TRUE;
@@ -698,12 +698,12 @@ _wnck_window_get_name_for_display (WnckWindow *window,
   const char *name;
 
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-  
+
   if (use_icon_name && wnck_window_has_icon_name (window))
     name = wnck_window_get_icon_name (window);
-  else 
+  else
     name = wnck_window_get_name (window);
-  
+
   if (use_state_decorations)
     {
       if (window->priv->is_shaded)
@@ -913,11 +913,11 @@ wnck_window_get_sort_order (WnckWindow *window)
  *
  * Since: 2.20
  **/
-void        wnck_window_set_sort_order        (WnckWindow *window, 
+void        wnck_window_set_sort_order        (WnckWindow *window,
 					       gint order)
-{ 
+{
   g_return_if_fail (WNCK_IS_WINDOW (window));
-  
+
   window->priv->sort_order = order;
   return;
 }
@@ -925,9 +925,9 @@ void        wnck_window_set_sort_order        (WnckWindow *window,
 /**
  * wnck_window_get_window_type:
  * @window: a #WnckWindow.
- * 
+ *
  * Gets the semantic type of @window.
- * 
+ *
  * Return value: the semantic type of @window.
  **/
 WnckWindowType
@@ -935,7 +935,7 @@ wnck_window_get_window_type (WnckWindow *window)
 {
   /* FIXME: should we have an invalid window type for this? */
   g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
-  
+
   return window->priv->wintype;
 }
 
@@ -943,7 +943,7 @@ wnck_window_get_window_type (WnckWindow *window)
  * wnck_window_set_window_type:
  * @window: a #WnckWindow.
  * @wintype: a semantic type.
- * 
+ *
  * Sets the semantic type of @window to @wintype.
  *
  * Since: 2.12
@@ -986,7 +986,7 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
   _wnck_error_trap_push ();
 
   XChangeProperty (_wnck_window_get_display (window),
-                   window->priv->xwindow, 
+                   window->priv->xwindow,
                    _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
 		   XA_ATOM, 32, PropModeReplace,
 		   (guchar *)&atom, 1);
@@ -1047,7 +1047,7 @@ transient_needs_attention (WnckWindow *window)
 {
   GList *windows;
   WnckWindow *transient;
-  
+
   if (!WNCK_IS_WINDOW (window))
     return NULL;
 
@@ -1101,7 +1101,7 @@ _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window)
 gboolean
 wnck_window_or_transient_needs_attention (WnckWindow *window)
 {
-  return wnck_window_needs_attention (window) || 
+  return wnck_window_needs_attention (window) ||
          transient_needs_attention (window) != NULL;
 }
 
@@ -1143,16 +1143,16 @@ const char*
 _wnck_window_get_startup_id (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-  
+
   if (window->priv->startup_id == NULL &&
       window->priv->group_leader != None)
     {
       WnckApplication *app;
 
       /* Fall back to group leader property */
-      
+
       app = wnck_application_get (window->priv->group_leader);
-      
+
       if (app != NULL)
         return wnck_application_get_startup_id (app);
       else
@@ -1407,7 +1407,7 @@ wnck_window_is_sticky                 (WnckWindow *window)
  *
  * This function existed before 2.6, but the @timestamp argument was missing
  * in earlier versions.
- * 
+ *
  * Since: 2.6
  **/
 void
@@ -1864,7 +1864,7 @@ wnck_window_unpin (WnckWindow *window)
  *
  * This function existed before 2.10, but the @timestamp argument was missing
  * in earlier versions.
- * 
+ *
  * Since: 2.10
  **/
 void
@@ -1936,13 +1936,13 @@ static WnckWindow*
 find_last_transient_for (GList *windows,
                          Window xwindow)
 {
-  GList *tmp; 
+  GList *tmp;
   WnckWindow *retval;
 
   /* find _last_ transient for xwindow in the list */
-  
+
   retval = NULL;
-  
+
   tmp = windows;
   while (tmp != NULL)
     {
@@ -1951,7 +1951,7 @@ find_last_transient_for (GList *windows,
       if (w->priv->transient_for == xwindow &&
 	  w->priv->wintype != WNCK_WINDOW_UTILITY)
         retval = w;
-      
+
       tmp = tmp->next;
     }
 
@@ -1966,14 +1966,14 @@ find_last_transient_for (GList *windows,
  *
  * If @window has transients, activates the most likely transient
  * instead of the window itself. Otherwise activates @window.
- * 
+ *
  * FIXME the ideal behavior of this function is probably to activate
  * the most recently active window among @window and its transients.
  * This is probably best implemented on the window manager side.
- * 
+ *
  * This function existed before 2.10, but the @timestamp argument was missing
  * in earlier versions.
- * 
+ *
  * Since: 2.10
  **/
 void
@@ -1983,14 +1983,14 @@ wnck_window_activate_transient (WnckWindow *window,
   GList *windows;
   WnckWindow *transient;
   WnckWindow *next;
-  
+
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
   windows = wnck_screen_get_windows_stacked (window->priv->screen);
 
   transient = NULL;
   next = find_last_transient_for (windows, window->priv->xwindow);
-  
+
   while (next != NULL)
     {
       if (next == window)
@@ -2001,7 +2001,7 @@ wnck_window_activate_transient (WnckWindow *window,
         }
 
       transient = next;
-      
+
       next = find_last_transient_for (windows, transient->priv->xwindow);
     }
 
@@ -2025,7 +2025,7 @@ wnck_window_activate_transient (WnckWindow *window,
  * minimize @window and its transients.  (Not doing this can be
  * especially annoying in the case of modal dialogs that don't appear
  * in the #WnckTaslist).
- * 
+ *
  * Return value: %TRUE if one of the transients of @window is the most recently
  * activated window, %FALSE otherwise.
  *
@@ -2036,7 +2036,7 @@ wnck_window_transient_is_most_recently_activated (WnckWindow *window)
 {
   GList *windows;
   WnckWindow *transient;
-  
+
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
 
   windows = wnck_screen_get_windows_stacked (window->priv->screen);
@@ -2063,7 +2063,7 @@ get_icons (WnckWindow *window)
 
   icon = NULL;
   mini_icon = NULL;
-  
+
   if (_wnck_read_icons (window->priv->xwindow,
                         window->priv->icon_cache,
                         &icon,
@@ -2091,11 +2091,11 @@ get_icons (WnckWindow *window)
 /**
  * wnck_window_get_icon:
  * @window: a #WnckWindow.
- * 
+ *
  * Gets the icon to be used for @window. If no icon was found, a fallback
  * icon is used. wnck_window_get_icon_is_fallback() can be used to tell if the
- * icon is the fallback icon. 
- * 
+ * icon is the fallback icon.
+ *
  * Return value: the icon for @window. The caller should reference the
  * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
  * around.
@@ -2117,11 +2117,11 @@ wnck_window_get_icon (WnckWindow *window)
 /**
  * wnck_window_get_mini_icon:
  * @window: a #WnckWindow.
- * 
+ *
  * Gets the mini-icon to be used for @window. If no mini-icon was found, a
  * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
- * to tell if the mini-icon is the fallback mini-icon. 
- * 
+ * to tell if the mini-icon is the fallback mini-icon.
+ *
  * Return value: the mini-icon for @window. The caller should reference the
  * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
  * around.
@@ -2130,13 +2130,13 @@ GdkPixbuf*
 wnck_window_get_mini_icon (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-  
+
   get_icons (window);
   if (window->priv->need_emit_icon_changed)
     queue_update (window); /* not done in get_icons since we call that from
                             * the update
                             */
-  
+
   return window->priv->mini_icon;
 }
 
@@ -2146,7 +2146,7 @@ wnck_window_get_mini_icon (WnckWindow *window)
  *
  * Gets whether a default fallback icon is used for @window (because none
  * was set on @window).
- * 
+ *
  * Return value: %TRUE if the icon for @window is a fallback, %FALSE otherwise.
  **/
 gboolean
@@ -2160,9 +2160,9 @@ wnck_window_get_icon_is_fallback (WnckWindow *window)
 /**
  * wnck_window_get_actions:
  * @window: a #WnckWindow.
- * 
+ *
  * Gets the actions that can be done for @window.
- * 
+ *
  * Return value: bitmask of actions that can be done for @window.
  **/
 WnckWindowActions
@@ -2177,9 +2177,9 @@ wnck_window_get_actions (WnckWindow *window)
 /**
  * wnck_window_get_state:
  * @window: a #WnckWindow.
- * 
+ *
  * Gets the state of @window.
- * 
+ *
  * Return value: bitmask of active states for @window.
  **/
 WnckWindowState
@@ -2305,7 +2305,7 @@ wnck_window_set_geometry (WnckWindow               *window,
   gravity_and_flags = gravity;
   gravity_and_flags |= geometry_mask << 8;
   gravity_and_flags |= source << 12;
-  
+
   x += window->priv->left_frame;
   y += window->priv->top_frame;
   width -= window->priv->left_frame + window->priv->right_frame;
@@ -2320,10 +2320,10 @@ wnck_window_set_geometry (WnckWindow               *window,
  * wnck_window_is_visible_on_workspace:
  * @window: a #WnckWindow.
  * @workspace: a #WnckWorkspace.
- * 
+ *
  * Like wnck_window_is_on_workspace(), but also checks that
  * the window is in a visible state (i.e. not minimized or shaded).
- * 
+ *
  * Return value: %TRUE if @window appears on @workspace in normal state, %FALSE
  * otherwise.
  **/
@@ -2335,7 +2335,7 @@ wnck_window_is_visible_on_workspace (WnckWindow    *window,
 
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
-  
+
   state = wnck_window_get_state (window);
 
   if (state & WNCK_WINDOW_STATE_HIDDEN)
@@ -2383,7 +2383,7 @@ wnck_window_set_icon_geometry (WnckWindow *window,
  * wnck_window_is_on_workspace:
  * @window: a #WnckWindow.
  * @workspace: a #WnckWorkspace.
- * 
+ *
  * Gets whether @window appears on @workspace.
  *
  * Return value: %TRUE if @window appears on @workspace, %FALSE otherwise.
@@ -2394,7 +2394,7 @@ wnck_window_is_on_workspace (WnckWindow    *window,
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
-  
+
   return wnck_window_is_pinned (window) ||
     wnck_window_get_workspace (window) == workspace;
 }
@@ -2403,9 +2403,9 @@ wnck_window_is_on_workspace (WnckWindow    *window,
  * wnck_window_is_in_viewport:
  * @window: a #WnckWindow.
  * @workspace: a #WnckWorkspace.
- * 
+ *
  * Gets %TRUE if @window appears in the current viewport of @workspace.
- * 
+ *
  * Return value: %TRUE if @window appears in current viewport of @workspace,
  * %FALSE otherwise.
  *
@@ -2417,7 +2417,7 @@ wnck_window_is_in_viewport (WnckWindow    *window,
 {
   GdkRectangle window_rect;
   GdkRectangle viewport_rect;
-  
+
   g_return_val_if_fail (WNCK_IS_WINDOW (window), FALSE);
   g_return_val_if_fail (WNCK_IS_WORKSPACE (workspace), FALSE);
 
@@ -2622,7 +2622,7 @@ update_state (WnckWindow *window)
    * state update just means the _NET_WM_STATE prop
    * changed
    */
-  
+
   if (reread_net_wm_state)
     {
       gboolean demanded_attention;
@@ -2640,7 +2640,7 @@ update_state (WnckWindow *window)
       window->priv->net_wm_state_hidden = FALSE;
       window->priv->is_fullscreen = FALSE;
       window->priv->demands_attention = FALSE;
-      
+
       atoms = NULL;
       n_atoms = 0;
       _wnck_get_atom_list (window->priv->xwindow,
@@ -2706,7 +2706,7 @@ update_state (WnckWindow *window)
           !window->priv->transient_for_root)
         window->priv->skip_taskbar = TRUE;
       break;
-      
+
     case WNCK_WINDOW_NORMAL:
       break;
     }
@@ -2723,13 +2723,13 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_SPLASHSCREEN:
       window->priv->skip_pager = TRUE;
       break;
-      
+
     case WNCK_WINDOW_NORMAL:
     case WNCK_WINDOW_DIALOG:
     case WNCK_WINDOW_UTILITY:
       break;
     }
-  
+
   /* FIXME we need to recompute this if the window manager changes */
   if (wnck_screen_net_wm_supports (window->priv->screen,
                                    "_NET_WM_STATE_HIDDEN"))
@@ -2745,7 +2745,7 @@ update_state (WnckWindow *window)
   else
     {
       window->priv->is_minimized = window->priv->wm_state_iconic;
-      
+
       window->priv->is_hidden = window->priv->is_minimized || window->priv->is_shaded;
     }
 }
@@ -2833,7 +2833,7 @@ update_actions (WnckWindow *window)
                             &atoms,
                             &n_atoms))
     {
-      window->priv->actions = 
+      window->priv->actions =
                 WNCK_WINDOW_ACTION_MOVE                    |
                 WNCK_WINDOW_ACTION_RESIZE                  |
                 WNCK_WINDOW_ACTION_SHADE                   |
@@ -2925,7 +2925,7 @@ update_wintype (WnckWindow *window)
   int n_atoms;
   WnckWindowType type;
   gboolean found_type;
-  
+
   if (!window->priv->need_update_wintype)
     return;
 
@@ -2933,7 +2933,7 @@ update_wintype (WnckWindow *window)
 
   found_type = FALSE;
   type = WNCK_WINDOW_NORMAL;
-  
+
   atoms = NULL;
   n_atoms = 0;
   if (_wnck_get_atom_list (window->priv->xwindow,
@@ -2942,7 +2942,7 @@ update_wintype (WnckWindow *window)
                            &n_atoms))
     {
       int i;
-      
+
       i = 0;
       while (i < n_atoms && !found_type)
         {
@@ -2968,7 +2968,7 @@ update_wintype (WnckWindow *window)
             type = WNCK_WINDOW_SPLASHSCREEN;
           else
             found_type = FALSE;
-          
+
           ++i;
         }
 
@@ -3000,7 +3000,7 @@ update_transient_for (WnckWindow *window)
     return;
 
   window->priv->need_update_transient_for = FALSE;
-  
+
   parent = None;
   if (_wnck_get_window (window->priv->xwindow,
                         _wnck_atom_get ("WM_TRANSIENT_FOR"),
@@ -3030,7 +3030,7 @@ update_startup_id (WnckWindow *window)
   window->priv->need_update_startup_id = FALSE;
 
   g_free (window->priv->startup_id);
-  window->priv->startup_id = 
+  window->priv->startup_id =
     _wnck_get_utf8_property (window->priv->xwindow,
                              _wnck_atom_get ("_NET_STARTUP_ID"));
 }
@@ -3130,7 +3130,7 @@ force_update_now (WnckWindow *window)
   WnckWindowState old_state;
   WnckWindowState new_state;
   WnckWindowActions old_actions;
-  
+
   unqueue_update (window);
 
   /* Name must be done before all other stuff,
@@ -3162,7 +3162,7 @@ force_update_now (WnckWindow *window)
   update_frame_extents (window); /* emits signals */
 
   get_icons (window);
-  
+
   new_state = COMPRESS_STATE (window);
 
   if (old_state != new_state)
@@ -3171,7 +3171,7 @@ force_update_now (WnckWindow *window)
   if (old_actions != window->priv->actions)
     emit_actions_changed (window, old_actions ^ window->priv->actions,
                           window->priv->actions);
-  
+
   if (window->priv->need_emit_icon_changed)
     emit_icon_changed (window);
 }

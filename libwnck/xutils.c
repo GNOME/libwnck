@@ -44,7 +44,7 @@ _wnck_get_cardinal (Window  xwindow,
   int err, result;
 
   *val = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -52,12 +52,12 @@ _wnck_get_cardinal (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
-			       &bytes_after, (void*)&num);  
+			       &bytes_after, (void*)&num);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_CARDINAL)
     {
       XFree (num);
@@ -65,7 +65,7 @@ _wnck_get_cardinal (Window  xwindow,
     }
 
   *val = *num;
-  
+
   XFree (num);
 
   return TRUE;
@@ -85,7 +85,7 @@ _wnck_get_wm_state (Window  xwindow)
 
   wm_state = _wnck_atom_get ("WM_STATE");
   retval = NormalState;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -98,7 +98,7 @@ _wnck_get_wm_state (Window  xwindow)
   if (err != Success ||
       result != Success)
     return retval;
-  
+
   if (type != wm_state)
     {
       XFree (num);
@@ -106,7 +106,7 @@ _wnck_get_wm_state (Window  xwindow)
     }
 
   retval = *num;
-  
+
   XFree (num);
 
   return retval;
@@ -125,7 +125,7 @@ _wnck_get_window (Window  xwindow,
   int err, result;
 
   *val = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -133,12 +133,12 @@ _wnck_get_window (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_WINDOW, &type, &format, &nitems,
-			       &bytes_after, (void*)&w);  
+			       &bytes_after, (void*)&w);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_WINDOW)
     {
       XFree (w);
@@ -146,7 +146,7 @@ _wnck_get_window (Window  xwindow,
     }
 
   *val = *w;
-  
+
   XFree (w);
 
   return TRUE;
@@ -165,7 +165,7 @@ _wnck_get_pixmap (Window  xwindow,
   int err, result;
 
   *val = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -173,12 +173,12 @@ _wnck_get_pixmap (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_PIXMAP, &type, &format, &nitems,
-			       &bytes_after, (void*)&w);  
+			       &bytes_after, (void*)&w);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_PIXMAP)
     {
       XFree (w);
@@ -186,7 +186,7 @@ _wnck_get_pixmap (Window  xwindow,
     }
 
   *val = *w;
-  
+
   XFree (w);
 
   return TRUE;
@@ -205,7 +205,7 @@ _wnck_get_atom (Window  xwindow,
   int err, result;
 
   *val = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -213,12 +213,12 @@ _wnck_get_atom (Window  xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_ATOM, &type, &format, &nitems,
-			       &bytes_after, (void*)&a);  
+			       &bytes_after, (void*)&a);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_ATOM)
     {
       XFree (a);
@@ -226,7 +226,7 @@ _wnck_get_atom (Window  xwindow,
     }
 
   *val = *a;
-  
+
   XFree (a);
 
   return TRUE;
@@ -238,10 +238,10 @@ text_property_to_utf8 (const XTextProperty *prop)
   char **list;
   int count;
   char *retval;
-  
+
   list = NULL;
 
-  count = gdk_text_property_to_utf8_list_for_display (gdk_display_get_default(),
+  count = gdk_text_property_to_utf8_list_for_display (gdk_display_get_default (),
                                           gdk_x11_xatom_to_atom (prop->encoding),
                                           prop->format,
                                           prop->value,
@@ -267,7 +267,7 @@ _wnck_get_text_property (Window  xwindow,
 {
   XTextProperty text;
   char *retval;
-  
+
   _wnck_error_trap_push ();
 
   text.nitems = 0;
@@ -285,7 +285,7 @@ _wnck_get_text_property (Window  xwindow,
     {
       retval = NULL;
     }
-  
+
   _wnck_error_trap_pop ();
 
   return retval;
@@ -302,20 +302,20 @@ _wnck_get_string_property_latin1 (Window  xwindow,
   gchar *str;
   int err, result;
   char *retval;
-  
+
   _wnck_error_trap_push ();
   str = NULL;
   result = XGetWindowProperty (_wnck_get_default_display(),
 			       xwindow, atom,
 			       0, G_MAXLONG,
 			       False, XA_STRING, &type, &format, &nitems,
-			       &bytes_after, (guchar **)&str);  
+			       &bytes_after, (guchar **)&str);
 
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return NULL;
-  
+
   if (type != XA_STRING)
     {
       XFree (str);
@@ -323,9 +323,9 @@ _wnck_get_string_property_latin1 (Window  xwindow,
     }
 
   retval = g_strdup (str);
-  
+
   XFree (str);
-  
+
   return retval;
 }
 
@@ -343,7 +343,7 @@ _wnck_get_utf8_property (Window  xwindow,
   Atom utf8_string;
 
   utf8_string = _wnck_atom_get ("UTF8_STRING");
-  
+
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
@@ -353,13 +353,13 @@ _wnck_get_utf8_property (Window  xwindow,
 			       0, G_MAXLONG,
 			       False, utf8_string,
 			       &type, &format, &nitems,
-			       &bytes_after, (guchar **)&val);  
+			       &bytes_after, (guchar **)&val);
   err = _wnck_error_trap_pop ();
 
   if (err != Success ||
       result != Success)
     return NULL;
-  
+
   if (type != utf8_string ||
       format != 8 ||
       nitems == 0)
@@ -376,11 +376,11 @@ _wnck_get_utf8_property (Window  xwindow,
       XFree (val);
       return NULL;
     }
-  
+
   retval = g_strndup (val, nitems);
-  
+
   XFree (val);
-  
+
   return retval;
 }
 
@@ -399,7 +399,7 @@ _wnck_get_window_list (Window   xwindow,
 
   *windows = NULL;
   *len = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -407,12 +407,12 @@ _wnck_get_window_list (Window   xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_WINDOW, &type, &format, &nitems,
-			       &bytes_after, (void*)&data);  
+			       &bytes_after, (void*)&data);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_WINDOW)
     {
       XFree (data);
@@ -422,10 +422,10 @@ _wnck_get_window_list (Window   xwindow,
   *windows = g_new (Window, nitems);
   memcpy (*windows, data, sizeof (Window) * nitems);
   *len = nitems;
-  
+
   XFree (data);
 
-  return TRUE;  
+  return TRUE;
 }
 
 gboolean
@@ -443,7 +443,7 @@ _wnck_get_atom_list (Window   xwindow,
 
   *atoms = NULL;
   *len = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -456,7 +456,7 @@ _wnck_get_atom_list (Window   xwindow,
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_ATOM)
     {
       XFree (data);
@@ -466,7 +466,7 @@ _wnck_get_atom_list (Window   xwindow,
   *atoms = g_new (Atom, nitems);
   memcpy (*atoms, data, sizeof (Atom) * nitems);
   *len = nitems;
-  
+
   XFree (data);
 
   return TRUE;
@@ -487,7 +487,7 @@ _wnck_get_cardinal_list (Window   xwindow,
 
   *cardinals = NULL;
   *len = 0;
-  
+
   _wnck_error_trap_push ();
   type = None;
   result = XGetWindowProperty (_wnck_get_default_display(),
@@ -495,12 +495,12 @@ _wnck_get_cardinal_list (Window   xwindow,
 			       atom,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
-			       &bytes_after, (void*)&nums);  
+			       &bytes_after, (void*)&nums);
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return FALSE;
-  
+
   if (type != XA_CARDINAL)
     {
       XFree (nums);
@@ -510,7 +510,7 @@ _wnck_get_cardinal_list (Window   xwindow,
   *cardinals = g_new (gulong, nitems);
   memcpy (*cardinals, nums, sizeof (gulong) * nitems);
   *len = nitems;
-  
+
   XFree (nums);
 
   return TRUE;
@@ -531,9 +531,9 @@ _wnck_get_utf8_list (Window   xwindow,
   guint i;
   guint n_strings;
   char *p;
-  
+
   utf8_string = _wnck_atom_get ("UTF8_STRING");
-  
+
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
@@ -543,13 +543,13 @@ _wnck_get_utf8_list (Window   xwindow,
 			       0, G_MAXLONG,
 			       False, utf8_string,
 			       &type, &format, &nitems,
-			       &bytes_after, (void*)&val);  
+			       &bytes_after, (void*)&val);
   err = _wnck_error_trap_pop ();
 
   if (err != Success ||
       result != Success)
     return NULL;
-  
+
   if (type != utf8_string ||
       format != 8 ||
       nitems == 0)
@@ -577,7 +577,7 @@ _wnck_get_utf8_list (Window   xwindow,
   /* we're guaranteed that val has a nul on the end
    * by XGetWindowProperty
    */
-  
+
   retval = g_new0 (char*, n_strings + 1);
 
   p = val;
@@ -594,13 +594,13 @@ _wnck_get_utf8_list (Window   xwindow,
         }
 
       retval[i] = g_strdup (p);
-      
+
       p = p + strlen (p) + 1;
       ++i;
     }
-  
+
   XFree (val);
-  
+
   return retval;
 }
 
@@ -612,8 +612,8 @@ _wnck_set_utf8_list (Window   xwindow,
   Atom utf8_string;
   GString *flattened;
   int i;
-  
-  utf8_string = _wnck_atom_get ("UTF8_STRING");  
+
+  utf8_string = _wnck_atom_get ("UTF8_STRING");
 
   /* flatten to nul-separated list */
   flattened = g_string_new ("");
@@ -626,13 +626,13 @@ _wnck_set_utf8_list (Window   xwindow,
     }
 
   _wnck_error_trap_push ();
-  
+
   XChangeProperty (_wnck_get_default_display(),
 		   xwindow,
                    atom,
 		   utf8_string, 8, PropModeReplace,
 		   (guchar *) flattened->str, flattened->len);
-  
+
   _wnck_error_trap_pop ();
 
   g_string_free (flattened, TRUE);
@@ -661,13 +661,13 @@ filter_func (GdkXEvent  *gdkxevent,
   int i;
   Display *display;
 #endif /* HAVE_STARTUP_NOTIFICATION */
-  
+
   switch (xevent->type)
     {
     case PropertyNotify:
       {
         WnckScreen *screen;
-        
+
         screen = wnck_screen_get_for_root (xevent->xany.window);
         if (screen != NULL)
           _wnck_screen_process_property_notify (screen, xevent);
@@ -681,7 +681,7 @@ filter_func (GdkXEvent  *gdkxevent,
 
             if (app)
               _wnck_application_process_property_notify (app, xevent);
-            
+
             if (window)
               _wnck_window_process_property_notify (window, xevent);
           }
@@ -691,9 +691,9 @@ filter_func (GdkXEvent  *gdkxevent,
     case ConfigureNotify:
       {
         WnckWindow *window;
-        
+
         window = wnck_window_get (xevent->xconfigure.window);
-        
+
         if (window)
           _wnck_window_process_configure_notify (window, xevent);
       }
@@ -721,13 +721,13 @@ filter_func (GdkXEvent  *gdkxevent,
           if (s != NULL)
             sn_display_process_event (_wnck_screen_get_sn_display (s),
                                       xevent);
-          
+
           ++i;
         }
 #endif /* HAVE_STARTUP_NOTIFICATION */
       break;
     }
-  
+
   return GDK_FILTER_CONTINUE;
 }
 
@@ -806,7 +806,7 @@ _wnck_close (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -825,7 +825,7 @@ _wnck_close (Screen *screen,
               root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
-	      &xev); 
+	      &xev);
   _wnck_error_trap_pop ();
 }
 
@@ -851,7 +851,7 @@ _wnck_keyboard_move (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -870,7 +870,7 @@ _wnck_keyboard_move (Screen *screen,
               root,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
-              &xev); 
+              &xev);
   _wnck_error_trap_pop ();
 }
 
@@ -884,7 +884,7 @@ _wnck_keyboard_size (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -903,7 +903,7 @@ _wnck_keyboard_size (Screen *screen,
               root,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
-              &xev); 
+              &xev);
   _wnck_error_trap_pop ();
 }
 
@@ -920,8 +920,8 @@ _wnck_change_state (Screen  *screen,
 
 #define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
 #define _NET_WM_STATE_ADD           1    /* add/set property */
-#define _NET_WM_STATE_TOGGLE        2    /* toggle property  */  
-  
+#define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
+
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
 
@@ -958,7 +958,7 @@ _wnck_change_workspace (Screen     *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -993,7 +993,7 @@ _wnck_activate (Screen *screen,
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
-  
+
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
 
@@ -1015,7 +1015,7 @@ _wnck_activate (Screen *screen,
 	      root,
               False,
 	      SubstructureRedirectMask | SubstructureNotifyMask,
-	      &xev); 
+	      &xev);
   _wnck_error_trap_pop ();
 }
 
@@ -1030,7 +1030,7 @@ _wnck_activate_workspace (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -1064,7 +1064,7 @@ _wnck_change_viewport (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -1097,7 +1097,7 @@ _wnck_toggle_showing_desktop (Screen  *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.send_event = True;
@@ -1124,7 +1124,7 @@ char*
 _wnck_get_session_id (Window xwindow)
 {
   Window client_leader;
-  
+
   client_leader = None;
   _wnck_get_window (xwindow,
                     _wnck_atom_get ("WM_CLIENT_LEADER"),
@@ -1154,7 +1154,7 @@ char*
 _wnck_get_name (Window xwindow)
 {
   char *name;
-  
+
   name = _wnck_get_utf8_property (xwindow,
                                   _wnck_atom_get ("_NET_WM_VISIBLE_NAME"));
 
@@ -1173,7 +1173,7 @@ char*
 _wnck_get_icon_name (Window xwindow)
 {
   char *name;
-  
+
   name = _wnck_get_utf8_property (xwindow,
                                   _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
 
@@ -1193,7 +1193,7 @@ latin1_to_utf8 (const char *latin1)
 {
   GString *str;
   const char *p;
-  
+
   str = g_string_new (NULL);
 
   p = latin1;
@@ -1223,7 +1223,7 @@ _wnck_get_wmclass (Window xwindow,
 {
   XClassHint ch;
   char *retval;
-  
+
   _wnck_error_trap_push ();
 
   ch.res_name = NULL;
@@ -1233,7 +1233,7 @@ _wnck_get_wmclass (Window xwindow,
                  &ch);
 
   _wnck_error_trap_pop ();
-  
+
   retval = NULL;
 
   if (res_class)
@@ -1241,12 +1241,12 @@ _wnck_get_wmclass (Window xwindow,
 
   if (res_name)
     *res_name = NULL;
-  
+
   if (ch.res_name)
     {
       if (res_name)
         *res_name = latin1_to_utf8 (ch.res_name);
-      
+
       XFree (ch.res_name);
     }
 
@@ -1254,7 +1254,7 @@ _wnck_get_wmclass (Window xwindow,
     {
       if (res_class)
         *res_class = latin1_to_utf8 (ch.res_class);
-      
+
       XFree (ch.res_class);
     }
 }
@@ -1299,7 +1299,7 @@ _wnck_select_input (Window xwindow,
                     int    mask)
 {
   GdkWindow *gdkwindow;
-  
+
   gdkwindow = gdk_x11_window_lookup_for_display (gdk_display_get_default (),
                                                  xwindow);
 
@@ -1315,11 +1315,11 @@ _wnck_select_input (Window xwindow,
       XGetWindowAttributes (_wnck_get_default_display (), xwindow, &attrs);
       mask |= attrs.your_event_mask;
     }
-  
+
   XSelectInput (_wnck_get_default_display (), xwindow, mask);
   _wnck_error_trap_pop ();
 }
-  
+
 /* The icon-reading code is copied
  * from metacity, please sync bugfixes
  */
@@ -1331,26 +1331,26 @@ find_largest_sizes (gulong *data,
 {
   *width = 0;
   *height = 0;
-  
+
   while (nitems > 0)
     {
       int w, h;
       gboolean replace;
 
       replace = FALSE;
-      
+
       if (nitems < 3)
         return FALSE; /* no space for w, h */
-      
+
       w = data[0];
       h = data[1];
-      
+
       if (nitems < ((w * h) + 2))
         return FALSE; /* not enough data */
 
       *width = MAX (w, *width);
       *height = MAX (h, *height);
-      
+
       data += (w * h) + 2;
       nitems -= (w * h) + 2;
     }
@@ -1371,7 +1371,7 @@ find_best_size (gulong  *data,
   int best_h;
   gulong *best_start;
   int max_width, max_height;
-  
+
   *width = 0;
   *height = 0;
   *start = NULL;
@@ -1383,24 +1383,24 @@ find_best_size (gulong  *data,
     ideal_width = max_width;
   if (ideal_height < 0)
     ideal_height = max_height;
-  
+
   best_w = 0;
   best_h = 0;
   best_start = NULL;
-  
+
   while (nitems > 0)
     {
       int w, h;
       gboolean replace;
 
       replace = FALSE;
-      
+
       if (nitems < 3)
         return FALSE; /* no space for w, h */
-      
+
       w = data[0];
       h = data[1];
-      
+
       if (nitems < ((w * h) + 2))
         break; /* not enough data */
 
@@ -1414,7 +1414,7 @@ find_best_size (gulong  *data,
           const int ideal_size = (ideal_width + ideal_height) / 2;
           int best_size = (best_w + best_h) / 2;
           int this_size = (w + h) / 2;
-          
+
           /* larger than desired is always better than smaller */
           if (best_size < ideal_size &&
               this_size >= ideal_size)
@@ -1459,7 +1459,7 @@ argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
 {
   guchar *p;
   int i;
-  
+
   *pixdata = g_new (guchar, len * 4);
   p = *pixdata;
 
@@ -1469,10 +1469,10 @@ argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
     {
       guint argb;
       guint rgba;
-      
+
       argb = argb_data[i];
       rgba = (argb << 8) | (argb >> 24);
-      
+
       *p = rgba >> 24;
       ++p;
       *p = (rgba >> 16) & 0xff;
@@ -1481,7 +1481,7 @@ argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
       ++p;
       *p = rgba & 0xff;
       ++p;
-      
+
       ++i;
     }
 }
@@ -1509,7 +1509,7 @@ read_rgb_icon (Window         xwindow,
   int w, h;
   gulong *best_mini;
   int mini_w, mini_h;
-  
+
   _wnck_error_trap_push ();
   type = None;
   data = NULL;
@@ -1519,9 +1519,9 @@ read_rgb_icon (Window         xwindow,
 			       0, G_MAXLONG,
 			       False, XA_CARDINAL, &type, &format, &nitems,
 			       &bytes_after, (void*)&data);
-  
+
   err = _wnck_error_trap_pop ();
-  
+
   if (err != Success ||
       result != Success)
     return FALSE;
@@ -1531,7 +1531,7 @@ read_rgb_icon (Window         xwindow,
       XFree (data);
       return FALSE;
     }
-  
+
   if (!find_best_size (data, nitems,
                        ideal_width, ideal_height,
                        &w, &h, &best))
@@ -1547,7 +1547,7 @@ read_rgb_icon (Window         xwindow,
       XFree (data);
       return FALSE;
     }
-  
+
   *width = w;
   *height = h;
 
@@ -1558,7 +1558,7 @@ read_rgb_icon (Window         xwindow,
   argbdata_to_pixdata (best_mini, mini_w * mini_h, mini_pixdata);
 
   XFree (data);
-  
+
   return TRUE;
 }
 
@@ -1586,7 +1586,7 @@ get_pixmap_geometry (Pixmap       pixmap,
     *h = 1;
   if (d)
     *d = 1;
-  
+
   XGetGeometry (_wnck_get_default_display (),
                 pixmap, &root_ignored, &x_ignored, &y_ignored,
                 &width, &height, &border_width_ignored, &depth);
@@ -1610,10 +1610,10 @@ apply_mask (GdkPixbuf *pixbuf,
   guchar *dest;
   int src_stride;
   int dest_stride;
-  
+
   w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
   h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
-  
+
   with_alpha = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
 
   dest = gdk_pixbuf_get_pixels (with_alpha);
@@ -1621,7 +1621,7 @@ apply_mask (GdkPixbuf *pixbuf,
 
   dest_stride = gdk_pixbuf_get_rowstride (with_alpha);
   src_stride = gdk_pixbuf_get_rowstride (mask);
-  
+
   i = 0;
   while (i < h)
     {
@@ -1630,7 +1630,7 @@ apply_mask (GdkPixbuf *pixbuf,
         {
           guchar *s = src + i * src_stride + j * 3;
           guchar *d = dest + i * dest_stride + j * 4;
-          
+
           /* s[0] == s[1] == s[2], they are 255 if the bit was set, 0
            * otherwise
            */
@@ -1638,10 +1638,10 @@ apply_mask (GdkPixbuf *pixbuf,
             d[3] = 0;   /* transparent */
           else
             d[3] = 255; /* opaque */
-          
+
           ++j;
         }
-      
+
       ++i;
     }
 
@@ -1649,7 +1649,7 @@ apply_mask (GdkPixbuf *pixbuf,
 }
 
 GdkPixbuf*
-_wnck_gdk_pixbuf_get_from_pixmap (Pixmap       xpixmap)
+_wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
 {
   cairo_surface_t *surface;
   Display *display;
@@ -1710,11 +1710,11 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
 
   if (src_pixmap == None)
     return FALSE;
-      
+
   _wnck_error_trap_push ();
 
   get_pixmap_geometry (src_pixmap, &w, &h, NULL);
-      
+
   unscaled = _wnck_gdk_pixbuf_get_from_pixmap (src_pixmap);
 
   if (unscaled && src_mask != None)
@@ -1722,13 +1722,13 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
       get_pixmap_geometry (src_mask, &w, &h, NULL);
       mask = _wnck_gdk_pixbuf_get_from_pixmap (src_mask);
     }
-  
+
   _wnck_error_trap_pop ();
 
   if (mask)
     {
       GdkPixbuf *masked;
-      
+
       masked = apply_mask (unscaled, mask);
       g_object_unref (G_OBJECT (unscaled));
       unscaled = masked;
@@ -1736,7 +1736,7 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
       g_object_unref (G_OBJECT (mask));
       mask = NULL;
     }
-  
+
   if (unscaled)
     {
       *iconp =
@@ -1752,8 +1752,8 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
                                  gdk_pixbuf_get_width (unscaled),
                                  ideal_mini_height > 0 ? ideal_mini_height :
                                  gdk_pixbuf_get_height (unscaled),
-                                 GDK_INTERP_BILINEAR);      
-      
+                                 GDK_INTERP_BILINEAR);
+
       g_object_unref (G_OBJECT (unscaled));
       return TRUE;
     }
@@ -1775,7 +1775,7 @@ get_kwm_win_icon (Window  xwindow,
 
   *pixmap = None;
   *mask = None;
-  
+
   _wnck_error_trap_push ();
   icons = NULL;
   result = XGetWindowProperty (_wnck_get_default_display (), xwindow,
@@ -1784,22 +1784,22 @@ get_kwm_win_icon (Window  xwindow,
 			       False,
 			       _wnck_atom_get ("KWM_WIN_ICON"),
 			       &type, &format, &nitems,
-			       &bytes_after, (void*)&icons);  
+			       &bytes_after, (void*)&icons);
 
   err = _wnck_error_trap_pop ();
   if (err != Success ||
       result != Success)
     return;
-  
+
   if (type != _wnck_atom_get ("KWM_WIN_ICON"))
     {
       XFree (icons);
       return;
     }
-  
+
   *pixmap = icons[0];
   *mask = icons[1];
-  
+
   XFree (icons);
 
   return;
@@ -1833,7 +1833,7 @@ struct _WnckIconCache
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
   guint kwm_win_icon_dirty : 1;
-  guint net_wm_icon_dirty : 1;  
+  guint net_wm_icon_dirty : 1;
 };
 
 WnckIconCache*
@@ -1855,7 +1855,7 @@ _wnck_icon_cache_new (void)
   icon_cache->wm_hints_dirty = TRUE;
   icon_cache->kwm_win_icon_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
-  
+
   return icon_cache;
 }
 
@@ -1866,7 +1866,7 @@ clear_icon_cache (WnckIconCache *icon_cache,
   if (icon_cache->icon)
     g_object_unref (G_OBJECT (icon_cache->icon));
   icon_cache->icon = NULL;
-  
+
   if (icon_cache->mini_icon)
     g_object_unref (G_OBJECT (icon_cache->mini_icon));
   icon_cache->mini_icon = NULL;
@@ -1885,14 +1885,14 @@ void
 _wnck_icon_cache_free (WnckIconCache *icon_cache)
 {
   clear_icon_cache (icon_cache, FALSE);
-  
+
   g_slice_free (WnckIconCache, icon_cache);
 }
 
 void
 _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
                                    Atom           atom)
-{  
+{
   if (atom == _wnck_atom_get ("_NET_WM_ICON"))
     icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("KWM_WIN_ICON"))
@@ -1945,7 +1945,7 @@ replace_cache (WnckIconCache *icon_cache,
                GdkPixbuf     *new_mini_icon)
 {
   clear_icon_cache (icon_cache, FALSE);
-  
+
   icon_cache->origin = origin;
 
   if (new_icon)
@@ -1968,13 +1968,13 @@ scaled_from_pixdata (guchar *pixdata,
 {
   GdkPixbuf *src;
   GdkPixbuf *dest;
-  
+
   src = gdk_pixbuf_new_from_data (pixdata,
                                   GDK_COLORSPACE_RGB,
                                   TRUE,
                                   8,
                                   w, h, w * 4,
-                                  free_pixels, 
+                                  free_pixels,
                                   NULL);
 
   if (src == NULL)
@@ -1984,27 +1984,27 @@ scaled_from_pixdata (guchar *pixdata,
     {
       GdkPixbuf *tmp;
       int size;
-      
+
       size = MAX (w, h);
-      
+
       tmp = gdk_pixbuf_new (GDK_COLORSPACE_RGB, TRUE, 8, size, size);
-      
+
       if (tmp != NULL)
 	{
 	  gdk_pixbuf_fill (tmp, 0);
 	  gdk_pixbuf_copy_area (src, 0, 0, w, h,
 				tmp,
 				(size - w) / 2, (size - h) / 2);
-	  
+
 	  g_object_unref (src);
 	  src = tmp;
 	}
     }
-  
+
   if (w != new_w || h != new_h)
     {
       dest = gdk_pixbuf_scale_simple (src, new_w, new_h, GDK_INTERP_BILINEAR);
-      
+
       g_object_unref (G_OBJECT (src));
     }
   else
@@ -2025,7 +2025,7 @@ _wnck_read_icons (Window         xwindow,
                   int            ideal_mini_width,
                   int            ideal_mini_height)
 {
-  guchar *pixdata;     
+  guchar *pixdata;
   int w, h;
   guchar *mini_pixdata;
   int mini_w, mini_h;
@@ -2034,18 +2034,18 @@ _wnck_read_icons (Window         xwindow,
   XWMHints *hints;
 
   /* Return value is whether the icon changed */
-  
+
   g_return_val_if_fail (icon_cache != NULL, FALSE);
-  
+
   *iconp = NULL;
   *mini_iconp = NULL;
-  
+
   if (ideal_width != icon_cache->ideal_width ||
       ideal_height != icon_cache->ideal_height ||
       ideal_mini_width != icon_cache->ideal_mini_width ||
       ideal_mini_height != icon_cache->ideal_mini_height)
     clear_icon_cache (icon_cache, TRUE);
-  
+
   icon_cache->ideal_width = ideal_width;
   icon_cache->ideal_height = ideal_height;
   icon_cache->ideal_mini_width = ideal_mini_width;
@@ -2053,7 +2053,7 @@ _wnck_read_icons (Window         xwindow,
 
   if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
     return FALSE; /* we have no new info to use */
-  
+
   pixdata = NULL;
 
   /* Our algorithm here assumes that we can't have for example origin
@@ -2064,13 +2064,13 @@ _wnck_read_icons (Window         xwindow,
    * tried to read it at the current size. If it is dirty, then
    * we haven't done that since the last change.
    */
-   
+
   if (icon_cache->origin <= USING_NET_WM_ICON &&
       icon_cache->net_wm_icon_dirty)
 
     {
       icon_cache->net_wm_icon_dirty = FALSE;
-      
+
       if (read_rgb_icon (xwindow,
                          ideal_width, ideal_height,
                          ideal_mini_width, ideal_mini_height,
@@ -2078,7 +2078,7 @@ _wnck_read_icons (Window         xwindow,
                          &mini_w, &mini_h, &mini_pixdata))
         {
           *iconp = scaled_from_pixdata (pixdata, w, h, ideal_width, ideal_height);
-          
+
           *mini_iconp = scaled_from_pixdata (mini_pixdata, mini_w, mini_h,
                                              ideal_mini_width, ideal_mini_height);
 
@@ -2093,7 +2093,7 @@ _wnck_read_icons (Window         xwindow,
       icon_cache->wm_hints_dirty)
     {
       icon_cache->wm_hints_dirty = FALSE;
-      
+
       _wnck_error_trap_push ();
       hints = XGetWMHints (_wnck_get_default_display (), xwindow);
       _wnck_error_trap_pop ();
@@ -2137,7 +2137,7 @@ _wnck_read_icons (Window         xwindow,
       icon_cache->kwm_win_icon_dirty)
     {
       icon_cache->kwm_win_icon_dirty = FALSE;
-      
+
       get_kwm_win_icon (xwindow, &pixmap, &mask);
 
       if ((pixmap != icon_cache->prev_pixmap ||
@@ -2153,12 +2153,12 @@ _wnck_read_icons (Window         xwindow,
 
               replace_cache (icon_cache, USING_KWM_WIN_ICON,
                              *iconp, *mini_iconp);
-              
+
               return TRUE;
             }
         }
     }
-  
+
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
@@ -2191,14 +2191,14 @@ _wnck_read_icons (Window         xwindow,
 static GdkPixbuf*
 default_icon_at_size (int width,
                       int height)
-{  
+{
 
   GdkPixbuf *base;
-  
+
   base = gdk_pixbuf_new_from_inline (-1, default_icon_data,
                                      FALSE,
                                      NULL);
-  
+
   g_assert (base);
 
   if ((width < 0 && height < 0) ||
@@ -2210,16 +2210,16 @@ default_icon_at_size (int width,
   else
     {
       GdkPixbuf *scaled;
-      
+
       scaled = gdk_pixbuf_scale_simple (base,
                                         width > 0 ? width :
                                         gdk_pixbuf_get_width (base),
                                         height > 0 ? height :
                                         gdk_pixbuf_get_height (base),
                                         GDK_INTERP_BILINEAR);
-      
+
       g_object_unref (G_OBJECT (base));
-      
+
       return scaled;
     }
 }
@@ -2263,14 +2263,14 @@ _wnck_get_window_geometry (Screen *screen,
   height = 1;
 
   display = DisplayOfScreen (screen);
-  
+
   _wnck_error_trap_push ();
 
   XGetGeometry (display,
                 xwindow,
                 &root_window,
                 &x, &y, &width, &height, &bw, &depth);
-  
+
   _wnck_error_trap_pop ();
 
   _wnck_get_window_position (screen, xwindow, xp, yp);
@@ -2334,7 +2334,7 @@ _wnck_get_window_position (Screen *screen,
 
   display = DisplayOfScreen (screen);
   root = RootWindowOfScreen (screen);
-  
+
   _wnck_error_trap_push ();
   XTranslateCoordinates (display,
                          xwindow,
@@ -2362,7 +2362,7 @@ _wnck_set_icon_geometry  (Window xwindow,
   data[1] = y;
   data[2] = width;
   data[3] = height;
-  
+
   _wnck_error_trap_push ();
 
   XChangeProperty (_wnck_get_default_display (),
@@ -2408,7 +2408,7 @@ _wnck_set_desktop_layout (Screen *xscreen,
   data[1] = columns;
   data[2] = rows;
   data[3] = _NET_WM_TOPLEFT;
-  
+
   _wnck_error_trap_push ();
 
   XChangeProperty (display,
@@ -2420,7 +2420,7 @@ _wnck_set_desktop_layout (Screen *xscreen,
   _wnck_error_trap_pop ();
 }
 
-typedef struct 
+typedef struct
 {
   Window window;
   Atom timestamp_prop_atom;
@@ -2447,9 +2447,9 @@ timestamp_predicate (Display *display,
  * @window: a #Window, used for communication with the server.
  *          The window must have PropertyChangeMask in its
  *          events mask or a hang will result.
- * 
- * Routine to get the current X server time stamp. 
- * 
+ *
+ * Routine to get the current X server time stamp.
+ *
  * Return value: the time stamp.
  **/
 static Time
@@ -2508,19 +2508,19 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   GSList *tmp;
   int number;
   Time timestamp;
-  XClientMessageEvent xev;  
+  XClientMessageEvent xev;
   char buffer[256];
   LayoutManager *lm;
 
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
   number = XScreenNumberOfScreen (xscreen);
-  
+
   sprintf (buffer, "_NET_DESKTOP_LAYOUT_S%d", number);
   selection_atom = _wnck_atom_get (buffer);
 
   owner = XGetSelectionOwner (display, selection_atom);
-  
+
   tmp = layout_managers;
   while (tmp != NULL)
     {
@@ -2542,10 +2542,10 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
           else
             return WNCK_NO_MANAGER_TOKEN; /* someone else has it */
         }
-      
+
       tmp = tmp->next;
     }
-  
+
   if (owner != None)
     return WNCK_NO_MANAGER_TOKEN; /* someone else has the selection */
 
@@ -2585,7 +2585,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
       g_free (lm);
       return WNCK_NO_MANAGER_TOKEN;
     }
-  
+
   xev.type = ClientMessage;
   xev.window = root;
   xev.message_type = lm->manager_atom;
@@ -2595,7 +2595,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   xev.data.l[2] = lm->window;
   xev.data.l[3] = 0;	/* manager specific data */
   xev.data.l[4] = 0;	/* manager specific data */
-  
+
   _wnck_error_trap_push ();
   XSendEvent (display, root,
               False, StructureNotifyMask, (XEvent *)&xev);
@@ -2603,7 +2603,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
 
   layout_managers = g_slist_prepend (layout_managers,
                                      lm);
-  
+
   return lm->token;
 }
 
@@ -2615,10 +2615,10 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
   GSList *tmp;
   int number;
   LayoutManager *lm;
-  
+
   display = DisplayOfScreen (xscreen);
   number = XScreenNumberOfScreen (xscreen);
-  
+
   tmp = layout_managers;
   while (tmp != NULL)
     {
@@ -2648,7 +2648,7 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
               return;
             }
         }
-      
+
       tmp = tmp->next;
     }
 }
@@ -2661,7 +2661,7 @@ _wnck_desktop_layout_manager_process_event (XEvent *xev)
 
   if (xev->type != SelectionClear)
     return FALSE;
-  
+
   tmp = layout_managers;
   while (tmp != NULL)
     {
@@ -2674,7 +2674,7 @@ _wnck_desktop_layout_manager_process_event (XEvent *xev)
           _wnck_free_layout_manager (lm);
           return TRUE;
         }
-      
+
       tmp = tmp->next;
     }
 

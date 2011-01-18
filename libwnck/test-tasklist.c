@@ -22,8 +22,8 @@ static GOptionEntry entries[] = {
 
 static gboolean
 window_draw (GtkWidget      *widget,
-	     cairo_t        *cr,
-	     gpointer        user_data)
+             cairo_t        *cr,
+             gpointer        user_data)
 {
   cairo_set_operator (cr, CAIRO_OPERATOR_SOURCE);
   cairo_set_source_rgba (cr, 1., 1., 1., .5);
@@ -51,7 +51,7 @@ main (int argc, char **argv)
   GtkWidget *win;
   GtkWidget *frame;
   GtkWidget *tasklist;
-  
+
   ctxt = g_option_context_new ("");
   g_option_context_add_main_entries (ctxt, entries, NULL);
   g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
@@ -65,10 +65,10 @@ main (int argc, char **argv)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
   screen = wnck_screen_get_default ();
-  
+
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
-  
+
   win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_default_size (GTK_WINDOW (win), 200, 100);
   gtk_window_stick (GTK_WINDOW (win));
@@ -127,22 +127,22 @@ main (int argc, char **argv)
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
   gtk_container_add (GTK_CONTAINER (win), frame);
 
-  gtk_container_add (GTK_CONTAINER (frame), tasklist);  
+  gtk_container_add (GTK_CONTAINER (frame), tasklist);
 
   gtk_widget_show (tasklist);
   gtk_widget_show (frame);
 
   gtk_window_move (GTK_WINDOW (win), 0, 0);
-  
+
   if (skip_tasklist)
   {
-    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (win), TRUE); 
-    gtk_window_set_keep_above (GTK_WINDOW (win), TRUE); 
+    gtk_window_set_skip_taskbar_hint (GTK_WINDOW (win), TRUE);
+    gtk_window_set_keep_above (GTK_WINDOW (win), TRUE);
   }
 
   gtk_widget_show (win);
-  
+
   gtk_main ();
-  
+
   return 0;
 }

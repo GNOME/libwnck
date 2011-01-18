@@ -830,7 +830,7 @@ refill_submenu_workspace (WnckActionMenu *menu)
     {
       char      *name;
       GtkWidget *item;
-	
+
       name = get_workspace_name_with_accel (menu->priv->window, i);
 
       item = make_menu_item (MOVE_TO_WORKSPACE);

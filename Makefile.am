@@ -8,7 +8,7 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = libwnck-3.0.pc
 
 EXTRA_DIST = \
-	HACKING				\
+	HACKING		\
 	MAINTAINERS
 
 MAINTAINERCLEANFILES = \

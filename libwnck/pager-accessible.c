@@ -65,9 +65,9 @@ wnck_pager_accessible_get_type (void)
 {
   static GType type = 0;
 
-  if (!type) 
+  if (!type)
     {
-      GTypeInfo tinfo = 
+      GTypeInfo tinfo =
         {
           sizeof (WnckPagerAccessibleClass),
           (GBaseInitFunc) NULL, /* base init */
@@ -81,7 +81,7 @@ wnck_pager_accessible_get_type (void)
           NULL /* value table */
         };
 
-      const GInterfaceInfo atk_selection_info = 
+      const GInterfaceInfo atk_selection_info =
         {
           (GInterfaceInitFunc) atk_selection_interface_init,
           (GInterfaceFinalizeFunc) NULL,
@@ -97,7 +97,7 @@ wnck_pager_accessible_get_type (void)
       GTypeQuery query;
       GType derived_atk_type;
 
-      derived_type = g_type_parent (WNCK_TYPE_PAGER);  
+      derived_type = g_type_parent (WNCK_TYPE_PAGER);
 
       factory = atk_registry_get_factory (atk_get_default_registry (),
                                           derived_type);
@@ -131,9 +131,9 @@ wnck_pager_accessible_class_init (WnckPagerAccessibleClass *klass)
 {
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GObjectClass *obj_class = G_OBJECT_CLASS (klass);
-  
+
   parent_class = g_type_class_peek_parent (klass);
-  
+
   class->get_name = wnck_pager_accessible_get_name;
   class->get_description = wnck_pager_accessible_get_description;
   class->get_n_children = wnck_pager_accessible_get_n_children;
@@ -145,13 +145,13 @@ wnck_pager_accessible_class_init (WnckPagerAccessibleClass *klass)
 
 
 static gboolean
-wnck_pager_add_selection (AtkSelection *selection, 
+wnck_pager_add_selection (AtkSelection *selection,
 		          int           i)
 {
   WnckPager *pager;
   WnckWorkspace *wspace;
   GtkWidget *widget;
-  int n_spaces; 
+  int n_spaces;
 
 #if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
@@ -159,9 +159,9 @@ wnck_pager_add_selection (AtkSelection *selection,
   widget = GTK_ACCESSIBLE (selection)->widget;
 #endif
 
-  if (widget == NULL) 
+  if (widget == NULL)
     {
-      /* 
+      /*
        *State is defunct
        */
       return FALSE;
@@ -179,7 +179,7 @@ wnck_pager_add_selection (AtkSelection *selection,
   wspace = _wnck_pager_get_workspace (pager, i);
   /* FIXME: Is gtk_get_current_event_time() good enough here?  I have no idea */
   _wnck_pager_activate_workspace (wspace, gtk_get_current_event_time ());
- 
+
   return TRUE;
 }
 
@@ -187,14 +187,14 @@ wnck_pager_add_selection (AtkSelection *selection,
  * Returns the AtkObject of the selected WorkSpace
  */
 static AtkObject*
-wnck_pager_ref_selection (AtkSelection *selection, 
+wnck_pager_ref_selection (AtkSelection *selection,
 		          int           i)
 {
   WnckPager *pager;
   GtkWidget *widget;
   WnckWorkspace *active_wspace;
   AtkObject *accessible;
-  int wsno;       
+  int wsno;
 
   g_return_val_if_fail (i == 0, NULL);
 
@@ -203,7 +203,7 @@ wnck_pager_ref_selection (AtkSelection *selection,
 #else
   widget = GTK_ACCESSIBLE (selection)->widget;
 #endif
-  if (widget == NULL) 
+  if (widget == NULL)
     {
       /*
        * State is defunct
@@ -234,7 +234,7 @@ wnck_pager_selection_count (AtkSelection *selection)
 #else
   widget = GTK_ACCESSIBLE (selection)->widget;
 #endif
-  if (widget == NULL) 
+  if (widget == NULL)
     {
       /*
        * State is defunct
@@ -252,7 +252,7 @@ wnck_pager_selection_count (AtkSelection *selection)
  *and returns TRUE on selection.
  */
 static gboolean
-wnck_pager_is_child_selected (AtkSelection *selection, 
+wnck_pager_is_child_selected (AtkSelection *selection,
 		              int           i)
 {
   WnckPager *pager;
@@ -265,7 +265,7 @@ wnck_pager_is_child_selected (AtkSelection *selection,
 #else
   widget = GTK_ACCESSIBLE (selection)->widget;
 #endif
-  if (widget == NULL) 
+  if (widget == NULL)
     {
       /*
        * State is defunct
@@ -312,7 +312,7 @@ wnck_pager_accessible_finalize (GObject *gobject)
   GSList *children;
 
   pager_accessible_priv = get_private_data (gobject);
-  
+
   if (pager_accessible_priv)
     {
       if (pager_accessible_priv->children)
@@ -329,7 +329,7 @@ wnck_pager_accessible_finalize (GObject *gobject)
                           quark_private_data,
                           NULL);
     }
-  
+
   G_OBJECT_CLASS (parent_class)->finalize (gobject);
 }
 
@@ -345,7 +345,7 @@ wnck_pager_accessible_get_name (AtkObject *obj)
 }
 
 static const char*
-wnck_pager_accessible_get_description (AtkObject *obj) 
+wnck_pager_accessible_get_description (AtkObject *obj)
 {
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), NULL);
 
@@ -384,7 +384,7 @@ wnck_pager_accessible_get_n_children (AtkObject* obj)
 }
 
 /*
- * Will return appropriate static AtkObject for the workspaces 
+ * Will return appropriate static AtkObject for the workspaces
  */
 static AtkObject*
 wnck_pager_accessible_ref_child (AtkObject *obj,
@@ -397,7 +397,7 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
   int len;
   WnckPagerAccessiblePriv *pager_accessible_priv;
   AtkObject *ret;
-  
+
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), NULL);
   g_return_val_if_fail (ATK_IS_OBJECT (obj), NULL);
 
@@ -426,15 +426,15 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
    */
   while (n_spaces > len)
     {
-      AtkRegistry *default_registry;   
+      AtkRegistry *default_registry;
       AtkObjectFactory *factory;
       WnckWorkspace *wspace;
       WnckWorkspaceAccessible *space_accessible;
-      
+
       default_registry = atk_get_default_registry ();
       factory = atk_registry_get_factory (default_registry,
                                           WNCK_TYPE_WORKSPACE);
-          
+
       wspace = _wnck_pager_get_workspace (pager, len);
       space_accessible = WNCK_WORKSPACE_ACCESSIBLE (atk_object_factory_create_accessible (factory,
                                                                                           G_OBJECT (wspace)));
@@ -442,20 +442,20 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
 
       pager_accessible_priv->children = g_slist_append (pager_accessible_priv->children,
                                                    space_accessible);
-      
+
       ++len;
     }
 
   ret = g_slist_nth_data (pager_accessible_priv->children, i);
   g_object_ref (G_OBJECT (ret));
   wnck_pager_accessible_update_workspace (ret, pager, i);
-  
+
   return ret;
 }
 
 static void
 wnck_pager_accessible_update_workspace (AtkObject *aobj_ws,
-                                        WnckPager *pager,        	
+                                        WnckPager *pager,
                                         int        i)
 {
   g_free (aobj_ws->name);

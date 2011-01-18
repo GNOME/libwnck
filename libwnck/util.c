@@ -101,16 +101,16 @@ _wnck_print_resource_usage (WnckResourceUsage *usage)
            "\tunknowns      : %d\n"
            "\tpixmap bytes  : %ld\n"
            "\ttotal bytes   : ~%ld\n",
-           usage->n_windows, 
-           usage->n_gcs, 
+           usage->n_windows,
+           usage->n_gcs,
            usage->n_fonts,
-           usage->n_pixmaps,  
+           usage->n_pixmaps,
            usage->n_pictures,
            usage->n_glyphsets,
            usage->n_colormap_entries,
            usage->n_passive_grabs,
            usage->n_cursors,
-           usage->n_other, 
+           usage->n_other,
            usage->pixmap_bytes,
            usage->total_bytes_estimate);
 }
@@ -138,7 +138,7 @@ wnck_init_resource_usage (GdkDisplay *gdisplay)
 #else
       status = WNCK_EXT_MISSING;
 #endif
-      
+
       g_object_set_data (G_OBJECT (gdisplay),
                          "wnck-xres-status",
                          GINT_TO_POINTER (status));
@@ -192,11 +192,11 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    Atom colormap_entry_atom;
    Atom passive_grab_atom;
    Atom cursor_atom;
-   
+
    types = NULL;
    n_types = 0;
    pixmap_bytes = 0;
-   
+
   _wnck_error_trap_push ();
 
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
@@ -207,8 +207,8 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
 
    XResQueryClientPixmapBytes (xdisplay,
                                xid, &pixmap_bytes);
-   _wnck_error_trap_pop ();   
-   
+   _wnck_error_trap_pop ();
+
    usage->pixmap_bytes = pixmap_bytes;
 
    pixmap_atom = _wnck_atom_get ("PIXMAP");
@@ -220,12 +220,12 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    colormap_entry_atom = _wnck_atom_get ("COLORMAP ENTRY");
    passive_grab_atom = _wnck_atom_get ("PASSIVE GRAB");
    cursor_atom = _wnck_atom_get ("CURSOR");
-   
+
    i = 0;
    while (i < n_types)
      {
        int t = types[i].resource_type;
-       
+
        if (t == pixmap_atom)
          usage->n_pixmaps += types[i].count;
        else if (t == window_atom)
@@ -246,7 +246,7 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
          usage->n_cursors += types[i].count;
        else
          usage->n_other += types[i].count;
-       
+
        ++i;
      }
 
@@ -337,12 +337,12 @@ wnck_find_pid_for_resource_r (Display *xdisplay,
   _wnck_error_trap_push ();
   qtres = XQueryTree (xdisplay, win_top, &dummy, &dummy,
                       &children, &n_children);
-  err = _wnck_error_trap_pop ();   
+  err = _wnck_error_trap_pop ();
 
   if (!qtres || err != Success)
     return;
 
-  for (i = 0; i < n_children; i++) 
+  for (i = 0; i < n_children; i++)
     {
       wnck_find_pid_for_resource_r (xdisplay, children[i],
                                     match_xid, mask, xid, pid);
@@ -466,7 +466,7 @@ wnck_pid_read_resource_usage_start_build_cache (GdkDisplay *gdisplay)
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
   _wnck_error_trap_push ();
-  XResQueryClients (xdisplay, &xres_state.n_clients, &xres_state.clients); 
+  XResQueryClients (xdisplay, &xres_state.n_clients, &xres_state.clients);
   err = _wnck_error_trap_pop ();
 
   if (err != Success)
@@ -562,7 +562,7 @@ wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
       WnckScreen *screen;
       GList *windows;
       GList *tmp;
-      
+
       screen = wnck_screen_get (i);
 
       g_assert (screen != NULL);
@@ -583,7 +583,7 @@ wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
 
           tmp = tmp->next;
         }
-      
+
       ++i;
     }
 }
@@ -778,7 +778,7 @@ _wnck_stock_icons_init (void)
     return;
 
   done = TRUE;
-  
+
   factory = gtk_icon_factory_new ();
   gtk_icon_factory_add_default (factory);
 
@@ -794,7 +794,7 @@ _wnck_stock_icons_init (void)
       icon_set = gtk_icon_set_new_from_pixbuf (pixbuf);
       gtk_icon_factory_add (factory, items[i].stock_id, icon_set);
       gtk_icon_set_unref (icon_set);
-		
+
       g_object_unref (G_OBJECT (pixbuf));
     }
 

@@ -140,42 +140,42 @@ wnck_workspace_finalize (GObject *object)
 
   g_free (workspace->priv->name);
   workspace->priv->name = NULL;
-  
+
   G_OBJECT_CLASS (wnck_workspace_parent_class)->finalize (object);
 }
 
 /**
  * wnck_workspace_get_number:
  * @space: a #WnckWorkspace.
- * 
+ *
  * Gets the index of @space on the #WnckScreen to which it belongs. The
  * first workspace has an index of 0.
- * 
+ *
  * Return value: the index of @space on its #WnckScreen, or -1 on errors.
  **/
 int
 wnck_workspace_get_number (WnckWorkspace *space)
 {
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
-  
+
   return space->priv->number;
 }
 
 /**
  * wnck_workspace_get_name:
  * @space: a #WnckWorkspace.
- * 
+ *
  * Gets the human-readable name that should be used to refer to @space. If
  * the user has not set a special name, a fallback like "Workspace 3" will be
  * used.
- * 
+ *
  * Return value: the name of @space.
  **/
 const char*
 wnck_workspace_get_name (WnckWorkspace *space)
 {
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), NULL);
-  
+
   return space->priv->name;
 }
 
@@ -185,7 +185,7 @@ wnck_workspace_get_name (WnckWorkspace *space)
  * @name: new name for @space.
  *
  * Changes the name of @space.
- * 
+ *
  * Since: 2.2
  **/
 void
@@ -222,14 +222,14 @@ wnck_workspace_get_screen (WnckWorkspace *space)
  * @space: a #WnckWorkspace.
  * @timestamp: the X server timestamp of the user interaction event that caused
  * this call to occur.
- * 
+ *
  * Asks the window manager to make @space the active workspace. The window
  * manager may decide to refuse the request (to not steal the focus if there is
  * a more recent user activity, for example).
  *
  * This function existed before 2.10, but the @timestamp argument was missing
  * in earlier versions.
- * 
+ *
  * Since: 2.10
  **/
 void
@@ -247,14 +247,14 @@ WnckWorkspace*
 _wnck_workspace_create (int number, WnckScreen *screen)
 {
   WnckWorkspace *space;
-  
+
   space = g_object_new (WNCK_TYPE_WORKSPACE, NULL);
   space->priv->number = number;
   space->priv->name = NULL;
   space->priv->screen = screen;
 
   _wnck_workspace_update_name (space, NULL);
-  
+
   /* Just set reasonable defaults */
   space->priv->width = wnck_screen_get_width (screen);
   space->priv->height = wnck_screen_get_height (screen);
@@ -271,7 +271,7 @@ _wnck_workspace_update_name (WnckWorkspace *space,
                              const char    *name)
 {
   char *old;
-  
+
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
   old = space->priv->name;
@@ -313,7 +313,7 @@ _wnck_workspace_set_geometry (WnckWorkspace *space,
       return TRUE;  /* change was made */
     }
   else
-    return FALSE; 
+    return FALSE;
 }
 
 gboolean
@@ -427,11 +427,11 @@ wnck_workspace_is_virtual (WnckWorkspace *space)
 /**
  * wnck_workspace_get_layout_row:
  * @space: a #WnckWorkspace.
- * 
+ *
  * Gets the row of @space in the #WnckWorkspace layout. The first row has an
  * index of 0 and is always the top row, regardless of the starting corner set
  * for the layout.
- * 
+ *
  * Return value: the row of @space in the #WnckWorkspace layout, or -1 on
  * errors.
  *
@@ -466,12 +466,12 @@ wnck_workspace_get_layout_row (WnckWorkspace *space)
 /**
  * wnck_workspace_get_layout_column:
  * @space: a #WnckWorkspace.
- * 
+ *
  * Gets the column of @space in the #WnckWorkspace layout. The first column
  * has an index of 0 and is always the left column, regardless of the starting
  * corner set for the layout and regardless of the default direction of the
  * environment (i.e., in both Left-To-Right and Right-To-Left environments).
- * 
+ *
  * Return value: the column of @space in the #WnckWorkspace layout, or -1 on
  * errors.
  *
@@ -507,7 +507,7 @@ wnck_workspace_get_layout_column (WnckWorkspace *space)
  * wnck_workspace_get_neighbor:
  * @space: a #WnckWorkspace.
  * @direction: direction in which to search the neighbor.
- * 
+ *
  * Gets the neighbor #WnckWorkspace of @space in the @direction direction.
  *
  * Return value: the neighbor #WnckWorkspace of @space in the @direction

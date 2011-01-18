@@ -57,9 +57,9 @@ static AtkObject*
 wnck_pager_accessible_factory_create_accessible (GObject *obj)
 {
   GtkWidget *widget;
-  
+
   g_return_val_if_fail (GTK_IS_WIDGET (obj), NULL);
-  
+
   widget = GTK_WIDGET (obj);
   return wnck_pager_accessible_new (widget);
 }

@@ -156,7 +156,7 @@ wnck_selector_dimm_icon (GdkPixbuf *pixbuf)
   w = gdk_pixbuf_get_width (pixbuf);
   h = gdk_pixbuf_get_height (pixbuf);
 
-  if (gdk_pixbuf_get_has_alpha (pixbuf)) 
+  if (gdk_pixbuf_get_has_alpha (pixbuf))
     dimmed = gdk_pixbuf_copy (pixbuf);
   else
     dimmed = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
@@ -220,7 +220,7 @@ wnck_selector_set_window_icon (WnckSelector *selector,
     }
 
   if (window && wnck_window_is_minimized (window))
-    {      
+    {
       pixbuf = wnck_selector_dimm_icon (pixbuf);
       freeme2 = pixbuf;
     }
@@ -424,8 +424,8 @@ wnck_selector_window_state_changed (WnckWindow *window,
       gtk_menu_reposition (GTK_MENU (selector->priv->menu));
     }
 
-  if (changed_mask & 
-      (WNCK_WINDOW_STATE_DEMANDS_ATTENTION | WNCK_WINDOW_STATE_URGENT))      
+  if (changed_mask &
+      (WNCK_WINDOW_STATE_DEMANDS_ATTENTION | WNCK_WINDOW_STATE_URGENT))
     {
       if (wnck_window_or_transient_needs_attention (window))
 	_make_gtk_label_bold (GTK_LABEL (item->label));
@@ -541,7 +541,7 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   return width;
 }
 
-static void  
+static void
 wnck_selector_drag_begin (GtkWidget          *widget,
 			  GdkDragContext     *context,
 			  WnckWindow         *window)
@@ -561,7 +561,7 @@ wnck_selector_drag_begin (GtkWidget          *widget,
     _wnck_window_set_as_drag_icon (window, context, widget);
 }
 
-static void  
+static void
 wnck_selector_drag_data_get (GtkWidget          *widget,
 			     GdkDragContext     *context,
 			     GtkSelectionData   *selection_data,
@@ -569,7 +569,7 @@ wnck_selector_drag_data_get (GtkWidget          *widget,
 			     guint               time,
 			     WnckWindow         *window)
 {
-  gulong xid;    
+  gulong xid;
 
   xid = wnck_window_get_xid (window);
   gtk_selection_data_set (selection_data,
@@ -626,12 +626,12 @@ wnck_selector_item_new (WnckSelector *selector,
       g_signal_connect_object (item, "drag_data_get",
                                G_CALLBACK (wnck_selector_drag_data_get),
                                G_OBJECT (window),
-                               0); 
+                               0);
 
       g_signal_connect_object (item, "drag_begin",
                                G_CALLBACK (wnck_selector_drag_begin),
                                G_OBJECT (window),
-                               0); 
+                               0);
     }
 
   return item;
@@ -775,7 +775,7 @@ wnck_selector_insert_window (WnckSelector *selector, WnckWindow *window)
       gtk_menu_shell_insert (GTK_MENU_SHELL (selector->priv->menu),
                              item, i);
     }
-  else 
+  else
     {
       workspace_n = wnck_workspace_get_number (workspace);
 
@@ -1089,7 +1089,7 @@ wnck_selector_scroll_cb (WnckSelector *selector,
 
       previous_window = window;
     }
-  
+
   return TRUE;
 }
 
