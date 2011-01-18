@@ -82,7 +82,7 @@ main (int argc, char **argv)
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  tasklist = wnck_tasklist_new (screen);
+  tasklist = wnck_tasklist_new ();
 
   wnck_tasklist_set_include_all_workspaces (WNCK_TASKLIST (tasklist), display_all);
   if (always_group)

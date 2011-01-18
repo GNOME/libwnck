@@ -51,17 +51,8 @@ WnckTasklist
 
 </para>
 
-@screen: 
+@void: 
 @Returns: 
-
-
-<!-- ##### FUNCTION wnck_tasklist_set_screen ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@screen: 
 
 
 <!-- ##### ENUM WnckTasklistGroupingType ##### -->
@@ -116,42 +107,6 @@ WnckTasklist
 
 @tasklist: 
 @relief: 
-
-
-<!-- ##### FUNCTION wnck_tasklist_get_minimum_width ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_tasklist_set_minimum_width ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@size: 
-
-
-<!-- ##### FUNCTION wnck_tasklist_get_minimum_height ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@Returns: 
-
-
-<!-- ##### FUNCTION wnck_tasklist_set_minimum_height ##### -->
-<para>
-
-</para>
-
-@tasklist: 
-@size: 
 
 
 <!-- ##### USER_FUNCTION WnckLoadIconFunction ##### -->

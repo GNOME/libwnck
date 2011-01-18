@@ -286,16 +286,6 @@ WnckScreen
 @Returns: 
 
 
-<!-- ##### FUNCTION wnck_screen_get_workspace_index ##### -->
-<para>
-
-</para>
-
-@screen: 
-@space: 
-@Returns: 
-
-
 <!-- ##### ENUM WnckMotionDirection ##### -->
 <para>
 
@@ -305,17 +295,6 @@ WnckScreen
 @WNCK_MOTION_DOWN: 
 @WNCK_MOTION_LEFT: 
 @WNCK_MOTION_RIGHT: 
-
-<!-- ##### FUNCTION wnck_screen_get_workspace_neighbor ##### -->
-<para>
-
-</para>
-
-@screen: 
-@space: 
-@direction: 
-@Returns: 
-
 
 <!-- ##### FUNCTION wnck_screen_get_workspace_count ##### -->
 <para>

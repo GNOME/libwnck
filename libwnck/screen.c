@@ -795,42 +795,6 @@ wnck_screen_get_workspace (WnckScreen *screen,
 }
 
 /**
- * wnck_screen_get_workspace_index:
- * @screen: a #WnckScreen.
- * @space: a #WnckWorkspace.
- *
- * Gets the index of @space on @screen. The first #WnckWorkspace has an
- * index of 0. See also wnck_workspace_get_number().
- *
- * Return value: the index of @space on @screen, or -1 on errors.
- *
- * Since: 2.14
- * Deprecated:2.20: Use wnck_workspace_get_number() instead.
- **/
-int
-wnck_screen_get_workspace_index (WnckScreen    *screen,
-                                 WnckWorkspace *space)
-{
-  GList *tmp;
-  int i;
-
-  g_return_val_if_fail (WNCK_IS_SCREEN (screen), -1);
-
-  i = 0;
-  tmp = screen->priv->workspaces;
-  while (tmp != NULL)
-    {
-      if (tmp->data == space)
-        return i;
-
-      ++i;
-
-      tmp = tmp->next;
-    }
-  return -1; /* compiler warnings */
-}
-
-/**
  * wnck_screen_get_active_workspace:
  * @screen: a #WnckScreen.
  *
@@ -848,72 +812,6 @@ wnck_screen_get_active_workspace (WnckScreen *screen)
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
   return screen->priv->active_workspace;
-}
-
-/**
- * wnck_screen_get_workspace_neighbor:
- * @screen: a #WnckScreen.
- * @space: a #WnckWorkspace.
- * @direction: direction in which to search the neighbor.
- *
- * Gets the neighbor #WnckWorkspace of @space in the @direction direction on
- * @screen.
- *
- * Return value: (transfer none): the neighbor #WnckWorkspace of @space in the
- * @direction direction on @screen, or %NULL if no such neighbor #WnckWorkspace
- * exists. The returned #WnckWorkspace is owned by libwnck and must not be
- * referenced or unreferenced.
- *
- * Since: 2.14
- * Deprecated:2.20: Use wnck_workspace_get_neighbor() instead.
- **/
-WnckWorkspace*
-wnck_screen_get_workspace_neighbor (WnckScreen         *screen,
-                                    WnckWorkspace      *space,
-                                    WnckMotionDirection direction)
-{
-  WnckWorkspaceLayout layout;
-  int i, space_index;
-
-  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
-
-  space_index = wnck_screen_get_workspace_index (screen, space);
-
-  wnck_screen_calc_workspace_layout (screen, -1,
-                                     space_index, &layout);
-
-  switch (direction)
-    {
-    case WNCK_MOTION_LEFT:
-      layout.current_col -= 1;
-      break;
-    case WNCK_MOTION_RIGHT:
-      layout.current_col += 1;
-      break;
-    case WNCK_MOTION_UP:
-      layout.current_row -= 1;
-      break;
-    case WNCK_MOTION_DOWN:
-      layout.current_row += 1;
-      break;
-    }
-
-  if (layout.current_col < 0)
-    layout.current_col = 0;
-  if (layout.current_col >= layout.cols)
-    layout.current_col = layout.cols - 1;
-  if (layout.current_row < 0)
-    layout.current_row = 0;
-  if (layout.current_row >= layout.rows)
-    layout.current_row = layout.rows - 1;
-
-  i = layout.grid[layout.current_row * layout.cols + layout.current_col];
-
-  if (i < 0)
-    i = space_index;
-
-  wnck_screen_free_workspace_layout (&layout);
-  return wnck_screen_get_workspace (screen, i);
 }
 
 /**

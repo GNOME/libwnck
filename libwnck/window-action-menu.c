@@ -21,8 +21,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#undef WNCK_DISABLE_DEPRECATED
-
 #include <config.h>
 
 #include <string.h>
@@ -1224,21 +1222,4 @@ wnck_action_menu_new (WnckWindow *window)
   return g_object_new (WNCK_TYPE_ACTION_MENU,
                        "window", window,
                        NULL);
-}
-
-/**
- * wnck_create_window_action_menu:
- * @window: the #WnckWindow for which a menu will be created.
- *
- * Creates a new #WnckActionMenu. The #WnckActionMenu will be filled with menu
- * items for window operations on @window.
- *
- * Return value: a newly created #WnckActionMenu.
- *
- * Deprecated:2.22: Use wnck_action_menu_new() instead.
- */
-GtkWidget*
-wnck_create_window_action_menu (WnckWindow *window)
-{
-	return wnck_action_menu_new (window);
 }

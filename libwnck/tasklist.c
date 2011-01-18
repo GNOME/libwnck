@@ -23,8 +23,6 @@
  * Boston, MA 02111-1307, USA.
 */
 
-#undef WNCK_DISABLE_DEPRECATED
-
 #include <config.h>
 
 #include <math.h>
@@ -994,66 +992,6 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 }
 
 /**
- * wnck_tasklist_set_minimum_width:
- * @tasklist: a #WnckTasklist.
- * @size: a minimum width in pixels.
- *
- * Does nothing.
- *
- * Deprecated:2.20:
- */
-void
-wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size)
-{
-}
-
-/**
- * wnck_tasklist_get_minimum_width:
- * @tasklist: a #WnckTasklist.
- *
- * Returns -1.
- *
- * Return value: -1.
- *
- * Deprecated:2.20:
- */
-gint
-wnck_tasklist_get_minimum_width (WnckTasklist *tasklist)
-{
-  return -1;
-}
-
-/**
- * wnck_tasklist_set_minimum_height:
- * @tasklist: a #WnckTasklist.
- * @size: a minimum height in pixels.
- *
- * Does nothing.
- *
- * Deprecated:2.20:
- */
-void
-wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size)
-{
-}
-
-/**
- * wnck_tasklist_get_minimum_height:
- * @tasklist: a #WnckTasklist.
- *
- * Returns -1.
- *
- * Return value: -1.
- *
- * Deprecated:2.20:
- */
-gint
-wnck_tasklist_get_minimum_height (WnckTasklist *tasklist)
-{
-  return -1;
-}
-
-/**
  * wnck_tasklist_set_icon_loader:
  * @tasklist: a #WnckTasklist
  * @load_icon_func: icon loader function
@@ -1911,22 +1849,6 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 #endif
 }
 
-/**
- * wnck_tasklist_set_screen:
- * @tasklist: a #WnckTasklist.
- * @screen: a #WnckScreen.
- *
- * Does nothing.
- *
- * Since: 2.2
- * Deprecated:2.20:
- */
-void
-wnck_tasklist_set_screen (WnckTasklist *tasklist,
-			  WnckScreen   *screen)
-{
-}
-
 static gboolean
 wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
                          GdkEventScroll *event,
@@ -2051,16 +1973,14 @@ wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
 
 /**
  * wnck_tasklist_new:
- * @screen: deprecated argument, can be %NULL.
  *
  * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
  * #WnckScreen it is on.
  *
  * Return value: a newly created #WnckTasklist.
  */
-/* TODO: when we break API again, remove the screen from here */
 GtkWidget*
-wnck_tasklist_new (WnckScreen *screen)
+wnck_tasklist_new (void)
 {
   WnckTasklist *tasklist;
 

@@ -31,17 +31,8 @@ WnckPager
 
 </para>
 
-@screen: 
+@void: 
 @Returns: 
-
-
-<!-- ##### FUNCTION wnck_pager_set_screen ##### -->
-<para>
-
-</para>
-
-@pager: 
-@screen: 
 
 
 <!-- ##### FUNCTION wnck_pager_set_orientation ##### -->

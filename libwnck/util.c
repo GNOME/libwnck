@@ -21,8 +21,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#undef WNCK_DISABLE_DEPRECATED
-
 #include <config.h>
 
 #include <glib/gi18n-lib.h>
@@ -55,23 +53,6 @@
  * These functions are utility functions providing some additional features to
  * libwcnk users.
  */
-
-/**
- * wnck_gtk_window_set_dock_type:
- * @window: a <classname>GtkWindow</classname>.
- *
- * Sets the semantic type of @window to %WNCK_WINDOW_DOCK.
- *
- * Deprecated:2.20: Use gdk_window_set_type_hint() instead.
- */
-void
-wnck_gtk_window_set_dock_type (GtkWindow *window)
-{
-  g_return_if_fail (GTK_IS_WINDOW (window));
-
-  gdk_window_set_type_hint (gtk_widget_get_window (GTK_WIDGET (window)),
-		  	    GDK_WINDOW_TYPE_HINT_DOCK);
-}
 
 typedef enum
 {

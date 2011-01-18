@@ -19,8 +19,7 @@ static GOptionEntry entries[] = {
 };
 
 static void
-create_pager_window (WnckScreen *screen,
-                     GtkOrientation orientation,
+create_pager_window (GtkOrientation orientation,
 		     gboolean       show_all,
 		     WnckPagerDisplayMode mode,
 		     int n_rows)
@@ -45,7 +44,7 @@ create_pager_window (WnckScreen *screen,
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  pager = wnck_pager_new (screen);
+  pager = wnck_pager_new ();
 
   wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
   wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
@@ -93,7 +92,7 @@ main (int argc, char **argv)
   else
 	  mode = WNCK_PAGER_DISPLAY_CONTENT;
 
-  create_pager_window (screen, orientation, !only_current, mode, n_rows);
+  create_pager_window (orientation, !only_current, mode, n_rows);
 
   gtk_main ();
 

@@ -24,8 +24,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#undef WNCK_DISABLE_DEPRECATED
-
 #include <config.h>
 
 #include <math.h>
@@ -1920,22 +1918,6 @@ wnck_pager_focus (GtkWidget        *widget,
   return GTK_WIDGET_CLASS (wnck_pager_parent_class)->focus (widget, direction);
 }
 
-/**
- * wnck_pager_set_screen:
- * @pager: a #WnckPager.
- * @screen: a #WnckScreen.
- *
- * Does nothing.
- *
- * Since: 2.2
- * Deprecated:2.20:
- */
-void
-wnck_pager_set_screen (WnckPager  *pager,
-		       WnckScreen *screen)
-{
-}
-
 static gboolean
 wnck_pager_query_tooltip (GtkWidget  *widget,
                           gint        x,
@@ -1991,16 +1973,14 @@ wnck_pager_query_tooltip (GtkWidget  *widget,
 
 /**
  * wnck_pager_new:
- * @screen: deprecated argument, can be %NULL.
  *
  * Creates a new #WnckPager. The #WnckPager will show the #WnckWorkspace of the
  * #WnckScreen it is on.
  *
  * Return value: a newly created #WnckPager.
  */
-/* TODO: when we break API again, remove the screen from here */
 GtkWidget*
-wnck_pager_new (WnckScreen *screen)
+wnck_pager_new (void)
 {
   WnckPager *pager;
 
