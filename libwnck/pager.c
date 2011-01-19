@@ -2584,7 +2584,7 @@ wnck_pager_get_background (WnckPager *pager,
   if (p != None)
     {
       _wnck_error_trap_push ();
-      pix = _wnck_gdk_pixbuf_get_from_pixmap (p);
+      pix = _wnck_gdk_pixbuf_get_from_pixmap (WNCK_SCREEN_XSCREEN (pager->priv->screen), p);
       _wnck_error_trap_pop ();
     }
 

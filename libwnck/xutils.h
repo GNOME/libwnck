@@ -218,7 +218,8 @@ void _wnck_set_desktop_layout (Screen *xscreen,
                                int     rows,
                                int     columns);
 
-GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (Pixmap       xpixmap);
+GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
+                                             Pixmap  xpixmap);
 
 #define WNCK_NO_MANAGER_TOKEN 0
 

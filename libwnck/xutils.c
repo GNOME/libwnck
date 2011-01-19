@@ -1648,7 +1648,8 @@ free_pixels (guchar *pixels, gpointer data)
 }
 
 static cairo_surface_t *
-_wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
+_wnck_cairo_surface_get_from_pixmap (Screen *screen,
+                                     Pixmap  xpixmap)
 {
   cairo_surface_t *surface;
   Display *display;
@@ -1657,7 +1658,7 @@ _wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
   unsigned int w_ret, h_ret, bw_ret, depth_ret;
   XWindowAttributes attrs;
 
-  display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+  display = DisplayOfScreen (screen);
 
   if (!XGetGeometry (display, xpixmap, &root_return,
                      &x_ret, &y_ret, &w_ret, &h_ret, &bw_ret, &depth_ret))
@@ -1667,7 +1668,7 @@ _wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
     {
       surface = cairo_xlib_surface_create_for_bitmap (display,
                                                       xpixmap,
-                                                      GDK_SCREEN_XSCREEN (gdk_screen_get_default ()),
+                                                      screen,
                                                       w_ret,
                                                       h_ret);
     }
@@ -1686,12 +1687,13 @@ _wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
 }
 
 GdkPixbuf*
-_wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
+_wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
+                                  Pixmap  xpixmap)
 {
   cairo_surface_t *surface;
   GdkPixbuf *retval;
 
-  surface = _wnck_cairo_surface_get_from_pixmap (xpixmap);
+  surface = _wnck_cairo_surface_get_from_pixmap (screen, xpixmap);
 
   if (surface == NULL)
     return NULL;
@@ -1727,10 +1729,10 @@ try_pixmap_and_mask (Screen     *screen,
 
   _wnck_error_trap_push ();
 
-  surface = _wnck_cairo_surface_get_from_pixmap (src_pixmap);
+  surface = _wnck_cairo_surface_get_from_pixmap (screen, src_pixmap);
 
   if (surface && src_mask != None)
-    mask_surface = _wnck_cairo_surface_get_from_pixmap (src_mask);
+    mask_surface = _wnck_cairo_surface_get_from_pixmap (screen, src_mask);
 
   _wnck_error_trap_pop ();
 
