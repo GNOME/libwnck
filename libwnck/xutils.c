@@ -76,8 +76,10 @@ _wnck_get_cardinal (Screen *screen,
 }
 
 int
-_wnck_get_wm_state (Window  xwindow)
+_wnck_get_wm_state (Screen *screen,
+                    Window  xwindow)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -87,12 +89,14 @@ _wnck_get_wm_state (Window  xwindow)
   Atom wm_state;
   int retval;
 
+  display = DisplayOfScreen (screen);
+
   wm_state = _wnck_atom_get ("WM_STATE");
   retval = NormalState;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       wm_state,
 			       0, G_MAXLONG,

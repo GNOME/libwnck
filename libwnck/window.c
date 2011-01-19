@@ -2599,7 +2599,8 @@ update_wm_state (WnckWindow *window)
 
   window->priv->wm_state_iconic = FALSE;
 
-  state = _wnck_get_wm_state (window->priv->xwindow);
+  state = _wnck_get_wm_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                              window->priv->xwindow);
 
   if (state == IconicState)
     window->priv->wm_state_iconic = TRUE;

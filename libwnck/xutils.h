@@ -42,7 +42,8 @@ gboolean _wnck_get_cardinal      (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom,
                                   int    *val);
-int      _wnck_get_wm_state      (Window  xwindow);
+int      _wnck_get_wm_state      (Screen *screen,
+                                  Window  xwindow);
 gboolean _wnck_get_window        (Window  xwindow,
                                   Atom    atom,
                                   Window *val);
