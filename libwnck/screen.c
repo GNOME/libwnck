@@ -2743,7 +2743,8 @@ _wnck_screen_change_workspace_name (WnckScreen *screen,
       ++i;
     }
 
-  _wnck_set_utf8_list (screen->priv->xroot,
+  _wnck_set_utf8_list (WNCK_SCREEN_XSCREEN (screen),
+                       screen->priv->xroot,
                        _wnck_atom_get ("_NET_DESKTOP_NAMES"),
                        names);
 

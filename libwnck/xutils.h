@@ -81,7 +81,8 @@ char**   _wnck_get_utf8_list     (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom);
 
-void     _wnck_set_utf8_list     (Window   xwindow,
+void     _wnck_set_utf8_list     (Screen  *screen,
+                                  Window   xwindow,
                                   Atom     atom,
                                   char   **list);
 

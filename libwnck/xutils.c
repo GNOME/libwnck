@@ -653,13 +653,17 @@ _wnck_get_utf8_list (Screen *screen,
 }
 
 void
-_wnck_set_utf8_list (Window   xwindow,
+_wnck_set_utf8_list (Screen  *screen,
+                     Window   xwindow,
                      Atom     atom,
                      char   **list)
 {
+  Display *display;
   Atom utf8_string;
   GString *flattened;
   int i;
+
+  display = DisplayOfScreen (screen);
 
   utf8_string = _wnck_atom_get ("UTF8_STRING");
 
@@ -675,7 +679,7 @@ _wnck_set_utf8_list (Window   xwindow,
 
   _wnck_error_trap_push ();
 
-  XChangeProperty (_wnck_get_default_display(),
+  XChangeProperty (display,
 		   xwindow,
                    atom,
 		   utf8_string, 8, PropModeReplace,
