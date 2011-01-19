@@ -1265,30 +1265,34 @@ latin1_to_utf8 (const char *latin1)
 }
 
 char*
-_wnck_get_res_class_utf8 (Window xwindow)
+_wnck_get_res_class_utf8 (Screen *screen,
+                          Window  xwindow)
 {
   char *res_class;
 
-  _wnck_get_wmclass (xwindow, &res_class, NULL);
+  _wnck_get_wmclass (screen, xwindow, &res_class, NULL);
 
   return res_class;
 }
 
 void
-_wnck_get_wmclass (Window xwindow,
+_wnck_get_wmclass (Screen *screen,
+                   Window  xwindow,
                    char **res_class,
                    char **res_name)
 {
+  Display *display;
   XClassHint ch;
   char *retval;
+
+  display = DisplayOfScreen (screen);
 
   _wnck_error_trap_push ();
 
   ch.res_name = NULL;
   ch.res_class = NULL;
 
-  XGetClassHint (_wnck_get_default_display (), xwindow,
-                 &ch);
+  XGetClassHint (display, xwindow, &ch);
 
   _wnck_error_trap_pop ();
 

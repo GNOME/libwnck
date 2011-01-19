@@ -534,7 +534,7 @@ _wnck_application_create (Window      xwindow,
   application->priv->name = _wnck_get_name (xscreen, xwindow);
 
   if (application->priv->name == NULL)
-    application->priv->name = _wnck_get_res_class_utf8 (xwindow);
+    application->priv->name = _wnck_get_res_class_utf8 (xscreen, xwindow);
 
   if (application->priv->name)
     application->priv->name_from_leader = TRUE;
@@ -724,7 +724,8 @@ update_name (WnckApplication *app)
         {
           /* more than one */
           app->priv->name =
-            _wnck_get_res_class_utf8 (wnck_window_get_xid (app->priv->windows->data));
+            _wnck_get_res_class_utf8 (WNCK_SCREEN_XSCREEN (app->priv->screen),
+                                      wnck_window_get_xid (app->priv->windows->data));
           if (app->priv->name)
             {
               app->priv->name_window = app->priv->windows->data;

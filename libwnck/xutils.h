@@ -133,8 +133,10 @@ char*  _wnck_get_name           (Screen *screen,
                                  Window  xwindow);
 char*  _wnck_get_icon_name      (Screen *screen,
                                  Window  xwindow);
-char*  _wnck_get_res_class_utf8 (Window xwindow);
-void   _wnck_get_wmclass        (Window xwindow,
+char*  _wnck_get_res_class_utf8 (Screen *screen,
+                                 Window  xwindow);
+void   _wnck_get_wmclass        (Screen *screen,
+                                 Window  xwindow,
                                  char **res_class,
                                  char **res_name);
 gboolean _wnck_get_frame_extents  (Screen *screen,

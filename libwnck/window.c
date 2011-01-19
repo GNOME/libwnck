@@ -3062,7 +3062,8 @@ update_wmclass (WnckWindow *window)
   window->priv->res_class = NULL;
   window->priv->res_name = NULL;
 
-  _wnck_get_wmclass (window->priv->xwindow,
+  _wnck_get_wmclass (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                     window->priv->xwindow,
                      &window->priv->res_class,
                      &window->priv->res_name);
 }
