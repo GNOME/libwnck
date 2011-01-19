@@ -2068,7 +2068,8 @@ get_icons (WnckWindow *window)
   icon = NULL;
   mini_icon = NULL;
 
-  if (_wnck_read_icons (window->priv->xwindow,
+  if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                        window->priv->xwindow,
                         window->priv->icon_cache,
                         &icon,
                         DEFAULT_ICON_WIDTH, DEFAULT_ICON_HEIGHT,

@@ -347,7 +347,8 @@ get_icons (WnckApplication *app)
   icon = NULL;
   mini_icon = NULL;
 
-  if (_wnck_read_icons (app->priv->xwindow,
+  if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (app->priv->screen),
+                        app->priv->xwindow,
                         app->priv->icon_cache,
                         &icon,
                         DEFAULT_ICON_WIDTH, DEFAULT_ICON_HEIGHT,

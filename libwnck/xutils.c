@@ -1550,7 +1550,8 @@ argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
 }
 
 static gboolean
-read_rgb_icon (Window         xwindow,
+read_rgb_icon (Screen        *screen,
+               Window         xwindow,
                int            ideal_width,
                int            ideal_height,
                int            ideal_mini_width,
@@ -1562,6 +1563,7 @@ read_rgb_icon (Window         xwindow,
                int           *mini_height,
                guchar       **mini_pixdata)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -1573,10 +1575,12 @@ read_rgb_icon (Window         xwindow,
   gulong *best_mini;
   int mini_w, mini_h;
 
+  display = DisplayOfScreen (screen);
+
   _wnck_error_trap_push ();
   type = None;
   data = NULL;
-  result = XGetWindowProperty (_wnck_get_default_display (),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       _wnck_atom_get ("_NET_WM_ICON"),
 			       0, G_MAXLONG,
@@ -1691,7 +1695,8 @@ _wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
 }
 
 static gboolean
-try_pixmap_and_mask (Pixmap      src_pixmap,
+try_pixmap_and_mask (Screen     *screen,
+                     Pixmap      src_pixmap,
                      Pixmap      src_mask,
                      GdkPixbuf **iconp,
                      int         ideal_width,
@@ -1789,10 +1794,12 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
 }
 
 static void
-get_kwm_win_icon (Window  xwindow,
+get_kwm_win_icon (Screen *screen,
+                  Window  xwindow,
                   Pixmap *pixmap,
                   Pixmap *mask)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -1800,12 +1807,14 @@ get_kwm_win_icon (Window  xwindow,
   Pixmap *icons;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *pixmap = None;
   *mask = None;
 
   _wnck_error_trap_push ();
   icons = NULL;
-  result = XGetWindowProperty (_wnck_get_default_display (), xwindow,
+  result = XGetWindowProperty (display, xwindow,
 			       _wnck_atom_get ("KWM_WIN_ICON"),
 			       0, G_MAXLONG,
 			       False,
@@ -2043,7 +2052,8 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 gboolean
-_wnck_read_icons (Window         xwindow,
+_wnck_read_icons (Screen        *screen,
+                  Window         xwindow,
                   WnckIconCache *icon_cache,
                   GdkPixbuf    **iconp,
                   int            ideal_width,
@@ -2052,6 +2062,7 @@ _wnck_read_icons (Window         xwindow,
                   int            ideal_mini_width,
                   int            ideal_mini_height)
 {
+  Display *display;
   guchar *pixdata;
   int w, h;
   guchar *mini_pixdata;
@@ -2063,6 +2074,8 @@ _wnck_read_icons (Window         xwindow,
   /* Return value is whether the icon changed */
 
   g_return_val_if_fail (icon_cache != NULL, FALSE);
+
+  display = DisplayOfScreen (screen);
 
   *iconp = NULL;
   *mini_iconp = NULL;
@@ -2098,7 +2111,7 @@ _wnck_read_icons (Window         xwindow,
     {
       icon_cache->net_wm_icon_dirty = FALSE;
 
-      if (read_rgb_icon (xwindow,
+      if (read_rgb_icon (screen, xwindow,
                          ideal_width, ideal_height,
                          ideal_mini_width, ideal_mini_height,
                          &w, &h, &pixdata,
@@ -2122,7 +2135,7 @@ _wnck_read_icons (Window         xwindow,
       icon_cache->wm_hints_dirty = FALSE;
 
       _wnck_error_trap_push ();
-      hints = XGetWMHints (_wnck_get_default_display (), xwindow);
+      hints = XGetWMHints (display, xwindow);
       _wnck_error_trap_pop ();
       pixmap = None;
       mask = None;
@@ -2145,7 +2158,7 @@ _wnck_read_icons (Window         xwindow,
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (pixmap, mask,
+          if (try_pixmap_and_mask (screen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {
@@ -2165,13 +2178,13 @@ _wnck_read_icons (Window         xwindow,
     {
       icon_cache->kwm_win_icon_dirty = FALSE;
 
-      get_kwm_win_icon (xwindow, &pixmap, &mask);
+      get_kwm_win_icon (screen, xwindow, &pixmap, &mask);
 
       if ((pixmap != icon_cache->prev_pixmap ||
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (pixmap, mask,
+          if (try_pixmap_and_mask (screen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {

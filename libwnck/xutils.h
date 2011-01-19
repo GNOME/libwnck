@@ -169,7 +169,8 @@ void           _wnck_icon_cache_set_want_fallback    (WnckIconCache *icon_cache,
                                                       gboolean       setting);
 gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache *icon_cache);
 
-gboolean _wnck_read_icons         (Window          xwindow,
+gboolean _wnck_read_icons         (Screen         *screen,
+                                   Window          xwindow,
                                    WnckIconCache  *icon_cache,
                                    GdkPixbuf     **iconp,
                                    int             ideal_width,
