@@ -2380,7 +2380,8 @@ wnck_window_set_icon_geometry (WnckWindow *window,
   window->priv->icon_geometry.width = width;
   window->priv->icon_geometry.height = height;
 
-  _wnck_set_icon_geometry (window->priv->xwindow,
+  _wnck_set_icon_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                           window->priv->xwindow,
                            x, y, width, height);
 }
 

@@ -206,11 +206,12 @@ void _wnck_get_window_position (Screen *screen,
                                 int    *xp,
                                 int    *yp);
 
-void _wnck_set_icon_geometry  (Window xwindow,
-			       int    x,
-			       int    y,
-			       int    width,
-			       int    height);
+void _wnck_set_icon_geometry  (Screen *screen,
+                               Window  xwindow,
+			       int     x,
+			       int     y,
+			       int     width,
+			       int     height);
 
 void _wnck_set_desktop_layout (Screen *xscreen,
                                int     rows,

@@ -2390,13 +2390,17 @@ _wnck_get_window_position (Screen *screen,
 }
 
 void
-_wnck_set_icon_geometry  (Window xwindow,
-			  int    x,
-			  int    y,
-			  int    width,
-			  int    height)
+_wnck_set_icon_geometry  (Screen *screen,
+                          Window  xwindow,
+			  int     x,
+			  int     y,
+			  int     width,
+			  int     height)
 {
+  Display *display;
   gulong data[4];
+
+  display = DisplayOfScreen (screen);
 
   data[0] = x;
   data[1] = y;
@@ -2405,7 +2409,7 @@ _wnck_set_icon_geometry  (Window xwindow,
 
   _wnck_error_trap_push ();
 
-  XChangeProperty (_wnck_get_default_display (),
+  XChangeProperty (display,
 		   xwindow,
 		   _wnck_atom_get ("_NET_WM_ICON_GEOMETRY"),
 		   XA_CARDINAL, 32, PropModeReplace,
