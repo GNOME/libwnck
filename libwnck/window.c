@@ -1434,7 +1434,8 @@ wnck_window_minimize                (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_iconify (window->priv->xwindow);
+  _wnck_iconify (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                 window->priv->xwindow);
 }
 
 /**

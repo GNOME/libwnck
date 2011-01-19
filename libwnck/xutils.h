@@ -98,8 +98,10 @@ int   _wnck_xid_equal (gconstpointer v1,
                        gconstpointer v2);
 guint _wnck_xid_hash  (gconstpointer v);
 
-void _wnck_iconify   (Window xwindow);
-void _wnck_deiconify (Window xwindow);
+void _wnck_iconify   (Screen *screen,
+                      Window  xwindow);
+void _wnck_deiconify (Screen *screen,
+                      Window  xwindow);
 
 void _wnck_close     (Screen *screen,
 		      Window  xwindow,

@@ -816,11 +816,12 @@ _wnck_xid_hash (gconstpointer v)
 }
 
 void
-_wnck_iconify (Window xwindow)
+_wnck_iconify (Screen *screen,
+               Window  xwindow)
 {
   Display *display;
 
-  display = _wnck_get_default_display ();
+  display = DisplayOfScreen (screen);
 
   _wnck_error_trap_push ();
   XIconifyWindow (display, xwindow, DefaultScreen (display));
@@ -828,7 +829,8 @@ _wnck_iconify (Window xwindow)
 }
 
 void
-_wnck_deiconify (Window xwindow)
+_wnck_deiconify (Screen *screen,
+                 Window  xwindow)
 {
   /* We need special precautions, because GDK doesn't like
    * XMapWindow() called on its windows, need to use the
@@ -843,7 +845,7 @@ _wnck_deiconify (Window xwindow)
   if (gdkwindow)
     gdk_window_show (gdkwindow);
   else
-    XMapRaised (_wnck_get_default_display (), xwindow);
+    XMapRaised (DisplayOfScreen (screen), xwindow);
   _wnck_error_trap_pop ();
 }
 
