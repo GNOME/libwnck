@@ -838,8 +838,7 @@ _wnck_deiconify (Screen *screen,
    */
   GdkWindow *gdkwindow;
 
-  gdkwindow = gdk_x11_window_lookup_for_display (gdk_display_get_default (),
-                                                 xwindow);
+  gdkwindow = _wnck_gdk_window_lookup_from_window (screen, xwindow);
 
   _wnck_error_trap_push ();
   if (gdkwindow)
@@ -1362,21 +1361,12 @@ _wnck_select_input (Screen *screen,
                     Window  xwindow,
                     int     mask)
 {
-  Display    *display;
-  GdkDisplay *gdkdisplay;
-  GdkWindow  *gdkwindow;
+  Display   *display;
+  GdkWindow *gdkwindow;
 
   display = DisplayOfScreen (screen);
-  gdkdisplay = gdk_x11_lookup_xdisplay (display);
 
-  if (gdkdisplay)
-    gdkwindow = gdk_x11_window_lookup_for_display (gdkdisplay, xwindow);
-  else
-    {
-      g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
-                 DisplayString (display));
-      gdkwindow = NULL;
-    }
+  gdkwindow = _wnck_gdk_window_lookup_from_window (screen, xwindow);
 
   _wnck_error_trap_push ();
   if (gdkwindow)
@@ -2430,6 +2420,25 @@ _wnck_set_icon_geometry  (Screen *screen,
 		   (guchar *)&data, 4);
 
   _wnck_error_trap_pop ();
+}
+
+GdkWindow*
+_wnck_gdk_window_lookup_from_window (Screen *screen,
+                                     Window  xwindow)
+{
+  Display    *display;
+  GdkDisplay *gdkdisplay;
+
+  display = DisplayOfScreen (screen);
+  gdkdisplay = gdk_x11_lookup_xdisplay (display);
+
+  if (gdkdisplay)
+    return gdk_x11_window_lookup_for_display (gdkdisplay, xwindow);
+
+  g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
+             DisplayString (display));
+
+  return NULL;
 }
 
 /* orientation of pager */

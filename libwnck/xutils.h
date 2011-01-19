@@ -221,6 +221,9 @@ void _wnck_set_desktop_layout (Screen *xscreen,
 GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
                                              Pixmap  xpixmap);
 
+GdkWindow* _wnck_gdk_window_lookup_from_window (Screen *screen,
+                                                Window  xwindow);
+
 #define WNCK_NO_MANAGER_TOKEN 0
 
 int      _wnck_try_desktop_layout_manager           (Screen *xscreen,
