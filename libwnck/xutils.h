@@ -62,7 +62,8 @@ char*    _wnck_get_text_property (Screen *screen,
 char*    _wnck_get_utf8_property (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom);
-gboolean _wnck_get_window_list   (Window   xwindow,
+gboolean _wnck_get_window_list   (Screen  *screen,
+                                  Window   xwindow,
                                   Atom     atom,
                                   Window **windows,
                                   int     *len);

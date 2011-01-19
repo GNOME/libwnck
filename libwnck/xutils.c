@@ -417,11 +417,13 @@ _wnck_get_utf8_property (Screen *screen,
 }
 
 gboolean
-_wnck_get_window_list (Window   xwindow,
+_wnck_get_window_list (Screen  *screen,
+                       Window   xwindow,
                        Atom     atom,
                        Window **windows,
                        int     *len)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -429,12 +431,14 @@ _wnck_get_window_list (Window   xwindow,
   Window *data;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *windows = NULL;
   *len = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,

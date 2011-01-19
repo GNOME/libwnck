@@ -1453,14 +1453,16 @@ update_client_list (WnckScreen *screen)
 
   stack = NULL;
   stack_length = 0;
-  _wnck_get_window_list (screen->priv->xroot,
+  _wnck_get_window_list (WNCK_SCREEN_XSCREEN (screen),
+                         screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST_STACKING"),
                          &stack,
                          &stack_length);
 
   mapping = NULL;
   mapping_length = 0;
-  _wnck_get_window_list (screen->priv->xroot,
+  _wnck_get_window_list (WNCK_SCREEN_XSCREEN (screen),
+                         screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST"),
                          &mapping,
                          &mapping_length);
