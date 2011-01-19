@@ -152,31 +152,6 @@ struct _WnckWorkspaceLayout
 #endif /* WNCK_DISABLE_DEPRECATED */
 
 /**
- * WnckMotionDirection:
- * @WNCK_MOTION_UP: search a neighbor #WnckWorkspace above another
- * #WnckWorkspace. 
- * @WNCK_MOTION_DOWN: search a neighbor #WnckWorkspace below another
- * #WnckWorkspace.
- * @WNCK_MOTION_LEFT: search a neighbor #WnckWorkspace at the left of another
- * #WnckWorkspace.
- * @WNCK_MOTION_RIGHT: search a neighbor #WnckWorkspace at the right of another
- * #WnckWorkspace.
- *
- * Type defining a direction in which to search a neighbor #WnckWorkspace.
- *
- * Since: 2.14
- */
-/* TODO: move this to workspace.h when we break API and remove
- * wnck_screen_get_workspace_neighbor() */
-typedef enum
-{
-  WNCK_MOTION_UP = -1,
-  WNCK_MOTION_DOWN = -2,
-  WNCK_MOTION_LEFT = -3,
-  WNCK_MOTION_RIGHT = -4
-} WnckMotionDirection;
-
-/**
  * WnckLayoutOrientation:
  * @WNCK_LAYOUT_ORIENTATION_HORIZONTAL: the #WnckWorkspace are laid out in
  * rows, with the first #WnckWorkspace in the defined #WnckLayoutCorner.
