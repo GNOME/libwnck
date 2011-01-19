@@ -132,6 +132,16 @@ WnckWorkspace
 @Returns: 
 
 
+<!-- ##### ENUM WnckMotionDirection ##### -->
+<para>
+
+</para>
+
+@WNCK_MOTION_UP: 
+@WNCK_MOTION_DOWN: 
+@WNCK_MOTION_LEFT: 
+@WNCK_MOTION_RIGHT: 
+
 <!-- ##### FUNCTION wnck_workspace_get_neighbor ##### -->
 <para>
 
