@@ -1648,8 +1648,8 @@ apply_mask (GdkPixbuf *pixbuf,
   return with_alpha;
 }
 
-GdkPixbuf*
-_wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
+static cairo_surface_t *
+_wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
 {
   cairo_surface_t *surface;
   Display *display;
@@ -1657,7 +1657,6 @@ _wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
   int x_ret, y_ret;
   unsigned int w_ret, h_ret, bw_ret, depth_ret;
   XWindowAttributes attrs;
-  GdkPixbuf *retval;
 
   display = GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
 
@@ -1684,11 +1683,25 @@ _wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
                                            w_ret, h_ret);
     }
 
+  return surface;
+}
+
+GdkPixbuf*
+_wnck_gdk_pixbuf_get_from_pixmap (Pixmap xpixmap)
+{
+  cairo_surface_t *surface;
+  GdkPixbuf *retval;
+
+  surface = _wnck_cairo_surface_get_from_pixmap (xpixmap);
+
+  if (surface == NULL)
+    return NULL;
+
   retval = gdk_pixbuf_get_from_surface (surface,
                                         0,
                                         0,
-                                        w_ret,
-                                        h_ret);
+                                        cairo_xlib_surface_get_width (surface),
+                                        cairo_xlib_surface_get_height (surface));
   cairo_surface_destroy (surface);
 
   return retval;
