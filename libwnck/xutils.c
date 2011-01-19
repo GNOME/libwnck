@@ -763,7 +763,7 @@ filter_func (GdkXEvent  *gdkxevent,
        * us to send all events through sn_display_process_event
        */
       i = 0;
-      display = _wnck_get_default_display ();
+      display = ((XAnyEvent *) xevent)->display;
 
       while (i < ScreenCount (display))
         {
