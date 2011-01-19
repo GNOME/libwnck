@@ -85,7 +85,7 @@ typedef enum {
 
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
-GtkWidget *wnck_tasklist_new (WnckScreen *screen);
+GtkWidget *wnck_tasklist_new (void);
 const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 					      int           *n_elements);
 
@@ -99,12 +99,6 @@ void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					       gboolean      include_all_workspaces);
 void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
                                       GtkReliefStyle relief);
-#ifndef WNCK_DISABLE_DEPRECATED
-void wnck_tasklist_set_minimum_width (WnckTasklist *tasklist, gint size);
-gint wnck_tasklist_get_minimum_width (WnckTasklist *tasklist);
-void wnck_tasklist_set_minimum_height (WnckTasklist *tasklist, gint size);
-gint wnck_tasklist_get_minimum_height (WnckTasklist *tasklist);
-#endif /* WNCK_DISABLE_DEPRECATED */
 
 /**
  * WnckLoadIconFunction:
@@ -133,14 +127,6 @@ void wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
                                     void                 *data,
                                     GDestroyNotify        free_data_func);
 
-
-#ifndef WNCK_DISABLE_DEPRECATED
-void       wnck_tasklist_set_screen (WnckTasklist *tasklist,
-				     WnckScreen   *screen);
-#endif /* WNCK_DISABLE_DEPRECATED */
-
 G_END_DECLS
 
 #endif /* WNCK_TASKLIST_H */
-
-

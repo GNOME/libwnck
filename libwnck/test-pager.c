@@ -19,42 +19,41 @@ static GOptionEntry entries[] = {
 };
 
 static void
-create_pager_window (WnckScreen *screen,
-                     GtkOrientation orientation,
+create_pager_window (GtkOrientation orientation,
 		     gboolean       show_all,
 		     WnckPagerDisplayMode mode,
 		     int n_rows)
 {
   GtkWidget *win;
   GtkWidget *pager;
-  
+
   win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
 
   gtk_window_stick (GTK_WINDOW (win));
 #if 0
   wnck_gtk_window_set_dock_type (GTK_WINDOW (win));
 #endif
-  
+
   gtk_window_set_title (GTK_WINDOW (win), "Pager");
 
   /* very very random */
   gtk_window_move (GTK_WINDOW (win), 0, 0);
-  
+
   /* quit on window close */
   g_signal_connect (G_OBJECT (win), "destroy",
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  pager = wnck_pager_new (screen);
+  pager = wnck_pager_new ();
 
   wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
   wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
   wnck_pager_set_orientation (WNCK_PAGER (pager), orientation);
   wnck_pager_set_n_rows (WNCK_PAGER (pager), n_rows);
   wnck_pager_set_shadow_type (WNCK_PAGER (pager), GTK_SHADOW_IN);
-  
+
   gtk_container_add (GTK_CONTAINER (win), pager);
-  
+
   gtk_widget_show_all (win);
 }
 
@@ -65,7 +64,7 @@ main (int argc, char **argv)
   GtkOrientation  orientation;
   WnckPagerDisplayMode mode;
   WnckScreen *screen;
-  
+
   ctxt = g_option_context_new ("");
   g_option_context_add_main_entries (ctxt, entries, NULL);
   g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
@@ -82,7 +81,7 @@ main (int argc, char **argv)
 
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
-  
+
   if (vertical)
 	  orientation = GTK_ORIENTATION_VERTICAL;
   else
@@ -93,9 +92,9 @@ main (int argc, char **argv)
   else
 	  mode = WNCK_PAGER_DISPLAY_CONTENT;
 
-  create_pager_window (screen, orientation, !only_current, mode, n_rows);
-  
+  create_pager_window (orientation, !only_current, mode, n_rows);
+
   gtk_main ();
-  
+
   return 0;
 }

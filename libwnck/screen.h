@@ -222,13 +222,6 @@ WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id)
 int            wnck_screen_get_number               (WnckScreen *screen);
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
-#ifndef WNCK_DISABLE_DEPRECATED
-int            wnck_screen_get_workspace_index      (WnckScreen    *screen,
-                                                     WnckWorkspace *space);
-WnckWorkspace* wnck_screen_get_workspace_neighbor   (WnckScreen         *screen,
-                                                     WnckWorkspace      *space,
-                                                     WnckMotionDirection direction);
-#endif /* WNCK_DISABLE_DEPRECATED */
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
 GList*         wnck_screen_get_workspaces           (WnckScreen *screen);
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);

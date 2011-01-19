@@ -1,6 +1,6 @@
 AC_PREREQ(2.62)
 
-AC_INIT([libwnck], [2.30.7],
+AC_INIT([libwnck], [2.91.0],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
 AM_CONFIG_HEADER(config.h)
@@ -16,16 +16,16 @@ GNOME_MAINTAINER_MODE_DEFINES
 dnl libtool versioning for libwnck
 
 dnl increment if the interface has additions, changes, removals.
-LIBWNCK_CURRENT=25
+LIBWNCK_CURRENT=0
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=31
+LIBWNCK_REVISION=0
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has
 dnl  precedence over adding, so set to 0 if both happened.
-LIBWNCK_AGE=3
+LIBWNCK_AGE=0
 
 AC_SUBST(LIBWNCK_CURRENT)
 AC_SUBST(LIBWNCK_REVISION)
@@ -144,7 +144,7 @@ AC_SUBST(XRES_PACKAGE)
 AC_SUBST(XLIB_CFLAGS)
 AC_SUBST(XLIB_LIBS)
 
-PKG_CHECK_MODULES(LIBWNCK, gtk+-2.0 >= 2.19.7 glib-2.0 >= 2.16.0 gobject-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE $XRES_PACKAGE)
+PKG_CHECK_MODULES(LIBWNCK, gtk+-3.0 >= 2.91.5 glib-2.0 >= 2.16.0 gobject-2.0 >= 2.13.0 $STARTUP_NOTIFICATION_PACKAGE $XRES_PACKAGE)
 AC_SUBST(LIBWNCK_LIBS)
 AC_SUBST(LIBWNCK_CFLAGS)
 
@@ -174,8 +174,8 @@ Makefile
 doc/Makefile
 po/Makefile.in
 libwnck/Makefile
-libwnck-1.0.pc
-libwnck-1.0-uninstalled.pc
+libwnck-3.0.pc
+libwnck-3.0-uninstalled.pc
 ])
 
 dnl ---------------------------------------------------------------------------

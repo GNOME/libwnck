@@ -20,14 +20,6 @@ Miscellaneous Functions
 <!-- ##### SECTION Image ##### -->
 
 
-<!-- ##### FUNCTION wnck_gtk_window_set_dock_type ##### -->
-<para>
-
-</para>
-
-@window: 
-
-
 <!-- ##### ENUM WnckClientType ##### -->
 <para>
 

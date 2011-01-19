@@ -110,5 +110,5 @@ that case.
       <title>Index of new symbols in 2.22</title>
     </index> 
   </part>
-
+  <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
 </book>

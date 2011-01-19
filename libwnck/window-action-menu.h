@@ -68,10 +68,6 @@ GType wnck_action_menu_get_type (void) G_GNUC_CONST;
 
 GtkWidget* wnck_action_menu_new (WnckWindow *window);
 
-#ifndef WNCK_DISABLE_DEPRECATED
-GtkWidget* wnck_create_window_action_menu (WnckWindow *window);
-#endif /* WNCK_DISABLE_DEPRECATED */
-
 G_END_DECLS
 
 #endif /* WNCK_WINDOW_MENU_H */

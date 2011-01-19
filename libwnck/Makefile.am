@@ -1,4 +1,4 @@
-lib_LTLIBRARIES = libwnck-1.la
+lib_LTLIBRARIES = libwnck-3.la
 bin_PROGRAMS =			\
 	wnckprop		\
 	wnck-urgency-monitor
@@ -33,7 +33,7 @@ wnck_headers =			\
 
 wnck_built_installed_headers = wnck-enum-types.h
 
-libwnckincludedir = $(includedir)/libwnck-1.0/libwnck
+libwnckincludedir = $(includedir)/libwnck-3.0/libwnck
 libwnckinclude_HEADERS =		\
 	$(wnck_headers)			\
 	$(wnck_built_installed_headers)
@@ -64,7 +64,7 @@ wnck_accessibility_files =			\
 wnck_built_headers = $(wnck_built_installed_headers) wnck-marshal.h inlinepixbufs.h
 wnck_built_cfiles = wnck-enum-types.c wnck-marshal.c
 
-libwnck_1_la_SOURCES = 		\
+libwnck_3_la_SOURCES = 		\
 	$(wnck_built_headers)	\
 	$(wnck_built_cfiles)	\
 	$(wnck_sources)		\
@@ -73,19 +73,19 @@ libwnck_1_la_SOURCES = 		\
 	xutils.h		\
 	$(wnck_accessibility_files)
 
-$(libwnck_1_la_OBJECTS): $(wnck_built_headers)
+$(libwnck_3_la_OBJECTS): $(wnck_built_headers)
 
-libwnck_1_la_CPPFLAGS =			\
+libwnck_3_la_CPPFLAGS =			\
 	$(AM_CPPFLAGS)			\
 	$(XLIB_CFLAGS)			\
 	-DG_LOG_DOMAIN=\"Wnck\"		\
 	-DSN_API_NOT_YET_FROZEN=1
 
-libwnck_1_la_LIBADD =	\
+libwnck_3_la_LIBADD =	\
 	$(LIBWNCK_LIBS)	\
 	$(XLIB_LIBS)
 
-libwnck_1_la_LDFLAGS =								\
+libwnck_3_la_LDFLAGS =								\
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE)	\
 	-no-undefined								\
 	-export-symbols-regex "^[^_].*"
@@ -167,13 +167,13 @@ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 if HAVE_INTROSPECTION
 introspection_sources = $(wnck_sources) $(libwnckinclude_HEADERS)
 
-Wnck-1.0.gir: libwnck-1.la
-Wnck_1_0_gir_INCLUDES = GObject-2.0 GdkPixbuf-2.0 Gtk-2.0
-Wnck_1_0_gir_CFLAGS = $(AM_CPPFLAGS)
-Wnck_1_0_gir_LIBS = libwnck-1.la
-Wnck_1_0_gir_SCANNERFLAGS = --pkg-export=libwnck-1.0
-Wnck_1_0_gir_FILES = $(introspection_sources)
-INTROSPECTION_GIRS += Wnck-1.0.gir
+Wnck-3.0.gir: libwnck-3.la
+Wnck_3_0_gir_INCLUDES = GObject-2.0 GdkPixbuf-2.0 Gtk-3.0
+Wnck_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
+Wnck_3_0_gir_LIBS = libwnck-3.la
+Wnck_3_0_gir_SCANNERFLAGS = --pkg-export=libwnck-3.0
+Wnck_3_0_gir_FILES = $(introspection_sources)
+INTROSPECTION_GIRS += Wnck-3.0.gir
 
 girdir = $(INTROSPECTION_GIRDIR)
 gir_DATA = $(INTROSPECTION_GIRS)

@@ -1,6 +1,6 @@
 /* vim: set sw=2 et: */
 /*
- * Copyright (C) 2007 Vincent Untz 
+ * Copyright (C) 2007 Vincent Untz
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -296,7 +296,7 @@ static GOptionEntry space_entries[] = {
 static void clean_up (void);
 
 /* this part is mostly stolen from xutils.c */
-typedef struct 
+typedef struct
 {
   Window window;
   Atom timestamp_prop_atom;
@@ -1725,7 +1725,7 @@ find_managed_window (Display *display,
   return retval;
 }
 
-static void 
+static void
 handle_button_press_event (XKeyEvent *event)
 {
   if (event->subwindow == None)
@@ -1818,7 +1818,7 @@ main (int argc, char **argv)
   GOptionGroup   *group;
   GError         *error;
   WnckScreen     *screen;
-  
+
   bindtextdomain (GETTEXT_PACKAGE, WNCK_LOCALEDIR);
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   textdomain (GETTEXT_PACKAGE);
@@ -1924,7 +1924,7 @@ main (int argc, char **argv)
       if (!got_from_user)
         return 0;
     }
-  
+
   if (mode == SCREEN_READ_MODE)
     print_screen (screen);
   else if (mode == SCREEN_LIST_MODE)
@@ -2025,6 +2025,6 @@ main (int argc, char **argv)
         g_printerr (_("Cannot interact with window with XID %lu: "
                       "the window cannot be found\n"), xid);
     }
-  
+
   return 0;
 }

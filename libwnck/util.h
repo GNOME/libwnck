@@ -106,11 +106,4 @@ void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             pid,
                                    WnckResourceUsage *usage);
 
-
-#ifndef WNCK_DISABLE_DEPRECATED
-void wnck_gtk_window_set_dock_type (GtkWindow *window);
-#endif /* WNCK_DISABLE_DEPRECATED */
-
 #endif /* WNCK_UTIL_H */
-
-

@@ -54,7 +54,7 @@ wnck_workspace_accessible_get_type (void)
 
   if (!type)
     {
-      const GTypeInfo tinfo = 
+      const GTypeInfo tinfo =
       {
         sizeof (WnckWorkspaceAccessibleClass),
         (GBaseInitFunc) NULL, /* base init */
@@ -68,7 +68,7 @@ wnck_workspace_accessible_get_type (void)
         NULL /* value table */
       };
 
-      const GInterfaceInfo atk_component_info = 
+      const GInterfaceInfo atk_component_info =
       {
         (GInterfaceInitFunc) atk_component_interface_init,
         (GInterfaceFinalizeFunc) NULL,
@@ -92,10 +92,10 @@ atk_component_interface_init (AtkComponentIface *iface)
   iface->contains = wnck_workspace_accessible_contains;
 }
 
-static void 
+static void
 wnck_workspace_accessible_get_extents (AtkComponent *component,
-                                       int          *x, 
-                                       int          *y, 
+                                       int          *x,
+                                       int          *y,
                                        int          *width,
                                        int          *height,
                                        AtkCoordType  coords)
@@ -142,11 +142,11 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
   atk_component_get_position (ATK_COMPONENT (parent), &px,&py, coords);
 
   _wnck_pager_get_workspace_rect (pager, WNCK_WORKSPACE_ACCESSIBLE (component)->index, &rect);
-  
+
   *x = rect.x + px;
   *y = rect.y + py;
   *height = rect.height;
-  *width = rect.width; 
+  *width = rect.width;
 }
 
 static void
@@ -154,11 +154,11 @@ wnck_workspace_accessible_get_size (AtkComponent *component,
                                     int          *width,
                                     int          *height)
 {
-  AtkCoordType coords = ATK_XY_SCREEN; 
+  AtkCoordType coords = ATK_XY_SCREEN;
   int x, y;
 
   /* FIXME: Value for initialization of coords picked randomly to please gcc */
-  
+
   wnck_workspace_accessible_get_extents (component, &x, &y, width, height, coords);
 }
 
@@ -173,7 +173,7 @@ wnck_workspace_accessible_get_position (AtkComponent *component,
 }
 
 static gboolean
-wnck_workspace_accessible_contains (AtkComponent *component, 
+wnck_workspace_accessible_contains (AtkComponent *component,
                                     int           x,
                                     int           y,
                                     AtkCoordType  coords)
@@ -217,7 +217,7 @@ wnck_workspace_accessible_new (GObject *obj)
 
   WNCK_WORKSPACE_ACCESSIBLE (atk_object)->index =
     wnck_workspace_get_number (WNCK_WORKSPACE (obj));
-  
+
   return atk_object;
 }
 
