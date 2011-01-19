@@ -316,9 +316,11 @@ _wnck_get_text_property (Screen *screen,
 }
 
 static char*
-_wnck_get_string_property_latin1 (Window  xwindow,
+_wnck_get_string_property_latin1 (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -327,9 +329,11 @@ _wnck_get_string_property_latin1 (Window  xwindow,
   int err, result;
   char *retval;
 
+  display = DisplayOfScreen (screen);
+
   _wnck_error_trap_push ();
   str = NULL;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow, atom,
 			       0, G_MAXLONG,
 			       False, XA_STRING, &type, &format, &nitems,
@@ -1158,7 +1162,7 @@ _wnck_get_session_id (Screen *screen,
   if (client_leader == None)
     return NULL;
 
-  return _wnck_get_string_property_latin1 (client_leader,
+  return _wnck_get_string_property_latin1 (screen, client_leader,
                                            _wnck_atom_get ("SM_CLIENT_ID"));
 }
 
