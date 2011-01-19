@@ -121,10 +121,12 @@ _wnck_get_wm_state (Screen *screen,
 }
 
 gboolean
-_wnck_get_window (Window  xwindow,
+_wnck_get_window (Screen *screen,
+                  Window  xwindow,
                   Atom    atom,
                   Window *val)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -132,11 +134,13 @@ _wnck_get_window (Window  xwindow,
   Window *w;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *val = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -1129,12 +1133,13 @@ _wnck_toggle_showing_desktop (Screen  *screen,
 }
 
 char*
-_wnck_get_session_id (Window xwindow)
+_wnck_get_session_id (Screen *screen,
+                      Window  xwindow)
 {
   Window client_leader;
 
   client_leader = None;
-  _wnck_get_window (xwindow,
+  _wnck_get_window (screen, xwindow,
                     _wnck_atom_get ("WM_CLIENT_LEADER"),
                     &client_leader);
 

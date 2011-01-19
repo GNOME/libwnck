@@ -499,12 +499,15 @@ _wnck_window_create (Window      xwindow,
                      gint        sort_order)
 {
   WnckWindow *window;
+  Screen     *xscreen;
 
   if (window_hash == NULL)
     window_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
 
   g_return_val_if_fail (g_hash_table_lookup (window_hash, &xwindow) == NULL,
                         NULL);
+
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
 
   window = g_object_new (WNCK_TYPE_WINDOW, NULL);
   window->priv->xwindow = xwindow;
@@ -527,17 +530,16 @@ _wnck_window_create (Window      xwindow,
   window->priv->group_leader = window->priv->xwindow;
 
   window->priv->session_id =
-    _wnck_get_session_id (window->priv->xwindow);
+    _wnck_get_session_id (xscreen, window->priv->xwindow);
 
   window->priv->pid =
-    _wnck_get_pid (WNCK_SCREEN_XSCREEN (window->priv->screen),
-                   window->priv->xwindow);
+    _wnck_get_pid (xscreen, window->priv->xwindow);
 
   window->priv->x = 0;
   window->priv->y = 0;
   window->priv->width = 0;
   window->priv->height = 0;
-  _wnck_get_window_geometry (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_get_window_geometry (xscreen,
 			     xwindow,
                              &window->priv->x,
                              &window->priv->y,
@@ -3005,7 +3007,8 @@ update_transient_for (WnckWindow *window)
   window->priv->need_update_transient_for = FALSE;
 
   parent = None;
-  if (_wnck_get_window (window->priv->xwindow,
+  if (_wnck_get_window (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                        window->priv->xwindow,
                         _wnck_atom_get ("WM_TRANSIENT_FOR"),
                         &parent) &&
       parent != window->priv->xwindow)

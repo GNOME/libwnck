@@ -1993,7 +1993,8 @@ update_active_window (WnckScreen *screen)
   screen->priv->need_update_active_window = FALSE;
 
   xwindow = None;
-  _wnck_get_window (screen->priv->xroot,
+  _wnck_get_window (WNCK_SCREEN_XSCREEN (screen),
+                    screen->priv->xroot,
                     _wnck_atom_get ("_NET_ACTIVE_WINDOW"),
                     &xwindow);
 
@@ -2193,7 +2194,8 @@ update_wm (WnckScreen *screen)
   screen->priv->need_update_wm = FALSE;
 
   wm_window = None;
-  _wnck_get_window (screen->priv->xroot,
+  _wnck_get_window (WNCK_SCREEN_XSCREEN (screen),
+                    screen->priv->xroot,
                     _wnck_atom_get ("_NET_SUPPORTING_WM_CHECK"),
                     &wm_window);
 

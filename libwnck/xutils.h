@@ -44,7 +44,8 @@ gboolean _wnck_get_cardinal      (Screen *screen,
                                   int    *val);
 int      _wnck_get_wm_state      (Screen *screen,
                                   Window  xwindow);
-gboolean _wnck_get_window        (Window  xwindow,
+gboolean _wnck_get_window        (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom,
                                   Window *val);
 gboolean _wnck_get_pixmap        (Window  xwindow,
@@ -113,7 +114,8 @@ void _wnck_change_viewport (Screen *screen,
 			    int     x,
 			    int     y);
 
-char*  _wnck_get_session_id     (Window xwindow);
+char*  _wnck_get_session_id     (Screen *screen,
+                                 Window xwindow);
 int    _wnck_get_pid            (Screen *screen,
                                  Window  xwindow);
 char*  _wnck_get_name           (Window xwindow);
