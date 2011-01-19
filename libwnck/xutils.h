@@ -48,7 +48,8 @@ gboolean _wnck_get_window        (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom,
                                   Window *val);
-gboolean _wnck_get_pixmap        (Window  xwindow,
+gboolean _wnck_get_pixmap        (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom,
                                   Pixmap *val);
 gboolean _wnck_get_atom          (Window  xwindow,

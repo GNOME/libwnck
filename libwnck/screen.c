@@ -2152,7 +2152,8 @@ update_bg_pixmap (WnckScreen *screen)
   screen->priv->need_update_bg_pixmap = FALSE;
 
   p = None;
-  _wnck_get_pixmap (screen->priv->xroot,
+  _wnck_get_pixmap (WNCK_SCREEN_XSCREEN (screen),
+                    screen->priv->xroot,
                     _wnck_atom_get ("_XROOTPMAP_ID"),
                     &p);
   /* may have failed, so p may still be None */
