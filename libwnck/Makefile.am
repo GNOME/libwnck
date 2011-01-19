@@ -161,7 +161,7 @@ EXTRA_DIST = 				\
 # Introspection
 -include $(INTROSPECTION_MAKEFILE)
 INTROSPECTION_GIRS =
-INTROSPECTION_SCANNER_ARGS = --warn-all --add-include-path=$(srcdir)
+INTROSPECTION_SCANNER_ARGS = --warn-all --add-include-path=$(srcdir) --c-include="libwnck/libwnck.h"
 INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
 
 if HAVE_INTROSPECTION
