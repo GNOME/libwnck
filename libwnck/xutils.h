@@ -67,7 +67,8 @@ gboolean _wnck_get_window_list   (Screen  *screen,
                                   Atom     atom,
                                   Window **windows,
                                   int     *len);
-gboolean _wnck_get_atom_list     (Window   xwindow,
+gboolean _wnck_get_atom_list     (Screen  *screen,
+                                  Window   xwindow,
                                   Atom     atom,
                                   Atom   **atoms,
                                   int     *len);

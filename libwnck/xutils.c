@@ -465,11 +465,13 @@ _wnck_get_window_list (Screen  *screen,
 }
 
 gboolean
-_wnck_get_atom_list (Window   xwindow,
+_wnck_get_atom_list (Screen  *screen,
+                     Window   xwindow,
                      Atom     atom,
                      Atom   **atoms,
                      int     *len)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -477,12 +479,14 @@ _wnck_get_atom_list (Window   xwindow,
   Atom *data;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *atoms = NULL;
   *len = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,

@@ -2647,7 +2647,8 @@ update_state (WnckWindow *window)
 
       atoms = NULL;
       n_atoms = 0;
-      _wnck_get_atom_list (window->priv->xwindow,
+      _wnck_get_atom_list (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                           window->priv->xwindow,
                            _wnck_atom_get ("_NET_WM_STATE"),
                            &atoms, &n_atoms);
 
@@ -2835,7 +2836,8 @@ update_actions (WnckWindow *window)
 
   atoms = NULL;
   n_atoms = 0;
-  if (!_wnck_get_atom_list (window->priv->xwindow,
+  if (!_wnck_get_atom_list (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                            window->priv->xwindow,
                             _wnck_atom_get ("_NET_WM_ALLOWED_ACTIONS"),
                             &atoms,
                             &n_atoms))
@@ -2943,7 +2945,8 @@ update_wintype (WnckWindow *window)
 
   atoms = NULL;
   n_atoms = 0;
-  if (_wnck_get_atom_list (window->priv->xwindow,
+  if (_wnck_get_atom_list (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                           window->priv->xwindow,
                            _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
                            &atoms,
                            &n_atoms))
