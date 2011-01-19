@@ -2497,7 +2497,8 @@ timestamp_predicate (Display *display,
  * Return value: the time stamp.
  **/
 static Time
-get_server_time (Window window)
+get_server_time (Display *display,
+                 Window   window)
 {
   unsigned char c = 'a';
   XEvent xevent;
@@ -2506,11 +2507,11 @@ get_server_time (Window window)
   info.timestamp_prop_atom = _wnck_atom_get ("_TIMESTAMP_PROP");
   info.window = window;
 
-  XChangeProperty (_wnck_get_default_display (), window,
+  XChangeProperty (display, window,
 		   info.timestamp_prop_atom, info.timestamp_prop_atom,
 		   8, PropModeReplace, &c, 1);
 
-  XIfEvent (_wnck_get_default_display (), &xevent,
+  XIfEvent (display, &xevent,
 	    timestamp_predicate, (XPointer)&info);
 
   return xevent.xproperty.time;
@@ -2614,7 +2615,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
                                     WhitePixel (display, number));
 
   XSelectInput (display, lm->window, PropertyChangeMask);
-  timestamp = get_server_time (lm->window);
+  timestamp = get_server_time (display, lm->window);
 
   XSetSelectionOwner (display, lm->selection_atom,
 		      lm->window, timestamp);
@@ -2681,7 +2682,7 @@ _wnck_release_desktop_layout_manager (Screen *xscreen,
                 {
                   Time timestamp;
 
-                  timestamp = get_server_time (lm->window);
+                  timestamp = get_server_time (display, lm->window);
                   XSetSelectionOwner (display, lm->selection_atom,
                                       None, timestamp);
                 }
