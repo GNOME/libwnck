@@ -578,13 +578,10 @@ sn_error_trap_pop (SnDisplay *display,
 #endif /* HAVE_STARTUP_NOTIFICATION */
 
 static void
-wnck_screen_construct (WnckScreen *screen,
+wnck_screen_construct (Display    *display,
+                       WnckScreen *screen,
                        int         number)
 {
-  Display *display;
-
-  display = _wnck_get_default_display ();
-
   /* Create the initial state of the screen. */
   screen->priv->xroot = RootWindow (display, number);
   screen->priv->xscreen = ScreenOfDisplay (display, number);
@@ -648,7 +645,7 @@ wnck_screen_get (int index)
     {
       screens[index] = g_object_new (WNCK_TYPE_SCREEN, NULL);
 
-      wnck_screen_construct (screens[index], index);
+      wnck_screen_construct (display, screens[index], index);
     }
 
   return screens[index];
