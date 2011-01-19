@@ -530,7 +530,8 @@ _wnck_window_create (Window      xwindow,
     _wnck_get_session_id (window->priv->xwindow);
 
   window->priv->pid =
-    _wnck_get_pid (window->priv->xwindow);
+    _wnck_get_pid (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                   window->priv->xwindow);
 
   window->priv->x = 0;
   window->priv->y = 0;
@@ -2802,7 +2803,8 @@ update_workspace (WnckWindow *window)
   old = window->priv->workspace;
 
   val = ALL_WORKSPACES;
-  _wnck_get_cardinal (window->priv->xwindow,
+  _wnck_get_cardinal (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
                       _wnck_atom_get ("_NET_WM_DESKTOP"),
                       &val);
 

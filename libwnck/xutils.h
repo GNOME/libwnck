@@ -38,7 +38,8 @@ G_BEGIN_DECLS
 
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
-gboolean _wnck_get_cardinal      (Window  xwindow,
+gboolean _wnck_get_cardinal      (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom,
                                   int    *val);
 int      _wnck_get_wm_state      (Window  xwindow);
@@ -112,7 +113,8 @@ void _wnck_change_viewport (Screen *screen,
 			    int     y);
 
 char*  _wnck_get_session_id     (Window xwindow);
-int    _wnck_get_pid            (Window xwindow);
+int    _wnck_get_pid            (Screen *screen,
+                                 Window  xwindow);
 char*  _wnck_get_name           (Window xwindow);
 char*  _wnck_get_icon_name      (Window xwindow);
 char*  _wnck_get_res_class_utf8 (Window xwindow);

@@ -278,12 +278,13 @@ wnck_gulong_equal (gconstpointer a,
 }
 
 static gulong
-wnck_check_window_for_pid (Window win,
-                           XID    match_xid,
-                           XID    mask)
+wnck_check_window_for_pid (Screen *screen,
+                           Window  win,
+                           XID     match_xid,
+                           XID     mask)
 {
   if ((win & ~mask) == match_xid) {
-    return _wnck_get_pid (win);
+    return _wnck_get_pid (screen, win);
   }
 
   return 0;
@@ -291,6 +292,7 @@ wnck_check_window_for_pid (Window win,
 
 static void
 wnck_find_pid_for_resource_r (Display *xdisplay,
+                              Screen  *screen,
                               Window   win_top,
                               XID      match_xid,
                               XID      mask,
@@ -308,7 +310,7 @@ wnck_find_pid_for_resource_r (Display *xdisplay,
   while (gtk_events_pending ())
     gtk_main_iteration ();
 
-  found_pid = wnck_check_window_for_pid (win_top, match_xid, mask);
+  found_pid = wnck_check_window_for_pid (screen, win_top, match_xid, mask);
   if (found_pid != 0)
     {
       *xid = win_top;
@@ -325,7 +327,7 @@ wnck_find_pid_for_resource_r (Display *xdisplay,
 
   for (i = 0; i < n_children; i++)
     {
-      wnck_find_pid_for_resource_r (xdisplay, children[i],
+      wnck_find_pid_for_resource_r (xdisplay, screen, children[i],
                                     match_xid, mask, xid, pid);
 
       if (*pid != 0)
@@ -401,14 +403,16 @@ wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
 
   for (i = 0; i < ScreenCount (state->xdisplay); i++)
     {
-      Window root;
+      Screen *screen;
+      Window  root;
 
+      screen = ScreenOfDisplay (state->xdisplay, i);
       root = RootWindow (state->xdisplay, i);
 
       if (root == None)
         continue;
 
-      wnck_find_pid_for_resource_r (state->xdisplay, root, match_xid,
+      wnck_find_pid_for_resource_r (state->xdisplay, screen, root, match_xid,
                                     state->clients[state->next].resource_mask,
                                     &xid, &pid);
 

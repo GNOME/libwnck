@@ -1730,7 +1730,8 @@ update_workspace_list (WnckScreen *screen)
   ++reentrancy_guard;
 
   n_spaces = 0;
-  if (!_wnck_get_cardinal (screen->priv->xroot,
+  if (!_wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+                           screen->priv->xroot,
                            _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS"),
                            &n_spaces))
     n_spaces = 1;
@@ -1963,7 +1964,8 @@ update_active_workspace (WnckScreen *screen)
   screen->priv->need_update_active_workspace = FALSE;
 
   number = 0;
-  if (!_wnck_get_cardinal (screen->priv->xroot,
+  if (!_wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+                           screen->priv->xroot,
                            _wnck_atom_get ("_NET_CURRENT_DESKTOP"),
                            &number))
     number = -1;
@@ -2170,7 +2172,8 @@ update_showing_desktop (WnckScreen *screen)
   screen->priv->need_update_showing_desktop = FALSE;
 
   showing_desktop = FALSE;
-  _wnck_get_cardinal (screen->priv->xroot,
+  _wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+                      screen->priv->xroot,
                       _wnck_atom_get ("_NET_SHOWING_DESKTOP"),
                       &showing_desktop);
 

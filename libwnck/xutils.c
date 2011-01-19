@@ -32,10 +32,12 @@
 #include "inlinepixbufs.h"
 
 gboolean
-_wnck_get_cardinal (Window  xwindow,
+_wnck_get_cardinal (Screen *screen,
+                    Window  xwindow,
                     Atom    atom,
                     int    *val)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -43,11 +45,13 @@ _wnck_get_cardinal (Window  xwindow,
   gulong *num;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *val = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -1138,11 +1142,12 @@ _wnck_get_session_id (Window xwindow)
 }
 
 int
-_wnck_get_pid (Window xwindow)
+_wnck_get_pid (Screen *screen,
+               Window  xwindow)
 {
   int val;
 
-  if (!_wnck_get_cardinal (xwindow,
+  if (!_wnck_get_cardinal (screen, xwindow,
                            _wnck_atom_get ("_NET_WM_PID"),
                            &val))
     return 0;

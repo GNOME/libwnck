@@ -536,7 +536,8 @@ _wnck_application_create (Window      xwindow,
   if (application->priv->name)
     application->priv->name_from_leader = TRUE;
 
-  application->priv->pid = _wnck_get_pid (application->priv->xwindow);
+  application->priv->pid = _wnck_get_pid (WNCK_SCREEN_XSCREEN (screen),
+                                          application->priv->xwindow);
 
   application->priv->startup_id = _wnck_get_utf8_property (application->priv->xwindow,
                                                            _wnck_atom_get ("_NET_STARTUP_ID"));
