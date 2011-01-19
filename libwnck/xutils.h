@@ -146,8 +146,9 @@ gboolean _wnck_get_frame_extents  (Screen *screen,
                                    int    *top_frame,
                                    int    *bottom_frame);
 
-void   _wnck_select_input     (Window xwindow,
-                               int    mask);
+void   _wnck_select_input     (Screen *screen,
+                               Window  xwindow,
+                               int     mask);
 
 void   _wnck_keyboard_move    (Screen *screen,
                                Window  xwindow);

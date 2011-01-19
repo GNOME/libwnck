@@ -554,7 +554,8 @@ _wnck_application_create (Window      xwindow,
   /* Note that xwindow may correspond to a WnckWindow's xwindow,
    * so we select events needed by either
    */
-  _wnck_select_input (application->priv->xwindow,
+  _wnck_select_input (xscreen,
+                      application->priv->xwindow,
                       WNCK_APP_WINDOW_EVENT_MASK);
 
   return application;

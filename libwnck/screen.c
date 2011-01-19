@@ -598,7 +598,8 @@ wnck_screen_construct (WnckScreen *screen,
 
   screen->priv->bg_pixmap = None;
 
-  _wnck_select_input (screen->priv->xroot,
+  _wnck_select_input (WNCK_SCREEN_XSCREEN (screen),
+                      screen->priv->xroot,
                       PropertyChangeMask);
 
   screen->priv->need_update_workspace_list = TRUE;

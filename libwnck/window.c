@@ -521,7 +521,8 @@ _wnck_window_create (Window      xwindow,
    * that's why we select the union of the mask we want for Application
    * and the one we want for window
    */
-  _wnck_select_input (window->priv->xwindow,
+  _wnck_select_input (xscreen,
+                      window->priv->xwindow,
                       WNCK_APP_WINDOW_EVENT_MASK);
 
   /* Default the group leader to the window itself; it is set in

@@ -1358,13 +1358,25 @@ _wnck_get_frame_extents (Screen *screen,
 }
 
 void
-_wnck_select_input (Window xwindow,
-                    int    mask)
+_wnck_select_input (Screen *screen,
+                    Window  xwindow,
+                    int     mask)
 {
-  GdkWindow *gdkwindow;
+  Display    *display;
+  GdkDisplay *gdkdisplay;
+  GdkWindow  *gdkwindow;
 
-  gdkwindow = gdk_x11_window_lookup_for_display (gdk_display_get_default (),
-                                                 xwindow);
+  display = DisplayOfScreen (screen);
+  gdkdisplay = gdk_x11_lookup_xdisplay (display);
+
+  if (gdkdisplay)
+    gdkwindow = gdk_x11_window_lookup_for_display (gdkdisplay, xwindow);
+  else
+    {
+      g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
+                 DisplayString (display));
+      gdkwindow = NULL;
+    }
 
   _wnck_error_trap_push ();
   if (gdkwindow)
@@ -1375,11 +1387,11 @@ _wnck_select_input (Window xwindow,
        * and not changing them again
        */
       XWindowAttributes attrs;
-      XGetWindowAttributes (_wnck_get_default_display (), xwindow, &attrs);
+      XGetWindowAttributes (display, xwindow, &attrs);
       mask |= attrs.your_event_mask;
     }
 
-  XSelectInput (_wnck_get_default_display (), xwindow, mask);
+  XSelectInput (display, xwindow, mask);
   _wnck_error_trap_pop ();
 }
 
