@@ -1670,29 +1670,29 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
    */
   if (cairo_surface_get_content (surface) & CAIRO_CONTENT_ALPHA)
     {
+      cairo_push_group (cr);
+
       /* black background */
       cairo_set_source_rgb (cr, 0, 0, 0);
       cairo_paint (cr);
       /* mask with white foreground */
       cairo_set_source_rgb (cr, 1, 1, 1);
       cairo_mask_surface (cr, surface, 0, 0);
+
+      cairo_pop_group_to_source (cr);
     }
   else
-    {
-      cairo_set_source_surface (cr, surface, 0, 0);
-      cairo_paint (cr);
-    }
-
-  cairo_surface_destroy (surface);
+    cairo_set_source_surface (cr, surface, 0, 0);
 
   if (mask_surface)
     {
-      cairo_set_operator (cr, CAIRO_OPERATOR_DEST_IN);
-      cairo_set_source_surface (cr, mask_surface, 0, 0);
-      cairo_paint (cr);
+      cairo_mask_surface (cr, mask_surface, 0, 0);
       cairo_surface_destroy (mask_surface);
     }
+  else
+    cairo_paint (cr);
 
+  cairo_surface_destroy (surface);
   cairo_destroy (cr);
 
   unscaled = gdk_pixbuf_get_from_surface (image,
