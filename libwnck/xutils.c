@@ -1568,37 +1568,6 @@ free_pixels (guchar *pixels, gpointer data)
   g_free (pixels);
 }
 
-static void
-get_pixmap_geometry (Pixmap       pixmap,
-                     int         *w,
-                     int         *h,
-                     int         *d)
-{
-  Window root_ignored;
-  int x_ignored, y_ignored;
-  guint width, height;
-  guint border_width_ignored;
-  guint depth;
-
-  if (w)
-    *w = 1;
-  if (h)
-    *h = 1;
-  if (d)
-    *d = 1;
-
-  XGetGeometry (_wnck_get_default_display (),
-                pixmap, &root_ignored, &x_ignored, &y_ignored,
-                &width, &height, &border_width_ignored, &depth);
-
-  if (w)
-    *w = width;
-  if (h)
-    *h = height;
-  if (d)
-    *d = depth;
-}
-
 static GdkPixbuf*
 apply_mask (GdkPixbuf *pixbuf,
             GdkPixbuf *mask)
@@ -1719,20 +1688,16 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
 {
   GdkPixbuf *unscaled = NULL;
   GdkPixbuf *mask = NULL;
-  int w, h;
 
   if (src_pixmap == None)
     return FALSE;
 
   _wnck_error_trap_push ();
 
-  get_pixmap_geometry (src_pixmap, &w, &h, NULL);
-
   unscaled = _wnck_gdk_pixbuf_get_from_pixmap (src_pixmap);
 
   if (unscaled && src_mask != None)
     {
-      get_pixmap_geometry (src_mask, &w, &h, NULL);
       mask = _wnck_gdk_pixbuf_get_from_pixmap (src_mask);
     }
 
