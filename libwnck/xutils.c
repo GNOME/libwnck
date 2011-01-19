@@ -209,10 +209,12 @@ _wnck_get_pixmap (Screen *screen,
 }
 
 gboolean
-_wnck_get_atom (Window  xwindow,
+_wnck_get_atom (Screen *screen,
+                Window  xwindow,
                 Atom    atom,
                 Atom   *val)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -220,11 +222,13 @@ _wnck_get_atom (Window  xwindow,
   Atom *a;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *val = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,

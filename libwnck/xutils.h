@@ -52,7 +52,8 @@ gboolean _wnck_get_pixmap        (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom,
                                   Pixmap *val);
-gboolean _wnck_get_atom          (Window  xwindow,
+gboolean _wnck_get_atom          (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom,
                                   Atom   *val);
 char*    _wnck_get_text_property (Window  xwindow,
