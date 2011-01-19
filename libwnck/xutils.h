@@ -56,7 +56,8 @@ gboolean _wnck_get_atom          (Screen *screen,
                                   Window  xwindow,
                                   Atom    atom,
                                   Atom   *val);
-char*    _wnck_get_text_property (Window  xwindow,
+char*    _wnck_get_text_property (Screen *screen,
+                                  Window  xwindow,
                                   Atom    atom);
 char*    _wnck_get_utf8_property (Window  xwindow,
                                   Atom    atom);
@@ -120,8 +121,10 @@ char*  _wnck_get_session_id     (Screen *screen,
                                  Window xwindow);
 int    _wnck_get_pid            (Screen *screen,
                                  Window  xwindow);
-char*  _wnck_get_name           (Window xwindow);
-char*  _wnck_get_icon_name      (Window xwindow);
+char*  _wnck_get_name           (Screen *screen,
+                                 Window  xwindow);
+char*  _wnck_get_icon_name      (Screen *screen,
+                                 Window  xwindow);
 char*  _wnck_get_res_class_utf8 (Window xwindow);
 void   _wnck_get_wmclass        (Window xwindow,
                                  char **res_class,

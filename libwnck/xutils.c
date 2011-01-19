@@ -282,16 +282,20 @@ text_property_to_utf8 (const XTextProperty *prop)
 }
 
 char*
-_wnck_get_text_property (Window  xwindow,
+_wnck_get_text_property (Screen *screen,
+                         Window  xwindow,
                          Atom    atom)
 {
+  Display *display;
   XTextProperty text;
   char *retval;
+
+  display = DisplayOfScreen (screen);
 
   _wnck_error_trap_push ();
 
   text.nitems = 0;
-  if (XGetTextProperty (_wnck_get_default_display(),
+  if (XGetTextProperty (display,
                         xwindow,
                         &text,
                         atom))
@@ -1173,7 +1177,8 @@ _wnck_get_pid (Screen *screen,
 }
 
 char*
-_wnck_get_name (Window xwindow)
+_wnck_get_name (Screen *screen,
+                Window  xwindow)
 {
   char *name;
 
@@ -1185,14 +1190,15 @@ _wnck_get_name (Window xwindow)
                                     _wnck_atom_get ("_NET_WM_NAME"));
 
   if (name == NULL)
-    name = _wnck_get_text_property (xwindow,
+    name = _wnck_get_text_property (screen, xwindow,
                                     XA_WM_NAME);
 
   return name;
 }
 
 char*
-_wnck_get_icon_name (Window xwindow)
+_wnck_get_icon_name (Screen *screen,
+                     Window  xwindow)
 {
   char *name;
 
@@ -1204,7 +1210,7 @@ _wnck_get_icon_name (Window xwindow)
                                     _wnck_atom_get ("_NET_WM_ICON_NAME"));
 
   if (name == NULL)
-    name = _wnck_get_text_property (xwindow,
+    name = _wnck_get_text_property (screen, xwindow,
                                     XA_WM_ICON_NAME);
 
   return name;

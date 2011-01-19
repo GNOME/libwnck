@@ -517,6 +517,7 @@ _wnck_application_create (Window      xwindow,
                           WnckScreen *screen)
 {
   WnckApplication *application;
+  Screen          *xscreen;
 
   if (app_hash == NULL)
     app_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
@@ -524,11 +525,13 @@ _wnck_application_create (Window      xwindow,
   g_return_val_if_fail (g_hash_table_lookup (app_hash, &xwindow) == NULL,
                         NULL);
 
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+
   application = g_object_new (WNCK_TYPE_APPLICATION, NULL);
   application->priv->xwindow = xwindow;
   application->priv->screen = screen;
 
-  application->priv->name = _wnck_get_name (xwindow);
+  application->priv->name = _wnck_get_name (xscreen, xwindow);
 
   if (application->priv->name == NULL)
     application->priv->name = _wnck_get_res_class_utf8 (xwindow);
@@ -536,7 +539,7 @@ _wnck_application_create (Window      xwindow,
   if (application->priv->name)
     application->priv->name_from_leader = TRUE;
 
-  application->priv->pid = _wnck_get_pid (WNCK_SCREEN_XSCREEN (screen),
+  application->priv->pid = _wnck_get_pid (xscreen,
                                           application->priv->xwindow);
 
   application->priv->startup_id = _wnck_get_utf8_property (application->priv->xwindow,

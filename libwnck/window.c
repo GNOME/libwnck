@@ -2764,7 +2764,8 @@ update_name (WnckWindow *window)
 
   window->priv->need_update_name = FALSE;
 
-  new_name = _wnck_get_name (window->priv->xwindow);
+  new_name = _wnck_get_name (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                             window->priv->xwindow);
 
   if (g_strcmp0 (window->priv->name, new_name) != 0)
     window->priv->need_emit_name_changed = TRUE;
@@ -2783,7 +2784,8 @@ update_icon_name (WnckWindow *window)
 
   window->priv->need_update_icon_name = FALSE;
 
-  new_name = _wnck_get_icon_name (window->priv->xwindow);
+  new_name = _wnck_get_icon_name (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                                  window->priv->xwindow);
 
   if (g_strcmp0 (window->priv->icon_name, new_name) != 0)
     window->priv->need_emit_name_changed = TRUE;
