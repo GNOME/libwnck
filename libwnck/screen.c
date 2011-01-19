@@ -595,7 +595,7 @@ wnck_screen_construct (Display    *display,
 
   screen->priv->bg_pixmap = None;
 
-  _wnck_select_input (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_select_input (screen->priv->xscreen,
                       screen->priv->xroot,
                       PropertyChangeMask);
 
@@ -1451,7 +1451,7 @@ update_client_list (WnckScreen *screen)
 
   stack = NULL;
   stack_length = 0;
-  _wnck_get_window_list (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_window_list (screen->priv->xscreen,
                          screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST_STACKING"),
                          &stack,
@@ -1459,7 +1459,7 @@ update_client_list (WnckScreen *screen)
 
   mapping = NULL;
   mapping_length = 0;
-  _wnck_get_window_list (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_window_list (screen->priv->xscreen,
                          screen->priv->xroot,
                          _wnck_atom_get ("_NET_CLIENT_LIST"),
                          &mapping,
@@ -1730,7 +1730,7 @@ update_workspace_list (WnckScreen *screen)
   ++reentrancy_guard;
 
   n_spaces = 0;
-  if (!_wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+  if (!_wnck_get_cardinal (screen->priv->xscreen,
                            screen->priv->xroot,
                            _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS"),
                            &n_spaces))
@@ -1863,7 +1863,7 @@ update_viewport_settings (WnckScreen *screen)
 
   p_coord = NULL;
   n_coord = 0;
-  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+  if (_wnck_get_cardinal_list (screen->priv->xscreen,
                                screen->priv->xroot,
 			       _wnck_atom_get ("_NET_DESKTOP_GEOMETRY"),
                                &p_coord, &n_coord) &&
@@ -1897,7 +1897,7 @@ update_viewport_settings (WnckScreen *screen)
 
   p_coord = NULL;
   n_coord = 0;
-  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+  if (_wnck_get_cardinal_list (screen->priv->xscreen,
                                screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_VIEWPORT"),
                                &p_coord, &n_coord) &&
@@ -1966,7 +1966,7 @@ update_active_workspace (WnckScreen *screen)
   screen->priv->need_update_active_workspace = FALSE;
 
   number = 0;
-  if (!_wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+  if (!_wnck_get_cardinal (screen->priv->xscreen,
                            screen->priv->xroot,
                            _wnck_atom_get ("_NET_CURRENT_DESKTOP"),
                            &number))
@@ -1995,7 +1995,7 @@ update_active_window (WnckScreen *screen)
   screen->priv->need_update_active_window = FALSE;
 
   xwindow = None;
-  _wnck_get_window (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_window (screen->priv->xscreen,
                     screen->priv->xroot,
                     _wnck_atom_get ("_NET_ACTIVE_WINDOW"),
                     &xwindow);
@@ -2024,7 +2024,7 @@ update_workspace_layout (WnckScreen *screen)
 
   list = NULL;
   n_items = 0;
-  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+  if (_wnck_get_cardinal_list (screen->priv->xscreen,
                                screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
                                &list,
@@ -2119,7 +2119,7 @@ update_workspace_names (WnckScreen *screen)
 
   screen->priv->need_update_workspace_names = FALSE;
 
-  names = _wnck_get_utf8_list (WNCK_SCREEN_XSCREEN (screen),
+  names = _wnck_get_utf8_list (screen->priv->xscreen,
                                screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_NAMES"));
 
@@ -2156,7 +2156,7 @@ update_bg_pixmap (WnckScreen *screen)
   screen->priv->need_update_bg_pixmap = FALSE;
 
   p = None;
-  _wnck_get_pixmap (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_pixmap (screen->priv->xscreen,
                     screen->priv->xroot,
                     _wnck_atom_get ("_XROOTPMAP_ID"),
                     &p);
@@ -2178,7 +2178,7 @@ update_showing_desktop (WnckScreen *screen)
   screen->priv->need_update_showing_desktop = FALSE;
 
   showing_desktop = FALSE;
-  _wnck_get_cardinal (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_cardinal (screen->priv->xscreen,
                       screen->priv->xroot,
                       _wnck_atom_get ("_NET_SHOWING_DESKTOP"),
                       &showing_desktop);
@@ -2191,18 +2191,15 @@ update_showing_desktop (WnckScreen *screen)
 static void
 update_wm (WnckScreen *screen)
 {
-  Screen *xscreen;
-  Window  wm_window;
+  Window wm_window;
 
   if (!screen->priv->need_update_wm)
     return;
 
-  xscreen = WNCK_SCREEN_XSCREEN (screen);
-
   screen->priv->need_update_wm = FALSE;
 
   wm_window = None;
-  _wnck_get_window (xscreen,
+  _wnck_get_window (screen->priv->xscreen,
                     screen->priv->xroot,
                     _wnck_atom_get ("_NET_SUPPORTING_WM_CHECK"),
                     &wm_window);
@@ -2210,7 +2207,7 @@ update_wm (WnckScreen *screen)
   g_free (screen->priv->wm_name);
 
   if (wm_window != None)
-    screen->priv->wm_name = _wnck_get_utf8_property (xscreen,
+    screen->priv->wm_name = _wnck_get_utf8_property (screen->priv->xscreen,
                                                      wm_window,
                                                      _wnck_atom_get ("_NET_WM_NAME"));
   else
@@ -2697,7 +2694,7 @@ wnck_screen_move_viewport (WnckScreen *screen,
   g_return_if_fail (x >= 0);
   g_return_if_fail (y >= 0);
 
-  _wnck_change_viewport (WNCK_SCREEN_XSCREEN (screen), x, y);
+  _wnck_change_viewport (screen->priv->xscreen, x, y);
 }
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -2741,7 +2738,7 @@ _wnck_screen_change_workspace_name (WnckScreen *screen,
       ++i;
     }
 
-  _wnck_set_utf8_list (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_set_utf8_list (screen->priv->xscreen,
                        screen->priv->xroot,
                        _wnck_atom_get ("_NET_DESKTOP_NAMES"),
                        names);
