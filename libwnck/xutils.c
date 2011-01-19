@@ -1568,55 +1568,6 @@ free_pixels (guchar *pixels, gpointer data)
   g_free (pixels);
 }
 
-static GdkPixbuf*
-apply_mask (GdkPixbuf *pixbuf,
-            GdkPixbuf *mask)
-{
-  int w, h;
-  int i, j;
-  GdkPixbuf *with_alpha;
-  guchar *src;
-  guchar *dest;
-  int src_stride;
-  int dest_stride;
-
-  w = MIN (gdk_pixbuf_get_width (mask), gdk_pixbuf_get_width (pixbuf));
-  h = MIN (gdk_pixbuf_get_height (mask), gdk_pixbuf_get_height (pixbuf));
-
-  with_alpha = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
-
-  dest = gdk_pixbuf_get_pixels (with_alpha);
-  src = gdk_pixbuf_get_pixels (mask);
-
-  dest_stride = gdk_pixbuf_get_rowstride (with_alpha);
-  src_stride = gdk_pixbuf_get_rowstride (mask);
-
-  i = 0;
-  while (i < h)
-    {
-      j = 0;
-      while (j < w)
-        {
-          guchar *s = src + i * src_stride + j * 3;
-          guchar *d = dest + i * dest_stride + j * 4;
-
-          /* s[0] == s[1] == s[2], they are 255 if the bit was set, 0
-           * otherwise
-           */
-          if (s[0] == 0)
-            d[3] = 0;   /* transparent */
-          else
-            d[3] = 255; /* opaque */
-
-          ++j;
-        }
-
-      ++i;
-    }
-
-  return with_alpha;
-}
-
 static cairo_surface_t *
 _wnck_cairo_surface_get_from_pixmap (Pixmap xpixmap)
 {
@@ -1686,34 +1637,69 @@ try_pixmap_and_mask (Pixmap      src_pixmap,
                      int         ideal_mini_width,
                      int         ideal_mini_height)
 {
-  GdkPixbuf *unscaled = NULL;
-  GdkPixbuf *mask = NULL;
+  cairo_surface_t *surface, *mask_surface, *image;
+  GdkPixbuf *unscaled;
+  int width, height;
+  cairo_t *cr;
 
   if (src_pixmap == None)
     return FALSE;
 
   _wnck_error_trap_push ();
 
-  unscaled = _wnck_gdk_pixbuf_get_from_pixmap (src_pixmap);
+  surface = _wnck_cairo_surface_get_from_pixmap (src_pixmap);
 
-  if (unscaled && src_mask != None)
-    {
-      mask = _wnck_gdk_pixbuf_get_from_pixmap (src_mask);
-    }
+  if (surface && src_mask != None)
+    mask_surface = _wnck_cairo_surface_get_from_pixmap (src_mask);
 
   _wnck_error_trap_pop ();
 
-  if (mask)
+  if (surface == NULL)
+    return FALSE;
+
+  width = cairo_xlib_surface_get_width (surface);
+  height = cairo_xlib_surface_get_height (surface);
+
+  image = cairo_image_surface_create (CAIRO_FORMAT_ARGB32,
+                                      width, height);
+  cr = cairo_create (image);
+
+  /* Need special code for alpha-only surfaces. We only get those
+   * for bitmaps. And in that case, it's a differentiation between
+   * foreground (white) and background (black).
+   */
+  if (cairo_surface_get_content (surface) & CAIRO_CONTENT_ALPHA)
     {
-      GdkPixbuf *masked;
-
-      masked = apply_mask (unscaled, mask);
-      g_object_unref (G_OBJECT (unscaled));
-      unscaled = masked;
-
-      g_object_unref (G_OBJECT (mask));
-      mask = NULL;
+      /* black background */
+      cairo_set_source_rgb (cr, 0, 0, 0);
+      cairo_paint (cr);
+      /* mask with white foreground */
+      cairo_set_source_rgb (cr, 1, 1, 1);
+      cairo_mask_surface (cr, surface, 0, 0);
     }
+  else
+    {
+      cairo_set_source_surface (cr, surface, 0, 0);
+      cairo_paint (cr);
+    }
+
+  cairo_surface_destroy (surface);
+
+  if (mask_surface)
+    {
+      cairo_set_operator (cr, CAIRO_OPERATOR_DEST_IN);
+      cairo_set_source_surface (cr, mask_surface, 0, 0);
+      cairo_paint (cr);
+      cairo_surface_destroy (mask_surface);
+    }
+
+  cairo_destroy (cr);
+
+  unscaled = gdk_pixbuf_get_from_surface (image,
+                                          0, 0,
+                                          width, height);
+
+  cairo_surface_destroy (image);
 
   if (unscaled)
     {
