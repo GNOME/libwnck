@@ -746,8 +746,10 @@ wnck_window_get_application  (WnckWindow *window)
  *
  * Gets the #WnckWindow for which @window is transient.
  *
- * Return value: the #WnckWindow for which @window is transient, or %NULL if
- * @window is not transient for any #WnckWindow.
+ * Return value: (transfer none): the #WnckWindow for which @window is
+ * transient, or %NULL if @window is not transient for any #WnckWindow.
+ * The returned #WnckWindow is owned by libwnck and must not be referenced or
+ * unreferenced.
  *
  * Since: 2.12
  **/

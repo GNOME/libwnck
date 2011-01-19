@@ -206,8 +206,8 @@ wnck_workspace_change_name (WnckWorkspace *space,
  *
  * Gets the #WnckScreen @space is on.
  *
- * Return value: the #WnckScreen @space is on. The returned #WnckScreen is
- * owned by libwnck and must not be referenced or unreferenced.
+ * Return value: (transfer none): the #WnckScreen @space is on. The returned
+ * #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
  **/
 WnckScreen*
 wnck_workspace_get_screen (WnckWorkspace *space)
@@ -510,10 +510,10 @@ wnck_workspace_get_layout_column (WnckWorkspace *space)
  *
  * Gets the neighbor #WnckWorkspace of @space in the @direction direction.
  *
- * Return value: the neighbor #WnckWorkspace of @space in the @direction
- * direction, or %NULL if no such neighbor #WnckWorkspace exists. The returned
- * #WnckWorkspace is owned by libwnck and must not be referenced or
- * unreferenced.
+ * Return value: (transfer none): the neighbor #WnckWorkspace of @space in the
+ * @direction direction, or %NULL if no such neighbor #WnckWorkspace exists.
+ * The returned #WnckWorkspace is owned by libwnck and must not be referenced
+ * or unreferenced.
  *
  * Since: 2.20
  **/
