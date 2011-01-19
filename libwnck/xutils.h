@@ -77,8 +77,9 @@ gboolean _wnck_get_cardinal_list (Screen  *screen,
                                   Atom     atom,
                                   gulong **cardinals,
                                   int     *len);
-char**   _wnck_get_utf8_list     (Window   xwindow,
-                                  Atom     atom);
+char**   _wnck_get_utf8_list     (Screen *screen,
+                                  Window  xwindow,
+                                  Atom    atom);
 
 void     _wnck_set_utf8_list     (Window   xwindow,
                                   Atom     atom,

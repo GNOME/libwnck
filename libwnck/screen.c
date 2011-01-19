@@ -2121,7 +2121,8 @@ update_workspace_names (WnckScreen *screen)
 
   screen->priv->need_update_workspace_names = FALSE;
 
-  names = _wnck_get_utf8_list (screen->priv->xroot,
+  names = _wnck_get_utf8_list (WNCK_SCREEN_XSCREEN (screen),
+                               screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_NAMES"));
 
   copy = g_list_copy (screen->priv->workspaces);

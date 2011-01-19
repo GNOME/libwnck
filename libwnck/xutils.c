@@ -561,9 +561,11 @@ _wnck_get_cardinal_list (Screen  *screen,
 }
 
 char**
-_wnck_get_utf8_list (Window   xwindow,
-                     Atom     atom)
+_wnck_get_utf8_list (Screen *screen,
+                     Window  xwindow,
+                     Atom    atom)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -576,12 +578,14 @@ _wnck_get_utf8_list (Window   xwindow,
   guint n_strings;
   char *p;
 
+  display = DisplayOfScreen (screen);
+
   utf8_string = _wnck_atom_get ("UTF8_STRING");
 
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
