@@ -542,7 +542,8 @@ _wnck_application_create (Window      xwindow,
   application->priv->pid = _wnck_get_pid (xscreen,
                                           application->priv->xwindow);
 
-  application->priv->startup_id = _wnck_get_utf8_property (application->priv->xwindow,
+  application->priv->startup_id = _wnck_get_utf8_property (xscreen,
+                                                           application->priv->xwindow,
                                                            _wnck_atom_get ("_NET_STARTUP_ID"));
 
   g_hash_table_insert (app_hash, &application->priv->xwindow, application);

@@ -3039,7 +3039,8 @@ update_startup_id (WnckWindow *window)
 
   g_free (window->priv->startup_id);
   window->priv->startup_id =
-    _wnck_get_utf8_property (window->priv->xwindow,
+    _wnck_get_utf8_property (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                             window->priv->xwindow,
                              _wnck_atom_get ("_NET_STARTUP_ID"));
 }
 

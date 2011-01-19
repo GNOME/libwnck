@@ -2187,15 +2187,18 @@ update_showing_desktop (WnckScreen *screen)
 static void
 update_wm (WnckScreen *screen)
 {
+  Screen *xscreen;
   Window  wm_window;
 
   if (!screen->priv->need_update_wm)
     return;
 
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+
   screen->priv->need_update_wm = FALSE;
 
   wm_window = None;
-  _wnck_get_window (WNCK_SCREEN_XSCREEN (screen),
+  _wnck_get_window (xscreen,
                     screen->priv->xroot,
                     _wnck_atom_get ("_NET_SUPPORTING_WM_CHECK"),
                     &wm_window);
@@ -2203,7 +2206,8 @@ update_wm (WnckScreen *screen)
   g_free (screen->priv->wm_name);
 
   if (wm_window != None)
-    screen->priv->wm_name = _wnck_get_utf8_property (wm_window,
+    screen->priv->wm_name = _wnck_get_utf8_property (xscreen,
+                                                     wm_window,
                                                      _wnck_atom_get ("_NET_WM_NAME"));
   else
     screen->priv->wm_name = NULL;

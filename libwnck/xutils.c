@@ -358,9 +358,11 @@ _wnck_get_string_property_latin1 (Screen *screen,
 }
 
 char*
-_wnck_get_utf8_property (Window  xwindow,
+_wnck_get_utf8_property (Screen *screen,
+                         Window  xwindow,
                          Atom    atom)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -370,12 +372,14 @@ _wnck_get_utf8_property (Window  xwindow,
   char *retval;
   Atom utf8_string;
 
+  display = DisplayOfScreen (screen);
+
   utf8_string = _wnck_atom_get ("UTF8_STRING");
 
   _wnck_error_trap_push ();
   type = None;
   val = NULL;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -1186,11 +1190,11 @@ _wnck_get_name (Screen *screen,
 {
   char *name;
 
-  name = _wnck_get_utf8_property (xwindow,
+  name = _wnck_get_utf8_property (screen, xwindow,
                                   _wnck_atom_get ("_NET_WM_VISIBLE_NAME"));
 
   if (name == NULL)
-    name = _wnck_get_utf8_property (xwindow,
+    name = _wnck_get_utf8_property (screen, xwindow,
                                     _wnck_atom_get ("_NET_WM_NAME"));
 
   if (name == NULL)
@@ -1206,11 +1210,11 @@ _wnck_get_icon_name (Screen *screen,
 {
   char *name;
 
-  name = _wnck_get_utf8_property (xwindow,
+  name = _wnck_get_utf8_property (screen, xwindow,
                                   _wnck_atom_get ("_NET_WM_VISIBLE_ICON_NAME"));
 
   if (name == NULL)
-    name = _wnck_get_utf8_property (xwindow,
+    name = _wnck_get_utf8_property (screen, xwindow,
                                     _wnck_atom_get ("_NET_WM_ICON_NAME"));
 
   if (name == NULL)
