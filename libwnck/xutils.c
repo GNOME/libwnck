@@ -513,11 +513,13 @@ _wnck_get_atom_list (Screen  *screen,
 }
 
 gboolean
-_wnck_get_cardinal_list (Window   xwindow,
+_wnck_get_cardinal_list (Screen  *screen,
+                         Window   xwindow,
                          Atom     atom,
                          gulong **cardinals,
                          int     *len)
 {
+  Display *display;
   Atom type;
   int format;
   gulong nitems;
@@ -525,12 +527,14 @@ _wnck_get_cardinal_list (Window   xwindow,
   gulong *nums;
   int err, result;
 
+  display = DisplayOfScreen (screen);
+
   *cardinals = NULL;
   *len = 0;
 
   _wnck_error_trap_push ();
   type = None;
-  result = XGetWindowProperty (_wnck_get_default_display(),
+  result = XGetWindowProperty (display,
 			       xwindow,
 			       atom,
 			       0, G_MAXLONG,
@@ -1304,7 +1308,8 @@ _wnck_get_wmclass (Window xwindow,
 }
 
 gboolean
-_wnck_get_frame_extents (Window  xwindow,
+_wnck_get_frame_extents (Screen *screen,
+                         Window  xwindow,
                          int    *left_frame,
                          int    *right_frame,
                          int    *top_frame,
@@ -1318,7 +1323,7 @@ _wnck_get_frame_extents (Window  xwindow,
   p_size = NULL;
   n_size = 0;
 
-  _wnck_get_cardinal_list (xwindow,
+  _wnck_get_cardinal_list (screen, xwindow,
                            _wnck_atom_get ("_NET_FRAME_EXTENTS"),
                            &p_size, &n_size);
 

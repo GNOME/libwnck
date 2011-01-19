@@ -72,7 +72,8 @@ gboolean _wnck_get_atom_list     (Screen  *screen,
                                   Atom     atom,
                                   Atom   **atoms,
                                   int     *len);
-gboolean _wnck_get_cardinal_list (Window   xwindow,
+gboolean _wnck_get_cardinal_list (Screen  *screen,
+                                  Window   xwindow,
                                   Atom     atom,
                                   gulong **cardinals,
                                   int     *len);
@@ -132,7 +133,8 @@ char*  _wnck_get_res_class_utf8 (Window xwindow);
 void   _wnck_get_wmclass        (Window xwindow,
                                  char **res_class,
                                  char **res_name);
-gboolean _wnck_get_frame_extents  (Window  xwindow,
+gboolean _wnck_get_frame_extents  (Screen *screen,
+                                   Window  xwindow,
                                    int    *left_frame,
                                    int    *right_frame,
                                    int    *top_frame,

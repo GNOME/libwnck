@@ -1865,7 +1865,8 @@ update_viewport_settings (WnckScreen *screen)
 
   p_coord = NULL;
   n_coord = 0;
-  if (_wnck_get_cardinal_list (screen->priv->xroot,
+  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+                               screen->priv->xroot,
 			       _wnck_atom_get ("_NET_DESKTOP_GEOMETRY"),
                                &p_coord, &n_coord) &&
       p_coord != NULL)
@@ -1898,7 +1899,8 @@ update_viewport_settings (WnckScreen *screen)
 
   p_coord = NULL;
   n_coord = 0;
-  if (_wnck_get_cardinal_list (screen->priv->xroot,
+  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+                               screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_VIEWPORT"),
                                &p_coord, &n_coord) &&
       p_coord != NULL)
@@ -2024,7 +2026,8 @@ update_workspace_layout (WnckScreen *screen)
 
   list = NULL;
   n_items = 0;
-  if (_wnck_get_cardinal_list (screen->priv->xroot,
+  if (_wnck_get_cardinal_list (WNCK_SCREEN_XSCREEN (screen),
+                               screen->priv->xroot,
                                _wnck_atom_get ("_NET_DESKTOP_LAYOUT"),
                                &list,
                                &n_items))

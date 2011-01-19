@@ -3118,7 +3118,8 @@ update_frame_extents (WnckWindow *window)
 
   left = right = top = bottom = 0;
 
-  if (!_wnck_get_frame_extents (window->priv->xwindow,
+  if (!_wnck_get_frame_extents (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                                window->priv->xwindow,
                                 &left, &right, &top, &bottom))
     return;
 
