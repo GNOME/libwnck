@@ -413,6 +413,7 @@ static void
 set_icon (WnckClassGroup *class_group)
 {
   GdkPixbuf *icon, *mini_icon;
+  gboolean icons_reffed = FALSE;
 
   get_icons_from_applications (class_group, &icon, &mini_icon);
 
@@ -420,12 +421,15 @@ set_icon (WnckClassGroup *class_group)
     get_icons_from_windows (class_group, &icon, &mini_icon);
 
   if (!icon || !mini_icon)
+    {
       _wnck_get_fallback_icons (&icon,
                                 DEFAULT_ICON_WIDTH,
                                 DEFAULT_ICON_HEIGHT,
                                 &mini_icon,
                                 DEFAULT_MINI_ICON_WIDTH,
                                 DEFAULT_MINI_ICON_HEIGHT);
+      icons_reffed = TRUE;
+    }
 
   g_assert (icon && mini_icon);
 
@@ -435,8 +439,14 @@ set_icon (WnckClassGroup *class_group)
   if (class_group->priv->mini_icon)
     g_object_unref (class_group->priv->mini_icon);
 
-  class_group->priv->icon = g_object_ref (icon);
-  class_group->priv->mini_icon = g_object_ref (mini_icon);
+  class_group->priv->icon = icon;
+  class_group->priv->mini_icon = mini_icon;
+
+  if (!icons_reffed)
+    {
+      g_object_ref (class_group->priv->icon);
+      g_object_ref (class_group->priv->mini_icon);
+    }
 
   g_signal_emit (G_OBJECT (class_group), signals[ICON_CHANGED], 0);
 }
