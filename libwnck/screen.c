@@ -1065,7 +1065,7 @@ _wnck_screen_process_property_notify (WnckScreen *screen,
  * @screen: a #WnckScreen.
  * @num_workspaces: the number of #WnckWorkspace on @screen, or -1 to let
  * wnck_screen_calc_workspace_layout() find this number.
- * @space_index: the index of a #Workspace.
+ * @space_index: the index of a #WnckWorkspace.
  * @layout: return location for the layout of #WnckWorkspace with additional
  * information.
  *

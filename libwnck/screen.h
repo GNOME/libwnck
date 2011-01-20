@@ -132,7 +132,7 @@ typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
  * the #WnckWorkspace for each position in the layout grid, or -1 if the
  * position does not correspond to any #WnckWorkspace.
  * @grid_area: size of the grid containing all #WnckWorkspace. This can be
- * bigger than the number of #WnckWorskpace because the grid might not be
+ * bigger than the number of #WnckWorkspace because the grid might not be
  * filled.
  * @current_row: row of the specific #WnckWorkspace, starting from 0.
  * @current_col: column of the specific #WnckWorkspace, starting from 0.

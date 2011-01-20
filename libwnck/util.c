@@ -51,7 +51,7 @@
  * @stability: Unstable
  *
  * These functions are utility functions providing some additional features to
- * libwcnk users.
+ * libwnck users.
  */
 
 typedef enum

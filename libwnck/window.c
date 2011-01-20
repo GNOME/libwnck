@@ -2031,7 +2031,7 @@ wnck_window_activate_transient (WnckWindow *window,
  * (wnck_window_activate_transient), and clicking again should
  * minimize @window and its transients.  (Not doing this can be
  * especially annoying in the case of modal dialogs that don't appear
- * in the #WnckTaslist).
+ * in the #WnckTasklist).
  *
  * Return value: %TRUE if one of the transients of @window is the most recently
  * activated window, %FALSE otherwise.
