@@ -21,6 +21,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
+#error "Only <libwnck/libwnck.h> can be included directly."
+#endif
+
 #ifndef WNCK_SELECTOR_H
 #define WNCK_SELECTOR_H
 
@@ -64,4 +68,5 @@ GtkWidget *wnck_selector_new      (void);
 GType      wnck_selector_get_type (void) G_GNUC_CONST;
 
 G_END_DECLS
+
 #endif /* WNCK_SELECTOR_H */

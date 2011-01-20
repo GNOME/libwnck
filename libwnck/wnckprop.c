@@ -45,7 +45,6 @@
 #include <glib/gi18n.h>
 
 #include <libwnck/libwnck.h>
-#include <libwnck/class-group.h>
 
 enum {
   INVALID_MODE,

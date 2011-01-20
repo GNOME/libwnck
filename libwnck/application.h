@@ -21,6 +21,10 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
+#error "Only <libwnck/libwnck.h> can be included directly."
+#endif
+
 #ifndef WNCK_APPLICATION_H
 #define WNCK_APPLICATION_H
 
@@ -95,5 +99,3 @@ const char* wnck_application_get_startup_id (WnckApplication *app);
 G_END_DECLS
 
 #endif /* WNCK_APPLICATION_H */
-
-

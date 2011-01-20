@@ -23,6 +23,8 @@
 #ifndef WNCK_LIB_H
 #define WNCK_LIB_H
 
+#define __LIBWNCK_H_INSIDE__
+
 #include <libwnck/window.h>
 #include <libwnck/application.h>
 #include <libwnck/class-group.h>
@@ -38,6 +40,6 @@
 
 #include <libwnck/wnck-enum-types.h>
 
+#undef __LIBWNCK_H_INSIDE__
+
 #endif /* WNCK_LIB_H */
-
-

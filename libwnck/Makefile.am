@@ -79,6 +79,7 @@ libwnck_3_la_CPPFLAGS =			\
 	$(AM_CPPFLAGS)			\
 	$(XLIB_CFLAGS)			\
 	-DG_LOG_DOMAIN=\"Wnck\"		\
+	-DWNCK_COMPILATION		\
 	-DSN_API_NOT_YET_FROZEN=1
 
 libwnck_3_la_LIBADD =	\
@@ -116,6 +117,9 @@ wnck-marshal.c: wnck-marshal.list wnck-marshal.h
 
 wnck-enum-types.h: $(wnck_headers)
 	$(AM_V_GEN)glib-mkenums \
+		--fhead "#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)\n" \
+		--fhead "#error \"Only <libwnck/libwnck.h> can be included directly.\"\n" \
+		--fhead "#endif\n\n" \
 		--fhead "#ifndef __WNCK_ENUM_TYPES_H__\n" \
 		--fhead "#define __WNCK_ENUM_TYPES_H__\n\n" \
 		--fhead "G_BEGIN_DECLS\n\n" \
@@ -169,7 +173,7 @@ introspection_sources = $(wnck_sources) $(libwnckinclude_HEADERS)
 
 Wnck-3.0.gir: libwnck-3.la
 Wnck_3_0_gir_INCLUDES = GObject-2.0 GdkPixbuf-2.0 Gtk-3.0
-Wnck_3_0_gir_CFLAGS = $(AM_CPPFLAGS)
+Wnck_3_0_gir_CFLAGS = $(libwnck_3_la_CPPFLAGS)
 Wnck_3_0_gir_LIBS = libwnck-3.la
 Wnck_3_0_gir_SCANNERFLAGS = --pkg-export=libwnck-3.0
 Wnck_3_0_gir_FILES = $(introspection_sources)
