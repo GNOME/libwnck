@@ -2104,9 +2104,9 @@ get_icons (WnckWindow *window)
  * icon is used. wnck_window_get_icon_is_fallback() can be used to tell if the
  * icon is the fallback icon.
  *
- * Return value: the icon for @window. The caller should reference the
- * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
- * around.
+ * Return value: (transfer none): the icon for @window. The caller should
+ * reference the returned <classname>GdkPixbuf</classname> if it needs to keep
+ * the icon around.
  **/
 GdkPixbuf*
 wnck_window_get_icon (WnckWindow *window)
@@ -2130,9 +2130,9 @@ wnck_window_get_icon (WnckWindow *window)
  * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
  * to tell if the mini-icon is the fallback mini-icon.
  *
- * Return value: the mini-icon for @window. The caller should reference the
- * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
- * around.
+ * Return value: (transfer none): the mini-icon for @window. The caller should
+ * reference the returned <classname>GdkPixbuf</classname> if it needs to keep
+ * the icon around.
  **/
 GdkPixbuf*
 wnck_window_get_mini_icon (WnckWindow *window)

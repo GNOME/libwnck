@@ -578,9 +578,9 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
  * #WnckWindow in @class_group, then at all the #WnckWindow in @class_group. If
  * no icon was found, a fallback icon is used.
  *
- * Return value: the icon for @class_group. The caller should reference the
- * returned <classname>GdkPixbuf</classname> if it needs to keep the icon
- * around.
+ * Return value: (transfer none): the icon for @class_group. The caller should
+ * reference the returned <classname>GdkPixbuf</classname> if it needs to keep
+ * the icon around.
  *
  * Since: 2.2
  **/
@@ -600,9 +600,9 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
  * properly find the mini-icon, the same suboptimal heuristic as the one for
  * wnck_class_group_get_icon() is used to find it.
  *
- * Return value: the mini-icon for @class_group. The caller should reference
- * the returned <classname>GdkPixbuf</classname> if it needs to keep the
- * mini-icon around.
+ * Return value: (transfer none): the mini-icon for @class_group. The caller
+ * should reference the returned <classname>GdkPixbuf</classname> if it needs
+ * to keep the mini-icon around.
  *
  * Since: 2.2
  **/

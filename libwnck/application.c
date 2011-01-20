@@ -410,8 +410,9 @@ find_icon_window (WnckApplication *app)
  * suboptimal heuristic is used to find an appropriate icon. If no icon was
  * found, a fallback icon is used.
  *
- * Return value: the icon for @app. The caller should reference the returned
- * <classname>GdkPixbuf</classname> if it needs to keep the icon around.
+ * Return value: (transfer none): the icon for @app. The caller should
+ * reference the returned <classname>GdkPixbuf</classname> if it needs to keep
+ * the icon around.
  **/
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
@@ -442,9 +443,9 @@ wnck_application_get_icon (WnckApplication *app)
  * a suboptimal heuristic is used to find an appropriate icon. If no mini-icon
  * was found, a fallback mini-icon is used.
  *
- * Return value: the mini-icon for @app. The caller should reference the
- * returned <classname>GdkPixbuf</classname> if it needs to keep the mini-icon
- * around.
+ * Return value: (transfer none): the mini-icon for @app. The caller should
+ * reference the returned <classname>GdkPixbuf</classname> if it needs to keep
+ * the mini-icon around.
  **/
 GdkPixbuf*
 wnck_application_get_mini_icon (WnckApplication *app)
