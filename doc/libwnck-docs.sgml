@@ -69,6 +69,7 @@ that case.
     <title>Libwnck Utilities</title>
     <xi:include href="xml/resource.xml"/>
     <xi:include href="xml/misc.xml"/>
+    <xi:include href="xml/version.xml"/>
   </part>
 
   <part id="indexes">
@@ -108,6 +109,9 @@ that case.
     </index> 
     <index role="2.22">
       <title>Index of new symbols in 2.22</title>
+    </index> 
+    <index role="2.32">
+      <title>Index of new symbols in 2.32</title>
     </index> 
   </part>
 

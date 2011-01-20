@@ -1,6 +1,12 @@
 AC_PREREQ(2.62)
 
-AC_INIT([libwnck], [2.31.0],
+m4_define([wnck_major_version], [2])
+m4_define([wnck_minor_version], [31])
+m4_define([wnck_micro_version], [0])
+m4_define([wnck_version],
+          [wnck_major_version.wnck_minor_version.wnck_micro_version])
+
+AC_INIT([libwnck], [wnck_version],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
 AM_CONFIG_HEADER(config.h)
@@ -30,6 +36,13 @@ LIBWNCK_AGE=3
 AC_SUBST(LIBWNCK_CURRENT)
 AC_SUBST(LIBWNCK_REVISION)
 AC_SUBST(LIBWNCK_AGE)
+
+WNCK_MAJOR_VERSION=wnck_major_version
+WNCK_MINOR_VERSION=wnck_minor_version
+WNCK_MICRO_VERSION=wnck_micro_version
+AC_SUBST(WNCK_MAJOR_VERSION)
+AC_SUBST(WNCK_MINOR_VERSION)
+AC_SUBST(WNCK_MICRO_VERSION)
 
 IT_PROG_INTLTOOL([0.40.0])
 
@@ -177,6 +190,7 @@ Makefile
 doc/Makefile
 po/Makefile.in
 libwnck/Makefile
+libwnck/version.h
 libwnck-1.0.pc
 libwnck-1.0-uninstalled.pc
 ])
