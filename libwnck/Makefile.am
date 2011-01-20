@@ -36,7 +36,8 @@ wnck_built_installed_headers = wnck-enum-types.h
 libwnckincludedir = $(includedir)/libwnck-3.0/libwnck
 libwnckinclude_HEADERS =		\
 	$(wnck_headers)			\
-	$(wnck_built_installed_headers)
+	$(wnck_built_installed_headers)	\
+	version.h
 
 # Sources that are relevant for introspection
 wnck_sources =			\
@@ -160,6 +161,7 @@ CLEANFILES =			\
 
 EXTRA_DIST = 				\
 	$(inlinepixbufs_SOURCES)	\
+	version.h.in			\
 	wnck-marshal.list
 
 # Introspection

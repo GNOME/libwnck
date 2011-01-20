@@ -334,6 +334,15 @@ wnck_pid_read_resource_usage
 <TITLE>Miscellaneous Functions</TITLE>
 WnckClientType
 wnck_set_client_type
+</SECTION>
+
+<SECTION>
+<FILE>version</FILE>
+<TITLE>Version Information</TITLE>
+WNCK_MAJOR_VERSION
+WNCK_MINOR_VERSION
+WNCK_MICRO_VERSION
+WNCK_CHECK_VERSION
 #</SECTION>
 
 # Ignored

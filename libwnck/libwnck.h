@@ -38,6 +38,8 @@
 #include <libwnck/window-action-menu.h>
 #include <libwnck/util.h>
 
+#include <libwnck/version.h>
+
 #include <libwnck/wnck-enum-types.h>
 
 #undef __LIBWNCK_H_INSIDE__
