@@ -26,9 +26,7 @@
 #include "pager.h"
 #include "screen.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+G_BEGIN_DECLS
 
 #define WNCK_PAGER_TYPE_ACCESSIBLE                     (wnck_pager_accessible_get_type ())
 #define WNCK_PAGER_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), WNCK_PAGER_TYPE_ACCESSIBLE, WnckPagerAccessible))
@@ -54,9 +52,6 @@ GType wnck_pager_accessible_get_type (void) G_GNUC_CONST;
 
 AtkObject* wnck_pager_accessible_new (GtkWidget *widget); 
 
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
+G_END_DECLS
 
 #endif /* __WNCK_PAGER_ACCESSIBLE_H__ */

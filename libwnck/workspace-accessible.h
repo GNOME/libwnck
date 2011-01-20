@@ -26,9 +26,7 @@
 #include "workspace.h"
 #include "pager-accessible.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+G_BEGIN_DECLS
 
 #define WNCK_WORKSPACE_TYPE_ACCESSIBLE                     (wnck_workspace_accessible_get_type ())
 #define WNCK_WORKSPACE_ACCESSIBLE(obj)                     (G_TYPE_CHECK_INSTANCE_CAST ((obj), WNCK_WORKSPACE_TYPE_ACCESSIBLE, WnckWorkspaceAccessible))
@@ -56,9 +54,6 @@ GType wnck_workspace_accessible_get_type (void) G_GNUC_CONST;
 
 AtkObject* wnck_workspace_accessible_new (GObject *obj); 
 
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
+G_END_DECLS
 
 #endif /* __WNCK_WORKSPACE_ACCESSIBLE_H__ */

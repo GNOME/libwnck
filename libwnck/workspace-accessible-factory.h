@@ -23,9 +23,7 @@
 
 #include <atk/atk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+G_BEGIN_DECLS
 
 #define WNCK_TYPE_WORKSPACE_ACCESSIBLE_FACTORY               (wnck_workspace_accessible_factory_get_type())
 #define WNCK_WORKSPACE_ACCESSIBLE_FACTORY(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), WNCK_TYPE_WORKSPACE_ACCESSIBLE_FACTORY, WnckWorkspaceAccessibleFactory))
@@ -51,9 +49,6 @@ GType wnck_workspace_accessible_factory_get_type (void) G_GNUC_CONST;
 
 AtkObjectFactory* wnck_workspace_accessible_factory_new (void);
 
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
+G_END_DECLS
 
 #endif /* __WNCK_WORKSPACE_ACCESSIBLE_FACTORY_H__ */

@@ -23,9 +23,7 @@
 
 #include <atk/atk.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
+G_BEGIN_DECLS
 
 #define WNCK_TYPE_PAGER_ACCESSIBLE_FACTORY               (wnck_pager_accessible_factory_get_type())
 #define WNCK_PAGER_ACCESSIBLE_FACTORY(obj)               (G_TYPE_CHECK_INSTANCE_CAST ((obj), WNCK_TYPE_PAGER_ACCESSIBLE_FACTORY, WnckpagerAccessibleFactory))
@@ -51,9 +49,6 @@ GType wnck_pager_accessible_factory_get_type (void) G_GNUC_CONST;
 
 AtkObjectFactory* wnck_pager_accessible_factory_new (void);
 
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
+G_END_DECLS
 
 #endif /* __WNCK_PAGER_ACCESSIBLE_FACTORY_H__ */

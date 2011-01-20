@@ -31,6 +31,8 @@
 
 #include <gtk/gtk.h>
 
+G_BEGIN_DECLS
+
 typedef struct _WnckResourceUsage WnckResourceUsage;
 
 /**
@@ -109,5 +111,7 @@ void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
 void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             pid,
                                    WnckResourceUsage *usage);
+
+G_END_DECLS
 
 #endif /* WNCK_UTIL_H */
