@@ -417,16 +417,6 @@ wnck_task_class_init (WnckTaskClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = wnck_task_finalize;
-
-  gtk_rc_parse_string ("\n"
-    "   style \"tasklist-button-style\"\n"
-    "   {\n"
-    "      GtkWidget::focus-line-width=0\n"
-    "      GtkWidget::focus-padding=0\n"
-    "   }\n"
-    "\n"
-    "    widget \"*.tasklist-button\" style \"tasklist-button-style\"\n"
-    "\n");
 }
 
 static gboolean
@@ -1152,18 +1142,20 @@ wnck_task_get_highest_scored (GList     *ungrouped_class_groups,
 static int
 wnck_tasklist_get_button_size (GtkWidget *widget)
 {
-  GtkStyle *style;
+  GtkStyleContext *style_context;
+  GtkStateFlags state;
   PangoContext *context;
   PangoFontMetrics *metrics;
   gint char_width;
   gint text_width;
   gint width;
 
-  gtk_widget_ensure_style (widget);
-  style = gtk_widget_get_style (widget);
+  style_context = gtk_widget_get_style_context (widget);
+  state = gtk_widget_get_state_flags (widget);
 
   context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context, style->font_desc,
+  metrics = pango_context_get_metrics (context,
+                                       gtk_style_context_get_font (style_context, state),
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
@@ -1392,14 +1384,18 @@ wnck_task_size_allocated (GtkWidget     *widget,
                           GtkAllocation *allocation,
                           gpointer       data)
 {
-  WnckTask *task = WNCK_TASK (data);
-  GtkStyle *style;
-  int       min_image_width;
+  WnckTask        *task = WNCK_TASK (data);
+  GtkStyleContext *context;
+  GtkStateFlags    state;
+  GtkBorder        padding;
+  int              min_image_width;
 
-  style = gtk_widget_get_style (widget);
+  state = gtk_widget_get_state_flags (widget);
+  context = gtk_widget_get_style_context (widget);
+  gtk_style_context_get_padding (context, state, &padding);
 
   min_image_width = MINI_ICON_SIZE +
-                    2 * style->xthickness +
+                    padding.left + padding.right +
                     2 * TASKLIST_BUTTON_PADDING;
 
   if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
@@ -3643,6 +3639,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
+  GtkCssProvider *provider;
   static GQuark disable_sound_quark = 0;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
@@ -3663,6 +3660,18 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 		      disable_sound_quark, GINT_TO_POINTER (TRUE));
   g_object_add_weak_pointer (G_OBJECT (task->button),
                              (void**) &task->button);
+
+  provider = gtk_css_provider_new ();
+  gtk_css_provider_load_from_data (provider,
+                                   "#tasklist-button {\n"
+                                   " -GtkWidget-focus-line-width: 0px;\n"
+                                   " -GtkWidget-focus-padding: 0px;\n"
+                                   "}",
+                                   -1, NULL);
+  gtk_style_context_add_provider (gtk_widget_get_style_context (task->button),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
 
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
@@ -3809,6 +3818,10 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
                            G_CONNECT_AFTER);
 }
 
+#define ARROW_SPACE 4
+#define ARROW_SIZE 10
+#define INDICATOR_SIZE 7
+
 static gboolean
 wnck_task_draw (GtkWidget *widget,
                 cairo_t   *cr,
@@ -3816,29 +3829,58 @@ wnck_task_draw (GtkWidget *widget,
 {
   int x, y;
   WnckTask *task;
-  GtkStyle *style;
-  GtkAllocation allocation, child_allocation;
+  GtkStyleContext *context;
+  GtkStateFlags state;
+  GtkBorder padding;
   WnckTasklist *tasklist;
-  GtkWidget    *tasklist_widget, *child;
+  GtkWidget    *tasklist_widget;
   gint width, height;
   gboolean overlay_rect;
+  gint arrow_width;
+  gint arrow_height;
+  GdkRGBA color;
 
   task = WNCK_TASK (data);
 
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      style = gtk_widget_get_style (widget);
+      context = gtk_widget_get_style_context (widget);
+
+      gtk_style_context_get_padding (context, gtk_widget_get_state_flags (widget), &padding);
+      state = (task->tasklist->priv->active_class_group == task) ?
+              GTK_STATE_FLAG_ACTIVE : GTK_STATE_FLAG_NORMAL;
+      gtk_style_context_get_color (context, state, &color);
 
       x = gtk_widget_get_allocated_width (widget) -
-          (gtk_container_get_border_width (GTK_CONTAINER (widget)) + style->ythickness + 12);
+          (gtk_container_get_border_width (GTK_CONTAINER (widget)) + padding.left + 12);
       y = gtk_widget_get_allocated_height (widget) / 2 - 5;
 
-      gtk_paint_tab (style,
-                     cr,
-		     task->tasklist->priv->active_class_group == task ?
-		       GTK_STATE_ACTIVE : GTK_STATE_NORMAL,
-		     GTK_SHADOW_NONE, widget, NULL, x, y, 10, 10);
+      arrow_width = INDICATOR_SIZE + ((INDICATOR_SIZE % 2) - 1);
+      arrow_height = arrow_width / 2 + 1;
+      x += (ARROW_SIZE - arrow_width) / 2;
+      y += (ARROW_SIZE - (2 * arrow_height + ARROW_SPACE)) / 2;
+
+      cairo_save (cr);
+      gdk_cairo_set_source_rgba (cr, &color);
+
+      /* Up arrow */
+      cairo_move_to (cr, x, y + arrow_height);
+      cairo_line_to (cr, x + arrow_width / 2., y);
+      cairo_line_to (cr, x + arrow_width, y + arrow_height);
+      cairo_close_path (cr);
+      cairo_fill (cr);
+
+      /* Down arrow */
+      y += arrow_height + ARROW_SPACE;
+      cairo_move_to (cr, x, y);
+      cairo_line_to (cr, x + arrow_width, y);
+      cairo_line_to (cr, x + arrow_width / 2., y + arrow_height);
+      cairo_close_path (cr);
+      cairo_fill (cr);
+
+      cairo_restore (cr);
+
       break;
 
     case WNCK_TASK_WINDOW:
@@ -3858,55 +3900,35 @@ wnck_task_draw (GtkWidget *widget,
   tasklist = WNCK_TASKLIST (task->tasklist);
   tasklist_widget = GTK_WIDGET (task->tasklist);
 
+  context = gtk_widget_get_style_context (task->button);
+
   /* first draw the button */
   gtk_widget_style_get (tasklist_widget, "fade-overlay-rect", &overlay_rect, NULL);
   if (overlay_rect)
     {
-      GtkStyle *style;
+      GdkRGBA bg_color;
 
-      style = gtk_widget_get_style (task->button);
-
-      /* Draw a rectangle with bg[SELECTED] */
-      gdk_cairo_set_source_color (cr, &style->bg[GTK_STATE_SELECTED]);
+      /* Draw a rectangle with selected background color */
+      gtk_style_context_get_background_color (context, GTK_STATE_FLAG_SELECTED, &bg_color);
+      gdk_cairo_set_source_rgba (cr, &bg_color);
       cairo_paint (cr);
     }
   else
     {
-      GtkStateType  state;
-      GtkStyle     *style;
-      GtkStyle     *attached_style;
+      gtk_style_context_save (context);
+      gtk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
+      gtk_style_context_add_class (context, GTK_STYLE_CLASS_BUTTON);
 
-      state = gtk_widget_get_state (task->button);
-
-      /* copy the style to change its colors around. */
-      style = gtk_style_copy (gtk_widget_get_style (task->button));
-      style->bg[state] = style->bg[GTK_STATE_SELECTED];
-      /* Now attach it to the window */
-      attached_style = gtk_style_attach (style, gtk_widget_get_window (task->button));
-      g_object_ref (attached_style);
-
-      /* draw the button with our modified style instead of the real one. */
-      gtk_paint_box (attached_style, cr, state,
-                     GTK_SHADOW_OUT, task->button, "button",
-                     0, 0, width, height);
-
-      g_object_unref (style);
-      gtk_style_detach (attached_style);
-      g_object_unref (attached_style);
+      cairo_save (cr);
+      gtk_render_background (context, cr, 0, 0, width, height);
+      gtk_render_frame (context, cr, 0, 0, width, height);
+      cairo_restore (cr);
     }
 
   /* then the contents */
-
-  cairo_save (cr);
-  gtk_widget_get_allocation (task->button, &allocation);
-  child = gtk_bin_get_child (GTK_BIN (task->button));
-  gtk_widget_get_allocation (child, &child_allocation);
-  cairo_translate (cr,
-                   child_allocation.x - allocation.x,
-                   child_allocation.y - allocation.y);
-  gtk_widget_draw (gtk_bin_get_child (GTK_BIN (task->button)), cr);
-  cairo_restore (cr);
-
+  gtk_container_propagate_draw (GTK_CONTAINER (task->button),
+                                gtk_bin_get_child (GTK_BIN (task->button)),
+                                cr);
   /* finally blend it */
   cairo_pop_group_to_source (cr);
   cairo_paint_with_alpha (cr, task->glow_factor);
