@@ -509,7 +509,8 @@ wnck_selector_activate_window (WnckWindow *window)
 static gint
 wnck_selector_get_width (GtkWidget *widget, const char *text)
 {
-  GtkStyle *style;
+  GtkStyleContext *style_context;
+  GtkStateFlags state;
   PangoContext *context;
   PangoFontMetrics *metrics;
   gint char_width;
@@ -519,11 +520,12 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   gint screen_width;
   gint width;
 
-  gtk_widget_ensure_style (widget);
-  style = gtk_widget_get_style (widget);
+  state = gtk_widget_get_state_flags (widget);
+  style_context = gtk_widget_get_style_context (widget);
 
   context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context, style->font_desc,
+  metrics = pango_context_get_metrics (context,
+                                       gtk_style_context_get_font (style_context, state),
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
@@ -641,17 +643,19 @@ static void
 wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
                                       GtkLabel      *label)
 {
-  GtkStyle *style;
-  GdkColor *color;
-  char     *name;
-  char     *markup;
+  GtkStyleContext *context;
+  GdkRGBA          color;
+  char            *name;
+  char            *markup;
 
-  style = gtk_widget_get_style (GTK_WIDGET (label));
-  color = &style->fg[GTK_STATE_INSENSITIVE];
+  context = gtk_widget_get_style_context (GTK_WIDGET (label));
+  gtk_style_context_get_color (context, GTK_STATE_FLAG_INSENSITIVE, &color);
 
   name = g_markup_escape_text (wnck_workspace_get_name (workspace), -1);
   markup = g_strdup_printf ("<span size=\"x-small\" style=\"italic\" foreground=\"#%.2x%.2x%.2x\">%s</span>",
-                            color->red, color->green, color->blue, name);
+                            (int)(color.red * 65535 + 0.5),
+                            (int)(color.green * 65535 + 0.5),
+                            (int)(color.blue * 65535 + 0.5), name);
   g_free (name);
 
   gtk_label_set_markup (label, markup);
@@ -659,9 +663,8 @@ wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
 }
 
 static void
-wnck_selector_workspace_label_style_set (GtkLabel      *label,
-                                         GtkStyle      *previous_style,
-                                         WnckWorkspace *workspace)
+wnck_selector_workspace_label_style_updated (GtkLabel      *label,
+                                             WnckWorkspace *workspace)
 {
   wnck_selector_workspace_name_changed (workspace, label);
 }
@@ -686,8 +689,8 @@ wnck_selector_add_workspace (WnckSelector *selector,
   gtk_widget_show (label);
   /* the handler will also take care of setting the name for the first time,
    * and we'll be able to adapt to theme changes */
-  g_signal_connect (G_OBJECT (label), "style-set",
-                    G_CALLBACK (wnck_selector_workspace_label_style_set),
+  g_signal_connect (G_OBJECT (label), "style-updated",
+                    G_CALLBACK (wnck_selector_workspace_label_style_updated),
 		    workspace);
   wncklet_connect_while_alive (workspace, "name_changed",
                                G_CALLBACK (wnck_selector_workspace_name_changed),
@@ -1186,7 +1189,8 @@ wnck_selector_on_show (GtkWidget *widget, WnckSelector *selector)
 static void
 wnck_selector_fill (WnckSelector *selector)
 {
-  GtkWidget *menu_item;
+  GtkWidget      *menu_item;
+  GtkCssProvider *provider;
 
   g_signal_connect (selector, "scroll-event",
                     G_CALLBACK (wnck_selector_scroll_cb), selector);
@@ -1210,13 +1214,18 @@ wnck_selector_fill (WnckSelector *selector)
                     G_CALLBACK (wnck_selector_on_show), selector);
 
   gtk_widget_set_name (GTK_WIDGET (selector),
-                       "gnome-panel-window-menu-menu-bar-style");
+                       "gnome-panel-window-menu-menu-bar");
 
-  gtk_rc_parse_string ("style \"gnome-panel-window-menu-menu-bar-style\" {\n"
-                       "        GtkMenuBar::shadow-type = none\n"
-                       "        GtkMenuBar::internal-padding = 0\n"
-                       "}\n"
-                       "widget \"*gnome-panel-window-menu-menu-bar*\" style : highest \"gnome-panel-window-menu-menu-bar-style\"");
+  provider = gtk_css_provider_new ();
+  gtk_css_provider_load_from_data (provider,
+                                   "#gnome-panel-window-menu-menu-bar {\n"
+                                   " border-width: 0px;\n"
+                                   "}",
+                                   -1, NULL);
+  gtk_style_context_add_provider (gtk_widget_get_style_context (GTK_WIDGET (selector)),
+                                  GTK_STYLE_PROVIDER (provider),
+                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+  g_object_unref (provider);
 
   gtk_widget_show (GTK_WIDGET (selector));
 }
