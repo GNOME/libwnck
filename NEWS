@@ -1,4 +1,45 @@
 ==============
+Version 2.91.6
+==============
+
+This is the first version of libwnck, ported to GTK+ 3. It should be
+parallel-installable with the GTK+ 2 version of libwnck. Some API changes
+might still happen until 3.0, but the libtool versioning won't change.
+There might be some issues left after the GTK+ 3 port, so please report any
+unusual behavior with the library.
+
+ Major changes
+
+  - Port to GTK+ 3 (Benjamin Otte, Christian Persch, David Ronis, Vincent)
+  - Enforce single include for libwnck (Vincent)
+  - Add macros to determine libwnck version at build time: WNCK_CHECK_VERSION,
+    WNCK_MAJOR_VERSION, WNCK_MINOR_VERSION, WNCK_MICRO_VERSION (Vincent)
+
+ API Changes
+
+  - Drop previously deprecated API: wnck_screen_get_workspace_index,
+    wnck_screen_get_workspace_neighbor, wnck_pager_set_screen,
+    wnck_tasklist_set_minimum_width, wnck_tasklist_get_minimum_width,
+    wnck_tasklist_set_minimum_height, wnck_tasklist_get_minimum_height,
+    wnck_tasklist_set_screen, wnck_gtk_window_set_dock_type,
+    wnck_create_window_action_menu (Vincent)
+  - Remove screen argument from wnck_pager_new and wnck_tasklist_new (Vincent)
+
+ Fixes
+
+  - Fix link errors for wnckprop (Diego Escalante Urrelo)
+  - Start removing assumptions where default display was used (Vincent)
+  - Add missing introspectio annotation (Vincent)
+  - Plug a leak (Lampersperger Andreas)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Vincent Untz (fr)
+  - Fran Diéguez (gl)
+  - Gheyret Kenji (ug)
+
+==============
 Version 2.30.6
 ==============
 
