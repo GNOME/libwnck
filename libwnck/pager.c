@@ -780,6 +780,8 @@ wnck_pager_size_allocate (GtkWidget      *widget,
 	workspace_size = height;
     }
 
+  workspace_size = MAX (workspace_size, 1);
+
   if (workspace_size != pager->priv->workspace_size)
     {
       pager->priv->workspace_size = workspace_size;
