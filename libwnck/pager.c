@@ -165,6 +165,8 @@ static gboolean wnck_pager_leave_notify	 (GtkWidget          *widget,
 					  GdkEventCrossing   *event);
 static gboolean wnck_pager_button_release (GtkWidget        *widget,
                                            GdkEventButton   *event);
+static gboolean wnck_pager_scroll_event  (GtkWidget        *widget,
+                                          GdkEventScroll   *event);
 static gboolean wnck_pager_focus         (GtkWidget        *widget,
                                           GtkDirectionType  direction);
 static gboolean wnck_pager_query_tooltip (GtkWidget  *widget,
@@ -268,6 +270,7 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
   widget_class->button_release_event = wnck_pager_button_release;
+  widget_class->scroll_event = wnck_pager_scroll_event;
   widget_class->motion_notify_event = wnck_pager_motion;
   widget_class->leave_notify_event = wnck_pager_leave_notify;
   widget_class->focus = wnck_pager_focus;
@@ -2076,6 +2079,91 @@ wnck_pager_button_release (GtkWidget        *widget,
     }
 
   return FALSE;
+}
+
+static gboolean
+wnck_pager_scroll_event (GtkWidget      *widget,
+                         GdkEventScroll *event)
+{
+  WnckPager          *pager;
+  WnckWorkspace      *space;
+  GdkScrollDirection  absolute_direction;
+  int                 index;
+  int                 n_workspaces;
+  int                 n_columns;
+  int                 in_last_row;
+
+  pager = WNCK_PAGER (widget);
+
+  if (event->type != GDK_SCROLL)
+    return FALSE;
+
+  absolute_direction = event->direction;
+
+  space = wnck_screen_get_active_workspace (pager->priv->screen);
+  index = wnck_workspace_get_number (space);
+
+  n_workspaces = wnck_screen_get_workspace_count (pager->priv->screen);
+  n_columns = n_workspaces / pager->priv->n_rows;
+  if (n_workspaces % pager->priv->n_rows != 0)
+    n_columns++;
+  in_last_row = n_workspaces % n_columns;
+
+  if (gtk_widget_get_direction (GTK_WIDGET (pager)) == GTK_TEXT_DIR_RTL)
+    {
+      switch (event->direction)
+        {
+          case GDK_SCROLL_DOWN:
+          case GDK_SCROLL_UP:
+            break;
+          case GDK_SCROLL_RIGHT:
+            absolute_direction = GDK_SCROLL_LEFT;
+            break;
+          case GDK_SCROLL_LEFT:
+            absolute_direction = GDK_SCROLL_RIGHT;
+            break;
+        }
+    }
+
+  switch (absolute_direction)
+    {
+      case GDK_SCROLL_DOWN:
+        if (index + n_columns < n_workspaces)
+          index += n_columns;
+        else if ((index < n_workspaces - 1 &&
+                  index + in_last_row != n_workspaces - 1) ||
+                 (index == n_workspaces - 1 &&
+                  in_last_row != 0))
+          index = (index % n_columns) + 1;
+        break;
+
+      case GDK_SCROLL_RIGHT:
+        if (index < n_workspaces - 1)
+          index++;
+        break;
+
+      case GDK_SCROLL_UP:
+        if (index - n_columns >= 0)
+          index -= n_columns;
+        else if (index > 0)
+          index = ((pager->priv->n_rows - 1) * n_columns) + (index % n_columns) - 1;
+        if (index >= n_workspaces)
+          index -= n_columns;
+        break;
+
+      case GDK_SCROLL_LEFT:
+        if (index > 0)
+          index--;
+        break;
+      default:
+        g_assert_not_reached ();
+        break;
+    }
+
+  space = wnck_screen_get_workspace (pager->priv->screen, index);
+  wnck_workspace_activate (space, event->time);
+
+  return TRUE;
 }
 
 static gboolean
