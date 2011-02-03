@@ -730,6 +730,13 @@ wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
   *natural_height = *minimum_height = height;
 }
 
+static gboolean
+_wnck_pager_queue_resize (gpointer data)
+{
+  gtk_widget_queue_resize (GTK_WIDGET (data));
+  return FALSE;
+}
+
 static void
 wnck_pager_size_allocate (GtkWidget      *widget,
                           GtkAllocation  *allocation)
@@ -785,7 +792,7 @@ wnck_pager_size_allocate (GtkWidget      *widget,
   if (workspace_size != pager->priv->workspace_size)
     {
       pager->priv->workspace_size = workspace_size;
-      gtk_widget_queue_resize (GTK_WIDGET (widget));
+      g_idle_add (_wnck_pager_queue_resize, pager);
       return;
     }
 
