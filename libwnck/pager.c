@@ -111,12 +111,21 @@ static void wnck_pager_finalize    (GObject        *object);
 
 static void     wnck_pager_realize       (GtkWidget        *widget);
 static void     wnck_pager_unrealize     (GtkWidget        *widget);
+static GtkSizeRequestMode wnck_pager_get_request_mode (GtkWidget *widget);
 static void     wnck_pager_get_preferred_width (GtkWidget *widget,
                                                 int       *minimum_width,
                                                 int       *natural_width);
+static void     wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
+                                                           int        height,
+                                                           int       *minimum_width,
+                                                           int       *natural_width);
 static void     wnck_pager_get_preferred_height (GtkWidget *widget,
                                                  int       *minimum_height,
                                                  int       *natural_height);
+static void     wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
+                                                           int        width,
+                                                           int       *minimum_height,
+                                                           int       *natural_height);
 static void     wnck_pager_size_allocate (GtkWidget        *widget,
                                           GtkAllocation    *allocation);
 static gboolean wnck_pager_draw          (GtkWidget        *widget,
@@ -250,8 +259,11 @@ wnck_pager_class_init (WnckPagerClass *klass)
 
   widget_class->realize = wnck_pager_realize;
   widget_class->unrealize = wnck_pager_unrealize;
+  widget_class->get_request_mode = wnck_pager_get_request_mode;
   widget_class->get_preferred_width = wnck_pager_get_preferred_width;
+  widget_class->get_preferred_width_for_height = wnck_pager_get_preferred_width_for_height;
   widget_class->get_preferred_height = wnck_pager_get_preferred_height;
+  widget_class->get_preferred_height_for_width = wnck_pager_get_preferred_height_for_width;
   widget_class->size_allocate = wnck_pager_size_allocate;
   widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
@@ -392,66 +404,19 @@ wnck_pager_unrealize (GtkWidget *widget)
   GTK_WIDGET_CLASS (wnck_pager_parent_class)->unrealize (widget);
 }
 
-static void
-wnck_pager_size_request  (GtkWidget      *widget,
-                          GtkRequisition *requisition)
+static int
+_wnck_pager_get_workspace_width_for_height (WnckPager *pager,
+                                            int        workspace_height)
 {
-  WnckPager *pager;
-  int n_spaces;
-  int spaces_per_row;
-  double screen_aspect;
-  int other_dimension_size;
-  int size;
-  int n_rows;
-  int focus_width;
-  WnckWorkspace *space;
+  int workspace_width = 0;
 
-  pager = WNCK_PAGER (widget);
-
-  /* if we're not realized, we don't know about our screen yet */
-  if (pager->priv->screen == NULL)
-    _wnck_pager_set_screen (pager);
-  g_assert (pager->priv->screen != NULL);
-
-  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
-
-  g_assert (pager->priv->n_rows > 0);
-  spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
-  space = wnck_screen_get_workspace (pager->priv->screen, 0);
-
-  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
     {
-      if (space) {
-        screen_aspect =
-              (double) wnck_workspace_get_height (space) /
-              (double) wnck_workspace_get_width (space);
-      } else {
-        screen_aspect =
-              (double) wnck_screen_get_height (pager->priv->screen) /
-              (double) wnck_screen_get_width (pager->priv->screen);
-      }
+      WnckWorkspace *space;
+      double screen_aspect;
 
-      /* TODO: Handle WNCK_PAGER_DISPLAY_NAME for this case */
+      space = wnck_screen_get_workspace (pager->priv->screen, 0);
 
-      if (pager->priv->show_all_workspaces)
-	{
-	  size = pager->priv->workspace_size;
-	  n_rows = pager->priv->n_rows;
-	}
-      else
-	{
-	  size = pager->priv->workspace_size;
-	  n_rows = 1;
-	  spaces_per_row = 1;
-	}
-
-      other_dimension_size = screen_aspect * size;
-
-      requisition->width = size * n_rows + (n_rows - 1);
-      requisition->height = other_dimension_size * spaces_per_row  + (spaces_per_row - 1);
-    }
-  else
-    {
       if (space) {
         screen_aspect =
               (double) wnck_workspace_get_width (space) /
@@ -462,49 +427,114 @@ wnck_pager_size_request  (GtkWidget      *widget,
               (double) wnck_screen_get_height (pager->priv->screen);
       }
 
-      if (pager->priv->show_all_workspaces)
+      workspace_width = screen_aspect * workspace_height;
+    }
+  else
+    {
+      PangoLayout *layout;
+      WnckScreen *screen;
+      int n_spaces;
+      int i, w;
+
+      layout = gtk_widget_create_pango_layout  (GTK_WIDGET (pager), NULL);
+      screen = pager->priv->screen;
+      n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+      workspace_width = 1;
+
+      for (i = 0; i < n_spaces; i++)
 	{
-	  size = pager->priv->workspace_size;
-	  n_rows = pager->priv->n_rows;
-	}
-      else
-	{
-	  size = pager->priv->workspace_size;
-	  n_rows = 1;
-	  spaces_per_row = 1;
-	}
-
-      if (pager->priv->display_mode == WNCK_PAGER_DISPLAY_CONTENT)
-	{
-	  other_dimension_size = screen_aspect * size;
-	}
-      else
-	{
-	  int n_spaces, i, w;
-	  WnckScreen *screen;
-	  PangoLayout *layout;
-
-	  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
-	  layout = gtk_widget_create_pango_layout  (widget, NULL);
-	  screen = pager->priv->screen;
-	  other_dimension_size = 1;
-
-	  for (i = 0; i < n_spaces; i++)
-	    {
-	      pango_layout_set_text (layout,
-				     wnck_workspace_get_name (wnck_screen_get_workspace (screen, i)),
-				     -1);
-	      pango_layout_get_pixel_size (layout, &w, NULL);
-	      other_dimension_size = MAX (other_dimension_size, w);
-	    }
-
-	  g_object_unref (layout);
-
-	  other_dimension_size += 2;
+	  pango_layout_set_text (layout,
+				 wnck_workspace_get_name (wnck_screen_get_workspace (screen, i)),
+				 -1);
+	  pango_layout_get_pixel_size (layout, &w, NULL);
+	  workspace_width = MAX (workspace_width, w);
 	}
 
-      requisition->width = other_dimension_size * spaces_per_row + (spaces_per_row - 1);
-      requisition->height = size * n_rows + (n_rows - 1);
+      g_object_unref (layout);
+
+      workspace_width += 2;
+    }
+
+  return workspace_width;
+}
+
+static int
+_wnck_pager_get_workspace_height_for_width (WnckPager *pager,
+                                            int        workspace_width)
+{
+  int workspace_height = 0;
+  WnckWorkspace *space;
+  double screen_aspect;
+
+  /* TODO: Handle WNCK_PAGER_DISPLAY_NAME for this case */
+
+  space = wnck_screen_get_workspace (pager->priv->screen, 0);
+
+  if (space) {
+    screen_aspect =
+	  (double) wnck_workspace_get_height (space) /
+	  (double) wnck_workspace_get_width (space);
+  } else {
+    screen_aspect =
+	  (double) wnck_screen_get_height (pager->priv->screen) /
+	  (double) wnck_screen_get_width (pager->priv->screen);
+  }
+
+  workspace_height = screen_aspect * workspace_width;
+
+  return workspace_height;
+}
+
+static void
+wnck_pager_size_request  (GtkWidget      *widget,
+                          GtkRequisition *requisition)
+{
+  WnckPager *pager;
+  int n_spaces;
+  int spaces_per_row;
+  int workspace_width, workspace_height;
+  int n_rows;
+  int focus_width;
+
+  pager = WNCK_PAGER (widget);
+
+  /* if we're not realized, we don't know about our screen yet */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
+
+  g_assert (pager->priv->n_rows > 0);
+
+  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+
+  if (pager->priv->show_all_workspaces)
+    {
+      n_rows = pager->priv->n_rows;
+      spaces_per_row = (n_spaces + n_rows - 1) / n_rows;
+    }
+  else
+    {
+      n_rows = 1;
+      spaces_per_row = 1;
+    }
+
+  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+    {
+      workspace_width = pager->priv->workspace_size;
+      workspace_height = _wnck_pager_get_workspace_height_for_width (pager,
+                                                                     workspace_width);
+
+      requisition->width = workspace_width * n_rows + (n_rows - 1);
+      requisition->height = workspace_height * spaces_per_row  + (spaces_per_row - 1);
+    }
+  else
+    {
+      workspace_height = pager->priv->workspace_size;
+      workspace_width = _wnck_pager_get_workspace_width_for_height (pager,
+                                                                    workspace_height);
+
+      requisition->width = workspace_width * spaces_per_row + (spaces_per_row - 1);
+      requisition->height = workspace_height * n_rows + (n_rows - 1);
     }
 
   if (pager->priv->shadow_type != GTK_SHADOW_NONE)
@@ -529,6 +559,19 @@ wnck_pager_size_request  (GtkWidget      *widget,
   requisition->height += 2 * focus_width;
 }
 
+static GtkSizeRequestMode
+wnck_pager_get_request_mode (GtkWidget *widget)
+{
+  WnckPager *pager;
+
+  pager = WNCK_PAGER (widget);
+
+  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+    return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+  else
+    return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
+}
+
 static void
 wnck_pager_get_preferred_width (GtkWidget *widget,
                                 int       *minimum_width,
@@ -542,6 +585,73 @@ wnck_pager_get_preferred_width (GtkWidget *widget,
 }
 
 static void
+wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
+                                           int        height,
+                                           int       *minimum_width,
+                                           int       *natural_width)
+{
+  WnckPager *pager;
+  int n_spaces;
+  int n_rows;
+  int spaces_per_row;
+  int workspace_width, workspace_height;
+  int focus_width;
+  int width = 0;
+
+  pager = WNCK_PAGER (widget);
+
+  /* if we're not realized, we don't know about our screen yet */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
+
+  g_assert (pager->priv->n_rows > 0);
+
+  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+
+  if (pager->priv->show_all_workspaces)
+    {
+      n_rows = pager->priv->n_rows;
+      spaces_per_row = (n_spaces + n_rows - 1) / n_rows;
+    }
+  else
+    {
+      n_rows = 1;
+      spaces_per_row = 1;
+    }
+
+  gtk_widget_style_get (widget,
+			"focus-line-width", &focus_width,
+			NULL);
+
+  height -= 2 * focus_width;
+  width += 2 * focus_width;
+
+  if (pager->priv->shadow_type != GTK_SHADOW_NONE)
+    {
+      GtkStyleContext *context;
+      GtkStateFlags    state;
+      GtkBorder        padding;
+
+      state = gtk_widget_get_state_flags (widget);
+      context = gtk_widget_get_style_context (widget);
+      gtk_style_context_get_padding (context, state, &padding);
+
+      height -= padding.top + padding.bottom;
+      width += padding.left + padding.right;
+    }
+
+  height -= (n_rows - 1);
+  workspace_height = height / n_rows;
+
+  workspace_width = _wnck_pager_get_workspace_width_for_height (pager,
+                                                                workspace_height);
+
+  width += workspace_width * spaces_per_row + (spaces_per_row - 1);
+  *natural_width = *minimum_width = width;
+}
+
+static void
 wnck_pager_get_preferred_height (GtkWidget *widget,
                                  int       *minimum_height,
                                  int       *natural_height)
@@ -551,6 +661,73 @@ wnck_pager_get_preferred_height (GtkWidget *widget,
   wnck_pager_size_request (widget, &req);
 
   *minimum_height = *natural_height = req.height;
+}
+
+static void
+wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
+                                           int        width,
+                                           int       *minimum_height,
+                                           int       *natural_height)
+{
+  WnckPager *pager;
+  int n_spaces;
+  int n_rows;
+  int spaces_per_row;
+  int workspace_width, workspace_height;
+  int focus_width;
+  int height = 0;
+
+  pager = WNCK_PAGER (widget);
+
+  /* if we're not realized, we don't know about our screen yet */
+  if (pager->priv->screen == NULL)
+    _wnck_pager_set_screen (pager);
+  g_assert (pager->priv->screen != NULL);
+
+  g_assert (pager->priv->n_rows > 0);
+
+  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+
+  if (pager->priv->show_all_workspaces)
+    {
+      n_rows = pager->priv->n_rows;
+      spaces_per_row = (n_spaces + n_rows - 1) / n_rows;
+    }
+  else
+    {
+      n_rows = 1;
+      spaces_per_row = 1;
+    }
+
+  gtk_widget_style_get (widget,
+			"focus-line-width", &focus_width,
+			NULL);
+
+  width -= 2 * focus_width;
+  height += 2 * focus_width;
+
+  if (pager->priv->shadow_type != GTK_SHADOW_NONE)
+    {
+      GtkStyleContext *context;
+      GtkStateFlags    state;
+      GtkBorder        padding;
+
+      state = gtk_widget_get_state_flags (widget);
+      context = gtk_widget_get_style_context (widget);
+      gtk_style_context_get_padding (context, state, &padding);
+
+      width -= padding.left + padding.right;
+      height += padding.top + padding.bottom;
+    }
+
+  width -= (n_rows - 1);
+  workspace_width = width / n_rows;
+
+  workspace_height = _wnck_pager_get_workspace_height_for_width (pager,
+                                                                 workspace_width);
+
+  height += workspace_height * spaces_per_row + (spaces_per_row - 1);
+  *natural_height = *minimum_height = height;
 }
 
 static void
