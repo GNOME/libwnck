@@ -282,9 +282,6 @@ static void       wnck_task_drag_data_get (GtkWidget          *widget,
 
 static void     wnck_tasklist_init          (WnckTasklist      *tasklist);
 static void     wnck_tasklist_class_init    (WnckTasklistClass *klass);
-static GObject *wnck_tasklist_constructor   (GType              type,
-                                             guint              n_construct_properties,
-                                             GObjectConstructParam *construct_properties);
 static void     wnck_tasklist_finalize      (GObject        *object);
 
 static void     wnck_tasklist_get_preferred_width (GtkWidget *widget,
@@ -297,15 +294,14 @@ static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
 static void     wnck_tasklist_unrealize     (GtkWidget        *widget);
+static gboolean wnck_tasklist_scroll_event  (GtkWidget        *widget,
+                                             GdkEventScroll   *event);
 static void     wnck_tasklist_forall        (GtkContainer     *container,
                                              gboolean	       include_internals,
                                              GtkCallback       callback,
                                              gpointer          callback_data);
 static void     wnck_tasklist_remove	    (GtkContainer   *container,
 					     GtkWidget	    *widget);
-static gboolean wnck_tasklist_scroll_cb     (WnckTasklist   *tasklist,
-                                             GdkEventScroll *event,
-                                             gpointer        user_data);
 static void     wnck_tasklist_free_tasks    (WnckTasklist   *tasklist);
 static void     wnck_tasklist_update_lists  (WnckTasklist   *tasklist);
 static int      wnck_tasklist_layout        (GtkAllocation  *allocation,
@@ -687,7 +683,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
 
   g_type_class_add_private (klass, sizeof (WnckTasklistPrivate));
 
-  object_class->constructor = wnck_tasklist_constructor;
   object_class->finalize = wnck_tasklist_finalize;
 
   widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
@@ -695,6 +690,7 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
+  widget_class->scroll_event = wnck_tasklist_scroll_event;
 
   container_class->forall = wnck_tasklist_forall;
   container_class->remove = wnck_tasklist_remove;
@@ -764,24 +760,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                               "The final opacity that will be reached. Default: 0.8",
                                                               0.0, 1.0, 0.8,
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
-}
-
-static GObject *
-wnck_tasklist_constructor (GType                  type,
-                           guint                  n_construct_properties,
-                           GObjectConstructParam *construct_properties)
-{
-  GObject *obj;
-
-  obj = G_OBJECT_CLASS (wnck_tasklist_parent_class)->constructor (
-                                                      type,
-                                                      n_construct_properties,
-                                                      construct_properties);
-
-  g_signal_connect (obj, "scroll-event",
-                    G_CALLBACK (wnck_tasklist_scroll_cb), NULL);
-
-  return obj;
 }
 
 static void
@@ -1855,16 +1833,18 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 }
 
 static gboolean
-wnck_tasklist_scroll_cb (WnckTasklist *tasklist,
-                         GdkEventScroll *event,
-                         gpointer user_data)
+wnck_tasklist_scroll_event (GtkWidget      *widget,
+                            GdkEventScroll *event)
 {
   /* use the fact that tasklist->priv->windows is sorted
    * see wnck_tasklist_size_allocate() */
+  WnckTasklist *tasklist;
   GtkTextDirection ltr;
   GList *window;
   gint row = 0;
   gint col = 0;
+
+  tasklist = WNCK_TASKLIST (widget);
 
   window = g_list_find (tasklist->priv->windows,
                         tasklist->priv->active_task);
