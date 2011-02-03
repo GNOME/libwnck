@@ -81,6 +81,8 @@ static void wnck_selector_dispose           (GObject           *object);
 static void wnck_selector_finalize          (GObject           *object);
 static void wnck_selector_realize           (GtkWidget *widget);
 static void wnck_selector_unrealize         (GtkWidget *widget);
+static gboolean wnck_selector_scroll_event  (GtkWidget        *widget,
+                                             GdkEventScroll   *event);
 static void wnck_selector_connect_to_window (WnckSelector      *selector,
                                              WnckWindow        *window);
 
@@ -1022,10 +1024,10 @@ wnck_selector_destroy_menu (GtkWidget *widget, WnckSelector *selector)
 }
 
 static gboolean
-wnck_selector_scroll_cb (WnckSelector *selector,
-                         GdkEventScroll *event,
-                         gpointer user_data)
+wnck_selector_scroll_event (GtkWidget      *widget,
+                            GdkEventScroll *event)
 {
+  WnckSelector *selector;
   WnckScreen *screen;
   WnckWorkspace *workspace;
   GList *windows_list;
@@ -1033,6 +1035,8 @@ wnck_selector_scroll_cb (WnckSelector *selector,
   WnckWindow *window;
   WnckWindow *previous_window;
   gboolean should_activate_next_window;
+
+  selector = WNCK_SELECTOR (widget);
 
   screen = wnck_selector_get_screen (selector);
   workspace = wnck_screen_get_active_workspace (screen);
@@ -1192,9 +1196,6 @@ wnck_selector_fill (WnckSelector *selector)
   GtkWidget      *menu_item;
   GtkCssProvider *provider;
 
-  g_signal_connect (selector, "scroll-event",
-                    G_CALLBACK (wnck_selector_scroll_cb), selector);
-
   menu_item = gtk_menu_item_new ();
   gtk_widget_show (menu_item);
   gtk_menu_shell_append (GTK_MENU_SHELL (selector), menu_item);
@@ -1265,6 +1266,7 @@ wnck_selector_class_init (WnckSelectorClass *klass)
 
   widget_class->realize   = wnck_selector_realize;
   widget_class->unrealize = wnck_selector_unrealize;
+  widget_class->scroll_event = wnck_selector_scroll_event;
 }
 
 static GObject *
