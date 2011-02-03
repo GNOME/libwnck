@@ -2253,6 +2253,12 @@ wnck_pager_set_layout_hint (WnckPager *pager)
  * For example, if the layout contains one row, but the orientation of the
  * layout is vertical, the #WnckPager will display a column of #WnckWorkspace.
  *
+ * Note that setting the orientation will have an effect on the geometry
+ * management: if @orientation is %GTK_ORIENTATION_HORIZONTAL,
+ * %GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT will be used as request mode; if
+ * @orientation is %GTK_ORIENTATION_VERTICAL, GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH
+ * will be used instead.
+ *
  * If @pager has not been added to a widget hierarchy, the call will fail
  * because @pager can't know the screen on which to modify the orientation.
  *
