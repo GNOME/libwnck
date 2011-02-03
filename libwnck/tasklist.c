@@ -3923,6 +3923,8 @@ wnck_task_draw (GtkWidget *widget,
       gtk_render_background (context, cr, 0, 0, width, height);
       gtk_render_frame (context, cr, 0, 0, width, height);
       cairo_restore (cr);
+
+      gtk_style_context_restore (context);
     }
 
   /* then the contents */
