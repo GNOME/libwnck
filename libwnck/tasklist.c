@@ -3819,7 +3819,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 }
 
 #define ARROW_SPACE 4
-#define ARROW_SIZE 10
+#define ARROW_SIZE 12
 #define INDICATOR_SIZE 7
 
 static gboolean
@@ -3853,13 +3853,13 @@ wnck_task_draw (GtkWidget *widget,
       gtk_style_context_get_color (context, state, &color);
 
       x = gtk_widget_get_allocated_width (widget) -
-          (gtk_container_get_border_width (GTK_CONTAINER (widget)) + padding.left + 12);
-      y = gtk_widget_get_allocated_height (widget) / 2 - 5;
+          (gtk_container_get_border_width (GTK_CONTAINER (widget)) + padding.right + ARROW_SIZE);
+      y = gtk_widget_get_allocated_height (widget) / 2;
 
       arrow_width = INDICATOR_SIZE + ((INDICATOR_SIZE % 2) - 1);
       arrow_height = arrow_width / 2 + 1;
       x += (ARROW_SIZE - arrow_width) / 2;
-      y += (ARROW_SIZE - (2 * arrow_height + ARROW_SPACE)) / 2;
+      y -= (2 * arrow_height + ARROW_SPACE) / 2;
 
       cairo_save (cr);
       gdk_cairo_set_source_rgba (cr, &color);
