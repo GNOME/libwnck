@@ -1723,6 +1723,8 @@ try_pixmap_and_mask (Screen     *screen,
 
   if (surface && src_mask != None)
     mask_surface = _wnck_cairo_surface_get_from_pixmap (screen, src_mask);
+  else
+    mask_surface = NULL;
 
   _wnck_error_trap_pop ();
 
