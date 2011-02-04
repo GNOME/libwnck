@@ -172,9 +172,6 @@ fi
 
 AC_SUBST(GDK_PIXBUF_CSOURCE)
 
-dnl Honor ACLOCAL_FLAGS for --enable-maintainer-mode
-ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
-
 ##################################################
 # Checks for gtk-doc and docbook-tools
 ##################################################
