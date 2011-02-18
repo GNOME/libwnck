@@ -253,15 +253,25 @@ _wnck_get_atom (Screen *screen,
 }
 
 static char*
-text_property_to_utf8 (const XTextProperty *prop)
+text_property_to_utf8 (Display             *display,
+                       const XTextProperty *prop)
 {
+  GdkDisplay *gdkdisplay;
   char **list;
   int count;
   char *retval;
 
   list = NULL;
 
-  count = gdk_text_property_to_utf8_list_for_display (gdk_display_get_default (),
+  gdkdisplay = gdk_x11_lookup_xdisplay (display);
+
+  if (!gdkdisplay) {
+    g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
+               DisplayString (display));
+    return NULL;
+  }
+
+  count = gdk_text_property_to_utf8_list_for_display (gdkdisplay,
                                           gdk_x11_xatom_to_atom (prop->encoding),
                                           prop->format,
                                           prop->value,
@@ -300,7 +310,7 @@ _wnck_get_text_property (Screen *screen,
                         &text,
                         atom))
     {
-      retval = text_property_to_utf8 (&text);
+      retval = text_property_to_utf8 (display, &text);
 
       if (text.value)
         XFree (text.value);
