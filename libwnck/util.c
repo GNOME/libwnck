@@ -178,9 +178,9 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    n_types = 0;
    pixmap_bytes = 0;
 
-  _wnck_error_trap_push ();
-
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
+
+  _wnck_error_trap_push (xdisplay);
 
   XResQueryClientResources (xdisplay,
                              xid, &n_types,
@@ -188,7 +188,7 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
 
    XResQueryClientPixmapBytes (xdisplay,
                                xid, &pixmap_bytes);
-   _wnck_error_trap_pop ();
+   _wnck_error_trap_pop (xdisplay);
 
    usage->pixmap_bytes = pixmap_bytes;
 
@@ -317,10 +317,10 @@ wnck_find_pid_for_resource_r (Display *xdisplay,
       *pid = found_pid;
     }
 
-  _wnck_error_trap_push ();
+  _wnck_error_trap_push (xdisplay);
   qtres = XQueryTree (xdisplay, win_top, &dummy, &dummy,
                       &children, &n_children);
-  err = _wnck_error_trap_pop ();
+  err = _wnck_error_trap_pop (xdisplay);
 
   if (!qtres || err != Success)
     return;
@@ -450,9 +450,9 @@ wnck_pid_read_resource_usage_start_build_cache (GdkDisplay *gdisplay)
 
   xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
-  _wnck_error_trap_push ();
+  _wnck_error_trap_push (xdisplay);
   XResQueryClients (xdisplay, &xres_state.n_clients, &xres_state.clients);
-  err = _wnck_error_trap_pop ();
+  err = _wnck_error_trap_pop (xdisplay);
 
   if (err != Success)
     return;

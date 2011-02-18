@@ -86,8 +86,8 @@ void     _wnck_set_utf8_list     (Screen  *screen,
                                   Atom     atom,
                                   char   **list);
 
-void _wnck_error_trap_push (void);
-int  _wnck_error_trap_pop  (void);
+void _wnck_error_trap_push (Display *display);
+int  _wnck_error_trap_pop  (Display *display);
 
 #define _wnck_atom_get(atom_name) gdk_x11_get_xatom_by_name (atom_name)
 #define _wnck_atom_name(atom)     gdk_x11_get_xatom_name (atom)

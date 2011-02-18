@@ -566,14 +566,14 @@ static void
 sn_error_trap_push (SnDisplay *display,
                     Display   *xdisplay)
 {
-  _wnck_error_trap_push ();
+  _wnck_error_trap_push (xdisplay);
 }
 
 static void
 sn_error_trap_pop (SnDisplay *display,
                    Display   *xdisplay)
 {
-  _wnck_error_trap_pop ();
+  _wnck_error_trap_pop (xdisplay);
 }
 #endif /* HAVE_STARTUP_NOTIFICATION */
 
@@ -969,27 +969,30 @@ void
 wnck_screen_change_workspace_count (WnckScreen *screen,
                                     int         count)
 {
+  Display *display;
   XEvent xev;
 
   g_return_if_fail (WNCK_IS_SCREEN (screen));
   g_return_if_fail (count >= 1);
 
+  display = DisplayOfScreen (screen->priv->xscreen);
+
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
   xev.xclient.window = screen->priv->xroot;
   xev.xclient.send_event = True;
-  xev.xclient.display = DisplayOfScreen (screen->priv->xscreen);
+  xev.xclient.display = display;
   xev.xclient.message_type = _wnck_atom_get ("_NET_NUMBER_OF_DESKTOPS");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = count;
 
-  _wnck_error_trap_push ();
-  XSendEvent (DisplayOfScreen (screen->priv->xscreen),
+  _wnck_error_trap_push (display);
+  XSendEvent (display,
               screen->priv->xroot,
               False,
               SubstructureRedirectMask | SubstructureNotifyMask,
               &xev);
-  _wnck_error_trap_pop ();
+  _wnck_error_trap_pop (display);
 }
 
 void

@@ -958,6 +958,7 @@ void
 wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
 {
   Atom atom;
+  Display *display;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
@@ -989,15 +990,18 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
   default:
     return;
   }
-  _wnck_error_trap_push ();
 
-  XChangeProperty (_wnck_window_get_display (window),
+  display = _wnck_window_get_display (window);
+
+  _wnck_error_trap_push (display);
+
+  XChangeProperty (display,
                    window->priv->xwindow,
                    _wnck_atom_get ("_NET_WM_WINDOW_TYPE"),
 		   XA_ATOM, 32, PropModeReplace,
 		   (guchar *)&atom, 1);
 
-  _wnck_error_trap_pop ();
+  _wnck_error_trap_pop (display);
 }
 
 /**
@@ -3076,14 +3080,17 @@ update_wmclass (WnckWindow *window)
 static void
 update_wmhints (WnckWindow *window)
 {
+  Display  *display;
   XWMHints *hints;
 
   if (!window->priv->need_update_wmhints)
     return;
 
-  _wnck_error_trap_push ();
-  hints = XGetWMHints (_wnck_window_get_display (window), window->priv->xwindow);
-  _wnck_error_trap_pop ();
+  display = _wnck_window_get_display (window);
+
+  _wnck_error_trap_push (display);
+  hints = XGetWMHints (display, window->priv->xwindow);
+  _wnck_error_trap_pop (display);
 
   if (hints)
     {
