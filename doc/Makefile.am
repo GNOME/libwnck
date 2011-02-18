@@ -35,7 +35,7 @@ EXTRA_HFILES =
 HTML_IMAGES =
 
 # Extra SGML files that are included by $(DOC_MAIN_SGML_FILE)
-content_files =
+content_files = example-force-update.c example-lazy-initialization.c
 
 # Other files to distribute
 extra_files =
