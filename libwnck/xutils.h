@@ -221,6 +221,8 @@ void _wnck_set_desktop_layout (Screen *xscreen,
 GdkPixbuf* _wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
                                              Pixmap  xpixmap);
 
+GdkDisplay* _wnck_gdk_display_lookup_from_display (Display *display);
+
 GdkWindow* _wnck_gdk_window_lookup_from_window (Screen *screen,
                                                 Window  xwindow);
 

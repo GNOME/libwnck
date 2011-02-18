@@ -263,13 +263,9 @@ text_property_to_utf8 (Display             *display,
 
   list = NULL;
 
-  gdkdisplay = gdk_x11_lookup_xdisplay (display);
-
-  if (!gdkdisplay) {
-    g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
-               DisplayString (display));
+  gdkdisplay = _wnck_gdk_display_lookup_from_display (display);
+  if (!gdkdisplay)
     return NULL;
-  }
 
   count = gdk_text_property_to_utf8_list_for_display (gdkdisplay,
                                           gdk_x11_xatom_to_atom (prop->encoding),
@@ -2434,6 +2430,20 @@ _wnck_set_icon_geometry  (Screen *screen,
   _wnck_error_trap_pop ();
 }
 
+GdkDisplay*
+_wnck_gdk_display_lookup_from_display (Display *display)
+{
+  GdkDisplay *gdkdisplay = NULL;
+
+  gdkdisplay = gdk_x11_lookup_xdisplay (display);
+
+  if (!gdkdisplay)
+    g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
+               DisplayString (display));
+
+  return gdkdisplay;
+}
+
 GdkWindow*
 _wnck_gdk_window_lookup_from_window (Screen *screen,
                                      Window  xwindow)
@@ -2442,15 +2452,11 @@ _wnck_gdk_window_lookup_from_window (Screen *screen,
   GdkDisplay *gdkdisplay;
 
   display = DisplayOfScreen (screen);
-  gdkdisplay = gdk_x11_lookup_xdisplay (display);
+  gdkdisplay = _wnck_gdk_display_lookup_from_display (display);
+  if (!gdkdisplay)
+    return NULL;
 
-  if (gdkdisplay)
-    return gdk_x11_window_lookup_for_display (gdkdisplay, xwindow);
-
-  g_warning ("No GdkDisplay matching Display \"%s\" was found.\n",
-             DisplayString (display));
-
-  return NULL;
+  return gdk_x11_window_lookup_for_display (gdkdisplay, xwindow);
 }
 
 /* orientation of pager */
