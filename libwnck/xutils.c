@@ -1656,11 +1656,14 @@ _wnck_cairo_surface_get_from_pixmap (Screen *screen,
   unsigned int w_ret, h_ret, bw_ret, depth_ret;
   XWindowAttributes attrs;
 
+  surface = NULL;
   display = DisplayOfScreen (screen);
+
+  _wnck_error_trap_push (display);
 
   if (!XGetGeometry (display, xpixmap, &root_return,
                      &x_ret, &y_ret, &w_ret, &h_ret, &bw_ret, &depth_ret))
-    return NULL;
+    goto TRAP_POP;
 
   if (depth_ret == 1)
     {
@@ -1673,13 +1676,16 @@ _wnck_cairo_surface_get_from_pixmap (Screen *screen,
   else
     {
       if (!XGetWindowAttributes (display, root_return, &attrs))
-        return NULL;
+        goto TRAP_POP;
 
       surface = cairo_xlib_surface_create (display,
                                            xpixmap,
                                            attrs.visual,
                                            w_ret, h_ret);
     }
+
+TRAP_POP:
+  _wnck_error_trap_pop (display);
 
   return surface;
 }
@@ -1717,7 +1723,6 @@ try_pixmap_and_mask (Screen     *screen,
                      int         ideal_mini_width,
                      int         ideal_mini_height)
 {
-  Display *display;
   cairo_surface_t *surface, *mask_surface, *image;
   GdkPixbuf *unscaled;
   int width, height;
@@ -1726,18 +1731,12 @@ try_pixmap_and_mask (Screen     *screen,
   if (src_pixmap == None)
     return FALSE;
 
-  display = DisplayOfScreen (screen);
-
-  _wnck_error_trap_push (display);
-
   surface = _wnck_cairo_surface_get_from_pixmap (screen, src_pixmap);
 
   if (surface && src_mask != None)
     mask_surface = _wnck_cairo_surface_get_from_pixmap (screen, src_mask);
   else
     mask_surface = NULL;
-
-  _wnck_error_trap_pop (display);
 
   if (surface == NULL)
     return FALSE;

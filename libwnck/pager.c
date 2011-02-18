@@ -2848,15 +2848,10 @@ wnck_pager_get_background (WnckPager *pager,
 
   if (p != None)
     {
-      Display *display;
-      Screen  *xscreen;
+      Screen *xscreen;
 
       xscreen = WNCK_SCREEN_XSCREEN (pager->priv->screen);
-      display = DisplayOfScreen (xscreen);
-
-      _wnck_error_trap_push (display);
       pix = _wnck_gdk_pixbuf_get_from_pixmap (xscreen, p);
-      _wnck_error_trap_pop (display);
     }
 
   if (pix)
