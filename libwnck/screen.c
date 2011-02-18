@@ -906,10 +906,17 @@ wnck_screen_get_windows_stacked (WnckScreen *screen)
 GdkScreen *
 _wnck_screen_get_gdk_screen (WnckScreen *screen)
 {
+  Display    *display;
+  GdkDisplay *gdkdisplay;
+
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
-  return gdk_display_get_screen (gdk_display_get_default (),
-				 screen->priv->number);
+  display = DisplayOfScreen (screen->priv->xscreen);
+  gdkdisplay = _wnck_gdk_display_lookup_from_display (display);
+  if (!gdkdisplay)
+    return NULL;
+
+  return gdk_display_get_screen (gdkdisplay, screen->priv->number);
 }
 
 /**
