@@ -8,8 +8,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
-"POT-Creation-Date: 2010-11-20 11:04+0000\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libwnck&component=general\n"
+"POT-Creation-Date: 2011-01-12 15:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Gheyret Kenji<gheyret@yahoo.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
@@ -38,25 +39,25 @@ msgstr ""
 #.
 #: ../libwnck/application.c:51
 msgid "Untitled application"
-msgstr ""
+msgstr "ماۋزۇسىز پروگرامما"
 
 #: ../libwnck/pager-accessible.c:342
 msgid "Workspace Switcher"
-msgstr "خىزمەت رايونى ئالماشتۇرغۇچ"
+msgstr "خىزمەت بوشلۇقى ئالماشتۇرغۇچ"
 
 #: ../libwnck/pager-accessible.c:353
 msgid "Tool to switch between workspaces"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنى ئالماشتۇرۇش قورالى"
 
 #: ../libwnck/pager-accessible.c:465
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr ""
+msgstr "بۇ يەر چېكىلسە %s خىزمەت بوشلۇقىغا ئالمىشىدۇ"
 
 #: ../libwnck/pager.c:1965
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr ""
+msgstr "چېكىلسە \"%s\" نى سۆرەش باشلىنىدۇ"
 
 #: ../libwnck/pager.c:1968
 #, c-format
@@ -66,7 +67,7 @@ msgstr "ھازىرقى خىزمەت بوشلۇقى: «%s»"
 #: ../libwnck/pager.c:1973
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr ""
+msgstr "چېكىلسە \"%s\" غا ئالمىشىدۇ"
 
 #: ../libwnck/selector.c:1177
 msgid "No Windows Open"
@@ -78,7 +79,7 @@ msgstr "كۆزنەك تاللىغۇچ"
 
 #: ../libwnck/selector.c:1231
 msgid "Tool to switch between windows"
-msgstr ""
+msgstr "كۆزنەكلەرنى ئالماشتۇرۇش قورالى"
 
 #: ../libwnck/tasklist.c:733
 msgid "Window List"
@@ -86,7 +87,7 @@ msgstr "كۆزنەك تىزىملىكى"
 
 #: ../libwnck/tasklist.c:734
 msgid "Tool to switch between visible windows"
-msgstr ""
+msgstr "كۆرۈنىدىغان كۆزنەكلەرنى ئالماشتۇرۇش قورالى"
 
 #: ../libwnck/tasklist.c:3062
 msgid "Mi_nimize All"
@@ -94,7 +95,7 @@ msgstr "ھەممىنى كىچىكلەت(_N)"
 
 #: ../libwnck/tasklist.c:3073
 msgid "Un_minimize All"
-msgstr "ھەممىنى ئەڭ كىچىك قىلما(_M)"
+msgstr "ھەممىنى ئەڭ كىچىك قىلىشنى بىكار قىلىش(_M)"
 
 #: ../libwnck/tasklist.c:3081
 msgid "Ma_ximize All"
@@ -102,7 +103,7 @@ msgstr "ھەممىنى چوڭايت(_X)"
 
 #: ../libwnck/tasklist.c:3092
 msgid "_Unmaximize All"
-msgstr "ھەممىنى ئەڭ چوڭ قىلما(_U)"
+msgstr "ھەممىنى ئەڭ چوڭ قىلىشنى بىكار قىلىش(_U)"
 
 #: ../libwnck/tasklist.c:3104
 msgid "_Close All"
@@ -110,7 +111,7 @@ msgstr "ھەممىنى تاقا(_C)"
 
 #: ../libwnck/window-action-menu.c:419
 msgid "Unmi_nimize"
-msgstr ""
+msgstr "ئەڭ كىچىك قىلىشنى بىكار قىلىش(_N)"
 
 #: ../libwnck/window-action-menu.c:426
 msgid "Mi_nimize"
@@ -127,17 +128,17 @@ msgstr "ئەڭ چوڭ(_X)"
 #: ../libwnck/window-action-menu.c:748 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
-msgstr "Workspace %d"
+msgstr "خىزمەت بوشلۇقى %d"
 
 #: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
 #, c-format
 msgid "Workspace 1_0"
-msgstr "خىزمەت مۇھىتى  1_0"
+msgstr "خىزمەت بوشلۇقى  1_0"
 
 #: ../libwnck/window-action-menu.c:759 ../libwnck/window-action-menu.c:906
 #, c-format
 msgid "Workspace %s%d"
-msgstr "خىزمەت مۇھىتى  %s%d"
+msgstr "خىزمەت بوشلۇقى  %s%d"
 
 #: ../libwnck/window-action-menu.c:1049
 msgid "_Move"
@@ -153,35 +154,35 @@ msgstr "ھەمىشە ئەڭ ئۈستىدە"
 
 #: ../libwnck/window-action-menu.c:1073
 msgid "_Always on Visible Workspace"
-msgstr "كۆرۈنىدىغان خىزمەت رايونىدا تۇرۇش (_A)"
+msgstr "كۆرۈنىدىغان خىزمەت بوشلۇقىدا تۇرۇش (_A)"
 
 #: ../libwnck/window-action-menu.c:1078
 msgid "_Only on This Workspace"
-msgstr "مۇشۇ خىزمەت رايونىدىلا (_O)"
+msgstr "مۇشۇ خىزمەت بوشلۇقىدىلا (_O)"
 
 #: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace _Left"
-msgstr "سولدىكى خىزمەت رايونىغا يۆتكەش (_L)"
+msgstr "سولدىكى خىزمەت بوشلۇقىغا يۆتكەش (_L)"
 
 #: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace R_ight"
-msgstr "ئوڭدىكى خىزمەت رايونىغا يۆتكەش (_I)"
+msgstr "ئوڭدىكى خىزمەت بوشلۇقىغا يۆتكەش (_I)"
 
 #: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Up"
-msgstr "ئۈستىدىكى خىزمەت رايونىغا يۆتكەش (_U)"
+msgstr "ئۈستىدىكى خىزمەت بوشلۇقىغا يۆتكەش (_U)"
 
 #: ../libwnck/window-action-menu.c:1103
 msgid "Move to Workspace _Down"
-msgstr "پەستىكى خىزمەت رايونىغا يۆتكەش (_D)"
+msgstr "پەستىكى خىزمەت بوشلۇقىغا يۆتكەش (_D)"
 
 #: ../libwnck/window-action-menu.c:1106
 msgid "Move to Another _Workspace"
-msgstr "باشقا خىزمەت رايونىغا يۆتكەش(_W)"
+msgstr "باشقا خىزمەت بوشلۇقىغا يۆتكەش(_W)"
 
 #: ../libwnck/window-action-menu.c:1126
 msgid "_Close"
-msgstr "ياپ(_C)"
+msgstr "تاقا(_C)"
 
 #. *
 #. * SECTION:window
@@ -194,16 +195,16 @@ msgstr "ياپ(_C)"
 #.
 #: ../libwnck/window.c:50
 msgid "Untitled window"
-msgstr ""
+msgstr "ماۋزۇسىز كۆزنەك"
 
 #: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "تەكشۈرىدىغان ياكى ئۆزگەرتىدىغان كۆزنەكنىڭ X كۆزنەك ID سى"
 
 #: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:146
 #: ../libwnck/wnckprop.c:156
 msgid "XID"
-msgstr ""
+msgstr "XID"
 
 #. Translators: A group leader is the window that is the "owner" of a
 #. * group of windows, ie: if you have multiple windows in one
@@ -211,35 +212,35 @@ msgstr ""
 #. * (like the application name).
 #: ../libwnck/wnckprop.c:145
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "تەكشۈرىدىغان پروگراممىنىڭ گۇرۇپپا باشلىقىنىڭ X كۆزنەك ID سى"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
 #: ../libwnck/wnckprop.c:150
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "تەكشۈرىدىغان تىپ گۇرۇپپىسىنىڭ بايلىقى"
 
 #: ../libwnck/wnckprop.c:150
 msgid "CLASS"
-msgstr "تۈر"
+msgstr "CLASS"
 
 #: ../libwnck/wnckprop.c:152
 msgid "NUMBER of the workspace to examine or modify"
-msgstr ""
+msgstr "تەكشۈرىدىغان ياكى ئۆزگەرتىدىغان خىزمەت بوشلۇقىنىڭ سانى"
 
 #: ../libwnck/wnckprop.c:152 ../libwnck/wnckprop.c:154
 #: ../libwnck/wnckprop.c:172 ../libwnck/wnckprop.c:174
 #: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:273
 msgid "NUMBER"
-msgstr "سان"
+msgstr "NUMBER"
 
 #: ../libwnck/wnckprop.c:154
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "تەكشۈرىدىغان ياكى ئۆزگەرتىدىغان ئېكراننىڭ سانى"
 
 #: ../libwnck/wnckprop.c:156
 msgid "Alias of --window"
-msgstr ""
+msgstr "--window تاللانمىسىنىڭ لەقىمى"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -247,39 +248,39 @@ msgstr ""
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr ""
+msgstr "پروگرامما/تىپ گۇرۇپپىسى/خىزمەت بوشلۇقى/ئېكرانلارنىڭ كۆزنىكىنىڭ تىزىملىكى(كۆرسىتىش فورماتى: \"XID: كۆزنەك ئاتى\")"
 
 #: ../libwnck/wnckprop.c:166
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgstr "ئېكراننىڭ خىزمەت مۇھىتى(چىقىرىش فورماتى: \"سانى: خىزمەت بوشلۇقى ئاتى\")"
 
 #: ../libwnck/wnckprop.c:172
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "ئېكراننىڭ خىزمەت بوشلۇقىنىڭ سانىنى NUMBER ئۆزگەرتىش"
 
 #: ../libwnck/wnckprop.c:174
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "ئېكراننىڭ خىزمەت بوشلۇقىنىڭ ئورۇنلاشتۇرۇلۇشىنى بىر قۇرغا NUMBER قىلىپ ئۆزگەرتىش"
 
 #: ../libwnck/wnckprop.c:176
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
+msgstr "ئېكراننىڭ خىزمەت بوشلۇقىنىڭ ئورۇنلاشتۇرۇلۇشىنى بىر ئىستونغا NUMBER قىلىپ ئۆزگەرتىش"
 
 #: ../libwnck/wnckprop.c:178
 msgid "Show the desktop"
-msgstr "ئۈستەلۇستىنى كۆرسەت"
+msgstr "ئۈستەلئۈستىنى كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:180
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "ئۈستەلئۈستىنى كۆرسىتىشنى توختىتىدۇ"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "ھازىرقى خىزمەت بوشلۇقىنىڭ viewport نى X دىكى كوئوردېنات X غا يۆتكەيدۇ"
 
 #: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:275
 msgid "X"
@@ -290,7 +291,7 @@ msgstr "X"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:190
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "ھازىرقى خىزمەت بوشلۇقىنىڭ viewport نى Y دىكى كوئوردېنات Y غا يۆتكەيدۇ"
 
 #: ../libwnck/wnckprop.c:190 ../libwnck/wnckprop.c:277
 msgid "Y"
@@ -302,39 +303,39 @@ msgstr "كۆزنەكنى ئەڭ كىچىك قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:198
 msgid "Unminimize the window"
-msgstr ""
+msgstr "كۆزنەكنى ئەڭ كىچىك قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:200
 msgid "Maximize the window"
-msgstr ""
+msgstr "كۆزنەكنى ئەڭ چوڭ قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:202
 msgid "Unmaximize the window"
-msgstr ""
+msgstr "كۆزنەكنى ئەڭ چوڭ قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:204
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "كۆزنەكنى توغرىسىغا ئەڭ چوڭ قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:206
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "كۆزنەكنى توغرىسىغا ئەڭ چوڭ قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:208
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "كۆزنەكنى بويىغا ئەڭ چوڭ قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:210
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "كۆزنەكنى بويىغا ئەڭ چوڭ قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:212
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "ھەرپتاختىسىنى ئىشلىتىپ كۆزنەكنى يۆتكەشكە باشلايدۇ"
 
 #: ../libwnck/wnckprop.c:214
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "ھەرپتاختىسىنى ئىشلىتىپ كۆزنەك چوڭلۇقىنى ئۆزگەرتىشكە باشلايدۇ"
 
 #: ../libwnck/wnckprop.c:216
 msgid "Activate the window"
@@ -342,15 +343,15 @@ msgstr "كۆزنەكنى ئاكتىپلايدۇ"
 
 #: ../libwnck/wnckprop.c:218
 msgid "Close the window"
-msgstr ""
+msgstr "كۆزنەكنى تاقايدۇ"
 
 #: ../libwnck/wnckprop.c:221
 msgid "Make the window fullscreen"
-msgstr "كۆزنەكنى ئەڭ چوڭ ھالەتتە كۆرسىتىدۇ"
+msgstr "كۆزنەكنى تولۇق ئېكران ھالەتتە كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "كۆزنەكنى تولۇق ئېكران ھالىتىدە كۆرسىتىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:225
 msgid "Make the window always on top"
@@ -358,7 +359,7 @@ msgstr "كۆزنەكنى ھەمىشە ئۈستىدە كۆرۈنىدىغان قى
 
 #: ../libwnck/wnckprop.c:227
 msgid "Make the window not always on top"
-msgstr "كۆزنەكنى ھەمىشە ئۈستىدە كۆرۈنمەيدىغان قىلىدۇ"
+msgstr "كۆزنەكنى ھەمىشە ئۈستىدە كۆرۈنىدىغان قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:229
 msgid "Make the window below other windows"
@@ -366,7 +367,7 @@ msgstr "كۆزنەكنى باشقا كۆزنەكنىڭ ئاستىدا كۆرۈن
 
 #: ../libwnck/wnckprop.c:231
 msgid "Make the window not below other windows"
-msgstr "كۆزنەكنى باشقا كۆزنەكنىڭ ئاستىدا كۆرۈنمەيدىغان قىلىدۇ"
+msgstr "كۆزنەكنى باشقا كۆزنەكنىڭ ئاستىدا كۆرۈنىدىغان قىلىشنى بىكار قىلىدۇ"
 
 #: ../libwnck/wnckprop.c:233
 msgid "Shade the window"
@@ -381,14 +382,14 @@ msgstr ""
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:240
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "كۆزنەكنىڭ viewport دىكى ئورنىنى مۇقىم قىلىدۇ"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:245
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "كۆزنەكنىڭ viewport دىكى ئورنىنى مۇقىم قىلىشنى بىكار قىلىدۇ"
 
 #. Translators: A pager is the technical term for the workspace
 #. * switcher. It's a representation of all workspaces with windows
@@ -430,50 +431,50 @@ msgstr "كۆزنەكنى ھازىرقى خىزمەت بوشلۇقىدىلا كۆ
 
 #: ../libwnck/wnckprop.c:273
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "كۆزنەكنى خىزمەت بوشلۇقى NUMBER غا يۆتكەيدۇ(تۇنجى خىزمەت بوشلۇقى 0)"
 
 #: ../libwnck/wnckprop.c:275
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "كۆزنەكنىڭ X كوئوردېناتىنى  X قا يۆتكەيدۇ"
 
 #: ../libwnck/wnckprop.c:277
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "كۆزنەكنىڭ Y كوئوردېناتىنى  Y غا يۆتكەيدۇ"
 
 #: ../libwnck/wnckprop.c:279
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "كۆزنەكنىڭ كەڭلىكىنى WIDTH غا ئۆزگەرتىدۇ"
 
 #: ../libwnck/wnckprop.c:279
 msgid "WIDTH"
-msgstr "كەڭلىكى"
+msgstr "WIDTH"
 
 #: ../libwnck/wnckprop.c:281
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "كۆزنەكنىڭ ئېگىزلىكىنى HEIGHT غا ئۆزگەرتىدۇ"
 
 #: ../libwnck/wnckprop.c:281
 msgid "HEIGHT"
-msgstr "ئېگىزلىكى"
+msgstr "HEIGHT"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:284
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
-msgstr ""
+msgstr "كۆزنەكنىڭ تىپىنى TYPE قا ئۆزگەرتىدۇ(ئىناۋەتلىك قىممەتلەر: نورمال، ئۈستەلئۈستى،dock، سۆزلەشكۈ، قورال بالداق، تىزىملىك، قورال، splash)"
 
 #: ../libwnck/wnckprop.c:284
 msgid "TYPE"
-msgstr "تىپى"
+msgstr "TYPE"
 
 #: ../libwnck/wnckprop.c:290
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "كۆزنەكنىڭ ئاتىنى  NAME غا ئۆزگەرتىدۇ"
 
 #: ../libwnck/wnckprop.c:290
 msgid "NAME"
-msgstr "ئاتى"
+msgstr "NAME"
 
 #: ../libwnck/wnckprop.c:292
 msgid "Activate the workspace"
@@ -483,49 +484,49 @@ msgstr "خىزمەت بوشلۇقىنى ئاكتىپلايدۇ"
 #: ../libwnck/wnckprop.c:446 ../libwnck/wnckprop.c:469
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "--%2$s تاللانمىغا نىسبەتەن \"%1$s\" قىممەت ئىناۋەتسىز"
 
 #: ../libwnck/wnckprop.c:503 ../libwnck/wnckprop.c:522
 #, c-format
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى: ئېكران %d بىلەن ئالاقە قىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:512
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى: ئېكران %d نىڭ كۆزنىكى ياكى خىزمەت بوشلۇقى تىزىپ كۆرسىتىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:535 ../libwnck/wnckprop.c:555
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:خىزمەت بوشلۇقى %d بىلەن ئالاقە قىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:545
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:خىزمەت بوشلۇقى %d دىكى كۆزنەكلەر تىزىپ كۆرسىتىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:567
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى: بىر پروگرامما بىلەن ئالاقە قىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:577
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:پروگراممىنىڭ كۆزنەكلىرى تىزىپ كۆرسىتىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -534,7 +535,7 @@ msgstr ""
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:تىپ گۇرۇپپىسى \"%s\" بىلەن ئالاقە قىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -543,48 +544,48 @@ msgstr ""
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:تىپ گۇرۇپپىسى \"%s\" نىڭ كۆزنەكلىرى تىزىپ كۆرسىتىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:615 ../libwnck/wnckprop.c:624
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى:بىز كۆزنەك بىلەن ئالاقە قىلىشى كېرەك ئىدى، بىراق --%s ئىشلىتىلىپتۇ\n"
 
 #: ../libwnck/wnckprop.c:643 ../libwnck/wnckprop.c:724
 #: ../libwnck/wnckprop.c:771
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى: --%s ۋە --%s\n"
 
 #: ../libwnck/wnckprop.c:682
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr ""
+msgstr "پارامېتىر \"%d\" ئىناۋەتسىز(--%s نىڭ پارامېتىرى): بۇ پارامېتىر چوقۇم مۇسبەت بولۇشى كېرەك\n"
 
 #: ../libwnck/wnckprop.c:695
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
+msgstr "پارامېتىر \"%d\" ئىناۋەتسىز(--%s نىڭ پارامېتىرى): بۇ پارامېتىر مۇسبەت بولۇشى كېرەك\n"
 
 #: ../libwnck/wnckprop.c:790
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "تاللانمىلار توقۇنۇشۇپ قالدى: --%s ياكى --%s،  ۋە --%s\n"
 
 #: ../libwnck/wnckprop.c:822
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "پارامېتىر \"%s\" ئىناۋەتسىز(--%s نىڭ پارامېتىرى)، ئىناۋەتلىك قىممەتلەر: %s\n"
 
 #: ../libwnck/wnckprop.c:865
 #, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr ""
+msgstr "ئېكراندىكى خىزمەت بوشلۇقىنىڭ ئورۇنلاشتۇرۇلۇشىنى ئۆزگەرتكىلى بولمىدى: بۇ خىزمەت بوشلۇقىنىڭ ئىگىسى بار\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -593,7 +594,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr ""
+msgstr "Viewport نى يۆتكىگىلى بولمىدى: نۆۋەتتىكى خىزمەت بوشلۇقىدا viewport يوق\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -601,7 +602,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:907
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr ""
+msgstr "Viewport نى يۆتكىگىلى بولمىدى: نۆۋەتتە خىزمەت بوشلۇقى مەۋجۇت ئەمەس\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:943 ../libwnck/wnckprop.c:952
@@ -615,12 +616,12 @@ msgstr "مەشغۇلاتقا يول قويۇلمايدۇ\n"
 #: ../libwnck/wnckprop.c:1039
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr ""
+msgstr "كۆزنەكنى خىزمەت بوشلۇقى %d غا يۆتكىگىلى بولمىدى: بۇ خىزمەت بوشلۇقى مەۋجۇت ئەمەس\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1103 ../libwnck/wnckprop.c:1235
 msgid "<name unset>"
-msgstr ""
+msgstr "<ئاتى بەلگىلەنمىگەن>"
 
 #. Translators: %lu is a window number and %s a window name
 #: ../libwnck/wnckprop.c:1106
@@ -637,12 +638,12 @@ msgstr "%d: %s\n"
 #: ../libwnck/wnckprop.c:1189
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "ئېكران نومۇرى: %d\n"
 
 #: ../libwnck/wnckprop.c:1191 ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr ""
+msgstr "گېئومېتىرىيىسى(كەڭلىك، ئېگىزلىك): %d، %d\n"
 
 #: ../libwnck/wnckprop.c:1195
 #, c-format
@@ -652,17 +653,17 @@ msgstr "خىزمەت بوشلۇقى سانى: %d\n"
 #: ../libwnck/wnckprop.c:1201
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنىڭ ئورۇنلاشتۇرۇلۇشى(قۇر، ئىستون، يۆنىلىش): %d، %d، %s\n"
 
 #: ../libwnck/wnckprop.c:1211 ../libwnck/wnckprop.c:1268
 #: ../libwnck/wnckprop.c:1462
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<EWMH گە ئۇيغۇن كۆزنەك باشقۇرغۇ يوق>"
 
 #: ../libwnck/wnckprop.c:1212
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr ""
+msgstr "كۆزنەك باشقۇرغۇ: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1217 ../libwnck/wnckprop.c:1298
@@ -710,7 +711,7 @@ msgstr "ئاكتىپ كۆزنەك: %s\n"
 #: ../libwnck/wnckprop.c:1248
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr ""
+msgstr "ئۈستەلئۈستىنىڭ كۆرسىتىلىشى: %s\n"
 
 #: ../libwnck/wnckprop.c:1250
 msgid "true"
@@ -723,12 +724,12 @@ msgstr "يالغان"
 #: ../libwnck/wnckprop.c:1261
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقى ئاتى: %s\n"
 
 #: ../libwnck/wnckprop.c:1262
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقى نومۇرى: %d\n"
 
 #: ../libwnck/wnckprop.c:1269 ../libwnck/wnckprop.c:1463
 #, c-format
@@ -740,7 +741,7 @@ msgstr "ئېكراندا: %d(كۆزنەك باشقۇرغۇ: %s)\n"
 #. * not just the current workspace.
 #: ../libwnck/wnckprop.c:1284
 msgid "<no viewport>"
-msgstr ""
+msgstr "<viewport يوق>"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport can be
 #. * used to implement workspaces (e.g. compiz is an example); however it is
@@ -748,38 +749,38 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1288
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "Viewport نىڭ ئورنى(x، y): %s\n"
 
 #: ../libwnck/wnckprop.c:1291
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr ""
+msgstr "ئورۇنلاشتۇرۇشتىكى ئورنى(قۇر، ئىستون): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1304
 #, c-format
 msgid "Left Neighbor: %s\n"
-msgstr ""
+msgstr "سول قوشنا:  %s\n"
 
 #: ../libwnck/wnckprop.c:1316
 #, c-format
 msgid "Right Neighbor: %s\n"
-msgstr ""
+msgstr "ئوڭ قوشنا:  %s\n"
 
 #: ../libwnck/wnckprop.c:1328
 #, c-format
 msgid "Top Neighbor: %s\n"
-msgstr ""
+msgstr "ئۇستى قوشنا: %s\n"
 
 #: ../libwnck/wnckprop.c:1340
 #, c-format
 msgid "Bottom Neighbor: %s\n"
-msgstr ""
+msgstr "ئاستى قوشنا: %s\n"
 
 #. Translators: Resource class is the name to identify a class.
 #: ../libwnck/wnckprop.c:1352
 #, c-format
 msgid "Resource Class: %s\n"
-msgstr ""
+msgstr "بايلىق تىپ:  %s\n"
 
 #: ../libwnck/wnckprop.c:1354
 #, c-format
@@ -790,7 +791,7 @@ msgstr "گۇرۇپپا ئاتى: %s\n"
 #: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1384
 #: ../libwnck/wnckprop.c:1438
 msgid "set"
-msgstr ""
+msgstr "بەلگىلەنگەن"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1363 ../libwnck/wnckprop.c:1387
@@ -799,7 +800,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1506 ../libwnck/wnckprop.c:1517
 #: ../libwnck/wnckprop.c:1525
 msgid "<unset>"
-msgstr ""
+msgstr "<بەلگىلەنمىگەن>"
 
 #: ../libwnck/wnckprop.c:1364 ../libwnck/wnckprop.c:1388
 #: ../libwnck/wnckprop.c:1442
@@ -827,7 +828,7 @@ msgstr "سىنبەلگە ئاتى: %s\n"
 #: ../libwnck/wnckprop.c:1395 ../libwnck/wnckprop.c:1518
 #, c-format
 msgid "PID: %s\n"
-msgstr ""
+msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
 #: ../libwnck/wnckprop.c:1402
@@ -838,11 +839,11 @@ msgstr "يوق"
 #: ../libwnck/wnckprop.c:1403
 #, c-format
 msgid "Startup ID: %s\n"
-msgstr ""
+msgstr "باشلىنىش ID سى: %s\n"
 
 #: ../libwnck/wnckprop.c:1451
 msgid "all workspaces"
-msgstr ""
+msgstr "بارلىق خىزمەت بوشلۇقى"
 
 #: ../libwnck/wnckprop.c:1455
 #, c-format
@@ -851,7 +852,7 @@ msgstr "خىزمەت بوشلۇقىدا: %s\n"
 
 #: ../libwnck/wnckprop.c:1470
 msgid "normal window"
-msgstr ""
+msgstr "نورمال كۆزنەك"
 
 #: ../libwnck/wnckprop.c:1473
 msgid "desktop"
@@ -863,7 +864,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1479
 msgid "dialog window"
-msgstr ""
+msgstr "سۆزلەشكۈ"
 
 #: ../libwnck/wnckprop.c:1482
 msgid "tearoff toolbar"
@@ -875,7 +876,7 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1488
 msgid "utility window"
-msgstr ""
+msgstr "قورال كۆزنەك"
 
 #: ../libwnck/wnckprop.c:1491
 msgid "splash screen"
@@ -884,29 +885,29 @@ msgstr ""
 #: ../libwnck/wnckprop.c:1496
 #, c-format
 msgid "Window Type: %s\n"
-msgstr ""
+msgstr "كۆزنەك تىپى: %s\n"
 
 #: ../libwnck/wnckprop.c:1499
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr ""
+msgstr "گېئومېتىرىيىسى(x، y، كەڭلىكى, ئېگىزلىكى): %d, %d, %d, %d\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
 #: ../libwnck/wnckprop.c:1509
 #, c-format
 msgid "Class Group: %s\n"
-msgstr ""
+msgstr "تىپ گۇرۇپپىسى: %s\n"
 
 #: ../libwnck/wnckprop.c:1511
 #, c-format
 msgid "XID: %lu\n"
-msgstr ""
+msgstr "XID: %lu\n"
 
 #: ../libwnck/wnckprop.c:1526
 #, c-format
 msgid "Session ID: %s\n"
-msgstr ""
+msgstr "ئەڭگىمە ID سى: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one
@@ -939,19 +940,19 @@ msgstr "، "
 
 #: ../libwnck/wnckprop.c:1564
 msgid "minimized"
-msgstr ""
+msgstr "كىچىكلىتىلگەن"
 
 #: ../libwnck/wnckprop.c:1565
 msgid "maximized"
-msgstr ""
+msgstr "چوڭايتىلغان"
 
 #: ../libwnck/wnckprop.c:1569
 msgid "maximized horizontally"
-msgstr ""
+msgstr "توغرىسىغا چوڭايتىلغان"
 
 #: ../libwnck/wnckprop.c:1571
 msgid "maximized vertically"
-msgstr ""
+msgstr "بويىغا چوڭايتىلغان"
 
 #: ../libwnck/wnckprop.c:1573
 msgid "shaded"
@@ -975,11 +976,11 @@ msgstr "ئاستى"
 
 #: ../libwnck/wnckprop.c:1578
 msgid "fullscreen"
-msgstr ""
+msgstr "پۈتۈن ئېكران"
 
 #: ../libwnck/wnckprop.c:1579
 msgid "needs attention"
-msgstr ""
+msgstr "دىققەت قىلىش زۆرۈر"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
@@ -987,13 +988,13 @@ msgstr ""
 #. * where this term is also used in translatable strings
 #: ../libwnck/wnckprop.c:1584
 msgid "skip pager"
-msgstr ""
+msgstr "pager دىن ئۆتۈپ كېتىش"
 
 #. Translators: "tasklist" is the list of running applications (the window
 #. * list)
 #: ../libwnck/wnckprop.c:1587
 msgid "skip tasklist"
-msgstr ""
+msgstr "tasklist دىن ئۆتۈپ كېتىش"
 
 #: ../libwnck/wnckprop.c:1589
 msgid "normal"
@@ -1002,23 +1003,23 @@ msgstr "نورمال"
 #: ../libwnck/wnckprop.c:1590
 #, c-format
 msgid "State: %s\n"
-msgstr ""
+msgstr "ھالەت: %s\n"
 
 #: ../libwnck/wnckprop.c:1611
 msgid "move"
-msgstr "يۆتكە"
+msgstr "يۆتكەش"
 
 #: ../libwnck/wnckprop.c:1612
 msgid "resize"
-msgstr ""
+msgstr "چوڭايتىش"
 
 #: ../libwnck/wnckprop.c:1613
 msgid "shade"
-msgstr ""
+msgstr "سايە"
 
 #: ../libwnck/wnckprop.c:1614
 msgid "unshade"
-msgstr ""
+msgstr "سايىسىز"
 
 #: ../libwnck/wnckprop.c:1615
 msgid "stick"
@@ -1030,23 +1031,23 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1618
 msgid "maximize horizontally"
-msgstr ""
+msgstr "توغرىسىغا ئەڭ چوڭ قىلىش"
 
 #: ../libwnck/wnckprop.c:1620
 msgid "unmaximize horizontally"
-msgstr ""
+msgstr "توغرىسىغا ئەڭ چوڭ قىلىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1622
 msgid "maximize vertically"
-msgstr ""
+msgstr "بويىغا ئەڭ چوڭ قىلىش"
 
 #: ../libwnck/wnckprop.c:1624
 msgid "unmaximize vertically"
-msgstr ""
+msgstr "بويىغا ئەڭ چوڭ قىلىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1627
 msgid "change workspace"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنى ئۆزگەرتىش"
 
 #: ../libwnck/wnckprop.c:1629
 msgid "pin"
@@ -1058,52 +1059,52 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1632
 msgid "minimize"
-msgstr ""
+msgstr "ئەڭ كىچىك قىلىش"
 
 #: ../libwnck/wnckprop.c:1633
 msgid "unminimize"
-msgstr ""
+msgstr "ئەڭ كىچىك قىلىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1634
 msgid "maximize"
-msgstr ""
+msgstr "ئەڭ چوڭ قىلىش"
 
 #: ../libwnck/wnckprop.c:1635
 msgid "unmaximize"
-msgstr ""
+msgstr "ئەڭ چوڭ قىلىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1637
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "تولۇق ئېكران ھالىتىنى ئۆزگەرتىش"
 
 #: ../libwnck/wnckprop.c:1638
 msgid "close"
-msgstr ""
+msgstr "تاقاش"
 
 #: ../libwnck/wnckprop.c:1640
 msgid "make above"
-msgstr ""
+msgstr "ئۇستى قىلىپ بېكىتىش"
 
 #: ../libwnck/wnckprop.c:1642
 msgid "unmake above"
-msgstr ""
+msgstr "ئۇستى قىلىپ بېكىتىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1644
 msgid "make below"
-msgstr ""
+msgstr "ئاستى قىلىپ بېكىتىش"
 
 #: ../libwnck/wnckprop.c:1646
 msgid "unmake below"
-msgstr ""
+msgstr "ئاستى قىلىپ بېكىتىشنى بىكار قىلىش"
 
 #: ../libwnck/wnckprop.c:1648
 msgid "no action possible"
-msgstr ""
+msgstr "مەشغۇلات مۇمكىنچىلىكى يوق"
 
 #: ../libwnck/wnckprop.c:1649
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "مۇمكىنچىلىكى بار مەشغۇلاتلار:  %s\n"
 
 #: ../libwnck/wnckprop.c:1830
 msgid ""
@@ -1111,54 +1112,57 @@ msgid ""
 "with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
-msgstr ""
+msgstr "EWMH بەلگىلىمىسىگە ئاساسەن ئېكران/خىزمەت بوشلۇقى/كۆزنەكنىڭ خاسلىقىنى ئۆزگەرتىڭ ياكى بېسىپ چىقىرىڭ، ياكى ئۇلار بىلەن ئالاقە قىلىڭ.\n"
+"EWMH بەلگىلىمىسىگە ئائىت مەزمۇنلارنى تۆۋەندىكى يەردىن كۆرۈڭ:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
+
 
 #: ../libwnck/wnckprop.c:1840
 msgid "Options to list windows or workspaces"
-msgstr ""
+msgstr "كۆزنەك ياكى خىزمەت بوشلۇقىنى تىزىپ كۆرسىتىش تاللانمىلىرى"
 
 #: ../libwnck/wnckprop.c:1841
 msgid "Show options to list windows or workspaces"
-msgstr ""
+msgstr "كۆزنەك ياكى خىزمەت بوشلۇقىنى تىزىپ كۆرسىتىدىغان تاللانمىلارنى كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:1848
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "كۆزنەكنىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلار"
 
 #: ../libwnck/wnckprop.c:1849
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "كۆزنەكنىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلارنى كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:1856
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلار"
 
 #: ../libwnck/wnckprop.c:1857
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "خىزمەت بوشلۇقىنىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلارنى كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:1864
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "ئېكراننىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلار"
 
 #: ../libwnck/wnckprop.c:1865
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "ئېكراننىڭ خاسلىقىنى ئۆزگەرتىدىغان تاللانمىلارنى كۆرسىتىدۇ"
 
 #: ../libwnck/wnckprop.c:1876
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr ""
+msgstr "پارامېتىرلارنى تەھلىل قىلىشتا خاتالىق كۆرۈلدى: %s\n"
 
 #: ../libwnck/wnckprop.c:1899
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "ئېكران %d بىلەن ئالاقە قىلالمىدى: ئېكران مەۋجۇت ئەمەس\n"
 
 #: ../libwnck/wnckprop.c:1955
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr ""
+msgstr "خىزمەت بوشلۇقى %d بىلەن ئالاقە قىلالمىدى: خىزمەت بوشلۇقى تېپىلمىدى\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
@@ -1166,16 +1170,16 @@ msgstr ""
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr ""
+msgstr "تىپ گۇرۇپپىسى \"%s\" بىلەن ئالاقە قىلالمىدى: تىپ گۇرۇپپىسى تېپىلمىدى\n"
 
 #: ../libwnck/wnckprop.c:2002
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr ""
+msgstr "گۇرۇپپا باشلىقىنىڭ XID سى %lu بولغان پروگرامما بىلەن ئالاقە قىلالمىدى: پروگرامما تېپىلمىدى\n"
 
 #: ../libwnck/wnckprop.c:2025
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr ""
+msgstr "XID سى %lu بولغان كۆزنەك بىلەن ئالاقە قىلالمىدى: كۆزنەك گۇرۇپپىسى تېپىلمىدى\n"
