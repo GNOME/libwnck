@@ -1,3 +1,25 @@
+===============
+Version 2.91.90
+===============
+
+ Fixes
+
+  - Port widgets to GtkStyleContext (Carlos Garcia Campos)
+  - Improve geometry management of WnckPager (Vincent)
+  - Add switching workspace on scroll events to WnckPager (Vincent)
+  - Fix crash when fetching some icons (Vincent)
+  - Make most of the code not assume the display is the default one (Vincent)
+  - Code cleanups (Vincent)
+
+ Misc
+
+  - Add high-level documentation, with hints and examples (Vincent)
+  - Build fixes (Vincent)
+
+ Translators
+
+  - Gheyret Kenji (ug)
+
 ==============
 Version 2.91.6
 ==============
