@@ -222,11 +222,11 @@ msgstr "Mută în spaț_iul de lucru din dreapta"
 
 #: ../libwnck/window-action-menu.c:1095
 msgid "Move to Workspace _Up"
-msgstr "Mută în spațiul de lucru de mai s_us"
+msgstr "Mută în spațiul de lucru de s_us"
 
 #: ../libwnck/window-action-menu.c:1101
 msgid "Move to Workspace _Down"
-msgstr "Mută în spațiul _de lucru de mai jos"
+msgstr "Mută în spațiul _de lucru de jos"
 
 #: ../libwnck/window-action-menu.c:1104
 msgid "Move to Another _Workspace"
