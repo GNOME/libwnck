@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: libwnck 2.9.90\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-10 02:22+0100\n"
-"PO-Revision-Date: 2010-04-02 18:41+0200\n"
+"PO-Revision-Date: 2011-04-04 22:08+0200\n"
 "Last-Translator: Sílvia Miranda <silvia.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,17 +44,17 @@ msgstr "Canviador d'espais de treball"
 
 #: ../libwnck/pager-accessible.c:333
 msgid "Tool to switch between workspaces"
-msgstr "Eina per a canviar entre espais de treball"
+msgstr "Eina per canviar entre espais de treball"
 
 #: ../libwnck/pager-accessible.c:437
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Feu clic aquí per a canviar a l'espai de treball %s"
+msgstr "Feu clic aquí per canviar a l'espai de treball %s"
 
 #: ../libwnck/pager.c:1910
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "Feu clic per a començar a arrossegar «%s»"
+msgstr "Feu clic per començar a arrossegar «%s»"
 
 #: ../libwnck/pager.c:1913
 #, c-format
@@ -64,7 +64,7 @@ msgstr "Espai de treball actual: «%s»"
 #: ../libwnck/pager.c:1918
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Feu clic aquí per a canviar a «%s»"
+msgstr "Feu clic aquí per canviar a «%s»"
 
 #: ../libwnck/selector.c:1171
 msgid "No Windows Open"
@@ -76,7 +76,7 @@ msgstr "Selector de finestres"
 
 #: ../libwnck/selector.c:1225
 msgid "Tool to switch between windows"
-msgstr "Eina per a canviar entre finestres"
+msgstr "Eina per canviar entre finestres"
 
 #: ../libwnck/tasklist.c:729
 msgid "Window List"
@@ -84,7 +84,7 @@ msgstr "Llista de finestres"
 
 #: ../libwnck/tasklist.c:730
 msgid "Tool to switch between visible windows"
-msgstr "Eina per a canviar entre finestres visibles"
+msgstr "Eina per canviar entre finestres visibles"
 
 #: ../libwnck/tasklist.c:3018
 msgid "Mi_nimize All"
@@ -530,7 +530,7 @@ msgstr "Activa l'espai de treball"
 #: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr "Valor invàlid «%s» per a --%s"
+msgstr "Valor no vàlid «%s» per a --%s"
 
 #: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
 #, c-format
@@ -626,12 +626,12 @@ msgstr "Hi ha opcions conflictives: --%s i --%s\n"
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
-"Argument invàlid «%d» per a --%s: l'argument ha de ser estrictament positiu\n"
+"Argument no vàlid «%d» per a --%s: l'argument ha de ser estrictament positiu\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr "Argument invàlid «%d» per a --%s: l'argument ha de ser positiu\n"
+msgstr "Argument no vàlid «%d» per a --%s: l'argument ha de ser positiu\n"
 
 #: ../libwnck/wnckprop.c:775
 #, c-format
@@ -641,7 +641,7 @@ msgstr "Hi ha opcions conflictives: --%s o --%s, i --%s\n"
 #: ../libwnck/wnckprop.c:807
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr "Argument invàlid «%s» per a --%s; els valors vàlids són: %s\n"
+msgstr "Argument no vàlid «%s» per a --%s; els valors vàlids són: %s\n"
 
 #: ../libwnck/wnckprop.c:850
 #, c-format
@@ -1181,37 +1181,37 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1815
 msgid "Options to list windows or workspaces"
-msgstr "Opcions per a mostrar llistes de finestres o d'espais de treball"
+msgstr "Opcions per mostrar llistes de finestres o d'espais de treball"
 
 #: ../libwnck/wnckprop.c:1816
 msgid "Show options to list windows or workspaces"
 msgstr ""
-"Mostra les opcions per a mostrar llistes de finestres o d'espais de treball"
+"Mostra les opcions per mostrar llistes de finestres o d'espais de treball"
 
 #: ../libwnck/wnckprop.c:1823
 msgid "Options to modify properties of a window"
-msgstr "Opcions per a modificar les propietats d'una finestra"
+msgstr "Opcions per modificar les propietats d'una finestra"
 
 #: ../libwnck/wnckprop.c:1824
 msgid "Show options to modify properties of a window"
-msgstr "Mostra les opcions per a modificar les propietats d'una finestra"
+msgstr "Mostra les opcions per modificar les propietats d'una finestra"
 
 #: ../libwnck/wnckprop.c:1831
 msgid "Options to modify properties of a workspace"
-msgstr "Opcions per a modificar les propietats d'un espai de treball"
+msgstr "Opcions per modificar les propietats d'un espai de treball"
 
 #: ../libwnck/wnckprop.c:1832
 msgid "Show options to modify properties of a workspace"
 msgstr ""
-"Mostra les opcions per a modificar les propietats d'un espai de treball"
+"Mostra les opcions per modificar les propietats d'un espai de treball"
 
 #: ../libwnck/wnckprop.c:1839
 msgid "Options to modify properties of a screen"
-msgstr "Opcions per a modificar les propietats d'una pantalla"
+msgstr "Opcions per modificar les propietats d'una pantalla"
 
 #: ../libwnck/wnckprop.c:1840
 msgid "Show options to modify properties of a screen"
-msgstr "Mostra les opcions per a modificar les propietats d'una pantalla"
+msgstr "Mostra les opcions per modificar les propietats d'una pantalla"
 
 #: ../libwnck/wnckprop.c:1851
 #, c-format
