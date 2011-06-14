@@ -11,12 +11,10 @@ AC_INIT([libwnck], [wnck_version],
 
 AM_CONFIG_HEADER(config.h)
 
-AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-bzip2])
+AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-bzip2 tar-ustar])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_MACRO_DIR([m4])
 
-AM_MAINTAINER_MODE
-GNOME_COMMON_INIT
 GNOME_MAINTAINER_MODE_DEFINES
 
 dnl libtool versioning for libwnck
@@ -44,36 +42,14 @@ AC_SUBST(WNCK_MAJOR_VERSION)
 AC_SUBST(WNCK_MINOR_VERSION)
 AC_SUBST(WNCK_MICRO_VERSION)
 
-IT_PROG_INTLTOOL([0.40.0])
+LT_PREREQ([2.2.6])
+LT_INIT([dlopen disable-static])
+
+IT_PROG_INTLTOOL([0.40.6])
 
 AC_PROG_CC
-AC_ISC_POSIX
-AC_HEADER_STDC
-AC_LIBTOOL_WIN32_DLL
-AM_PROG_LIBTOOL
 
-changequote(,)dnl
-if test "x$GCC" = "xyes"; then
-  case " $CFLAGS " in
-  *[\ \	]-Wall[\ \	]*) ;;
-  *) CFLAGS="$CFLAGS -Wall" ;;
-  esac
-
-  if test "x$enable_ansi" = "xyes"; then
-    case " $CFLAGS " in
-    *[\ \	]-ansi[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -ansi" ;;
-    esac
-
-    case " $CFLAGS " in
-    *[\ \	]-pedantic[\ \	]*) ;;
-    *) CFLAGS="$CFLAGS -pedantic" ;;
-    esac
-  fi
-fi
-changequote([,])dnl
-
-GNOME_COMPILE_WARNINGS(maximum)
+GNOME_COMPILE_WARNINGS([maximum])
 
 AC_ARG_ENABLE(deprecation_flags,
               [AC_HELP_STRING([--enable-deprecation-flags],
