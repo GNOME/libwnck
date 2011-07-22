@@ -1008,6 +1008,13 @@ wnck_tasklist_layout (GtkAllocation *allocation,
 {
   int n_cols, n_rows;
 
+  if (n_buttons == 0)
+    {
+      *n_cols_out = 0;
+      *n_rows_out = 0;
+      return 0;
+    }
+
   /* How many rows fit in the allocation */
   n_rows = allocation->height / max_height;
 
