@@ -316,7 +316,6 @@ item_activated_callback (GtkWidget *menu_item,
         {
           WnckWorkspace *workspace;
           int new_viewport_x, new_viewport_y;
-          int width, height;
           int xw, yw, ww, hw;
           int viewport_x, viewport_y;
 
@@ -328,9 +327,6 @@ item_activated_callback (GtkWidget *menu_item,
                                                          "viewport_y"));
 
           workspace = wnck_screen_get_workspace (screen, 0);
-
-          width = wnck_screen_get_width (screen);
-          height = wnck_screen_get_height (screen);
 
           wnck_window_get_geometry (window, &xw, &yw, &ww, &hw);
 

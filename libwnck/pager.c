@@ -167,8 +167,6 @@ static gboolean wnck_pager_button_release (GtkWidget        *widget,
                                            GdkEventButton   *event);
 static gboolean wnck_pager_scroll_event  (GtkWidget        *widget,
                                           GdkEventScroll   *event);
-static gboolean wnck_pager_focus         (GtkWidget        *widget,
-                                          GtkDirectionType  direction);
 static gboolean wnck_pager_query_tooltip (GtkWidget  *widget,
                                           gint        x,
                                           gint        y,
@@ -273,7 +271,6 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->scroll_event = wnck_pager_scroll_event;
   widget_class->motion_notify_event = wnck_pager_motion;
   widget_class->leave_notify_event = wnck_pager_leave_notify;
-  widget_class->focus = wnck_pager_focus;
   widget_class->get_accessible = wnck_pager_get_accessible;
   widget_class->drag_leave = wnck_pager_drag_motion_leave;
   widget_class->drag_motion = wnck_pager_drag_motion;
@@ -2164,17 +2161,6 @@ wnck_pager_scroll_event (GtkWidget      *widget,
   wnck_workspace_activate (space, event->time);
 
   return TRUE;
-}
-
-static gboolean
-wnck_pager_focus (GtkWidget        *widget,
-                  GtkDirectionType  direction)
-{
-  WnckPager *pager;
-
-  pager = WNCK_PAGER (widget);
-
-  return GTK_WIDGET_CLASS (wnck_pager_parent_class)->focus (widget, direction);
 }
 
 static gboolean

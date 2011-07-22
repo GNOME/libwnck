@@ -709,7 +709,6 @@ wnck_selector_add_workspace (WnckSelector *selector,
 static GtkWidget *
 wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
 {
-  WnckWorkspace *workspace;
   GtkWidget *item;
   GtkWidget *image;
   char *name;
@@ -727,9 +726,6 @@ wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
   gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
                                  GTK_WIDGET (image));
   gtk_widget_show (image);
-
-  workspace =
-    wnck_screen_get_active_workspace (wnck_selector_get_screen (selector));
 
   g_signal_connect_swapped (item, "activate",
                             G_CALLBACK (wnck_selector_activate_window),

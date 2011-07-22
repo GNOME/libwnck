@@ -3819,7 +3819,6 @@ wnck_task_draw (GtkWidget *widget,
   GtkStyleContext *context;
   GtkStateFlags state;
   GtkBorder padding;
-  WnckTasklist *tasklist;
   GtkWidget    *tasklist_widget;
   gint width, height;
   gboolean overlay_rect;
@@ -3884,7 +3883,6 @@ wnck_task_draw (GtkWidget *widget,
   width = gtk_widget_get_allocated_width (task->button);
   height = gtk_widget_get_allocated_height (task->button);
 
-  tasklist = WNCK_TASKLIST (task->tasklist);
   tasklist_widget = GTK_WIDGET (task->tasklist);
 
   context = gtk_widget_get_style_context (task->button);

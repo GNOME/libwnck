@@ -101,7 +101,6 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
                                        AtkCoordType  coords)
 {
   AtkGObjectAccessible *atk_gobj;
-  WnckWorkspace *workspace;
   WnckPager *pager;
   GdkRectangle rect;
   GtkWidget *widget;
@@ -117,7 +116,6 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
     return;
 
   g_return_if_fail (WNCK_IS_WORKSPACE (g_obj));
-  workspace = WNCK_WORKSPACE (g_obj);
 
   parent = atk_object_get_parent (ATK_OBJECT(component));
 #if GTK_CHECK_VERSION(2,21,0)

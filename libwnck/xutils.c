@@ -1290,7 +1290,6 @@ _wnck_get_wmclass (Screen *screen,
 {
   Display *display;
   XClassHint ch;
-  char *retval;
 
   display = DisplayOfScreen (screen);
 
@@ -1302,8 +1301,6 @@ _wnck_get_wmclass (Screen *screen,
   XGetClassHint (display, xwindow, &ch);
 
   _wnck_error_trap_pop (display);
-
-  retval = NULL;
 
   if (res_class)
     *res_class = NULL;
@@ -1408,9 +1405,6 @@ find_largest_sizes (gulong *data,
   while (nitems > 0)
     {
       int w, h;
-      gboolean replace;
-
-      replace = FALSE;
 
       if (nitems < 3)
         return FALSE; /* no space for w, h */
