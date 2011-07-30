@@ -1530,7 +1530,7 @@ update_client_list (WnckScreen *screen)
 
 	  /* Class group */
 
-	  res_class = _wnck_window_get_resource_class (window);
+	  res_class = wnck_window_get_class_group_name (window);
 
 	  class_group = wnck_class_group_get (res_class);
 	  if (class_group == NULL)

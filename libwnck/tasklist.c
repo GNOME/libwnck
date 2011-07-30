@@ -4233,8 +4233,8 @@ wnck_tasklist_check_end_sequence (WnckTasklist   *tasklist,
   if (tasklist->priv->startup_sequences == NULL)
     return;
 
-  res_class = _wnck_window_get_resource_class (window);
-  res_name = _wnck_window_get_resource_name (window);
+  res_class = wnck_window_get_class_group_name (window);
+  res_name = wnck_window_get_class_instance_name (window);
 
   if (res_class == NULL && res_name == NULL)
     return;

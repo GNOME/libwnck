@@ -1172,16 +1172,38 @@ _wnck_window_get_startup_id (WnckWindow *window)
   return window->priv->startup_id;
 }
 
+/**
+ * wnck_window_get_class_group_name:
+ * @window: a #WnckWindow.
+ *
+ * Gets class group name parameter of the <ulink
+ * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
+ * for the window @window.
+ * Note that using this function is actually like doing wnck_window_get_class_group()
+ * and then wnck_class_group_get_res_class()
+ *
+ * Return value: the class name for @window, or %NULL if @window has no class.
+ **/
 const char*
-_wnck_window_get_resource_class (WnckWindow *window)
+wnck_window_get_class_group_name (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
   return window->priv->res_class;
 }
 
+/**
+ * wnck_window_get_class_instance_name:
+ * @window: a #WnckWindow.
+ *
+ * Gets class instance name parameter of the <ulink
+ * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
+ * for the window @window.
+ *
+ * Return value: the class instance for @window, or %NULL if @window has no class instance.
+ **/
 const char*
-_wnck_window_get_resource_name (WnckWindow *window)
+wnck_window_get_class_instance_name (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
