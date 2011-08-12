@@ -3676,7 +3676,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
     gtk_drag_dest_set (GTK_WIDGET (task->button), 0,
                        NULL, 0, GDK_ACTION_DEFAULT);
 
-  hbox = gtk_hbox_new (FALSE, 0);
+  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
   pixbuf = wnck_task_get_icon (task);
   if (pixbuf)
