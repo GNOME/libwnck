@@ -1,8 +1,8 @@
 AC_PREREQ(2.62)
 
 m4_define([wnck_major_version], [3])
-m4_define([wnck_minor_version], [0])
-m4_define([wnck_micro_version], [3])
+m4_define([wnck_minor_version], [1])
+m4_define([wnck_micro_version], [5])
 m4_define([wnck_version],
           [wnck_major_version.wnck_minor_version.wnck_micro_version])
 
@@ -20,16 +20,16 @@ GNOME_MAINTAINER_MODE_DEFINES
 dnl libtool versioning for libwnck
 
 dnl increment if the interface has additions, changes, removals.
-LIBWNCK_CURRENT=0
+LIBWNCK_CURRENT=1
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=1
+LIBWNCK_REVISION=0
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has
 dnl  precedence over adding, so set to 0 if both happened.
-LIBWNCK_AGE=0
+LIBWNCK_AGE=1
 
 AC_SUBST(LIBWNCK_CURRENT)
 AC_SUBST(LIBWNCK_REVISION)

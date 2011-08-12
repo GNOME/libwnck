@@ -1,4 +1,33 @@
 =============
+Version 3.1.5
+=============
+
+ Features
+
+  - Add API to get WM_CLASS group name & instance name of a WnckWindow:
+    wnck_window_get_class_group_name(), wnck_window_get_class_instance_name()
+    (Marco Trevisan)
+  - Change WnckClassGroup to talk about identifier instead of resource class.
+    This includes deprecating wnck_class_group_get_res_class() in favor of
+    wnck_class_group_get_id() (Vincent)
+
+ Fixes
+
+  - Fix tasklist taking some space when there is no window (Vincent)
+  - Remove unused variables (Vincent)
+  - Stop using several deprecated APIs (Vincent)
+  - Remove disabling of libgnomeui sounds (Vincent)
+  - Do not connect same signal handler twice (Vincent)
+
+ Misc
+
+  - Modernize build system (Vincent)
+
+ Translators
+
+  - Petr Kovar (cs)
+
+=============
 Version 3.0.2
 =============
 
