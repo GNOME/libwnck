@@ -1787,7 +1787,7 @@ get_target (gpointer data)
   cross = gdk_cursor_new (GDK_CROSS);
   status = gdk_pointer_grab (root, FALSE, GDK_BUTTON_PRESS_MASK,
                              NULL, cross, GDK_CURRENT_TIME);
-  gdk_cursor_unref (cross);
+  g_object_unref (cross);
 
   if (status != GDK_GRAB_SUCCESS)
     {
