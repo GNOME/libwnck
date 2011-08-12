@@ -3734,11 +3734,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   if (task->type == WNCK_TASK_WINDOW)
     {
-      g_signal_connect_object (G_OBJECT (task->button), "drag_data_get",
-                               G_CALLBACK (wnck_task_drag_data_get),
-                               G_OBJECT (task),
-                               0);
-
       g_signal_connect_object (G_OBJECT (task->button), "drag_data_received",
                                G_CALLBACK (wnck_task_drag_data_received),
                                G_OBJECT (task),
