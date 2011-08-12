@@ -3627,13 +3627,9 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GdkPixbuf *pixbuf;
   char *text;
   GtkCssProvider *provider;
-  static GQuark disable_sound_quark = 0;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
   };
-
-  if (!disable_sound_quark)
-    disable_sound_quark = g_quark_from_static_string ("gnome_disable_sound_events");
 
   if (task->type == WNCK_TASK_STARTUP_SEQUENCE)
     task->button = gtk_button_new ();
@@ -3643,8 +3639,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   gtk_button_set_relief (GTK_BUTTON (task->button), relief);
 
   task->button_activate = 0;
-  g_object_set_qdata (G_OBJECT (task->button),
-		      disable_sound_quark, GINT_TO_POINTER (TRUE));
   g_object_add_weak_pointer (G_OBJECT (task->button),
                              (void**) &task->button);
 
