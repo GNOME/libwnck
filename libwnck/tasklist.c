@@ -2162,7 +2162,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
 
 	  class_group = wnck_window_get_class_group (win);
           /* don't group windows if they do not belong to any class */
-          if (strcmp (wnck_class_group_get_res_class (class_group), "") != 0)
+          if (strcmp (wnck_class_group_get_id (class_group), "") != 0)
             {
               class_group_task =
                         g_hash_table_lookup (tasklist->priv->class_group_hash,

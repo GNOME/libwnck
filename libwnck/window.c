@@ -1180,8 +1180,8 @@ _wnck_window_get_startup_id (WnckWindow *window)
  * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
  * for @window.
  *
- * The class group name can also be fetched from the #WnckClassGroup to which
- * @window belongs.
+ * The class group name is also the identifier name of the #WnckClassGroup to
+ * which @window belongs.
  *
  * Return value: the class group name for @window, or %NULL if @window belongs
  * to no class group.

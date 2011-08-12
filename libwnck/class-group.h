@@ -74,15 +74,19 @@ struct _WnckClassGroupClass
 
 GType wnck_class_group_get_type (void) G_GNUC_CONST;
 
-WnckClassGroup *wnck_class_group_get (const char *res_class);
+WnckClassGroup *wnck_class_group_get (const char *id);
 
 GList *wnck_class_group_get_windows (WnckClassGroup *class_group);
-const char * wnck_class_group_get_res_class (WnckClassGroup *class_group);
+const char * wnck_class_group_get_id (WnckClassGroup *class_group);
 
 const char * wnck_class_group_get_name (WnckClassGroup *class_group);
 
 GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
+
+#ifndef WNCK_DISABLE_DEPRECATED
+const char * wnck_class_group_get_res_class (WnckClassGroup *class_group);
+#endif
 
 G_END_DECLS
 

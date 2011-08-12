@@ -1347,10 +1347,13 @@ print_class_group (WnckClassGroup *class_group)
 
   windows = wnck_class_group_get_windows (class_group);
 
-  /* Translators: Resource class is the name to identify a class. */
-  g_print (_("Resource Class: %s\n"),
-           wnck_class_group_get_res_class (class_group));
-  g_print (_("Group Name: %s\n"), wnck_class_group_get_name (class_group));
+  /* Translators: A class is like a "family". E.g., all gvim windows are of the
+   * same class. */
+  g_print (_("Class Group ID: %s\n"),
+           wnck_class_group_get_id (class_group));
+  /* Translators: A class is like a "family". E.g., all gvim windows are of the
+   * same class. */
+  g_print (_("Class Group Name: %s\n"), wnck_class_group_get_name (class_group));
 
   /* TODO: missing API */
 #if 0
@@ -1498,14 +1501,14 @@ print_window (WnckWindow *window)
   g_print (_("Geometry (x, y, width, height): %d, %d, %d, %d\n"), x, y, w, h);
 
   class_group = wnck_window_get_class_group (window);
-  if (strcmp (wnck_class_group_get_res_class (class_group), ""))
-    buf = wnck_class_group_get_res_class (class_group);
+  if (strcmp (wnck_class_group_get_id (class_group), ""))
+    buf = wnck_class_group_get_id (class_group);
   else
     /* Translators: 'unset' in the sense of "something has not been set". */
     buf = _("<unset>");
   /* Translators: A class is like a "family". E.g., all gvim windows are of the
    * same class. */
-  g_print (_("Class Group: %s\n"), buf);
+  g_print (_("Class Group ID: %s\n"), buf);
 
   if (g_strcmp0 (wnck_window_get_class_instance_name (window), ""))
     buf = wnck_window_get_class_instance_name (window);

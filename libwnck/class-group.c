@@ -22,6 +22,8 @@
  * Boston, MA 02111-1307, USA.
  */
 
+#undef WNCK_DISABLE_DEPRECATED
+
 #include <string.h>
 #include "class-group.h"
 #include "window.h"
@@ -161,24 +163,24 @@ wnck_class_group_finalize (GObject *object)
 
 /**
  * wnck_class_group_get:
- * @res_class: name of the sought resource class.
+ * @id: identifier name of the sought resource class.
  *
- * Gets the #WnckClassGroup corresponding to @res_class.
+ * Gets the #WnckClassGroup corresponding to @id.
  *
  * Return value: (transfer none): the #WnckClassGroup corresponding to
- * @res_class, or %NULL if there is no #WnckClassGroup with the specified
- * @res_class. The returned #WnckClassGroup is owned by libwnck and must not be
+ * @id, or %NULL if there is no #WnckClassGroup with the specified
+ * @id. The returned #WnckClassGroup is owned by libwnck and must not be
  * referenced or unreferenced.
  *
  * Since: 2.2
  **/
 WnckClassGroup *
-wnck_class_group_get (const char *res_class)
+wnck_class_group_get (const char *id)
 {
   if (!class_group_hash)
     return NULL;
   else
-    return g_hash_table_lookup (class_group_hash, res_class ? res_class : "");
+    return g_hash_table_lookup (class_group_hash, id ? id : "");
 }
 
 /**
@@ -526,6 +528,26 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
 }
 
 /**
+ * wnck_class_group_get_id:
+ * @class_group: a #WnckClassGroup.
+ *
+ * Gets the identifier name for @class_group. This is the resource class for
+ * @class_group.
+ *
+ * Return value: the identifier name of @class_group, or an
+ * empty string if the group has no identifier name.
+ *
+ * Since: 3.2
+ **/
+const char *
+wnck_class_group_get_id (WnckClassGroup *class_group)
+{
+  g_return_val_if_fail (class_group != NULL, NULL);
+
+  return class_group->priv->res_class;
+}
+
+/**
  * wnck_class_group_get_res_class:
  * @class_group: a #WnckClassGroup.
  *
@@ -535,6 +557,7 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
  * empty string if the group has no resource class name.
  *
  * Since: 2.2
+ * Deprecated:3.2: Use wnck_class_group_get_id() instead.
  **/
 const char *
 wnck_class_group_get_res_class (WnckClassGroup *class_group)
