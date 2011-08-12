@@ -1176,13 +1176,15 @@ _wnck_window_get_startup_id (WnckWindow *window)
  * wnck_window_get_class_group_name:
  * @window: a #WnckWindow.
  *
- * Gets class group name parameter of the <ulink
+ * Gets the class group name from the <ulink
  * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
- * for the window @window.
- * Note that using this function is actually like doing wnck_window_get_class_group()
- * and then wnck_class_group_get_res_class()
+ * for @window.
  *
- * Return value: the class name for @window, or %NULL if @window has no class.
+ * The class group name can also be fetched from the #WnckClassGroup to which
+ * @window belongs.
+ *
+ * Return value: the class group name for @window, or %NULL if @window belongs
+ * to no class group.
  **/
 const char*
 wnck_window_get_class_group_name (WnckWindow *window)
@@ -1196,11 +1198,15 @@ wnck_window_get_class_group_name (WnckWindow *window)
  * wnck_window_get_class_instance_name:
  * @window: a #WnckWindow.
  *
- * Gets class instance name parameter of the <ulink
+ * Gets the class instance name from the <ulink
  * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
- * for the window @window.
+ * for @window.
  *
- * Return value: the class instance for @window, or %NULL if @window has no class instance.
+ * The class instance name allows to differentiate windows belonging to the
+ * same class group, so that they can use different resources.
+ *
+ * Return value: the class instance name for @window, or %NULL if @window has
+ * no class instance.
  **/
 const char*
 wnck_window_get_class_instance_name (WnckWindow *window)
