@@ -1507,12 +1507,14 @@ print_window (WnckWindow *window)
    * same class. */
   g_print (_("Class Group: %s\n"), buf);
 
-  if (wnck_window_get_class_instance_name (window))
+  if (g_strcmp0 (wnck_window_get_class_instance_name (window), ""))
     buf = wnck_window_get_class_instance_name (window);
   else
     /* Translators: 'unset' in the sense of "something has not been set". */
     buf = _("<unset>");
-
+  /* Translators: A class is like a "family". E.g., all gvim windows are of the
+   * same class. The class instance is a way to differentiate windows belonging
+   * to the same class group. */
   g_print (_("Class Instance: %s\n"), buf);
 
   g_print (_("XID: %lu\n"), wnck_window_get_xid (window));
