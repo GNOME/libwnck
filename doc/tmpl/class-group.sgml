@@ -45,7 +45,16 @@ WnckClassGroup
 
 </para>
 
-@res_class: 
+@id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_class_group_get_id ##### -->
+<para>
+
+</para>
+
+@class_group: 
 @Returns: 
 
 

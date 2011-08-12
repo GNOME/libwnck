@@ -19,6 +19,8 @@ wnck_window_get_transient
 wnck_window_get_group_leader
 wnck_window_get_xid
 wnck_window_get_class_group
+wnck_window_get_class_group_name
+wnck_window_get_class_instance_name
 wnck_window_get_session_id
 wnck_window_get_session_id_utf8
 wnck_window_get_pid
@@ -103,6 +105,7 @@ WnckWindowClass
 <TITLE>WnckClassGroup</TITLE>
 WnckClassGroup
 wnck_class_group_get
+wnck_class_group_get_id
 wnck_class_group_get_res_class
 wnck_class_group_get_name
 wnck_class_group_get_icon

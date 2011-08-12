@@ -198,6 +198,24 @@ WnckWindow
 @Returns: 
 
 
+<!-- ##### FUNCTION wnck_window_get_class_group_name ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
+<!-- ##### FUNCTION wnck_window_get_class_instance_name ##### -->
+<para>
+
+</para>
+
+@window: 
+@Returns: 
+
+
 <!-- ##### FUNCTION wnck_window_get_session_id ##### -->
 <para>
 
