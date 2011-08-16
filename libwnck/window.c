@@ -2233,10 +2233,10 @@ wnck_window_get_state (WnckWindow *window)
 /**
  * wnck_window_get_client_window_geometry:
  * @window: a #WnckWindow.
- * @xp: return location for X coordinate in pixels of @window.
- * @yp: return location for Y coordinate in pixels of @window.
- * @widthp: return location for width in pixels of @window.
- * @heightp: return location for height in pixels of @window.
+ * @xp: (out): return location for X coordinate in pixels of @window.
+ * @yp: (out): return location for Y coordinate in pixels of @window.
+ * @widthp: (out): return location for width in pixels of @window.
+ * @heightp: (out): return location for height in pixels of @window.
  *
  * Gets the size and position of @window, as last received
  * in a ConfigureNotify event (i.e. this call does not round-trip
@@ -2271,10 +2271,10 @@ wnck_window_get_client_window_geometry (WnckWindow *window,
 /**
  * wnck_window_get_geometry:
  * @window: a #WnckWindow.
- * @xp: return location for X coordinate in pixels of @window.
- * @yp: return location for Y coordinate in pixels of @window.
- * @widthp: return location for width in pixels of @window.
- * @heightp: return location for height in pixels of @window.
+ * @xp: (out): return location for X coordinate in pixels of @window.
+ * @yp: (out): return location for Y coordinate in pixels of @window.
+ * @widthp: (out): return location for width in pixels of @window.
+ * @heightp: (out): return location for height in pixels of @window.
  *
  * Gets the size and position of @window, including decorations. This
  * function uses the information last received in a ConfigureNotify
