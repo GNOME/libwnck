@@ -83,7 +83,8 @@ libwnck_1_la_CPPFLAGS =			\
 
 libwnck_1_la_LIBADD =	\
 	$(LIBWNCK_LIBS)	\
-	$(XLIB_LIBS)
+	$(XLIB_LIBS)	\
+	$(LIBM)
 
 libwnck_1_la_LDFLAGS =								\
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE)	\
