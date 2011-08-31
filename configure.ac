@@ -74,6 +74,9 @@ AC_SUBST(wncklocaledir)
 
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 
+AC_CHECK_LIBM
+AC_SUBST(LIBM)
+
 AC_ARG_ENABLE(startup-notification,
               [AC_HELP_STRING([--enable-startup-notification],
                               [startup notification library @<:@default=auto@:>@])],,
