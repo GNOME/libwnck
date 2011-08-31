@@ -1,4 +1,18 @@
 ==============
+Version 2.30.7
+==============
+
+ Misc
+
+  - Link against libX11 (Wouter Bolsterlee)
+  - Link against libm (Vincent)
+
+ Translators
+
+  - Ivar Smolin (et)
+  - Gheyret Kenji (ug)
+
+==============
 Version 2.30.6
 ==============
 
