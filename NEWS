@@ -1,3 +1,29 @@
+==============
+Version 3.1.90
+==============
+
+ Fixes
+
+  - Added missing introspection annotations (Priit Laes)
+
+ Misc
+
+  - Link against libm (Vincent)
+
+ Translators
+
+  - Alexander Shopov (bg)
+  - Mario Blättermann (de)
+  - Jorge González (es)
+  - Vincent Untz (fr)
+  - Fran Diéguez (gl)
+  - Yaron Shahrabani (he)
+  - Andika Triwidada (id)
+  - Kjartan Maraas (nb)
+  - Piotr Drąg (pl)
+  - Daniel Nylander (sv)
+  - Theppitak Karoonboonyanan (th)
+
 =============
 Version 3.1.5
 =============
