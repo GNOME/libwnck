@@ -12,6 +12,7 @@ noinst_PROGRAMS =		\
 AM_CPPFLAGS =					\
 	$(LIBWNCK_CFLAGS)			\
 	-I$(top_srcdir)				\
+	-I$(top_builddir)			\
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE		\
 	-DWNCK_LOCALEDIR=\"$(wncklocaledir)\"	\
 	$(DISABLE_DEPRECATED_CFLAGS)
