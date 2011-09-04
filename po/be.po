@@ -5,12 +5,12 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-28 13:08+0000\n"
-"PO-Revision-Date: 2011-09-02 15:31+0300\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-09-04 19:13+0300\n"
+"PO-Revision-Date: 2011-09-04 19:14+0300\n"
 "Last-Translator: Ihar Hrachyshka <ihar.hrachyshka@gmail.com>\n"
 "Language-Team: Belarusian <i18n-bel-gnome@googlegroups.com>\n"
+"Language: be\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +70,7 @@ msgstr "Пстрыкніце, каб перайсці ў \"%s\""
 
 #: ../libwnck/selector.c:1180
 msgid "No Windows Open"
-msgstr "Няма адчыненых вокнаў"
+msgstr "Няма адкрытых вокнаў"
 
 #: ../libwnck/selector.c:1236
 msgid "Window Selector"
@@ -106,7 +106,7 @@ msgstr "_Аднавіць максімалізаваныя вокны"
 
 #: ../libwnck/tasklist.c:2938
 msgid "_Close All"
-msgstr "_Зачыніць усё"
+msgstr "_Закрыць усё"
 
 #: ../libwnck/window-action-menu.c:413
 msgid "Unmi_nimize"
@@ -181,7 +181,7 @@ msgstr "П_ерамясціць на іншую прастору працы"
 
 #: ../libwnck/window-action-menu.c:1120
 msgid "_Close"
-msgstr "_Зачыніць акно"
+msgstr "_Закрыць акно"
 
 #. *
 #. * SECTION:window
@@ -282,7 +282,8 @@ msgstr "Перастаць паказваць стол"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:184
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr "Перамясціць прастору прагляду бягучай прасторы працы ў пэўную X-каардынату"
+msgstr ""
+"Перамясціць прастору прагляду бягучай прасторы працы ў пэўную X-каардынату"
 
 #: ../libwnck/wnckprop.c:184 ../libwnck/wnckprop.c:274
 msgid "X"
@@ -293,7 +294,8 @@ msgstr "X"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:189
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "Перамясціць прастору прагляду бягучай прасторы працы ў пэўную Y-каардынату"
+msgstr ""
+"Перамясціць прастору прагляду бягучай прасторы працы ў пэўную Y-каардынату"
 
 #: ../libwnck/wnckprop.c:189 ../libwnck/wnckprop.c:276
 msgid "Y"
@@ -345,7 +347,7 @@ msgstr "Задзейнічаць акно"
 
 #: ../libwnck/wnckprop.c:217
 msgid "Close the window"
-msgstr "Зачыніць акно"
+msgstr "Закрыць акно"
 
 #: ../libwnck/wnckprop.c:220
 msgid "Make the window fullscreen"
@@ -465,8 +467,9 @@ msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"Змяніць тып акна (магчымыя значэнні: normal: звычайнае , desktop: стол, dock: убудаванае, "
-"dialog: дыялог, toolbar: паліца прылад, menu: меню, utility: утыліта, splash: застаўка)"
+"Змяніць тып акна (магчымыя значэнні: normal: звычайнае , desktop: стол, "
+"dock: убудаванае, dialog: дыялог, toolbar: паліца прылад, menu: меню, "
+"utility: утыліта, splash: застаўка)"
 
 #: ../libwnck/wnckprop.c:283
 msgid "TYPE"
@@ -496,8 +499,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --"
 "%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з экранам %d, але ўжыта --"
-"%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з экранам %d, але ўжыта "
+"--%s\n"
 
 #: ../libwnck/wnckprop.c:511
 #, c-format
@@ -505,8 +508,8 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны ці прасторы працы экрана %d, "
-"але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны ці прасторы "
+"працы экрана %d, але ўжыта --%s\n"
 
 #: ../libwnck/wnckprop.c:534 ../libwnck/wnckprop.c:554
 #, c-format
@@ -514,8 +517,8 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з прасторай працы %d, але ўжыта "
-"--%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з прасторай працы %d, "
+"але ўжыта --%s\n"
 
 #: ../libwnck/wnckprop.c:544
 #, c-format
@@ -523,8 +526,8 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны прасторы працы %d, "
-"але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны прасторы працы "
+"%d, але ўжыта --%s\n"
 
 #: ../libwnck/wnckprop.c:566
 #, c-format
@@ -532,8 +535,8 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з праграмай, "
-"але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з праграмай, але ўжыта "
+"--%s\n"
 
 #: ../libwnck/wnckprop.c:576
 #, c-format
@@ -541,8 +544,8 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны праграмы, "
-"але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны праграмы, але "
+"ўжыта --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -552,7 +555,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з групай класа \"%s\", але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба працаваць з групай класа \"%s\", "
+"але ўжыта --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -562,7 +566,8 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны з групы класа \"%s\", але ўжыта --%s\n"
+"Ужытыя ўзаемна несумяшчальныя опцыі: трэба пералічыць вокны з групы класа "
+"\"%s\", але ўжыта --%s\n"
 
 #: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
 #, c-format
@@ -607,7 +612,8 @@ msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
-"Не ўдалося змяніць схему размяшчэння прастор працы на экране: схема ўжо камусьці належыць\n"
+"Не ўдалося змяніць схему размяшчэння прастор працы на экране: схема ўжо "
+"камусьці належыць\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -617,7 +623,8 @@ msgstr ""
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
-"Не ўдалося перамясціць прастору прагляду: бягучая прастора працы не змяшчае прасторы прагляду\n"
+"Не ўдалося перамясціць прастору прагляду: бягучая прастора працы не змяшчае "
+"прасторы прагляду\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -625,7 +632,8 @@ msgstr ""
 #: ../libwnck/wnckprop.c:906
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr "Не ўдалося перамясціць прастору прагляду: няма бягучай прасторы працы\n"
+msgstr ""
+"Не ўдалося перамясціць прастору прагляду: няма бягучай прасторы працы\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:942 ../libwnck/wnckprop.c:951
@@ -639,7 +647,8 @@ msgstr "Дзеянне забаронена\n"
 #: ../libwnck/wnckprop.c:1038
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr "Не ўдалося перамясціць акно ў прастору працы %d: такой прасторы не існуе\n"
+msgstr ""
+"Не ўдалося перамясціць акно ў прастору працы %d: такой прасторы не існуе\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1102 ../libwnck/wnckprop.c:1234
@@ -1106,7 +1115,7 @@ msgstr "пераключэнне поўнаэкраннага рэжыму"
 
 #: ../libwnck/wnckprop.c:1650
 msgid "close"
-msgstr "зачыненне"
+msgstr "закрыццё"
 
 #: ../libwnck/wnckprop.c:1652
 msgid "make above"
@@ -1140,7 +1149,8 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"Праграма для вываду ці змянення значэнняў уласцівасцяў экрана/прастор працы/вокнаў або працы з імі ў адпаведнасці са спецыфікацыяй EWMH.\n"
+"Праграма для вываду ці змянення значэнняў уласцівасцяў экрана/прастор працы/"
+"вокнаў або працы з імі ў адпаведнасці са спецыфікацыяй EWMH.\n"
 "Каб атрымаць больш звестак аб спецыфікацыі, гл.:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
@@ -1189,7 +1199,9 @@ msgstr "Не ўдалося пачаць узаемадзеянне з экра�
 #: ../libwnck/wnckprop.c:1967
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr "Не ўдалося пачаць узаемадзеянне з прасторай працы %d: не ўдалося адшукаць такую прастору\n"
+msgstr ""
+"Не ўдалося пачаць узаемадзеянне з прасторай працы %d: не ўдалося адшукаць "
+"такую прастору\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
@@ -1198,7 +1210,8 @@ msgstr "Не ўдалося пачаць узаемадзеянне з прас�
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
-"Не ўдалося пачаць узаемадзеянне з групай класа \"%s\": не ўдалося адшукаць такую групу\n"
+"Не ўдалося пачаць узаемадзеянне з групай класа \"%s\": не ўдалося адшукаць "
+"такую групу\n"
 
 #: ../libwnck/wnckprop.c:2014
 #, c-format
@@ -1206,10 +1219,12 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
-"Не ўдалося пачаць узаемадзеянне з праграмай, якая мае лідара групы з XID = %lu: не ўдалося адшукаць такую праграму\n"
+"Не ўдалося пачаць узаемадзеянне з праграмай, якая мае лідара групы з XID = "
+"%lu: не ўдалося адшукаць такую праграму\n"
 
 #: ../libwnck/wnckprop.c:2037
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr "Не ўдалося пачаць узаемадзеянне з акном, якое мае XID = %lu: не ўдалося адшукаць такое акно\n"
-
+msgstr ""
+"Не ўдалося пачаць узаемадзеянне з акном, якое мае XID = %lu: не ўдалося "
+"адшукаць такое акно\n"
