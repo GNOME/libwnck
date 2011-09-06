@@ -9,10 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
-"product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-03-22 18:50+0000\n"
-"PO-Revision-Date: 2011-03-26 20:55+0330\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-09-01 20:39+0000\n"
+"PO-Revision-Date: 2011-09-06 23:51+0330\n"
 "Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
 "Language-Team: Persian <translate@ifsug.org>\n"
 "MIME-Version: 1.0\n"
@@ -59,30 +58,30 @@ msgstr "ابزار تعویض بین فضاهای کاری"
 msgid "Click this to switch to workspace %s"
 msgstr "برای تعویض به فضای کاری %s این‌جا کلیک کنید"
 
-#: ../libwnck/pager.c:2214
+#: ../libwnck/pager.c:2200
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "برای شروع کشیدن «%s» کلیک کنید"
 
-#: ../libwnck/pager.c:2217
+#: ../libwnck/pager.c:2203
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "فضای کاری جاری: «%s»"
 
-#: ../libwnck/pager.c:2222
+#: ../libwnck/pager.c:2208
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "برای رفتن به «%s» کلیک کنید"
 
-#: ../libwnck/selector.c:1184
+#: ../libwnck/selector.c:1180
 msgid "No Windows Open"
 msgstr "هیچ پنجره‌ای باز نیست"
 
-#: ../libwnck/selector.c:1240
+#: ../libwnck/selector.c:1236
 msgid "Window Selector"
 msgstr "گزیننده‌ی پنجره‌ها"
 
-#: ../libwnck/selector.c:1241
+#: ../libwnck/selector.c:1237
 msgid "Tool to switch between windows"
 msgstr "ابزاری برای جا‌به‌جایی بین پنجره‌ها"
 
@@ -94,98 +93,101 @@ msgstr "فهرست پنجره‌ها"
 msgid "Tool to switch between visible windows"
 msgstr "ابزاری برای جا‌به‌جایی بین فضاهای کاری نمایان"
 
-#: ../libwnck/tasklist.c:2889
+#: ../libwnck/tasklist.c:2896
 msgid "Mi_nimize All"
 msgstr "_حداقل کردن همه"
 
-#: ../libwnck/tasklist.c:2900
+#: ../libwnck/tasklist.c:2907
 msgid "Un_minimize All"
 msgstr "_ناحداقل کردن همه"
 
-#: ../libwnck/tasklist.c:2908
+#: ../libwnck/tasklist.c:2915
 msgid "Ma_ximize All"
 msgstr "_حداکثر کردن همه"
 
-#: ../libwnck/tasklist.c:2919
+#: ../libwnck/tasklist.c:2926
 msgid "_Unmaximize All"
 msgstr "_ناحداکثر کردن همه"
 
-#: ../libwnck/tasklist.c:2931
+#: ../libwnck/tasklist.c:2938
 msgid "_Close All"
 msgstr "ب_ستن همه"
 
-#: ../libwnck/window-action-menu.c:417
+#: ../libwnck/window-action-menu.c:413
 msgid "Unmi_nimize"
 msgstr "ناحداق_ل کردن"
 
-#: ../libwnck/window-action-menu.c:424
+#: ../libwnck/window-action-menu.c:420
 msgid "Mi_nimize"
 msgstr "حدا_قل کردن"
 
-#: ../libwnck/window-action-menu.c:432
+#: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
 msgstr "ناحداک_ثر کردن"
 
-#: ../libwnck/window-action-menu.c:439
+#: ../libwnck/window-action-menu.c:435
 msgid "Ma_ximize"
 msgstr "حدا_کثر کردن"
 
-#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:742
+#: ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "فضای کاری %Id"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:751
+#: ../libwnck/window-action-menu.c:898
 #, c-format
 msgid "Workspace 1_0"
 msgstr "فضای کاری ۱_۰"
 
-#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
+#: ../libwnck/window-action-menu.c:753
+#: ../libwnck/window-action-menu.c:900
 #, c-format
 msgid "Workspace %s%d"
 msgstr "فضای کاری %s%Id"
 
-#: ../libwnck/window-action-menu.c:1047
+#: ../libwnck/window-action-menu.c:1043
 msgid "_Move"
 msgstr "_جابه‌جایی"
 
-#: ../libwnck/window-action-menu.c:1054
+#: ../libwnck/window-action-menu.c:1050
 msgid "_Resize"
 msgstr "_تغییر اندازه"
 
-#: ../libwnck/window-action-menu.c:1063
+#: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
 msgstr "همیشه در _بالا"
 
-#: ../libwnck/window-action-menu.c:1071
+#: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
 msgstr "فقط در _فضای کاری نمایان"
 
-#: ../libwnck/window-action-menu.c:1076
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
 msgstr "فقط در _این فضای کاری"
 
-#: ../libwnck/window-action-menu.c:1083
+#: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
 msgstr "جابه‌جایی به فضای کاری _چپ"
 
-#: ../libwnck/window-action-menu.c:1089
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace R_ight"
 msgstr "جابه‌جایی به فضای کاری _راست"
 
-#: ../libwnck/window-action-menu.c:1095
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
 msgstr "جابه‌جایی به فضای کاری _بالا"
 
-#: ../libwnck/window-action-menu.c:1101
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
 msgstr "جابه‌جایی به فضای کاری _پایین"
 
-#: ../libwnck/window-action-menu.c:1104
+#: ../libwnck/window-action-menu.c:1100
 msgid "Move to Another _Workspace"
 msgstr "نقل مکان به یک _فضای کاری دیگر"
 
-#: ../libwnck/window-action-menu.c:1124
+#: ../libwnck/window-action-menu.c:1120
 msgid "_Close"
 msgstr "ب_ستن"
 
@@ -206,7 +208,8 @@ msgstr "پنجره‌ی بی‌عنوان"
 msgid "X window ID of the window to examine or modify"
 msgstr "شناسه‌ی پنجره‌ی X برای امتحان یا تغییر"
 
-#: ../libwnck/wnckprop.c:138 ../libwnck/wnckprop.c:145
+#: ../libwnck/wnckprop.c:138
+#: ../libwnck/wnckprop.c:145
 #: ../libwnck/wnckprop.c:155
 msgid "XID"
 msgstr "XID"
@@ -233,9 +236,12 @@ msgstr "CLASS"
 msgid "NUMBER of the workspace to examine or modify"
 msgstr "شماره فضاهای کاری برای آزمایش یا تغییر"
 
-#: ../libwnck/wnckprop.c:151 ../libwnck/wnckprop.c:153
-#: ../libwnck/wnckprop.c:171 ../libwnck/wnckprop.c:173
-#: ../libwnck/wnckprop.c:175 ../libwnck/wnckprop.c:272
+#: ../libwnck/wnckprop.c:151
+#: ../libwnck/wnckprop.c:153
+#: ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:173
+#: ../libwnck/wnckprop.c:175
+#: ../libwnck/wnckprop.c:272
 msgid "NUMBER"
 msgstr "NUMBER"
 
@@ -250,16 +256,11 @@ msgstr "نام مستعار --window"
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
 #: ../libwnck/wnckprop.c:163
-msgid ""
-"List windows of the application/class group/workspace/screen (output format: "
-"\"XID: Window Name\")"
-msgstr ""
-"پنجره‌های برنامه/گروه رده/فضای کاری/صفحه‌نمایش، فهرست شوند (قالب خروجی: «شناسه‌ی "
-"X: نام پنجره»)"
+msgid "List windows of the application/class group/workspace/screen (output format: \"XID: Window Name\")"
+msgstr "پنجره‌های برنامه/گروه رده/فضای کاری/صفحه‌نمایش، فهرست شوند (قالب خروجی: «شناسه‌ی X: نام پنجره»)"
 
 #: ../libwnck/wnckprop.c:165
-msgid ""
-"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr "فضاهای کاری صفحه‌نمایش فهرست شوند (قالب خروجی «شماره: نام فضای کاری»)"
 
 #: ../libwnck/wnckprop.c:171
@@ -272,8 +273,7 @@ msgstr "تغییر صفحه‌بندی فضای کاریِ صفحه نمایش �
 
 #: ../libwnck/wnckprop.c:175
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr ""
-"صفحه‌بندی فضای کاری صفحه نمایش تغییر داده شود تا از NUMBER ستون استفاده کند"
+msgstr "صفحه‌بندی فضای کاری صفحه نمایش تغییر داده شود تا از NUMBER ستون استفاده کند"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Show the desktop"
@@ -290,7 +290,8 @@ msgstr "توقف نمایش رومیزی"
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "نما فضای‌کاری جاری روی محور X به مختصات X جابه‌جا شود"
 
-#: ../libwnck/wnckprop.c:184 ../libwnck/wnckprop.c:274
+#: ../libwnck/wnckprop.c:184
+#: ../libwnck/wnckprop.c:274
 msgid "X"
 msgstr "X"
 
@@ -301,7 +302,8 @@ msgstr "X"
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "نما فضای‌کاری جاری روی محور Y به مختصات Y جابه‌جا شود"
 
-#: ../libwnck/wnckprop.c:189 ../libwnck/wnckprop.c:276
+#: ../libwnck/wnckprop.c:189
+#: ../libwnck/wnckprop.c:276
 msgid "Y"
 msgstr "Y"
 
@@ -467,12 +469,8 @@ msgstr "HEIGHT"
 
 #. Translators: do not translate "normal, desktop, dock..."
 #: ../libwnck/wnckprop.c:283
-msgid ""
-"Change the type of the window to TYPE (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
-msgstr ""
-"تغییر نوع پنجره به به TYPE ( مقادیر معتبر: normal, desktop, dock, dialog, "
-"toolbar, menu, utility, splash)"
+msgid "Change the type of the window to TYPE (valid values: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
+msgstr "تغییر نوع پنجره به به TYPE ( مقادیر معتبر: normal, desktop, dock, dialog, toolbar, menu, utility, splash)"
 
 #: ../libwnck/wnckprop.c:283
 msgid "TYPE"
@@ -490,98 +488,68 @@ msgstr "NAME"
 msgid "Activate the workspace"
 msgstr "فعال کردن فضای‌کاری"
 
-#: ../libwnck/wnckprop.c:385 ../libwnck/wnckprop.c:409
-#: ../libwnck/wnckprop.c:445 ../libwnck/wnckprop.c:468
+#: ../libwnck/wnckprop.c:385
+#: ../libwnck/wnckprop.c:409
+#: ../libwnck/wnckprop.c:445
+#: ../libwnck/wnckprop.c:468
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
 msgstr "مقدار نا‌معتبر «%s» برای --%s"
 
-#: ../libwnck/wnckprop.c:502 ../libwnck/wnckprop.c:521
+#: ../libwnck/wnckprop.c:502
+#: ../libwnck/wnckprop.c:521
 #, c-format
-msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: با صفحه نمایش %Id باید کار شود ولی --%s استفاده "
-"شده است\n"
+msgid "Conflicting options are present: screen %d should be interacted with, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: با صفحه نمایش %Id باید کار شود ولی --%s استفاده شده است\n"
 
 #: ../libwnck/wnckprop.c:511
 #, c-format
-msgid ""
-"Conflicting options are present: windows or workspaces of screen %d should "
-"be listed, but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: پنجره‌های یا فضاهای کاری صفحه‌نمایش %Id باید فهرست "
-"شوند ولی --%s استفاده شده است\n"
+msgid "Conflicting options are present: windows or workspaces of screen %d should be listed, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: پنجره‌های یا فضاهای کاری صفحه‌نمایش %Id باید فهرست شوند ولی --%s استفاده شده است\n"
 
-#: ../libwnck/wnckprop.c:534 ../libwnck/wnckprop.c:554
+#: ../libwnck/wnckprop.c:534
+#: ../libwnck/wnckprop.c:554
 #, c-format
-msgid ""
-"Conflicting options are present: workspace %d should be interacted with, but "
-"--%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: با فضای کاری %Id باید کار شود ولی --%s استفاده "
-"شده است\n"
+msgid "Conflicting options are present: workspace %d should be interacted with, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: با فضای کاری %Id باید کار شود ولی --%s استفاده شده است\n"
 
 #: ../libwnck/wnckprop.c:544
 #, c-format
-msgid ""
-"Conflicting options are present: windows of workspace %d should be listed, "
-"but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: پنجره‌های فضای کاری %Id باید فهرست شوند ولی --%s "
-"استفاده شده است\n"
+msgid "Conflicting options are present: windows of workspace %d should be listed, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: پنجره‌های فضای کاری %Id باید فهرست شوند ولی --%s استفاده شده است\n"
 
 #: ../libwnck/wnckprop.c:566
 #, c-format
-msgid ""
-"Conflicting options are present: an application should be interacted with, "
-"but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: با یک برنامه باید کار شود ولی --%s استفاده شده "
-"است\n"
+msgid "Conflicting options are present: an application should be interacted with, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: با یک برنامه باید کار شود ولی --%s استفاده شده است\n"
 
 #: ../libwnck/wnckprop.c:576
 #, c-format
-msgid ""
-"Conflicting options are present: windows of an application should be listed, "
-"but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: پنجره‌های یک برنامه باید فهرست شوند ولی --%s "
-"استفاده شده است\n"
+msgid "Conflicting options are present: windows of an application should be listed, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: پنجره‌های یک برنامه باید فهرست شوند ولی --%s استفاده شده است\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
 #: ../libwnck/wnckprop.c:590
 #, c-format
-msgid ""
-"Conflicting options are present: class group \"%s\" should be interacted "
-"with, but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: با گروه رده‌ی «%s» باید کار شود ولی --%s استفاده "
-"شده است\n"
+msgid "Conflicting options are present: class group \"%s\" should be interacted with, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: با گروه رده‌ی «%s» باید کار شود ولی --%s استفاده شده است\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
 #: ../libwnck/wnckprop.c:602
 #, c-format
-msgid ""
-"Conflicting options are present: windows of class group \"%s\" should be "
-"listed, but --%s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: پنجره‌های گروه رده‌ی «%s» باید فهرست شوند ولی --%s "
-"استفاده شده است\n"
+msgid "Conflicting options are present: windows of class group \"%s\" should be listed, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: پنجره‌های گروه رده‌ی «%s» باید فهرست شوند ولی --%s استفاده شده است\n"
 
-#: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
+#: ../libwnck/wnckprop.c:614
+#: ../libwnck/wnckprop.c:623
 #, c-format
-msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
-msgstr ""
-"گزینه‌های مغایر وجود دارند: با یک پنجره باید کار شود ولی --%s استفاده شده "
-"است\n"
+msgid "Conflicting options are present: a window should be interacted with, but --%s has been used\n"
+msgstr "گزینه‌های مغایر وجود دارند: با یک پنجره باید کار شود ولی --%s استفاده شده است\n"
 
-#: ../libwnck/wnckprop.c:642 ../libwnck/wnckprop.c:723
+#: ../libwnck/wnckprop.c:642
+#: ../libwnck/wnckprop.c:723
 #: ../libwnck/wnckprop.c:770
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
@@ -589,8 +557,7 @@ msgstr "گزینه‌های مغایر وجود دارند: --%s و --%s\n"
 
 #: ../libwnck/wnckprop.c:681
 #, c-format
-msgid ""
-"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr "نشانوند نامعتبر «%d» برای --%s: نشانوند باید اکیدا مقداری مثبت باشد\n"
 
 #: ../libwnck/wnckprop.c:694
@@ -610,20 +577,15 @@ msgstr "نشانوند نامعتبر «%s» برای --%s: مقادیر معت�
 
 #: ../libwnck/wnckprop.c:864
 #, c-format
-msgid ""
-"Cannot change the workspace layout on the screen: the layout is already "
-"owned\n"
-msgstr ""
-"چیدمان فضای‌کاری روی صفحه نمایش قابل تغییر نیست: این چیدمان از قبل به برنامه‌ی "
-"دیگری تعلق دارد \n"
+msgid "Cannot change the workspace layout on the screen: the layout is already owned\n"
+msgstr "چیدمان فضای‌کاری روی صفحه نمایش قابل تغییر نیست: این چیدمان از قبل به برنامه‌ی دیگری تعلق دارد \n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:899
 #, c-format
-msgid ""
-"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr "نما را نمی‌توان جابه‌جا کرد: فضای‌کاری جاری هیچ نمایی ندارد\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
@@ -635,10 +597,14 @@ msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "نما را نمی‌توان جابه‌جا کرد: فضای‌کاری جاری وجود ندارد\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:942 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:960 ../libwnck/wnckprop.c:967
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:984
-#: ../libwnck/wnckprop.c:993 ../libwnck/wnckprop.c:1042
+#: ../libwnck/wnckprop.c:942
+#: ../libwnck/wnckprop.c:951
+#: ../libwnck/wnckprop.c:960
+#: ../libwnck/wnckprop.c:967
+#: ../libwnck/wnckprop.c:977
+#: ../libwnck/wnckprop.c:984
+#: ../libwnck/wnckprop.c:993
+#: ../libwnck/wnckprop.c:1042
 #, c-format
 msgid "Action not allowed\n"
 msgstr "چنین عملی اجازه داده نمی‌شود\n"
@@ -649,7 +615,8 @@ msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr "پنجره را نمی‌توان به فضای‌کاری %Id برد: فضای‌کاری مورد نظر وجود ندارد\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1102 ../libwnck/wnckprop.c:1234
+#: ../libwnck/wnckprop.c:1102
+#: ../libwnck/wnckprop.c:1234
 msgid "<name unset>"
 msgstr "<بی‌نام>"
 
@@ -670,7 +637,8 @@ msgstr "%Id: %s\n"
 msgid "Screen Number: %d\n"
 msgstr "شماره‌ی صفحه‌نمایش: %Id\n"
 
-#: ../libwnck/wnckprop.c:1190 ../libwnck/wnckprop.c:1271
+#: ../libwnck/wnckprop.c:1190
+#: ../libwnck/wnckprop.c:1271
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "مختصات (پهنا، درازا): %Id ، %Id \n"
@@ -685,8 +653,9 @@ msgstr "تعداد فضاهای‌کاری %Id\n"
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "چیدمان فضای‌کاری (ردیف‌ها، ستون‌ها، جهت): %Id, %Id, %s\n"
 
-#: ../libwnck/wnckprop.c:1210 ../libwnck/wnckprop.c:1267
-#: ../libwnck/wnckprop.c:1461
+#: ../libwnck/wnckprop.c:1210
+#: ../libwnck/wnckprop.c:1267
+#: ../libwnck/wnckprop.c:1464
 msgid "<no EWMH-compliant window manager>"
 msgstr "<مدیر پنجره‌ی سازگار با EWMH وجود ندارد >"
 
@@ -696,17 +665,23 @@ msgid "Window Manager: %s\n"
 msgstr "مدیر پنجره: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1216 ../libwnck/wnckprop.c:1297
-#: ../libwnck/wnckprop.c:1309 ../libwnck/wnckprop.c:1321
-#: ../libwnck/wnckprop.c:1333 ../libwnck/wnckprop.c:1446
+#: ../libwnck/wnckprop.c:1216
+#: ../libwnck/wnckprop.c:1297
+#: ../libwnck/wnckprop.c:1309
+#: ../libwnck/wnckprop.c:1321
+#: ../libwnck/wnckprop.c:1333
+#: ../libwnck/wnckprop.c:1449
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%Id («%s»)"
 
 #. Translators: "none" here means "no workspace"
-#: ../libwnck/wnckprop.c:1221 ../libwnck/wnckprop.c:1302
-#: ../libwnck/wnckprop.c:1314 ../libwnck/wnckprop.c:1326
-#: ../libwnck/wnckprop.c:1338 ../libwnck/wnckprop.c:1453
+#: ../libwnck/wnckprop.c:1221
+#: ../libwnck/wnckprop.c:1302
+#: ../libwnck/wnckprop.c:1314
+#: ../libwnck/wnckprop.c:1326
+#: ../libwnck/wnckprop.c:1338
+#: ../libwnck/wnckprop.c:1456
 msgctxt "workspace"
 msgid "none"
 msgstr "هیچ"
@@ -761,7 +736,8 @@ msgstr "فضای‌کاری %s\n"
 msgid "Workspace Number: %d\n"
 msgstr "فضای‌کاری شماره‌ی %Id\n"
 
-#: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1462
+#: ../libwnck/wnckprop.c:1268
+#: ../libwnck/wnckprop.c:1465
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "روی صفحه‌نمایش: %Id (مدیر پنجره: %s) \n"
@@ -806,135 +782,154 @@ msgstr "همسایه‌ی بالا: %s\n"
 msgid "Bottom Neighbor: %s\n"
 msgstr "همسایه‌ی پایین: %s\n"
 
-#. Translators: Resource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1351
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: ../libwnck/wnckprop.c:1352
+#: ../libwnck/wnckprop.c:1511
 #, c-format
-msgid "Resource Class: %s\n"
-msgstr " نام رده‌ی منبع: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Group ID: %s\n"
+msgstr "شناسه گروه رده: %s\n"
 
-#: ../libwnck/wnckprop.c:1353
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: ../libwnck/wnckprop.c:1356
 #, c-format
-msgid "Group Name: %s\n"
-msgstr "نام گروه: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Group Name: %s\n"
+msgstr "نام گروه رده: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1359 ../libwnck/wnckprop.c:1383
-#: ../libwnck/wnckprop.c:1437
+#: ../libwnck/wnckprop.c:1362
+#: ../libwnck/wnckprop.c:1386
+#: ../libwnck/wnckprop.c:1440
 msgid "set"
 msgstr "تنظیم شد"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1386
-#: ../libwnck/wnckprop.c:1393 ../libwnck/wnckprop.c:1423
-#: ../libwnck/wnckprop.c:1430 ../libwnck/wnckprop.c:1440
-#: ../libwnck/wnckprop.c:1505 ../libwnck/wnckprop.c:1516
-#: ../libwnck/wnckprop.c:1524
+#: ../libwnck/wnckprop.c:1365
+#: ../libwnck/wnckprop.c:1389
+#: ../libwnck/wnckprop.c:1396
+#: ../libwnck/wnckprop.c:1426
+#: ../libwnck/wnckprop.c:1433
+#: ../libwnck/wnckprop.c:1443
+#: ../libwnck/wnckprop.c:1508
+#: ../libwnck/wnckprop.c:1517
+#: ../libwnck/wnckprop.c:1529
+#: ../libwnck/wnckprop.c:1537
 msgid "<unset>"
 msgstr "<تنظیم نشده است>"
 
-#: ../libwnck/wnckprop.c:1363 ../libwnck/wnckprop.c:1387
-#: ../libwnck/wnckprop.c:1441
+#: ../libwnck/wnckprop.c:1366
+#: ../libwnck/wnckprop.c:1390
+#: ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "Icons: %s\n"
 msgstr "شمایل‌ها: %s\n"
 
-#: ../libwnck/wnckprop.c:1366 ../libwnck/wnckprop.c:1404
+#: ../libwnck/wnckprop.c:1369
+#: ../libwnck/wnckprop.c:1407
 #, c-format
 msgid "Number of Windows: %d\n"
 msgstr "تعداد پنجره‌ها: %Id\n"
 
-#: ../libwnck/wnckprop.c:1378 ../libwnck/wnckprop.c:1424
+#: ../libwnck/wnckprop.c:1381
+#: ../libwnck/wnckprop.c:1427
 #, c-format
 msgid "Name: %s\n"
 msgstr "نام: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1379 ../libwnck/wnckprop.c:1433
+#: ../libwnck/wnckprop.c:1382
+#: ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "نام شمایل: %s\n"
 
-#: ../libwnck/wnckprop.c:1394 ../libwnck/wnckprop.c:1517
+#: ../libwnck/wnckprop.c:1397
+#: ../libwnck/wnckprop.c:1530
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
-#: ../libwnck/wnckprop.c:1401
+#: ../libwnck/wnckprop.c:1404
 msgctxt "startupID"
 msgid "none"
 msgstr "هیچ"
 
-#: ../libwnck/wnckprop.c:1402
+#: ../libwnck/wnckprop.c:1405
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr "شناسه‌ی آغاز: %s\n"
 
-#: ../libwnck/wnckprop.c:1450
+#: ../libwnck/wnckprop.c:1453
 msgid "all workspaces"
 msgstr "همه‌ی فضاهای‌کاری"
 
-#: ../libwnck/wnckprop.c:1454
+#: ../libwnck/wnckprop.c:1457
 #, c-format
 msgid "On Workspace: %s\n"
 msgstr "در فضای‌کاری %s\n"
 
-#: ../libwnck/wnckprop.c:1469
+#: ../libwnck/wnckprop.c:1472
 msgid "normal window"
 msgstr "پنجره‌ی معمولی"
 
-#: ../libwnck/wnckprop.c:1472
+#: ../libwnck/wnckprop.c:1475
 msgid "desktop"
 msgstr "رومیزی"
 
-#: ../libwnck/wnckprop.c:1475
+#: ../libwnck/wnckprop.c:1478
 msgid "dock or panel"
 msgstr "تابلو یا داک"
 
-#: ../libwnck/wnckprop.c:1478
+#: ../libwnck/wnckprop.c:1481
 msgid "dialog window"
 msgstr "پنجره‌ی محاوره"
 
-#: ../libwnck/wnckprop.c:1481
+#: ../libwnck/wnckprop.c:1484
 msgid "tearoff toolbar"
 msgstr "نوا ابزار آژدار"
 
-#: ../libwnck/wnckprop.c:1484
+#: ../libwnck/wnckprop.c:1487
 msgid "tearoff menu"
 msgstr "منوی آژدار"
 
-#: ../libwnck/wnckprop.c:1487
+#: ../libwnck/wnckprop.c:1490
 msgid "utility window"
 msgstr "پنجره‌ی ابزار"
 
-#: ../libwnck/wnckprop.c:1490
+#: ../libwnck/wnckprop.c:1493
 msgid "splash screen"
 msgstr "صفحه‌ی شروع"
 
-#: ../libwnck/wnckprop.c:1495
+#: ../libwnck/wnckprop.c:1498
 #, c-format
 msgid "Window Type: %s\n"
 msgstr "نوع پنجره: %s\n"
 
-#: ../libwnck/wnckprop.c:1498
+#: ../libwnck/wnckprop.c:1501
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "مختصات (x ,y، پهنا، درازا): %Id, %Id, %Id, %Id\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
-#. * same class.
-#: ../libwnck/wnckprop.c:1508
+#. * same class. The class instance is a way to differentiate windows belonging
+#. * to the same class group.
+#: ../libwnck/wnckprop.c:1521
 #, c-format
-msgid "Class Group: %s\n"
-msgstr "گروه رده: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Instance: %s\n"
+msgstr "نمونه رده: %s\n"
 
-#: ../libwnck/wnckprop.c:1510
+#: ../libwnck/wnckprop.c:1523
 #, c-format
 msgid "XID: %lu\n"
 msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1525
+#: ../libwnck/wnckprop.c:1538
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "شناسه‌ی نشست: %s\n"
@@ -943,14 +938,14 @@ msgstr "شناسه‌ی نشست: %s\n"
 #. * of windows, ie: if you have multiple windows in one application, one
 #. * window has some information about the application (like the application
 #. * name).
-#: ../libwnck/wnckprop.c:1532
+#: ../libwnck/wnckprop.c:1545
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "سردسته‌ی گروه: %lu\n"
 
 #. Translators: A window can be transient for another window: it means it's
 #. * on top of it
-#: ../libwnck/wnckprop.c:1538
+#: ../libwnck/wnckprop.c:1551
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "در بالا: %lu\n"
@@ -958,57 +953,59 @@ msgstr "در بالا: %lu\n"
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1553 ../libwnck/wnckprop.c:1601
+#: ../libwnck/wnckprop.c:1566
+#: ../libwnck/wnckprop.c:1614
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1557 ../libwnck/wnckprop.c:1603
+#: ../libwnck/wnckprop.c:1570
+#: ../libwnck/wnckprop.c:1616
 msgid ", "
 msgstr "،"
 
-#: ../libwnck/wnckprop.c:1563
+#: ../libwnck/wnckprop.c:1576
 msgid "minimized"
 msgstr "حداقل شده"
 
-#: ../libwnck/wnckprop.c:1564
+#: ../libwnck/wnckprop.c:1577
 msgid "maximized"
 msgstr "حداکثر شده"
 
-#: ../libwnck/wnckprop.c:1568
+#: ../libwnck/wnckprop.c:1581
 msgid "maximized horizontally"
 msgstr "بصورت افقی حداکثر شده"
 
-#: ../libwnck/wnckprop.c:1570
+#: ../libwnck/wnckprop.c:1583
 msgid "maximized vertically"
 msgstr "بصورت عمودی حداکثر شده"
 
-#: ../libwnck/wnckprop.c:1572
+#: ../libwnck/wnckprop.c:1585
 msgid "shaded"
 msgstr "سایه خورده"
 
-#: ../libwnck/wnckprop.c:1573
+#: ../libwnck/wnckprop.c:1586
 msgid "pinned"
 msgstr "میخ شده"
 
-#: ../libwnck/wnckprop.c:1574
+#: ../libwnck/wnckprop.c:1587
 msgid "sticky"
 msgstr "چسبناک"
 
-#: ../libwnck/wnckprop.c:1575
+#: ../libwnck/wnckprop.c:1588
 msgid "above"
 msgstr "بالا"
 
-#: ../libwnck/wnckprop.c:1576
+#: ../libwnck/wnckprop.c:1589
 msgid "below"
 msgstr "پایین"
 
-#: ../libwnck/wnckprop.c:1577
+#: ../libwnck/wnckprop.c:1590
 msgid "fullscreen"
 msgstr "تمام صفحه"
 
-#: ../libwnck/wnckprop.c:1578
+#: ../libwnck/wnckprop.c:1591
 msgid "needs attention"
 msgstr "نیاز توجه دارد"
 
@@ -1016,206 +1013,205 @@ msgstr "نیاز توجه دارد"
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1583
+#: ../libwnck/wnckprop.c:1596
 msgid "skip pager"
 msgstr "پرش از پی‌جو"
 
 #. Translators: "tasklist" is the list of running applications (the window
 #. * list)
-#: ../libwnck/wnckprop.c:1586
+#: ../libwnck/wnckprop.c:1599
 msgid "skip tasklist"
 msgstr "پرش از فهرست وظایف"
 
-#: ../libwnck/wnckprop.c:1588
+#: ../libwnck/wnckprop.c:1601
 msgid "normal"
 msgstr "معمولی"
 
-#: ../libwnck/wnckprop.c:1589
+#: ../libwnck/wnckprop.c:1602
 #, c-format
 msgid "State: %s\n"
 msgstr "وضعیت: %s\n"
 
-#: ../libwnck/wnckprop.c:1610
+#: ../libwnck/wnckprop.c:1623
 msgid "move"
 msgstr "جابه‌جایی"
 
-#: ../libwnck/wnckprop.c:1611
+#: ../libwnck/wnckprop.c:1624
 msgid "resize"
 msgstr "تغییر اندازه"
 
-#: ../libwnck/wnckprop.c:1612
+#: ../libwnck/wnckprop.c:1625
 msgid "shade"
 msgstr "سایه"
 
-#: ../libwnck/wnckprop.c:1613
+#: ../libwnck/wnckprop.c:1626
 msgid "unshade"
 msgstr "بدون سایه"
 
-#: ../libwnck/wnckprop.c:1614
+#: ../libwnck/wnckprop.c:1627
 msgid "stick"
 msgstr "چسباندن"
 
-#: ../libwnck/wnckprop.c:1615
+#: ../libwnck/wnckprop.c:1628
 msgid "unstick"
 msgstr "ناچسباندن"
 
-#: ../libwnck/wnckprop.c:1617
+#: ../libwnck/wnckprop.c:1630
 msgid "maximize horizontally"
 msgstr "بصورت افقی حداکثر شود"
 
-#: ../libwnck/wnckprop.c:1619
+#: ../libwnck/wnckprop.c:1632
 msgid "unmaximize horizontally"
 msgstr "بصورت افقی ناحداکثر شود"
 
-#: ../libwnck/wnckprop.c:1621
+#: ../libwnck/wnckprop.c:1634
 msgid "maximize vertically"
 msgstr "بصورت عمودی حداکثر شود"
 
-#: ../libwnck/wnckprop.c:1623
+#: ../libwnck/wnckprop.c:1636
 msgid "unmaximize vertically"
 msgstr "بصورت عمودی ناحداکثر شود"
 
-#: ../libwnck/wnckprop.c:1626
+#: ../libwnck/wnckprop.c:1639
 msgid "change workspace"
 msgstr "تغییر فضای‌کاری"
 
-#: ../libwnck/wnckprop.c:1628
+#: ../libwnck/wnckprop.c:1641
 msgid "pin"
 msgstr "میخ‌زدن"
 
-#: ../libwnck/wnckprop.c:1630
+#: ../libwnck/wnckprop.c:1643
 msgid "unpin"
 msgstr "میخ‌برداشتن"
 
-#: ../libwnck/wnckprop.c:1631
+#: ../libwnck/wnckprop.c:1644
 msgid "minimize"
 msgstr "حداقل کردن"
 
-#: ../libwnck/wnckprop.c:1632
+#: ../libwnck/wnckprop.c:1645
 msgid "unminimize"
 msgstr "ناحداقل کردن"
 
-#: ../libwnck/wnckprop.c:1633
+#: ../libwnck/wnckprop.c:1646
 msgid "maximize"
 msgstr "حداکثر کردن"
 
-#: ../libwnck/wnckprop.c:1634
+#: ../libwnck/wnckprop.c:1647
 msgid "unmaximize"
 msgstr "ناحداکثر کردن"
 
-#: ../libwnck/wnckprop.c:1636
+#: ../libwnck/wnckprop.c:1649
 msgid "change fullscreen mode"
 msgstr "تغییر حالت تمام‌صفحه"
 
-#: ../libwnck/wnckprop.c:1637
+#: ../libwnck/wnckprop.c:1650
 msgid "close"
 msgstr "بستن"
 
-#: ../libwnck/wnckprop.c:1639
+#: ../libwnck/wnckprop.c:1652
 msgid "make above"
 msgstr "پیش رو گذاشته شود"
 
-#: ../libwnck/wnckprop.c:1641
+#: ../libwnck/wnckprop.c:1654
 msgid "unmake above"
 msgstr "برداشتن از پیش رو"
 
-#: ../libwnck/wnckprop.c:1643
+#: ../libwnck/wnckprop.c:1656
 msgid "make below"
 msgstr "زیر گذاشته شود"
 
-#: ../libwnck/wnckprop.c:1645
+#: ../libwnck/wnckprop.c:1658
 msgid "unmake below"
 msgstr "برداشتن از زیر"
 
-#: ../libwnck/wnckprop.c:1647
+#: ../libwnck/wnckprop.c:1660
 msgid "no action possible"
 msgstr "هیچ عملی ممکن نیست"
 
-#: ../libwnck/wnckprop.c:1648
+#: ../libwnck/wnckprop.c:1661
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr "اعمال ممکن: %s\n"
 
-#: ../libwnck/wnckprop.c:1829
+#: ../libwnck/wnckprop.c:1842
 msgid ""
-"Print or modify the properties of a screen/workspace/window, or interact "
-"with it, following the EWMH specification.\n"
+"Print or modify the properties of a screen/workspace/window, or interact with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"چاپ یا دست‌کاری ویژگی‌های صفحه نمایش/فضای کاری/پنجره، یا کار کردن با آن‌ها، با "
-"پیروی از مشخصه‌ی EWMH \n"
+"چاپ یا دست‌کاری ویژگی‌های صفحه نمایش/فضای کاری/پنجره، یا کار کردن با آن‌ها، با پیروی از مشخصه‌ی EWMH \n"
 "برای اطلاعات بیشتر در مورد این مشخصه، این‌جا را ببینید: \n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1839
+#: ../libwnck/wnckprop.c:1852
 msgid "Options to list windows or workspaces"
 msgstr "گزینه‌ها برای فهرست کردن پنجره‌ها یا فضاهای‌کاری"
 
-#: ../libwnck/wnckprop.c:1840
+#: ../libwnck/wnckprop.c:1853
 msgid "Show options to list windows or workspaces"
 msgstr "نمایش گزینه‌ها برای فهرست کردن پنجره‌ها یا فضاهای‌کاری"
 
-#: ../libwnck/wnckprop.c:1847
+#: ../libwnck/wnckprop.c:1860
 msgid "Options to modify properties of a window"
 msgstr "گزینه‌هایی برای دست‌کاری ویژگی‌های یک پنجره"
 
-#: ../libwnck/wnckprop.c:1848
+#: ../libwnck/wnckprop.c:1861
 msgid "Show options to modify properties of a window"
 msgstr "نمایش گزینه‌ها برای دست‌کاری ویژگی‌های یک پنجره"
 
-#: ../libwnck/wnckprop.c:1855
+#: ../libwnck/wnckprop.c:1868
 msgid "Options to modify properties of a workspace"
 msgstr "گزینه‌هایی برای دست‌کاری ویژگی‌های یک فضای‌کاری"
 
-#: ../libwnck/wnckprop.c:1856
+#: ../libwnck/wnckprop.c:1869
 msgid "Show options to modify properties of a workspace"
 msgstr "نمایش گزینه‌ها برای دست‌کاری ویژگی‌های یک فضای کاری"
 
-#: ../libwnck/wnckprop.c:1863
+#: ../libwnck/wnckprop.c:1876
 msgid "Options to modify properties of a screen"
 msgstr "گزینه‌هایی برای دست‌کاری ویژگی‌های یک صفحه نمایش"
 
-#: ../libwnck/wnckprop.c:1864
+#: ../libwnck/wnckprop.c:1877
 msgid "Show options to modify properties of a screen"
 msgstr "برای دست‌کاری ویژگی‌های یک صفحه‌نمایش، گزینه‌ها نشان داده شوند"
 
-#: ../libwnck/wnckprop.c:1875
+#: ../libwnck/wnckprop.c:1888
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "خطا در تجزیه‌ی نشانوند: %s\n"
 
-#: ../libwnck/wnckprop.c:1898
+#: ../libwnck/wnckprop.c:1911
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "نمی‌توان با صفحه‌نمایش %Id کار کرد: صفحه‌نمایش وجود ندارد\n"
 
-#: ../libwnck/wnckprop.c:1954
+#: ../libwnck/wnckprop.c:1967
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "نمی‌توان با فضای‌کاری %Id کار کرد: فضای‌کاری یافت نمی‌شود\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: ../libwnck/wnckprop.c:1978
+#: ../libwnck/wnckprop.c:1991
 #, c-format
-msgid ""
-"Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "نمی‌توان با گروه رده «%s» کار کرد: گروه رده یافت نمی‌شود\n"
 
-#: ../libwnck/wnckprop.c:2001
+#: ../libwnck/wnckprop.c:2014
 #, c-format
-msgid ""
-"Cannot interact with application having its group leader with XID %lu: the "
-"application cannot be found\n"
-msgstr ""
-"نمی‌توان با برنامه که سردسته‌ی گروهش XID %lu دارد، کار کرد: برنامه پیدا "
-"نمی‌شود\n"
+msgid "Cannot interact with application having its group leader with XID %lu: the application cannot be found\n"
+msgstr "نمی‌توان با برنامه که سردسته‌ی گروهش XID %lu دارد، کار کرد: برنامه پیدا نمی‌شود\n"
 
-#: ../libwnck/wnckprop.c:2024
+#: ../libwnck/wnckprop.c:2037
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "نمی‌توان با پنجره با XID %lu کار کرد: پنجره یافت نمی‌شود\n"
+
+#~ msgid "Resource Class: %s\n"
+#~ msgstr " نام رده‌ی منبع: %s\n"
+
+#~ msgid "Group Name: %s\n"
+#~ msgstr "نام گروه: %s\n"
 
 #~ msgid "Only show current workspace"
 #~ msgstr "فقط فضای کاری جاری نشان داده شود"
