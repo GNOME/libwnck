@@ -1,4 +1,32 @@
 ==============
+Version 3.1.92
+==============
+
+ Misc
+
+  - Fix srcdir != builddir build (Colin Walters)
+
+ Translators
+
+  - Ihar Hrachyshka (be)
+  - Sílvia Miranda (ca)
+  - Bruce Cowan (en_GB)
+  - Arash Mousavi (fa)
+  - Milo Casagrande (it)
+  - Jiro Matsuzawa (ja)
+  - Changwoo Ryu (ko)
+  - Aurimas Černius (lt)
+  - Rūdofls Mazurs (lv)
+  - A S Alam (pa)
+  - Duarte Loreto (pt)
+  - Yuri Myasoedov (ru)
+  - Matej Urbančič (sl)
+  - Dr.T.Vasudevan (ta)
+  - Ray Wang (zh_CN)
+  - Chao-Hsiung Liao (zh_HK)
+  - Chao-Hsiung Liao (zh_TW)
+
+==============
 Version 3.1.90
 ==============
 
