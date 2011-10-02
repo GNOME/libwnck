@@ -1,6 +1,6 @@
 # Vietnamese translation for Libwnck
 # Copyright © 2009 GNOME i18n Project for Vietnamese.
-# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002, 2005, 2007.
+# Nguyễn Thái Ngọc Duy <pclouds@gmail.com>, 2002, 2005, 2007, 2011.
 # Clytie Siddall <clytie@riverland.net.au>, 2006-2009.
 #
 msgid ""
@@ -9,8 +9,8 @@ msgstr ""
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&keywords=I18N+L10N&component=general\n"
 "POT-Creation-Date: 2011-08-12 10:57+0000\n"
-"PO-Revision-Date: 2011-10-02 12:03+1100\n"
-"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"PO-Revision-Date: 2011-10-02 12:04+1100\n"
+"Last-Translator: Nguyễn Thái Ngọc Duy <pclouds@gmail.com>\n"
 "Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -816,18 +816,18 @@ msgstr "Hàng xóm bên dưới: %s\n"
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
 #: ../libwnck/wnckprop.c:1352 ../libwnck/wnckprop.c:1511
-#, fuzzy, c-format
+#, c-format
 #| msgid "Class Group: %s\n"
 msgid "Class Group ID: %s\n"
-msgstr "Nhóm lớp: %s\n"
+msgstr "ID nhóm lớp: %s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
 #: ../libwnck/wnckprop.c:1356
-#, fuzzy, c-format
+#, c-format
 #| msgid "Class Group: %s\n"
 msgid "Class Group Name: %s\n"
-msgstr "Nhóm lớp: %s\n"
+msgstr "Tên nhóm lớp: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
 #: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1386
@@ -938,10 +938,10 @@ msgstr "Vị trí (x, y, rộng, cao): %d, %d, %d, %d\n"
 #. * same class. The class instance is a way to differentiate windows belonging
 #. * to the same class group.
 #: ../libwnck/wnckprop.c:1521
-#, fuzzy, c-format
+#, c-format
 #| msgid "Class Group: %s\n"
 msgid "Class Instance: %s\n"
-msgstr "Nhóm lớp: %s\n"
+msgstr "Thể hiện lớp: %s\n"
 
 #: ../libwnck/wnckprop.c:1523
 #, c-format
