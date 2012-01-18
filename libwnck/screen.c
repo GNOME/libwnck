@@ -597,7 +597,8 @@ wnck_screen_construct (Display    *display,
 
   _wnck_select_input (screen->priv->xscreen,
                       screen->priv->xroot,
-                      PropertyChangeMask);
+                      PropertyChangeMask,
+                      TRUE);
 
   screen->priv->need_update_workspace_list = TRUE;
   screen->priv->need_update_stack_list = TRUE;
@@ -2754,4 +2755,40 @@ _wnck_screen_change_workspace_name (WnckScreen *screen,
                        names);
 
   g_free (names);
+}
+
+void
+_wnck_screen_shutdown (WnckScreen *screen)
+{
+  GList *item;
+  g_return_if_fail (WNCK_IS_SCREEN (screen));
+
+  _wnck_select_input (screen->priv->xscreen,
+                      screen->priv->xroot,
+                      0,
+                      FALSE);
+  for (item = screen->priv->mapped_windows; item != NULL; item = g_list_next (item))
+    _wnck_window_shutdown (WNCK_WINDOW (item->data));
+  wnck_screen_finalize (G_OBJECT (screen));
+}
+
+void
+_wnck_screen_shutdown_all (void)
+{
+  int i;
+  Display *display;
+
+  if (screens == NULL)
+    return;
+
+  display = _wnck_get_default_display ();
+
+  for (i = 0; i < ScreenCount (display); ++i)
+    {
+      if (screens[i] != NULL)
+        _wnck_screen_shutdown (screens[i]);
+    }
+
+  g_free (screens);
+  screens = NULL;
 }

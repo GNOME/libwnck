@@ -557,7 +557,8 @@ _wnck_application_create (Window      xwindow,
    */
   _wnck_select_input (xscreen,
                       application->priv->xwindow,
-                      WNCK_APP_WINDOW_EVENT_MASK);
+                      WNCK_APP_WINDOW_EVENT_MASK,
+                      TRUE);
 
   return application;
 }
@@ -674,6 +675,26 @@ _wnck_application_process_property_notify (WnckApplication *app,
       /* FIXME update startup id */
     }
 }
+
+static void
+_wnck_app_iter_destroy_application (gpointer key,
+                                    gpointer value,
+                                    gpointer user_data)
+{
+  g_object_unref (WNCK_APPLICATION (value));
+}
+
+void
+_wnck_application_shutdown_all (void)
+{
+  if (app_hash != NULL)
+    {
+      g_hash_table_foreach (app_hash, _wnck_app_iter_destroy_application, NULL);
+      g_hash_table_destroy (app_hash);
+      app_hash = NULL;
+    }
+}
+
 
 static void
 emit_name_changed (WnckApplication *app)

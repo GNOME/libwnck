@@ -789,15 +789,27 @@ filter_func (GdkXEvent  *gdkxevent,
   return GDK_FILTER_CONTINUE;
 }
 
+static gboolean _wnck_event_filter_initialized = FALSE;
+
 void
 _wnck_event_filter_init (void)
 {
-  static gboolean initialized = FALSE;
 
-  if (!initialized)
+  if (!_wnck_event_filter_initialized)
     {
       gdk_window_add_filter (NULL, filter_func, NULL);
-      initialized = TRUE;
+      _wnck_event_filter_initialized = TRUE;
+    }
+}
+
+void
+_wnck_event_filter_shutdown (void)
+{
+
+  if (_wnck_event_filter_initialized)
+    {
+      gdk_window_remove_filter (NULL, filter_func, NULL);
+      _wnck_event_filter_initialized = FALSE;
     }
 }
 
@@ -1361,13 +1373,15 @@ _wnck_get_frame_extents (Screen *screen,
   return retval;
 }
 
-void
+int
 _wnck_select_input (Screen *screen,
                     Window  xwindow,
-                    int     mask)
+                    int     mask,
+                    gboolean update)
 {
   Display   *display;
   GdkWindow *gdkwindow;
+  int old_mask = 0;
 
   display = DisplayOfScreen (screen);
 
@@ -1383,11 +1397,16 @@ _wnck_select_input (Screen *screen,
        */
       XWindowAttributes attrs;
       XGetWindowAttributes (display, xwindow, &attrs);
-      mask |= attrs.your_event_mask;
+      old_mask = attrs.your_event_mask;
+
+      if (update)
+        mask |= attrs.your_event_mask;
     }
 
   XSelectInput (display, xwindow, mask);
   _wnck_error_trap_pop (display);
+
+  return old_mask;
 }
 
 /* The icon-reading code is copied

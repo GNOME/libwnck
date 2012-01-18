@@ -93,6 +93,7 @@ int  _wnck_error_trap_pop  (Display *display);
 #define _wnck_atom_name(atom)     gdk_x11_get_xatom_name (atom)
 
 void _wnck_event_filter_init (void);
+void _wnck_event_filter_shutdown (void);
 
 int   _wnck_xid_equal (gconstpointer v1,
                        gconstpointer v2);
@@ -146,9 +147,10 @@ gboolean _wnck_get_frame_extents  (Screen *screen,
                                    int    *top_frame,
                                    int    *bottom_frame);
 
-void   _wnck_select_input     (Screen *screen,
-                               Window  xwindow,
-                               int     mask);
+int    _wnck_select_input     (Screen  *screen,
+                               Window   xwindow,
+                               int      mask,
+                               gboolean update);
 
 void   _wnck_keyboard_move    (Screen *screen,
                                Window  xwindow);

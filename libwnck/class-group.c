@@ -636,3 +636,22 @@ wnck_class_group_get_mini_icon (WnckClassGroup *class_group)
 
   return class_group->priv->mini_icon;
 }
+
+static void
+_wnck_class_iter_destroy_class_group (gpointer key,
+                                      gpointer value,
+                                      gpointer user_data)
+{
+  g_object_unref (WNCK_CLASS_GROUP (value));
+}
+
+void
+_wnck_class_group_shutdown_all (void)
+{
+  if (class_group_hash != NULL)
+    {
+      g_hash_table_foreach (class_group_hash, _wnck_class_iter_destroy_class_group, NULL);
+      g_hash_table_destroy (class_group_hash);
+      class_group_hash = NULL;
+    }
+}

@@ -785,3 +785,23 @@ _wnck_stock_icons_init (void)
 
   g_object_unref (G_OBJECT (factory));
 }
+
+/**
+ * wnck_shutdown:
+ *
+ * Stop listening to events and tear down all resources from libwnck. This
+ * should be done if you are not going to need the state change notifications
+ * for an extended period of time, to avoid wakeups with every key and focus
+ * event. After this all Wnck object references you might still hold are
+ * invalid.
+ *
+ * Since: 3.4
+ */
+void
+wnck_shutdown (void)
+{
+  _wnck_event_filter_shutdown ();
+  _wnck_screen_shutdown_all ();
+  _wnck_class_group_shutdown_all ();
+  _wnck_application_shutdown_all ();
+}
