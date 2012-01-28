@@ -1,16 +1,16 @@
-# Norwegian translation of libwnck
+# Norwegian bokmål translation of libwnck
 # Copyright (C) 2001-2003 Free Software Foundation, Inc.
-# Kjartan Maraas <kmaraas@gnome.org>, 2001-2011.
+# Kjartan Maraas <kmaraas@gnome.org>, 2001-2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.32.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-25 09:35+0200\n"
-"PO-Revision-Date: 2011-08-24 22:58+0200\n"
+"POT-Creation-Date: 2012-01-28 17:24+0100\n"
+"PO-Revision-Date: 2012-01-28 17:26+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
-"Language-Team: Norwegian Bokmål <i18n-nb@lister.ping.uio.n>\n"
-"Language: \n"
+"Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.n>\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -245,12 +245,12 @@ msgstr "Alias for --window"
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr ""
+msgstr "Vis liste med vinduer for program/klasse gruppe/arbeidsområde/skjerm (utdataformat: «XID: navn på vindu»)"
 
 #: ../libwnck/wnckprop.c:165
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr ""
+msgstr "Vis arbeidsområder for skjermen (utdataformat: «Nummer: navn på arbeidsområde»)"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the number of workspaces of the screen to NUMBER"
@@ -258,7 +258,7 @@ msgstr "Endre antall arbeidsområder på skjermen til TALL"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr ""
+msgstr "Endre utforming av arbeidsområde for skjermen til å bruke ANTALL rader"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Change the workspace layout of the screen to use NUMBER columns"
@@ -404,8 +404,9 @@ msgstr ""
 #. * gnome-panel, where this term is also used in translatable strings
 #.
 #: ../libwnck/wnckprop.c:258
+#, fuzzy
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "Gjør vinduet synlig i "
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
