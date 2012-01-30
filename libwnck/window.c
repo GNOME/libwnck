@@ -418,6 +418,11 @@ wnck_window_finalize (GObject *object)
 
   window = WNCK_WINDOW (object);
 
+  _wnck_select_input (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                      window->priv->xwindow,
+                      window->priv->orig_event_mask,
+                      FALSE);
+
   unqueue_update (window);
 
   if (window->priv->app)
@@ -588,13 +593,6 @@ _wnck_window_destroy (WnckWindow *window)
   /* Removing from hash also removes the only ref WnckWindow had */
 
   g_return_if_fail (wnck_window_get (xwindow) == NULL);
-}
-
-void
-_wnck_window_shutdown (WnckWindow *window)
-{
-  _wnck_select_input (WNCK_SCREEN_XSCREEN (window->priv->screen),
-          window->priv->xwindow, window->priv->orig_event_mask, FALSE);
 }
 
 static Display *

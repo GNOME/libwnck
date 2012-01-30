@@ -513,6 +513,11 @@ wnck_screen_finalize (GObject *object)
 
   screen = WNCK_SCREEN (object);
 
+  _wnck_select_input (screen->priv->xscreen,
+                      screen->priv->xroot,
+                      0,
+                      FALSE);
+
   unqueue_update (screen);
 
   for (tmp = screen->priv->stacked_windows; tmp; tmp = tmp->next)
@@ -2758,21 +2763,6 @@ _wnck_screen_change_workspace_name (WnckScreen *screen,
 }
 
 void
-_wnck_screen_shutdown (WnckScreen *screen)
-{
-  GList *item;
-  g_return_if_fail (WNCK_IS_SCREEN (screen));
-
-  _wnck_select_input (screen->priv->xscreen,
-                      screen->priv->xroot,
-                      0,
-                      FALSE);
-  for (item = screen->priv->mapped_windows; item != NULL; item = g_list_next (item))
-    _wnck_window_shutdown (WNCK_WINDOW (item->data));
-  wnck_screen_finalize (G_OBJECT (screen));
-}
-
-void
 _wnck_screen_shutdown_all (void)
 {
   int i;
@@ -2785,8 +2775,10 @@ _wnck_screen_shutdown_all (void)
 
   for (i = 0; i < ScreenCount (display); ++i)
     {
-      if (screens[i] != NULL)
-        _wnck_screen_shutdown (screens[i]);
+      if (screens[i] != NULL) {
+        g_object_unref (screens[i]);
+        screens[i] = NULL;
+      }
     }
 
   g_free (screens);

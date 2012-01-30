@@ -55,7 +55,6 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   WnckScreen *screen,
                                   gint        sort_order);
 void        _wnck_window_destroy (WnckWindow *window);
-void        _wnck_window_shutdown (WnckWindow *window);
 
 char*       _wnck_window_get_name_for_display (WnckWindow *window,
                                                gboolean    use_icon_name,
@@ -106,7 +105,6 @@ void _wnck_screen_change_workspace_name (WnckScreen *screen,
                                          int         number,
                                          const char *name);
 
-void _wnck_screen_shutdown              (WnckScreen *screen);
 void _wnck_screen_shutdown_all          (void);
 
 gboolean _wnck_workspace_set_geometry (WnckWorkspace *space, int w, int h);
