@@ -455,6 +455,8 @@ wnck_window_finalize (GObject *object)
   g_free (window->priv->res_name);
   window->priv->res_name = NULL;
 
+  window->priv->xwindow = None;
+
   G_OBJECT_CLASS (wnck_window_parent_class)->finalize (object);
 }
 
@@ -504,7 +506,8 @@ _wnck_window_create (Window      xwindow,
   Screen     *xscreen;
 
   if (window_hash == NULL)
-    window_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
+    window_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
+                                         NULL, g_object_unref);
 
   g_return_val_if_fail (g_hash_table_lookup (window_hash, &xwindow) == NULL,
                         NULL);
@@ -574,18 +577,17 @@ _wnck_window_create (Window      xwindow,
 void
 _wnck_window_destroy (WnckWindow *window)
 {
+  Window xwindow = window->priv->xwindow;
+
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  g_return_if_fail (wnck_window_get (window->priv->xwindow) == window);
+  g_return_if_fail (wnck_window_get (xwindow) == window);
 
-  g_hash_table_remove (window_hash, &window->priv->xwindow);
+  g_hash_table_remove (window_hash, &xwindow);
 
-  g_return_if_fail (wnck_window_get (window->priv->xwindow) == NULL);
+  /* Removing from hash also removes the only ref WnckWindow had */
 
-  window->priv->xwindow = None;
-
-  /* remove hash's ref on the window */
-  g_object_unref (G_OBJECT (window));
+  g_return_if_fail (wnck_window_get (xwindow) == NULL);
 }
 
 void

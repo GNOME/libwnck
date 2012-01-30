@@ -99,6 +99,16 @@ static void wnck_application_finalize    (GObject        *object);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+void
+_wnck_application_shutdown_all (void)
+{
+  if (app_hash != NULL)
+    {
+      g_hash_table_destroy (app_hash);
+      app_hash = NULL;
+    }
+}
+
 static void
 wnck_application_init (WnckApplication *application)
 {
@@ -522,7 +532,8 @@ _wnck_application_create (Window      xwindow,
   Screen          *xscreen;
 
   if (app_hash == NULL)
-    app_hash = g_hash_table_new (_wnck_xid_hash, _wnck_xid_equal);
+    app_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
+                                      NULL, g_object_unref);
 
   g_return_val_if_fail (g_hash_table_lookup (app_hash, &xwindow) == NULL,
                         NULL);
@@ -566,14 +577,15 @@ _wnck_application_create (Window      xwindow,
 void
 _wnck_application_destroy (WnckApplication *application)
 {
-  g_return_if_fail (wnck_application_get (application->priv->xwindow) == application);
+  Window xwindow = application->priv->xwindow;
 
-  g_hash_table_remove (app_hash, &application->priv->xwindow);
+  g_return_if_fail (wnck_application_get (xwindow) == application);
 
-  g_return_if_fail (wnck_application_get (application->priv->xwindow) == NULL);
+  g_hash_table_remove (app_hash, &xwindow);
 
-  /* remove hash's ref on the application */
-  g_object_unref (G_OBJECT (application));
+  /* Removing from hash also removes the only ref WnckApplication had */
+
+  g_return_if_fail (wnck_application_get (xwindow) == NULL);
 }
 
 static void
@@ -675,26 +687,6 @@ _wnck_application_process_property_notify (WnckApplication *app,
       /* FIXME update startup id */
     }
 }
-
-static void
-_wnck_app_iter_destroy_application (gpointer key,
-                                    gpointer value,
-                                    gpointer user_data)
-{
-  g_object_unref (WNCK_APPLICATION (value));
-}
-
-void
-_wnck_application_shutdown_all (void)
-{
-  if (app_hash != NULL)
-    {
-      g_hash_table_foreach (app_hash, _wnck_app_iter_destroy_application, NULL);
-      g_hash_table_destroy (app_hash);
-      app_hash = NULL;
-    }
-}
-
 
 static void
 emit_name_changed (WnckApplication *app)

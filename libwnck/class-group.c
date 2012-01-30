@@ -80,6 +80,16 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+void
+_wnck_class_group_shutdown_all (void)
+{
+  if (class_group_hash != NULL)
+    {
+      g_hash_table_destroy (class_group_hash);
+      class_group_hash = NULL;
+    }
+}
+
 static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
 {
@@ -200,7 +210,8 @@ _wnck_class_group_create (const char *res_class)
   WnckClassGroup *class_group;
 
   if (class_group_hash == NULL)
-    class_group_hash = g_hash_table_new (g_str_hash, g_str_equal);
+    class_group_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                              NULL, g_object_unref);
 
   g_return_val_if_fail (g_hash_table_lookup (class_group_hash, res_class ? res_class : "") == NULL,
 			NULL);
@@ -229,11 +240,7 @@ _wnck_class_group_destroy (WnckClassGroup *class_group)
 
   g_hash_table_remove (class_group_hash, class_group->priv->res_class);
 
-  g_free (class_group->priv->res_class);
-  class_group->priv->res_class = NULL;
-
-  /* remove hash's ref on the class group */
-  g_object_unref (class_group);
+  /* Removing from hash also removes the only ref WnckClassGroup had */
 }
 
 static const char *
@@ -635,23 +642,4 @@ wnck_class_group_get_mini_icon (WnckClassGroup *class_group)
   g_return_val_if_fail (class_group != NULL, NULL);
 
   return class_group->priv->mini_icon;
-}
-
-static void
-_wnck_class_iter_destroy_class_group (gpointer key,
-                                      gpointer value,
-                                      gpointer user_data)
-{
-  g_object_unref (WNCK_CLASS_GROUP (value));
-}
-
-void
-_wnck_class_group_shutdown_all (void)
-{
-  if (class_group_hash != NULL)
-    {
-      g_hash_table_foreach (class_group_hash, _wnck_class_iter_destroy_class_group, NULL);
-      g_hash_table_destroy (class_group_hash);
-      class_group_hash = NULL;
-    }
 }
