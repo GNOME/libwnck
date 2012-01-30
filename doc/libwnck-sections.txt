@@ -337,6 +337,7 @@ wnck_pid_read_resource_usage
 <TITLE>Miscellaneous Functions</TITLE>
 WnckClientType
 wnck_set_client_type
+wnck_shutdown
 </SECTION>
 
 <SECTION>

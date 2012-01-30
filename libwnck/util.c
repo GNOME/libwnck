@@ -789,11 +789,18 @@ _wnck_stock_icons_init (void)
 /**
  * wnck_shutdown:
  *
- * Stop listening to events and tear down all resources from libwnck. This
- * should be done if you are not going to need the state change notifications
- * for an extended period of time, to avoid wakeups with every key and focus
- * event. After this all Wnck object references you might still hold are
- * invalid.
+ * Makes libwnck stop listening to events and tear down all resources from
+ * libwnck. This should be done if you are not going to need the state change
+ * notifications for an extended period of time, to avoid wakeups with every
+ * key and focus event.
+ *
+ * After this, all pointers to Wnck object you might still hold are invalid.
+ *
+ * Due to the fact that <link
+ * linkend="getting-started.pitfalls.memory-management">Wnck objects are all
+ * owned by libwnck</link>, users of this API through introspection should be
+ * extremely careful: they must explicitly clear variables referencing objects
+ * before this call. Failure to do so might result in crashes.
  *
  * Since: 3.4
  */

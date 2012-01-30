@@ -45,7 +45,7 @@
     </para>
 
     <para>
-     Applications that just need to do some management on their own windows (like positioning one of their windows on a specific workspace) should likely not use libwnck, as the use of this library is relatively expensive in terms of resources. The internals of libwnck make sure that the library always tracks everything that is occurring on the display, mirroring various information from the X server and actively using resources to update the cached information as it changes. In concrete termes, every time something changes on the display, every application using libwnck will wake up. An application that is not dealing specifically with window management should not do this.
+     Applications that just need to do some management on their own windows (like positioning one of their windows on a specific workspace) should likely not use libwnck, as the use of this library is relatively expensive in terms of resources. The internals of libwnck make sure that the library always tracks everything that is occurring on the display, mirroring various information from the X server and actively using resources to update the cached information as it changes. In concrete terms, every time something changes on the display, every application using libwnck will wake up. An application that is not dealing specifically with window management should not do this. While <link linkend="wnck-shutdown"><function>wnck_shutdown()</function></link> can be used to mitigate the expensiveness of libwnck, it is generally not considered a proper solution.
     </para>
 
     <note><simpara>
@@ -77,6 +77,22 @@
      <title>Memory management</title>
      <para>
       All objects provided by the <link linkend="core">Core Window Management Support</link> are owned by libwnck and should not be referenced or unreferenced by the user. Those objects are tied to X resources, and it makes no sense to keep the objects alive when the X resources are gone; doing so could lead to errors. Therefore it is important that, when keeping in memory a pointer to such an object, the life of this object is tracked to make sure the pointer is always valid.
+     </para>
+     <para>
+      This memory management model is important to keep in mind for users of <link linkend="wnck-shutdown"><function>wnck_shutdown()</function></link>, and especially for users of libwnck through introspection. With introspection, all variables pointing to objects owned by libwnck must be cleared before <link linkend="wnck-shutdown"><function>wnck_shutdown()</function></link> as the introspection support can add some references to the objects.
+     </para>
+     <para>
+      For instance, the following would work in Python:
+      <informalexample>
+       <programlisting language="python">
+from gi.repository import Wnck
+
+screen = Wnck.Screen.get_default()
+[...]
+screen = None
+Wnck.Shutdown()
+       </programlisting>
+      </informalexample>
      </para>
     </sect2>
 
@@ -187,6 +203,9 @@
     <index role="3.0">
       <title>Index of new symbols in 3.0</title>
     </index> 
+    <index role="3.4">
+      <title>Index of new symbols in 3.4</title>
+    </index>
   </part>
   <xi:include href="xml/annotation-glossary.xml"><xi:fallback /></xi:include>
 </book>
