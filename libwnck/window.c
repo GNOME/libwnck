@@ -542,9 +542,9 @@ _wnck_window_create (Window      xwindow,
    * and the one we want for window
    */
   window->priv->orig_event_mask =_wnck_select_input (xscreen,
-                      window->priv->xwindow,
-                      WNCK_APP_WINDOW_EVENT_MASK,
-                      TRUE);
+                                                     window->priv->xwindow,
+                                                     WNCK_APP_WINDOW_EVENT_MASK,
+                                                     TRUE);
 
   /* Default the group leader to the window itself; it is set in
    * update_wmhints() if a different group leader is specified.
