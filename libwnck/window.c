@@ -212,6 +212,16 @@ static WnckWindow* find_last_transient_for (GList *windows,
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+void
+_wnck_window_shutdown_all (void)
+{
+  if (window_hash != NULL)
+    {
+      g_hash_table_destroy (window_hash);
+      window_hash = NULL;
+    }
+}
+
 static void
 wnck_window_init (WnckWindow *window)
 {

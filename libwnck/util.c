@@ -804,4 +804,5 @@ wnck_shutdown (void)
   _wnck_screen_shutdown_all ();
   _wnck_class_group_shutdown_all ();
   _wnck_application_shutdown_all ();
+  _wnck_window_shutdown_all ();
 }
