@@ -805,4 +805,9 @@ wnck_shutdown (void)
   _wnck_class_group_shutdown_all ();
   _wnck_application_shutdown_all ();
   _wnck_window_shutdown_all ();
+
+  if (xres_removeid != 0)
+    g_source_remove (xres_removeid);
+  xres_removeid = 0;
+  wnck_pid_read_resource_usage_destroy_hash_table (NULL);
 }

@@ -104,6 +104,8 @@ typedef enum {
 
 void wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type);
 
+void wnck_shutdown        (void);
+
 void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             xid,
                                    WnckResourceUsage *usage);
@@ -111,8 +113,6 @@ void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
 void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             pid,
                                    WnckResourceUsage *usage);
-
-void wnck_shutdown                (void);
 
 G_END_DECLS
 
