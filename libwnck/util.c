@@ -808,9 +808,23 @@ void
 wnck_shutdown (void)
 {
   _wnck_event_filter_shutdown ();
-  _wnck_screen_shutdown_all ();
+
+  /* Warning: this is hacky :-)
+   *
+   * Shutting down all WnckScreen objects will automatically unreference (and
+   * finalize) all WnckWindow objects, but not the WnckClassGroup and
+   * WnckApplication objects.
+   * Therefore we need to manually shut down all WnckClassGroup and
+   * WnckApplication objects first, since they reference the WnckScreen they're
+   * on.
+   * On the other side, shutting down the WnckScreen objects will results in
+   * all WnckWindow objects getting unreferenced and finalized, and must
+   * actually be done before shutting down global WnckWindow structures
+   * (because the WnckScreen has a list of WnckWindow that will get mis-used
+   * otherwise). */
   _wnck_class_group_shutdown_all ();
   _wnck_application_shutdown_all ();
+  _wnck_screen_shutdown_all ();
   _wnck_window_shutdown_all ();
 
   if (xres_removeid != 0)
