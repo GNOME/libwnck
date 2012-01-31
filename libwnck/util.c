@@ -827,8 +827,10 @@ wnck_shutdown (void)
   _wnck_screen_shutdown_all ();
   _wnck_window_shutdown_all ();
 
+#ifdef HAVE_XRES
   if (xres_removeid != 0)
     g_source_remove (xres_removeid);
   xres_removeid = 0;
   wnck_pid_read_resource_usage_destroy_hash_table (NULL);
+#endif
 }
