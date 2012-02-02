@@ -2568,7 +2568,7 @@ wnck_task_position_menu (GtkMenu   *menu,
 
   *x = menu_xpos;
   *y = menu_ypos;
-  *push_in = TRUE;
+  *push_in = FALSE;
 }
 
 static gboolean
