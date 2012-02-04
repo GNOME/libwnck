@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.32.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-28 17:24+0100\n"
-"PO-Revision-Date: 2012-01-28 17:26+0100\n"
+"POT-Creation-Date: 2012-02-04 12:38+0100\n"
+"PO-Revision-Date: 2012-02-04 12:39+0100\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.n>\n"
 "Language: nb\n"
@@ -245,12 +245,16 @@ msgstr "Alias for --window"
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
-msgstr "Vis liste med vinduer for program/klasse gruppe/arbeidsområde/skjerm (utdataformat: «XID: navn på vindu»)"
+msgstr ""
+"Vis liste med vinduer for program/klasse gruppe/arbeidsområde/skjerm "
+"(utdataformat: «XID: navn på vindu»)"
 
 #: ../libwnck/wnckprop.c:165
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr "Vis arbeidsområder for skjermen (utdataformat: «Nummer: navn på arbeidsområde»)"
+msgstr ""
+"Vis arbeidsområder for skjermen (utdataformat: «Nummer: navn på "
+"arbeidsområde»)"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the number of workspaces of the screen to NUMBER"
@@ -426,11 +430,11 @@ msgstr "Gjør vinduet synlig på alle arbeidsområder"
 
 #: ../libwnck/wnckprop.c:270
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Gjør vinduet synlig kun på aktivt arbeidsområde"
 
 #: ../libwnck/wnckprop.c:272
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Flytt vinduet til arbeidsområde TALL (første arbeidsområde er 0)"
 
 #: ../libwnck/wnckprop.c:274
 msgid "Change the X coordinate of the window to X"
