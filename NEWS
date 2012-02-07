@@ -1,4 +1,22 @@
 =============
+Version 3.3.5
+=============
+
+ Features
+
+	* Add wnck_shutdown() API (Martin Pitt, Vincent)
+
+  Fixes
+
+	* Don't ask for tasklist menus to be pushed in (Vincent)
+
+  Translators
+
+	* OKANO Takayoshi (ja)
+	* Kjartan Maraas (nb)
+	* Wouter Bolsterlee (nl)
+
+=============
 Version 3.2.1
 =============
 
