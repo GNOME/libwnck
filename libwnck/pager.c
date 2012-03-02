@@ -69,6 +69,7 @@ struct _WnckPagerPrivate
   
   int n_rows; /* really columns for vertical orientation */
   WnckPagerDisplayMode display_mode;
+  WnckPagerLayoutPolicy layout_policy;
   gboolean show_all_workspaces;
   GtkShadowType shadow_type;
   
@@ -210,6 +211,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->shadow_type = GTK_SHADOW_NONE;
 
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  pager->priv->layout_policy = WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC;
   pager->priv->workspace_size = 48;
 
   for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
@@ -428,7 +430,9 @@ wnck_pager_size_request  (GtkWidget      *widget,
   spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
   space = wnck_screen_get_workspace (pager->priv->screen, 0);
   
-  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+  if (pager->priv->layout_policy == WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH ||
+      (pager->priv->layout_policy == WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC &&
+       pager->priv->orientation == GTK_ORIENTATION_VERTICAL))
     {
       if (space) {
         screen_aspect =
@@ -455,9 +459,16 @@ wnck_pager_size_request  (GtkWidget      *widget,
 	}
       
       other_dimension_size = screen_aspect * size;
-      
-      requisition->width = size * n_rows + (n_rows - 1);
-      requisition->height = other_dimension_size * spaces_per_row  + (spaces_per_row - 1);
+      if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+	{
+	  requisition->width = size * n_rows + (n_rows - 1);
+	  requisition->height = other_dimension_size * spaces_per_row  + (spaces_per_row - 1);
+	}
+      else
+	{
+	  requisition->width = size * spaces_per_row + (spaces_per_row - 1);
+	  requisition->height = other_dimension_size * n_rows  + (n_rows - 1);
+	}
     }
   else
     {
@@ -512,8 +523,16 @@ wnck_pager_size_request  (GtkWidget      *widget,
 	  other_dimension_size += 2;
 	}
       
-      requisition->width = other_dimension_size * spaces_per_row + (spaces_per_row - 1);
-      requisition->height = size * n_rows + (n_rows - 1);
+      if (pager->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+	{
+	  requisition->width = other_dimension_size * spaces_per_row + (spaces_per_row - 1);
+	  requisition->height = size * n_rows + (n_rows - 1);
+	}
+      else
+	{
+	  requisition->width = other_dimension_size * n_rows + (n_rows - 1);
+	  requisition->height = size * spaces_per_row + (spaces_per_row - 1);
+	}
     }
 
   if (pager->priv->shadow_type != GTK_SHADOW_NONE)
@@ -543,6 +562,8 @@ wnck_pager_size_allocate (GtkWidget      *widget,
   int focus_width;
   int width;
   int height;
+  int n_spaces;
+  int spaces_per_row;
 
   pager = WNCK_PAGER (widget);
 
@@ -565,17 +586,34 @@ wnck_pager_size_allocate (GtkWidget      *widget,
 
   g_assert (pager->priv->n_rows > 0);
 
-  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
+  spaces_per_row = (n_spaces + pager->priv->n_rows - 1) / pager->priv->n_rows;
+  if (spaces_per_row == 0)
+    spaces_per_row = 1;
+
+  if (pager->priv->layout_policy == WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH ||
+      (pager->priv->layout_policy == WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC &&
+       pager->priv->orientation == GTK_ORIENTATION_VERTICAL))
     {
       if (pager->priv->show_all_workspaces)
-	workspace_size = (width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
+	{
+	  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+	    workspace_size = (width - (pager->priv->n_rows - 1))  / pager->priv->n_rows;
+	  else
+	    workspace_size = (width - (spaces_per_row - 1)) / spaces_per_row;
+	}
       else
 	workspace_size = width;
     }
   else
     {
       if (pager->priv->show_all_workspaces)
-	workspace_size = (height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
+	{
+	  if (pager->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+	    workspace_size = (height - (pager->priv->n_rows - 1))/ pager->priv->n_rows;
+	  else
+	    workspace_size = (height - (spaces_per_row - 1)) / spaces_per_row;
+	}
       else
 	workspace_size = height;
     }
@@ -2165,6 +2203,26 @@ wnck_pager_set_display_mode (WnckPager            *pager,
   g_object_set (pager, "has-tooltip", mode != WNCK_PAGER_DISPLAY_NAME, NULL);
 
   pager->priv->display_mode = mode;
+  gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+/**
+ * wnck_pager_set_layout_policy:
+ * @pager: a #WnckPager.
+ * @policy: a layout policy.
+ *
+ * Sets the layout policy for @pager to @policy.
+ */
+void
+wnck_pager_set_layout_policy (WnckPager            *pager,
+			      WnckPagerLayoutPolicy policy)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  if (pager->priv->layout_policy == policy)
+    return;
+
+  pager->priv->layout_policy = policy;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
 }
 

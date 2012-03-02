@@ -61,7 +61,7 @@ struct _WnckPagerClass
   void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);
-  void (* pad4) (void);
+  void (* pad4) (void); /* should we remove one? */
 };
 
 /**
@@ -78,6 +78,26 @@ typedef enum {
   WNCK_PAGER_DISPLAY_CONTENT
 } WnckPagerDisplayMode;
 
+/**
+ * WnckPagerLayoutPolicy:
+ * @WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC: the #WnckPager is resize policy is
+ * "height for width" for in vertical orientation, or "width for height"
+ * in horizontal one. This is a default behavior of libwnck <= 2.30.7
+ * @WNCK_PAGER_LAYOUT_POLICY_WIDTH_FOR_HEIGHT: the #WnckPager is forced to resize its
+ * width in proportion to a preset height. This can be used for instantiating a vertical
+ * #WnckPager inside a horizontal panel.
+ * @WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH: the #WnckPager is forced to resize its
+ * height in proportion to a preset width. This can be used for instantiating a horizontal
+ * #WnckPager inside a vertical panel.
+ *
+ * Policy defining how a #WnckPager will resize itself.
+ */
+typedef enum {
+  WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC,
+  WNCK_PAGER_LAYOUT_POLICY_WIDTH_FOR_HEIGHT,
+  WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH
+} WnckPagerLayoutPolicy;
+
 GType wnck_pager_get_type (void) G_GNUC_CONST;
 
 GtkWidget* wnck_pager_new (WnckScreen *screen);
@@ -92,6 +112,8 @@ void wnck_pager_set_show_all     (WnckPager            *pager,
 				  gboolean              show_all_workspaces);
 void wnck_pager_set_shadow_type  (WnckPager	       *pager,
 				  GtkShadowType		shadow_type);
+void wnck_pager_set_layout_policy (WnckPager            *pager,
+                                   WnckPagerLayoutPolicy policy);
 
 
 #ifndef WNCK_DISABLE_DEPRECATED
