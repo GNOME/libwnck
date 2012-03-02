@@ -61,7 +61,7 @@ struct _WnckPagerClass
   void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);
-  void (* pad4) (void); /* should we remove one? */
+  void (* pad4) (void);
 };
 
 /**

@@ -2214,8 +2214,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  * Sets the layout policy for @pager to @policy.
  */
 void
-wnck_pager_set_layout_policy (WnckPager            *pager,
-			      WnckPagerLayoutPolicy policy)
+wnck_pager_set_layout_policy (WnckPager             *pager,
+			      WnckPagerLayoutPolicy  policy)
 {
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
