@@ -80,17 +80,19 @@ typedef enum {
 
 /**
  * WnckPagerLayoutPolicy:
- * @WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC: the #WnckPager is resize policy is
- * "height for width" for in vertical orientation, or "width for height"
- * in horizontal one. This is a default behavior of libwnck <= 2.30.7
- * @WNCK_PAGER_LAYOUT_POLICY_WIDTH_FOR_HEIGHT: the #WnckPager is forced to resize its
- * width in proportion to a preset height. This can be used for instantiating a vertical
+ * @WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC: the #WnckPager geometry management is
+ * "height for width" when in vertical orientation, or "width for height" when
+ * in horizontal orientation. This is the default behavior.
+ * @WNCK_PAGER_LAYOUT_POLICY_WIDTH_FOR_HEIGHT: the #WnckPager calculates its
+ * width in proportion to a preset height. This can be used for a vertical
  * #WnckPager inside a horizontal panel.
- * @WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH: the #WnckPager is forced to resize its
- * height in proportion to a preset width. This can be used for instantiating a horizontal
+ * @WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH: the #WnckPager calculates its
+ * height in proportion to a preset width. This can be used for a horizontal
  * #WnckPager inside a vertical panel.
  *
- * Policy defining how a #WnckPager will resize itself.
+ * Policy defining the geometry management used by a #WnckPager.
+ *
+ * Since: 2.32
  */
 typedef enum {
   WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC,

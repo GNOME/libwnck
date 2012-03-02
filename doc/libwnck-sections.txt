@@ -242,6 +242,8 @@ wnck_pager_new
 wnck_pager_set_screen
 wnck_pager_set_orientation
 wnck_pager_set_n_rows
+WnckPagerLayoutPolicy
+wnck_pager_set_layout_policy
 WnckPagerDisplayMode
 wnck_pager_set_display_mode
 wnck_pager_set_show_all

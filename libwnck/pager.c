@@ -2212,6 +2212,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  * @policy: a layout policy.
  *
  * Sets the layout policy for @pager to @policy.
+ *
+ * Since: 2.32
  */
 void
 wnck_pager_set_layout_policy (WnckPager             *pager,

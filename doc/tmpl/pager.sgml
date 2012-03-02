@@ -64,6 +64,24 @@ WnckPager
 @Returns: 
 
 
+<!-- ##### ENUM WnckPagerLayoutPolicy ##### -->
+<para>
+
+</para>
+
+@WNCK_PAGER_LAYOUT_POLICY_AUTOMATIC: 
+@WNCK_PAGER_LAYOUT_POLICY_WIDTH_FOR_HEIGHT: 
+@WNCK_PAGER_LAYOUT_POLICY_HEIGHT_FOR_WIDTH: 
+
+<!-- ##### FUNCTION wnck_pager_set_layout_policy ##### -->
+<para>
+
+</para>
+
+@pager: 
+@policy: 
+
+
 <!-- ##### ENUM WnckPagerDisplayMode ##### -->
 <para>
 
