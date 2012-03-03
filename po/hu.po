@@ -2,11 +2,10 @@
 # Copyright (C) 2002, 2003, 2004, 2005, 2007, 2008, 2009 Free Software Foundation, Inc.
 # This file is distributed under the same license as the libwnck package.
 #
-# Peter Doma <zelin@pointernet.hu>, 2002.
-# Andras Timar <timar@gnome.hu>, 2003, 2004.
-# Laszlo Dvornik <dvornik@gnome.hu>, 2004.
-# Gabor Kelemen <kelemeng@gnome.hu>, 2005, 2007, 2008, 2009.
-# Gabor Kelemen <kelemeng at gnome dot hu>, 2011.
+# Peter Doma <zelin at pointernet dot hu>, 2002.
+# Andras Timar <timar at gnome dot hu>, 2003, 2004.
+# Laszlo Dvornik <dvornik at gnome dot hu>, 2004.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2005, 2007, 2008, 2009, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
@@ -745,7 +744,7 @@ msgstr "%lu (%s)"
 #: ../libwnck/wnckprop.c:1243
 msgctxt "window"
 msgid "none"
-msgstr "incs"
+msgstr "nincs"
 
 #: ../libwnck/wnckprop.c:1244
 #, c-format
