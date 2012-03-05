@@ -1,4 +1,16 @@
 ==============
+Version 2.31.0
+==============
+
+This release adds new API, needed for fixes in the forthcoming XFCE 4.10.
+
+ Features
+
+   - Add macros to determine libwnck version at build time: WNCK_CHECK_VERSION,
+     WNCK_MAJOR_VERSION, WNCK_MINOR_VERSION, WNCK_MICRO_VERSION (Vincent)
+   - Add wnck_pager_set_layout_policy() API (Andrzej)
+
+==============
 Version 2.30.7
 ==============
 
