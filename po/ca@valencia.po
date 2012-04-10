@@ -2,12 +2,13 @@
 # Copyright © 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
 # Jordi Mallach <jordi@sindominio.net>, 2002, 2003, 2004, 2005, 2006.
 # Sílvia Miranda <silvia.gnome@gmail.com>, 2007.
+# Jordi Serratosa <jordis@softcatala.cat>, 2012.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.9.90\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-09-26 14:18+0200\n"
+"POT-Creation-Date: 2012-04-10 21:11+0200\n"
 "PO-Revision-Date: 2011-09-16 23:16+0200\n"
 "Last-Translator: Sílvia Miranda <silvia.gnome@gmail.com>\n"
 "Language-Team: Catalan <tradgnome@softcatala.org>\n"
@@ -306,7 +307,7 @@ msgstr "Y"
 
 #: ../libwnck/wnckprop.c:195
 msgid "Minimize the window"
-msgstr "Minimitza la fiestra"
+msgstr "Minimitza la finestra"
 
 #: ../libwnck/wnckprop.c:197
 msgid "Unminimize the window"
@@ -1064,7 +1065,7 @@ msgstr "desenro_tlla"
 
 #: ../libwnck/wnckprop.c:1627
 msgid "stick"
-msgstr "enganxa"
+msgstr "apega"
 
 #: ../libwnck/wnckprop.c:1628
 msgid "unstick"
@@ -1128,7 +1129,7 @@ msgstr "posa a sobre"
 
 #: ../libwnck/wnckprop.c:1654
 msgid "unmake above"
-msgstr "treu de sobre"
+msgstr "trau de sobre"
 
 #: ../libwnck/wnckprop.c:1656
 msgid "make below"
@@ -1136,7 +1137,7 @@ msgstr "posa a sota"
 
 #: ../libwnck/wnckprop.c:1658
 msgid "unmake below"
-msgstr "treu de sota"
+msgstr "trau de sota"
 
 #: ../libwnck/wnckprop.c:1660
 msgid "no action possible"
