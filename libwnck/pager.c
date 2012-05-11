@@ -365,6 +365,7 @@ wnck_pager_realize (GtkWidget *widget)
   attributes.visual = gtk_widget_get_visual (widget);
   attributes.event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK |
 	  		  GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+			  GDK_SCROLL_MASK |
 			  GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK |
 			  GDK_POINTER_MOTION_HINT_MASK;
 
@@ -2093,6 +2094,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
   pager = WNCK_PAGER (widget);
 
   if (event->type != GDK_SCROLL)
+    return FALSE;
+  if (event->direction == GDK_SCROLL_SMOOTH)
     return FALSE;
 
   absolute_direction = event->direction;

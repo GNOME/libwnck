@@ -1085,6 +1085,9 @@ wnck_selector_scroll_event (GtkWidget      *widget,
                 /* We ignore LEFT and RIGHT scroll events. */
               break;
 
+              case GDK_SCROLL_SMOOTH:
+              break;
+
               default:
                 g_assert_not_reached ();
             }
@@ -1246,6 +1249,8 @@ wnck_selector_init (WnckSelector *selector)
   selector->priv->window_hash     = NULL;
 
   selector->priv->size            = -1;
+
+  gtk_widget_add_events (GTK_WIDGET (selector), GDK_SCROLL_MASK);
 }
 
 static void

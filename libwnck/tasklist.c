@@ -672,6 +672,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
+
+  gtk_widget_add_events (widget, GDK_SCROLL_MASK);
 }
 
 static void
@@ -1948,6 +1950,10 @@ wnck_tasklist_scroll_event (GtkWidget      *widget,
             if (!window)
               TASKLIST_GET_MOST_RIGHT (ltr, window, tasklist);
           }
+      break;
+
+      case GDK_SCROLL_SMOOTH:
+        window = NULL;
       break;
 
 #undef TASKLIST_GET_MOST_LEFT
