@@ -1,7 +1,5 @@
 lib_LTLIBRARIES = libwnck-3.la
-bin_PROGRAMS =			\
-	wnckprop		\
-	wnck-urgency-monitor
+bin_PROGRAMS =
 noinst_PROGRAMS =		\
 	test-pager		\
 	test-wnck		\
@@ -9,6 +7,16 @@ noinst_PROGRAMS =		\
 	test-tasklist		\
 	test-urgent		\
 	test-shutdown
+
+if ENABLE_TOOLS
+bin_PROGRAMS +=			\
+	wnckprop		\
+	wnck-urgency-monitor
+else
+noinst_PROGRAMS +=		\
+	wnckprop		\
+	wnck-urgency-monitor
+endif
 
 AM_CPPFLAGS =					\
 	$(LIBWNCK_CFLAGS)			\

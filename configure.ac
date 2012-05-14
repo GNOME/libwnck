@@ -61,6 +61,12 @@ if test "x$enable_deprecation_flags" = "xyes"; then
    AC_SUBST(DISABLE_DEPRECATED_CFLAGS)
 fi
 
+AC_ARG_ENABLE(tools,
+              [AC_HELP_STRING([--enable-tools],
+                              [install wnck-based tools @<:@default=yes@:>@])],,
+              [enable_tools=yes])
+AM_CONDITIONAL(ENABLE_TOOLS, test "x$enable_tools" != "xno")
+
 GETTEXT_PACKAGE=libwnck-3.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Package name])
@@ -194,5 +200,6 @@ echo "
         XRes support:                 ${have_xres}
         Build introspection support:  ${found_introspection}
         Build gtk-doc documentation:  ${enable_gtk_doc}
+        Install wnck-based tools:     ${enable_tools}
 
 "
