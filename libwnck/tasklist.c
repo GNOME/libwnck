@@ -673,7 +673,11 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
 
+#if 0
+  /* This doesn't work because, and I think this is because we have no window;
+   * therefore, we use the scroll events on task buttons instead */
   gtk_widget_add_events (widget, GDK_SCROLL_MASK);
+#endif
 }
 
 static void
@@ -692,7 +696,10 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
+#if 0
+  /* See comment above gtk_widget_add_events() in wnck_tasklist_init() */
   widget_class->scroll_event = wnck_tasklist_scroll_event;
+#endif
 
   container_class->forall = wnck_tasklist_forall;
   container_class->remove = wnck_tasklist_remove;
@@ -3622,6 +3629,16 @@ wnck_task_button_press_event (GtkWidget	      *widget,
 }
 
 static gboolean
+wnck_task_scroll_event (GtkWidget *widget,
+			GdkEvent  *event,
+			gpointer   data)
+{
+  WnckTask *task = WNCK_TASK (data);
+
+  return wnck_tasklist_scroll_event (GTK_WIDGET (task->tasklist), (GdkEventScroll *) event);
+}
+
+static gboolean
 wnck_task_draw (GtkWidget *widget,
                 cairo_t   *cr,
                 gpointer   data);
@@ -3730,6 +3747,12 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
                            G_CALLBACK (wnck_task_button_press_event),
+                           G_OBJECT (task),
+                           0);
+
+  gtk_widget_add_events (task->button, GDK_SCROLL_MASK);
+  g_signal_connect_object (G_OBJECT (task->button), "scroll_event",
+                           G_CALLBACK (wnck_task_scroll_event),
                            G_OBJECT (task),
                            0);
 
