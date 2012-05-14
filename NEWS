@@ -1,4 +1,23 @@
 =============
+Version 3.4.2
+=============
+
+  Fixes
+
+	* Fix mouse wheel scrolling with new GTK+ (Christian Persch, Vincent)
+
+  Misc
+
+	* Add --enable-tools to enable/disable installation of tools (Vincent)
+
+  Translators
+
+	* Sílvia Miranda (ca)
+	* Sílvia Miranda (ca@valencia)
+	* Sweta Kothari (gu)
+	* Mitsuya Shibata (ja)
+
+=============
 Version 3.4.0
 =============
 

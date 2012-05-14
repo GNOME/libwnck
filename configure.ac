@@ -2,7 +2,7 @@ AC_PREREQ(2.62)
 
 m4_define([wnck_major_version], [3])
 m4_define([wnck_minor_version], [4])
-m4_define([wnck_micro_version], [1])
+m4_define([wnck_micro_version], [2])
 m4_define([wnck_version],
           [wnck_major_version.wnck_minor_version.wnck_micro_version])
 
@@ -24,7 +24,7 @@ LIBWNCK_CURRENT=2
 
 dnl increment any time the source changes; set to
 dnl  0 if you increment CURRENT
-LIBWNCK_REVISION=0
+LIBWNCK_REVISION=1
 
 dnl increment if any interfaces have been added; set to 0
 dnl  if any interfaces have been changed or removed. removal has
