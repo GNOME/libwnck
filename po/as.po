@@ -8,10 +8,11 @@ msgstr ""
 "Project-Id-Version: as\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
 "cgi?product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-12 10:57+0000\n"
-"PO-Revision-Date: 2012-03-12 13:55+0530\n"
+"POT-Creation-Date: 2012-07-12 12:08+0000\n"
+"PO-Revision-Date: 2012-07-12 17:40+0530\n"
 "Last-Translator: Nilamdyuti Goswami <ngoswami@redhat.com>\n"
 "Language-Team: as_IN <kde-i18n-doc@kde.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -55,31 +56,31 @@ msgstr "কৰ্মক্ষেত্ৰ পৰিবৰ্তনৰ বাব�
 msgid "Click this to switch to workspace %s"
 msgstr "কৰ্মক্ষেত্ৰ %s লৈ পৰিবৰ্তন কৰিবলৈ এই স্থানত ক্লিক কৰক"
 
-#: ../libwnck/pager.c:2200
+#: ../libwnck/pager.c:2203
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\" লৈ ক্লিক কৰক টনাৰ বাবে"
 
-#: ../libwnck/pager.c:2203
+#: ../libwnck/pager.c:2206
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "বৰ্তমান কৰ্মক্ষেত্ৰত: \"%s\""
 
-#: ../libwnck/pager.c:2208
+#: ../libwnck/pager.c:2211
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "%s লৈ পৰিবৰ্তন কৰিবলৈ এই স্থানত ক্লিক কৰক"
 
-#: ../libwnck/selector.c:1180
+#: ../libwnck/selector.c:1183
 msgid "No Windows Open"
 msgstr "কোনো উইন্ডো বৰ্তমান খোলা নাই"
 
 #
-#: ../libwnck/selector.c:1236
+#: ../libwnck/selector.c:1239
 msgid "Window Selector"
 msgstr "উইণ্ডো নিৰ্বাচক"
 
-#: ../libwnck/selector.c:1237
+#: ../libwnck/selector.c:1240
 msgid "Tool to switch between windows"
 msgstr "উইন্ডো পৰিবৰ্তন কৰিবলৈ ব্যবহৃত সঁজুলি"
 
@@ -92,24 +93,24 @@ msgstr "উইণ্ডো তালিকা"
 msgid "Tool to switch between visible windows"
 msgstr "দৃশ্যমান উইন্ডো পৰিবৰ্তন কৰিবলৈ ব্যবহৃত সঁজুলি"
 
-#: ../libwnck/tasklist.c:2896
+#: ../libwnck/tasklist.c:2909
 msgid "Mi_nimize All"
 msgstr "সকলো লুকাওক (_n)"
 
-#: ../libwnck/tasklist.c:2907
+#: ../libwnck/tasklist.c:2920
 msgid "Un_minimize All"
 msgstr "সকলো প্ৰদৰ্শন কৰক (_m)"
 
-#: ../libwnck/tasklist.c:2915
+#: ../libwnck/tasklist.c:2928
 msgid "Ma_ximize All"
 msgstr "সকলো ডাঙৰ কৰক (_x)"
 
-#: ../libwnck/tasklist.c:2926
+#: ../libwnck/tasklist.c:2939
 msgid "_Unmaximize All"
 msgstr "সকলো স্বাভাবিক মাপে প্ৰদৰ্শন কৰক (_U)"
 
 #
-#: ../libwnck/tasklist.c:2938
+#: ../libwnck/tasklist.c:2951
 msgid "_Close All"
 msgstr "সকলো বন্ধ কৰক (_C)"
 
@@ -214,7 +215,8 @@ msgid "Untitled window"
 msgstr "শীৰ্ষকবিহিন উইন্ডো"
 
 #: ../libwnck/wnckprop.c:138
-msgid "X উইন্ডো ID of the window to examine or modify"
+#| msgid "X উইন্ডো ID of the window to examine or modify"
+msgid "X window ID of the window to examine or modify"
 msgstr "পৰীক্ষা অথবা পৰিবৰ্তনৰ বাবে চিহ্নিত উইন্ডোৰ X উইন্ডো ID"
 
 #: ../libwnck/wnckprop.c:138 ../libwnck/wnckprop.c:145
@@ -227,7 +229,8 @@ msgstr "XID"
 #. * application, one window has some information about the application
 #. * (like the application name).
 #: ../libwnck/wnckprop.c:144
-msgid "X উইন্ডো ID of the group leader of an application to examine"
+#| msgid "X উইন্ডো ID of the group leader of an application to examine"
+msgid "X window ID of the group leader of an application to examine"
 msgstr "যি অনুপ্ৰয়োগ পৰীক্ষা কৰা হ'ব তাৰ দল প্ৰমূখৰ X উইন্ডো ID"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
@@ -266,8 +269,8 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"অনুপ্ৰয়োগ/শ্ৰেণী দল/কৰ্মক্ষেত্ৰ/পৰ্দাৰ উইন্ডোসমূহ তালিকাভুক্ত কৰক (ফলাফলৰ "
-"বিন্যাস: \"XID: উইন্ডোৰ নাম\")"
+"অনুপ্ৰয়োগ/শ্ৰেণী দল/কৰ্মক্ষেত্ৰ/পৰ্দাৰ উইন্ডোসমূহ তালিকাভুক্ত কৰক (ফলাফলৰ বিন্যাস: "
+"\"XID: উইন্ডোৰ নাম\")"
 
 #: ../libwnck/wnckprop.c:165
 msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
@@ -512,8 +515,8 @@ msgstr "অবৈধ মান \"%s\", --%sৰ বাবে"
 #: ../libwnck/wnckprop.c:502 ../libwnck/wnckprop.c:521
 #, c-format
 msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: screen %d should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
 "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: পৰ্দা %d ৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --%s "
 "ব্যবহৃত হৈছে\n"
@@ -542,8 +545,8 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: কৰ্মক্ষেত্ৰ %d ৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত "
-"কিন্তু --%s ব্যবহৃত হৈছে\n"
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: কৰ্মক্ষেত্ৰ %d ৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু --"
+"%s ব্যবহৃত হৈছে\n"
 
 #: ../libwnck/wnckprop.c:566
 #, c-format
@@ -560,8 +563,8 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা অনুপ্ৰয়োগৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু "
-"--%s ইতিমধ্যে ব্যবহৃত হৈছে\n"
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা অনুপ্ৰয়োগৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু --"
+"%s ইতিমধ্যে ব্যবহৃত হৈছে\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -571,8 +574,8 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: \"%s\" শ্ৰেণী দল ৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --%s "
-"ইতিমধ্যে ব্যবহৃত হৈছে\n"
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: \"%s\" শ্ৰেণী দল ৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --"
+"%s ইতিমধ্যে ব্যবহৃত হৈছে\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -582,14 +585,14 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: \"%s\" শ্ৰেণী দলৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু --%s"
-"ব্যবহৃত হৈছে\n"
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: \"%s\" শ্ৰেণী দলৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত "
+"কিন্তু --%sব্যবহৃত হৈছে\n"
 
 #: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
 #, c-format
 msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: a window should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
 "দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: উইন্ডোৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --%s ব্যবহৃত "
 "হৈছে\n"
@@ -625,8 +628,7 @@ msgstr "--%s ৰ বাবে অবৈধ তৰ্ক \"%s\", বৈধ মা
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr ""
-"পৰ্দাত কৰ্মক্ষেত্ৰৰ বিন্যাস পৰিবৰ্তন কৰিব নোৱাৰি: বিন্যাস পূৰ্বে ব্যবহৃত হৈছে\n"
+msgstr "পৰ্দাত কৰ্মক্ষেত্ৰৰ বিন্যাস পৰিবৰ্তন কৰিব নোৱাৰি: বিন্যাস পূৰ্বে ব্যবহৃত হৈছে\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -824,7 +826,6 @@ msgstr "তলৰ প্ৰতিবেশি: %s\n"
 #. * same class.
 #: ../libwnck/wnckprop.c:1352 ../libwnck/wnckprop.c:1511
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Group ID: %s\n"
 msgstr "শ্ৰেণী দল ID: %s\n"
 
@@ -832,7 +833,6 @@ msgstr "শ্ৰেণী দল ID: %s\n"
 #. * same class.
 #: ../libwnck/wnckprop.c:1356
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Group Name: %s\n"
 msgstr "শ্ৰেণী দল নাম: %s\n"
 
@@ -949,7 +949,6 @@ msgstr "জ্যামিতি (x, y, প্ৰস্থ, উচ্চতা):
 #. * to the same class group.
 #: ../libwnck/wnckprop.c:1521
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Instance: %s\n"
 msgstr "শ্ৰেণী উদাহৰণ: %s\n"
 
@@ -1236,8 +1235,8 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
-"XID %lu ৰ সৈতে দল প্ৰমূখ থকা অনুপ্ৰয়োগৰ সৈতে ভাৱবিনিময় কৰিব নোৱাৰি: "
-"অনুপ্ৰয়োগ পোৱা নাযায়\n"
+"XID %lu ৰ সৈতে দল প্ৰমূখ থকা অনুপ্ৰয়োগৰ সৈতে ভাৱবিনিময় কৰিব নোৱাৰি: অনুপ্ৰয়োগ পোৱা "
+"নাযায়\n"
 
 #: ../libwnck/wnckprop.c:2037
 #, c-format
