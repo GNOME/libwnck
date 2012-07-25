@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.32.x\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-04 12:38+0100\n"
-"PO-Revision-Date: 2012-02-04 12:39+0100\n"
+"POT-Creation-Date: 2012-07-25 16:42+0200\n"
+"PO-Revision-Date: 2012-07-25 16:43+0200\n"
 "Last-Translator: Kjartan Maraas <kmaraas@gnome.org>\n"
 "Language-Team: Norwegian bokmål <i18n-nb@lister.ping.uio.n>\n"
 "Language: nb\n"
@@ -51,30 +51,30 @@ msgstr "Verktøy for å bytte mellom arbeidsområder"
 msgid "Click this to switch to workspace %s"
 msgstr "Klikk her for å bytte til arbeidsområde %s"
 
-#: ../libwnck/pager.c:2200
+#: ../libwnck/pager.c:2203
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Klikk for å dra «%s»"
 
-#: ../libwnck/pager.c:2203
+#: ../libwnck/pager.c:2206
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Aktivt arbeidsområde: «%s»"
 
-#: ../libwnck/pager.c:2208
+#: ../libwnck/pager.c:2211
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Klikk for å bytte til «%s»"
 
-#: ../libwnck/selector.c:1180
+#: ../libwnck/selector.c:1183
 msgid "No Windows Open"
 msgstr "Ingen åpne vinduer"
 
-#: ../libwnck/selector.c:1236
+#: ../libwnck/selector.c:1239
 msgid "Window Selector"
 msgstr "Vinduvelger"
 
-#: ../libwnck/selector.c:1237
+#: ../libwnck/selector.c:1240
 msgid "Tool to switch between windows"
 msgstr "Verktøy for å bytte mellom vinduer"
 
@@ -86,23 +86,23 @@ msgstr "Vinduliste"
 msgid "Tool to switch between visible windows"
 msgstr "Verktøy for å bytte mellom synlige vinduer"
 
-#: ../libwnck/tasklist.c:2896
+#: ../libwnck/tasklist.c:2909
 msgid "Mi_nimize All"
 msgstr "Mi_nimer alle"
 
-#: ../libwnck/tasklist.c:2907
+#: ../libwnck/tasklist.c:2920
 msgid "Un_minimize All"
 msgstr "Gjen_opprett alle"
 
-#: ../libwnck/tasklist.c:2915
+#: ../libwnck/tasklist.c:2928
 msgid "Ma_ximize All"
 msgstr "Ma_ksimer alle"
 
-#: ../libwnck/tasklist.c:2926
+#: ../libwnck/tasklist.c:2939
 msgid "_Unmaximize All"
 msgstr "Gjeno_pprett alle"
 
-#: ../libwnck/tasklist.c:2938
+#: ../libwnck/tasklist.c:2951
 msgid "_Close All"
 msgstr "_Lukk alle"
 
@@ -408,9 +408,8 @@ msgstr ""
 #. * gnome-panel, where this term is also used in translatable strings
 #.
 #: ../libwnck/wnckprop.c:258
-#, fuzzy
 msgid "Make the window appear in pagers"
-msgstr "Gjør vinduet synlig i "
+msgstr "Gjør vinduet synlig i arbeidsområdebyttere"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
@@ -772,12 +771,12 @@ msgstr "Høyre nabo: %s\n"
 #: ../libwnck/wnckprop.c:1327
 #, c-format
 msgid "Top Neighbor: %s\n"
-msgstr ""
+msgstr "Øverste nabo: %s\n"
 
 #: ../libwnck/wnckprop.c:1339
 #, c-format
 msgid "Bottom Neighbor: %s\n"
-msgstr ""
+msgstr "Nederste nabo: %s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
