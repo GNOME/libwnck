@@ -85,6 +85,7 @@ GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
 
 #ifndef WNCK_DISABLE_DEPRECATED
+G_DEPRECATED_FOR(wnck_class_group_get_id)
 const char * wnck_class_group_get_res_class (WnckClassGroup *class_group);
 #endif
 

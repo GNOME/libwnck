@@ -235,10 +235,12 @@ int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
 void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
 #ifndef WNCK_DISABLE_DEPRECATED
+G_DEPRECATED
 void           wnck_screen_calc_workspace_layout    (WnckScreen          *screen,
                                                      int                  num_workspaces,
                                                      int                  space_index,
                                                      WnckWorkspaceLayout *layout);
+G_DEPRECATED
 void           wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout);
 #endif /* WNCK_DISABLE_DEPRECATED */
 
