@@ -40,7 +40,7 @@ msgstr ""
 #.
 #: ../libwnck/application.c:51
 msgid "Untitled application"
-msgstr "শীৰ্ষকবিহিন অনুপ্ৰয়োগ"
+msgstr "শীৰ্ষকবিহিন এপ্লিকেচন"
 
 #
 #: ../libwnck/pager-accessible.c:342
@@ -231,7 +231,7 @@ msgstr "XID"
 #: ../libwnck/wnckprop.c:144
 #| msgid "X উইন্ডো ID of the group leader of an application to examine"
 msgid "X window ID of the group leader of an application to examine"
-msgstr "যি অনুপ্ৰয়োগ পৰীক্ষা কৰা হ'ব তাৰ দল প্ৰমূখৰ X উইন্ডো ID"
+msgstr "যি এপ্লিকেচন পৰীক্ষা কৰা হ'ব তাৰ দল প্ৰমূখৰ X উইন্ডো ID"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
@@ -269,7 +269,7 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"অনুপ্ৰয়োগ/শ্ৰেণী দল/কৰ্মক্ষেত্ৰ/পৰ্দাৰ উইন্ডোসমূহ তালিকাভুক্ত কৰক (ফলাফলৰ বিন্যাস: "
+"এপ্লিকেচন/শ্ৰেণী দল/কৰ্মক্ষেত্ৰ/পৰ্দাৰ উইন্ডোসমূহ তালিকাভুক্ত কৰক (ফলাফলৰ বিন্যাস: "
 "\"XID: উইন্ডোৰ নাম\")"
 
 #: ../libwnck/wnckprop.c:165
@@ -554,7 +554,7 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা অনুপ্ৰয়োগৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --%s "
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা এপ্লিকেচনৰ সৈতে ভাৱবিনিময় হোৱা উচিত কিন্তু --%s "
 "ব্যবহৃত হৈছে\n"
 
 #: ../libwnck/wnckprop.c:576
@@ -563,7 +563,7 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা অনুপ্ৰয়োগৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু --"
+"দ্বন্দ্বযুক্ত বিকল্প উপস্থিত আছে: এটা এপ্লিকেচনৰ উইন্ডোসমূহ তালিকাভুক্ত হোৱা উচিত কিন্তু --"
 "%s ইতিমধ্যে ব্যবহৃত হৈছে\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
@@ -1235,7 +1235,7 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
-"XID %lu ৰ সৈতে দল প্ৰমূখ থকা অনুপ্ৰয়োগৰ সৈতে ভাৱবিনিময় কৰিব নোৱাৰি: অনুপ্ৰয়োগ পোৱা "
+"XID %lu ৰ সৈতে দল প্ৰমূখ থকা এপ্লিকেচনৰ সৈতে ভাৱবিনিময় কৰিব নোৱাৰি: এপ্লিকেচন পোৱা "
 "নাযায়\n"
 
 #: ../libwnck/wnckprop.c:2037
