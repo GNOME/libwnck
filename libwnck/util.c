@@ -659,9 +659,9 @@ _wnck_get_client_type (void)
 
 /**
  * _make_gtk_label_bold:
+ * @label: The label.
  *
  * Switches the font of label to a bold equivalent.
- * @label: The label.
  **/
 void
 _make_gtk_label_bold (GtkLabel *label)
