@@ -1,4 +1,23 @@
 =============
+Version 3.4.3
+=============
+
+  Fixes
+
+	* Add deprecation attributes to deprecated functions (Javier Jardón)
+
+  Misc
+
+	* Require gtk+-3.0 >= 3.4.0 (Vincent)
+
+  Translators
+
+	* Nilamdyuti Goswami (as)
+	* Tom Tryfonidis (el)
+	* Sandeep Shedmake (mr)
+	* Kjartan Maraas (nb)
+
+=============
 Version 3.4.2
 =============
 
