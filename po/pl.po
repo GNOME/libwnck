@@ -4,12 +4,19 @@
 # pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
 # gnomepl@aviary.pl
 # -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 2002-2003.
+# Artur Flinta <aflinta@at.kernel.pl>, 2003-2006.
+# Tomasz Dominikowski <dominikowski@gmail.com>, 2008.
+# Piotr Leszczyński <piotr@kontury.pl>, 2009.
+# Wadim Dziedzic <wdziedzic@aviary.pl>, 2009.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2012.
+# Aviary.pl <gnomepl@aviary.pl>, 2008-2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-08-14 15:21+0200\n"
-"PO-Revision-Date: 2011-08-14 15:27+0200\n"
+"POT-Creation-Date: 2012-09-04 19:05+0200\n"
+"PO-Revision-Date: 2012-09-04 19:15+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -57,30 +64,30 @@ msgstr "Narzędzie do przełączania obszarów roboczych"
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknięcie przełącza na obszar roboczy %s"
 
-#: ../libwnck/pager.c:2200
+#: ../libwnck/pager.c:2203
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Kliknięcie rozpocznie przeciąganie \"%s\""
 
-#: ../libwnck/pager.c:2203
+#: ../libwnck/pager.c:2206
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Bieżący obszar roboczy: \"%s\""
 
-#: ../libwnck/pager.c:2208
+#: ../libwnck/pager.c:2211
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Kliknięcie przełączy na obszar roboczy \"%s\""
 
-#: ../libwnck/selector.c:1180
+#: ../libwnck/selector.c:1183
 msgid "No Windows Open"
 msgstr "Brak otwartych okien"
 
-#: ../libwnck/selector.c:1236
+#: ../libwnck/selector.c:1239
 msgid "Window Selector"
 msgstr "Wybór okien"
 
-#: ../libwnck/selector.c:1237
+#: ../libwnck/selector.c:1240
 msgid "Tool to switch between windows"
 msgstr "Narzędzie do przełączania pomiędzy oknami"
 
@@ -92,23 +99,23 @@ msgstr "Lista okien"
 msgid "Tool to switch between visible windows"
 msgstr "Narzędzie do przełączania widocznych okien"
 
-#: ../libwnck/tasklist.c:2896
+#: ../libwnck/tasklist.c:2909
 msgid "Mi_nimize All"
 msgstr "Zmi_nimalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:2907
+#: ../libwnck/tasklist.c:2920
 msgid "Un_minimize All"
 msgstr "Cofnij minimalizację wszystkic_h"
 
-#: ../libwnck/tasklist.c:2915
+#: ../libwnck/tasklist.c:2928
 msgid "Ma_ximize All"
 msgstr "Zm_aksymalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:2926
+#: ../libwnck/tasklist.c:2939
 msgid "_Unmaximize All"
 msgstr "Cofnij maksymalizację wszystki_ch"
 
-#: ../libwnck/tasklist.c:2938
+#: ../libwnck/tasklist.c:2951
 msgid "_Close All"
 msgstr "Zamknij _wszystkie"
 
