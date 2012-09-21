@@ -5,26 +5,30 @@
 # G Karunakar <karunakar@freedomink.org>, 2002.
 # Rajesh Ranjan <rranjan@redhat.com>, 2005, 2006, 2008.
 # Rajesh Ranjan <rajesh672@gmail.com>, 2009.
+# chandankumar <chandankumar.093047@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck.master\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck&component=general\n"
-"POT-Creation-Date: 2009-04-22 15:34+0000\n"
-"PO-Revision-Date: 2009-09-15 15:48+0530\n"
-"Last-Translator: Rajesh Ranjan <rajesh672@gmail.com>\n"
-"Language-Team: Hindi <hindi.sf.net>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libwnck&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2011-08-12 10:57+0000\n"
+"PO-Revision-Date: 2012-09-21 07:40+0530\n"
+"Last-Translator: chandankumar <chandankumar.093047@gmail.com>\n"
+"Language-Team: Hindi <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "net>\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n\n"
+"X-Generator: Lokalize 1.4\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
 "\n"
 "\n"
 "\n"
 "\n"
 "\n"
 "\n"
+"\n"
+"Language: hi\n"
 
 #. *
 #. * SECTION:application
@@ -49,191 +53,146 @@ msgstr ""
 msgid "Untitled application"
 msgstr "अनामित अनुप्रयोग"
 
-#: ../libwnck/pager-accessible.c:322
+#: ../libwnck/pager-accessible.c:342
 msgid "Workspace Switcher"
 msgstr "कार्यस्थान सविचर"
 
-#: ../libwnck/pager-accessible.c:333
+#: ../libwnck/pager-accessible.c:353
 msgid "Tool to switch between workspaces"
 msgstr "कार्यस्थान बदलने का उपकरण"
 
-#: ../libwnck/pager-accessible.c:437
+#: ../libwnck/pager-accessible.c:465
 #, c-format
 msgid "Click this to switch to workspace %s"
 msgstr "कार्यस्थान %s में बदलने के लिए इधर क्लिक करें"
 
-#: ../libwnck/pager.c:1910
+#: ../libwnck/pager.c:2200
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "\"%s\" को खींचना शुरू करने के लिए क्लिक करें"
 
-#: ../libwnck/pager.c:1913
+#: ../libwnck/pager.c:2203
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "मौजूदा कार्यस्थान: \"%s\""
 
-#: ../libwnck/pager.c:1918
+#: ../libwnck/pager.c:2208
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "\"%s\" में स्विच करने के लिए क्लिक करें"
 
-#: ../libwnck/selector.c:1171
+#: ../libwnck/selector.c:1180
 msgid "No Windows Open"
 msgstr "कोई विंडो नहीं खुला"
 
-#: ../libwnck/selector.c:1224
+#: ../libwnck/selector.c:1236
 msgid "Window Selector"
 msgstr "विंडो चयनक"
 
-#: ../libwnck/selector.c:1225
+#: ../libwnck/selector.c:1237
 msgid "Tool to switch between windows"
 msgstr "कार्यस्थान बदलने का उपकरण"
 
-#: ../libwnck/tasklist.c:729
+#: ../libwnck/tasklist.c:673
 msgid "Window List"
 msgstr "विंडो सूची"
 
-#: ../libwnck/tasklist.c:730
+#: ../libwnck/tasklist.c:674
 msgid "Tool to switch between visible windows"
 msgstr "कार्यस्थान बदलने का उपकरण"
 
-#: ../libwnck/tasklist.c:3018
+#: ../libwnck/tasklist.c:2896
 msgid "Mi_nimize All"
 msgstr "सबको छोटा करें (_n)"
 
-#: ../libwnck/tasklist.c:3029
+#: ../libwnck/tasklist.c:2907
 msgid "Un_minimize All"
 msgstr "सबको छोटे से बड़ा करें (_m)"
 
-#: ../libwnck/tasklist.c:3037
+#: ../libwnck/tasklist.c:2915
 msgid "Ma_ximize All"
 msgstr "बडा करें (_x)"
 
-#: ../libwnck/tasklist.c:3048
+#: ../libwnck/tasklist.c:2926
 msgid "_Unmaximize All"
 msgstr "सबको छोटे से बड़ा करें (_U)"
 
-#: ../libwnck/tasklist.c:3060
+#: ../libwnck/tasklist.c:2938
 msgid "_Close All"
 msgstr "सबको बंद करें (_C)"
 
-#: ../libwnck/test-pager.c:15
-msgid "Use N_ROWS rows"
-msgstr "N_ROWS पंक्ति का प्रयोग करें"
-
-#: ../libwnck/test-pager.c:15
-msgid "N_ROWS"
-msgstr "N_ROWS"
-
-#: ../libwnck/test-pager.c:16
-msgid "Only show current workspace"
-msgstr "केवल इसी कार्यस्थान पर दिखाएं"
-
-#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
-msgid "Use RTL as default direction"
-msgstr "RTL का प्रयोग तयशुदा दिशा के लिए करें"
-
-#: ../libwnck/test-pager.c:18
-msgid "Show workspace names instead of workspace contents"
-msgstr "कार्यस्थान सामग्री के बदले कार्यस्थान नाम दिखाएँ"
-
-#: ../libwnck/test-pager.c:19
-msgid "Use a vertical orientation"
-msgstr "लंबवत अभिमुखन का प्रयोग करें"
-
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
-msgid "Don't show window in tasklist"
-msgstr "कार्यसूची में विंडो मत दिखाएं"
-
-#: ../libwnck/test-tasklist.c:16
-msgid "Always group windows"
-msgstr "हमेशा समूह विंडो"
-
-#: ../libwnck/test-tasklist.c:17
-msgid "Never group windows"
-msgstr "कभी नहीं समूह विंडो"
-
-#: ../libwnck/test-tasklist.c:18
-msgid "Display windows from all workspaces"
-msgstr "सभी कार्यस्थान से विंडो दिखाएँ"
-
-#: ../libwnck/test-tasklist.c:21
-msgid "Enable Transparency"
-msgstr "पारदर्शिता सक्रिय करें"
-
-#: ../libwnck/window-action-menu.c:417
+#: ../libwnck/window-action-menu.c:413
 msgid "Unmi_nimize"
 msgstr "छोटे से बड़ा करें (_m)"
 
-#: ../libwnck/window-action-menu.c:424
+#: ../libwnck/window-action-menu.c:420
 msgid "Mi_nimize"
 msgstr "न्यूनतम (_n)"
 
-#: ../libwnck/window-action-menu.c:432
+#: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
 msgstr "बडे से छोटा करें (_x)"
 
-#: ../libwnck/window-action-menu.c:439
+#: ../libwnck/window-action-menu.c:435
 msgid "Ma_ximize"
 msgstr "बडा करें (_x)"
 
-#: ../libwnck/window-action-menu.c:746 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
 #, c-format
 msgid "Workspace %d"
 msgstr "कार्यस्थान %d"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
+#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
 #, c-format
 msgid "Workspace 1_0"
 msgstr "कार्यस्थान 1_0"
 
-#: ../libwnck/window-action-menu.c:757 ../libwnck/window-action-menu.c:904
+#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
 #, c-format
 msgid "Workspace %s%d"
 msgstr "कार्यस्थान %s%d"
 
-#: ../libwnck/window-action-menu.c:1047
+#: ../libwnck/window-action-menu.c:1043
 msgid "_Move"
 msgstr "खिसकायें (_M)"
 
-#: ../libwnck/window-action-menu.c:1054
+#: ../libwnck/window-action-menu.c:1050
 msgid "_Resize"
 msgstr "आकार बदलें (_R)"
 
-#: ../libwnck/window-action-menu.c:1063
+#: ../libwnck/window-action-menu.c:1059
 msgid "Always On _Top"
 msgstr "हमेसा शीर्ष पर (_T)"
 
-#: ../libwnck/window-action-menu.c:1071
+#: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
 msgstr "हमेशा दृश्य कार्यस्थान पर (_A)"
 
-#: ../libwnck/window-action-menu.c:1076
+#: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
 msgstr "केवल इसी कार्यस्थान पर (_O)"
 
-#: ../libwnck/window-action-menu.c:1083
+#: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
 msgstr "बांयें कार्यस्थान में ले जाएँ (_L)"
 
-#: ../libwnck/window-action-menu.c:1089
+#: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace R_ight"
 msgstr "दांयें कार्यस्थान में ले जाएँ (_R)"
 
-#: ../libwnck/window-action-menu.c:1095
+#: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
 msgstr "ऊपरी कार्यस्थान में ले जाएँ (_U)"
 
-#: ../libwnck/window-action-menu.c:1101
+#: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
 msgstr "नीचे कार्यस्थान में ले जाएँ (_D)"
 
-#: ../libwnck/window-action-menu.c:1104
+#: ../libwnck/window-action-menu.c:1100
 msgid "Move to Another _Workspace"
 msgstr "दूसरे कार्यस्थान में ले जाएँ (_W)"
 
-#: ../libwnck/window-action-menu.c:1124
+#: ../libwnck/window-action-menu.c:1120
 msgid "_Close"
 msgstr "बंद करें (_C)"
 
@@ -250,716 +209,777 @@ msgstr "बंद करें (_C)"
 msgid "Untitled window"
 msgstr "अनामित विंडो"
 
-#: ../libwnck/wnckprop.c:139
+#: ../libwnck/wnckprop.c:138
 msgid "X window ID of the window to examine or modify"
 msgstr "विंडो की X विंडो ID जाँचने या बदलने के लिए"
 
-#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
-#: ../libwnck/wnckprop.c:154
+#: ../libwnck/wnckprop.c:138 ../libwnck/wnckprop.c:145
+#: ../libwnck/wnckprop.c:155
 msgid "XID"
 msgstr "XID"
 
-#. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
+#. Translators: A group leader is the window that is the "owner" of a
+#. * group of windows, ie: if you have multiple windows in one
+#. * application, one window has some information about the application
+#. * (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
 msgstr "जाँचने के लिए किसी प्रोग्रान के समूह लीडर का X विंडो आईडी"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:148
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: ../libwnck/wnckprop.c:149
 msgid "Class resource of the class group to examine"
 msgstr "जाँचने के लिए वर्ग संसाधन का वर्ग समूह"
 
-#: ../libwnck/wnckprop.c:148
+#: ../libwnck/wnckprop.c:149
 msgid "CLASS"
 msgstr "क्लास"
 
-#: ../libwnck/wnckprop.c:150
+#: ../libwnck/wnckprop.c:151
 msgid "NUMBER of the workspace to examine or modify"
 msgstr "जाँचने या बदलने के लिए कार्यस्थान की संख्या"
 
-#: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
-#: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
-#: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
+#: ../libwnck/wnckprop.c:151 ../libwnck/wnckprop.c:153
+#: ../libwnck/wnckprop.c:171 ../libwnck/wnckprop.c:173
+#: ../libwnck/wnckprop.c:175 ../libwnck/wnckprop.c:272
 msgid "NUMBER"
 msgstr "संख्या"
 
-#: ../libwnck/wnckprop.c:152
+#: ../libwnck/wnckprop.c:153
 msgid "NUMBER of the screen to examine or modify"
 msgstr "जाँचने या बदलने के लिए स्क्रीन की संख्या"
 
-#: ../libwnck/wnckprop.c:154
+#: ../libwnck/wnckprop.c:155
 msgid "Alias of --window"
 msgstr "विंडो का उपनाम --window"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:161
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: ../libwnck/wnckprop.c:163
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"अनुप्रयोग/वर्ग समूह/कार्यस्थान/स्क्रीन की विंडो सूची (output format: "
-"\"XID: Window Name\")"
+"अनुप्रयोग/वर्ग समूह/कार्यस्थान/स्क्रीन की विंडो सूची (output format: \"XID: "
+"Window Name"
+"\")"
 
-#: ../libwnck/wnckprop.c:163
-msgid "List workspaces of the screen (output format: \"Number: Workspace Name\")"
-msgstr "स्क्रीन के कार्यस्थान की सूची (output format: \"Number: Workspace Name\")"
+#: ../libwnck/wnckprop.c:165
+msgid ""
+"List workspaces of the screen (output format: \"Number: Workspace Name\")"
+msgstr ""
+"स्क्रीन के कार्यस्थान की सूची (output format: \"Number: Workspace Name\")"
 
-#: ../libwnck/wnckprop.c:169
+#: ../libwnck/wnckprop.c:171
 msgid "Change the number of workspaces of the screen to NUMBER"
 msgstr "संख्या से स्क्रीन के सक्रीन के कार्यस्थान की संख्या बदलें"
 
-#: ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr "स्क्रीन के कार्यस्थान लेआउट को बदलें संख्या पंक्ति के प्रयोग के लिए"
 
-#: ../libwnck/wnckprop.c:173
+#: ../libwnck/wnckprop.c:175
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr "स्क्रीन के कार्यस्थान लेआउट को बदलें संख्या स्तंभ के प्रयोग के लिए"
 
-#: ../libwnck/wnckprop.c:175
+#: ../libwnck/wnckprop.c:177
 msgid "Show the desktop"
 msgstr "डेस्कटॉप दिखाएं"
 
-#: ../libwnck/wnckprop.c:177
+#: ../libwnck/wnckprop.c:179
 msgid "Stop showing the desktop"
 msgstr "डेस्कटॉप दिखाना रोकें"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:181
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:184
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "मौजूदा कार्यस्थान से X निर्देशांक X में दृश्य पोर्ट खिसकाएँ"
 
-#: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
+#: ../libwnck/wnckprop.c:184 ../libwnck/wnckprop.c:274
 msgid "X"
 msgstr "X"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:185
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:189
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "मौजूदा कार्यस्थान से Y निर्देशांक Y में दृश्य पोर्ट खिसकाएँ"
 
-#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
+#: ../libwnck/wnckprop.c:189 ../libwnck/wnckprop.c:276
 msgid "Y"
 msgstr "वाई"
 
-#: ../libwnck/wnckprop.c:191
+#: ../libwnck/wnckprop.c:195
 msgid "Minimize the window"
 msgstr "विंडो न्यूनतम करें"
 
-#: ../libwnck/wnckprop.c:193
+#: ../libwnck/wnckprop.c:197
 msgid "Unminimize the window"
 msgstr "विंडो बड़ा करें"
 
-#: ../libwnck/wnckprop.c:195
+#: ../libwnck/wnckprop.c:199
 msgid "Maximize the window"
 msgstr "विंडो अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:197
+#: ../libwnck/wnckprop.c:201
 msgid "Unmaximize the window"
 msgstr "विंडो बडे से छोटा करें"
 
-#: ../libwnck/wnckprop.c:199
+#: ../libwnck/wnckprop.c:203
 msgid "Maximize horizontally the window"
 msgstr "विंडो को क्षैतिज रूप से अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:201
+#: ../libwnck/wnckprop.c:205
 msgid "Unmaximize horizontally the window"
 msgstr "विंडो को क्षैतिज रूप से गैर अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:203
+#: ../libwnck/wnckprop.c:207
 msgid "Maximize vertically the window"
 msgstr "विंडो को लंबवत रूप से अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:205
+#: ../libwnck/wnckprop.c:209
 msgid "Unmaximize vertically the window"
 msgstr "विंडो को लंबवत रूप से गैर अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:207
+#: ../libwnck/wnckprop.c:211
 msgid "Start moving the window via the keyboard"
 msgstr "कुंजीपट से होकर विंडो खिसकाना आरंभ करें"
 
-#: ../libwnck/wnckprop.c:209
+#: ../libwnck/wnckprop.c:213
 msgid "Start resizing the window via the keyboard"
 msgstr "कुंजीपट से होकर विंडो का आकार बदलना आरंभ करें"
 
-#: ../libwnck/wnckprop.c:211
+#: ../libwnck/wnckprop.c:215
 msgid "Activate the window"
 msgstr "विंडो सक्रिय करें"
 
-#: ../libwnck/wnckprop.c:213
+#: ../libwnck/wnckprop.c:217
 msgid "Close the window"
 msgstr "विंडो बंद करें"
 
-#: ../libwnck/wnckprop.c:216
+#: ../libwnck/wnckprop.c:220
 msgid "Make the window fullscreen"
 msgstr "विंडो पूर्णस्क्रीन बनाएं"
 
-#: ../libwnck/wnckprop.c:218
+#: ../libwnck/wnckprop.c:222
 msgid "Make the window quit fullscreen mode"
 msgstr "विंडो को पूर्ण स्क्रीन मोड छोड़ना बनाएँ"
 
-#: ../libwnck/wnckprop.c:220
+#: ../libwnck/wnckprop.c:224
 msgid "Make the window always on top"
 msgstr "विंडो को हमेशा शीर्ष पर रखें"
 
-#: ../libwnck/wnckprop.c:222
+#: ../libwnck/wnckprop.c:226
 msgid "Make the window not always on top"
 msgstr "विंडो को हमेशा शीर्ष पर मत रखें"
 
-#: ../libwnck/wnckprop.c:224
+#: ../libwnck/wnckprop.c:228
 msgid "Make the window below other windows"
 msgstr "विंडो को दूसरे विंडो के नीचे रखें"
 
-#: ../libwnck/wnckprop.c:226
+#: ../libwnck/wnckprop.c:230
 msgid "Make the window not below other windows"
 msgstr "विंडो को दूसरे विंडो के नीचे मत रखें"
 
-#: ../libwnck/wnckprop.c:228
+#: ../libwnck/wnckprop.c:232
 msgid "Shade the window"
 msgstr "विंडो छायांकित करें"
 
-#: ../libwnck/wnckprop.c:230
+#: ../libwnck/wnckprop.c:234
 msgid "Unshade the window"
 msgstr "विंडो गैर छायांकित करें"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:234
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:239
 msgid "Make the window have a fixed position in the viewport"
 msgstr "दृश्य पोर्ट में स्थिर स्थिति में विंडो बनाएँ"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:238
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:244
 msgid "Make the window not have a fixed position in the viewport"
 msgstr "दृश्य पोर्ट में स्थिर स्थिति में विंडो मत बनाएँ"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:244
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: ../libwnck/wnckprop.c:251
 msgid "Make the window not appear in pagers"
 msgstr "पेजर में विंडो को प्रकट होता मत बनाएँ"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:250
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: ../libwnck/wnckprop.c:258
 msgid "Make the window appear in pagers"
 msgstr "पेजर में विंडो को प्रकट होता बनाएँ"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:253
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: ../libwnck/wnckprop.c:262
 msgid "Make the window not appear in tasklists"
 msgstr "विंडो को कार्यसूची में मत प्रकट होने दें"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:256
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: ../libwnck/wnckprop.c:266
 msgid "Make the window appear in tasklists"
 msgstr "विंडो को कार्यसूची में प्रकट होने दें"
 
-#: ../libwnck/wnckprop.c:258
+#: ../libwnck/wnckprop.c:268
 msgid "Make the window visible on all workspaces"
 msgstr "विंडो को सभी कार्यस्थानों पर दिखने दें"
 
-#: ../libwnck/wnckprop.c:260
+#: ../libwnck/wnckprop.c:270
 msgid "Make the window visible on the current workspace only"
 msgstr "विंडो को केवल मौजूदा कार्यस्थान पर दिखने दें"
 
-#: ../libwnck/wnckprop.c:262
+#: ../libwnck/wnckprop.c:272
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
 msgstr "कार्यस्थान संख्या (पहला कार्यस्थान 0 है) में विंडो को खिसकाएँ"
 
-#: ../libwnck/wnckprop.c:264
+#: ../libwnck/wnckprop.c:274
 msgid "Change the X coordinate of the window to X"
 msgstr "विंडो के एक्स निर्देशांक को एक्स में बदलें"
 
-#: ../libwnck/wnckprop.c:266
+#: ../libwnck/wnckprop.c:276
 msgid "Change the Y coordinate of the window to Y"
 msgstr "विंडो के वाई निर्देशांक को वाई में बदलें"
 
-#: ../libwnck/wnckprop.c:268
+#: ../libwnck/wnckprop.c:278
 msgid "Change the width of the window to WIDTH"
 msgstr "विंडो की चौड़ाई को चौड़ाई में बदलें"
 
-#: ../libwnck/wnckprop.c:268
+#: ../libwnck/wnckprop.c:278
 msgid "WIDTH"
 msgstr "चौड़ाई"
 
-#: ../libwnck/wnckprop.c:270
+#: ../libwnck/wnckprop.c:280
 msgid "Change the height of the window to HEIGHT"
 msgstr "विंडो की ऊँचाई को ऊँचाई में बदलें"
 
-#: ../libwnck/wnckprop.c:270
+#: ../libwnck/wnckprop.c:280
 msgid "HEIGHT"
 msgstr "ऊँचाई"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:273
+#: ../libwnck/wnckprop.c:283
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
 "विंडो के प्रकार को प्रकार में बदलें (valid values: normal, desktop, dock, "
-"dialog, toolbar, menu, utility, splash)"
+"dialog, "
+"toolbar, menu, utility, splash)"
 
-#: ../libwnck/wnckprop.c:273
+#: ../libwnck/wnckprop.c:283
 msgid "TYPE"
 msgstr "प्रकार"
 
-#: ../libwnck/wnckprop.c:279
+#: ../libwnck/wnckprop.c:289
 msgid "Change the name of the workspace to NAME"
 msgstr "विंडो के नाम को नाम में बदलें"
 
-#: ../libwnck/wnckprop.c:279
+#: ../libwnck/wnckprop.c:289
 msgid "NAME"
 msgstr "नाम"
 
-#: ../libwnck/wnckprop.c:281
+#: ../libwnck/wnckprop.c:291
 msgid "Activate the workspace"
 msgstr "कार्यस्थान में ले जाएँ"
 
-#: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
-#: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
+#: ../libwnck/wnckprop.c:385 ../libwnck/wnckprop.c:409
+#: ../libwnck/wnckprop.c:445 ../libwnck/wnckprop.c:468
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
 msgstr "अवैध मान \"%s\" --%s के लिए"
 
-#: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
+#: ../libwnck/wnckprop.c:502 ../libwnck/wnckprop.c:521
 #, c-format
 msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"विरोधी विकल्प उपस्थित हैं: screen %d should be interacted with, but --%"
-"s has been used\n"
+"विरोधी विकल्प उपस्थित हैं: screen %d should be interacted with, but --%s has "
+"been used\n"
 
-#: ../libwnck/wnckprop.c:499
+#: ../libwnck/wnckprop.c:511
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: विंडो या स्क्रीन %d के कार्यस्थान को सूचीबद्ध होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: विंडो या स्क्रीन %d के कार्यस्थान को सूचीबद्ध होना "
+"चाहिए, "
+"लेकिन --%s प्रयोग किया गया है\n"
 
-#: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
+#: ../libwnck/wnckprop.c:534 ../libwnck/wnckprop.c:554
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: %d कार्यस्थान को इसके साथ अंतःक्रिया करनी चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: %d कार्यस्थान को इसके साथ अंतःक्रिया करनी चाहिए, "
+"लेकिन --%s "
+"प्रयोग किया गया है\n"
 
-#: ../libwnck/wnckprop.c:532
+#: ../libwnck/wnckprop.c:544
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: %d कार्यस्थान  का विंडो को सूचीबद्ध होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: %d कार्यस्थान  का विंडो को सूचीबद्ध होना चाहिए, "
+"लेकिन --%s "
+"प्रयोग किया गया है\n"
 
-#: ../libwnck/wnckprop.c:554
+#: ../libwnck/wnckprop.c:566
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: एक अनुप्रयोग को अंतःक्रियात्मक होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: एक अनुप्रयोग को अंतःक्रियात्मक होना चाहिए, लेकिन "
+"--%s प्रयोग "
+"किया गया है\n"
 
-#: ../libwnck/wnckprop.c:564
+#: ../libwnck/wnckprop.c:576
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: एक अनुप्रयोग को सूचीबद्ध होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: एक अनुप्रयोग को सूचीबद्ध होना चाहिए, लेकिन --%s "
+"प्रयोग किया "
+"गया है\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:577
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: ../libwnck/wnckprop.c:590
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: वर्ग समूह \"%s\" को इसके साथ अंतःक्रियात्मक होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: वर्ग समूह \"%s\" को इसके साथ अंतःक्रियात्मक होना "
+"चाहिए, "
+"लेकिन --%s प्रयोग किया गया है\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:588
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: ../libwnck/wnckprop.c:602
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: वर्ग समूह \"%s\" के विंडो को इसके साथ अंतःक्रियात्मक होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: वर्ग समूह \"%s\" के विंडो को इसके साथ "
+"अंतःक्रियात्मक होना "
+"चाहिए, लेकिन --%s प्रयोग किया गया है\n"
 
-#: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
+#: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
 #, c-format
 msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
-msgstr "विरोधी विकल्प उपस्थित हैं: एक विंडो को अंतःक्रियात्मक होना चाहिए, लेकिन --%s प्रयोग किया गया है\n"
+msgstr ""
+"विरोधी विकल्प उपस्थित हैं: एक विंडो को अंतःक्रियात्मक होना चाहिए, लेकिन --%s "
+"प्रयोग "
+"किया गया है\n"
 
-#: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
-#: ../libwnck/wnckprop.c:756
+#: ../libwnck/wnckprop.c:642 ../libwnck/wnckprop.c:723
+#: ../libwnck/wnckprop.c:770
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
 msgstr "विरोधी विकल्प उपस्थित हैं: --%s और --%s\n"
 
-#: ../libwnck/wnckprop.c:667
+#: ../libwnck/wnckprop.c:681
 #, c-format
-msgid "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
-msgstr "अवैध तर्क \"%d\" --%s के लिए: तर्क को जरूर कड़ाई से सकारात्मक होना चाहिए\n"
+msgid ""
+"Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
+msgstr ""
+"अवैध तर्क \"%d\" --%s के लिए: तर्क को जरूर कड़ाई से सकारात्मक होना चाहिए\n"
 
-#: ../libwnck/wnckprop.c:680
+#: ../libwnck/wnckprop.c:694
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr "अवैध तर्क \"%d\" --%s के लिए: तर्क को जरूर सकारात्मक होना चाहिए\n"
 
-#: ../libwnck/wnckprop.c:775
+#: ../libwnck/wnckprop.c:789
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
 msgstr "विरोधी विकल्प उपस्थित हैं: --%s या --%s, और --%s\n"
 
-#: ../libwnck/wnckprop.c:807
+#: ../libwnck/wnckprop.c:821
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "अवैध तर्क \"%s\" --%s के लिए, वैध मान हैं: %s\n"
 
-#: ../libwnck/wnckprop.c:850
+#: ../libwnck/wnckprop.c:864
 #, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
-msgstr "स्क्रीन का कार्यस्थान लेआउट बदल नहीं सकता है: यह लेआउट पहले से स्वामित्व में है\n"
+msgstr ""
+"स्क्रीन का कार्यस्थान लेआउट बदल नहीं सकता है: यह लेआउट पहले से स्वामित्व में "
+"है\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:884
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:899
 #, c-format
-msgid "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr "व्यूपोर्ट खिसकाया नहीं जा सकता है: मौजूदा कार्यस्थान किसी व्यूपोर्ट को नहीं समाहित करता है\n"
+msgid ""
+"Viewport cannot be moved: the current workspace does not contain a viewport\n"
+msgstr ""
+"व्यूपोर्ट खिसकाया नहीं जा सकता है: मौजूदा कार्यस्थान किसी व्यूपोर्ट को नहीं "
+"समाहित करता "
+"है\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:890
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: ../libwnck/wnckprop.c:906
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "व्यूपोर्ट खिसकाया नहीं जा सकता है: कोई मौजूदा कार्यस्थान नहीं है\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
-#: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
+#: ../libwnck/wnckprop.c:942 ../libwnck/wnckprop.c:951
+#: ../libwnck/wnckprop.c:960 ../libwnck/wnckprop.c:967
+#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:984
+#: ../libwnck/wnckprop.c:993 ../libwnck/wnckprop.c:1042
 #, c-format
 msgid "Action not allowed\n"
 msgstr "क्रिया लागू नहीं\n"
 
-#: ../libwnck/wnckprop.c:1022
+#: ../libwnck/wnckprop.c:1038
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr "विंडो को %d कार्यस्थान में खिसकाया नहीं जा सकता है: कार्यस्थान मौजूद नहीं है\n"
+msgstr ""
+"विंडो को %d कार्यस्थान में खिसकाया नहीं जा सकता है: कार्यस्थान मौजूद नहीं है\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
+#: ../libwnck/wnckprop.c:1102 ../libwnck/wnckprop.c:1234
 msgid "<name unset>"
 msgstr "<name unset>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1089
+#: ../libwnck/wnckprop.c:1105
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1109
+#: ../libwnck/wnckprop.c:1125
 #, c-format
 msgid "%d: %s\n"
 msgstr "%d: %s\n"
 
-#: ../libwnck/wnckprop.c:1172
+#: ../libwnck/wnckprop.c:1188
 #, c-format
 msgid "Screen Number: %d\n"
 msgstr "स्क्रीन संख्या: %d\n"
 
-#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1255
+#: ../libwnck/wnckprop.c:1190 ../libwnck/wnckprop.c:1271
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "ज्यामिति (width, height): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1178
+#: ../libwnck/wnckprop.c:1194
 #, c-format
 msgid "Number of Workspaces: %d\n"
 msgstr "कार्यस्थान की संख्या: %d\n"
 
-#: ../libwnck/wnckprop.c:1184
+#: ../libwnck/wnckprop.c:1200
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "कार्यस्थान लेआउट (rows, columns, orientation): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
-#: ../libwnck/wnckprop.c:1443
+#: ../libwnck/wnckprop.c:1210 ../libwnck/wnckprop.c:1267
+#: ../libwnck/wnckprop.c:1464
 msgid "<no EWMH-compliant window manager>"
 msgstr "<no EWMH-compliant window manager>"
 
-#: ../libwnck/wnckprop.c:1195
+#: ../libwnck/wnckprop.c:1211
 #, c-format
 msgid "Window Manager: %s\n"
 msgstr "विंडो प्रबंधक: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1279
-#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1303
-#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1428
+#: ../libwnck/wnckprop.c:1216 ../libwnck/wnckprop.c:1297
+#: ../libwnck/wnckprop.c:1309 ../libwnck/wnckprop.c:1321
+#: ../libwnck/wnckprop.c:1333 ../libwnck/wnckprop.c:1449
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
 #. Translators: "none" here means "no workspace"
-#: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
-#: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
-#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-#| msgid "pinned"
+#: ../libwnck/wnckprop.c:1221 ../libwnck/wnckprop.c:1302
+#: ../libwnck/wnckprop.c:1314 ../libwnck/wnckprop.c:1326
+#: ../libwnck/wnckprop.c:1338 ../libwnck/wnckprop.c:1456
 msgctxt "workspace"
 msgid "none"
 msgstr "कोई नहीं"
 
-#: ../libwnck/wnckprop.c:1206
+#: ../libwnck/wnckprop.c:1222
 #, c-format
 msgid "Active Workspace: %s\n"
 msgstr "सक्रिय कार्यस्थान: %s\n"
 
-#: ../libwnck/wnckprop.c:1215
+#: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "\"%s\""
 msgstr "\"%s\""
 
-#. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1221
+#. Translators: %lu is a window identifier (number) and %s a window name
+#: ../libwnck/wnckprop.c:1237
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
-#: ../libwnck/wnckprop.c:1227
-#| msgid "pinned"
+#: ../libwnck/wnckprop.c:1243
 msgctxt "window"
 msgid "none"
 msgstr "कोई नहीं"
 
-#: ../libwnck/wnckprop.c:1228
+#: ../libwnck/wnckprop.c:1244
 #, c-format
 msgid "Active Window: %s\n"
 msgstr "सक्रिय विंडो: %s\n"
 
-#: ../libwnck/wnckprop.c:1231
+#: ../libwnck/wnckprop.c:1247
 #, c-format
 msgid "Showing the desktop: %s\n"
 msgstr "डेस्कटॉप दिखा रही हूँ: %s\n"
 
-#: ../libwnck/wnckprop.c:1233
+#: ../libwnck/wnckprop.c:1249
 msgid "true"
 msgstr "सही"
 
-#: ../libwnck/wnckprop.c:1233
+#: ../libwnck/wnckprop.c:1249
 msgid "false"
 msgstr "गलत"
 
-#: ../libwnck/wnckprop.c:1244
+#: ../libwnck/wnckprop.c:1260
 #, c-format
 msgid "Workspace Name: %s\n"
 msgstr "कार्यस्थान नाम: %s\n"
 
-#: ../libwnck/wnckprop.c:1245
+#: ../libwnck/wnckprop.c:1261
 #, c-format
 msgid "Workspace Number: %d\n"
 msgstr "कार्यस्थान संख्या: %d\n"
 
-#: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
+#: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1465
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "ऑनस्क्रीन: %d (Window Manager: %s)\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1266
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: ../libwnck/wnckprop.c:1283
 msgid "<no viewport>"
 msgstr "<no viewport>"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1269
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: ../libwnck/wnckprop.c:1287
 #, c-format
 msgid "Viewport position (x, y): %s\n"
 msgstr "व्यूपोर्ट स्थिति (x, y): %s\n"
 
-#: ../libwnck/wnckprop.c:1272
+#: ../libwnck/wnckprop.c:1290
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
 msgstr "लेआउट में स्थिति (row, column): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1285
+#: ../libwnck/wnckprop.c:1303
 #, c-format
 msgid "Left Neighbor: %s\n"
 msgstr "बायां पड़ोसी: %s\n"
 
-#: ../libwnck/wnckprop.c:1297
+#: ../libwnck/wnckprop.c:1315
 #, c-format
 msgid "Right Neighbor: %s\n"
 msgstr "दाहिना पड़ोसी: %s\n"
 
-#: ../libwnck/wnckprop.c:1309
+#: ../libwnck/wnckprop.c:1327
 #, c-format
 msgid "Top Neighbor: %s\n"
 msgstr "शीर्ष पड़ोसी: %s\n"
 
-#: ../libwnck/wnckprop.c:1321
+#: ../libwnck/wnckprop.c:1339
 #, c-format
 msgid "Bottom Neighbor: %s\n"
 msgstr "तलवर्ती पड़ोसी: %s\n"
 
-#. Translators: Ressource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1333
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: ../libwnck/wnckprop.c:1352 ../libwnck/wnckprop.c:1511
 #, c-format
-msgid "Resource Class: %s\n"
-msgstr "संसाधन वर्ग: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Group ID: %s\n"
+msgstr "वर्ग समूह आईडी: %s\n"
 
-#: ../libwnck/wnckprop.c:1335
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: ../libwnck/wnckprop.c:1356
 #, c-format
-msgid "Group Name: %s\n"
-msgstr "समूह नाम: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Group Name: %s\n"
+msgstr "वर्ग समूह नाम: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
-#: ../libwnck/wnckprop.c:1419
+#: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1386
+#: ../libwnck/wnckprop.c:1440
 msgid "set"
 msgstr "सेट"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1344 ../libwnck/wnckprop.c:1368
-#: ../libwnck/wnckprop.c:1375 ../libwnck/wnckprop.c:1405
-#: ../libwnck/wnckprop.c:1412 ../libwnck/wnckprop.c:1422
-#: ../libwnck/wnckprop.c:1487 ../libwnck/wnckprop.c:1497
-#: ../libwnck/wnckprop.c:1505
+#: ../libwnck/wnckprop.c:1365 ../libwnck/wnckprop.c:1389
+#: ../libwnck/wnckprop.c:1396 ../libwnck/wnckprop.c:1426
+#: ../libwnck/wnckprop.c:1433 ../libwnck/wnckprop.c:1443
+#: ../libwnck/wnckprop.c:1508 ../libwnck/wnckprop.c:1517
+#: ../libwnck/wnckprop.c:1529 ../libwnck/wnckprop.c:1537
 msgid "<unset>"
 msgstr "<unset>"
 
-#: ../libwnck/wnckprop.c:1345 ../libwnck/wnckprop.c:1369
-#: ../libwnck/wnckprop.c:1423
+#: ../libwnck/wnckprop.c:1366 ../libwnck/wnckprop.c:1390
+#: ../libwnck/wnckprop.c:1444
 #, c-format
 msgid "Icons: %s\n"
 msgstr "प्रतीक: %s\n"
 
-#: ../libwnck/wnckprop.c:1348 ../libwnck/wnckprop.c:1386
+#: ../libwnck/wnckprop.c:1369 ../libwnck/wnckprop.c:1407
 #, c-format
 msgid "Number of Windows: %d\n"
 msgstr "विंडो की संख्या: %d\n"
 
-#: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1406
+#: ../libwnck/wnckprop.c:1381 ../libwnck/wnckprop.c:1427
 #, c-format
 msgid "Name: %s\n"
 msgstr "नाम: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1361 ../libwnck/wnckprop.c:1415
+#: ../libwnck/wnckprop.c:1382 ../libwnck/wnckprop.c:1436
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "प्रतीक नाम: %s\n"
 
-#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1498
+#: ../libwnck/wnckprop.c:1397 ../libwnck/wnckprop.c:1530
 #, c-format
 msgid "PID: %s\n"
 msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
-#: ../libwnck/wnckprop.c:1383
-#| msgid "pinned"
+#: ../libwnck/wnckprop.c:1404
 msgctxt "startupID"
 msgid "none"
 msgstr "कोई नहीं"
 
-#: ../libwnck/wnckprop.c:1384
+#: ../libwnck/wnckprop.c:1405
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr "स्टार्टअप: %s\n"
 
-#: ../libwnck/wnckprop.c:1432
+#: ../libwnck/wnckprop.c:1453
 msgid "all workspaces"
 msgstr "सभी कार्यस्थान"
 
-#: ../libwnck/wnckprop.c:1436
+#: ../libwnck/wnckprop.c:1457
 #, c-format
 msgid "On Workspace: %s\n"
 msgstr "कार्यस्थान पर: %s\n"
 
-#: ../libwnck/wnckprop.c:1451
+#: ../libwnck/wnckprop.c:1472
 msgid "normal window"
 msgstr "नामित विंडो"
 
-#: ../libwnck/wnckprop.c:1454
+#: ../libwnck/wnckprop.c:1475
 msgid "desktop"
 msgstr "डेस्कटॉप"
 
-#: ../libwnck/wnckprop.c:1457
+#: ../libwnck/wnckprop.c:1478
 msgid "dock or panel"
 msgstr "डाक या पैनल"
 
-#: ../libwnck/wnckprop.c:1460
+#: ../libwnck/wnckprop.c:1481
 msgid "dialog window"
 msgstr "संवादन विंडो"
 
-#: ../libwnck/wnckprop.c:1463
+#: ../libwnck/wnckprop.c:1484
 msgid "tearoff toolbar"
 msgstr "टीयरऑफ औजारपेटी"
 
-#: ../libwnck/wnckprop.c:1466
+#: ../libwnck/wnckprop.c:1487
 msgid "tearoff menu"
 msgstr "टीयरऑफ मेन्यू"
 
-#: ../libwnck/wnckprop.c:1469
+#: ../libwnck/wnckprop.c:1490
 msgid "utility window"
 msgstr "सहयुक्तियां विंडो"
 
-#: ../libwnck/wnckprop.c:1472
+#: ../libwnck/wnckprop.c:1493
 msgid "splash screen"
 msgstr "स्पैलैश स्क्रीन"
 
-#: ../libwnck/wnckprop.c:1477
+#: ../libwnck/wnckprop.c:1498
 #, c-format
 msgid "Window Type: %s\n"
 msgstr "विंडो प्रकार: %s\n"
 
-#: ../libwnck/wnckprop.c:1480
+#: ../libwnck/wnckprop.c:1501
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "ज्यामिति (x, y, width, height): %d, %d, %d, %d\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1489
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class. The class instance is a way to differentiate windows belonging
+#. * to the same class group.
+#: ../libwnck/wnckprop.c:1521
 #, c-format
-msgid "Class Group: %s\n"
-msgstr "वर्ग समूह: %s\n"
+#| msgid "Class Group: %s\n"
+msgid "Class Instance: %s\n"
+msgstr "वर्ग उदाहरण: %s\n"
 
-#: ../libwnck/wnckprop.c:1491
+#: ../libwnck/wnckprop.c:1523
 #, c-format
 msgid "XID: %lu\n"
 msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1506
+#: ../libwnck/wnckprop.c:1538
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "सत्र ID: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:1512
+#. * of windows, ie: if you have multiple windows in one application, one
+#. * window has some information about the application (like the application
+#. * name).
+#: ../libwnck/wnckprop.c:1545
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "समूह नेता: %lu\n"
 
-#. Translators: A window can be transient for another window: it means it's on top of it
-#: ../libwnck/wnckprop.c:1517
+#. Translators: A window can be transient for another window: it means it's
+#. * on top of it
+#: ../libwnck/wnckprop.c:1551
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "इसके लिएउत्पन्न: %lu\n"
@@ -967,57 +987,57 @@ msgstr "इसके लिएउत्पन्न: %lu\n"
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1532 ../libwnck/wnckprop.c:1579
+#: ../libwnck/wnckprop.c:1566 ../libwnck/wnckprop.c:1614
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1536 ../libwnck/wnckprop.c:1581
+#: ../libwnck/wnckprop.c:1570 ../libwnck/wnckprop.c:1616
 msgid ", "
 msgstr ", "
 
-#: ../libwnck/wnckprop.c:1542
+#: ../libwnck/wnckprop.c:1576
 msgid "minimized"
 msgstr "न्यूनतम"
 
-#: ../libwnck/wnckprop.c:1543
+#: ../libwnck/wnckprop.c:1577
 msgid "maximized"
 msgstr "अधिकतम"
 
-#: ../libwnck/wnckprop.c:1547
+#: ../libwnck/wnckprop.c:1581
 msgid "maximized horizontally"
 msgstr "क्षैतिज रूप से अधिकतम"
 
-#: ../libwnck/wnckprop.c:1549
+#: ../libwnck/wnckprop.c:1583
 msgid "maximized vertically"
 msgstr "लंबवत रूप से अधिकतम"
 
-#: ../libwnck/wnckprop.c:1551
+#: ../libwnck/wnckprop.c:1585
 msgid "shaded"
 msgstr "छायांकित"
 
-#: ../libwnck/wnckprop.c:1552
+#: ../libwnck/wnckprop.c:1586
 msgid "pinned"
 msgstr "पिन किया"
 
-#: ../libwnck/wnckprop.c:1553
+#: ../libwnck/wnckprop.c:1587
 msgid "sticky"
 msgstr "स्टिकी"
 
-#: ../libwnck/wnckprop.c:1554
+#: ../libwnck/wnckprop.c:1588
 msgid "above"
 msgstr "ऊपर"
 
-#: ../libwnck/wnckprop.c:1555
+#: ../libwnck/wnckprop.c:1589
 msgid "below"
 msgstr "नीचे"
 
-#: ../libwnck/wnckprop.c:1556
+#: ../libwnck/wnckprop.c:1590
 msgid "fullscreen"
 msgstr "पूर्णस्क्रीन"
 
-#: ../libwnck/wnckprop.c:1557
+#: ../libwnck/wnckprop.c:1591
 msgid "needs attention"
 msgstr "ध्यान जरूरी"
 
@@ -1025,198 +1045,245 @@ msgstr "ध्यान जरूरी"
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1562
+#: ../libwnck/wnckprop.c:1596
 msgid "skip pager"
 msgstr "स्किप पेजर"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:1564
+#. Translators: "tasklist" is the list of running applications (the window
+#. * list)
+#: ../libwnck/wnckprop.c:1599
 msgid "skip tasklist"
 msgstr "कार्यसूची छोड़ें"
 
-#: ../libwnck/wnckprop.c:1566
+#: ../libwnck/wnckprop.c:1601
 msgid "normal"
 msgstr "सामान्य"
 
-#: ../libwnck/wnckprop.c:1567
+#: ../libwnck/wnckprop.c:1602
 #, c-format
 msgid "State: %s\n"
 msgstr "स्थिति: %s\n"
 
-#: ../libwnck/wnckprop.c:1588
+#: ../libwnck/wnckprop.c:1623
 msgid "move"
 msgstr "खिसकायें"
 
-#: ../libwnck/wnckprop.c:1589
+#: ../libwnck/wnckprop.c:1624
 msgid "resize"
 msgstr "आकार बदलें"
 
-#: ../libwnck/wnckprop.c:1590
+#: ../libwnck/wnckprop.c:1625
 msgid "shade"
 msgstr "छायांकित"
 
-#: ../libwnck/wnckprop.c:1591
+#: ../libwnck/wnckprop.c:1626
 msgid "unshade"
 msgstr "गैर छायांकित करें"
 
-#: ../libwnck/wnckprop.c:1592
+#: ../libwnck/wnckprop.c:1627
 msgid "stick"
 msgstr "स्टिकी"
 
-#: ../libwnck/wnckprop.c:1593
+#: ../libwnck/wnckprop.c:1628
 msgid "unstick"
 msgstr "अनस्टिक"
 
-#: ../libwnck/wnckprop.c:1595
+#: ../libwnck/wnckprop.c:1630
 msgid "maximize horizontally"
 msgstr "क्षैतिज रूप से अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:1597
+#: ../libwnck/wnckprop.c:1632
 msgid "unmaximize horizontally"
 msgstr "क्षैतिज रूप से अधिकतम मत करें"
 
-#: ../libwnck/wnckprop.c:1599
+#: ../libwnck/wnckprop.c:1634
 msgid "maximize vertically"
 msgstr "लंबवत रूप से अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:1601
+#: ../libwnck/wnckprop.c:1636
 msgid "unmaximize vertically"
 msgstr "लंबवत रूप से अधिकतम मत करें"
 
-#: ../libwnck/wnckprop.c:1604
+#: ../libwnck/wnckprop.c:1639
 msgid "change workspace"
 msgstr "कार्यस्थान बदलें"
 
-#: ../libwnck/wnckprop.c:1606
+#: ../libwnck/wnckprop.c:1641
 msgid "pin"
 msgstr "पिन"
 
-#: ../libwnck/wnckprop.c:1608
+#: ../libwnck/wnckprop.c:1643
 msgid "unpin"
 msgstr "अनपिन"
 
-#: ../libwnck/wnckprop.c:1609
+#: ../libwnck/wnckprop.c:1644
 msgid "minimize"
 msgstr "न्यूनतम करें"
 
-#: ../libwnck/wnckprop.c:1610
+#: ../libwnck/wnckprop.c:1645
 msgid "unminimize"
 msgstr "गैर न्यूनतम करें"
 
-#: ../libwnck/wnckprop.c:1611
+#: ../libwnck/wnckprop.c:1646
 msgid "maximize"
 msgstr "अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:1612
+#: ../libwnck/wnckprop.c:1647
 msgid "unmaximize"
 msgstr "गैर अधिकतम करें"
 
-#: ../libwnck/wnckprop.c:1614
+#: ../libwnck/wnckprop.c:1649
 msgid "change fullscreen mode"
 msgstr "पूर्णस्क्रीन मोड बदलें"
 
-#: ../libwnck/wnckprop.c:1615
+#: ../libwnck/wnckprop.c:1650
 msgid "close"
 msgstr "बंद करें"
 
-#: ../libwnck/wnckprop.c:1617
+#: ../libwnck/wnckprop.c:1652
 msgid "make above"
 msgstr "ऊपर बनाएं"
 
-#: ../libwnck/wnckprop.c:1619
+#: ../libwnck/wnckprop.c:1654
 msgid "unmake above"
 msgstr "ऊपर मत बनाएं"
 
-#: ../libwnck/wnckprop.c:1621
+#: ../libwnck/wnckprop.c:1656
 msgid "make below"
 msgstr "नीचे बनाएं"
 
-#: ../libwnck/wnckprop.c:1623
+#: ../libwnck/wnckprop.c:1658
 msgid "unmake below"
 msgstr "नीचे मत बनाएं"
 
-#: ../libwnck/wnckprop.c:1625
+#: ../libwnck/wnckprop.c:1660
 msgid "no action possible"
 msgstr "कोई क्रिया संभव नहीं है"
 
-#: ../libwnck/wnckprop.c:1626
+#: ../libwnck/wnckprop.c:1661
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr "संभावित क्रिया: %s\n"
 
-#: ../libwnck/wnckprop.c:1805
+#: ../libwnck/wnckprop.c:1842
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"स्क्रीन/कार्यस्थान/विंडो की विशेषताओं को छापें या बदलें, या इसके साथ अंतःक्रिया करें, निम्नलिखित EWMH विशेषता के साथ.\n"
+"स्क्रीन/कार्यस्थान/विंडो की विशेषताओं को छापें या बदलें, या इसके साथ "
+"अंतःक्रिया करें, "
+"निम्नलिखित EWMH विशेषता के साथ.\n"
 "इस विशेषता के बारे में सूचना के लिए, देखें:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1815
+#: ../libwnck/wnckprop.c:1852
 msgid "Options to list windows or workspaces"
 msgstr "विंडो या कार्यस्थान की सूची में विकल्प"
 
-#: ../libwnck/wnckprop.c:1816
+#: ../libwnck/wnckprop.c:1853
 msgid "Show options to list windows or workspaces"
 msgstr "विंडो या कार्यस्थान की सूची में विकल्प दिखाएं"
 
-#: ../libwnck/wnckprop.c:1823
+#: ../libwnck/wnckprop.c:1860
 msgid "Options to modify properties of a window"
 msgstr "विंडो की विशेषता को बदलने के लिए विकल्प"
 
-#: ../libwnck/wnckprop.c:1824
+#: ../libwnck/wnckprop.c:1861
 msgid "Show options to modify properties of a window"
 msgstr "विंडो की विशेषता बदलने के विकल्प दिखाएँ"
 
-#: ../libwnck/wnckprop.c:1831
+#: ../libwnck/wnckprop.c:1868
 msgid "Options to modify properties of a workspace"
 msgstr "कार्यस्थान की विशेषता को बदलने के लिए विकल्प"
 
-#: ../libwnck/wnckprop.c:1832
+#: ../libwnck/wnckprop.c:1869
 msgid "Show options to modify properties of a workspace"
 msgstr "कार्यस्थान की विशेषता को बदलने के लिए विकल्प दिखाएँ"
 
-#: ../libwnck/wnckprop.c:1839
+#: ../libwnck/wnckprop.c:1876
 msgid "Options to modify properties of a screen"
 msgstr "स्क्रीन की विशेषता को बदलने के लिए विकल्प"
 
-#: ../libwnck/wnckprop.c:1840
+#: ../libwnck/wnckprop.c:1877
 msgid "Show options to modify properties of a screen"
 msgstr "स्क्रीन की विशेषता को बदलने के लिए विकल्प दिखाएँ"
 
-#: ../libwnck/wnckprop.c:1851
+#: ../libwnck/wnckprop.c:1888
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "तर्क के विश्लेषण के दौरान त्रुटि: %s\n"
 
-#: ../libwnck/wnckprop.c:1874
+#: ../libwnck/wnckprop.c:1911
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "स्क्रीन %d से अंतःक्रिया नहीं कर सका: स्क्रीन मौजूद नहीं है\n"
 
-#: ../libwnck/wnckprop.c:1930
+#: ../libwnck/wnckprop.c:1967
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "कार्यस्थान %d से अंतःक्रिया नहीं कर सका: कार्यस्थान मौजूद नहीं है\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1953
+#. Translators: A class is like a "family". E.g., all gvim windows are
+#. * of the same class.
+#: ../libwnck/wnckprop.c:1991
 #, c-format
-msgid "Cannot interact with class group \"%s\": the class group cannot be found\n"
-msgstr "वर्ग समूह \"%s\" से अंतःक्रिया नहीं कर सका: वर्ग समूह मिल नहीं सका है\n"
+msgid ""
+"Cannot interact with class group \"%s\": the class group cannot be found\n"
+msgstr ""
+"वर्ग समूह \"%s\" से अंतःक्रिया नहीं कर सका: वर्ग समूह मिल नहीं सका है\n"
 
-#: ../libwnck/wnckprop.c:1976
+#: ../libwnck/wnckprop.c:2014
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
-msgstr "XID %lu के साथ इसका समूह लीडर के रखना अंतःक्रिया नहीं कर सका: अनुप्रयोग मिल नहीं सका है\n"
+msgstr ""
+"XID %lu के साथ इसका समूह लीडर के रखना अंतःक्रिया नहीं कर सका: अनुप्रयोग मिल "
+"नहीं सका "
+"है\n"
 
-#: ../libwnck/wnckprop.c:1999
+#: ../libwnck/wnckprop.c:2037
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "XID %lu के साथ विंडो अंतःक्रिया नहीं कर सका: विंडो मिल नहीं सका है\n"
 
+#~ msgid "Use N_ROWS rows"
+#~ msgstr "N_ROWS पंक्ति का प्रयोग करें"
+
+#~ msgid "N_ROWS"
+#~ msgstr "N_ROWS"
+
+#~ msgid "Only show current workspace"
+#~ msgstr "केवल इसी कार्यस्थान पर दिखाएं"
+
+#~ msgid "Use RTL as default direction"
+#~ msgstr "RTL का प्रयोग तयशुदा दिशा के लिए करें"
+
+#~ msgid "Show workspace names instead of workspace contents"
+#~ msgstr "कार्यस्थान सामग्री के बदले कार्यस्थान नाम दिखाएँ"
+
+#~ msgid "Use a vertical orientation"
+#~ msgstr "लंबवत अभिमुखन का प्रयोग करें"
+
+#~ msgid "Don't show window in tasklist"
+#~ msgstr "कार्यसूची में विंडो मत दिखाएं"
+
+#~ msgid "Always group windows"
+#~ msgstr "हमेशा समूह विंडो"
+
+#~ msgid "Never group windows"
+#~ msgstr "कभी नहीं समूह विंडो"
+
+#~ msgid "Display windows from all workspaces"
+#~ msgstr "सभी कार्यस्थान से विंडो दिखाएँ"
+
+#~ msgid "Enable Transparency"
+#~ msgstr "पारदर्शिता सक्रिय करें"
+
+#~ msgid "Resource Class: %s\n"
+#~ msgstr "संसाधन वर्ग: %s\n"
+
+#~ msgid "Group Name: %s\n"
+#~ msgstr "समूह नाम: %s\n"
