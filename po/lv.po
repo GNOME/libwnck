@@ -2,22 +2,23 @@
 # Copyright © 2006 Gnome i18n Project for Latvian.
 #
 # Raivis Dejus <orvils@gmail.com>, 2006, 2010.
-# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011.
+# Rūdofls Mazurs <rudolfs.mazurs@gmail.com>, 2011, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 2.13.92 HEAD\n"
-"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug."
-"cgi?product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-08-12 10:57+0000\n"
-"PO-Revision-Date: 2011-09-07 02:46+0300\n"
-"Last-Translator: Rūdofls Mazurs <rudolfs.mazurs@gmail.com>\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
+"product=libwnck&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2012-05-14 14:37+0000\n"
+"PO-Revision-Date: 2012-09-21 23:36+0200\n"
+"Last-Translator: Rūdolfs Mazurs <rudolfs.mazurs@gmail.com>\n"
 "Language-Team: Latvian <lata-l10n@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 1.1\n"
+"X-Generator: Lokalize 1.4\n"
+"Language: lv\n"
 
 #. *
 #. * SECTION:application
@@ -44,31 +45,31 @@ msgstr "Nenosaukta lietotne"
 
 #: ../libwnck/pager-accessible.c:342
 msgid "Workspace Switcher"
-msgstr "Darba vietu pārslēdzējs"
+msgstr "Darbvietu pārslēdzējs"
 
 #: ../libwnck/pager-accessible.c:353
 msgid "Tool to switch between workspaces"
-msgstr "Rīks, lai pārslēgtos starp darba vietām"
+msgstr "Rīks, lai pārslēgtos starp darbvietām"
 
 #: ../libwnck/pager-accessible.c:465
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Klikšķiniet šo, lai pārslēgtos uz darba vietu %s"
+msgstr "Spiediet šo, lai pārslēgtos uz darbvietu %s"
 
 #: ../libwnck/pager.c:2200
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "Klikšķiniet, lai sāktu vilkt \"%s\""
+msgstr "Spiediet, lai sāktu vilkt “%s”"
 
 #: ../libwnck/pager.c:2203
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr "Pašreizējā darba vieta: \"%s\""
+msgstr "Pašreizējā darbvieta: “%s”"
 
 #: ../libwnck/pager.c:2208
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Klikšķiniet, lai pārslēgtos uz \"%s\""
+msgstr "Spiediet, lai pārslēgtos uz “%s”"
 
 #: ../libwnck/selector.c:1180
 msgid "No Windows Open"
@@ -120,7 +121,7 @@ msgstr "Mi_nimizēt"
 
 #: ../libwnck/window-action-menu.c:428
 msgid "Unma_ximize"
-msgstr "Atma_ksimizēt"
+msgstr "At_jaunot"
 
 #: ../libwnck/window-action-menu.c:435
 msgid "Ma_ximize"
@@ -155,31 +156,31 @@ msgstr "Vienmēr _virspusē"
 
 #: ../libwnck/window-action-menu.c:1067
 msgid "_Always on Visible Workspace"
-msgstr "Vienmēr uz redz_amās darba vietas"
+msgstr "Vienmēr uz redz_amās darbvietas"
 
 #: ../libwnck/window-action-menu.c:1072
 msgid "_Only on This Workspace"
-msgstr "_Tikai uz šīs darba vietas"
+msgstr "_Tikai uz šīs darbvietas"
 
 #: ../libwnck/window-action-menu.c:1079
 msgid "Move to Workspace _Left"
-msgstr "Pārvietot uz darba vietu pa _kreisi"
+msgstr "Pārvietot uz darbvietu pa _kreisi"
 
 #: ../libwnck/window-action-menu.c:1085
 msgid "Move to Workspace R_ight"
-msgstr "Pārvietot uz darba vietu pa lab_i"
+msgstr "Pārvietot uz darbvietu pa lab_i"
 
 #: ../libwnck/window-action-menu.c:1091
 msgid "Move to Workspace _Up"
-msgstr "Pārvietot uz darba vietu a_ugšup"
+msgstr "Pārvietot _uz augstāku darbvietu"
 
 #: ../libwnck/window-action-menu.c:1097
 msgid "Move to Workspace _Down"
-msgstr "Pārvietot uz _darba vietu lejup"
+msgstr "Pārvietot uz zemāku _darbvietu"
 
 #: ../libwnck/window-action-menu.c:1100
 msgid "Move to Another _Workspace"
-msgstr "Pārvietot uz citu darba _vietu"
+msgstr "Pārvietot uz citu darb_vietu"
 
 #: ../libwnck/window-action-menu.c:1120
 msgid "_Close"
@@ -213,13 +214,13 @@ msgstr "XID"
 #. * (like the application name).
 #: ../libwnck/wnckprop.c:144
 msgid "X window ID of the group leader of an application to examine"
-msgstr "X window grupas vadītāja ID lietotnei, ko apskatīt"
+msgstr "X window grupas vadītāja ID lietotnei, ko izpētīt"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
 #: ../libwnck/wnckprop.c:149
 msgid "Class resource of the class group to examine"
-msgstr "Klases resurss klašu grupai, ko apskatīt"
+msgstr "Klases resurss klašu grupai, ko izpētīt"
 
 #: ../libwnck/wnckprop.c:149
 msgid "CLASS"
@@ -227,7 +228,7 @@ msgstr "KLASE"
 
 #: ../libwnck/wnckprop.c:151
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "Darba vietu SKAITS, kuras apskatīt vai mainīt"
+msgstr "Darbvietu SKAITS, kuras apskatīt vai mainīt"
 
 #: ../libwnck/wnckprop.c:151 ../libwnck/wnckprop.c:153
 #: ../libwnck/wnckprop.c:171 ../libwnck/wnckprop.c:173
@@ -237,7 +238,7 @@ msgstr "SKAITS"
 
 #: ../libwnck/wnckprop.c:153
 msgid "NUMBER of the screen to examine or modify"
-msgstr "Ekrānu SKAITS, kurus apskatīt vai mainīt"
+msgstr "Ekrānu SKAITS, kurus izpētīt vai mainīt"
 
 #: ../libwnck/wnckprop.c:155
 msgid "Alias of --window"
@@ -250,27 +251,27 @@ msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
-"Izdrukā lietotnes/klašu grupas/darba vietas/ekrāna logu sarakstu (izvades "
-"formāts: \"XID: loga nosaukums\")"
+"Izdrukā lietotnes/klašu grupas/darbvietas/ekrāna logu sarakstu (izvades "
+"formāts: “XID: loga nosaukums”)"
 
 #: ../libwnck/wnckprop.c:165
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
-"Saraksts ar ekrāna darba vietām (izvades formāts: \"Numurs: darba vietas "
-"nosaukums\")"
+"Saraksts ar ekrāna darbvietām (izvades formāts: “Numurs: darba vietas "
+"nosaukums”)"
 
 #: ../libwnck/wnckprop.c:171
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr "Nomainīt darba vietu skaitu ekrānā uz SKAITS"
+msgstr "Nomainīt darbvietu skaitu ekrānā uz SKAITS"
 
 #: ../libwnck/wnckprop.c:173
 msgid "Change the workspace layout of the screen to use NUMBER rows"
-msgstr "Nomainīt darba vietu izkārtojumu ekrānā, lai izmantotu SKAITS rindu"
+msgstr "Nomainīt darbvietu izkārtojumu ekrānā, lai izmantotu SKAITS rindu"
 
 #: ../libwnck/wnckprop.c:175
 msgid "Change the workspace layout of the screen to use NUMBER columns"
-msgstr "Nomainīt darba vietu izkārtojumu ekrānā, lai izmantotu SKAITS kolonnu"
+msgstr "Nomainīt darbvietu izkārtojumu ekrānā, lai izmantotu SKAITS kolonnu"
 
 #: ../libwnck/wnckprop.c:177
 msgid "Show the desktop"
@@ -285,7 +286,7 @@ msgstr "Beigt rādīt darbvirsmu"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:184
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr "Pārvietot esošās darba virsmas skatu punktu uz X koordinātu X"
+msgstr "Pārvietot esošās darbvietas skatu punktu uz X koordinātu X"
 
 #: ../libwnck/wnckprop.c:184 ../libwnck/wnckprop.c:274
 msgid "X"
@@ -296,7 +297,7 @@ msgstr "X"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:189
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "Pārvietot esošās darba virsmas skatu punktu uz Y koordinātu Y"
+msgstr "Pārvietot esošās darbvietas skatu punktu uz Y koordinātu Y"
 
 #: ../libwnck/wnckprop.c:189 ../libwnck/wnckprop.c:276
 msgid "Y"
@@ -428,11 +429,11 @@ msgstr "Rādīt logu uzdevumu sarakstā"
 
 #: ../libwnck/wnckprop.c:268
 msgid "Make the window visible on all workspaces"
-msgstr "Rādīt logu visās darba vietās"
+msgstr "Rādīt logu visās darbvietās"
 
 #: ../libwnck/wnckprop.c:270
 msgid "Make the window visible on the current workspace only"
-msgstr "Rādīt logu tikai šajā darba vietā"
+msgstr "Rādīt logu tikai šajā darbvietā"
 
 #: ../libwnck/wnckprop.c:272
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
@@ -477,7 +478,7 @@ msgstr "TIPS"
 
 #: ../libwnck/wnckprop.c:289
 msgid "Change the name of the workspace to NAME"
-msgstr "Mainīt darba vietas nosaukumu uz NOSAUKUMS"
+msgstr "Mainīt darbvietas nosaukumu uz NOSAUKUMS"
 
 #: ../libwnck/wnckprop.c:289
 msgid "NAME"
@@ -485,13 +486,13 @@ msgstr "NOSAUKUMS"
 
 #: ../libwnck/wnckprop.c:291
 msgid "Activate the workspace"
-msgstr "Aktivizēt darba vietu"
+msgstr "Aktivizēt darbvietu"
 
 #: ../libwnck/wnckprop.c:385 ../libwnck/wnckprop.c:409
 #: ../libwnck/wnckprop.c:445 ../libwnck/wnckprop.c:468
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr "Nederīga vērtība \"%s\" parametram --%s"
+msgstr "Nederīga vērtība “%s” parametram --%s"
 
 #: ../libwnck/wnckprop.c:502 ../libwnck/wnckprop.c:521
 #, c-format
@@ -499,7 +500,7 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu mijiedarboties ar ekrānu %d, bet tiek "
+"Ir konfliktējošas opcijas — vajadzētu mijiedarboties ar ekrānu %d, bet tiek "
 "izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:511
@@ -508,7 +509,7 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu tikt uzskaitītām ekrāna %d darba vietām "
+"Ir konfliktējošas opcijas — vajadzētu tikt uzskaitītām ekrāna %d darbvietām "
 "vai logiem, bet tika izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:534 ../libwnck/wnckprop.c:554
@@ -517,7 +518,7 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu mijiedarboties ar darba vietu %d, bet "
+"Ir konfliktējošas opcijas — vajadzētu mijiedarboties ar darbvietu %d, bet "
 "tiek izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:544
@@ -526,7 +527,7 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu tikt uzskaitītiem darba vietas %d "
+"Ir konfliktējošas opcijas — vajadzētu tikt uzskaitītiem darbvietas %d "
 "logiem, bet tika izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:566
@@ -535,7 +536,7 @@ msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu mijiedarboties ar lietotni, bet tika "
+"Ir konfliktējošas opcijas — vajadzētu mijiedarboties ar lietotni, bet tika "
 "izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:576
@@ -544,7 +545,7 @@ msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu uzskaitīt lietotnes logus, bet tika "
+"Ir konfliktējošas opcijas — vajadzētu uzskaitīt lietotnes logus, bet tika "
 "izmantots --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
@@ -555,7 +556,7 @@ msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu mijiedarboties ar klašu grupu \"%s\", "
+"Ir konfliktējošas opcijas — vajadzētu mijiedarboties ar klašu grupu “%s”, "
 "bet tika izmantots --%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
@@ -566,7 +567,7 @@ msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu uzskaitīt klašu grupu \"%s\" logus, bet "
+"Ir konfliktējošas opcijas — vajadzētu uzskaitīt klašu grupu “%s” logus, bet "
 "tika izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
@@ -575,39 +576,39 @@ msgid ""
 "Conflicting options are present: a window should be interacted with, but --%"
 "s has been used\n"
 msgstr ""
-"Ir konfliktējošas opcijas: vajadzētu mijiedarboties ar logu, bet tika "
+"Ir konfliktējošas opcijas — vajadzētu mijiedarboties ar logu, bet tika "
 "izmantots --%s\n"
 
 #: ../libwnck/wnckprop.c:642 ../libwnck/wnckprop.c:723
 #: ../libwnck/wnckprop.c:770
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr "Ir konfliktējošas opcijas: --%s un --%s\n"
+msgstr "Ir konfliktējošas opcijas — --%s un --%s\n"
 
 #: ../libwnck/wnckprop.c:681
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
-"Nederīgs arguments \"%d\" parametram --%s: argumentam ir jābūt lielākam par "
+"Nederīgs parametrs “%d” parametram --%s — parametram ir jābūt lielākam par "
 "nulli\n"
 
 #: ../libwnck/wnckprop.c:694
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr ""
-"Nederīgs arguments \"%d\" parametram --%s: argumentam ir jābūt lielākam par "
+"Nederīgs parametrs “%d” parametram --%s — parametram ir jābūt lielākam par "
 "nulli\n"
 
 #: ../libwnck/wnckprop.c:789
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr "Ir konfliktējošas opcijas: --%s vai --%s un --%s\n"
+msgstr "Ir konfliktējošas opcijas — --%s vai --%s un --%s\n"
 
 #: ../libwnck/wnckprop.c:821
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr "Nederīgs arguments \"%s\" parametram --%s: derīgās vērtības ir: %s\n"
+msgstr "Nederīgs parametrs “%s” parametram --%s — derīgās vērtības ir: %s\n"
 
 #: ../libwnck/wnckprop.c:864
 #, c-format
@@ -615,7 +616,7 @@ msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
-"Nevar mainīt darba vietu izkārtojumu uz ekrāna: izkārtojumam jau ir "
+"Nevar mainīt darbvietu izkārtojumu uz ekrāna — izkārtojumam jau ir "
 "piederība\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
@@ -625,7 +626,7 @@ msgstr ""
 #, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
-msgstr "Nevar pārvietot skatu punktu: šajā darba vietā nav skatu punkta\n"
+msgstr "Nevar pārvietot skatu punktu — šajā darbvietā nav skatu punkta\n"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
@@ -633,7 +634,7 @@ msgstr "Nevar pārvietot skatu punktu: šajā darba vietā nav skatu punkta\n"
 #: ../libwnck/wnckprop.c:906
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
-msgstr "Nevar pārvietot skatu punktu: nav pašreizējās darba vietas\n"
+msgstr "Nevar pārvietot skatu punktu — nav pašreizējās darbvietas\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
 #: ../libwnck/wnckprop.c:942 ../libwnck/wnckprop.c:951
@@ -647,7 +648,7 @@ msgstr "Darbība nav atļauta\n"
 #: ../libwnck/wnckprop.c:1038
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
-msgstr "Nevar pārvietot logu uz darba vietu %d: darba vieta neeksistē\n"
+msgstr "Nevar pārvietot logu uz darbvietu %d — darba vieta neeksistē\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1102 ../libwnck/wnckprop.c:1234
@@ -679,12 +680,12 @@ msgstr "Ģeometrija (platums, augstums): %d, %d\n"
 #: ../libwnck/wnckprop.c:1194
 #, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr "Darba vietu skaits: %d\n"
+msgstr "Darbvietu skaits: %d\n"
 
 #: ../libwnck/wnckprop.c:1200
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr "Darba vietas izkārtojums (rindas, kolonnas, orientācija): %d, %d, %s\n"
+msgstr "Darbvietu izkārtojums (rindas, kolonnas, orientācija): %d, %d, %s\n"
 
 #: ../libwnck/wnckprop.c:1210 ../libwnck/wnckprop.c:1267
 #: ../libwnck/wnckprop.c:1464
@@ -694,7 +695,7 @@ msgstr "<nav EWMH-atbilstošs loga pārvaldnieks>"
 #: ../libwnck/wnckprop.c:1211
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr "Loga pārvaldnieks: %s\n"
+msgstr "Logu pārvaldnieks: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
 #: ../libwnck/wnckprop.c:1216 ../libwnck/wnckprop.c:1297
@@ -702,7 +703,7 @@ msgstr "Loga pārvaldnieks: %s\n"
 #: ../libwnck/wnckprop.c:1333 ../libwnck/wnckprop.c:1449
 #, c-format
 msgid "%d (\"%s\")"
-msgstr "%d (\"%s\")"
+msgstr "%d (“%s”)"
 
 #. Translators: "none" here means "no workspace"
 #: ../libwnck/wnckprop.c:1221 ../libwnck/wnckprop.c:1302
@@ -715,12 +716,12 @@ msgstr "nav"
 #: ../libwnck/wnckprop.c:1222
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr "Aktīvā darba vieta: %s\n"
+msgstr "Aktīvā darbvieta: %s\n"
 
 #: ../libwnck/wnckprop.c:1231
 #, c-format
 msgid "\"%s\""
-msgstr "\"%s\""
+msgstr "“%s”"
 
 #. Translators: %lu is a window identifier (number) and %s a window name
 #: ../libwnck/wnckprop.c:1237
@@ -755,12 +756,12 @@ msgstr "aplams"
 #: ../libwnck/wnckprop.c:1260
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr "Darba vietas nosaukums: %s\n"
+msgstr "Darbvietas nosaukums: %s\n"
 
 #: ../libwnck/wnckprop.c:1261
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr "Darba vietas numurs: %d\n"
+msgstr "Darbvietas numurs: %d\n"
 
 #: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1465
 #, c-format
@@ -811,7 +812,6 @@ msgstr "Apakšējais kaimiņš: %s\n"
 #. * same class.
 #: ../libwnck/wnckprop.c:1352 ../libwnck/wnckprop.c:1511
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Group ID: %s\n"
 msgstr "Klašu grupas ID: %s\n"
 
@@ -819,7 +819,6 @@ msgstr "Klašu grupas ID: %s\n"
 #. * same class.
 #: ../libwnck/wnckprop.c:1356
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Group Name: %s\n"
 msgstr "Klašu grupas nosaukums: %s\n"
 
@@ -879,12 +878,12 @@ msgstr "Sākuma ID: %s\n"
 
 #: ../libwnck/wnckprop.c:1453
 msgid "all workspaces"
-msgstr "visas darba vietas"
+msgstr "visas darbvietas"
 
 #: ../libwnck/wnckprop.c:1457
 #, c-format
 msgid "On Workspace: %s\n"
-msgstr "Uz darba vietas: %s\n"
+msgstr "Uz darbvietas: %s\n"
 
 #: ../libwnck/wnckprop.c:1472
 msgid "normal window"
@@ -900,7 +899,7 @@ msgstr "doks vai panelis"
 
 #: ../libwnck/wnckprop.c:1481
 msgid "dialog window"
-msgstr "dialoga logs"
+msgstr "dialoglodziņa logs"
 
 #: ../libwnck/wnckprop.c:1484
 msgid "tearoff toolbar"
@@ -916,7 +915,7 @@ msgstr "utilīšu logs"
 
 #: ../libwnck/wnckprop.c:1493
 msgid "splash screen"
-msgstr "Uzplaiksnījuma ekrāns"
+msgstr "uzplaiksnījuma ekrāns"
 
 #: ../libwnck/wnckprop.c:1498
 #, c-format
@@ -933,7 +932,6 @@ msgstr "Ģeometrija (x, y, platums, augstums): %d, %d, %d, %d\n"
 #. * to the same class group.
 #: ../libwnck/wnckprop.c:1521
 #, c-format
-#| msgid "Class Group: %s\n"
 msgid "Class Instance: %s\n"
 msgstr "Klases instance: %s\n"
 
@@ -1085,7 +1083,7 @@ msgstr "atmaksimizēt vertikāli"
 
 #: ../libwnck/wnckprop.c:1639
 msgid "change workspace"
-msgstr "mainīt darba vietu"
+msgstr "mainīt darbvietu"
 
 #: ../libwnck/wnckprop.c:1641
 msgid "pin"
@@ -1151,18 +1149,18 @@ msgid ""
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
-"Izdrukājiet vai mainiet ekrāna/darba vietas/loga īpašības, vai "
+"Izdrukājiet vai mainiet ekrāna/darbvietas/loga īpašības, vai "
 "mijiedarbojieties ar tām, sekojot EWMN specifikāciju.\n"
 "Lai iegūtu vairāk informācijas par šo specifikāciju, skatiet:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
 #: ../libwnck/wnckprop.c:1852
 msgid "Options to list windows or workspaces"
-msgstr "Rādīt opcijas, lai uzskaitītu logus vai darba virsmas"
+msgstr "Opcijas, lai uzskaitītu logus vai darbvietas"
 
 #: ../libwnck/wnckprop.c:1853
 msgid "Show options to list windows or workspaces"
-msgstr "Opcijas, lai uzskaitītu logus vai darba virsmas"
+msgstr "Rādīt opcijas, lai uzskaitītu logus vai darbvietas"
 
 #: ../libwnck/wnckprop.c:1860
 msgid "Options to modify properties of a window"
@@ -1174,11 +1172,11 @@ msgstr "Rādīt opcijas, lai mainītu loga īpašības"
 
 #: ../libwnck/wnckprop.c:1868
 msgid "Options to modify properties of a workspace"
-msgstr "Opcijas, lai mainītu darva vietas īpašības"
+msgstr "Opcijas, lai mainītu darbvietas īpašības"
 
 #: ../libwnck/wnckprop.c:1869
 msgid "Show options to modify properties of a workspace"
-msgstr "Rādīt opcijas, lai mainītu darba vietas īpašības"
+msgstr "Rādīt opcijas, lai mainītu darbvietas īpašības"
 
 #: ../libwnck/wnckprop.c:1876
 msgid "Options to modify properties of a screen"
@@ -1191,17 +1189,17 @@ msgstr "Rādīt opcijas, lai mainītu ekrāna īpašības"
 #: ../libwnck/wnckprop.c:1888
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr "Kļūda, analizējot argumentus: %s\n"
+msgstr "Kļūda, parsējot parametrus — %s\n"
 
 #: ../libwnck/wnckprop.c:1911
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr "Nevar mijiedarboties ar ekrānu %d: ekrāns neeksistē\n"
+msgstr "Nevar mijiedarboties ar ekrānu %d — ekrāns neeksistē\n"
 
 #: ../libwnck/wnckprop.c:1967
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
-msgstr "Nevar mijiedarboties ar darba vietu %d: šo darba vietu nevar atrast\n"
+msgstr "Nevar mijiedarboties ar darbvietu %d — šo darba vietu nevar atrast\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
@@ -1210,7 +1208,7 @@ msgstr "Nevar mijiedarboties ar darba vietu %d: šo darba vietu nevar atrast\n"
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
-"Nevar mijiedarboties ar klašu grupu \"%s\": šo klašu grupu nevar atrast\n"
+"Nevar mijiedarboties ar klašu grupu “%s” — šo klašu grupu nevar atrast\n"
 
 #: ../libwnck/wnckprop.c:2014
 #, c-format
@@ -1218,13 +1216,13 @@ msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
-"Nevar mijiedarboties ar lietotni, kuras grupas vadītāja XID ir %lu: nevar "
+"Nevar mijiedarboties ar lietotni, kuras grupas vadītāja XID ir %lu — nevar "
 "atrast lietotni\n"
 
 #: ../libwnck/wnckprop.c:2037
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
-msgstr "Nevar mijiedarboties ar logu, kura XID ir %lu: nevar atrast logu\n"
+msgstr "Nevar mijiedarboties ar logu, kura XID ir %lu — nevar atrast logu\n"
 
 #~ msgid "Use N_ROWS rows"
 #~ msgstr "Izmantot N_ROWS rindas"
