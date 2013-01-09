@@ -47,6 +47,8 @@ static void window_geometry_changed_callback  (WnckWindow      *window,
                                                gpointer         data);
 static void window_class_changed_callback     (WnckWindow      *window,
                                                gpointer         data);
+static void window_role_changed_callback      (WnckWindow      *window,
+                                               gpointer         data);
 
 static GtkTreeModel* create_tree_model (void);
 static GtkWidget*    create_tree_view  (void);
@@ -165,11 +167,13 @@ window_opened_callback            (WnckScreen    *screen,
                                    WnckWindow    *window,
                                    gpointer       data)
 {
-  g_print ("Window '%s' opened (pid = %d session_id = %s)\n",
+  g_print ("Window '%s' opened (pid = %d, session_id = %s, role = %s)\n",
            wnck_window_get_name (window),
            wnck_window_get_pid (window),
            wnck_window_get_session_id (window) ?
-           wnck_window_get_session_id (window) : "none");
+            wnck_window_get_session_id (window) : "none",
+           wnck_window_get_role (window) ?
+            wnck_window_get_role (window) : "none");
 
   g_signal_connect (G_OBJECT (window), "name_changed",
                     G_CALLBACK (window_name_changed_callback),
@@ -188,6 +192,9 @@ window_opened_callback            (WnckScreen    *screen,
                     NULL);
   g_signal_connect (G_OBJECT (window), "class_changed",
                     G_CALLBACK (window_class_changed_callback),
+                    NULL);
+  g_signal_connect (G_OBJECT (window), "role_changed",
+                    G_CALLBACK (window_role_changed_callback),
                     NULL);
 
   queue_refill_model ();
@@ -358,6 +365,18 @@ window_class_changed_callback  (WnckWindow      *window,
 
   g_print ("Class changed on window '%s': %s,%s\n",
            wnck_window_get_name (window), group_name, instance_name);
+}
+
+static void
+window_role_changed_callback  (WnckWindow      *window,
+                               gpointer         data)
+{
+  const char *role;
+
+  role = wnck_window_get_role (window);
+
+  g_print ("Role changed on window '%s': %s\n",
+           wnck_window_get_name (window), role);
 }
 
 static GtkTreeModel*
