@@ -45,6 +45,8 @@ static void window_icon_changed_callback      (WnckWindow      *window,
                                                gpointer         data);
 static void window_geometry_changed_callback  (WnckWindow      *window,
                                                gpointer         data);
+static void window_class_changed_callback     (WnckWindow      *window,
+                                               gpointer         data);
 
 static GtkTreeModel* create_tree_model (void);
 static GtkWidget*    create_tree_view  (void);
@@ -168,7 +170,7 @@ window_opened_callback            (WnckScreen    *screen,
            wnck_window_get_pid (window),
            wnck_window_get_session_id (window) ?
            wnck_window_get_session_id (window) : "none");
-  
+
   g_signal_connect (G_OBJECT (window), "name_changed",
                     G_CALLBACK (window_name_changed_callback),
                     NULL);
@@ -177,14 +179,17 @@ window_opened_callback            (WnckScreen    *screen,
                     NULL);
   g_signal_connect (G_OBJECT (window), "workspace_changed",
                     G_CALLBACK (window_workspace_changed_callback),
-                    NULL);    
+                    NULL);
   g_signal_connect (G_OBJECT (window), "icon_changed",
                     G_CALLBACK (window_icon_changed_callback),
                     NULL);
   g_signal_connect (G_OBJECT (window), "geometry_changed",
                     G_CALLBACK (window_geometry_changed_callback),
                     NULL);
-  
+  g_signal_connect (G_OBJECT (window), "class_changed",
+                    G_CALLBACK (window_class_changed_callback),
+                    NULL);
+
   queue_refill_model ();
 }
 
@@ -336,9 +341,23 @@ window_geometry_changed_callback  (WnckWindow      *window,
   int x, y, width, height;
 
   wnck_window_get_geometry (window, &x, &y, &width, &height);
-  
+
   g_print ("Geometry changed on window '%s': %d,%d  %d x %d\n",
            wnck_window_get_name (window), x, y, width, height);
+}
+
+static void
+window_class_changed_callback  (WnckWindow      *window,
+                                gpointer         data)
+{
+  const char *group_name;
+  const char *instance_name;
+
+  group_name = wnck_window_get_class_group_name (window);
+  instance_name = wnck_window_get_class_instance_name (window);
+
+  g_print ("Class changed on window '%s': %s,%s\n",
+           wnck_window_get_name (window), group_name, instance_name);
 }
 
 static GtkTreeModel*
