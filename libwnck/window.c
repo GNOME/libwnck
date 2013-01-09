@@ -162,6 +162,7 @@ struct _WnckWindowPrivate
 
   guint need_emit_name_changed : 1;
   guint need_emit_icon_changed : 1;
+  guint need_emit_class_changed : 1;
 };
 
 G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
@@ -174,6 +175,7 @@ enum {
   ICON_CHANGED,
   ACTIONS_CHANGED,
   GEOMETRY_CHANGED,
+  CLASS_CHANGED,
   LAST_SIGNAL
 };
 
@@ -191,6 +193,7 @@ static void emit_actions_changed   (WnckWindow       *window,
                                     WnckWindowActions changed_mask,
                                     WnckWindowActions new_actions);
 static void emit_geometry_changed  (WnckWindow      *window);
+static void emit_class_changed  (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -306,6 +309,7 @@ wnck_window_init (WnckWindow *window)
 
   window->priv->need_emit_name_changed = FALSE;
   window->priv->need_emit_icon_changed = FALSE;
+  window->priv->need_emit_class_changed = FALSE;
 }
 
 static void
@@ -416,6 +420,21 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, geometry_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
+  /**
+   * WnckWindow::class-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the class name or instance name of @window changes.
+   */
+  signals[CLASS_CHANGED] =
+    g_signal_new ("class_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, class_changed),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -584,6 +603,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_frame_extents = TRUE;
   window->priv->need_emit_name_changed = FALSE;
   window->priv->need_emit_icon_changed = FALSE;
+  window->priv->need_emit_class_changed = FALSE;
   force_update_now (window);
 
   return window;
@@ -3110,21 +3130,35 @@ update_startup_id (WnckWindow *window)
 static void
 update_wmclass (WnckWindow *window)
 {
+  char *new_res_class = NULL;
+  char *new_res_name = NULL;
+
   if (!window->priv->need_update_wmclass)
     return;
 
   window->priv->need_update_wmclass = FALSE;
 
-  g_free (window->priv->res_class);
-  g_free (window->priv->res_name);
-
-  window->priv->res_class = NULL;
-  window->priv->res_name = NULL;
-
   _wnck_get_wmclass (WNCK_SCREEN_XSCREEN (window->priv->screen),
                      window->priv->xwindow,
-                     &window->priv->res_class,
-                     &window->priv->res_name);
+                     &new_res_class,
+                     &new_res_name);
+
+  if (g_strcmp0 (window->priv->res_class, new_res_class) != 0 ||
+      g_strcmp0 (window->priv->res_name, new_res_name) != 0)
+    {
+      window->priv->need_emit_class_changed = TRUE;
+
+      g_free (window->priv->res_class);
+      g_free (window->priv->res_name);
+
+      window->priv->res_class = new_res_class;
+      window->priv->res_name = new_res_name;
+    }
+  else
+    {
+      g_free (new_res_class);
+      g_free (new_res_name);
+    }
 }
 
 static void
@@ -3251,6 +3285,9 @@ force_update_now (WnckWindow *window)
 
   if (window->priv->need_emit_icon_changed)
     emit_icon_changed (window);
+
+  if (window->priv->need_emit_class_changed)
+    emit_class_changed (window);
 }
 
 
@@ -3316,6 +3353,15 @@ emit_icon_changed (WnckWindow *window)
   window->priv->need_emit_icon_changed = FALSE;
   g_signal_emit (G_OBJECT (window),
                  signals[ICON_CHANGED],
+                 0);
+}
+
+static void
+emit_class_changed (WnckWindow *window)
+{
+  window->priv->need_emit_class_changed = FALSE;
+  g_signal_emit (G_OBJECT (window),
+                 signals[CLASS_CHANGED],
                  0);
 }
 

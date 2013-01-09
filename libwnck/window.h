@@ -274,13 +274,15 @@ struct _WnckWindowClass
                               WnckWindowActions new_actions);
 
   /* Changed size/position */
-  void (* geometry_changed)      (WnckWindow       *window);
-  
+  void (* geometry_changed)  (WnckWindow       *window);
+
+  /* Changed class group/instance name */
+  void (* class_changed)     (WnckWindow       *window);
+
   /* Padding for future expansion */
   void (* pad1) (void);
   void (* pad2) (void);
   void (* pad3) (void);
-  void (* pad4) (void);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
