@@ -84,6 +84,7 @@ struct _WnckWindowPrivate
   char *icon_name;
   char *session_id;
   char *session_id_utf8;
+  char *role;
   int pid;
   int workspace;
   gint sort_order;
@@ -159,10 +160,12 @@ struct _WnckWindowPrivate
   guint need_update_wmclass : 1;
   guint need_update_wmhints : 1;
   guint need_update_frame_extents : 1;
+  guint need_update_role : 1;
 
   guint need_emit_name_changed : 1;
   guint need_emit_icon_changed : 1;
   guint need_emit_class_changed : 1;
+  guint need_emit_role_changed : 1;
 };
 
 G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
@@ -176,6 +179,7 @@ enum {
   ACTIONS_CHANGED,
   GEOMETRY_CHANGED,
   CLASS_CHANGED,
+  ROLE_CHANGED,
   LAST_SIGNAL
 };
 
@@ -193,7 +197,8 @@ static void emit_actions_changed   (WnckWindow       *window,
                                     WnckWindowActions changed_mask,
                                     WnckWindowActions new_actions);
 static void emit_geometry_changed  (WnckWindow      *window);
-static void emit_class_changed  (WnckWindow      *window);
+static void emit_class_changed     (WnckWindow      *window);
+static void emit_role_changed      (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -204,8 +209,9 @@ static void update_actions   (WnckWindow *window);
 static void update_wintype   (WnckWindow *window);
 static void update_transient_for (WnckWindow *window);
 static void update_startup_id (WnckWindow *window);
-static void update_wmclass    (WnckWindow *window);
+static void update_wmclass   (WnckWindow *window);
 static void update_frame_extents (WnckWindow *window);
+static void update_role      (WnckWindow *window);
 static void unqueue_update   (WnckWindow *window);
 static void queue_update     (WnckWindow *window);
 static void force_update_now (WnckWindow *window);
@@ -306,10 +312,12 @@ wnck_window_init (WnckWindow *window)
   window->priv->need_update_wmclass = FALSE;
   window->priv->need_update_wmhints = FALSE;
   window->priv->need_update_frame_extents = FALSE;
+  window->priv->need_update_role = FALSE;
 
   window->priv->need_emit_name_changed = FALSE;
   window->priv->need_emit_icon_changed = FALSE;
   window->priv->need_emit_class_changed = FALSE;
+  window->priv->need_emit_role_changed = FALSE;
 }
 
 static void
@@ -435,6 +443,21 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, class_changed),
+                  NULL, NULL,
+                  g_cclosure_marshal_VOID__VOID,
+                  G_TYPE_NONE, 0);
+
+  /**
+   * WnckWindow::role-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the role of @window changes.
+   */
+  signals[ROLE_CHANGED] =
+    g_signal_new ("role_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, role_changed),
                   NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
@@ -601,9 +624,11 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_wmclass = TRUE;
   window->priv->need_update_wmhints = TRUE;
   window->priv->need_update_frame_extents = TRUE;
+  window->priv->need_update_role = TRUE;
   window->priv->need_emit_name_changed = FALSE;
   window->priv->need_emit_icon_changed = FALSE;
   window->priv->need_emit_class_changed = FALSE;
+  window->priv->need_emit_role_changed = FALSE;
   force_update_now (window);
 
   return window;
@@ -913,6 +938,24 @@ wnck_window_get_session_id_utf8 (WnckWindow *window)
     }
 
   return window->priv->session_id_utf8;
+}
+
+/**
+ * wnck_window_get_role:
+ * @window: a #WnckWindow.
+ *
+ * Gets the role for @window.
+ * The role uniquely identifies a window among all windows that have the same
+ * client leader window.
+ *
+ * Return value: role for @window, or %NULL if @window has no role.
+ **/
+const char*
+wnck_window_get_role (WnckWindow *window)
+{
+  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
+
+  return window->priv->role;
 }
 
 /**
@@ -2644,6 +2687,12 @@ _wnck_window_process_property_notify (WnckWindow *window,
       window->priv->need_update_frame_extents = TRUE;
       queue_update (window);
     }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("WM_WINDOW_ROLE"))
+    {
+      window->priv->need_update_role = TRUE;
+      queue_update (window);
+    }
 }
 
 void
@@ -3236,6 +3285,33 @@ update_frame_extents (WnckWindow *window)
 }
 
 static void
+update_role (WnckWindow *window)
+{
+  char *new_role;
+
+  if (!window->priv->need_update_role)
+    return;
+
+  window->priv->need_update_role = FALSE;
+
+  new_role = _wnck_get_text_property (WNCK_SCREEN_XSCREEN (window->priv->screen),
+                                      window->priv->xwindow,
+                                      _wnck_atom_get ("WM_WINDOW_ROLE"));
+
+  if (g_strcmp0 (window->priv->role, new_role) != 0)
+    {
+      window->priv->need_emit_role_changed = TRUE;
+
+      g_free (window->priv->role);
+      window->priv->role = new_role;
+    }
+  else
+    {
+      g_free (new_role);
+    }
+}
+
+static void
 force_update_now (WnckWindow *window)
 {
   WnckWindowState old_state;
@@ -3271,6 +3347,7 @@ force_update_now (WnckWindow *window)
   update_workspace (window); /* emits signals */
   update_actions (window);
   update_frame_extents (window); /* emits signals */
+  update_role (window); /* emits signals */
 
   get_icons (window);
 
@@ -3288,6 +3365,9 @@ force_update_now (WnckWindow *window)
 
   if (window->priv->need_emit_class_changed)
     emit_class_changed (window);
+
+  if (window->priv->need_emit_role_changed)
+    emit_role_changed (window);
 }
 
 
@@ -3380,5 +3460,14 @@ emit_geometry_changed (WnckWindow *window)
 {
   g_signal_emit (G_OBJECT (window),
                  signals[GEOMETRY_CHANGED],
+                 0);
+}
+
+static void
+emit_role_changed (WnckWindow *window)
+{
+  window->priv->need_emit_role_changed = FALSE;
+  g_signal_emit (G_OBJECT (window),
+                 signals[ROLE_CHANGED],
                  0);
 }

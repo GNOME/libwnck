@@ -279,10 +279,12 @@ struct _WnckWindowClass
   /* Changed class group/instance name */
   void (* class_changed)     (WnckWindow       *window);
 
+  /* Changed role */
+  void (* role_changed)      (WnckWindow       *window);
+
   /* Padding for future expansion */
   void (* pad1) (void);
   void (* pad2) (void);
-  void (* pad3) (void);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
@@ -308,9 +310,10 @@ const char* wnck_window_get_class_instance_name (WnckWindow *window);
 
 const char* wnck_window_get_session_id        (WnckWindow *window);
 const char* wnck_window_get_session_id_utf8   (WnckWindow *window);
+const char* wnck_window_get_role              (WnckWindow *window);
 int         wnck_window_get_pid               (WnckWindow *window);
 gint        wnck_window_get_sort_order        (WnckWindow *window);
-void        wnck_window_set_sort_order        (WnckWindow *window, 
+void        wnck_window_set_sort_order        (WnckWindow *window,
 						gint order);
 
 WnckWindowType wnck_window_get_window_type    (WnckWindow *window);
