@@ -9,7 +9,7 @@ m4_define([wnck_version],
 AC_INIT([libwnck], [wnck_version],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
-AM_CONFIG_HEADER(config.h)
+AC_CONFIG_HEADERS(config.h)
 
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
