@@ -38,7 +38,7 @@
 
 G_BEGIN_DECLS
 
-#define WNCK_ACTIVATE_TIMEOUT 1000
+#define WNCK_ACTIVATE_TIMEOUT 1
 
 WnckClientType _wnck_get_client_type (void);
 

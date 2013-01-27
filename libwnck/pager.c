@@ -1700,7 +1700,7 @@ wnck_pager_drag_motion (GtkWidget          *widget,
 
       if (pager->priv->dnd_activate == 0 && pager->priv->prelight > -1)
 	{
-	  pager->priv->dnd_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+	  pager->priv->dnd_activate = g_timeout_add_seconds (WNCK_ACTIVATE_TIMEOUT,
                                                      wnck_pager_drag_motion_timeout,
                                                      pager);
 	  pager->priv->dnd_time = time;

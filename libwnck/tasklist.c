@@ -3428,7 +3428,7 @@ wnck_task_drag_motion (GtkWidget          *widget,
        task->dnd_timestamp = time;
 
        if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
-           task->button_activate = g_timeout_add (WNCK_ACTIVATE_TIMEOUT,
+           task->button_activate = g_timeout_add_seconds (WNCK_ACTIVATE_TIMEOUT,
                                                   wnck_task_motion_timeout,
                                                   task);
        gdk_drag_status (context, 0, time);
