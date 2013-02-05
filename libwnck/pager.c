@@ -1974,12 +1974,16 @@ wnck_pager_motion (GtkWidget        *widget,
 {
   WnckPager *pager;
   GdkWindow *window;
+  GdkDeviceManager *dev_manager;
+  GdkDevice *pointer;
   int x, y;
 
   pager = WNCK_PAGER (widget);
 
+  dev_manager = gdk_display_get_device_manager (gtk_widget_get_display (widget));
   window = gtk_widget_get_window (widget);
-  gdk_window_get_pointer (window, &x, &y, NULL);
+  pointer = gdk_device_manager_get_client_pointer (dev_manager);
+  gdk_window_get_device_position (window, pointer, &x, &y, NULL);
 
   if (!pager->priv->dragging &&
       pager->priv->drag_window != NULL &&
