@@ -1538,6 +1538,13 @@ print_window (WnckWindow *window)
     buf = _("<unset>");
   g_print (_("Session ID: %s\n"), buf);
 
+  if (wnck_window_get_role (window))
+    buf = wnck_window_get_role (window);
+  else
+    /* Translators: 'unset' in the sense of "something has not been set". */
+    buf = _("<unset>");
+  g_print (_("Role: %s\n"), buf);
+
   if (wnck_window_get_group_leader (window) != wnck_window_get_xid (window))
     /* Translators: A group leader is the window that is the "owner" of a group
      * of windows, ie: if you have multiple windows in one application, one
