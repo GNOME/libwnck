@@ -2093,6 +2093,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
   int                 n_workspaces;
   int                 n_columns;
   int                 in_last_row;
+  gdouble             smooth_x;
+  gdouble             smooth_y;
 
   pager = WNCK_PAGER (widget);
 
@@ -2124,6 +2126,13 @@ wnck_pager_scroll_event (GtkWidget      *widget,
             break;
           case GDK_SCROLL_LEFT:
             absolute_direction = GDK_SCROLL_RIGHT;
+            break;
+          case GDK_SCROLL_SMOOTH:
+            gdk_event_get_scroll_deltas ((GdkEvent*)event, &smooth_x, &smooth_y);
+            if (smooth_x > 5)
+              absolute_direction = GDK_SCROLL_RIGHT;
+            else if (smooth_x < -5)
+              absolute_direction = GDK_SCROLL_LEFT;
             break;
         }
     }
