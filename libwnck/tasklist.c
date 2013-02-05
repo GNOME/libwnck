@@ -3415,23 +3415,25 @@ wnck_task_drag_motion (GtkWidget          *widget,
 {
   if (gtk_drag_dest_find_target (widget, context, NULL))
     {
-       gtk_drag_highlight (widget);
+      gtk_drag_highlight (widget);
 #if GTK_CHECK_VERSION(2,21,0)
-       gdk_drag_status (context,
-                        gdk_drag_context_get_suggested_action (context), time);
+      gdk_drag_status (context, gdk_drag_context_get_suggested_action (context), time);
 #else
-       gdk_drag_status (context, context->suggested_action, time);
+      gdk_drag_status (context, context->suggested_action, time);
 #endif
     }
   else
     {
-       task->dnd_timestamp = time;
+      task->dnd_timestamp = time;
 
-       if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
+      if (task->button_activate == 0 && task->type == WNCK_TASK_WINDOW)
+        {
            task->button_activate = g_timeout_add_seconds (WNCK_ACTIVATE_TIMEOUT,
-                                                  wnck_task_motion_timeout,
-                                                  task);
-       gdk_drag_status (context, 0, time);
+                                                          wnck_task_motion_timeout,
+                                                          task);
+        }
+
+      gdk_drag_status (context, 0, time);
     }
   return TRUE;
 }

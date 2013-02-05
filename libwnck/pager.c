@@ -1679,10 +1679,9 @@ wnck_pager_drag_motion (GtkWidget          *widget,
   if (gtk_drag_dest_find_target (widget, context, NULL))
     {
 #if GTK_CHECK_VERSION(2,21,0)
-       gdk_drag_status (context,
-                        gdk_drag_context_get_suggested_action (context), time);
+      gdk_drag_status (context, gdk_drag_context_get_suggested_action (context), time);
 #else
-       gdk_drag_status (context, context->suggested_action, time);
+      gdk_drag_status (context, context->suggested_action, time);
 #endif
     }
   else
@@ -1690,21 +1689,21 @@ wnck_pager_drag_motion (GtkWidget          *widget,
       gdk_drag_status (context, 0, time);
 
       if (pager->priv->prelight != previous_workspace &&
-	  pager->priv->dnd_activate != 0)
-	{
-	  /* remove timeout, the window we hover over changed */
-	  g_source_remove (pager->priv->dnd_activate);
-	  pager->priv->dnd_activate = 0;
-	  pager->priv->dnd_time = 0;
-	}
+          pager->priv->dnd_activate != 0)
+        {
+          /* remove timeout, the window we hover over changed */
+          g_source_remove (pager->priv->dnd_activate);
+          pager->priv->dnd_activate = 0;
+          pager->priv->dnd_time = 0;
+        }
 
       if (pager->priv->dnd_activate == 0 && pager->priv->prelight > -1)
-	{
-	  pager->priv->dnd_activate = g_timeout_add_seconds (WNCK_ACTIVATE_TIMEOUT,
-                                                     wnck_pager_drag_motion_timeout,
-                                                     pager);
-	  pager->priv->dnd_time = time;
-	}
+        {
+          pager->priv->dnd_activate = g_timeout_add_seconds (WNCK_ACTIVATE_TIMEOUT,
+                                                             wnck_pager_drag_motion_timeout,
+                                                             pager);
+          pager->priv->dnd_time = time;
+        }
     }
 
   return (pager->priv->prelight != -1);
