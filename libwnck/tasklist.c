@@ -2553,6 +2553,8 @@ wnck_task_position_menu (GtkMenu   *menu,
 {
   GtkWidget *widget = GTK_WIDGET (user_data);
   GdkWindow *window;
+  GdkDeviceManager *dev_manager;
+  GdkDevice *pointer;
   GtkAllocation allocation;
   GtkRequisition requisition;
   gint menu_xpos;
@@ -2575,7 +2577,10 @@ wnck_task_position_menu (GtkMenu   *menu,
   else
     menu_ypos += allocation.height;
 
-  gtk_widget_get_pointer (widget, &pointer_x, &pointer_y);
+  dev_manager = gdk_display_get_device_manager (gtk_widget_get_display (widget));
+  pointer = gdk_device_manager_get_client_pointer (dev_manager);
+  gdk_window_get_device_position (window, pointer, &pointer_x, &pointer_y, NULL);
+
   if (requisition.width < pointer_x)
     menu_xpos += MIN (pointer_x, allocation.width - requisition.width);
 
