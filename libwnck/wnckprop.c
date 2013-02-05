@@ -38,6 +38,7 @@
 #include <string.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
+#include <X11/extensions/XInput2.h>
 
 #include <gtk/gtk.h>
 #include <gdk/gdkx.h>
@@ -1738,12 +1739,12 @@ find_managed_window (Display *display,
 }
 
 static void
-handle_button_press_event (XKeyEvent *event)
+handle_button_press_event (Display *dpy, XIDeviceEvent *event)
 {
-  if (event->subwindow == None)
+  if (event->child == None)
     return;
 
-  got_from_user = find_managed_window (event->display, event->subwindow);
+  got_from_user = find_managed_window (dpy, event->child);
 }
 
 static GdkFilterReturn
@@ -1752,22 +1753,32 @@ target_filter (GdkXEvent *gdk_xevent,
                gpointer   data)
 {
   XEvent *xevent = (XEvent *) gdk_xevent;
+  XGenericEventCookie *cookie = &xevent->xcookie;
 
-  switch (xevent->type)
+  /* Use XI2 to read the event data */
+  if (cookie->type == GenericEvent)
     {
-      case ButtonPress:
-        handle_button_press_event (&xevent->xkey);
-        clean_up ();
-        return GDK_FILTER_REMOVE;
-      case KeyPress:
-        if (xevent->xkey.keycode == XKeysymToKeycode (xevent->xany.display, XK_Escape))
-          {
+      XIDeviceEvent *event = cookie->data;
+
+      if (!event)
+        return GDK_FILTER_CONTINUE;
+
+      switch (event->evtype)
+        {
+          case XI_ButtonPress:
+            handle_button_press_event (cookie->display, event);
             clean_up ();
             return GDK_FILTER_REMOVE;
-          }
-        break;
-      default:
-        break;
+          case XI_KeyPress:
+            if (event->detail == XKeysymToKeycode (cookie->display, XK_Escape))
+              {
+                clean_up ();
+                return GDK_FILTER_REMOVE;
+              }
+            break;
+          default:
+            break;
+        }
     }
 
   return GDK_FILTER_CONTINUE;
@@ -1776,17 +1787,22 @@ target_filter (GdkXEvent *gdk_xevent,
 static gboolean
 get_target (gpointer data)
 {
-  GdkGrabStatus  status;
-  GdkCursor     *cross;
-  GdkWindow     *root;
+  GdkGrabStatus     status;
+  GdkDeviceManager *dev_manager;
+  GdkDevice        *device;
+  GdkCursor        *cross;
+  GdkWindow        *root;
+  GList            *devices, *l;
 
+  dev_manager = gdk_display_get_device_manager (gdk_display_get_default ());
   root = gdk_get_default_root_window ();
 
   gdk_window_add_filter (root, (GdkFilterFunc) target_filter, NULL);
 
   cross = gdk_cursor_new (GDK_CROSS);
-  status = gdk_pointer_grab (root, FALSE, GDK_BUTTON_PRESS_MASK,
-                             NULL, cross, GDK_CURRENT_TIME);
+  device = gdk_device_manager_get_client_pointer (dev_manager);
+  status = gdk_device_grab (device, root, GDK_OWNERSHIP_WINDOW, TRUE,
+                            GDK_BUTTON_PRESS_MASK, cross, GDK_CURRENT_TIME);
   g_object_unref (cross);
 
   if (status != GDK_GRAB_SUCCESS)
@@ -1796,7 +1812,25 @@ get_target (gpointer data)
       return FALSE;
     }
 
-  status = gdk_keyboard_grab (root, FALSE, GDK_CURRENT_TIME);
+  devices = gdk_device_manager_list_devices (dev_manager, GDK_DEVICE_TYPE_MASTER);
+
+  for (l = devices; l; l = l->next)
+    {
+      device = GDK_DEVICE (l->data);
+
+      if (gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+        continue;
+
+      status = gdk_device_grab (device, root, GDK_OWNERSHIP_NONE, TRUE,
+                                GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK, NULL,
+                                GDK_CURRENT_TIME);
+
+      if (status != GDK_GRAB_SUCCESS)
+        break;
+    }
+
+  g_list_free (devices);
+
   if (status != GDK_GRAB_SUCCESS)
     {
       g_warning ("Keyboard grab failed.\n");
@@ -1813,12 +1847,30 @@ static void
 clean_up (void)
 {
   GdkWindow *root;
+  GdkDeviceManager *dev_manager;
+  GdkDevice        *device;
+  GList            *devices, *l;
 
   root = gdk_get_default_root_window ();
+  dev_manager = gdk_display_get_device_manager (gdk_display_get_default ());
   gdk_window_remove_filter (root, (GdkFilterFunc) target_filter, NULL);
 
-  gdk_pointer_ungrab (GDK_CURRENT_TIME);
-  gdk_keyboard_ungrab (GDK_CURRENT_TIME);
+  device = gdk_device_manager_get_client_pointer (dev_manager);
+  gdk_device_ungrab (device, GDK_CURRENT_TIME);
+
+  devices = gdk_device_manager_list_devices (dev_manager, GDK_DEVICE_TYPE_MASTER);
+
+  for (l = devices; l; l = l->next)
+    {
+      device = GDK_DEVICE (l->data);
+
+      if (gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
+        continue;
+
+      gdk_device_ungrab (device, GDK_CURRENT_TIME);
+    }
+
+  g_list_free (devices);
 
   gtk_main_quit ();
 }
