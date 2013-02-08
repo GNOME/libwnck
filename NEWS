@@ -1,15 +1,37 @@
 =============
+Version 3.4.5
+=============
+
+  Features
+
+	* Add getter and notifier for the Window role
+	* Emit signals when a window instance or group name (WM_CLASS) changes (Marco Trevisan)
+
+  Fixes
+
+	* Remove deprecated APIs for device grabbing (Marco Trevisan)
+	* Fix wnckprop hang, that made the system unusable (Marco Trevisan)
+	* Fix build with recent automake (Nuno Araujo)
+	* Use a little less power using g_timeout_add_seconds (B.Prathibha)
+
+  Translators
+
+	* ManojKumar Giri (or)
+	* Piotr Drąg (pl)
+	* Shankar Prasad (kn)
+
+=============
 Version 3.4.4
 =============
 
   Translators
 
-        * Runa Bhattacharjee (bn_IN)
-        * chandankumar (hi)
-        * Khoem Sokhem (km)
-        * Rūdolfs Mazurs (lv)
-        * Anish A (ml)
-        * Piotr Drąg (pl)
+	* Runa Bhattacharjee (bn_IN)
+	* chandankumar (hi)
+	* Khoem Sokhem (km)
+	* Rūdolfs Mazurs (lv)
+	* Anish A (ml)
+	* Piotr Drąg (pl)
 
 =============
 Version 3.4.3
