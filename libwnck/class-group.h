@@ -62,9 +62,9 @@ struct _WnckClassGroupClass
 {
   GObjectClass parent_class;
 
-  void (* name_changed) (WnckApplication *app);
-  void (* icon_changed) (WnckApplication *app);
-  
+  void (* name_changed) (WnckClassGroup *group);
+  void (* icon_changed) (WnckClassGroup *group);
+
   /* Padding for future expansion */
   void (* pad1) (void);
   void (* pad2) (void);
