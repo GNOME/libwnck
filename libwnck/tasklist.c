@@ -202,6 +202,7 @@ struct _WnckTasklistPrivate
   gint max_button_height;
 
   gboolean switch_workspace_on_unminimize;
+  gboolean middle_click_close;
 
   WnckTasklistGroupingType grouping;
   gint grouping_limit;
@@ -641,6 +642,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->max_button_height = 0;
 
   tasklist->priv->switch_workspace_on_unminimize = FALSE;
+  tasklist->priv->middle_click_close = FALSE;
 
   tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
@@ -898,6 +900,26 @@ wnck_tasklist_set_button_relief (WnckTasklist *tasklist, GtkReliefStyle relief)
                         tasklist);
   for (walk = tasklist->priv->class_groups; walk; walk = g_list_next (walk))
     gtk_button_set_relief (GTK_BUTTON (WNCK_TASK (walk->data)->button), relief);
+}
+
+/**
+ * wnck_tasklist_set_middle_click_close:
+ * @tasklist: a #WnckTasklist.
+ * @middle_click_close: whether to close windows with middle click on
+ * button.
+ *
+ * Sets @tasklist to close windows with mouse middle click on button,
+ * according to @middle_click_close.
+ *
+ * Since: 3.4.6
+ */
+void
+wnck_tasklist_set_middle_click_close (WnckTasklist  *tasklist,
+				      gboolean       middle_click_close)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  tasklist->priv->middle_click_close = middle_click_close;
 }
 
 /**
@@ -3599,6 +3621,15 @@ wnck_task_button_press_event (GtkWidget	      *widget,
             task->was_active = FALSE;
 
           return FALSE;
+        }
+      else if (event->button == 2)
+        {
+          /* middle-click close window */
+          if (task->tasklist->priv->middle_click_close == TRUE)
+            {
+              wnck_window_close (task->window, gtk_get_current_event_time ());
+              return TRUE;
+            }
         }
       else if (event->button == 3)
         {

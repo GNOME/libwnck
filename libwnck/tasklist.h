@@ -97,6 +97,8 @@ void wnck_tasklist_set_grouping (WnckTasklist             *tasklist,
 				 WnckTasklistGroupingType  grouping);
 void wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
 						       gboolean       switch_workspace_on_unminimize);
+void wnck_tasklist_set_middle_click_close (WnckTasklist  *tasklist,
+					   gboolean       middle_click_close);
 void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				       gint          limit);
 void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
