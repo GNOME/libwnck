@@ -515,6 +515,7 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   GtkStateFlags state;
   PangoContext *context;
   PangoFontMetrics *metrics;
+  PangoFontDescription *description;
   gint char_width;
   PangoLayout *layout;
   PangoRectangle natural;
@@ -524,10 +525,10 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
 
   state = gtk_widget_get_state_flags (widget);
   style_context = gtk_widget_get_style_context (widget);
+  gtk_style_context_get (style_context, state, GTK_STYLE_PROPERTY_FONT, &description, NULL);
 
   context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context,
-                                       gtk_style_context_get_font (style_context, state),
+  metrics = pango_context_get_metrics (context, description,
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
