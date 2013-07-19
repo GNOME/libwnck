@@ -1310,7 +1310,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
                   /* Overlaps old range */
                   g_assert (array->len > 0);
                   lowest_range = n_rows * grouping_limit;
-                  g_array_index(array, int, array->len-1) = lowest_range;
+                  g_array_index (array, int, array->len-1) = lowest_range;
                 }
               else
                 {
@@ -1344,18 +1344,17 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
     g_free (tasklist->priv->size_hints);
 
   tasklist->priv->size_hints_len = array->len;
-
   tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
 
-  if (tasklist->priv->orientation == GTK_ORIENTATION_VERTICAL)
-    {
-      requisition->width  = n_cols * tasklist->priv->max_button_width;
-      requisition->height = n_rows * tasklist->priv->max_button_height;
-    }
-  else
+  if (tasklist->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
     {
       requisition->width = tasklist->priv->size_hints[0];
       requisition->height = fake_allocation.height;
+    }
+  else
+    {
+      requisition->width = fake_allocation.width;
+      requisition->height = tasklist->priv->size_hints[0];
     }
 }
 
