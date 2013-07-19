@@ -9,6 +9,7 @@ static gboolean always_group = FALSE;
 static gboolean rtl = FALSE;
 static gboolean skip_tasklist = FALSE;
 static gboolean transparent = FALSE;
+static gboolean vertical = FALSE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
@@ -16,6 +17,7 @@ static GOptionEntry entries[] = {
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Use RTL as default direction", NULL},
 	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, "Don't show window in tasklist", NULL},
+	{"vertical", 'v', 0, G_OPTION_ARG_NONE, &vertical, "Show in vertical mode", NULL},
 	{"transparent", 't', 0, G_OPTION_ARG_NONE, &transparent, "Enable Transparency", NULL},
 	{NULL }
 };
@@ -96,6 +98,10 @@ main (int argc, char **argv)
                                 WNCK_TASKLIST_AUTO_GROUP);
 
   wnck_tasklist_set_middle_click_close (WNCK_TASKLIST (tasklist), TRUE);
+
+  wnck_tasklist_set_orientation (WNCK_TASKLIST (tasklist),
+                                 (vertical ? GTK_ORIENTATION_VERTICAL :
+                                             GTK_ORIENTATION_HORIZONTAL));
 
   if (transparent)
     {
