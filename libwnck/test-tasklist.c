@@ -95,6 +95,8 @@ main (int argc, char **argv)
     wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
                                 WNCK_TASKLIST_AUTO_GROUP);
 
+  wnck_tasklist_set_middle_click_close (WNCK_TASKLIST (tasklist), TRUE);
+
   if (transparent)
     {
       GdkVisual *visual;
