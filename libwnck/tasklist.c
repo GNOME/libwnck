@@ -365,49 +365,7 @@ wnck_task_get_type (void) G_GNUC_CONST;
 static void
 wnck_task_init (WnckTask *task)
 {
-  task->tasklist = NULL;
-
-  task->button = NULL;
-  task->image = NULL;
-  task->label = NULL;
-
   task->type = WNCK_TASK_WINDOW;
-
-  task->class_group = NULL;
-  task->window = NULL;
-#ifdef HAVE_STARTUP_NOTIFICATION
-  task->startup_sequence = NULL;
-#endif
-
-  task->grouping_score = 0;
-
-  task->windows = NULL;
-
-  task->state_changed_tag = 0;
-  task->icon_changed_tag = 0;
-  task->name_changed_tag = 0;
-  task->class_name_changed_tag = 0;
-  task->class_icon_changed_tag = 0;
-
-  task->menu = NULL;
-  task->action_menu = NULL;
-
-  task->really_toggling = FALSE;
-
-  task->was_active = FALSE;
-
-  task->button_activate = 0;
-
-  task->dnd_timestamp = 0;
-
-  task->start_needs_attention = 0;
-  task->glow_start_time = 0.0;
-  task->glow_factor = 0.0;
-
-  task->button_glow = 0;
-
-  task->row = 0;
-  task->col = 0;
 }
 
 static void
@@ -612,7 +570,6 @@ wnck_task_finalize (GObject *object)
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
-  int i;
   GtkWidget *widget;
   AtkObject *atk_obj;
 
