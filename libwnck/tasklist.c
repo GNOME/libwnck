@@ -1162,16 +1162,17 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   GtkStateFlags state;
   PangoContext *context;
   PangoFontMetrics *metrics;
+  PangoFontDescription *description;
   gint char_width;
   gint text_width;
   gint width;
 
   style_context = gtk_widget_get_style_context (widget);
   state = gtk_widget_get_state_flags (widget);
+  gtk_style_context_get (style_context, state, GTK_STYLE_PROPERTY_FONT, &description, NULL);
 
   context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context,
-                                       gtk_style_context_get_font (style_context, state),
+  metrics = pango_context_get_metrics (context, description,
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
