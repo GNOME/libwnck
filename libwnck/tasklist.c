@@ -622,57 +622,16 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   tasklist->priv = WNCK_TASKLIST_GET_PRIVATE (tasklist);
 
-  tasklist->priv->screen = NULL;
-
-  tasklist->priv->active_task = NULL;
-  tasklist->priv->active_class_group = NULL;
-
-  tasklist->priv->include_all_workspaces = FALSE;
-
-  tasklist->priv->class_groups = NULL;
-  tasklist->priv->windows = NULL;
-  tasklist->priv->windows_without_class_group = NULL;
-
-  tasklist->priv->startup_sequences = NULL;
-
-  tasklist->priv->skipped_windows = NULL;
-
   tasklist->priv->class_group_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
 
-  tasklist->priv->max_button_width = 0;
-  tasklist->priv->max_button_height = 0;
-
-  tasklist->priv->switch_workspace_on_unminimize = FALSE;
-  tasklist->priv->middle_click_close = FALSE;
-
   tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
-
-  tasklist->priv->activate_timeout_id = 0;
-  for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
-    tasklist->priv->screen_connections[i] = 0;
-
-  tasklist->priv->idle_callback_tag = 0;
-
-  tasklist->priv->size_hints = NULL;
-  tasklist->priv->size_hints_len = 0;
-
-  tasklist->priv->icon_loader = NULL;
-  tasklist->priv->icon_loader_data = NULL;
-  tasklist->priv->free_icon_loader_data = NULL;
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-  tasklist->priv->sn_context = NULL;
-  tasklist->priv->startup_sequence_timeout = 0;
-#endif
 
   tasklist->priv->monitor_num = -1;
   tasklist->priv->monitor_geometry.width = -1; /* invalid value */
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   tasklist->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
-
-  tasklist->priv->drag_start_time = 0;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
