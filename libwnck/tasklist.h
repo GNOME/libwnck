@@ -105,6 +105,8 @@ void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					       gboolean      include_all_workspaces);
 void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
                                       GtkReliefStyle relief);
+void wnck_tasklist_set_orientation (WnckTasklist *tasklist,
+                                    GtkOrientation orient);
 
 /**
  * WnckLoadIconFunction:
