@@ -1264,7 +1264,7 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     {
       if (!wnck_workspace_is_virtual (space))
         {
-	  get_dark_color_for_state (context, state, &color);
+          get_dark_color_for_state (context, state, &color);
           gdk_cairo_set_source_rgba (cr, &color);
           cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
           cairo_fill (cr);
@@ -1379,23 +1379,19 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 							    wnck_screen_get_workspace (pager->priv->screen,
 										       workspace));
 
-      tmp = windows;
-      while (tmp != NULL)
-	{
-	  WnckWindow *win = tmp->data;
-	  GdkRectangle winrect;
+  tmp = windows;
+  while (tmp != NULL)
+  	{
+  	  WnckWindow *win = tmp->data;
+  	  GdkRectangle winrect;
 
-	  get_window_rect (win, rect, &winrect);
+  	  get_window_rect (win, rect, &winrect);
 
-	  draw_window (cr,
-		       widget,
-		       win,
-		       &winrect,
-                       state,
-		       win == pager->priv->drag_window && pager->priv->dragging ? TRUE : FALSE);
+      gboolean translucent = (win == pager->priv->drag_window) && pager->priv->dragging;
+      draw_window (cr, widget, win, &winrect, state, translucent);
 
-	  tmp = tmp->next;
-	}
+  	  tmp = tmp->next;
+  	}
 
       g_list_free (windows);
     }
@@ -1414,9 +1410,9 @@ wnck_pager_draw_workspace (WnckPager    *pager,
       pango_layout_get_pixel_size (layout, &w, &h);
 
       if (is_current)
-	gtk_style_context_get_color (context, GTK_STATE_FLAG_SELECTED, &color);
+        gtk_style_context_get_color (context, GTK_STATE_FLAG_SELECTED, &color);
       else
-	gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &color);
+        gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &color);
       gdk_cairo_set_source_rgba (cr, &color);
       cairo_move_to (cr,
                      rect->x + (rect->width - w) / 2,
@@ -1863,8 +1859,7 @@ wnck_update_drag_icon (WnckWindow     *window,
                                                CAIRO_CONTENT_COLOR,
                                                rect.width, rect.height);
   cr = cairo_create (surface);
-  draw_window (cr, widget, window,
-	       &rect, GTK_STATE_FLAG_NORMAL, FALSE);
+  draw_window (cr, widget, window, &rect, GTK_STATE_FLAG_NORMAL, FALSE);
   cairo_destroy (cr);
   cairo_surface_set_device_offset (surface, 2, 2);
 
