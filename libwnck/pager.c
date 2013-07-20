@@ -1240,7 +1240,6 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   GtkWidget *widget;
   GtkStateFlags state;
   GtkStyleContext *context;
-  GdkRGBA color;
 
   space = wnck_screen_get_workspace (pager->priv->screen, workspace);
   if (!space)
@@ -1394,28 +1393,25 @@ wnck_pager_draw_workspace (WnckPager    *pager,
   else
     {
       /* Workspace name mode */
+      GtkStateFlags layout_state;
       const char *workspace_name;
       PangoLayout *layout;
+      WnckWorkspace *ws;
       int w, h;
 
-      workspace_name = wnck_workspace_get_name (wnck_screen_get_workspace (pager->priv->screen,
-									   workspace));
-      layout = gtk_widget_create_pango_layout  (widget,
-						workspace_name);
+      ws = wnck_screen_get_workspace (pager->priv->screen, workspace);
+      workspace_name = wnck_workspace_get_name (ws);
+      layout = gtk_widget_create_pango_layout (widget, workspace_name);
 
       pango_layout_get_pixel_size (layout, &w, &h);
 
-      if (is_current)
-        gtk_style_context_get_color (context, GTK_STATE_FLAG_SELECTED, &color);
-      else
-        gtk_style_context_get_color (context, GTK_STATE_FLAG_NORMAL, &color);
-      gdk_cairo_set_source_rgba (cr, &color);
-      cairo_move_to (cr,
-                     rect->x + (rect->width - w) / 2,
-                     rect->y + (rect->height - h) / 2);
+      layout_state = (is_current) ? GTK_STATE_FLAG_SELECTED : GTK_STATE_FLAG_NORMAL;
+      gtk_style_context_save (context);
+      gtk_style_context_set_state (context, layout_state);
+      gtk_render_layout (context, cr, rect->x + (rect->width - w) / 2,
+                         rect->y + (rect->height - h) / 2, layout);
 
-      pango_cairo_show_layout (cr, layout);
-
+      gtk_style_context_restore (context);
       g_object_unref (layout);
     }
 
@@ -1423,18 +1419,13 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     {
       gtk_style_context_save (context);
       gtk_style_context_set_state (context, GTK_STATE_FLAG_NORMAL);
-
-      cairo_save (cr);
       gtk_render_frame (context, cr, rect->x, rect->y, rect->width, rect->height);
-      cairo_restore (cr);
-
       gtk_style_context_restore (context);
 
       cairo_set_source_rgb (cr, 0.0, 0.0, 0.0); /* black */
       cairo_set_line_width (cr, 1.0);
-      cairo_rectangle (cr,
-		       rect->x + 0.5, rect->y + 0.5,
-		       MAX (0, rect->width - 1), MAX (0, rect->height - 1));
+      cairo_rectangle (cr, rect->x + 0.5, rect->y + 0.5,
+                           MAX (0, rect->width - 1), MAX (0, rect->height - 1));
       cairo_stroke (cr);
     }
 }
