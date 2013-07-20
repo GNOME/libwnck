@@ -1204,28 +1204,33 @@ workspace_at_point (WnckPager *pager,
 }
 
 static void
-get_dark_color_for_state (GtkStyleContext *context,
-			  GtkStateFlags    state,
-			  GdkRGBA         *dark)
+draw_dark_rectangle (GtkStyleContext *context,
+                     cairo_t *cr,
+                     GtkStateFlags state,
+                     int rx, int ry, int rw, int rh)
 {
-  GdkRGBA           bg;
-  GtkSymbolicColor *c1, *c2;
+  gtk_style_context_save (context);
 
-  gtk_style_context_get_background_color (context, state, &bg);
+  gtk_style_context_set_state (context, state);
 
-  c1 = gtk_symbolic_color_new_literal (&bg);
+  cairo_push_group (cr);
 
-  c2 = gtk_symbolic_color_new_shade (c1, 0.7);
-  gtk_symbolic_color_resolve (c2, NULL, dark);
-  gtk_symbolic_color_unref (c2);
-  gtk_symbolic_color_unref (c1);
+  gtk_render_background (context, cr, rx, ry, rw, rh);
+  cairo_set_source_rgba (cr, 0.0f, 0.0f, 0.0f, 0.3f);
+  cairo_rectangle (cr, rx, ry, rw, rh);
+  cairo_fill (cr);
+
+  cairo_pop_group_to_source (cr);
+  cairo_paint (cr);
+
+  gtk_style_context_restore (context);
 }
 
 static void
 wnck_pager_draw_workspace (WnckPager    *pager,
                            cairo_t      *cr,
-			   int           workspace,
-			   GdkRectangle *rect,
+                           int           workspace,
+                           GdkRectangle *rect,
                            GdkPixbuf    *bg_pixbuf)
 {
   GList *windows;
@@ -1264,10 +1269,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
     {
       if (!wnck_workspace_is_virtual (space))
         {
-          get_dark_color_for_state (context, state, &color);
-          gdk_cairo_set_source_rgba (cr, &color);
-          cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
-          cairo_fill (cr);
+          draw_dark_rectangle (context, cr, state,
+                               rect->x, rect->y, rect->width, rect->height);
         }
       else
         {
@@ -1328,18 +1331,15 @@ wnck_pager_draw_workspace (WnckPager    *pager,
                     {
                       /* "+ j" is for the thin lines */
                       vy = rect->y + (height_ratio * screen_height) * j + j;
+                      GtkStateFlags rec_state = GTK_STATE_FLAG_NORMAL;
 
                       if (j == verti_views - 1)
                         vh = rect->height + rect->y - vy;
 
                       if (active_i == i && active_j == j)
-			get_dark_color_for_state (context, GTK_STATE_FLAG_SELECTED, &color);
-		      else
-			get_dark_color_for_state (context, GTK_STATE_FLAG_NORMAL, &color);
+                        rec_state = GTK_STATE_FLAG_SELECTED;
 
-		      gdk_cairo_set_source_rgba (cr, &color);
-                      cairo_rectangle (cr, vx, vy, vw, vh);
-                      cairo_fill (cr);
+                      draw_dark_rectangle (context, cr, rec_state, vx, vy, vw, vh);
                     }
                 }
             }
@@ -1349,10 +1349,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
               height_ratio = rect->height / (double) workspace_height;
 
               /* first draw non-active part of the viewport */
-	      get_dark_color_for_state (context, GTK_STATE_FLAG_NORMAL, &color);
-              gdk_cairo_set_source_rgba (cr, &color);
-              cairo_rectangle (cr, rect->x, rect->y, rect->width, rect->height);
-              cairo_fill (cr);
+              draw_dark_rectangle (context, cr, GTK_STATE_FLAG_NORMAL,
+                                   rect->x, rect->y, rect->width, rect->height);
 
               if (is_current)
                 {
@@ -1364,10 +1362,8 @@ wnck_pager_draw_workspace (WnckPager    *pager,
                   vw = width_ratio * screen_width;
                   vh = height_ratio * screen_height;
 
-		  get_dark_color_for_state (context, GTK_STATE_FLAG_SELECTED, &color);
-                  gdk_cairo_set_source_rgba (cr, &color);
-                  cairo_rectangle (cr, vx, vy, vw, vh);
-                  cairo_fill (cr);
+                  draw_dark_rectangle (context, cr, GTK_STATE_FLAG_SELECTED,
+                                       vx, vy, vw, vh);
                 }
             }
         }
