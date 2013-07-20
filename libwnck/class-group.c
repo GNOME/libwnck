@@ -131,13 +131,6 @@ static void
 wnck_class_group_init (WnckClassGroup *class_group)
 {
   class_group->priv = WNCK_CLASS_GROUP_GET_PRIVATE (class_group);
-
-  class_group->priv->res_class = NULL;
-  class_group->priv->name = NULL;
-  class_group->priv->windows = NULL;
-
-  class_group->priv->icon = NULL;
-  class_group->priv->mini_icon = NULL;
 }
 
 static void
