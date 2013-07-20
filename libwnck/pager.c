@@ -987,7 +987,7 @@ draw_window (cairo_t            *cr,
   GdkPixbuf *icon;
   int icon_x, icon_y, icon_w, icon_h;
   gboolean is_active;
-  GdkRGBA bg, fg;
+  GdkRGBA fg;
   gdouble translucency;
 
   context = gtk_widget_get_style_context (widget);
@@ -995,27 +995,24 @@ draw_window (cairo_t            *cr,
   is_active = wnck_window_is_active (win);
   translucency = translucent ? 0.4 : 1.0;
 
-  cairo_save (cr);
-  cairo_rectangle (cr, winrect->x, winrect->y, winrect->width, winrect->height);
-  cairo_clip (cr);
+  gtk_style_context_save (context);
+  gtk_style_context_set_state (context, state);
 
-  gtk_style_context_get_background_color (context, state, &bg);
-  if (is_active) {
-    GtkSymbolicColor *c1, *c2;
+  cairo_push_group (cr);
 
-    c1 = gtk_symbolic_color_new_literal (&bg);
-    c2 = gtk_symbolic_color_new_shade (c1, 1.3);
-    gtk_symbolic_color_resolve (c2, NULL, &bg);
-    gtk_symbolic_color_unref (c2);
-    gtk_symbolic_color_unref (c1);
-  }
+  gtk_render_background (context, cr, winrect->x + 1, winrect->y + 1,
+                         MAX (0, winrect->width - 2), MAX (0, winrect->height - 2));
 
-  bg.alpha = translucency;
-  gdk_cairo_set_source_rgba (cr, &bg);
-  cairo_rectangle (cr,
-                   winrect->x + 1, winrect->y + 1,
-                   MAX (0, winrect->width - 2), MAX (0, winrect->height - 2));
-  cairo_fill (cr);
+  if (is_active)
+    {
+      cairo_set_source_rgba (cr, 1.0f, 1.0f, 1.0f, 0.3f);
+      cairo_rectangle (cr, winrect->x + 1, winrect->y + 1,
+                       MAX (0, winrect->width - 2), MAX (0, winrect->height - 2));
+      cairo_fill (cr);
+    }
+
+  cairo_pop_group_to_source (cr);
+  cairo_paint_with_alpha (cr, translucency);
 
   icon = wnck_window_get_icon (win);
 
@@ -1052,12 +1049,10 @@ draw_window (cairo_t            *cr,
       icon_x = winrect->x + (winrect->width - icon_w) / 2;
       icon_y = winrect->y + (winrect->height - icon_h) / 2;
 
-      cairo_save (cr);
-      gdk_cairo_set_source_pixbuf (cr, icon, icon_x, icon_y);
-      cairo_rectangle (cr, icon_x, icon_y, icon_w, icon_h);
-      cairo_clip (cr);
+      cairo_push_group (cr);
+      gtk_render_icon (context, cr, icon, icon_x, icon_y);
+      cairo_pop_group_to_source (cr);
       cairo_paint_with_alpha (cr, translucency);
-      cairo_restore (cr);
     }
 
   gtk_style_context_get_color (context, state, &fg);
@@ -1069,7 +1064,7 @@ draw_window (cairo_t            *cr,
                    MAX (0, winrect->width - 1), MAX (0, winrect->height - 1));
   cairo_stroke (cr);
 
-  cairo_restore (cr);
+  gtk_style_context_restore (context);
 }
 
 static WnckWindow *
