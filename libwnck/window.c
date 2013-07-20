@@ -235,88 +235,13 @@ wnck_window_init (WnckWindow *window)
 {
   window->priv = WNCK_WINDOW_GET_PRIVATE (window);
 
-  window->priv->xwindow = None;
-  window->priv->name = NULL;
-  window->priv->app = NULL;
-  window->priv->class_group = NULL;
-  window->priv->group_leader = None;
-  window->priv->transient_for = None;
-  window->priv->orig_event_mask = 0;
+  window->priv->icon_cache = _wnck_icon_cache_new ();
   window->priv->icon_geometry.width = -1; /* invalid cached value */
-  window->priv->name = NULL;
-  window->priv->icon_name = NULL;
-  window->priv->session_id = NULL;
-  window->priv->session_id_utf8 = NULL;
-  window->priv->pid = 0;
   window->priv->workspace = -1;
   window->priv->sort_order = G_MAXINT;
 
   /* FIXME: should we have an invalid window type for this? */
-  window->priv->wintype = 0;
-
-  window->priv->icon = NULL;
-  window->priv->mini_icon = NULL;
-
-  window->priv->icon_cache = _wnck_icon_cache_new ();
-
-  window->priv->actions = 0;
-
-  window->priv->x = 0;
-  window->priv->y = 0;
-  window->priv->width = 0;
-  window->priv->height = 0;
-
-  window->priv->left_frame = 0;
-  window->priv->right_frame = 0;
-  window->priv->top_frame = 0;
-  window->priv->bottom_frame = 0;
-
-  window->priv->startup_id = NULL;
-
-  window->priv->res_class = NULL;
-  window->priv->res_name = NULL;
-
-  window->priv->transient_for_root = FALSE;
-
-  window->priv->is_minimized = FALSE;
-  window->priv->is_maximized_horz = FALSE;
-  window->priv->is_maximized_vert = FALSE;
-  window->priv->is_shaded = FALSE;
-  window->priv->is_above = FALSE;
-  window->priv->is_below = FALSE;
-  window->priv->skip_pager = FALSE;
-  window->priv->skip_taskbar = FALSE;
-  window->priv->is_sticky = FALSE;
-  window->priv->is_hidden = FALSE;
-  window->priv->is_fullscreen = FALSE;
-  window->priv->demands_attention = FALSE;
-  window->priv->is_urgent = FALSE;
-
-  window->priv->needs_attention_time = 0;
-
-  window->priv->net_wm_state_hidden = FALSE;
-  window->priv->wm_state_iconic = FALSE;
-
-  window->priv->update_handler = 0;
-
-  window->priv->need_update_name = FALSE;
-  window->priv->need_update_state = FALSE;
-  window->priv->need_update_wm_state = FALSE;
-  window->priv->need_update_icon_name = FALSE;
-  window->priv->need_update_workspace = FALSE;
-  window->priv->need_update_actions = FALSE;
-  window->priv->need_update_wintype = FALSE;
-  window->priv->need_update_transient_for = FALSE;
-  window->priv->need_update_startup_id = FALSE;
-  window->priv->need_update_wmclass = FALSE;
-  window->priv->need_update_wmhints = FALSE;
-  window->priv->need_update_frame_extents = FALSE;
-  window->priv->need_update_role = FALSE;
-
-  window->priv->need_emit_name_changed = FALSE;
-  window->priv->need_emit_icon_changed = FALSE;
-  window->priv->need_emit_class_changed = FALSE;
-  window->priv->need_emit_role_changed = FALSE;
+  window->priv->wintype = WNCK_WINDOW_NORMAL;
 }
 
 static void
