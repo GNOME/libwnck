@@ -1005,6 +1005,7 @@ draw_window (cairo_t            *cr,
 
   if (is_active)
     {
+      /* Sharpen the foreground color */
       cairo_set_source_rgba (cr, 1.0f, 1.0f, 1.0f, 0.3f);
       cairo_rectangle (cr, winrect->x + 1, winrect->y + 1,
                        MAX (0, winrect->width - 2), MAX (0, winrect->height - 2));
@@ -1054,6 +1055,12 @@ draw_window (cairo_t            *cr,
       cairo_pop_group_to_source (cr);
       cairo_paint_with_alpha (cr, translucency);
     }
+
+  cairo_push_group (cr);
+  gtk_render_frame (context, cr, winrect->x + 0.5, winrect->y + 0.5,
+                    MAX (0, winrect->width - 1), MAX (0, winrect->height - 1));
+  cairo_pop_group_to_source (cr);
+  cairo_paint_with_alpha (cr, translucency);
 
   gtk_style_context_get_color (context, state, &fg);
   fg.alpha = translucency;
