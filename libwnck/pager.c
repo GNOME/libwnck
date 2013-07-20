@@ -227,19 +227,8 @@ wnck_pager_init (WnckPager *pager)
     pager->priv->screen_connections[i] = 0;
 
   pager->priv->prelight = -1;
-  pager->priv->prelight_dnd = FALSE;
-
-  pager->priv->dragging = FALSE;
-  pager->priv->drag_start_x = 0;
-  pager->priv->drag_start_y = 0;
-  pager->priv->drag_window = NULL;
-
-  pager->priv->bg_cache = NULL;
 
   pager->priv->layout_manager_token = WNCK_NO_MANAGER_TOKEN;
-
-  pager->priv->dnd_activate = 0;
-  pager->priv->dnd_time = 0;
 
   g_object_set (pager, "has-tooltip", TRUE, NULL);
 
