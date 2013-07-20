@@ -203,47 +203,9 @@ wnck_screen_init (WnckScreen *screen)
   screen->priv = WNCK_SCREEN_GET_PRIVATE (screen);
 
   screen->priv->number = -1;
-  screen->priv->xroot = None;
-  screen->priv->xscreen = NULL;
-
-  screen->priv->mapped_windows = NULL;
-  screen->priv->stacked_windows = NULL;
-  screen->priv->workspaces = NULL;
-
-  screen->priv->active_window = NULL;
-  screen->priv->previously_active_window = NULL;
-
-  screen->priv->active_workspace = NULL;
-
-  screen->priv->window_order = 0;
-
-  screen->priv->bg_pixmap = None;
-
-  screen->priv->wm_name = NULL;
-
-  screen->priv->update_handler = 0;
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-  screen->priv->sn_display = NULL;
-#endif
-
-  screen->priv->showing_desktop = FALSE;
-
-  screen->priv->vertical_workspaces = FALSE;
   screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
   screen->priv->rows_of_workspaces = 1;
   screen->priv->columns_of_workspaces = -1;
-
-  screen->priv->need_update_stack_list = FALSE;
-  screen->priv->need_update_workspace_list = FALSE;
-  screen->priv->need_update_viewport_settings = FALSE;
-  screen->priv->need_update_active_workspace = FALSE;
-  screen->priv->need_update_active_window = FALSE;
-  screen->priv->need_update_workspace_layout = FALSE;
-  screen->priv->need_update_workspace_names = FALSE;
-  screen->priv->need_update_bg_pixmap = FALSE;
-  screen->priv->need_update_showing_desktop = FALSE;
-  screen->priv->need_update_wm = FALSE;
 }
 
 static void
