@@ -1242,14 +1242,7 @@ wnck_selector_init (WnckSelector *selector)
 
   selector->priv = WNCK_SELECTOR_GET_PRIVATE (selector);
 
-  selector->priv->image           = NULL;
-  selector->priv->icon_window     = NULL;
-
-  selector->priv->menu            = NULL;
-  selector->priv->no_windows_item = NULL;
-  selector->priv->window_hash     = NULL;
-
-  selector->priv->size            = -1;
+  selector->priv->size = -1;
 
   gtk_widget_add_events (GTK_WIDGET (selector), GDK_SCROLL_MASK);
 }
