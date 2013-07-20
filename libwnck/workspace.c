@@ -96,14 +96,7 @@ wnck_workspace_init (WnckWorkspace *workspace)
 {
   workspace->priv = WNCK_WORKSPACE_GET_PRIVATE (workspace);
 
-  workspace->priv->screen = NULL;
   workspace->priv->number = -1;
-  workspace->priv->name = NULL;
-  workspace->priv->width = 0;
-  workspace->priv->height = 0;
-  workspace->priv->viewport_x = 0;
-  workspace->priv->viewport_y = 0;
-  workspace->priv->is_virtual = FALSE;
 }
 
 static void
