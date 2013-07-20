@@ -270,8 +270,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, active_window_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
   /**
@@ -287,8 +286,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, active_workspace_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
 
   /**
@@ -302,8 +300,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, window_stacking_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -318,8 +315,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, window_opened),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
   /**
@@ -334,8 +330,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, window_closed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WINDOW);
 
   /**
@@ -350,8 +345,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, workspace_created),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
 
   /**
@@ -366,8 +360,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, workspace_destroyed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_WORKSPACE);
 
   /**
@@ -382,8 +375,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, application_opened),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
 
   /**
@@ -398,8 +390,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, application_closed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_APPLICATION);
 
   /**
@@ -416,8 +407,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, class_group_opened),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
 
   /**
@@ -434,8 +424,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, class_group_closed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__OBJECT,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 1, WNCK_TYPE_CLASS_GROUP);
 
   /**
@@ -449,8 +438,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, background_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -466,8 +454,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, showing_desktop_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -484,8 +471,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, viewports_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -501,8 +487,7 @@ wnck_screen_class_init (WnckScreenClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckScreenClass, window_manager_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 }
 

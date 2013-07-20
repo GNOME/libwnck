@@ -110,8 +110,7 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckClassGroupClass, name_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
   /**
    * WnckClassGroup::icon-changed:
@@ -124,8 +123,7 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
                   G_OBJECT_CLASS_TYPE (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckClassGroupClass, icon_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 }
 

@@ -35,7 +35,6 @@
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
-#include "wnck-marshal.h"
 
 /**
  * SECTION:window
@@ -340,8 +339,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, name_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -361,8 +359,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, state_changed),
-                  NULL, NULL,
-                  _wnck_marshal_VOID__FLAGS_FLAGS,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 2,
                   WNCK_TYPE_WINDOW_STATE, WNCK_TYPE_WINDOW_STATE);
 
@@ -378,8 +375,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, workspace_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -393,8 +389,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, icon_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -411,8 +406,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, actions_changed),
-                  NULL, NULL,
-                  _wnck_marshal_VOID__FLAGS_FLAGS,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 2,
                   WNCK_TYPE_WINDOW_ACTIONS,
                   WNCK_TYPE_WINDOW_ACTIONS);
@@ -428,8 +422,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, geometry_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -443,8 +436,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, class_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 
   /**
@@ -458,8 +450,7 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_OBJECT_CLASS_TYPE (object_class),
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (WnckWindowClass, role_changed),
-                  NULL, NULL,
-                  g_cclosure_marshal_VOID__VOID,
+                  NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
 }
 

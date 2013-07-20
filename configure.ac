@@ -150,9 +150,6 @@ PKG_CHECK_MODULES([LIBWNCK],[
 	$XRES_PACKAGE
 ])
 
-GLIB_GENMARSHAL=`$PKG_CONFIG --variable=glib_genmarshal glib-2.0`  
-AC_SUBST(GLIB_GENMARSHAL)
-
 AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
 
 if test x"$GDK_PIXBUF_CSOURCE" = xno; then

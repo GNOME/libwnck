@@ -72,8 +72,8 @@ wnck_accessibility_files =			\
 	workspace-accessible-factory.c		\
 	workspace-accessible-factory.h
 
-wnck_built_headers = $(wnck_built_installed_headers) wnck-marshal.h inlinepixbufs.h
-wnck_built_cfiles = wnck-enum-types.c wnck-marshal.c
+wnck_built_headers = $(wnck_built_installed_headers) inlinepixbufs.h
+wnck_built_cfiles = wnck-enum-types.c
 
 libwnck_3_la_SOURCES = 		\
 	$(wnck_built_headers)	\
@@ -121,14 +121,6 @@ test_pager_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 test_urgent_LDADD = $(LIBWNCK_LIBS)
 test_shutdown_LDADD = $(LIBWNCK_LIBS) ./$(lib_LTLIBRARIES)
 
-wnck-marshal.h: wnck-marshal.list
-	$(AM_V_GEN)$(GLIB_GENMARSHAL) --prefix=_wnck_marshal $< --header > $@
-
-wnck-marshal.c: wnck-marshal.list wnck-marshal.h
-	$(AM_V_GEN)echo "#include <libwnck/libwnck.h>" > $@ \
-	&& echo "#include \"wnck-marshal.h\"" >> $@ \
-	&& $(GLIB_GENMARSHAL) --prefix=_wnck_marshal $< --body >> $@
-
 wnck-enum-types.h: $(wnck_headers)
 	$(AM_V_GEN)glib-mkenums \
 		--fhead "#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)\n" \
@@ -174,8 +166,7 @@ CLEANFILES =			\
 
 EXTRA_DIST = 				\
 	$(inlinepixbufs_SOURCES)	\
-	version.h.in			\
-	wnck-marshal.list
+	version.h.in
 
 # Introspection
 -include $(INTROSPECTION_MAKEFILE)
