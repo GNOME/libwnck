@@ -116,29 +116,8 @@ wnck_application_init (WnckApplication *application)
 {
   application->priv = WNCK_APPLICATION_GET_PRIVATE (application);
 
-  application->priv->xwindow = None;
-  application->priv->screen = NULL;
-  application->priv->windows = NULL;
-  application->priv->pid = 0;
-  application->priv->name = NULL;
-
-  application->priv->name_window = NULL;
-
-  application->priv->icon = NULL;
-  application->priv->mini_icon = NULL;
-
   application->priv->icon_cache = _wnck_icon_cache_new ();
-  _wnck_icon_cache_set_want_fallback (application->priv->icon_cache,
-                                      FALSE);
-
-  application->priv->icon_window = NULL;
-
-  application->priv->startup_id = NULL;
-
-  application->priv->name_from_leader = FALSE;
-  application->priv->icon_from_leader = FALSE;
-
-  application->priv->need_emit_icon_changed = FALSE;
+  _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
 }
 
 static void
