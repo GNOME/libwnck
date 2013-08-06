@@ -705,7 +705,7 @@ _wnck_error_trap_push (Display *display)
 int
 _wnck_error_trap_pop (Display *display)
 {
-  XSync (display, False);
+  gdk_flush ();
   return gdk_error_trap_pop ();
 }
 
