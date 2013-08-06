@@ -35,6 +35,13 @@ WnckWindow
 @arg1: 
 @arg2: 
 
+<!-- ##### SIGNAL WnckWindow::class-changed ##### -->
+<para>
+
+</para>
+
+@wnckwindow: the object which received the signal.
+
 <!-- ##### SIGNAL WnckWindow::geometry-changed ##### -->
 <para>
 
@@ -50,6 +57,13 @@ WnckWindow
 @wnckwindow: the object which received the signal.
 
 <!-- ##### SIGNAL WnckWindow::name-changed ##### -->
+<para>
+
+</para>
+
+@wnckwindow: the object which received the signal.
+
+<!-- ##### SIGNAL WnckWindow::role-changed ##### -->
 <para>
 
 </para>

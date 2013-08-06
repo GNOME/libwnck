@@ -11,7 +11,7 @@ DOC_MAIN_SGML_FILE=libwnck-docs.sgml
 DOC_SOURCE_DIR=../libwnck
 
 # Extra options to pass to gtkdoc-scangobj
-SCANGOBJ_OPTIONS=--nogtkinit --type-init-func="g_type_init ()"
+SCANGOBJ_OPTIONS=--nogtkinit
 
 # Extra options to supply to gtkdoc-scan
 SCAN_OPTIONS=--deprecated-guards="WNCK_DISABLE_DEPRECATED"
