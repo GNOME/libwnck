@@ -1,4 +1,42 @@
 =============
+Version 3.4.6
+=============
+
+  Features
+
+  * Add option to close windows with mouse middle click on button in tasklist
+    (Stefano Karapetsas)
+  * Add API to define task list orientation (Jean-Luc Porquet and Josselin Mouette)
+
+  Fixes
+
+  * ClassGroup: fix class signal signature (Marco Trevisan)
+  * Get rid of the deprecated code in TaskList, Selector and Pager (Marco Trevisan)
+  
+  Translators
+
+  * Andika Triwidada (id)
+  * Ani Peter (ml)
+  * Aurimas Černius (lt)
+  * Balázs Úr (hu)
+  * Daniel Mustieles (es)
+  * Enrico Nicoletto (pt_BR)
+  * Joe Hansen (da)
+  * Krishnababu Krothapalli (te)
+  * ManojKumar Giri (or)
+  * Marek Černocký (cs)
+  * Matej Urbančič (sl)
+  * Nilamdyuti Goswami (as)
+  * Rajesh Ranjan (hi)
+  * Sandeep Sheshrao Shedmake (mr)
+  * Shankar Prasad (kn)
+  * Shantha kumar (ta)
+  * Sweta Kothari (gu)
+  * Theppitak Karoonboonyanan (th)
+  * Yuri Myasoedov (ru)
+  * Мирослав Николић (sr) (sr@latin
+
+=============
 Version 3.4.5
 =============
 
