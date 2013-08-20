@@ -2130,6 +2130,18 @@ get_icons (WnckWindow *window)
             !(window->priv->icon || window->priv->mini_icon));
 }
 
+void
+_wnck_window_load_icons (WnckWindow *window)
+{
+  g_return_if_fail (WNCK_IS_WINDOW (window));
+
+  get_icons (window);
+  if (window->priv->need_emit_icon_changed)
+    queue_update (window); /* not done in get_icons since we call that from
+                            * the update
+                            */
+}
+
 /**
  * wnck_window_get_icon:
  * @window: a #WnckWindow.
@@ -2147,11 +2159,7 @@ wnck_window_get_icon (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  get_icons (window);
-  if (window->priv->need_emit_icon_changed)
-    queue_update (window); /* not done in get_icons since we call that from
-                            * the update
-                            */
+  _wnck_window_load_icons (window);
 
   return window->priv->icon;
 }
@@ -2173,11 +2181,7 @@ wnck_window_get_mini_icon (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  get_icons (window);
-  if (window->priv->need_emit_icon_changed)
-    queue_update (window); /* not done in get_icons since we call that from
-                            * the update
-                            */
+  _wnck_window_load_icons (window);
 
   return window->priv->mini_icon;
 }

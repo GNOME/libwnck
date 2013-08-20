@@ -59,6 +59,8 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   gint        sort_order);
 void        _wnck_window_destroy (WnckWindow *window);
 
+void        _wnck_window_load_icons (WnckWindow *window);
+
 char*       _wnck_window_get_name_for_display (WnckWindow *window,
                                                gboolean    use_icon_name,
                                                gboolean    use_state_decorations);
