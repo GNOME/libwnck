@@ -10,11 +10,13 @@ static gboolean rtl = FALSE;
 static gboolean skip_tasklist = FALSE;
 static gboolean transparent = FALSE;
 static gboolean vertical = FALSE;
+static gint icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
 	{"never-group", 'n', 0, G_OPTION_ARG_NONE, &never_group, "Never group windows", NULL},
 	{"display-all", 'a', 0, G_OPTION_ARG_NONE, &display_all, "Display windows from all workspaces", NULL},
+	{"icon-size", 'i', 0, G_OPTION_ARG_INT, &icon_size, "Icon size for tasklist", NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Use RTL as default direction", NULL},
 	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, "Don't show window in tasklist", NULL},
 	{"vertical", 'v', 0, G_OPTION_ARG_NONE, &vertical, "Show in vertical mode", NULL},
@@ -66,6 +68,7 @@ main (int argc, char **argv)
   if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
+  wnck_set_default_mini_icon_size (icon_size);
   screen = wnck_screen_get_default ();
 
   /* because the pager doesn't respond to signals at the moment */

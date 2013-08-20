@@ -71,8 +71,8 @@ time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *wind
 
 void        _wnck_window_shutdown_all (void);
 
-WnckWorkspace* _wnck_workspace_create  (int            number,
-					WnckScreen    *screen);
+WnckWorkspace* _wnck_workspace_create  (int            number, 
+                                        WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);
 
 void _wnck_window_set_application    (WnckWindow      *window,
@@ -82,10 +82,9 @@ void _wnck_window_set_class_group (WnckWindow     *window,
 				   WnckClassGroup *class_group);
 
 /* this one is in pager.c since it needs code from there to draw the icon */
-void 
-_wnck_window_set_as_drag_icon (WnckWindow     *window,
-                               GdkDragContext *context,
-                               GtkWidget      *drag_source);
+void _wnck_window_set_as_drag_icon (WnckWindow     *window,
+                                    GdkDragContext *context,
+                                    GtkWidget      *drag_source);
 
 void _wnck_application_add_window    (WnckApplication *app,
                                       WnckWindow      *window);
