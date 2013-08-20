@@ -115,10 +115,8 @@ gboolean _wnck_workspace_set_viewport (WnckWorkspace *space, int x, int y);
 void _wnck_init (void);
 Display *_wnck_get_default_display (void);
 
-#define DEFAULT_ICON_WIDTH 32
-#define DEFAULT_ICON_HEIGHT 32
-#define DEFAULT_MINI_ICON_WIDTH 16
-#define DEFAULT_MINI_ICON_HEIGHT 16
+#define DEFAULT_ICON_SIZE 32
+#define DEFAULT_MINI_ICON_SIZE 16
 
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 

@@ -345,10 +345,10 @@ get_icons (WnckApplication *app)
                         app->priv->xwindow,
                         app->priv->icon_cache,
                         &icon,
-                        DEFAULT_ICON_WIDTH, DEFAULT_ICON_HEIGHT,
+                        DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE,
                         &mini_icon,
-                        DEFAULT_MINI_ICON_WIDTH,
-                        DEFAULT_MINI_ICON_HEIGHT))
+                        DEFAULT_MINI_ICON_SIZE,
+                        DEFAULT_MINI_ICON_SIZE))
     {
       app->priv->need_emit_icon_changed = TRUE;
       app->priv->icon_from_leader = TRUE;

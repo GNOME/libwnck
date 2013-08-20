@@ -423,11 +423,11 @@ set_icon (WnckClassGroup *class_group)
   if (!icon || !mini_icon)
     {
       _wnck_get_fallback_icons (&icon,
-                                DEFAULT_ICON_WIDTH,
-                                DEFAULT_ICON_HEIGHT,
+                                DEFAULT_ICON_SIZE,
+                                DEFAULT_ICON_SIZE,
                                 &mini_icon,
-                                DEFAULT_MINI_ICON_WIDTH,
-                                DEFAULT_MINI_ICON_HEIGHT);
+                                DEFAULT_MINI_ICON_SIZE,
+                                DEFAULT_MINI_ICON_SIZE);
       icons_reffed = TRUE;
     }
 

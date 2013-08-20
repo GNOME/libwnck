@@ -91,7 +91,7 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define DEFAULT_GROUPING_LIMIT 80
 
-#define MINI_ICON_SIZE DEFAULT_MINI_ICON_WIDTH
+#define MINI_ICON_SIZE DEFAULT_MINI_ICON_SIZE
 #define TASKLIST_BUTTON_PADDING 4
 #define TASKLIST_TEXT_MAX_WIDTH 25 /* maximum width in characters */
 
