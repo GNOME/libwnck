@@ -93,6 +93,7 @@ void _wnck_application_remove_window (WnckApplication *app,
 WnckApplication* _wnck_application_create  (Window           xwindow,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
+void             _wnck_application_load_icons (WnckApplication *app);
 void             _wnck_application_shutdown_all (void);
 
 

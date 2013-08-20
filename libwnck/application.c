@@ -374,6 +374,16 @@ get_icons (WnckApplication *app)
             !(app->priv->icon || app->priv->mini_icon));
 }
 
+void
+_wnck_application_load_icons (WnckApplication *app)
+{
+  g_return_if_fail (WNCK_IS_APPLICATION (app));
+
+  get_icons (app);
+  if (app->priv->need_emit_icon_changed)
+    emit_icon_changed (app);
+}
+
 /* Prefer to get group icon from a window of type "normal" */
 static WnckWindow*
 find_icon_window (WnckApplication *app)
@@ -414,9 +424,7 @@ wnck_application_get_icon (WnckApplication *app)
 {
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
-  get_icons (app);
-  if (app->priv->need_emit_icon_changed)
-    emit_icon_changed (app);
+  _wnck_application_load_icons (app);
 
   if (app->priv->icon)
     return app->priv->icon;
@@ -447,9 +455,7 @@ wnck_application_get_mini_icon (WnckApplication *app)
 {
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
-  get_icons (app);
-  if (app->priv->need_emit_icon_changed)
-    emit_icon_changed (app);
+  _wnck_application_load_icons (app);
 
   if (app->priv->mini_icon)
     return app->priv->mini_icon;
