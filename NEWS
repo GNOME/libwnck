@@ -1,4 +1,14 @@
 =============
+Version 3.4.7
+=============
+
+  Features
+
+  * Add wnck_set_default_icon_size and wnck_set_default_mini_icon_size functions
+    to allow clients to define the size of the icons to be used for windows
+    and applications.
+
+=============
 Version 3.4.6
 =============
 
@@ -12,7 +22,7 @@ Version 3.4.6
 
   * ClassGroup: fix class signal signature (Marco Trevisan)
   * Get rid of the deprecated code in TaskList, Selector and Pager (Marco Trevisan)
-  
+
   Translators
 
   * Andika Triwidada (id)
