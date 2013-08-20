@@ -694,7 +694,29 @@ static gsize default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 void
 wnck_set_default_mini_icon_size (gsize size)
 {
+  int default_screen;
+  WnckScreen *screen;
+  GList *l;
+
   default_mini_icon_size = size;
+
+  default_screen = DefaultScreen (_wnck_get_default_display ());
+  screen = _wnck_screen_get_existing (default_screen);
+
+  if (WNCK_IS_SCREEN (screen))
+    {
+      /* Make applications and icons to reload their icons */
+      for (l = wnck_screen_get_windows (screen); l; l = l->next)
+        {
+          WnckWindow *window = WNCK_WINDOW (l->data);
+          WnckApplication *application = wnck_window_get_application (window);
+
+          _wnck_window_load_icons (window);
+
+          if (WNCK_IS_APPLICATION (application))
+            _wnck_application_load_icons (application);
+        }
+    }
 }
 
 gsize
