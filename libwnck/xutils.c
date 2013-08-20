@@ -2303,15 +2303,15 @@ _wnck_get_fallback_icons (GdkPixbuf **iconp,
 {
   if (iconp)
     *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
-                                   DEFAULT_ICON_SIZE,
+                                   _wnck_get_default_icon_size (),
                                    ideal_height > 0 ? ideal_height :
-                                   DEFAULT_ICON_SIZE);
+                                   _wnck_get_default_icon_size ());
 
   if (mini_iconp)
     *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
-                                        DEFAULT_MINI_ICON_SIZE,
+                                        _wnck_get_default_mini_icon_size (),
                                         ideal_mini_height > 0 ? ideal_mini_height :
-                                        DEFAULT_MINI_ICON_SIZE);
+                                        _wnck_get_default_mini_icon_size ());
 }
 
 

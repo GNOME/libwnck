@@ -42,6 +42,9 @@ G_BEGIN_DECLS
 
 WnckClientType _wnck_get_client_type (void);
 
+gsize _wnck_get_default_icon_size (void);
+gsize _wnck_get_default_mini_icon_size (void);
+
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);
 void _wnck_window_process_property_notify (WnckWindow *window,
@@ -114,9 +117,6 @@ gboolean _wnck_workspace_set_viewport (WnckWorkspace *space, int x, int y);
 
 void _wnck_init (void);
 Display *_wnck_get_default_display (void);
-
-#define DEFAULT_ICON_SIZE 32
-#define DEFAULT_MINI_ICON_SIZE 16
 
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 

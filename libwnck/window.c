@@ -2100,18 +2100,19 @@ get_icons (WnckWindow *window)
 {
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
+  gsize normal_size;
+  gsize mini_size;
 
   icon = NULL;
   mini_icon = NULL;
+  normal_size = _wnck_get_default_icon_size ();
+  mini_size = _wnck_get_default_mini_icon_size ();
 
   if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (window->priv->screen),
                         window->priv->xwindow,
                         window->priv->icon_cache,
-                        &icon,
-                        DEFAULT_ICON_SIZE, DEFAULT_ICON_SIZE,
-                        &mini_icon,
-                        DEFAULT_MINI_ICON_SIZE,
-                        DEFAULT_MINI_ICON_SIZE))
+                        &icon, normal_size, normal_size,
+                        &mini_icon, mini_size, mini_size))
     {
       window->priv->need_emit_icon_changed = TRUE;
 
