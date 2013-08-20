@@ -333,6 +333,15 @@ wnck_pid_read_resource_usage
 </SECTION>
 
 <SECTION>
+<FILE>icons</FILE>
+<TITLE>Icons Functions</TITLE>
+WNCK_DEFAULT_ICON_SIZE
+WNCK_DEFAULT_MINI_ICON_SIZE
+wnck_set_default_icon_size
+wnck_set_default_mini_icon_size
+</SECTION>
+
+<SECTION>
 <FILE>misc</FILE>
 <TITLE>Miscellaneous Functions</TITLE>
 WnckClientType

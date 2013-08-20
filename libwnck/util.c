@@ -54,6 +54,15 @@
  * libwnck users.
  */
 
+/**
+ * SECTION:icons
+ * @short_description: icons related functions.
+ * @stability: Unstable
+ *
+ * These functions are utility functions to manage icons for #WnckWindow and
+ * #WnckApplication.
+ */
+
 typedef enum
 {
   WNCK_EXT_UNKNOWN = 0,
