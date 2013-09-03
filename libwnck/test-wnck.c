@@ -78,7 +78,7 @@ main (int argc, char **argv)
   g_option_context_add_main_entries (ctxt, entries, NULL);
   g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
   g_option_context_parse (ctxt, &argc, &argv, NULL);
-  g_clear_pointer (&ctxt, g_option_context_free);
+  g_option_context_free (ctxt);
 
   wnck_set_default_mini_icon_size (icon_size);
 
