@@ -102,10 +102,8 @@ enum {
 G_DEFINE_TYPE (WnckActionMenu, wnck_action_menu, GTK_TYPE_MENU);
 #define WNCK_ACTION_MENU_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_ACTION_MENU, WnckActionMenuPrivate))
 
-static void wnck_action_menu_finalize (GObject *object);
+static void wnck_action_menu_dispose (GObject *object);
 
-static void object_weak_notify (gpointer data,
-                                GObject *obj);
 static void window_weak_notify (gpointer data,
                                 GObject *window);
 
@@ -116,21 +114,8 @@ static void
 window_weak_notify (gpointer data,
                     GObject *window)
 {
-  g_object_weak_unref (G_OBJECT (data),
-                       object_weak_notify,
-                       window);
-
+  WNCK_ACTION_MENU(data)->priv->window = NULL;
   gtk_widget_destroy (GTK_WIDGET (data));
-}
-
-
-static void
-object_weak_notify (gpointer data,
-                    GObject *obj)
-{
-  g_object_weak_unref (G_OBJECT (data),
-                       window_weak_notify,
-                       obj);
 }
 
 static WnckActionMenu*
@@ -1024,7 +1009,6 @@ wnck_action_menu_constructor (GType                  type,
     }
 
   g_object_weak_ref (G_OBJECT (priv->window), window_weak_notify, menu);
-  g_object_weak_ref (G_OBJECT (menu), object_weak_notify, priv->window);
 
   priv->minimize_item = make_menu_item (MINIMIZE);
 
@@ -1175,7 +1159,7 @@ wnck_action_menu_class_init (WnckActionMenuClass *klass)
   object_class->constructor = wnck_action_menu_constructor;
   object_class->get_property = wnck_action_menu_get_property;
   object_class->set_property = wnck_action_menu_set_property;
-  object_class->finalize = wnck_action_menu_finalize;
+  object_class->dispose = wnck_action_menu_dispose;
 
   g_object_class_install_property (object_class,
                                    PROP_WINDOW,
@@ -1186,17 +1170,30 @@ wnck_action_menu_class_init (WnckActionMenuClass *klass)
 }
 
 static void
-wnck_action_menu_finalize (GObject *object)
+wnck_action_menu_dispose (GObject *object)
 {
   WnckActionMenu *menu;
 
   menu = WNCK_ACTION_MENU (object);
 
   if (menu->priv->idle_handler)
-    g_source_remove (menu->priv->idle_handler);
-  menu->priv->idle_handler = 0;
+    {
+      g_source_remove (menu->priv->idle_handler);
+      menu->priv->idle_handler = 0;
+    }
 
-  G_OBJECT_CLASS (wnck_action_menu_parent_class)->finalize (object);
+  if (WNCK_IS_WINDOW (menu->priv->window))
+    {
+      g_object_weak_unref (G_OBJECT (menu->priv->window), window_weak_notify, menu);
+      g_signal_handlers_disconnect_by_data (menu->priv->window, menu);
+
+      WnckScreen *screen = wnck_window_get_screen (menu->priv->window);
+      g_signal_handlers_disconnect_by_data (screen, menu);
+
+      menu->priv->window = NULL;
+    }
+
+  G_OBJECT_CLASS (wnck_action_menu_parent_class)->dispose (object);
 }
 
 /**
