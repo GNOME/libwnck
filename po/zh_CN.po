@@ -4,16 +4,17 @@
 # Funda Wang <fundawang@en2china.com>, 2003
 # Deng Xiyue <manphiz@gmail.com>, 2009.
 #
-#
+
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck HEAD\n"
 "Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?"
 "product=libwnck&keywords=I18N+L10N&component=general\n"
-"POT-Creation-Date: 2011-09-11 19:41+0000\n"
-"PO-Revision-Date: 2011-09-12 21:48+0800\n"
-"Last-Translator: Ray Wang <wanglei1123@gmail.com>\n"
+"POT-Creation-Date: 2013-12-19 15:17+0000\n"
+"PO-Revision-Date: 2014-01-12 19:48+0800\n"
+"Last-Translator: Wylmer Wang <wantinghard@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-zh@googlegroups.com>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,133 +55,133 @@ msgstr "在工作区间切换的工具"
 msgid "Click this to switch to workspace %s"
 msgstr "单击此处切换到工作区 %s"
 
-#: ../libwnck/pager.c:2200
+#: ../libwnck/pager.c:2188
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "单击以拖曳“%s”"
 
-#: ../libwnck/pager.c:2203
+#: ../libwnck/pager.c:2191
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "当前工作区：“%s”"
 
-#: ../libwnck/pager.c:2208
+#: ../libwnck/pager.c:2196
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "单击切换到“%s”"
 
-#: ../libwnck/selector.c:1180
+#: ../libwnck/selector.c:1184
 msgid "No Windows Open"
 msgstr "没有打开窗口"
 
-#: ../libwnck/selector.c:1236
+#: ../libwnck/selector.c:1240
 msgid "Window Selector"
 msgstr "窗口选择器"
 
-#: ../libwnck/selector.c:1237
+#: ../libwnck/selector.c:1241
 msgid "Tool to switch between windows"
 msgstr "在窗口间切换的工具"
 
-#: ../libwnck/tasklist.c:673
+#: ../libwnck/tasklist.c:594
 msgid "Window List"
 msgstr "窗口列表"
 
-#: ../libwnck/tasklist.c:674
+#: ../libwnck/tasklist.c:595
 msgid "Tool to switch between visible windows"
 msgstr "在可见窗口间切换的工具"
 
-#: ../libwnck/tasklist.c:2896
+#: ../libwnck/tasklist.c:2952
 msgid "Mi_nimize All"
 msgstr "全部最小化(_N)"
 
-#: ../libwnck/tasklist.c:2907
+#: ../libwnck/tasklist.c:2963
 msgid "Un_minimize All"
 msgstr "全部恢复(_M)"
 
-#: ../libwnck/tasklist.c:2915
+#: ../libwnck/tasklist.c:2971
 msgid "Ma_ximize All"
 msgstr "全部最大化(_X)"
 
-#: ../libwnck/tasklist.c:2926
+#: ../libwnck/tasklist.c:2982
 msgid "_Unmaximize All"
 msgstr "全部恢复(_U)"
 
-#: ../libwnck/tasklist.c:2938
+#: ../libwnck/tasklist.c:2994
 msgid "_Close All"
 msgstr "全部关闭(_C)"
 
-#: ../libwnck/window-action-menu.c:413
+#: ../libwnck/window-action-menu.c:398
 msgid "Unmi_nimize"
 msgstr "恢复(_N)"
 
-#: ../libwnck/window-action-menu.c:420
+#: ../libwnck/window-action-menu.c:405
 msgid "Mi_nimize"
 msgstr "最小化(_N)"
 
-#: ../libwnck/window-action-menu.c:428
+#: ../libwnck/window-action-menu.c:413
 msgid "Unma_ximize"
 msgstr "恢复(_X)"
 
-#: ../libwnck/window-action-menu.c:435
+#: ../libwnck/window-action-menu.c:420
 msgid "Ma_ximize"
 msgstr "最大化(_X)"
 
-#: ../libwnck/window-action-menu.c:742 ../libwnck/workspace.c:281
+#: ../libwnck/window-action-menu.c:727 ../libwnck/workspace.c:273
 #, c-format
 msgid "Workspace %d"
 msgstr "工作区 %d"
 
-#: ../libwnck/window-action-menu.c:751 ../libwnck/window-action-menu.c:898
+#: ../libwnck/window-action-menu.c:736 ../libwnck/window-action-menu.c:883
 #, c-format
 msgid "Workspace 1_0"
 msgstr "工作区 1_0"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
+#: ../libwnck/window-action-menu.c:738 ../libwnck/window-action-menu.c:885
 #, c-format
 msgid "Workspace %s%d"
 msgstr "工作区 %s%d"
 
-#: ../libwnck/window-action-menu.c:1043
+#: ../libwnck/window-action-menu.c:1027
 msgid "_Move"
 msgstr "移动(_M)"
 
-#: ../libwnck/window-action-menu.c:1050
+#: ../libwnck/window-action-menu.c:1034
 msgid "_Resize"
 msgstr "改变大小(_R)"
 
-#: ../libwnck/window-action-menu.c:1059
+#: ../libwnck/window-action-menu.c:1043
 msgid "Always On _Top"
 msgstr "总是置顶(_T)"
 
-#: ../libwnck/window-action-menu.c:1067
+#: ../libwnck/window-action-menu.c:1051
 msgid "_Always on Visible Workspace"
 msgstr "总在可见工作区(_A)"
 
-#: ../libwnck/window-action-menu.c:1072
+#: ../libwnck/window-action-menu.c:1056
 msgid "_Only on This Workspace"
 msgstr "仅在此工作区(_O)"
 
-#: ../libwnck/window-action-menu.c:1079
+#: ../libwnck/window-action-menu.c:1063
 msgid "Move to Workspace _Left"
 msgstr "移动到左侧的工作区(_L)"
 
-#: ../libwnck/window-action-menu.c:1085
+#: ../libwnck/window-action-menu.c:1069
 msgid "Move to Workspace R_ight"
 msgstr "移动到右侧的工作区(_I)"
 
-#: ../libwnck/window-action-menu.c:1091
+#: ../libwnck/window-action-menu.c:1075
 msgid "Move to Workspace _Up"
 msgstr "移动到上侧的工作区(_U)"
 
-#: ../libwnck/window-action-menu.c:1097
+#: ../libwnck/window-action-menu.c:1081
 msgid "Move to Workspace _Down"
 msgstr "移动到下侧的工作区(_D)"
 
-#: ../libwnck/window-action-menu.c:1100
+#: ../libwnck/window-action-menu.c:1084
 msgid "Move to Another _Workspace"
 msgstr "移动到另外的工作区(_W)"
 
-#: ../libwnck/window-action-menu.c:1120
+#: ../libwnck/window-action-menu.c:1104
 msgid "_Close"
 msgstr "关闭(_C)"
 
@@ -193,16 +194,16 @@ msgstr "关闭(_C)"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:50
+#: ../libwnck/window.c:49
 msgid "Untitled window"
 msgstr "无标题窗口"
 
-#: ../libwnck/wnckprop.c:138
+#: ../libwnck/wnckprop.c:139
 msgid "X window ID of the window to examine or modify"
 msgstr "要检查或修改的窗口的 X Window ID"
 
-#: ../libwnck/wnckprop.c:138 ../libwnck/wnckprop.c:145
-#: ../libwnck/wnckprop.c:155
+#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:146
+#: ../libwnck/wnckprop.c:156
 msgid "XID"
 msgstr "XID"
 
@@ -210,184 +211,184 @@ msgstr "XID"
 #. * group of windows, ie: if you have multiple windows in one
 #. * application, one window has some information about the application
 #. * (like the application name).
-#: ../libwnck/wnckprop.c:144
+#: ../libwnck/wnckprop.c:145
 msgid "X window ID of the group leader of an application to examine"
 msgstr "要检查的应用程序的 group leader 的 X Window ID"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:149
+#: ../libwnck/wnckprop.c:150
 msgid "Class resource of the class group to examine"
 msgstr "要检查类别组的类别资源"
 
-#: ../libwnck/wnckprop.c:149
+#: ../libwnck/wnckprop.c:150
 msgid "CLASS"
 msgstr "CLASS"
 
-#: ../libwnck/wnckprop.c:151
+#: ../libwnck/wnckprop.c:152
 msgid "NUMBER of the workspace to examine or modify"
 msgstr "要检查或修改的工作区 NUMBER"
 
-#: ../libwnck/wnckprop.c:151 ../libwnck/wnckprop.c:153
-#: ../libwnck/wnckprop.c:171 ../libwnck/wnckprop.c:173
-#: ../libwnck/wnckprop.c:175 ../libwnck/wnckprop.c:272
+#: ../libwnck/wnckprop.c:152 ../libwnck/wnckprop.c:154
+#: ../libwnck/wnckprop.c:172 ../libwnck/wnckprop.c:174
+#: ../libwnck/wnckprop.c:176 ../libwnck/wnckprop.c:273
 msgid "NUMBER"
 msgstr "NUMBER"
 
-#: ../libwnck/wnckprop.c:153
+#: ../libwnck/wnckprop.c:154
 msgid "NUMBER of the screen to examine or modify"
 msgstr "要检查或修改的屏幕 NUMBER"
 
-#: ../libwnck/wnckprop.c:155
+#: ../libwnck/wnckprop.c:156
 msgid "Alias of --window"
 msgstr "--window 的别名"
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:163
+#: ../libwnck/wnckprop.c:164
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr "列出 应用程序/类别 组/工作区/屏幕 的窗口(输出格式为：“XID：窗口名”)"
 
-#: ../libwnck/wnckprop.c:165
+#: ../libwnck/wnckprop.c:166
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr "列出屏幕中的工作区(输出格式为：“序号：工作区名”)"
 
-#: ../libwnck/wnckprop.c:171
+#: ../libwnck/wnckprop.c:172
 msgid "Change the number of workspaces of the screen to NUMBER"
 msgstr "改变当前屏幕的工作区数量为 NUMBER"
 
-#: ../libwnck/wnckprop.c:173
+#: ../libwnck/wnckprop.c:174
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr "改变当前屏幕的工作区布局为 NUMBER 行"
 
-#: ../libwnck/wnckprop.c:175
+#: ../libwnck/wnckprop.c:176
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr "改变当前屏幕的工作区布局为 NUMBER 列"
 
-#: ../libwnck/wnckprop.c:177
+#: ../libwnck/wnckprop.c:178
 msgid "Show the desktop"
 msgstr "显示桌面"
 
-#: ../libwnck/wnckprop.c:179
+#: ../libwnck/wnckprop.c:180
 msgid "Stop showing the desktop"
 msgstr "停止显示桌面"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:184
+#: ../libwnck/wnckprop.c:185
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr "将当前工作区的视口移动到 X 坐标 X"
 
-#: ../libwnck/wnckprop.c:184 ../libwnck/wnckprop.c:274
+#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:275
 msgid "X"
 msgstr "X"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:189
+#: ../libwnck/wnckprop.c:190
 msgid "Move the viewport of the current workspace to Y coordinate Y"
 msgstr "将当前工作区的视口移动到 Y 坐标 Y"
 
-#: ../libwnck/wnckprop.c:189 ../libwnck/wnckprop.c:276
+#: ../libwnck/wnckprop.c:190 ../libwnck/wnckprop.c:277
 msgid "Y"
 msgstr "Y"
 
-#: ../libwnck/wnckprop.c:195
+#: ../libwnck/wnckprop.c:196
 msgid "Minimize the window"
 msgstr "最小化窗口"
 
-#: ../libwnck/wnckprop.c:197
+#: ../libwnck/wnckprop.c:198
 msgid "Unminimize the window"
 msgstr "取消窗口最小化"
 
-#: ../libwnck/wnckprop.c:199
+#: ../libwnck/wnckprop.c:200
 msgid "Maximize the window"
 msgstr "最大化窗口"
 
-#: ../libwnck/wnckprop.c:201
+#: ../libwnck/wnckprop.c:202
 msgid "Unmaximize the window"
 msgstr "取消窗口最大化"
 
-#: ../libwnck/wnckprop.c:203
+#: ../libwnck/wnckprop.c:204
 msgid "Maximize horizontally the window"
 msgstr "水平最大化窗口"
 
-#: ../libwnck/wnckprop.c:205
+#: ../libwnck/wnckprop.c:206
 msgid "Unmaximize horizontally the window"
 msgstr "取消水平最大化窗口"
 
-#: ../libwnck/wnckprop.c:207
+#: ../libwnck/wnckprop.c:208
 msgid "Maximize vertically the window"
 msgstr "垂直最大化窗口"
 
-#: ../libwnck/wnckprop.c:209
+#: ../libwnck/wnckprop.c:210
 msgid "Unmaximize vertically the window"
 msgstr "取消垂直最大化窗口"
 
-#: ../libwnck/wnckprop.c:211
+#: ../libwnck/wnckprop.c:212
 msgid "Start moving the window via the keyboard"
 msgstr "开始通过键盘移动窗口"
 
-#: ../libwnck/wnckprop.c:213
+#: ../libwnck/wnckprop.c:214
 msgid "Start resizing the window via the keyboard"
 msgstr "开始通过键盘改变窗口大小"
 
-#: ../libwnck/wnckprop.c:215
+#: ../libwnck/wnckprop.c:216
 msgid "Activate the window"
 msgstr "激活窗口"
 
-#: ../libwnck/wnckprop.c:217
+#: ../libwnck/wnckprop.c:218
 msgid "Close the window"
 msgstr "关闭窗口"
 
-#: ../libwnck/wnckprop.c:220
+#: ../libwnck/wnckprop.c:221
 msgid "Make the window fullscreen"
 msgstr "使窗口全屏"
 
-#: ../libwnck/wnckprop.c:222
+#: ../libwnck/wnckprop.c:223
 msgid "Make the window quit fullscreen mode"
 msgstr "使窗口退出全屏模式"
 
-#: ../libwnck/wnckprop.c:224
+#: ../libwnck/wnckprop.c:225
 msgid "Make the window always on top"
 msgstr "使窗口永远在最上层"
 
-#: ../libwnck/wnckprop.c:226
+#: ../libwnck/wnckprop.c:227
 msgid "Make the window not always on top"
 msgstr "不使窗口永远在最上层"
 
-#: ../libwnck/wnckprop.c:228
+#: ../libwnck/wnckprop.c:229
 msgid "Make the window below other windows"
 msgstr "使窗口在别的窗口之下"
 
-#: ../libwnck/wnckprop.c:230
+#: ../libwnck/wnckprop.c:231
 msgid "Make the window not below other windows"
 msgstr "不使窗口在别的窗口之下"
 
-#: ../libwnck/wnckprop.c:232
+#: ../libwnck/wnckprop.c:233
 msgid "Shade the window"
 msgstr "卷起窗口"
 
-#: ../libwnck/wnckprop.c:234
+#: ../libwnck/wnckprop.c:235
 msgid "Unshade the window"
 msgstr "取消窗口卷起"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:239
+#: ../libwnck/wnckprop.c:240
 msgid "Make the window have a fixed position in the viewport"
 msgstr "使窗口在视口内的固定位置"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:244
+#: ../libwnck/wnckprop.c:245
 msgid "Make the window not have a fixed position in the viewport"
 msgstr "不使窗口在视口内的固定位置"
 
@@ -396,7 +397,7 @@ msgstr "不使窗口在视口内的固定位置"
 #. * inside it. Please make sure that the translation is in sync with
 #. * gnome-panel, where this term is also used in translatable strings
 #.
-#: ../libwnck/wnckprop.c:251
+#: ../libwnck/wnckprop.c:252
 msgid "Make the window not appear in pagers"
 msgstr "不使窗口出现在分页器上"
 
@@ -405,60 +406,60 @@ msgstr "不使窗口出现在分页器上"
 #. * inside it. Please make sure that the translation is in sync with
 #. * gnome-panel, where this term is also used in translatable strings
 #.
-#: ../libwnck/wnckprop.c:258
+#: ../libwnck/wnckprop.c:259
 msgid "Make the window appear in pagers"
 msgstr "使窗口出现在分页器上"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
-#: ../libwnck/wnckprop.c:262
+#: ../libwnck/wnckprop.c:263
 msgid "Make the window not appear in tasklists"
 msgstr "使窗口不显示在任务列表中"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
-#: ../libwnck/wnckprop.c:266
+#: ../libwnck/wnckprop.c:267
 msgid "Make the window appear in tasklists"
 msgstr "使窗口显示在任务列表中"
 
-#: ../libwnck/wnckprop.c:268
+#: ../libwnck/wnckprop.c:269
 msgid "Make the window visible on all workspaces"
 msgstr "使窗口在全部工作区可见"
 
-#: ../libwnck/wnckprop.c:270
+#: ../libwnck/wnckprop.c:271
 msgid "Make the window visible on the current workspace only"
 msgstr "使窗口仅在当前工作区可见"
 
-#: ../libwnck/wnckprop.c:272
+#: ../libwnck/wnckprop.c:273
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
 msgstr "将窗口移动到工作区 NUMBER (第一个工作区是0)"
 
-#: ../libwnck/wnckprop.c:274
+#: ../libwnck/wnckprop.c:275
 msgid "Change the X coordinate of the window to X"
 msgstr "将窗口的 X 坐标改变为 X"
 
-#: ../libwnck/wnckprop.c:276
+#: ../libwnck/wnckprop.c:277
 msgid "Change the Y coordinate of the window to Y"
 msgstr "将窗口的 Y 坐标改变为 Y"
 
-#: ../libwnck/wnckprop.c:278
+#: ../libwnck/wnckprop.c:279
 msgid "Change the width of the window to WIDTH"
 msgstr "改变窗口的宽为 WIDTH"
 
-#: ../libwnck/wnckprop.c:278
+#: ../libwnck/wnckprop.c:279
 msgid "WIDTH"
 msgstr "WIDTH"
 
-#: ../libwnck/wnckprop.c:280
+#: ../libwnck/wnckprop.c:281
 msgid "Change the height of the window to HEIGHT"
 msgstr "改变窗口的高为 HEIGHT"
 
-#: ../libwnck/wnckprop.c:280
+#: ../libwnck/wnckprop.c:281
 msgid "HEIGHT"
 msgstr "HEIGHT"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:283
+#: ../libwnck/wnckprop.c:284
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
@@ -466,64 +467,64 @@ msgstr ""
 "改变窗口的类型为 TYPE (有效值为：normal、desktop、dock，dialog、toolbar、"
 "menu、utility、splash)"
 
-#: ../libwnck/wnckprop.c:283
+#: ../libwnck/wnckprop.c:284
 msgid "TYPE"
 msgstr "TYPE"
 
-#: ../libwnck/wnckprop.c:289
+#: ../libwnck/wnckprop.c:290
 msgid "Change the name of the workspace to NAME"
 msgstr "改变工作区名为 NAME"
 
-#: ../libwnck/wnckprop.c:289
+#: ../libwnck/wnckprop.c:290
 msgid "NAME"
 msgstr "NAME"
 
-#: ../libwnck/wnckprop.c:291
+#: ../libwnck/wnckprop.c:292
 msgid "Activate the workspace"
 msgstr "激活工作区"
 
-#: ../libwnck/wnckprop.c:385 ../libwnck/wnckprop.c:409
-#: ../libwnck/wnckprop.c:445 ../libwnck/wnckprop.c:468
+#: ../libwnck/wnckprop.c:386 ../libwnck/wnckprop.c:410
+#: ../libwnck/wnckprop.c:446 ../libwnck/wnckprop.c:469
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
 msgstr "无效值“%s”在 --%s"
 
-#: ../libwnck/wnckprop.c:502 ../libwnck/wnckprop.c:521
+#: ../libwnck/wnckprop.c:503 ../libwnck/wnckprop.c:522
 #, c-format
 msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: screen %d should be interacted with, but --"
+"%s has been used\n"
 msgstr "选项冲突：应该与屏幕 %d 交互，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:511
+#: ../libwnck/wnckprop.c:512
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr "选项冲突：应该列出屏幕 %d 的窗体或工作区，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:534 ../libwnck/wnckprop.c:554
+#: ../libwnck/wnckprop.c:535 ../libwnck/wnckprop.c:555
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr "选项冲突：应该与工作区 %d 交互，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:544
+#: ../libwnck/wnckprop.c:545
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr "选项冲突：应该列出工作区 %d 的窗口，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:566
+#: ../libwnck/wnckprop.c:567
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr "选项冲突：应该与应用程序交互，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:576
+#: ../libwnck/wnckprop.c:577
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
@@ -532,7 +533,7 @@ msgstr "选项冲突：应该列出应用程序的窗口，但是 --%s 已经被
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:590
+#: ../libwnck/wnckprop.c:591
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
@@ -541,48 +542,48 @@ msgstr "选项冲突：应该与类别组“%s”交互，但是 --%s 已经被�
 
 #. Translators: A class is like a "family". E.g., all gvim windows
 #. * are of the same class.
-#: ../libwnck/wnckprop.c:602
+#: ../libwnck/wnckprop.c:603
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr "选项冲突：应该列出类别组“%s”，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:614 ../libwnck/wnckprop.c:623
+#: ../libwnck/wnckprop.c:615 ../libwnck/wnckprop.c:624
 #, c-format
 msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: a window should be interacted with, but --"
+"%s has been used\n"
 msgstr "选项冲突：应该与一个窗体交互，但是 --%s 已经被使用\n"
 
-#: ../libwnck/wnckprop.c:642 ../libwnck/wnckprop.c:723
-#: ../libwnck/wnckprop.c:770
+#: ../libwnck/wnckprop.c:643 ../libwnck/wnckprop.c:724
+#: ../libwnck/wnckprop.c:771
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
 msgstr "选项冲突：--%s 和 --%s\n"
 
-#: ../libwnck/wnckprop.c:681
+#: ../libwnck/wnckprop.c:682
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr "无效参数“%d”用于 --%s：参数必须严格为正数\n"
 
-#: ../libwnck/wnckprop.c:694
+#: ../libwnck/wnckprop.c:695
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr "无效参数“%d”用于 --%s：参数必须为正数\n"
 
-#: ../libwnck/wnckprop.c:789
+#: ../libwnck/wnckprop.c:790
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
 msgstr "选项冲突：--%s 或 --%s, 或者 --%s\n"
 
-#: ../libwnck/wnckprop.c:821
+#: ../libwnck/wnckprop.c:822
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr "无效参数“%s”用于 --%s：有效的参数为：%s\n"
 
-#: ../libwnck/wnckprop.c:864
+#: ../libwnck/wnckprop.c:865
 #, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
@@ -592,7 +593,7 @@ msgstr "无法改变当前屏幕的工作区布局：布局已经被支配\n"
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:899
+#: ../libwnck/wnckprop.c:900
 #, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
@@ -601,139 +602,139 @@ msgstr "无法移动视口：当前工作区不包含视口\n"
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:906
+#: ../libwnck/wnckprop.c:907
 #, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr "无法移动视口：当前没有工作区\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:942 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:960 ../libwnck/wnckprop.c:967
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:984
-#: ../libwnck/wnckprop.c:993 ../libwnck/wnckprop.c:1042
+#: ../libwnck/wnckprop.c:943 ../libwnck/wnckprop.c:952
+#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
+#: ../libwnck/wnckprop.c:978 ../libwnck/wnckprop.c:985
+#: ../libwnck/wnckprop.c:994 ../libwnck/wnckprop.c:1043
 #, c-format
 msgid "Action not allowed\n"
 msgstr "动作不被允许\n"
 
-#: ../libwnck/wnckprop.c:1038
+#: ../libwnck/wnckprop.c:1039
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr "无法移动窗口到工作区 %d：工作区不存在\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1102 ../libwnck/wnckprop.c:1234
+#: ../libwnck/wnckprop.c:1103 ../libwnck/wnckprop.c:1235
 msgid "<name unset>"
 msgstr "<未设定名称>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1105
+#: ../libwnck/wnckprop.c:1106
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu：%s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1125
+#: ../libwnck/wnckprop.c:1126
 #, c-format
 msgid "%d: %s\n"
 msgstr "%d：%s\n"
 
-#: ../libwnck/wnckprop.c:1188
+#: ../libwnck/wnckprop.c:1189
 #, c-format
 msgid "Screen Number: %d\n"
 msgstr "屏幕编号：%d\n"
 
-#: ../libwnck/wnckprop.c:1190 ../libwnck/wnckprop.c:1271
+#: ../libwnck/wnckprop.c:1191 ../libwnck/wnckprop.c:1272
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
 msgstr "几何(宽，高)：%d，%d\n"
 
-#: ../libwnck/wnckprop.c:1194
+#: ../libwnck/wnckprop.c:1195
 #, c-format
 msgid "Number of Workspaces: %d\n"
 msgstr "工作区数：%d\n"
 
-#: ../libwnck/wnckprop.c:1200
+#: ../libwnck/wnckprop.c:1201
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
 msgstr "工作区布局(行，列，方向)：%d，%d，%s\n"
 
-#: ../libwnck/wnckprop.c:1210 ../libwnck/wnckprop.c:1267
-#: ../libwnck/wnckprop.c:1464
+#: ../libwnck/wnckprop.c:1211 ../libwnck/wnckprop.c:1268
+#: ../libwnck/wnckprop.c:1465
 msgid "<no EWMH-compliant window manager>"
 msgstr "<没有EWMH兼容的窗口管理器>"
 
-#: ../libwnck/wnckprop.c:1211
+#: ../libwnck/wnckprop.c:1212
 #, c-format
 msgid "Window Manager: %s\n"
 msgstr "窗口管理器：%s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1216 ../libwnck/wnckprop.c:1297
-#: ../libwnck/wnckprop.c:1309 ../libwnck/wnckprop.c:1321
-#: ../libwnck/wnckprop.c:1333 ../libwnck/wnckprop.c:1449
+#: ../libwnck/wnckprop.c:1217 ../libwnck/wnckprop.c:1298
+#: ../libwnck/wnckprop.c:1310 ../libwnck/wnckprop.c:1322
+#: ../libwnck/wnckprop.c:1334 ../libwnck/wnckprop.c:1450
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (“%s”)"
 
 #. Translators: "none" here means "no workspace"
-#: ../libwnck/wnckprop.c:1221 ../libwnck/wnckprop.c:1302
-#: ../libwnck/wnckprop.c:1314 ../libwnck/wnckprop.c:1326
-#: ../libwnck/wnckprop.c:1338 ../libwnck/wnckprop.c:1456
+#: ../libwnck/wnckprop.c:1222 ../libwnck/wnckprop.c:1303
+#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1327
+#: ../libwnck/wnckprop.c:1339 ../libwnck/wnckprop.c:1457
 msgctxt "workspace"
 msgid "none"
 msgstr "无"
 
-#: ../libwnck/wnckprop.c:1222
+#: ../libwnck/wnckprop.c:1223
 #, c-format
 msgid "Active Workspace: %s\n"
 msgstr "活动的工作区：%s\n"
 
-#: ../libwnck/wnckprop.c:1231
+#: ../libwnck/wnckprop.c:1232
 #, c-format
 msgid "\"%s\""
 msgstr "“%s”"
 
 #. Translators: %lu is a window identifier (number) and %s a window name
-#: ../libwnck/wnckprop.c:1237
+#: ../libwnck/wnckprop.c:1238
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
-#: ../libwnck/wnckprop.c:1243
+#: ../libwnck/wnckprop.c:1244
 msgctxt "window"
 msgid "none"
 msgstr "无"
 
-#: ../libwnck/wnckprop.c:1244
+#: ../libwnck/wnckprop.c:1245
 #, c-format
 msgid "Active Window: %s\n"
 msgstr "活动窗口：%s\n"
 
-#: ../libwnck/wnckprop.c:1247
+#: ../libwnck/wnckprop.c:1248
 #, c-format
 msgid "Showing the desktop: %s\n"
 msgstr "正在显示桌面：%s\n"
 
-#: ../libwnck/wnckprop.c:1249
+#: ../libwnck/wnckprop.c:1250
 msgid "true"
 msgstr "真"
 
-#: ../libwnck/wnckprop.c:1249
+#: ../libwnck/wnckprop.c:1250
 msgid "false"
 msgstr "假"
 
-#: ../libwnck/wnckprop.c:1260
+#: ../libwnck/wnckprop.c:1261
 #, c-format
 msgid "Workspace Name: %s\n"
 msgstr "工作区名：%s\n"
 
-#: ../libwnck/wnckprop.c:1261
+#: ../libwnck/wnckprop.c:1262
 #, c-format
 msgid "Workspace Number: %d\n"
 msgstr "工作区号：%d\n"
 
-#: ../libwnck/wnckprop.c:1268 ../libwnck/wnckprop.c:1465
+#: ../libwnck/wnckprop.c:1269 ../libwnck/wnckprop.c:1466
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
 msgstr "在屏幕：%d(窗口管理器：%s)\n"
@@ -741,158 +742,159 @@ msgstr "在屏幕：%d(窗口管理器：%s)\n"
 #. Translators: 'viewport' is kind of the viewable area. A viewport can be
 #. * used to implement workspaces (e.g. compiz is an example); however it is
 #. * not just the current workspace.
-#: ../libwnck/wnckprop.c:1283
+#: ../libwnck/wnckprop.c:1284
 msgid "<no viewport>"
 msgstr "<没有视口>"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport can be
 #. * used to implement workspaces (e.g. compiz is an example); however it is
 #. * not just the current workspace.
-#: ../libwnck/wnckprop.c:1287
+#: ../libwnck/wnckprop.c:1288
 #, c-format
 msgid "Viewport position (x, y): %s\n"
 msgstr "视口位置(x，y)：%s\n"
 
-#: ../libwnck/wnckprop.c:1290
+#: ../libwnck/wnckprop.c:1291
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
 msgstr "布局中的位置(行，列)：%d，%d\n"
 
-#: ../libwnck/wnckprop.c:1303
+#: ../libwnck/wnckprop.c:1304
 #, c-format
 msgid "Left Neighbor: %s\n"
 msgstr "左邻居：%s\n"
 
-#: ../libwnck/wnckprop.c:1315
+#: ../libwnck/wnckprop.c:1316
 #, c-format
 msgid "Right Neighbor: %s\n"
 msgstr "右邻居：%s\n"
 
-#: ../libwnck/wnckprop.c:1327
+#: ../libwnck/wnckprop.c:1328
 #, c-format
 msgid "Top Neighbor: %s\n"
 msgstr "上邻居：%s\n"
 
-#: ../libwnck/wnckprop.c:1339
+#: ../libwnck/wnckprop.c:1340
 #, c-format
 msgid "Bottom Neighbor: %s\n"
 msgstr "下邻居：%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
-#: ../libwnck/wnckprop.c:1352 ../libwnck/wnckprop.c:1511
+#: ../libwnck/wnckprop.c:1353 ../libwnck/wnckprop.c:1512
 #, c-format
 msgid "Class Group ID: %s\n"
 msgstr "类别组 ID：%s\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class.
-#: ../libwnck/wnckprop.c:1356
+#: ../libwnck/wnckprop.c:1357
 #, c-format
 msgid "Class Group Name: %s\n"
 msgstr "类别组名称：%s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1362 ../libwnck/wnckprop.c:1386
-#: ../libwnck/wnckprop.c:1440
+#: ../libwnck/wnckprop.c:1363 ../libwnck/wnckprop.c:1387
+#: ../libwnck/wnckprop.c:1441
 msgid "set"
 msgstr "设置"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1365 ../libwnck/wnckprop.c:1389
-#: ../libwnck/wnckprop.c:1396 ../libwnck/wnckprop.c:1426
-#: ../libwnck/wnckprop.c:1433 ../libwnck/wnckprop.c:1443
-#: ../libwnck/wnckprop.c:1508 ../libwnck/wnckprop.c:1517
-#: ../libwnck/wnckprop.c:1529 ../libwnck/wnckprop.c:1537
+#: ../libwnck/wnckprop.c:1366 ../libwnck/wnckprop.c:1390
+#: ../libwnck/wnckprop.c:1397 ../libwnck/wnckprop.c:1427
+#: ../libwnck/wnckprop.c:1434 ../libwnck/wnckprop.c:1444
+#: ../libwnck/wnckprop.c:1509 ../libwnck/wnckprop.c:1518
+#: ../libwnck/wnckprop.c:1530 ../libwnck/wnckprop.c:1538
+#: ../libwnck/wnckprop.c:1545
 msgid "<unset>"
 msgstr "<取消设置>"
 
-#: ../libwnck/wnckprop.c:1366 ../libwnck/wnckprop.c:1390
-#: ../libwnck/wnckprop.c:1444
+#: ../libwnck/wnckprop.c:1367 ../libwnck/wnckprop.c:1391
+#: ../libwnck/wnckprop.c:1445
 #, c-format
 msgid "Icons: %s\n"
 msgstr "图标：%s\n"
 
-#: ../libwnck/wnckprop.c:1369 ../libwnck/wnckprop.c:1407
+#: ../libwnck/wnckprop.c:1370 ../libwnck/wnckprop.c:1408
 #, c-format
 msgid "Number of Windows: %d\n"
 msgstr "窗口数量：%d\n"
 
-#: ../libwnck/wnckprop.c:1381 ../libwnck/wnckprop.c:1427
+#: ../libwnck/wnckprop.c:1382 ../libwnck/wnckprop.c:1428
 #, c-format
 msgid "Name: %s\n"
 msgstr "名称：%s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1382 ../libwnck/wnckprop.c:1436
+#: ../libwnck/wnckprop.c:1383 ../libwnck/wnckprop.c:1437
 #, c-format
 msgid "Icon Name: %s\n"
 msgstr "图标名称：%s\n"
 
-#: ../libwnck/wnckprop.c:1397 ../libwnck/wnckprop.c:1530
+#: ../libwnck/wnckprop.c:1398 ../libwnck/wnckprop.c:1531
 #, c-format
 msgid "PID: %s\n"
 msgstr "进程标识符：%s\n"
 
 #. Translators: "none" here means "no startup ID"
-#: ../libwnck/wnckprop.c:1404
+#: ../libwnck/wnckprop.c:1405
 msgctxt "startupID"
 msgid "none"
 msgstr "无"
 
-#: ../libwnck/wnckprop.c:1405
+#: ../libwnck/wnckprop.c:1406
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr "启动标识符：%s\n"
 
-#: ../libwnck/wnckprop.c:1453
+#: ../libwnck/wnckprop.c:1454
 msgid "all workspaces"
 msgstr "所有工作区"
 
-#: ../libwnck/wnckprop.c:1457
+#: ../libwnck/wnckprop.c:1458
 #, c-format
 msgid "On Workspace: %s\n"
 msgstr "在工作区：%s\n"
 
-#: ../libwnck/wnckprop.c:1472
+#: ../libwnck/wnckprop.c:1473
 msgid "normal window"
 msgstr "普通窗口"
 
-#: ../libwnck/wnckprop.c:1475
+#: ../libwnck/wnckprop.c:1476
 msgid "desktop"
 msgstr "桌面"
 
-#: ../libwnck/wnckprop.c:1478
+#: ../libwnck/wnckprop.c:1479
 msgid "dock or panel"
 msgstr "dock 或面板"
 
-#: ../libwnck/wnckprop.c:1481
+#: ../libwnck/wnckprop.c:1482
 msgid "dialog window"
 msgstr "对话窗口"
 
-#: ../libwnck/wnckprop.c:1484
+#: ../libwnck/wnckprop.c:1485
 msgid "tearoff toolbar"
 msgstr "撕下工具栏"
 
-#: ../libwnck/wnckprop.c:1487
+#: ../libwnck/wnckprop.c:1488
 msgid "tearoff menu"
 msgstr "撕下菜单"
 
-#: ../libwnck/wnckprop.c:1490
+#: ../libwnck/wnckprop.c:1491
 msgid "utility window"
 msgstr "实用窗口"
 
-#: ../libwnck/wnckprop.c:1493
+#: ../libwnck/wnckprop.c:1494
 msgid "splash screen"
 msgstr "splash 屏幕"
 
-#: ../libwnck/wnckprop.c:1498
+#: ../libwnck/wnckprop.c:1499
 #, c-format
 msgid "Window Type: %s\n"
 msgstr "窗口类型：%s\n"
 
-#: ../libwnck/wnckprop.c:1501
+#: ../libwnck/wnckprop.c:1502
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr "几何(x，y，宽，高)：%d, %d, %d, %d\n"
@@ -900,33 +902,39 @@ msgstr "几何(x，y，宽，高)：%d, %d, %d, %d\n"
 #. Translators: A class is like a "family". E.g., all gvim windows are of the
 #. * same class. The class instance is a way to differentiate windows belonging
 #. * to the same class group.
-#: ../libwnck/wnckprop.c:1521
+#: ../libwnck/wnckprop.c:1522
 #, c-format
 msgid "Class Instance: %s\n"
 msgstr "类别实例：%s\n"
 
-#: ../libwnck/wnckprop.c:1523
+#: ../libwnck/wnckprop.c:1524
 #, c-format
 msgid "XID: %lu\n"
 msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1538
+#: ../libwnck/wnckprop.c:1539
 #, c-format
 msgid "Session ID: %s\n"
 msgstr "会话ID：%s\n"
+
+#: ../libwnck/wnckprop.c:1546
+#, c-format
+#| msgid "%lu: %s\n"
+msgid "Role: %s\n"
+msgstr "角色：%s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
 #. * of windows, ie: if you have multiple windows in one application, one
 #. * window has some information about the application (like the application
 #. * name).
-#: ../libwnck/wnckprop.c:1545
+#: ../libwnck/wnckprop.c:1553
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr "组领导：%lu\n"
 
 #. Translators: A window can be transient for another window: it means it's
 #. * on top of it
-#: ../libwnck/wnckprop.c:1551
+#: ../libwnck/wnckprop.c:1559
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr "过渡：%lu\n"
@@ -934,57 +942,57 @@ msgstr "过渡：%lu\n"
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1566 ../libwnck/wnckprop.c:1614
+#: ../libwnck/wnckprop.c:1574 ../libwnck/wnckprop.c:1622
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1570 ../libwnck/wnckprop.c:1616
+#: ../libwnck/wnckprop.c:1578 ../libwnck/wnckprop.c:1624
 msgid ", "
 msgstr ", "
 
-#: ../libwnck/wnckprop.c:1576
+#: ../libwnck/wnckprop.c:1584
 msgid "minimized"
 msgstr "已最小化"
 
-#: ../libwnck/wnckprop.c:1577
+#: ../libwnck/wnckprop.c:1585
 msgid "maximized"
 msgstr "已最大化"
 
-#: ../libwnck/wnckprop.c:1581
+#: ../libwnck/wnckprop.c:1589
 msgid "maximized horizontally"
 msgstr "已水平最大化"
 
-#: ../libwnck/wnckprop.c:1583
+#: ../libwnck/wnckprop.c:1591
 msgid "maximized vertically"
 msgstr "已垂直最大化"
 
-#: ../libwnck/wnckprop.c:1585
+#: ../libwnck/wnckprop.c:1593
 msgid "shaded"
 msgstr "已卷起"
 
-#: ../libwnck/wnckprop.c:1586
+#: ../libwnck/wnckprop.c:1594
 msgid "pinned"
 msgstr "已固定"
 
-#: ../libwnck/wnckprop.c:1587
+#: ../libwnck/wnckprop.c:1595
 msgid "sticky"
 msgstr "已粘住"
 
-#: ../libwnck/wnckprop.c:1588
+#: ../libwnck/wnckprop.c:1596
 msgid "above"
 msgstr "上面"
 
-#: ../libwnck/wnckprop.c:1589
+#: ../libwnck/wnckprop.c:1597
 msgid "below"
 msgstr "下面"
 
-#: ../libwnck/wnckprop.c:1590
+#: ../libwnck/wnckprop.c:1598
 msgid "fullscreen"
 msgstr "全屏"
 
-#: ../libwnck/wnckprop.c:1591
+#: ../libwnck/wnckprop.c:1599
 msgid "needs attention"
 msgstr "需要注意"
 
@@ -992,127 +1000,127 @@ msgstr "需要注意"
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1596
+#: ../libwnck/wnckprop.c:1604
 msgid "skip pager"
 msgstr "跳过分页器"
 
 #. Translators: "tasklist" is the list of running applications (the window
 #. * list)
-#: ../libwnck/wnckprop.c:1599
+#: ../libwnck/wnckprop.c:1607
 msgid "skip tasklist"
 msgstr "跳过任务列表"
 
-#: ../libwnck/wnckprop.c:1601
+#: ../libwnck/wnckprop.c:1609
 msgid "normal"
 msgstr "正常"
 
-#: ../libwnck/wnckprop.c:1602
+#: ../libwnck/wnckprop.c:1610
 #, c-format
 msgid "State: %s\n"
 msgstr "状态：%s\n"
 
-#: ../libwnck/wnckprop.c:1623
+#: ../libwnck/wnckprop.c:1631
 msgid "move"
 msgstr "移动"
 
-#: ../libwnck/wnckprop.c:1624
+#: ../libwnck/wnckprop.c:1632
 msgid "resize"
 msgstr "更改大小"
 
-#: ../libwnck/wnckprop.c:1625
+#: ../libwnck/wnckprop.c:1633
 msgid "shade"
 msgstr "卷起"
 
-#: ../libwnck/wnckprop.c:1626
+#: ../libwnck/wnckprop.c:1634
 msgid "unshade"
 msgstr "取消卷起"
 
-#: ../libwnck/wnckprop.c:1627
+#: ../libwnck/wnckprop.c:1635
 msgid "stick"
 msgstr "粘住"
 
-#: ../libwnck/wnckprop.c:1628
+#: ../libwnck/wnckprop.c:1636
 msgid "unstick"
 msgstr "取消粘住"
 
-#: ../libwnck/wnckprop.c:1630
+#: ../libwnck/wnckprop.c:1638
 msgid "maximize horizontally"
 msgstr "水平最大化"
 
-#: ../libwnck/wnckprop.c:1632
+#: ../libwnck/wnckprop.c:1640
 msgid "unmaximize horizontally"
 msgstr "取消水平最大化"
 
-#: ../libwnck/wnckprop.c:1634
+#: ../libwnck/wnckprop.c:1642
 msgid "maximize vertically"
 msgstr "垂直最大化"
 
-#: ../libwnck/wnckprop.c:1636
+#: ../libwnck/wnckprop.c:1644
 msgid "unmaximize vertically"
 msgstr "取消垂直最大化"
 
-#: ../libwnck/wnckprop.c:1639
+#: ../libwnck/wnckprop.c:1647
 msgid "change workspace"
 msgstr "改变工作区"
 
-#: ../libwnck/wnckprop.c:1641
+#: ../libwnck/wnckprop.c:1649
 msgid "pin"
 msgstr "固定"
 
-#: ../libwnck/wnckprop.c:1643
+#: ../libwnck/wnckprop.c:1651
 msgid "unpin"
 msgstr "取消固定"
 
-#: ../libwnck/wnckprop.c:1644
+#: ../libwnck/wnckprop.c:1652
 msgid "minimize"
 msgstr "最小化"
 
-#: ../libwnck/wnckprop.c:1645
+#: ../libwnck/wnckprop.c:1653
 msgid "unminimize"
 msgstr "取消最小化"
 
-#: ../libwnck/wnckprop.c:1646
+#: ../libwnck/wnckprop.c:1654
 msgid "maximize"
 msgstr "最大化"
 
-#: ../libwnck/wnckprop.c:1647
+#: ../libwnck/wnckprop.c:1655
 msgid "unmaximize"
 msgstr "取消最大化"
 
-#: ../libwnck/wnckprop.c:1649
+#: ../libwnck/wnckprop.c:1657
 msgid "change fullscreen mode"
 msgstr "改变全屏模式"
 
-#: ../libwnck/wnckprop.c:1650
+#: ../libwnck/wnckprop.c:1658
 msgid "close"
 msgstr "关闭"
 
-#: ../libwnck/wnckprop.c:1652
+#: ../libwnck/wnckprop.c:1660
 msgid "make above"
 msgstr "使其在上面"
 
-#: ../libwnck/wnckprop.c:1654
+#: ../libwnck/wnckprop.c:1662
 msgid "unmake above"
 msgstr "取消使其在上面"
 
-#: ../libwnck/wnckprop.c:1656
+#: ../libwnck/wnckprop.c:1664
 msgid "make below"
 msgstr "使其在下面"
 
-#: ../libwnck/wnckprop.c:1658
+#: ../libwnck/wnckprop.c:1666
 msgid "unmake below"
 msgstr "取消使其在下面"
 
-#: ../libwnck/wnckprop.c:1660
+#: ../libwnck/wnckprop.c:1668
 msgid "no action possible"
 msgstr "无可执行动作"
 
-#: ../libwnck/wnckprop.c:1661
+#: ../libwnck/wnckprop.c:1669
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr "可执行动作：%s\n"
 
-#: ../libwnck/wnckprop.c:1842
+#: ../libwnck/wnckprop.c:1901
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1123,69 +1131,69 @@ msgstr ""
 "有关该规范的更多信息，请看：\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1852
+#: ../libwnck/wnckprop.c:1911
 msgid "Options to list windows or workspaces"
 msgstr "用于列出窗体和工作区的选项"
 
-#: ../libwnck/wnckprop.c:1853
+#: ../libwnck/wnckprop.c:1912
 msgid "Show options to list windows or workspaces"
 msgstr "显示用于列出窗体和工作区的选项"
 
-#: ../libwnck/wnckprop.c:1860
+#: ../libwnck/wnckprop.c:1919
 msgid "Options to modify properties of a window"
 msgstr "修改窗口属性的选项"
 
-#: ../libwnck/wnckprop.c:1861
+#: ../libwnck/wnckprop.c:1920
 msgid "Show options to modify properties of a window"
 msgstr "显示修改窗口属性的选项"
 
-#: ../libwnck/wnckprop.c:1868
+#: ../libwnck/wnckprop.c:1927
 msgid "Options to modify properties of a workspace"
 msgstr "修改工作区属性的选项"
 
-#: ../libwnck/wnckprop.c:1869
+#: ../libwnck/wnckprop.c:1928
 msgid "Show options to modify properties of a workspace"
 msgstr "显示修改工作区属性的选项"
 
-#: ../libwnck/wnckprop.c:1876
+#: ../libwnck/wnckprop.c:1935
 msgid "Options to modify properties of a screen"
 msgstr "修改屏幕属性的选项"
 
-#: ../libwnck/wnckprop.c:1877
+#: ../libwnck/wnckprop.c:1936
 msgid "Show options to modify properties of a screen"
 msgstr "显示修改屏幕属性的选项"
 
-#: ../libwnck/wnckprop.c:1888
+#: ../libwnck/wnckprop.c:1947
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "解析参数时出错：%s\n"
 
-#: ../libwnck/wnckprop.c:1911
+#: ../libwnck/wnckprop.c:1970
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "无法与屏幕 %d 交互：该屏幕不存在\n"
 
-#: ../libwnck/wnckprop.c:1967
+#: ../libwnck/wnckprop.c:2026
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr "无法与工作区 %d 交互：无法找到该工作区\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: ../libwnck/wnckprop.c:1991
+#: ../libwnck/wnckprop.c:2050
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr "无法与组类别“%s”交互：无法找到该组类别\n"
 
-#: ../libwnck/wnckprop.c:2014
+#: ../libwnck/wnckprop.c:2073
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr "无法与组领导 XID 为 %lu 的应用程序交互：无法找到该应用程序\n"
 
-#: ../libwnck/wnckprop.c:2037
+#: ../libwnck/wnckprop.c:2096
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr "无法与 XID 为 %lu 的窗口交互：无法找到该窗口\n"
