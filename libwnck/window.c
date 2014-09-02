@@ -2601,7 +2601,9 @@ _wnck_window_process_property_notify (WnckWindow *window,
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
-           _wnck_atom_get ("_NET_FRAME_EXTENTS"))
+           _wnck_atom_get ("_NET_FRAME_EXTENTS") ||
+           xevent->xproperty.atom ==
+           _wnck_atom_get ("_GTK_FRAME_EXTENTS"))
     {
       window->priv->need_update_frame_extents = TRUE;
       queue_update (window);

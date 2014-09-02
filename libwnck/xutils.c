@@ -1365,6 +1365,23 @@ _wnck_get_frame_extents (Screen *screen,
       retval = TRUE;
     }
 
+  if (p_size == NULL)
+    {
+      _wnck_get_cardinal_list (screen, xwindow,
+                               _wnck_atom_get ("_GTK_FRAME_EXTENTS"),
+                               &p_size, &n_size);
+
+      if (p_size != NULL && n_size == 4)
+        {
+          *left_frame   = -p_size[0];
+          *right_frame  = -p_size[1];
+          *top_frame    = -p_size[2];
+          *bottom_frame = -p_size[3];
+
+          retval = TRUE;
+        }
+    }
+
   if (p_size != NULL)
     g_free (p_size);
 
