@@ -1,4 +1,25 @@
 =============
+Version 3.4.8
+=============
+
+  Features
+
+  * Add support for _GTK_FRAME_EXTENTS (Rico Tzschichholz)
+
+  Fixes
+
+  * WindowActionMenu: unset window and stop async events on dispose (Marco Trevisan)
+
+  Translators
+
+  * Fran Diéguez (gl)
+  * GunChleoc (gd)
+  * Milo Casagrande (it)
+  * Noriko Mizumoto (ja)
+  * Rūdolfs Mazurs (lv)
+  * Wylmer Wang (zh_CN)
+
+=============
 Version 3.4.7
 =============
 
