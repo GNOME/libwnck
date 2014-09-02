@@ -4178,8 +4178,7 @@ sequence_timeout_callback (void *user_data)
   WnckTasklist *tasklist = user_data;
   GList *tmp;
   GTimeVal now;
-  time_t tv_sec;
-  suseconds_t tv_usec;
+  long tv_sec, tv_usec;
   double elapsed;
 
   g_get_current_time (&now);
