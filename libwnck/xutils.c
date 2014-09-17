@@ -24,6 +24,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <cairo-xlib.h>
+#if CAIRO_HAS_XLIB_XRENDER_SURFACE
+#include <cairo-xlib-xrender.h>
+#endif
 #include "screen.h"
 #include "window.h"
 #include "private.h"
@@ -1706,10 +1709,34 @@ _wnck_cairo_surface_get_from_pixmap (Screen *screen,
       if (!XGetWindowAttributes (display, root_return, &attrs))
         goto TRAP_POP;
 
-      surface = cairo_xlib_surface_create (display,
-                                           xpixmap,
-                                           attrs.visual,
-                                           w_ret, h_ret);
+      if (depth_ret == attrs.depth)
+	{
+	  surface = cairo_xlib_surface_create (display,
+					       xpixmap,
+					       attrs.visual,
+					       w_ret, h_ret);
+	}
+      else
+	{
+#if CAIRO_HAS_XLIB_XRENDER_SURFACE
+	  int std;
+
+	  switch (depth_ret) {
+	  case 1: std = PictStandardA1; break;
+	  case 4: std = PictStandardA4; break;
+	  case 8: std = PictStandardA8; break;
+	  case 24: std = PictStandardRGB24; break;
+	  case 32: std = PictStandardARGB32; break;
+	  default: goto TRAP_POP;
+	  }
+
+	  surface = cairo_xlib_surface_create_with_xrender_format (display,
+								   xpixmap,
+								   attrs.screen,
+								   XRenderFindStandardFormat (display, std),
+								   w_ret, h_ret);
+#endif
+	}
     }
 
 TRAP_POP:
