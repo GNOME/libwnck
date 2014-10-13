@@ -121,6 +121,11 @@ PKG_CHECK_MODULES(XLIB, x11,
      fi])
 AC_SUBST(X11_PACKAGE)
 
+PKG_CHECK_EXISTS([cairo-xlib-xrender],
+                 [AC_DEFINE_UNQUOTED([HAVE_CAIRO_XLIB_XRENDER], [1],
+                                     [Define if building against cairo-xlib-xrender])
+                  CAIRO_XLIB_XRENDER_PACKAGE=cairo-xlib-xrender])
+
 AC_MSG_CHECKING([if building with X Resource Information Extension Library])
 if $PKG_CONFIG xres; then
   AC_MSG_RESULT([yes])
@@ -146,6 +151,7 @@ PKG_CHECK_MODULES([LIBWNCK],[
 	gtk+-3.0 >= 3.4
 	glib-2.0 >= 2.32
 	gobject-2.0 >= 2.13.0
+	$CAIRO_XLIB_XRENDER_PACKAGE
 	$STARTUP_NOTIFICATION_PACKAGE
 	$XRES_PACKAGE
 ])

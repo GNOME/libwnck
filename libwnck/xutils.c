@@ -24,7 +24,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <cairo-xlib.h>
-#if CAIRO_HAS_XLIB_XRENDER_SURFACE
+#if HAVE_CAIRO_XLIB_XRENDER
 #include <cairo-xlib-xrender.h>
 #endif
 #include "screen.h"
@@ -1718,7 +1718,7 @@ _wnck_cairo_surface_get_from_pixmap (Screen *screen,
 	}
       else
 	{
-#if CAIRO_HAS_XLIB_XRENDER_SURFACE
+#if HAVE_CAIRO_XLIB_XRENDER
 	  int std;
 
 	  switch (depth_ret) {
