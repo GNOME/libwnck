@@ -2973,16 +2973,12 @@ wnck_task_popup_menu (WnckTask *task,
   if (action_submenu)
     {
       GtkWidget *separator;
-      GtkWidget *image;
 
       separator = gtk_separator_menu_item_new ();
       gtk_widget_show (separator);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), separator);
 
-      menu_item = gtk_image_menu_item_new_with_mnemonic (_("Mi_nimize All"));
-      image = gtk_image_new_from_stock (WNCK_STOCK_MINIMIZE, GTK_ICON_SIZE_MENU);
-      gtk_widget_show (image);
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+      menu_item = gtk_menu_item_new_with_mnemonic (_("Mi_nimize All"));
       gtk_widget_show (menu_item);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
@@ -2990,7 +2986,7 @@ wnck_task_popup_menu (WnckTask *task,
 			       G_OBJECT (task),
 			       0);
 
-      menu_item =  gtk_image_menu_item_new_with_mnemonic (_("Un_minimize All"));
+      menu_item =  gtk_menu_item_new_with_mnemonic (_("Un_minimize All"));
       gtk_widget_show (menu_item);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
@@ -2998,10 +2994,7 @@ wnck_task_popup_menu (WnckTask *task,
 			       G_OBJECT (task),
 			       0);
 
-      menu_item = gtk_image_menu_item_new_with_mnemonic (_("Ma_ximize All"));
-      image = gtk_image_new_from_stock (WNCK_STOCK_MAXIMIZE, GTK_ICON_SIZE_MENU);
-      gtk_widget_show (image);
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+      menu_item = gtk_menu_item_new_with_mnemonic (_("Ma_ximize All"));
       gtk_widget_show (menu_item);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
@@ -3009,7 +3002,7 @@ wnck_task_popup_menu (WnckTask *task,
 			       G_OBJECT (task),
 			       0);
 
-      menu_item =  gtk_image_menu_item_new_with_mnemonic (_("_Unmaximize All"));
+      menu_item =  gtk_menu_item_new_with_mnemonic (_("_Unmaximize All"));
       gtk_widget_show (menu_item);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
@@ -3021,10 +3014,7 @@ wnck_task_popup_menu (WnckTask *task,
       gtk_widget_show (separator);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), separator);
 
-      menu_item = gtk_image_menu_item_new_with_mnemonic(_("_Close All"));
-      image = gtk_image_new_from_stock (WNCK_STOCK_DELETE, GTK_ICON_SIZE_MENU);
-      gtk_widget_show (image);
-      gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item), image);
+      menu_item = gtk_menu_item_new_with_mnemonic(_("_Close All"));
       gtk_widget_show (menu_item);
       gtk_menu_shell_append (GTK_MENU_SHELL (menu), menu_item);
       g_signal_connect_object (G_OBJECT (menu_item), "activate",
