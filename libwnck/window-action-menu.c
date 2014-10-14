@@ -1109,8 +1109,6 @@ wnck_action_menu_class_init (WnckActionMenuClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
-  _wnck_stock_icons_init ();
-
   g_type_class_add_private (klass, sizeof (WnckActionMenuPrivate));
 
   object_class->constructor = wnck_action_menu_constructor;

@@ -30,10 +30,6 @@
 
 G_BEGIN_DECLS
 
-#define WNCK_STOCK_DELETE "wnck-stock-delete"
-#define WNCK_STOCK_MAXIMIZE "wnck-stock-maximize"
-#define WNCK_STOCK_MINIMIZE "wnck-stock-minimize"
-
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
 gboolean _wnck_get_cardinal      (Screen *screen,

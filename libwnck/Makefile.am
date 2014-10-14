@@ -150,12 +150,9 @@ wnck-enum-types.c: $(wnck_headers)
 		--vtail "  return type;\n}\n\n" \
 		$^ > $@
 
-inlinepixbufs_SOURCES = default_icon.png stock_delete.png stock_maximize.png stock_minimize.png
+inlinepixbufs_SOURCES = default_icon.png
 inlinepixbufs_pairs =						\
-	default_icon_data $(srcdir)/default_icon.png 		\
-	stock_delete_data $(srcdir)/stock_delete.png 		\
-	stock_maximize_data $(srcdir)/stock_maximize.png 	\
-	stock_minimize_data $(srcdir)/stock_minimize.png
+	default_icon_data $(srcdir)/default_icon.png
 
 inlinepixbufs.h: $(inlinepixbufs_SOURCES)
 	$(AM_V_GEN)$(GDK_PIXBUF_CSOURCE) --raw --build-list $(inlinepixbufs_pairs) > $@
