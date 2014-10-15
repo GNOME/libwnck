@@ -158,6 +158,8 @@ struct _WnckTask
 
   guint row;
   guint col;
+  
+  guint resize_idle_id;
 };
 
 struct _WnckTaskClass
@@ -364,6 +366,7 @@ static void
 wnck_task_init (WnckTask *task)
 {
   task->type = WNCK_TASK_WINDOW;
+  task->resize_idle_id = 0;
 }
 
 static void
@@ -561,6 +564,12 @@ wnck_task_finalize (GObject *object)
     }
 
   wnck_task_stop_glow (task);
+
+  if (task->resize_idle_id > 0)
+    {
+      g_source_remove (task->resize_idle_id);
+      task->resize_idle_id = 0;
+    }
 
   G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
 }
@@ -1407,6 +1416,18 @@ wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
   return tasklist->priv->size_hints;
 }
 
+static gboolean
+task_button_queue_resize (gpointer user_data)
+{
+  WnckTask *task = WNCK_TASK (user_data);
+
+  gtk_widget_queue_resize (task->image);
+  gtk_widget_queue_resize (task->label);
+  task->resize_idle_id = 0;
+
+  return G_SOURCE_REMOVE;
+}
+
 static void
 wnck_task_size_allocated (GtkWidget     *widget,
                           GtkAllocation *allocation,
@@ -1417,6 +1438,8 @@ wnck_task_size_allocated (GtkWidget     *widget,
   GtkStateFlags    state;
   GtkBorder        padding;
   int              min_image_width;
+  gboolean         old_image_visible;
+  gboolean         old_label_visible;
 
   state = gtk_widget_get_state_flags (widget);
   context = gtk_widget_get_style_context (widget);
@@ -1425,6 +1448,8 @@ wnck_task_size_allocated (GtkWidget     *widget,
   min_image_width = MINI_ICON_SIZE +
                     padding.left + padding.right +
                     2 * TASKLIST_BUTTON_PADDING;
+  old_image_visible = gtk_widget_get_visible (task->image);
+  old_label_visible = gtk_widget_get_visible (task->label);
 
   if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
       (allocation->width >= min_image_width)) {
@@ -1437,6 +1462,13 @@ wnck_task_size_allocated (GtkWidget     *widget,
     gtk_widget_show (task->image);
     gtk_widget_show (task->label);
   }
+
+  if (old_image_visible != gtk_widget_get_visible (task->image) ||
+      old_label_visible != gtk_widget_get_visible (task->label))
+    {
+      if (task->resize_idle_id == 0)
+        task->resize_idle_id = g_idle_add (task_button_queue_resize, task);
+    }
 }
 
 static void
