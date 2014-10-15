@@ -788,6 +788,17 @@ get_workspace_rect (WnckPager    *pager,
 
   gtk_widget_get_allocation (widget, &allocation);
 
+  if (allocation.x == -1 || allocation.y == -1 ||
+      allocation.width == -1 || allocation.height == -1)
+    {
+      rect->x = 0;
+      rect->y = 0;
+      rect->width = 0;
+      rect->height = 0;
+
+      return;
+    }
+
   _wnck_pager_get_padding (pager, &padding);
   gtk_widget_style_get (widget,
 			"focus-line-width", &focus_width,
