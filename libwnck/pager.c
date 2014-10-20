@@ -788,8 +788,8 @@ get_workspace_rect (WnckPager    *pager,
 
   gtk_widget_get_allocation (widget, &allocation);
 
-  if (allocation.x == -1 || allocation.y == -1 ||
-      allocation.width == -1 || allocation.height == -1)
+  if (allocation.x < 0 || allocation.y < 0 ||
+      allocation.width < 0 || allocation.height < 0)
     {
       rect->x = 0;
       rect->y = 0;
