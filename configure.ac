@@ -1,8 +1,8 @@
 AC_PREREQ(2.62)
 
 m4_define([wnck_major_version], [3])
-m4_define([wnck_minor_version], [4])
-m4_define([wnck_micro_version], [10])
+m4_define([wnck_minor_version], [14])
+m4_define([wnck_micro_version], [0])
 m4_define([wnck_version],
           [wnck_major_version.wnck_minor_version.wnck_micro_version])
 
@@ -148,7 +148,7 @@ AC_SUBST(XLIB_CFLAGS)
 AC_SUBST(XLIB_LIBS)
 
 PKG_CHECK_MODULES([LIBWNCK],[
-	gtk+-3.0 >= 3.4
+	gtk+-3.0 >= 3.10
 	glib-2.0 >= 2.32
 	gobject-2.0 >= 2.13.0
 	$CAIRO_XLIB_XRENDER_PACKAGE

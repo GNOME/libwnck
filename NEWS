@@ -1,4 +1,26 @@
 =============
+Version 3.14.0
+=============
+
+  Release bump to 3.14.0
+
+  Fixes
+
+  * xutils: Support non-standard depths for icon pixmaps (Chris Wilson)
+  * xutils: Correctly link against libXrender (David King)
+  * pager: don't return invalid workspace rect (Alberts Muktupāvels)
+  * tasklist: fix missing icon in tasklist button (Alberts Muktupāvels)
+  * window-action-menu: don't use deprecated GtkImageMenuItem (Alberts Muktupāvels)
+  * tasklist: don't use deprecated GtkImageMenuItem (Alberts Muktupāvels)
+
+  Translators
+
+  * Anders Jonsson (sv)
+  * Saibal Ray (bn_IN)
+  * Timo Jyrinki (fi)
+
+
+=============
 Version 3.4.9
 =============
 
