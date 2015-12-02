@@ -280,9 +280,10 @@ struct _WnckWindowClass
   /* Changed role */
   void (* role_changed)      (WnckWindow       *window);
 
+  void (* type_changed)      (WnckWindow       *window);
+
   /* Padding for future expansion */
   void (* pad1) (void);
-  void (* pad2) (void);
 };
 
 GType wnck_window_get_type (void) G_GNUC_CONST;

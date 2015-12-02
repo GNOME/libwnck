@@ -163,6 +163,7 @@ struct _WnckWindowPrivate
   guint need_emit_icon_changed : 1;
   guint need_emit_class_changed : 1;
   guint need_emit_role_changed : 1;
+  guint need_emit_type_changed : 1;
 };
 
 G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
@@ -177,6 +178,7 @@ enum {
   GEOMETRY_CHANGED,
   CLASS_CHANGED,
   ROLE_CHANGED,
+  TYPE_CHANGED,
   LAST_SIGNAL
 };
 
@@ -196,6 +198,7 @@ static void emit_actions_changed   (WnckWindow       *window,
 static void emit_geometry_changed  (WnckWindow      *window);
 static void emit_class_changed     (WnckWindow      *window);
 static void emit_role_changed      (WnckWindow      *window);
+static void emit_type_changed      (WnckWindow      *window);
 
 static void update_name      (WnckWindow *window);
 static void update_state     (WnckWindow *window);
@@ -375,6 +378,22 @@ wnck_window_class_init (WnckWindowClass *klass)
                   G_STRUCT_OFFSET (WnckWindowClass, role_changed),
                   NULL, NULL, NULL,
                   G_TYPE_NONE, 0);
+
+  /**
+   * WnckWindow::type-changed:
+   * @window: the #WnckWindow which emitted the signal.
+   *
+   * Emitted when the EWMH type hint of the window changes.
+   *
+   * Since: 3.20
+   */
+  signals[TYPE_CHANGED] =
+    g_signal_new ("type_changed",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  G_STRUCT_OFFSET (WnckWindowClass, type_changed),
+                  NULL, NULL, NULL,
+                  G_TYPE_NONE, 0);
 }
 
 static void
@@ -543,6 +562,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_emit_icon_changed = FALSE;
   window->priv->need_emit_class_changed = FALSE;
   window->priv->need_emit_role_changed = FALSE;
+  window->priv->need_emit_type_changed = FALSE;
   force_update_now (window);
 
   return window;
@@ -1001,6 +1021,8 @@ wnck_window_set_window_type (WnckWindow *window, WnckWindowType wintype)
 		   (guchar *)&atom, 1);
 
   _wnck_error_trap_pop (display);
+
+  emit_type_changed (window);
 }
 
 /**
@@ -3048,7 +3070,11 @@ update_wintype (WnckWindow *window)
       found_type = TRUE;
     }
 
-  window->priv->wintype = type;
+  if (window->priv->wintype != type)
+    {
+      window->priv->need_emit_type_changed = TRUE;
+      window->priv->wintype = type;
+    }
 }
 
 static void
@@ -3260,7 +3286,7 @@ force_update_now (WnckWindow *window)
   update_wmclass (window);
   update_wmhints (window);
   update_transient_for (window); /* wintype needs this to be first */
-  update_wintype (window);
+  update_wintype (window);   /* emits signals */
   update_wm_state (window);
   update_state (window);     /* must come after the above, since they affect
                               * our calculated state
@@ -3289,6 +3315,9 @@ force_update_now (WnckWindow *window)
 
   if (window->priv->need_emit_role_changed)
     emit_role_changed (window);
+
+  if (window->priv->need_emit_type_changed)
+    emit_type_changed (window);
 }
 
 
@@ -3390,5 +3419,14 @@ emit_role_changed (WnckWindow *window)
   window->priv->need_emit_role_changed = FALSE;
   g_signal_emit (G_OBJECT (window),
                  signals[ROLE_CHANGED],
+                 0);
+}
+
+static void
+emit_type_changed (WnckWindow *window)
+{
+  window->priv->need_emit_type_changed = FALSE;
+  g_signal_emit (G_OBJECT (window),
+                 signals[TYPE_CHANGED],
                  0);
 }
