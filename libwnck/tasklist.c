@@ -3723,7 +3723,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
-  GtkCssProvider *provider;
   static const GtkTargetEntry targets[] = {
     { "application/x-wnck-window-id", 0, 0 }
   };
@@ -3738,18 +3737,6 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   task->button_activate = 0;
   g_object_add_weak_pointer (G_OBJECT (task->button),
                              (void**) &task->button);
-
-  provider = gtk_css_provider_new ();
-  gtk_css_provider_load_from_data (provider,
-                                   "#tasklist-button {\n"
-                                   " -GtkWidget-focus-line-width: 0px;\n"
-                                   " -GtkWidget-focus-padding: 0px;\n"
-                                   "}",
-                                   -1, NULL);
-  gtk_style_context_add_provider (gtk_widget_get_style_context (task->button),
-                                  GTK_STYLE_PROVIDER (provider),
-                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
-  g_object_unref (provider);
 
   gtk_widget_set_name (task->button,
 		       "tasklist-button");
