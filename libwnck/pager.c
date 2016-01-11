@@ -403,8 +403,8 @@ _wnck_pager_get_padding (WnckPager *pager,
       GtkStateFlags    state;
 
       widget = GTK_WIDGET (pager);
-      state = gtk_widget_get_state_flags (widget);
       context = gtk_widget_get_style_context (widget);
+      state = gtk_style_context_get_state (context);
       gtk_style_context_get_padding (context, state, padding);
     }
   else
