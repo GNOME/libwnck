@@ -1133,7 +1133,7 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   gint width;
 
   style_context = gtk_widget_get_style_context (widget);
-  state = gtk_widget_get_state_flags (widget);
+  state = gtk_style_context_get_state (style_context);
   gtk_style_context_get (style_context, state, GTK_STYLE_PROPERTY_FONT, &description, NULL);
 
   context = gtk_widget_get_pango_context (widget);
@@ -1441,8 +1441,8 @@ wnck_task_size_allocated (GtkWidget     *widget,
   gboolean         old_image_visible;
   gboolean         old_label_visible;
 
-  state = gtk_widget_get_state_flags (widget);
   context = gtk_widget_get_style_context (widget);
+  state = gtk_style_context_get_state (context);
   gtk_style_context_get_padding (context, state, &padding);
 
   min_image_width = MINI_ICON_SIZE +
@@ -3912,10 +3912,16 @@ wnck_task_draw (GtkWidget *widget,
     case WNCK_TASK_CLASS_GROUP:
       context = gtk_widget_get_style_context (widget);
 
-      gtk_style_context_get_padding (context, gtk_widget_get_state_flags (widget), &padding);
+      state = gtk_style_context_get_state (context);
+      gtk_style_context_get_padding (context, state, &padding);
+
       state = (task->tasklist->priv->active_class_group == task) ?
               GTK_STATE_FLAG_ACTIVE : GTK_STATE_FLAG_NORMAL;
+
+      gtk_style_context_save (context);
+      gtk_style_context_set_state (context, state);
       gtk_style_context_get_color (context, state, &color);
+      gtk_style_context_restore (context);
 
       x = gtk_widget_get_allocated_width (widget) -
           (gtk_container_get_border_width (GTK_CONTAINER (widget)) + padding.right + ARROW_SIZE);
@@ -3972,8 +3978,12 @@ wnck_task_draw (GtkWidget *widget,
     {
       GdkRGBA bg_color;
 
-      /* Draw a rectangle with selected background color */
+      gtk_style_context_save (context);
+      gtk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
       gtk_style_context_get_background_color (context, GTK_STATE_FLAG_SELECTED, &bg_color);
+      gtk_style_context_restore (context);
+
+      /* Draw a rectangle with selected background color */
       gdk_cairo_set_source_rgba (cr, &bg_color);
       cairo_paint (cr);
     }
