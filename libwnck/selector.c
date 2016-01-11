@@ -521,8 +521,8 @@ wnck_selector_get_width (GtkWidget *widget, const char *text)
   gint screen_width;
   gint width;
 
-  state = gtk_widget_get_state_flags (widget);
   style_context = gtk_widget_get_style_context (widget);
+  state = gtk_style_context_get_state (style_context);
   gtk_style_context_get (style_context, state, GTK_STYLE_PROPERTY_FONT, &description, NULL);
 
   context = gtk_widget_get_pango_context (widget);
@@ -650,7 +650,11 @@ wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
   char            *markup;
 
   context = gtk_widget_get_style_context (GTK_WIDGET (label));
+
+  gtk_style_context_save (context);
+  gtk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
   gtk_style_context_get_color (context, GTK_STATE_FLAG_INSENSITIVE, &color);
+  gtk_style_context_restore (context);
 
   name = g_markup_escape_text (wnck_workspace_get_name (workspace), -1);
   markup = g_strdup_printf ("<span size=\"x-small\" style=\"italic\" foreground=\"#%.2x%.2x%.2x\">%s</span>",
