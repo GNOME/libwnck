@@ -171,6 +171,16 @@ GTK_DOC_CHECK([1.9])
 
 GOBJECT_INTROSPECTION_CHECK([0.6.14])
 
+if test "$enable_introspection" = "yes"; then
+  # Redefine introspection dirs using proper prefixes
+
+  INTROSPECTION_GIRDIR=`$PKG_CONFIG --define-variable=datadir=${datadir} --variable=girdir gobject-introspection-1.0`
+  AC_SUBST(INTROSPECTION_GIRDIR)
+
+  INTROSPECTION_TYPELIBDIR=`$PKG_CONFIG --define-variable=libdir=${libdir} --variable=typelibdir gobject-introspection-1.0`
+  AC_SUBST(INTROSPECTION_TYPELIBDIR)
+fi
+
 AC_OUTPUT([
 Makefile
 doc/Makefile
