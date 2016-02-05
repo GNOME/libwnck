@@ -1,4 +1,32 @@
 =============
+Version 3.18.0
+=============
+
+  Release bump to 3.18.0
+
+  Fixes
+
+  * WnckWindow: Add a new 'type-changed' signal (Sebastian Geiger)
+  * don't use deprecated style properties (Alberts Muktupāvels)
+  * pager: use correct state flags (Alberts Muktupāvels)
+  * selector: avoid warnings from GtkStyleContext (Alberts Muktupāvels)
+  * tasklist: avoid warnings from GtkStyleContext (Alberts Muktupāvels)
+  * Back to dependency on gtk+-3.0 >= 3.10
+
+  Translators
+
+  * Aurimas Černius (lt)
+  * Cédric Valmary (oc)
+  * Cheng-Chia Tseng (zh_TW)
+  * Jordi Mas (ca)
+  * Maria  Mavridou (el)
+  * Mario Blättermann (de)
+  * Muhammet Kara (tr)
+  * Pedro Albuquerque (pt)
+  * Piotr Drąg (pl)
+  * Samir Ribic (bs)
+
+=============
 Version 3.14.0
 =============
 
