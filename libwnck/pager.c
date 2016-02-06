@@ -266,6 +266,10 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->drag_data_get = wnck_pager_drag_data_get;
   widget_class->drag_end = wnck_pager_drag_end;
   widget_class->query_tooltip = wnck_pager_query_tooltip;
+
+#if GTK_CHECK_VERSION (3, 19, 1)
+  gtk_widget_class_set_css_name (widget_class, "wnck-pager");
+#endif
 }
 
 static void
