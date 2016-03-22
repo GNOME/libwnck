@@ -595,7 +595,7 @@ wnck_selector_item_new (WnckSelector *selector,
   gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (item), TRUE);
 
   ellipsizing_label = gtk_label_new (label);
-  gtk_misc_set_alignment (GTK_MISC (ellipsizing_label), 0.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (ellipsizing_label), 0.0);
   gtk_label_set_ellipsize (GTK_LABEL (ellipsizing_label),
                            PANGO_ELLIPSIZE_END);
 
@@ -690,7 +690,7 @@ wnck_selector_add_workspace (WnckSelector *selector,
   item = gtk_separator_menu_item_new ();
 
   label = gtk_label_new ("");
-  gtk_misc_set_alignment (GTK_MISC (label), 1.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (label), 1.0);
   gtk_widget_show (label);
   /* the handler will also take care of setting the name for the first time,
    * and we'll be able to adapt to theme changes */
