@@ -803,8 +803,6 @@ create_tree_view (void)
   
   tree_view = gtk_tree_view_new ();
 
-  gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (tree_view), TRUE);
-  
   /* The icon and title are in the same column, so pack
    * two cell renderers into that column
    */
