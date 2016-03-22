@@ -1265,9 +1265,7 @@ wnck_selector_class_init (WnckSelectorClass *klass)
   widget_class->unrealize = wnck_selector_unrealize;
   widget_class->scroll_event = wnck_selector_scroll_event;
 
-#if GTK_CHECK_VERSION (3, 19, 1)
   gtk_widget_class_set_css_name (widget_class, "wnck-selector");
-#endif
 }
 
 static GObject *
