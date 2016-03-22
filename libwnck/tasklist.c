@@ -3773,7 +3773,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   text = wnck_task_get_text (task, TRUE, TRUE);
   task->label = gtk_label_new (text);
-  gtk_misc_set_alignment (GTK_MISC (task->label), 0.0, 0.5);
+  gtk_label_set_xalign (GTK_LABEL (task->label), 0.0);
   gtk_label_set_ellipsize (GTK_LABEL (task->label),
                           PANGO_ELLIPSIZE_END);
 
