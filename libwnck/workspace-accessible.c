@@ -135,7 +135,7 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
 
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
-  atk_component_get_position (ATK_COMPONENT (parent), &px,&py, coords);
+  atk_component_get_extents (ATK_COMPONENT (parent), &px, &py, NULL, NULL, coords);
 
   _wnck_pager_get_workspace_rect (pager, WNCK_WORKSPACE_ACCESSIBLE (component)->index, &rect);
 
