@@ -116,11 +116,7 @@ wnck_workspace_accessible_get_extents (AtkComponent *component,
   g_return_if_fail (WNCK_IS_WORKSPACE (g_obj));
 
   parent = atk_object_get_parent (ATK_OBJECT(component));
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (parent));
-#else
-  widget = GTK_ACCESSIBLE (parent)->widget;
-#endif
 
   if (widget == NULL)
     {
