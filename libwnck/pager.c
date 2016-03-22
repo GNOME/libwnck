@@ -1908,15 +1908,15 @@ wnck_pager_motion (GtkWidget        *widget,
 {
   WnckPager *pager;
   GdkWindow *window;
-  GdkDeviceManager *dev_manager;
+  GdkSeat *seat;
   GdkDevice *pointer;
   int x, y;
 
   pager = WNCK_PAGER (widget);
 
-  dev_manager = gdk_display_get_device_manager (gtk_widget_get_display (widget));
+  seat = gdk_display_get_default_seat (gtk_widget_get_display (widget));
   window = gtk_widget_get_window (widget);
-  pointer = gdk_device_manager_get_client_pointer (dev_manager);
+  pointer = gdk_seat_get_pointer (seat);
   gdk_window_get_device_position (window, pointer, &x, &y, NULL);
 
   if (!pager->priv->dragging &&
