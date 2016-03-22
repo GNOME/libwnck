@@ -698,9 +698,7 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                               0.0, 1.0, 0.8,
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
-#if GTK_CHECK_VERSION (3, 19, 1)
   gtk_widget_class_set_css_name (widget_class, "wnck-tasklist");
-#endif
 }
 
 static void
@@ -3488,11 +3486,7 @@ wnck_task_drag_motion (GtkWidget          *widget,
   if (gtk_drag_dest_find_target (widget, context, NULL))
     {
       gtk_drag_highlight (widget);
-#if GTK_CHECK_VERSION(2,21,0)
       gdk_drag_status (context, gdk_drag_context_get_suggested_action (context), time);
-#else
-      gdk_drag_status (context, context->suggested_action, time);
-#endif
     }
   else
     {
