@@ -1789,58 +1789,38 @@ target_filter (GdkXEvent *gdk_xevent,
   return GDK_FILTER_CONTINUE;
 }
 
+static void
+prepare (GdkSeat   *seat,
+         GdkWindow *window,
+         gpointer   user_data)
+{
+  gdk_window_show_unraised (window);
+}
+
 static gboolean
 get_target (gpointer data)
 {
-  GdkDisplay       *display;
-  GdkGrabStatus     status;
-  GdkDeviceManager *dev_manager;
-  GdkDevice        *device;
-  GdkCursor        *cross;
-  GdkWindow        *root;
-  GList            *devices, *l;
+  GdkWindow *root;
+  GdkDisplay *display;
+  GdkSeat *seat;
+  GdkCursor *cross;
+  GdkSeatCapabilities caps;
+  GdkGrabStatus status;
 
-  display = gdk_display_get_default ();
-  dev_manager = gdk_display_get_device_manager (display);
   root = gdk_get_default_root_window ();
+  display = gdk_display_get_default ();
+  seat = gdk_display_get_default_seat (display);
+  cross = gdk_cursor_new_for_display (display, GDK_CROSS);
+  caps = GDK_SEAT_CAPABILITY_POINTER | GDK_SEAT_CAPABILITY_KEYBOARD;
 
   gdk_window_add_filter (root, (GdkFilterFunc) target_filter, NULL);
 
-  cross = gdk_cursor_new_for_display (display, GDK_CROSS);
-  device = gdk_device_manager_get_client_pointer (dev_manager);
-  status = gdk_device_grab (device, root, GDK_OWNERSHIP_WINDOW, TRUE,
-                            GDK_BUTTON_PRESS_MASK, cross, GDK_CURRENT_TIME);
+  status = gdk_seat_grab (seat, root, caps, TRUE, cross, NULL, prepare, NULL);
   g_object_unref (cross);
 
   if (status != GDK_GRAB_SUCCESS)
     {
-      g_warning ("Pointer grab failed.\n");
-      clean_up ();
-      return FALSE;
-    }
-
-  devices = gdk_device_manager_list_devices (dev_manager, GDK_DEVICE_TYPE_MASTER);
-
-  for (l = devices; l; l = l->next)
-    {
-      device = GDK_DEVICE (l->data);
-
-      if (gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
-        continue;
-
-      status = gdk_device_grab (device, root, GDK_OWNERSHIP_NONE, TRUE,
-                                GDK_KEY_PRESS_MASK | GDK_KEY_RELEASE_MASK, NULL,
-                                GDK_CURRENT_TIME);
-
-      if (status != GDK_GRAB_SUCCESS)
-        break;
-    }
-
-  g_list_free (devices);
-
-  if (status != GDK_GRAB_SUCCESS)
-    {
-      g_warning ("Keyboard grab failed.\n");
+      g_warning ("Seat grab failed.");
       clean_up ();
       return FALSE;
     }
@@ -1854,30 +1834,15 @@ static void
 clean_up (void)
 {
   GdkWindow *root;
-  GdkDeviceManager *dev_manager;
-  GdkDevice        *device;
-  GList            *devices, *l;
+  GdkDisplay *display;
+  GdkSeat *seat;
 
   root = gdk_get_default_root_window ();
-  dev_manager = gdk_display_get_device_manager (gdk_display_get_default ());
+  display = gdk_display_get_default ();
+  seat = gdk_display_get_default_seat (display);
+
   gdk_window_remove_filter (root, (GdkFilterFunc) target_filter, NULL);
-
-  device = gdk_device_manager_get_client_pointer (dev_manager);
-  gdk_device_ungrab (device, GDK_CURRENT_TIME);
-
-  devices = gdk_device_manager_list_devices (dev_manager, GDK_DEVICE_TYPE_MASTER);
-
-  for (l = devices; l; l = l->next)
-    {
-      device = GDK_DEVICE (l->data);
-
-      if (gdk_device_get_source (device) != GDK_SOURCE_KEYBOARD)
-        continue;
-
-      gdk_device_ungrab (device, GDK_CURRENT_TIME);
-    }
-
-  g_list_free (devices);
+  gdk_seat_ungrab (seat);
 
   gtk_main_quit ();
 }
