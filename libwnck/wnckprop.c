@@ -1792,6 +1792,7 @@ target_filter (GdkXEvent *gdk_xevent,
 static gboolean
 get_target (gpointer data)
 {
+  GdkDisplay       *display;
   GdkGrabStatus     status;
   GdkDeviceManager *dev_manager;
   GdkDevice        *device;
@@ -1799,12 +1800,13 @@ get_target (gpointer data)
   GdkWindow        *root;
   GList            *devices, *l;
 
-  dev_manager = gdk_display_get_device_manager (gdk_display_get_default ());
+  display = gdk_display_get_default ();
+  dev_manager = gdk_display_get_device_manager (display);
   root = gdk_get_default_root_window ();
 
   gdk_window_add_filter (root, (GdkFilterFunc) target_filter, NULL);
 
-  cross = gdk_cursor_new (GDK_CROSS);
+  cross = gdk_cursor_new_for_display (display, GDK_CROSS);
   device = gdk_device_manager_get_client_pointer (dev_manager);
   status = gdk_device_grab (device, root, GDK_OWNERSHIP_WINDOW, TRUE,
                             GDK_BUTTON_PRESS_MASK, cross, GDK_CURRENT_TIME);
