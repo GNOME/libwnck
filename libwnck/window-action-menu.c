@@ -336,7 +336,7 @@ set_item_text (GtkWidget  *mi,
   GtkLabel *label;
 
   label = GTK_LABEL (gtk_bin_get_child (GTK_BIN (mi)));
-  gtk_label_set_text (label, text);
+  gtk_label_set_text_with_mnemonic (label, text);
   gtk_label_set_use_underline (label, TRUE);
 }
 
