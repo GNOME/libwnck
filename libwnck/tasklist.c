@@ -1425,8 +1425,7 @@ task_button_queue_resize (gpointer user_data)
 {
   WnckTask *task = WNCK_TASK (user_data);
 
-  gtk_widget_queue_resize (task->image);
-  gtk_widget_queue_resize (task->label);
+  gtk_widget_queue_resize (task->button);
   task->resize_idle_id = 0;
 
   return G_SOURCE_REMOVE;
