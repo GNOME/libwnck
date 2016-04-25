@@ -2984,7 +2984,9 @@ update_actions (WnckWindow *window)
       else
         {
           const char *name = _wnck_atom_name (atoms [i]);
-          g_warning ("Unhandled action type %s", name ? name: "(nil)");
+
+          if (name && g_str_has_prefix (name, "_NET_WM_"))
+            g_warning ("Unhandled action type %s", name);
         }
 
       i++;
