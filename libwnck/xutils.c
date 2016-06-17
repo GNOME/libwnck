@@ -1796,6 +1796,8 @@ try_pixmap_and_mask (Screen     *screen,
   if (surface == NULL)
     return FALSE;
 
+  gdk_error_trap_push ();
+
   width = cairo_xlib_surface_get_width (surface);
   height = cairo_xlib_surface_get_height (surface);
 
@@ -1833,6 +1835,12 @@ try_pixmap_and_mask (Screen     *screen,
 
   cairo_surface_destroy (surface);
   cairo_destroy (cr);
+
+  if (gdk_error_trap_pop () != Success)
+    {
+      cairo_surface_destroy (image);
+      return FALSE;
+    }
 
   unscaled = gdk_pixbuf_get_from_surface (image,
                                           0, 0,
