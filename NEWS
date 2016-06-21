@@ -1,8 +1,26 @@
-=============
-Version 3.18.0
-=============
+==============
+Version 3.20.0
+==============
 
-  Release bump to 3.18.0
+  Fixes
+
+  * xutils: add error trap in try_pixmap_and_mask (Alberts Muktupāvel)
+  * Window: ignore unhandled non-_NET_WM actions
+  * ActionMenu: Use gtk_label_set_text_with_mnemonic instead of
+    gtk_label_set_text (Andrea Azzarone)
+  * tasklist: set css name (Alberts Muktupāvel)
+  * selector: set css name (Alberts Muktupāvel)
+  * pager: set css name Alberts Muktupāvels
+  * configure.ac: redefine introspection dirs using proper prefixes
+
+  Translators
+
+  * Dušan Kazi (sk)
+  * Trần Ngọc Quân (vi)
+
+==============
+Version 3.18.0
+==============
 
   Fixes
 
@@ -26,11 +44,9 @@ Version 3.18.0
   * Piotr Drąg (pl)
   * Samir Ribic (bs)
 
-=============
+==============
 Version 3.14.0
-=============
-
-  Release bump to 3.14.0
+==============
 
   Fixes
 
