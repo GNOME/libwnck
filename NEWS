@@ -1,4 +1,21 @@
 ==============
+Version 3.20.1
+==============
+
+  Fixes
+
+  * tasklist: ignore size_allocate with invalid size (Alberts Muktupāvels)
+  * tasklist: queue resize on button not on its content (Alberts Muktupāvels)
+  * workspace-accessible: drop obsolete GTK_CHECK_VERSION (Alberts Muktupāvels)
+  * workspace-accessible: don't use deprecated atk_component_get_position
+    (Alberts Muktupāvels)
+  * tasklist: don't use deprecated GtkMisc (Alberts Muktupāvels)
+  * selector: don't use deprecated GtkMisc (Alberts Muktupāvels)
+  * wnckprop: don't use deprecated gdk_cursor_new (Alberts Muktupāvels)
+  * test-wnck: don't use deprecated gtk_tree_view_set_rules_hint (Alberts
+    Muktupāvels)
+
+==============
 Version 3.20.0
 ==============
 
