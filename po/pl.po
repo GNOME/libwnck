@@ -1,32 +1,28 @@
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aviary.pl
-# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
-# gnomepl@aviary.pl
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Polish translation for libwnck.
+# Copyright © 2002-2016 the libwnck authors.
+# This file is distributed under the same license as the libwnck package.
 # Zbigniew Chyla <chyla@alice.ci.pwr.wroc.pl>, 2002-2003.
 # Artur Flinta <aflinta@at.kernel.pl>, 2003-2006.
 # Tomasz Dominikowski <dominikowski@gmail.com>, 2008.
 # Piotr Leszczyński <piotr@kontury.pl>, 2009.
 # Wadim Dziedzic <wdziedzic@aviary.pl>, 2009.
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2015.
-# Aviary.pl <gnomepl@aviary.pl>, 2008-2015.
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2016.
+# Aviary.pl <community-poland@mozilla.org>, 2008-2016.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-30 18:40+0200\n"
-"PO-Revision-Date: 2015-08-30 18:42+0200\n"
+"POT-Creation-Date: 2016-08-21 17:44+0200\n"
+"PO-Revision-Date: 2016-08-21 17:45+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <gnomepl@aviary.pl>\n"
+"Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
 
 #. *
 #. * SECTION:application
@@ -64,30 +60,30 @@ msgstr "Narzędzie do przełączania obszarów roboczych"
 msgid "Click this to switch to workspace %s"
 msgstr "Kliknięcie przełącza na obszar roboczy %s"
 
-#: ../libwnck/pager.c:2197
+#: ../libwnck/pager.c:2155
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Kliknięcie rozpocznie przeciąganie „%s”"
 
-#: ../libwnck/pager.c:2200
+#: ../libwnck/pager.c:2158
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Bieżący obszar roboczy: „%s”"
 
-#: ../libwnck/pager.c:2205
+#: ../libwnck/pager.c:2163
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Kliknięcie przełączy na obszar roboczy „%s”"
 
-#: ../libwnck/selector.c:1182
+#: ../libwnck/selector.c:1186
 msgid "No Windows Open"
 msgstr "Brak otwartych okien"
 
-#: ../libwnck/selector.c:1238
+#: ../libwnck/selector.c:1242
 msgid "Window Selector"
 msgstr "Wybór okien"
 
-#: ../libwnck/selector.c:1239
+#: ../libwnck/selector.c:1243
 msgid "Tool to switch between windows"
 msgstr "Narzędzie do przełączania pomiędzy oknami"
 
@@ -99,23 +95,23 @@ msgstr "Lista okien"
 msgid "Tool to switch between visible windows"
 msgstr "Narzędzie do przełączania widocznych okien"
 
-#: ../libwnck/tasklist.c:2981
+#: ../libwnck/tasklist.c:2990
 msgid "Mi_nimize All"
 msgstr "Zmi_nimalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:2989
+#: ../libwnck/tasklist.c:2998
 msgid "Un_minimize All"
 msgstr "Cofnij minimalizację wszystkic_h"
 
-#: ../libwnck/tasklist.c:2997
+#: ../libwnck/tasklist.c:3006
 msgid "Ma_ximize All"
 msgstr "Zm_aksymalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:3005
+#: ../libwnck/tasklist.c:3014
 msgid "_Unmaximize All"
 msgstr "Cofnij maksymalizację wszystki_ch"
 
-#: ../libwnck/tasklist.c:3017
+#: ../libwnck/tasklist.c:3026
 msgid "_Close All"
 msgstr "Zamknij _wszystkie"
 
@@ -329,19 +325,19 @@ msgstr "Cofnij maksymalizację"
 
 #: ../libwnck/wnckprop.c:202
 msgid "Maximize horizontally the window"
-msgstr "Zmaksymalizuj okno w poziomie"
+msgstr "Zmaksymalizuj okno w poziomie"
 
 #: ../libwnck/wnckprop.c:204
 msgid "Unmaximize horizontally the window"
-msgstr "Cofnij maksymalizację okna w poziomie"
+msgstr "Cofnij maksymalizację okna w poziomie"
 
 #: ../libwnck/wnckprop.c:206
 msgid "Maximize vertically the window"
-msgstr "Zmaksymalizuj okno w pionie"
+msgstr "Zmaksymalizuj okno w pionie"
 
 #: ../libwnck/wnckprop.c:208
 msgid "Unmaximize vertically the window"
-msgstr "Cofnij maksymalizację okna w pionie"
+msgstr "Cofnij maksymalizację okna w pionie"
 
 #: ../libwnck/wnckprop.c:210
 msgid "Start moving the window via the keyboard"
@@ -365,7 +361,7 @@ msgstr "Okno na pełnym ekranie"
 
 #: ../libwnck/wnckprop.c:221
 msgid "Make the window quit fullscreen mode"
-msgstr "Wyjście okna z trybu pełnego ekranu"
+msgstr "Wyjście okna z trybu pełnego ekranu"
 
 #: ../libwnck/wnckprop.c:223
 msgid "Make the window always on top"
@@ -396,14 +392,14 @@ msgstr "Kończy przyciemnianie okna"
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:238
 msgid "Make the window have a fixed position in the viewport"
-msgstr "Sprawia, że okno ma stałą pozycję w widoku"
+msgstr "Sprawia, że okno ma stałą pozycję w widoku"
 
 #. Translators: 'viewport' is kind of the viewable area. A viewport
 #. * can be used to implement workspaces (e.g. compiz is an example);
 #. * however it is not just the current workspace.
 #: ../libwnck/wnckprop.c:243
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "Sprawia, że okno nie ma stałej pozycji w widoku"
+msgstr "Sprawia, że okno nie ma stałej pozycji w widoku"
 
 #. Translators: A pager is the technical term for the workspace
 #. * switcher. It's a representation of all workspaces with windows
@@ -412,7 +408,7 @@ msgstr "Sprawia, że okno nie ma stałej pozycji w widoku"
 #.
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window not appear in pagers"
-msgstr "Sprawia, że okno nie pojawia się w przełączniku obszarów roboczych"
+msgstr "Sprawia, że okno nie pojawia się w przełączniku obszarów roboczych"
 
 #. Translators: A pager is the technical term for the workspace
 #. * switcher. It's a representation of all workspaces with windows
@@ -421,19 +417,19 @@ msgstr "Sprawia, że okno nie pojawia się w przełączniku obszarów roboczych"
 #.
 #: ../libwnck/wnckprop.c:257
 msgid "Make the window appear in pagers"
-msgstr "Sprawia, że okno pojawia się w przełączniku obszarów roboczych"
+msgstr "Sprawia, że okno pojawia się w przełączniku obszarów roboczych"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
 #: ../libwnck/wnckprop.c:261
 msgid "Make the window not appear in tasklists"
-msgstr "Sprawia, że okno nie pojawia się w liście zadań"
+msgstr "Sprawia, że okno nie pojawia się w liście zadań"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
 #: ../libwnck/wnckprop.c:265
 msgid "Make the window appear in tasklists"
-msgstr "Sprawia, że okno pojawia się w liście zadań"
+msgstr "Sprawia, że okno pojawia się w liście zadań"
 
 #: ../libwnck/wnckprop.c:267
 msgid "Make the window visible on all workspaces"
@@ -591,7 +587,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:769
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr "Wystąpiły sprzeczne opcje: --%s i --%s\n"
+msgstr "Wystąpiły sprzeczne opcje: --%s i --%s\n"
 
 #: ../libwnck/wnckprop.c:680
 #, c-format
@@ -610,7 +606,7 @@ msgstr ""
 #: ../libwnck/wnckprop.c:788
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr "Wystąpiły sprzeczne opcje: --%s lub --%s i --%s\n"
+msgstr "Wystąpiły sprzeczne opcje: --%s lub --%s i --%s\n"
 
 #: ../libwnck/wnckprop.c:820
 #, c-format
@@ -700,7 +696,7 @@ msgstr "Układ obszarów roboczych (wiersze, kolumny, układ): %d, %d, %s\n"
 #: ../libwnck/wnckprop.c:1209 ../libwnck/wnckprop.c:1266
 #: ../libwnck/wnckprop.c:1463
 msgid "<no EWMH-compliant window manager>"
-msgstr "<menedżer okien niezgodny z EWMH>"
+msgstr "<menedżer okien niezgodny z EWMH>"
 
 #: ../libwnck/wnckprop.c:1210
 #, c-format
@@ -796,7 +792,7 @@ msgstr "Pozycja widoku (X,Y): %s\n"
 #: ../libwnck/wnckprop.c:1289
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr "Pozycja w układzie (wiersz, kolumna): %d, %d\n"
+msgstr "Pozycja w układzie (wiersz, kolumna): %d, %d\n"
 
 #: ../libwnck/wnckprop.c:1302
 #, c-format
@@ -1158,7 +1154,7 @@ msgstr "nie można wykonać żadnej czynności"
 msgid "Possible Actions: %s\n"
 msgstr "Możliwe czynności: %s\n"
 
-#: ../libwnck/wnckprop.c:1899
+#: ../libwnck/wnckprop.c:1901
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1167,52 +1163,52 @@ msgid ""
 msgstr ""
 "Wypisuje lub modyfikuje właściwości ekranu/obszaru roboczego/okna lub "
 "wykonuje na nim czynności zgodne ze specyfikacją EWMH.\n"
-"Więcej informacji o tej specyfikacji można znaleźć pod adresem:\n"
+"Więcej informacji o tej specyfikacji można znaleźć pod adresem:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1909
+#: ../libwnck/wnckprop.c:1911
 msgid "Options to list windows or workspaces"
-msgstr "Opcje wypisywania list okien i obszarów roboczych"
+msgstr "Opcje wypisywania list okien i obszarów roboczych"
 
-#: ../libwnck/wnckprop.c:1910
+#: ../libwnck/wnckprop.c:1912
 msgid "Show options to list windows or workspaces"
-msgstr "Wyświetla opcje wypisywania list okien i obszarów roboczych"
+msgstr "Wyświetla opcje wypisywania list okien i obszarów roboczych"
 
-#: ../libwnck/wnckprop.c:1917
+#: ../libwnck/wnckprop.c:1919
 msgid "Options to modify properties of a window"
 msgstr "Opcje modyfikowania właściwości okna"
 
-#: ../libwnck/wnckprop.c:1918
+#: ../libwnck/wnckprop.c:1920
 msgid "Show options to modify properties of a window"
 msgstr "Wyświetla opcje modyfikowania właściwości okna"
 
-#: ../libwnck/wnckprop.c:1925
+#: ../libwnck/wnckprop.c:1927
 msgid "Options to modify properties of a workspace"
 msgstr "Opcje modyfikowania właściwości obszaru roboczego"
 
-#: ../libwnck/wnckprop.c:1926
+#: ../libwnck/wnckprop.c:1928
 msgid "Show options to modify properties of a workspace"
 msgstr "Wyświetla opcje modyfikowania właściwości obszaru roboczego"
 
-#: ../libwnck/wnckprop.c:1933
+#: ../libwnck/wnckprop.c:1935
 msgid "Options to modify properties of a screen"
 msgstr "Opcje modyfikowania właściwości ekranu"
 
-#: ../libwnck/wnckprop.c:1934
+#: ../libwnck/wnckprop.c:1936
 msgid "Show options to modify properties of a screen"
 msgstr "Wyświetla opcje modyfikowania właściwości ekranu"
 
-#: ../libwnck/wnckprop.c:1945
+#: ../libwnck/wnckprop.c:1947
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "Błąd podczas przetwarzania parametrów: %s\n"
 
-#: ../libwnck/wnckprop.c:1968
+#: ../libwnck/wnckprop.c:1970
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr "Nie można wykonać czynności na ekranie %d: ekran nie istnieje\n"
 
-#: ../libwnck/wnckprop.c:2024
+#: ../libwnck/wnckprop.c:2026
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
@@ -1221,7 +1217,7 @@ msgstr ""
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: ../libwnck/wnckprop.c:2048
+#: ../libwnck/wnckprop.c:2050
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
@@ -1229,17 +1225,17 @@ msgstr ""
 "Nie można wykonać czynności na grupie klas „%s”: nie można odnaleźć grupy "
 "klas\n"
 
-#: ../libwnck/wnckprop.c:2071
+#: ../libwnck/wnckprop.c:2073
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
-"Nie można wykonać czynności na programie o XID lidera grupy %lu: nie można "
+"Nie można wykonać czynności na programie o XID lidera grupy %lu: nie można "
 "odnaleźć programu\n"
 
-#: ../libwnck/wnckprop.c:2094
+#: ../libwnck/wnckprop.c:2096
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
-"Nie można wykonać czynności na oknie o XID %lu: nie można odnaleźć okna\n"
+"Nie można wykonać czynności na oknie o XID %lu: nie można odnaleźć okna\n"
