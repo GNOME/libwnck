@@ -65,8 +65,6 @@ struct _WnckSelectorPrivate {
   GtkWidget  *menu;
   GtkWidget  *no_windows_item;
   GHashTable *window_hash;
-
-  int size;
 };
 
 G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
@@ -183,7 +181,7 @@ wnck_selector_dimm_icon (GdkPixbuf *pixbuf)
 static void
 wnck_selector_set_window_icon (WnckSelector *selector,
                                GtkWidget *image,
-                               WnckWindow *window, gboolean use_icon_size)
+                               WnckWindow *window)
 {
   GdkPixbuf *pixbuf, *freeme, *freeme2;
   int width, height;
@@ -198,9 +196,6 @@ wnck_selector_set_window_icon (WnckSelector *selector,
 
   if (!pixbuf)
     pixbuf = wnck_selector_get_default_window_icon ();
-
-  if (!use_icon_size && selector->priv->size > 1)
-    icon_size = selector->priv->size;
 
   if (icon_size == -1)
     gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
@@ -236,8 +231,7 @@ wnck_selector_set_window_icon (WnckSelector *selector,
 static void
 wnck_selector_set_active_window (WnckSelector *selector, WnckWindow *window)
 {
-  wnck_selector_set_window_icon (selector, selector->priv->image,
-		  		 window, FALSE);
+  wnck_selector_set_window_icon (selector, selector->priv->image, window);
   selector->priv->icon_window = window;
 }
 
@@ -356,7 +350,7 @@ wnck_selector_window_icon_changed (WnckWindow *window,
   if (item != NULL)
     {
       image = gtk_image_new ();
-      wnck_selector_set_window_icon (selector, image, window, TRUE);
+      wnck_selector_set_window_icon (selector, image, window);
       gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item->item),
                                      GTK_WIDGET (image));
       gtk_widget_show (image);
@@ -724,7 +718,7 @@ wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
 
   image = gtk_image_new ();
 
-  wnck_selector_set_window_icon (selector, image, window, TRUE);
+  wnck_selector_set_window_icon (selector, image, window);
 
   gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (item),
                                  GTK_WIDGET (image));
@@ -1243,8 +1237,6 @@ wnck_selector_init (WnckSelector *selector)
   atk_object_set_description (atk_obj, _("Tool to switch between windows"));
 
   selector->priv = WNCK_SELECTOR_GET_PRIVATE (selector);
-
-  selector->priv->size = -1;
 
   gtk_widget_add_events (GTK_WIDGET (selector), GDK_SCROLL_MASK);
 }
