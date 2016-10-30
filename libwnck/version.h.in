@@ -21,6 +21,13 @@
  *      Vincent Untz <vuntz@gnome.org>
  */
 
+#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
+#error "Only <libwnck/libwnck.h> can be included directly."
+#endif
+
+#ifndef WNCK_VERSION_H
+#define WNCK_VERSION_H
+
 /**
  * SECTION:version
  * @Short_description: variables and functions to check the libwnck version
@@ -30,13 +37,6 @@
  * for builds that have a configure script, and to write code against different
  * versions of libwnck that do not provide the same API.
  */
-
-#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
-#error "Only <libwnck/libwnck.h> can be included directly."
-#endif
-
-#ifndef WNCK_VERSION_H
-#define WNCK_VERSION_H
 
 /**
  * WNCK_MAJOR_VERSION:
