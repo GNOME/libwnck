@@ -40,9 +40,11 @@ static void
 window_composited_changed (GtkWidget *widget,
                            gpointer   user_data)
 {
+  GdkScreen *screen;
   gboolean composited;
 
-  composited = gtk_widget_is_composited (widget);
+  screen = gdk_screen_get_default ();
+  composited = gdk_screen_is_composited (screen);
 
   gtk_widget_set_app_paintable (widget, composited);
 }
