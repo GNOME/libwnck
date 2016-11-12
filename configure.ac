@@ -9,13 +9,15 @@ m4_define([wnck_version],
 AC_INIT([libwnck], [wnck_version],
         [http://bugzilla.gnome.org/enter_bug.cgi?product=libwnck])
 
+AX_IS_RELEASE([git-directory])
+
 AC_CONFIG_HEADERS(config.h)
 
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
 AC_CONFIG_MACRO_DIR([m4])
 
-GNOME_MAINTAINER_MODE_DEFINES
+AX_CHECK_ENABLE_DEBUG([yes])
 
 dnl libtool versioning for libwnck
 
@@ -49,7 +51,7 @@ IT_PROG_INTLTOOL([0.40.6])
 
 AC_PROG_CC
 
-GNOME_COMPILE_WARNINGS([maximum])
+AX_COMPILER_FLAGS([WARN_CFLAGS], [WARN_LDFLAGS])
 
 AC_ARG_ENABLE(deprecation_flags,
               [AC_HELP_STRING([--enable-deprecation-flags],

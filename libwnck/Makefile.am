@@ -97,7 +97,10 @@ libwnck_3_la_LIBADD =	\
 libwnck_3_la_LDFLAGS =								\
 	-version-info $(LIBWNCK_CURRENT):$(LIBWNCK_REVISION):$(LIBWNCK_AGE)	\
 	-no-undefined								\
-	-export-symbols-regex "^[^_].*"
+	-export-symbols-regex "^[^_].*" \
+	$(WARN_LDFLAGS) \
+	$(AM_LDFLAGS) \
+	$(NULL)
 
 wnckprop_SOURCES = wnckprop.c
 wnck_urgency_monitor_SOURCES = wnck-urgency-monitor.c
@@ -180,7 +183,7 @@ Wnck-3.0.gir: libwnck-3.la
 Wnck_3_0_gir_INCLUDES = GObject-2.0 GdkPixbuf-2.0 Gtk-3.0
 Wnck_3_0_gir_CFLAGS = $(libwnck_3_la_CPPFLAGS)
 Wnck_3_0_gir_LIBS = libwnck-3.la
-Wnck_3_0_gir_SCANNERFLAGS = --pkg-export=libwnck-3.0
+Wnck_3_0_gir_SCANNERFLAGS = --pkg-export=libwnck-3.0 $(WARN_SCANNERFLAGS)
 Wnck_3_0_gir_FILES = $(introspection_sources)
 INTROSPECTION_GIRS += Wnck-3.0.gir
 
