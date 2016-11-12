@@ -582,7 +582,7 @@ wnck_selector_item_new (WnckSelector *selector,
   GtkWidget *ellipsizing_label;
   window_hash_item *hash_item;
   static const GtkTargetEntry targets[] = {
-    { "application/x-wnck-window-id", 0, 0 }
+    { (gchar *) "application/x-wnck-window-id", 0, 0 }
   };
 
   item = gtk_image_menu_item_new ();
