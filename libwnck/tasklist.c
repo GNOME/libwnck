@@ -2661,51 +2661,6 @@ wnck_tasklist_viewports_changed (WnckScreen   *screen,
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
 }
 
-static void
-wnck_task_position_menu (GtkMenu   *menu,
-			 gint      *x,
-			 gint      *y,
-			 gboolean  *push_in,
-			 gpointer   user_data)
-{
-  GtkWidget *widget = GTK_WIDGET (user_data);
-  GdkWindow *window;
-  GdkSeat *seat;
-  GdkDevice *pointer;
-  GtkAllocation allocation;
-  GtkRequisition requisition;
-  gint menu_xpos;
-  gint menu_ypos;
-  gint pointer_x;
-  gint pointer_y;
-
-  gtk_widget_get_preferred_size (GTK_WIDGET (menu), &requisition, NULL);
-
-  window = gtk_widget_get_window (widget);
-  gtk_widget_get_allocation (widget, &allocation);
-
-  gdk_window_get_origin (window, &menu_xpos, &menu_ypos);
-
-  menu_xpos += allocation.x;
-  menu_ypos += allocation.y;
-
-  if (menu_ypos >  gdk_screen_height () / 2)
-    menu_ypos -= requisition.height;
-  else
-    menu_ypos += allocation.height;
-
-  seat = gdk_display_get_default_seat (gtk_widget_get_display (widget));
-  pointer = gdk_seat_get_pointer (seat);
-  gdk_window_get_device_position (window, pointer, &pointer_x, &pointer_y, NULL);
-
-  if (requisition.width < pointer_x)
-    menu_xpos += MIN (pointer_x, allocation.width - requisition.width);
-
-  *x = menu_xpos;
-  *y = menu_ypos;
-  *push_in = FALSE;
-}
-
 static gboolean
 wnck_tasklist_change_active_timeout (gpointer data)
 {
@@ -3073,10 +3028,10 @@ wnck_task_popup_menu (WnckTask *task,
 		       _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
 
   gtk_widget_show (menu);
-  gtk_menu_popup (GTK_MENU (menu),
-		  NULL, NULL,
-		  wnck_task_position_menu, task->button,
-		  1, gtk_get_current_event_time ());
+  gtk_menu_popup_at_widget (GTK_MENU (menu), task->button,
+                            GDK_GRAVITY_SOUTH_WEST,
+                            GDK_GRAVITY_NORTH_WEST,
+                            NULL);
 }
 
 static void
@@ -3725,11 +3680,10 @@ wnck_task_button_press_event (GtkWidget	      *widget,
                                _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
 
           gtk_widget_show (task->action_menu);
-          gtk_menu_popup (GTK_MENU (task->action_menu),
-                          NULL, NULL,
-                          wnck_task_position_menu, task->button,
-                          event->button,
-                          gtk_get_current_event_time ());
+          gtk_menu_popup_at_widget (GTK_MENU (task->action_menu), task->button,
+                                    GDK_GRAVITY_SOUTH_WEST,
+                                    GDK_GRAVITY_NORTH_WEST,
+                                    (GdkEvent *) event);
 
           g_signal_connect (task->action_menu, "selection-done",
                             G_CALLBACK (gtk_widget_destroy), NULL);
