@@ -1,3 +1,5 @@
+NULL =
+
 SUBDIRS = libwnck doc po
 
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
@@ -12,21 +14,15 @@ EXTRA_DIST = \
 	MAINTAINERS
 
 MAINTAINERCLEANFILES = \
+	$(GITIGNORE_MAINTAINERCLEANFILES_TOPLEVEL) \
+	$(GITIGNORE_MAINTAINERCLEANFILES_MAKEFILE_IN) \
+	$(GITIGNORE_MAINTAINERCLEANFILES_M4_LIBTOOL) \
+	`find "$(srcdir)/m4" -type f -name "*.m4" -print` \
 	$(srcdir)/INSTALL \
-	$(srcdir)/aclocal.m4 \
-	$(srcdir)/config.guess \
-	$(srcdir)/config.h.in \
-	$(srcdir)/config.sub \
-	$(srcdir)/depcomp \
-	$(srcdir)/install-sh \
-	$(srcdir)/ltmain.sh \
-	$(srcdir)/missing \
-	$(srcdir)/mkinstalldirs \
-	`find "$(srcdir)" -type f -name Makefile.in -print` \
+	$(srcdir)/config.h.in~ \
 	$(srcdir)/configure \
 	$(srcdir)/gtk-doc.make \
-	$(srcdir)/m4/gtk-doc.m4 \
-	$(srcdir)/m4/intltool.m4
+	$(NULL)
 
 CHANGELOG_GIT_RANGE = LIBWNCK_2_26_1..
 dist-hook:
