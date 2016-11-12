@@ -82,6 +82,8 @@ libwnck_3_la_SOURCES = 		\
 	private.h		\
 	xutils.c		\
 	xutils.h		\
+	wnck-image-menu-item.c \
+	wnck-image-menu-item-private.h \
 	$(wnck_accessibility_files)
 
 $(libwnck_3_la_OBJECTS): $(wnck_built_headers)

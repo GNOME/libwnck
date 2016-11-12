@@ -31,6 +31,7 @@
 #include "window.h"
 #include "class-group.h"
 #include "window-action-menu.h"
+#include "wnck-image-menu-item-private.h"
 #include "workspace.h"
 #include "xutils.h"
 #include "private.h"
@@ -2923,7 +2924,6 @@ wnck_task_popup_menu (WnckTask *task,
   char *text;
   GdkPixbuf *pixbuf;
   GtkWidget *menu_item;
-  GtkWidget *image;
   GList *l, *list;
 
   g_return_if_fail (task->type == WNCK_TASK_CLASS_GROUP);
@@ -2956,11 +2956,8 @@ wnck_task_popup_menu (WnckTask *task,
       win_task = WNCK_TASK (l->data);
 
       text = wnck_task_get_text (win_task, TRUE, TRUE);
-      menu_item = gtk_image_menu_item_new_with_label (text);
+      menu_item = wnck_image_menu_item_new_with_label (text);
       g_free (text);
-
-      gtk_image_menu_item_set_always_show_image (GTK_IMAGE_MENU_ITEM (menu_item),
-                                                 TRUE);
 
       if (wnck_task_get_needs_attention (win_task))
         _make_gtk_label_bold (GTK_LABEL (gtk_bin_get_child (GTK_BIN (menu_item))));
@@ -2971,13 +2968,14 @@ wnck_task_popup_menu (WnckTask *task,
 
       pixbuf = wnck_task_get_icon (win_task);
       if (pixbuf)
-	{
-	  image = gtk_image_new_from_pixbuf (pixbuf);
-	  gtk_widget_show (image);
-	  gtk_image_menu_item_set_image (GTK_IMAGE_MENU_ITEM (menu_item),
-					 image);
-	  g_object_unref (pixbuf);
-	}
+        {
+          WnckImageMenuItem *item;
+
+          item = WNCK_IMAGE_MENU_ITEM (menu_item);
+
+          wnck_image_menu_item_set_image_from_icon_pixbuf (item, pixbuf);
+          g_object_unref (pixbuf);
+        }
 
       gtk_widget_show (menu_item);
 
