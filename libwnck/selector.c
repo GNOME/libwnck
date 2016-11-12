@@ -125,7 +125,7 @@ wnck_selector_get_screen (WnckSelector *selector)
 
   screen = gtk_widget_get_screen (GTK_WIDGET (selector));
 
-  return wnck_screen_get (gdk_screen_get_number (screen));
+  return wnck_screen_get (gdk_x11_screen_get_screen_number (screen));
 }
 
 static GdkPixbuf *
