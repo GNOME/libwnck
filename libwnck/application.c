@@ -92,10 +92,7 @@ static void emit_icon_changed (WnckApplication *app);
 static void reset_name  (WnckApplication *app);
 static void update_name (WnckApplication *app);
 
-static void wnck_application_init        (WnckApplication      *application);
-static void wnck_application_class_init  (WnckApplicationClass *klass);
 static void wnck_application_finalize    (GObject        *object);
-
 
 static guint signals[LAST_SIGNAL] = { 0 };
 

@@ -151,8 +151,6 @@ enum {
   LAST_SIGNAL
 };
 
-static void wnck_screen_init        (WnckScreen      *screen);
-static void wnck_screen_class_init  (WnckScreenClass *klass);
 static void wnck_screen_finalize    (GObject         *object);
 
 static void update_client_list        (WnckScreen      *screen);

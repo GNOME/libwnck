@@ -241,8 +241,6 @@ G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
 G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 #define WNCK_TASKLIST_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_TASKLIST, WnckTasklistPrivate))
 
-static void wnck_task_init        (WnckTask      *task);
-static void wnck_task_class_init  (WnckTaskClass *klass);
 static void wnck_task_finalize    (GObject       *object);
 
 static void wnck_task_stop_glow   (WnckTask *task);
@@ -285,8 +283,6 @@ static void       wnck_task_drag_data_get (GtkWidget          *widget,
                                            guint               time,
                                            WnckTask           *task);
 
-static void     wnck_tasklist_init          (WnckTasklist      *tasklist);
-static void     wnck_tasklist_class_init    (WnckTasklistClass *klass);
 static void     wnck_tasklist_finalize      (GObject        *object);
 
 static void     wnck_tasklist_get_preferred_width (GtkWidget *widget,
@@ -354,16 +350,12 @@ static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist
                                                         WnckWindow     *window);
 #endif
 
-
 /*
  * Keep track of all tasklist instances so we can decide
  * whether to show windows from all monitors in the
  * tasklist
  */
 static GSList *tasklist_instances;
-
-static GType
-wnck_task_get_type (void) G_GNUC_CONST;
 
 static void
 wnck_task_init (WnckTask *task)

@@ -80,10 +80,7 @@ enum {
   LAST_SIGNAL
 };
 
-static void wnck_workspace_init        (WnckWorkspace      *workspace);
-static void wnck_workspace_class_init  (WnckWorkspaceClass *klass);
 static void wnck_workspace_finalize    (GObject        *object);
-
 
 static void emit_name_changed (WnckWorkspace *space);
 

@@ -97,15 +97,12 @@ enum
   LAST_SIGNAL
 };
 
-
 #define POINT_IN_RECT(xcoord, ycoord, rect) \
  ((xcoord) >= (rect).x &&                   \
   (xcoord) <  ((rect).x + (rect).width) &&  \
   (ycoord) >= (rect).y &&                   \
   (ycoord) <  ((rect).y + (rect).height))
 
-static void wnck_pager_init        (WnckPager      *pager);
-static void wnck_pager_class_init  (WnckPagerClass *klass);
 static void wnck_pager_finalize    (GObject        *object);
 
 static void     wnck_pager_realize       (GtkWidget        *widget);

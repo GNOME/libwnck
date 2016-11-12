@@ -182,8 +182,6 @@ enum {
   LAST_SIGNAL
 };
 
-static void wnck_window_init        (WnckWindow      *window);
-static void wnck_window_class_init  (WnckWindowClass *klass);
 static void wnck_window_finalize    (GObject        *object);
 
 static void emit_name_changed      (WnckWindow      *window);

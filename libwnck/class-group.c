@@ -64,10 +64,6 @@ G_DEFINE_TYPE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
 /* Hash table that maps res_class strings -> WnckClassGroup instances */
 static GHashTable *class_group_hash = NULL;
 
-
-
-static void wnck_class_group_class_init  (WnckClassGroupClass *class);
-static void wnck_class_group_init        (WnckClassGroup      *class_group);
 static void wnck_class_group_finalize    (GObject             *object);
 
 enum {
