@@ -1707,7 +1707,7 @@ wnck_tasklist_realize (GtkWidget *widget)
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
-  tasklist->priv->screen = wnck_screen_get (gdk_screen_get_number (gdkscreen));
+  tasklist->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
