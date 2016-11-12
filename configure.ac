@@ -11,6 +11,7 @@ AC_INIT([libwnck], [wnck_version],
 
 AX_IS_RELEASE([git-directory])
 
+AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_HEADERS(config.h)
 
 AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
@@ -47,8 +48,6 @@ AC_SUBST(WNCK_MICRO_VERSION)
 LT_PREREQ([2.2.6])
 LT_INIT([dlopen disable-static])
 
-IT_PROG_INTLTOOL([0.40.6])
-
 AC_PROG_CC
 
 AX_COMPILER_FLAGS([WARN_CFLAGS], [WARN_LDFLAGS])
@@ -69,11 +68,12 @@ AC_ARG_ENABLE(tools,
               [enable_tools=yes])
 AM_CONDITIONAL(ENABLE_TOOLS, test "x$enable_tools" != "xno")
 
+AM_GNU_GETTEXT_VERSION([0.19.4])
+AM_GNU_GETTEXT([external])
+
 GETTEXT_PACKAGE=libwnck-3.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Package name])
-
-AM_GLIB_GNU_GETTEXT
 
 # AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
 # this is the directory where the *.{mo,gmo} files are installed
