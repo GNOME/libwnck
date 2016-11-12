@@ -303,7 +303,7 @@ _wnck_pager_set_screen (WnckPager *pager)
     return;
 
   gdkscreen = gtk_widget_get_screen (GTK_WIDGET (pager));
-  pager->priv->screen = wnck_screen_get (gdk_screen_get_number (gdkscreen));
+  pager->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
 
   if (!wnck_pager_set_layout_hint (pager))
     {
