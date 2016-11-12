@@ -24,7 +24,7 @@ static void
 create_pager_window (GtkOrientation       orientation,
                      gboolean             show_all,
                      WnckPagerDisplayMode mode,
-                     int                  n_rows,
+                     int                  rows,
                      gboolean             wrap_on_scroll)
 {
   GtkWidget *win;
@@ -52,7 +52,7 @@ create_pager_window (GtkOrientation       orientation,
   wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
   wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
   wnck_pager_set_orientation (WNCK_PAGER (pager), orientation);
-  wnck_pager_set_n_rows (WNCK_PAGER (pager), n_rows);
+  wnck_pager_set_n_rows (WNCK_PAGER (pager), rows);
   wnck_pager_set_shadow_type (WNCK_PAGER (pager), GTK_SHADOW_IN);
   wnck_pager_set_wrap_on_scroll (WNCK_PAGER (pager), wrap_on_scroll);
 
