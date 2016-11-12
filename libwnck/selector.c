@@ -31,7 +31,6 @@
 
 #include <glib/gi18n-lib.h>
 #include "selector.h"
-#include "inlinepixbufs.h"
 #include "libwnck.h"
 #include "screen.h"
 #include "wnck-image-menu-item-private.h"
@@ -131,7 +130,7 @@ wnck_selector_get_default_window_icon (void)
   if (retval)
     return retval;
 
-  retval = gdk_pixbuf_new_from_inline (-1, default_icon_data, FALSE, NULL);
+  retval = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
 
   g_assert (retval);
 

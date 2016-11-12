@@ -25,7 +25,6 @@
 #include "util.h"
 #include "xutils.h"
 #include "private.h"
-#include "inlinepixbufs.h"
 #include <gdk/gdkx.h>
 #include <string.h>
 #ifdef HAVE_XRES

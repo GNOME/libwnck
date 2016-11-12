@@ -78,6 +78,7 @@ AM_GLIB_GNU_GETTEXT
 wncklocaledir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(wncklocaledir)
 
+AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 
 AC_CHECK_LIBM
@@ -155,14 +156,6 @@ PKG_CHECK_MODULES([LIBWNCK],[
 	$STARTUP_NOTIFICATION_PACKAGE
 	$XRES_PACKAGE
 ])
-
-AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
-
-if test x"$GDK_PIXBUF_CSOURCE" = xno; then
-  AC_MSG_ERROR([gdk-pixbuf-csource executable not found in your path - should be installed with GTK])
-fi
-
-AC_SUBST(GDK_PIXBUF_CSOURCE)
 
 ##################################################
 # Checks for gtk-doc and docbook-tools

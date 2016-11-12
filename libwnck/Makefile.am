@@ -1,3 +1,5 @@
+NULL =
+
 lib_LTLIBRARIES = libwnck-3.la
 bin_PROGRAMS =
 noinst_PROGRAMS =		\
@@ -41,12 +43,10 @@ wnck_headers =			\
 	window-action-menu.h	\
 	workspace.h
 
-wnck_built_installed_headers = wnck-enum-types.h
-
 libwnckincludedir = $(includedir)/libwnck-3.0/libwnck
 libwnckinclude_HEADERS =		\
 	$(wnck_headers)			\
-	$(wnck_built_installed_headers)	\
+	wnck-enum-types.h \
 	version.h
 
 # Sources that are relevant for introspection
@@ -72,12 +72,8 @@ wnck_accessibility_files =			\
 	workspace-accessible-factory.c		\
 	workspace-accessible-factory.h
 
-wnck_built_headers = $(wnck_built_installed_headers) inlinepixbufs.h
-wnck_built_cfiles = wnck-enum-types.c
-
 libwnck_3_la_SOURCES = 		\
-	$(wnck_built_headers)	\
-	$(wnck_built_cfiles)	\
+	$(BUILT_SOURCES) \
 	$(wnck_sources)		\
 	private.h		\
 	xutils.c		\
@@ -85,8 +81,6 @@ libwnck_3_la_SOURCES = 		\
 	wnck-image-menu-item.c \
 	wnck-image-menu-item-private.h \
 	$(wnck_accessibility_files)
-
-$(libwnck_3_la_OBJECTS): $(wnck_built_headers)
 
 libwnck_3_la_CPPFLAGS =			\
 	$(AM_CPPFLAGS)			\
@@ -152,20 +146,26 @@ wnck-enum-types.c: $(wnck_headers)
 		--vtail "  return type;\n}\n\n" \
 		$^ > $@
 
-inlinepixbufs_SOURCES = default_icon.png
-inlinepixbufs_pairs =						\
-	default_icon_data $(srcdir)/default_icon.png
+wnck-resources.h wnck-resources.c: wnck.gresource.xml \
+	$(shell $(GLIB_COMPILE_RESOURCES) --sourcedir=$(srcdir) --generate-dependencies $(srcdir)/wnck.gresource.xml)
+	$(AM_V_GEN) $(GLIB_COMPILE_RESOURCES) --target=$@ --sourcedir=$(srcdir) --generate --c-name libwnck $<
 
-inlinepixbufs.h: $(inlinepixbufs_SOURCES)
-	$(AM_V_GEN)$(GDK_PIXBUF_CSOURCE) --raw --build-list $(inlinepixbufs_pairs) > $@
+BUILT_SOURCES = \
+	wnck-enum-types.c \
+	wnck-enum-types.h \
+	wnck-resources.c \
+	wnck-resources.h \
+	$(NULL)
 
 CLEANFILES =			\
-	$(wnck_built_cfiles)	\
-	$(wnck_built_headers)
+	$(BUILT_SOURCES) \
+	$(NULL)
 
-EXTRA_DIST = 				\
-	$(inlinepixbufs_SOURCES)	\
-	version.h.in
+EXTRA_DIST = \
+	default_icon.png \
+	wnck.gresource.xml \
+	version.h.in \
+	$(NULL)
 
 # Introspection
 -include $(INTROSPECTION_MAKEFILE)

@@ -30,7 +30,6 @@
 #include "screen.h"
 #include "window.h"
 #include "private.h"
-#include "inlinepixbufs.h"
 
 gboolean
 _wnck_get_cardinal (Screen *screen,
@@ -2311,12 +2310,9 @@ static GdkPixbuf*
 default_icon_at_size (int width,
                       int height)
 {
-
   GdkPixbuf *base;
 
-  base = gdk_pixbuf_new_from_inline (-1, default_icon_data,
-                                     FALSE,
-                                     NULL);
+  base = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
 
   g_assert (base);
 
