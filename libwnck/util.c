@@ -212,7 +212,7 @@ wnck_xid_read_resource_usage (GdkDisplay        *gdisplay,
    i = 0;
    while (i < n_types)
      {
-       int t = types[i].resource_type;
+       guint t = types[i].resource_type;
 
        if (t == pixmap_atom)
          usage->n_pixmaps += types[i].count;
@@ -311,7 +311,7 @@ wnck_find_pid_for_resource_r (Display *xdisplay,
   Window   dummy;
   Window  *children;
   guint    n_children;
-  int      i;
+  guint    i;
   gulong   found_pid = 0;
 
   while (gtk_events_pending ())
