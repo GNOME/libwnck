@@ -7,7 +7,7 @@ LIBWNCK_SOVERSION = 0
 
 # libtool versioning for libwnck
 # increment if the interface has additions, changes, removals.
-LIBWNCK_CURRENT = 3
+LIBWNCK_CURRENT = 4
 
 # increment any time the source changes; set to
 # 0 if you increment CURRENT
@@ -16,7 +16,7 @@ LIBWNCK_REVISION = 0
 # increment if any interfaces have been added; set to 0
 # if any interfaces have been changed or removed. removal has
 # precedence over adding, so set to 0 if both happened.
-LIBWNCK_AGE = 3
+LIBWNCK_AGE = 0
 
 MODULE_NAME = meson.project_name() + '-@0@'.format(LIBWNCK_CURRENT)
 MODULE_VERSION = '@0@.@1@'.format(LIBWNCK_CURRENT, LIBWNCK_REVISION)
@@ -42,7 +42,7 @@ pkg_deps = [
   {'name': 'cairo-xlib-xrender', 'required': false},
   {'name': 'glib-2.0', 'version': '>= 2.44' },
   {'name': 'gobject-2.0', 'version': '>= 2.13.0' },
-  {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
+  {'name': 'gtk4' },
   {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification')},
   {'name': X11_PACKAGE },
   {'name': XRES_PACKAGE, 'required': false},

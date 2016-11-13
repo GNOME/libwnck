@@ -6,8 +6,7 @@ includedir=@includedir@
 Name: libwnck
 Description: Window Navigator Construction Kit library
 Version: @VERSION@
-Requires: glib-2.0 gobject-2.0 gtk+-3.0
+Requires: glib-2.0 gobject-2.0 gtk+-4.0
 Requires.private: @X11_PACKAGE@ pango cairo @STARTUP_NOTIFICATION_PACKAGE@ @XRES_PACKAGE@
-Libs: -L${libdir} -lwnck-3
-Cflags: -I${includedir}/libwnck-3.0
-
+Libs: -L${libdir} -lwnck-4
+Cflags: -I${includedir}/libwnck-4.0

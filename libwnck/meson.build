@@ -133,7 +133,7 @@ if not introspection.disabled()
     namespace: 'Wnck',
     nsversion: MODULE_VERSION,
     export_packages: PACKAGE_NAME,
-    includes: ['GObject-2.0', 'GdkPixbuf-2.0', 'Gtk-3.0'],
+    includes: ['GObject-2.0', 'GdkPixbuf-2.0', 'Gtk-4.0'],
     extra_args: '--c-include=@0@/@0@.h'.format(meson.project_name()),
     install: true
   )
