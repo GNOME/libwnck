@@ -808,9 +808,12 @@ _wnck_init (void)
 Display *
 _wnck_get_default_display (void)
 {
+  GdkDisplay *display = gdk_display_get_default ();
   /* FIXME: when we fix libwnck to not use the GDK default display, we will
    * need to fix wnckprop accordingly. */
-  return GDK_DISPLAY_XDISPLAY (gdk_display_get_default ());
+  if (!GDK_IS_X11_DISPLAY (display))
+    return NULL;
+  return GDK_DISPLAY_XDISPLAY (display);
 }
 
 /**

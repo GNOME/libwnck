@@ -625,15 +625,20 @@ _wnck_screen_get_existing (int number)
  *
  * Gets the default #WnckScreen on the default display.
  *
- * Return value: (transfer none): the default #WnckScreen. The returned
- * #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
+ * Return value: (transfer none) (nullable): the default #WnckScreen. The returned
+ * #WnckScreen is owned by libwnck and must not be referenced or unreferenced. This
+ * can return %NULL if not on X11.
  **/
 WnckScreen*
 wnck_screen_get_default (void)
 {
   int default_screen;
+  Display *default_display = _wnck_get_default_display ();
 
-  default_screen = DefaultScreen (_wnck_get_default_display ());
+  if (default_display == NULL)
+    return NULL;
+
+  default_screen = DefaultScreen (default_display);
 
   return wnck_screen_get (default_screen);
 }
