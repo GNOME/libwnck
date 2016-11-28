@@ -812,7 +812,11 @@ _wnck_get_default_display (void)
   /* FIXME: when we fix libwnck to not use the GDK default display, we will
    * need to fix wnckprop accordingly. */
   if (!GDK_IS_X11_DISPLAY (display))
-    return NULL;
+    {
+      g_warning ("libwnck is designed to work in X11 only, no valid display found");
+      return NULL;
+    }
+
   return GDK_DISPLAY_XDISPLAY (display);
 }
 
