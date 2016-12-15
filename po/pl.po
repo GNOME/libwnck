@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 17:44+0200\n"
-"PO-Revision-Date: 2016-08-21 17:45+0200\n"
+"POT-Creation-Date: 2016-12-15 18:54+0100\n"
+"PO-Revision-Date: 2016-12-15 18:55+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -58,32 +58,32 @@ msgstr "Narzędzie do przełączania obszarów roboczych"
 #: ../libwnck/pager-accessible.c:463
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Kliknięcie przełącza na obszar roboczy %s"
+msgstr "Kliknięcie przełącza na obszar roboczy „%s”"
 
-#: ../libwnck/pager.c:2155
+#: ../libwnck/pager.c:2149
 #, c-format
 msgid "Click to start dragging \"%s\""
 msgstr "Kliknięcie rozpocznie przeciąganie „%s”"
 
-#: ../libwnck/pager.c:2158
+#: ../libwnck/pager.c:2152
 #, c-format
 msgid "Current workspace: \"%s\""
 msgstr "Bieżący obszar roboczy: „%s”"
 
-#: ../libwnck/pager.c:2163
+#: ../libwnck/pager.c:2157
 #, c-format
 msgid "Click to switch to \"%s\""
 msgstr "Kliknięcie przełączy na obszar roboczy „%s”"
 
-#: ../libwnck/selector.c:1186
+#: ../libwnck/selector.c:1180
 msgid "No Windows Open"
 msgstr "Brak otwartych okien"
 
-#: ../libwnck/selector.c:1242
+#: ../libwnck/selector.c:1236
 msgid "Window Selector"
 msgstr "Wybór okien"
 
-#: ../libwnck/selector.c:1243
+#: ../libwnck/selector.c:1237
 msgid "Tool to switch between windows"
 msgstr "Narzędzie do przełączania pomiędzy oknami"
 
@@ -95,23 +95,23 @@ msgstr "Lista okien"
 msgid "Tool to switch between visible windows"
 msgstr "Narzędzie do przełączania widocznych okien"
 
-#: ../libwnck/tasklist.c:2990
+#: ../libwnck/tasklist.c:2988
 msgid "Mi_nimize All"
 msgstr "Zmi_nimalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:2998
+#: ../libwnck/tasklist.c:2996
 msgid "Un_minimize All"
 msgstr "Cofnij minimalizację wszystkic_h"
 
-#: ../libwnck/tasklist.c:3006
+#: ../libwnck/tasklist.c:3004
 msgid "Ma_ximize All"
 msgstr "Zm_aksymalizuj wszystkie"
 
-#: ../libwnck/tasklist.c:3014
+#: ../libwnck/tasklist.c:3012
 msgid "_Unmaximize All"
 msgstr "Cofnij maksymalizację wszystki_ch"
 
-#: ../libwnck/tasklist.c:3026
+#: ../libwnck/tasklist.c:3024
 msgid "_Close All"
 msgstr "Zamknij _wszystkie"
 
@@ -134,17 +134,17 @@ msgstr "Zm_aksymalizuj"
 #: ../libwnck/window-action-menu.c:693 ../libwnck/workspace.c:271
 #, c-format
 msgid "Workspace %d"
-msgstr "Obszar %d"
+msgstr "%d. obszar roboczy"
 
 #: ../libwnck/window-action-menu.c:702 ../libwnck/window-action-menu.c:848
 #, c-format
 msgid "Workspace 1_0"
-msgstr "Obszar 1_0"
+msgstr "1_0. obszar roboczy"
 
 #: ../libwnck/window-action-menu.c:704 ../libwnck/window-action-menu.c:850
 #, c-format
 msgid "Workspace %s%d"
-msgstr "Obszar %s%d"
+msgstr "%s%d. obszar roboczy"
 
 #: ../libwnck/window-action-menu.c:991
 msgid "_Move"
@@ -423,13 +423,13 @@ msgstr "Sprawia, że okno pojawia się w przełączniku obszarów roboczych"
 #. * window list)
 #: ../libwnck/wnckprop.c:261
 msgid "Make the window not appear in tasklists"
-msgstr "Sprawia, że okno nie pojawia się w liście zadań"
+msgstr "Sprawia, że okno nie pojawia się na liście zadań"
 
 #. Translators: "tasklist" is the list of running applications (the
 #. * window list)
 #: ../libwnck/wnckprop.c:265
 msgid "Make the window appear in tasklists"
-msgstr "Sprawia, że okno pojawia się w liście zadań"
+msgstr "Sprawia, że okno pojawia się na liście zadań"
 
 #: ../libwnck/wnckprop.c:267
 msgid "Make the window visible on all workspaces"
@@ -504,8 +504,8 @@ msgid ""
 "Conflicting options are present: screen %d should be interacted with, but --"
 "%s has been used\n"
 msgstr ""
-"Wystąpiły sprzeczne opcje: ekran %d do wykonania działania, lecz użyto opcji "
-"--%s\n"
+"Wystąpiły sprzeczne opcje: %d. ekran do wykonania działania, lecz użyto "
+"opcji --%s\n"
 
 #: ../libwnck/wnckprop.c:510
 #, c-format
@@ -513,8 +513,8 @@ msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
-"Wystąpiły sprzeczne opcje: wypisanie listy okien lub obszarów roboczych "
-"ekranu %d, lecz użyto opcji --%s\n"
+"Wystąpiły sprzeczne opcje: wypisanie listy okien lub obszarów roboczych %d. "
+"ekranu, lecz użyto opcji --%s\n"
 
 #: ../libwnck/wnckprop.c:533 ../libwnck/wnckprop.c:553
 #, c-format
@@ -522,7 +522,7 @@ msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
-"Wystąpiły sprzeczne opcje: obszar roboczy %d do wykonania działania, lecz "
+"Wystąpiły sprzeczne opcje: %d. obszar roboczy do wykonania działania, lecz "
 "użyto opcji --%s\n"
 
 #: ../libwnck/wnckprop.c:543
@@ -531,7 +531,7 @@ msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
-"Wystąpiły sprzeczne opcje: wypisanie listy okien obszaru roboczego %d, lecz "
+"Wystąpiły sprzeczne opcje: wypisanie listy okien %d. obszaru roboczego, lecz "
 "użyto opcji --%s\n"
 
 #: ../libwnck/wnckprop.c:565
@@ -654,7 +654,7 @@ msgstr "Niedozwolona czynność\n"
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
-"Nie można przenieść okna na obszar roboczy %d: obszar roboczy nie istnieje\n"
+"Nie można przenieść okna na %d. obszar roboczy: obszar roboczy nie istnieje\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
 #: ../libwnck/wnckprop.c:1101 ../libwnck/wnckprop.c:1233
@@ -1154,7 +1154,7 @@ msgstr "nie można wykonać żadnej czynności"
 msgid "Possible Actions: %s\n"
 msgstr "Możliwe czynności: %s\n"
 
-#: ../libwnck/wnckprop.c:1901
+#: ../libwnck/wnckprop.c:1866
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1166,58 +1166,58 @@ msgstr ""
 "Więcej informacji o tej specyfikacji można znaleźć pod adresem:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1911
+#: ../libwnck/wnckprop.c:1876
 msgid "Options to list windows or workspaces"
 msgstr "Opcje wypisywania list okien i obszarów roboczych"
 
-#: ../libwnck/wnckprop.c:1912
+#: ../libwnck/wnckprop.c:1877
 msgid "Show options to list windows or workspaces"
 msgstr "Wyświetla opcje wypisywania list okien i obszarów roboczych"
 
-#: ../libwnck/wnckprop.c:1919
+#: ../libwnck/wnckprop.c:1884
 msgid "Options to modify properties of a window"
 msgstr "Opcje modyfikowania właściwości okna"
 
-#: ../libwnck/wnckprop.c:1920
+#: ../libwnck/wnckprop.c:1885
 msgid "Show options to modify properties of a window"
 msgstr "Wyświetla opcje modyfikowania właściwości okna"
 
-#: ../libwnck/wnckprop.c:1927
+#: ../libwnck/wnckprop.c:1892
 msgid "Options to modify properties of a workspace"
 msgstr "Opcje modyfikowania właściwości obszaru roboczego"
 
-#: ../libwnck/wnckprop.c:1928
+#: ../libwnck/wnckprop.c:1893
 msgid "Show options to modify properties of a workspace"
 msgstr "Wyświetla opcje modyfikowania właściwości obszaru roboczego"
 
-#: ../libwnck/wnckprop.c:1935
+#: ../libwnck/wnckprop.c:1900
 msgid "Options to modify properties of a screen"
 msgstr "Opcje modyfikowania właściwości ekranu"
 
-#: ../libwnck/wnckprop.c:1936
+#: ../libwnck/wnckprop.c:1901
 msgid "Show options to modify properties of a screen"
 msgstr "Wyświetla opcje modyfikowania właściwości ekranu"
 
-#: ../libwnck/wnckprop.c:1947
+#: ../libwnck/wnckprop.c:1912
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr "Błąd podczas przetwarzania parametrów: %s\n"
 
-#: ../libwnck/wnckprop.c:1970
+#: ../libwnck/wnckprop.c:1935
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr "Nie można wykonać czynności na ekranie %d: ekran nie istnieje\n"
+msgstr "Nie można wykonać czynności na %d. ekranie: ekran nie istnieje\n"
 
-#: ../libwnck/wnckprop.c:2026
+#: ../libwnck/wnckprop.c:1991
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
-"Nie można wykonać czynności na obszarze roboczym %d: nie można odnaleźć "
+"Nie można wykonać czynności na %d. obszarze roboczym: nie można odnaleźć "
 "obszaru\n"
 
 #. Translators: A class is like a "family". E.g., all gvim windows are
 #. * of the same class.
-#: ../libwnck/wnckprop.c:2050
+#: ../libwnck/wnckprop.c:2015
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
@@ -1225,7 +1225,7 @@ msgstr ""
 "Nie można wykonać czynności na grupie klas „%s”: nie można odnaleźć grupy "
 "klas\n"
 
-#: ../libwnck/wnckprop.c:2073
+#: ../libwnck/wnckprop.c:2038
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
@@ -1234,7 +1234,7 @@ msgstr ""
 "Nie można wykonać czynności na programie o XID lidera grupy %lu: nie można "
 "odnaleźć programu\n"
 
-#: ../libwnck/wnckprop.c:2096
+#: ../libwnck/wnckprop.c:2061
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
