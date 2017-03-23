@@ -67,6 +67,7 @@ struct _WnckPagerPrivate
   WnckPagerDisplayMode display_mode;
   gboolean show_all_workspaces;
   GtkShadowType shadow_type;
+  gboolean wrap_on_scroll;
 
   GtkOrientation orientation;
   int workspace_size;
@@ -217,6 +218,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
   pager->priv->show_all_workspaces = TRUE;
   pager->priv->shadow_type = GTK_SHADOW_NONE;
+  pager->priv->wrap_on_scroll = FALSE;
 
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   pager->priv->workspace_size = 48;
@@ -2027,6 +2029,7 @@ wnck_pager_scroll_event (GtkWidget      *widget,
   int                 n_workspaces;
   int                 n_columns;
   int                 in_last_row;
+  gboolean            wrap_workspaces;
   gdouble             smooth_x;
   gdouble             smooth_y;
 
@@ -2047,6 +2050,7 @@ wnck_pager_scroll_event (GtkWidget      *widget,
   if (n_workspaces % pager->priv->n_rows != 0)
     n_columns++;
   in_last_row = n_workspaces % n_columns;
+  wrap_workspaces = pager->priv->wrap_on_scroll;
 
   if (gtk_widget_get_direction (GTK_WIDGET (pager)) == GTK_TEXT_DIR_RTL)
     {
@@ -2075,7 +2079,14 @@ wnck_pager_scroll_event (GtkWidget      *widget,
     {
       case GDK_SCROLL_DOWN:
         if (index + n_columns < n_workspaces)
+        {
           index += n_columns;
+        }
+        else if (wrap_workspaces && index == n_workspaces - 1)
+        {
+          /* reached the last workspace, wrap arround to first */
+          index = 0;
+        }
         else if ((index < n_workspaces - 1 &&
                   index + in_last_row != n_workspaces - 1) ||
                  (index == n_workspaces - 1 &&
@@ -2086,6 +2097,11 @@ wnck_pager_scroll_event (GtkWidget      *widget,
       case GDK_SCROLL_RIGHT:
         if (index < n_workspaces - 1)
           index++;
+        else if (wrap_workspaces)
+        {
+          /* reached the last workspace, wrap arround to first */
+          index = 0;
+        }
         break;
 
       case GDK_SCROLL_UP:
@@ -2093,6 +2109,12 @@ wnck_pager_scroll_event (GtkWidget      *widget,
           index -= n_columns;
         else if (index > 0)
           index = ((pager->priv->n_rows - 1) * n_columns) + (index % n_columns) - 1;
+        else if (wrap_workspaces)
+        {
+          /* reached the first workspace, wrap arround to last */
+          index = n_workspaces - 1;
+        }
+
         if (index >= n_workspaces)
           index -= n_columns;
         break;
@@ -2100,6 +2122,11 @@ wnck_pager_scroll_event (GtkWidget      *widget,
       case GDK_SCROLL_LEFT:
         if (index > 0)
           index--;
+        else if (wrap_workspaces)
+        {
+          /* reached the first workspace, wrap arround to last */
+          index = n_workspaces - 1;
+        }
         break;
       default:
         g_assert_not_reached ();
@@ -2401,6 +2428,24 @@ wnck_pager_set_shadow_type (WnckPager *   pager,
 
   pager->priv->shadow_type = shadow_type;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+/**
+ * wnck_pager_set_wrap_on_scroll:
+ * @pager: a #WnckPager.
+ * @wrap_on_scroll: a shadow type.
+ *
+ * Sets the wrapping behavior of the @pager. Setting it will wrap
+ * arround to the start when scrolling over the end. By default it
+ * is disabled.
+ */
+void
+wnck_pager_set_wrap_on_scroll (WnckPager *   pager,
+			    gboolean wrap_on_scroll)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  pager->priv->wrap_on_scroll = wrap_on_scroll;
 }
 
 static void
