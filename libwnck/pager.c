@@ -2436,8 +2436,10 @@ wnck_pager_set_shadow_type (WnckPager *   pager,
  * @wrap_on_scroll: a shadow type.
  *
  * Sets the wrapping behavior of the @pager. Setting it will wrap
- * arround to the start when scrolling over the end. By default it
- * is disabled.
+ * arround to the start when scrolling over the end and vice versa.
+ * By default it is disabled.
+ *
+ * Since: 3.21
  */
 void
 wnck_pager_set_wrap_on_scroll (WnckPager *   pager,
