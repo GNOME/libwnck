@@ -94,6 +94,8 @@ void wnck_pager_set_show_all     (WnckPager            *pager,
 				  gboolean              show_all_workspaces);
 void wnck_pager_set_shadow_type  (WnckPager	       *pager,
 				  GtkShadowType		shadow_type);
+void wnck_pager_set_wrap_on_scroll  (WnckPager	       *pager,
+				  gboolean		wrap_on_scroll);
 
 G_END_DECLS
 
