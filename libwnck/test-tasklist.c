@@ -11,6 +11,7 @@ static gboolean skip_tasklist = FALSE;
 static gboolean transparent = FALSE;
 static gboolean vertical = FALSE;
 static gint icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
+static gboolean enable_scroll = TRUE;
 
 static GOptionEntry entries[] = {
 	{"always-group", 'g', 0, G_OPTION_ARG_NONE, &always_group, "Always group windows", NULL},
@@ -21,6 +22,7 @@ static GOptionEntry entries[] = {
 	{"skip-tasklist", 's', 0, G_OPTION_ARG_NONE, &skip_tasklist, "Don't show window in tasklist", NULL},
 	{"vertical", 'v', 0, G_OPTION_ARG_NONE, &vertical, "Show in vertical mode", NULL},
 	{"transparent", 't', 0, G_OPTION_ARG_NONE, &transparent, "Enable Transparency", NULL},
+	{"disable-scroll", 'd', G_OPTION_FLAG_REVERSE, G_OPTION_ARG_NONE, &enable_scroll, "Disable scrolling", NULL},
 	{NULL }
 };
 
@@ -101,6 +103,8 @@ main (int argc, char **argv)
   else
     wnck_tasklist_set_grouping (WNCK_TASKLIST (tasklist),
                                 WNCK_TASKLIST_AUTO_GROUP);
+
+  wnck_tasklist_set_scroll_enabled (WNCK_TASKLIST (tasklist), enable_scroll);
 
   wnck_tasklist_set_middle_click_close (WNCK_TASKLIST (tasklist), TRUE);
 

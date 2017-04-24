@@ -105,6 +105,9 @@ void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
                                       GtkReliefStyle relief);
 void wnck_tasklist_set_orientation (WnckTasklist *tasklist,
                                     GtkOrientation orient);
+void wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
+                                       gboolean      scroll_enabled);
+gboolean wnck_tasklist_get_scroll_enabled (WnckTasklist *tasklist);
 
 /**
  * WnckLoadIconFunction:

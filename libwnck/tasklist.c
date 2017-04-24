@@ -230,6 +230,8 @@ struct _WnckTasklistPrivate
   GtkOrientation orientation;
 
   guint drag_start_time;
+
+  gboolean scroll_enabled;
 };
 
 static GType wnck_task_get_type (void);
@@ -596,6 +598,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->monitor_geometry.width = -1; /* invalid value */
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   tasklist->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
+  tasklist->priv->scroll_enabled = TRUE;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -866,6 +869,41 @@ void wnck_tasklist_set_orientation (WnckTasklist *tasklist,
   g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
 
   tasklist->priv->orientation = orient;
+}
+
+/**
+ * wnck_tasklist_set_scroll_enabled:
+ * @tasklist: a #WnckTasklist.
+ * @scroll_enabled: a boolean.
+ *
+ * Sets the scroll behavior of the @tasklist. When set to %TRUE, a scroll
+ * event over the tasklist will change the current window accordingly.
+ *
+ * Since: 3.20.2
+ */
+void
+wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
+                                  gboolean      scroll_enabled)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
+
+  tasklist->priv->scroll_enabled = scroll_enabled;
+}
+
+/**
+ * wnck_tasklist_get_scroll_enabled:
+ * @tasklist: a #WnckTasklist.
+ *
+ * Gets the scroll behavior of the @tasklist.
+ *
+ * Since: 3.20.2
+ */
+gboolean
+wnck_tasklist_get_scroll_enabled (WnckTasklist *tasklist)
+{
+  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), TRUE);
+
+  return tasklist->priv->scroll_enabled;
 }
 
 /**
@@ -1936,6 +1974,9 @@ wnck_tasklist_scroll_event (GtkWidget      *widget,
   gint col = 0;
 
   tasklist = WNCK_TASKLIST (widget);
+
+  if (!tasklist->priv->scroll_enabled)
+    return FALSE;
 
   window = g_list_find (tasklist->priv->windows,
                         tasklist->priv->active_task);
