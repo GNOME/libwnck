@@ -206,7 +206,7 @@ wnck_pager_init (WnckPager *pager)
 {
   int i;
   static const GtkTargetEntry targets[] = {
-    { "application/x-wnck-window-id", 0, 0}
+    { (gchar *) "application/x-wnck-window-id", 0, 0}
   };
 
   pager->priv = WNCK_PAGER_GET_PRIVATE (pager);
