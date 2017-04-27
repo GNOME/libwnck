@@ -592,6 +592,9 @@ wnck_workspace_get_neighbor (WnckWorkspace       *space,
       else
         index += add;
       break;
+
+    default:
+      break;
     }
 
   if (index == space->priv->number)

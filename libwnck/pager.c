@@ -2069,6 +2069,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
             else if (smooth_x < -5)
               absolute_direction = GDK_SCROLL_LEFT;
             break;
+          default:
+            break;
         }
     }
 

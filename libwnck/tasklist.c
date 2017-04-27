@@ -3056,6 +3056,8 @@ wnck_task_button_toggled (GtkButton *button,
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
       break;
+    default:
+      break;
     }
 }
 
@@ -3095,6 +3097,9 @@ wnck_task_get_text (WnckTask *task,
 #else
       return NULL;
 #endif
+      break;
+
+    default:
       break;
     }
 
@@ -3208,6 +3213,7 @@ wnck_task_get_icon (WnckTask *task)
       pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
 				      state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
+
     case WNCK_TASK_STARTUP_SEQUENCE:
 #ifdef HAVE_STARTUP_NOTIFICATION
       if (task->tasklist->priv->icon_loader != NULL)
@@ -3238,6 +3244,9 @@ wnck_task_get_icon (WnckTask *task)
                                     &pixbuf, MINI_ICON_SIZE, MINI_ICON_SIZE);
         }
 #endif
+      break;
+
+    default:
       break;
     }
 
@@ -3280,6 +3289,7 @@ wnck_task_get_needs_attention (WnckTask *task)
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
+    default:
       break;
     }
 
@@ -3683,7 +3693,9 @@ wnck_task_button_press_event (GtkWidget	      *widget,
           return TRUE;
         }
       break;
+
     case WNCK_TASK_STARTUP_SEQUENCE:
+    default:
       break;
     }
 
@@ -3944,6 +3956,7 @@ wnck_task_draw (GtkWidget *widget,
 
     case WNCK_TASK_WINDOW:
     case WNCK_TASK_STARTUP_SEQUENCE:
+    default:
       break;
     }
 
@@ -4054,6 +4067,9 @@ wnck_task_compare (gconstpointer  a,
     case WNCK_TASK_STARTUP_SEQUENCE:
       pos1 = G_MAXINT; /* startup sequences are sorted at the end. */
       break;           /* Changing this will break scrolling.      */
+
+    default:
+      break;
     }
 
   switch (task2->type)
@@ -4069,6 +4085,9 @@ wnck_task_compare (gconstpointer  a,
       break;
     case WNCK_TASK_STARTUP_SEQUENCE:
       pos2 = G_MAXINT;
+      break;
+
+    default:
       break;
     }
 
@@ -4287,6 +4306,9 @@ wnck_tasklist_sn_event (SnMonitorEvent *event,
       break;
 
     case SN_MONITOR_EVENT_CANCELED:
+      break;
+
+    default:
       break;
     }
 

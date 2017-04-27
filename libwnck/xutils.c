@@ -784,6 +784,9 @@ filter_func (GdkXEvent  *gdkxevent,
         }
 #endif /* HAVE_STARTUP_NOTIFICATION */
       break;
+
+    default:
+      break;
     }
 
   return GDK_FILTER_CONTINUE;

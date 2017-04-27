@@ -1218,6 +1218,8 @@ wnck_screen_calc_workspace_layout (WnckScreen          *screen,
             }
         }
       break;
+    default:
+      break;
     }
 
   current_row = 0;

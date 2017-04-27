@@ -2783,6 +2783,7 @@ update_state (WnckWindow *window)
       break;
 
     case WNCK_WINDOW_NORMAL:
+    default:
       break;
     }
 
@@ -2802,6 +2803,7 @@ update_state (WnckWindow *window)
     case WNCK_WINDOW_NORMAL:
     case WNCK_WINDOW_DIALOG:
     case WNCK_WINDOW_UTILITY:
+    default:
       break;
     }
 
