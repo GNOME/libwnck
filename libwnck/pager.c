@@ -1927,11 +1927,15 @@ wnck_pager_motion (GtkWidget        *widget,
                                 pager->priv->drag_start_y,
                                 x, y))
     {
+      GtkTargetList *target_list;
       GdkDragContext *context;
-      context = gtk_drag_begin (widget,
-				gtk_drag_dest_get_target_list (widget),
-				GDK_ACTION_MOVE,
-				1, (GdkEvent *)event);
+
+      target_list = gtk_drag_dest_get_target_list (widget);
+      context = gtk_drag_begin_with_coordinates (widget, target_list,
+                                                 GDK_ACTION_MOVE,
+                                                 1, (GdkEvent *) event,
+                                                 -1, -1);
+
       pager->priv->dragging = TRUE;
       pager->priv->prelight_dnd = TRUE;
       _wnck_window_set_as_drag_icon (pager->priv->drag_window,
