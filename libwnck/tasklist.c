@@ -225,7 +225,7 @@ struct _WnckTasklistPrivate
   guint startup_sequence_timeout;
 #endif
 
-  gint monitor_num;
+  GdkMonitor *monitor;
   GdkRectangle monitor_geometry;
   GtkReliefStyle relief;
   GtkOrientation orientation;
@@ -587,7 +587,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->grouping = WNCK_TASKLIST_AUTO_GROUP;
   tasklist->priv->grouping_limit = DEFAULT_GROUPING_LIMIT;
 
-  tasklist->priv->monitor_num = -1;
+  tasklist->priv->monitor = NULL;
   tasklist->priv->monitor_geometry.width = -1; /* invalid value */
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   tasklist->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
@@ -2168,12 +2168,19 @@ tasklist_include_window_impl (WnckTasklist *tasklist,
       wnck_window_get_state (win) & WNCK_WINDOW_STATE_SKIP_TASKLIST)
     return FALSE;
 
-  if (tasklist->priv->monitor_num != -1)
+  if (tasklist->priv->monitor != NULL)
     {
+      GdkDisplay *display;
+      GdkMonitor *monitor;
+
       wnck_window_get_geometry (win, &x, &y, &w, &h);
+
       /* Don't include the window if its center point is not on the same monitor */
-      if (gdk_screen_get_monitor_at_point (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
-                                           x + w / 2, y + h / 2) != tasklist->priv->monitor_num)
+
+      display = gdk_display_get_default ();
+      monitor = gdk_display_get_monitor_at_point (display, x + w / 2, y + h / 2);
+
+      if (monitor != tasklist->priv->monitor)
         return FALSE;
     }
 
@@ -2246,24 +2253,23 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
        * only show windows from this monitor if there is more than one tasklist running
        */
       if (tasklist_instances == NULL || tasklist_instances->next == NULL)
-	{
-	  tasklist->priv->monitor_num = -1;
+        {
+          tasklist->priv->monitor = NULL;
         }
       else
-	{
-	  int monitor_num;
+        {
+          GdkDisplay *display;
+          GdkMonitor *monitor;
 
-	  monitor_num = gdk_screen_get_monitor_at_window (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
-							  tasklist_window);
+          display = gdk_display_get_default ();
+          monitor = gdk_display_get_monitor_at_window (display, tasklist_window);
 
-	  if (monitor_num != tasklist->priv->monitor_num)
-	    {
-	      tasklist->priv->monitor_num = monitor_num;
-	      gdk_screen_get_monitor_geometry (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
-					       tasklist->priv->monitor_num,
-					       &tasklist->priv->monitor_geometry);
-	    }
-	}
+          if (monitor != tasklist->priv->monitor)
+            {
+              tasklist->priv->monitor = monitor;
+              gdk_monitor_get_geometry (monitor, &tasklist->priv->monitor_geometry);
+            }
+        }
     }
 
   l = windows = wnck_screen_get_windows (tasklist->priv->screen);
@@ -2566,7 +2572,7 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
    * the tasklist itself possibly changed monitor.
    */
   monitor_changed = FALSE;
-  if (tasklist->priv->monitor_num != -1 &&
+  if (tasklist->priv->monitor != NULL &&
       (wnck_window_get_state (window) & WNCK_WINDOW_STATE_SKIP_TASKLIST) &&
       tasklist_window != NULL)
     {
@@ -2574,8 +2580,13 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
       wnck_window_get_geometry (window, &x, &y, &w, &h);
       if (!POINT_IN_RECT (x + w / 2, y + h / 2, tasklist->priv->monitor_geometry))
         {
-          monitor_changed = (gdk_screen_get_monitor_at_window (_wnck_screen_get_gdk_screen (tasklist->priv->screen),
-                                                               tasklist_window) != tasklist->priv->monitor_num);
+          GdkDisplay *display;
+          GdkMonitor *monitor;
+
+          display = gdk_display_get_default ();
+          monitor = gdk_display_get_monitor_at_window (display, tasklist_window);
+
+          monitor_changed = (monitor != tasklist->priv->monitor);
         }
     }
 
