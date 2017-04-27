@@ -1304,9 +1304,10 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 
                   for (j = 0; j < verti_views; j++)
                     {
+                      GtkStateFlags rec_state = GTK_STATE_FLAG_NORMAL;
+
                       /* "+ j" is for the thin lines */
                       vy = rect->y + (height_ratio * screen_height) * j + j;
-                      GtkStateFlags rec_state = GTK_STATE_FLAG_NORMAL;
 
                       if (j == verti_views - 1)
                         vh = rect->height + rect->y - vy;
@@ -1350,19 +1351,20 @@ wnck_pager_draw_workspace (WnckPager    *pager,
 							    wnck_screen_get_workspace (pager->priv->screen,
 										       workspace));
 
-  tmp = windows;
-  while (tmp != NULL)
-  	{
-  	  WnckWindow *win = tmp->data;
-  	  GdkRectangle winrect;
+      tmp = windows;
+      while (tmp != NULL)
+        {
+          WnckWindow *win = tmp->data;
+          GdkRectangle winrect;
+          gboolean translucent;
 
-  	  get_window_rect (win, rect, &winrect);
+          get_window_rect (win, rect, &winrect);
 
-      gboolean translucent = (win == pager->priv->drag_window) && pager->priv->dragging;
-      draw_window (cr, widget, win, &winrect, state, translucent);
+          translucent = (win == pager->priv->drag_window) && pager->priv->dragging;
+          draw_window (cr, widget, win, &winrect, state, translucent);
 
-  	  tmp = tmp->next;
-  	}
+          tmp = tmp->next;
+        }
 
       g_list_free (windows);
     }
