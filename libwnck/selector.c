@@ -1011,7 +1011,7 @@ wnck_selector_scroll_event (GtkWidget      *widget,
 static void
 wnck_selector_menu_hidden (GtkWidget *menu, WnckSelector *selector)
 {
-  gtk_widget_set_state (GTK_WIDGET (selector), GTK_STATE_NORMAL);
+  gtk_widget_set_state_flags (GTK_WIDGET (selector), GTK_STATE_FLAG_NORMAL, TRUE);
 }
 
 static void
