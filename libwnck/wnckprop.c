@@ -481,12 +481,12 @@ option_parse (const char  *option_name,
 static gboolean
 set_mode (int         new_mode,
           const char *option,
-          gboolean    list)
+          gboolean    use_list)
 {
   switch (mode)
     {
       case INVALID_MODE:
-        if (list)
+        if (use_list)
           g_assert_not_reached ();
 
         mode = new_mode;
@@ -494,7 +494,7 @@ set_mode (int         new_mode,
       case SCREEN_READ_MODE:
         if (new_mode == SCREEN_READ_MODE || new_mode == SCREEN_WRITE_MODE)
           mode = new_mode;
-        else if (list)
+        else if (use_list)
           mode = SCREEN_LIST_MODE;
         else
           {
@@ -526,7 +526,7 @@ set_mode (int         new_mode,
       case WORKSPACE_READ_MODE:
         if (new_mode == WORKSPACE_READ_MODE || new_mode == WORKSPACE_WRITE_MODE)
           mode = new_mode;
-        else if (list)
+        else if (use_list)
           mode = WORKSPACE_LIST_MODE;
         else
           {
@@ -558,7 +558,7 @@ set_mode (int         new_mode,
           }
         break;
       case APPLICATION_READ_MODE:
-        if (list)
+        if (use_list)
           mode = APPLICATION_LIST_MODE;
         else if (new_mode != APPLICATION_READ_MODE)
           {
@@ -580,7 +580,7 @@ set_mode (int         new_mode,
           }
         break;
       case CLASS_GROUP_READ_MODE:
-        if (list)
+        if (use_list)
           mode = CLASS_GROUP_LIST_MODE;
         else if (new_mode != CLASS_GROUP_READ_MODE)
           {
