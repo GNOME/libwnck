@@ -67,6 +67,7 @@ status_icon_update (WnckWindow *window)
       return;
     }
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   if (wnck_window_get_icon_is_fallback (window))
     {
       gtk_status_icon_set_from_icon_name (icon, "dialog-information");
@@ -77,7 +78,8 @@ status_icon_update (WnckWindow *window)
                                        wnck_window_get_mini_icon (window));
     }
 
-    gtk_status_icon_set_tooltip_text (icon, wnck_window_get_name (window));
+  gtk_status_icon_set_tooltip_text (icon, wnck_window_get_name (window));
+  G_GNUC_END_IGNORE_DEPRECATIONS
 }
 
 static void
@@ -85,7 +87,10 @@ status_icon_create (WnckWindow *window)
 {
   GtkStatusIcon *icon;
 
+  G_GNUC_BEGIN_IGNORE_DEPRECATIONS
   icon = gtk_status_icon_new ();
+  G_GNUC_END_IGNORE_DEPRECATIONS
+
   g_object_set_data (G_OBJECT (window), "wnck-urgency-icon", icon);
 
   g_signal_connect (icon, "activate",
@@ -102,7 +107,10 @@ status_icon_remove (WnckWindow *window)
   icon = status_icon_get (window);
   if (icon != NULL)
     {
+      G_GNUC_BEGIN_IGNORE_DEPRECATIONS
       gtk_status_icon_set_visible (icon, FALSE);
+      G_GNUC_END_IGNORE_DEPRECATIONS
+
       g_object_unref (icon);
       g_object_set_data (G_OBJECT (window), "wnck-urgency-icon", NULL);
     }
