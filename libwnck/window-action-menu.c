@@ -1139,10 +1139,12 @@ wnck_action_menu_dispose (GObject *object)
 
   if (WNCK_IS_WINDOW (menu->priv->window))
     {
+      WnckScreen *screen;
+
       g_object_weak_unref (G_OBJECT (menu->priv->window), window_weak_notify, menu);
       g_signal_handlers_disconnect_by_data (menu->priv->window, menu);
 
-      WnckScreen *screen = wnck_window_get_screen (menu->priv->window);
+      screen = wnck_window_get_screen (menu->priv->window);
       g_signal_handlers_disconnect_by_data (screen, menu);
 
       menu->priv->window = NULL;
