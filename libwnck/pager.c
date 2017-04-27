@@ -2141,6 +2141,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
             index = n_workspaces - 1;
           }
         break;
+
+      case GDK_SCROLL_SMOOTH:
       default:
         g_assert_not_reached ();
         break;
