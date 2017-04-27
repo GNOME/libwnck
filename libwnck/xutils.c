@@ -829,7 +829,7 @@ _wnck_xid_hash (gconstpointer v)
   gulong val = * (const gulong *) v;
 
   /* I'm not sure this works so well. */
-#if G_SIZEOF_LONG > 4
+#if GLIB_SIZEOF_LONG > 4
   return (guint) (val ^ (val >> 32));
 #else
   return val;
