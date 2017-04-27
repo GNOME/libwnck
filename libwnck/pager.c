@@ -1788,8 +1788,7 @@ wnck_update_drag_icon (WnckWindow     *window,
   if (!widget)
     return;
 
-  if (!gtk_icon_size_lookup_for_settings (gtk_widget_get_settings (widget),
-					  GTK_ICON_SIZE_DND, &dnd_w, &dnd_h))
+  if (!gtk_icon_size_lookup (GTK_ICON_SIZE_DND, &dnd_w, &dnd_h))
     dnd_w = dnd_h = 32;
   /* windows are huge, so let's make this huge */
   dnd_w *= 3;
