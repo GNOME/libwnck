@@ -2691,15 +2691,15 @@ wnck_tasklist_activate_next_in_class_group (WnckTask *task,
   l = task->windows;
   while (l)
     {
-      WnckTask *task;
+      WnckTask *tmp;
 
-      task = WNCK_TASK (l->data);
+      tmp = WNCK_TASK (l->data);
 
-      if (wnck_window_is_most_recently_activated (task->window))
+      if (wnck_window_is_most_recently_activated (tmp->window))
         activate_next = TRUE;
       else if (activate_next)
         {
-          activate_task = task;
+          activate_task = tmp;
           break;
         }
 

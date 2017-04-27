@@ -1754,7 +1754,7 @@ handle_button_press_event (Display *dpy, XIDeviceEvent *event)
 
 static GdkFilterReturn
 target_filter (GdkXEvent *gdk_xevent,
-               GdkEvent  *event,
+               GdkEvent  *gdk_event,
                gpointer   data)
 {
   XEvent *xevent = (XEvent *) gdk_xevent;
