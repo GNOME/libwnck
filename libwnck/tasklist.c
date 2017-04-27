@@ -2943,7 +2943,7 @@ wnck_task_popup_menu (WnckTask *task,
       else
         {
           static const GtkTargetEntry targets[] = {
-            { "application/x-wnck-window-id", 0, 0 }
+            { (gchar *) "application/x-wnck-window-id", 0, 0 }
           };
 
           g_signal_connect_object (G_OBJECT (menu_item), "activate",
@@ -3735,7 +3735,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   GdkPixbuf *pixbuf;
   char *text;
   static const GtkTargetEntry targets[] = {
-    { "application/x-wnck-window-id", 0, 0 }
+    { (gchar *) "application/x-wnck-window-id", 0, 0 }
   };
 
   if (task->type == WNCK_TASK_STARTUP_SEQUENCE)
