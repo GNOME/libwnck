@@ -147,6 +147,8 @@ void           _make_gtk_label_normal (GtkLabel *label);
 void           _wnck_selector_set_window_icon   (GtkWidget     *image,
                                                  WnckWindow    *window);
 
+void           _wnck_ensure_fallback_style      (void);
+
 G_END_DECLS
 
 #endif /* WNCK_PRIVATE_H */

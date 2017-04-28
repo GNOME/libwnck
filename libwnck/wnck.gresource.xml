@@ -2,5 +2,6 @@
 <gresources>
   <gresource prefix="/org/gnome/libwnck">
     <file>default_icon.png</file>
+    <file>wnck.css</file>
   </gresource>
 </gresources>

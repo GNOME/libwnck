@@ -740,41 +740,21 @@ _wnck_get_default_mini_icon_size (void)
 void
 _make_gtk_label_bold (GtkLabel *label)
 {
-  PangoFontDescription *font_desc;
+  GtkStyleContext *context;
 
-  font_desc = pango_font_description_new ();
+  _wnck_ensure_fallback_style ();
 
-  pango_font_description_set_weight (font_desc,
-                                     PANGO_WEIGHT_BOLD);
-
-  /* This will only affect the weight of the font, the rest is
-   * from the current state of the widget, which comes from the
-   * theme or user prefs, since the font desc only has the
-   * weight flag turned on.
-   */
-  gtk_widget_override_font (GTK_WIDGET (label), font_desc);
-
-  pango_font_description_free (font_desc);
+  context = gtk_widget_get_style_context (GTK_WIDGET (label));
+  gtk_style_context_add_class (context, "wnck-needs-attention");
 }
 
 void
 _make_gtk_label_normal (GtkLabel *label)
 {
-  PangoFontDescription *font_desc;
+  GtkStyleContext *context;
 
-  font_desc = pango_font_description_new ();
-
-  pango_font_description_set_weight (font_desc,
-                                     PANGO_WEIGHT_NORMAL);
-
-  /* This will only affect the weight of the font, the rest is
-   * from the current state of the widget, which comes from the
-   * theme or user prefs, since the font desc only has the
-   * weight flag turned on.
-   */
-  gtk_widget_override_font (GTK_WIDGET (label), font_desc);
-
-  pango_font_description_free (font_desc);
+  context = gtk_widget_get_style_context (GTK_WIDGET (label));
+  gtk_style_context_remove_class (context, "wnck-needs-attention");
 }
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -866,4 +846,27 @@ wnck_shutdown (void)
   xres_removeid = 0;
   wnck_pid_read_resource_usage_destroy_hash_table (NULL);
 #endif
+}
+
+void
+_wnck_ensure_fallback_style (void)
+{
+  static gboolean css_loaded = FALSE;
+  GtkCssProvider *provider;
+  guint priority;
+
+  if (css_loaded)
+    return;
+
+  provider = gtk_css_provider_new ();
+  gtk_css_provider_load_from_resource (provider, "/org/gnome/libwnck/wnck.css");
+
+  priority = GTK_STYLE_PROVIDER_PRIORITY_FALLBACK;
+  gtk_style_context_add_provider_for_screen (gdk_screen_get_default (),
+                                             GTK_STYLE_PROVIDER (provider),
+                                             priority);
+
+  g_object_unref (provider);
+
+  css_loaded = TRUE;
 }

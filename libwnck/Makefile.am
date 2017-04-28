@@ -166,6 +166,7 @@ CLEANFILES =			\
 
 EXTRA_DIST = \
 	default_icon.png \
+	wnck.css \
 	wnck.gresource.xml \
 	version.h.in \
 	$(NULL)
