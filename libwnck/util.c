@@ -562,7 +562,7 @@ wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
       tmp = windows;
       while (tmp != NULL)
         {
-          if (wnck_window_get_pid (tmp->data) == pid)
+          if (wnck_window_get_pid (tmp->data) == (int) pid)
             {
               wnck_xid_read_resource_usage (gdisplay,
                                             wnck_window_get_xid (tmp->data),
