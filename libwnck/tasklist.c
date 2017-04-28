@@ -3988,16 +3988,13 @@ wnck_task_draw (GtkWidget *widget,
   gtk_widget_style_get (tasklist_widget, "fade-overlay-rect", &overlay_rect, NULL);
   if (overlay_rect)
     {
-      GdkRGBA bg_color;
-
       gtk_style_context_save (context);
       gtk_style_context_set_state (context, GTK_STATE_FLAG_SELECTED);
-      gtk_style_context_get_background_color (context, GTK_STATE_FLAG_SELECTED, &bg_color);
-      gtk_style_context_restore (context);
 
       /* Draw a rectangle with selected background color */
-      gdk_cairo_set_source_rgba (cr, &bg_color);
-      cairo_paint (cr);
+      gtk_render_background (context, cr, 0, 0, width, height);
+
+      gtk_style_context_restore (context);
     }
   else
     {
