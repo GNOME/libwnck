@@ -2455,7 +2455,7 @@ wnck_pager_set_shadow_type (WnckPager *   pager,
  * wrap arround to the start when scrolling over the end and vice
  * versa. By default it is set to %FALSE.
  *
- * Since: 3.20.2
+ * Since: 3.24.0
  */
 void
 wnck_pager_set_wrap_on_scroll (WnckPager *pager,
@@ -2473,7 +2473,7 @@ wnck_pager_set_wrap_on_scroll (WnckPager *pager,
  * Return value: %TRUE if the @pager wraps workspaces on a scroll event that
  * hits a border, %FALSE otherwise.
  *
- * Since: 3.20.2
+ * Since: 3.24.0
  */
 gboolean
 wnck_pager_get_wrap_on_scroll (WnckPager *pager)

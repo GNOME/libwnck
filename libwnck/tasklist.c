@@ -872,7 +872,7 @@ void wnck_tasklist_set_orientation (WnckTasklist *tasklist,
  * Sets the scroll behavior of the @tasklist. When set to %TRUE, a scroll
  * event over the tasklist will change the current window accordingly.
  *
- * Since: 3.20.2
+ * Since: 3.24.0
  */
 void
 wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
@@ -889,7 +889,7 @@ wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
  *
  * Gets the scroll behavior of the @tasklist.
  *
- * Since: 3.20.2
+ * Since: 3.24.0
  */
 gboolean
 wnck_tasklist_get_scroll_enabled (WnckTasklist *tasklist)
