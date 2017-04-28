@@ -1888,12 +1888,12 @@ update_viewport_settings (WnckScreen *screen)
               space = wnck_screen_get_workspace (screen, i);
               g_assert (space != NULL);
 
-	      /* p_coord[x] is unsigned, and thus >= 0 */
-              if (p_coord[x] > space_width - screen_width)
+              /* p_coord[x] is unsigned, and thus >= 0 */
+              if ((int) p_coord[x] > space_width - screen_width)
                 p_coord[x] = space_width - screen_width;
 
-	      /* p_coord[y] is unsigned, and thus >= 0 */
-              if (p_coord[y] > space_height - screen_height)
+              /* p_coord[y] is unsigned, and thus >= 0 */
+              if ((int) p_coord[y] > space_height - screen_height)
                 p_coord[y] = space_height - screen_height;
 
 	      if (_wnck_workspace_set_viewport (space,
