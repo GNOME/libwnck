@@ -1451,7 +1451,7 @@ find_largest_sizes (gulong *data,
       w = data[0];
       h = data[1];
 
-      if (nitems < ((w * h) + 2))
+      if (nitems < ((gulong) (w * h) + 2))
         return FALSE; /* not enough data */
 
       *width = MAX (w, *width);
@@ -1507,7 +1507,7 @@ find_best_size (gulong  *data,
       w = data[0];
       h = data[1];
 
-      if (nitems < ((w * h) + 2))
+      if (nitems < ((gulong) (w * h) + 2))
         break; /* not enough data */
 
       if (best_start == NULL)
@@ -1711,7 +1711,7 @@ _wnck_cairo_surface_get_from_pixmap (Screen *screen,
       if (!XGetWindowAttributes (display, root_return, &attrs))
         goto TRAP_POP;
 
-      if (depth_ret == attrs.depth)
+      if (depth_ret == (unsigned int) attrs.depth)
 	{
 	  surface = cairo_xlib_surface_create (display,
 					       xpixmap,
