@@ -872,7 +872,10 @@ _wnck_screen_get_gdk_screen (WnckScreen *screen)
   if (!gdkdisplay)
     return NULL;
 
-  return gdk_display_get_screen (gdkdisplay, screen->priv->number);
+  if (screen->priv->number != 0)
+    return NULL;
+
+  return gdk_display_get_default_screen (gdkdisplay);
 }
 
 /**
