@@ -157,8 +157,8 @@ struct _WnckTask
 
   guint button_glow;
 
-  guint row;
-  guint col;
+  gint row;
+  gint col;
   
   guint resize_idle_id;
 };
@@ -3163,7 +3163,7 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 
-  if (h != MINI_ICON_SIZE ||
+  if (h != (int) MINI_ICON_SIZE ||
       !gdk_pixbuf_get_has_alpha (orig))
     {
       double scale;
@@ -3593,7 +3593,7 @@ wnck_task_drag_data_received (GtkWidget          *widget,
   if (target_task->window == found_window)
     {
       GtkSettings  *settings;
-      gint          double_click_time;
+      guint         double_click_time;
 
       settings = gtk_settings_get_for_screen (gtk_widget_get_screen (GTK_WIDGET (tasklist)));
       double_click_time = 0;
