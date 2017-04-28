@@ -363,8 +363,6 @@ wnck_pager_realize (GtkWidget *widget)
   gtk_widget_set_window (widget, window);
   gdk_window_set_user_data (window, widget);
 
-  gtk_style_context_set_background (gtk_widget_get_style_context (widget), window);
-
   /* connect to the screen of this pager. In theory, this will already have
    * been done in wnck_pager_size_request() */
   if (pager->priv->screen == NULL)
@@ -1430,6 +1428,10 @@ wnck_pager_draw (GtkWidget *widget,
 
   state = gtk_widget_get_state_flags (widget);
   context = gtk_widget_get_style_context (widget);
+
+  gtk_render_background (context, cr, 0, 0,
+                         gtk_widget_get_allocated_width (widget),
+                         gtk_widget_get_allocated_height (widget));
 
   gtk_style_context_save (context);
   gtk_style_context_set_state (context, state);
