@@ -45,7 +45,7 @@
  */
 
 #define FALLBACK_NAME _("Untitled window")
-#define ALL_WORKSPACES (0xFFFFFFFF)
+#define ALL_WORKSPACES (G_MAXINT)
 
 static GHashTable *window_hash = NULL;
 
