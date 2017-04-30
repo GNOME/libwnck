@@ -27,6 +27,8 @@ gtkdocize --copy || exit 1
 autoreconf --verbose --force --install -Wno-portability || exit 1
 { set +x; } 2>/dev/null
 
+cd "$olddir"
+
 if [ -z "$NOCONFIGURE" ]; then
   set -x
   $srcdir/configure "$@" || exit 1
