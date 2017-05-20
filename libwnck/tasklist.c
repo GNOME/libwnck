@@ -314,7 +314,6 @@ static void     wnck_tasklist_unrealize     (GtkWidget        *widget);
 static gboolean wnck_tasklist_scroll_event  (GtkWidget        *widget,
                                              GdkEventScroll   *event);
 static void     wnck_tasklist_forall        (GtkContainer     *container,
-                                             gboolean	       include_internals,
                                              GtkCallback       callback,
                                              gpointer          callback_data);
 static void     wnck_tasklist_remove	    (GtkContainer   *container,
@@ -2157,7 +2156,6 @@ wnck_tasklist_unrealize (GtkWidget *widget)
 
 static void
 wnck_tasklist_forall (GtkContainer *container,
-                      gboolean      include_internals,
                       GtkCallback   callback,
                       gpointer      callback_data)
 {
