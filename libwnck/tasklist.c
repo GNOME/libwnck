@@ -4420,8 +4420,7 @@ wnck_task_draw (GtkWidget *widget,
       gtk_style_context_get_color (context, &color);
       gtk_style_context_restore (context);
 
-      x = gtk_widget_get_allocated_width (widget) -
-          (gtk_container_get_border_width (GTK_CONTAINER (widget)) + padding.right + ARROW_SIZE);
+      x = gtk_widget_get_allocated_width (widget) - (padding.right + ARROW_SIZE);
       y = gtk_widget_get_allocated_height (widget) / 2;
 
       arrow_width = INDICATOR_SIZE + ((INDICATOR_SIZE % 2) - 1);
