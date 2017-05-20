@@ -565,7 +565,7 @@ wnck_selector_workspace_name_changed (WnckWorkspace *workspace,
 
   gtk_style_context_save (context);
   gtk_style_context_set_state (context, GTK_STATE_FLAG_INSENSITIVE);
-  gtk_style_context_get_color (context, GTK_STATE_FLAG_INSENSITIVE, &color);
+  gtk_style_context_get_color (context, &color);
   gtk_style_context_restore (context);
 
   name = g_markup_escape_text (wnck_workspace_get_name (workspace), -1);

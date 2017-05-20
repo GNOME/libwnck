@@ -395,12 +395,10 @@ _wnck_pager_get_padding (WnckPager *pager,
     {
       GtkWidget       *widget;
       GtkStyleContext *context;
-      GtkStateFlags    state;
 
       widget = GTK_WIDGET (pager);
       context = gtk_widget_get_style_context (widget);
-      state = gtk_style_context_get_state (context);
-      gtk_style_context_get_padding (context, state, padding);
+      gtk_style_context_get_padding (context, padding);
     }
   else
     {
@@ -978,7 +976,7 @@ draw_window (cairo_t            *cr,
   cairo_pop_group_to_source (cr);
   cairo_paint_with_alpha (cr, translucency);
 
-  gtk_style_context_get_color (context, state, &fg);
+  gtk_style_context_get_color (context, &fg);
   fg.alpha = translucency;
   gdk_cairo_set_source_rgba (cr, &fg);
   cairo_set_line_width (cr, 1.0);

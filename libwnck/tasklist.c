@@ -415,18 +415,16 @@ static int
 get_css_width (GtkWidget *widget)
 {
   GtkStyleContext *context;
-  GtkStateFlags state;
   GtkBorder margin;
   GtkBorder border;
   GtkBorder padding;
   int min_width;
 
   context = gtk_widget_get_style_context (widget);
-  state = gtk_style_context_get_state (context);
 
-  gtk_style_context_get_margin (context, state, &margin);
-  gtk_style_context_get_border (context, state, &border);
-  gtk_style_context_get_padding (context, state, &padding);
+  gtk_style_context_get_margin (context, &margin);
+  gtk_style_context_get_border (context, &border);
+  gtk_style_context_get_padding (context, &padding);
 
   min_width = margin.left + margin.right;
   min_width += border.left + border.right;
@@ -448,7 +446,6 @@ get_char_width (GtkWidget *widget)
   style = gtk_widget_get_style_context (widget);
 
   gtk_style_context_get (style,
-                         gtk_style_context_get_state (style),
                          GTK_STYLE_PROPERTY_FONT,
                          &description,
                          NULL);
@@ -4413,14 +4410,14 @@ wnck_task_draw (GtkWidget *widget,
       context = gtk_widget_get_style_context (widget);
 
       state = gtk_style_context_get_state (context);
-      gtk_style_context_get_padding (context, state, &padding);
+      gtk_style_context_get_padding (context, &padding);
 
       state = (task->tasklist->priv->active_class_group == task) ?
               GTK_STATE_FLAG_ACTIVE : GTK_STATE_FLAG_NORMAL;
 
       gtk_style_context_save (context);
       gtk_style_context_set_state (context, state);
-      gtk_style_context_get_color (context, state, &color);
+      gtk_style_context_get_color (context, &color);
       gtk_style_context_restore (context);
 
       x = gtk_widget_get_allocated_width (widget) -
