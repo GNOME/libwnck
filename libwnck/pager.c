@@ -108,20 +108,13 @@ static void wnck_pager_finalize    (GObject        *object);
 static void     wnck_pager_realize       (GtkWidget        *widget);
 static void     wnck_pager_unrealize     (GtkWidget        *widget);
 static GtkSizeRequestMode wnck_pager_get_request_mode (GtkWidget *widget);
-static void     wnck_pager_get_preferred_width (GtkWidget *widget,
-                                                int       *minimum_width,
-                                                int       *natural_width);
-static void     wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
-                                                           int        height,
-                                                           int       *minimum_width,
-                                                           int       *natural_width);
-static void     wnck_pager_get_preferred_height (GtkWidget *widget,
-                                                 int       *minimum_height,
-                                                 int       *natural_height);
-static void     wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
-                                                           int        width,
-                                                           int       *minimum_height,
-                                                           int       *natural_height);
+static void     wnck_pager_measure       (GtkWidget        *widget,
+                                          GtkOrientation    orientation,
+                                          int               for_size,
+                                          int              *minimum,
+                                          int              *natural,
+                                          int              *minimum_baseline,
+                                          int              *natural_baseline);
 static gboolean wnck_pager_draw          (GtkWidget        *widget,
                                           cairo_t          *cr);
 static gboolean wnck_pager_button_press  (GtkWidget        *widget,
@@ -243,10 +236,7 @@ wnck_pager_class_init (WnckPagerClass *klass)
   widget_class->realize = wnck_pager_realize;
   widget_class->unrealize = wnck_pager_unrealize;
   widget_class->get_request_mode = wnck_pager_get_request_mode;
-  widget_class->get_preferred_width = wnck_pager_get_preferred_width;
-  widget_class->get_preferred_width_for_height = wnck_pager_get_preferred_width_for_height;
-  widget_class->get_preferred_height = wnck_pager_get_preferred_height;
-  widget_class->get_preferred_height_for_width = wnck_pager_get_preferred_height_for_width;
+  widget_class->measure = wnck_pager_measure;
   widget_class->draw = wnck_pager_draw;
   widget_class->button_press_event = wnck_pager_button_press;
   widget_class->button_release_event = wnck_pager_button_release;
@@ -479,63 +469,6 @@ _wnck_pager_get_workspace_height_for_width (WnckPager *pager,
   return workspace_height;
 }
 
-static void
-wnck_pager_size_request  (GtkWidget      *widget,
-                          GtkRequisition *requisition)
-{
-  WnckPager *pager;
-  int n_spaces;
-  int spaces_per_row;
-  int workspace_width, workspace_height;
-  int n_rows;
-  GtkBorder padding;
-
-  pager = WNCK_PAGER (widget);
-
-  /* if we're not realized, we don't know about our screen yet */
-  if (pager->priv->screen == NULL)
-    _wnck_pager_set_screen (pager);
-  g_assert (pager->priv->screen != NULL);
-
-  g_assert (pager->priv->n_rows > 0);
-
-  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
-
-  if (pager->priv->show_all_workspaces)
-    {
-      n_rows = pager->priv->n_rows;
-      spaces_per_row = (n_spaces + n_rows - 1) / n_rows;
-    }
-  else
-    {
-      n_rows = 1;
-      spaces_per_row = 1;
-    }
-
-  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
-    {
-      workspace_width = pager->priv->workspace_size;
-      workspace_height = _wnck_pager_get_workspace_height_for_width (pager,
-                                                                     workspace_width);
-
-      requisition->width = workspace_width * n_rows + (n_rows - 1);
-      requisition->height = workspace_height * spaces_per_row  + (spaces_per_row - 1);
-    }
-  else
-    {
-      workspace_height = pager->priv->workspace_size;
-      workspace_width = _wnck_pager_get_workspace_width_for_height (pager,
-                                                                    workspace_height);
-
-      requisition->width = workspace_width * spaces_per_row + (spaces_per_row - 1);
-      requisition->height = workspace_height * n_rows + (n_rows - 1);
-    }
-
-  _wnck_pager_get_padding (pager, &padding);
-  requisition->width += padding.left + padding.right;
-  requisition->height += padding.top + padding.bottom;
-}
-
 static GtkSizeRequestMode
 wnck_pager_get_request_mode (GtkWidget *widget)
 {
@@ -550,38 +483,31 @@ wnck_pager_get_request_mode (GtkWidget *widget)
 }
 
 static void
-wnck_pager_get_preferred_width (GtkWidget *widget,
-                                int       *minimum_width,
-                                int       *natural_width)
-{
-  GtkRequisition req;
-
-  wnck_pager_size_request (widget, &req);
-
-  *minimum_width = *natural_width = MAX (req.width, 0);
-}
-
-static void
-wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
-                                           int        height,
-                                           int       *minimum_width,
-                                           int       *natural_width)
+wnck_pager_measure (GtkWidget      *widget,
+                    GtkOrientation  orientation,
+                    int             for_size,
+                    int            *minimum,
+                    int            *natural,
+                    int            *minimum_baseline,
+                    int            *natural_baseline)
 {
   WnckPager *pager;
   int n_spaces;
   int n_rows;
   int spaces_per_row;
-  int workspace_width, workspace_height;
   GtkBorder padding;
-  int width = 0;
+  int workspace_width;
+  int workspace_height;
+  int width;
+  int height;
 
   pager = WNCK_PAGER (widget);
 
   /* if we're not realized, we don't know about our screen yet */
   if (pager->priv->screen == NULL)
     _wnck_pager_set_screen (pager);
-  g_assert (pager->priv->screen != NULL);
 
+  g_assert (pager->priv->screen != NULL);
   g_assert (pager->priv->n_rows > 0);
 
   n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
@@ -598,79 +524,59 @@ wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
     }
 
   _wnck_pager_get_padding (pager, &padding);
-  height -= padding.top + padding.bottom;
+
+  if (pager->priv->orientation == GTK_ORIENTATION_VERTICAL)
+    {
+      if (for_size == -1)
+        {
+          workspace_width = pager->priv->workspace_size;
+        }
+      else
+        {
+          for_size -= padding.left + padding.right;
+          for_size -= (n_rows - 1);
+
+          workspace_width = for_size / n_rows;
+        }
+
+      workspace_height = _wnck_pager_get_workspace_height_for_width (pager,
+                                                                     workspace_width);
+
+      width = workspace_width * n_rows + (n_rows - 1);
+      height = workspace_height * spaces_per_row  + (spaces_per_row - 1);
+    }
+  else
+    {
+      if (for_size == -1)
+        {
+          workspace_height = pager->priv->workspace_size;
+        }
+      else
+        {
+          for_size -= padding.left + padding.right;
+          for_size -= (n_rows - 1);
+
+          workspace_height = for_size / n_rows;
+        }
+
+      workspace_width = _wnck_pager_get_workspace_width_for_height (pager,
+                                                                    workspace_height);
+
+      width = workspace_width * spaces_per_row + (spaces_per_row - 1);
+      height = workspace_height * n_rows + (n_rows - 1);
+    }
+
   width += padding.left + padding.right;
-
-  height -= (n_rows - 1);
-  workspace_height = height / n_rows;
-
-  workspace_width = _wnck_pager_get_workspace_width_for_height (pager,
-                                                                workspace_height);
-
-  width += workspace_width * spaces_per_row + (spaces_per_row - 1);
-  *natural_width = *minimum_width = MAX (width, 0);
-}
-
-static void
-wnck_pager_get_preferred_height (GtkWidget *widget,
-                                 int       *minimum_height,
-                                 int       *natural_height)
-{
-  GtkRequisition req;
-
-  wnck_pager_size_request (widget, &req);
-
-  *minimum_height = *natural_height = MAX (req.height, 0);
-}
-
-static void
-wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
-                                           int        width,
-                                           int       *minimum_height,
-                                           int       *natural_height)
-{
-  WnckPager *pager;
-  int n_spaces;
-  int n_rows;
-  int spaces_per_row;
-  int workspace_width, workspace_height;
-  GtkBorder padding;
-  int height = 0;
-
-  pager = WNCK_PAGER (widget);
-
-  /* if we're not realized, we don't know about our screen yet */
-  if (pager->priv->screen == NULL)
-    _wnck_pager_set_screen (pager);
-  g_assert (pager->priv->screen != NULL);
-
-  g_assert (pager->priv->n_rows > 0);
-
-  n_spaces = wnck_screen_get_workspace_count (pager->priv->screen);
-
-  if (pager->priv->show_all_workspaces)
-    {
-      n_rows = pager->priv->n_rows;
-      spaces_per_row = (n_spaces + n_rows - 1) / n_rows;
-    }
-  else
-    {
-      n_rows = 1;
-      spaces_per_row = 1;
-    }
-
-  _wnck_pager_get_padding (pager, &padding);
-  width -= padding.left + padding.right;
   height += padding.top + padding.bottom;
 
-  width -= (n_rows - 1);
-  workspace_width = width / n_rows;
-
-  workspace_height = _wnck_pager_get_workspace_height_for_width (pager,
-                                                                 workspace_width);
-
-  height += workspace_height * spaces_per_row + (spaces_per_row - 1);
-  *natural_height = *minimum_height = MAX (height, 0);
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      *minimum = *natural = width;
+    }
+  else
+    {
+      *minimum = *natural = height;
+    }
 }
 
 static void
