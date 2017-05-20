@@ -62,12 +62,11 @@ main (int argc, char **argv)
 
   ctxt = g_option_context_new ("");
   g_option_context_add_main_entries (ctxt, entries, NULL);
-  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
   g_option_context_parse (ctxt, &argc, &argv, NULL);
   g_option_context_free (ctxt);
   ctxt = NULL;
 
-  gtk_init (&argc, &argv);
+  gtk_init ();
 
   if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);

@@ -76,13 +76,12 @@ main (int argc, char **argv)
 
   ctxt = g_option_context_new ("");
   g_option_context_add_main_entries (ctxt, entries, NULL);
-  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
   g_option_context_parse (ctxt, &argc, &argv, NULL);
   g_option_context_free (ctxt);
 
   wnck_set_default_mini_icon_size (icon_size);
 
-  gtk_init (&argc, &argv);
+  gtk_init ();
 
   screen = wnck_screen_get (0);
 

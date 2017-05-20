@@ -33,7 +33,7 @@ main (int    argc,
   GMainLoop *loop;
   WnckScreen *screen;
 
-  gdk_init (&argc, &argv);
+  gtk_init ();
 
   loop = g_main_loop_new (NULL, FALSE);
 

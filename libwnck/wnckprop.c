@@ -1914,8 +1914,6 @@ main (int argc, char **argv)
   g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
   g_option_context_add_group (ctxt, group);
 
-  g_option_context_add_group (ctxt, gtk_get_option_group (TRUE));
-
   error = NULL;
   if (!g_option_context_parse (ctxt, &argc, &argv, &error))
     {
@@ -1931,7 +1929,7 @@ main (int argc, char **argv)
   if (!validate_options ())
     return 1;
 
-  gtk_init (&argc, &argv);
+  gtk_init ();
 
   wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
 

@@ -70,7 +70,7 @@ main (int argc, char **argv)
   GtkWidget *win;
   GtkWidget *label;
 
-  gtk_init (&argc, &argv);
+  gtk_init ();
 
   win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   label = gtk_label_new ("");
