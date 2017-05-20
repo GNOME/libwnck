@@ -325,11 +325,9 @@ _wnck_pager_set_screen (WnckPager *pager)
 static void
 wnck_pager_realize (GtkWidget *widget)
 {
-
-  GdkWindowAttr attributes;
-  gint attributes_mask;
   WnckPager *pager;
   GtkAllocation allocation;
+  gint event_mask;
   GdkWindow *window;
 
   pager = WNCK_PAGER (widget);
@@ -340,22 +338,15 @@ wnck_pager_realize (GtkWidget *widget)
 
   gtk_widget_get_allocation (widget, &allocation);
 
-  attributes.window_type = GDK_WINDOW_CHILD;
-  attributes.x = allocation.x;
-  attributes.y = allocation.y;
-  attributes.width = allocation.width;
-  attributes.height = allocation.height;
-  attributes.wclass = GDK_INPUT_OUTPUT;
-  attributes.visual = gtk_widget_get_visual (widget);
-  attributes.event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK |
-	  		  GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
-			  GDK_SCROLL_MASK |
-			  GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK |
-			  GDK_POINTER_MOTION_HINT_MASK;
+  event_mask = gtk_widget_get_events (widget) | GDK_EXPOSURE_MASK |
+               GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK |
+               GDK_SCROLL_MASK |
+               GDK_LEAVE_NOTIFY_MASK | GDK_POINTER_MOTION_MASK |
+               GDK_POINTER_MOTION_HINT_MASK;
 
-  attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
+  window = gdk_window_new_child (gtk_widget_get_parent_window (widget),
+                                 event_mask, &allocation);
 
-  window = gdk_window_new (gtk_widget_get_parent_window (widget), &attributes, attributes_mask);
   gtk_widget_set_window (widget, window);
   gdk_window_set_user_data (window, widget);
 
