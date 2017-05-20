@@ -581,18 +581,14 @@ wnck_button_init (WnckButton *self)
   gtk_widget_show (box);
 
   self->image = gtk_image_new ();
-  gtk_box_pack_start (GTK_BOX (box),
-                      self->image,
-                      FALSE,
-                      FALSE,
-                      TASKLIST_BUTTON_PADDING);
+  gtk_box_pack_start (GTK_BOX (box), self->image);
+  g_object_set (self->image, "margin", TASKLIST_BUTTON_PADDING, NULL);
 
   self->label = gtk_label_new (NULL);
-  gtk_box_pack_start (GTK_BOX (box),
-                      self->label,
-                      TRUE,
-                      TRUE,
-                      TASKLIST_BUTTON_PADDING);
+  gtk_box_pack_start (GTK_BOX (box), self->label);
+  gtk_widget_set_hexpand (self->label, TRUE);
+  gtk_widget_set_valign (self->label, GTK_ALIGN_FILL);
+  g_object_set (self->label, "margin", TASKLIST_BUTTON_PADDING, NULL);
 
   gtk_label_set_xalign (GTK_LABEL (self->label), 0.0);
   gtk_label_set_ellipsize (GTK_LABEL (self->label), PANGO_ELLIPSIZE_END);
