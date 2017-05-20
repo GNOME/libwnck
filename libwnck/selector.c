@@ -1129,7 +1129,7 @@ wnck_selector_fill (WnckSelector *selector)
                                    "#gnome-panel-window-menu-menu-bar {\n"
                                    " border-width: 0px;\n"
                                    "}",
-                                   -1, NULL);
+                                   -1);
   gtk_style_context_add_provider (gtk_widget_get_style_context (GTK_WIDGET (selector)),
                                   GTK_STYLE_PROVIDER (provider),
                                   GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
