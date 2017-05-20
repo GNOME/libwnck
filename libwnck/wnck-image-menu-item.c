@@ -192,10 +192,12 @@ wnck_image_menu_item_init (WnckImageMenuItem *item)
   gtk_widget_show (item->box);
 
   item->image = gtk_image_new ();
-  gtk_box_pack_start (GTK_BOX (item->box), item->image, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (item->box), item->image);
 
   item->accel_label = gtk_accel_label_new ("");
-  gtk_box_pack_end (GTK_BOX (item->box), item->accel_label, TRUE, TRUE, 0);
+  gtk_box_pack_end (GTK_BOX (item->box), item->accel_label);
+  gtk_widget_set_hexpand (item->accel_label, TRUE);
+  gtk_widget_set_halign (item->accel_label, GTK_ALIGN_FILL);
   gtk_label_set_xalign (GTK_LABEL (item->accel_label), 0.0);
   gtk_widget_show (item->accel_label);
 
