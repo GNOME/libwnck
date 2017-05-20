@@ -26,6 +26,7 @@ static GOptionEntry entries[] = {
 	{NULL }
 };
 
+#if 0
 static gboolean
 window_draw (GtkWidget      *widget,
              cairo_t        *cr,
@@ -50,6 +51,7 @@ window_composited_changed (GtkWidget *widget,
 
   gtk_widget_set_app_paintable (widget, composited);
 }
+#endif
 
 int
 main (int argc, char **argv)
@@ -113,6 +115,7 @@ main (int argc, char **argv)
 
   if (transparent)
     {
+#if 0
       GdkVisual *visual;
 
       visual = gdk_screen_get_rgba_visual (gtk_widget_get_screen (win));
@@ -137,6 +140,7 @@ main (int argc, char **argv)
 
         wnck_tasklist_set_button_relief (WNCK_TASKLIST (tasklist),
                                          GTK_RELIEF_NONE);
+#endif
     }
 
   frame = gtk_frame_new (NULL);
