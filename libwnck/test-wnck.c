@@ -141,7 +141,7 @@ main (int argc, char **argv)
                     G_CALLBACK (gtk_main_quit),
                     NULL);
   
-  gtk_widget_show_all (win);
+  gtk_widget_show (win);
   
   gtk_main ();
   

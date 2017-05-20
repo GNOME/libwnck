@@ -76,7 +76,7 @@ main (int argc, char **argv)
   label = gtk_label_new ("");
   gtk_container_add (GTK_CONTAINER (win), label);
   gtk_window_set_keep_above (GTK_WINDOW (win), TRUE);
-  gtk_widget_show_all (win);
+  gtk_widget_show (win);
 
   g_signal_connect (G_OBJECT (win), "focus-in-event",
                     G_CALLBACK (focused_in),

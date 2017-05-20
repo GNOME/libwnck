@@ -62,7 +62,7 @@ create_pager_window (GtkOrientation       orientation,
 
   gtk_container_add (GTK_CONTAINER (win), pager);
 
-  gtk_widget_show_all (win);
+  gtk_widget_show (win);
 }
 
 int
