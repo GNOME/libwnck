@@ -48,9 +48,13 @@ wnck_image_menu_item_finalize (GObject *object)
 }
 
 static void
-wnck_image_menu_item_get_preferred_width (GtkWidget *widget,
-                                          gint      *minimum,
-                                          gint      *natural)
+wnck_image_menu_item_measure (GtkWidget      *widget,
+                              GtkOrientation  orientation,
+                              int             for_size,
+                              int            *minimum,
+                              int            *natural,
+                              int            *minimum_baseline,
+                              int            *natural_baseline)
 {
   GtkWidgetClass *widget_class;
   WnckImageMenuItem *item;
@@ -59,9 +63,11 @@ wnck_image_menu_item_get_preferred_width (GtkWidget *widget,
   widget_class = GTK_WIDGET_CLASS (wnck_image_menu_item_parent_class);
   item = WNCK_IMAGE_MENU_ITEM (widget);
 
-  widget_class->get_preferred_width (widget, minimum, natural);
+  widget_class->measure (widget, orientation, for_size,minimum, natural,
+                         minimum_baseline, natural_baseline);
 
-  if (!gtk_widget_get_visible (item->image))
+  if (!gtk_widget_get_visible (item->image) ||
+      orientation != GTK_ORIENTATION_HORIZONTAL)
     return;
 
   gtk_widget_get_preferred_size (item->image, &image_requisition, NULL);
@@ -168,7 +174,7 @@ wnck_image_menu_item_class_init (WnckImageMenuItemClass *item_class)
 
   object_class->finalize = wnck_image_menu_item_finalize;
 
-  widget_class->get_preferred_width = wnck_image_menu_item_get_preferred_width;
+  widget_class->measure = wnck_image_menu_item_measure;
   widget_class->size_allocate = wnck_image_menu_item_size_allocate;
 
   menu_item_class->get_label = wnck_image_menu_item_get_label;
