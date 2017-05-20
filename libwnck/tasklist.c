@@ -300,20 +300,13 @@ static void       wnck_task_drag_data_get (GtkWidget          *widget,
 
 static void     wnck_tasklist_finalize      (GObject        *object);
 
-static void     wnck_tasklist_get_preferred_width (GtkWidget *widget,
-                                                   int       *minimum_width,
-                                                   int       *natural_width);
-static void     wnck_tasklist_get_preferred_height_for_width (GtkWidget *widget,
-                                                              int        width,
-                                                              int       *minimum_height,
-                                                              int       *natural_height);
-static void     wnck_tasklist_get_preferred_height (GtkWidget *widget,
-                                                    int       *minimum_height,
-                                                    int       *natural_height);
-static void     wnck_tasklist_get_preferred_width_for_height (GtkWidget *widget,
-                                                              int        height,
-                                                              int       *minimum_width,
-                                                              int       *natural_width);
+static void     wnck_tasklist_measure       (GtkWidget        *widget,
+                                             GtkOrientation    orientation,
+                                             int               for_size,
+                                             int              *minimum,
+                                             int              *natural,
+                                             int              *minimum_baseline,
+                                             int              *natural_baseline);
 static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
@@ -516,42 +509,59 @@ wnck_button_size_allocate (GtkWidget     *widget,
 }
 
 static void
-wnck_button_get_preferred_width (GtkWidget *widget,
-                                 gint      *minimum_width,
-                                 gint      *natural_width)
+wnck_button_measure (GtkWidget      *widget,
+                     GtkOrientation  orientation,
+                     int             for_size,
+                     int            *minimum,
+                     int            *natural,
+                     int            *minimum_baseline,
+                     int            *natural_baseline)
 {
-  WnckButton *self;
-  int min_width;
-  int char_width;
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      WnckButton *self;
+      int min_width;
+      int char_width;
 
-  self = WNCK_BUTTON (widget);
+      self = WNCK_BUTTON (widget);
 
-  min_width = get_css_width (widget);
-  min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
+      min_width = get_css_width (widget);
+      min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
-  char_width = get_char_width (self->label);
+      char_width = get_char_width (self->label);
 
-  /* Minimum width:
-   * - margin, border and padding that might be set on widget
-   * - margin, border and padding that might be set on box widget
-   * - TASKLIST_BUTTON_PADDING around image or label
-   * - character width
-   */
-  *minimum_width = min_width +
-                   2 * TASKLIST_BUTTON_PADDING +
-                   char_width;
+      /* Minimum width:
+       * - margin, border and padding that might be set on widget
+       * - margin, border and padding that might be set on box widget
+       * - TASKLIST_BUTTON_PADDING around image or label
+       * - character width
+       */
+      *minimum_width = min_width +
+                       2 * TASKLIST_BUTTON_PADDING +
+                       char_width;
 
-  /* Natural width:
-   * - margin, border and padding that might be set on widget
-   * - margin, border and padding that might be set on box widget
-   * - TASKLIST_BUTTON_PADDING around image
-   * - TASKLIST_BUTTON_PADDING around label
-   * - needed size for TASKLIST_TEXT_MAX_WIDTH
-   */
-  *natural_width = min_width +
-                   2 * TASKLIST_BUTTON_PADDING +
-                   2 * TASKLIST_BUTTON_PADDING +
-                   char_width * TASKLIST_TEXT_MAX_WIDTH;
+      /* Natural width:
+       * - margin, border and padding that might be set on widget
+       * - margin, border and padding that might be set on box widget
+       * - TASKLIST_BUTTON_PADDING around image
+       * - TASKLIST_BUTTON_PADDING around label
+       * - needed size for TASKLIST_TEXT_MAX_WIDTH
+       */
+      *natural_width = min_width +
+                       2 * TASKLIST_BUTTON_PADDING +
+                       2 * TASKLIST_BUTTON_PADDING +
+                       char_width * TASKLIST_TEXT_MAX_WIDTH;
+    }
+  else
+    {
+      GTK_WIDGET_CLASS (wnck_button_parent_class)->mesure (widget,
+                                                           orientation,
+                                                           for_size,
+                                                           minimum,
+                                                           natural,
+                                                           minimum_baseline,
+                                                           natural_baseline);
+    }
 }
 
 static void
@@ -566,7 +576,7 @@ wnck_button_class_init (WnckButtonClass *self_class)
   object_class->dispose = wnck_button_dispose;
 
   widget_class->size_allocate = wnck_button_size_allocate;
-  widget_class->get_preferred_width = wnck_button_get_preferred_width;
+  widget_class->measure = wnck_button_measure;
 }
 
 static void
@@ -888,10 +898,7 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   object_class->finalize = wnck_tasklist_finalize;
 
   widget_class->get_request_mode = wnck_tasklist_get_request_mode;
-  widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
-  widget_class->get_preferred_height_for_width = wnck_tasklist_get_preferred_height_for_width;
-  widget_class->get_preferred_height = wnck_tasklist_get_preferred_height;
-  widget_class->get_preferred_width_for_height = wnck_tasklist_get_preferred_width_for_height;
+  widget_class->measure = wnck_tasklist_measure;
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
@@ -1859,53 +1866,19 @@ get_preferred_size (WnckTasklist   *self,
 }
 
 static void
-wnck_tasklist_get_preferred_width (GtkWidget *widget,
-                                   int       *minimum_width,
-                                   int       *natural_width)
+wnck_tasklist_measure (GtkWidget      *widget,
+                       GtkOrientation  orientation,
+                       int             for_size,
+                       int            *minimum,
+                       int            *natural,
+                       int            *minimum_baseline,
+                       int            *natural_baseline)
 {
   get_preferred_size (WNCK_TASKLIST (widget),
-                      GTK_ORIENTATION_HORIZONTAL,
-                      -1,
-                      minimum_width,
-                      natural_width);
-}
-
-static void
-wnck_tasklist_get_preferred_width_for_height (GtkWidget *widget,
-                                              int        height,
-                                              int       *minimum_width,
-                                              int       *natural_width)
-{
-  get_preferred_size (WNCK_TASKLIST (widget),
-                      GTK_ORIENTATION_HORIZONTAL,
-                      height,
-                      minimum_width,
-                      natural_width);
-}
-
-static void
-wnck_tasklist_get_preferred_height (GtkWidget *widget,
-                                    int       *minimum_height,
-                                    int       *natural_height)
-{
-  get_preferred_size (WNCK_TASKLIST (widget),
-                      GTK_ORIENTATION_VERTICAL,
-                      -1,
-                      minimum_height,
-                      natural_height);
-}
-
-static void
-wnck_tasklist_get_preferred_height_for_width (GtkWidget *widget,
-                                              int        width,
-                                              int       *minimum_height,
-                                              int       *natural_height)
-{
-  get_preferred_size (WNCK_TASKLIST (widget),
-                      GTK_ORIENTATION_VERTICAL,
-                      width,
-                      minimum_height,
-                      natural_height);
+                      orientation,
+                      for_size,
+                      minimum,
+                      natural);
 }
 
 /**
