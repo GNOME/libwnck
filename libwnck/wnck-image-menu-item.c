@@ -36,6 +36,18 @@ struct _WnckImageMenuItem
 G_DEFINE_TYPE (WnckImageMenuItem, wnck_image_menu_item, GTK_TYPE_MENU_ITEM)
 
 static void
+wnck_image_menu_item_finalize (GObject *object)
+{
+  WnckImageMenuItem *item;
+
+  item = WNCK_IMAGE_MENU_ITEM (object);
+
+  g_clear_pointer (&item->label, g_free);
+
+  G_OBJECT_CLASS (wnck_image_menu_item_parent_class)->finalize (object);
+}
+
+static void
 wnck_image_menu_item_get_preferred_width (GtkWidget *widget,
                                           gint      *minimum,
                                           gint      *natural)
@@ -146,11 +158,15 @@ wnck_image_menu_item_set_label (GtkMenuItem *menu_item,
 static void
 wnck_image_menu_item_class_init (WnckImageMenuItemClass *item_class)
 {
+  GObjectClass *object_class;
   GtkWidgetClass *widget_class;
   GtkMenuItemClass *menu_item_class;
 
+  object_class = G_OBJECT_CLASS (item_class);
   widget_class = GTK_WIDGET_CLASS (item_class);
   menu_item_class = GTK_MENU_ITEM_CLASS (item_class);
+
+  object_class->finalize = wnck_image_menu_item_finalize;
 
   widget_class->get_preferred_width = wnck_image_menu_item_get_preferred_width;
   widget_class->size_allocate = wnck_image_menu_item_size_allocate;
