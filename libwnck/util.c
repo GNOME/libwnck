@@ -106,11 +106,7 @@ _wnck_print_resource_usage (WnckResourceUsage *usage)
 static WnckExtStatus
 wnck_init_resource_usage (GdkDisplay *gdisplay)
 {
-  int event, error;
-  Display *xdisplay;
   WnckExtStatus status;
-
-  xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
 
   status = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (gdisplay),
                                                "wnck-xres-status"));
@@ -118,6 +114,9 @@ wnck_init_resource_usage (GdkDisplay *gdisplay)
   if (status == WNCK_EXT_UNKNOWN)
     {
 #ifdef HAVE_XRES
+      Display *xdisplay = GDK_DISPLAY_XDISPLAY (gdisplay);
+      int event, error;
+
       if (!XResQueryExtension (xdisplay, &event, &error))
         status = WNCK_EXT_MISSING;
       else
