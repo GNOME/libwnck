@@ -1,4 +1,22 @@
 ==============
+Version 3.24.0
+==============
+
+  Fixes
+
+  * bump GTK+ required version to 3.22.0
+  * Various refactoring to remove deprecated code (Alberts Muktupāvel)
+  * Add an option to disable the tasklist scroll event (Moritz Bruder)
+  * Add wrap-on-scroll option for WnckPager widget (Moritz Bruder)
+  * wnck-image-menu-item: fix memory leak (Alberts Muktupāvel)
+
+  Translators
+
+  * Baurzhan Muftakhidinov (kk)
+  * Inaki Larranaga Murgoitio (eu)
+  * Piotr Drąg (pl)
+
+==============
 Version 3.20.1
 ==============
 
