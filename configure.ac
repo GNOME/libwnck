@@ -75,11 +75,6 @@ GETTEXT_PACKAGE=libwnck-3.0
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Package name])
 
-# AM_GLIB_GNU_GETTEXT above substs $DATADIRNAME
-# this is the directory where the *.{mo,gmo} files are installed
-wncklocaledir='${prefix}/${DATADIRNAME}/locale'
-AC_SUBST(wncklocaledir)
-
 AC_PATH_PROG([GLIB_COMPILE_RESOURCES], [glib-compile-resources])
 AC_PATH_PROG(PKG_CONFIG, pkg-config)
 

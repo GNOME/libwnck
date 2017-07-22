@@ -25,7 +25,7 @@ AM_CPPFLAGS =					\
 	-I$(top_srcdir)				\
 	-I$(top_builddir)			\
 	-DWNCK_I_KNOW_THIS_IS_UNSTABLE		\
-	-DWNCK_LOCALEDIR=\"$(wncklocaledir)\"	\
+	-DWNCK_LOCALEDIR=\"$(localedir)\"	\
 	$(DISABLE_DEPRECATED_CFLAGS)
 
 AM_CFLAGS = $(WARN_CFLAGS)
