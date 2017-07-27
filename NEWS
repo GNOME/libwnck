@@ -1,4 +1,13 @@
 ==============
+Version 3.24.1
+==============
+
+  Fixes
+
+  * Fixed regression causing not working pin window (Marco Trevisan)
+  * Fixed Localedir (Alberts Muktupāvel)
+
+==============
 Version 3.24.0
 ==============
 
