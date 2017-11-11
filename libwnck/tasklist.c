@@ -396,17 +396,18 @@ wnck_task_button_glow (WnckTask *task)
   if (task->button_glow == 0)
     {
       /* we're in "has stopped glowing" mode */
-      task->glow_factor = fade_opacity * 0.5;
+      task->glow_factor = (gdouble) fade_opacity * 0.5;
       stopped = TRUE;
     }
   else
     {
-      task->glow_factor = fade_opacity * (0.5 -
-                                          0.5 * cos ((now - task->glow_start_time) *
-                                                     M_PI * 2.0 / loop_time));
+      task->glow_factor =
+        (gdouble) fade_opacity * (0.5 -
+                                  0.5 * cos ((now - task->glow_start_time) *
+                                             M_PI * 2.0 / (gdouble) loop_time));
 
-      if (now - task->start_needs_attention > loop_time * 1.0 * fade_max_loops)
-        stopped = ABS (task->glow_factor - fade_opacity * 0.5) < 0.05;
+      if (now - task->start_needs_attention > (gdouble) loop_time * 1.0 * fade_max_loops)
+        stopped = ABS (task->glow_factor - (gdouble) fade_opacity * 0.5) < 0.05;
       else
         stopped = FALSE;
     }
