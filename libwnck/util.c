@@ -636,6 +636,11 @@ static WnckClientType client_type = 0;
  * tasklists, it is important to set the role to %WNCK_CLIENT_TYPE_PAGER for
  * libwnck to properly work.
  *
+ * This function should only be called once per program. Additional calls
+ * with the same client type will be silently ignored. An attempt to change
+ * the client type to a differnet value after it has already been set will
+ * be ignored and a critical warning will be logged.
+ *
  * Since: 2.14
  */
 void
@@ -644,8 +649,8 @@ wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
   /* Clients constantly switching types makes no sense; this should only be
    * set once.
    */
-  if (client_type != 0)
-    g_critical ("wnck_set_client_type got called multiple times.\n");
+  if (client_type != 0 && client_type != ewmh_sourceindication_client_type)
+    g_critical ("wnck_set_client_type: changing the client type is not supported.\n");
   else
     client_type = ewmh_sourceindication_client_type;
 }
