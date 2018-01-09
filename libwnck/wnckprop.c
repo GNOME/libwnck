@@ -1673,6 +1673,7 @@ static gboolean
 wm_state_set (Display *display,
               Window   window)
 {
+  GdkDisplay *gdk_display;
   Atom    wm_state;
   gulong  nitems;
   gulong  bytes_after;
@@ -1681,16 +1682,19 @@ wm_state_set (Display *display,
   int     ret_format;
   int     err, result;
 
+  gdk_display = gdk_x11_lookup_xdisplay (display);
+  g_assert (gdk_display != NULL);
+
   wm_state = gdk_x11_get_xatom_by_name ("WM_STATE");
 
-  gdk_error_trap_push ();
+  gdk_x11_display_error_trap_push (gdk_display);
   result = XGetWindowProperty (display,
                                window,
                                wm_state,
                                0, G_MAXLONG,
                                False, wm_state, &ret_type, &ret_format, &nitems,
                                &bytes_after, (gpointer) &prop);
-  err = gdk_error_trap_pop ();
+  err = gdk_x11_display_error_trap_pop (gdk_display);
   if (err != Success ||
       result != Success)
     return FALSE;
@@ -1707,6 +1711,7 @@ static WnckWindow *
 find_managed_window (Display *display,
                      Window   window)
 {
+  GdkDisplay *gdk_display;
   Window      root;
   Window      parent;
   Window     *kids = NULL;
@@ -1717,9 +1722,12 @@ find_managed_window (Display *display,
   if (wm_state_set (display, window))
     return wnck_window_get (window);
 
-  gdk_error_trap_push ();
+  gdk_display = gdk_x11_lookup_xdisplay (display);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_push (gdk_display);
   result = XQueryTree (display, window, &root, &parent, &kids, &nkids);
-  if (gdk_error_trap_pop () || !result)
+  if (gdk_x11_display_error_trap_pop (gdk_display) || !result)
     return NULL;
 
   retval = NULL;
@@ -1825,7 +1833,7 @@ get_target (gpointer data)
       return FALSE;
     }
 
-  gdk_flush ();
+  gdk_display_flush (display);
 
   return FALSE;
 }
