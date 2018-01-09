@@ -699,14 +699,24 @@ _wnck_set_utf8_list (Screen  *screen,
 void
 _wnck_error_trap_push (Display *display)
 {
-  gdk_error_trap_push ();
+  GdkDisplay *gdk_display;
+
+  gdk_display = gdk_x11_lookup_xdisplay (display);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_push (gdk_display);
 }
 
 int
 _wnck_error_trap_pop (Display *display)
 {
-  gdk_flush ();
-  return gdk_error_trap_pop ();
+  GdkDisplay *gdk_display;
+
+  gdk_display = gdk_x11_lookup_xdisplay (display);
+  g_assert (gdk_display != NULL);
+
+  gdk_display_flush (gdk_display);
+  return gdk_x11_display_error_trap_pop (gdk_display);
 }
 
 static GdkFilterReturn
@@ -1781,6 +1791,7 @@ try_pixmap_and_mask (Screen     *screen,
                      int         ideal_mini_height)
 {
   cairo_surface_t *surface, *mask_surface, *image;
+  GdkDisplay *gdk_display;
   GdkPixbuf *unscaled;
   int width, height;
   cairo_t *cr;
@@ -1798,7 +1809,10 @@ try_pixmap_and_mask (Screen     *screen,
   if (surface == NULL)
     return FALSE;
 
-  gdk_error_trap_push ();
+  gdk_display = gdk_x11_lookup_xdisplay (XDisplayOfScreen (screen));
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_push (gdk_display);
 
   width = cairo_xlib_surface_get_width (surface);
   height = cairo_xlib_surface_get_height (surface);
@@ -1838,7 +1852,7 @@ try_pixmap_and_mask (Screen     *screen,
   cairo_surface_destroy (surface);
   cairo_destroy (cr);
 
-  if (gdk_error_trap_pop () != Success)
+  if (gdk_x11_display_error_trap_pop (gdk_display) != Success)
     {
       cairo_surface_destroy (image);
       return FALSE;
