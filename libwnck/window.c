@@ -166,8 +166,7 @@ struct _WnckWindowPrivate
   guint need_emit_type_changed : 1;
 };
 
-G_DEFINE_TYPE (WnckWindow, wnck_window, G_TYPE_OBJECT);
-#define WNCK_WINDOW_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_WINDOW, WnckWindowPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckWindow, wnck_window, G_TYPE_OBJECT);
 
 enum {
   NAME_CHANGED,
@@ -232,7 +231,7 @@ _wnck_window_shutdown_all (void)
 static void
 wnck_window_init (WnckWindow *window)
 {
-  window->priv = WNCK_WINDOW_GET_PRIVATE (window);
+  window->priv = wnck_window_get_instance_private (window);
 
   window->priv->icon_cache = _wnck_icon_cache_new ();
   window->priv->icon_geometry.width = -1; /* invalid cached value */
@@ -247,8 +246,6 @@ static void
 wnck_window_class_init (WnckWindowClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckWindowPrivate));
 
   object_class->finalize = wnck_window_finalize;
 

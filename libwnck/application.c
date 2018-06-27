@@ -77,8 +77,7 @@ struct _WnckApplicationPrivate
   guint need_emit_icon_changed : 1;
 };
 
-G_DEFINE_TYPE (WnckApplication, wnck_application, G_TYPE_OBJECT);
-#define WNCK_APPLICATION_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_APPLICATION, WnckApplicationPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckApplication, wnck_application, G_TYPE_OBJECT);
 
 enum {
   NAME_CHANGED,
@@ -109,7 +108,7 @@ _wnck_application_shutdown_all (void)
 static void
 wnck_application_init (WnckApplication *application)
 {
-  application->priv = WNCK_APPLICATION_GET_PRIVATE (application);
+  application->priv = wnck_application_get_instance_private (application);
 
   application->priv->icon_cache = _wnck_icon_cache_new ();
   _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
@@ -119,8 +118,6 @@ static void
 wnck_application_class_init (WnckApplicationClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckApplicationPrivate));
 
   object_class->finalize = wnck_application_finalize;
 

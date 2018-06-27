@@ -129,8 +129,7 @@ struct _WnckScreenPrivate
   guint need_update_wm : 1;
 };
 
-G_DEFINE_TYPE (WnckScreen, wnck_screen, G_TYPE_OBJECT);
-#define WNCK_SCREEN_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SCREEN, WnckScreenPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckScreen, wnck_screen, G_TYPE_OBJECT);
 
 enum {
   ACTIVE_WINDOW_CHANGED,
@@ -196,7 +195,7 @@ static guint signals[LAST_SIGNAL] = { 0 };
 static void
 wnck_screen_init (WnckScreen *screen)
 {
-  screen->priv = WNCK_SCREEN_GET_PRIVATE (screen);
+  screen->priv = wnck_screen_get_instance_private (screen);
 
   screen->priv->number = -1;
   screen->priv->starting_corner = WNCK_LAYOUT_CORNER_TOPLEFT;
@@ -210,8 +209,6 @@ wnck_screen_class_init (WnckScreenClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   _wnck_init ();
-
-  g_type_class_add_private (klass, sizeof (WnckScreenPrivate));
 
   object_class->finalize = wnck_screen_finalize;
 

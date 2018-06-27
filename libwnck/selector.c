@@ -61,8 +61,7 @@ struct _WnckSelectorPrivate {
   GHashTable *window_hash;
 };
 
-G_DEFINE_TYPE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
-#define WNCK_SELECTOR_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_SELECTOR, WnckSelectorPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
 
 static GObject *wnck_selector_constructor (GType                  type,
                                            guint                  n_construct_properties,
@@ -1148,7 +1147,7 @@ wnck_selector_init (WnckSelector *selector)
   atk_object_set_name (atk_obj, _("Window Selector"));
   atk_object_set_description (atk_obj, _("Tool to switch between windows"));
 
-  selector->priv = WNCK_SELECTOR_GET_PRIVATE (selector);
+  selector->priv = wnck_selector_get_instance_private (selector);
 
   gtk_widget_add_events (GTK_WIDGET (selector), GDK_SCROLL_MASK);
 }
@@ -1158,8 +1157,6 @@ wnck_selector_class_init (WnckSelectorClass *klass)
 {
   GObjectClass   *object_class     = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class     = GTK_WIDGET_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckSelectorPrivate));
 
   object_class->constructor = wnck_selector_constructor;
   object_class->dispose = wnck_selector_dispose;

@@ -58,8 +58,7 @@ struct _WnckClassGroupPrivate {
   GdkPixbuf *mini_icon;
 };
 
-G_DEFINE_TYPE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
-#define WNCK_CLASS_GROUP_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_CLASS_GROUP, WnckClassGroupPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
 
 /* Hash table that maps res_class strings -> WnckClassGroup instances */
 static GHashTable *class_group_hash = NULL;
@@ -88,8 +87,6 @@ static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-
-  g_type_class_add_private (class, sizeof (WnckClassGroupPrivate));
 
   gobject_class->finalize = wnck_class_group_finalize;
 
@@ -124,7 +121,7 @@ wnck_class_group_class_init (WnckClassGroupClass *class)
 static void
 wnck_class_group_init (WnckClassGroup *class_group)
 {
-  class_group->priv = WNCK_CLASS_GROUP_GET_PRIVATE (class_group);
+  class_group->priv = wnck_class_group_get_instance_private (class_group);
 }
 
 static void

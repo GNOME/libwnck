@@ -97,8 +97,7 @@ enum {
 	PROP_WINDOW
 };
 
-G_DEFINE_TYPE (WnckActionMenu, wnck_action_menu, GTK_TYPE_MENU);
-#define WNCK_ACTION_MENU_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_ACTION_MENU, WnckActionMenuPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckActionMenu, wnck_action_menu, GTK_TYPE_MENU);
 
 static void wnck_action_menu_dispose (GObject *object);
 
@@ -925,7 +924,7 @@ wnck_action_menu_set_property (GObject      *object,
 static void
 wnck_action_menu_init (WnckActionMenu *menu)
 {
-  menu->priv = WNCK_ACTION_MENU_GET_PRIVATE (menu);
+  menu->priv = wnck_action_menu_get_instance_private (menu);
 
   menu->priv->window = NULL;
   menu->priv->minimize_item = NULL;
@@ -1108,8 +1107,6 @@ static void
 wnck_action_menu_class_init (WnckActionMenuClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckActionMenuPrivate));
 
   object_class->constructor = wnck_action_menu_constructor;
   object_class->get_property = wnck_action_menu_get_property;
