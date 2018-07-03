@@ -88,8 +88,7 @@ struct _WnckPagerPrivate
   guint dnd_time; /* time of last event during dnd (for delayed workspace activation) */
 };
 
-G_DEFINE_TYPE (WnckPager, wnck_pager, GTK_TYPE_WIDGET);
-#define WNCK_PAGER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_PAGER, WnckPagerPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckPager, wnck_pager, GTK_TYPE_WIDGET);
 
 enum
 {
@@ -209,7 +208,7 @@ wnck_pager_init (WnckPager *pager)
     { (gchar *) "application/x-wnck-window-id", 0, 0}
   };
 
-  pager->priv = WNCK_PAGER_GET_PRIVATE (pager);
+  pager->priv = wnck_pager_get_instance_private (pager);
 
   pager->priv->n_rows = 1;
   pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
@@ -238,8 +237,6 @@ wnck_pager_class_init (WnckPagerClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckPagerPrivate));
 
   object_class->finalize = wnck_pager_finalize;
 

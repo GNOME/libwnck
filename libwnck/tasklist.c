@@ -238,8 +238,7 @@ struct _WnckTasklistPrivate
 static GType wnck_task_get_type (void);
 
 G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
-G_DEFINE_TYPE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
-#define WNCK_TASKLIST_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), WNCK_TYPE_TASKLIST, WnckTasklistPrivate))
+G_DEFINE_TYPE_WITH_PRIVATE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 
 static void wnck_task_finalize    (GObject       *object);
 
@@ -580,7 +579,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 
   gtk_widget_set_has_window (widget, FALSE);
 
-  tasklist->priv = WNCK_TASKLIST_GET_PRIVATE (tasklist);
+  tasklist->priv = wnck_tasklist_get_instance_private (tasklist);
 
   tasklist->priv->class_group_hash = g_hash_table_new (NULL, NULL);
   tasklist->priv->win_hash = g_hash_table_new (NULL, NULL);
@@ -611,8 +610,6 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
   GtkWidgetClass *widget_class = GTK_WIDGET_CLASS (klass);
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (WnckTasklistPrivate));
 
   object_class->finalize = wnck_tasklist_finalize;
 
