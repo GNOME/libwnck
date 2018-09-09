@@ -1690,6 +1690,13 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
 }
 
 static void
+foreach_tasklist (WnckTasklist *tasklist,
+                  gpointer      user_data)
+{
+  wnck_tasklist_update_lists (tasklist);
+}
+
+static void
 wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
@@ -1713,9 +1720,7 @@ wnck_tasklist_realize (GtkWidget *widget)
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->realize) (widget);
 
   tasklist_instances = g_slist_append (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
+  g_slist_foreach (tasklist_instances, (GFunc) foreach_tasklist, NULL);
 
   wnck_tasklist_update_lists (tasklist);
 
@@ -1740,9 +1745,7 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->unrealize) (widget);
 
   tasklist_instances = g_slist_remove (tasklist_instances, tasklist);
-  g_slist_foreach (tasklist_instances,
-		   (GFunc) wnck_tasklist_update_lists,
-		   NULL);
+  g_slist_foreach (tasklist_instances, (GFunc) foreach_tasklist, NULL);
 }
 
 static void
