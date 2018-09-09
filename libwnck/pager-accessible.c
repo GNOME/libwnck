@@ -28,13 +28,12 @@
 #include "workspace-accessible.h"
 #include "private.h"
 
-typedef struct _WnckPagerAccessiblePriv WnckPagerAccessiblePriv;
-struct _WnckPagerAccessiblePriv
+typedef struct _WnckPagerAccessiblePrivate WnckPagerAccessiblePrivate;
+struct _WnckPagerAccessiblePrivate
 {
   GSList *children;
 };
 
-static void        wnck_pager_accessible_class_init       (WnckPagerAccessibleClass *klass);
 static const char* wnck_pager_accessible_get_name         (AtkObject                *obj);
 static const char* wnck_pager_accessible_get_description  (AtkObject                *obj);
 static int         wnck_pager_accessible_get_n_children   (AtkObject                *obj);
@@ -53,65 +52,12 @@ static void        wnck_pager_accessible_update_workspace (AtkObject            
                                                            int                       i);
 static void        wnck_pager_accessible_finalize         (GObject                  *gobject);
 
-static WnckPagerAccessiblePriv* get_private_data          (GObject                  *gobject);
-
-static void* parent_class;
-static GQuark quark_private_data = 0;
-
-GType
-wnck_pager_accessible_get_type (void)
-{
-  static GType type = 0;
-
-  if (!type)
-    {
-      GTypeInfo tinfo =
-        {
-          sizeof (WnckPagerAccessibleClass),
-          (GBaseInitFunc) NULL, /* base init */
-          (GBaseFinalizeFunc) NULL, /* base finalize */
-          (GClassInitFunc) wnck_pager_accessible_class_init, /* class init */
-          (GClassFinalizeFunc) NULL, /* class finalize */
-          NULL, /* class data */
-          sizeof (WnckPagerAccessible), /* instance size */
-          0, /* nb preallocs */
-          NULL, /* instance init */
-          NULL /* value table */
-        };
-
-      const GInterfaceInfo atk_selection_info =
-        {
-          (GInterfaceInitFunc) atk_selection_interface_init,
-          (GInterfaceFinalizeFunc) NULL,
-          NULL
-        };
-
-      /*
-       * Figure out the size of the class and instance
-       * we are deriving from
-       */
-      AtkObjectFactory *factory;
-      GType derived_type;
-      GTypeQuery query;
-      GType derived_atk_type;
-
-      derived_type = g_type_parent (WNCK_TYPE_PAGER);
-
-      factory = atk_registry_get_factory (atk_get_default_registry (),
-                                          derived_type);
-      derived_atk_type = atk_object_factory_get_accessible_type (factory);
-      g_type_query (derived_atk_type, &query);
-      tinfo.class_size = query.class_size;
-      tinfo.instance_size = query.instance_size;
-
-      type = g_type_register_static (derived_atk_type,
-                                     "WnckPagerAccessible", &tinfo, 0);
-
-      g_type_add_interface_static (type, ATK_TYPE_SELECTION, &atk_selection_info);
-    }
-
-  return type;
-}
+G_DEFINE_TYPE_WITH_CODE (WnckPagerAccessible,
+                         wnck_pager_accessible,
+                         GTK_TYPE_ACCESSIBLE,
+                         G_IMPLEMENT_INTERFACE (ATK_TYPE_SELECTION,
+                                                atk_selection_interface_init)
+                         G_ADD_PRIVATE (WnckPagerAccessible))
 
 static void
 atk_selection_interface_init (AtkSelectionIface *iface)
@@ -130,17 +76,18 @@ wnck_pager_accessible_class_init (WnckPagerAccessibleClass *klass)
   AtkObjectClass *class = ATK_OBJECT_CLASS (klass);
   GObjectClass *obj_class = G_OBJECT_CLASS (klass);
 
-  parent_class = g_type_class_peek_parent (klass);
-
   class->get_name = wnck_pager_accessible_get_name;
   class->get_description = wnck_pager_accessible_get_description;
   class->get_n_children = wnck_pager_accessible_get_n_children;
   class->ref_child = wnck_pager_accessible_ref_child;
 
   obj_class->finalize = wnck_pager_accessible_finalize;
-  quark_private_data = g_quark_from_static_string ("wnck-pager-accessible-private-data");
 }
 
+static void
+wnck_pager_accessible_init (WnckPagerAccessible *accessible)
+{
+}
 
 static gboolean
 wnck_pager_add_selection (AtkSelection *selection,
@@ -151,11 +98,7 @@ wnck_pager_add_selection (AtkSelection *selection,
   GtkWidget *widget;
   int n_spaces;
 
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
-#else
-  widget = GTK_ACCESSIBLE (selection)->widget;
-#endif
 
   if (widget == NULL)
     {
@@ -196,11 +139,8 @@ wnck_pager_ref_selection (AtkSelection *selection,
 
   g_return_val_if_fail (i == 0, NULL);
 
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
-#else
-  widget = GTK_ACCESSIBLE (selection)->widget;
-#endif
+
   if (widget == NULL)
     {
       /*
@@ -227,11 +167,8 @@ wnck_pager_selection_count (AtkSelection *selection)
 {
   GtkWidget *widget;
 
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
-#else
-  widget = GTK_ACCESSIBLE (selection)->widget;
-#endif
+
   if (widget == NULL)
     {
       /*
@@ -258,11 +195,8 @@ wnck_pager_is_child_selected (AtkSelection *selection,
   WnckWorkspace *active_wspace;
   int wsno;
 
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (GTK_ACCESSIBLE (selection));
-#else
-  widget = GTK_ACCESSIBLE (selection)->widget;
-#endif
+
   if (widget == NULL)
     {
       /*
@@ -291,11 +225,7 @@ wnck_pager_accessible_new (GtkWidget *widget)
   aobj_pager = ATK_OBJECT (object);
 
   gtk_accessible = GTK_ACCESSIBLE (aobj_pager);
-#if GTK_CHECK_VERSION(2,21,3)
   gtk_accessible_set_widget (gtk_accessible, widget);
-#else
-  gtk_accessible->widget = widget;
-#endif
 
   atk_object_initialize (aobj_pager, widget);
   aobj_pager->role = ATK_ROLE_PANEL;
@@ -306,29 +236,22 @@ wnck_pager_accessible_new (GtkWidget *widget)
 static void
 wnck_pager_accessible_finalize (GObject *gobject)
 {
-  WnckPagerAccessiblePriv *pager_accessible_priv;
-  GSList *children;
+  WnckPagerAccessible *accessible;
+  WnckPagerAccessiblePrivate *priv;
 
-  pager_accessible_priv = get_private_data (gobject);
+  accessible = WNCK_PAGER_ACCESSIBLE (gobject);
+  priv = wnck_pager_accessible_get_instance_private (accessible);
 
-  if (pager_accessible_priv)
+  if (priv)
     {
-      if (pager_accessible_priv->children)
+      if (priv->children)
         {
-          children = pager_accessible_priv->children;
-          g_slist_foreach (children,
-                           (GFunc) g_object_unref, NULL);
-
-          g_slist_free (children);
+          g_slist_free_full (priv->children, g_object_unref);
+          priv->children = NULL;
         }
-
-      g_free (pager_accessible_priv);
-      g_object_set_qdata (gobject,
-                          quark_private_data,
-                          NULL);
     }
 
-  G_OBJECT_CLASS (parent_class)->finalize (gobject);
+  G_OBJECT_CLASS (wnck_pager_accessible_parent_class)->finalize (gobject);
 }
 
 static const char*
@@ -366,11 +289,7 @@ wnck_pager_accessible_get_n_children (AtkObject* obj)
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), 0);
 
   accessible = GTK_ACCESSIBLE (obj);
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (accessible);
-#else
-  widget = accessible->widget;
-#endif
 
   if (widget == NULL)
     /* State is defunct */
@@ -393,27 +312,25 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
   WnckPager *pager;
   int n_spaces = 0;
   int len;
-  WnckPagerAccessiblePriv *pager_accessible_priv;
+  WnckPagerAccessible *pager_accessible;
+  WnckPagerAccessiblePrivate *priv;
   AtkObject *ret;
 
   g_return_val_if_fail (WNCK_PAGER_IS_ACCESSIBLE (obj), NULL);
   g_return_val_if_fail (ATK_IS_OBJECT (obj), NULL);
 
   accessible = GTK_ACCESSIBLE (obj);
-#if GTK_CHECK_VERSION(2,21,0)
   widget = gtk_accessible_get_widget (accessible);
-#else
-  widget = accessible->widget;
-#endif
 
   if (widget == NULL)
     /* State is defunct */
     return NULL;
 
   pager = WNCK_PAGER (widget);
-  pager_accessible_priv = get_private_data (G_OBJECT (obj));
+  pager_accessible = WNCK_PAGER_ACCESSIBLE (obj);
+  priv = wnck_pager_accessible_get_instance_private (pager_accessible);
 
-  len = g_slist_length (pager_accessible_priv->children);
+  len = g_slist_length (priv->children);
   n_spaces = _wnck_pager_get_n_workspaces (pager);
 
   if (i < 0 || i >= n_spaces)
@@ -438,13 +355,12 @@ wnck_pager_accessible_ref_child (AtkObject *obj,
                                                                                           G_OBJECT (wspace)));
       atk_object_set_parent (ATK_OBJECT (space_accessible), obj);
 
-      pager_accessible_priv->children = g_slist_append (pager_accessible_priv->children,
-                                                   space_accessible);
+      priv->children = g_slist_append (priv->children, space_accessible);
 
       ++len;
     }
 
-  ret = g_slist_nth_data (pager_accessible_priv->children, i);
+  ret = g_slist_nth_data (priv->children, i);
   g_object_ref (G_OBJECT (ret));
   wnck_pager_accessible_update_workspace (ret, pager, i);
 
@@ -464,22 +380,3 @@ wnck_pager_accessible_update_workspace (AtkObject *aobj_ws,
                                           aobj_ws->name);
   aobj_ws->role = ATK_ROLE_UNKNOWN;
 }
-
-static WnckPagerAccessiblePriv*
-get_private_data (GObject *gobject)
-{
-  WnckPagerAccessiblePriv *private_data;
-
-  private_data = g_object_get_qdata (gobject,
-                                     quark_private_data);
-  if (!private_data)
-    {
-      private_data = g_new0 (WnckPagerAccessiblePriv, 1);
-      g_object_set_qdata (gobject,
-                          quark_private_data,
-                          private_data);
-    }
-  return private_data;
-}
-
-
