@@ -22,7 +22,7 @@
 #include <unistd.h>
 #include "workspace-accessible.h"
 #include "private.h"
-static void        wnck_workspace_accessible_class_init          (WnckWorkspaceAccessibleClass *klass);
+
 static const char* wnck_workspace_accessible_get_name            (AtkObject                    *obj);
 static const char* wnck_workspace_accessible_get_description     (AtkObject                    *obj);
 static int         wnck_workspace_accessible_get_index_in_parent (AtkObject                    *obj);
@@ -45,39 +45,11 @@ static void        wnck_workspace_accessible_get_size            (AtkComponent  
                                                                   int                          *width,
                                                                   int                          *height);
 
-GType
-wnck_workspace_accessible_get_type (void)
-{
-  static GType type = 0;
-
-  if (!type)
-    {
-      const GTypeInfo tinfo =
-      {
-        sizeof (WnckWorkspaceAccessibleClass),
-        (GBaseInitFunc) NULL, /* base init */
-        (GBaseFinalizeFunc) NULL, /* base finalize */
-        (GClassInitFunc) wnck_workspace_accessible_class_init,
-        (GClassFinalizeFunc) NULL, /* class finalize */
-        NULL, /* class data */
-        sizeof (WnckWorkspaceAccessible), /* instance size*/
-        0, /* nb preallocs */
-        (GInstanceInitFunc) NULL, /* instance init */
-        NULL /* value table */
-      };
-
-      const GInterfaceInfo atk_component_info =
-      {
-        (GInterfaceInitFunc) atk_component_interface_init,
-        (GInterfaceFinalizeFunc) NULL,
-        NULL
-      };
-
-      type = g_type_register_static (ATK_TYPE_GOBJECT_ACCESSIBLE, "WnckWorkspaceAccessible", &tinfo, 0);
-      g_type_add_interface_static (type, ATK_TYPE_COMPONENT, &atk_component_info);
-  }
-  return type;
-}
+G_DEFINE_TYPE_WITH_CODE (WnckWorkspaceAccessible,
+                         wnck_workspace_accessible,
+                         ATK_TYPE_GOBJECT_ACCESSIBLE,
+                         G_IMPLEMENT_INTERFACE (ATK_TYPE_COMPONENT,
+                                                atk_component_interface_init))
 
 static void
 atk_component_interface_init (AtkComponentIface *iface)
@@ -191,6 +163,11 @@ wnck_workspace_accessible_class_init (WnckWorkspaceAccessibleClass *klass)
   class->get_name = wnck_workspace_accessible_get_name;
   class->get_description = wnck_workspace_accessible_get_description;
   class->get_index_in_parent = wnck_workspace_accessible_get_index_in_parent;
+}
+
+static void
+wnck_workspace_accessible_init (WnckWorkspaceAccessible *accessible)
+{
 }
 
 AtkObject*
