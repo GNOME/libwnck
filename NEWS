@@ -1,4 +1,21 @@
 ==============
+Version 3.30.0
+==============
+
+  Fixes
+  * Use single precision floats to double (Emmanuele Bassi)
+  * Allow setting the same client type (Sebastian Geiger) [#792304]
+  * Remove usage of various deprecated functions and modernize code (Alberts Muktupāvels)
+  * Add gitlab-ci pipeline [GNOME/libwnck!3]
+
+  Translators
+
+  * Andre Klapper (as) (bn) (bn_IN) (bs) (ca) (ca@valencia) (eu) (kn) (mk) (ne) (or) (ta)
+  * Ask Hjorth Larsen (da)
+  * GNOME Translation Robot (gd)
+  * Kristjan SCHMIDT (eo)
+
+==============
 Version 3.24.1
 ==============
 
