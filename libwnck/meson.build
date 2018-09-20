@@ -94,10 +94,10 @@ GType
 )
 
 resources = gnome.compile_resources(
-    '@0@-resources'.format(meson.project_name()),
-    'wnck.gresource.xml',
-    source_dir: '.',
-    c_name: meson.project_name()
+  '@0@-resources'.format(meson.project_name()),
+  'wnck.gresource.xml',
+  source_dir: '.',
+  c_name: meson.project_name()
 )
 
 libwnck_cflags = [
