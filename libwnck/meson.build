@@ -55,42 +55,10 @@ a11y_sources = [
   'workspace-accessible-factory.h',
 ]
 
-enum_types = []
-enum_types += gnome.mkenums(
-  'wnck-enum-types.h',
-  sources: headers,
-  fhead: '''#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
-#error "Only <libwnck/libwnck.h> can be included directly."
-#endif
-#ifndef __WNCK_ENUM_TYPES_H__
-#define __WNCK_ENUM_TYPES_H__
-G_BEGIN_DECLS''',
-  ftail: '''G_END_DECLS
-#endif /* __WNCK_ENUM_TYPES_H__ */''',
-  eprod: '''#define WNCK_TYPE_@ENUMSHORT@ @enum_name@_get_type()
-GType @enum_name@_get_type (void);''',
+enum_types = gnome.mkenums_simple('wnck-enum-types',
+  sources : headers,
   install_header: true,
   install_dir: libwnck_includedir
-)
-
-enum_types += gnome.mkenums(
-  'wnck-enum-types.c',
-  sources: headers,
-  fhead: '#include <libwnck/libwnck.h>',
-  fprod: '/* enumerations from "@filename@" */',
-  vhead: 'static const G@Type@Value _@enum_name@_values[] = {',
-  vprod: '{ @VALUENAME@, "@VALUENAME@", "@valuenick@" },',
-  vtail: '''{ 0, NULL, NULL }
-};
-
-GType
-@enum_name@_get_type (void)
-{
-      static GType type = 0;
-      if (!type)
-        type = g_@type@_register_static ("@EnumName@", _@enum_name@_values);
-      return type;
-}'''
 )
 
 resources = gnome.compile_resources(
