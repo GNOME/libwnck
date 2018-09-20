@@ -119,29 +119,32 @@ if get_option('enable-deprecation-flags')
   endforeach
 endif
 
-libwnck_lib = shared_library(LIBNAME,
+libwnck_dep = declare_dependency(
   include_directories: default_includes,
-  sources: sources + a11y_sources + enum_types + resources,
   dependencies: LIBWNCK_DEPS,
+  compile_args: libwnck_cflags,
+  link_args: libwnck_ldflags,
+)
+
+libwnck_lib = shared_library(LIBNAME,
+  dependencies: libwnck_dep,
+  sources: sources + a11y_sources + enum_types + resources,
   version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
   soversion: LIBWNCK_SOVERSION,
   install: true,
-  c_args: libwnck_cflags,
-  link_args: libwnck_ldflags,
 )
 
 introspection = get_option('introspection')
 if not introspection.disabled()
   find_program('g-ir-scanner', required: introspection.enabled())
   gnome.generate_gir(libwnck_lib,
-    sources : headers + sources + enum_types,
-    namespace : 'Wnck',
-    nsversion : MODULE_VERSION,
-    export_packages : PACKAGE_NAME,
-    includes : ['GObject-2.0', 'GdkPixbuf-2.0', 'Gtk-3.0'],
-    extra_args:  ['--c-include=@0@/@0@.h'.format(meson.project_name()),
-                  '--cflags-begin'] + libwnck_cflags + ['--cflags-end'],
-    install : true
+    sources: headers + sources + enum_types,
+    namespace: 'Wnck',
+    nsversion: MODULE_VERSION,
+    export_packages: PACKAGE_NAME,
+    includes: ['GObject-2.0', 'GdkPixbuf-2.0', 'Gtk-3.0'],
+    extra_args: '--c-include=@0@/@0@.h'.format(meson.project_name()),
+    install: true
   )
 endif
 
