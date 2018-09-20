@@ -4,9 +4,7 @@ gnome.gtkdoc(meson.project_name(),
   main_sgml: meson.project_name() + '-docs.sgml',
   src_dir: join_paths(meson.source_root(), meson.project_name()),
   dependencies: declare_dependency(
-    include_directories: default_includes,
-    dependencies: LIBWNCK_DEPS,
-    compile_args: libwnck_cflags,
+    dependencies: libwnck_dep,
     link_with: libwnck_lib
   ),
   gobject_typesfile: meson.project_name() + '.types',
