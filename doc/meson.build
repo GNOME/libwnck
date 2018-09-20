@@ -1,5 +1,6 @@
 gnome.gtkdoc(meson.project_name(),
   namespace: PACKAGE_NAME,
+  mode: 'sgml',
   main_sgml: meson.project_name() + '-docs.sgml',
   src_dir: join_paths(meson.source_root(), meson.project_name()),
   dependencies: declare_dependency(
@@ -13,9 +14,6 @@ gnome.gtkdoc(meson.project_name(),
     '--rebuild-types',
     '--ignore-headers=' + ' '.join(['wnck-enum-types.h', 'version.h']),
     '--deprecated-guards="WNCK_DISABLE_DEPRECATED"'
-  ],
-  mkdb_args: [
-    '--sgml-mode', '--output-format=xml'
   ],
   install: true,
   module_version: MODULE_VERSION,
