@@ -1,9 +1,8 @@
 stages:
   - build
 
-build-ubuntu:
+.before_script_template: &ubuntu_before_script
   image: ubuntu:devel
-  stage: build
   before_script:
     - apt-get update
     - apt-get install -q -y --no-install-recommends
@@ -25,8 +24,19 @@ build-ubuntu:
                       gtk-doc-tools
                       libglib2.0-doc
                       libgtk-3-doc
+                      meson
+
+build-ubuntu:
+  stage: build
+  <<: *ubuntu_before_script
   script:
-    - ./autogen.sh
+    - ./autogen.sh --enable-gtk-doc=yes
     - make
     - make distcheck
 
+build-ubuntu-meson:
+  stage: build
+  <<: *ubuntu_before_script
+  script:
+    - meson _build -Denable-gtk-doc=true
+    - ninja -C _build
