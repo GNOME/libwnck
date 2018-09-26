@@ -29,91 +29,9 @@ libdir = join_paths(prefix, get_option('libdir'))
 includedir = join_paths(prefix, get_option('includedir'))
 localedir = join_paths(prefix, get_option('localedir'))
 
-cc = meson.get_compiler('c')
 default_includes = include_directories('.')
-
-#####
-# CFLAGS
-# The same as the AX_COMPILER_FLAGS Autotools macro.
-
-warning_cflags = [
-  '-fno-strict-aliasing',
-  '-Wall',
-  '-Wextra',
-  '-Wundef',
-  '-Wnested-externs',
-  '-Wwrite-strings',
-  '-Wpointer-arith',
-  '-Wmissing-declarations',
-  '-Wmissing-prototypes',
-  '-Wstrict-prototypes',
-  '-Wredundant-decls',
-  '-Wno-unused-parameter',
-  '-Wno-missing-field-initializers',
-  '-Wdeclaration-after-statement',
-  '-Wformat=2',
-  '-Wold-style-definition',
-  '-Wcast-align',
-  '-Wformat-nonliteral',
-  '-Wformat-security',
-  '-Wsign-compare',
-  '-Wstrict-aliasing',
-  '-Wshadow',
-  '-Winline',
-  '-Wpacked',
-  '-Wmissing-format-attribute',
-  '-Wmissing-noreturn',
-  '-Winit-self',
-  '-Wredundant-decls',
-  '-Wmissing-include-dirs',
-  '-Wunused-but-set-variable',
-  '-Warray-bounds',
-  '-Wimplicit-function-declaration',
-  '-Wreturn-type',
-  '-Wswitch-enum',
-  '-Wswitch-default',
-  '-Wduplicated-cond',
-  '-Wduplicated-branches',
-  '-Wlogical-op',
-  '-Wrestrict',
-  '-Wnull-dereference',
-  '-Wjump-misses-init',
-  '-Wdouble-promotion'
-]
-
-supported_warning_cflags = cc.get_supported_arguments(warning_cflags)
-add_global_arguments(supported_warning_cflags, language : 'c')
-##### end CFLAGS
-
 conf = configuration_data()
-check_headers = [
-  ['HAVE_DLFCN_H', 'dlfcn.h'],
-  ['HAVE_INTTYPES_H', 'inttypes.h'],
-  ['HAVE_MEMORY_H', 'memory.h'],
-  ['HAVE_STDINT_H', 'stdint.h'],
-  ['HAVE_STDLIB_H', 'stdlib.h'],
-  ['HAVE_STRINGS_H', 'strings.h'],
-  ['HAVE_STRING_H', 'string.h'],
-  ['HAVE_SYS_STAT_H', 'sys/stat.h'],
-  ['HAVE_SYS_TYPES_H', 'sys/types.h'],
-  ['HAVE_UNISTD_H', 'unistd.h'],
-]
-
-foreach h: check_headers
-  if cc.has_header(h.get(1))
-    conf.set(h.get(0), 1)
-  endif
-endforeach
-
-check_functions = [
-  ['HAVE_DCGETTEXT', 'dcgettext', '#include<libintl.h>'],
-]
-
-foreach f: check_functions
-  if cc.has_function(f.get(1), prefix : f.get(2))
-    conf.set(f.get(0), 1)
-  endif
-endforeach
+cc = meson.get_compiler('c')
 
 LIBWNCK_DEPS = [cc.find_library('m', required: true)]
 STARTUP_NOTIFICATION_PACKAGE = 'libstartup-notification-1.0'
@@ -143,9 +61,9 @@ endforeach
 
 conf.set_quoted('PACKAGE_NAME', meson.project_name())
 conf.set_quoted('PACKAGE_STRING', meson.project_name() + ' ' + meson.project_version())
-conf.set_quoted('VERSION', meson.project_version())
 conf.set_quoted('PACKAGE_VERSION', meson.project_version())
 conf.set_quoted('GETTEXT_PACKAGE', PACKAGE_NAME)
+conf.set_quoted('VERSION', meson.project_version())
 
 configure_file(input: 'config.h.meson',
   output : 'config.h',
