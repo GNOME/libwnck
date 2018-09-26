@@ -39,19 +39,19 @@ X11_PACKAGE = 'x11'
 XRES_PACKAGE = 'xres'
 
 pkg_deps = [
-  ['cairo-xlib-xrender', [], false],
-  ['glib-2.0', '>= 2.32', true],
-  ['gobject-2.0', '>= 2.13.0', true],
-  ['gtk+-3.0', '>= 3.22.0', true],
-  [STARTUP_NOTIFICATION_PACKAGE, '>= 0.4', get_option('startup-notification').enabled()],
-  [X11_PACKAGE, [], true],
-  [XRES_PACKAGE, [], false],
+  {'name': 'cairo-xlib-xrender', 'required': false},
+  {'name': 'glib-2.0', 'version': '>= 2.32' },
+  {'name': 'gobject-2.0', 'version': '>= 2.13.0' },
+  {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
+  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup-notification').enabled() },
+  {'name': X11_PACKAGE },
+  {'name': XRES_PACKAGE, 'required': false},
 ]
 
 foreach p: pkg_deps
-  pkg = p.get(0)
-  required = p.get(2)
-  dep = dependency(pkg, version: p.get(1), required: required)
+  pkg = p.get('name')
+  required = p.get('required', true)
+  dep = dependency(pkg, version: p.get('version', []), required: required)
   LIBWNCK_DEPS += dep
 
   if not required and dep.found()
