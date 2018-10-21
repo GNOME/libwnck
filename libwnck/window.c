@@ -3383,6 +3383,8 @@ emit_icon_changed (WnckWindow *window)
   g_signal_emit (G_OBJECT (window),
                  signals[ICON_CHANGED],
                  0);
+  if (window->priv->class_group != NULL)
+    _wnck_class_group_set_icon(window->priv->class_group);
 }
 
 static void

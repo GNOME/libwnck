@@ -89,4 +89,6 @@ const char * wnck_class_group_get_res_class (WnckClassGroup *class_group);
 
 G_END_DECLS
 
+void _wnck_class_group_set_icon (WnckClassGroup *class_group);
+
 #endif /* WNCK_CLASS_GROUP_H */
