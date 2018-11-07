@@ -1,8 +1,17 @@
 ==============
+Version 3.31.1
+==============
+
+  Features
+
+  * Add support to build using meson (Marco Trevisan) [GNOME/libwnck!4]
+
+==============
 Version 3.30.0
 ==============
 
   Fixes
+
   * Use single precision floats to double (Emmanuele Bassi)
   * Allow setting the same client type (Sebastian Geiger) [#792304]
   * Remove usage of various deprecated functions and modernize code (Alberts Muktupāvels)
