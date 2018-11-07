@@ -103,6 +103,7 @@ void             _wnck_class_group_add_window    (WnckClassGroup *class_group,
 void             _wnck_class_group_remove_window (WnckClassGroup *class_group,
                                                   WnckWindow     *window);
 void             _wnck_class_group_shutdown_all  (void);
+void             _wnck_class_group_set_icon      (WnckClassGroup *class_group);
 
 void _wnck_workspace_update_name (WnckWorkspace *workspace,
                                   const char    *name);
