@@ -8,9 +8,9 @@ gnome.gtkdoc(meson.project_name(),
     link_with: libwnck_lib
   ),
   gobject_typesfile: meson.project_name() + '.types',
+  ignore_headers: ['wnck-enum-types.h', 'version.h'],
   scan_args: [
     '--rebuild-types',
-    '--ignore-headers=' + ' '.join(['wnck-enum-types.h', 'version.h']),
     '--deprecated-guards="WNCK_DISABLE_DEPRECATED"'
   ],
   install: true,
