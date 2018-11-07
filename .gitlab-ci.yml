@@ -6,9 +6,6 @@ stages:
   before_script:
     - apt-get update
     - apt-get install -q -y --no-install-recommends
-                      autoconf-archive
-                      automake
-                      autopoint
                       build-essential
                       gettext
                       libstartup-notification0-dev
@@ -24,11 +21,15 @@ stages:
                       gtk-doc-tools
                       libglib2.0-doc
                       libgtk-3-doc
-                      meson
 
 build-ubuntu:
   stage: build
   <<: *ubuntu_before_script
+  before_script:
+    - apt-get install -q -y --no-install-recommends
+                      autoconf-archive
+                      automake
+                      autopoint
   script:
     - ./autogen.sh --enable-gtk-doc=yes
     - make
@@ -37,6 +38,9 @@ build-ubuntu:
 build-ubuntu-meson:
   stage: build
   <<: *ubuntu_before_script
+  before_script:
+    - apt-get install -q -y --no-install-recommends
+                      meson
   script:
     - meson _build -Denable-gtk-doc=true
     - ninja -C _build
