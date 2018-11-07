@@ -1,0 +1,33 @@
+/* Package name */
+#mesondefine GETTEXT_PACKAGE
+
+/* Define if building against cairo-xlib-xrender */
+#mesondefine HAVE_CAIRO_XLIB_XRENDER
+
+/* Define if the GNU gettext() function is already present or preinstalled. */
+#mesondefine HAVE_GETTEXT
+
+/* Define if you have libstartup-notification */
+#mesondefine HAVE_LIBSTARTUP_NOTIFICATION_1_0
+
+#ifdef HAVE_LIBSTARTUP_NOTIFICATION_1_0
+#define HAVE_STARTUP_NOTIFICATION 1
+#endif
+
+/* Define if you have the XRes library */
+#mesondefine HAVE_XRES
+
+/* Name of package */
+#mesondefine PACKAGE
+
+/* Define to the full name of this package. */
+#mesondefine PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#mesondefine PACKAGE_STRING
+
+/* Define to the version of this package. */
+#mesondefine PACKAGE_VERSION
+
+/* Version number of package */
+#mesondefine VERSION
