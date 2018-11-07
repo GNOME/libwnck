@@ -91,6 +91,7 @@ libwnck_dep = declare_dependency(
   include_directories: default_includes,
   dependencies: LIBWNCK_DEPS,
   compile_args: libwnck_cflags,
+  sources: headers + [enum_types[1]],
   link_args: libwnck_ldflags,
 )
 
@@ -136,10 +137,9 @@ test_progs = [
 ]
 
 foreach prog: progs + test_progs
-  executable(prog, [prog + '.c'] + enum_types,
+  executable(prog, [prog + '.c'],
     include_directories: default_includes,
-    dependencies: LIBWNCK_DEPS,
-    c_args: libwnck_cflags,
+    dependencies: libwnck_dep,
     link_with: libwnck_lib,
     install: progs.contains(prog) and get_option('install-tools'),
     install_dir: bindir)
