@@ -1,12 +1,12 @@
-option('enable-deprecation-flags',
+option('deprecation_flags',
   type: 'boolean',
   value: false,
   description: 'Use *_DISABLE_DEPRECATED flags')
-option('install-tools',
+option('install_tools',
   type: 'boolean',
   value: true,
   description: 'Install wnck-based tools')
-option('startup-notification',
+option('startup_notification',
   type: 'feature',
   value: 'auto',
   description: 'Use Startup notification')
@@ -14,7 +14,7 @@ option('introspection',
   type: 'feature',
   value: 'enabled',
   description: 'Enable GObject introspection')
-option('enable-gtk-doc',
+option('gtk_doc',
   type: 'boolean',
   value: false,
   description: 'Enable generating the API reference (depends on GTK-Doc)')

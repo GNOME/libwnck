@@ -48,5 +48,5 @@ build:ubuntu:meson:
         python3-setuptools
     - pip3 install meson
   script:
-    - meson _build -Denable-gtk-doc=true
+    - meson _build -Dgtk_doc=true
     - ninja -C _build

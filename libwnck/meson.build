@@ -81,7 +81,7 @@ libwnck_ldflags = [
   '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfile),
 ]
 
-if get_option('enable-deprecation-flags')
+if get_option('deprecation_flags')
   foreach domain: ['G', 'ATK', 'GDK', 'GDK_PIXBUF', 'GTK', 'WNCK']
     libwnck_cflags += '-D@0@_DISABLE_DEPRECATED'.format(domain)
   endforeach
@@ -123,7 +123,7 @@ progs = [
   'wnckprop',
 ]
 
-if not get_option('enable-deprecation-flags')
+if not get_option('deprecation_flags')
   progs += 'wnck-urgency-monitor'
 endif
 
@@ -141,6 +141,6 @@ foreach prog: progs + test_progs
     include_directories: default_includes,
     dependencies: libwnck_dep,
     link_with: libwnck_lib,
-    install: progs.contains(prog) and get_option('install-tools'),
+    install: progs.contains(prog) and get_option('install_tools'),
     install_dir: bindir)
 endforeach
