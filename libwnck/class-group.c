@@ -507,13 +507,13 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
                                                window);
   _wnck_window_set_class_group (window, class_group);
   icon_handler = g_signal_connect (window,
-                                 "icon_changed",
-                                 G_CALLBACK(update_class_group_icon),
-                                 class_group);
+                                   "icon_changed",
+                                   G_CALLBACK(update_class_group_icon),
+                                   class_group);
   name_handler = g_signal_connect (window,
-                                 "name_changed",
-                                 G_CALLBACK(update_class_group_name),
-                                 class_group);
+                                   "name_changed",
+                                   G_CALLBACK(update_class_group_name),
+                                   class_group);
   g_hash_table_insert (class_group->priv->window_icon_handlers,
                        window,
                        (gpointer) icon_handler);
