@@ -53,6 +53,8 @@ struct _WnckClassGroupPrivate {
   char *res_class;
   char *name;
   GList *windows;
+  GHashTable *window_icon_handlers;
+  GHashTable *window_name_handlers;
 
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
@@ -122,6 +124,10 @@ static void
 wnck_class_group_init (WnckClassGroup *class_group)
 {
   class_group->priv = wnck_class_group_get_instance_private (class_group);
+  class_group->priv->window_icon_handlers = g_hash_table_new (g_direct_hash,
+                                                             g_direct_equal);
+  class_group->priv->window_name_handlers = g_hash_table_new (g_direct_hash,
+                                                             g_direct_equal);
 }
 
 static void
@@ -141,6 +147,32 @@ wnck_class_group_finalize (GObject *object)
 
   g_list_free (class_group->priv->windows);
   class_group->priv->windows = NULL;
+
+  if (class_group->priv->window_icon_handlers)
+    {
+      GHashTableIter iter;
+      gpointer key, value;
+
+      g_hash_table_iter_init (&iter,
+                              class_group->priv->window_icon_handlers);
+      while (g_hash_table_iter_next (&iter, &key, &value))
+          g_signal_handler_disconnect (key, (gulong) value);
+      g_hash_table_destroy (class_group->priv->window_icon_handlers);
+    }
+  class_group->priv->window_icon_handlers = NULL;
+
+  if (class_group->priv->window_name_handlers)
+    {
+      GHashTableIter iter;
+      gpointer key, value;
+
+      g_hash_table_iter_init (&iter,
+                              class_group->priv->window_name_handlers);
+      while (g_hash_table_iter_next (&iter, &key, &value))
+          g_signal_handler_disconnect (key, (gulong) value);
+      g_hash_table_destroy (class_group->priv->window_name_handlers);
+    }
+  class_group->priv->window_name_handlers = NULL;
 
   if (class_group->priv->icon)
     g_object_unref (class_group->priv->icon);
@@ -309,12 +341,6 @@ set_name (WnckClassGroup *class_group)
 {
   const char *new_name;
 
-  if (class_group->priv->name)
-    {
-      g_free (class_group->priv->name);
-      class_group->priv->name = NULL;
-    }
-
   new_name = get_name_from_applications (class_group);
 
   if (!new_name)
@@ -400,8 +426,8 @@ get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf
 /* Gets a sensible icon and mini_icon for the class group from the application
  * group leaders or from individual windows.
  */
-void
-_wnck_class_group_set_icon (WnckClassGroup *class_group)
+static void
+set_icon (WnckClassGroup *class_group)
 {
   GdkPixbuf *icon, *mini_icon;
   gboolean icons_reffed = FALSE;
@@ -442,6 +468,23 @@ _wnck_class_group_set_icon (WnckClassGroup *class_group)
   g_signal_emit (G_OBJECT (class_group), signals[ICON_CHANGED], 0);
 }
 
+
+/* Handle window's icon_changed signal, update class group icon */
+static void
+update_class_group_icon (WnckWindow     *window,
+                         WnckClassGroup *class_group)
+{
+  set_icon (class_group);
+}
+
+/* Handle window's name_changed signal, update class group name */
+static void
+update_class_group_name (WnckWindow     *window,
+                         WnckClassGroup *class_group)
+{
+  set_name (class_group);
+}
+
 /**
  * _wnck_class_group_add_window:
  * @class_group: a #WnckClassGroup.
@@ -454,6 +497,7 @@ void
 _wnck_class_group_add_window (WnckClassGroup *class_group,
                               WnckWindow     *window)
 {
+  gulong icon_handler, name_handler;
 
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
   g_return_if_fail (WNCK_IS_WINDOW (window));
@@ -462,9 +506,23 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
   class_group->priv->windows = g_list_prepend (class_group->priv->windows,
                                                window);
   _wnck_window_set_class_group (window, class_group);
+  icon_handler = g_signal_connect (window,
+                                 "icon_changed",
+                                 G_CALLBACK(update_class_group_icon),
+                                 class_group);
+  name_handler = g_signal_connect (window,
+                                 "name_changed",
+                                 G_CALLBACK(update_class_group_name),
+                                 class_group);
+  g_hash_table_insert (class_group->priv->window_icon_handlers,
+                       window,
+                       (gpointer) icon_handler);
+  g_hash_table_insert (class_group->priv->window_name_handlers,
+                       window,
+                       (gpointer) name_handler);
 
   set_name (class_group);
-  _wnck_class_group_set_icon (class_group);
+  set_icon (class_group);
 
   /* FIXME: should we monitor class group changes on the window?  The ICCCM says
    * that clients should never change WM_CLASS unless the window is withdrawn.
@@ -483,6 +541,8 @@ void
 _wnck_class_group_remove_window (WnckClassGroup *class_group,
 				 WnckWindow     *window)
 {
+  gpointer icon_handler, name_handler;
+
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (wnck_window_get_class_group (window) == class_group);
@@ -490,9 +550,28 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
   class_group->priv->windows = g_list_remove (class_group->priv->windows,
                                               window);
   _wnck_window_set_class_group (window, NULL);
+  icon_handler = g_hash_table_lookup (class_group->priv->window_icon_handlers,
+                                    window);
+  if (icon_handler != NULL)
+    {
+      g_signal_handler_disconnect (window,
+                                   (gulong) icon_handler);
+      g_hash_table_remove (class_group->priv->window_icon_handlers,
+                           window);
+    }
+  name_handler = g_hash_table_lookup (class_group->priv->window_name_handlers,
+                                     window);
+  if (name_handler != NULL)
+    {
+      g_signal_handler_disconnect (window,
+                                   (gulong) name_handler);
+      g_hash_table_remove (class_group->priv->window_name_handlers,
+                           window);
+    }
+
 
   set_name (class_group);
-  _wnck_class_group_set_icon (class_group);
+  set_icon (class_group);
 }
 
 /**
