@@ -43,7 +43,7 @@ pkg_deps = [
   {'name': 'glib-2.0', 'version': '>= 2.32' },
   {'name': 'gobject-2.0', 'version': '>= 2.13.0' },
   {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
-  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup-notification').enabled() },
+  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification').enabled() },
   {'name': X11_PACKAGE },
   {'name': XRES_PACKAGE, 'required': false},
 ]
@@ -93,6 +93,6 @@ endforeach
 subdir('libwnck')
 subdir('po')
 
-if get_option('enable-gtk-doc')
+if get_option('gtk_doc')
   subdir('doc')
 endif
