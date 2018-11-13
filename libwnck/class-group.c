@@ -125,9 +125,9 @@ wnck_class_group_init (WnckClassGroup *class_group)
 {
   class_group->priv = wnck_class_group_get_instance_private (class_group);
   class_group->priv->window_icon_handlers = g_hash_table_new (g_direct_hash,
-                                                             g_direct_equal);
+                                                              g_direct_equal);
   class_group->priv->window_name_handlers = g_hash_table_new (g_direct_hash,
-                                                             g_direct_equal);
+                                                              g_direct_equal);
 }
 
 static void
@@ -507,12 +507,12 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
                                                window);
   _wnck_window_set_class_group (window, class_group);
   icon_handler = g_signal_connect (window,
-                                   "icon_changed",
-                                   G_CALLBACK(update_class_group_icon),
+                                   "icon-changed",
+                                   G_CALLBACK (update_class_group_icon),
                                    class_group);
   name_handler = g_signal_connect (window,
-                                   "name_changed",
-                                   G_CALLBACK(update_class_group_name),
+                                   "name-changed",
+                                   G_CALLBACK (update_class_group_name),
                                    class_group);
   g_hash_table_insert (class_group->priv->window_icon_handlers,
                        window,
@@ -541,7 +541,7 @@ void
 _wnck_class_group_remove_window (WnckClassGroup *class_group,
 				 WnckWindow     *window)
 {
-  gpointer icon_handler, name_handler;
+  gulong icon_handler, name_handler;
 
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
   g_return_if_fail (WNCK_IS_WINDOW (window));
@@ -550,25 +550,24 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
   class_group->priv->windows = g_list_remove (class_group->priv->windows,
                                               window);
   _wnck_window_set_class_group (window, NULL);
-  icon_handler = g_hash_table_lookup (class_group->priv->window_icon_handlers,
-                                    window);
-  if (icon_handler != NULL)
+  icon_handler = (gulong) g_hash_table_lookup (class_group->priv->window_icon_handlers,
+                                               window);
+  if (icon_handler != 0)
     {
       g_signal_handler_disconnect (window,
-                                   (gulong) icon_handler);
+                                   icon_handler);
       g_hash_table_remove (class_group->priv->window_icon_handlers,
                            window);
     }
-  name_handler = g_hash_table_lookup (class_group->priv->window_name_handlers,
-                                     window);
-  if (name_handler != NULL)
+  name_handler = (gulong) g_hash_table_lookup (class_group->priv->window_name_handlers,
+                                               window);
+  if (name_handler != 0)
     {
       g_signal_handler_disconnect (window,
-                                   (gulong) name_handler);
+                                   name_handler);
       g_hash_table_remove (class_group->priv->window_name_handlers,
                            window);
     }
-
 
   set_name (class_group);
   set_icon (class_group);
