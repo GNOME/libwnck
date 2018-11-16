@@ -131,6 +131,14 @@ wnck_class_group_init (WnckClassGroup *class_group)
 }
 
 static void
+remove_signal_handler (gpointer key,
+                       gpointer value,
+                       gpointer user_data)
+{
+  g_signal_handler_disconnect (key, (gulong) value);
+}
+
+static void
 wnck_class_group_finalize (GObject *object)
 {
   WnckClassGroup *class_group;
@@ -150,26 +158,18 @@ wnck_class_group_finalize (GObject *object)
 
   if (class_group->priv->window_icon_handlers)
     {
-      GHashTableIter iter;
-      gpointer key, value;
-
-      g_hash_table_iter_init (&iter,
-                              class_group->priv->window_icon_handlers);
-      while (g_hash_table_iter_next (&iter, &key, &value))
-          g_signal_handler_disconnect (key, (gulong) value);
+      g_hash_table_foreach (class_group->priv->window_icon_handlers,
+                            remove_signal_handler,
+                            NULL);
       g_hash_table_destroy (class_group->priv->window_icon_handlers);
     }
   class_group->priv->window_icon_handlers = NULL;
 
   if (class_group->priv->window_name_handlers)
     {
-      GHashTableIter iter;
-      gpointer key, value;
-
-      g_hash_table_iter_init (&iter,
-                              class_group->priv->window_name_handlers);
-      while (g_hash_table_iter_next (&iter, &key, &value))
-          g_signal_handler_disconnect (key, (gulong) value);
+      g_hash_table_foreach (class_group->priv->window_name_handlers,
+                            remove_signal_handler,
+                            NULL);
       g_hash_table_destroy (class_group->priv->window_name_handlers);
     }
   class_group->priv->window_name_handlers = NULL;
