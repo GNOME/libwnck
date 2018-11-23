@@ -1867,6 +1867,8 @@ main (int argc, char **argv)
   bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
   textdomain (GETTEXT_PACKAGE);
 
+  gdk_set_allowed_backends ("x11");
+
   ctxt = g_option_context_new (NULL);
   g_option_context_set_translation_domain (ctxt, GETTEXT_PACKAGE);
 
