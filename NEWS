@@ -1,4 +1,16 @@
 ==============
+Version 3.31.4
+==============
+
+  Fixes
+
+  * Meson: cleanups to the dependencies and fixed docs quotes (Marco Trevisan)
+  * Wnckprop: force it working under x11, so that it will work in Wayland for
+    X11 clients (Marco Trevisan)
+  * Update class group icon when window icon has changed (Xu Zhen) [GNOME/libwnck#135]
+
+
+==============
 Version 3.31.1
 ==============
 
