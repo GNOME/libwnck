@@ -58,12 +58,14 @@ struct _WnckTasklist
 struct _WnckTasklistClass
 {
   GtkContainerClass parent_class;
-  
+
+  void (* task_enter_notify) (WnckTasklist *tasklist);
+
+  void (* task_leave_notify) (WnckTasklist *tasklist);
+
   /* Padding for future expansion */
   void (* pad1) (void);
   void (* pad2) (void);
-  void (* pad3) (void);
-  void (* pad4) (void);
 };
 
 /**
