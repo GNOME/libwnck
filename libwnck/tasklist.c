@@ -240,6 +240,13 @@ static GType wnck_task_get_type (void);
 G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
 G_DEFINE_TYPE_WITH_PRIVATE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 
+enum
+{
+  TASK_ENTER_NOTIFY,
+  TASK_LEAVE_NOTIFY,
+  LAST_SIGNAL
+};
+
 static void wnck_task_finalize    (GObject       *object);
 
 static void wnck_task_stop_glow   (WnckTask *task);
@@ -569,6 +576,8 @@ wnck_task_finalize (GObject *object)
   G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
 }
 
+static guint signals[LAST_SIGNAL] = { 0 };
+
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
@@ -693,6 +702,36 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                                                               G_PARAM_READABLE|G_PARAM_STATIC_NAME|G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
   gtk_widget_class_set_css_name (widget_class, "wnck-tasklist");
+
+  /**
+   * WnckTasklist::task-enter-notify:
+   * @tasklist: the #WnckTasklist which emitted the signal.
+   * @windows: the #GList with all the #WnckWindow belonging to the task.
+   *
+   * Emitted when the task is entered.
+   */
+  signals[TASK_ENTER_NOTIFY] =
+    g_signal_new ("task_enter_notify",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL, NULL,
+                  G_TYPE_NONE, 1,
+                  G_TYPE_POINTER);
+
+  /**
+   * WnckTasklist::task-leave-notify:
+   * @tasklist: the #WnckTasklist which emitted the signal.
+   * @windows: the #GList with all the #WnckWindow belonging to the task.
+   *
+   * Emitted when the task is entered.
+   */
+  signals[TASK_LEAVE_NOTIFY] =
+    g_signal_new ("task_leave_notify",
+                  G_OBJECT_CLASS_TYPE (object_class),
+                  G_SIGNAL_RUN_LAST,
+                  0, NULL, NULL, NULL,
+                  G_TYPE_NONE, 1,
+                  G_TYPE_POINTER);
 }
 
 static void
@@ -3714,6 +3753,60 @@ wnck_task_button_press_event (GtkWidget	      *widget,
   return FALSE;
 }
 
+static GList*
+wnck_task_extract_windows (WnckTask *task)
+{
+  GList *windows = NULL;
+  GList *l;
+
+  /* Add the ungrouped window in the task */
+  if (task->window != NULL) {
+    windows = g_list_prepend (windows, task->window);
+  }
+
+  /* Add any grouped windows available in the task */
+  for (l = task->windows; l != NULL; l = l->next) {
+    WnckTask *t = WNCK_TASK (l->data);
+    windows = g_list_prepend (windows, t->window);
+  }
+
+  return g_list_reverse (windows);
+}
+
+static gboolean
+wnck_task_enter_notify_event (GtkWidget *widget,
+                              GdkEvent  *event,
+                              gpointer   data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  GList *windows = wnck_task_extract_windows (task);
+
+  g_signal_emit (G_OBJECT (task->tasklist),
+                 signals[TASK_ENTER_NOTIFY],
+                 0, windows);
+
+  g_list_free (windows);
+
+  return FALSE;
+}
+
+static gboolean
+wnck_task_leave_notify_event (GtkWidget *widget,
+                              GdkEvent  *event,
+                              gpointer   data)
+{
+  WnckTask *task = WNCK_TASK (data);
+  GList *windows = wnck_task_extract_windows (task);
+
+  g_signal_emit (G_OBJECT (task->tasklist),
+                 signals[TASK_LEAVE_NOTIFY],
+                 0, windows);
+
+  g_list_free (windows);
+
+  return FALSE;
+}
+
 static gboolean
 wnck_task_scroll_event (GtkWidget *widget,
 			GdkEvent  *event,
@@ -3820,6 +3913,16 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
                            G_CALLBACK (wnck_task_button_press_event),
+                           G_OBJECT (task),
+                           0);
+
+  g_signal_connect_object (G_OBJECT (task->button), "enter_notify_event",
+                           G_CALLBACK (wnck_task_enter_notify_event),
+                           G_OBJECT (task),
+                           0);
+
+  g_signal_connect_object (G_OBJECT (task->button), "leave_notify_event",
+                           G_CALLBACK (wnck_task_leave_notify_event),
                            G_OBJECT (task),
                            0);
 
