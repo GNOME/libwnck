@@ -80,14 +80,15 @@ pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
 pc_conf.set('VERSION', meson.project_version())
 
 foreach pc: [PACKAGE_NAME, PACKAGE_NAME + '-uninstalled']
-  install_path = []
-  if not pc.contains('-uninstalled')
-    install_path = join_paths(libdir, 'pkgconfig')
+  DoInstall = true
+  if pc.contains('-uninstalled')
+    DoInstall = false
   endif
   configure_file(input: pc + '.pc.in',
     output: pc + '.pc',
     configuration: pc_conf,
-    install_dir: install_path)
+    install: DoInstall,
+    install_dir: join_paths(libdir, 'pkgconfig'))
 endforeach
 
 subdir('libwnck')
