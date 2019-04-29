@@ -80,7 +80,7 @@ pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
 pc_conf.set('VERSION', meson.project_version())
 
 foreach pc: [PACKAGE_NAME, PACKAGE_NAME + '-uninstalled']
-  install_path = []
+  install_path = ''
   if not pc.contains('-uninstalled')
     install_path = join_paths(libdir, 'pkgconfig')
   endif
