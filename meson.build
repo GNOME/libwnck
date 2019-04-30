@@ -1,7 +1,7 @@
 project('libwnck',
   'c',
   version: '3.31.4',
-  meson_version: '>= 0.48.1')
+  meson_version: '>= 0.50.0')
 
 LIBWNCK_SOVERSION = 0
 
@@ -80,14 +80,12 @@ pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
 pc_conf.set('VERSION', meson.project_version())
 
 foreach pc: [PACKAGE_NAME, PACKAGE_NAME + '-uninstalled']
-  install_path = []
-  if not pc.contains('-uninstalled')
-    install_path = join_paths(libdir, 'pkgconfig')
-  endif
   configure_file(input: pc + '.pc.in',
     output: pc + '.pc',
     configuration: pc_conf,
-    install_dir: install_path)
+    install: not pc.contains('-uninstalled'),
+    install_dir: join_paths(libdir, 'pkgconfig'),
+  )
 endforeach
 
 subdir('libwnck')
