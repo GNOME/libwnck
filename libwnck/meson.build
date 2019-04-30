@@ -1,7 +1,6 @@
 gnome = import('gnome')
 
-libwnck_includepath = join_paths(includedir, PACKAGE_NAME)
-libwnck_includedir = join_paths(libwnck_includepath, meson.project_name())
+libwnck_includedir = join_paths(PACKAGE_NAME, meson.project_name())
 
 version_data = configuration_data()
 version_array = meson.project_version().split('.')
@@ -58,7 +57,7 @@ a11y_sources = [
 enum_types = gnome.mkenums_simple('wnck-enum-types',
   sources : headers,
   install_header: true,
-  install_dir: libwnck_includedir
+  install_dir: join_paths(includedir, libwnck_includedir)
 )
 
 resources = gnome.compile_resources(
