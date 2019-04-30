@@ -100,6 +100,7 @@ libwnck_lib = shared_library(LIBNAME,
   sources: sources + a11y_sources + enum_types + resources,
   version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
   soversion: LIBWNCK_SOVERSION,
+  link_depends: mapfile,
   install: true,
 )
 
