@@ -1,4 +1,18 @@
 ==============
+Version 3.32.0
+==============
+
+  Features
+
+  * Add signals for enter and leave notify events in task list
+    (Victor Kareh) [GNOME/libwnck!6]
+
+  Fixes
+
+  * Meson: depend on 0.50.0, use install_dir for .pc file and subdir parameter
+    (Marco Trevisan)
+
+==============
 Version 3.31.4
 ==============
 
