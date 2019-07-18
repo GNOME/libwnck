@@ -957,7 +957,7 @@ draw_window (cairo_t            *cr,
              gboolean            translucent)
 {
   GtkStyleContext *context;
-  GdkPixbuf *icon;
+  cairo_surface_t *icon;
   int icon_x, icon_y, icon_w, icon_h;
   gboolean is_active;
   GdkRGBA fg;
@@ -988,14 +988,18 @@ draw_window (cairo_t            *cr,
   cairo_pop_group_to_source (cr);
   cairo_paint_with_alpha (cr, translucency);
 
-  icon = wnck_window_get_icon (win);
+  icon = gdk_cairo_surface_create_from_pixbuf (wnck_window_get_icon (win),
+                                               0, NULL);
 
   icon_w = icon_h = 0;
 
   if (icon)
     {
-      icon_w = gdk_pixbuf_get_width (icon);
-      icon_h = gdk_pixbuf_get_height (icon);
+      int scale;
+
+      scale = _wnck_get_window_scaling_factor ();
+      icon_w = cairo_image_surface_get_width (icon) / scale;
+      icon_h = cairo_image_surface_get_height (icon) / scale;
 
       /* If the icon is too big, fall back to mini icon.
        * We don't arbitrarily scale the icon, because it's
@@ -1004,11 +1008,12 @@ draw_window (cairo_t            *cr,
       if (icon_w > (winrect->width - 2) ||
           icon_h > (winrect->height - 2))
         {
-          icon = wnck_window_get_mini_icon (win);
+          icon = gdk_cairo_surface_create_from_pixbuf (wnck_window_get_mini_icon (win),
+                                                       0, NULL);
           if (icon)
             {
-              icon_w = gdk_pixbuf_get_width (icon);
-              icon_h = gdk_pixbuf_get_height (icon);
+              icon_w = cairo_image_surface_get_width (icon) / scale;
+              icon_h = cairo_image_surface_get_height (icon) / scale;
 
               /* Give up. */
               if (icon_w > (winrect->width - 2) ||
@@ -1024,9 +1029,10 @@ draw_window (cairo_t            *cr,
       icon_y = winrect->y + (winrect->height - icon_h) / 2;
 
       cairo_push_group (cr);
-      gtk_render_icon (context, cr, icon, icon_x, icon_y);
+      gtk_render_icon_surface (context, cr, icon, icon_x, icon_y);
       cairo_pop_group_to_source (cr);
       cairo_paint_with_alpha (cr, translucency);
+      cairo_surface_destroy (icon);
     }
 
   cairo_push_group (cr);
