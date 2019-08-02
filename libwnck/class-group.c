@@ -496,6 +496,20 @@ update_class_group_name (WnckWindow     *window,
   set_name (class_group);
 }
 
+static void
+window_weak_notify_cb (gpointer  data,
+                       GObject  *where_the_window_was)
+{
+  WnckClassGroup *class_group;
+  WnckClassGroupPrivate *priv;
+
+  class_group = WNCK_CLASS_GROUP (data);
+  priv = class_group->priv;
+
+  g_hash_table_remove (priv->window_icon_handlers, where_the_window_was);
+  g_hash_table_remove (priv->window_name_handlers, where_the_window_was);
+}
+
 /**
  * _wnck_class_group_add_window:
  * @class_group: a #WnckClassGroup.
@@ -533,6 +547,8 @@ _wnck_class_group_add_window (WnckClassGroup *class_group,
   g_hash_table_insert (class_group->priv->window_name_handlers,
                        window,
                        (gpointer) signal_id);
+
+  g_object_weak_ref (G_OBJECT (window), window_weak_notify_cb, class_group);
 
   set_name (class_group);
   set_icon (class_group);
