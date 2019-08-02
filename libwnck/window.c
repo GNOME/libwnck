@@ -410,8 +410,12 @@ wnck_window_finalize (GObject *object)
   window->priv->app = NULL;
 
   if (window->priv->class_group)
-    g_object_unref (G_OBJECT (window->priv->class_group));
-  window->priv->class_group = NULL;
+    {
+      _wnck_class_group_remove_window (window->priv->class_group, window);
+
+      g_object_unref (G_OBJECT (window->priv->class_group));
+      window->priv->class_group = NULL;
+    }
 
   g_free (window->priv->name);
   window->priv->name = NULL;
