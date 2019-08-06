@@ -33,6 +33,7 @@
 #include <glib-object.h>
 #include <libwnck/screen.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
+#include <cairo.h>
 
 G_BEGIN_DECLS
 
@@ -379,8 +380,10 @@ void     wnck_window_activate_transient (WnckWindow *window,
                                          guint32     timestamp);
 gboolean wnck_window_transient_is_most_recently_activated (WnckWindow *window);
 
-GdkPixbuf* wnck_window_get_icon      (WnckWindow *window);
-GdkPixbuf* wnck_window_get_mini_icon (WnckWindow *window);
+GdkPixbuf*       wnck_window_get_icon              (WnckWindow *window);
+GdkPixbuf*       wnck_window_get_mini_icon         (WnckWindow *window);
+cairo_surface_t* wnck_window_get_icon_surface      (WnckWindow *window);
+cairo_surface_t* wnck_window_get_mini_icon_surface (WnckWindow *window);
 
 gboolean wnck_window_get_icon_is_fallback (WnckWindow *window);
 
