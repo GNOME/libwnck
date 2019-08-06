@@ -40,6 +40,8 @@ G_BEGIN_DECLS
 
 WnckClientType _wnck_get_client_type (void);
 
+int _wnck_get_window_scaling_factor (void);
+
 gsize _wnck_get_default_icon_size (void);
 gsize _wnck_get_default_mini_icon_size (void);
 
