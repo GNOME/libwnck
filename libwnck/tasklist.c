@@ -3195,6 +3195,7 @@ static GdkPixbuf *
 wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
 {
   int w, h;
+  int mini_icon_size;
   GdkPixbuf *pixbuf;
 
   if (!orig)
@@ -3203,7 +3204,9 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 
-  if (h != (int) MINI_ICON_SIZE ||
+  mini_icon_size = MINI_ICON_SIZE / _wnck_get_window_scaling_factor ();
+
+  if (h != (int) mini_icon_size ||
       !gdk_pixbuf_get_has_alpha (orig))
     {
       double scale;
@@ -3211,10 +3214,10 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
       pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
 			       TRUE,
 			       8,
-			       MINI_ICON_SIZE * w / (double) h,
-			       MINI_ICON_SIZE);
+			       mini_icon_size * w / (double) h,
+			       mini_icon_size);
 
-      scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (orig);
+      scale = mini_icon_size / (double) gdk_pixbuf_get_height (orig);
 
       gdk_pixbuf_scale (orig,
 			pixbuf,
