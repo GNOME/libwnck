@@ -709,7 +709,7 @@ wnck_set_default_icon_size (gsize size)
 gsize
 _wnck_get_default_icon_size (void)
 {
-  return default_icon_size;
+  return default_icon_size * _wnck_get_window_scaling_factor ();
 }
 
 static gsize default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
@@ -754,7 +754,7 @@ wnck_set_default_mini_icon_size (gsize size)
 gsize
 _wnck_get_default_mini_icon_size (void)
 {
-  return default_mini_icon_size;
+  return default_mini_icon_size * _wnck_get_window_scaling_factor ();
 }
 
 /**

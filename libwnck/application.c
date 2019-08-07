@@ -341,9 +341,11 @@ get_icons (WnckApplication *app)
   GdkPixbuf *mini_icon_pixbuf;
   gsize normal_size;
   gsize mini_size;
+  int scaling_factor;
 
   normal_size = _wnck_get_default_icon_size ();
   mini_size = _wnck_get_default_mini_icon_size ();
+  scaling_factor = _wnck_get_window_scaling_factor ();
 
   if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (app->priv->screen),
                         app->priv->xwindow,
@@ -366,14 +368,25 @@ get_icons (WnckApplication *app)
       if (app->priv->mini_icon_pixbuf)
         g_object_unref (G_OBJECT (app->priv->mini_icon_pixbuf));
 
-      app->priv->icon_pixbuf = icon_pixbuf;
-      app->priv->mini_icon_pixbuf = mini_icon_pixbuf;
-
       if (icon_pixbuf)
-        app->priv->icon = gdk_cairo_surface_create_from_pixbuf (icon_pixbuf, 0, NULL);
+        {
+          app->priv->icon = gdk_cairo_surface_create_from_pixbuf (icon_pixbuf, 0, NULL);
+          app->priv->icon_pixbuf = gdk_pixbuf_scale_simple (icon_pixbuf,
+                                                            gdk_pixbuf_get_width (icon_pixbuf) / scaling_factor,
+                                                            gdk_pixbuf_get_height (icon_pixbuf) / scaling_factor,
+                                                            GDK_INTERP_BILINEAR);
+          g_object_unref (icon_pixbuf);
+        }
 
       if (mini_icon_pixbuf)
-        app->priv->mini_icon = gdk_cairo_surface_create_from_pixbuf (mini_icon_pixbuf, 0, NULL);
+        {
+          app->priv->mini_icon = gdk_cairo_surface_create_from_pixbuf (mini_icon_pixbuf, 0, NULL);
+          app->priv->mini_icon_pixbuf = gdk_pixbuf_scale_simple (mini_icon_pixbuf,
+                                                                 gdk_pixbuf_get_width (mini_icon_pixbuf) / scaling_factor,
+                                                                 gdk_pixbuf_get_height (mini_icon_pixbuf) / scaling_factor,
+                                                                 GDK_INTERP_BILINEAR);
+          g_object_unref (mini_icon_pixbuf);
+        }
     }
 
   /* FIXME we should really fall back to using the icon
