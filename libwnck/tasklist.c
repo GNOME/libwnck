@@ -261,11 +261,11 @@ static WnckTask *wnck_task_new_from_startup_sequence (WnckTasklist      *tasklis
 #endif
 static gboolean wnck_task_get_needs_attention (WnckTask *task);
 
+static cairo_surface_t *wnck_task_get_icon (WnckTask *task);
 
 static char      *wnck_task_get_text (WnckTask *task,
                                       gboolean  icon_text,
                                       gboolean  include_state);
-static GdkPixbuf *wnck_task_get_icon (WnckTask *task);
 static gint       wnck_task_compare_alphabetically (gconstpointer  a,
                                                     gconstpointer  b);
 static gint       wnck_task_compare  (gconstpointer  a,
@@ -2920,7 +2920,7 @@ wnck_task_popup_menu (WnckTask *task,
   GtkWidget *menu;
   WnckTask *win_task;
   char *text;
-  GdkPixbuf *pixbuf;
+  cairo_surface_t *surface;
   GtkWidget *menu_item;
   GList *l, *list;
 
@@ -2964,15 +2964,15 @@ wnck_task_popup_menu (WnckTask *task,
       gtk_widget_set_tooltip_text (menu_item, text);
       g_free (text);
 
-      pixbuf = wnck_task_get_icon (win_task);
-      if (pixbuf)
+      surface = wnck_task_get_icon (win_task);
+      if (surface)
         {
           WnckImageMenuItem *item;
 
           item = WNCK_IMAGE_MENU_ITEM (menu_item);
 
-          wnck_image_menu_item_set_image_from_icon_pixbuf (item, pixbuf);
-          g_object_unref (pixbuf);
+          wnck_image_menu_item_set_image_from_icon_surface (item, surface);
+          cairo_surface_destroy (surface);
         }
 
       gtk_widget_show (menu_item);
@@ -3158,114 +3158,100 @@ wnck_task_get_text (WnckTask *task,
 }
 
 static void
-wnck_dimm_icon (GdkPixbuf *pixbuf)
+wnck_dimm_icon (cairo_t *cr, cairo_surface_t *surface)
 {
-  int x, y, pixel_stride, row_stride;
-  guchar *row, *pixels;
-  int w, h;
+  cairo_surface_t *temp;
+  cairo_t *temp_cr;
+  int scaling_factor;
 
-  g_assert (pixbuf != NULL);
+  g_assert (surface != NULL);
+  g_assert (cairo_surface_get_content (surface) != CAIRO_CONTENT_COLOR);
 
-  w = gdk_pixbuf_get_width (pixbuf);
-  h = gdk_pixbuf_get_height (pixbuf);
+  scaling_factor = _wnck_get_window_scaling_factor ();
 
-  g_assert (gdk_pixbuf_get_has_alpha (pixbuf));
+  temp = cairo_surface_create_similar (surface,
+                                       cairo_surface_get_content (surface),
+                                       cairo_image_surface_get_width (surface) / scaling_factor,
+                                       cairo_image_surface_get_height (surface) / scaling_factor);
 
-  pixel_stride = 4;
+  temp_cr = cairo_create (temp);
 
-  row = gdk_pixbuf_get_pixels (pixbuf);
-  row_stride = gdk_pixbuf_get_rowstride (pixbuf);
+  cairo_set_source_surface (temp_cr, surface, 0, 0);
+  cairo_paint_with_alpha (temp_cr, 0.5);
 
-  for (y = 0; y < h; y++)
-    {
-      pixels = row;
+  cairo_set_operator (cr, CAIRO_OPERATOR_IN);
+  cairo_set_source_surface (cr, temp, 0, 0);
+  cairo_paint (cr);
 
-      for (x = 0; x < w; x++)
-	{
-	  pixels[3] /= 2;
-
-	  pixels += pixel_stride;
-	}
-
-      row += row_stride;
-    }
+  cairo_destroy (temp_cr);
+  cairo_surface_destroy (temp);
 }
 
-static GdkPixbuf *
-wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
+static cairo_surface_t *
+wnck_task_scale_icon (cairo_surface_t *orig, gboolean minimized)
 {
-  int w, h;
-  int mini_icon_size;
-  GdkPixbuf *pixbuf;
+  int w, h, scaling_factor;
+  cairo_surface_t *surface;
+  cairo_t *cr;
 
   if (!orig)
     return NULL;
 
-  w = gdk_pixbuf_get_width (orig);
-  h = gdk_pixbuf_get_height (orig);
+  scaling_factor = _wnck_get_window_scaling_factor ();
 
-  mini_icon_size = MINI_ICON_SIZE / _wnck_get_window_scaling_factor ();
+  w = cairo_image_surface_get_width (orig) / scaling_factor;
+  h = cairo_image_surface_get_height (orig) / scaling_factor;
 
-  if (h != (int) mini_icon_size ||
-      !gdk_pixbuf_get_has_alpha (orig))
+  surface = cairo_surface_create_similar (orig,
+                                          cairo_surface_get_content (orig),
+                                          w, h);
+
+  cr = cairo_create (surface);
+
+  if (h != (int) MINI_ICON_SIZE)
     {
       double scale;
 
-      pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
-			       TRUE,
-			       8,
-			       mini_icon_size * w / (double) h,
-			       mini_icon_size);
+      scale = MINI_ICON_SIZE / (double) (h * scaling_factor);
 
-      scale = mini_icon_size / (double) gdk_pixbuf_get_height (orig);
-
-      gdk_pixbuf_scale (orig,
-			pixbuf,
-			0, 0,
-			gdk_pixbuf_get_width (pixbuf),
-			gdk_pixbuf_get_height (pixbuf),
-			0, 0,
-			scale, scale,
-			GDK_INTERP_HYPER);
+      cairo_scale (cr, scale, scale);
     }
-  else
-    pixbuf = orig;
+
+  cairo_set_source_surface (cr, orig, 0, 0);
+
+  cairo_paint (cr);
 
   if (minimized)
     {
-      if (orig == pixbuf)
-	pixbuf = gdk_pixbuf_copy (orig);
-
-      wnck_dimm_icon (pixbuf);
+      wnck_dimm_icon (cr, surface);
     }
 
-  if (orig == pixbuf)
-    g_object_ref (pixbuf);
+  cairo_destroy (cr);
 
-  return pixbuf;
+  return surface;
 }
 
 
-static GdkPixbuf *
+static cairo_surface_t *
 wnck_task_get_icon (WnckTask *task)
 {
   WnckWindowState state;
-  GdkPixbuf *pixbuf;
+  cairo_surface_t *surface;
 
-  pixbuf = NULL;
+  surface = NULL;
 
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      pixbuf = wnck_task_scale_icon (wnck_class_group_get_mini_icon (task->class_group),
-				     FALSE);
+      surface = wnck_task_scale_icon (wnck_class_group_get_mini_icon_surface (task->class_group),
+                                      FALSE);
       break;
 
     case WNCK_TASK_WINDOW:
       state = wnck_window_get_state (task->window);
 
-      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
-				      state & WNCK_WINDOW_STATE_MINIMIZED);
+      surface =  wnck_task_scale_icon (wnck_window_get_mini_icon_surface (task->window),
+                                       state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3286,16 +3272,24 @@ wnck_task_get_icon (WnckTask *task)
 
               if (loaded != NULL)
                 {
-                  pixbuf = wnck_task_scale_icon (loaded, FALSE);
+                  surface = wnck_task_scale_icon (gdk_cairo_surface_create_from_pixbuf (loaded, 0, NULL),
+                                                  FALSE);
                   g_object_unref (G_OBJECT (loaded));
                 }
             }
         }
 
-      if (pixbuf == NULL)
+      if (surface == NULL)
         {
+          GdkPixbuf *pixbuf;
           _wnck_get_fallback_icons (NULL, 0, 0,
                                     &pixbuf, MINI_ICON_SIZE, MINI_ICON_SIZE);
+
+          if (pixbuf != NULL)
+            {
+              surface = gdk_cairo_surface_create_from_pixbuf (pixbuf, 0, NULL);
+              g_object_unref (pixbuf);
+            }
         }
 #endif
       break;
@@ -3304,7 +3298,7 @@ wnck_task_get_icon (WnckTask *task)
       break;
     }
 
-  return pixbuf;
+  return surface;
 }
 
 static gboolean
@@ -3353,14 +3347,14 @@ wnck_task_get_needs_attention (WnckTask *task)
 static void
 wnck_task_update_visible_state (WnckTask *task)
 {
-  GdkPixbuf *pixbuf;
+  cairo_surface_t *surface;
   char *text;
 
-  pixbuf = wnck_task_get_icon (task);
-  gtk_image_set_from_pixbuf (GTK_IMAGE (task->image),
-			     pixbuf);
-  if (pixbuf)
-    g_object_unref (pixbuf);
+  surface = wnck_task_get_icon (task);
+  gtk_image_set_from_surface (GTK_IMAGE (task->image),
+                              surface);
+  if (surface)
+    cairo_surface_destroy (surface);
 
   text = wnck_task_get_text (task, TRUE, TRUE);
   if (text != NULL)
@@ -3831,7 +3825,7 @@ static void
 wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 {
   GtkWidget *hbox;
-  GdkPixbuf *pixbuf;
+  cairo_surface_t *surface;
   char *text;
   static const GtkTargetEntry targets[] = {
     { (gchar *) "application/x-wnck-window-id", 0, 0 }
@@ -3866,11 +3860,11 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 
   hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
 
-  pixbuf = wnck_task_get_icon (task);
-  if (pixbuf)
+  surface = wnck_task_get_icon (task);
+  if (surface)
     {
-      task->image = gtk_image_new_from_pixbuf (pixbuf);
-      g_object_unref (pixbuf);
+      task->image = gtk_image_new_from_surface (surface);
+      cairo_surface_destroy (surface);
     }
   else
     task->image = gtk_image_new ();

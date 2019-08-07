@@ -31,6 +31,9 @@ GtkWidget *wnck_image_menu_item_new                        (void);
 
 GtkWidget *wnck_image_menu_item_new_with_label             (const gchar       *label);
 
+void       wnck_image_menu_item_set_image_from_icon_surface (WnckImageMenuItem *item,
+                                                             cairo_surface_t   *surface);
+
 void       wnck_image_menu_item_set_image_from_icon_pixbuf (WnckImageMenuItem *item,
                                                             GdkPixbuf         *pixbuf);
 

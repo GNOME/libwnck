@@ -212,6 +212,14 @@ wnck_image_menu_item_new_with_label (const gchar *label)
 }
 
 void
+wnck_image_menu_item_set_image_from_icon_surface (WnckImageMenuItem *item,
+                                                  cairo_surface_t   *surface)
+{
+  gtk_image_set_from_surface (GTK_IMAGE (item->image), surface);
+  gtk_widget_show (item->image);
+}
+
+void
 wnck_image_menu_item_set_image_from_icon_pixbuf (WnckImageMenuItem *item,
                                                  GdkPixbuf         *pixbuf)
 {
