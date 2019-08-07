@@ -121,79 +121,84 @@ wnck_selector_get_screen (WnckSelector *selector)
   return wnck_screen_get (gdk_x11_screen_get_screen_number (screen));
 }
 
-static GdkPixbuf *
+static cairo_surface_t *
 wnck_selector_get_default_window_icon (void)
 {
-  static GdkPixbuf *retval = NULL;
+  static cairo_surface_t *retval = NULL;
+  GdkPixbuf *pixbuf;
 
   if (retval)
     return retval;
 
-  retval = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
+  pixbuf = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
 
-  g_assert (retval);
+  g_assert (pixbuf);
+
+  retval = gdk_cairo_surface_create_from_pixbuf (pixbuf, 0, NULL);
 
   return retval;
 }
 
-static GdkPixbuf *
-wnck_selector_dimm_icon (GdkPixbuf *pixbuf)
+static void
+wnck_selector_dimm_icon (cairo_t *cr, cairo_surface_t *surface)
 {
-  int x, y, pixel_stride, row_stride;
-  guchar *row, *pixels;
-  int w, h;
-  GdkPixbuf *dimmed;
+  cairo_surface_t *temp;
+  cairo_t *temp_cr;
+  int scaling_factor;
 
-  w = gdk_pixbuf_get_width (pixbuf);
-  h = gdk_pixbuf_get_height (pixbuf);
+  g_assert (surface != NULL);
+  g_assert (cairo_surface_get_content (surface) != CAIRO_CONTENT_COLOR);
 
-  if (gdk_pixbuf_get_has_alpha (pixbuf))
-    dimmed = gdk_pixbuf_copy (pixbuf);
-  else
-    dimmed = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
+  scaling_factor = _wnck_get_window_scaling_factor ();
 
-  pixel_stride = 4;
+  temp = cairo_surface_create_similar (surface,
+                                       cairo_surface_get_content (surface),
+                                       cairo_image_surface_get_width (surface) / scaling_factor,
+                                       cairo_image_surface_get_height (surface) / scaling_factor);
 
-  row = gdk_pixbuf_get_pixels (dimmed);
-  row_stride = gdk_pixbuf_get_rowstride (dimmed);
+  temp_cr = cairo_create (temp);
 
-  for (y = 0; y < h; y++)
-    {
-      pixels = row;
-      for (x = 0; x < w; x++)
-        {
-          pixels[3] /= 2;
-          pixels += pixel_stride;
-        }
-      row += row_stride;
-    }
+  cairo_set_source_surface (temp_cr, surface, 0, 0);
+  cairo_paint_with_alpha (temp_cr, 0.5);
 
-  return dimmed;
+  cairo_set_operator (cr, CAIRO_OPERATOR_IN);
+  cairo_set_source_surface (cr, temp, 0, 0);
+  cairo_paint (cr);
+
+  cairo_destroy (temp_cr);
+  cairo_surface_destroy (temp);
 }
 
 void
 _wnck_selector_set_window_icon (GtkWidget  *image,
                                 WnckWindow *window)
 {
-  GdkPixbuf *pixbuf, *freeme, *freeme2;
-  int width, height;
+  cairo_surface_t *orig, *surface;
+  cairo_t *cr;
+  int width, height, scaling_factor;
   int icon_size = -1;
 
-  pixbuf = NULL;
-  freeme = NULL;
-  freeme2 = NULL;
+  orig = NULL;
+  surface = NULL;
 
   if (window)
-    pixbuf = wnck_window_get_mini_icon (window);
+    orig = wnck_window_get_mini_icon_surface (window);
 
-  if (!pixbuf)
-    pixbuf = wnck_selector_get_default_window_icon ();
+  if (!orig)
+    orig = wnck_selector_get_default_window_icon ();
 
   if (icon_size == -1)
     gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
 
-  width = gdk_pixbuf_get_width (pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf);
+  scaling_factor = _wnck_get_window_scaling_factor ();
+
+  width = cairo_image_surface_get_width (orig) / scaling_factor;
+  height = cairo_image_surface_get_height (orig) / scaling_factor;
+
+  surface = cairo_surface_create_similar (orig,
+                                          cairo_surface_get_content (orig),
+                                          width, height);
+  cr = cairo_create (surface);
 
   if (icon_size != -1 && (width > icon_size || height > icon_size))
     {
@@ -201,23 +206,22 @@ _wnck_selector_set_window_icon (GtkWidget  *image,
 
       scale = ((double) icon_size) / MAX (width, height);
 
-      pixbuf = gdk_pixbuf_scale_simple (pixbuf, width * scale,
-                                        height * scale, GDK_INTERP_BILINEAR);
-      freeme = pixbuf;
+      cairo_scale (cr, scale, scale);
     }
+
+  cairo_set_source_surface (cr, orig, 0, 0);
+
+  cairo_paint (cr);
 
   if (window && wnck_window_is_minimized (window))
     {
-      pixbuf = wnck_selector_dimm_icon (pixbuf);
-      freeme2 = pixbuf;
+      wnck_selector_dimm_icon (cr, surface);
     }
 
-  gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+  gtk_image_set_from_surface (GTK_IMAGE (image), surface);
 
-  if (freeme)
-    g_object_unref (freeme);
-  if (freeme2)
-    g_object_unref (freeme2);
+  cairo_destroy (cr);
+  cairo_surface_destroy (surface);
 }
 
 static void
