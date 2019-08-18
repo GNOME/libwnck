@@ -213,7 +213,7 @@ wnck_pager_init (WnckPager *pager)
 
   pager->priv->n_rows = 1;
   pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
-  pager->priv->scroll_mode = 0;
+  pager->priv->scroll_mode = WNCK_PAGER_SCROLL_2D;
   pager->priv->show_all_workspaces = TRUE;
   pager->priv->shadow_type = GTK_SHADOW_NONE;
   pager->priv->wrap_on_scroll = FALSE;
@@ -2080,7 +2080,7 @@ wnck_pager_scroll_event (GtkWidget      *widget,
         }
     }
 
-  if (pager->priv->scroll_mode == 0)
+  if (pager->priv->scroll_mode == WNCK_PAGER_SCROLL_2D)
     {
       switch (absolute_direction)
         {
@@ -2427,14 +2427,12 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  * @pager: a #WnckPager.
  * @scroll_mode: a scroll mode.
  *
- * Sets @pager to react to input device scrolling in one of two
- * available modes: 2d scrolling (@scroll_mode = 0, default) or
- * 1d scrolling (@scroll_mode = 1). Note that 2d scrolling only shows
- * its effect if the pager has been set to have more than one row.
+ * Sets @pager to react to input device scrolling in one of the
+ * available scroll modes.
  */
 void
 wnck_pager_set_scroll_mode (WnckPager *pager,
-                            guint      scroll_mode)
+                            WnckPagerScrollMode scroll_mode)
 {
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
