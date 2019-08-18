@@ -2436,8 +2436,7 @@ wnck_pager_set_scroll_mode (WnckPager *pager,
 {
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
-  if (pager->priv->scroll_mode == scroll_mode ||
-      pager->priv->scroll_mode > 1)
+  if (pager->priv->scroll_mode == scroll_mode)
     return;
 
   pager->priv->scroll_mode = scroll_mode;
