@@ -244,6 +244,7 @@ wnck_pager_set_orientation
 wnck_pager_set_n_rows
 WnckPagerDisplayMode
 wnck_pager_set_display_mode
+wnck_pager_set_scroll_mode
 wnck_pager_set_show_all
 wnck_pager_set_shadow_type
 <SUBSECTION Private>
