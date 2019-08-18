@@ -65,7 +65,7 @@ struct _WnckPagerPrivate
 
   int n_rows; /* really columns for vertical orientation */
   WnckPagerDisplayMode display_mode;
-  WnckPagerDisplayMode scroll_mode;
+  WnckPagerScrollMode scroll_mode;
   gboolean show_all_workspaces;
   GtkShadowType shadow_type;
   gboolean wrap_on_scroll;
