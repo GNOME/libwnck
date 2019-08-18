@@ -7,6 +7,7 @@ static int n_rows = 1;
 static gboolean only_current = FALSE;
 static gboolean rtl = FALSE;
 static gboolean show_name = FALSE;
+static gboolean simple_scrolling = FALSE;
 static gboolean vertical = FALSE;
 static gboolean wrap_on_scroll = FALSE;
 
@@ -15,6 +16,7 @@ static GOptionEntry entries[] = {
 	{"only-current", 'c', 0, G_OPTION_ARG_NONE, &only_current, "Only show current workspace", NULL},
 	{"rtl", 'r', 0, G_OPTION_ARG_NONE, &rtl, "Use RTL as default direction", NULL},
 	{"show-name", 's', 0, G_OPTION_ARG_NONE, &show_name, "Show workspace names instead of workspace contents", NULL},
+	{"simple-scrolling", 's', 0, G_OPTION_ARG_NONE, &simple_scrolling, "Use the simple 1d scroll mode", NULL},
 	{"vertical-orientation", 'v', 0, G_OPTION_ARG_NONE, &vertical, "Use a vertical orientation", NULL},
 	{"wrap-on-scroll", 'w', 0, G_OPTION_ARG_NONE, &wrap_on_scroll, "Wrap on scrolling over borders", NULL},
 	{NULL }
@@ -24,6 +26,7 @@ static void
 create_pager_window (GtkOrientation       orientation,
                      gboolean             show_all,
                      WnckPagerDisplayMode mode,
+                     WnckPagerScrollMode  scroll_mode,
                      int                  rows,
                      gboolean             wrap)
 {
@@ -51,6 +54,7 @@ create_pager_window (GtkOrientation       orientation,
 
   wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
   wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
+  wnck_pager_set_scroll_mode (WNCK_PAGER (pager), scroll_mode);
   wnck_pager_set_orientation (WNCK_PAGER (pager), orientation);
   wnck_pager_set_n_rows (WNCK_PAGER (pager), rows);
   wnck_pager_set_shadow_type (WNCK_PAGER (pager), GTK_SHADOW_IN);
@@ -67,6 +71,7 @@ main (int argc, char **argv)
   GOptionContext *ctxt;
   GtkOrientation  orientation;
   WnckPagerDisplayMode mode;
+  WnckPagerScrollMode scroll_mode;
   WnckScreen *screen;
 
   ctxt = g_option_context_new ("");
@@ -96,7 +101,12 @@ main (int argc, char **argv)
   else
 	  mode = WNCK_PAGER_DISPLAY_CONTENT;
 
-  create_pager_window (orientation, !only_current, mode, n_rows, wrap_on_scroll);
+  if (simple_scrolling)
+	  scroll_mode = WNCK_PAGER_SCROLL_1D;
+  else
+	  scroll_mode = WNCK_PAGER_SCROLL_2D;
+
+  create_pager_window (orientation, !only_current, mode, scroll_mode, n_rows, wrap_on_scroll);
 
   gtk_main ();
 
