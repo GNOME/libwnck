@@ -65,6 +65,7 @@ struct _WnckPagerPrivate
 
   int n_rows; /* really columns for vertical orientation */
   WnckPagerDisplayMode display_mode;
+  WnckPagerScrollMode scroll_mode;
   gboolean show_all_workspaces;
   GtkShadowType shadow_type;
   gboolean wrap_on_scroll;
@@ -212,6 +213,7 @@ wnck_pager_init (WnckPager *pager)
 
   pager->priv->n_rows = 1;
   pager->priv->display_mode = WNCK_PAGER_DISPLAY_CONTENT;
+  pager->priv->scroll_mode = WNCK_PAGER_SCROLL_2D;
   pager->priv->show_all_workspaces = TRUE;
   pager->priv->shadow_type = GTK_SHADOW_NONE;
   pager->priv->wrap_on_scroll = FALSE;
@@ -2078,73 +2080,103 @@ wnck_pager_scroll_event (GtkWidget      *widget,
         }
     }
 
-  switch (absolute_direction)
+  if (pager->priv->scroll_mode == WNCK_PAGER_SCROLL_2D)
     {
-      case GDK_SCROLL_DOWN:
-        if (index + n_columns < n_workspaces)
+      switch (absolute_direction)
+        {
+          case GDK_SCROLL_DOWN:
+            if (index + n_columns < n_workspaces)
+              {
+                index += n_columns;
+              }
+            else if (wrap_workspaces && index == n_workspaces - 1)
+              {
+                index = 0;
+              }
+            else if ((index < n_workspaces - 1 &&
+                      index + in_last_row != n_workspaces - 1) ||
+                     (index == n_workspaces - 1 &&
+                      in_last_row != 0))
+              {
+                index = (index % n_columns) + 1;
+              }
+            break;
+          case GDK_SCROLL_RIGHT:
+            if (index < n_workspaces - 1)
+              {
+                index++;
+              }
+            else if (wrap_workspaces)
+              {
+                index = 0;
+              }
+            break;
+          case GDK_SCROLL_UP:
+            if (index - n_columns >= 0)
+              {
+                index -= n_columns;
+              }
+            else if (index > 0)
+              {
+                index = ((pager->priv->n_rows - 1) * n_columns) + (index % n_columns) - 1;
+              }
+            else if (wrap_workspaces)
+              {
+                index = n_workspaces - 1;
+              }
+            if (index >= n_workspaces)
+              {
+                index -= n_columns;
+              }
+            break;
+          case GDK_SCROLL_LEFT:
+            if (index > 0)
+              {
+                index--;
+              }
+            else if (wrap_workspaces)
+              {
+                index = n_workspaces - 1;
+              }
+            break;
+          case GDK_SCROLL_SMOOTH:
+          default:
+            g_assert_not_reached ();
+            break;
+        }
+      }
+    else
+      {
+        switch (absolute_direction)
           {
-            index += n_columns;
+            case GDK_SCROLL_UP:
+            case GDK_SCROLL_LEFT:
+              if (index > 0)
+                {
+                  index--;
+                }
+              else if (wrap_workspaces)
+                {
+                  index = n_workspaces - 1;
+                }
+              break;
+            case GDK_SCROLL_DOWN:
+            case GDK_SCROLL_RIGHT:
+              if (index < n_workspaces - 1)
+                {
+                  index++;
+                }
+              else if (wrap_workspaces)
+                {
+                  index = 0;
+                }
+              break;
+            case GDK_SCROLL_SMOOTH:
+            default:
+              g_assert_not_reached ();
+              break;
           }
-        else if (wrap_workspaces && index == n_workspaces - 1)
-          {
-            index = 0;
-          }
-        else if ((index < n_workspaces - 1 &&
-                  index + in_last_row != n_workspaces - 1) ||
-                 (index == n_workspaces - 1 &&
-                  in_last_row != 0))
-          {
-            index = (index % n_columns) + 1;
-          }
-        break;
-
-      case GDK_SCROLL_RIGHT:
-        if (index < n_workspaces - 1)
-          {
-            index++;
-          }
-        else if (wrap_workspaces)
-          {
-            index = 0;
-          }
-        break;
-
-      case GDK_SCROLL_UP:
-        if (index - n_columns >= 0)
-          {
-            index -= n_columns;
-          }
-        else if (index > 0)
-          {
-            index = ((pager->priv->n_rows - 1) * n_columns) + (index % n_columns) - 1;
-          }
-        else if (wrap_workspaces)
-          {
-            index = n_workspaces - 1;
-          }
-
-        if (index >= n_workspaces)
-          {
-            index -= n_columns;
-          }
-        break;
-
-      case GDK_SCROLL_LEFT:
-        if (index > 0)
-          {
-            index--;
-          }
-        else if (wrap_workspaces)
-          {
-            index = n_workspaces - 1;
-          }
-        break;
-
-      case GDK_SCROLL_SMOOTH:
-      default:
-        g_assert_not_reached ();
-        break;
-    }
+      }
 
   space = wnck_screen_get_workspace (pager->priv->screen, index);
   wnck_workspace_activate (space, event->time);
@@ -2394,6 +2426,26 @@ wnck_pager_set_display_mode (WnckPager            *pager,
 
   pager->priv->display_mode = mode;
   gtk_widget_queue_resize (GTK_WIDGET (pager));
+}
+
+/**
+ * wnck_pager_set_scroll_mode:
+ * @pager: a #WnckPager.
+ * @scroll_mode: a scroll mode.
+ *
+ * Sets @pager to react to input device scrolling in one of the
+ * available scroll modes.
+ */
+void
+wnck_pager_set_scroll_mode (WnckPager           *pager,
+                            WnckPagerScrollMode  scroll_mode)
+{
+  g_return_if_fail (WNCK_IS_PAGER (pager));
+
+  if (pager->priv->scroll_mode == scroll_mode)
+    return;
+
+  pager->priv->scroll_mode = scroll_mode;
 }
 
 /**

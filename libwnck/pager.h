@@ -80,6 +80,22 @@ typedef enum {
   WNCK_PAGER_DISPLAY_CONTENT
 } WnckPagerDisplayMode;
 
+/**
+ * WnckPagerScrollMode:
+ * @WNCK_PAGER_SCROLL_2D: given that the workspaces are set up in multiple rows,
+ * scrolling on the #WnckPager will cycle through the workspaces as if on a
+ * 2-dimensional map. Example cycling order with 2 rows and 4 workspaces: 1 3 2 4.
+ * @WNCK_PAGER_SCROLL_1D: the #WnckPager will always cycle workspaces in a linear
+ * manner, irrespective of how many rows are configured. (Hint: Better for mice)
+ * Example cycling order with 2 rows and 4 workspaces: 1 2 3 4.
+ *
+ * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
+ */
+typedef enum {
+  WNCK_PAGER_SCROLL_2D,
+  WNCK_PAGER_SCROLL_1D
+} WnckPagerScrollMode;
+
 GType      wnck_pager_get_type           (void) G_GNUC_CONST;
 
 GtkWidget* wnck_pager_new                (void);
@@ -90,6 +106,8 @@ gboolean   wnck_pager_set_n_rows         (WnckPager            *pager,
                                           int                   n_rows);
 void       wnck_pager_set_display_mode   (WnckPager            *pager,
                                           WnckPagerDisplayMode  mode);
+void       wnck_pager_set_scroll_mode    (WnckPager            *pager,
+                                          WnckPagerScrollMode   scroll_mode);
 void       wnck_pager_set_show_all       (WnckPager            *pager,
                                           gboolean              show_all_workspaces);
 void       wnck_pager_set_shadow_type    (WnckPager            *pager,
