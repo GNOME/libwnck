@@ -23,12 +23,13 @@ static GOptionEntry entries[] = {
 };
 
 static void
-create_pager_window (GtkOrientation       orientation,
-                     gboolean             show_all,
-                     WnckPagerDisplayMode mode,
-                     WnckPagerScrollMode  scroll_mode,
-                     int                  rows,
-                     gboolean             wrap)
+create_pager_window (WnckHandle           *handle,
+                     GtkOrientation        orientation,
+                     gboolean              show_all,
+                     WnckPagerDisplayMode  mode,
+                     WnckPagerScrollMode   scroll_mode,
+                     int                   rows,
+                     gboolean              wrap)
 {
   GtkWidget *win;
   GtkWidget *pager;
@@ -50,7 +51,7 @@ create_pager_window (GtkOrientation       orientation,
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  pager = wnck_pager_new ();
+  pager = wnck_pager_new_with_handle (handle);
 
   wnck_pager_set_show_all (WNCK_PAGER (pager), show_all);
   wnck_pager_set_display_mode (WNCK_PAGER (pager), mode);
@@ -72,6 +73,7 @@ main (int argc, char **argv)
   GtkOrientation  orientation;
   WnckPagerDisplayMode mode;
   WnckPagerScrollMode scroll_mode;
+  WnckHandle *handle;
   WnckScreen *screen;
 
   ctxt = g_option_context_new ("");
@@ -86,7 +88,8 @@ main (int argc, char **argv)
   if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  screen = wnck_screen_get_default ();
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+  screen = wnck_handle_get_default_screen (handle);
 
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
@@ -106,9 +109,11 @@ main (int argc, char **argv)
   else
 	  scroll_mode = WNCK_PAGER_SCROLL_2D;
 
-  create_pager_window (orientation, !only_current, mode, scroll_mode, n_rows, wrap_on_scroll);
+  create_pager_window (handle, orientation, !only_current, mode, scroll_mode, n_rows, wrap_on_scroll);
 
   gtk_main ();
+
+  g_object_unref (handle);
 
   return 0;
 }
