@@ -104,6 +104,8 @@ GType      wnck_pager_get_type           (void) G_GNUC_CONST;
 
 GtkWidget* wnck_pager_new                (void);
 
+GtkWidget* wnck_pager_new_with_handle    (WnckHandle           *handle);
+
 gboolean   wnck_pager_set_orientation    (WnckPager            *pager,
                                           GtkOrientation        orientation);
 gboolean   wnck_pager_set_n_rows         (WnckPager            *pager,

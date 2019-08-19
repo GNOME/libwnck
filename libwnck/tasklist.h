@@ -89,6 +89,8 @@ GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
 GtkWidget *wnck_tasklist_new (void);
 
+GtkWidget *wnck_tasklist_new_with_handle (WnckHandle *handle);
+
 G_DEPRECATED
 const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 					      int           *n_elements);

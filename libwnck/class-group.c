@@ -202,7 +202,7 @@ wnck_class_group_finalize (GObject *object)
 WnckClassGroup *
 wnck_class_group_get (const char *id)
 {
-  return _wnck_handle_get_class_group (_wnck_get_handle (), id);
+  return wnck_handle_get_class_group (_wnck_get_handle (), id);
 }
 
 /**
@@ -224,8 +224,8 @@ _wnck_class_group_create (WnckScreen *screen,
   WnckHandle *handle;
   WnckClassGroup *class_group;
 
-  handle = _wnck_screen_get_handle (screen);
-  class_group = _wnck_handle_get_class_group (handle, res_class);
+  handle = wnck_screen_get_handle (screen);
+  class_group = wnck_handle_get_class_group (handle, res_class);
 
   g_return_val_if_fail (class_group == NULL, NULL);
 
@@ -256,7 +256,7 @@ _wnck_class_group_destroy (WnckClassGroup *class_group)
 
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
 
-  handle = _wnck_screen_get_handle (class_group->priv->screen);
+  handle = wnck_screen_get_handle (class_group->priv->screen);
   _wnck_handle_remove_class_group (handle, class_group->priv->res_class);
 
   /* Removing from handle also removes the only ref WnckClassGroup had */
@@ -446,7 +446,7 @@ set_icon (WnckClassGroup *class_group)
     {
       WnckHandle *handle;
 
-      handle = _wnck_screen_get_handle (class_group->priv->screen);
+      handle = wnck_screen_get_handle (class_group->priv->screen);
 
       _wnck_get_fallback_icons (&icon,
                                 _wnck_handle_get_default_icon_size (handle),

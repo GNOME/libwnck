@@ -395,7 +395,7 @@ wnck_pid_read_resource_usage_no_cache (GdkDisplay        *gdisplay,
       GList *windows;
       GList *tmp;
 
-      screen = _wnck_handle_get_screen (_wnck_get_handle (), i);
+      screen = wnck_handle_get_screen (_wnck_get_handle (), i);
 
       g_assert (screen != NULL);
 

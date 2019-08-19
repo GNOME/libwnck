@@ -448,7 +448,7 @@ wnck_window_finalize (GObject *object)
 WnckWindow*
 wnck_window_get (gulong xwindow)
 {
-  return _wnck_handle_get_window (_wnck_get_handle (), xwindow);
+  return wnck_handle_get_window (_wnck_get_handle (), xwindow);
 }
 
 /**
@@ -477,8 +477,8 @@ _wnck_window_create (Window      xwindow,
   WnckWindow *window;
   Screen     *xscreen;
 
-  handle = _wnck_screen_get_handle (screen);
-  window = _wnck_handle_get_window (handle, xwindow);
+  handle = wnck_screen_get_handle (screen);
+  window = wnck_handle_get_window (handle, xwindow);
 
   g_return_val_if_fail (window == NULL, NULL);
 
@@ -556,15 +556,15 @@ _wnck_window_destroy (WnckWindow *window)
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  handle = _wnck_screen_get_handle (window->priv->screen);
+  handle = wnck_screen_get_handle (window->priv->screen);
 
-  g_return_if_fail (_wnck_handle_get_window (handle, xwindow) == window);
+  g_return_if_fail (wnck_handle_get_window (handle, xwindow) == window);
 
   _wnck_handle_remove_window (handle, &xwindow);
 
   /* Removing from handle also removes the only ref WnckWindow had */
 
-  g_return_if_fail (_wnck_handle_get_window (handle, xwindow) == NULL);
+  g_return_if_fail (wnck_handle_get_window (handle, xwindow) == NULL);
 }
 
 static Display *
@@ -744,9 +744,9 @@ wnck_window_get_transient (WnckWindow *window)
 
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  handle = _wnck_screen_get_handle (window->priv->screen);
+  handle = wnck_screen_get_handle (window->priv->screen);
 
-  return _wnck_handle_get_window (handle, window->priv->transient_for);
+  return wnck_handle_get_window (handle, window->priv->transient_for);
 }
 
 /**
@@ -1170,8 +1170,8 @@ _wnck_window_get_startup_id (WnckWindow *window)
 
       /* Fall back to group leader property */
 
-      handle = _wnck_screen_get_handle (window->priv->screen);
-      app = _wnck_handle_get_application (handle, window->priv->group_leader);
+      handle = wnck_screen_get_handle (window->priv->screen);
+      app = wnck_handle_get_application (handle, window->priv->group_leader);
 
       if (app != NULL)
         return wnck_application_get_startup_id (app);
@@ -2115,7 +2115,7 @@ get_icons (WnckWindow *window)
   gsize normal_size;
   gsize mini_size;
 
-  handle = _wnck_screen_get_handle (window->priv->screen);
+  handle = wnck_screen_get_handle (window->priv->screen);
 
   icon = NULL;
   mini_icon = NULL;
@@ -2364,7 +2364,7 @@ wnck_window_set_geometry (WnckWindow               *window,
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  handle = _wnck_screen_get_handle (window->priv->screen);
+  handle = wnck_screen_get_handle (window->priv->screen);
   source = _wnck_handle_get_client_type (handle);
 
   gravity_and_flags = gravity;
@@ -3100,9 +3100,9 @@ update_transient_for (WnckWindow *window)
 
       window->priv->transient_for = parent;
 
-      handle = _wnck_screen_get_handle (window->priv->screen);
-      screen = _wnck_handle_get_screen_for_root (handle,
-                                                 window->priv->transient_for);
+      handle = wnck_screen_get_handle (window->priv->screen);
+      screen = wnck_handle_get_screen_for_root (handle,
+                                                window->priv->transient_for);
 
       if (screen != NULL)
         window->priv->transient_for_root = TRUE;

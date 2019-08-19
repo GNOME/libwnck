@@ -246,6 +246,17 @@ struct _WnckTasklistPrivate
   gboolean scroll_enabled;
 };
 
+enum
+{
+  PROP_0,
+
+  PROP_HANDLE,
+
+  LAST_PROP
+};
+
+static GParamSpec *tasklist_properties[LAST_PROP] = { NULL };
+
 static GType wnck_task_get_type (void);
 
 G_DEFINE_TYPE (WnckButton, wnck_button, GTK_TYPE_TOGGLE_BUTTON)
@@ -896,6 +907,69 @@ wnck_tasklist_get_request_mode (GtkWidget *widget)
 }
 
 static void
+wnck_tasklist_get_property (GObject    *object,
+                            guint       property_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  WnckTasklist *self;
+
+  self = WNCK_TASKLIST (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_value_set_object (value, self->priv->handle);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+wnck_tasklist_set_property (GObject      *object,
+                            guint         property_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  WnckTasklist *self;
+
+  self = WNCK_TASKLIST (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_assert (self->priv->handle == NULL);
+        self->priv->handle = g_value_dup_object (value);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+install_properties (GObjectClass *object_class)
+{
+  tasklist_properties[PROP_HANDLE] =
+    g_param_spec_object ("handle",
+                         "handle",
+                         "handle",
+                         WNCK_TYPE_HANDLE,
+                         G_PARAM_CONSTRUCT_ONLY |
+                         G_PARAM_READWRITE |
+                         G_PARAM_EXPLICIT_NOTIFY |
+                         G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class,
+                                     LAST_PROP,
+                                     tasklist_properties);
+}
+
+static void
 wnck_tasklist_class_init (WnckTasklistClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
@@ -903,6 +977,8 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
   GtkContainerClass *container_class = GTK_CONTAINER_CLASS (klass);
 
   object_class->finalize = wnck_tasklist_finalize;
+  object_class->get_property = wnck_tasklist_get_property;
+  object_class->set_property = wnck_tasklist_set_property;
 
   widget_class->get_request_mode = wnck_tasklist_get_request_mode;
   widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
@@ -1017,6 +1093,8 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                   0, NULL, NULL, NULL,
                   G_TYPE_NONE, 1,
                   G_TYPE_POINTER);
+
+  install_properties (object_class);
 }
 
 static void
@@ -2163,8 +2241,8 @@ wnck_tasklist_realize (GtkWidget *widget)
   gdkscreen = gtk_widget_get_screen (widget);
   screen_number = gdk_x11_screen_get_screen_number (gdkscreen);
 
-  tasklist->priv->screen = _wnck_handle_get_screen (tasklist->priv->handle,
-                                                    screen_number);
+  tasklist->priv->screen = wnck_handle_get_screen (tasklist->priv->handle,
+                                                   screen_number);
 
   g_assert (tasklist->priv->screen != NULL);
 
@@ -2559,10 +2637,32 @@ wnck_tasklist_new (void)
 {
   WnckTasklist *tasklist;
 
-  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
-  tasklist->priv->handle = g_object_ref (_wnck_get_handle ());
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST,
+                           "handle", _wnck_get_handle (),
+                           NULL);
 
   return GTK_WIDGET (tasklist);
+}
+
+/**
+ * wnck_tasklist_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckTasklist.
+ */
+GtkWidget *
+wnck_tasklist_new_with_handle (WnckHandle *handle)
+{
+  WnckTasklist *self;
+
+  self = g_object_new (WNCK_TYPE_TASKLIST,
+                       "handle", handle,
+                       NULL);
+
+  return GTK_WIDGET (self);
 }
 
 static void

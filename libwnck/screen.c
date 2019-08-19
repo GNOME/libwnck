@@ -575,7 +575,7 @@ _wnck_screen_construct (WnckScreen *screen,
 WnckScreen*
 wnck_screen_get (int index)
 {
-  return _wnck_handle_get_screen (_wnck_get_handle (), index);
+  return wnck_handle_get_screen (_wnck_get_handle (), index);
 }
 
 /**
@@ -590,7 +590,7 @@ wnck_screen_get (int index)
 WnckScreen*
 wnck_screen_get_default (void)
 {
-  return _wnck_handle_get_default_screen (_wnck_get_handle ());
+  return wnck_handle_get_default_screen (_wnck_get_handle ());
 }
 
 /**
@@ -610,12 +610,20 @@ wnck_screen_get_default (void)
 WnckScreen*
 wnck_screen_get_for_root (gulong root_window_id)
 {
-  return _wnck_handle_get_screen_for_root (_wnck_get_handle (),
-                                           root_window_id);
+  return wnck_handle_get_screen_for_root (_wnck_get_handle (),
+                                          root_window_id);
 }
 
+/**
+ * wnck_screen_get_handle:
+ * @screen: a #WnckScreen.
+ *
+ * Gets the handle.
+ *
+ * Returns: (transfer none): a #WnckHandle, or %NULL.
+ */
 WnckHandle *
-_wnck_screen_get_handle (WnckScreen *screen)
+wnck_screen_get_handle (WnckScreen *screen)
 {
   g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
@@ -1405,7 +1413,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = _wnck_handle_get_window (screen->priv->handle, mapping[i]);
+      window = wnck_handle_get_window (screen->priv->handle, mapping[i]);
 
       if (window == NULL)
         {
@@ -1424,7 +1432,7 @@ update_client_list (WnckScreen *screen)
 
           leader = wnck_window_get_group_leader (window);
 
-          app = _wnck_handle_get_application (screen->priv->handle, leader);
+          app = wnck_handle_get_application (screen->priv->handle, leader);
           if (app == NULL)
             {
               app = _wnck_application_create (leader, screen);
@@ -1437,7 +1445,7 @@ update_client_list (WnckScreen *screen)
 
 	  res_class = wnck_window_get_class_group_name (window);
 
-	  class_group = _wnck_handle_get_class_group (screen->priv->handle, res_class);
+	  class_group = wnck_handle_get_class_group (screen->priv->handle, res_class);
 	  if (class_group == NULL)
 	    {
 	      class_group = _wnck_class_group_create (screen, res_class);
@@ -1501,7 +1509,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = _wnck_handle_get_window (screen->priv->handle, stack[i]);
+      window = wnck_handle_get_window (screen->priv->handle, stack[i]);
 
       g_assert (window != NULL);
 
@@ -1915,7 +1923,7 @@ update_active_window (WnckScreen *screen)
                     _wnck_atom_get ("_NET_ACTIVE_WINDOW"),
                     &xwindow);
 
-  window = _wnck_handle_get_window (screen->priv->handle, xwindow);
+  window = wnck_handle_get_window (screen->priv->handle, xwindow);
 
   if (window == screen->priv->active_window)
     return;

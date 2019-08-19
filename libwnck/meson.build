@@ -39,6 +39,7 @@ headers = [
   'util.h',
   'window.h',
   'window-action-menu.h',
+  'wnck-handle.h',
   'workspace.h',
 ]
 

@@ -158,7 +158,7 @@ _wnck_get_handle (void)
       if (client_type == 0)
         client_type = WNCK_CLIENT_TYPE_APPLICATION;
 
-      wnck_handle = _wnck_handle_new (client_type);
+      wnck_handle = wnck_handle_new (client_type);
     }
 
   return wnck_handle;
@@ -176,7 +176,7 @@ _wnck_get_handle (void)
 void
 wnck_set_default_icon_size (gsize size)
 {
-  _wnck_handle_set_default_icon_size (_wnck_get_handle (), size);
+  wnck_handle_set_default_icon_size (_wnck_get_handle(), size);
 }
 
 /**
@@ -195,7 +195,7 @@ wnck_set_default_mini_icon_size (gsize size)
   WnckScreen *screen;
   GList *l;
 
-  _wnck_handle_set_default_mini_icon_size (_wnck_get_handle (), size);
+  wnck_handle_set_default_mini_icon_size (_wnck_get_handle (), size);
 
   default_screen = DefaultScreen (_wnck_get_default_display ());
   screen = _wnck_handle_get_existing_screen (_wnck_get_handle (),

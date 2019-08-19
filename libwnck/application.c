@@ -191,7 +191,7 @@ wnck_application_finalize (GObject *object)
 WnckApplication*
 wnck_application_get (gulong xwindow)
 {
-  return _wnck_handle_get_application (_wnck_get_handle (), xwindow);
+  return wnck_handle_get_application (_wnck_get_handle (), xwindow);
 }
 
 /**
@@ -319,7 +319,7 @@ get_icons (WnckApplication *app)
   gsize normal_size;
   gsize mini_size;
 
-  handle = _wnck_screen_get_handle (app->priv->screen);
+  handle = wnck_screen_get_handle (app->priv->screen);
 
   icon = NULL;
   mini_icon = NULL;
@@ -505,8 +505,8 @@ _wnck_application_create (Window      xwindow,
   WnckApplication *application;
   Screen          *xscreen;
 
-  handle = _wnck_screen_get_handle (screen);
-  application = _wnck_handle_get_application (handle, xwindow);
+  handle = wnck_screen_get_handle (screen);
+  application = wnck_handle_get_application (handle, xwindow);
 
   g_return_val_if_fail (application == NULL, NULL);
 
@@ -554,15 +554,15 @@ _wnck_application_destroy (WnckApplication *application)
   WnckHandle *handle;
   Window xwindow = application->priv->xwindow;
 
-  handle = _wnck_screen_get_handle (application->priv->screen);
+  handle = wnck_screen_get_handle (application->priv->screen);
 
-  g_return_if_fail (_wnck_handle_get_application (handle, xwindow) == application);
+  g_return_if_fail (wnck_handle_get_application (handle, xwindow) == application);
 
   _wnck_handle_remove_application (handle, &xwindow);
 
   /* Removing from handle also removes the only ref WnckApplication had */
 
-  g_return_if_fail (_wnck_handle_get_application (handle, xwindow) == NULL);
+  g_return_if_fail (wnck_handle_get_application (handle, xwindow) == NULL);
 }
 
 static void

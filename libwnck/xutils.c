@@ -789,7 +789,7 @@ _wnck_close (WnckScreen *screen,
   Window root;
   XEvent xev;
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -838,7 +838,7 @@ _wnck_keyboard_move (WnckScreen *screen,
   Window root;
   XEvent xev;
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -875,7 +875,7 @@ _wnck_keyboard_size (WnckScreen *screen,
   Window root;
   XEvent xev;
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -919,7 +919,7 @@ _wnck_change_state (WnckScreen *screen,
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -957,7 +957,7 @@ _wnck_change_workspace (WnckScreen *screen,
   Window root;
   XEvent xev;
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -999,7 +999,7 @@ _wnck_activate (WnckScreen *screen,
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
 
-  handle = _wnck_screen_get_handle (screen);
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);

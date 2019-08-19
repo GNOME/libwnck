@@ -20,33 +20,16 @@
 
 #include "class-group.h"
 #include "util.h"
+#include "wnck-handle.h"
 
 G_BEGIN_DECLS
 
-typedef struct _WnckHandle WnckHandle;
-
-WnckHandle      *_wnck_handle_new                        (WnckClientType  client_type);
-
 WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
-
-WnckScreen      *_wnck_handle_get_default_screen         (WnckHandle     *self);
-
-WnckScreen      *_wnck_handle_get_screen                 (WnckHandle     *self,
-                                                          int             index);
-
-WnckScreen      *_wnck_handle_get_screen_for_root        (WnckHandle     *self,
-                                                          gulong          root_window_id);
 
 WnckScreen      *_wnck_handle_get_existing_screen        (WnckHandle     *self,
                                                           int             number);
 
-void             _wnck_handle_set_default_icon_size      (WnckHandle     *self,
-                                                          gsize           icon_size);
-
 gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
-
-void             _wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
-                                                          gsize           icon_size);
 
 gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
 
@@ -57,9 +40,6 @@ void             _wnck_handle_insert_class_group         (WnckHandle      *self,
 void             _wnck_handle_remove_class_group         (WnckHandle      *self,
                                                           const char      *id);
 
-WnckClassGroup  *_wnck_handle_get_class_group            (WnckHandle      *self,
-                                                          const char      *id);
-
 void             _wnck_handle_insert_application         (WnckHandle      *self,
                                                           gpointer         xwindow,
                                                           WnckApplication *app);
@@ -67,18 +47,12 @@ void             _wnck_handle_insert_application         (WnckHandle      *self,
 void             _wnck_handle_remove_application         (WnckHandle      *self,
                                                           gpointer         xwindow);
 
-WnckApplication *_wnck_handle_get_application            (WnckHandle      *self,
-                                                          gulong           xwindow);
-
 void             _wnck_handle_insert_window              (WnckHandle      *self,
                                                           gpointer         xwindow,
                                                           WnckWindow      *window);
 
 void             _wnck_handle_remove_window              (WnckHandle      *self,
                                                           gpointer         xwindow);
-
-WnckWindow      *_wnck_handle_get_window                 (WnckHandle      *self,
-                                                          gulong           xwindow);
 
 G_END_DECLS
 

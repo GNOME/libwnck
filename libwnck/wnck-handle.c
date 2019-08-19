@@ -19,6 +19,13 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
+/**
+ * SECTION: wnck-handle
+ * @short_description: an object representing a handle.
+ *
+ * This is the main entry point into the libwnck library.
+ */
+
 #include "config.h"
 #include "wnck-handle-private.h"
 
@@ -27,9 +34,6 @@
 #include "window.h"
 #include "wnck-enum-types.h"
 #include "xutils.h"
-
-#define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
-G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
 struct _WnckHandle
 {
@@ -80,7 +84,7 @@ filter_func (GdkXEvent *gdkxevent,
       {
         WnckScreen *screen;
 
-        screen = _wnck_handle_get_screen_for_root (self, xevent->xany.window);
+        screen = wnck_handle_get_screen_for_root (self, xevent->xany.window);
 
         if (screen != NULL)
           {
@@ -91,8 +95,8 @@ filter_func (GdkXEvent *gdkxevent,
             WnckWindow *window;
             WnckApplication *app;
 
-            window = wnck_window_get (xevent->xany.window);
-            app = wnck_application_get (xevent->xany.window);
+            window = wnck_handle_get_window (self, xevent->xany.window);
+            app = wnck_handle_get_application (self, xevent->xany.window);
 
             if (app)
               _wnck_application_process_property_notify (app, xevent);
@@ -107,7 +111,7 @@ filter_func (GdkXEvent *gdkxevent,
       {
         WnckWindow *window;
 
-        window = wnck_window_get (xevent->xconfigure.window);
+        window = wnck_handle_get_window (self, xevent->xconfigure.window);
 
         if (window)
           _wnck_window_process_configure_notify (window, xevent);
@@ -305,8 +309,16 @@ wnck_handle_init (WnckHandle *self)
   gdk_window_add_filter (NULL, filter_func, self);
 }
 
+/**
+ * wnck_handle_new:
+ * @client_type: a role for the client
+ *
+ * Creates a new #WnckHandle object with a given @client_type.
+ *
+ * Returns: (transfer full): newly created #WnckHandle.
+ */
 WnckHandle *
-_wnck_handle_new (WnckClientType client_type)
+wnck_handle_new (WnckClientType client_type)
 {
   return g_object_new (WNCK_TYPE_HANDLE,
                        "client-type", client_type,
@@ -319,8 +331,18 @@ _wnck_handle_get_client_type (WnckHandle *self)
   return self->client_type;
 }
 
+/**
+ * wnck_handle_get_default_screen:
+ * @self: a #WnckHandle
+ *
+ * Gets the default #WnckScreen on the default display.
+ *
+ * Returns: (transfer none) (nullable): the default #WnckScreen. The
+ * returned #WnckScreen is owned by #WnckHandle and must not be referenced
+ * or unreferenced. This can return %NULL if not on X11.
+ */
 WnckScreen *
-_wnck_handle_get_default_screen (WnckHandle *self)
+wnck_handle_get_default_screen (WnckHandle *self)
 {
   Display *display;
 
@@ -330,12 +352,23 @@ _wnck_handle_get_default_screen (WnckHandle *self)
   if (display == NULL)
     return NULL;
 
-  return _wnck_handle_get_screen (self, DefaultScreen (display));
+  return wnck_handle_get_screen (self, DefaultScreen (display));
 }
 
+/**
+ * wnck_handle_get_screen:
+ * @self: a #WnckHandle
+ * @index: screen number, starting from 0.
+ *
+ * Gets the #WnckScreen for a given screen on the default display.
+ *
+ * Returns: (transfer none): the #WnckScreen for screen @index, or %NULL
+ * if no such screen exists. The returned #WnckScreen is owned by #WnckHandle
+ * and must not be referenced or unreferenced.
+ */
 WnckScreen *
-_wnck_handle_get_screen (WnckHandle *self,
-                         int         index)
+wnck_handle_get_screen (WnckHandle *self,
+                        int         index)
 {
   Display *display;
 
@@ -360,9 +393,24 @@ _wnck_handle_get_screen (WnckHandle *self,
   return self->screens[index];
 }
 
+/**
+ * wnck_handle_get_screen_for_root:
+ * @self: a #WnckHandle
+ * @root_window_id: an X window ID.
+ *
+ * Gets the #WnckScreen for the root window at @root_window_id, or
+ * %NULL if no #WnckScreen exists for this root window.
+ *
+ * This function does not work if wnck_handle_get_screen() was not called
+ * for the sought #WnckScreen before, and returns %NULL.
+ *
+ * Returns: (transfer none): the #WnckScreen for the root window at
+ * @root_window_id, or %NULL. The returned #WnckScreen is owned by
+ * #WnckHandle and must not be referenced or unreferenced.
+ */
 WnckScreen *
-_wnck_handle_get_screen_for_root (WnckHandle *self,
-                                  gulong      root_window_id)
+wnck_handle_get_screen_for_root (WnckHandle *self,
+                                 gulong      root_window_id)
 {
   Display *display;
   int i;
@@ -407,29 +455,53 @@ _wnck_handle_get_existing_screen (WnckHandle *self,
   return NULL;
 }
 
+/**
+ * wnck_handle_set_default_icon_size:
+ * @self: a #WnckHandle
+ * @icon_size: the default size for windows and application standard icons.
+ *
+ * The default main icon size is %WNCK_DEFAULT_ICON_SIZE. This function allows
+ * to change this value.
+ */
 void
-_wnck_handle_set_default_icon_size (WnckHandle *self,
-                                    gsize       icon_size)
+wnck_handle_set_default_icon_size (WnckHandle *self,
+                                   gsize       icon_size)
 {
+  g_return_if_fail (WNCK_IS_HANDLE (self));
+
   self->default_icon_size = icon_size;
 }
 
 gsize
 _wnck_handle_get_default_icon_size (WnckHandle *self)
 {
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_ICON_SIZE);
+
   return self->default_icon_size;
 }
 
+/**
+ * wnck_handle_set_default_mini_icon_size:
+ * @self: a #WnckHandle
+ * @icon_size: the default size for windows and application mini icons.
+ *
+ * The default main icon size is %WNCK_DEFAULT_MINI_ICON_SIZE. This function
+ * allows to change this value.
+ */
 void
-_wnck_handle_set_default_mini_icon_size (WnckHandle *self,
-                                         gsize       icon_size)
+wnck_handle_set_default_mini_icon_size (WnckHandle *self,
+                                        gsize       icon_size)
 {
+  g_return_if_fail (WNCK_IS_HANDLE (self));
+
   self->default_mini_icon_size = icon_size;
 }
 
 gsize
 _wnck_handle_get_default_mini_icon_size (WnckHandle *self)
 {
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_MINI_ICON_SIZE);
+
   return self->default_mini_icon_size;
 }
 
@@ -451,9 +523,21 @@ _wnck_handle_remove_class_group (WnckHandle *self,
   g_hash_table_remove (self->class_group_hash, id);
 }
 
+/**
+ * wnck_handle_get_class_group:
+ * @self: a #WnckHandle
+ * @id: identifier name of the sought resource class.
+ *
+ * Gets the #WnckClassGroup corresponding to @id.
+ *
+ * Returns: (transfer none): the #WnckClassGroup corresponding to
+ * @id, or %NULL if there is no #WnckClassGroup with the specified
+ * @id. The returned #WnckClassGroup is owned by libwnck and must not be
+ * referenced or unreferenced.
+ */
 WnckClassGroup *
-_wnck_handle_get_class_group (WnckHandle *self,
-                              const char *id)
+wnck_handle_get_class_group (WnckHandle *self,
+                             const char *id)
 {
   g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
 
@@ -475,9 +559,23 @@ _wnck_handle_remove_application (WnckHandle *self,
   g_hash_table_remove (self->app_hash, xwindow);
 }
 
+
+/**
+ * wnck_handle_get_application:
+ * @self: a #WnckHandle
+ * @xwindow: the X window ID of a group leader.
+ *
+ * Gets the #WnckApplication corresponding to the group leader with @xwindow
+ * as X window ID.
+ *
+ * Returns: (transfer none): the #WnckApplication corresponding to
+ * @xwindow, or %NULL if there no such #WnckApplication could be found. The
+ * returned #WnckApplication is owned by libwnck and must not be referenced or
+ * unreferenced.
+ */
 WnckApplication *
-_wnck_handle_get_application (WnckHandle *self,
-                              gulong      xwindow)
+wnck_handle_get_application (WnckHandle *self,
+                             gulong      xwindow)
 {
   g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
 
@@ -499,9 +597,21 @@ _wnck_handle_remove_window (WnckHandle *self,
   g_hash_table_remove (self->window_hash, xwindow);
 }
 
+/**
+ * wnck_handle_get_window:
+ * @self: a #WnckHandle
+ * @xwindow: an X window ID.
+ *
+ * Gets a preexisting #WnckWindow for the X window @xwindow. This will not
+ * create a #WnckWindow if none exists. The function is robust against bogus
+ * window IDs.
+ *
+ * Returns: (transfer none): the #WnckWindow for @xwindow. The returned
+ * #WnckWindow is owned by libwnck and must not be referenced or unreferenced.
+ */
 WnckWindow *
-_wnck_handle_get_window (WnckHandle *self,
-                         gulong      xwindow)
+wnck_handle_get_window (WnckHandle *self,
+                        gulong      xwindow)
 {
   g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
 

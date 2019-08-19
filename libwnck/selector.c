@@ -63,6 +63,17 @@ struct _WnckSelectorPrivate {
   GHashTable *window_hash;
 };
 
+enum
+{
+  PROP_0,
+
+  PROP_HANDLE,
+
+  LAST_PROP
+};
+
+static GParamSpec *selector_properties[LAST_PROP] = { NULL };
+
 G_DEFINE_TYPE_WITH_PRIVATE (WnckSelector, wnck_selector, GTK_TYPE_MENU_BAR);
 
 static GObject *wnck_selector_constructor (GType                  type,
@@ -120,8 +131,8 @@ wnck_selector_get_screen (WnckSelector *selector)
 
   screen = gtk_widget_get_screen (GTK_WIDGET (selector));
 
-  return _wnck_handle_get_screen (selector->priv->handle,
-                                  gdk_x11_screen_get_screen_number (screen));
+  return wnck_handle_get_screen (selector->priv->handle,
+                                 gdk_x11_screen_get_screen_number (screen));
 }
 
 static GdkPixbuf *
@@ -1156,6 +1167,69 @@ wnck_selector_init (WnckSelector *selector)
 }
 
 static void
+wnck_selector_get_property (GObject    *object,
+                            guint       property_id,
+                            GValue     *value,
+                            GParamSpec *pspec)
+{
+  WnckSelector *self;
+
+  self = WNCK_SELECTOR (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_value_set_object (value, self->priv->handle);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+wnck_selector_set_property (GObject      *object,
+                            guint         property_id,
+                            const GValue *value,
+                            GParamSpec   *pspec)
+{
+  WnckSelector *self;
+
+  self = WNCK_SELECTOR (object);
+
+  switch (property_id)
+    {
+      case PROP_HANDLE:
+        g_assert (self->priv->handle == NULL);
+        self->priv->handle = g_value_dup_object (value);
+        break;
+
+      default:
+        G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+        break;
+    }
+}
+
+static void
+install_properties (GObjectClass *object_class)
+{
+  selector_properties[PROP_HANDLE] =
+    g_param_spec_object ("handle",
+                         "handle",
+                         "handle",
+                         WNCK_TYPE_HANDLE,
+                         G_PARAM_CONSTRUCT_ONLY |
+                         G_PARAM_READWRITE |
+                         G_PARAM_EXPLICIT_NOTIFY |
+                         G_PARAM_STATIC_STRINGS);
+
+  g_object_class_install_properties (object_class,
+                                     LAST_PROP,
+                                     selector_properties);
+}
+
+static void
 wnck_selector_class_init (WnckSelectorClass *klass)
 {
   GObjectClass   *object_class     = G_OBJECT_CLASS (klass);
@@ -1164,10 +1238,14 @@ wnck_selector_class_init (WnckSelectorClass *klass)
   object_class->constructor = wnck_selector_constructor;
   object_class->dispose = wnck_selector_dispose;
   object_class->finalize = wnck_selector_finalize;
+  object_class->get_property = wnck_selector_get_property;
+  object_class->set_property = wnck_selector_set_property;
 
   widget_class->realize   = wnck_selector_realize;
   widget_class->unrealize = wnck_selector_unrealize;
   widget_class->scroll_event = wnck_selector_scroll_event;
+
+  install_properties (object_class);
 
   gtk_widget_class_set_css_name (widget_class, "wnck-selector");
 }
@@ -1277,8 +1355,30 @@ wnck_selector_new (void)
 {
   WnckSelector *selector;
 
-  selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
-  selector->priv->handle = g_object_ref (_wnck_get_handle ());
+  selector = g_object_new (WNCK_TYPE_SELECTOR,
+                           "handle", _wnck_get_handle (),
+                           NULL);
 
   return GTK_WIDGET (selector);
+}
+
+/**
+ * wnck_selector_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckSelector. The #WnckSelector will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckSelector.
+ */
+GtkWidget *
+wnck_selector_new_with_handle (WnckHandle *handle)
+{
+  WnckSelector *self;
+
+  self = g_object_new (WNCK_TYPE_SELECTOR,
+                       "handle", handle,
+                       NULL);
+
+  return GTK_WIDGET (self);
 }
