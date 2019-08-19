@@ -41,6 +41,7 @@ wnck_headers =			\
 	util.h			\
 	window.h 		\
 	window-action-menu.h	\
+	wnck-handle.h 		\
 	workspace.h
 
 libwnckincludedir = $(includedir)/libwnck-3.0/libwnck
@@ -60,6 +61,7 @@ wnck_sources =			\
 	util.c			\
 	window.c		\
 	window-action-menu.c	\
+	wnck-handle.c		\
 	workspace.c
 
 wnck_accessibility_files =			\
@@ -78,6 +80,7 @@ libwnck_3_la_SOURCES = 		\
 	private.h		\
 	xutils.c		\
 	xutils.h		\
+	wnck-handle-private.h \
 	wnck-image-menu-item.c \
 	wnck-image-menu-item-private.h \
 	$(wnck_accessibility_files)
