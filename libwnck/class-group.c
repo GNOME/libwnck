@@ -26,6 +26,7 @@
 #include "class-group.h"
 #include "window.h"
 #include "private.h"
+#include "wnck-handle-private.h"
 
 /**
  * SECTION:class-group
@@ -455,12 +456,17 @@ set_icon (WnckClassGroup *class_group)
 
   if (!icon || !mini_icon)
     {
-      _wnck_get_fallback_icons (&icon,
-                                _wnck_get_default_icon_size (),
-                                _wnck_get_default_icon_size (),
+      WnckHandle *handle;
+
+      handle = wnck_screen_get_handle (class_group->priv->screen);
+
+      _wnck_get_fallback_icons (handle,
+                                &icon,
+                                wnck_handle_get_default_icon_size (handle),
+                                wnck_handle_get_default_icon_size (handle),
                                 &mini_icon,
-                                _wnck_get_default_mini_icon_size (),
-                                _wnck_get_default_mini_icon_size ());
+                                wnck_handle_get_default_mini_icon_size (handle),
+                                wnck_handle_get_default_mini_icon_size (handle));
       icons_reffed = TRUE;
     }
 

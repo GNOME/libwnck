@@ -2116,15 +2116,18 @@ wnck_window_transient_is_most_recently_activated (WnckWindow *window)
 static void
 get_icons (WnckWindow *window)
 {
+  WnckHandle *handle;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
   gsize normal_size;
   gsize mini_size;
 
+  handle = wnck_screen_get_handle (window->priv->screen);
+
   icon = NULL;
   mini_icon = NULL;
-  normal_size = _wnck_get_default_icon_size ();
-  mini_size = _wnck_get_default_mini_icon_size ();
+  normal_size = wnck_handle_get_default_icon_size (handle);
+  mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   if (_wnck_read_icons (window->priv->screen,
                         window->priv->xwindow,

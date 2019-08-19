@@ -674,8 +674,6 @@ _wnck_get_handle (void)
   return wnck_handle;
 }
 
-static gsize default_icon_size = WNCK_DEFAULT_ICON_SIZE;
-
 /**
  * wnck_set_default_icon_size:
  * @size: the default size for windows and application standard icons.
@@ -688,16 +686,8 @@ static gsize default_icon_size = WNCK_DEFAULT_ICON_SIZE;
 void
 wnck_set_default_icon_size (gsize size)
 {
-  default_icon_size = size;
+  wnck_handle_set_default_icon_size (_wnck_get_handle(), size);
 }
-
-gsize
-_wnck_get_default_icon_size (void)
-{
-  return default_icon_size;
-}
-
-static gsize default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 
 /**
  * wnck_set_default_mini_icon_size:
@@ -715,7 +705,7 @@ wnck_set_default_mini_icon_size (gsize size)
   WnckScreen *screen;
   GList *l;
 
-  default_mini_icon_size = size;
+  wnck_handle_set_default_mini_icon_size (_wnck_get_handle (), size);
 
   default_screen = DefaultScreen (_wnck_get_default_display ());
   screen = _wnck_screen_get_existing (default_screen);
@@ -734,12 +724,6 @@ wnck_set_default_mini_icon_size (gsize size)
             _wnck_application_load_icons (application);
         }
     }
-}
-
-gsize
-_wnck_get_default_mini_icon_size (void)
-{
-  return default_mini_icon_size;
 }
 
 /**

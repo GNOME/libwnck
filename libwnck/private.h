@@ -41,9 +41,6 @@ G_BEGIN_DECLS
 
 WnckHandle *_wnck_get_handle (void);
 
-gsize _wnck_get_default_icon_size (void);
-gsize _wnck_get_default_mini_icon_size (void);
-
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);
 void _wnck_window_process_property_notify (WnckWindow *window,
@@ -96,9 +93,8 @@ void             _wnck_application_destroy (WnckApplication *app);
 void             _wnck_application_load_icons (WnckApplication *app);
 void             _wnck_application_shutdown_all (void);
 
-WnckClassGroup  *_wnck_class_group_create        (WnckScreen     *screen,
+WnckClassGroup*  _wnck_class_group_create        (WnckScreen     *screen,
                                                   const char     *res_class);
-
 void             _wnck_class_group_destroy       (WnckClassGroup *class_group);
 void             _wnck_class_group_add_window    (WnckClassGroup *class_group,
                                                   WnckWindow     *window);

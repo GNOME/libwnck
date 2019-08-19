@@ -2324,7 +2324,12 @@ _wnck_read_icons (WnckScreen     *screen,
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (iconp,
+      WnckHandle *handle;
+
+      handle = wnck_screen_get_handle (screen);
+
+      _wnck_get_fallback_icons (handle,
+                                iconp,
                                 ideal_width,
                                 ideal_height,
                                 mini_iconp,
@@ -2384,24 +2389,31 @@ default_icon_at_size (int width,
 }
 
 void
-_wnck_get_fallback_icons (GdkPixbuf **iconp,
-                          int         ideal_width,
-                          int         ideal_height,
-                          GdkPixbuf **mini_iconp,
-                          int         ideal_mini_width,
-                          int         ideal_mini_height)
+_wnck_get_fallback_icons (WnckHandle  *handle,
+                          GdkPixbuf  **iconp,
+                          int          ideal_width,
+                          int          ideal_height,
+                          GdkPixbuf  **mini_iconp,
+                          int          ideal_mini_width,
+                          int          ideal_mini_height)
 {
+  gsize default_icon_size;
+  gsize default_mini_icon_size;
+
+  default_icon_size = wnck_handle_get_default_icon_size (handle);
+  default_mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
   if (iconp)
     *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
-                                   (int) _wnck_get_default_icon_size (),
+                                   (int) default_icon_size,
                                    ideal_height > 0 ? ideal_height :
-                                   (int) _wnck_get_default_icon_size ());
+                                   (int) default_icon_size);
 
   if (mini_iconp)
     *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
-                                        (int) _wnck_get_default_mini_icon_size (),
+                                        (int) default_mini_icon_size,
                                         ideal_mini_height > 0 ? ideal_mini_height :
-                                        (int) _wnck_get_default_mini_icon_size ());
+                                        (int) default_mini_icon_size);
 }
 
 
