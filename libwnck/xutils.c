@@ -30,6 +30,7 @@
 #include "screen.h"
 #include "window.h"
 #include "private.h"
+#include "wnck-handle-private.h"
 
 gboolean
 _wnck_get_cardinal (Screen *screen,
@@ -882,16 +883,20 @@ _wnck_deiconify (Screen *screen,
 }
 
 void
-_wnck_close (Screen *screen,
-	     Window  xwindow,
-	     Time    timestamp)
+_wnck_close (WnckScreen *screen,
+             Window      xwindow,
+             Time        timestamp)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -901,7 +906,7 @@ _wnck_close (Screen *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = timestamp;
-  xev.xclient.data.l[1] = _wnck_get_client_type ();
+  xev.xclient.data.l[1] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -928,15 +933,19 @@ _wnck_close (Screen *screen,
 #define _NET_WM_MOVERESIZE_MOVE_KEYBOARD    10
 
 void
-_wnck_keyboard_move (Screen *screen,
-                     Window  xwindow)
+_wnck_keyboard_move (WnckScreen *screen,
+                     Window      xwindow)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -949,7 +958,7 @@ _wnck_keyboard_move (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_MOVE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = _wnck_get_client_type ();
+  xev.xclient.data.l[4] = wnck_handle_get_client_type (handle);
 
   _wnck_error_trap_push (display);
   XSendEvent (display,
@@ -961,15 +970,19 @@ _wnck_keyboard_move (Screen *screen,
 }
 
 void
-_wnck_keyboard_size (Screen *screen,
-                     Window  xwindow)
+_wnck_keyboard_size (WnckScreen *screen,
+                     Window      xwindow)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -982,7 +995,7 @@ _wnck_keyboard_size (Screen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_SIZE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = _wnck_get_client_type ();
+  xev.xclient.data.l[4] = wnck_handle_get_client_type (handle);
 
   _wnck_error_trap_push (display);
   XSendEvent (display,
@@ -994,22 +1007,26 @@ _wnck_keyboard_size (Screen *screen,
 }
 
 void
-_wnck_change_state (Screen  *screen,
-		    Window   xwindow,
-                    gboolean add,
-                    Atom     state1,
-                    Atom     state2)
+_wnck_change_state (WnckScreen *screen,
+                    Window      xwindow,
+                    gboolean    add,
+                    Atom        state1,
+                    Atom        state2)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
 #define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -1021,7 +1038,7 @@ _wnck_change_state (Screen  *screen,
   xev.xclient.data.l[0] = add ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
   xev.xclient.data.l[1] = state1;
   xev.xclient.data.l[2] = state2;
-  xev.xclient.data.l[3] = _wnck_get_client_type ();
+  xev.xclient.data.l[3] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push (display);
@@ -1034,16 +1051,20 @@ _wnck_change_state (Screen  *screen,
 }
 
 void
-_wnck_change_workspace (Screen     *screen,
-			Window      xwindow,
+_wnck_change_workspace (WnckScreen *screen,
+                        Window      xwindow,
                         int         new_space)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -1053,7 +1074,7 @@ _wnck_change_workspace (Screen     *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_space;
-  xev.xclient.data.l[1] = _wnck_get_client_type ();
+  xev.xclient.data.l[1] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -1068,20 +1089,25 @@ _wnck_change_workspace (Screen     *screen,
 }
 
 void
-_wnck_activate (Screen *screen,
-                Window  xwindow,
-                Time    timestamp)
+_wnck_activate (WnckScreen *screen,
+                Window      xwindow,
+                Time        timestamp)
 {
-  Display *display;
-  Window   root;
-  XEvent   xev;
+
+  WnckHandle *handle;
+  Screen     *xscreen;
+  Display    *display;
+  Window      root;
+  XEvent      xev;
 
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  handle = wnck_screen_get_handle (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -1090,7 +1116,7 @@ _wnck_activate (Screen *screen,
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
   xev.xclient.format = 32;
-  xev.xclient.data.l[0] = _wnck_get_client_type ();
+  xev.xclient.data.l[0] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;

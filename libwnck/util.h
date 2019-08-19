@@ -100,6 +100,7 @@ typedef enum {
   WNCK_CLIENT_TYPE_PAGER = 2
 } WnckClientType;
 
+G_DEPRECATED_FOR(wnck_handle_new)
 void wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type);
 
 #define WNCK_DEFAULT_ICON_SIZE 32

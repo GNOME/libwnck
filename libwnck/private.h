@@ -30,6 +30,7 @@
 #include "xutils.h"
 #include "pager.h"
 #include "util.h"
+#include "wnck-handle.h"
 #ifdef HAVE_STARTUP_NOTIFICATION
 #include <libsn/sn.h>
 #endif
@@ -38,7 +39,7 @@ G_BEGIN_DECLS
 
 #define WNCK_ACTIVATE_TIMEOUT 1
 
-WnckClientType _wnck_get_client_type (void);
+WnckHandle *_wnck_get_handle (void);
 
 gsize _wnck_get_default_icon_size (void);
 gsize _wnck_get_default_mini_icon_size (void);

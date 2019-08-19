@@ -33,6 +33,7 @@
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
+#include "wnck-handle-private.h"
 
 /**
  * SECTION:window
@@ -1344,8 +1345,8 @@ wnck_window_set_skip_pager (WnckWindow *window,
                             gboolean skip)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       skip,
                       _wnck_atom_get ("_NET_WM_STATE_SKIP_PAGER"),
                       0);
@@ -1400,8 +1401,8 @@ wnck_window_set_skip_tasklist (WnckWindow *window,
                                gboolean skip)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       skip,
                       _wnck_atom_get ("_NET_WM_STATE_SKIP_TASKBAR"),
                       0);
@@ -1422,8 +1423,8 @@ wnck_window_set_fullscreen (WnckWindow *window,
                                gboolean fullscreen)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       fullscreen,
                       _wnck_atom_get ("_NET_WM_STATE_FULLSCREEN"),
                       0);
@@ -1470,8 +1471,7 @@ wnck_window_close (WnckWindow *window,
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_close (WNCK_SCREEN_XSCREEN (window->priv->screen),
-	       window->priv->xwindow, timestamp);
+  _wnck_close (window->priv->screen, window->priv->xwindow, timestamp);
 }
 
 /**
@@ -1518,8 +1518,8 @@ wnck_window_maximize                (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
@@ -1536,8 +1536,8 @@ wnck_window_unmaximize              (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"));
@@ -1554,8 +1554,8 @@ wnck_window_maximize_horizontally   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
                       0);
@@ -1572,8 +1572,8 @@ wnck_window_unmaximize_horizontally (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_HORZ"),
                       0);
@@ -1590,8 +1590,8 @@ wnck_window_maximize_vertically     (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       0);
@@ -1608,8 +1608,8 @@ wnck_window_unmaximize_vertically   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_MAXIMIZED_VERT"),
                       0);
@@ -1626,8 +1626,8 @@ wnck_window_shade                   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_SHADED"),
                       0);
@@ -1644,8 +1644,8 @@ wnck_window_unshade                 (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_SHADED"),
                       0);
@@ -1666,7 +1666,7 @@ wnck_window_make_above (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_change_state (window->priv->screen,
                       window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_ABOVE"),
@@ -1687,7 +1687,7 @@ wnck_window_unmake_above (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_change_state (window->priv->screen,
                       window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_ABOVE"),
@@ -1707,7 +1707,7 @@ wnck_window_make_below (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_change_state (window->priv->screen,
                       window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_BELOW"),
@@ -1728,7 +1728,7 @@ wnck_window_unmake_below (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_change_state (window->priv->screen,
                       window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_BELOW"),
@@ -1747,8 +1747,8 @@ wnck_window_stick                   (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       TRUE,
                       _wnck_atom_get ("_NET_WM_STATE_STICKY"),
                       0);
@@ -1766,8 +1766,8 @@ wnck_window_unstick                 (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_state (WNCK_SCREEN_XSCREEN (window->priv->screen),
-		      window->priv->xwindow,
+  _wnck_change_state (window->priv->screen,
+                      window->priv->xwindow,
                       FALSE,
                       _wnck_atom_get ("_NET_WM_STATE_STICKY"),
                       0);
@@ -1784,8 +1784,7 @@ wnck_window_keyboard_move (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_keyboard_move (WNCK_SCREEN_XSCREEN (window->priv->screen),
-                       window->priv->xwindow);
+  _wnck_keyboard_move (window->priv->screen, window->priv->xwindow);
 }
 
 /**
@@ -1799,8 +1798,7 @@ wnck_window_keyboard_size (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_keyboard_size (WNCK_SCREEN_XSCREEN (window->priv->screen),
-                       window->priv->xwindow);
+  _wnck_keyboard_size (window->priv->screen, window->priv->xwindow);
 }
 
 /**
@@ -1840,8 +1838,8 @@ wnck_window_move_to_workspace (WnckWindow    *window,
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           wnck_workspace_get_number (space));
 }
 
@@ -1874,8 +1872,8 @@ wnck_window_pin (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           ALL_WORKSPACES);
 }
 
@@ -1901,8 +1899,8 @@ wnck_window_unpin (WnckWindow *window)
 
   active = wnck_screen_get_active_workspace (window->priv->screen);
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           active ? wnck_workspace_get_number (active) : 0);
 }
 
@@ -1928,7 +1926,7 @@ wnck_window_activate (WnckWindow *window,
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_activate (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_activate (window->priv->screen,
                   window->priv->xwindow,
                   timestamp);
 }
@@ -2357,12 +2355,15 @@ wnck_window_set_geometry (WnckWindow               *window,
                           int                       width,
                           int                       height)
 {
+  WnckHandle *handle;
   int gravity_and_flags;
   int source;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  source = _wnck_get_client_type();
+  handle = wnck_screen_get_handle (window->priv->screen);
+  source = wnck_handle_get_client_type (handle);
+
   gravity_and_flags = gravity;
   gravity_and_flags |= geometry_mask << 8;
   gravity_and_flags |= source << 12;

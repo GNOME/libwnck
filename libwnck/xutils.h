@@ -30,6 +30,9 @@
 
 G_BEGIN_DECLS
 
+/* forward decls */
+typedef struct _WnckScreen WnckScreen;
+
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
 gboolean _wnck_get_cardinal      (Screen *screen,
@@ -98,21 +101,22 @@ void _wnck_iconify   (Screen *screen,
 void _wnck_deiconify (Screen *screen,
                       Window  xwindow);
 
-void _wnck_close     (Screen *screen,
-		      Window  xwindow,
-		      Time    timestamp);
+void _wnck_close     (WnckScreen *screen,
+                      Window      xwindow,
+                      Time        timestamp);
 
-void _wnck_change_state     (Screen  *screen,
-			     Window   xwindow,
-                             gboolean add,
-                             Atom     state1,
-                             Atom     state2);
-void _wnck_change_workspace (Screen  *screen,
-			     Window   xwindow,
-                             int      new_space);
-void _wnck_activate         (Screen  *screen,
-                             Window   xwindow,
-                             Time     timestamp);
+void _wnck_change_state     (WnckScreen *screen,
+                             Window      xwindow,
+                             gboolean    add,
+                             Atom        state1,
+                             Atom        state2);
+void _wnck_change_workspace (WnckScreen *screen,
+                             Window      xwindow,
+                             int         new_space);
+void _wnck_activate         (WnckScreen *screen,
+                             Window      xwindow,
+                             Time        timestamp);
+
 void _wnck_activate_workspace (Screen *screen,
                                int     new_active_space,
                                Time    timestamp);
@@ -146,11 +150,11 @@ int    _wnck_select_input     (Screen  *screen,
                                int      mask,
                                gboolean update);
 
-void   _wnck_keyboard_move    (Screen *screen,
-                               Window  xwindow);
+void   _wnck_keyboard_move    (WnckScreen *screen,
+                               Window      xwindow);
 
-void   _wnck_keyboard_size    (Screen *screen,
-                               Window  xwindow);
+void   _wnck_keyboard_size    (WnckScreen *screen,
+                               Window      xwindow);
 
 void _wnck_toggle_showing_desktop (Screen  *screen,
                                    gboolean show);
