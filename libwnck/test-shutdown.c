@@ -31,6 +31,7 @@ main (int    argc,
       char **argv)
 {
   GMainLoop *loop;
+  WnckHandle *handle;
   WnckScreen *screen;
 
   gdk_init (&argc, &argv);
@@ -39,7 +40,8 @@ main (int    argc,
 
   while (TRUE)
     {
-      screen = wnck_screen_get_default ();
+      handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+      screen = wnck_handle_get_default_screen (handle);
 
       g_print ("libwnck is active for 5 seconds; change the active window to get notifications\n");
       g_signal_connect (screen, "active-window-changed",
@@ -48,7 +50,7 @@ main (int    argc,
       g_main_loop_run (loop);
 
       g_print ("libwnck is shutting down for 5 seconds; no notification will happen anymore\n");
-      wnck_shutdown ();
+      g_clear_object (&handle);
       g_timeout_add_seconds (5, quit_loop, loop);
       g_main_loop_run (loop);
 

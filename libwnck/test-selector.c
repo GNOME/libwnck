@@ -16,6 +16,7 @@ int
 main (int argc, char **argv)
 {
   GOptionContext *ctxt;
+  WnckHandle *handle;
   WnckScreen *screen;
   GtkWidget *win;
   GtkWidget *frame;
@@ -30,7 +31,8 @@ main (int argc, char **argv)
 
   gtk_init (&argc, &argv);
 
-  screen = wnck_screen_get_default ();
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+  screen = wnck_handle_get_default_screen (handle);
 
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
@@ -48,7 +50,7 @@ main (int argc, char **argv)
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  selector = wnck_selector_new ();
+  selector = wnck_selector_new_with_handle (handle);
 
   frame = gtk_frame_new (NULL);
   gtk_frame_set_shadow_type (GTK_FRAME (frame), GTK_SHADOW_IN);
@@ -70,6 +72,8 @@ main (int argc, char **argv)
   gtk_widget_show (win);
 
   gtk_main ();
+
+  g_object_unref (handle);
 
   return 0;
 }

@@ -55,6 +55,7 @@ int
 main (int argc, char **argv)
 {
   GOptionContext *ctxt;
+  WnckHandle *handle;
   WnckScreen *screen;
   GtkWidget *win;
   GtkWidget *frame;
@@ -72,8 +73,10 @@ main (int argc, char **argv)
   if (rtl)
     gtk_widget_set_default_direction (GTK_TEXT_DIR_RTL);
 
-  wnck_set_default_mini_icon_size (icon_size);
-  screen = wnck_screen_get_default ();
+
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+  wnck_handle_set_default_mini_icon_size (handle, icon_size);
+  screen = wnck_handle_get_default_screen (handle);
 
   /* because the pager doesn't respond to signals at the moment */
   wnck_screen_force_update (screen);
@@ -91,7 +94,7 @@ main (int argc, char **argv)
                     G_CALLBACK (gtk_main_quit),
                     NULL);
 
-  tasklist = wnck_tasklist_new ();
+  tasklist = wnck_tasklist_new_with_handle (handle);
 
   wnck_tasklist_set_include_all_workspaces (WNCK_TASKLIST (tasklist), display_all);
   if (always_group)
@@ -160,6 +163,8 @@ main (int argc, char **argv)
   gtk_widget_show (win);
 
   gtk_main ();
+
+  g_object_unref (handle);
 
   return 0;
 }
