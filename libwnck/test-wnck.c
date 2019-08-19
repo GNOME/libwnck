@@ -3,6 +3,7 @@
 #include <libwnck/libwnck.h>
 #include <gtk/gtk.h>
 
+static WnckHandle *handle;
 static GtkWidget *global_tree_view;
 static GtkTreeModel *global_tree_model;
 static guint refill_idle;
@@ -80,11 +81,11 @@ main (int argc, char **argv)
   g_option_context_parse (ctxt, &argc, &argv, NULL);
   g_option_context_free (ctxt);
 
-  wnck_set_default_mini_icon_size (icon_size);
-
   gtk_init (&argc, &argv);
 
-  screen = wnck_screen_get (0);
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+  wnck_handle_set_default_mini_icon_size (handle, icon_size);
+  screen = wnck_handle_get_screen (handle, 0);
 
   g_signal_connect (G_OBJECT (screen), "active_window_changed",
                     G_CALLBACK (active_window_changed_callback),
@@ -145,7 +146,9 @@ main (int argc, char **argv)
   gtk_widget_show_all (win);
   
   gtk_main ();
-  
+
+  g_object_unref (handle);
+
   return 0;
 }
 
@@ -914,7 +917,7 @@ do_refill_model (gpointer data)
   refill_idle = 0;
 
   refill_tree_model (global_tree_model,
-                     wnck_screen_get (0));
+                     wnck_handle_get_screen (handle, 0));
 
   return FALSE;
 }
