@@ -2437,8 +2437,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  * available scroll modes.
  */
 void
-wnck_pager_set_scroll_mode (WnckPager          *pager,
-                            WnckPagerScrollMode scroll_mode)
+wnck_pager_set_scroll_mode (WnckPager           *pager,
+                            WnckPagerScrollMode  scroll_mode)
 {
   g_return_if_fail (WNCK_IS_PAGER (pager));
 
