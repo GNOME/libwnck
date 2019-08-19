@@ -31,6 +31,9 @@
 
 G_BEGIN_DECLS
 
+/* forward decls */
+typedef struct _WnckScreen WnckScreen;
+
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
 gboolean _wnck_get_cardinal      (Screen *screen,

@@ -23,11 +23,14 @@
 #define WNCK_HANDLE_H
 
 #include <glib-object.h>
+#include <libwnck/util.h>
 
 G_BEGIN_DECLS
 
 #define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
 G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
+
+WnckHandle *wnck_handle_new (WnckClientType client_type);
 
 G_END_DECLS
 

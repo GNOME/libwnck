@@ -69,6 +69,8 @@ static WnckScreen** screens = NULL;
 
 struct _WnckScreenPrivate
 {
+  WnckHandle *handle;
+
   int number;
   Window xroot;
   Screen *xscreen;
@@ -529,6 +531,8 @@ wnck_screen_construct (Display    *display,
                        WnckScreen *screen,
                        int         number)
 {
+  screen->priv->handle = _wnck_get_handle ();
+
   /* Create the initial state of the screen. */
   screen->priv->xroot = RootWindow (display, number);
   screen->priv->xscreen = ScreenOfDisplay (display, number);
@@ -673,6 +677,22 @@ wnck_screen_get_for_root (gulong root_window_id)
     }
 
   return NULL;
+}
+
+/**
+ * wnck_screen_get_handle:
+ * @screen: a #WnckScreen.
+ *
+ * Gets the handle.
+ *
+ * Returns: (transfer none): a #WnckHandle, or %NULL.
+ */
+WnckHandle *
+wnck_screen_get_handle (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
+
+  return screen->priv->handle;
 }
 
 /**

@@ -22,6 +22,8 @@
 
 G_BEGIN_DECLS
 
+WnckClientType wnck_handle_get_client_type (WnckHandle *self);
+
 G_END_DECLS
 
 #endif
