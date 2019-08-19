@@ -381,15 +381,12 @@ wnck_task_class_init (WnckTaskClass *klass)
 static gboolean
 wnck_task_button_glow (WnckTask *task)
 {
-  GTimeVal tv;
   gdouble now;
   gfloat fade_opacity, loop_time;
   gint fade_max_loops;
   gboolean stopped;
 
-  g_get_current_time (&tv);
-  now = (tv.tv_sec * (1.0 * G_USEC_PER_SEC) +
-        tv.tv_usec) / G_USEC_PER_SEC;
+  now = g_get_real_time () / G_USEC_PER_SEC;
 
   if (task->glow_start_time <= G_MINDOUBLE)
     task->glow_start_time = now;
@@ -4317,11 +4314,11 @@ sequence_timeout_callback (void *user_data)
 {
   WnckTasklist *tasklist = user_data;
   GList *tmp;
-  GTimeVal now;
+  gint64 now;
   long tv_sec, tv_usec;
   double elapsed;
 
-  g_get_current_time (&now);
+  now = g_get_real_time ();
 
  restart:
   tmp = tasklist->priv->startup_sequences;
@@ -4332,9 +4329,7 @@ sequence_timeout_callback (void *user_data)
       sn_startup_sequence_get_last_active_time (task->startup_sequence,
                                                 &tv_sec, &tv_usec);
 
-      elapsed =
-        ((((double)now.tv_sec - tv_sec) * G_USEC_PER_SEC +
-          (now.tv_usec - tv_usec))) / 1000.0;
+      elapsed = (now - (tv_sec * G_USEC_PER_SEC + tv_usec)) / 1000.0;
 
       if (elapsed > STARTUP_TIMEOUT)
         {
