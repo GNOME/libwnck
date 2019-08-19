@@ -2173,7 +2173,7 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 gboolean
-_wnck_read_icons (Screen        *screen,
+_wnck_read_icons (WnckScreen    *screen,
                   Window         xwindow,
                   WnckIconCache *icon_cache,
                   GdkPixbuf    **iconp,
@@ -2183,6 +2183,7 @@ _wnck_read_icons (Screen        *screen,
                   int            ideal_mini_width,
                   int            ideal_mini_height)
 {
+  Screen *xscreen;
   Display *display;
   guchar *pixdata;
   int w, h;
@@ -2196,7 +2197,8 @@ _wnck_read_icons (Screen        *screen,
 
   g_return_val_if_fail (icon_cache != NULL, FALSE);
 
-  display = DisplayOfScreen (screen);
+  xscreen = WNCK_SCREEN_XSCREEN (screen);
+  display = DisplayOfScreen (xscreen);
 
   *iconp = NULL;
   *mini_iconp = NULL;
@@ -2232,7 +2234,7 @@ _wnck_read_icons (Screen        *screen,
     {
       icon_cache->net_wm_icon_dirty = FALSE;
 
-      if (read_rgb_icon (screen, xwindow,
+      if (read_rgb_icon (xscreen, xwindow,
                          ideal_width, ideal_height,
                          ideal_mini_width, ideal_mini_height,
                          &w, &h, &pixdata,
@@ -2279,7 +2281,7 @@ _wnck_read_icons (Screen        *screen,
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (screen, pixmap, mask,
+          if (try_pixmap_and_mask (xscreen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {
@@ -2299,13 +2301,13 @@ _wnck_read_icons (Screen        *screen,
     {
       icon_cache->kwm_win_icon_dirty = FALSE;
 
-      get_kwm_win_icon (screen, xwindow, &pixmap, &mask);
+      get_kwm_win_icon (xscreen, xwindow, &pixmap, &mask);
 
       if ((pixmap != icon_cache->prev_pixmap ||
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (screen, pixmap, mask,
+          if (try_pixmap_and_mask (xscreen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {
@@ -2323,7 +2325,12 @@ _wnck_read_icons (Screen        *screen,
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (iconp,
+      WnckHandle *handle;
+
+      handle = wnck_screen_get_handle (screen);
+
+      _wnck_get_fallback_icons (handle,
+                                iconp,
                                 ideal_width,
                                 ideal_height,
                                 mini_iconp,
@@ -2383,24 +2390,31 @@ default_icon_at_size (int width,
 }
 
 void
-_wnck_get_fallback_icons (GdkPixbuf **iconp,
-                          int         ideal_width,
-                          int         ideal_height,
-                          GdkPixbuf **mini_iconp,
-                          int         ideal_mini_width,
-                          int         ideal_mini_height)
+_wnck_get_fallback_icons (WnckHandle  *handle,
+                          GdkPixbuf  **iconp,
+                          int          ideal_width,
+                          int          ideal_height,
+                          GdkPixbuf  **mini_iconp,
+                          int          ideal_mini_width,
+                          int          ideal_mini_height)
 {
+  gsize default_icon_size;
+  gsize default_mini_icon_size;
+
+  default_icon_size = wnck_handle_get_default_icon_size (handle);
+  default_mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
   if (iconp)
     *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
-                                   (int) _wnck_get_default_icon_size (),
+                                   (int) default_icon_size,
                                    ideal_height > 0 ? ideal_height :
-                                   (int) _wnck_get_default_icon_size ());
+                                   (int) default_icon_size);
 
   if (mini_iconp)
     *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
-                                        (int) _wnck_get_default_mini_icon_size (),
+                                        (int) default_mini_icon_size,
                                         ideal_mini_height > 0 ? ideal_mini_height :
-                                        (int) _wnck_get_default_mini_icon_size ());
+                                        (int) default_mini_icon_size);
 }
 
 

@@ -31,6 +31,7 @@
 G_BEGIN_DECLS
 
 /* forward decls */
+typedef struct _WnckHandle WnckHandle;
 typedef struct _WnckScreen WnckScreen;
 
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
@@ -170,7 +171,7 @@ void           _wnck_icon_cache_set_want_fallback    (WnckIconCache *icon_cache,
                                                       gboolean       setting);
 gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache *icon_cache);
 
-gboolean _wnck_read_icons         (Screen         *screen,
+gboolean _wnck_read_icons         (WnckScreen     *screen,
                                    Window          xwindow,
                                    WnckIconCache  *icon_cache,
                                    GdkPixbuf     **iconp,
@@ -179,7 +180,8 @@ gboolean _wnck_read_icons         (Screen         *screen,
                                    GdkPixbuf     **mini_iconp,
                                    int             ideal_mini_width,
                                    int             ideal_mini_height);
-void _wnck_get_fallback_icons (GdkPixbuf     **iconp,
+void _wnck_get_fallback_icons (WnckHandle     *handle,
+                               GdkPixbuf     **iconp,
                                int             ideal_width,
                                int             ideal_height,
                                GdkPixbuf     **mini_iconp,

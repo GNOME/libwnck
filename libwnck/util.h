@@ -106,7 +106,10 @@ void wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type);
 #define WNCK_DEFAULT_ICON_SIZE 32
 #define WNCK_DEFAULT_MINI_ICON_SIZE 16
 
+G_DEPRECATED_FOR(wnck_handle_set_default_icon_size)
 void wnck_set_default_icon_size      (gsize size);
+
+G_DEPRECATED_FOR(wnck_handle_set_default_mini_icon_size)
 void wnck_set_default_mini_icon_size (gsize size);
 
 void wnck_shutdown        (void);

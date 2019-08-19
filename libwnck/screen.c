@@ -1513,7 +1513,7 @@ update_client_list (WnckScreen *screen)
 	  class_group = wnck_class_group_get (res_class);
 	  if (class_group == NULL)
 	    {
-	      class_group = _wnck_class_group_create (res_class);
+	      class_group = _wnck_class_group_create (screen, res_class);
 	      created_class_groups = g_list_prepend (created_class_groups, class_group);
 	    }
 

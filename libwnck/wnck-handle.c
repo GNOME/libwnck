@@ -32,6 +32,9 @@ struct _WnckHandle
   GObject        parent;
 
   WnckClientType client_type;
+
+  gsize          default_icon_size;
+  gsize          default_mini_icon_size;
 };
 
 enum
@@ -120,6 +123,8 @@ wnck_handle_class_init (WnckHandleClass *self_class)
 static void
 wnck_handle_init (WnckHandle *self)
 {
+  self->default_icon_size = WNCK_DEFAULT_ICON_SIZE;
+  self->default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 }
 
 /**
@@ -144,4 +149,54 @@ wnck_handle_get_client_type (WnckHandle *self)
   g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_CLIENT_TYPE_APPLICATION);
 
   return self->client_type;
+}
+
+/**
+ * wnck_handle_set_default_icon_size:
+ * @self: a #WnckHandle
+ * @icon_size: the default size for windows and application standard icons.
+ *
+ * The default main icon size is %WNCK_DEFAULT_ICON_SIZE. This function allows
+ * to change this value.
+ */
+void
+wnck_handle_set_default_icon_size (WnckHandle *self,
+                                   gsize       icon_size)
+{
+  g_return_if_fail (WNCK_IS_HANDLE (self));
+
+  self->default_icon_size = icon_size;
+}
+
+gsize
+wnck_handle_get_default_icon_size (WnckHandle *self)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_ICON_SIZE);
+
+  return self->default_icon_size;
+}
+
+/**
+ * wnck_handle_set_default_mini_icon_size:
+ * @self: a #WnckHandle
+ * @icon_size: the default size for windows and application mini icons.
+ *
+ * The default main icon size is %WNCK_DEFAULT_MINI_ICON_SIZE. This function
+ * allows to change this value.
+ */
+void
+wnck_handle_set_default_mini_icon_size (WnckHandle *self,
+                                        gsize       icon_size)
+{
+  g_return_if_fail (WNCK_IS_HANDLE (self));
+
+  self->default_mini_icon_size = icon_size;
+}
+
+gsize
+wnck_handle_get_default_mini_icon_size (WnckHandle *self)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_MINI_ICON_SIZE);
+
+  return self->default_mini_icon_size;
 }

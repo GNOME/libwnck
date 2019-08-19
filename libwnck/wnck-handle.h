@@ -30,7 +30,13 @@ G_BEGIN_DECLS
 #define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
 G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
-WnckHandle *wnck_handle_new (WnckClientType client_type);
+WnckHandle *wnck_handle_new                        (WnckClientType  client_type);
+
+void        wnck_handle_set_default_icon_size      (WnckHandle     *self,
+                                                    gsize           icon_size);
+
+void        wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
+                                                    gsize           icon_size);
 
 G_END_DECLS
 
