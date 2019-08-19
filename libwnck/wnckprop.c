@@ -1861,6 +1861,7 @@ main (int argc, char **argv)
   GOptionContext *ctxt;
   GOptionGroup   *group;
   GError         *error;
+  WnckHandle     *handle;
   WnckScreen     *screen;
 
   bindtextdomain (GETTEXT_PACKAGE, WNCK_LOCALEDIR);
@@ -1933,17 +1934,19 @@ main (int argc, char **argv)
 
   gtk_init (&argc, &argv);
 
-  wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_PAGER);
 
   if ((option_screen && interact_screen < 0) || !option_screen)
-    screen = wnck_screen_get_default ();
+    screen = wnck_handle_get_default_screen (handle);
   else
     {
-      screen = wnck_screen_get (interact_screen);
+      screen = wnck_handle_get_screen (handle, interact_screen);
       if (!screen)
         {
-         g_printerr (_("Cannot interact with screen %d: "
-                       "the screen does not exist\n"), interact_screen);
+          g_printerr (_("Cannot interact with screen %d: "
+                        "the screen does not exist\n"), interact_screen);
+
+          g_object_unref (handle);
           return 0;
         }
     }
@@ -1968,7 +1971,10 @@ main (int argc, char **argv)
       gtk_main ();
 
       if (!got_from_user)
-        return 0;
+        {
+          g_object_unref (handle);
+          return 0;
+        }
     }
 
   if (mode == SCREEN_READ_MODE)
@@ -2071,6 +2077,8 @@ main (int argc, char **argv)
         g_printerr (_("Cannot interact with window with XID %lu: "
                       "the window cannot be found\n"), xid);
     }
+
+  g_object_unref (handle);
 
   return 0;
 }
