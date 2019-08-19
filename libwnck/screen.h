@@ -194,8 +194,13 @@ typedef enum
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_handle_get_default_screen)
 WnckScreen*    wnck_screen_get_default              (void);
+
+G_DEPRECATED_FOR(wnck_handle_get_screen)
 WnckScreen*    wnck_screen_get                      (int         index);
+
+G_DEPRECATED_FOR(wnck_handle_get_screen_for_root)
 WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id);
 
 WnckHandle*    wnck_screen_get_handle               (WnckScreen *screen);

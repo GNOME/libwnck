@@ -3097,9 +3097,12 @@ update_transient_for (WnckWindow *window)
                         &parent) &&
       parent != window->priv->xwindow)
     {
+      WnckHandle *handle;
+
       window->priv->transient_for = parent;
 
-      if (wnck_screen_get_for_root (window->priv->transient_for) != NULL)
+      handle = wnck_screen_get_handle (window->priv->screen);
+      if (wnck_handle_get_screen_for_root (handle, window->priv->transient_for) != NULL)
         window->priv->transient_for_root = TRUE;
       else
         window->priv->transient_for_root = FALSE;

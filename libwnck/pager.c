@@ -61,6 +61,8 @@
 
 struct _WnckPagerPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   int n_rows; /* really columns for vertical orientation */
@@ -297,7 +299,8 @@ _wnck_pager_set_screen (WnckPager *pager)
     return;
 
   gdkscreen = gtk_widget_get_screen (GTK_WIDGET (pager));
-  pager->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  pager->priv->screen = wnck_handle_get_screen (pager->priv->handle,
+                                                gdk_x11_screen_get_screen_number (gdkscreen));
 
   if (!wnck_pager_set_layout_hint (pager))
     {
@@ -2219,6 +2222,27 @@ wnck_pager_new (void)
   WnckPager *pager;
 
   pager = g_object_new (WNCK_TYPE_PAGER, NULL);
+  pager->priv->handle = _wnck_get_handle ();
+
+  return GTK_WIDGET (pager);
+}
+
+/**
+ * wnck_pager_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckPager. The #WnckPager will show the #WnckWorkspace of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckPager.
+ */
+GtkWidget *
+wnck_pager_new_with_handle (WnckHandle *handle)
+{
+  WnckPager *pager;
+
+  pager = g_object_new (WNCK_TYPE_PAGER, NULL);
+  pager->priv->handle = handle;
 
   return GTK_WIDGET (pager);
 }
