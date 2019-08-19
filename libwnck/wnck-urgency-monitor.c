@@ -188,6 +188,7 @@ main (int argc, char **argv)
 {
   GOptionContext *ctxt;
   GError         *error;
+  WnckHandle     *handle;
   WnckScreen     *screen;
 
   ctxt = g_option_context_new (NULL);
@@ -210,15 +211,17 @@ main (int argc, char **argv)
 
   gtk_init (&argc, &argv);
 
-  wnck_set_client_type (WNCK_CLIENT_TYPE_PAGER);
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_PAGER);
+  screen = wnck_handle_get_default_screen (handle);
 
-  screen = wnck_screen_get_default ();
   g_signal_connect (screen, "window_opened",
                     G_CALLBACK (connect_to_window), NULL);
   g_signal_connect (screen, "window_closed",
                     G_CALLBACK (disconnect_from_window), NULL);
 
   gtk_main ();
+
+  g_object_unref (handle);
 
   return 0;
 }
