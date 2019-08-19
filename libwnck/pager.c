@@ -2147,28 +2147,34 @@ wnck_pager_scroll_event (GtkWidget      *widget,
       }
     else
       {
-        if (absolute_direction == GDK_SCROLL_UP
-            || absolute_direction == GDK_SCROLL_LEFT)
+        switch (absolute_direction)
           {
-            if (index > 0)
-              {
-                index--;
-              }
-            else if (wrap_workspaces)
-              {
-                index = n_workspaces - 1;
-              }
-          }
-        else
-          {
-            if (index < n_workspaces - 1)
-              {
-                index++;
-              }
-            else if (wrap_workspaces)
-              {
-                index = 0;
-              }
+            case GDK_SCROLL_UP:
+            case GDK_SCROLL_LEFT:
+              if (index > 0)
+                {
+                  index--;
+                }
+              else if (wrap_workspaces)
+                {
+                  index = n_workspaces - 1;
+                }
+              break;
+            case GDK_SCROLL_DOWN:
+            case GDK_SCROLL_RIGHT:
+              if (index < n_workspaces - 1)
+                {
+                  index++;
+                }
+              else if (wrap_workspaces)
+                {
+                  index = 0;
+                }
+              break;
+            case GDK_SCROLL_SMOOTH:
+            default:
+              g_assert_not_reached ();
+              break;
           }
       }
 
