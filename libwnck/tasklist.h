@@ -87,7 +87,10 @@ typedef enum {
 
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_tasklist_new_with_handle)
 GtkWidget *wnck_tasklist_new (void);
+
+GtkWidget *wnck_tasklist_new_with_handle (WnckHandle *handle);
 const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 					      int           *n_elements);
 

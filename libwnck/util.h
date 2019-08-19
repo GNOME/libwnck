@@ -114,10 +114,12 @@ void wnck_set_default_mini_icon_size (gsize size);
 
 void wnck_shutdown        (void);
 
+G_DEPRECATED_FOR(wnck_handle_read_resource_usage_xid)
 void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             xid,
                                    WnckResourceUsage *usage);
 
+G_DEPRECATED_FOR(wnck_handle_read_resource_usage_pid)
 void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             pid,
                                    WnckResourceUsage *usage);

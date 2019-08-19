@@ -22,11 +22,14 @@
 
 G_BEGIN_DECLS
 
-WnckClientType wnck_handle_get_client_type            (WnckHandle *self);
+WnckClientType  wnck_handle_get_client_type            (WnckHandle *self);
 
-gsize          wnck_handle_get_default_icon_size      (WnckHandle *self);
+WnckScreen     *wnck_handle_get_existing_screen        (WnckHandle *self,
+                                                        int         number);
 
-gsize          wnck_handle_get_default_mini_icon_size (WnckHandle *self);
+gsize           wnck_handle_get_default_icon_size      (WnckHandle *self);
+
+gsize           wnck_handle_get_default_mini_icon_size (WnckHandle *self);
 
 G_END_DECLS
 
