@@ -176,6 +176,8 @@ typedef struct _skipped_window
 
 struct _WnckTasklistPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   WnckTask *active_task; /* NULL if active window not in tasklist */
@@ -1198,7 +1200,6 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   PangoFontDescription *description;
   gint char_width;
   gint text_width;
-  WnckHandle *handle;
   gint mini_icon_size;
   gint width;
 
@@ -1215,8 +1216,7 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   pango_font_metrics_unref (metrics);
   text_width = PANGO_PIXELS (TASKLIST_TEXT_MAX_WIDTH * char_width);
 
-  handle = wnck_screen_get_handle (tasklist->priv->screen);
-  mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (tasklist->priv->handle);
 
   width = text_width + 2 * TASKLIST_BUTTON_PADDING
 	  + mini_icon_size + 2 * TASKLIST_BUTTON_PADDING;
@@ -1511,7 +1511,6 @@ wnck_task_size_allocated (GtkWidget     *widget,
   GtkStyleContext *context;
   GtkStateFlags    state;
   GtkBorder        padding;
-  WnckHandle      *handle;
   gsize            mini_icon_size;
   int              min_image_width;
   gboolean         old_image_visible;
@@ -1521,8 +1520,7 @@ wnck_task_size_allocated (GtkWidget     *widget,
   state = gtk_style_context_get_state (context);
   gtk_style_context_get_padding (context, state, &padding);
 
-  handle = wnck_screen_get_handle (task->tasklist->priv->screen);
-  mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (task->tasklist->priv->handle);
 
   min_image_width = mini_icon_size +
                     padding.left + padding.right +
@@ -1754,7 +1752,9 @@ wnck_tasklist_realize (GtkWidget *widget)
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
-  tasklist->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  tasklist->priv->screen = wnck_handle_get_screen (tasklist->priv->handle,
+                                                   gdk_x11_screen_get_screen_number (gdkscreen));
+
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -2149,6 +2149,27 @@ wnck_tasklist_new (void)
   WnckTasklist *tasklist;
 
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist->priv->handle = _wnck_get_handle ();
+
+  return GTK_WIDGET (tasklist);
+}
+
+/**
+ * wnck_tasklist_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckTasklist.
+ */
+GtkWidget*
+wnck_tasklist_new_with_handle (WnckHandle *handle)
+{
+  WnckTasklist *tasklist;
+
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist->priv->handle = handle;
 
   return GTK_WIDGET (tasklist);
 }
@@ -3265,7 +3286,7 @@ wnck_task_get_icon (WnckTask *task)
   WnckWindowState state;
   GdkPixbuf *pixbuf;
 
-  handle = wnck_screen_get_handle (task->tasklist->priv->screen);
+  handle = task->tasklist->priv->handle;
   pixbuf = NULL;
 
   switch (task->type)
@@ -3513,6 +3534,7 @@ static gboolean
 wnck_task_motion_timeout (gpointer data)
 {
   WnckWorkspace *ws;
+  WnckScreen *screen;
   WnckTask *task = WNCK_TASK (data);
 
   task->button_activate = 0;
@@ -3522,7 +3544,9 @@ wnck_task_motion_timeout (gpointer data)
    * There should only be *one* activate call.
    */
   ws = wnck_window_get_workspace (task->window);
-  if (ws && ws != wnck_screen_get_active_workspace (wnck_screen_get_default ()))
+  screen = wnck_handle_get_default_screen (task->tasklist->priv->handle);
+
+  if (ws && ws != wnck_screen_get_active_workspace (screen))
   {
     wnck_workspace_activate (ws, task->dnd_timestamp);
   }

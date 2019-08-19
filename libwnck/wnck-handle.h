@@ -23,6 +23,7 @@
 #define WNCK_HANDLE_H
 
 #include <glib-object.h>
+#include <libwnck/screen.h>
 #include <libwnck/util.h>
 
 G_BEGIN_DECLS
@@ -30,13 +31,31 @@ G_BEGIN_DECLS
 #define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
 G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
-WnckHandle *wnck_handle_new                        (WnckClientType  client_type);
+WnckHandle *wnck_handle_new                        (WnckClientType     client_type);
 
-void        wnck_handle_set_default_icon_size      (WnckHandle     *self,
-                                                    gsize           icon_size);
+WnckScreen *wnck_handle_get_default_screen         (WnckHandle        *self);
 
-void        wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
-                                                    gsize           icon_size);
+WnckScreen *wnck_handle_get_screen                 (WnckHandle        *self,
+                                                    int                index);
+
+WnckScreen *wnck_handle_get_screen_for_root        (WnckHandle        *self,
+                                                    gulong             root_window_id);
+
+void        wnck_handle_set_default_icon_size      (WnckHandle        *self,
+                                                    gsize              icon_size);
+
+void        wnck_handle_set_default_mini_icon_size (WnckHandle        *self,
+                                                    gsize              icon_size);
+
+void        wnck_handle_read_resource_usage_xid    (WnckHandle        *self,
+                                                    GdkDisplay        *gdk_display,
+                                                    gulong             xid,
+                                                    WnckResourceUsage *usage);
+
+void        wnck_handle_read_resource_usage_pid    (WnckHandle        *self,
+                                                    GdkDisplay        *gdk_display,
+                                                    gulong             pid,
+                                                    WnckResourceUsage *usage);
 
 G_END_DECLS
 
