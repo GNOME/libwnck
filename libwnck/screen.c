@@ -590,7 +590,6 @@ wnck_screen_get (int index)
   if (screens == NULL)
     {
       screens = g_new0 (WnckScreen*, ScreenCount (display));
-      _wnck_event_filter_init ();
     }
 
   if (screens[index] == NULL)

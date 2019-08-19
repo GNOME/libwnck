@@ -815,8 +815,6 @@ _wnck_get_default_display (void)
 void
 wnck_shutdown (void)
 {
-  _wnck_event_filter_shutdown ();
-
   /* Warning: this is hacky :-)
    *
    * Shutting down all WnckScreen objects will automatically unreference (and
