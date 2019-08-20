@@ -291,7 +291,7 @@ static GOptionEntry space_entries[] = {
 	{ NULL }
 };
 
-static void clean_up (void);
+static void clean_up (WnckHandle *handle);
 
 /* this part is mostly stolen from xutils.c */
 typedef struct
@@ -1708,8 +1708,9 @@ wm_state_set (Display *display,
 }
 
 static WnckWindow *
-find_managed_window (Display *display,
-                     Window   window)
+find_managed_window (WnckHandle *handle,
+                     Display    *display,
+                     Window      window)
 {
   GdkDisplay *gdk_display;
   Window      root;
@@ -1720,7 +1721,7 @@ find_managed_window (Display *display,
   int         result;
 
   if (wm_state_set (display, window))
-    return wnck_window_get (window);
+    return wnck_handle_get_window (handle, window);
 
   gdk_display = gdk_x11_lookup_xdisplay (display);
   g_assert (gdk_display != NULL);
@@ -1736,11 +1737,11 @@ find_managed_window (Display *display,
     {
       if (wm_state_set (display, kids [i]))
         {
-          retval = wnck_window_get (kids [i]);
+          retval = wnck_handle_get_window (handle, kids [i]);
           break;
         }
 
-      retval = find_managed_window (display, kids [i]);
+      retval = find_managed_window (handle, display, kids [i]);
       if (retval != NULL)
         break;
     }
@@ -1752,12 +1753,14 @@ find_managed_window (Display *display,
 }
 
 static void
-handle_button_press_event (Display *dpy, XIDeviceEvent *event)
+handle_button_press_event (WnckHandle    *handle,
+                           Display       *dpy,
+                           XIDeviceEvent *event)
 {
   if (event->child == None)
     return;
 
-  got_from_user = find_managed_window (dpy, event->child);
+  got_from_user = find_managed_window (handle, dpy, event->child);
 }
 
 static GdkFilterReturn
@@ -1765,6 +1768,7 @@ target_filter (GdkXEvent *gdk_xevent,
                GdkEvent  *gdk_event,
                gpointer   data)
 {
+  WnckHandle *handle = data;
   XEvent *xevent = (XEvent *) gdk_xevent;
   XGenericEventCookie *cookie = &xevent->xcookie;
 
@@ -1779,13 +1783,13 @@ target_filter (GdkXEvent *gdk_xevent,
       switch (event->evtype)
         {
           case XI_ButtonPress:
-            handle_button_press_event (cookie->display, event);
-            clean_up ();
+            handle_button_press_event (handle, cookie->display, event);
+            clean_up (handle);
             return GDK_FILTER_REMOVE;
           case XI_KeyPress:
             if (event->detail == XKeysymToKeycode (cookie->display, XK_Escape))
               {
-                clean_up ();
+                clean_up (handle);
                 return GDK_FILTER_REMOVE;
               }
             break;
@@ -1808,6 +1812,7 @@ prepare (GdkSeat   *seat,
 static gboolean
 get_target (gpointer data)
 {
+  WnckHandle *handle;
   GdkWindow *root;
   GdkDisplay *display;
   GdkSeat *seat;
@@ -1815,13 +1820,15 @@ get_target (gpointer data)
   GdkSeatCapabilities caps;
   GdkGrabStatus status;
 
+  handle = data;
+
   root = gdk_get_default_root_window ();
   display = gdk_display_get_default ();
   seat = gdk_display_get_default_seat (display);
   cross = gdk_cursor_new_for_display (display, GDK_CROSS);
   caps = GDK_SEAT_CAPABILITY_POINTER | GDK_SEAT_CAPABILITY_KEYBOARD;
 
-  gdk_window_add_filter (root, (GdkFilterFunc) target_filter, NULL);
+  gdk_window_add_filter (root, (GdkFilterFunc) target_filter, handle);
 
   status = gdk_seat_grab (seat, root, caps, TRUE, cross, NULL, prepare, NULL);
   g_object_unref (cross);
@@ -1829,7 +1836,7 @@ get_target (gpointer data)
   if (status != GDK_GRAB_SUCCESS)
     {
       g_warning ("Seat grab failed.");
-      clean_up ();
+      clean_up (handle);
       return FALSE;
     }
 
@@ -1839,7 +1846,7 @@ get_target (gpointer data)
 }
 
 static void
-clean_up (void)
+clean_up (WnckHandle *handle)
 {
   GdkWindow *root;
   GdkDisplay *display;
@@ -1849,7 +1856,7 @@ clean_up (void)
   display = gdk_display_get_default ();
   seat = gdk_display_get_default_seat (display);
 
-  gdk_window_remove_filter (root, (GdkFilterFunc) target_filter, NULL);
+  gdk_window_remove_filter (root, (GdkFilterFunc) target_filter, handle);
   gdk_seat_ungrab (seat);
 
   gtk_main_quit ();
@@ -1966,7 +1973,7 @@ main (int argc, char **argv)
 
   if (get_from_user)
     {
-      g_idle_add (get_target, NULL);
+      g_idle_add (get_target, handle);
 
       gtk_main ();
 
@@ -2014,7 +2021,7 @@ main (int argc, char **argv)
       if (got_from_user)
         class_group = wnck_window_get_class_group (got_from_user);
       else
-        class_group = wnck_class_group_get (interact_class_group);
+        class_group = wnck_handle_get_class_group (handle, interact_class_group);
 
       if (class_group)
         {
@@ -2039,7 +2046,7 @@ main (int argc, char **argv)
       if (got_from_user)
         app = wnck_window_get_application (got_from_user);
       else
-        app = wnck_application_get (interact_app_xid);
+        app = wnck_handle_get_application (handle, interact_app_xid);
 
       if (app)
         {
@@ -2062,7 +2069,7 @@ main (int argc, char **argv)
       if (got_from_user)
         window = got_from_user;
       else
-        window = wnck_window_get (xid);
+        window = wnck_handle_get_window (handle, xid);
 
       if (window)
         {
