@@ -99,9 +99,9 @@ void _wnck_iconify   (Screen *screen,
 void _wnck_deiconify (Screen *screen,
                       Window  xwindow);
 
-void _wnck_close     (Screen *screen,
-		      Window  xwindow,
-		      Time    timestamp);
+void _wnck_close (WnckScreen *screen,
+                  Window      xwindow,
+                  Time        timestamp);
 
 void _wnck_change_state (WnckScreen *screen,
                          Window      xwindow,

@@ -882,16 +882,18 @@ _wnck_deiconify (Screen *screen,
 }
 
 void
-_wnck_close (Screen *screen,
-	     Window  xwindow,
-	     Time    timestamp)
+_wnck_close (WnckScreen *screen,
+             Window      xwindow,
+             Time        timestamp)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;

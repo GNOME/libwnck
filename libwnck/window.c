@@ -1469,12 +1469,11 @@ wnck_window_is_sticky                 (WnckWindow *window)
  **/
 void
 wnck_window_close (WnckWindow *window,
-		   guint32     timestamp)
+                   guint32     timestamp)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_close (WNCK_SCREEN_XSCREEN (window->priv->screen),
-	       window->priv->xwindow, timestamp);
+  _wnck_close (window->priv->screen, window->priv->xwindow, timestamp);
 }
 
 /**
