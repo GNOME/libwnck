@@ -2123,7 +2123,7 @@ get_icons (WnckWindow *window)
   normal_size = _wnck_get_default_icon_size ();
   mini_size = _wnck_get_default_mini_icon_size ();
 
-  if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  if (_wnck_read_icons (window->priv->screen,
                         window->priv->xwindow,
                         window->priv->icon_cache,
                         &icon, normal_size, normal_size,
