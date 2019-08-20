@@ -72,6 +72,7 @@ struct _WnckClassGroupClass
 
 GType wnck_class_group_get_type (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_handle_get_class_group)
 WnckClassGroup *wnck_class_group_get (const char *id);
 
 GList *wnck_class_group_get_windows (WnckClassGroup *class_group);

@@ -288,6 +288,7 @@ struct _WnckWindowClass
 
 GType wnck_window_get_type (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_handle_get_window)
 WnckWindow* wnck_window_get (gulong xwindow);
 
 WnckScreen* wnck_window_get_screen    (WnckWindow *window);

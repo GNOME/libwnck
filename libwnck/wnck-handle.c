@@ -70,6 +70,10 @@ struct _WnckHandle
   gsize              default_icon_size;
   gsize              default_mini_icon_size;
 
+  GHashTable        *class_group_hash;
+  GHashTable        *app_hash;
+  GHashTable        *window_hash;
+
   xresclient_state   xres_state;
   guint              xres_idleid;
   GHashTable        *xres_hashtable;
@@ -465,8 +469,8 @@ filter_func (GdkXEvent *gdkxevent,
             WnckWindow *window;
             WnckApplication *app;
 
-            window = wnck_window_get (xevent->xany.window);
-            app = wnck_application_get (xevent->xany.window);
+            window = wnck_handle_get_window (self, xevent->xany.window);
+            app = wnck_handle_get_application (self, xevent->xany.window);
 
             if (app)
               _wnck_application_process_property_notify (app, xevent);
@@ -481,7 +485,7 @@ filter_func (GdkXEvent *gdkxevent,
       {
         WnckWindow *window;
 
-        window = wnck_window_get (xevent->xconfigure.window);
+        window = wnck_handle_get_window (self, xevent->xconfigure.window);
 
         if (window)
           _wnck_window_process_configure_notify (window, xevent);
@@ -546,9 +550,23 @@ wnck_handle_finalize (GObject *object)
    * actually be done before shutting down global WnckWindow structures
    * (because the WnckScreen has a list of WnckWindow that will get mis-used
    * otherwise). */
-  _wnck_class_group_shutdown_all ();
-  _wnck_application_shutdown_all ();
-  _wnck_window_shutdown_all ();
+  if (self->class_group_hash != NULL)
+    {
+      g_hash_table_destroy (self->class_group_hash);
+      self->class_group_hash = NULL;
+    }
+
+  if (self->app_hash != NULL)
+    {
+      g_hash_table_destroy (self->app_hash);
+      self->app_hash = NULL;
+    }
+
+  if (self->window_hash != NULL)
+    {
+      g_hash_table_destroy (self->window_hash);
+      self->window_hash = NULL;
+    }
 
   if (self->screens != NULL)
     {
@@ -650,6 +668,15 @@ wnck_handle_init (WnckHandle *self)
 {
   self->default_icon_size = WNCK_DEFAULT_ICON_SIZE;
   self->default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
+
+  self->class_group_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
+                                                  NULL, g_object_unref);
+
+  self->app_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
+                                          NULL, g_object_unref);
+
+  self->window_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
+                                             NULL, g_object_unref);
 
   self->xres_state = (xresclient_state) { self, NULL, 0, -1, NULL, NULL };
 
@@ -1023,4 +1050,115 @@ wnck_handle_read_resource_usage_pid (WnckHandle        *self,
      * data for a new X client, so try to fallback to something else */
     wnck_pid_read_resource_usage_no_cache (self, gdk_display, pid, usage);
 #endif /* HAVE_XRES */
+}
+
+void
+wnck_handle_insert_class_group (WnckHandle     *self,
+                                const char     *id,
+                                WnckClassGroup *class_group)
+{
+  g_return_if_fail (id != NULL);
+
+  g_hash_table_insert (self->class_group_hash, (gpointer) id, class_group);
+}
+
+void
+wnck_handle_remove_class_group (WnckHandle *self,
+                                const char *id)
+{
+  g_hash_table_remove (self->class_group_hash, id);
+}
+
+/**
+ * wnck_handle_get_class_group:
+ * @self: a #WnckHandle
+ * @id: identifier name of the sought resource class.
+ *
+ * Gets the #WnckClassGroup corresponding to @id.
+ *
+ * Returns: (transfer none): the #WnckClassGroup corresponding to
+ * @id, or %NULL if there is no #WnckClassGroup with the specified
+ * @id. The returned #WnckClassGroup is owned by libwnck and must not be
+ * referenced or unreferenced.
+ */
+WnckClassGroup *
+wnck_handle_get_class_group (WnckHandle *self,
+                             const char *id)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  return g_hash_table_lookup (self->class_group_hash, id ? id : "");
+}
+
+void
+wnck_handle_insert_application (WnckHandle      *self,
+                                gpointer         xwindow,
+                                WnckApplication *app)
+{
+  g_hash_table_insert (self->app_hash, xwindow, app);
+}
+
+void
+wnck_handle_remove_application (WnckHandle *self,
+                                gpointer    xwindow)
+{
+  g_hash_table_remove (self->app_hash, xwindow);
+}
+
+/**
+ * wnck_handle_get_application:
+ * @self: a #WnckHandle
+ * @xwindow: the X window ID of a group leader.
+ *
+ * Gets the #WnckApplication corresponding to the group leader with @xwindow
+ * as X window ID.
+ *
+ * Returns: (transfer none): the #WnckApplication corresponding to
+ * @xwindow, or %NULL if there no such #WnckApplication could be found. The
+ * returned #WnckApplication is owned by libwnck and must not be referenced or
+ * unreferenced.
+ */
+WnckApplication *
+wnck_handle_get_application (WnckHandle *self,
+                             gulong      xwindow)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  return g_hash_table_lookup (self->app_hash, &xwindow);
+}
+
+void
+wnck_handle_insert_window (WnckHandle *self,
+                           gpointer    xwindow,
+                           WnckWindow *window)
+{
+  g_hash_table_insert (self->window_hash, xwindow, window);
+}
+
+void
+wnck_handle_remove_window (WnckHandle *self,
+                           gpointer    xwindow)
+{
+  g_hash_table_remove (self->window_hash, xwindow);
+}
+
+/**
+ * wnck_handle_get_window:
+ * @self: a #WnckHandle
+ * @xwindow: an X window ID.
+ *
+ * Gets a preexisting #WnckWindow for the X window @xwindow. This will not
+ * create a #WnckWindow if none exists. The function is robust against bogus
+ * window IDs.
+ *
+ * Returns: (transfer none): the #WnckWindow for @xwindow. The returned
+ * #WnckWindow is owned by libwnck and must not be referenced or unreferenced.
+ */
+WnckWindow *
+wnck_handle_get_window (WnckHandle *self,
+                        gulong      xwindow)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  return g_hash_table_lookup (self->window_hash, &xwindow);
 }
