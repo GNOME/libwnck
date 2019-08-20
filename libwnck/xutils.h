@@ -103,11 +103,11 @@ void _wnck_close     (Screen *screen,
 		      Window  xwindow,
 		      Time    timestamp);
 
-void _wnck_change_state     (Screen  *screen,
-			     Window   xwindow,
-                             gboolean add,
-                             Atom     state1,
-                             Atom     state2);
+void _wnck_change_state (WnckScreen *screen,
+                         Window      xwindow,
+                         gboolean    add,
+                         Atom        state1,
+                         Atom        state2);
 
 void _wnck_change_workspace (WnckScreen *screen,
                              Window      xwindow,

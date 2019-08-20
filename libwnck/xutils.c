@@ -998,22 +998,24 @@ _wnck_keyboard_size (WnckScreen *screen,
 }
 
 void
-_wnck_change_state (Screen  *screen,
-		    Window   xwindow,
-                    gboolean add,
-                    Atom     state1,
-                    Atom     state2)
+_wnck_change_state (WnckScreen *screen,
+                    Window      xwindow,
+                    gboolean    add,
+                    Atom        state1,
+                    Atom        state2)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
 #define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
