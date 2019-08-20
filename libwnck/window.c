@@ -1799,7 +1799,7 @@ wnck_window_keyboard_size (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_keyboard_size (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_keyboard_size (window->priv->screen,
                        window->priv->xwindow);
 }
 

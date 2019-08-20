@@ -961,15 +961,17 @@ _wnck_keyboard_move (Screen *screen,
 }
 
 void
-_wnck_keyboard_size (Screen *screen,
-                     Window  xwindow)
+_wnck_keyboard_size (WnckScreen *screen,
+                     Window      xwindow)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;

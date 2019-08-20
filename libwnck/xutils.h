@@ -150,8 +150,8 @@ int    _wnck_select_input     (Screen  *screen,
 void   _wnck_keyboard_move    (Screen *screen,
                                Window  xwindow);
 
-void   _wnck_keyboard_size    (Screen *screen,
-                               Window  xwindow);
+void _wnck_keyboard_size (WnckScreen *screen,
+                          Window      xwindow);
 
 void _wnck_toggle_showing_desktop (Screen  *screen,
                                    gboolean show);
