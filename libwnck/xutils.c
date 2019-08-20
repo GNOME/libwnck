@@ -1038,16 +1038,18 @@ _wnck_change_state (Screen  *screen,
 }
 
 void
-_wnck_change_workspace (Screen     *screen,
-			Window      xwindow,
+_wnck_change_workspace (WnckScreen *screen,
+                        Window      xwindow,
                         int         new_space)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;

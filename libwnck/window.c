@@ -1840,8 +1840,8 @@ wnck_window_move_to_workspace (WnckWindow    *window,
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (WNCK_IS_WORKSPACE (space));
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           wnck_workspace_get_number (space));
 }
 
@@ -1874,8 +1874,8 @@ wnck_window_pin (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           ALL_WORKSPACES);
 }
 
@@ -1901,8 +1901,8 @@ wnck_window_unpin (WnckWindow *window)
 
   active = wnck_screen_get_active_workspace (window->priv->screen);
 
-  _wnck_change_workspace (WNCK_SCREEN_XSCREEN (window->priv->screen),
-			  window->priv->xwindow,
+  _wnck_change_workspace (window->priv->screen,
+                          window->priv->xwindow,
                           active ? wnck_workspace_get_number (active) : 0);
 }
 

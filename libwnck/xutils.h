@@ -108,9 +108,10 @@ void _wnck_change_state     (Screen  *screen,
                              gboolean add,
                              Atom     state1,
                              Atom     state2);
-void _wnck_change_workspace (Screen  *screen,
-			     Window   xwindow,
-                             int      new_space);
+
+void _wnck_change_workspace (WnckScreen *screen,
+                             Window      xwindow,
+                             int         new_space);
 
 void _wnck_activate (WnckScreen *screen,
                      Window      xwindow,
