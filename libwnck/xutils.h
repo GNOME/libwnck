@@ -147,8 +147,8 @@ int    _wnck_select_input     (Screen  *screen,
                                int      mask,
                                gboolean update);
 
-void   _wnck_keyboard_move    (Screen *screen,
-                               Window  xwindow);
+void _wnck_keyboard_move (WnckScreen *screen,
+                          Window      xwindow);
 
 void _wnck_keyboard_size (WnckScreen *screen,
                           Window      xwindow);

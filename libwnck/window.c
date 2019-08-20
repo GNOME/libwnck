@@ -1784,7 +1784,7 @@ wnck_window_keyboard_move (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_keyboard_move (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_keyboard_move (window->priv->screen,
                        window->priv->xwindow);
 }
 
