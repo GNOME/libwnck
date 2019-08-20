@@ -50,6 +50,8 @@
 
 /* Private part of the WnckClassGroup structure */
 struct _WnckClassGroupPrivate {
+  WnckScreen *screen;
+
   char *res_class;
   char *name;
   GList *windows;
@@ -220,6 +222,7 @@ wnck_class_group_get (const char *id)
 
 /**
  * _wnck_class_group_create:
+ * @screen: a #WnckScreen.
  * @res_class: name of the resource class for the group.
  *
  * Creates a new WnckClassGroup with the specified resource class name.  If
@@ -230,7 +233,8 @@ wnck_class_group_get (const char *id)
  * matches the @res_class.
  **/
 WnckClassGroup *
-_wnck_class_group_create (const char *res_class)
+_wnck_class_group_create (WnckScreen *screen,
+                          const char *res_class)
 {
   WnckClassGroup *class_group;
 
@@ -242,6 +246,7 @@ _wnck_class_group_create (const char *res_class)
 			NULL);
 
   class_group = g_object_new (WNCK_TYPE_CLASS_GROUP, NULL);
+  class_group->priv->screen = screen;
 
   class_group->priv->res_class = g_strdup (res_class ? res_class : "");
 
