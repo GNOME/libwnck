@@ -1928,7 +1928,7 @@ wnck_window_activate (WnckWindow *window,
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  _wnck_activate (WNCK_SCREEN_XSCREEN (window->priv->screen),
+  _wnck_activate (window->priv->screen,
                   window->priv->xwindow,
                   timestamp);
 }

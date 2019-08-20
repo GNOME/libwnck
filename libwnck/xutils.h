@@ -111,9 +111,11 @@ void _wnck_change_state     (Screen  *screen,
 void _wnck_change_workspace (Screen  *screen,
 			     Window   xwindow,
                              int      new_space);
-void _wnck_activate         (Screen  *screen,
-                             Window   xwindow,
-                             Time     timestamp);
+
+void _wnck_activate (WnckScreen *screen,
+                     Window      xwindow,
+                     Time        timestamp);
+
 void _wnck_activate_workspace (Screen *screen,
                                int     new_active_space,
                                Time    timestamp);

@@ -1072,20 +1072,22 @@ _wnck_change_workspace (Screen     *screen,
 }
 
 void
-_wnck_activate (Screen *screen,
-                Window  xwindow,
-                Time    timestamp)
+_wnck_activate (WnckScreen *screen,
+                Window      xwindow,
+                Time        timestamp)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
