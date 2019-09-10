@@ -882,16 +882,18 @@ _wnck_deiconify (Screen *screen,
 }
 
 void
-_wnck_close (Screen *screen,
-	     Window  xwindow,
-	     Time    timestamp)
+_wnck_close (WnckScreen *screen,
+             Window      xwindow,
+             Time        timestamp)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -928,15 +930,17 @@ _wnck_close (Screen *screen,
 #define _NET_WM_MOVERESIZE_MOVE_KEYBOARD    10
 
 void
-_wnck_keyboard_move (Screen *screen,
-                     Window  xwindow)
+_wnck_keyboard_move (WnckScreen *screen,
+                     Window      xwindow)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -961,15 +965,17 @@ _wnck_keyboard_move (Screen *screen,
 }
 
 void
-_wnck_keyboard_size (Screen *screen,
-                     Window  xwindow)
+_wnck_keyboard_size (WnckScreen *screen,
+                     Window      xwindow)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -994,22 +1000,24 @@ _wnck_keyboard_size (Screen *screen,
 }
 
 void
-_wnck_change_state (Screen  *screen,
-		    Window   xwindow,
-                    gboolean add,
-                    Atom     state1,
-                    Atom     state2)
+_wnck_change_state (WnckScreen *screen,
+                    Window      xwindow,
+                    gboolean    add,
+                    Atom        state1,
+                    Atom        state2)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
 #define _NET_WM_STATE_REMOVE        0    /* remove/unset property */
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -1034,16 +1042,18 @@ _wnck_change_state (Screen  *screen,
 }
 
 void
-_wnck_change_workspace (Screen     *screen,
-			Window      xwindow,
+_wnck_change_workspace (WnckScreen *screen,
+                        Window      xwindow,
                         int         new_space)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -1068,20 +1078,22 @@ _wnck_change_workspace (Screen     *screen,
 }
 
 void
-_wnck_activate (Screen *screen,
-                Window  xwindow,
-                Time    timestamp)
+_wnck_activate (WnckScreen *screen,
+                Window      xwindow,
+                Time        timestamp)
 {
+  Screen *xscreen;
   Display *display;
-  Window   root;
-  XEvent   xev;
+  Window root;
+  XEvent xev;
 
   if (timestamp == 0)
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
 
-  display = DisplayOfScreen (screen);
-  root = RootWindowOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
+  root = RootWindowOfScreen (xscreen);
 
   xev.xclient.type = ClientMessage;
   xev.xclient.serial = 0;
@@ -2147,16 +2159,17 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 gboolean
-_wnck_read_icons (Screen        *screen,
-                  Window         xwindow,
-                  WnckIconCache *icon_cache,
-                  GdkPixbuf    **iconp,
-                  int            ideal_width,
-                  int            ideal_height,
-                  GdkPixbuf    **mini_iconp,
-                  int            ideal_mini_width,
-                  int            ideal_mini_height)
+_wnck_read_icons (WnckScreen     *screen,
+                  Window          xwindow,
+                  WnckIconCache  *icon_cache,
+                  GdkPixbuf     **iconp,
+                  int             ideal_width,
+                  int             ideal_height,
+                  GdkPixbuf     **mini_iconp,
+                  int             ideal_mini_width,
+                  int             ideal_mini_height)
 {
+  Screen *xscreen;
   Display *display;
   guchar *pixdata;
   int w, h;
@@ -2170,7 +2183,8 @@ _wnck_read_icons (Screen        *screen,
 
   g_return_val_if_fail (icon_cache != NULL, FALSE);
 
-  display = DisplayOfScreen (screen);
+  xscreen = _wnck_screen_get_xscreen (screen);
+  display = DisplayOfScreen (xscreen);
 
   *iconp = NULL;
   *mini_iconp = NULL;
@@ -2206,7 +2220,7 @@ _wnck_read_icons (Screen        *screen,
     {
       icon_cache->net_wm_icon_dirty = FALSE;
 
-      if (read_rgb_icon (screen, xwindow,
+      if (read_rgb_icon (xscreen, xwindow,
                          ideal_width, ideal_height,
                          ideal_mini_width, ideal_mini_height,
                          &w, &h, &pixdata,
@@ -2253,7 +2267,7 @@ _wnck_read_icons (Screen        *screen,
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (screen, pixmap, mask,
+          if (try_pixmap_and_mask (xscreen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {
@@ -2273,13 +2287,13 @@ _wnck_read_icons (Screen        *screen,
     {
       icon_cache->kwm_win_icon_dirty = FALSE;
 
-      get_kwm_win_icon (screen, xwindow, &pixmap, &mask);
+      get_kwm_win_icon (xscreen, xwindow, &pixmap, &mask);
 
       if ((pixmap != icon_cache->prev_pixmap ||
            mask != icon_cache->prev_mask) &&
           pixmap != None)
         {
-          if (try_pixmap_and_mask (screen, pixmap, mask,
+          if (try_pixmap_and_mask (xscreen, pixmap, mask,
                                    iconp, ideal_width, ideal_height,
                                    mini_iconp, ideal_mini_width, ideal_mini_height))
             {

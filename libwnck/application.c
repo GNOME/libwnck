@@ -337,7 +337,7 @@ get_icons (WnckApplication *app)
   normal_size = _wnck_get_default_icon_size ();
   mini_size = _wnck_get_default_mini_icon_size ();
 
-  if (_wnck_read_icons (WNCK_SCREEN_XSCREEN (app->priv->screen),
+  if (_wnck_read_icons (app->priv->screen,
                         app->priv->xwindow,
                         app->priv->icon_cache,
                         &icon, normal_size, normal_size,
