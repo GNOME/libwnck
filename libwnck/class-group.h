@@ -30,6 +30,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libwnck/screen.h>
+#include <cairo.h>
 
 G_BEGIN_DECLS
 
@@ -81,6 +82,8 @@ const char * wnck_class_group_get_name (WnckClassGroup *class_group);
 
 GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
+cairo_surface_t *wnck_class_group_get_icon_surface (WnckClassGroup *class_group);
+cairo_surface_t *wnck_class_group_get_mini_icon_surface (WnckClassGroup *class_group);
 
 #ifndef WNCK_DISABLE_DEPRECATED
 G_DEPRECATED_FOR(wnck_class_group_get_id)

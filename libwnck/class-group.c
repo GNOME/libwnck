@@ -58,8 +58,10 @@ struct _WnckClassGroupPrivate {
   GHashTable *window_icon_handlers;
   GHashTable *window_name_handlers;
 
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
+  cairo_surface_t *icon;
+  cairo_surface_t *mini_icon;
+  GdkPixbuf *icon_pixbuf;
+  GdkPixbuf *mini_icon_pixbuf;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
@@ -185,14 +187,26 @@ wnck_class_group_finalize (GObject *object)
 
   if (class_group->priv->icon)
     {
-      g_object_unref (class_group->priv->icon);
+      cairo_surface_destroy (class_group->priv->icon);
       class_group->priv->icon = NULL;
     }
 
   if (class_group->priv->mini_icon)
     {
-      g_object_unref (class_group->priv->mini_icon);
+      cairo_surface_destroy (class_group->priv->mini_icon);
       class_group->priv->mini_icon = NULL;
+    }
+
+  if (class_group->priv->icon_pixbuf)
+    {
+      g_object_unref (class_group->priv->icon_pixbuf);
+      class_group->priv->icon_pixbuf = NULL;
+    }
+
+  if (class_group->priv->mini_icon_pixbuf)
+    {
+      g_object_unref (class_group->priv->mini_icon_pixbuf);
+      class_group->priv->mini_icon_pixbuf = NULL;
     }
 
   G_OBJECT_CLASS (wnck_class_group_parent_class)->finalize (object);
@@ -381,12 +395,16 @@ set_name (WnckClassGroup *class_group)
 
 /* Walks the list of applications, trying to get an icon from them */
 static void
-get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
+get_icons_from_applications (WnckClassGroup *class_group,
+                             cairo_surface_t **icon, cairo_surface_t **mini_icon,
+                             GdkPixbuf **icon_pixbuf, GdkPixbuf **mini_icon_pixbuf)
 {
   GList *l;
 
   *icon = NULL;
   *mini_icon = NULL;
+  *icon_pixbuf = NULL;
+  *mini_icon_pixbuf = NULL;
 
   for (l = class_group->priv->windows; l; l = l->next)
     {
@@ -397,8 +415,10 @@ get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkP
       app = wnck_window_get_application (window);
       if (app)
 	{
-	  *icon = wnck_application_get_icon (app);
-	  *mini_icon = wnck_application_get_mini_icon (app);
+	  *icon = wnck_application_get_icon_surface (app);
+	  *mini_icon = wnck_application_get_mini_icon_surface (app);
+	  *icon_pixbuf = wnck_application_get_icon (app);
+	  *mini_icon_pixbuf = wnck_application_get_mini_icon (app);
 
 	  if (*icon && *mini_icon)
 	    return;
@@ -406,6 +426,8 @@ get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkP
 	    {
 	      *icon = NULL;
 	      *mini_icon = NULL;
+	      *icon_pixbuf = NULL;
+	      *mini_icon_pixbuf = NULL;
 	    }
 	}
     }
@@ -413,12 +435,16 @@ get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkP
 
 /* Walks the list of windows, trying to get an icon from them */
 static void
-get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
+get_icons_from_windows (WnckClassGroup *class_group,
+                        cairo_surface_t **icon, cairo_surface_t **mini_icon,
+                        GdkPixbuf **icon_pixbuf, GdkPixbuf **mini_icon_pixbuf)
 {
   GList *l;
 
   *icon = NULL;
   *mini_icon = NULL;
+  *icon_pixbuf = NULL;
+  *mini_icon_pixbuf = NULL;
 
   for (l = class_group->priv->windows; l; l = l->next)
     {
@@ -426,8 +452,10 @@ get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf
 
       window = WNCK_WINDOW (l->data);
 
-      *icon = wnck_window_get_icon (window);
-      *mini_icon = wnck_window_get_mini_icon (window);
+      *icon = wnck_window_get_icon_surface (window);
+      *mini_icon = wnck_window_get_mini_icon_surface (window);
+      *icon_pixbuf = wnck_window_get_icon (window);
+      *mini_icon_pixbuf = wnck_window_get_mini_icon (window);
 
       if (*icon && *mini_icon)
 	return;
@@ -435,6 +463,8 @@ get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf
 	{
 	  *icon = NULL;
 	  *mini_icon = NULL;
+	  *icon_pixbuf = NULL;
+	  *mini_icon_pixbuf = NULL;
 	}
     }
 }
@@ -445,40 +475,57 @@ get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf
 static void
 set_icon (WnckClassGroup *class_group)
 {
-  GdkPixbuf *icon, *mini_icon;
+  cairo_surface_t *icon, *mini_icon;
+  GdkPixbuf *icon_pixbuf, *mini_icon_pixbuf;
   gboolean icons_reffed = FALSE;
 
-  get_icons_from_applications (class_group, &icon, &mini_icon);
+  get_icons_from_applications (class_group, &icon, &mini_icon, &icon_pixbuf, &mini_icon_pixbuf);
 
   if (!icon || !mini_icon)
-    get_icons_from_windows (class_group, &icon, &mini_icon);
+    get_icons_from_windows (class_group, &icon, &mini_icon, &icon_pixbuf, &mini_icon_pixbuf);
 
   if (!icon || !mini_icon)
     {
-      _wnck_get_fallback_icons (&icon,
+      _wnck_get_fallback_icons (&icon_pixbuf,
                                 _wnck_get_default_icon_size (),
                                 _wnck_get_default_icon_size (),
-                                &mini_icon,
+                                &mini_icon_pixbuf,
                                 _wnck_get_default_mini_icon_size (),
                                 _wnck_get_default_mini_icon_size ());
+      if (icon_pixbuf)
+        icon = gdk_cairo_surface_create_from_pixbuf (icon_pixbuf, 0, NULL);
+
+      if (mini_icon_pixbuf)
+        mini_icon = gdk_cairo_surface_create_from_pixbuf (mini_icon_pixbuf, 0, NULL);
+
       icons_reffed = TRUE;
     }
 
   g_assert (icon && mini_icon);
 
   if (class_group->priv->icon)
-    g_object_unref (class_group->priv->icon);
+    cairo_surface_destroy (class_group->priv->icon);
 
   if (class_group->priv->mini_icon)
-    g_object_unref (class_group->priv->mini_icon);
+    cairo_surface_destroy (class_group->priv->mini_icon);
+
+  if (class_group->priv->icon_pixbuf)
+    g_object_unref (class_group->priv->icon_pixbuf);
+
+  if (class_group->priv->mini_icon_pixbuf)
+    g_object_unref (class_group->priv->mini_icon_pixbuf);
 
   class_group->priv->icon = icon;
   class_group->priv->mini_icon = mini_icon;
+  class_group->priv->icon_pixbuf = icon_pixbuf;
+  class_group->priv->mini_icon_pixbuf = mini_icon_pixbuf;
 
   if (!icons_reffed)
     {
-      g_object_ref (class_group->priv->icon);
-      g_object_ref (class_group->priv->mini_icon);
+      cairo_surface_reference (class_group->priv->icon);
+      cairo_surface_reference (class_group->priv->mini_icon);
+      g_object_ref (class_group->priv->icon_pixbuf);
+      g_object_ref (class_group->priv->mini_icon_pixbuf);
     }
 
   g_signal_emit (G_OBJECT (class_group), signals[ICON_CHANGED], 0);
@@ -713,7 +760,7 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
 {
   g_return_val_if_fail (class_group != NULL, NULL);
 
-  return class_group->priv->icon;
+  return class_group->priv->icon_pixbuf;
 }
 
 /**
@@ -732,6 +779,50 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
  **/
 GdkPixbuf *
 wnck_class_group_get_mini_icon (WnckClassGroup *class_group)
+{
+  g_return_val_if_fail (class_group != NULL, NULL);
+
+  return class_group->priv->mini_icon_pixbuf;
+}
+
+/**
+ * wnck_class_group_get_icon_surface:
+ * @class_group: a #WnckClassGroup.
+ *
+ * Gets the icon-surface to be used for @class_group. Since there is no way to
+ * properly find the icon-surface, the same suboptimal heuristic as the one for
+ * wnck_class_group_get_icon() is used to find it.
+ *
+ * Return value: (transfer none): the icon-surface for @class_group. The caller
+ * should reference the returned <classname>cairo_surface_t</classname> if it needs
+ * to keep the icon-surface around.
+ *
+ * Since: 2.2
+ **/
+cairo_surface_t *
+wnck_class_group_get_icon_surface (WnckClassGroup *class_group)
+{
+  g_return_val_if_fail (class_group != NULL, NULL);
+
+  return class_group->priv->icon;
+}
+
+/**
+ * wnck_class_group_get_mini_icon_surface:
+ * @class_group: a #WnckClassGroup.
+ *
+ * Gets the mini-icon-surface to be used for @class_group. Since there is no way to
+ * properly find the mini-icon-surface, the same suboptimal heuristic as the one for
+ * wnck_class_group_get_icon() is used to find it.
+ *
+ * Return value: (transfer none): the mini-icon-surface for @class_group. The caller
+ * should reference the returned <classname>cairo_surface_t</classname> if it needs
+ * to keep the mini-icon-surface around.
+ *
+ * Since: 2.2
+ **/
+cairo_surface_t *
+wnck_class_group_get_mini_icon_surface (WnckClassGroup *class_group)
 {
   g_return_val_if_fail (class_group != NULL, NULL);
 

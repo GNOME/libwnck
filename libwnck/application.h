@@ -29,6 +29,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libwnck/screen.h>
+#include <cairo.h>
 
 G_BEGIN_DECLS
 
@@ -86,13 +87,15 @@ int    wnck_application_get_n_windows (WnckApplication *app);
  * prop is the same for all windows in the app, return the values for
  * the window. Failing that, they make stuff up.
  */
-const char* wnck_application_get_name      (WnckApplication *app);
-const char* wnck_application_get_icon_name (WnckApplication *app);
-int         wnck_application_get_pid       (WnckApplication *app);
-GdkPixbuf*  wnck_application_get_icon      (WnckApplication *app);
-GdkPixbuf*  wnck_application_get_mini_icon (WnckApplication *app);
-gboolean    wnck_application_get_icon_is_fallback (WnckApplication *app);
-const char* wnck_application_get_startup_id (WnckApplication *app);
+const char*       wnck_application_get_name              (WnckApplication *app);
+const char*       wnck_application_get_icon_name         (WnckApplication *app);
+int               wnck_application_get_pid               (WnckApplication *app);
+GdkPixbuf*        wnck_application_get_icon              (WnckApplication *app);
+GdkPixbuf*        wnck_application_get_mini_icon         (WnckApplication *app);
+cairo_surface_t*  wnck_application_get_icon_surface      (WnckApplication *app);
+cairo_surface_t*  wnck_application_get_mini_icon_surface (WnckApplication *app);
+gboolean          wnck_application_get_icon_is_fallback  (WnckApplication *app);
+const char*       wnck_application_get_startup_id        (WnckApplication *app);
 
 G_END_DECLS
 
