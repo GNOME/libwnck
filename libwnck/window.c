@@ -33,6 +33,7 @@
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
+#include "wnck-handle-private.h"
 
 /**
  * SECTION:window
@@ -46,8 +47,6 @@
 
 #define FALLBACK_NAME _("Untitled window")
 #define ALL_WORKSPACES ((int) 0xFFFFFFFF)
-
-static GHashTable *window_hash = NULL;
 
 /* Keep 0-7 in sync with the numbers in the WindowState enum. Yeah I'm
  * a loser.
@@ -217,16 +216,6 @@ static WnckWindow* find_last_transient_for (GList *windows,
                                             Window xwindow);
 
 static guint signals[LAST_SIGNAL] = { 0 };
-
-void
-_wnck_window_shutdown_all (void)
-{
-  if (window_hash != NULL)
-    {
-      g_hash_table_destroy (window_hash);
-      window_hash = NULL;
-    }
-}
 
 static void
 wnck_window_init (WnckWindow *window)
@@ -459,10 +448,7 @@ wnck_window_finalize (GObject *object)
 WnckWindow*
 wnck_window_get (gulong xwindow)
 {
-  if (window_hash == NULL)
-    return NULL;
-  else
-    return g_hash_table_lookup (window_hash, &xwindow);
+  return wnck_handle_get_window (_wnck_get_handle (), xwindow);
 }
 
 /**
@@ -487,15 +473,12 @@ _wnck_window_create (Window      xwindow,
                      WnckScreen *screen,
                      gint        sort_order)
 {
+  WnckHandle *handle;
   WnckWindow *window;
   Screen     *xscreen;
 
-  if (window_hash == NULL)
-    window_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
-                                         NULL, g_object_unref);
-
-  g_return_val_if_fail (g_hash_table_lookup (window_hash, &xwindow) == NULL,
-                        NULL);
+  handle = wnck_screen_get_handle (screen);
+  g_return_val_if_fail (wnck_handle_get_window (handle, xwindow) == NULL, NULL);
 
   xscreen = WNCK_SCREEN_XSCREEN (screen);
 
@@ -503,7 +486,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->xwindow = xwindow;
   window->priv->screen = screen;
 
-  g_hash_table_insert (window_hash, &window->priv->xwindow, window);
+  wnck_handle_insert_window (handle, &window->priv->xwindow, window);
 
   /* Hash now owns one ref, caller gets none */
 
@@ -566,17 +549,20 @@ _wnck_window_create (Window      xwindow,
 void
 _wnck_window_destroy (WnckWindow *window)
 {
+  WnckHandle *handle;
   Window xwindow = window->priv->xwindow;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  g_return_if_fail (wnck_window_get (xwindow) == window);
+  handle = wnck_screen_get_handle (window->priv->screen);
 
-  g_hash_table_remove (window_hash, &xwindow);
+  g_return_if_fail (wnck_handle_get_window (handle, xwindow) == window);
+
+  wnck_handle_remove_window (handle, &xwindow);
 
   /* Removing from hash also removes the only ref WnckWindow had */
 
-  g_return_if_fail (wnck_window_get (xwindow) == NULL);
+  g_return_if_fail (wnck_handle_get_window (handle, xwindow) == NULL);
 }
 
 static Display *
@@ -752,9 +738,13 @@ wnck_window_get_application  (WnckWindow *window)
 WnckWindow*
 wnck_window_get_transient (WnckWindow *window)
 {
+  WnckHandle *handle;
+
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  return wnck_window_get (window->priv->transient_for);
+  handle = wnck_screen_get_handle (window->priv->screen);
+
+  return wnck_handle_get_window (handle, window->priv->transient_for);
 }
 
 /**
@@ -1173,11 +1163,13 @@ _wnck_window_get_startup_id (WnckWindow *window)
   if (window->priv->startup_id == NULL &&
       window->priv->group_leader != None)
     {
+      WnckHandle *handle;
       WnckApplication *app;
 
       /* Fall back to group leader property */
 
-      app = wnck_application_get (window->priv->group_leader);
+      handle = wnck_screen_get_handle (window->priv->screen);
+      app = wnck_handle_get_application (handle, window->priv->group_leader);
 
       if (app != NULL)
         return wnck_application_get_startup_id (app);
@@ -2115,15 +2107,18 @@ wnck_window_transient_is_most_recently_activated (WnckWindow *window)
 static void
 get_icons (WnckWindow *window)
 {
+  WnckHandle *handle;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
   gsize normal_size;
   gsize mini_size;
 
+  handle = wnck_screen_get_handle (window->priv->screen);
+
   icon = NULL;
   mini_icon = NULL;
-  normal_size = _wnck_get_default_icon_size ();
-  mini_size = _wnck_get_default_mini_icon_size ();
+  normal_size = wnck_handle_get_default_icon_size (handle);
+  mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   if (_wnck_read_icons (window->priv->screen,
                         window->priv->xwindow,
@@ -2359,12 +2354,15 @@ wnck_window_set_geometry (WnckWindow               *window,
                           int                       width,
                           int                       height)
 {
+  WnckHandle *handle;
   int gravity_and_flags;
   int source;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  source = _wnck_get_client_type();
+  handle = wnck_screen_get_handle (window->priv->screen);
+  source = wnck_handle_get_client_type (handle);
+
   gravity_and_flags = gravity;
   gravity_and_flags |= geometry_mask << 8;
   gravity_and_flags |= source << 12;
@@ -3095,9 +3093,12 @@ update_transient_for (WnckWindow *window)
                         &parent) &&
       parent != window->priv->xwindow)
     {
+      WnckHandle *handle;
+
       window->priv->transient_for = parent;
 
-      if (wnck_screen_get_for_root (window->priv->transient_for) != NULL)
+      handle = wnck_screen_get_handle (window->priv->screen);
+      if (wnck_handle_get_screen_for_root (handle, window->priv->transient_for) != NULL)
         window->priv->transient_for_root = TRUE;
       else
         window->priv->transient_for_root = FALSE;

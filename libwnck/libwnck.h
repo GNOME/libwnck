@@ -23,6 +23,8 @@
 
 #define __LIBWNCK_H_INSIDE__
 
+#include <libwnck/wnck-handle.h>
+
 #include <libwnck/window.h>
 #include <libwnck/application.h>
 #include <libwnck/class-group.h>

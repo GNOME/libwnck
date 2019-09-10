@@ -25,6 +25,7 @@
 #include <glib/gi18n-lib.h>
 #include "application.h"
 #include "private.h"
+#include "wnck-handle-private.h"
 
 /**
  * SECTION:application
@@ -47,8 +48,6 @@
  */
 
 #define FALLBACK_NAME _("Untitled application")
-
-static GHashTable *app_hash = NULL;
 
 struct _WnckApplicationPrivate
 {
@@ -94,16 +93,6 @@ static void update_name (WnckApplication *app);
 static void wnck_application_finalize    (GObject        *object);
 
 static guint signals[LAST_SIGNAL] = { 0 };
-
-void
-_wnck_application_shutdown_all (void)
-{
-  if (app_hash != NULL)
-    {
-      g_hash_table_destroy (app_hash);
-      app_hash = NULL;
-    }
-}
 
 static void
 wnck_application_init (WnckApplication *application)
@@ -202,10 +191,7 @@ wnck_application_finalize (GObject *object)
 WnckApplication*
 wnck_application_get (gulong xwindow)
 {
-  if (app_hash == NULL)
-    return NULL;
-  else
-    return g_hash_table_lookup (app_hash, &xwindow);
+  return wnck_handle_get_application (_wnck_get_handle (), xwindow);
 }
 
 /**
@@ -327,15 +313,18 @@ wnck_application_get_pid (WnckApplication *app)
 static void
 get_icons (WnckApplication *app)
 {
+  WnckHandle *handle;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
   gsize normal_size;
   gsize mini_size;
 
+  handle = wnck_screen_get_handle (app->priv->screen);
+
   icon = NULL;
   mini_icon = NULL;
-  normal_size = _wnck_get_default_icon_size ();
-  mini_size = _wnck_get_default_mini_icon_size ();
+  normal_size = wnck_handle_get_default_icon_size (handle);
+  mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   if (_wnck_read_icons (app->priv->screen,
                         app->priv->xwindow,
@@ -511,15 +500,12 @@ WnckApplication*
 _wnck_application_create (Window      xwindow,
                           WnckScreen *screen)
 {
+  WnckHandle      *handle;
   WnckApplication *application;
   Screen          *xscreen;
 
-  if (app_hash == NULL)
-    app_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
-                                      NULL, g_object_unref);
-
-  g_return_val_if_fail (g_hash_table_lookup (app_hash, &xwindow) == NULL,
-                        NULL);
+  handle = wnck_screen_get_handle (screen);
+  g_return_val_if_fail (wnck_handle_get_application (handle, xwindow) == NULL, NULL);
 
   xscreen = WNCK_SCREEN_XSCREEN (screen);
 
@@ -542,7 +528,7 @@ _wnck_application_create (Window      xwindow,
                                                            application->priv->xwindow,
                                                            _wnck_atom_get ("_NET_STARTUP_ID"));
 
-  g_hash_table_insert (app_hash, &application->priv->xwindow, application);
+  wnck_handle_insert_application (handle, &application->priv->xwindow, application);
 
   /* Hash now owns one ref, caller gets none */
 
@@ -560,15 +546,18 @@ _wnck_application_create (Window      xwindow,
 void
 _wnck_application_destroy (WnckApplication *application)
 {
+  WnckHandle *handle;
   Window xwindow = application->priv->xwindow;
 
-  g_return_if_fail (wnck_application_get (xwindow) == application);
+  handle = wnck_screen_get_handle (application->priv->screen);
 
-  g_hash_table_remove (app_hash, &xwindow);
+  g_return_if_fail (wnck_handle_get_application (handle, xwindow) == application);
+
+  wnck_handle_remove_application (handle, &xwindow);
 
   /* Removing from hash also removes the only ref WnckApplication had */
 
-  g_return_if_fail (wnck_application_get (xwindow) == NULL);
+  g_return_if_fail (wnck_handle_get_application (handle, xwindow) == NULL);
 }
 
 static void

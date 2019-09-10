@@ -19,6 +19,7 @@ headers = [
   'util.h',
   'window.h',
   'window-action-menu.h',
+  'wnck-handle.h',
   'workspace.h',
 ]
 
@@ -37,6 +38,8 @@ sources = [
   'util.c',
   'window-action-menu.c',
   'window.c',
+  'wnck-handle-private.h',
+  'wnck-handle.c',
   'wnck-image-menu-item-private.h',
   'wnck-image-menu-item.c',
   'workspace.c',

@@ -65,10 +65,10 @@
 #define _NET_WM_BOTTOMRIGHT 2
 #define _NET_WM_BOTTOMLEFT  3
 
-static WnckScreen** screens = NULL;
-
 struct _WnckScreenPrivate
 {
+  WnckHandle *handle;
+
   int number;
   Window xroot;
   Screen *xscreen;
@@ -498,8 +498,6 @@ wnck_screen_finalize (GObject *object)
   g_free (screen->priv->wm_name);
   screen->priv->wm_name = NULL;
 
-  screens[screen->priv->number] = NULL;
-
 #ifdef HAVE_STARTUP_NOTIFICATION
   sn_display_unref (screen->priv->sn_display);
   screen->priv->sn_display = NULL;
@@ -524,11 +522,14 @@ sn_error_trap_pop (SnDisplay *display,
 }
 #endif /* HAVE_STARTUP_NOTIFICATION */
 
-static void
-wnck_screen_construct (Display    *display,
-                       WnckScreen *screen,
-                       int         number)
+void
+_wnck_screen_construct (WnckScreen *screen,
+                        WnckHandle *handle,
+                        Display    *display,
+                        int         number)
 {
+  screen->priv->handle = handle;
+
   /* Create the initial state of the screen. */
   screen->priv->xroot = RootWindow (display, number);
   screen->priv->xscreen = ScreenOfDisplay (display, number);
@@ -574,45 +575,7 @@ wnck_screen_construct (Display    *display,
 WnckScreen*
 wnck_screen_get (int index)
 {
-  Display *display;
-
-  display = _wnck_get_default_display ();
-
-  g_return_val_if_fail (display != NULL, NULL);
-
-  if (index >= ScreenCount (display))
-    return NULL;
-
-  if (screens == NULL)
-    {
-      screens = g_new0 (WnckScreen*, ScreenCount (display));
-      _wnck_event_filter_init ();
-    }
-
-  if (screens[index] == NULL)
-    {
-      screens[index] = g_object_new (WNCK_TYPE_SCREEN, NULL);
-
-      wnck_screen_construct (display, screens[index], index);
-    }
-
-  return screens[index];
-}
-
-WnckScreen*
-_wnck_screen_get_existing (int number)
-{
-  Display *display;
-
-  display = _wnck_get_default_display ();
-
-  g_return_val_if_fail (display != NULL, NULL);
-  g_return_val_if_fail (number < ScreenCount (display), NULL);
-
-  if (screens != NULL)
-    return screens[number];
-  else
-    return NULL;
+  return wnck_handle_get_screen (_wnck_get_handle (), index);
 }
 
 /**
@@ -627,15 +590,7 @@ _wnck_screen_get_existing (int number)
 WnckScreen*
 wnck_screen_get_default (void)
 {
-  int default_screen;
-  Display *default_display = _wnck_get_default_display ();
-
-  if (default_display == NULL)
-    return NULL;
-
-  default_screen = DefaultScreen (default_display);
-
-  return wnck_screen_get (default_screen);
+  return wnck_handle_get_default_screen (_wnck_get_handle ());
 }
 
 /**
@@ -655,24 +610,23 @@ wnck_screen_get_default (void)
 WnckScreen*
 wnck_screen_get_for_root (gulong root_window_id)
 {
-  int i;
-  Display *display;
+  return wnck_handle_get_screen_for_root (_wnck_get_handle (), root_window_id);
+}
 
-  if (screens == NULL)
-    return NULL;
+/**
+ * wnck_screen_get_handle:
+ * @screen: a #WnckScreen.
+ *
+ * Gets the handle.
+ *
+ * Returns: (transfer none): a #WnckHandle, or %NULL.
+ */
+WnckHandle *
+wnck_screen_get_handle (WnckScreen *screen)
+{
+  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
 
-  i = 0;
-  display = _wnck_get_default_display ();
-
-  while (i < ScreenCount (display))
-    {
-      if (screens[i] != NULL && screens[i]->priv->xroot == root_window_id)
-        return screens[i];
-
-      ++i;
-    }
-
-  return NULL;
+  return screen->priv->handle;
 }
 
 /**
@@ -1458,7 +1412,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (mapping[i]);
+      window = wnck_handle_get_window (screen->priv->handle, mapping[i]);
 
       if (window == NULL)
         {
@@ -1477,7 +1431,7 @@ update_client_list (WnckScreen *screen)
 
           leader = wnck_window_get_group_leader (window);
 
-          app = wnck_application_get (leader);
+          app = wnck_handle_get_application (screen->priv->handle, leader);
           if (app == NULL)
             {
               app = _wnck_application_create (leader, screen);
@@ -1490,7 +1444,7 @@ update_client_list (WnckScreen *screen)
 
 	  res_class = wnck_window_get_class_group_name (window);
 
-	  class_group = wnck_class_group_get (res_class);
+	  class_group = wnck_handle_get_class_group (screen->priv->handle, res_class);
 	  if (class_group == NULL)
 	    {
 	      class_group = _wnck_class_group_create (screen, res_class);
@@ -1554,7 +1508,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (stack[i]);
+      window = wnck_handle_get_window (screen->priv->handle, stack[i]);
 
       g_assert (window != NULL);
 
@@ -1968,7 +1922,7 @@ update_active_window (WnckScreen *screen)
                     _wnck_atom_get ("_NET_ACTIVE_WINDOW"),
                     &xwindow);
 
-  window = wnck_window_get (xwindow);
+  window = wnck_handle_get_window (screen->priv->handle, xwindow);
 
   if (window == screen->priv->active_window)
     return;
@@ -2483,6 +2437,12 @@ wnck_screen_get_height (WnckScreen *screen)
   return HeightOfScreen (screen->priv->xscreen);
 }
 
+Window
+_wnck_screen_get_xroot (WnckScreen *screen)
+{
+  return screen->priv->xroot;
+}
+
 Screen *
 _wnck_screen_get_xscreen (WnckScreen *screen)
 {
@@ -2712,27 +2672,4 @@ _wnck_screen_change_workspace_name (WnckScreen *screen,
                        names);
 
   g_free (names);
-}
-
-void
-_wnck_screen_shutdown_all (void)
-{
-  int i;
-  Display *display;
-
-  if (screens == NULL)
-    return;
-
-  display = _wnck_get_default_display ();
-
-  for (i = 0; i < ScreenCount (display); ++i)
-    {
-      if (screens[i] != NULL) {
-        g_object_unref (screens[i]);
-        screens[i] = NULL;
-      }
-    }
-
-  g_free (screens);
-  screens = NULL;
 }

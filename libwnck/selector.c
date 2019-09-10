@@ -52,6 +52,8 @@
  */
 
 struct _WnckSelectorPrivate {
+  WnckHandle *handle;
+
   GtkWidget  *image;
   WnckWindow *icon_window;
 
@@ -118,7 +120,8 @@ wnck_selector_get_screen (WnckSelector *selector)
 
   screen = gtk_widget_get_screen (GTK_WIDGET (selector));
 
-  return wnck_screen_get (gdk_x11_screen_get_screen_number (screen));
+  return wnck_handle_get_screen (selector->priv->handle,
+                                 gdk_x11_screen_get_screen_number (screen));
 }
 
 static GdkPixbuf *
@@ -1273,6 +1276,27 @@ wnck_selector_new (void)
   WnckSelector *selector;
 
   selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
+  selector->priv->handle = _wnck_get_handle ();
+
+  return GTK_WIDGET (selector);
+}
+
+/**
+ * wnck_selector_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckSelector. The #WnckSelector will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckSelector.
+ */
+GtkWidget *
+wnck_selector_new_with_handle (WnckHandle *handle)
+{
+  WnckSelector *selector;
+
+  selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
+  selector->priv->handle = handle;
 
   return GTK_WIDGET (selector);
 }

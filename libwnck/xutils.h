@@ -31,6 +31,10 @@
 
 G_BEGIN_DECLS
 
+/* forward decls */
+typedef struct _WnckHandle WnckHandle;
+typedef struct _WnckScreen WnckScreen;
+
 #define WNCK_APP_WINDOW_EVENT_MASK (PropertyChangeMask | StructureNotifyMask)
 
 gboolean _wnck_get_cardinal      (Screen *screen,
@@ -86,9 +90,6 @@ int  _wnck_error_trap_pop  (Display *display);
 
 #define _wnck_atom_get(atom_name) gdk_x11_get_xatom_by_name (atom_name)
 #define _wnck_atom_name(atom)     gdk_x11_get_xatom_name (atom)
-
-void _wnck_event_filter_init (void);
-void _wnck_event_filter_shutdown (void);
 
 int   _wnck_xid_equal (gconstpointer v1,
                        gconstpointer v2);
@@ -180,7 +181,8 @@ gboolean _wnck_read_icons (WnckScreen     *screen,
                            int             ideal_mini_width,
                            int             ideal_mini_height);
 
-void _wnck_get_fallback_icons (GdkPixbuf     **iconp,
+void _wnck_get_fallback_icons (WnckHandle     *handle,
+                               GdkPixbuf     **iconp,
                                int             ideal_width,
                                int             ideal_height,
                                GdkPixbuf     **mini_iconp,

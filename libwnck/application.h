@@ -74,6 +74,7 @@ struct _WnckApplicationClass
 
 GType wnck_application_get_type (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_handle_get_application)
 WnckApplication* wnck_application_get (gulong xwindow);
 
 gulong wnck_application_get_xid (WnckApplication *app);

@@ -30,6 +30,7 @@
 #include "screen.h"
 #include "window.h"
 #include "private.h"
+#include "wnck-handle-private.h"
 
 gboolean
 _wnck_get_cardinal (Screen *screen,
@@ -719,113 +720,6 @@ _wnck_error_trap_pop (Display *display)
   return gdk_x11_display_error_trap_pop (gdk_display);
 }
 
-static GdkFilterReturn
-filter_func (GdkXEvent  *gdkxevent,
-             GdkEvent   *event,
-             gpointer    data)
-{
-  XEvent *xevent = gdkxevent;
-#ifdef HAVE_STARTUP_NOTIFICATION
-  int i;
-  Display *display;
-#endif /* HAVE_STARTUP_NOTIFICATION */
-
-  switch (xevent->type)
-    {
-    case PropertyNotify:
-      {
-        WnckScreen *screen;
-
-        screen = wnck_screen_get_for_root (xevent->xany.window);
-        if (screen != NULL)
-          _wnck_screen_process_property_notify (screen, xevent);
-        else
-          {
-            WnckWindow *window;
-            WnckApplication *app;
-
-            window = wnck_window_get (xevent->xany.window);
-            app = wnck_application_get (xevent->xany.window);
-
-            if (app)
-              _wnck_application_process_property_notify (app, xevent);
-
-            if (window)
-              _wnck_window_process_property_notify (window, xevent);
-          }
-      }
-      break;
-
-    case ConfigureNotify:
-      {
-        WnckWindow *window;
-
-        window = wnck_window_get (xevent->xconfigure.window);
-
-        if (window)
-          _wnck_window_process_configure_notify (window, xevent);
-      }
-      break;
-
-    case SelectionClear:
-      {
-        _wnck_desktop_layout_manager_process_event (xevent);
-      }
-      break;
-
-    case ClientMessage:
-#ifdef HAVE_STARTUP_NOTIFICATION
-      /* We're cheating as officially libsn requires
-       * us to send all events through sn_display_process_event
-       */
-      i = 0;
-      display = ((XAnyEvent *) xevent)->display;
-
-      while (i < ScreenCount (display))
-        {
-          WnckScreen *s;
-
-          s = _wnck_screen_get_existing (i);
-          if (s != NULL)
-            sn_display_process_event (_wnck_screen_get_sn_display (s),
-                                      xevent);
-
-          ++i;
-        }
-#endif /* HAVE_STARTUP_NOTIFICATION */
-      break;
-
-    default:
-      break;
-    }
-
-  return GDK_FILTER_CONTINUE;
-}
-
-static gboolean _wnck_event_filter_initialized = FALSE;
-
-void
-_wnck_event_filter_init (void)
-{
-
-  if (!_wnck_event_filter_initialized)
-    {
-      gdk_window_add_filter (NULL, filter_func, NULL);
-      _wnck_event_filter_initialized = TRUE;
-    }
-}
-
-void
-_wnck_event_filter_shutdown (void)
-{
-
-  if (_wnck_event_filter_initialized)
-    {
-      gdk_window_remove_filter (NULL, filter_func, NULL);
-      _wnck_event_filter_initialized = FALSE;
-    }
-}
-
 int
 _wnck_xid_equal (gconstpointer v1,
                  gconstpointer v2)
@@ -886,11 +780,13 @@ _wnck_close (WnckScreen *screen,
              Window      xwindow,
              Time        timestamp)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
   XEvent xev;
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -903,7 +799,7 @@ _wnck_close (WnckScreen *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_CLOSE_WINDOW");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = timestamp;
-  xev.xclient.data.l[1] = _wnck_get_client_type ();
+  xev.xclient.data.l[1] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -933,11 +829,13 @@ void
 _wnck_keyboard_move (WnckScreen *screen,
                      Window      xwindow)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
   XEvent xev;
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -953,7 +851,7 @@ _wnck_keyboard_move (WnckScreen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_MOVE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = _wnck_get_client_type ();
+  xev.xclient.data.l[4] = wnck_handle_get_client_type (handle);
 
   _wnck_error_trap_push (display);
   XSendEvent (display,
@@ -968,11 +866,13 @@ void
 _wnck_keyboard_size (WnckScreen *screen,
                      Window      xwindow)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
   XEvent xev;
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -988,7 +888,7 @@ _wnck_keyboard_size (WnckScreen *screen,
   xev.xclient.data.l[1] = 0; /* unused */
   xev.xclient.data.l[2] = _NET_WM_MOVERESIZE_SIZE_KEYBOARD;
   xev.xclient.data.l[3] = 0; /* unused */
-  xev.xclient.data.l[4] = _wnck_get_client_type ();
+  xev.xclient.data.l[4] = wnck_handle_get_client_type (handle);
 
   _wnck_error_trap_push (display);
   XSendEvent (display,
@@ -1006,6 +906,7 @@ _wnck_change_state (WnckScreen *screen,
                     Atom        state1,
                     Atom        state2)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
@@ -1015,6 +916,7 @@ _wnck_change_state (WnckScreen *screen,
 #define _NET_WM_STATE_ADD           1    /* add/set property */
 #define _NET_WM_STATE_TOGGLE        2    /* toggle property  */
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -1029,7 +931,7 @@ _wnck_change_state (WnckScreen *screen,
   xev.xclient.data.l[0] = add ? _NET_WM_STATE_ADD : _NET_WM_STATE_REMOVE;
   xev.xclient.data.l[1] = state1;
   xev.xclient.data.l[2] = state2;
-  xev.xclient.data.l[3] = _wnck_get_client_type ();
+  xev.xclient.data.l[3] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[4] = 0;
 
   _wnck_error_trap_push (display);
@@ -1046,11 +948,13 @@ _wnck_change_workspace (WnckScreen *screen,
                         Window      xwindow,
                         int         new_space)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
   XEvent xev;
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -1063,7 +967,7 @@ _wnck_change_workspace (WnckScreen *screen,
   xev.xclient.message_type = _wnck_atom_get ("_NET_WM_DESKTOP");
   xev.xclient.format = 32;
   xev.xclient.data.l[0] = new_space;
-  xev.xclient.data.l[1] = _wnck_get_client_type ();
+  xev.xclient.data.l[1] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
   xev.xclient.data.l[4] = 0;
@@ -1082,6 +986,7 @@ _wnck_activate (WnckScreen *screen,
                 Window      xwindow,
                 Time        timestamp)
 {
+  WnckHandle *handle;
   Screen *xscreen;
   Display *display;
   Window root;
@@ -1091,6 +996,7 @@ _wnck_activate (WnckScreen *screen,
     g_warning ("Received a timestamp of 0; window activation may not "
                "function properly.\n");
 
+  handle = wnck_screen_get_handle (screen);
   xscreen = _wnck_screen_get_xscreen (screen);
   display = DisplayOfScreen (xscreen);
   root = RootWindowOfScreen (xscreen);
@@ -1102,7 +1008,7 @@ _wnck_activate (WnckScreen *screen,
   xev.xclient.window = xwindow;
   xev.xclient.message_type = _wnck_atom_get ("_NET_ACTIVE_WINDOW");
   xev.xclient.format = 32;
-  xev.xclient.data.l[0] = _wnck_get_client_type ();
+  xev.xclient.data.l[0] = wnck_handle_get_client_type (handle);
   xev.xclient.data.l[1] = timestamp;
   xev.xclient.data.l[2] = 0;
   xev.xclient.data.l[3] = 0;
@@ -2311,7 +2217,12 @@ _wnck_read_icons (WnckScreen     *screen,
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (iconp,
+      WnckHandle *handle;
+
+      handle = wnck_screen_get_handle (screen);
+
+      _wnck_get_fallback_icons (handle,
+                                iconp,
                                 ideal_width,
                                 ideal_height,
                                 mini_iconp,
@@ -2371,24 +2282,31 @@ default_icon_at_size (int width,
 }
 
 void
-_wnck_get_fallback_icons (GdkPixbuf **iconp,
-                          int         ideal_width,
-                          int         ideal_height,
-                          GdkPixbuf **mini_iconp,
-                          int         ideal_mini_width,
-                          int         ideal_mini_height)
+_wnck_get_fallback_icons (WnckHandle  *handle,
+                          GdkPixbuf  **iconp,
+                          int          ideal_width,
+                          int          ideal_height,
+                          GdkPixbuf  **mini_iconp,
+                          int          ideal_mini_width,
+                          int          ideal_mini_height)
 {
+  gsize default_icon_size;
+  gsize default_mini_icon_size;
+
+  default_icon_size = wnck_handle_get_default_icon_size (handle);
+  default_mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
   if (iconp)
     *iconp = default_icon_at_size (ideal_width > 0 ? ideal_width :
-                                   (int) _wnck_get_default_icon_size (),
+                                   (int) default_icon_size,
                                    ideal_height > 0 ? ideal_height :
-                                   (int) _wnck_get_default_icon_size ());
+                                   (int) default_icon_size);
 
   if (mini_iconp)
     *mini_iconp = default_icon_at_size (ideal_mini_width > 0 ? ideal_mini_width :
-                                        (int) _wnck_get_default_mini_icon_size (),
+                                        (int) default_mini_icon_size,
                                         ideal_mini_height > 0 ? ideal_mini_height :
-                                        (int) _wnck_get_default_mini_icon_size ());
+                                        (int) default_mini_icon_size);
 }
 
 

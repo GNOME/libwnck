@@ -32,6 +32,7 @@
 #include "class-group.h"
 #include "window-action-menu.h"
 #include "wnck-image-menu-item-private.h"
+#include "wnck-handle-private.h"
 #include "workspace.h"
 #include "xutils.h"
 #include "private.h"
@@ -90,7 +91,6 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define DEFAULT_GROUPING_LIMIT 80
 
-#define MINI_ICON_SIZE _wnck_get_default_mini_icon_size ()
 #define TASKLIST_BUTTON_PADDING 4
 #define TASKLIST_TEXT_MAX_WIDTH 25 /* maximum width in characters */
 
@@ -176,6 +176,8 @@ typedef struct _skipped_window
 
 struct _WnckTasklistPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   WnckTask *active_task; /* NULL if active window not in tasklist */
@@ -1190,6 +1192,7 @@ wnck_task_get_highest_scored (GList     *ungrouped_class_groups,
 static int
 wnck_tasklist_get_button_size (GtkWidget *widget)
 {
+  WnckTasklist *tasklist;
   GtkStyleContext *style_context;
   GtkStateFlags state;
   PangoContext *context;
@@ -1197,7 +1200,10 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   PangoFontDescription *description;
   gint char_width;
   gint text_width;
+  gint mini_icon_size;
   gint width;
+
+  tasklist = WNCK_TASKLIST (widget);
 
   style_context = gtk_widget_get_style_context (widget);
   state = gtk_style_context_get_state (style_context);
@@ -1210,8 +1216,10 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
   pango_font_metrics_unref (metrics);
   text_width = PANGO_PIXELS (TASKLIST_TEXT_MAX_WIDTH * char_width);
 
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (tasklist->priv->handle);
+
   width = text_width + 2 * TASKLIST_BUTTON_PADDING
-	  + MINI_ICON_SIZE + 2 * TASKLIST_BUTTON_PADDING;
+	  + mini_icon_size + 2 * TASKLIST_BUTTON_PADDING;
 
   return width;
 }
@@ -1503,6 +1511,7 @@ wnck_task_size_allocated (GtkWidget     *widget,
   GtkStyleContext *context;
   GtkStateFlags    state;
   GtkBorder        padding;
+  gsize            mini_icon_size;
   int              min_image_width;
   gboolean         old_image_visible;
   gboolean         old_label_visible;
@@ -1511,7 +1520,9 @@ wnck_task_size_allocated (GtkWidget     *widget,
   state = gtk_style_context_get_state (context);
   gtk_style_context_get_padding (context, state, &padding);
 
-  min_image_width = MINI_ICON_SIZE +
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (task->tasklist->priv->handle);
+
+  min_image_width = mini_icon_size +
                     padding.left + padding.right +
                     2 * TASKLIST_BUTTON_PADDING;
   old_image_visible = gtk_widget_get_visible (task->image);
@@ -1741,7 +1752,9 @@ wnck_tasklist_realize (GtkWidget *widget)
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
-  tasklist->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  tasklist->priv->screen = wnck_handle_get_screen (tasklist->priv->handle,
+                                                   gdk_x11_screen_get_screen_number (gdkscreen));
+
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -2136,6 +2149,27 @@ wnck_tasklist_new (void)
   WnckTasklist *tasklist;
 
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist->priv->handle = _wnck_get_handle ();
+
+  return GTK_WIDGET (tasklist);
+}
+
+/**
+ * wnck_tasklist_new_with_handle:
+ * @handle: a #WnckHandle
+ *
+ * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
+ * #WnckScreen it is on.
+ *
+ * Returns: a newly created #WnckTasklist.
+ */
+GtkWidget*
+wnck_tasklist_new_with_handle (WnckHandle *handle)
+{
+  WnckTasklist *tasklist;
+
+  tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist->priv->handle = handle;
 
   return GTK_WIDGET (tasklist);
 }
@@ -3189,9 +3223,12 @@ wnck_dimm_icon (GdkPixbuf *pixbuf)
 }
 
 static GdkPixbuf *
-wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
+wnck_task_scale_icon (WnckHandle *handle,
+                      GdkPixbuf  *orig,
+                      gboolean    minimized)
 {
   int w, h;
+  gsize mini_icon_size;
   GdkPixbuf *pixbuf;
 
   if (!orig)
@@ -3200,7 +3237,9 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 
-  if (h != (int) MINI_ICON_SIZE ||
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
+  if (h != (int) mini_icon_size ||
       !gdk_pixbuf_get_has_alpha (orig))
     {
       double scale;
@@ -3208,10 +3247,10 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
       pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
 			       TRUE,
 			       8,
-			       MINI_ICON_SIZE * w / (double) h,
-			       MINI_ICON_SIZE);
+			       mini_icon_size * w / (double) h,
+			       mini_icon_size);
 
-      scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (orig);
+      scale = mini_icon_size / (double) gdk_pixbuf_get_height (orig);
 
       gdk_pixbuf_scale (orig,
 			pixbuf,
@@ -3243,23 +3282,27 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
 static GdkPixbuf *
 wnck_task_get_icon (WnckTask *task)
 {
+  WnckHandle *handle;
   WnckWindowState state;
   GdkPixbuf *pixbuf;
 
+  handle = task->tasklist->priv->handle;
   pixbuf = NULL;
 
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      pixbuf = wnck_task_scale_icon (wnck_class_group_get_mini_icon (task->class_group),
-				     FALSE);
+      pixbuf = wnck_task_scale_icon (handle,
+                                     wnck_class_group_get_mini_icon (task->class_group),
+                                     FALSE);
       break;
 
     case WNCK_TASK_WINDOW:
       state = wnck_window_get_state (task->window);
 
-      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
-				      state & WNCK_WINDOW_STATE_MINIMIZED);
+      pixbuf =  wnck_task_scale_icon (handle,
+                                      wnck_window_get_mini_icon (task->window),
+                                      state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3271,16 +3314,19 @@ wnck_task_get_icon (WnckTask *task)
           icon = sn_startup_sequence_get_icon_name (task->startup_sequence);
           if (icon != NULL)
             {
+              gsize mini_icon_size;
               GdkPixbuf *loaded;
 
+              mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
               loaded =  (* task->tasklist->priv->icon_loader) (icon,
-                                                               MINI_ICON_SIZE,
+                                                               mini_icon_size,
                                                                0,
                                                                task->tasklist->priv->icon_loader_data);
 
               if (loaded != NULL)
                 {
-                  pixbuf = wnck_task_scale_icon (loaded, FALSE);
+                  pixbuf = wnck_task_scale_icon (handle, loaded, FALSE);
                   g_object_unref (G_OBJECT (loaded));
                 }
             }
@@ -3288,8 +3334,12 @@ wnck_task_get_icon (WnckTask *task)
 
       if (pixbuf == NULL)
         {
-          _wnck_get_fallback_icons (NULL, 0, 0,
-                                    &pixbuf, MINI_ICON_SIZE, MINI_ICON_SIZE);
+          gsize mini_icon_size;
+
+          mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
+
+          _wnck_get_fallback_icons (handle, NULL, 0, 0,
+                                    &pixbuf, mini_icon_size, mini_icon_size);
         }
 #endif
       break;
@@ -3484,6 +3534,7 @@ static gboolean
 wnck_task_motion_timeout (gpointer data)
 {
   WnckWorkspace *ws;
+  WnckScreen *screen;
   WnckTask *task = WNCK_TASK (data);
 
   task->button_activate = 0;
@@ -3493,7 +3544,9 @@ wnck_task_motion_timeout (gpointer data)
    * There should only be *one* activate call.
    */
   ws = wnck_window_get_workspace (task->window);
-  if (ws && ws != wnck_screen_get_active_workspace (wnck_screen_get_default ()))
+  screen = wnck_handle_get_default_screen (task->tasklist->priv->handle);
+
+  if (ws && ws != wnck_screen_get_active_workspace (screen))
   {
     wnck_workspace_activate (ws, task->dnd_timestamp);
   }
