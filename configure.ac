@@ -68,7 +68,8 @@ AC_ARG_ENABLE(tools,
               [enable_tools=yes])
 AM_CONDITIONAL(ENABLE_TOOLS, test "x$enable_tools" != "xno")
 
-AM_GNU_GETTEXT_VERSION([0.19.4])
+AM_GNU_GETTEXT_VERSION([0.19.6])
+AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
 AM_GNU_GETTEXT([external])
 
 GETTEXT_PACKAGE=libwnck-3.0
