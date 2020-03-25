@@ -1,4 +1,17 @@
 ==============
+Version 3.36.0
+==============
+
+  Fixes
+
+  * Add a weak reference callback to window to disconnect obsolete signal
+    handlers (Alberts Muktupāvels) [GNOME/libwnck#141]
+  * pager: Add scroll modes [GNOME/libwnck#134]
+  * meson build fixes (Jan Alexander Steffens, Jan Tojnar, Victor Kareh)
+    [GNOME/libwnck#139]
+
+
+==============
 Version 3.32.0
 ==============
 
