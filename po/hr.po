@@ -5,19 +5,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: libwnck 0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-09 17:56+0200\n"
-"PO-Revision-Date: 2008-04-13 23:33+0000\n"
-"Last-Translator: Launchpad Translations Administrators <rosetta@launchpad."
-"net>\n"
+"POT-Creation-Date: 2020-04-05 06:37+0000\n"
+"PO-Revision-Date: 2020-04-11 20:05+0200\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <lokalizacija@linux.hr>\n"
-"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2008-05-28 10:06+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2020-04-11 18:04+0000\n"
+"X-Generator: Poedit 2.0.6\n"
+"Language: hr\n"
 
 #. *
 #. * SECTION:application
@@ -38,196 +35,150 @@ msgstr ""
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/application.c:51
+#: libwnck/application.c:49
 msgid "Untitled application"
-msgstr ""
+msgstr "Bezimena aplikacija"
 
-#: ../libwnck/pager-accessible.c:322
+#: libwnck/pager-accessible.c:263
 msgid "Workspace Switcher"
-msgstr "Mjenjač radnih površina"
+msgstr "Izmjenjivač radnih prostora"
 
-#: ../libwnck/pager-accessible.c:333
+#: libwnck/pager-accessible.c:274
 msgid "Tool to switch between workspaces"
-msgstr "Alat za izmjenu radnih površina"
+msgstr "Alat za prebacivanje radnih prostora"
 
-#: ../libwnck/pager-accessible.c:437
+#: libwnck/pager-accessible.c:379
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Kliknite na ovo za prebacivanje na radnu površinu %s"
+msgstr "Klikni ovdje za prebacivanje na radni prostor %s"
 
-#: ../libwnck/pager.c:1908
+#: libwnck/pager.c:2221
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr ""
+msgstr "Klikni za pokretanje povlačenja \"%s\""
 
-#: ../libwnck/pager.c:1911
+#: libwnck/pager.c:2224
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr ""
+msgstr "Trenutni radni prostor \"%s\""
 
-#: ../libwnck/pager.c:1916
+#: libwnck/pager.c:2229
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr ""
+msgstr "Klikni za prebacivanje na \"%s\""
 
-#: ../libwnck/selector.c:1171
+#: libwnck/selector.c:1091
 msgid "No Windows Open"
 msgstr "Nema otvorenih prozora"
 
-#: ../libwnck/selector.c:1224
+#: libwnck/selector.c:1147
 msgid "Window Selector"
-msgstr "Odabir prozora"
+msgstr "Odabiratelj prozora"
 
-#: ../libwnck/selector.c:1225
+#: libwnck/selector.c:1148
 msgid "Tool to switch between windows"
-msgstr "Alat za prebacivanje između prozora"
+msgstr "Alat za prebacivanje prozora"
 
-#: ../libwnck/tasklist.c:727
+#: libwnck/tasklist.c:603
 msgid "Window List"
 msgstr "Popis prozora"
 
-#: ../libwnck/tasklist.c:728
+#: libwnck/tasklist.c:604
 msgid "Tool to switch between visible windows"
-msgstr "Alat za izmjenu između vidljivih prozora"
+msgstr "Alat za prebacivanje vidljivih prozora"
 
-#: ../libwnck/tasklist.c:3016
+#: libwnck/tasklist.c:3022
 msgid "Mi_nimize All"
-msgstr ""
+msgstr "Sm_anji sve"
 
-#: ../libwnck/tasklist.c:3027
+#: libwnck/tasklist.c:3030
 msgid "Un_minimize All"
-msgstr ""
+msgstr "_Poništi samanjivanje svih"
 
-#: ../libwnck/tasklist.c:3035
+#: libwnck/tasklist.c:3038
 msgid "Ma_ximize All"
-msgstr ""
+msgstr "Uv_ećaj sve"
 
-#: ../libwnck/tasklist.c:3046
+#: libwnck/tasklist.c:3046
 msgid "_Unmaximize All"
-msgstr ""
+msgstr "_Poništi uvećanje svih"
 
-#: ../libwnck/tasklist.c:3058
+#: libwnck/tasklist.c:3058
 msgid "_Close All"
 msgstr "_Zatvori sve"
 
-#: ../libwnck/test-pager.c:15
-msgid "Use N_ROWS rows"
-msgstr ""
-
-#: ../libwnck/test-pager.c:15
-msgid "N_ROWS"
-msgstr ""
-
-#: ../libwnck/test-pager.c:16
-msgid "Only show current workspace"
-msgstr ""
-
-#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
-msgid "Use RTL as default direction"
-msgstr ""
-
-#: ../libwnck/test-pager.c:18
-msgid "Show workspace names instead of workspace contents"
-msgstr ""
-
-#: ../libwnck/test-pager.c:19
-msgid "Use a vertical orientation"
-msgstr ""
-
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
-msgid "Don't show window in tasklist"
-msgstr ""
-
-#: ../libwnck/test-tasklist.c:16
-msgid "Always group windows"
-msgstr ""
-
-#: ../libwnck/test-tasklist.c:17
-msgid "Never group windows"
-msgstr ""
-
-#: ../libwnck/test-tasklist.c:18
-msgid "Display windows from all workspaces"
-msgstr ""
-
-#: ../libwnck/test-tasklist.c:21
-msgid "Enable Transparency"
-msgstr ""
-
-#: ../libwnck/window-action-menu.c:415
+#: libwnck/window-action-menu.c:367
 msgid "Unmi_nimize"
-msgstr "Vrati sa mi_nimiziranog"
+msgstr "Poništi s_manjenje"
 
-#: ../libwnck/window-action-menu.c:422
+#: libwnck/window-action-menu.c:373
 msgid "Mi_nimize"
-msgstr "_Minimiziraj"
+msgstr "Sm_anji"
 
-#: ../libwnck/window-action-menu.c:430
+#: libwnck/window-action-menu.c:380
 msgid "Unma_ximize"
-msgstr "Vrati sa _maksimiziranog"
+msgstr "Poništi u_većanje"
 
-#: ../libwnck/window-action-menu.c:437
+#: libwnck/window-action-menu.c:386
 msgid "Ma_ximize"
-msgstr "_Maksimiziraj"
+msgstr "Uv_ećaj"
 
-#: ../libwnck/window-action-menu.c:744 ../libwnck/workspace.c:281
-#, fuzzy, c-format
+#: libwnck/window-action-menu.c:692 libwnck/workspace.c:265
+#, c-format
 msgid "Workspace %d"
-msgstr "Mjenjač radnih površina"
+msgstr "Radni prostor %d"
 
-#: ../libwnck/window-action-menu.c:753 ../libwnck/window-action-menu.c:900
-#, fuzzy
+#: libwnck/window-action-menu.c:701 libwnck/window-action-menu.c:847
+#, c-format
 msgid "Workspace 1_0"
-msgstr "Pomakni na radnu površinu _iznad"
+msgstr "Radni prostor 1_0"
 
-#: ../libwnck/window-action-menu.c:755 ../libwnck/window-action-menu.c:902
-#, fuzzy, c-format
+#: libwnck/window-action-menu.c:703 libwnck/window-action-menu.c:849
+#, c-format
 msgid "Workspace %s%d"
-msgstr "Mjenjač radnih površina"
+msgstr "Radni prostor  %s%d"
 
-#: ../libwnck/window-action-menu.c:1045
+#: libwnck/window-action-menu.c:990
 msgid "_Move"
-msgstr "_Pomakni"
+msgstr "_Premjesti"
 
-#: ../libwnck/window-action-menu.c:1052
+#: libwnck/window-action-menu.c:996
 msgid "_Resize"
-msgstr "_Promjena veličine"
+msgstr "_Promijeni veličinu"
 
-#: ../libwnck/window-action-menu.c:1061
+#: libwnck/window-action-menu.c:1004
 msgid "Always On _Top"
-msgstr ""
+msgstr "Uvijek na _vrhu"
 
-#: ../libwnck/window-action-menu.c:1069
+#: libwnck/window-action-menu.c:1012
 msgid "_Always on Visible Workspace"
-msgstr "Uvijek na _vidljivom radnom prostoru"
+msgstr "_Uvijek na vidljivom radnom prostoru"
 
-#: ../libwnck/window-action-menu.c:1074
-#, fuzzy
+#: libwnck/window-action-menu.c:1017
 msgid "_Only on This Workspace"
-msgstr "Samo na _ovom radnom prostoru"
+msgstr "_Samo na ovom radnom prostoru"
 
-#: ../libwnck/window-action-menu.c:1081
+#: libwnck/window-action-menu.c:1024
 msgid "Move to Workspace _Left"
-msgstr "Pomakni na _lijevu radnu površinu"
+msgstr "Premjesti na lij_evi radni prostor"
 
-#: ../libwnck/window-action-menu.c:1087
+#: libwnck/window-action-menu.c:1029
 msgid "Move to Workspace R_ight"
-msgstr "Pomakni na _desnu radnu površinu"
+msgstr "Premjest_i na desni radni prostor"
 
-#: ../libwnck/window-action-menu.c:1093
+#: libwnck/window-action-menu.c:1034
 msgid "Move to Workspace _Up"
-msgstr "Pomakni na radnu površinu _iznad"
+msgstr "Premjesti na _gornji radni prostor"
 
-#: ../libwnck/window-action-menu.c:1099
+#: libwnck/window-action-menu.c:1039
 msgid "Move to Workspace _Down"
-msgstr "Pomakni na radnu površinu is_pod"
+msgstr "Premjesti na _donji radni prostor"
 
-#: ../libwnck/window-action-menu.c:1102
+#: libwnck/window-action-menu.c:1041
 msgid "Move to Another _Workspace"
-msgstr "Premjesti se u drugu _radnu površinu"
+msgstr "Premjesti na drugi _radni prostor"
 
-#: ../libwnck/window-action-menu.c:1122
+#: libwnck/window-action-menu.c:1061
 msgid "_Close"
 msgstr "_Zatvori"
 
@@ -240,961 +191,1031 @@ msgstr "_Zatvori"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:50
+#: libwnck/window.c:47
 msgid "Untitled window"
-msgstr ""
+msgstr "Neimenovani prozor"
 
-#: ../libwnck/wnckprop.c:139
+#: libwnck/wnckprop.c:137
 msgid "X window ID of the window to examine or modify"
-msgstr ""
+msgstr "ID X prozora za ispitivanje ili promjenu"
 
-#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
-#: ../libwnck/wnckprop.c:154
+#: libwnck/wnckprop.c:137 libwnck/wnckprop.c:144 libwnck/wnckprop.c:154
 msgid "XID"
-msgstr ""
+msgstr "XID"
 
-#. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:144
+#. Translators: A group leader is the window that is the "owner" of a
+#. * group of windows, ie: if you have multiple windows in one
+#. * application, one window has some information about the application
+#. * (like the application name).
+#: libwnck/wnckprop.c:143
 msgid "X window ID of the group leader of an application to examine"
-msgstr ""
+msgstr "ID X prozora za grupe vođe grupe aplikacije za ispitivanje"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:148
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr ""
+msgstr "Izvor klase u grupi klase za ispitivanje"
 
-#: ../libwnck/wnckprop.c:148
+#: libwnck/wnckprop.c:148
 msgid "CLASS"
-msgstr ""
+msgstr "KLASA"
 
-#: ../libwnck/wnckprop.c:150
+#: libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr ""
+msgstr "BROJ radnog prostora za ispitivanje ili promjenu"
 
-#: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
-#: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
-#: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
+#: libwnck/wnckprop.c:150 libwnck/wnckprop.c:152 libwnck/wnckprop.c:170
+#: libwnck/wnckprop.c:172 libwnck/wnckprop.c:174 libwnck/wnckprop.c:271
 msgid "NUMBER"
-msgstr ""
+msgstr "BROJ"
 
-#: ../libwnck/wnckprop.c:152
+#: libwnck/wnckprop.c:152
 msgid "NUMBER of the screen to examine or modify"
-msgstr ""
+msgstr "BROJ zaslona za ispitivanje ili promjenu"
 
-#: ../libwnck/wnckprop.c:154
+#: libwnck/wnckprop.c:154
 msgid "Alias of --window"
-msgstr ""
+msgstr "Naziv --window"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:161
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:162
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
+"Popis prozora aplikacije/klase grupe/radnog prostora/zaslona (izlazni "
+"format: \"XID: Naziv prozora\")"
 
-#: ../libwnck/wnckprop.c:163
+#: libwnck/wnckprop.c:164
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
+"Popis prozora zaslona (izlazni format: \"Broj: Naziv radnog prostora\")"
 
-#: ../libwnck/wnckprop.c:169
+#: libwnck/wnckprop.c:170
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr ""
+msgstr "Promijeni broj radnih prostora zaslona u BROJ"
 
-#: ../libwnck/wnckprop.c:171
+#: libwnck/wnckprop.c:172
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr ""
+"Promijeni raspored radnih prostora na zaslona da koristi BROJEVE redaka"
 
-#: ../libwnck/wnckprop.c:173
+#: libwnck/wnckprop.c:174
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr ""
+"Promijeni raspored radnih prostora na zaslona da koristi BROJEVE stupaca"
 
-#: ../libwnck/wnckprop.c:175
+#: libwnck/wnckprop.c:176
 msgid "Show the desktop"
-msgstr ""
+msgstr "Prikaži radnu površinu"
 
-#: ../libwnck/wnckprop.c:177
+#: libwnck/wnckprop.c:178
 msgid "Stop showing the desktop"
-msgstr ""
+msgstr "Zaustavi prikaz radne površine"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:181
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:183
 msgid "Move the viewport of the current workspace to X coordinate X"
-msgstr ""
+msgstr "Premjesti prikaz područja trenutnog radnog prostora na X koordinatu X"
 
-#: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
+#: libwnck/wnckprop.c:183 libwnck/wnckprop.c:273
 msgid "X"
-msgstr ""
+msgstr "X"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:185
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:188
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr ""
+msgstr "Premjesti prikaz područja trenutnog radnog prostora na Y koordinatu Y"
 
-#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
+#: libwnck/wnckprop.c:188 libwnck/wnckprop.c:275
 msgid "Y"
-msgstr ""
+msgstr "Y"
 
-#: ../libwnck/wnckprop.c:191
+#: libwnck/wnckprop.c:194
 msgid "Minimize the window"
-msgstr ""
+msgstr "Smanjuje prozor"
 
-#: ../libwnck/wnckprop.c:193
+#: libwnck/wnckprop.c:196
 msgid "Unminimize the window"
-msgstr ""
+msgstr "Poništava smanjenje prozora"
 
-#: ../libwnck/wnckprop.c:195
+#: libwnck/wnckprop.c:198
 msgid "Maximize the window"
-msgstr ""
+msgstr "Uvećva prozor"
 
-#: ../libwnck/wnckprop.c:197
+#: libwnck/wnckprop.c:200
 msgid "Unmaximize the window"
-msgstr ""
+msgstr "Poništava uvećanje prozora"
 
-#: ../libwnck/wnckprop.c:199
+#: libwnck/wnckprop.c:202
 msgid "Maximize horizontally the window"
-msgstr ""
+msgstr "Uvećava prozor vodoravno"
 
-#: ../libwnck/wnckprop.c:201
+#: libwnck/wnckprop.c:204
 msgid "Unmaximize horizontally the window"
-msgstr ""
+msgstr "Poništava vodoravno uvećanje prozora"
 
-#: ../libwnck/wnckprop.c:203
+#: libwnck/wnckprop.c:206
 msgid "Maximize vertically the window"
-msgstr ""
+msgstr "Uvećava prozor okomito"
 
-#: ../libwnck/wnckprop.c:205
+#: libwnck/wnckprop.c:208
 msgid "Unmaximize vertically the window"
-msgstr ""
+msgstr "Poništava okomito uvećanje prozora"
 
-#: ../libwnck/wnckprop.c:207
+#: libwnck/wnckprop.c:210
 msgid "Start moving the window via the keyboard"
-msgstr ""
+msgstr "Pokreni promicanje prozora putem tipkovnice"
 
-#: ../libwnck/wnckprop.c:209
+#: libwnck/wnckprop.c:212
 msgid "Start resizing the window via the keyboard"
-msgstr ""
+msgstr "Pokreni promjenu veličine prozora putem tipkovnice"
 
-#: ../libwnck/wnckprop.c:211
+#: libwnck/wnckprop.c:214
 msgid "Activate the window"
-msgstr ""
+msgstr "Aktiviraj prozor"
 
-#: ../libwnck/wnckprop.c:213
+#: libwnck/wnckprop.c:216
 msgid "Close the window"
-msgstr ""
+msgstr "Zatvori prozor"
 
-#: ../libwnck/wnckprop.c:216
+#: libwnck/wnckprop.c:219
 msgid "Make the window fullscreen"
-msgstr ""
+msgstr "Postavi prozor preko cijelog zaslona"
 
-#: ../libwnck/wnckprop.c:218
+#: libwnck/wnckprop.c:221
 msgid "Make the window quit fullscreen mode"
-msgstr ""
+msgstr "Vrati prozor iz cijelog zaslona"
 
-#: ../libwnck/wnckprop.c:220
+#: libwnck/wnckprop.c:223
 msgid "Make the window always on top"
-msgstr ""
+msgstr "Postavi prozor uvijek na vrhu"
 
-#: ../libwnck/wnckprop.c:222
+#: libwnck/wnckprop.c:225
 msgid "Make the window not always on top"
-msgstr ""
+msgstr "Ne stavljaj prozor uvijek na vrhu"
 
-#: ../libwnck/wnckprop.c:224
+#: libwnck/wnckprop.c:227
 msgid "Make the window below other windows"
-msgstr ""
+msgstr "Postavi prozor uvijek ispod ostalih prozora"
 
-#: ../libwnck/wnckprop.c:226
+#: libwnck/wnckprop.c:229
 msgid "Make the window not below other windows"
-msgstr ""
+msgstr "Ne stavljaj prozor uvijek ispod ostalih prozora"
 
-#: ../libwnck/wnckprop.c:228
+#: libwnck/wnckprop.c:231
 msgid "Shade the window"
-msgstr ""
+msgstr "Osjenčaj prozor"
 
-#: ../libwnck/wnckprop.c:230
+#: libwnck/wnckprop.c:233
 msgid "Unshade the window"
-msgstr ""
+msgstr "Nemoj osjenčati prozor"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:234
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:238
 msgid "Make the window have a fixed position in the viewport"
-msgstr ""
+msgstr "Učini da prozor ima nepromjenjivi položaj prikaza područja"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:238
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:243
 msgid "Make the window not have a fixed position in the viewport"
-msgstr ""
+msgstr "Učini da prozor nema nepromjenjivi položaj prikaza područja"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:244
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: libwnck/wnckprop.c:250
 msgid "Make the window not appear in pagers"
-msgstr ""
+msgstr "Učini da se prozor ne pojavi u izmjenjivaču"
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:250
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: libwnck/wnckprop.c:257
 msgid "Make the window appear in pagers"
-msgstr ""
+msgstr "Učini da se prozor pojavi u izmjenjivaču"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:253
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: libwnck/wnckprop.c:261
 msgid "Make the window not appear in tasklists"
-msgstr ""
+msgstr "Učini da se prozor ne pojavi u popisu zadataka"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:256
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: libwnck/wnckprop.c:265
 msgid "Make the window appear in tasklists"
-msgstr ""
+msgstr "Učini da se prozor pojavi u popisu zadataka"
 
-#: ../libwnck/wnckprop.c:258
+#: libwnck/wnckprop.c:267
 msgid "Make the window visible on all workspaces"
-msgstr ""
+msgstr "Učini prozor vidljivim na svim radnim prostorima"
 
-#: ../libwnck/wnckprop.c:260
+#: libwnck/wnckprop.c:269
 msgid "Make the window visible on the current workspace only"
-msgstr ""
+msgstr "Učini prozor vidljivim samo na trenutnom radnom prostoru"
 
-#: ../libwnck/wnckprop.c:262
+#: libwnck/wnckprop.c:271
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr ""
+msgstr "Premjesti prozor na radni prostor BROJ (prvi radni prostor je 0)"
 
-#: ../libwnck/wnckprop.c:264
+#: libwnck/wnckprop.c:273
 msgid "Change the X coordinate of the window to X"
-msgstr ""
+msgstr "Promijeni X koordinate prozora na X"
 
-#: ../libwnck/wnckprop.c:266
+#: libwnck/wnckprop.c:275
 msgid "Change the Y coordinate of the window to Y"
-msgstr ""
+msgstr "Promijeni Y koordinate prozora na Y"
 
-#: ../libwnck/wnckprop.c:268
+#: libwnck/wnckprop.c:277
 msgid "Change the width of the window to WIDTH"
-msgstr ""
+msgstr "Promijeni širinu prozora na ŠIRINU"
 
-#: ../libwnck/wnckprop.c:268
+#: libwnck/wnckprop.c:277
 msgid "WIDTH"
-msgstr ""
+msgstr "ŠIRINA"
 
-#: ../libwnck/wnckprop.c:270
+#: libwnck/wnckprop.c:279
 msgid "Change the height of the window to HEIGHT"
-msgstr ""
+msgstr "Promijeni visniu prozora na VISINU"
 
-#: ../libwnck/wnckprop.c:270
+#: libwnck/wnckprop.c:279
 msgid "HEIGHT"
-msgstr ""
+msgstr "VISINA"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:273
+#: libwnck/wnckprop.c:282
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
+"Promijeni vrstu prozora na VRSTU (valjane vrijednosti: normal, desktop, "
+"dock, dialog, toolbar, menu, utility, splash)"
 
-#: ../libwnck/wnckprop.c:273
+#: libwnck/wnckprop.c:282
 msgid "TYPE"
-msgstr ""
+msgstr "VRSTA"
 
-#: ../libwnck/wnckprop.c:279
+#: libwnck/wnckprop.c:288
 msgid "Change the name of the workspace to NAME"
-msgstr ""
+msgstr "Promijeni naziv radnog prostora u NAZIV"
 
-#: ../libwnck/wnckprop.c:279
+#: libwnck/wnckprop.c:288
 msgid "NAME"
-msgstr ""
+msgstr "NAZIV"
 
-#: ../libwnck/wnckprop.c:281
+#: libwnck/wnckprop.c:290
 msgid "Activate the workspace"
-msgstr ""
+msgstr "Aktiviraj radni prostor"
 
-#: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
-#: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
+#: libwnck/wnckprop.c:384 libwnck/wnckprop.c:408 libwnck/wnckprop.c:444
+#: libwnck/wnckprop.c:467
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr ""
+msgstr "Nevaljana vrijednost \"%s\" za --%s"
 
-#: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
+#: libwnck/wnckprop.c:501 libwnck/wnckprop.c:520
 #, c-format
 msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: screen %d should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: zaslon %d trebao bi biti u interakciji s "
+"njima, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:499
+#: libwnck/wnckprop.c:510
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: prozori ili radni prostori na zaslonu %d "
+"trebali bi biti prikazani, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
+#: libwnck/wnckprop.c:533 libwnck/wnckprop.c:553
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: radni prostor %d trebao bi biti u "
+"interakciji s njima, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:532
+#: libwnck/wnckprop.c:543
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: prozori ili radni prostori %d trebali bi "
+"biti prikazani, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:554
+#: libwnck/wnckprop.c:565
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: aplikacije bi trebale biti u interakciji "
+"s njima, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:564
+#: libwnck/wnckprop.c:575
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: prozori ili aplikacija bi trebali biti "
+"prikazani, ali --%s se koristi\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:577
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:589
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: grupa klase \"%s\" trebala bi biti u "
+"interakciji s njima, ali --%s se koristi\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:588
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:601
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: prozori ili grupa klase \"%s\" trebali bi "
+"biti prikazani, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
+#: libwnck/wnckprop.c:613 libwnck/wnckprop.c:622
 #, c-format
 msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: a window should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
+"Sukobljene mogućnosti su prisutne: prozor bi trebao biti u interakciji s "
+"njima, ali --%s se koristi\n"
 
-#: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
-#: ../libwnck/wnckprop.c:756
+#: libwnck/wnckprop.c:641 libwnck/wnckprop.c:722 libwnck/wnckprop.c:769
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr ""
+msgstr "Sukobljene mogućnosti su prisutne: --%s i --%s\n"
 
-#: ../libwnck/wnckprop.c:667
+#: libwnck/wnckprop.c:680
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
+"Nevaljani argument \"%d\" za --%s: argument mora biti izričito pozitivan\n"
 
-#: ../libwnck/wnckprop.c:680
+#: libwnck/wnckprop.c:693
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
-msgstr ""
+msgstr "Nevaljani argument \"%d\" za --%s: argument mora biti pozitivan\n"
 
-#: ../libwnck/wnckprop.c:775
+#: libwnck/wnckprop.c:788
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
-msgstr ""
+msgstr "Sukobljene mogućnosti su prisutne: --%s ili --%s, i --%s\n"
 
-#: ../libwnck/wnckprop.c:807
+#: libwnck/wnckprop.c:820
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
-msgstr ""
+msgstr "Nevaljani argument \"%s\" za --%s, valjane vrijednosti su: %s\n"
 
-#: ../libwnck/wnckprop.c:850
+#: libwnck/wnckprop.c:863
+#, c-format
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
+"Nemoguća promjena rasporeda radnog prostora na zaslonu: raspored je već "
+"zauzet\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:884
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:898
+#, c-format
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
+"Područje prikaza se ne može premjestiti: trenutni radni prostor ne sadrži "
+"područje prikaza\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:890
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:905
+#, c-format
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr ""
+"Područje prikaza se ne može premjestiti: trenutni radni prostor ne postoji\n"
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
-#: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
+#: libwnck/wnckprop.c:941 libwnck/wnckprop.c:950 libwnck/wnckprop.c:959
+#: libwnck/wnckprop.c:966 libwnck/wnckprop.c:976 libwnck/wnckprop.c:983
+#: libwnck/wnckprop.c:992 libwnck/wnckprop.c:1041
+#, c-format
 msgid "Action not allowed\n"
-msgstr ""
+msgstr "Radnja nije dopuštena\n"
 
-#: ../libwnck/wnckprop.c:1022
+#: libwnck/wnckprop.c:1037
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
+"Prozor se ne može premjestiti na radni prostor %d: radni prostor ne postoji\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1218
+#: libwnck/wnckprop.c:1101 libwnck/wnckprop.c:1233
 msgid "<name unset>"
-msgstr ""
+msgstr "<naziv nije postavljen>"
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1089
+#: libwnck/wnckprop.c:1104
 #, c-format
 msgid "%lu: %s\n"
-msgstr ""
+msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1109
+#: libwnck/wnckprop.c:1124
 #, c-format
 msgid "%d: %s\n"
-msgstr ""
+msgstr "%d: %s\n"
 
-#: ../libwnck/wnckprop.c:1172
+#: libwnck/wnckprop.c:1187
 #, c-format
 msgid "Screen Number: %d\n"
-msgstr ""
+msgstr "Broj zaslona: %d\n"
 
-#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1255
+#: libwnck/wnckprop.c:1189 libwnck/wnckprop.c:1270
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr ""
+msgstr "Razlučivost (širina, visina): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1178
+#: libwnck/wnckprop.c:1193
 #, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr ""
+msgstr "Broj radnih prostora: %d\n"
 
-#: ../libwnck/wnckprop.c:1184
+#: libwnck/wnckprop.c:1199
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr ""
+msgstr "Raspored radnog prostora (retci, stupci, orijentacija): %d, %d, %s\n"
 
-#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1251
-#: ../libwnck/wnckprop.c:1443
+#: libwnck/wnckprop.c:1209 libwnck/wnckprop.c:1266 libwnck/wnckprop.c:1463
 msgid "<no EWMH-compliant window manager>"
-msgstr ""
+msgstr "<nema EWMH podržanog upravitelja prozora>"
 
-#: ../libwnck/wnckprop.c:1195
+#: libwnck/wnckprop.c:1210
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr ""
+msgstr "Upravitelj prozora: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1279
-#: ../libwnck/wnckprop.c:1291 ../libwnck/wnckprop.c:1303
-#: ../libwnck/wnckprop.c:1315 ../libwnck/wnckprop.c:1428
+#: libwnck/wnckprop.c:1215 libwnck/wnckprop.c:1296 libwnck/wnckprop.c:1308
+#: libwnck/wnckprop.c:1320 libwnck/wnckprop.c:1332 libwnck/wnckprop.c:1448
 #, c-format
 msgid "%d (\"%s\")"
-msgstr ""
+msgstr "%d (\"%s\")"
 
 #. Translators: "none" here means "no workspace"
-#: ../libwnck/wnckprop.c:1205 ../libwnck/wnckprop.c:1284
-#: ../libwnck/wnckprop.c:1296 ../libwnck/wnckprop.c:1308
-#: ../libwnck/wnckprop.c:1320 ../libwnck/wnckprop.c:1435
-msgid "workspace|none"
-msgstr ""
+#: libwnck/wnckprop.c:1220 libwnck/wnckprop.c:1301 libwnck/wnckprop.c:1313
+#: libwnck/wnckprop.c:1325 libwnck/wnckprop.c:1337 libwnck/wnckprop.c:1455
+msgctxt "workspace"
+msgid "none"
+msgstr "nijedan"
 
-#: ../libwnck/wnckprop.c:1206
+#: libwnck/wnckprop.c:1221
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr ""
+msgstr "Aktivan radni prostor: %s\n"
 
-#: ../libwnck/wnckprop.c:1215
+#: libwnck/wnckprop.c:1230
 #, c-format
 msgid "\"%s\""
-msgstr ""
+msgstr "\"%s\""
 
-#. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1221
+#. Translators: %lu is a window identifier (number) and %s a window name
+#: libwnck/wnckprop.c:1236
 #, c-format
 msgid "%lu (%s)"
-msgstr ""
+msgstr "%lu (%s)"
 
 #. Translators: "none" here means "no window"
-#: ../libwnck/wnckprop.c:1227
-msgid "window|none"
-msgstr ""
+#: libwnck/wnckprop.c:1242
+msgctxt "window"
+msgid "none"
+msgstr "nijedan"
 
-#: ../libwnck/wnckprop.c:1228
+#: libwnck/wnckprop.c:1243
 #, c-format
 msgid "Active Window: %s\n"
-msgstr ""
+msgstr "Aktivan prozor: %s\n"
 
-#: ../libwnck/wnckprop.c:1231
+#: libwnck/wnckprop.c:1246
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr ""
+msgstr "Prikaz radne površine: %s\n"
 
-#: ../libwnck/wnckprop.c:1233
+#: libwnck/wnckprop.c:1248
 msgid "true"
-msgstr ""
+msgstr "istina"
 
-#: ../libwnck/wnckprop.c:1233
+#: libwnck/wnckprop.c:1248
 msgid "false"
-msgstr ""
+msgstr "laž"
 
-#: ../libwnck/wnckprop.c:1244
+#: libwnck/wnckprop.c:1259
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr ""
+msgstr "Naziv radnog prostora: %s\n"
 
-#: ../libwnck/wnckprop.c:1245
+#: libwnck/wnckprop.c:1260
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr ""
+msgstr "Broj radnog prostora: %d\n"
 
-#: ../libwnck/wnckprop.c:1252 ../libwnck/wnckprop.c:1444
+#: libwnck/wnckprop.c:1267 libwnck/wnckprop.c:1464
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr ""
+msgstr "Na zaslonu: %d (Upravitelj prozora: %s)\n"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1266
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: libwnck/wnckprop.c:1282
 msgid "<no viewport>"
-msgstr ""
+msgstr "<nema područja prikaza>"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1269
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: libwnck/wnckprop.c:1286
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr ""
+msgstr "Položaj područja prikaza (x, y): %s\n"
 
-#: ../libwnck/wnckprop.c:1272
+#: libwnck/wnckprop.c:1289
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
-msgstr ""
+msgstr "Položaj u rasporedu (redak, stupac): %d, %d\n"
 
-#: ../libwnck/wnckprop.c:1285
+#: libwnck/wnckprop.c:1302
 #, c-format
 msgid "Left Neighbor: %s\n"
-msgstr ""
+msgstr "Lijevi susjed: %s\n"
 
-#: ../libwnck/wnckprop.c:1297
+#: libwnck/wnckprop.c:1314
 #, c-format
 msgid "Right Neighbor: %s\n"
-msgstr ""
+msgstr "Desni susjed: %s\n"
 
-#: ../libwnck/wnckprop.c:1309
+#: libwnck/wnckprop.c:1326
 #, c-format
 msgid "Top Neighbor: %s\n"
-msgstr ""
+msgstr "Gornji susjed: %s\n"
 
-#: ../libwnck/wnckprop.c:1321
+#: libwnck/wnckprop.c:1338
 #, c-format
 msgid "Bottom Neighbor: %s\n"
-msgstr ""
+msgstr "Donji susjed: %s\n"
 
-#. Translators: Ressource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1333
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: libwnck/wnckprop.c:1351 libwnck/wnckprop.c:1510
 #, c-format
-msgid "Resource Class: %s\n"
-msgstr ""
+msgid "Class Group ID: %s\n"
+msgstr "ID grupe klase: %s\n"
 
-#: ../libwnck/wnckprop.c:1335
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: libwnck/wnckprop.c:1355
 #, c-format
-msgid "Group Name: %s\n"
-msgstr ""
+msgid "Class Group Name: %s\n"
+msgstr "Naziv grupe klase: %s\n"
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1341 ../libwnck/wnckprop.c:1365
-#: ../libwnck/wnckprop.c:1419
+#: libwnck/wnckprop.c:1361 libwnck/wnckprop.c:1385 libwnck/wnckprop.c:1439
 msgid "set"
-msgstr ""
+msgstr "postavljeno"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1344 ../libwnck/wnckprop.c:1368
-#: ../libwnck/wnckprop.c:1375 ../libwnck/wnckprop.c:1405
-#: ../libwnck/wnckprop.c:1412 ../libwnck/wnckprop.c:1422
-#: ../libwnck/wnckprop.c:1487 ../libwnck/wnckprop.c:1497
-#: ../libwnck/wnckprop.c:1505
+#: libwnck/wnckprop.c:1364 libwnck/wnckprop.c:1388 libwnck/wnckprop.c:1395
+#: libwnck/wnckprop.c:1425 libwnck/wnckprop.c:1432 libwnck/wnckprop.c:1442
+#: libwnck/wnckprop.c:1507 libwnck/wnckprop.c:1516 libwnck/wnckprop.c:1528
+#: libwnck/wnckprop.c:1536 libwnck/wnckprop.c:1543
 msgid "<unset>"
-msgstr ""
+msgstr "<nije postavljeno>"
 
-#: ../libwnck/wnckprop.c:1345 ../libwnck/wnckprop.c:1369
-#: ../libwnck/wnckprop.c:1423
+#: libwnck/wnckprop.c:1365 libwnck/wnckprop.c:1389 libwnck/wnckprop.c:1443
 #, c-format
 msgid "Icons: %s\n"
-msgstr ""
+msgstr "Ikona: %s\n"
 
-#: ../libwnck/wnckprop.c:1348 ../libwnck/wnckprop.c:1386
+#: libwnck/wnckprop.c:1368 libwnck/wnckprop.c:1406
 #, c-format
 msgid "Number of Windows: %d\n"
-msgstr ""
+msgstr "Broj prozora: %d\n"
 
-#: ../libwnck/wnckprop.c:1360 ../libwnck/wnckprop.c:1406
+#: libwnck/wnckprop.c:1380 libwnck/wnckprop.c:1426
 #, c-format
 msgid "Name: %s\n"
-msgstr ""
+msgstr "Naziv: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1361 ../libwnck/wnckprop.c:1415
+#: libwnck/wnckprop.c:1381 libwnck/wnckprop.c:1435
 #, c-format
 msgid "Icon Name: %s\n"
-msgstr ""
+msgstr "Naziv ikone: %s\n"
 
-#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1498
+#: libwnck/wnckprop.c:1396 libwnck/wnckprop.c:1529
 #, c-format
 msgid "PID: %s\n"
-msgstr ""
+msgstr "PID: %s\n"
 
 #. Translators: "none" here means "no startup ID"
-#: ../libwnck/wnckprop.c:1383
-msgid "startupID|none"
-msgstr ""
+#: libwnck/wnckprop.c:1403
+msgctxt "startupID"
+msgid "none"
+msgstr "nijedan"
 
-#: ../libwnck/wnckprop.c:1384
+#: libwnck/wnckprop.c:1404
 #, c-format
 msgid "Startup ID: %s\n"
-msgstr ""
+msgstr "ID pokretanja: %s\n"
 
-#: ../libwnck/wnckprop.c:1432
+#: libwnck/wnckprop.c:1452
 msgid "all workspaces"
-msgstr ""
+msgstr "svi radni prostori"
 
-#: ../libwnck/wnckprop.c:1436
+#: libwnck/wnckprop.c:1456
 #, c-format
 msgid "On Workspace: %s\n"
-msgstr ""
+msgstr "Na radnom prostoru: %s\n"
 
-#: ../libwnck/wnckprop.c:1451
+#: libwnck/wnckprop.c:1471
 msgid "normal window"
-msgstr ""
+msgstr "normalan prozor"
 
-#: ../libwnck/wnckprop.c:1454
+#: libwnck/wnckprop.c:1474
 msgid "desktop"
-msgstr ""
+msgstr "radna površina"
 
-#: ../libwnck/wnckprop.c:1457
+#: libwnck/wnckprop.c:1477
 msgid "dock or panel"
-msgstr ""
+msgstr "dok ili panel"
 
-#: ../libwnck/wnckprop.c:1460
+#: libwnck/wnckprop.c:1480
 msgid "dialog window"
-msgstr ""
+msgstr "prozor dijaloga"
 
-#: ../libwnck/wnckprop.c:1463
+#: libwnck/wnckprop.c:1483
 msgid "tearoff toolbar"
-msgstr ""
+msgstr "odvojiva alatna traka"
 
-#: ../libwnck/wnckprop.c:1466
+#: libwnck/wnckprop.c:1486
 msgid "tearoff menu"
-msgstr ""
+msgstr "odvojiv izbornik"
 
-#: ../libwnck/wnckprop.c:1469
+#: libwnck/wnckprop.c:1489
 msgid "utility window"
-msgstr ""
+msgstr "prozor pomagala"
 
-#: ../libwnck/wnckprop.c:1472
+#: libwnck/wnckprop.c:1492
 msgid "splash screen"
-msgstr ""
+msgstr "uvodni zaslon"
 
-#: ../libwnck/wnckprop.c:1477
+#: libwnck/wnckprop.c:1497
 #, c-format
 msgid "Window Type: %s\n"
-msgstr ""
+msgstr "Vrsta prozora: %s\n"
 
-#: ../libwnck/wnckprop.c:1480
+#: libwnck/wnckprop.c:1500
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
-msgstr ""
+msgstr "Razlučivost (x, y, širina, visina): %d, %d, %d, %d\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1489
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class. The class instance is a way to differentiate windows belonging
+#. * to the same class group.
+#: libwnck/wnckprop.c:1520
 #, c-format
-msgid "Class Group: %s\n"
-msgstr ""
+msgid "Class Instance: %s\n"
+msgstr "Primjerak klase: %s\n"
 
-#: ../libwnck/wnckprop.c:1491
+#: libwnck/wnckprop.c:1522
 #, c-format
 msgid "XID: %lu\n"
-msgstr ""
+msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1506
+#: libwnck/wnckprop.c:1537
 #, c-format
 msgid "Session ID: %s\n"
-msgstr ""
+msgstr "ID sesije: %s\n"
+
+#: libwnck/wnckprop.c:1544
+#, c-format
+msgid "Role: %s\n"
+msgstr "Namjena: %s\n"
 
 #. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:1512
+#. * of windows, ie: if you have multiple windows in one application, one
+#. * window has some information about the application (like the application
+#. * name).
+#: libwnck/wnckprop.c:1551
 #, c-format
 msgid "Group Leader: %lu\n"
-msgstr ""
+msgstr "Glavni u grupi: %lu\n"
 
-#. Translators: A window can be transient for another window: it means it's on top of it
-#: ../libwnck/wnckprop.c:1517
+#. Translators: A window can be transient for another window: it means it's
+#. * on top of it
+#: libwnck/wnckprop.c:1557
 #, c-format
 msgid "Transient for: %lu\n"
-msgstr ""
+msgstr "Prozor je iznad: %lu\n"
 
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1532 ../libwnck/wnckprop.c:1579
+#: libwnck/wnckprop.c:1572 libwnck/wnckprop.c:1620
 #, c-format
 msgid "%1$s%2$s%3$s"
-msgstr ""
+msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1536 ../libwnck/wnckprop.c:1581
+#: libwnck/wnckprop.c:1576 libwnck/wnckprop.c:1622
 msgid ", "
-msgstr ""
+msgstr ", "
 
-#: ../libwnck/wnckprop.c:1542
+#: libwnck/wnckprop.c:1582
 msgid "minimized"
-msgstr ""
+msgstr "smanjen"
 
-#: ../libwnck/wnckprop.c:1543
+#: libwnck/wnckprop.c:1583
 msgid "maximized"
-msgstr ""
+msgstr "uvećan"
 
-#: ../libwnck/wnckprop.c:1547
+#: libwnck/wnckprop.c:1587
 msgid "maximized horizontally"
-msgstr ""
+msgstr "uvećan vodoravno"
 
-#: ../libwnck/wnckprop.c:1549
+#: libwnck/wnckprop.c:1589
 msgid "maximized vertically"
-msgstr ""
+msgstr "uvećan okomito"
 
-#: ../libwnck/wnckprop.c:1551
+#: libwnck/wnckprop.c:1591
 msgid "shaded"
-msgstr ""
+msgstr "osjenčan"
 
-#: ../libwnck/wnckprop.c:1552
+#: libwnck/wnckprop.c:1592
 msgid "pinned"
-msgstr ""
+msgstr "pričvršćen"
 
-#: ../libwnck/wnckprop.c:1553
+#: libwnck/wnckprop.c:1593
 msgid "sticky"
-msgstr ""
+msgstr "pričvrstiv"
 
-#: ../libwnck/wnckprop.c:1554
+#: libwnck/wnckprop.c:1594
 msgid "above"
-msgstr ""
+msgstr "iznad"
 
-#: ../libwnck/wnckprop.c:1555
+#: libwnck/wnckprop.c:1595
 msgid "below"
-msgstr ""
+msgstr "ispod"
 
-#: ../libwnck/wnckprop.c:1556
+#: libwnck/wnckprop.c:1596
 msgid "fullscreen"
-msgstr ""
+msgstr "cijeli zaslon"
 
-#: ../libwnck/wnckprop.c:1557
+#: libwnck/wnckprop.c:1597
 msgid "needs attention"
-msgstr ""
+msgstr "potrebna pozornost"
 
 #. Translators: A pager is the technical term for the workspace switcher.
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1562
+#: libwnck/wnckprop.c:1602
 msgid "skip pager"
-msgstr ""
+msgstr "preskoči izmjenjivača"
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:1564
+#. Translators: "tasklist" is the list of running applications (the window
+#. * list)
+#: libwnck/wnckprop.c:1605
 msgid "skip tasklist"
-msgstr ""
+msgstr "preskoči popis zadataka"
 
-#: ../libwnck/wnckprop.c:1566
+#: libwnck/wnckprop.c:1607
 msgid "normal"
-msgstr ""
+msgstr "normalno"
 
-#: ../libwnck/wnckprop.c:1567
+#: libwnck/wnckprop.c:1608
 #, c-format
 msgid "State: %s\n"
-msgstr ""
+msgstr "Stanje: %s\n"
 
-#: ../libwnck/wnckprop.c:1588
+#: libwnck/wnckprop.c:1629
 msgid "move"
-msgstr ""
+msgstr "premjesti"
 
-#: ../libwnck/wnckprop.c:1589
+#: libwnck/wnckprop.c:1630
 msgid "resize"
-msgstr ""
+msgstr "promjena veličine"
 
-#: ../libwnck/wnckprop.c:1590
+#: libwnck/wnckprop.c:1631
 msgid "shade"
-msgstr ""
+msgstr "osjenčaj"
 
-#: ../libwnck/wnckprop.c:1591
+#: libwnck/wnckprop.c:1632
 msgid "unshade"
-msgstr ""
+msgstr "odsjenčaj"
 
-#: ../libwnck/wnckprop.c:1592
+#: libwnck/wnckprop.c:1633
 msgid "stick"
-msgstr ""
+msgstr "pričvrsti"
 
-#: ../libwnck/wnckprop.c:1593
+#: libwnck/wnckprop.c:1634
 msgid "unstick"
-msgstr ""
+msgstr "odčvrsti"
 
-#: ../libwnck/wnckprop.c:1595
+#: libwnck/wnckprop.c:1636
 msgid "maximize horizontally"
-msgstr ""
+msgstr "uvećaj vodoravno"
 
-#: ../libwnck/wnckprop.c:1597
+#: libwnck/wnckprop.c:1638
 msgid "unmaximize horizontally"
-msgstr ""
+msgstr "poništi vodoravno uvećanje"
 
-#: ../libwnck/wnckprop.c:1599
+#: libwnck/wnckprop.c:1640
 msgid "maximize vertically"
-msgstr ""
+msgstr "uvećaj okomito"
 
-#: ../libwnck/wnckprop.c:1601
+#: libwnck/wnckprop.c:1642
 msgid "unmaximize vertically"
-msgstr ""
+msgstr "poništi okomito uvećanje"
 
-#: ../libwnck/wnckprop.c:1604
+#: libwnck/wnckprop.c:1645
 msgid "change workspace"
-msgstr ""
+msgstr "promijeni radni prostor"
 
-#: ../libwnck/wnckprop.c:1606
+#: libwnck/wnckprop.c:1647
 msgid "pin"
-msgstr ""
+msgstr "pričvrsti"
 
-#: ../libwnck/wnckprop.c:1608
+#: libwnck/wnckprop.c:1649
 msgid "unpin"
-msgstr ""
+msgstr "odčvrsti"
 
-#: ../libwnck/wnckprop.c:1609
+#: libwnck/wnckprop.c:1650
 msgid "minimize"
-msgstr ""
+msgstr "smanji"
 
-#: ../libwnck/wnckprop.c:1610
+#: libwnck/wnckprop.c:1651
 msgid "unminimize"
-msgstr ""
+msgstr "poništi smanjenje"
 
-#: ../libwnck/wnckprop.c:1611
+#: libwnck/wnckprop.c:1652
 msgid "maximize"
-msgstr ""
+msgstr "uvećaj"
 
-#: ../libwnck/wnckprop.c:1612
+#: libwnck/wnckprop.c:1653
 msgid "unmaximize"
-msgstr ""
+msgstr "poništi uvećanje"
 
-#: ../libwnck/wnckprop.c:1614
+#: libwnck/wnckprop.c:1655
 msgid "change fullscreen mode"
-msgstr ""
+msgstr "promijeni cjelozaslonski način"
 
-#: ../libwnck/wnckprop.c:1615
+#: libwnck/wnckprop.c:1656
 msgid "close"
-msgstr ""
+msgstr "zatvori"
 
-#: ../libwnck/wnckprop.c:1617
+#: libwnck/wnckprop.c:1658
 msgid "make above"
-msgstr ""
+msgstr "postavi iznad"
 
-#: ../libwnck/wnckprop.c:1619
+#: libwnck/wnckprop.c:1660
 msgid "unmake above"
-msgstr ""
+msgstr "poništi postavljanje iznad"
 
-#: ../libwnck/wnckprop.c:1621
+#: libwnck/wnckprop.c:1662
 msgid "make below"
-msgstr ""
+msgstr "postavi ispod"
 
-#: ../libwnck/wnckprop.c:1623
+#: libwnck/wnckprop.c:1664
 msgid "unmake below"
-msgstr ""
+msgstr "poništi postavljanje ispod"
 
-#: ../libwnck/wnckprop.c:1625
+#: libwnck/wnckprop.c:1666
 msgid "no action possible"
-msgstr ""
+msgstr "radnja nije moguća"
 
-#: ../libwnck/wnckprop.c:1626
+#: libwnck/wnckprop.c:1667
 #, c-format
 msgid "Possible Actions: %s\n"
-msgstr ""
+msgstr "Moguće radnje: %s\n"
 
-#: ../libwnck/wnckprop.c:1805
+#: libwnck/wnckprop.c:1876
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
 "For information about this specification, see:\n"
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
+"Prikaži ili promijeni svojstva zaslona/radnog prostora/prozora, ili djelujte "
+"na njega slijedeći EWMH specifikacije.\n"
+"Za informacije o tim svojstvima, pogledajte:\n"
+"\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 
-#: ../libwnck/wnckprop.c:1815
+#: libwnck/wnckprop.c:1886
 msgid "Options to list windows or workspaces"
-msgstr ""
+msgstr "Mogućnosti za prikaz prozora ili radnih prostora"
 
-#: ../libwnck/wnckprop.c:1816
+#: libwnck/wnckprop.c:1887
 msgid "Show options to list windows or workspaces"
-msgstr ""
+msgstr "Prikaži mogućnosti za prikaz prozora ili radnih prostora"
 
-#: ../libwnck/wnckprop.c:1823
+#: libwnck/wnckprop.c:1894
 msgid "Options to modify properties of a window"
-msgstr ""
+msgstr "Mogućnosti za promjenu svojstava prozora"
 
-#: ../libwnck/wnckprop.c:1824
+#: libwnck/wnckprop.c:1895
 msgid "Show options to modify properties of a window"
-msgstr ""
+msgstr "Prikaži mogućnosti za promjenu svojstava prozora"
 
-#: ../libwnck/wnckprop.c:1831
+#: libwnck/wnckprop.c:1902
 msgid "Options to modify properties of a workspace"
-msgstr ""
+msgstr "Mogućnosti za promjenu svojstava radnog prostora"
 
-#: ../libwnck/wnckprop.c:1832
+#: libwnck/wnckprop.c:1903
 msgid "Show options to modify properties of a workspace"
-msgstr ""
+msgstr "Prikaži mogućnosti za promjenu svojstava radnog prostora"
 
-#: ../libwnck/wnckprop.c:1839
+#: libwnck/wnckprop.c:1910
 msgid "Options to modify properties of a screen"
-msgstr ""
+msgstr "Mogućnosti za promjenu svojstava zaslona"
 
-#: ../libwnck/wnckprop.c:1840
+#: libwnck/wnckprop.c:1911
 msgid "Show options to modify properties of a screen"
-msgstr ""
+msgstr "Prikaži mogućnosti za promjenu svojstava zaslona"
 
-#: ../libwnck/wnckprop.c:1851
+#: libwnck/wnckprop.c:1922
 #, c-format
 msgid "Error while parsing arguments: %s\n"
-msgstr ""
+msgstr "Greška pri obradi argumenata: %s\n"
 
-#: ../libwnck/wnckprop.c:1874
+#: libwnck/wnckprop.c:1945
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
-msgstr ""
+msgstr "Nemoguća interakcija sa zaslonom %d: zaslon ne postoji\n"
 
-#: ../libwnck/wnckprop.c:1930
+#: libwnck/wnckprop.c:2001
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
+"Nemoguća interakcija s radnim prostorom %d: radni prostor se ne može "
+"pronaći\n"
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1953
+#. Translators: A class is like a "family". E.g., all gvim windows are
+#. * of the same class.
+#: libwnck/wnckprop.c:2025
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
+"Nemoguća interakcija s grupom klase \"%s\": grupa klase se ne može pronaći\n"
 
-#: ../libwnck/wnckprop.c:1976
+#: libwnck/wnckprop.c:2048
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
+"Nemoguća interakcija sa aplikacijom čiji glavni u grupi ima XID %lu: "
+"aplikacija se ne može pronaći\n"
 
-#: ../libwnck/wnckprop.c:1999
+#: libwnck/wnckprop.c:2071
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
+"Nemoguća interakcija s prozorom koji ima XID %lu: prozor se ne može pronaći\n"
