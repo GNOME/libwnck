@@ -1208,6 +1208,7 @@ wnck_tasklist_get_button_size (GtkWidget *widget)
                                        pango_context_get_language (context));
   char_width = pango_font_metrics_get_approximate_char_width (metrics);
   pango_font_metrics_unref (metrics);
+  pango_font_description_free (description);
   text_width = PANGO_PIXELS (TASKLIST_TEXT_MAX_WIDTH * char_width);
 
   width = text_width + 2 * TASKLIST_BUTTON_PADDING
