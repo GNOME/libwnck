@@ -31,12 +31,12 @@ msgstr ""
 #. * application.
 #. *
 #. * A #WnckApplication is identified by the group leader of the #WnckWindow
-#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if and
+#. * belonging to it, and new #WnckWindow are added to a #WnckApplication if
+#. and
 #. * only if they have the group leader of the #WnckApplication.
 #. *
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
-#.
 #: ../libwnck/application.c:49
 msgid "Untitled application"
 msgstr "Aplicació sense títol"
@@ -47,17 +47,17 @@ msgstr "Canviador d'espais de treball"
 
 #: ../libwnck/pager-accessible.c:351
 msgid "Tool to switch between workspaces"
-msgstr "Eina per canviar entre espais de treball"
+msgstr "Eina per a canviar entre espais de treball"
 
 #: ../libwnck/pager-accessible.c:463
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "Feu clic aquí per canviar a l'espai de treball %s"
+msgstr "Feu clic aquí per a canviar a l'espai de treball %s"
 
 #: ../libwnck/pager.c:2197
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "Feu clic per començar a arrossegar «%s»"
+msgstr "Feu clic per a començar a arrossegar «%s»"
 
 #: ../libwnck/pager.c:2200
 #, c-format
@@ -67,7 +67,7 @@ msgstr "Espai de treball actual: «%s»"
 #: ../libwnck/pager.c:2205
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "Feu clic aquí per canviar a «%s»"
+msgstr "Feu clic aquí per a canviar a «%s»"
 
 #: ../libwnck/selector.c:1182
 msgid "No Windows Open"
@@ -79,7 +79,7 @@ msgstr "Selector de finestres"
 
 #: ../libwnck/selector.c:1239
 msgid "Tool to switch between windows"
-msgstr "Eina per canviar entre finestres"
+msgstr "Eina per a canviar entre finestres"
 
 #: ../libwnck/tasklist.c:601
 msgid "Window List"
@@ -87,7 +87,7 @@ msgstr "Llista de finestres"
 
 #: ../libwnck/tasklist.c:602
 msgid "Tool to switch between visible windows"
-msgstr "Eina per canviar entre finestres visibles"
+msgstr "Eina per a canviar entre finestres visibles"
 
 #: ../libwnck/tasklist.c:2981
 msgid "Mi_nimize All"
@@ -192,7 +192,6 @@ msgstr "_Tanca"
 #. *
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
-#.
 #: ../libwnck/window.c:47
 msgid "Untitled window"
 msgstr "Finestra sense títol"
@@ -404,7 +403,6 @@ msgstr "Fes que la finestra no tingui una posició fixa a la subàrea"
 #. * switcher. It's a representation of all workspaces with windows
 #. * inside it. Please make sure that the translation is in sync with
 #. * gnome-panel, where this term is also used in translatable strings
-#.
 #: ../libwnck/wnckprop.c:250
 msgid "Make the window not appear in pagers"
 msgstr "Fes que la finestra no aparegui als paginadors"
@@ -413,7 +411,6 @@ msgstr "Fes que la finestra no aparegui als paginadors"
 #. * switcher. It's a representation of all workspaces with windows
 #. * inside it. Please make sure that the translation is in sync with
 #. * gnome-panel, where this term is also used in translatable strings
-#.
 #: ../libwnck/wnckprop.c:257
 msgid "Make the window appear in pagers"
 msgstr "Fes que la finestra aparegui als paginadors"
@@ -977,14 +974,22 @@ msgid "Transient for: %lu\n"
 msgstr "Transitori per a: %lu\n"
 
 #. FIXME: else print something?
-#. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
-#. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
+#. Translators: we're building a list of items here.             * For example,
+#. the result is "a, b".                            * In this case, the first
+#. string is "a", the second             * string is ", " and the third string
+#. is "b".                   * We can then use this information here to also
+#. * recursively build longer lists, like "a, b, c, d"
+#. Translators: we're building a list of items here.             * The end
+#. result is something like "a, b, c"                    * In this case, the
+#. first string is "a, b", the second          * string is ", " and the third
+#. string is "c"
 #: ../libwnck/wnckprop.c:1572 ../libwnck/wnckprop.c:1620
 #, c-format
 msgid "%1$s%2$s%3$s"
 msgstr "%1$s%2$s%3$s"
 
-#. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
+#. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly
+#. translate this
 #: ../libwnck/wnckprop.c:1576 ../libwnck/wnckprop.c:1622
 msgid ", "
 msgstr ", "
@@ -1171,36 +1176,36 @@ msgstr ""
 
 #: ../libwnck/wnckprop.c:1909
 msgid "Options to list windows or workspaces"
-msgstr "Opcions per mostrar llistes de finestres o d'espais de treball"
+msgstr "Opcions per a mostrar llistes de finestres o d'espais de treball"
 
 #: ../libwnck/wnckprop.c:1910
 msgid "Show options to list windows or workspaces"
 msgstr ""
-"Mostra les opcions per mostrar llistes de finestres o d'espais de treball"
+"Mostra les opcions per a mostrar llistes de finestres o d'espais de treball"
 
 #: ../libwnck/wnckprop.c:1917
 msgid "Options to modify properties of a window"
-msgstr "Opcions per modificar les propietats d'una finestra"
+msgstr "Opcions per a modificar les propietats d'una finestra"
 
 #: ../libwnck/wnckprop.c:1918
 msgid "Show options to modify properties of a window"
-msgstr "Mostra les opcions per modificar les propietats d'una finestra"
+msgstr "Mostra les opcions per a modificar les propietats d'una finestra"
 
 #: ../libwnck/wnckprop.c:1925
 msgid "Options to modify properties of a workspace"
-msgstr "Opcions per modificar les propietats d'un espai de treball"
+msgstr "Opcions per a modificar les propietats d'un espai de treball"
 
 #: ../libwnck/wnckprop.c:1926
 msgid "Show options to modify properties of a workspace"
-msgstr "Mostra les opcions per modificar les propietats d'un espai de treball"
+msgstr "Mostra les opcions per a modificar les propietats d'un espai de treball"
 
 #: ../libwnck/wnckprop.c:1933
 msgid "Options to modify properties of a screen"
-msgstr "Opcions per modificar les propietats d'una pantalla"
+msgstr "Opcions per a modificar les propietats d'una pantalla"
 
 #: ../libwnck/wnckprop.c:1934
 msgid "Show options to modify properties of a screen"
-msgstr "Mostra les opcions per modificar les propietats d'una pantalla"
+msgstr "Mostra les opcions per a modificar les propietats d'una pantalla"
 
 #: ../libwnck/wnckprop.c:1945
 #, c-format
