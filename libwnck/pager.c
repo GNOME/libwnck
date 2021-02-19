@@ -2042,6 +2042,8 @@ wnck_pager_scroll_event (GtkWidget      *widget,
     return FALSE;
   if (event->direction == GDK_SCROLL_SMOOTH)
     return FALSE;
+  if (pager->priv->scroll_mode == WNCK_PAGER_SCROLL_NONE)
+    return FALSE;
 
   absolute_direction = event->direction;
 
