@@ -90,6 +90,8 @@ typedef enum {
  * Example cycling order with 2 rows and 4 workspaces: 1 2 3 4.
  *
  * Mode defining in which order scrolling on a #WnckPager will cycle through workspaces.
+ *
+ * Since: 3.36
  */
 typedef enum {
   WNCK_PAGER_SCROLL_2D,

@@ -2435,6 +2435,8 @@ wnck_pager_set_display_mode (WnckPager            *pager,
  *
  * Sets @pager to react to input device scrolling in one of the
  * available scroll modes.
+ *
+ * Since: 3.36
  */
 void
 wnck_pager_set_scroll_mode (WnckPager           *pager,
