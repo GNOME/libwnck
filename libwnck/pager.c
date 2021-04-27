@@ -622,7 +622,7 @@ wnck_pager_get_preferred_width_for_height (GtkWidget *widget,
                                                                 workspace_height);
 
   width += workspace_width * spaces_per_row + (spaces_per_row - 1);
-  *natural_width = *minimum_width = width;
+  *natural_width = *minimum_width = MAX (width, 0);
 }
 
 static void
@@ -684,7 +684,7 @@ wnck_pager_get_preferred_height_for_width (GtkWidget *widget,
                                                                  workspace_width);
 
   height += workspace_height * spaces_per_row + (spaces_per_row - 1);
-  *natural_height = *minimum_height = height;
+  *natural_height = *minimum_height = MAX (height, 0);
 }
 
 static gboolean
