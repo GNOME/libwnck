@@ -572,7 +572,7 @@ wnck_pager_get_preferred_width (GtkWidget *widget,
 
   wnck_pager_size_request (widget, &req);
 
-  *minimum_width = *natural_width = req.width;
+  *minimum_width = *natural_width = MAX (req.width, 0);
 }
 
 static void
@@ -634,7 +634,7 @@ wnck_pager_get_preferred_height (GtkWidget *widget,
 
   wnck_pager_size_request (widget, &req);
 
-  *minimum_height = *natural_height = req.height;
+  *minimum_height = *natural_height = MAX (req.height, 0);
 }
 
 static void
