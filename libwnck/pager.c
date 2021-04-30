@@ -219,7 +219,7 @@ wnck_pager_init (WnckPager *pager)
   pager->priv->wrap_on_scroll = FALSE;
 
   pager->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
-  pager->priv->workspace_size = 48;
+  pager->priv->workspace_size = 16;
 
   for (i = 0; i < N_SCREEN_CONNECTIONS; i++)
     pager->priv->screen_connections[i] = 0;
