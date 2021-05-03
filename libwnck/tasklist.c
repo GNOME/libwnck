@@ -406,14 +406,65 @@ wnck_button_update_idle_cb (gpointer user_data)
   return G_SOURCE_REMOVE;
 }
 
+static int
+get_css_width (GtkWidget *widget)
+{
+  GtkStyleContext *context;
+  GtkStateFlags state;
+  GtkBorder margin;
+  GtkBorder border;
+  GtkBorder padding;
+  int min_width;
+
+  context = gtk_widget_get_style_context (widget);
+  state = gtk_style_context_get_state (context);
+
+  gtk_style_context_get_margin (context, state, &margin);
+  gtk_style_context_get_border (context, state, &border);
+  gtk_style_context_get_padding (context, state, &padding);
+
+  min_width = margin.left + margin.right;
+  min_width += border.left + border.right;
+  min_width += padding.left + padding.right;
+
+  return min_width;
+}
+
+static int
+get_char_width (GtkWidget *widget)
+{
+  PangoContext *context;
+  GtkStyleContext *style;
+  PangoFontDescription *description;
+  PangoFontMetrics *metrics;
+  int char_width;
+
+  context = gtk_widget_get_pango_context (widget);
+  style = gtk_widget_get_style_context (widget);
+
+  gtk_style_context_get (style,
+                         gtk_style_context_get_state (style),
+                         GTK_STYLE_PROPERTY_FONT,
+                         &description,
+                         NULL);
+
+  metrics = pango_context_get_metrics (context,
+                                       description,
+                                       pango_context_get_language (context));
+  pango_font_description_free (description);
+
+  char_width = pango_font_metrics_get_approximate_char_width (metrics);
+  pango_font_metrics_unref (metrics);
+
+  return PANGO_PIXELS (char_width);
+}
+
 static void
 wnck_button_size_allocate (GtkWidget     *widget,
                            GtkAllocation *allocation)
 {
   WnckButton *self;
-  GtkStyleContext *context;
-  GtkStateFlags state;
-  GtkBorder padding;
+  int min_width;
   int min_image_width;
 
   self = WNCK_BUTTON (widget);
@@ -421,12 +472,11 @@ wnck_button_size_allocate (GtkWidget     *widget,
   GTK_WIDGET_CLASS (wnck_button_parent_class)->size_allocate (widget,
                                                               allocation);
 
-  context = gtk_widget_get_style_context (widget);
-  state = gtk_style_context_get_state (context);
-  gtk_style_context_get_padding (context, state, &padding);
+  min_width = get_css_width (widget);
+  min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
   min_image_width = MINI_ICON_SIZE +
-                    padding.left + padding.right +
+                    min_width +
                     2 * TASKLIST_BUTTON_PADDING;
 
   if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
@@ -464,6 +514,45 @@ wnck_button_size_allocate (GtkWidget     *widget,
 }
 
 static void
+wnck_button_get_preferred_width (GtkWidget *widget,
+                                 gint      *minimum_width,
+                                 gint      *natural_width)
+{
+  WnckButton *self;
+  int min_width;
+  int char_width;
+
+  self = WNCK_BUTTON (widget);
+
+  min_width = get_css_width (widget);
+  min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
+
+  char_width = get_char_width (self->label);
+
+  /* Minimum width:
+   * - margin, border and padding that might be set on widget
+   * - margin, border and padding that might be set on box widget
+   * - TASKLIST_BUTTON_PADDING around image or label
+   * - character width
+   */
+  *minimum_width = min_width +
+                   2 * TASKLIST_BUTTON_PADDING +
+                   char_width;
+
+  /* Natural width:
+   * - margin, border and padding that might be set on widget
+   * - margin, border and padding that might be set on box widget
+   * - TASKLIST_BUTTON_PADDING around image
+   * - TASKLIST_BUTTON_PADDING around label
+   * - needed size for TASKLIST_TEXT_MAX_WIDTH
+   */
+  *natural_width = min_width +
+                   2 * TASKLIST_BUTTON_PADDING +
+                   2 * TASKLIST_BUTTON_PADDING +
+                   char_width * TASKLIST_TEXT_MAX_WIDTH;
+}
+
+static void
 wnck_button_class_init (WnckButtonClass *self_class)
 {
   GObjectClass *object_class;
@@ -475,6 +564,7 @@ wnck_button_class_init (WnckButtonClass *self_class)
   object_class->dispose = wnck_button_dispose;
 
   widget_class->size_allocate = wnck_button_size_allocate;
+  widget_class->get_preferred_width = wnck_button_get_preferred_width;
 }
 
 static void
@@ -1354,42 +1444,13 @@ wnck_task_get_highest_scored (GList     *ungrouped_class_groups,
   return g_list_remove (ungrouped_class_groups, best_task);
 }
 
-static int
-wnck_tasklist_get_button_size (GtkWidget *widget)
-{
-  GtkStyleContext *style_context;
-  GtkStateFlags state;
-  PangoContext *context;
-  PangoFontMetrics *metrics;
-  PangoFontDescription *description;
-  gint char_width;
-  gint text_width;
-  gint width;
-
-  style_context = gtk_widget_get_style_context (widget);
-  state = gtk_style_context_get_state (style_context);
-  gtk_style_context_get (style_context, state, GTK_STYLE_PROPERTY_FONT, &description, NULL);
-
-  context = gtk_widget_get_pango_context (widget);
-  metrics = pango_context_get_metrics (context, description,
-                                       pango_context_get_language (context));
-  char_width = pango_font_metrics_get_approximate_char_width (metrics);
-  pango_font_metrics_unref (metrics);
-  pango_font_description_free (description);
-  text_width = PANGO_PIXELS (TASKLIST_TEXT_MAX_WIDTH * char_width);
-
-  width = text_width + 2 * TASKLIST_BUTTON_PADDING
-	  + MINI_ICON_SIZE + 2 * TASKLIST_BUTTON_PADDING;
-
-  return width;
-}
-
 static void
 wnck_tasklist_size_request  (GtkWidget      *widget,
                              GtkRequisition *requisition)
 {
   WnckTasklist *tasklist;
-  GtkRequisition child_req;
+  GtkRequisition child_min_req;
+  GtkRequisition child_nat_req;
   GtkAllocation  tasklist_allocation;
   GtkAllocation  fake_allocation;
   int max_height = 1;
@@ -1419,12 +1480,11 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
       WnckTask *task = WNCK_TASK (l->data);                     \
                                                                 \
       gtk_widget_get_preferred_size (task->button,              \
-                                     &child_req, NULL);         \
+                                     &child_min_req,            \
+                                     &child_nat_req);           \
                                                                 \
-      max_height = MAX (child_req.height,                       \
-			max_height);                            \
-      max_width = MAX (child_req.width,                         \
-		       max_width);                              \
+      max_height = MAX (child_min_req.height, max_height);      \
+      max_width = MAX (child_nat_req.width, max_width);         \
                                                                 \
       l = l->next;                                              \
     }
@@ -1439,7 +1499,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
    * wouldn't work since our call to gtk_widget_size_request() does not take
    * into account the hidden widgets.
    */
-  tasklist->priv->max_button_width = wnck_tasklist_get_button_size (widget);
+  tasklist->priv->max_button_width = max_width;
   tasklist->priv->max_button_height = max_height;
 
   gtk_widget_get_allocation (GTK_WIDGET (tasklist), &tasklist_allocation);
