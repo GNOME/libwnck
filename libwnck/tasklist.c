@@ -77,6 +77,8 @@
  *
  */
 
+#define WNCK_TYPE_BUTTON (wnck_button_get_type ())
+G_DECLARE_FINAL_TYPE (WnckButton, wnck_button, WNCK, BUTTON, GtkToggleButton)
 
 #define WNCK_TYPE_TASK              (wnck_task_get_type ())
 #define WNCK_TASK(object)           (G_TYPE_CHECK_INSTANCE_CAST ((object), WNCK_TYPE_TASK, WnckTask))
@@ -102,6 +104,19 @@ typedef struct _WnckTaskClass   WnckTaskClass;
   (ycoord) >= (rect).y &&                   \
   (ycoord) <  ((rect).y + (rect).height))
 
+struct _WnckButton
+{
+  GtkToggleButton  parent;
+
+  GtkWidget       *image;
+  gboolean         show_image;
+
+  GtkWidget       *label;
+  gboolean         show_label;
+
+  guint            update_idle_id;
+};
+
 typedef enum
 {
   WNCK_TASK_CLASS_GROUP,
@@ -116,8 +131,6 @@ struct _WnckTask
   WnckTasklist *tasklist;
 
   GtkWidget *button;
-  GtkWidget *image;
-  GtkWidget *label;
 
   WnckTaskType type;
 
@@ -159,11 +172,6 @@ struct _WnckTask
 
   gint row;
   gint col;
-
-  gboolean show_image;
-  gboolean show_label;
-
-  guint update_idle_id;
 };
 
 struct _WnckTaskClass
@@ -240,6 +248,7 @@ struct _WnckTasklistPrivate
 
 static GType wnck_task_get_type (void);
 
+G_DEFINE_TYPE (WnckButton, wnck_button, GTK_TYPE_TOGGLE_BUTTON)
 G_DEFINE_TYPE (WnckTask, wnck_task, G_TYPE_OBJECT);
 G_DEFINE_TYPE_WITH_PRIVATE (WnckTasklist, wnck_tasklist, GTK_TYPE_CONTAINER);
 
@@ -367,10 +376,173 @@ static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist
 static GSList *tasklist_instances;
 
 static void
+wnck_button_dispose (GObject *object)
+{
+  WnckButton *self;
+
+  self = WNCK_BUTTON (object);
+
+  if (self->update_idle_id != 0)
+    {
+      g_source_remove (self->update_idle_id);
+      self->update_idle_id = 0;
+    }
+
+  G_OBJECT_CLASS (wnck_button_parent_class)->dispose (object);
+}
+
+static gboolean
+wnck_button_update_idle_cb (gpointer user_data)
+{
+  WnckButton *self;
+
+  self = WNCK_BUTTON (user_data);
+
+  gtk_widget_set_visible (self->image, self->show_image);
+  gtk_widget_set_visible (self->label, self->show_label);
+
+  self->update_idle_id = 0;
+
+  return G_SOURCE_REMOVE;
+}
+
+static void
+wnck_button_size_allocate (GtkWidget     *widget,
+                           GtkAllocation *allocation)
+{
+  WnckButton *self;
+  GtkStyleContext *context;
+  GtkStateFlags state;
+  GtkBorder padding;
+  int min_image_width;
+
+  self = WNCK_BUTTON (widget);
+
+  GTK_WIDGET_CLASS (wnck_button_parent_class)->size_allocate (widget,
+                                                              allocation);
+
+  context = gtk_widget_get_style_context (widget);
+  state = gtk_style_context_get_state (context);
+  gtk_style_context_get_padding (context, state, &padding);
+
+  min_image_width = MINI_ICON_SIZE +
+                    padding.left + padding.right +
+                    2 * TASKLIST_BUTTON_PADDING;
+
+  if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
+      (allocation->width >= min_image_width))
+    {
+      self->show_image = TRUE;
+      self->show_label = FALSE;
+    }
+  else if (allocation->width < min_image_width)
+    {
+      self->show_image = FALSE;
+      self->show_label = TRUE;
+    }
+  else
+    {
+      self->show_image = TRUE;
+      self->show_label = TRUE;
+    }
+
+  if (self->show_image != gtk_widget_get_visible (self->image) ||
+      self->show_label != gtk_widget_get_visible (self->label))
+    {
+      if (self->update_idle_id == 0)
+        {
+          self->update_idle_id = g_idle_add (wnck_button_update_idle_cb, self);
+          g_source_set_name_by_id (self->update_idle_id,
+                                   "[libwnck] wnck_button_update_idle_cb");
+        }
+    }
+  else if (self->update_idle_id != 0)
+    {
+      g_source_remove (self->update_idle_id);
+      self->update_idle_id = 0;
+    }
+}
+
+static void
+wnck_button_class_init (WnckButtonClass *self_class)
+{
+  GObjectClass *object_class;
+  GtkWidgetClass *widget_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+  widget_class = GTK_WIDGET_CLASS (self_class);
+
+  object_class->dispose = wnck_button_dispose;
+
+  widget_class->size_allocate = wnck_button_size_allocate;
+}
+
+static void
+wnck_button_init (WnckButton *self)
+{
+  GtkWidget *box;
+
+  gtk_widget_set_name (GTK_WIDGET (self), "tasklist-button");
+
+  box = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
+  gtk_container_add (GTK_CONTAINER (self), box);
+  gtk_widget_show (box);
+
+  self->image = gtk_image_new ();
+  gtk_box_pack_start (GTK_BOX (box),
+                      self->image,
+                      FALSE,
+                      FALSE,
+                      TASKLIST_BUTTON_PADDING);
+
+  self->label = gtk_label_new (NULL);
+  gtk_box_pack_start (GTK_BOX (box),
+                      self->label,
+                      TRUE,
+                      TRUE,
+                      TASKLIST_BUTTON_PADDING);
+
+  gtk_label_set_xalign (GTK_LABEL (self->label), 0.0);
+  gtk_label_set_ellipsize (GTK_LABEL (self->label), PANGO_ELLIPSIZE_END);
+
+  gtk_widget_show (self->image);
+  gtk_widget_show (self->label);
+}
+
+static GtkWidget *
+wnck_button_new (void)
+{
+  return g_object_new (WNCK_TYPE_BUTTON, NULL);
+}
+
+static void
+wnck_button_set_image_from_pixbuf (WnckButton *self,
+                                   GdkPixbuf  *pixbuf)
+{
+  gtk_image_set_from_pixbuf (GTK_IMAGE (self->image), pixbuf);
+}
+
+static void
+wnck_button_set_text (WnckButton *self,
+                      const char *text)
+{
+  gtk_label_set_text (GTK_LABEL (self->label), text);
+}
+
+static void
+wnck_button_set_bold (WnckButton *self,
+                      gboolean    bold)
+{
+  if (bold)
+    _make_gtk_label_bold ((GTK_LABEL (self->label)));
+  else
+    _make_gtk_label_normal ((GTK_LABEL (self->label)));
+}
+
+static void
 wnck_task_init (WnckTask *task)
 {
   task->type = WNCK_TASK_WINDOW;
-  task->update_idle_id = 0;
 }
 
 static void
@@ -483,8 +655,6 @@ wnck_task_finalize (GObject *object)
                                     (void**) &task->button);
       gtk_widget_destroy (task->button);
       task->button = NULL;
-      task->image = NULL;
-      task->label = NULL;
     }
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -566,12 +736,6 @@ wnck_task_finalize (GObject *object)
     }
 
   wnck_task_stop_glow (task);
-
-  if (task->update_idle_id != 0)
-    {
-      g_source_remove (task->update_idle_id);
-      task->update_idle_id = 0;
-    }
 
   G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
 }
@@ -1485,69 +1649,6 @@ wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 
   *n_elements = tasklist->priv->size_hints_len;
   return tasklist->priv->size_hints;
-}
-
-static gboolean
-wnck_task_update_idle_cb (gpointer user_data)
-{
-  WnckTask *task;
-
-  task = user_data;
-
-  gtk_widget_set_visible (task->image, task->show_image);
-  gtk_widget_set_visible (task->label, task->show_label);
-
-  task->update_idle_id = 0;
-
-  return G_SOURCE_REMOVE;
-}
-
-static void
-wnck_task_size_allocated (GtkWidget     *widget,
-                          GtkAllocation *allocation,
-                          gpointer       data)
-{
-  WnckTask        *task = WNCK_TASK (data);
-  GtkStyleContext *context;
-  GtkStateFlags    state;
-  GtkBorder        padding;
-  int              min_image_width;
-
-  context = gtk_widget_get_style_context (widget);
-  state = gtk_style_context_get_state (context);
-  gtk_style_context_get_padding (context, state, &padding);
-
-  min_image_width = MINI_ICON_SIZE +
-                    padding.left + padding.right +
-                    2 * TASKLIST_BUTTON_PADDING;
-
-  if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
-      (allocation->width >= min_image_width)) {
-    task->show_image = TRUE;
-    task->show_label = FALSE;
-  } else if (allocation->width < min_image_width) {
-    task->show_image = FALSE;
-    task->show_label = TRUE;
-  } else {
-    task->show_image = TRUE;
-    task->show_label = TRUE;
-  }
-
-  if (task->show_image != gtk_widget_get_visible (task->image) ||
-      task->show_label != gtk_widget_get_visible (task->label))
-    {
-      if (task->update_idle_id == 0)
-        {
-          task->update_idle_id = g_idle_add (wnck_task_update_idle_cb, task);
-          g_source_set_name_by_id (task->update_idle_id,
-                                   "[libwnck] wnck_task_update_idle_cb");
-        }
-    }
-  else if (task->update_idle_id != 0)
-    {
-      g_source_remove (task->update_idle_id);
-      task->update_idle_id = 0;
-    }
 }
 
 static void
@@ -3358,26 +3459,25 @@ wnck_task_update_visible_state (WnckTask *task)
   char *text;
 
   pixbuf = wnck_task_get_icon (task);
-  gtk_image_set_from_pixbuf (GTK_IMAGE (task->image),
-			     pixbuf);
-  if (pixbuf)
-    g_object_unref (pixbuf);
+  wnck_button_set_image_from_pixbuf (WNCK_BUTTON (task->button), pixbuf);
+  g_clear_object (&pixbuf);
 
   text = wnck_task_get_text (task, TRUE, TRUE);
   if (text != NULL)
     {
-      gtk_label_set_text (GTK_LABEL (task->label), text);
+      wnck_button_set_text (WNCK_BUTTON (task->button), text);
+      g_free (text);
+
       if (wnck_task_get_needs_attention (task))
         {
-          _make_gtk_label_bold ((GTK_LABEL (task->label)));
+          wnck_button_set_bold (WNCK_BUTTON (task->button), TRUE);
           wnck_task_queue_glow (task);
         }
       else
         {
-          _make_gtk_label_normal ((GTK_LABEL (task->label)));
+          wnck_button_set_bold (WNCK_BUTTON (task->button), FALSE);
           wnck_task_reset_glow (task);
         }
-      g_free (text);
     }
 
   text = wnck_task_get_text (task, FALSE, FALSE);
@@ -3831,26 +3931,19 @@ wnck_task_draw (GtkWidget *widget,
 static void
 wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
 {
-  GtkWidget *hbox;
   GdkPixbuf *pixbuf;
   char *text;
   static const GtkTargetEntry targets[] = {
     { (gchar *) "application/x-wnck-window-id", 0, 0 }
   };
 
-  if (task->type == WNCK_TASK_STARTUP_SEQUENCE)
-    task->button = gtk_button_new ();
-  else
-    task->button = gtk_toggle_button_new ();
+  task->button = wnck_button_new ();
 
   gtk_button_set_relief (GTK_BUTTON (task->button), relief);
 
   task->button_activate = 0;
   g_object_add_weak_pointer (G_OBJECT (task->button),
                              (void**) &task->button);
-
-  gtk_widget_set_name (task->button,
-		       "tasklist-button");
 
   if (task->type == WNCK_TASK_WINDOW)
     {
@@ -3865,57 +3958,30 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
     gtk_drag_dest_set (GTK_WIDGET (task->button), 0,
                        NULL, 0, GDK_ACTION_DEFAULT);
 
-  hbox = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 0);
-
   pixbuf = wnck_task_get_icon (task);
-  if (pixbuf)
-    {
-      task->image = gtk_image_new_from_pixbuf (pixbuf);
-      g_object_unref (pixbuf);
-    }
-  else
-    task->image = gtk_image_new ();
-
-  gtk_widget_show (task->image);
+  wnck_button_set_image_from_pixbuf (WNCK_BUTTON (task->button), pixbuf);
+  g_clear_object (&pixbuf);
 
   text = wnck_task_get_text (task, TRUE, TRUE);
-  task->label = gtk_label_new (text);
-  gtk_label_set_xalign (GTK_LABEL (task->label), 0.0);
-  gtk_label_set_ellipsize (GTK_LABEL (task->label),
-                          PANGO_ELLIPSIZE_END);
+  wnck_button_set_text (WNCK_BUTTON (task->button), text);
+  g_free (text);
 
   if (wnck_task_get_needs_attention (task))
     {
-      _make_gtk_label_bold ((GTK_LABEL (task->label)));
+      wnck_button_set_bold (WNCK_BUTTON (task->button), TRUE);
       wnck_task_queue_glow (task);
     }
-
-  gtk_widget_show (task->label);
-
-  gtk_box_pack_start (GTK_BOX (hbox), task->image, FALSE, FALSE,
-		      TASKLIST_BUTTON_PADDING);
-  gtk_box_pack_start (GTK_BOX (hbox), task->label, TRUE, TRUE,
-		      TASKLIST_BUTTON_PADDING);
-
-  gtk_container_add (GTK_CONTAINER (task->button), hbox);
-  gtk_widget_show (hbox);
-  g_free (text);
 
   text = wnck_task_get_text (task, FALSE, FALSE);
   gtk_widget_set_tooltip_text (task->button, text);
   g_free (text);
 
   /* Set up signals */
-  if (GTK_IS_TOGGLE_BUTTON (task->button))
+  if (task->type != WNCK_TASK_STARTUP_SEQUENCE)
     g_signal_connect_object (G_OBJECT (task->button), "toggled",
                              G_CALLBACK (wnck_task_button_toggled),
                              G_OBJECT (task),
                              0);
-
-  g_signal_connect_object (G_OBJECT (task->button), "size_allocate",
-                           G_CALLBACK (wnck_task_size_allocated),
-                           G_OBJECT (task),
-                           0);
 
   g_signal_connect_object (G_OBJECT (task->button), "button_press_event",
                            G_CALLBACK (wnck_task_button_press_event),
