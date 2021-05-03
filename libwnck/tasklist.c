@@ -159,8 +159,11 @@ struct _WnckTask
 
   gint row;
   gint col;
-  
-  guint resize_idle_id;
+
+  gboolean show_image;
+  gboolean show_label;
+
+  guint update_idle_id;
 };
 
 struct _WnckTaskClass
@@ -367,7 +370,7 @@ static void
 wnck_task_init (WnckTask *task)
 {
   task->type = WNCK_TASK_WINDOW;
-  task->resize_idle_id = 0;
+  task->update_idle_id = 0;
 }
 
 static void
@@ -564,10 +567,10 @@ wnck_task_finalize (GObject *object)
 
   wnck_task_stop_glow (task);
 
-  if (task->resize_idle_id > 0)
+  if (task->update_idle_id != 0)
     {
-      g_source_remove (task->resize_idle_id);
-      task->resize_idle_id = 0;
+      g_source_remove (task->update_idle_id);
+      task->update_idle_id = 0;
     }
 
   G_OBJECT_CLASS (wnck_task_parent_class)->finalize (object);
@@ -1485,12 +1488,16 @@ wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
 }
 
 static gboolean
-task_button_queue_resize (gpointer user_data)
+wnck_task_update_idle_cb (gpointer user_data)
 {
-  WnckTask *task = WNCK_TASK (user_data);
+  WnckTask *task;
 
-  gtk_widget_queue_resize (task->button);
-  task->resize_idle_id = 0;
+  task = user_data;
+
+  gtk_widget_set_visible (task->image, task->show_image);
+  gtk_widget_set_visible (task->label, task->show_label);
+
+  task->update_idle_id = 0;
 
   return G_SOURCE_REMOVE;
 }
@@ -1505,8 +1512,6 @@ wnck_task_size_allocated (GtkWidget     *widget,
   GtkStateFlags    state;
   GtkBorder        padding;
   int              min_image_width;
-  gboolean         old_image_visible;
-  gboolean         old_label_visible;
 
   context = gtk_widget_get_style_context (widget);
   state = gtk_style_context_get_state (context);
@@ -1515,26 +1520,33 @@ wnck_task_size_allocated (GtkWidget     *widget,
   min_image_width = MINI_ICON_SIZE +
                     padding.left + padding.right +
                     2 * TASKLIST_BUTTON_PADDING;
-  old_image_visible = gtk_widget_get_visible (task->image);
-  old_label_visible = gtk_widget_get_visible (task->label);
 
   if ((allocation->width < min_image_width + 2 * TASKLIST_BUTTON_PADDING) &&
       (allocation->width >= min_image_width)) {
-    gtk_widget_show (task->image);
-    gtk_widget_hide (task->label);
+    task->show_image = TRUE;
+    task->show_label = FALSE;
   } else if (allocation->width < min_image_width) {
-    gtk_widget_hide (task->image);
-    gtk_widget_show (task->label);
+    task->show_image = FALSE;
+    task->show_label = TRUE;
   } else {
-    gtk_widget_show (task->image);
-    gtk_widget_show (task->label);
+    task->show_image = TRUE;
+    task->show_label = TRUE;
   }
 
-  if (old_image_visible != gtk_widget_get_visible (task->image) ||
-      old_label_visible != gtk_widget_get_visible (task->label))
+  if (task->show_image != gtk_widget_get_visible (task->image) ||
+      task->show_label != gtk_widget_get_visible (task->label))
     {
-      if (task->resize_idle_id == 0)
-        task->resize_idle_id = g_idle_add (task_button_queue_resize, task);
+      if (task->update_idle_id == 0)
+        {
+          task->update_idle_id = g_idle_add (wnck_task_update_idle_cb, task);
+          g_source_set_name_by_id (task->update_idle_id,
+                                   "[libwnck] wnck_task_update_idle_cb");
+        }
+    }
+  else if (task->update_idle_id != 0)
+    {
+      g_source_remove (task->update_idle_id);
+      task->update_idle_id = 0;
     }
 }
 
