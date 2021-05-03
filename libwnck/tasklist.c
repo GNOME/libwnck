@@ -1573,12 +1573,6 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   GList *windows_sorted = NULL;
   int grouping_limit;
 
-  if (allocation->width <= 1 || allocation->height <= 1)
-    {
-      GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->size_allocate (widget, allocation);
-      return;
-    }
-
   tasklist = WNCK_TASKLIST (widget);
 
   n_windows = g_list_length (tasklist->priv->windows);
