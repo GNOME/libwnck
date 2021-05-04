@@ -1739,6 +1739,8 @@ wnck_tasklist_get_preferred_height (GtkWidget *widget,
  *
  * Return value: a list of size hints that can be used to allocate an
  * appropriate size for @tasklist.
+ *
+ * Deprecated: 3.42: Use minimum and natural size instead.
  */
 const int *
 wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
