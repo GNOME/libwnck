@@ -1661,15 +1661,45 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 }
 
 static void
+get_minimum_button_size (int *minimum_width,
+                         int *minimum_height)
+{
+  GtkWidget *button;
+
+  button = wnck_button_new ();
+  gtk_widget_show (button);
+
+  if (minimum_width != NULL)
+    gtk_widget_get_preferred_width (button, minimum_width, NULL);
+
+  if (minimum_height != NULL)
+    gtk_widget_get_preferred_height (button, minimum_height, NULL);
+
+  g_object_ref_sink (button);
+  g_object_unref (button);
+}
+
+static void
 wnck_tasklist_get_preferred_width (GtkWidget *widget,
                                    int       *minimum_width,
                                    int       *natural_width)
 {
+  WnckTasklist *self;
   GtkRequisition req;
+
+  self = WNCK_TASKLIST (widget);
 
   wnck_tasklist_size_request (widget, &req);
 
-  *minimum_width = *natural_width = req.width;
+  if (self->priv->windows == NULL &&
+      self->priv->startup_sequences == NULL)
+    {
+      *minimum_width = *natural_width = 0;
+      return;
+    }
+
+  get_minimum_button_size (minimum_width, NULL);
+  *natural_width = req.width;
 }
 
 static void
@@ -1677,13 +1707,23 @@ wnck_tasklist_get_preferred_height (GtkWidget *widget,
                                    int       *minimum_height,
                                    int       *natural_height)
 {
+  WnckTasklist *self;
   GtkRequisition req;
+
+  self = WNCK_TASKLIST (widget);
 
   wnck_tasklist_size_request (widget, &req);
 
-  *minimum_height = *natural_height = req.height;
-}
+  if (self->priv->windows == NULL &&
+      self->priv->startup_sequences == NULL)
+    {
+      *minimum_height = *natural_height = 0;
+      return;
+    }
 
+  get_minimum_button_size (NULL, minimum_height);
+  *natural_height = req.height;
+}
 
 /**
  * wnck_tasklist_get_size_hint_list:
