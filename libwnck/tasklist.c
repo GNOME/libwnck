@@ -210,9 +210,6 @@ struct _WnckTasklistPrivate
   GHashTable *class_group_hash;
   GHashTable *win_hash;
 
-  gint max_button_width;
-  gint max_button_height;
-
   gboolean switch_workspace_on_unminimize;
   gboolean middle_click_close;
 
@@ -306,9 +303,17 @@ static void     wnck_tasklist_finalize      (GObject        *object);
 static void     wnck_tasklist_get_preferred_width (GtkWidget *widget,
                                                    int       *minimum_width,
                                                    int       *natural_width);
+static void     wnck_tasklist_get_preferred_height_for_width (GtkWidget *widget,
+                                                              int        width,
+                                                              int       *minimum_height,
+                                                              int       *natural_height);
 static void     wnck_tasklist_get_preferred_height (GtkWidget *widget,
                                                     int       *minimum_height,
                                                     int       *natural_height);
+static void     wnck_tasklist_get_preferred_width_for_height (GtkWidget *widget,
+                                                              int        height,
+                                                              int       *minimum_width,
+                                                              int       *natural_width);
 static void     wnck_tasklist_size_allocate (GtkWidget        *widget,
                                              GtkAllocation    *allocation);
 static void     wnck_tasklist_realize       (GtkWidget        *widget);
@@ -867,6 +872,19 @@ wnck_tasklist_init (WnckTasklist *tasklist)
 #endif
 }
 
+static GtkSizeRequestMode
+wnck_tasklist_get_request_mode (GtkWidget *widget)
+{
+  WnckTasklist *self;
+
+  self = WNCK_TASKLIST (widget);
+
+  if (self->priv->orientation == GTK_ORIENTATION_VERTICAL)
+    return GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH;
+
+  return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
+}
+
 static void
 wnck_tasklist_class_init (WnckTasklistClass *klass)
 {
@@ -876,8 +894,11 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
 
   object_class->finalize = wnck_tasklist_finalize;
 
+  widget_class->get_request_mode = wnck_tasklist_get_request_mode;
   widget_class->get_preferred_width = wnck_tasklist_get_preferred_width;
+  widget_class->get_preferred_height_for_width = wnck_tasklist_get_preferred_height_for_width;
   widget_class->get_preferred_height = wnck_tasklist_get_preferred_height;
+  widget_class->get_preferred_width_for_height = wnck_tasklist_get_preferred_width_for_height;
   widget_class->size_allocate = wnck_tasklist_size_allocate;
   widget_class->realize = wnck_tasklist_realize;
   widget_class->unrealize = wnck_tasklist_unrealize;
@@ -1294,6 +1315,59 @@ wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
   tasklist->priv->free_icon_loader_data = free_data_func;
 }
 
+static void
+get_layout (GtkOrientation  orientation,
+            int             for_size,
+            int             max_size,
+            int             n_buttons,
+            int            *n_cols_out,
+            int            *n_rows_out)
+{
+  int n_cols;
+  int n_rows;
+
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      /* How many rows fit in the allocation */
+      n_rows = for_size / max_size;
+
+      /* Don't have more rows than buttons */
+      n_rows = MIN (n_rows, n_buttons);
+
+      /* At least one row */
+      n_rows = MAX (n_rows, 1);
+
+      /* We want to use as many cols as possible to limit the width */
+      n_cols = (n_buttons + n_rows - 1) / n_rows;
+
+      /* At least one column */
+      n_cols = MAX (n_cols, 1);
+    }
+  else
+    {
+      /* How many cols fit in the allocation */
+      n_cols = for_size / max_size;
+
+      /* Don't have more cols than buttons */
+      n_cols = MIN (n_cols, n_buttons);
+
+      /* At least one col */
+      n_cols = MAX (n_cols, 1);
+
+      /* We want to use as many rows as possible to limit the height */
+      n_rows = (n_buttons + n_cols - 1) / n_cols;
+
+      /* At least one row */
+      n_rows = MAX (n_rows, 1);
+    }
+
+  if (n_cols_out != NULL)
+    *n_cols_out = n_cols;
+
+  if (n_rows_out != NULL)
+    *n_rows_out = n_rows;
+}
+
 /* returns the maximal possible button width (i.e. if you
  * don't want to stretch the buttons to fill the alloctions
  * the width can be smaller) */
@@ -1317,37 +1391,21 @@ wnck_tasklist_layout (GtkAllocation *allocation,
 
   if (orientation == GTK_ORIENTATION_HORIZONTAL)
     {
-      /* How many rows fit in the allocation */
-      n_rows = allocation->height / max_height;
-
-      /* Don't have more rows than buttons */
-      n_rows = MIN (n_rows, n_buttons);
-
-      /* At least one row */
-      n_rows = MAX (n_rows, 1);
-
-      /* We want to use as many cols as possible to limit the width */
-      n_cols = (n_buttons + n_rows - 1) / n_rows;
-
-      /* At least one column */
-      n_cols = MAX (n_cols, 1);
+      get_layout (GTK_ORIENTATION_HORIZONTAL,
+                  allocation->height,
+                  max_height,
+                  n_buttons,
+                  &n_cols,
+                  &n_rows);
     }
   else
     {
-      /* How many cols fit in the allocation */
-      n_cols = allocation->width / max_width;
-
-      /* Don't have more cols than buttons */
-      n_cols = MIN (n_cols, n_buttons);
-
-      /* At least one col */
-      n_cols = MAX (n_cols, 1);
-
-      /* We want to use as many rows as possible to limit the height */
-      n_rows = (n_buttons + n_cols - 1) / n_cols;
-
-      /* At least one row */
-      n_rows = MAX (n_rows, 1);
+      get_layout (GTK_ORIENTATION_VERTICAL,
+                  allocation->width,
+                  max_width,
+                  n_buttons,
+                  &n_cols,
+                  &n_rows);
     }
 
   *n_cols_out = n_cols;
@@ -1445,18 +1503,58 @@ wnck_task_get_highest_scored (GList     *ungrouped_class_groups,
 }
 
 static void
-wnck_tasklist_size_request  (GtkWidget      *widget,
-                             GtkRequisition *requisition)
+calculate_max_button_size (WnckTasklist *self,
+                           int          *max_width_out,
+                           int          *max_height_out)
 {
-  WnckTasklist *tasklist;
-  GtkRequisition child_min_req;
-  GtkRequisition child_nat_req;
+  int max_width;
+  int max_height;
+  GList *l;
+
+  max_width = 0;
+  max_height = 0;
+
+#define GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS(list)                 \
+  l = list;                                                     \
+                                                                \
+  while (l != NULL)                                             \
+    {                                                           \
+      WnckTask *task;                                           \
+      GtkRequisition child_min_req;                             \
+      GtkRequisition child_nat_req;                             \
+                                                                \
+      task = WNCK_TASK (l->data);                               \
+                                                                \
+      gtk_widget_get_preferred_size (task->button,              \
+                                     &child_min_req,            \
+                                     &child_nat_req);           \
+                                                                \
+      max_height = MAX (child_min_req.height, max_height);      \
+      max_width = MAX (child_nat_req.width, max_width);         \
+                                                                \
+      l = l->next;                                              \
+    }
+
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (self->priv->windows)
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (self->priv->class_groups)
+  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (self->priv->startup_sequences)
+
+#undef GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS
+
+  if (max_width_out != NULL)
+    *max_width_out = max_width;
+
+  if (max_height_out != NULL)
+    *max_height_out = max_height;
+}
+
+static void
+wnck_tasklist_update_size_hints (WnckTasklist *tasklist)
+{
   GtkAllocation  tasklist_allocation;
   GtkAllocation  fake_allocation;
   int max_height = 1;
   int max_width = 1;
-  /* int u_width, u_height; */
-  GList *l;
   GArray *array;
   GList *ungrouped_class_groups;
   int n_windows;
@@ -1470,37 +1568,13 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   int lowest_range;
   int grouping_limit;
 
-  tasklist = WNCK_TASKLIST (widget);
-
-  /* Calculate max needed height and width of the buttons */
-#define GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS(list)                 \
-  l = list;                                                     \
-  while (l != NULL)                                             \
-    {                                                           \
-      WnckTask *task = WNCK_TASK (l->data);                     \
-                                                                \
-      gtk_widget_get_preferred_size (task->button,              \
-                                     &child_min_req,            \
-                                     &child_nat_req);           \
-                                                                \
-      max_height = MAX (child_min_req.height, max_height);      \
-      max_width = MAX (child_nat_req.width, max_width);         \
-                                                                \
-      l = l->next;                                              \
-    }
-
-  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->windows)
-  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->class_groups)
-  GET_MAX_WIDTH_HEIGHT_FROM_BUTTONS (tasklist->priv->startup_sequences)
-
   /* Note that the fact that we nearly don't care about the width/height
    * requested by the buttons makes it possible to hide/show the label/image
    * in wnck_task_size_allocated(). If we really cared about those, this
    * wouldn't work since our call to gtk_widget_size_request() does not take
    * into account the hidden widgets.
    */
-  tasklist->priv->max_button_width = max_width;
-  tasklist->priv->max_button_height = max_height;
+  calculate_max_button_size (tasklist, &max_width, &max_height);
 
   gtk_widget_get_allocation (GTK_WIDGET (tasklist), &tasklist_allocation);
 
@@ -1517,13 +1591,12 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
   ungrouped_class_groups = g_list_copy (tasklist->priv->class_groups);
   score_set = FALSE;
 
-  grouping_limit = MIN (tasklist->priv->grouping_limit,
-			tasklist->priv->max_button_width);
+  grouping_limit = MIN (tasklist->priv->grouping_limit, max_width);
 
   /* Try ungrouped mode */
   wnck_tasklist_layout (&fake_allocation,
-			tasklist->priv->max_button_width,
-			tasklist->priv->max_button_height,
+			max_width,
+			max_height,
 			n_windows + n_startup_sequences,
 			tasklist->priv->orientation,
 			&n_cols, &n_rows);
@@ -1534,7 +1607,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
     {
       if (tasklist->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
         {
-          val = n_cols * tasklist->priv->max_button_width;
+          val = n_cols * max_width;
           g_array_insert_val (array, array->len, val);
           val = n_cols * grouping_limit;
           g_array_insert_val (array, array->len, val);
@@ -1544,7 +1617,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
         }
       else
         {
-          val = n_rows * tasklist->priv->max_button_height;
+          val = n_rows * max_height;
           g_array_insert_val (array, array->len, val);
           val = n_rows * grouping_limit;
           g_array_insert_val (array, array->len, val);
@@ -1568,8 +1641,8 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
       n_grouped_buttons += g_list_length (class_group_task->windows) - 1;
 
       wnck_tasklist_layout (&fake_allocation,
-			    tasklist->priv->max_button_width,
-			    tasklist->priv->max_button_height,
+			    max_width,
+			    max_height,
 			    n_startup_sequences + n_windows - n_grouped_buttons,
 			    tasklist->priv->orientation,
 			    &n_cols, &n_rows);
@@ -1580,7 +1653,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
               (tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP ||
                ungrouped_class_groups == NULL))
             {
-              val = n_cols * tasklist->priv->max_button_width;
+              val = n_cols * max_width;
               if (val >= lowest_range)
                 {
                   /* Overlaps old range */
@@ -1606,7 +1679,7 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
               (tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP ||
                ungrouped_class_groups == NULL))
             {
-              val = n_rows * tasklist->priv->max_button_height;
+              val = n_rows * max_height;
               if (val >= lowest_range)
                 {
                   /* Overlaps old range */
@@ -1647,17 +1720,48 @@ wnck_tasklist_size_request  (GtkWidget      *widget,
 
   tasklist->priv->size_hints_len = array->len;
   tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
+}
 
-  if (tasklist->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+static int
+get_n_buttons (WnckTasklist *self)
+{
+  int n_windows;
+  int n_startup_sequences;
+  int n_buttons;
+
+  n_windows = g_list_length (self->priv->windows);
+  n_startup_sequences = g_list_length (self->priv->startup_sequences);
+
+  if (self->priv->grouping == WNCK_TASKLIST_ALWAYS_GROUP &&
+      self->priv->class_groups != NULL)
     {
-      requisition->width = tasklist->priv->size_hints[0];
-      requisition->height = fake_allocation.height;
+      GList *ungrouped_class_groups;
+      int n_grouped_buttons;
+
+      ungrouped_class_groups = g_list_copy (self->priv->class_groups);
+      n_grouped_buttons = 0;
+
+      wnck_tasklist_score_groups (self, ungrouped_class_groups);
+
+      while (ungrouped_class_groups != NULL)
+        {
+          WnckTask *task;
+
+          ungrouped_class_groups = wnck_task_get_highest_scored (ungrouped_class_groups,
+                                                                 &task);
+
+          n_grouped_buttons += g_list_length (task->windows) - 1;
+        }
+
+      n_buttons = n_startup_sequences + n_windows - n_grouped_buttons;
+      g_list_free (ungrouped_class_groups);
     }
   else
     {
-      requisition->width = fake_allocation.width;
-      requisition->height = tasklist->priv->size_hints[0];
+      n_buttons = n_windows + n_startup_sequences;
     }
+
+  return n_buttons;
 }
 
 static void
@@ -1680,49 +1784,135 @@ get_minimum_button_size (int *minimum_width,
 }
 
 static void
+get_preferred_size (WnckTasklist   *self,
+                    GtkOrientation  orientation,
+                    int             for_size,
+                    int            *minimum,
+                    int            *natural)
+{
+  int n_buttons;
+  int max_button_width;
+  int max_button_height;
+
+  *minimum = 0;
+  *natural = 0;
+
+  n_buttons = get_n_buttons (self);
+  if (n_buttons == 0)
+    return;
+
+  calculate_max_button_size (self, &max_button_width, &max_button_height);
+
+  if (orientation == GTK_ORIENTATION_HORIZONTAL)
+    {
+      int min_button_width;
+
+      get_minimum_button_size (&min_button_width, NULL);
+
+      if (self->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+        {
+          int n_cols;
+
+          if (for_size < 0)
+            {
+              n_cols = n_buttons;
+            }
+          else
+            {
+              get_layout (GTK_ORIENTATION_HORIZONTAL,
+                          for_size,
+                          max_button_height,
+                          n_buttons,
+                          &n_cols,
+                          NULL);
+            }
+
+          *minimum = min_button_width;
+          *natural = n_cols * max_button_width;
+        }
+      else
+        {
+          *minimum = *natural = min_button_width;
+        }
+    }
+  else
+    {
+      if (self->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
+        {
+          *minimum = *natural = max_button_height;
+        }
+      else
+        {
+          int n_rows;
+
+          if (for_size < 0)
+            {
+              n_rows = n_buttons;
+            }
+          else
+            {
+              get_layout (GTK_ORIENTATION_VERTICAL,
+                          for_size,
+                          max_button_width,
+                          n_buttons,
+                          NULL,
+                          &n_rows);
+            }
+
+          *minimum = max_button_height;
+          *natural = n_rows * max_button_height;
+        }
+    }
+}
+
+static void
 wnck_tasklist_get_preferred_width (GtkWidget *widget,
                                    int       *minimum_width,
                                    int       *natural_width)
 {
-  WnckTasklist *self;
-  GtkRequisition req;
+  get_preferred_size (WNCK_TASKLIST (widget),
+                      GTK_ORIENTATION_HORIZONTAL,
+                      -1,
+                      minimum_width,
+                      natural_width);
+}
 
-  self = WNCK_TASKLIST (widget);
-
-  wnck_tasklist_size_request (widget, &req);
-
-  if (self->priv->windows == NULL &&
-      self->priv->startup_sequences == NULL)
-    {
-      *minimum_width = *natural_width = 0;
-      return;
-    }
-
-  get_minimum_button_size (minimum_width, NULL);
-  *natural_width = req.width;
+static void
+wnck_tasklist_get_preferred_width_for_height (GtkWidget *widget,
+                                              int        height,
+                                              int       *minimum_width,
+                                              int       *natural_width)
+{
+  get_preferred_size (WNCK_TASKLIST (widget),
+                      GTK_ORIENTATION_HORIZONTAL,
+                      height,
+                      minimum_width,
+                      natural_width);
 }
 
 static void
 wnck_tasklist_get_preferred_height (GtkWidget *widget,
-                                   int       *minimum_height,
-                                   int       *natural_height)
+                                    int       *minimum_height,
+                                    int       *natural_height)
 {
-  WnckTasklist *self;
-  GtkRequisition req;
+  get_preferred_size (WNCK_TASKLIST (widget),
+                      GTK_ORIENTATION_VERTICAL,
+                      -1,
+                      minimum_height,
+                      natural_height);
+}
 
-  self = WNCK_TASKLIST (widget);
-
-  wnck_tasklist_size_request (widget, &req);
-
-  if (self->priv->windows == NULL &&
-      self->priv->startup_sequences == NULL)
-    {
-      *minimum_height = *natural_height = 0;
-      return;
-    }
-
-  get_minimum_button_size (NULL, minimum_height);
-  *natural_height = req.height;
+static void
+wnck_tasklist_get_preferred_height_for_width (GtkWidget *widget,
+                                              int        width,
+                                              int       *minimum_height,
+                                              int       *natural_height)
+{
+  get_preferred_size (WNCK_TASKLIST (widget),
+                      GTK_ORIENTATION_VERTICAL,
+                      width,
+                      minimum_height,
+                      natural_height);
 }
 
 /**
@@ -1749,6 +1939,8 @@ wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
   g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), NULL);
   g_return_val_if_fail (n_elements != NULL, NULL);
 
+  wnck_tasklist_update_size_hints (tasklist);
+
   *n_elements = tasklist->priv->size_hints_len;
   return tasklist->priv->size_hints;
 }
@@ -1762,6 +1954,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   WnckTask *class_group_task;
   int n_windows;
   int n_startup_sequences;
+  int max_height = 1;
+  int max_width = 1;
   GList *l;
   int button_width;
   int total_width;
@@ -1784,13 +1978,14 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   ungrouped_class_groups = g_list_copy (tasklist->priv->class_groups);
   score_set = FALSE;
 
-  grouping_limit = MIN (tasklist->priv->grouping_limit,
-			tasklist->priv->max_button_width);
+  calculate_max_button_size (tasklist, &max_width, &max_height);
+
+  grouping_limit = MIN (tasklist->priv->grouping_limit, max_width);
 
   /* Try ungrouped mode */
   button_width = wnck_tasklist_layout (allocation,
-				       tasklist->priv->max_button_width,
-				       tasklist->priv->max_button_height,
+				       max_width,
+				       max_height,
 				       n_startup_sequences + n_windows,
 				       tasklist->priv->orientation,
 				       &n_cols, &n_rows);
@@ -1835,8 +2030,8 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
         }
 
       button_width = wnck_tasklist_layout (allocation,
-					   tasklist->priv->max_button_width,
-					   tasklist->priv->max_button_height,
+					   max_width,
+					   max_height,
 					   n_startup_sequences + n_windows - n_grouped_buttons,
 					   tasklist->priv->orientation,
 					   &n_cols, &n_rows);
@@ -1876,7 +2071,7 @@ wnck_tasklist_size_allocate (GtkWidget      *widget,
   /* Allocate children */
   l = visible_tasks;
   i = 0;
-  total_width = tasklist->priv->max_button_width * n_cols;
+  total_width = max_width * n_cols;
   total_width = MIN (total_width, allocation->width);
   /* FIXME: this is obviously wrong, but if we don't this, some space that the
    * panel allocated to us won't have the panel popup menu, but the tasklist
