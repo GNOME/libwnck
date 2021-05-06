@@ -2678,8 +2678,11 @@ static void
 wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
 				      GList        *visible_tasks)
 {
+	int scale;
 	gint x, y, width, height;
 	GList *l1;
+
+	scale = gtk_widget_get_scale_factor (GTK_WIDGET (tasklist));
 
 	for (l1 = visible_tasks; l1; l1 = l1->next) {
 		WnckTask *task = WNCK_TASK (l1->data);
@@ -2702,6 +2705,11 @@ wnck_tasklist_update_icon_geometries (WnckTasklist *tasklist,
                 y += allocation.y;
                 width = allocation.width;
                 height = allocation.height;
+
+                x *= scale;
+                y *= scale;
+                width *= scale;
+                height *= scale;
 
 		if (task->window)
 			wnck_window_set_icon_geometry (task->window,
