@@ -2417,10 +2417,18 @@ tasklist_include_window_impl (WnckTasklist *tasklist,
 
   if (tasklist->priv->monitor != NULL)
     {
+      int scale;
       GdkDisplay *display;
       GdkMonitor *monitor;
 
       wnck_window_get_geometry (win, &x, &y, &w, &h);
+
+      scale = gtk_widget_get_scale_factor (GTK_WIDGET (tasklist));
+
+      x /= scale;
+      y /= scale;
+      w /= scale;
+      h /= scale;
 
       /* Don't include the window if its center point is not on the same monitor */
 
