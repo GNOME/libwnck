@@ -3498,8 +3498,8 @@ wnck_task_get_icon (WnckTask *task)
 
       if (pixbuf == NULL)
         {
-          _wnck_get_fallback_icons (NULL, 0, 0,
-                                    &pixbuf, MINI_ICON_SIZE, MINI_ICON_SIZE);
+          _wnck_get_fallback_icons (NULL, 0,
+                                    &pixbuf, MINI_ICON_SIZE);
         }
 #endif
       break;

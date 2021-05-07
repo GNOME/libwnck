@@ -457,9 +457,7 @@ set_icon (WnckClassGroup *class_group)
     {
       _wnck_get_fallback_icons (&icon,
                                 _wnck_get_default_icon_size (),
-                                _wnck_get_default_icon_size (),
                                 &mini_icon,
-                                _wnck_get_default_mini_icon_size (),
                                 _wnck_get_default_mini_icon_size ());
       icons_reffed = TRUE;
     }
