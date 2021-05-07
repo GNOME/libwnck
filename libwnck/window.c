@@ -2128,8 +2128,10 @@ get_icons (WnckWindow *window)
   if (_wnck_read_icons (window->priv->screen,
                         window->priv->xwindow,
                         window->priv->icon_cache,
-                        &icon, normal_size, normal_size,
-                        &mini_icon, mini_size, mini_size))
+                        &icon,
+                        normal_size,
+                        &mini_icon,
+                        mini_size))
     {
       window->priv->need_emit_icon_changed = TRUE;
 

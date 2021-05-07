@@ -1968,10 +1968,8 @@ struct _WnckIconCache
   Pixmap prev_mask;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
-  int ideal_width;
-  int ideal_height;
-  int ideal_mini_width;
-  int ideal_mini_height;
+  int ideal_size;
+  int ideal_mini_size;
   guint want_fallback : 1;
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
@@ -1990,10 +1988,8 @@ _wnck_icon_cache_new (void)
   icon_cache->prev_pixmap = None;
   icon_cache->icon = NULL;
   icon_cache->mini_icon = NULL;
-  icon_cache->ideal_width = -1; /* won't be a legit width */
-  icon_cache->ideal_height = -1;
-  icon_cache->ideal_mini_width = -1;
-  icon_cache->ideal_mini_height = -1;
+  icon_cache->ideal_size = -1; /* won't be a legit size */
+  icon_cache->ideal_mini_size = -1;
   icon_cache->want_fallback = TRUE;
   icon_cache->wm_hints_dirty = TRUE;
   icon_cache->kwm_win_icon_dirty = TRUE;
@@ -2163,11 +2159,9 @@ _wnck_read_icons (WnckScreen     *screen,
                   Window          xwindow,
                   WnckIconCache  *icon_cache,
                   GdkPixbuf     **iconp,
-                  int             ideal_width,
-                  int             ideal_height,
+                  int             ideal_size,
                   GdkPixbuf     **mini_iconp,
-                  int             ideal_mini_width,
-                  int             ideal_mini_height)
+                  int             ideal_mini_size)
 {
   Screen *xscreen;
   Display *display;
@@ -2189,16 +2183,12 @@ _wnck_read_icons (WnckScreen     *screen,
   *iconp = NULL;
   *mini_iconp = NULL;
 
-  if (ideal_width != icon_cache->ideal_width ||
-      ideal_height != icon_cache->ideal_height ||
-      ideal_mini_width != icon_cache->ideal_mini_width ||
-      ideal_mini_height != icon_cache->ideal_mini_height)
+  if (ideal_size != icon_cache->ideal_size ||
+      ideal_mini_size != icon_cache->ideal_mini_size)
     clear_icon_cache (icon_cache, TRUE);
 
-  icon_cache->ideal_width = ideal_width;
-  icon_cache->ideal_height = ideal_height;
-  icon_cache->ideal_mini_width = ideal_mini_width;
-  icon_cache->ideal_mini_height = ideal_mini_height;
+  icon_cache->ideal_size = ideal_size;
+  icon_cache->ideal_mini_size = ideal_mini_size;
 
   if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
     return FALSE; /* we have no new info to use */
@@ -2221,15 +2211,17 @@ _wnck_read_icons (WnckScreen     *screen,
       icon_cache->net_wm_icon_dirty = FALSE;
 
       if (read_rgb_icon (xscreen, xwindow,
-                         ideal_width, ideal_height,
-                         ideal_mini_width, ideal_mini_height,
+                         ideal_size,
+                         ideal_size,
+                         ideal_mini_size,
+                         ideal_mini_size,
                          &w, &h, &pixdata,
                          &mini_w, &mini_h, &mini_pixdata))
         {
-          *iconp = scaled_from_pixdata (pixdata, w, h, ideal_width, ideal_height);
+          *iconp = scaled_from_pixdata (pixdata, w, h, ideal_size, ideal_size);
 
           *mini_iconp = scaled_from_pixdata (mini_pixdata, mini_w, mini_h,
-                                             ideal_mini_width, ideal_mini_height);
+                                             ideal_mini_size, ideal_mini_size);
 
           replace_cache (icon_cache, USING_NET_WM_ICON,
                          *iconp, *mini_iconp);
@@ -2268,8 +2260,8 @@ _wnck_read_icons (WnckScreen     *screen,
           pixmap != None)
         {
           if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_width, ideal_height,
-                                   mini_iconp, ideal_mini_width, ideal_mini_height))
+                                   iconp, ideal_size, ideal_size,
+                                   mini_iconp, ideal_mini_size, ideal_mini_size))
             {
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
@@ -2294,8 +2286,8 @@ _wnck_read_icons (WnckScreen     *screen,
           pixmap != None)
         {
           if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_width, ideal_height,
-                                   mini_iconp, ideal_mini_width, ideal_mini_height))
+                                   iconp, ideal_size, ideal_size,
+                                   mini_iconp, ideal_mini_size, ideal_mini_size))
             {
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
@@ -2312,11 +2304,11 @@ _wnck_read_icons (WnckScreen     *screen,
       icon_cache->origin < USING_FALLBACK_ICON)
     {
       _wnck_get_fallback_icons (iconp,
-                                ideal_width,
-                                ideal_height,
+                                ideal_size,
+                                ideal_size,
                                 mini_iconp,
-                                ideal_mini_width,
-                                ideal_mini_height);
+                                ideal_mini_size,
+                                ideal_mini_size);
 
       replace_cache (icon_cache, USING_FALLBACK_ICON,
                      *iconp, *mini_iconp);

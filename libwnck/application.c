@@ -340,8 +340,10 @@ get_icons (WnckApplication *app)
   if (_wnck_read_icons (app->priv->screen,
                         app->priv->xwindow,
                         app->priv->icon_cache,
-                        &icon, normal_size, normal_size,
-                        &mini_icon, mini_size, mini_size))
+                        &icon,
+                        normal_size,
+                        &mini_icon,
+                        mini_size))
     {
       app->priv->need_emit_icon_changed = TRUE;
       app->priv->icon_from_leader = TRUE;
