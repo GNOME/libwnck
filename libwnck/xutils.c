@@ -1796,11 +1796,9 @@ try_pixmap_and_mask (Screen     *screen,
                      Pixmap      src_pixmap,
                      Pixmap      src_mask,
                      GdkPixbuf **iconp,
-                     int         ideal_width,
-                     int         ideal_height,
+                     int         ideal_size,
                      GdkPixbuf **mini_iconp,
-                     int         ideal_mini_width,
-                     int         ideal_mini_height)
+                     int         ideal_mini_size)
 {
   cairo_surface_t *surface, *mask_surface, *image;
   GdkDisplay *gdk_display;
@@ -1880,16 +1878,16 @@ try_pixmap_and_mask (Screen     *screen,
     {
       *iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_width > 0 ? ideal_width :
+                                 ideal_size > 0 ? ideal_size :
                                  gdk_pixbuf_get_width (unscaled),
-                                 ideal_height > 0 ? ideal_height :
+                                 ideal_size > 0 ? ideal_size :
                                  gdk_pixbuf_get_height (unscaled),
                                  GDK_INTERP_BILINEAR);
       *mini_iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_mini_width > 0 ? ideal_mini_width :
+                                 ideal_mini_size > 0 ? ideal_mini_size :
                                  gdk_pixbuf_get_width (unscaled),
-                                 ideal_mini_height > 0 ? ideal_mini_height :
+                                 ideal_mini_size > 0 ? ideal_mini_size :
                                  gdk_pixbuf_get_height (unscaled),
                                  GDK_INTERP_BILINEAR);
 
@@ -2260,8 +2258,8 @@ _wnck_read_icons (WnckScreen     *screen,
           pixmap != None)
         {
           if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_size, ideal_size,
-                                   mini_iconp, ideal_mini_size, ideal_mini_size))
+                                   iconp, ideal_size,
+                                   mini_iconp, ideal_mini_size))
             {
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
@@ -2286,8 +2284,8 @@ _wnck_read_icons (WnckScreen     *screen,
           pixmap != None)
         {
           if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_size, ideal_size,
-                                   mini_iconp, ideal_mini_size, ideal_mini_size))
+                                   iconp, ideal_size,
+                                   mini_iconp, ideal_mini_size))
             {
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
