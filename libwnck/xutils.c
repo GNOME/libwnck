@@ -1454,8 +1454,7 @@ _wnck_select_input (Screen *screen,
 static gboolean
 find_best_size (gulong  *data,
                 gulong   nitems,
-                int      ideal_width,
-                int      ideal_height,
+                int      ideal_size,
                 int     *width,
                 int     *height,
                 gulong **start)
@@ -1495,7 +1494,6 @@ find_best_size (gulong  *data,
       else
         {
           /* work with averages */
-          const int ideal_size = (ideal_width + ideal_height) / 2;
           int best_size = (best_w + best_h) / 2;
           int this_size = (w + h) / 2;
 
@@ -1571,18 +1569,16 @@ argbdata_to_pixdata (gulong *argb_data, int len, guchar **pixdata)
 }
 
 static gboolean
-read_rgb_icon (Screen        *screen,
-               Window         xwindow,
-               int            ideal_width,
-               int            ideal_height,
-               int            ideal_mini_width,
-               int            ideal_mini_height,
-               int           *width,
-               int           *height,
-               guchar       **pixdata,
-               int           *mini_width,
-               int           *mini_height,
-               guchar       **mini_pixdata)
+read_rgb_icon (Screen  *screen,
+               Window   xwindow,
+               int      ideal_size,
+               int      ideal_mini_size,
+               int     *width,
+               int     *height,
+               guchar **pixdata,
+               int     *mini_width,
+               int     *mini_height,
+               guchar **mini_pixdata)
 {
   Display *display;
   Atom type;
@@ -1620,16 +1616,14 @@ read_rgb_icon (Screen        *screen,
       return FALSE;
     }
 
-  if (!find_best_size (data, nitems,
-                       ideal_width, ideal_height,
-                       &w, &h, &best))
+  if (!find_best_size (data, nitems, ideal_size, &w, &h, &best))
     {
       XFree (data);
       return FALSE;
     }
 
   if (!find_best_size (data, nitems,
-                       ideal_mini_width, ideal_mini_height,
+                       ideal_mini_size,
                        &mini_w, &mini_h, &best_mini))
     {
       XFree (data);
@@ -2162,8 +2156,6 @@ _wnck_read_icons (WnckScreen     *screen,
 
       if (read_rgb_icon (xscreen, xwindow,
                          ideal_size,
-                         ideal_size,
-                         ideal_mini_size,
                          ideal_mini_size,
                          &w, &h, &pixdata,
                          &mini_w, &mini_h, &mini_pixdata))
