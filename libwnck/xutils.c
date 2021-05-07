@@ -1451,41 +1451,6 @@ _wnck_select_input (Screen *screen,
   return old_mask;
 }
 
-/* The icon-reading code is copied
- * from metacity, please sync bugfixes
- */
-static gboolean
-find_largest_sizes (gulong *data,
-                    gulong  nitems,
-                    int    *width,
-                    int    *height)
-{
-  *width = 0;
-  *height = 0;
-
-  while (nitems > 0)
-    {
-      int w, h;
-
-      if (nitems < 3)
-        return FALSE; /* no space for w, h */
-
-      w = data[0];
-      h = data[1];
-
-      if (nitems < ((gulong) (w * h) + 2))
-        return FALSE; /* not enough data */
-
-      *width = MAX (w, *width);
-      *height = MAX (h, *height);
-
-      data += (w * h) + 2;
-      nitems -= (w * h) + 2;
-    }
-
-  return TRUE;
-}
-
 static gboolean
 find_best_size (gulong  *data,
                 gulong   nitems,
@@ -1498,19 +1463,10 @@ find_best_size (gulong  *data,
   int best_w;
   int best_h;
   gulong *best_start;
-  int max_width, max_height;
 
   *width = 0;
   *height = 0;
   *start = NULL;
-
-  if (!find_largest_sizes (data, nitems, &max_width, &max_height))
-    return FALSE;
-
-  if (ideal_width < 0)
-    ideal_width = max_width;
-  if (ideal_height < 0)
-    ideal_height = max_height;
 
   best_w = 0;
   best_h = 0;
@@ -1878,17 +1834,13 @@ try_pixmap_and_mask (Screen     *screen,
     {
       *iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_size > 0 ? ideal_size :
-                                 gdk_pixbuf_get_width (unscaled),
-                                 ideal_size > 0 ? ideal_size :
-                                 gdk_pixbuf_get_height (unscaled),
+                                 ideal_size,
+                                 ideal_size,
                                  GDK_INTERP_BILINEAR);
       *mini_iconp =
         gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_mini_size > 0 ? ideal_mini_size :
-                                 gdk_pixbuf_get_width (unscaled),
-                                 ideal_mini_size > 0 ? ideal_mini_size :
-                                 gdk_pixbuf_get_height (unscaled),
+                                 ideal_mini_size,
+                                 ideal_mini_size,
                                  GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (unscaled));
@@ -2334,9 +2286,8 @@ default_icon_at_size (int size)
 
   g_assert (base);
 
-  if ((size < 0) ||
-      (gdk_pixbuf_get_width (base) == size &&
-       gdk_pixbuf_get_height (base) == size))
+  if (gdk_pixbuf_get_width (base) == size &&
+      gdk_pixbuf_get_height (base) == size)
     {
       return base;
     }
@@ -2344,13 +2295,7 @@ default_icon_at_size (int size)
     {
       GdkPixbuf *scaled;
 
-      scaled = gdk_pixbuf_scale_simple (base,
-                                        size > 0 ? size :
-                                        gdk_pixbuf_get_width (base),
-                                        size > 0 ? size :
-                                        gdk_pixbuf_get_height (base),
-                                        GDK_INTERP_BILINEAR);
-
+      scaled = gdk_pixbuf_scale_simple (base, size, size, GDK_INTERP_BILINEAR);
       g_object_unref (G_OBJECT (base));
 
       return scaled;
@@ -2364,12 +2309,10 @@ _wnck_get_fallback_icons (GdkPixbuf **iconp,
                           int         ideal_mini_size)
 {
   if (iconp)
-    *iconp = default_icon_at_size (ideal_size > 0 ? ideal_size :
-                                   (int) _wnck_get_default_icon_size ());
+    *iconp = default_icon_at_size (ideal_size);
 
   if (mini_iconp)
-    *mini_iconp = default_icon_at_size (ideal_mini_size > 0 ? ideal_mini_size :
-                                        (int) _wnck_get_default_mini_icon_size ());
+    *mini_iconp = default_icon_at_size (ideal_mini_size);
 }
 
 void
