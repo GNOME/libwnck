@@ -655,16 +655,29 @@ wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
     client_type = ewmh_sourceindication_client_type;
 }
 
+static WnckHandle *wnck_handle = NULL;
+
+WnckHandle *
+_wnck_get_handle (void)
+{
+  if (wnck_handle == NULL)
+    {
+      /* If the type hasn't been set yet, use the default--treat it as a
+       * normal application.
+       */
+      if (client_type == 0)
+        client_type = WNCK_CLIENT_TYPE_APPLICATION;
+
+      wnck_handle = _wnck_handle_new (client_type);
+    }
+
+  return wnck_handle;
+}
+
 WnckClientType
 _wnck_get_client_type (void)
 {
-  /* If the type hasn't been set yet, use the default--treat it as a
-   * normal application.
-   */
-  if (client_type == 0)
-    client_type = WNCK_CLIENT_TYPE_APPLICATION;
-
-  return client_type;
+  return _wnck_handle_get_client_type (_wnck_get_handle ());
 }
 
 static gsize default_icon_size = WNCK_DEFAULT_ICON_SIZE;
@@ -843,6 +856,8 @@ wnck_shutdown (void)
   _wnck_application_shutdown_all ();
   _wnck_screen_shutdown_all ();
   _wnck_window_shutdown_all ();
+
+  g_clear_object (&wnck_handle);
 
 #ifdef HAVE_XRES
   if (xres_removeid != 0)
