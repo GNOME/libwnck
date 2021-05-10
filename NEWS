@@ -1,4 +1,32 @@
 ==============
+Version 40.0
+==============
+
+  Features
+
+  * Use new GNOME versioning scheme (not strictly the same schedule though)
+  * pager: Add API to disable scrolling (Andre Miranda)
+  * tasklist: Reworked the size management to use internal WnckButton
+    and GTK's preferred size
+  * Add WnckHandle (private for now, Alberts Muktupāvels)
+
+  Fixes
+
+  * Do not leak pango font description (Tomas Bzatek)
+  * tasklist: Use geometries to respect HiDPI settings
+    (Alberts Muktupāvels)
+
+  Translations
+
+  * Asier Sarasua Garmendia (eu)
+  * Goran Vidović (hr)
+  * Jordi Mas (ca)
+  * Jwtiyar Nariman (ckb)
+  * Stephan Woidowski (en_GB)
+  * Yuri Chornoivan (uk)
+
+
+==============
 Version 3.36.0
 ==============
 
