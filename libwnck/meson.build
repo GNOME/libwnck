@@ -4,9 +4,29 @@ libwnck_includedir = join_paths(PACKAGE_NAME, meson.project_name())
 
 version_data = configuration_data()
 version_array = meson.project_version().split('.')
-version_data.set('WNCK_MAJOR_VERSION', version_array[0])
-version_data.set('WNCK_MINOR_VERSION', version_array[1])
-version_data.set('WNCK_MICRO_VERSION', version_array[2])
+
+major_version = version_array[0].to_int()
+minor_version = version_array[1]
+micro_version = (version_array.length() == 3) ? version_array[2].to_int() : 0
+
+if minor_version == 'alpha'
+  minor_version = 97
+elif minor_version == 'beta'
+  minor_version = 98
+elif minor_version == 'rc'
+  minor_version = 99
+else
+  # Ensure that only numbers are expected in this case
+  minor_version = minor_version.to_int()
+endif
+
+if minor_version >= 97
+  major_version = major_version - 1
+endif
+
+version_data.set('WNCK_MAJOR_VERSION', major_version)
+version_data.set('WNCK_MINOR_VERSION', minor_version)
+version_data.set('WNCK_MICRO_VERSION', micro_version)
 
 headers = [
   'libwnck.h',
