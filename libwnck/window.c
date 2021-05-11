@@ -33,6 +33,7 @@
 #include "xutils.h"
 #include "private.h"
 #include "wnck-enum-types.h"
+#include "wnck-icon-cache-private.h"
 
 /**
  * SECTION:window
