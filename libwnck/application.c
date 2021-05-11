@@ -25,6 +25,7 @@
 #include <glib/gi18n-lib.h>
 #include "application.h"
 #include "private.h"
+#include "wnck-icon-cache-private.h"
 
 /**
  * SECTION:application

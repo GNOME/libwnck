@@ -59,6 +59,8 @@ sources = [
   'window.c',
   'wnck-handle-private.h',
   'wnck-handle.c',
+  'wnck-icon-cache-private.h',
+  'wnck-icon-cache.c',
   'wnck-image-menu-item-private.h',
   'wnck-image-menu-item.c',
   'workspace.c',
