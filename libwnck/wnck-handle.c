@@ -28,6 +28,9 @@ struct _WnckHandle
   GObject        parent;
 
   WnckClientType client_type;
+
+  gsize          default_icon_size;
+  gsize          default_mini_icon_size;
 };
 
 enum
@@ -120,6 +123,8 @@ wnck_handle_class_init (WnckHandleClass *self_class)
 static void
 wnck_handle_init (WnckHandle *self)
 {
+  self->default_icon_size = WNCK_DEFAULT_ICON_SIZE;
+  self->default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 }
 
 WnckHandle
@@ -134,4 +139,30 @@ WnckClientType
 _wnck_handle_get_client_type (WnckHandle *self)
 {
   return self->client_type;
+}
+
+void
+_wnck_handle_set_default_icon_size (WnckHandle *self,
+                                    gsize       icon_size)
+{
+  self->default_icon_size = icon_size;
+}
+
+gsize
+_wnck_handle_get_default_icon_size (WnckHandle *self)
+{
+  return self->default_icon_size;
+}
+
+void
+_wnck_handle_set_default_mini_icon_size (WnckHandle *self,
+                                         gsize       icon_size)
+{
+  self->default_mini_icon_size = icon_size;
+}
+
+gsize
+_wnck_handle_get_default_mini_icon_size (WnckHandle *self)
+{
+  return self->default_mini_icon_size;
 }
