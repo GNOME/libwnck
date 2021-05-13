@@ -63,6 +63,8 @@ sources = [
   'wnck-icon-cache.c',
   'wnck-image-menu-item-private.h',
   'wnck-image-menu-item.c',
+  'wnck-resource-usage-private.h',
+  'wnck-resource-usage.c',
   'workspace.c',
   'xutils.c',
 ]
