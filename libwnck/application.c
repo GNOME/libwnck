@@ -72,7 +72,6 @@ struct _WnckApplicationPrivate
   char *startup_id;
 
   guint name_from_leader : 1; /* name is from group leader */
-  guint icon_from_leader : 1;
 
   guint need_emit_icon_changed : 1;
 };
@@ -333,7 +332,6 @@ get_icons (WnckApplication *app)
                         mini_size))
     {
       app->priv->need_emit_icon_changed = TRUE;
-      app->priv->icon_from_leader = TRUE;
 
       if (app->priv->icon)
         g_object_unref (G_OBJECT (app->priv->icon));
