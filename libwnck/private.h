@@ -133,6 +133,8 @@ SnDisplay* _wnck_screen_get_sn_display (WnckScreen *screen);
 
 WnckScreen* _wnck_screen_get_existing (int number);
 
+WnckHandle    *_wnck_screen_get_handle          (WnckScreen    *screen);
+
 void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace,
                                                  guint32        timestamp);
 int            _wnck_pager_get_n_workspaces     (WnckPager     *pager);
