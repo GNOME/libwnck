@@ -31,12 +31,14 @@ G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
 struct _WnckHandle
 {
-  GObject        parent;
+  GObject         parent;
 
-  WnckClientType client_type;
+  WnckClientType  client_type;
 
-  gsize          default_icon_size;
-  gsize          default_mini_icon_size;
+  gsize           default_icon_size;
+  gsize           default_mini_icon_size;
+
+  GHashTable     *class_group_hash;
 };
 
 enum
@@ -146,6 +148,31 @@ wnck_handle_finalize (GObject *object)
 
   gdk_window_remove_filter (NULL, filter_func, self);
 
+  /* Warning: this is hacky :-)
+   *
+   * Shutting down all WnckScreen objects will automatically unreference
+   * (and finalize) all WnckWindow objects, but not the WnckClassGroup and
+   * WnckApplication objects.
+   * Therefore we need to manually shut down all WnckClassGroup and
+   * WnckApplication objects first, since they reference the WnckScreen they
+   * are on.
+   * On the other side, shutting down the WnckScreen objects will results in
+   * all WnckWindow objects getting unreferenced and finalized, and must
+   * actually be done before shutting down global WnckWindow structures
+   * (because the WnckScreen has a list of WnckWindow that will get mis-used
+   * otherwise).
+   */
+
+  if (self->class_group_hash != NULL)
+    {
+      g_hash_table_destroy (self->class_group_hash);
+      self->class_group_hash = NULL;
+    }
+
+  _wnck_application_shutdown_all ();
+  _wnck_screen_shutdown_all ();
+  _wnck_window_shutdown_all ();
+
   G_OBJECT_CLASS (wnck_handle_parent_class)->finalize (object);
 }
 
@@ -230,11 +257,16 @@ wnck_handle_init (WnckHandle *self)
   self->default_icon_size = WNCK_DEFAULT_ICON_SIZE;
   self->default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
 
+  self->class_group_hash = g_hash_table_new_full (g_str_hash,
+                                                  g_str_equal,
+                                                  NULL,
+                                                  g_object_unref);
+
   gdk_window_add_filter (NULL, filter_func, self);
 }
 
-WnckHandle
-*_wnck_handle_new (WnckClientType client_type)
+WnckHandle *
+_wnck_handle_new (WnckClientType client_type)
 {
   return g_object_new (WNCK_TYPE_HANDLE,
                        "client-type", client_type,
@@ -271,4 +303,31 @@ gsize
 _wnck_handle_get_default_mini_icon_size (WnckHandle *self)
 {
   return self->default_mini_icon_size;
+}
+
+
+void
+_wnck_handle_insert_class_group (WnckHandle     *self,
+                                 const char     *id,
+                                 WnckClassGroup *class_group)
+{
+  g_return_if_fail (id != NULL);
+
+  g_hash_table_insert (self->class_group_hash, (gpointer) id, class_group);
+}
+
+void
+_wnck_handle_remove_class_group (WnckHandle *self,
+                                 const char *id)
+{
+  g_hash_table_remove (self->class_group_hash, id);
+}
+
+WnckClassGroup *
+_wnck_handle_get_class_group (WnckHandle *self,
+                              const char *id)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  return g_hash_table_lookup (self->class_group_hash, id ? id : "");
 }

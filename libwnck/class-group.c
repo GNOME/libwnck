@@ -25,6 +25,7 @@
 #include <string.h>
 #include "class-group.h"
 #include "window.h"
+#include "wnck-handle-private.h"
 #include "private.h"
 
 /**
@@ -64,9 +65,6 @@ struct _WnckClassGroupPrivate {
 
 G_DEFINE_TYPE_WITH_PRIVATE (WnckClassGroup, wnck_class_group, G_TYPE_OBJECT);
 
-/* Hash table that maps res_class strings -> WnckClassGroup instances */
-static GHashTable *class_group_hash = NULL;
-
 static void wnck_class_group_finalize    (GObject             *object);
 
 enum {
@@ -76,16 +74,6 @@ enum {
 };
 
 static guint signals[LAST_SIGNAL] = { 0 };
-
-void
-_wnck_class_group_shutdown_all (void)
-{
-  if (class_group_hash != NULL)
-    {
-      g_hash_table_destroy (class_group_hash);
-      class_group_hash = NULL;
-    }
-}
 
 static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
@@ -214,10 +202,7 @@ wnck_class_group_finalize (GObject *object)
 WnckClassGroup *
 wnck_class_group_get (const char *id)
 {
-  if (!class_group_hash)
-    return NULL;
-  else
-    return g_hash_table_lookup (class_group_hash, id ? id : "");
+  return _wnck_handle_get_class_group (_wnck_get_handle (), id);
 }
 
 /**
@@ -236,23 +221,24 @@ WnckClassGroup *
 _wnck_class_group_create (WnckScreen *screen,
                           const char *res_class)
 {
+  WnckHandle *handle;
   WnckClassGroup *class_group;
 
-  if (class_group_hash == NULL)
-    class_group_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
-                                              NULL, g_object_unref);
+  handle = _wnck_screen_get_handle (screen);
+  class_group = _wnck_handle_get_class_group (handle, res_class);
 
-  g_return_val_if_fail (g_hash_table_lookup (class_group_hash, res_class ? res_class : "") == NULL,
-			NULL);
+  g_return_val_if_fail (class_group == NULL, NULL);
 
   class_group = g_object_new (WNCK_TYPE_CLASS_GROUP, NULL);
   class_group->priv->screen = screen;
 
   class_group->priv->res_class = g_strdup (res_class ? res_class : "");
 
-  g_hash_table_insert (class_group_hash,
-                       class_group->priv->res_class, class_group);
-  /* Hash now owns one ref, caller gets none */
+  _wnck_handle_insert_class_group (handle,
+                                   class_group->priv->res_class,
+                                   class_group);
+
+  /* Handle now owns one ref, caller gets none */
 
   return class_group;
 }
@@ -266,11 +252,14 @@ _wnck_class_group_create (WnckScreen *screen,
 void
 _wnck_class_group_destroy (WnckClassGroup *class_group)
 {
+  WnckHandle *handle;
+
   g_return_if_fail (WNCK_IS_CLASS_GROUP (class_group));
 
-  g_hash_table_remove (class_group_hash, class_group->priv->res_class);
+  handle = _wnck_screen_get_handle (class_group->priv->screen);
+  _wnck_handle_remove_class_group (handle, class_group->priv->res_class);
 
-  /* Removing from hash also removes the only ref WnckClassGroup had */
+  /* Removing from handle also removes the only ref WnckClassGroup had */
 }
 
 static const char *
