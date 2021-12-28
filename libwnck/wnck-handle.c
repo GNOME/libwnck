@@ -39,6 +39,7 @@ struct _WnckHandle
   gsize           default_mini_icon_size;
 
   GHashTable     *class_group_hash;
+  GHashTable     *app_hash;
 };
 
 enum
@@ -169,7 +170,12 @@ wnck_handle_finalize (GObject *object)
       self->class_group_hash = NULL;
     }
 
-  _wnck_application_shutdown_all ();
+  if (self->app_hash != NULL)
+    {
+      g_hash_table_destroy (self->app_hash);
+      self->app_hash = NULL;
+    }
+
   _wnck_screen_shutdown_all ();
   _wnck_window_shutdown_all ();
 
@@ -262,6 +268,11 @@ wnck_handle_init (WnckHandle *self)
                                                   NULL,
                                                   g_object_unref);
 
+  self->app_hash = g_hash_table_new_full (_wnck_xid_hash,
+                                          _wnck_xid_equal,
+                                          NULL,
+                                          g_object_unref);
+
   gdk_window_add_filter (NULL, filter_func, self);
 }
 
@@ -330,4 +341,28 @@ _wnck_handle_get_class_group (WnckHandle *self,
   g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
 
   return g_hash_table_lookup (self->class_group_hash, id ? id : "");
+}
+
+void
+_wnck_handle_insert_application (WnckHandle      *self,
+                                 gpointer         xwindow,
+                                 WnckApplication *app)
+{
+  g_hash_table_insert (self->app_hash, xwindow, app);
+}
+
+void
+_wnck_handle_remove_application (WnckHandle *self,
+                                 gpointer    xwindow)
+{
+  g_hash_table_remove (self->app_hash, xwindow);
+}
+
+WnckApplication *
+_wnck_handle_get_application (WnckHandle *self,
+                              gulong      xwindow)
+{
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  return g_hash_table_lookup (self->app_hash, &xwindow);
 }

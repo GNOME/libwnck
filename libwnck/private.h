@@ -96,7 +96,6 @@ WnckApplication* _wnck_application_create  (Window           xwindow,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
 void             _wnck_application_load_icons (WnckApplication *app);
-void             _wnck_application_shutdown_all (void);
 
 WnckClassGroup  *_wnck_class_group_create        (WnckScreen     *screen,
                                                   const char     *res_class);
