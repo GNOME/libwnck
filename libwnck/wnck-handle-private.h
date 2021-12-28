@@ -59,6 +59,16 @@ void             _wnck_handle_remove_application         (WnckHandle      *self,
 WnckApplication *_wnck_handle_get_application            (WnckHandle      *self,
                                                           gulong           xwindow);
 
+void             _wnck_handle_insert_window              (WnckHandle      *self,
+                                                          gpointer         xwindow,
+                                                          WnckWindow      *window);
+
+void             _wnck_handle_remove_window              (WnckHandle      *self,
+                                                          gpointer         xwindow);
+
+WnckWindow      *_wnck_handle_get_window                 (WnckHandle      *self,
+                                                          gulong           xwindow);
+
 G_END_DECLS
 
 #endif

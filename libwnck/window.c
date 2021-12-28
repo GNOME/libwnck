@@ -48,8 +48,6 @@
 #define FALLBACK_NAME _("Untitled window")
 #define ALL_WORKSPACES ((int) 0xFFFFFFFF)
 
-static GHashTable *window_hash = NULL;
-
 /* Keep 0-7 in sync with the numbers in the WindowState enum. Yeah I'm
  * a loser.
  */
@@ -218,16 +216,6 @@ static WnckWindow* find_last_transient_for (GList *windows,
                                             Window xwindow);
 
 static guint signals[LAST_SIGNAL] = { 0 };
-
-void
-_wnck_window_shutdown_all (void)
-{
-  if (window_hash != NULL)
-    {
-      g_hash_table_destroy (window_hash);
-      window_hash = NULL;
-    }
-}
 
 static void
 wnck_window_init (WnckWindow *window)
@@ -460,10 +448,7 @@ wnck_window_finalize (GObject *object)
 WnckWindow*
 wnck_window_get (gulong xwindow)
 {
-  if (window_hash == NULL)
-    return NULL;
-  else
-    return g_hash_table_lookup (window_hash, &xwindow);
+  return _wnck_handle_get_window (_wnck_get_handle (), xwindow);
 }
 
 /**
@@ -488,15 +473,14 @@ _wnck_window_create (Window      xwindow,
                      WnckScreen *screen,
                      gint        sort_order)
 {
+  WnckHandle *handle;
   WnckWindow *window;
   Screen     *xscreen;
 
-  if (window_hash == NULL)
-    window_hash = g_hash_table_new_full (_wnck_xid_hash, _wnck_xid_equal,
-                                         NULL, g_object_unref);
+  handle = _wnck_screen_get_handle (screen);
+  window = _wnck_handle_get_window (handle, xwindow);
 
-  g_return_val_if_fail (g_hash_table_lookup (window_hash, &xwindow) == NULL,
-                        NULL);
+  g_return_val_if_fail (window == NULL, NULL);
 
   xscreen = WNCK_SCREEN_XSCREEN (screen);
 
@@ -504,9 +488,9 @@ _wnck_window_create (Window      xwindow,
   window->priv->xwindow = xwindow;
   window->priv->screen = screen;
 
-  g_hash_table_insert (window_hash, &window->priv->xwindow, window);
+  _wnck_handle_insert_window (handle, &window->priv->xwindow, window);
 
-  /* Hash now owns one ref, caller gets none */
+  /* Handle now owns one ref, caller gets none */
 
   /* Note that xwindow may correspond to a WnckApplication's xwindow,
    * that's why we select the union of the mask we want for Application
@@ -567,15 +551,18 @@ _wnck_window_create (Window      xwindow,
 void
 _wnck_window_destroy (WnckWindow *window)
 {
+  WnckHandle *handle;
   Window xwindow = window->priv->xwindow;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
+  handle = _wnck_screen_get_handle (window->priv->screen);
+
   g_return_if_fail (wnck_window_get (xwindow) == window);
 
-  g_hash_table_remove (window_hash, &xwindow);
+  _wnck_handle_remove_window (handle, &xwindow);
 
-  /* Removing from hash also removes the only ref WnckWindow had */
+  /* Removing from handle also removes the only ref WnckWindow had */
 
   g_return_if_fail (wnck_window_get (xwindow) == NULL);
 }
