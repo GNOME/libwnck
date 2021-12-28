@@ -25,29 +25,39 @@ G_BEGIN_DECLS
 
 typedef struct _WnckHandle WnckHandle;
 
-WnckHandle     *_wnck_handle_new                        (WnckClientType  client_type);
+WnckHandle      *_wnck_handle_new                        (WnckClientType  client_type);
 
-WnckClientType  _wnck_handle_get_client_type            (WnckHandle     *self);
+WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
 
-void            _wnck_handle_set_default_icon_size      (WnckHandle     *self,
-                                                         gsize           icon_size);
+void             _wnck_handle_set_default_icon_size      (WnckHandle     *self,
+                                                          gsize           icon_size);
 
-gsize           _wnck_handle_get_default_icon_size      (WnckHandle     *self);
+gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
 
-void            _wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
-                                                         gsize           icon_size);
+void             _wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
+                                                          gsize           icon_size);
 
-gsize           _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
+gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
 
-void            _wnck_handle_insert_class_group         (WnckHandle      *self,
-                                                         const char      *id,
-                                                         WnckClassGroup  *class_group);
+void             _wnck_handle_insert_class_group         (WnckHandle      *self,
+                                                          const char      *id,
+                                                          WnckClassGroup  *class_group);
 
-void            _wnck_handle_remove_class_group         (WnckHandle      *self,
-                                                         const char      *id);
+void             _wnck_handle_remove_class_group         (WnckHandle      *self,
+                                                          const char      *id);
 
-WnckClassGroup *_wnck_handle_get_class_group            (WnckHandle      *self,
-                                                         const char      *id);
+WnckClassGroup  *_wnck_handle_get_class_group            (WnckHandle      *self,
+                                                          const char      *id);
+
+void             _wnck_handle_insert_application         (WnckHandle      *self,
+                                                          gpointer         xwindow,
+                                                          WnckApplication *app);
+
+void             _wnck_handle_remove_application         (WnckHandle      *self,
+                                                          gpointer         xwindow);
+
+WnckApplication *_wnck_handle_get_application            (WnckHandle      *self,
+                                                          gulong           xwindow);
 
 G_END_DECLS
 
