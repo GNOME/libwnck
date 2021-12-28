@@ -18,6 +18,7 @@
 #ifndef WNCK_HANDLE_PRIVATE_H
 #define WNCK_HANDLE_PRIVATE_H
 
+#include "class-group.h"
 #include "util.h"
 
 G_BEGIN_DECLS
@@ -33,11 +34,20 @@ void            _wnck_handle_set_default_icon_size      (WnckHandle     *self,
 
 gsize           _wnck_handle_get_default_icon_size      (WnckHandle     *self);
 
-
 void            _wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
                                                          gsize           icon_size);
 
 gsize           _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
+
+void            _wnck_handle_insert_class_group         (WnckHandle      *self,
+                                                         const char      *id,
+                                                         WnckClassGroup  *class_group);
+
+void            _wnck_handle_remove_class_group         (WnckHandle      *self,
+                                                         const char      *id);
+
+WnckClassGroup *_wnck_handle_get_class_group            (WnckHandle      *self,
+                                                         const char      *id);
 
 G_END_DECLS
 
