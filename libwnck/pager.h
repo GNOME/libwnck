@@ -102,6 +102,7 @@ typedef enum {
 
 GType      wnck_pager_get_type           (void) G_GNUC_CONST;
 
+G_DEPRECATED_FOR(wnck_pager_new_with_handle)
 GtkWidget* wnck_pager_new                (void);
 
 GtkWidget* wnck_pager_new_with_handle    (WnckHandle           *handle);
