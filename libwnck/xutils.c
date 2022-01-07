@@ -27,6 +27,9 @@
 #if HAVE_CAIRO_XLIB_XRENDER
 #include <cairo-xlib-xrender.h>
 #endif
+#ifdef HAVE_XRES
+#include <X11/extensions/XRes.h>
+#endif
 #include "screen.h"
 #include "window.h"
 #include "private.h"
@@ -1146,14 +1149,41 @@ int
 _wnck_get_pid (Screen *screen,
                Window  xwindow)
 {
-  int val;
+  int pid = -1;
+
+#ifdef HAVE_XRES
+  XResClientIdSpec client_spec;
+  long client_id_count = 0;
+  XResClientIdValue *client_ids = NULL;
+
+  client_spec.client = xwindow;
+  client_spec.mask = XRES_CLIENT_ID_PID_MASK;
+
+  if (XResQueryClientIds (DisplayOfScreen (screen), 1, &client_spec,
+                          &client_id_count, &client_ids) == Success)
+    {
+      long i;
+
+      for (i = 0; i < client_id_count; i++)
+        {
+          pid = XResGetClientPid (&client_ids[i]);
+          if (pid != -1)
+            break;
+        }
+
+      XResClientIdsDestroy (client_id_count, client_ids);
+
+      if (pid != -1)
+        return pid;
+    }
+#endif
 
   if (!_wnck_get_cardinal (screen, xwindow,
                            _wnck_atom_get ("_NET_WM_PID"),
-                           &val))
+                           &pid))
     return 0;
   else
-    return val;
+    return pid;
 }
 
 char*
