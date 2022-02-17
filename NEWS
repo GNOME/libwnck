@@ -1,4 +1,18 @@
 ==============
+Version 40.1
+==============
+
+  Fixes
+
+  * Revert "pager: do not change workspace size from size_allocate"
+    (Alberts Muktupāvels)
+
+  Translations
+
+  * Anders Jonsson (sv)
+
+
+==============
 Version 40.0
 ==============
 
