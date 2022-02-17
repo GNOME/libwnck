@@ -1,6 +1,4 @@
 /*
- * Copyright (C) 2001 Havoc Pennington
- * Copyright (C) 2005-2007 Vincent Untz
  * Copyright (C) 2021 Alberts Muktupāvels
  *
  * This library is free software; you can redistribute it and/or
@@ -20,11 +18,7 @@
 #include "config.h"
 #include "wnck-handle-private.h"
 
-#include "private.h"
-#include "screen.h"
-#include "window.h"
 #include "wnck-enum-types.h"
-#include "xutils.h"
 
 #define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
 G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
@@ -51,103 +45,6 @@ enum
 static GParamSpec *handle_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (WnckHandle, wnck_handle, G_TYPE_OBJECT)
-
-static GdkFilterReturn
-filter_func (GdkXEvent *gdkxevent,
-             GdkEvent  *event,
-             gpointer   data)
-{
-  XEvent *xevent = gdkxevent;
-#ifdef HAVE_STARTUP_NOTIFICATION
-  int i;
-  Display *display;
-#endif /* HAVE_STARTUP_NOTIFICATION */
-
-  switch (xevent->type)
-    {
-    case PropertyNotify:
-      {
-        WnckScreen *screen;
-
-        screen = wnck_screen_get_for_root (xevent->xany.window);
-        if (screen != NULL)
-          {
-            _wnck_screen_process_property_notify (screen, xevent);
-          }
-        else
-          {
-            WnckWindow *window;
-            WnckApplication *app;
-
-            window = wnck_window_get (xevent->xany.window);
-            app = wnck_application_get (xevent->xany.window);
-
-            if (app)
-              _wnck_application_process_property_notify (app, xevent);
-
-            if (window)
-              _wnck_window_process_property_notify (window, xevent);
-          }
-      }
-      break;
-
-    case ConfigureNotify:
-      {
-        WnckWindow *window;
-
-        window = wnck_window_get (xevent->xconfigure.window);
-
-        if (window)
-          _wnck_window_process_configure_notify (window, xevent);
-      }
-      break;
-
-    case SelectionClear:
-      {
-        _wnck_desktop_layout_manager_process_event (xevent);
-      }
-      break;
-
-    case ClientMessage:
-#ifdef HAVE_STARTUP_NOTIFICATION
-      /* We're cheating as officially libsn requires
-       * us to send all events through sn_display_process_event
-       */
-      i = 0;
-      display = ((XAnyEvent *) xevent)->display;
-
-      while (i < ScreenCount (display))
-        {
-          WnckScreen *s;
-
-          s = _wnck_screen_get_existing (i);
-          if (s != NULL)
-            sn_display_process_event (_wnck_screen_get_sn_display (s),
-                                      xevent);
-
-          ++i;
-        }
-#endif /* HAVE_STARTUP_NOTIFICATION */
-      break;
-
-    default:
-      break;
-    }
-
-  return GDK_FILTER_CONTINUE;
-}
-
-static void
-wnck_handle_finalize (GObject *object)
-{
-  WnckHandle *self;
-
-  self = WNCK_HANDLE (object);
-
-  gdk_window_remove_filter (NULL, filter_func, self);
-
-  G_OBJECT_CLASS (wnck_handle_parent_class)->finalize (object);
-}
 
 static void
 wnck_handle_get_property (GObject    *object,
@@ -217,7 +114,6 @@ wnck_handle_class_init (WnckHandleClass *self_class)
 
   object_class = G_OBJECT_CLASS (self_class);
 
-  object_class->finalize = wnck_handle_finalize;
   object_class->get_property = wnck_handle_get_property;
   object_class->set_property = wnck_handle_set_property;
 
@@ -229,8 +125,6 @@ wnck_handle_init (WnckHandle *self)
 {
   self->default_icon_size = WNCK_DEFAULT_ICON_SIZE;
   self->default_mini_icon_size = WNCK_DEFAULT_MINI_ICON_SIZE;
-
-  gdk_window_add_filter (NULL, filter_func, self);
 }
 
 WnckHandle
