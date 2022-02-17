@@ -24,20 +24,9 @@ G_BEGIN_DECLS
 
 typedef struct _WnckHandle WnckHandle;
 
-WnckHandle     *_wnck_handle_new                        (WnckClientType  client_type);
+WnckHandle     *_wnck_handle_new             (WnckClientType  client_type);
 
-WnckClientType  _wnck_handle_get_client_type            (WnckHandle     *self);
-
-void            _wnck_handle_set_default_icon_size      (WnckHandle     *self,
-                                                         gsize           icon_size);
-
-gsize           _wnck_handle_get_default_icon_size      (WnckHandle     *self);
-
-
-void            _wnck_handle_set_default_mini_icon_size (WnckHandle     *self,
-                                                         gsize           icon_size);
-
-gsize           _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
+WnckClientType  _wnck_handle_get_client_type (WnckHandle     *self);
 
 G_END_DECLS
 
