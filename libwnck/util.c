@@ -210,7 +210,8 @@ wnck_set_default_mini_icon_size (gsize size)
   _wnck_handle_set_default_mini_icon_size (_wnck_get_handle (), size);
 
   default_screen = DefaultScreen (_wnck_get_default_display ());
-  screen = _wnck_screen_get_existing (default_screen);
+  screen = _wnck_handle_get_existing_screen (_wnck_get_handle (),
+                                             default_screen);
 
   if (WNCK_IS_SCREEN (screen))
     {

@@ -110,8 +110,6 @@ void _wnck_screen_change_workspace_name (WnckScreen *screen,
                                          int         number,
                                          const char *name);
 
-void _wnck_screen_shutdown_all          (void);
-
 gboolean _wnck_workspace_set_geometry (WnckWorkspace *space, int w, int h);
 gboolean _wnck_workspace_set_viewport (WnckWorkspace *space, int x, int y);
 
@@ -120,14 +118,18 @@ Display *_wnck_get_default_display (void);
 
 #define WNCK_SCREEN_XSCREEN(screen) (_wnck_screen_get_xscreen (screen))
 
+void       _wnck_screen_construct      (WnckScreen *screen,
+                                        WnckHandle *handle,
+                                        Display    *display,
+                                        int         number);
+
+Window     _wnck_screen_get_xroot      (WnckScreen *screen);
 Screen    *_wnck_screen_get_xscreen    (WnckScreen *screen);
 GdkScreen *_wnck_screen_get_gdk_screen (WnckScreen *screen);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
 SnDisplay* _wnck_screen_get_sn_display (WnckScreen *screen);
 #endif
-
-WnckScreen* _wnck_screen_get_existing (int number);
 
 WnckHandle    *_wnck_screen_get_handle          (WnckScreen    *screen);
 

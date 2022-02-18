@@ -29,6 +29,17 @@ WnckHandle      *_wnck_handle_new                        (WnckClientType  client
 
 WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
 
+WnckScreen      *_wnck_handle_get_default_screen         (WnckHandle     *self);
+
+WnckScreen      *_wnck_handle_get_screen                 (WnckHandle     *self,
+                                                          int             index);
+
+WnckScreen      *_wnck_handle_get_screen_for_root        (WnckHandle     *self,
+                                                          gulong          root_window_id);
+
+WnckScreen      *_wnck_handle_get_existing_screen        (WnckHandle     *self,
+                                                          int             number);
+
 void             _wnck_handle_set_default_icon_size      (WnckHandle     *self,
                                                           gsize           icon_size);
 

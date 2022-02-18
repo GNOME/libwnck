@@ -1,5 +1,7 @@
 /*
  * Copyright (C) 2001 Havoc Pennington
+ * Copyright (C) 2003 Kim Woelders
+ * Copyright (C) 2003 Red Hat, Inc.
  * Copyright (C) 2005-2007 Vincent Untz
  * Copyright (C) 2021 Alberts Muktupāvels
  *
@@ -31,16 +33,18 @@ G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
 struct _WnckHandle
 {
-  GObject         parent;
+  GObject          parent;
 
-  WnckClientType  client_type;
+  WnckScreen     **screens;
 
-  gsize           default_icon_size;
-  gsize           default_mini_icon_size;
+  WnckClientType   client_type;
 
-  GHashTable     *class_group_hash;
-  GHashTable     *app_hash;
-  GHashTable     *window_hash;
+  gsize            default_icon_size;
+  gsize            default_mini_icon_size;
+
+  GHashTable      *class_group_hash;
+  GHashTable      *app_hash;
+  GHashTable      *window_hash;
 };
 
 enum
@@ -61,11 +65,14 @@ filter_func (GdkXEvent *gdkxevent,
              GdkEvent  *event,
              gpointer   data)
 {
+  WnckHandle *self;
   XEvent *xevent = gdkxevent;
 #ifdef HAVE_STARTUP_NOTIFICATION
   int i;
   Display *display;
 #endif /* HAVE_STARTUP_NOTIFICATION */
+
+  self = WNCK_HANDLE (data);
 
   switch (xevent->type)
     {
@@ -73,7 +80,8 @@ filter_func (GdkXEvent *gdkxevent,
       {
         WnckScreen *screen;
 
-        screen = wnck_screen_get_for_root (xevent->xany.window);
+        screen = _wnck_handle_get_screen_for_root (self, xevent->xany.window);
+
         if (screen != NULL)
           {
             _wnck_screen_process_property_notify (screen, xevent);
@@ -122,11 +130,12 @@ filter_func (GdkXEvent *gdkxevent,
 
       while (i < ScreenCount (display))
         {
-          WnckScreen *s;
+          WnckScreen *screen;
 
-          s = _wnck_screen_get_existing (i);
-          if (s != NULL)
-            sn_display_process_event (_wnck_screen_get_sn_display (s),
+          screen = _wnck_handle_get_existing_screen (self, i);
+
+          if (screen != NULL)
+            sn_display_process_event (_wnck_screen_get_sn_display (screen),
                                       xevent);
 
           ++i;
@@ -177,7 +186,16 @@ wnck_handle_finalize (GObject *object)
       self->app_hash = NULL;
     }
 
-  _wnck_screen_shutdown_all ();
+  if (self->screens != NULL)
+    {
+      Display *display;
+      int i;
+
+      for (i = 0; i < ScreenCount (display); ++i)
+        g_clear_object (&self->screens[i]);
+
+      g_clear_pointer (&self->screens, g_free);
+    }
 
   if (self->window_hash != NULL)
     {
@@ -299,6 +317,94 @@ WnckClientType
 _wnck_handle_get_client_type (WnckHandle *self)
 {
   return self->client_type;
+}
+
+WnckScreen *
+_wnck_handle_get_default_screen (WnckHandle *self)
+{
+  Display *display;
+
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  display = _wnck_get_default_display ();
+  if (display == NULL)
+    return NULL;
+
+  return _wnck_handle_get_screen (self, DefaultScreen (display));
+}
+
+WnckScreen *
+_wnck_handle_get_screen (WnckHandle *self,
+                         int         index)
+{
+  Display *display;
+
+  display = _wnck_get_default_display ();
+
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+  g_return_val_if_fail (display != NULL, NULL);
+
+  if (index >= ScreenCount (display))
+    return NULL;
+
+  if (self->screens == NULL)
+    self->screens = g_new0 (WnckScreen*, ScreenCount (display));
+
+  if (self->screens[index] == NULL)
+    {
+      self->screens[index] = g_object_new (WNCK_TYPE_SCREEN, NULL);
+
+      _wnck_screen_construct (self->screens[index], self, display, index);
+    }
+
+  return self->screens[index];
+}
+
+WnckScreen *
+_wnck_handle_get_screen_for_root (WnckHandle *self,
+                                  gulong      root_window_id)
+{
+  Display *display;
+  int i;
+
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+
+  if (self->screens == NULL)
+    return NULL;
+
+  display = _wnck_get_default_display ();
+  i = 0;
+
+  while (i < ScreenCount (display))
+    {
+      WnckScreen *screen;
+
+      screen = self->screens[i];
+      if (screen != NULL && _wnck_screen_get_xroot (screen) == root_window_id)
+        return screen;
+
+      ++i;
+    }
+
+  return NULL;
+}
+
+WnckScreen *
+_wnck_handle_get_existing_screen (WnckHandle *self,
+                                  int         number)
+{
+  Display *display;
+
+  display = _wnck_get_default_display ();
+
+  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
+  g_return_val_if_fail (display != NULL, NULL);
+  g_return_val_if_fail (number < ScreenCount (display), NULL);
+
+  if (self->screens != NULL)
+    return self->screens[number];
+
+  return NULL;
 }
 
 void
