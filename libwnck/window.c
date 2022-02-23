@@ -2349,12 +2349,15 @@ wnck_window_set_geometry (WnckWindow               *window,
                           int                       width,
                           int                       height)
 {
+  WnckHandle *handle;
   int gravity_and_flags;
   int source;
 
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
-  source = _wnck_get_client_type();
+  handle = _wnck_screen_get_handle (window->priv->screen);
+  source = _wnck_handle_get_client_type (handle);
+
   gravity_and_flags = gravity;
   gravity_and_flags |= geometry_mask << 8;
   gravity_and_flags |= source << 12;
