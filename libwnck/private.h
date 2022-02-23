@@ -41,8 +41,6 @@ G_BEGIN_DECLS
 
 WnckHandle *_wnck_get_handle (void);
 
-WnckClientType _wnck_get_client_type (void);
-
 gsize _wnck_get_default_icon_size (void);
 gsize _wnck_get_default_mini_icon_size (void);
 

@@ -164,12 +164,6 @@ _wnck_get_handle (void)
   return wnck_handle;
 }
 
-WnckClientType
-_wnck_get_client_type (void)
-{
-  return _wnck_handle_get_client_type (_wnck_get_handle ());
-}
-
 /**
  * wnck_set_default_icon_size:
  * @size: the default size for windows and application standard icons.
