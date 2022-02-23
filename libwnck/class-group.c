@@ -444,10 +444,14 @@ set_icon (WnckClassGroup *class_group)
 
   if (!icon || !mini_icon)
     {
+      WnckHandle *handle;
+
+      handle = _wnck_screen_get_handle (class_group->priv->screen);
+
       _wnck_get_fallback_icons (&icon,
-                                _wnck_get_default_icon_size (),
+                                _wnck_handle_get_default_icon_size (handle),
                                 &mini_icon,
-                                _wnck_get_default_mini_icon_size ());
+                                _wnck_handle_get_default_mini_icon_size (handle));
       icons_reffed = TRUE;
     }
 
