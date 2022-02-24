@@ -52,6 +52,8 @@
  */
 
 struct _WnckSelectorPrivate {
+  WnckHandle *handle;
+
   GtkWidget  *image;
   WnckWindow *icon_window;
 
@@ -118,7 +120,8 @@ wnck_selector_get_screen (WnckSelector *selector)
 
   screen = gtk_widget_get_screen (GTK_WIDGET (selector));
 
-  return wnck_screen_get (gdk_x11_screen_get_screen_number (screen));
+  return _wnck_handle_get_screen (selector->priv->handle,
+                                  gdk_x11_screen_get_screen_number (screen));
 }
 
 static GdkPixbuf *
@@ -1197,6 +1200,8 @@ wnck_selector_finalize (GObject *object)
     g_hash_table_destroy (selector->priv->window_hash);
   selector->priv->window_hash = NULL;
 
+  g_clear_object (&selector->priv->handle);
+
   G_OBJECT_CLASS (wnck_selector_parent_class)->finalize (object);
 }
 
@@ -1273,6 +1278,7 @@ wnck_selector_new (void)
   WnckSelector *selector;
 
   selector = g_object_new (WNCK_TYPE_SELECTOR, NULL);
+  selector->priv->handle = g_object_ref (_wnck_get_handle ());
 
   return GTK_WIDGET (selector);
 }
