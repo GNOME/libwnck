@@ -1424,7 +1424,7 @@ update_client_list (WnckScreen *screen)
 
           leader = wnck_window_get_group_leader (window);
 
-          app = wnck_application_get (leader);
+          app = _wnck_handle_get_application (screen->priv->handle, leader);
           if (app == NULL)
             {
               app = _wnck_application_create (leader, screen);
