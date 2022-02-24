@@ -1437,7 +1437,7 @@ update_client_list (WnckScreen *screen)
 
 	  res_class = wnck_window_get_class_group_name (window);
 
-	  class_group = wnck_class_group_get (res_class);
+	  class_group = _wnck_handle_get_class_group (screen->priv->handle, res_class);
 	  if (class_group == NULL)
 	    {
 	      class_group = _wnck_class_group_create (screen, res_class);
