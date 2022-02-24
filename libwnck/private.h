@@ -41,8 +41,6 @@ G_BEGIN_DECLS
 
 WnckHandle *_wnck_get_handle (void);
 
-gsize _wnck_get_default_mini_icon_size (void);
-
 void _wnck_application_process_property_notify (WnckApplication *app,
                                                 XEvent          *xevent);
 void _wnck_window_process_property_notify (WnckWindow *window,

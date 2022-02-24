@@ -217,12 +217,6 @@ wnck_set_default_mini_icon_size (gsize size)
     }
 }
 
-gsize
-_wnck_get_default_mini_icon_size (void)
-{
-  return _wnck_handle_get_default_mini_icon_size (_wnck_get_handle ());
-}
-
 /**
  * _make_gtk_label_bold:
  * @label: The label.
