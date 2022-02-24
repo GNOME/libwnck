@@ -61,6 +61,8 @@
 
 struct _WnckPagerPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   int n_rows; /* really columns for vertical orientation */
@@ -284,6 +286,8 @@ wnck_pager_finalize (GObject *object)
       pager->priv->dnd_activate = 0;
     }
 
+  g_clear_object (&pager->priv->handle);
+
   G_OBJECT_CLASS (wnck_pager_parent_class)->finalize (object);
 }
 
@@ -291,12 +295,16 @@ static void
 _wnck_pager_set_screen (WnckPager *pager)
 {
   GdkScreen *gdkscreen;
+  int screen_number;
 
   if (!gtk_widget_has_screen (GTK_WIDGET (pager)))
     return;
 
   gdkscreen = gtk_widget_get_screen (GTK_WIDGET (pager));
-  pager->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  screen_number = gdk_x11_screen_get_screen_number (gdkscreen);
+
+  pager->priv->screen = _wnck_handle_get_screen (pager->priv->handle,
+                                                 screen_number);
 
   if (!wnck_pager_set_layout_hint (pager))
     {
@@ -2194,6 +2202,7 @@ wnck_pager_new (void)
   WnckPager *pager;
 
   pager = g_object_new (WNCK_TYPE_PAGER, NULL);
+  pager->priv->handle = g_object_ref (_wnck_get_handle ());
 
   return GTK_WIDGET (pager);
 }
