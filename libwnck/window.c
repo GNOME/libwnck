@@ -558,13 +558,13 @@ _wnck_window_destroy (WnckWindow *window)
 
   handle = _wnck_screen_get_handle (window->priv->screen);
 
-  g_return_if_fail (wnck_window_get (xwindow) == window);
+  g_return_if_fail (_wnck_handle_get_window (handle, xwindow) == window);
 
   _wnck_handle_remove_window (handle, &xwindow);
 
   /* Removing from handle also removes the only ref WnckWindow had */
 
-  g_return_if_fail (wnck_window_get (xwindow) == NULL);
+  g_return_if_fail (_wnck_handle_get_window (handle, xwindow) == NULL);
 }
 
 static Display *
@@ -740,9 +740,13 @@ wnck_window_get_application  (WnckWindow *window)
 WnckWindow*
 wnck_window_get_transient (WnckWindow *window)
 {
+  WnckHandle *handle;
+
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
-  return wnck_window_get (window->priv->transient_for);
+  handle = _wnck_screen_get_handle (window->priv->screen);
+
+  return _wnck_handle_get_window (handle, window->priv->transient_for);
 }
 
 /**
