@@ -92,7 +92,6 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 
 #define DEFAULT_GROUPING_LIMIT 80
 
-#define MINI_ICON_SIZE _wnck_get_default_mini_icon_size ()
 #define TASKLIST_BUTTON_PADDING 4
 #define TASKLIST_TEXT_MAX_WIDTH 25 /* maximum width in characters */
 
@@ -107,6 +106,8 @@ typedef struct _WnckTaskClass   WnckTaskClass;
 struct _WnckButton
 {
   GtkToggleButton  parent;
+
+  WnckHandle      *handle;
 
   GtkWidget       *image;
   gboolean         show_image;
@@ -482,7 +483,7 @@ wnck_button_size_allocate (GtkWidget     *widget,
   min_width = get_css_width (widget);
   min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
-  min_image_width = MINI_ICON_SIZE +
+  min_image_width = _wnck_handle_get_default_mini_icon_size (self->handle) +
                     min_width +
                     2 * TASKLIST_BUTTON_PADDING;
 
@@ -610,6 +611,13 @@ static GtkWidget *
 wnck_button_new (void)
 {
   return g_object_new (WNCK_TYPE_BUTTON, NULL);
+}
+
+static void
+wnck_button_set_handle (WnckButton *self,
+                        WnckHandle *handle)
+{
+  self->handle = handle;
 }
 
 static void
@@ -1769,12 +1777,14 @@ get_n_buttons (WnckTasklist *self)
 }
 
 static void
-get_minimum_button_size (int *minimum_width,
-                         int *minimum_height)
+get_minimum_button_size (WnckHandle *handle,
+                         int        *minimum_width,
+                         int        *minimum_height)
 {
   GtkWidget *button;
 
   button = wnck_button_new ();
+  wnck_button_set_handle (WNCK_BUTTON (button), handle);
   gtk_widget_show (button);
 
   if (minimum_width != NULL)
@@ -1811,7 +1821,7 @@ get_preferred_size (WnckTasklist   *self,
     {
       int min_button_width;
 
-      get_minimum_button_size (&min_button_width, NULL);
+      get_minimum_button_size (self->priv->handle, &min_button_width, NULL);
 
       if (self->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
         {
@@ -3620,7 +3630,9 @@ wnck_dimm_icon (GdkPixbuf *pixbuf)
 }
 
 static GdkPixbuf *
-wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
+wnck_task_scale_icon (gsize      mini_icon_size,
+                      GdkPixbuf *orig,
+                      gboolean   minimized)
 {
   int w, h;
   GdkPixbuf *pixbuf;
@@ -3631,7 +3643,7 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
   w = gdk_pixbuf_get_width (orig);
   h = gdk_pixbuf_get_height (orig);
 
-  if (h != (int) MINI_ICON_SIZE ||
+  if (h != (int) mini_icon_size ||
       !gdk_pixbuf_get_has_alpha (orig))
     {
       double scale;
@@ -3639,10 +3651,10 @@ wnck_task_scale_icon (GdkPixbuf *orig, gboolean minimized)
       pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
 			       TRUE,
 			       8,
-			       MINI_ICON_SIZE * w / (double) h,
-			       MINI_ICON_SIZE);
+			       mini_icon_size * w / (double) h,
+			       mini_icon_size);
 
-      scale = MINI_ICON_SIZE / (double) gdk_pixbuf_get_height (orig);
+      scale = mini_icon_size / (double) gdk_pixbuf_get_height (orig);
 
       gdk_pixbuf_scale (orig,
 			pixbuf,
@@ -3676,21 +3688,28 @@ wnck_task_get_icon (WnckTask *task)
 {
   WnckWindowState state;
   GdkPixbuf *pixbuf;
+  WnckHandle *handle;
+  gsize mini_icon_size;
 
   pixbuf = NULL;
+
+  handle = task->tasklist->priv->handle;
+  mini_icon_size = _wnck_handle_get_default_mini_icon_size (handle);
 
   switch (task->type)
     {
     case WNCK_TASK_CLASS_GROUP:
-      pixbuf = wnck_task_scale_icon (wnck_class_group_get_mini_icon (task->class_group),
-				     FALSE);
+      pixbuf = wnck_task_scale_icon (mini_icon_size,
+                                     wnck_class_group_get_mini_icon (task->class_group),
+                                     FALSE);
       break;
 
     case WNCK_TASK_WINDOW:
       state = wnck_window_get_state (task->window);
 
-      pixbuf =  wnck_task_scale_icon (wnck_window_get_mini_icon (task->window),
-				      state & WNCK_WINDOW_STATE_MINIMIZED);
+      pixbuf = wnck_task_scale_icon (mini_icon_size,
+                                     wnck_window_get_mini_icon (task->window),
+                                     state & WNCK_WINDOW_STATE_MINIMIZED);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
@@ -3705,13 +3724,13 @@ wnck_task_get_icon (WnckTask *task)
               GdkPixbuf *loaded;
 
               loaded =  (* task->tasklist->priv->icon_loader) (icon,
-                                                               MINI_ICON_SIZE,
+                                                               mini_icon_size,
                                                                0,
                                                                task->tasklist->priv->icon_loader_data);
 
               if (loaded != NULL)
                 {
-                  pixbuf = wnck_task_scale_icon (loaded, FALSE);
+                  pixbuf = wnck_task_scale_icon (mini_icon_size, loaded, FALSE);
                   g_object_unref (G_OBJECT (loaded));
                 }
             }
@@ -3720,7 +3739,7 @@ wnck_task_get_icon (WnckTask *task)
       if (pixbuf == NULL)
         {
           _wnck_get_fallback_icons (NULL, 0,
-                                    &pixbuf, MINI_ICON_SIZE);
+                                    &pixbuf, mini_icon_size);
         }
 #endif
       break;
@@ -4261,6 +4280,8 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
   };
 
   task->button = wnck_button_new ();
+  wnck_button_set_handle (WNCK_BUTTON (task->button),
+                          task->tasklist->priv->handle);
 
   gtk_button_set_relief (GTK_BUTTON (task->button), relief);
 
