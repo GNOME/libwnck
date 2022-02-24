@@ -187,6 +187,8 @@ typedef struct _skipped_window
 
 struct _WnckTasklistPrivate
 {
+  WnckHandle *handle;
+
   WnckScreen *screen;
 
   WnckTask *active_task; /* NULL if active window not in tasklist */
@@ -1076,6 +1078,8 @@ wnck_tasklist_finalize (GObject *object)
     (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
   tasklist->priv->free_icon_loader_data = NULL;
   tasklist->priv->icon_loader_data = NULL;
+
+  g_clear_object (&tasklist->priv->handle);
 
   G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
 }
@@ -2142,11 +2146,16 @@ wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
   GdkScreen *gdkscreen;
+  int screen_number;
 
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
-  tasklist->priv->screen = wnck_screen_get (gdk_x11_screen_get_screen_number (gdkscreen));
+  screen_number = gdk_x11_screen_get_screen_number (gdkscreen);
+
+  tasklist->priv->screen = _wnck_handle_get_screen (tasklist->priv->handle,
+                                                    screen_number);
+
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
@@ -2541,6 +2550,7 @@ wnck_tasklist_new (void)
   WnckTasklist *tasklist;
 
   tasklist = g_object_new (WNCK_TYPE_TASKLIST, NULL);
+  tasklist->priv->handle = g_object_ref (_wnck_get_handle ());
 
   return GTK_WIDGET (tasklist);
 }
@@ -3913,7 +3923,7 @@ wnck_task_motion_timeout (gpointer data)
    * There should only be *one* activate call.
    */
   ws = wnck_window_get_workspace (task->window);
-  if (ws && ws != wnck_screen_get_active_workspace (wnck_screen_get_default ()))
+  if (ws && ws != wnck_screen_get_active_workspace (task->tasklist->priv->screen))
   {
     wnck_workspace_activate (ws, task->dnd_timestamp);
   }
