@@ -1405,7 +1405,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (mapping[i]);
+      window = _wnck_handle_get_window (screen->priv->handle, mapping[i]);
 
       if (window == NULL)
         {
@@ -1501,7 +1501,7 @@ update_client_list (WnckScreen *screen)
     {
       WnckWindow *window;
 
-      window = wnck_window_get (stack[i]);
+      window = _wnck_handle_get_window (screen->priv->handle, stack[i]);
 
       g_assert (window != NULL);
 
@@ -1915,7 +1915,7 @@ update_active_window (WnckScreen *screen)
                     _wnck_atom_get ("_NET_ACTIVE_WINDOW"),
                     &xwindow);
 
-  window = wnck_window_get (xwindow);
+  window = _wnck_handle_get_window (screen->priv->handle, xwindow);
 
   if (window == screen->priv->active_window)
     return;
