@@ -1165,11 +1165,13 @@ _wnck_window_get_startup_id (WnckWindow *window)
   if (window->priv->startup_id == NULL &&
       window->priv->group_leader != None)
     {
+      WnckHandle *handle;
       WnckApplication *app;
 
       /* Fall back to group leader property */
 
-      app = wnck_application_get (window->priv->group_leader);
+      handle = _wnck_screen_get_handle (window->priv->screen);
+      app = _wnck_handle_get_application (handle, window->priv->group_leader);
 
       if (app != NULL)
         return wnck_application_get_startup_id (app);
