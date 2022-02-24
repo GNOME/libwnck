@@ -562,7 +562,7 @@ _wnck_application_destroy (WnckApplication *application)
 
   /* Removing from handle also removes the only ref WnckApplication had */
 
-  g_return_if_fail (wnck_application_get (xwindow) == NULL);
+  g_return_if_fail (_wnck_handle_get_application (handle, xwindow) == NULL);
 }
 
 static void
