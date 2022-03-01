@@ -195,6 +195,8 @@ wnck_handle_finalize (GObject *object)
       Display *display;
       int i;
 
+      display = _wnck_get_default_display ();
+
       for (i = 0; i < ScreenCount (display); ++i)
         g_clear_object (&self->screens[i]);
 
