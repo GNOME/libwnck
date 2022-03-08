@@ -103,10 +103,6 @@ struct _WnckScreenPrivate
 
   guint update_handler;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
-  SnDisplay *sn_display;
-#endif
-
   guint showing_desktop : 1;
 
   guint vertical_workspaces : 1;
@@ -498,29 +494,8 @@ wnck_screen_finalize (GObject *object)
   g_free (screen->priv->wm_name);
   screen->priv->wm_name = NULL;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
-  sn_display_unref (screen->priv->sn_display);
-  screen->priv->sn_display = NULL;
-#endif
-
   G_OBJECT_CLASS (wnck_screen_parent_class)->finalize (object);
 }
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-static void
-sn_error_trap_push (SnDisplay *display,
-                    Display   *xdisplay)
-{
-  _wnck_error_trap_push (xdisplay);
-}
-
-static void
-sn_error_trap_pop (SnDisplay *display,
-                   Display   *xdisplay)
-{
-  _wnck_error_trap_pop (xdisplay);
-}
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
 void
 _wnck_screen_construct (WnckScreen *screen,
@@ -534,12 +509,6 @@ _wnck_screen_construct (WnckScreen *screen,
   screen->priv->xroot = RootWindow (display, number);
   screen->priv->xscreen = ScreenOfDisplay (display, number);
   screen->priv->number = number;
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-  screen->priv->sn_display = sn_display_new (display,
-                                             sn_error_trap_push,
-                                             sn_error_trap_pop);
-#endif
 
   screen->priv->bg_pixmap = None;
 
@@ -2625,16 +2594,6 @@ wnck_screen_move_viewport (WnckScreen *screen,
 
   _wnck_change_viewport (screen->priv->xscreen, x, y);
 }
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-SnDisplay*
-_wnck_screen_get_sn_display (WnckScreen *screen)
-{
-  g_return_val_if_fail (WNCK_IS_SCREEN (screen), NULL);
-
-  return screen->priv->sn_display;
-}
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
 void
 _wnck_screen_change_workspace_name (WnckScreen *screen,

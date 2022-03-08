@@ -22,7 +22,6 @@
 #ifndef WNCK_PRIVATE_H
 #define WNCK_PRIVATE_H
 
-#include <config.h>
 #include "screen.h"
 #include "window.h"
 #include "workspace.h"
@@ -31,9 +30,6 @@
 #include "pager.h"
 #include "util.h"
 #include "wnck-handle-private.h"
-#ifdef HAVE_STARTUP_NOTIFICATION
-#include <libsn/sn.h>
-#endif
 
 G_BEGIN_DECLS
 
@@ -121,10 +117,6 @@ void       _wnck_screen_construct      (WnckScreen *screen,
 Window     _wnck_screen_get_xroot      (WnckScreen *screen);
 Screen    *_wnck_screen_get_xscreen    (WnckScreen *screen);
 GdkScreen *_wnck_screen_get_gdk_screen (WnckScreen *screen);
-
-#ifdef HAVE_STARTUP_NOTIFICATION
-SnDisplay* _wnck_screen_get_sn_display (WnckScreen *screen);
-#endif
 
 void           _wnck_pager_activate_workspace   (WnckWorkspace *wspace,
                                                  guint32        timestamp);

@@ -36,6 +36,10 @@
 #include "xutils.h"
 #include "private.h"
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+#include <libsn/sn.h>
+#endif
+
 /**
  * SECTION:tasklist
  * @short_description: a tasklist widget, showing the list of windows as a list
@@ -232,6 +236,7 @@ struct _WnckTasklistPrivate
   GDestroyNotify free_icon_loader_data;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  SnDisplay *sn_display;
   SnMonitorContext *sn_context;
   guint startup_sequence_timeout;
 #endif
@@ -858,6 +863,34 @@ wnck_task_finalize (GObject *object)
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
+static GdkFilterReturn
+event_filter_cb (GdkXEvent *gdkxevent,
+                 GdkEvent  *event,
+                 gpointer   data)
+{
+#ifdef HAVE_STARTUP_NOTIFICATION
+  WnckTasklist *self;
+  XEvent *xevent = gdkxevent;
+
+  self = WNCK_TASKLIST (data);
+
+  switch (xevent->type)
+    {
+      case ClientMessage:
+        /* We're cheating as officially libsn requires
+         * us to send all events through sn_display_process_event
+         */
+        sn_display_process_event (self->priv->sn_display, xevent);
+        break;
+
+      default:
+        break;
+    }
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
+  return GDK_FILTER_CONTINUE;
+}
+
 static void
 wnck_tasklist_init (WnckTasklist *tasklist)
 {
@@ -886,6 +919,8 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   atk_object_set_name (atk_obj, _("Window List"));
   atk_object_set_description (atk_obj, _("Tool to switch between visible windows"));
 
+  gdk_window_add_filter (NULL, event_filter_cb, tasklist);
+
 #if 0
   /* This doesn't work because, and I think this is because we have no window;
    * therefore, we use the scroll events on task buttons instead */
@@ -905,6 +940,15 @@ wnck_tasklist_get_request_mode (GtkWidget *widget)
 
   return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
 }
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+static gboolean
+sn_utf8_validator (const char *str,
+                   int         max_len)
+{
+  return g_utf8_validate (str, max_len, NULL);
+}
+#endif /* HAVE_STARTUP_NOTIFICATION */
 
 static void
 wnck_tasklist_get_property (GObject    *object,
@@ -1095,6 +1139,10 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
                   G_TYPE_POINTER);
 
   install_properties (object_class);
+
+#ifdef HAVE_STARTUP_NOTIFICATION
+  sn_set_utf8_validator (sn_utf8_validator);
+#endif /* HAVE_STARTUP_NOTIFICATION */
 }
 
 static void
@@ -1131,6 +1179,8 @@ wnck_tasklist_finalize (GObject *object)
   g_assert (tasklist->priv->windows_without_class_group == NULL);
   g_assert (tasklist->priv->startup_sequences == NULL);
   /* wnck_tasklist_free_tasks (tasklist); */
+
+  gdk_window_remove_filter (NULL, event_filter_cb, tasklist);
 
   if (tasklist->priv->skipped_windows)
     {
@@ -2229,16 +2279,34 @@ foreach_tasklist (WnckTasklist *tasklist,
   wnck_tasklist_update_lists (tasklist);
 }
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+static void
+sn_error_trap_push (SnDisplay *display,
+                    Display   *xdisplay)
+{
+  _wnck_error_trap_push (xdisplay);
+}
+
+static void
+sn_error_trap_pop (SnDisplay *display,
+                   Display   *xdisplay)
+{
+  _wnck_error_trap_pop (xdisplay);
+}
+#endif /* HAVE_STARTUP_NOTIFICATION */
+
 static void
 wnck_tasklist_realize (GtkWidget *widget)
 {
   WnckTasklist *tasklist;
   GdkScreen *gdkscreen;
+  GdkDisplay *gdkdisplay;
   int screen_number;
 
   tasklist = WNCK_TASKLIST (widget);
 
   gdkscreen = gtk_widget_get_screen (widget);
+  gdkdisplay = gdk_screen_get_display (gdkscreen);
   screen_number = gdk_x11_screen_get_screen_number (gdkscreen);
 
   tasklist->priv->screen = wnck_handle_get_screen (tasklist->priv->handle,
@@ -2247,8 +2315,12 @@ wnck_tasklist_realize (GtkWidget *widget)
   g_assert (tasklist->priv->screen != NULL);
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  tasklist->priv->sn_display = sn_display_new (gdk_x11_display_get_xdisplay (gdkdisplay),
+                                               sn_error_trap_push,
+                                               sn_error_trap_pop);
+
   tasklist->priv->sn_context =
-    sn_monitor_context_new (_wnck_screen_get_sn_display (tasklist->priv->screen),
+    sn_monitor_context_new (tasklist->priv->sn_display,
                             wnck_screen_get_number (tasklist->priv->screen),
                             wnck_tasklist_sn_event,
                             tasklist,
@@ -2276,6 +2348,9 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   tasklist->priv->screen = NULL;
 
 #ifdef HAVE_STARTUP_NOTIFICATION
+  sn_display_unref (tasklist->priv->sn_display);
+  tasklist->priv->sn_display = NULL;
+
   sn_monitor_context_unref (tasklist->priv->sn_context);
   tasklist->priv->sn_context = NULL;
 #endif
