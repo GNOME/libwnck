@@ -88,9 +88,6 @@ struct _WnckWindowPrivate
 
   WnckWindowType wintype;
 
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
-
   WnckIconCache *icon_cache;
 
   WnckWindowActions actions;
@@ -412,14 +409,6 @@ wnck_window_finalize (GObject *object)
   window->priv->session_id_utf8 = NULL;
   g_free (window->priv->role);
   window->priv->role = NULL;
-
-  if (window->priv->icon)
-    g_object_unref (G_OBJECT (window->priv->icon));
-  window->priv->icon = NULL;
-
-  if (window->priv->mini_icon)
-    g_object_unref (G_OBJECT (window->priv->mini_icon));
-  window->priv->mini_icon = NULL;
 
   g_clear_pointer (&window->priv->icon_cache, _wnck_icon_cache_free);
 
@@ -2118,21 +2107,12 @@ get_icons (WnckWindow *window)
   mini_icon = NULL;
 
   if (_wnck_read_icons (window->priv->icon_cache, &icon, &mini_icon))
-    {
-      window->priv->need_emit_icon_changed = TRUE;
+    window->priv->need_emit_icon_changed = TRUE;
 
-      if (window->priv->icon)
-        g_object_unref (G_OBJECT (window->priv->icon));
+  g_assert ((icon && mini_icon) || !(icon || mini_icon));
 
-      if (window->priv->mini_icon)
-        g_object_unref (G_OBJECT (window->priv->mini_icon));
-
-      window->priv->icon = icon;
-      window->priv->mini_icon = mini_icon;
-    }
-
-  g_assert ((window->priv->icon && window->priv->mini_icon) ||
-            !(window->priv->icon || window->priv->mini_icon));
+  g_clear_object (&icon);
+  g_clear_object (&mini_icon);
 }
 
 static void
@@ -2173,7 +2153,7 @@ wnck_window_get_icon (WnckWindow *window)
 
   _wnck_window_load_icons (window);
 
-  return window->priv->icon;
+  return _wnck_icon_cache_get_icon (window->priv->icon_cache);
 }
 
 /**
@@ -2195,7 +2175,7 @@ wnck_window_get_mini_icon (WnckWindow *window)
 
   _wnck_window_load_icons (window);
 
-  return window->priv->mini_icon;
+  return _wnck_icon_cache_get_mini_icon (window->priv->icon_cache);
 }
 
 /**
