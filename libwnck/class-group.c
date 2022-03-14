@@ -74,6 +74,61 @@ enum {
 static guint signals[LAST_SIGNAL] = { 0 };
 
 static void
+get_icon_internal (WnckClassGroup  *self,
+                   GdkPixbuf      **ret_icon,
+                   int              icon_size)
+{
+  GdkPixbuf *icon;
+  GList *l;
+
+  icon = NULL;
+
+  for (l = self->priv->windows; l; l = l->next)
+    {
+      WnckWindow *window;
+      WnckApplication *app;
+
+      window = WNCK_WINDOW (l->data);
+      app = wnck_window_get_application (window);
+
+      if (app == NULL)
+        continue;
+
+      icon = wnck_application_get_icon (app);
+
+      if (icon != NULL)
+        break;
+    }
+
+  if (icon == NULL)
+    {
+      for (l = self->priv->windows; l; l = l->next)
+        {
+          WnckWindow *window;
+
+          window = WNCK_WINDOW (l->data);
+
+          icon = wnck_window_get_icon (window);
+
+          if (icon != NULL)
+            break;
+        }
+    }
+
+  if (icon != NULL)
+    {
+      *ret_icon = g_object_ref (icon);
+    }
+  else
+    {
+      _wnck_get_fallback_icons (ret_icon,
+                                icon_size,
+                                NULL,
+                                0);
+    }
+}
+
+static void
 wnck_class_group_class_init (WnckClassGroupClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
@@ -347,113 +402,14 @@ set_name (WnckClassGroup *class_group)
     }
 }
 
-/* Walks the list of applications, trying to get an icon from them */
-static void
-get_icons_from_applications (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
-{
-  GList *l;
-
-  *icon = NULL;
-  *mini_icon = NULL;
-
-  for (l = class_group->priv->windows; l; l = l->next)
-    {
-      WnckWindow *window;
-      WnckApplication *app;
-
-      window = WNCK_WINDOW (l->data);
-      app = wnck_window_get_application (window);
-      if (app)
-	{
-	  *icon = wnck_application_get_icon (app);
-	  *mini_icon = wnck_application_get_mini_icon (app);
-
-	  if (*icon && *mini_icon)
-	    return;
-	  else
-	    {
-	      *icon = NULL;
-	      *mini_icon = NULL;
-	    }
-	}
-    }
-}
-
-/* Walks the list of windows, trying to get an icon from them */
-static void
-get_icons_from_windows (WnckClassGroup *class_group, GdkPixbuf **icon, GdkPixbuf **mini_icon)
-{
-  GList *l;
-
-  *icon = NULL;
-  *mini_icon = NULL;
-
-  for (l = class_group->priv->windows; l; l = l->next)
-    {
-      WnckWindow *window;
-
-      window = WNCK_WINDOW (l->data);
-
-      *icon = wnck_window_get_icon (window);
-      *mini_icon = wnck_window_get_mini_icon (window);
-
-      if (*icon && *mini_icon)
-	return;
-      else
-	{
-	  *icon = NULL;
-	  *mini_icon = NULL;
-	}
-    }
-}
-
-/* Gets a sensible icon and mini_icon for the class group from the application
- * group leaders or from individual windows.
- */
 static void
 set_icon (WnckClassGroup *class_group)
 {
-  GdkPixbuf *icon, *mini_icon;
-  gboolean icons_reffed = FALSE;
-
-  get_icons_from_applications (class_group, &icon, &mini_icon);
-
-  if (!icon || !mini_icon)
-    get_icons_from_windows (class_group, &icon, &mini_icon);
-
-  if (!icon || !mini_icon)
-    {
-      WnckHandle *handle;
-
-      handle = wnck_screen_get_handle (class_group->priv->screen);
-
-      _wnck_get_fallback_icons (&icon,
-                                wnck_handle_get_default_icon_size (handle),
-                                &mini_icon,
-                                wnck_handle_get_default_mini_icon_size (handle));
-      icons_reffed = TRUE;
-    }
-
-  g_assert (icon && mini_icon);
-
-  if (class_group->priv->icon)
-    g_object_unref (class_group->priv->icon);
-
-  if (class_group->priv->mini_icon)
-    g_object_unref (class_group->priv->mini_icon);
-
-  class_group->priv->icon = icon;
-  class_group->priv->mini_icon = mini_icon;
-
-  if (!icons_reffed)
-    {
-      g_object_ref (class_group->priv->icon);
-      g_object_ref (class_group->priv->mini_icon);
-    }
+  g_clear_object (&class_group->priv->icon);
+  g_clear_object (&class_group->priv->mini_icon);
 
   g_signal_emit (G_OBJECT (class_group), signals[ICON_CHANGED], 0);
 }
-
 
 /* Handle window's icon_changed signal, update class group icon */
 static void
@@ -661,7 +617,18 @@ wnck_class_group_get_name (WnckClassGroup *class_group)
 GdkPixbuf *
 wnck_class_group_get_icon (WnckClassGroup *class_group)
 {
+  WnckHandle *handle;
+
   g_return_val_if_fail (class_group != NULL, NULL);
+
+  if (class_group->priv->icon != NULL)
+    return class_group->priv->icon;
+
+  handle = wnck_screen_get_handle (class_group->priv->screen);
+
+  get_icon_internal (class_group,
+                     &class_group->priv->icon,
+                     wnck_handle_get_default_icon_size (handle));
 
   return class_group->priv->icon;
 }
@@ -683,7 +650,18 @@ wnck_class_group_get_icon (WnckClassGroup *class_group)
 GdkPixbuf *
 wnck_class_group_get_mini_icon (WnckClassGroup *class_group)
 {
+  WnckHandle *handle;
+
   g_return_val_if_fail (class_group != NULL, NULL);
+
+  if (class_group->priv->mini_icon != NULL)
+    return class_group->priv->mini_icon;
+
+  handle = wnck_screen_get_handle (class_group->priv->screen);
+
+  get_icon_internal (class_group,
+                     &class_group->priv->mini_icon,
+                     wnck_handle_get_default_mini_icon_size (handle));
 
   return class_group->priv->mini_icon;
 }
