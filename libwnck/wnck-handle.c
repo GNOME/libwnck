@@ -110,10 +110,10 @@ invalidate_icons (WnckHandle *self)
           window = WNCK_WINDOW (l->data);
           application = wnck_window_get_application (window);
 
-          _wnck_window_load_icons (window);
+          _wnck_window_invalidate_icons (window);
 
           if (application != NULL)
-            _wnck_application_load_icons (application);
+            _wnck_application_invalidate_icons (application);
         }
     }
 }

@@ -51,7 +51,7 @@ WnckWindow* _wnck_window_create  (Window      xwindow,
                                   gint        sort_order);
 void        _wnck_window_destroy (WnckWindow *window);
 
-void        _wnck_window_load_icons (WnckWindow *window);
+void        _wnck_window_invalidate_icons (WnckWindow *self);
 
 char*       _wnck_window_get_name_for_display (WnckWindow *window,
                                                gboolean    use_icon_name,
@@ -86,7 +86,7 @@ WnckApplication* _wnck_application_create  (Window           xwindow,
                                             gboolean         has_group_leader,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
-void             _wnck_application_load_icons (WnckApplication *app);
+void             _wnck_application_invalidate_icons (WnckApplication *self);
 
 WnckClassGroup  *_wnck_class_group_create        (WnckScreen     *screen,
                                                   const char     *res_class);

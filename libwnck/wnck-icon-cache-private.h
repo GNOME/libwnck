@@ -46,6 +46,8 @@ gboolean       _wnck_read_icons                      (WnckScreen     *screen,
                                                       GdkPixbuf     **mini_iconp,
                                                       int             ideal_mini_size);
 
+void           _wnck_icon_cache_invalidate           (WnckIconCache  *self);
+
 G_END_DECLS
 
 #endif

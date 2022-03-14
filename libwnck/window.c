@@ -2148,7 +2148,7 @@ get_icons (WnckWindow *window)
             !(window->priv->icon || window->priv->mini_icon));
 }
 
-void
+static void
 _wnck_window_load_icons (WnckWindow *window)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
@@ -2158,6 +2158,13 @@ _wnck_window_load_icons (WnckWindow *window)
     queue_update (window); /* not done in get_icons since we call that from
                             * the update
                             */
+}
+
+void
+_wnck_window_invalidate_icons (WnckWindow *self)
+{
+  _wnck_icon_cache_invalidate (self->priv->icon_cache);
+  _wnck_window_load_icons (self);
 }
 
 /**
