@@ -98,9 +98,6 @@ static void
 wnck_application_init (WnckApplication *application)
 {
   application->priv = wnck_application_get_instance_private (application);
-
-  application->priv->icon_cache = _wnck_icon_cache_new ();
-  _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
 }
 
 static void
@@ -167,8 +164,7 @@ wnck_application_finalize (GObject *object)
     g_object_unref (G_OBJECT (application->priv->mini_icon));
   application->priv->mini_icon = NULL;
 
-  _wnck_icon_cache_free (application->priv->icon_cache);
-  application->priv->icon_cache = NULL;
+  g_clear_pointer (&application->priv->icon_cache, _wnck_icon_cache_free);
 
   g_free (application->priv->startup_id);
   application->priv->startup_id = NULL;
@@ -309,7 +305,6 @@ get_icons (WnckApplication *app)
   mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   if (_wnck_read_icons (app->priv->screen,
-                        app->priv->xwindow,
                         app->priv->icon_cache,
                         &icon,
                         normal_size,
@@ -505,6 +500,9 @@ _wnck_application_create (Window      xwindow,
   application = g_object_new (WNCK_TYPE_APPLICATION, NULL);
   application->priv->xwindow = xwindow;
   application->priv->screen = screen;
+
+  application->priv->icon_cache = _wnck_icon_cache_new (xwindow);
+  _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
 
   if (has_group_leader)
     application->priv->name = _wnck_get_name (xscreen, xwindow);

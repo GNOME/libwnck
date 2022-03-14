@@ -29,7 +29,7 @@ G_BEGIN_DECLS
 
 typedef struct _WnckIconCache WnckIconCache;
 
-WnckIconCache *_wnck_icon_cache_new                  (void);
+WnckIconCache *_wnck_icon_cache_new                  (Window          xwindow);
 void           _wnck_icon_cache_free                 (WnckIconCache  *icon_cache);
 void           _wnck_icon_cache_property_changed     (WnckIconCache  *icon_cache,
                                                       Atom            atom);
@@ -39,7 +39,6 @@ void           _wnck_icon_cache_set_want_fallback    (WnckIconCache  *icon_cache
 gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache  *icon_cache);
 
 gboolean       _wnck_read_icons                      (WnckScreen     *screen,
-                                                      Window          xwindow,
                                                       WnckIconCache  *icon_cache,
                                                       GdkPixbuf     **iconp,
                                                       int             ideal_size,

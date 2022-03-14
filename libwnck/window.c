@@ -223,7 +223,6 @@ wnck_window_init (WnckWindow *window)
 {
   window->priv = wnck_window_get_instance_private (window);
 
-  window->priv->icon_cache = _wnck_icon_cache_new ();
   window->priv->icon_geometry.width = -1; /* invalid cached value */
   window->priv->workspace = -1;
   window->priv->sort_order = G_MAXINT;
@@ -422,8 +421,7 @@ wnck_window_finalize (GObject *object)
     g_object_unref (G_OBJECT (window->priv->mini_icon));
   window->priv->mini_icon = NULL;
 
-  _wnck_icon_cache_free (window->priv->icon_cache);
-  window->priv->icon_cache = NULL;
+  g_clear_pointer (&window->priv->icon_cache, _wnck_icon_cache_free);
 
   g_free (window->priv->startup_id);
   window->priv->startup_id = NULL;
@@ -473,6 +471,8 @@ _wnck_window_create (Window      xwindow,
   window = g_object_new (WNCK_TYPE_WINDOW, NULL);
   window->priv->xwindow = xwindow;
   window->priv->screen = screen;
+
+  window->priv->icon_cache = _wnck_icon_cache_new (xwindow);
 
   _wnck_handle_insert_window (handle, &window->priv->xwindow, window);
 
@@ -2125,7 +2125,6 @@ get_icons (WnckWindow *window)
   mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   if (_wnck_read_icons (window->priv->screen,
-                        window->priv->xwindow,
                         window->priv->icon_cache,
                         &icon,
                         normal_size,
