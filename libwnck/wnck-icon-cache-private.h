@@ -38,10 +38,6 @@ void           _wnck_icon_cache_set_want_fallback    (WnckIconCache  *icon_cache
                                                       gboolean        setting);
 gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache  *icon_cache);
 
-gboolean       _wnck_read_icons                      (WnckIconCache  *icon_cache,
-                                                      GdkPixbuf     **iconp,
-                                                      GdkPixbuf     **mini_iconp);
-
 GdkPixbuf     *_wnck_icon_cache_get_icon             (WnckIconCache  *self);
 
 GdkPixbuf     *_wnck_icon_cache_get_mini_icon        (WnckIconCache  *self);
