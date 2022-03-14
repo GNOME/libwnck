@@ -57,6 +57,14 @@ struct _WnckIconCache
   guint net_wm_icon_dirty : 1;
 };
 
+enum
+{
+  INVALIDATED,
+  LAST_SIGNAL
+};
+
+static guint icon_cache_signals[LAST_SIGNAL] = { 0 };
+
 G_DEFINE_TYPE (WnckIconCache, _wnck_icon_cache, G_TYPE_OBJECT)
 
 static gboolean
@@ -461,6 +469,12 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 static void
+emit_invalidated (WnckIconCache *self)
+{
+  g_signal_emit (self, icon_cache_signals[INVALIDATED], 0);
+}
+
+static void
 _wnck_icon_cache_finalize (GObject *object)
 {
   WnckIconCache *self;
@@ -480,6 +494,17 @@ _wnck_icon_cache_class_init (WnckIconCacheClass *self_class)
   object_class = G_OBJECT_CLASS (self_class);
 
   object_class->finalize = _wnck_icon_cache_finalize;
+
+  icon_cache_signals[INVALIDATED] =
+    g_signal_new ("invalidated",
+                  WNCK_TYPE_ICON_CACHE,
+                  G_SIGNAL_RUN_LAST,
+                  0,
+                  NULL,
+                  NULL,
+                  NULL,
+                  G_TYPE_NONE,
+                  0);
 }
 
 static void
@@ -517,6 +542,12 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
     icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("WM_HINTS"))
     icon_cache->wm_hints_dirty = TRUE;
+
+  if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
+    return;
+
+  clear_icon_cache (icon_cache, FALSE);
+  emit_invalidated (icon_cache);
 }
 
 gboolean
@@ -681,15 +712,6 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
       return TRUE;
     }
 
-  if (!icon_cache->want_fallback &&
-      icon_cache->origin == USING_FALLBACK_ICON)
-    {
-      /* Get rid of current icon */
-      clear_icon_cache (icon_cache, FALSE);
-
-      return TRUE;
-    }
-
   /* found nothing new */
   return FALSE;
 }
@@ -710,4 +732,5 @@ void
 _wnck_icon_cache_invalidate (WnckIconCache *self)
 {
   clear_icon_cache (self, TRUE);
+  emit_invalidated (self);
 }

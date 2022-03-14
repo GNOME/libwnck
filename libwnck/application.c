@@ -69,8 +69,6 @@ struct _WnckApplicationPrivate
   char *startup_id;
 
   guint name_from_leader : 1; /* name is from group leader */
-
-  guint need_emit_icon_changed : 1;
 };
 
 G_DEFINE_TYPE_WITH_PRIVATE (WnckApplication, wnck_application, G_TYPE_OBJECT);
@@ -278,6 +276,13 @@ wnck_application_get_pid (WnckApplication *app)
 }
 
 static void
+icon_cache_invalidated_cb (WnckIconCache   *icon_cache,
+                           WnckApplication *self)
+{
+  emit_icon_changed (self);
+}
+
+static void
 get_icons (WnckApplication *app)
 {
   GdkPixbuf *icon;
@@ -286,8 +291,7 @@ get_icons (WnckApplication *app)
   icon = NULL;
   mini_icon = NULL;
 
-  if (_wnck_read_icons (app->priv->icon_cache, &icon, &mini_icon))
-    app->priv->need_emit_icon_changed = TRUE;
+  _wnck_read_icons (app->priv->icon_cache, &icon, &mini_icon);
 
   /* FIXME we should really fall back to using the icon
    * for one of the windows. But then we need to be more
@@ -307,8 +311,6 @@ _wnck_application_load_icons (WnckApplication *app)
   g_return_if_fail (WNCK_IS_APPLICATION (app));
 
   get_icons (app);
-  if (app->priv->need_emit_icon_changed)
-    emit_icon_changed (app);
 }
 
 void
@@ -480,6 +482,11 @@ _wnck_application_create (Window      xwindow,
   application->priv->icon_cache = _wnck_icon_cache_new (xwindow, screen);
   _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
 
+  g_signal_connect (application->priv->icon_cache,
+                    "invalidated",
+                    G_CALLBACK (icon_cache_invalidated_cb),
+                    application);
+
   if (has_group_leader)
     application->priv->name = _wnck_get_name (xscreen, xwindow);
 
@@ -619,7 +626,6 @@ _wnck_application_process_property_notify (WnckApplication *app,
     {
       _wnck_icon_cache_property_changed (app->priv->icon_cache,
                                          xevent->xproperty.atom);
-      emit_icon_changed (app);
     }
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_STARTUP_ID"))
@@ -639,7 +645,6 @@ emit_name_changed (WnckApplication *app)
 static void
 emit_icon_changed (WnckApplication *app)
 {
-  app->priv->need_emit_icon_changed = FALSE;
   g_signal_emit (G_OBJECT (app),
                  signals[ICON_CHANGED],
                  0);

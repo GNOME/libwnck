@@ -157,7 +157,6 @@ struct _WnckWindowPrivate
   guint need_update_role : 1;
 
   guint need_emit_name_changed : 1;
-  guint need_emit_icon_changed : 1;
   guint need_emit_class_changed : 1;
   guint need_emit_role_changed : 1;
   guint need_emit_type_changed : 1;
@@ -214,6 +213,13 @@ static WnckWindow* find_last_transient_for (GList *windows,
                                             Window xwindow);
 
 static guint signals[LAST_SIGNAL] = { 0 };
+
+static void
+icon_cache_invalidated_cb (WnckIconCache *icon_cache,
+                           WnckWindow    *self)
+{
+  emit_icon_changed (self);
+}
 
 static void
 wnck_window_init (WnckWindow *window)
@@ -463,6 +469,11 @@ _wnck_window_create (Window      xwindow,
 
   window->priv->icon_cache = _wnck_icon_cache_new (xwindow, screen);
 
+  g_signal_connect (window->priv->icon_cache,
+                    "invalidated",
+                    G_CALLBACK (icon_cache_invalidated_cb),
+                    window);
+
   _wnck_handle_insert_window (handle, &window->priv->xwindow, window);
 
   /* Handle now owns one ref, caller gets none */
@@ -515,7 +526,6 @@ _wnck_window_create (Window      xwindow,
   window->priv->need_update_frame_extents = TRUE;
   window->priv->need_update_role = TRUE;
   window->priv->need_emit_name_changed = FALSE;
-  window->priv->need_emit_icon_changed = FALSE;
   window->priv->need_emit_class_changed = FALSE;
   window->priv->need_emit_role_changed = FALSE;
   window->priv->need_emit_type_changed = FALSE;
@@ -2106,8 +2116,7 @@ get_icons (WnckWindow *window)
   icon = NULL;
   mini_icon = NULL;
 
-  if (_wnck_read_icons (window->priv->icon_cache, &icon, &mini_icon))
-    window->priv->need_emit_icon_changed = TRUE;
+  _wnck_read_icons (window->priv->icon_cache, &icon, &mini_icon);
 
   g_assert ((icon && mini_icon) || !(icon || mini_icon));
 
@@ -2121,10 +2130,6 @@ _wnck_window_load_icons (WnckWindow *window)
   g_return_if_fail (WNCK_IS_WINDOW (window));
 
   get_icons (window);
-  if (window->priv->need_emit_icon_changed)
-    queue_update (window); /* not done in get_icons since we call that from
-                            * the update
-                            */
 }
 
 void
@@ -2587,7 +2592,6 @@ _wnck_window_process_property_notify (WnckWindow *window,
     {
       _wnck_icon_cache_property_changed (window->priv->icon_cache,
                                          xevent->xproperty.atom);
-      queue_update (window);
     }
   else if (xevent->xproperty.atom ==
   	   _wnck_atom_get ("WM_HINTS"))
@@ -3294,9 +3298,6 @@ force_update_now (WnckWindow *window)
     emit_actions_changed (window, old_actions ^ window->priv->actions,
                           window->priv->actions);
 
-  if (window->priv->need_emit_icon_changed)
-    emit_icon_changed (window);
-
   if (window->priv->need_emit_class_changed)
     emit_class_changed (window);
 
@@ -3306,7 +3307,6 @@ force_update_now (WnckWindow *window)
   if (window->priv->need_emit_type_changed)
     emit_type_changed (window);
 }
-
 
 static gboolean
 update_idle (gpointer data)
@@ -3367,7 +3367,6 @@ emit_workspace_changed (WnckWindow *window)
 static void
 emit_icon_changed (WnckWindow *window)
 {
-  window->priv->need_emit_icon_changed = FALSE;
   g_signal_emit (G_OBJECT (window),
                  signals[ICON_CHANGED],
                  0);
