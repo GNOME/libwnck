@@ -587,7 +587,7 @@ _wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
   return icon_cache->origin == USING_FALLBACK_ICON;
 }
 
-gboolean
+static gboolean
 _wnck_read_icons (WnckIconCache  *icon_cache,
                   GdkPixbuf     **iconp,
                   GdkPixbuf     **mini_iconp)
