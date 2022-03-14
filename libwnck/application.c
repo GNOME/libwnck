@@ -62,9 +62,6 @@ struct _WnckApplicationPrivate
 
   WnckWindow *name_window;    /* window we are using name of */
 
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
-
   WnckIconCache *icon_cache;
 
   WnckWindow *icon_window;
@@ -155,14 +152,6 @@ wnck_application_finalize (GObject *object)
 
   g_free (application->priv->name);
   application->priv->name = NULL;
-
-  if (application->priv->icon)
-    g_object_unref (G_OBJECT (application->priv->icon));
-  application->priv->icon = NULL;
-
-  if (application->priv->mini_icon)
-    g_object_unref (G_OBJECT (application->priv->mini_icon));
-  application->priv->mini_icon = NULL;
 
   g_clear_pointer (&application->priv->icon_cache, _wnck_icon_cache_free);
 
@@ -316,18 +305,7 @@ get_icons (WnckApplication *app)
   mini_icon = NULL;
 
   if (_wnck_read_icons (app->priv->icon_cache, &icon, &mini_icon))
-    {
-      app->priv->need_emit_icon_changed = TRUE;
-
-      if (app->priv->icon)
-        g_object_unref (G_OBJECT (app->priv->icon));
-
-      if (app->priv->mini_icon)
-        g_object_unref (G_OBJECT (app->priv->mini_icon));
-
-      app->priv->icon = icon;
-      app->priv->mini_icon = mini_icon;
-    }
+    app->priv->need_emit_icon_changed = TRUE;
 
   /* FIXME we should really fall back to using the icon
    * for one of the windows. But then we need to be more
@@ -335,8 +313,10 @@ get_icons (WnckApplication *app)
    * needs updating and all that.
    */
 
-  g_assert ((app->priv->icon && app->priv->mini_icon) ||
-            !(app->priv->icon || app->priv->mini_icon));
+  g_assert ((icon && mini_icon) || !(icon || mini_icon));
+
+  g_clear_object (&icon);
+  g_clear_object (&mini_icon);
 }
 
 static void
@@ -394,12 +374,16 @@ find_icon_window (WnckApplication *app)
 GdkPixbuf*
 wnck_application_get_icon (WnckApplication *app)
 {
+  GdkPixbuf *icon;
+
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
   _wnck_application_load_icons (app);
 
-  if (app->priv->icon)
-    return app->priv->icon;
+  icon = _wnck_icon_cache_get_icon (app->priv->icon_cache);
+
+  if (icon != NULL)
+    return icon;
   else
     {
       WnckWindow *w = find_icon_window (app);
@@ -425,12 +409,16 @@ wnck_application_get_icon (WnckApplication *app)
 GdkPixbuf*
 wnck_application_get_mini_icon (WnckApplication *app)
 {
+  GdkPixbuf *mini_icon;
+
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
   _wnck_application_load_icons (app);
 
-  if (app->priv->mini_icon)
-    return app->priv->mini_icon;
+  mini_icon = _wnck_icon_cache_get_mini_icon (app->priv->icon_cache);
+
+  if (mini_icon != NULL)
+    return mini_icon;
   else
     {
       WnckWindow *w = find_icon_window (app);
@@ -455,7 +443,7 @@ wnck_application_get_icon_is_fallback (WnckApplication *app)
 {
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), FALSE);
 
-  if (app->priv->icon)
+  if (_wnck_icon_cache_get_icon (app->priv->icon_cache) != NULL)
     return FALSE;
   else
     {
@@ -590,8 +578,8 @@ _wnck_application_add_window (WnckApplication *app,
   update_name (app);
 
   /* see if we're using icon from a window */
-  if (app->priv->icon == NULL ||
-      app->priv->mini_icon == NULL)
+  if (_wnck_icon_cache_get_icon (app->priv->icon_cache) == NULL ||
+      _wnck_icon_cache_get_mini_icon (app->priv->icon_cache) == NULL)
     emit_icon_changed (app);
 }
 
@@ -614,8 +602,8 @@ _wnck_application_remove_window (WnckApplication *app,
   update_name (app);
 
   /* see if we're using icon from a window */
-  if (app->priv->icon == NULL ||
-      app->priv->mini_icon == NULL)
+  if (_wnck_icon_cache_get_icon (app->priv->icon_cache) == NULL ||
+      _wnck_icon_cache_get_mini_icon (app->priv->icon_cache) == NULL)
     emit_icon_changed (app);
 }
 
