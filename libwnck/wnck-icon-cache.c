@@ -68,6 +68,9 @@ static guint icon_cache_signals[LAST_SIGNAL] = { 0 };
 G_DEFINE_TYPE (WnckIconCache, _wnck_icon_cache, G_TYPE_OBJECT)
 
 static gboolean
+_wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache);
+
+static gboolean
 find_best_size (gulong  *data,
                 gulong   nitems,
                 int      ideal_size,
@@ -550,7 +553,7 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
   emit_invalidated (icon_cache);
 }
 
-gboolean
+static gboolean
 _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache)
 {
   if (icon_cache->origin <= USING_WM_HINTS &&

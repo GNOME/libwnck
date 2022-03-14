@@ -34,7 +34,6 @@ WnckIconCache *_wnck_icon_cache_new                  (Window          xwindow,
                                                       WnckScreen     *screen);
 void           _wnck_icon_cache_property_changed     (WnckIconCache  *icon_cache,
                                                       Atom            atom);
-gboolean       _wnck_icon_cache_get_icon_invalidated (WnckIconCache  *icon_cache);
 void           _wnck_icon_cache_set_want_fallback    (WnckIconCache  *icon_cache,
                                                       gboolean        setting);
 gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache  *icon_cache);
