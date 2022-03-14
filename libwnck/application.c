@@ -304,8 +304,7 @@ get_icons (WnckApplication *app)
   normal_size = wnck_handle_get_default_icon_size (handle);
   mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
-  if (_wnck_read_icons (app->priv->screen,
-                        app->priv->icon_cache,
+  if (_wnck_read_icons (app->priv->icon_cache,
                         &icon,
                         normal_size,
                         &mini_icon,
@@ -501,7 +500,7 @@ _wnck_application_create (Window      xwindow,
   application->priv->xwindow = xwindow;
   application->priv->screen = screen;
 
-  application->priv->icon_cache = _wnck_icon_cache_new (xwindow);
+  application->priv->icon_cache = _wnck_icon_cache_new (xwindow, screen);
   _wnck_icon_cache_set_want_fallback (application->priv->icon_cache, FALSE);
 
   if (has_group_leader)

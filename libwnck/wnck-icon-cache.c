@@ -42,6 +42,7 @@ typedef enum
 struct _WnckIconCache
 {
   Window xwindow;
+  WnckScreen *screen;
 
   IconOrigin origin;
   Pixmap prev_pixmap;
@@ -456,13 +457,15 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 WnckIconCache*
-_wnck_icon_cache_new (Window xwindow)
+_wnck_icon_cache_new (Window      xwindow,
+                      WnckScreen *screen)
 {
   WnckIconCache *icon_cache;
 
   icon_cache = g_slice_new0 (WnckIconCache);
 
   icon_cache->xwindow = xwindow;
+  icon_cache->screen = screen;
 
   icon_cache->origin = USING_NO_ICON;
   icon_cache->prev_pixmap = None;
@@ -528,8 +531,7 @@ _wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
 }
 
 gboolean
-_wnck_read_icons (WnckScreen     *screen,
-                  WnckIconCache  *icon_cache,
+_wnck_read_icons (WnckIconCache  *icon_cache,
                   GdkPixbuf     **iconp,
                   int             ideal_size,
                   GdkPixbuf     **mini_iconp,
@@ -549,7 +551,7 @@ _wnck_read_icons (WnckScreen     *screen,
 
   g_return_val_if_fail (icon_cache != NULL, FALSE);
 
-  xscreen = _wnck_screen_get_xscreen (screen);
+  xscreen = _wnck_screen_get_xscreen (icon_cache->screen);
   display = DisplayOfScreen (xscreen);
 
   *iconp = NULL;
