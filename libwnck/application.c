@@ -291,24 +291,13 @@ wnck_application_get_pid (WnckApplication *app)
 static void
 get_icons (WnckApplication *app)
 {
-  WnckHandle *handle;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
-  gsize normal_size;
-  gsize mini_size;
-
-  handle = wnck_screen_get_handle (app->priv->screen);
 
   icon = NULL;
   mini_icon = NULL;
-  normal_size = wnck_handle_get_default_icon_size (handle);
-  mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
-  if (_wnck_read_icons (app->priv->icon_cache,
-                        &icon,
-                        normal_size,
-                        &mini_icon,
-                        mini_size))
+  if (_wnck_read_icons (app->priv->icon_cache, &icon, &mini_icon))
     {
       app->priv->need_emit_icon_changed = TRUE;
 

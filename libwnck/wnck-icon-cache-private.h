@@ -41,9 +41,7 @@ gboolean       _wnck_icon_cache_get_is_fallback      (WnckIconCache  *icon_cache
 
 gboolean       _wnck_read_icons                      (WnckIconCache  *icon_cache,
                                                       GdkPixbuf     **iconp,
-                                                      int             ideal_size,
-                                                      GdkPixbuf     **mini_iconp,
-                                                      int             ideal_mini_size);
+                                                      GdkPixbuf     **mini_iconp);
 
 void           _wnck_icon_cache_invalidate           (WnckIconCache  *self);
 
