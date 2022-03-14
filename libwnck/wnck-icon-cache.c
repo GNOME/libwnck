@@ -719,12 +719,40 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
 GdkPixbuf *
 _wnck_icon_cache_get_icon (WnckIconCache *self)
 {
+  GdkPixbuf *icon;
+  GdkPixbuf *mini_icon;
+
+  if (self->icon != NULL)
+    return self->icon;
+
+  icon = NULL;
+  mini_icon = NULL;
+
+  _wnck_read_icons (self, &icon, &mini_icon);
+
+  g_clear_object (&icon);
+  g_clear_object (&mini_icon);
+
   return self->icon;
 }
 
 GdkPixbuf *
 _wnck_icon_cache_get_mini_icon (WnckIconCache *self)
 {
+  GdkPixbuf *icon;
+  GdkPixbuf *mini_icon;
+
+  if (self->mini_icon != NULL)
+    return self->mini_icon;
+
+  icon = NULL;
+  mini_icon = NULL;
+
+  _wnck_read_icons (self, &icon, &mini_icon);
+
+  g_clear_object (&icon);
+  g_clear_object (&mini_icon);
+
   return self->mini_icon;
 }
 
