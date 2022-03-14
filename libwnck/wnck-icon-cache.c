@@ -533,12 +533,13 @@ _wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
 gboolean
 _wnck_read_icons (WnckIconCache  *icon_cache,
                   GdkPixbuf     **iconp,
-                  int             ideal_size,
-                  GdkPixbuf     **mini_iconp,
-                  int             ideal_mini_size)
+                  GdkPixbuf     **mini_iconp)
 {
   Screen *xscreen;
   Display *display;
+  WnckHandle *handle;
+  int ideal_size;
+  int ideal_mini_size;
   guchar *pixdata;
   int w, h;
   guchar *mini_pixdata;
@@ -559,6 +560,10 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
 
   if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
     return FALSE; /* we have no new info to use */
+
+  handle = wnck_screen_get_handle (icon_cache->screen);
+  ideal_size = wnck_handle_get_default_icon_size (handle);
+  ideal_mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
   pixdata = NULL;
 
