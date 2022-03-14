@@ -282,42 +282,10 @@ icon_cache_invalidated_cb (WnckIconCache   *icon_cache,
   emit_icon_changed (self);
 }
 
-static void
-get_icons (WnckApplication *app)
-{
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
-
-  icon = NULL;
-  mini_icon = NULL;
-
-  _wnck_read_icons (app->priv->icon_cache, &icon, &mini_icon);
-
-  /* FIXME we should really fall back to using the icon
-   * for one of the windows. But then we need to be more
-   * complicated about icon_changed and when the icon
-   * needs updating and all that.
-   */
-
-  g_assert ((icon && mini_icon) || !(icon || mini_icon));
-
-  g_clear_object (&icon);
-  g_clear_object (&mini_icon);
-}
-
-static void
-_wnck_application_load_icons (WnckApplication *app)
-{
-  g_return_if_fail (WNCK_IS_APPLICATION (app));
-
-  get_icons (app);
-}
-
 void
 _wnck_application_invalidate_icons (WnckApplication *self)
 {
   _wnck_icon_cache_invalidate (self->priv->icon_cache);
-  _wnck_application_load_icons (self);
 }
 
 /* Prefer to get group icon from a window of type "normal" */
@@ -362,8 +330,6 @@ wnck_application_get_icon (WnckApplication *app)
 
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
 
-  _wnck_application_load_icons (app);
-
   icon = _wnck_icon_cache_get_icon (app->priv->icon_cache);
 
   if (icon != NULL)
@@ -396,8 +362,6 @@ wnck_application_get_mini_icon (WnckApplication *app)
   GdkPixbuf *mini_icon;
 
   g_return_val_if_fail (WNCK_IS_APPLICATION (app), NULL);
-
-  _wnck_application_load_icons (app);
 
   mini_icon = _wnck_icon_cache_get_mini_icon (app->priv->icon_cache);
 
@@ -567,9 +531,7 @@ _wnck_application_add_window (WnckApplication *app,
   update_name (app);
 
   /* see if we're using icon from a window */
-  if (_wnck_icon_cache_get_icon (app->priv->icon_cache) == NULL ||
-      _wnck_icon_cache_get_mini_icon (app->priv->icon_cache) == NULL)
-    emit_icon_changed (app);
+  emit_icon_changed (app);
 }
 
 void
@@ -591,9 +553,7 @@ _wnck_application_remove_window (WnckApplication *app,
   update_name (app);
 
   /* see if we're using icon from a window */
-  if (_wnck_icon_cache_get_icon (app->priv->icon_cache) == NULL ||
-      _wnck_icon_cache_get_mini_icon (app->priv->icon_cache) == NULL)
-    emit_icon_changed (app);
+  emit_icon_changed (app);
 }
 
 void
