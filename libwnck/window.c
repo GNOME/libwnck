@@ -410,7 +410,7 @@ wnck_window_finalize (GObject *object)
   g_free (window->priv->role);
   window->priv->role = NULL;
 
-  g_clear_pointer (&window->priv->icon_cache, _wnck_icon_cache_free);
+  g_clear_object (&window->priv->icon_cache);
 
   g_free (window->priv->startup_id);
   window->priv->startup_id = NULL;

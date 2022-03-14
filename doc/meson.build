@@ -12,6 +12,7 @@ gnome.gtkdoc(meson.project_name(),
     'pager-accessible.h',
     'pager-accessible-factory.h',
     'wnck-enum-types.h',
+    'wnck-icon-cache-private.h',
     'wnck-image-menu-item-private.h',
     'workspace-accessible.h',
     'workspace-accessible-factory.h'

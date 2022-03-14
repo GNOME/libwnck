@@ -41,6 +41,8 @@ typedef enum
 
 struct _WnckIconCache
 {
+  GObject parent;
+
   Window xwindow;
   WnckScreen *screen;
 
@@ -54,6 +56,8 @@ struct _WnckIconCache
   guint wm_hints_dirty : 1;
   guint net_wm_icon_dirty : 1;
 };
+
+G_DEFINE_TYPE (WnckIconCache, _wnck_icon_cache, G_TYPE_OBJECT)
 
 static gboolean
 find_best_size (gulong  *data,
@@ -456,13 +460,40 @@ scaled_from_pixdata (guchar *pixdata,
   return dest;
 }
 
+static void
+_wnck_icon_cache_finalize (GObject *object)
+{
+  WnckIconCache *self;
+
+  self = WNCK_ICON_CACHE (object);
+
+  clear_icon_cache (self, FALSE);
+
+  G_OBJECT_CLASS (_wnck_icon_cache_parent_class)->finalize (object);
+}
+
+static void
+_wnck_icon_cache_class_init (WnckIconCacheClass *self_class)
+{
+  GObjectClass *object_class;
+
+  object_class = G_OBJECT_CLASS (self_class);
+
+  object_class->finalize = _wnck_icon_cache_finalize;
+}
+
+static void
+_wnck_icon_cache_init (WnckIconCache *self)
+{
+}
+
 WnckIconCache*
 _wnck_icon_cache_new (Window      xwindow,
                       WnckScreen *screen)
 {
   WnckIconCache *icon_cache;
 
-  icon_cache = g_slice_new0 (WnckIconCache);
+  icon_cache = g_object_new (WNCK_TYPE_ICON_CACHE, NULL);
 
   icon_cache->xwindow = xwindow;
   icon_cache->screen = screen;
@@ -476,14 +507,6 @@ _wnck_icon_cache_new (Window      xwindow,
   icon_cache->net_wm_icon_dirty = TRUE;
 
   return icon_cache;
-}
-
-void
-_wnck_icon_cache_free (WnckIconCache *icon_cache)
-{
-  clear_icon_cache (icon_cache, FALSE);
-
-  g_slice_free (WnckIconCache, icon_cache);
 }
 
 void

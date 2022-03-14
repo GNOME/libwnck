@@ -153,7 +153,7 @@ wnck_application_finalize (GObject *object)
   g_free (application->priv->name);
   application->priv->name = NULL;
 
-  g_clear_pointer (&application->priv->icon_cache, _wnck_icon_cache_free);
+  g_clear_object (&application->priv->icon_cache);
 
   g_free (application->priv->startup_id);
   application->priv->startup_id = NULL;
