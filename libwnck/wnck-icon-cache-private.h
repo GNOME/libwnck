@@ -43,6 +43,10 @@ gboolean       _wnck_read_icons                      (WnckIconCache  *icon_cache
                                                       GdkPixbuf     **iconp,
                                                       GdkPixbuf     **mini_iconp);
 
+GdkPixbuf     *_wnck_icon_cache_get_icon             (WnckIconCache  *self);
+
+GdkPixbuf     *_wnck_icon_cache_get_mini_icon        (WnckIconCache  *self);
+
 void           _wnck_icon_cache_invalidate           (WnckIconCache  *self);
 
 G_END_DECLS
