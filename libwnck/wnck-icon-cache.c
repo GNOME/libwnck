@@ -671,6 +671,18 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
   return FALSE;
 }
 
+GdkPixbuf *
+_wnck_icon_cache_get_icon (WnckIconCache *self)
+{
+  return self->icon;
+}
+
+GdkPixbuf *
+_wnck_icon_cache_get_mini_icon (WnckIconCache *self)
+{
+  return self->mini_icon;
+}
+
 void
 _wnck_icon_cache_invalidate (WnckIconCache *self)
 {
