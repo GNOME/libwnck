@@ -46,8 +46,6 @@ struct _WnckIconCache
   Pixmap prev_mask;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
-  int ideal_size;
-  int ideal_mini_size;
   guint want_fallback : 1;
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
@@ -466,8 +464,6 @@ _wnck_icon_cache_new (void)
   icon_cache->prev_pixmap = None;
   icon_cache->icon = NULL;
   icon_cache->mini_icon = NULL;
-  icon_cache->ideal_size = -1; /* won't be a legit size */
-  icon_cache->ideal_mini_size = -1;
   icon_cache->want_fallback = TRUE;
   icon_cache->wm_hints_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
@@ -555,13 +551,6 @@ _wnck_read_icons (WnckScreen     *screen,
 
   *iconp = NULL;
   *mini_iconp = NULL;
-
-  if (ideal_size != icon_cache->ideal_size ||
-      ideal_mini_size != icon_cache->ideal_mini_size)
-    clear_icon_cache (icon_cache, TRUE);
-
-  icon_cache->ideal_size = ideal_size;
-  icon_cache->ideal_mini_size = ideal_mini_size;
 
   if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
     return FALSE; /* we have no new info to use */
@@ -670,4 +659,10 @@ _wnck_read_icons (WnckScreen     *screen,
 
   /* found nothing new */
   return FALSE;
+}
+
+void
+_wnck_icon_cache_invalidate (WnckIconCache *self)
+{
+  clear_icon_cache (self, TRUE);
 }
