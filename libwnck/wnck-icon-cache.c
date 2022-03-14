@@ -41,6 +41,8 @@ typedef enum
 
 struct _WnckIconCache
 {
+  Window xwindow;
+
   IconOrigin origin;
   Pixmap prev_pixmap;
   Pixmap prev_mask;
@@ -454,11 +456,13 @@ scaled_from_pixdata (guchar *pixdata,
 }
 
 WnckIconCache*
-_wnck_icon_cache_new (void)
+_wnck_icon_cache_new (Window xwindow)
 {
   WnckIconCache *icon_cache;
 
   icon_cache = g_slice_new0 (WnckIconCache);
+
+  icon_cache->xwindow = xwindow;
 
   icon_cache->origin = USING_NO_ICON;
   icon_cache->prev_pixmap = None;
@@ -525,7 +529,6 @@ _wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
 
 gboolean
 _wnck_read_icons (WnckScreen     *screen,
-                  Window          xwindow,
                   WnckIconCache  *icon_cache,
                   GdkPixbuf     **iconp,
                   int             ideal_size,
@@ -572,7 +575,7 @@ _wnck_read_icons (WnckScreen     *screen,
     {
       icon_cache->net_wm_icon_dirty = FALSE;
 
-      if (read_rgb_icon (xscreen, xwindow,
+      if (read_rgb_icon (xscreen, icon_cache->xwindow,
                          ideal_size,
                          ideal_mini_size,
                          &w, &h, &pixdata,
@@ -596,7 +599,7 @@ _wnck_read_icons (WnckScreen     *screen,
       icon_cache->wm_hints_dirty = FALSE;
 
       _wnck_error_trap_push (display);
-      hints = XGetWMHints (display, xwindow);
+      hints = XGetWMHints (display, icon_cache->xwindow);
       _wnck_error_trap_pop (display);
       pixmap = None;
       mask = None;
