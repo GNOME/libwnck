@@ -2107,36 +2107,10 @@ wnck_window_transient_is_most_recently_activated (WnckWindow *window)
   return FALSE;
 }
 
-static void
-get_icons (WnckWindow *window)
-{
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
-
-  icon = NULL;
-  mini_icon = NULL;
-
-  _wnck_read_icons (window->priv->icon_cache, &icon, &mini_icon);
-
-  g_assert ((icon && mini_icon) || !(icon || mini_icon));
-
-  g_clear_object (&icon);
-  g_clear_object (&mini_icon);
-}
-
-static void
-_wnck_window_load_icons (WnckWindow *window)
-{
-  g_return_if_fail (WNCK_IS_WINDOW (window));
-
-  get_icons (window);
-}
-
 void
 _wnck_window_invalidate_icons (WnckWindow *self)
 {
   _wnck_icon_cache_invalidate (self->priv->icon_cache);
-  _wnck_window_load_icons (self);
 }
 
 /**
@@ -2155,8 +2129,6 @@ GdkPixbuf*
 wnck_window_get_icon (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-
-  _wnck_window_load_icons (window);
 
   return _wnck_icon_cache_get_icon (window->priv->icon_cache);
 }
@@ -2177,8 +2149,6 @@ GdkPixbuf*
 wnck_window_get_mini_icon (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-
-  _wnck_window_load_icons (window);
 
   return _wnck_icon_cache_get_mini_icon (window->priv->icon_cache);
 }
@@ -3286,8 +3256,6 @@ force_update_now (WnckWindow *window)
   update_actions (window);
   update_frame_extents (window); /* emits signals */
   update_role (window); /* emits signals */
-
-  get_icons (window);
 
   new_state = COMPRESS_STATE (window);
 
