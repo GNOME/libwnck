@@ -8,7 +8,10 @@ gnome.gtkdoc(meson.project_name(),
     link_with: libwnck_lib
   ),
   gobject_typesfile: meson.project_name() + '.types',
-  ignore_headers: ['wnck-enum-types.h'],
+  ignore_headers: [
+    'wnck-enum-types.h',
+    'wnck-icon-cache-private.h',
+  ],
   scan_args: [
     '--rebuild-types',
     '--rebuild-sections',

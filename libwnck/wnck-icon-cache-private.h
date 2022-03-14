@@ -27,11 +27,11 @@
 
 G_BEGIN_DECLS
 
-typedef struct _WnckIconCache WnckIconCache;
+#define WNCK_TYPE_ICON_CACHE (_wnck_icon_cache_get_type ())
+G_DECLARE_FINAL_TYPE (WnckIconCache, _wnck_icon_cache, WNCK, ICON_CACHE, GObject)
 
 WnckIconCache *_wnck_icon_cache_new                  (Window          xwindow,
                                                       WnckScreen     *screen);
-void           _wnck_icon_cache_free                 (WnckIconCache  *icon_cache);
 void           _wnck_icon_cache_property_changed     (WnckIconCache  *icon_cache,
                                                       Atom            atom);
 gboolean       _wnck_icon_cache_get_icon_invalidated (WnckIconCache  *icon_cache);
