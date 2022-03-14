@@ -472,7 +472,7 @@ _wnck_window_create (Window      xwindow,
   window->priv->xwindow = xwindow;
   window->priv->screen = screen;
 
-  window->priv->icon_cache = _wnck_icon_cache_new (xwindow);
+  window->priv->icon_cache = _wnck_icon_cache_new (xwindow, screen);
 
   _wnck_handle_insert_window (handle, &window->priv->xwindow, window);
 
@@ -2124,8 +2124,7 @@ get_icons (WnckWindow *window)
   normal_size = wnck_handle_get_default_icon_size (handle);
   mini_size = wnck_handle_get_default_mini_icon_size (handle);
 
-  if (_wnck_read_icons (window->priv->screen,
-                        window->priv->icon_cache,
+  if (_wnck_read_icons (window->priv->icon_cache,
                         &icon,
                         normal_size,
                         &mini_icon,
