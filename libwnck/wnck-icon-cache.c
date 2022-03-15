@@ -191,13 +191,9 @@ static gboolean
 read_rgb_icon (Screen  *screen,
                Window   xwindow,
                int      ideal_size,
-               int      ideal_mini_size,
                int     *width,
                int     *height,
-               guchar **pixdata,
-               int     *mini_width,
-               int     *mini_height,
-               guchar **mini_pixdata)
+               guchar **pixdata)
 {
   Display *display;
   Atom type;
@@ -208,8 +204,6 @@ read_rgb_icon (Screen  *screen,
   gulong *data;
   gulong *best;
   int w, h;
-  gulong *best_mini;
-  int mini_w, mini_h;
 
   display = DisplayOfScreen (screen);
 
@@ -241,22 +235,10 @@ read_rgb_icon (Screen  *screen,
       return FALSE;
     }
 
-  if (!find_best_size (data, nitems,
-                       ideal_mini_size,
-                       &mini_w, &mini_h, &best_mini))
-    {
-      XFree (data);
-      return FALSE;
-    }
-
   *width = w;
   *height = h;
 
-  *mini_width = mini_w;
-  *mini_height = mini_h;
-
   argbdata_to_pixdata (best, w * h, pixdata);
-  argbdata_to_pixdata (best_mini, mini_w * mini_h, mini_pixdata);
 
   XFree (data);
 
@@ -268,9 +250,7 @@ try_pixmap_and_mask (Screen     *screen,
                      Pixmap      src_pixmap,
                      Pixmap      src_mask,
                      GdkPixbuf **iconp,
-                     int         ideal_size,
-                     GdkPixbuf **mini_iconp,
-                     int         ideal_mini_size)
+                     int         ideal_size)
 {
   cairo_surface_t *surface, *mask_surface, *image;
   GdkDisplay *gdk_display;
@@ -353,11 +333,6 @@ try_pixmap_and_mask (Screen     *screen,
                                  ideal_size,
                                  ideal_size,
                                  GDK_INTERP_BILINEAR);
-      *mini_iconp =
-        gdk_pixbuf_scale_simple (unscaled,
-                                 ideal_mini_size,
-                                 ideal_mini_size,
-                                 GDK_INTERP_BILINEAR);
 
       g_object_unref (G_OBJECT (unscaled));
       return TRUE;
@@ -385,27 +360,6 @@ clear_icon_cache (WnckIconCache *icon_cache,
       icon_cache->wm_hints_dirty = TRUE;
       icon_cache->net_wm_icon_dirty = TRUE;
     }
-}
-
-static void
-replace_cache (WnckIconCache *icon_cache,
-               IconOrigin     origin,
-               GdkPixbuf     *new_icon,
-               GdkPixbuf     *new_mini_icon)
-{
-  clear_icon_cache (icon_cache, FALSE);
-
-  icon_cache->origin = origin;
-
-  if (new_icon)
-    g_object_ref (G_OBJECT (new_icon));
-
-  icon_cache->icon = new_icon;
-
-  if (new_mini_icon)
-    g_object_ref (G_OBJECT (new_mini_icon));
-
-  icon_cache->mini_icon = new_mini_icon;
 }
 
 static void
@@ -587,41 +541,23 @@ _wnck_icon_cache_get_is_fallback (WnckIconCache *icon_cache)
   return icon_cache->origin == USING_FALLBACK_ICON;
 }
 
-static gboolean
-_wnck_read_icons (WnckIconCache  *icon_cache,
-                  GdkPixbuf     **iconp,
-                  GdkPixbuf     **mini_iconp)
+static GdkPixbuf *
+_wnck_read_icon (WnckIconCache *icon_cache,
+                 int            ideal_size)
 {
   Screen *xscreen;
   Display *display;
-  WnckHandle *handle;
-  int ideal_size;
-  int ideal_mini_size;
+  GdkPixbuf *icon;
   guchar *pixdata;
   int w, h;
-  guchar *mini_pixdata;
-  int mini_w, mini_h;
   Pixmap pixmap;
   Pixmap mask;
   XWMHints *hints;
 
-  /* Return value is whether the icon changed */
-
-  g_return_val_if_fail (icon_cache != NULL, FALSE);
-
   xscreen = _wnck_screen_get_xscreen (icon_cache->screen);
   display = DisplayOfScreen (xscreen);
 
-  *iconp = NULL;
-  *mini_iconp = NULL;
-
-  if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
-    return FALSE; /* we have no new info to use */
-
-  handle = wnck_screen_get_handle (icon_cache->screen);
-  ideal_size = wnck_handle_get_default_icon_size (handle);
-  ideal_mini_size = wnck_handle_get_default_mini_icon_size (handle);
-
+  icon = NULL;
   pixdata = NULL;
 
   /* Our algorithm here assumes that we can't have for example origin
@@ -633,32 +569,27 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
    * we haven't done that since the last change.
    */
 
-  if (icon_cache->origin <= USING_NET_WM_ICON &&
-      icon_cache->net_wm_icon_dirty)
-
+  if ((icon_cache->origin <= USING_NET_WM_ICON &&
+       icon_cache->net_wm_icon_dirty) ||
+      icon_cache->origin == USING_NET_WM_ICON)
     {
       icon_cache->net_wm_icon_dirty = FALSE;
 
       if (read_rgb_icon (xscreen, icon_cache->xwindow,
                          ideal_size,
-                         ideal_mini_size,
-                         &w, &h, &pixdata,
-                         &mini_w, &mini_h, &mini_pixdata))
+                         &w, &h, &pixdata))
         {
-          *iconp = scaled_from_pixdata (pixdata, w, h, ideal_size, ideal_size);
+          icon = scaled_from_pixdata (pixdata, w, h, ideal_size, ideal_size);
 
-          *mini_iconp = scaled_from_pixdata (mini_pixdata, mini_w, mini_h,
-                                             ideal_mini_size, ideal_mini_size);
+          icon_cache->origin = USING_NET_WM_ICON;
 
-          replace_cache (icon_cache, USING_NET_WM_ICON,
-                         *iconp, *mini_iconp);
-
-          return TRUE;
+          return icon;
         }
     }
 
-  if (icon_cache->origin <= USING_WM_HINTS &&
-      icon_cache->wm_hints_dirty)
+  if ((icon_cache->origin <= USING_WM_HINTS &&
+       icon_cache->wm_hints_dirty) ||
+      icon_cache->origin == USING_WM_HINTS)
     {
       icon_cache->wm_hints_dirty = FALSE;
 
@@ -682,59 +613,54 @@ _wnck_read_icons (WnckIconCache  *icon_cache,
        * avoids a get_from_drawable() on every geometry
        * hints change
        */
-      if ((pixmap != icon_cache->prev_pixmap ||
-           mask != icon_cache->prev_mask) &&
-          pixmap != None)
+      if (((pixmap != icon_cache->prev_pixmap ||
+            mask != icon_cache->prev_mask) &&
+           pixmap != None) ||
+          (icon_cache->origin == USING_WM_HINTS &&
+           pixmap != None))
         {
-          if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_size,
-                                   mini_iconp, ideal_mini_size))
+          if (try_pixmap_and_mask (xscreen, pixmap, mask, &icon, ideal_size))
             {
               icon_cache->prev_pixmap = pixmap;
               icon_cache->prev_mask = mask;
 
-              replace_cache (icon_cache, USING_WM_HINTS,
-                             *iconp, *mini_iconp);
+              icon_cache->origin = USING_WM_HINTS;
 
-              return TRUE;
+              return icon;
             }
         }
     }
 
-  if (icon_cache->want_fallback &&
-      icon_cache->origin < USING_FALLBACK_ICON)
+  if ((icon_cache->want_fallback &&
+       icon_cache->origin < USING_FALLBACK_ICON) ||
+      icon_cache->origin == USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (iconp,
+      _wnck_get_fallback_icons (&icon,
                                 ideal_size,
-                                mini_iconp,
-                                ideal_mini_size);
+                                NULL,
+                                0);
 
-      replace_cache (icon_cache, USING_FALLBACK_ICON,
-                     *iconp, *mini_iconp);
+      icon_cache->origin = USING_FALLBACK_ICON;
 
-      return TRUE;
+      return icon;
     }
 
-  /* found nothing new */
-  return FALSE;
+  return NULL;
 }
 
 GdkPixbuf *
 _wnck_icon_cache_get_icon (WnckIconCache *self)
 {
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
+  WnckHandle *handle;
+  int ideal_size;
 
   if (self->icon != NULL)
     return self->icon;
 
-  icon = NULL;
-  mini_icon = NULL;
+  handle = wnck_screen_get_handle (self->screen);
+  ideal_size = wnck_handle_get_default_icon_size (handle);
 
-  _wnck_read_icons (self, &icon, &mini_icon);
-
-  g_clear_object (&icon);
-  g_clear_object (&mini_icon);
+  self->icon = _wnck_read_icon (self, ideal_size);
 
   return self->icon;
 }
@@ -742,19 +668,16 @@ _wnck_icon_cache_get_icon (WnckIconCache *self)
 GdkPixbuf *
 _wnck_icon_cache_get_mini_icon (WnckIconCache *self)
 {
-  GdkPixbuf *icon;
-  GdkPixbuf *mini_icon;
+  WnckHandle *handle;
+  int ideal_size;
 
   if (self->mini_icon != NULL)
     return self->mini_icon;
 
-  icon = NULL;
-  mini_icon = NULL;
+  handle = wnck_screen_get_handle (self->screen);
+  ideal_size = wnck_handle_get_default_mini_icon_size (handle);
 
-  _wnck_read_icons (self, &icon, &mini_icon);
-
-  g_clear_object (&icon);
-  g_clear_object (&mini_icon);
+  self->mini_icon = _wnck_read_icon (self, ideal_size);
 
   return self->mini_icon;
 }
