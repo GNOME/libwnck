@@ -64,6 +64,43 @@ static GParamSpec *handle_properties[LAST_PROP] = { NULL };
 
 G_DEFINE_TYPE (WnckHandle, wnck_handle, G_TYPE_OBJECT)
 
+static void
+invalidate_icons (WnckHandle *self)
+{
+  Display *xdisplay;
+  int i;
+
+  xdisplay = _wnck_get_default_display ();
+
+  for (i = 0; i < ScreenCount (xdisplay); ++i)
+    {
+      WnckScreen *screen;
+      GList *windows;
+      GList *l;
+
+      screen = self->screens[i];
+
+      if (screen == NULL)
+        continue;
+
+      windows = wnck_screen_get_windows (screen);
+
+      for (l = windows; l != NULL; l = l->next)
+        {
+          WnckWindow *window;
+          WnckApplication *application;
+
+          window = WNCK_WINDOW (l->data);
+          application = wnck_window_get_application (window);
+
+          _wnck_window_load_icons (window);
+
+          if (application != NULL)
+            _wnck_application_load_icons (application);
+        }
+    }
+}
+
 static GdkFilterReturn
 filter_func (GdkXEvent *gdkxevent,
              GdkEvent  *event,
@@ -471,7 +508,12 @@ wnck_handle_set_default_icon_size (WnckHandle *self,
 {
   g_return_if_fail (WNCK_IS_HANDLE (self));
 
+  if (self->default_icon_size == icon_size)
+    return;
+
   self->default_icon_size = icon_size;
+
+  invalidate_icons (self);
 }
 
 gsize
@@ -496,7 +538,12 @@ wnck_handle_set_default_mini_icon_size (WnckHandle *self,
 {
   g_return_if_fail (WNCK_IS_HANDLE (self));
 
+  if (self->default_mini_icon_size == icon_size)
+    return;
+
   self->default_mini_icon_size = icon_size;
+
+  invalidate_icons (self);
 }
 
 gsize
