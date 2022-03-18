@@ -161,6 +161,7 @@ test_progs = [
   'test-pager',
   'test-urgent',
   'test-shutdown',
+  'test-icon-cache',
 ]
 
 foreach prog: progs + test_progs
