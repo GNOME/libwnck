@@ -2607,9 +2607,7 @@ _wnck_window_process_property_notify (WnckWindow *window,
       queue_update (window);
     }
   else if (xevent->xproperty.atom ==
-           _wnck_atom_get ("_NET_WM_ICON") ||
-           xevent->xproperty.atom ==
-           _wnck_atom_get ("KWM_WIN_ICON"))
+           _wnck_atom_get ("_NET_WM_ICON"))
     {
       _wnck_icon_cache_property_changed (window->priv->icon_cache,
                                          xevent->xproperty.atom);

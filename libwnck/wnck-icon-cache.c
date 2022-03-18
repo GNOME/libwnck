@@ -35,7 +35,6 @@ typedef enum
    */
   USING_NO_ICON,
   USING_FALLBACK_ICON,
-  USING_KWM_WIN_ICON,
   USING_WM_HINTS,
   USING_NET_WM_ICON
 } IconOrigin;
@@ -52,7 +51,6 @@ struct _WnckIconCache
   guint want_fallback : 1;
   /* TRUE if these props have changed */
   guint wm_hints_dirty : 1;
-  guint kwm_win_icon_dirty : 1;
   guint net_wm_icon_dirty : 1;
 };
 
@@ -353,54 +351,6 @@ try_pixmap_and_mask (Screen     *screen,
 }
 
 static void
-get_kwm_win_icon (Screen *screen,
-                  Window  xwindow,
-                  Pixmap *pixmap,
-                  Pixmap *mask)
-{
-  Display *display;
-  Atom type;
-  int format;
-  gulong nitems;
-  gulong bytes_after;
-  Pixmap *icons;
-  int err, result;
-
-  display = DisplayOfScreen (screen);
-
-  *pixmap = None;
-  *mask = None;
-
-  _wnck_error_trap_push (display);
-  icons = NULL;
-  result = XGetWindowProperty (display, xwindow,
-			       _wnck_atom_get ("KWM_WIN_ICON"),
-			       0, G_MAXLONG,
-			       False,
-			       _wnck_atom_get ("KWM_WIN_ICON"),
-			       &type, &format, &nitems,
-			       &bytes_after, (void*)&icons);
-
-  err = _wnck_error_trap_pop (display);
-  if (err != Success ||
-      result != Success)
-    return;
-
-  if (type != _wnck_atom_get ("KWM_WIN_ICON"))
-    {
-      XFree (icons);
-      return;
-    }
-
-  *pixmap = icons[0];
-  *mask = icons[1];
-
-  XFree (icons);
-
-  return;
-}
-
-static void
 clear_icon_cache (WnckIconCache *icon_cache,
                   gboolean       dirty_all)
 {
@@ -417,7 +367,6 @@ clear_icon_cache (WnckIconCache *icon_cache,
   if (dirty_all)
     {
       icon_cache->wm_hints_dirty = TRUE;
-      icon_cache->kwm_win_icon_dirty = TRUE;
       icon_cache->net_wm_icon_dirty = TRUE;
     }
 }
@@ -521,7 +470,6 @@ _wnck_icon_cache_new (void)
   icon_cache->ideal_mini_size = -1;
   icon_cache->want_fallback = TRUE;
   icon_cache->wm_hints_dirty = TRUE;
-  icon_cache->kwm_win_icon_dirty = TRUE;
   icon_cache->net_wm_icon_dirty = TRUE;
 
   return icon_cache;
@@ -541,8 +489,6 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
 {
   if (atom == _wnck_atom_get ("_NET_WM_ICON"))
     icon_cache->net_wm_icon_dirty = TRUE;
-  else if (atom == _wnck_atom_get ("KWM_WIN_ICON"))
-    icon_cache->kwm_win_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("WM_HINTS"))
     icon_cache->wm_hints_dirty = TRUE;
 }
@@ -550,11 +496,8 @@ _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
 gboolean
 _wnck_icon_cache_get_icon_invalidated (WnckIconCache *icon_cache)
 {
-  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
-      icon_cache->kwm_win_icon_dirty)
-    return TRUE;
-  else if (icon_cache->origin <= USING_WM_HINTS &&
-           icon_cache->wm_hints_dirty)
+  if (icon_cache->origin <= USING_WM_HINTS &&
+      icon_cache->wm_hints_dirty)
     return TRUE;
   else if (icon_cache->origin <= USING_NET_WM_ICON &&
            icon_cache->net_wm_icon_dirty)
@@ -695,32 +638,6 @@ _wnck_read_icons (WnckScreen     *screen,
               icon_cache->prev_mask = mask;
 
               replace_cache (icon_cache, USING_WM_HINTS,
-                             *iconp, *mini_iconp);
-
-              return TRUE;
-            }
-        }
-    }
-
-  if (icon_cache->origin <= USING_KWM_WIN_ICON &&
-      icon_cache->kwm_win_icon_dirty)
-    {
-      icon_cache->kwm_win_icon_dirty = FALSE;
-
-      get_kwm_win_icon (xscreen, xwindow, &pixmap, &mask);
-
-      if ((pixmap != icon_cache->prev_pixmap ||
-           mask != icon_cache->prev_mask) &&
-          pixmap != None)
-        {
-          if (try_pixmap_and_mask (xscreen, pixmap, mask,
-                                   iconp, ideal_size,
-                                   mini_iconp, ideal_mini_size))
-            {
-              icon_cache->prev_pixmap = pixmap;
-              icon_cache->prev_mask = mask;
-
-              replace_cache (icon_cache, USING_KWM_WIN_ICON,
                              *iconp, *mini_iconp);
 
               return TRUE;
