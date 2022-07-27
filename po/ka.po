@@ -1,23 +1,22 @@
-# Georgian translation of libwnck.
-# This file is distributed under the same license as the libwnck package.
-# Vladimer Sichinava ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2007.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-# Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>, 2008.
 msgid ""
 msgstr ""
-"Project-Id-Version: ka\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-30 11:39+0200\n"
-"PO-Revision-Date: 2008-09-30 12:59+0200\n"
-"Last-Translator: Vladimer Sichinava  ვლადიმერ სიჭინავა <vsichi@gnome.org>\n"
-"Language-Team: Georgian <http://mail.gnome.org/mailman/listinfo/gnome-ge-"
-"list>\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/libwnck/issues\n"
+"POT-Creation-Date: 2022-04-09 02:56+0000\n"
+"PO-Revision-Date: 2022-07-27 17:43+0200\n"
+"Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
+"Language-Team: \n"
 "Language: ka\n"
 "MIME-Version: 1.0\n"
-"Content-Type:  text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #. *
 #. * SECTION:application
@@ -38,197 +37,150 @@ msgstr ""
 #. * The #WnckApplication objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/application.c:51
+#: libwnck/application.c:51
 msgid "Untitled application"
-msgstr "უსახელო პროგრამა"
+msgstr "უსახელო აპლიკაცია"
 
-#: ../libwnck/pager-accessible.c:322
+#: libwnck/pager-accessible.c:263
 msgid "Workspace Switcher"
-msgstr "გარემოს გადამრთველი"
+msgstr "სამუშაო სივრცის გადამრთველი"
 
-#: ../libwnck/pager-accessible.c:333
+#: libwnck/pager-accessible.c:274
 msgid "Tool to switch between workspaces"
-msgstr "სამუშაო გარემოებებს შორის გადამრთველი ხელსაწყო"
+msgstr "ხელსაწყო სამუშაო სივრცეებს შორის გადასართველად"
 
-#: ../libwnck/pager-accessible.c:437
+#: libwnck/pager-accessible.c:379
 #, c-format
 msgid "Click this to switch to workspace %s"
-msgstr "აქ დააწკაპუნეთ, %s გარემოში გადასასვლელად"
+msgstr ""
 
-#: ../libwnck/pager.c:1904
+#: libwnck/pager.c:2172
 #, c-format
 msgid "Click to start dragging \"%s\""
-msgstr "დააწკაპეთ გადათრევის დაწყებისთვის \"%s\""
+msgstr ""
 
-#: ../libwnck/pager.c:1907
+#: libwnck/pager.c:2175
 #, c-format
 msgid "Current workspace: \"%s\""
-msgstr "მიმდინარე სამუშაო გარემო: \"%s\""
+msgstr ""
 
-#: ../libwnck/pager.c:1912
+#: libwnck/pager.c:2180
 #, c-format
 msgid "Click to switch to \"%s\""
-msgstr "დააწკაპუნეთ \"%s\"-ზე გადასასვლელად"
+msgstr ""
 
-#: ../libwnck/selector.c:1171
+#: libwnck/selector.c:1094
 msgid "No Windows Open"
-msgstr "არავითარი გახსნილი ფანჯარა"
+msgstr ""
 
-#: ../libwnck/selector.c:1224
+#: libwnck/selector.c:1150
 msgid "Window Selector"
-msgstr "ფანჯრების გადამრთველი"
+msgstr ""
 
-#: ../libwnck/selector.c:1225
+#: libwnck/selector.c:1151
 msgid "Tool to switch between windows"
-msgstr "ფანჯრებს შორის გადასვლის ხელსაწყო"
+msgstr ""
 
-#: ../libwnck/tasklist.c:720
+#: libwnck/tasklist.c:875
 msgid "Window List"
 msgstr "ფანჯრების სია"
 
-#: ../libwnck/tasklist.c:721
+#: libwnck/tasklist.c:876
 msgid "Tool to switch between visible windows"
-msgstr "ხილულ ფანჯრებს შორის გადასვლის ხელსაწყო"
+msgstr ""
 
-#: ../libwnck/tasklist.c:3005
+#: libwnck/tasklist.c:3463
 msgid "Mi_nimize All"
-msgstr "ყველას მი_ნიმიზირება"
+msgstr "ყველას ჩაკეცვა"
 
-#: ../libwnck/tasklist.c:3016
+#: libwnck/tasklist.c:3471
 msgid "Un_minimize All"
-msgstr "ყველას მაქ_სიმიზირება"
+msgstr "ყველას ამოკეცვა"
 
-#: ../libwnck/tasklist.c:3024
+#: libwnck/tasklist.c:3479
 msgid "Ma_ximize All"
-msgstr "ყველას მთლიან ეკრანზე გ_აშლა"
+msgstr "ყველას გადიდება"
 
-#: ../libwnck/tasklist.c:3035
+#: libwnck/tasklist.c:3487
 msgid "_Unmaximize All"
-msgstr "ყვ_ელასთვის თავდაპირველი ზომის დაბრუნება"
+msgstr "ყველას შემცირება"
 
-#: ../libwnck/tasklist.c:3047
+#: libwnck/tasklist.c:3499
 msgid "_Close All"
 msgstr "ყველას _დახურვა"
 
-#: ../libwnck/test-pager.c:15
-msgid "Use N_ROWS rows"
-msgstr "N_ROWS ხაზის გამოყენება"
-
-#: ../libwnck/test-pager.c:15
-msgid "N_ROWS"
-msgstr "N_ROWS"
-
-#: ../libwnck/test-pager.c:16
-msgid "Only show current workspace"
-msgstr "მხოლოდ მიმდინარე გარემოს ჩვენება"
-
-#: ../libwnck/test-pager.c:17 ../libwnck/test-tasklist.c:19
-msgid "Use RTL as default direction"
-msgstr "მარჯვნიდან მარცხნივ მიმართულების ნაგულისმევად გამოყენება"
-
-#: ../libwnck/test-pager.c:18
-msgid "Show workspace names instead of workspace contents"
-msgstr ""
-"გარემოში გაშვებული პროგრამების მაგივრად სამუშაო გარემოთა სახელწოდებების "
-"ჩვენება"
-
-#: ../libwnck/test-pager.c:19
-msgid "Use a vertical orientation"
-msgstr "ვერტიკალური ორიენტაციის გამოყენება"
-
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/test-selector.c:12 ../libwnck/test-tasklist.c:20
-msgid "Don't show window in tasklist"
-msgstr "ფანრის ფანჯრების სიაში არ გამოჩენა"
-
-#: ../libwnck/test-tasklist.c:16
-msgid "Always group windows"
-msgstr "ფანჯრების დაჯგუფება ყოველთვის"
-
-#: ../libwnck/test-tasklist.c:17
-msgid "Never group windows"
-msgstr "ფანჯრების არასდროს დაჯგუფება"
-
-#: ../libwnck/test-tasklist.c:18
-msgid "Display windows from all workspaces"
-msgstr "ყველა გარემოდან ფანჯრების ჩვენება"
-
-#: ../libwnck/test-tasklist.c:21
-msgid "Enable Transparency"
-msgstr "გამჭვირვალე ეფექტის ჩართვა"
-
-#: ../libwnck/window-action-menu.c:387
+#: libwnck/window-action-menu.c:367
 msgid "Unmi_nimize"
-msgstr "გ_აშლა"
+msgstr "_ამოკეცვა"
 
-#: ../libwnck/window-action-menu.c:394
+#: libwnck/window-action-menu.c:373
 msgid "Mi_nimize"
-msgstr "მი_ნიმიზირება"
+msgstr "ჩაკეცვა"
 
-#: ../libwnck/window-action-menu.c:402
+#: libwnck/window-action-menu.c:380
 msgid "Unma_ximize"
-msgstr "თავდა_პირველი ზომის დაბრუნება"
+msgstr "შემცირება"
 
-#: ../libwnck/window-action-menu.c:409
+#: libwnck/window-action-menu.c:386
 msgid "Ma_ximize"
-msgstr "მთელს ეკრანზე გაფართო_ება"
+msgstr "გადიდება"
 
-#: ../libwnck/window-action-menu.c:752 ../libwnck/workspace.c:281
+#: libwnck/window-action-menu.c:692 libwnck/workspace.c:265
 #, c-format
 msgid "Workspace %d"
-msgstr "სამუშაო გარემო %d"
+msgstr "სამუშაო სივრცე %d"
 
-#: ../libwnck/window-action-menu.c:761 ../libwnck/window-action-menu.c:907
+#: libwnck/window-action-menu.c:701 libwnck/window-action-menu.c:847
 #, c-format
 msgid "Workspace 1_0"
-msgstr "სამუშაო გარემო 1_0"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:763 ../libwnck/window-action-menu.c:909
+#: libwnck/window-action-menu.c:703 libwnck/window-action-menu.c:849
 #, c-format
 msgid "Workspace %s%d"
-msgstr "სამუშაო გარემო %s%d"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:995
+#: libwnck/window-action-menu.c:990
 msgid "_Move"
 msgstr "_გადაადგილება"
 
-#: ../libwnck/window-action-menu.c:1002
+#: libwnck/window-action-menu.c:996
 msgid "_Resize"
-msgstr "_ზომის შეცვლა"
+msgstr "ზომის შეცვლა"
 
-#: ../libwnck/window-action-menu.c:1011
+#: libwnck/window-action-menu.c:1004
 msgid "Always On _Top"
-msgstr "ყოველთვის წინა _პლანზე"
+msgstr "ყოველთვის ყველაზე ზემოთ"
 
-#: ../libwnck/window-action-menu.c:1019
+#: libwnck/window-action-menu.c:1012
 msgid "_Always on Visible Workspace"
-msgstr "ყოვ_ელთვის ხილულ გარემოში ჩვენება"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1024
+#: libwnck/window-action-menu.c:1017
 msgid "_Only on This Workspace"
-msgstr "_მხოლოდ მიმდინარე გარემოში"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1031
+#: libwnck/window-action-menu.c:1024
 msgid "Move to Workspace _Left"
-msgstr "_მარცხენა გარემოში გადატანა"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1037
+#: libwnck/window-action-menu.c:1029
 msgid "Move to Workspace R_ight"
-msgstr "მარჯვენა გარემოშ_ი გადატანა"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1043
+#: libwnck/window-action-menu.c:1034
 msgid "Move to Workspace _Up"
-msgstr "ზემ_ო·გარემოში·გადატანა"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1049
+#: libwnck/window-action-menu.c:1039
 msgid "Move to Workspace _Down"
-msgstr "ქვემო გარემოში გა_დატანა"
+msgstr ""
 
-#: ../libwnck/window-action-menu.c:1052
+#: libwnck/window-action-menu.c:1041
 msgid "Move to Another _Workspace"
-msgstr "სხვა გარემოში გადა_ტანა"
+msgstr "სხვა სამუშაო სივრცეზე გადატანა"
 
-#: ../libwnck/window-action-menu.c:1072
+#: libwnck/window-action-menu.c:1061
 msgid "_Close"
 msgstr "_დახურვა"
 
@@ -241,708 +193,729 @@ msgstr "_დახურვა"
 #. * The #WnckWindow objects are always owned by libwnck and must not be
 #. * referenced or unreferenced.
 #.
-#: ../libwnck/window.c:50
+#: libwnck/window.c:48
 msgid "Untitled window"
-msgstr "უსახელო ფანჯარა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:139
+#: libwnck/wnckprop.c:137
 msgid "X window ID of the window to examine or modify"
-msgstr "X სერვერის ფანჯრის იდენტიფიკატორი, შემოწმება შეცვლისათვის"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:139 ../libwnck/wnckprop.c:145
-#: ../libwnck/wnckprop.c:154
+#: libwnck/wnckprop.c:137 libwnck/wnckprop.c:144 libwnck/wnckprop.c:154
 msgid "XID"
 msgstr "XID"
 
-#. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:144
+#. Translators: A group leader is the window that is the "owner" of a
+#. * group of windows, ie: if you have multiple windows in one
+#. * application, one window has some information about the application
+#. * (like the application name).
+#: libwnck/wnckprop.c:143
 msgid "X window ID of the group leader of an application to examine"
-msgstr "X სერვერის მთავარი ფანჯრის იდენტიფიკატორი, შემოწმება შეცვლისათვის"
+msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:148
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:148
 msgid "Class resource of the class group to examine"
-msgstr "შესამოწმებელი კლასის ან ჯგუფტა კლასის რესურსი"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:148
+#: libwnck/wnckprop.c:148
 msgid "CLASS"
 msgstr "კლასი"
 
-#: ../libwnck/wnckprop.c:150
+#: libwnck/wnckprop.c:150
 msgid "NUMBER of the workspace to examine or modify"
-msgstr "შესამოწმებელი ან შესაცვლელი სამუშაო გარემოთა რიცხვი"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:150 ../libwnck/wnckprop.c:152
-#: ../libwnck/wnckprop.c:169 ../libwnck/wnckprop.c:171
-#: ../libwnck/wnckprop.c:173 ../libwnck/wnckprop.c:262
+#: libwnck/wnckprop.c:150 libwnck/wnckprop.c:152 libwnck/wnckprop.c:170
+#: libwnck/wnckprop.c:172 libwnck/wnckprop.c:174 libwnck/wnckprop.c:271
 msgid "NUMBER"
-msgstr "რიცხვი"
+msgstr "ნომერი"
 
-#: ../libwnck/wnckprop.c:152
+#: libwnck/wnckprop.c:152
 msgid "NUMBER of the screen to examine or modify"
-msgstr "შესამოწმებელი ან შესაცვლელი ეკრანთა რიცხვი"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:154
+#: libwnck/wnckprop.c:154
 msgid "Alias of --window"
-msgstr "იგივეა რაც --window"
+msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:161
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:162
 msgid ""
 "List windows of the application/class group/workspace/screen (output format: "
 "\"XID: Window Name\")"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:163
+#: libwnck/wnckprop.c:164
 msgid ""
 "List workspaces of the screen (output format: \"Number: Workspace Name\")"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:169
+#: libwnck/wnckprop.c:170
 msgid "Change the number of workspaces of the screen to NUMBER"
-msgstr "ეკრანზე სამუშაო გარემოთა რიცხვის შეცვლა "
+msgstr ""
 
-#: ../libwnck/wnckprop.c:171
+#: libwnck/wnckprop.c:172
 msgid "Change the workspace layout of the screen to use NUMBER rows"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:173
+#: libwnck/wnckprop.c:174
 msgid "Change the workspace layout of the screen to use NUMBER columns"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:175
+#: libwnck/wnckprop.c:176
 msgid "Show the desktop"
-msgstr "სამუშაო მაგიდის ჩვენება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:177
+#: libwnck/wnckprop.c:178
 msgid "Stop showing the desktop"
-msgstr "სამუშაო მაგიდის ჩვენების შეწყვეტა"
+msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:181
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:183
 msgid "Move the viewport of the current workspace to X coordinate X"
 msgstr ""
-"სამუშაო მაგიდის ხილული არის X-ის ჰორიზონტალურ კოორდინატთან გადაადგილება"
 
-#: ../libwnck/wnckprop.c:181 ../libwnck/wnckprop.c:264
+#: libwnck/wnckprop.c:183 libwnck/wnckprop.c:273
 msgid "X"
 msgstr "X"
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:185
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:188
 msgid "Move the viewport of the current workspace to Y coordinate Y"
-msgstr "სამუშაო მაგიდის ხილული არის Y-ის ვერტიკალურ კოორდინატთან გადაადგილება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:185 ../libwnck/wnckprop.c:266
+#: libwnck/wnckprop.c:188 libwnck/wnckprop.c:275
 msgid "Y"
-msgstr "Y"
+msgstr "იოქტა"
 
-#: ../libwnck/wnckprop.c:191
+#: libwnck/wnckprop.c:194
 msgid "Minimize the window"
-msgstr "ფანჯრის მინიმიზირება"
+msgstr "ფანჯრის ჩაკეცვა"
 
-#: ../libwnck/wnckprop.c:193
+#: libwnck/wnckprop.c:196
 msgid "Unminimize the window"
-msgstr "ფანჯრის გაშლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:195
+#: libwnck/wnckprop.c:198
 msgid "Maximize the window"
-msgstr "მთელს ეკრანზე გაშლა"
+msgstr "ფანჯრის გადიდება"
 
-#: ../libwnck/wnckprop.c:197
+#: libwnck/wnckprop.c:200
 msgid "Unmaximize the window"
-msgstr "ფანჯრის თავდაპირველი ზომა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:199
+#: libwnck/wnckprop.c:202
 msgid "Maximize horizontally the window"
-msgstr "ფანჯრის ჰორიზონტალურად გაშლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:201
+#: libwnck/wnckprop.c:204
 msgid "Unmaximize horizontally the window"
-msgstr "ფანჯრის თავდაპირველი ჰორიზონტალური ზომის აღდგენა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:203
+#: libwnck/wnckprop.c:206
 msgid "Maximize vertically the window"
-msgstr "ფანჯრის ვერტიკალურად გაშლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:205
+#: libwnck/wnckprop.c:208
 msgid "Unmaximize vertically the window"
-msgstr "ფანჯრის თავდაპირველი ვერტიკალური ზომის აღდგენა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:207
+#: libwnck/wnckprop.c:210
 msgid "Start moving the window via the keyboard"
-msgstr "ფანჯრის კლავიატურის მეშვეობით გადაადგილება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:209
+#: libwnck/wnckprop.c:212
 msgid "Start resizing the window via the keyboard"
-msgstr "ფანჯრის ზომის კლავიატურის მეშვეობით შეცვლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:211
+#: libwnck/wnckprop.c:214
 msgid "Activate the window"
-msgstr "ფანჯრის გააქტიურება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:213
+#: libwnck/wnckprop.c:216
 msgid "Close the window"
 msgstr "ფანჯრის დახურვა"
 
-#: ../libwnck/wnckprop.c:216
+#: libwnck/wnckprop.c:219
 msgid "Make the window fullscreen"
-msgstr "ფანჯრის 'მთელს ეკრანზე' რეჟიმში გადაყვანა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:218
+#: libwnck/wnckprop.c:221
 msgid "Make the window quit fullscreen mode"
-msgstr "'მთელს ეკრანზე' რეჟიმიდან გამოსვლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:220
+#: libwnck/wnckprop.c:223
 msgid "Make the window always on top"
-msgstr "ფანჯრის ყოველთვის წინა პლანზე გამოჩენა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:222
+#: libwnck/wnckprop.c:225
 msgid "Make the window not always on top"
-msgstr "ფანჯრის წინაპლანზე არასოდეს გამოჩენა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:224
+#: libwnck/wnckprop.c:227
 msgid "Make the window below other windows"
-msgstr "ფანჯრის დანარჩენებს ქვეშ ჩვენება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:226
+#: libwnck/wnckprop.c:229
 msgid "Make the window not below other windows"
-msgstr "ფანრის დანარჩენებს ქვეშ ჩვენების გაუქმება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:228
+#: libwnck/wnckprop.c:231
 msgid "Shade the window"
-msgstr "ფანჯარა ჩარჩოში"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:230
+#: libwnck/wnckprop.c:233
 msgid "Unshade the window"
-msgstr "ფანჯრის ჩარჩოს მოშორება"
+msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:234
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:238
 msgid "Make the window have a fixed position in the viewport"
-msgstr "ხილულ გარემოში ფანჯრის მდებარეობის დაფიქსირება"
+msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:238
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:243
 msgid "Make the window not have a fixed position in the viewport"
-msgstr "ხილულ გარემოში ფანჯრის მდებარეობის ფიქსირების გაუქმება"
+msgstr ""
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:244
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: libwnck/wnckprop.c:250
 msgid "Make the window not appear in pagers"
-msgstr "ფანჯრის სამუშაო გარემოს გადამრთველში არ გამოჩენა"
+msgstr ""
 
-#. Translators: A pager is the technical term for the workspace switcher.
-#. * It's a representation of all workspaces with windows inside it.
-#. * Please make sure that the translation is in sync with gnome-panel,
-#. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:250
+#. Translators: A pager is the technical term for the workspace
+#. * switcher. It's a representation of all workspaces with windows
+#. * inside it. Please make sure that the translation is in sync with
+#. * gnome-panel, where this term is also used in translatable strings
+#.
+#: libwnck/wnckprop.c:257
 msgid "Make the window appear in pagers"
-msgstr "ფანჯრის სამუშაო გარემოს გადამრთველში გამოჩენა"
+msgstr ""
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:253
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: libwnck/wnckprop.c:261
 msgid "Make the window not appear in tasklists"
-msgstr "ფანჯრების სიაში ფანჯრის დამალვა"
+msgstr ""
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:256
+#. Translators: "tasklist" is the list of running applications (the
+#. * window list)
+#: libwnck/wnckprop.c:265
 msgid "Make the window appear in tasklists"
-msgstr "ფანჯრების სიაში ფანჯრის ჩვენება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:258
+#: libwnck/wnckprop.c:267
 msgid "Make the window visible on all workspaces"
-msgstr "ფანჯრის ყველა სამუშაო გარემოში ჩვენება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:260
+#: libwnck/wnckprop.c:269
 msgid "Make the window visible on the current workspace only"
-msgstr "ფანჯრის მხოლოდ მიმდინარე სამუშაო გარემოში ჩვენება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:262
+#: libwnck/wnckprop.c:271
 msgid "Move the window to workspace NUMBER (first workspace is 0)"
-msgstr "ფანჯრის გადაადგილება სამუშაო გარემო ნომერი (პირველი სამუშაო გარემოა 0)"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:264
+#: libwnck/wnckprop.c:273
 msgid "Change the X coordinate of the window to X"
-msgstr "ფანჯრის X კოორდინატის შეცვლა X-ზე"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:266
+#: libwnck/wnckprop.c:275
 msgid "Change the Y coordinate of the window to Y"
-msgstr "ფანჯრის Y კოორდინატის შეცვლა Y-ზე"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:268
+#: libwnck/wnckprop.c:277
 msgid "Change the width of the window to WIDTH"
-msgstr "ფანჯრის სიგანის შეცვლა სიგანე"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:268
+#: libwnck/wnckprop.c:277
 msgid "WIDTH"
 msgstr "სიგანე"
 
-#: ../libwnck/wnckprop.c:270
+#: libwnck/wnckprop.c:279
 msgid "Change the height of the window to HEIGHT"
-msgstr "ფანჯრის სიმაღლის შეცვლა სიმაღლე"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:270
+#: libwnck/wnckprop.c:279
 msgid "HEIGHT"
 msgstr "სიმაღლე"
 
 #. Translators: do not translate "normal, desktop, dock..."
-#: ../libwnck/wnckprop.c:273
+#: libwnck/wnckprop.c:282
 msgid ""
 "Change the type of the window to TYPE (valid values: normal, desktop, dock, "
 "dialog, toolbar, menu, utility, splash)"
 msgstr ""
-"ფანჯრის ტიპის შეცვლა ტიპზე (შესაძლებელი მნიშვნელობები: normal, desktop, "
-"dock, dialog, toolbar, menu, utility, splash)"
 
-#: ../libwnck/wnckprop.c:273
+#: libwnck/wnckprop.c:282
 msgid "TYPE"
 msgstr "ტიპი"
 
-#: ../libwnck/wnckprop.c:279
+#: libwnck/wnckprop.c:288
 msgid "Change the name of the workspace to NAME"
-msgstr "სამუშაო გარემოს სახელის შეცვლა სახელით"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:279
+#: libwnck/wnckprop.c:288
 msgid "NAME"
 msgstr "სახელი"
 
-#: ../libwnck/wnckprop.c:281
+#: libwnck/wnckprop.c:290
 msgid "Activate the workspace"
-msgstr "სამუშაო გარემოს გააქტიურება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:373 ../libwnck/wnckprop.c:397
-#: ../libwnck/wnckprop.c:433 ../libwnck/wnckprop.c:456
+#: libwnck/wnckprop.c:384 libwnck/wnckprop.c:408 libwnck/wnckprop.c:444
+#: libwnck/wnckprop.c:467
 #, c-format
 msgid "Invalid value \"%s\" for --%s"
-msgstr "მიუღებელი მნიშვნელობა \"%s\" --%s-თვის"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:490 ../libwnck/wnckprop.c:509
+#: libwnck/wnckprop.c:501 libwnck/wnckprop.c:520
 #, c-format
 msgid ""
-"Conflicting options are present: screen %d should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: screen %d should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
-"გამოიყენება მიუღებელი პარამეტრი, მითითებულია ეკრანი %d, მაგრამ გამოიყენება --"
-"%s\n"
 
-#: ../libwnck/wnckprop.c:499
+#: libwnck/wnckprop.c:510
 #, c-format
 msgid ""
 "Conflicting options are present: windows or workspaces of screen %d should "
 "be listed, but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:522 ../libwnck/wnckprop.c:542
+#: libwnck/wnckprop.c:533 libwnck/wnckprop.c:553
 #, c-format
 msgid ""
 "Conflicting options are present: workspace %d should be interacted with, but "
 "--%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:532
+#: libwnck/wnckprop.c:543
 #, c-format
 msgid ""
 "Conflicting options are present: windows of workspace %d should be listed, "
 "but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:554
+#: libwnck/wnckprop.c:565
 #, c-format
 msgid ""
 "Conflicting options are present: an application should be interacted with, "
 "but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:564
+#: libwnck/wnckprop.c:575
 #, c-format
 msgid ""
 "Conflicting options are present: windows of an application should be listed, "
 "but --%s has been used\n"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:577
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:589
 #, c-format
 msgid ""
 "Conflicting options are present: class group \"%s\" should be interacted "
 "with, but --%s has been used\n"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:588
+#. Translators: A class is like a "family". E.g., all gvim windows
+#. * are of the same class.
+#: libwnck/wnckprop.c:601
 #, c-format
 msgid ""
 "Conflicting options are present: windows of class group \"%s\" should be "
 "listed, but --%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:600 ../libwnck/wnckprop.c:609
+#: libwnck/wnckprop.c:613 libwnck/wnckprop.c:622
 #, c-format
 msgid ""
-"Conflicting options are present: a window should be interacted with, but --%"
-"s has been used\n"
+"Conflicting options are present: a window should be interacted with, but --"
+"%s has been used\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:628 ../libwnck/wnckprop.c:709
-#: ../libwnck/wnckprop.c:756
+#: libwnck/wnckprop.c:641 libwnck/wnckprop.c:722 libwnck/wnckprop.c:769
 #, c-format
 msgid "Conflicting options are present: --%s and --%s\n"
-msgstr "მოცემულია მიუღებელი პარამეტრები: --%s და --%s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:667
+#: libwnck/wnckprop.c:680
 #, c-format
 msgid ""
 "Invalid argument \"%d\" for --%s: the argument must be strictly positive\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:680
+#: libwnck/wnckprop.c:693
 #, c-format
 msgid "Invalid argument \"%d\" for --%s: the argument must be positive\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:775
+#: libwnck/wnckprop.c:788
 #, c-format
 msgid "Conflicting options are present: --%s or --%s, and --%s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:807
+#: libwnck/wnckprop.c:820
 #, c-format
 msgid "Invalid argument \"%s\" for --%s, valid values are: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:850
-#, c-format
+#: libwnck/wnckprop.c:863
 msgid ""
 "Cannot change the workspace layout on the screen: the layout is already "
 "owned\n"
 msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:884
-#, c-format
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:898
 msgid ""
 "Viewport cannot be moved: the current workspace does not contain a viewport\n"
 msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:890
-#, c-format
+#. Translators: 'viewport' is kind of the viewable area. A viewport
+#. * can be used to implement workspaces (e.g. compiz is an example);
+#. * however it is not just the current workspace.
+#: libwnck/wnckprop.c:905
 msgid "Viewport cannot be moved: there is no current workspace\n"
 msgstr ""
 
 #. FIXME: why do we have dual & boolean API. This is not consistent!
-#: ../libwnck/wnckprop.c:926 ../libwnck/wnckprop.c:935
-#: ../libwnck/wnckprop.c:944 ../libwnck/wnckprop.c:951
-#: ../libwnck/wnckprop.c:961 ../libwnck/wnckprop.c:968
-#: ../libwnck/wnckprop.c:977 ../libwnck/wnckprop.c:1026
-#, c-format
+#: libwnck/wnckprop.c:941 libwnck/wnckprop.c:950 libwnck/wnckprop.c:959
+#: libwnck/wnckprop.c:966 libwnck/wnckprop.c:976 libwnck/wnckprop.c:983
+#: libwnck/wnckprop.c:992 libwnck/wnckprop.c:1041
 msgid "Action not allowed\n"
-msgstr "დაუშვებელი ქმედება\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1022
+#: libwnck/wnckprop.c:1037
 #, c-format
 msgid "Window cannot be moved to workspace %d: the workspace does not exist\n"
 msgstr ""
-"შეუძლებელია ფანჯრის სამუშაო გარემო %d-ზე გადატანა: არ არსებული სამუშაო "
-"გარემო\n"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1086 ../libwnck/wnckprop.c:1217
+#: libwnck/wnckprop.c:1101 libwnck/wnckprop.c:1233
 msgid "<name unset>"
-msgstr "<განუსაზღვრელი სახელწოდება>"
+msgstr ""
 
 #. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1089
+#: libwnck/wnckprop.c:1104
 #, c-format
 msgid "%lu: %s\n"
 msgstr "%lu: %s\n"
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1109
+#: libwnck/wnckprop.c:1124
 #, c-format
 msgid "%d: %s\n"
 msgstr "%d: %s\n"
 
-#: ../libwnck/wnckprop.c:1172
+#: libwnck/wnckprop.c:1187
 #, c-format
 msgid "Screen Number: %d\n"
 msgstr "ეკრანის ნომერი: %d\n"
 
-#: ../libwnck/wnckprop.c:1174 ../libwnck/wnckprop.c:1253
+#: libwnck/wnckprop.c:1189 libwnck/wnckprop.c:1270
 #, c-format
 msgid "Geometry (width, height): %d, %d\n"
-msgstr "ზომები (სიგანე, სიმაღლე): %d, %d\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1178
+#: libwnck/wnckprop.c:1193
 #, c-format
 msgid "Number of Workspaces: %d\n"
-msgstr "სამუშაო გარემოებების რაოდენობა: %d\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1184
+#: libwnck/wnckprop.c:1199
 #, c-format
 msgid "Workspace Layout (rows, columns, orientation): %d, %d, %s\n"
-msgstr "სამუშაო გარემოებების განლაგება (რიგი, სვეტი, ორიენტაცია): %d, %d, %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1194 ../libwnck/wnckprop.c:1249
-#: ../libwnck/wnckprop.c:1435
+#: libwnck/wnckprop.c:1209 libwnck/wnckprop.c:1266 libwnck/wnckprop.c:1463
 msgid "<no EWMH-compliant window manager>"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1195
+#: libwnck/wnckprop.c:1210
 #, c-format
 msgid "Window Manager: %s\n"
-msgstr "ფანჯრების მმართველი: %s\n"
+msgstr ""
 
 #. Translators: %d is a workspace number and %s a workspace name
-#: ../libwnck/wnckprop.c:1200 ../libwnck/wnckprop.c:1277
-#: ../libwnck/wnckprop.c:1288 ../libwnck/wnckprop.c:1299
-#: ../libwnck/wnckprop.c:1310 ../libwnck/wnckprop.c:1421
+#: libwnck/wnckprop.c:1215 libwnck/wnckprop.c:1296 libwnck/wnckprop.c:1308
+#: libwnck/wnckprop.c:1320 libwnck/wnckprop.c:1332 libwnck/wnckprop.c:1448
 #, c-format
 msgid "%d (\"%s\")"
 msgstr "%d (\"%s\")"
 
-#: ../libwnck/wnckprop.c:1204 ../libwnck/wnckprop.c:1225
-#: ../libwnck/wnckprop.c:1281 ../libwnck/wnckprop.c:1292
-#: ../libwnck/wnckprop.c:1303 ../libwnck/wnckprop.c:1314
-#: ../libwnck/wnckprop.c:1376 ../libwnck/wnckprop.c:1427
+#. Translators: "none" here means "no workspace"
+#: libwnck/wnckprop.c:1220 libwnck/wnckprop.c:1301 libwnck/wnckprop.c:1313
+#: libwnck/wnckprop.c:1325 libwnck/wnckprop.c:1337 libwnck/wnckprop.c:1455
+msgctxt "workspace"
 msgid "none"
 msgstr "არა"
 
-#: ../libwnck/wnckprop.c:1205
+#: libwnck/wnckprop.c:1221
 #, c-format
 msgid "Active Workspace: %s\n"
-msgstr "აქტიური სამუშაო გარემო: %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1214
+#: libwnck/wnckprop.c:1230
 #, c-format
 msgid "\"%s\""
 msgstr "\"%s\""
 
-#. Translators: %lu is a window number and %s a window name
-#: ../libwnck/wnckprop.c:1220
+#. Translators: %lu is a window identifier (number) and %s a window name
+#: libwnck/wnckprop.c:1236
 #, c-format
 msgid "%lu (%s)"
 msgstr "%lu (%s)"
 
-#: ../libwnck/wnckprop.c:1226
+#. Translators: "none" here means "no window"
+#: libwnck/wnckprop.c:1242
+msgctxt "window"
+msgid "none"
+msgstr "არა"
+
+#: libwnck/wnckprop.c:1243
 #, c-format
 msgid "Active Window: %s\n"
-msgstr "აქტიური ფანჯარა: %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1229
+#: libwnck/wnckprop.c:1246
 #, c-format
 msgid "Showing the desktop: %s\n"
-msgstr "სამუშაო მაგიდის გამოჩენა: %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1231
+#: libwnck/wnckprop.c:1248
 msgid "true"
-msgstr "true"
+msgstr "სიმართლე"
 
-#: ../libwnck/wnckprop.c:1231
+#: libwnck/wnckprop.c:1248
 msgid "false"
-msgstr "false"
+msgstr "მცდარი"
 
-#: ../libwnck/wnckprop.c:1242
+#: libwnck/wnckprop.c:1259
 #, c-format
 msgid "Workspace Name: %s\n"
-msgstr "სამუშაო გარემოს სახელწოდება: %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1243
+#: libwnck/wnckprop.c:1260
 #, c-format
 msgid "Workspace Number: %d\n"
-msgstr "სამუშაო გარემოებების რაოდენობა: %d\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1250 ../libwnck/wnckprop.c:1436
+#: libwnck/wnckprop.c:1267 libwnck/wnckprop.c:1464
 #, c-format
 msgid "On Screen: %d (Window Manager: %s)\n"
-msgstr "ეკრანზე: %d (ფანჯრების მმართველი: %s)\n"
+msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1264
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: libwnck/wnckprop.c:1282
 msgid "<no viewport>"
-msgstr "<არავითარი ხილული არე>"
+msgstr ""
 
-#. Translators: 'viewport' is kind of the viewable area. a viewport can be used to implement
-#. a workspace (e.g. compiz is an example); however it is not just the current workspace.
-#: ../libwnck/wnckprop.c:1267
+#. Translators: 'viewport' is kind of the viewable area. A viewport can be
+#. * used to implement workspaces (e.g. compiz is an example); however it is
+#. * not just the current workspace.
+#: libwnck/wnckprop.c:1286
 #, c-format
 msgid "Viewport position (x, y): %s\n"
-msgstr "ხილული გარემოს მდებარეობა (x, y): %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1270
+#: libwnck/wnckprop.c:1289
 #, c-format
 msgid "Position in Layout (row, column): %d, %d\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1282
+#: libwnck/wnckprop.c:1302
 #, c-format
 msgid "Left Neighbor: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1293
+#: libwnck/wnckprop.c:1314
 #, c-format
 msgid "Right Neighbor: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1304
+#: libwnck/wnckprop.c:1326
 #, c-format
 msgid "Top Neighbor: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1315
+#: libwnck/wnckprop.c:1338
 #, c-format
 msgid "Bottom Neighbor: %s\n"
 msgstr ""
 
-#. Translators: Ressource class is the name to identify a class.
-#: ../libwnck/wnckprop.c:1327
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: libwnck/wnckprop.c:1351 libwnck/wnckprop.c:1510
 #, c-format
-msgid "Resource Class: %s\n"
+msgid "Class Group ID: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1329
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class.
+#: libwnck/wnckprop.c:1355
 #, c-format
-msgid "Group Name: %s\n"
+msgid "Class Group Name: %s\n"
 msgstr ""
 
 #. Translators: 'set' in the sense of "something has been set".
-#: ../libwnck/wnckprop.c:1335 ../libwnck/wnckprop.c:1359
-#: ../libwnck/wnckprop.c:1412
+#: libwnck/wnckprop.c:1361 libwnck/wnckprop.c:1385 libwnck/wnckprop.c:1439
 msgid "set"
-msgstr ""
+msgstr "set"
 
 #. Translators: 'unset' in the sense of "something has not been set".
-#: ../libwnck/wnckprop.c:1338 ../libwnck/wnckprop.c:1362
-#: ../libwnck/wnckprop.c:1369 ../libwnck/wnckprop.c:1398
-#: ../libwnck/wnckprop.c:1405 ../libwnck/wnckprop.c:1415
-#: ../libwnck/wnckprop.c:1479 ../libwnck/wnckprop.c:1489
-#: ../libwnck/wnckprop.c:1497
+#: libwnck/wnckprop.c:1364 libwnck/wnckprop.c:1388 libwnck/wnckprop.c:1395
+#: libwnck/wnckprop.c:1425 libwnck/wnckprop.c:1432 libwnck/wnckprop.c:1442
+#: libwnck/wnckprop.c:1507 libwnck/wnckprop.c:1516 libwnck/wnckprop.c:1528
+#: libwnck/wnckprop.c:1536 libwnck/wnckprop.c:1543
 msgid "<unset>"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1339 ../libwnck/wnckprop.c:1363
-#: ../libwnck/wnckprop.c:1416
+#: libwnck/wnckprop.c:1365 libwnck/wnckprop.c:1389 libwnck/wnckprop.c:1443
 #, c-format
 msgid "Icons: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1342 ../libwnck/wnckprop.c:1379
+#: libwnck/wnckprop.c:1368 libwnck/wnckprop.c:1406
 #, c-format
 msgid "Number of Windows: %d\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1354 ../libwnck/wnckprop.c:1399
+#: libwnck/wnckprop.c:1380 libwnck/wnckprop.c:1426
 #, c-format
 msgid "Name: %s\n"
-msgstr ""
+msgstr "სახელი: %s\n"
 
 #. Translators: note that "Icon" here has a specific window
 #. * management-related meaning. It means minimized.
-#: ../libwnck/wnckprop.c:1355 ../libwnck/wnckprop.c:1408
+#: libwnck/wnckprop.c:1381 libwnck/wnckprop.c:1435
 #, c-format
 msgid "Icon Name: %s\n"
-msgstr "ხატულას სახელი: %s\n"
-
-#: ../libwnck/wnckprop.c:1370 ../libwnck/wnckprop.c:1490
-#, c-format
-msgid "PID: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1377
+#: libwnck/wnckprop.c:1396 libwnck/wnckprop.c:1529
+#, c-format
+msgid "PID: %s\n"
+msgstr "PID: %s\n"
+
+#. Translators: "none" here means "no startup ID"
+#: libwnck/wnckprop.c:1403
+msgctxt "startupID"
+msgid "none"
+msgstr "არა"
+
+#: libwnck/wnckprop.c:1404
 #, c-format
 msgid "Startup ID: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1425
+#: libwnck/wnckprop.c:1452
 msgid "all workspaces"
-msgstr "ყველა სამუშაო გარემოში"
-
-#: ../libwnck/wnckprop.c:1428
-#, c-format
-msgid "On Workspace: %s\n"
-msgstr "სამუშაო გარემოში: %s\n"
-
-#: ../libwnck/wnckprop.c:1443
-msgid "normal window"
-msgstr "ნორმალური ფანჯარა"
-
-#: ../libwnck/wnckprop.c:1446
-msgid "desktop"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1449
+#: libwnck/wnckprop.c:1456
+#, c-format
+msgid "On Workspace: %s\n"
+msgstr ""
+
+#: libwnck/wnckprop.c:1471
+msgid "normal window"
+msgstr ""
+
+#: libwnck/wnckprop.c:1474
+msgid "desktop"
+msgstr "სამუშაო მაგიდა"
+
+#: libwnck/wnckprop.c:1477
 msgid "dock or panel"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1452
+#: libwnck/wnckprop.c:1480
 msgid "dialog window"
-msgstr "დიალოგ ფანჯარა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1455
+#: libwnck/wnckprop.c:1483
 msgid "tearoff toolbar"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1458
+#: libwnck/wnckprop.c:1486
 msgid "tearoff menu"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1461
+#: libwnck/wnckprop.c:1489
 msgid "utility window"
-msgstr "ხელსაწყოთა ფანჯარა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1464
+#: libwnck/wnckprop.c:1492
 msgid "splash screen"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1469
+#: libwnck/wnckprop.c:1497
 #, c-format
 msgid "Window Type: %s\n"
-msgstr "ფანჯრის ტიპი: %s\n"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1472
+#: libwnck/wnckprop.c:1500
 #, c-format
 msgid "Geometry (x, y, width, height): %d, %d, %d, %d\n"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1481
+#. Translators: A class is like a "family". E.g., all gvim windows are of the
+#. * same class. The class instance is a way to differentiate windows belonging
+#. * to the same class group.
+#: libwnck/wnckprop.c:1520
 #, c-format
-msgid "Class Group: %s\n"
+msgid "Class Instance: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1483
+#: libwnck/wnckprop.c:1522
 #, c-format
 msgid "XID: %lu\n"
-msgstr ""
+msgstr "XID: %lu\n"
 
-#: ../libwnck/wnckprop.c:1498
+#: libwnck/wnckprop.c:1537
 #, c-format
 msgid "Session ID: %s\n"
 msgstr ""
 
+#: libwnck/wnckprop.c:1544
+#, c-format
+msgid "Role: %s\n"
+msgstr ""
+
 #. Translators: A group leader is the window that is the "owner" of a group
-#. * of windows, ie: if you have multiple windows in one application, one window
-#. * has some information about the application (like the application name).
-#: ../libwnck/wnckprop.c:1504
+#. * of windows, ie: if you have multiple windows in one application, one
+#. * window has some information about the application (like the application
+#. * name).
+#: libwnck/wnckprop.c:1551
 #, c-format
 msgid "Group Leader: %lu\n"
 msgstr ""
 
-#. Translators: A window can be transient for another window: it means it's on top of it
-#: ../libwnck/wnckprop.c:1509
+#. Translators: A window can be transient for another window: it means it's
+#. * on top of it
+#: libwnck/wnckprop.c:1557
 #, c-format
 msgid "Transient for: %lu\n"
 msgstr ""
@@ -950,57 +923,57 @@ msgstr ""
 #. FIXME: else print something?
 #. Translators: we're building a list of items here.             * For example, the result is "a, b".                            * In this case, the first string is "a", the second             * string is ", " and the third string is "b".                   * We can then use this information here to also                 * recursively build longer lists, like "a, b, c, d"
 #. Translators: we're building a list of items here.             * The end result is something like "a, b, c"                    * In this case, the first string is "a, b", the second          * string is ", " and the third string is "c"
-#: ../libwnck/wnckprop.c:1524 ../libwnck/wnckprop.c:1571
+#: libwnck/wnckprop.c:1572 libwnck/wnckprop.c:1620
 #, c-format
 msgid "%1$s%2$s%3$s"
-msgstr ""
+msgstr "%1$s%2$s%3$s"
 
 #. Translators: see comment for "%1$s%2$s%3$s" in order          * to properly translate this
-#: ../libwnck/wnckprop.c:1528 ../libwnck/wnckprop.c:1573
+#: libwnck/wnckprop.c:1576 libwnck/wnckprop.c:1622
 msgid ", "
+msgstr ", "
+
+#: libwnck/wnckprop.c:1582
+msgid "minimized"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1534
-msgid "minimized"
-msgstr "მინიმიზირებული"
-
-#: ../libwnck/wnckprop.c:1535
+#: libwnck/wnckprop.c:1583
 msgid "maximized"
-msgstr "გაფართოებული"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1539
+#: libwnck/wnckprop.c:1587
 msgid "maximized horizontally"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1541
+#: libwnck/wnckprop.c:1589
 msgid "maximized vertically"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1543
+#: libwnck/wnckprop.c:1591
 msgid "shaded"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1544
+#: libwnck/wnckprop.c:1592
 msgid "pinned"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1545
+#: libwnck/wnckprop.c:1593
 msgid "sticky"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1546
+#: libwnck/wnckprop.c:1594
 msgid "above"
-msgstr "ზემოთ"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1547
+#: libwnck/wnckprop.c:1595
 msgid "below"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1548
+#: libwnck/wnckprop.c:1596
 msgid "fullscreen"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1549
+#: libwnck/wnckprop.c:1597
 msgid "needs attention"
 msgstr ""
 
@@ -1008,126 +981,127 @@ msgstr ""
 #. * It's a representation of all workspaces with windows inside it.
 #. * Please make sure that the translation is in sync with gnome-panel,
 #. * where this term is also used in translatable strings
-#: ../libwnck/wnckprop.c:1554
+#: libwnck/wnckprop.c:1602
 msgid "skip pager"
 msgstr ""
 
-#. Translators: "tasklist" is the list of running applications (the window list)
-#: ../libwnck/wnckprop.c:1556
+#. Translators: "tasklist" is the list of running applications (the window
+#. * list)
+#: libwnck/wnckprop.c:1605
 msgid "skip tasklist"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1558
+#: libwnck/wnckprop.c:1607
 msgid "normal"
-msgstr ""
+msgstr "ნორმალური"
 
-#: ../libwnck/wnckprop.c:1559
+#: libwnck/wnckprop.c:1608
 #, c-format
 msgid "State: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1580
+#: libwnck/wnckprop.c:1629
 msgid "move"
-msgstr "გადაადგილება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1581
+#: libwnck/wnckprop.c:1630
 msgid "resize"
-msgstr "ზომის შეცვლა"
+msgstr "resize"
 
-#: ../libwnck/wnckprop.c:1582
+#: libwnck/wnckprop.c:1631
 msgid "shade"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1583
+#: libwnck/wnckprop.c:1632
 msgid "unshade"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1584
+#: libwnck/wnckprop.c:1633
 msgid "stick"
-msgstr "მიწებება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1585
+#: libwnck/wnckprop.c:1634
 msgid "unstick"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1587
+#: libwnck/wnckprop.c:1636
 msgid "maximize horizontally"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1589
+#: libwnck/wnckprop.c:1638
 msgid "unmaximize horizontally"
-msgstr "თავდაპირველი ზომა ჰორიზონტალურად"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1591
+#: libwnck/wnckprop.c:1640
 msgid "maximize vertically"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1593
+#: libwnck/wnckprop.c:1642
 msgid "unmaximize vertically"
-msgstr "თავდაპირველი ზომა ვერტიკალურად"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1596
+#: libwnck/wnckprop.c:1645
 msgid "change workspace"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1598
+#: libwnck/wnckprop.c:1647
 msgid "pin"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1600
+#: libwnck/wnckprop.c:1649
 msgid "unpin"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1601
+#: libwnck/wnckprop.c:1650
 msgid "minimize"
-msgstr "მინიმიზირება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1602
+#: libwnck/wnckprop.c:1651
 msgid "unminimize"
-msgstr "გაშლა"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1603
+#: libwnck/wnckprop.c:1652
 msgid "maximize"
-msgstr "გაფართოება"
+msgstr "გადიდება"
 
-#: ../libwnck/wnckprop.c:1604
+#: libwnck/wnckprop.c:1653
 msgid "unmaximize"
-msgstr "თავდაპირველი ზომის დაბრუნება"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1606
+#: libwnck/wnckprop.c:1655
 msgid "change fullscreen mode"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1607
+#: libwnck/wnckprop.c:1656
 msgid "close"
 msgstr "დახურვა"
 
-#: ../libwnck/wnckprop.c:1609
+#: libwnck/wnckprop.c:1658
 msgid "make above"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1611
+#: libwnck/wnckprop.c:1660
 msgid "unmake above"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1613
+#: libwnck/wnckprop.c:1662
 msgid "make below"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1615
+#: libwnck/wnckprop.c:1664
 msgid "unmake below"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1617
+#: libwnck/wnckprop.c:1666
 msgid "no action possible"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1618
+#: libwnck/wnckprop.c:1667
 #, c-format
 msgid "Possible Actions: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1795
+#: libwnck/wnckprop.c:1876
 msgid ""
 "Print or modify the properties of a screen/workspace/window, or interact "
 "with it, following the EWMH specification.\n"
@@ -1135,68 +1109,69 @@ msgid ""
 "\thttp://freedesktop.org/wiki/Specifications/wm-spec"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1805
+#: libwnck/wnckprop.c:1886
 msgid "Options to list windows or workspaces"
-msgstr "პარამეტრები ფანჯრების ან სამუშაო მაგიდების სიის სანახავად"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1806
+#: libwnck/wnckprop.c:1887
 msgid "Show options to list windows or workspaces"
-msgstr "პარამეტრების ჩვენება ფანჯრების ან სამუშაო მაგიდების სიის სანახავად"
+msgstr ""
 
-#: ../libwnck/wnckprop.c:1812
+#: libwnck/wnckprop.c:1894
 msgid "Options to modify properties of a window"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1813
+#: libwnck/wnckprop.c:1895
 msgid "Show options to modify properties of a window"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1819
+#: libwnck/wnckprop.c:1902
 msgid "Options to modify properties of a workspace"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1820
+#: libwnck/wnckprop.c:1903
 msgid "Show options to modify properties of a workspace"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1826
+#: libwnck/wnckprop.c:1910
 msgid "Options to modify properties of a screen"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1827
+#: libwnck/wnckprop.c:1911
 msgid "Show options to modify properties of a screen"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1837
+#: libwnck/wnckprop.c:1922
 #, c-format
 msgid "Error while parsing arguments: %s\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1860
+#: libwnck/wnckprop.c:1945
 #, c-format
 msgid "Cannot interact with screen %d: the screen does not exist\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1916
+#: libwnck/wnckprop.c:2001
 #, c-format
 msgid "Cannot interact with workspace %d: the workspace cannot be found\n"
 msgstr ""
 
-#. Translators: A class is like a "family". E.g., all gvim windows are of the same class.
-#: ../libwnck/wnckprop.c:1939
+#. Translators: A class is like a "family". E.g., all gvim windows are
+#. * of the same class.
+#: libwnck/wnckprop.c:2025
 #, c-format
 msgid ""
 "Cannot interact with class group \"%s\": the class group cannot be found\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1962
+#: libwnck/wnckprop.c:2048
 #, c-format
 msgid ""
 "Cannot interact with application having its group leader with XID %lu: the "
 "application cannot be found\n"
 msgstr ""
 
-#: ../libwnck/wnckprop.c:1985
+#: libwnck/wnckprop.c:2071
 #, c-format
 msgid "Cannot interact with window with XID %lu: the window cannot be found\n"
 msgstr ""
