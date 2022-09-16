@@ -1345,28 +1345,6 @@ wnck_selector_unrealize (GtkWidget *widget)
 }
 
 /**
- * wnck_selector_new:
- *
- * Creates a new #WnckSelector. The #WnckSelector will list #WnckWindow of the
- * #WnckScreen it is on.
- *
- * Return value: a newly created #WnckSelector.
- *
- * Since: 2.10
- */
-GtkWidget *
-wnck_selector_new (void)
-{
-  WnckSelector *selector;
-
-  selector = g_object_new (WNCK_TYPE_SELECTOR,
-                           "handle", _wnck_get_handle (),
-                           NULL);
-
-  return GTK_WIDGET (selector);
-}
-
-/**
  * wnck_selector_new_with_handle:
  * @handle: a #WnckHandle
  *
