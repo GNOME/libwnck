@@ -72,9 +72,6 @@ struct _WnckClassGroupClass
 
 GType wnck_class_group_get_type (void) G_GNUC_CONST;
 
-G_DEPRECATED_FOR(wnck_handle_get_class_group)
-WnckClassGroup *wnck_class_group_get (const char *id);
-
 GList *wnck_class_group_get_windows (WnckClassGroup *class_group);
 const char * wnck_class_group_get_id (WnckClassGroup *class_group);
 
@@ -82,11 +79,6 @@ const char * wnck_class_group_get_name (WnckClassGroup *class_group);
 
 GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
-
-#ifndef WNCK_DISABLE_DEPRECATED
-G_DEPRECATED_FOR(wnck_class_group_get_id)
-const char * wnck_class_group_get_res_class (WnckClassGroup *class_group);
-#endif
 
 G_END_DECLS
 
