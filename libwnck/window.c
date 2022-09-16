@@ -438,23 +438,6 @@ wnck_window_finalize (GObject *object)
 }
 
 /**
- * wnck_window_get:
- * @xwindow: an X window ID.
- *
- * Gets a preexisting #WnckWindow for the X window @xwindow. This will not
- * create a #WnckWindow if none exists. The function is robust against bogus
- * window IDs.
- *
- * Return value: (transfer none): the #WnckWindow for @xwindow. The returned
- * #WnckWindow is owned by libwnck and must not be referenced or unreferenced.
- **/
-WnckWindow*
-wnck_window_get (gulong xwindow)
-{
-  return wnck_handle_get_window (_wnck_get_handle (), xwindow);
-}
-
-/**
  * wnck_window_get_screen:
  * @window: a #WnckWindow.
  *
