@@ -120,40 +120,6 @@ struct _WnckScreenClass
   void (* pad6) (void);
 };
 
-#ifndef WNCK_DISABLE_DEPRECATED
-typedef struct _WnckWorkspaceLayout WnckWorkspaceLayout;
-
-/**
- * WnckWorkspaceLayout:
- * @rows: number of rows in the layout grid.
- * @cols: number of columns in the layout grid.
- * @grid: array of size @grid_area containing the index (starting from 0) of
- * the #WnckWorkspace for each position in the layout grid, or -1 if the
- * position does not correspond to any #WnckWorkspace.
- * @grid_area: size of the grid containing all #WnckWorkspace. This can be
- * bigger than the number of #WnckWorkspace because the grid might not be
- * filled.
- * @current_row: row of the specific #WnckWorkspace, starting from 0.
- * @current_col: column of the specific #WnckWorkspace, starting from 0.
- *
- * The #WnckWorkspaceLayout struct contains information about the layout of
- * #WnckWorkspace on a #WnckScreen, and the exact position of a specific
- * #WnckWorkspace.
- *
- * Since: 2.12
- * Deprecated:2.20:
- */
-struct _WnckWorkspaceLayout
-{
-  int rows;
-  int cols;
-  int *grid;
-  int grid_area;
-  int current_row;
-  int current_col;
-};
-#endif /* WNCK_DISABLE_DEPRECATED */
-
 #ifndef __GTK_DOC_IGNORE__
 /**
  * WnckLayoutOrientation:
@@ -196,15 +162,6 @@ typedef enum
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
-G_DEPRECATED_FOR(wnck_handle_get_default_screen)
-WnckScreen*    wnck_screen_get_default              (void);
-
-G_DEPRECATED_FOR(wnck_handle_get_screen)
-WnckScreen*    wnck_screen_get                      (int         index);
-
-G_DEPRECATED_FOR(wnck_handle_get_screen_for_root)
-WnckScreen*    wnck_screen_get_for_root             (gulong      root_window_id);
-
 WnckHandle*    wnck_screen_get_handle               (WnckScreen *screen);
 
 int            wnck_screen_get_number               (WnckScreen *screen);
@@ -243,16 +200,6 @@ int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                                      int         columns);
 void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
-#ifndef WNCK_DISABLE_DEPRECATED
-G_DEPRECATED
-void           wnck_screen_calc_workspace_layout    (WnckScreen          *screen,
-                                                     int                  num_workspaces,
-                                                     int                  space_index,
-                                                     WnckWorkspaceLayout *layout);
-G_DEPRECATED
-void           wnck_screen_free_workspace_layout (WnckWorkspaceLayout *layout);
-#endif /* WNCK_DISABLE_DEPRECATED */
-
 
 G_END_DECLS
 
