@@ -183,10 +183,6 @@ progs = [
   'wnckprop',
 ]
 
-if not get_option('deprecation_flags')
-  progs += 'wnck-urgency-monitor'
-endif
-
 test_progs = [
   'test-wnck',
   'test-tasklist',
