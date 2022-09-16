@@ -177,24 +177,6 @@ wnck_application_finalize (GObject *object)
 }
 
 /**
- * wnck_application_get:
- * @xwindow: the X window ID of a group leader.
- *
- * Gets the #WnckApplication corresponding to the group leader with @xwindow
- * as X window ID.
- *
- * Return value: (transfer none): the #WnckApplication corresponding to
- * @xwindow, or %NULL if there no such #WnckApplication could be found. The
- * returned #WnckApplication is owned by libwnck and must not be referenced or
- * unreferenced.
- */
-WnckApplication*
-wnck_application_get (gulong xwindow)
-{
-  return wnck_handle_get_application (_wnck_get_handle (), xwindow);
-}
-
-/**
  * wnck_application_get_xid:
  * @app: a #WnckApplication.
  *
