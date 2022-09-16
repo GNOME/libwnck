@@ -159,7 +159,6 @@ Wnck.Shutdown()
   <part id="utils">
     <title>Libwnck Utilities</title>
     <xi:include href="xml/resource.xml"/>
-    <xi:include href="xml/icons.xml"/>
     <xi:include href="xml/misc.xml"/>
     <xi:include href="xml/version.xml"/>
   </part>

@@ -37,7 +37,6 @@ headers = [
   'screen.h',
   'selector.h',
   'tasklist.h',
-  'icons.h',
   'misc.h',
   'resource.h',
   'util.h',

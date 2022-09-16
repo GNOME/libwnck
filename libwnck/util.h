@@ -28,10 +28,12 @@
 #define WNCK_UTIL_H
 
 #include <libwnck/misc.h>
-#include <libwnck/icons.h>
 #include <libwnck/resource.h>
 
 G_BEGIN_DECLS
+
+#define WNCK_DEFAULT_ICON_SIZE 32
+#define WNCK_DEFAULT_MINI_ICON_SIZE 16
 
 G_END_DECLS
 

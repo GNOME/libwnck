@@ -116,85 +116,15 @@ wnck_pid_read_resource_usage (GdkDisplay        *gdisplay,
   _wnck_read_resource_usage_pid (gdisplay, pid, usage);
 }
 
-static WnckClientType client_type = 0;
-
-/**
- * wnck_set_client_type:
- * @ewmh_sourceindication_client_type: a role for the client.
- *
- * Sets the role of the libwnck user.
- *
- * The default role is %WNCK_CLIENT_TYPE_APPLICATION. Therefore, for
- * applications providing some window management features, like pagers or
- * tasklists, it is important to set the role to %WNCK_CLIENT_TYPE_PAGER for
- * libwnck to properly work.
- *
- * This function should only be called once per program. Additional calls
- * with the same client type will be silently ignored. An attempt to change
- * the client type to a differnet value after it has already been set will
- * be ignored and a critical warning will be logged.
- *
- * Since: 2.14
- */
-void
-wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type)
-{
-  /* Clients constantly switching types makes no sense; this should only be
-   * set once.
-   */
-  if (client_type != 0 && client_type != ewmh_sourceindication_client_type)
-    g_critical ("wnck_set_client_type: changing the client type is not supported.\n");
-  else
-    client_type = ewmh_sourceindication_client_type;
-}
-
 static WnckHandle *wnck_handle = NULL;
 
 WnckHandle *
 _wnck_get_handle (void)
 {
   if (wnck_handle == NULL)
-    {
-      /* If the type hasn't been set yet, use the default--treat it as a
-       * normal application.
-       */
-      if (client_type == 0)
-        client_type = WNCK_CLIENT_TYPE_APPLICATION;
-
-      wnck_handle = wnck_handle_new (client_type);
-    }
+    wnck_handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
 
   return wnck_handle;
-}
-
-/**
- * wnck_set_default_icon_size:
- * @size: the default size for windows and application standard icons.
- *
- * The default main icon size is %WNCK_DEFAULT_ICON_SIZE. This function allows
- * to change this value.
- *
- * Since: 2.4.6
- */
-void
-wnck_set_default_icon_size (gsize size)
-{
-  wnck_handle_set_default_icon_size (_wnck_get_handle(), size);
-}
-
-/**
- * wnck_set_default_mini_icon_size:
- * @size: the default size for windows and application mini icons.
- *
- * The default main icon size is %WNCK_DEFAULT_MINI_ICON_SIZE. This function
- * allows to change this value.
- *
- * Since: 2.4.6
- */
-void
-wnck_set_default_mini_icon_size (gsize size)
-{
-  wnck_handle_set_default_mini_icon_size (_wnck_get_handle (), size);
 }
 
 /**
