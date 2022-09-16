@@ -26,9 +26,6 @@ G_BEGIN_DECLS
 
 WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
 
-WnckScreen      *_wnck_handle_get_existing_screen        (WnckHandle     *self,
-                                                          int             number);
-
 gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
 
 gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);

@@ -449,24 +449,6 @@ wnck_handle_get_screen_for_root (WnckHandle *self,
   return NULL;
 }
 
-WnckScreen *
-_wnck_handle_get_existing_screen (WnckHandle *self,
-                                  int         number)
-{
-  Display *display;
-
-  display = _wnck_get_default_display ();
-
-  g_return_val_if_fail (WNCK_IS_HANDLE (self), NULL);
-  g_return_val_if_fail (display != NULL, NULL);
-  g_return_val_if_fail (number < ScreenCount (display), NULL);
-
-  if (self->screens != NULL)
-    return self->screens[number];
-
-  return NULL;
-}
-
 /**
  * wnck_handle_set_default_icon_size:
  * @self: a #WnckHandle
