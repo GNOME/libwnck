@@ -63,9 +63,6 @@ struct _WnckSelectorClass
   void (* pad4) (void);
 };
 
-G_DEPRECATED_FOR(wnck_selector_new_with_handle)
-GtkWidget *wnck_selector_new             (void);
-
 GtkWidget *wnck_selector_new_with_handle (WnckHandle *handle);
 
 GType      wnck_selector_get_type        (void) G_GNUC_CONST;
