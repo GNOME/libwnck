@@ -20,8 +20,6 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#undef WNCK_DISABLE_DEPRECATED
-
 #include <string.h>
 #include "class-group.h"
 #include "window.h"
@@ -184,25 +182,6 @@ wnck_class_group_finalize (GObject *object)
     }
 
   G_OBJECT_CLASS (wnck_class_group_parent_class)->finalize (object);
-}
-
-/**
- * wnck_class_group_get:
- * @id: identifier name of the sought resource class.
- *
- * Gets the #WnckClassGroup corresponding to @id.
- *
- * Return value: (transfer none): the #WnckClassGroup corresponding to
- * @id, or %NULL if there is no #WnckClassGroup with the specified
- * @id. The returned #WnckClassGroup is owned by libwnck and must not be
- * referenced or unreferenced.
- *
- * Since: 2.2
- **/
-WnckClassGroup *
-wnck_class_group_get (const char *id)
-{
-  return wnck_handle_get_class_group (_wnck_get_handle (), id);
 }
 
 /**
@@ -633,26 +612,6 @@ wnck_class_group_get_windows (WnckClassGroup *class_group)
  **/
 const char *
 wnck_class_group_get_id (WnckClassGroup *class_group)
-{
-  g_return_val_if_fail (class_group != NULL, NULL);
-
-  return class_group->priv->res_class;
-}
-
-/**
- * wnck_class_group_get_res_class:
- * @class_group: a #WnckClassGroup.
- *
- * Gets the resource class name for @class_group.
- *
- * Return value: the resource class name of @class_group, or an
- * empty string if the group has no resource class name.
- *
- * Since: 2.2
- * Deprecated:3.2: Use wnck_class_group_get_id() instead.
- **/
-const char *
-wnck_class_group_get_res_class (WnckClassGroup *class_group)
 {
   g_return_val_if_fail (class_group != NULL, NULL);
 
