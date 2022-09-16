@@ -2265,26 +2265,6 @@ wnck_pager_query_tooltip (GtkWidget  *widget,
 }
 
 /**
- * wnck_pager_new:
- *
- * Creates a new #WnckPager. The #WnckPager will show the #WnckWorkspace of the
- * #WnckScreen it is on.
- *
- * Return value: a newly created #WnckPager.
- */
-GtkWidget*
-wnck_pager_new (void)
-{
-  WnckPager *pager;
-
-  pager = g_object_new (WNCK_TYPE_PAGER,
-                        "handle", _wnck_get_handle (),
-                        NULL);
-
-  return GTK_WIDGET (pager);
-}
-
-/**
  * wnck_pager_new_with_handle:
  * @handle: a #WnckHandle
  *
