@@ -489,6 +489,7 @@ int
 main (int    argc,
       char **argv)
 {
+  g_autoptr (WnckHandle) handle = NULL;
   WnckScreen *screen;
   GtkWidget *window;
   GtkWidget *vbox;
@@ -498,7 +499,8 @@ main (int    argc,
 
   gtk_init (&argc, &argv);
 
-  screen = wnck_screen_get_default ();
+  handle = wnck_handle_new (WNCK_CLIENT_TYPE_APPLICATION);
+  screen = wnck_handle_get_default_screen (handle);
 
   window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
   gtk_window_set_title (GTK_WINDOW (window), WINDOW_NAME);
