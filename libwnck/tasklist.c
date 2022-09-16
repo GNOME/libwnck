@@ -228,13 +228,6 @@ struct _WnckTasklistPrivate
 
   guint idle_callback_tag;
 
-  int *size_hints;
-  int size_hints_len;
-
-  WnckLoadIconFunction icon_loader;
-  void *icon_loader_data;
-  GDestroyNotify free_icon_loader_data;
-
 #ifdef HAVE_STARTUP_NOTIFICATION
   SnDisplay *sn_display;
   SnMonitorContext *sn_context;
@@ -1272,15 +1265,6 @@ wnck_tasklist_finalize (GObject *object)
       tasklist->priv->idle_callback_tag = 0;
     }
 
-  g_free (tasklist->priv->size_hints);
-  tasklist->priv->size_hints = NULL;
-  tasklist->priv->size_hints_len = 0;
-
-  if (tasklist->priv->free_icon_loader_data != NULL)
-    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
-  tasklist->priv->free_icon_loader_data = NULL;
-  tasklist->priv->icon_loader_data = NULL;
-
   g_clear_object (&tasklist->priv->handle);
 
   G_OBJECT_CLASS (wnck_tasklist_parent_class)->finalize (object);
@@ -1492,36 +1476,6 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 
   tasklist->priv->grouping_limit = limit;
   gtk_widget_queue_resize (GTK_WIDGET (tasklist));
-}
-
-/**
- * wnck_tasklist_set_icon_loader:
- * @tasklist: a #WnckTasklist
- * @load_icon_func: icon loader function
- * @data: data for icon loader function
- * @free_data_func: function to free the data
- *
- * Sets a function to be used for loading icons.
- *
- * Since: 2.2
- *
- * Deprecated: 43.2: Icon loader is included in libwnck.
- * load_icon_func will be ignored.
- **/
-void
-wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
-                               WnckLoadIconFunction  load_icon_func,
-                               void                 *data,
-                               GDestroyNotify        free_data_func)
-{
-  g_return_if_fail (WNCK_IS_TASKLIST (tasklist));
-
-  if (tasklist->priv->free_icon_loader_data != NULL)
-    (* tasklist->priv->free_icon_loader_data) (tasklist->priv->icon_loader_data);
-
-  tasklist->priv->icon_loader = load_icon_func;
-  tasklist->priv->icon_loader_data = data;
-  tasklist->priv->free_icon_loader_data = free_data_func;
 }
 
 static void
@@ -1757,180 +1711,6 @@ calculate_max_button_size (WnckTasklist *self,
     *max_height_out = max_height;
 }
 
-static void
-wnck_tasklist_update_size_hints (WnckTasklist *tasklist)
-{
-  GtkAllocation  tasklist_allocation;
-  GtkAllocation  fake_allocation;
-  int max_height = 1;
-  int max_width = 1;
-  GArray *array;
-  GList *ungrouped_class_groups;
-  int n_windows;
-  int n_startup_sequences;
-  int n_rows;
-  int n_cols, last_n_cols;
-  int n_grouped_buttons;
-  gboolean score_set;
-  int val;
-  WnckTask *class_group_task;
-  int lowest_range;
-  int grouping_limit;
-
-  /* Note that the fact that we nearly don't care about the width/height
-   * requested by the buttons makes it possible to hide/show the label/image
-   * in wnck_task_size_allocated(). If we really cared about those, this
-   * wouldn't work since our call to gtk_widget_size_request() does not take
-   * into account the hidden widgets.
-   */
-  calculate_max_button_size (tasklist, &max_width, &max_height);
-
-  gtk_widget_get_allocation (GTK_WIDGET (tasklist), &tasklist_allocation);
-
-  fake_allocation.width = tasklist_allocation.width;
-  fake_allocation.height = tasklist_allocation.height;
-
-  array = g_array_new (FALSE, FALSE, sizeof (int));
-
-  /* Calculate size_hints list */
-
-  n_windows = g_list_length (tasklist->priv->windows);
-  n_startup_sequences = g_list_length (tasklist->priv->startup_sequences);
-  n_grouped_buttons = 0;
-  ungrouped_class_groups = g_list_copy (tasklist->priv->class_groups);
-  score_set = FALSE;
-
-  grouping_limit = MIN (tasklist->priv->grouping_limit, max_width);
-
-  /* Try ungrouped mode */
-  wnck_tasklist_layout (&fake_allocation,
-			max_width,
-			max_height,
-			n_windows + n_startup_sequences,
-			tasklist->priv->orientation,
-			&n_cols, &n_rows);
-
-  last_n_cols = G_MAXINT;
-  lowest_range = G_MAXINT;
-  if (tasklist->priv->grouping != WNCK_TASKLIST_ALWAYS_GROUP)
-    {
-      if (tasklist->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
-        {
-          val = n_cols * max_width;
-          g_array_insert_val (array, array->len, val);
-          val = n_cols * grouping_limit;
-          g_array_insert_val (array, array->len, val);
-
-          last_n_cols = n_cols;
-          lowest_range = val;
-        }
-      else
-        {
-          val = n_rows * max_height;
-          g_array_insert_val (array, array->len, val);
-          val = n_rows * grouping_limit;
-          g_array_insert_val (array, array->len, val);
-
-          last_n_cols = n_rows;
-          lowest_range = val;
-        }
-    }
-
-  while (ungrouped_class_groups != NULL &&
-	 tasklist->priv->grouping != WNCK_TASKLIST_NEVER_GROUP)
-    {
-      if (!score_set)
-        {
-          wnck_tasklist_score_groups (tasklist, ungrouped_class_groups);
-          score_set = TRUE;
-        }
-
-      ungrouped_class_groups = wnck_task_get_highest_scored (ungrouped_class_groups, &class_group_task);
-
-      n_grouped_buttons += g_list_length (class_group_task->windows) - 1;
-
-      wnck_tasklist_layout (&fake_allocation,
-			    max_width,
-			    max_height,
-			    n_startup_sequences + n_windows - n_grouped_buttons,
-			    tasklist->priv->orientation,
-			    &n_cols, &n_rows);
-
-      if (tasklist->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
-        {
-          if (n_cols != last_n_cols &&
-              (tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP ||
-               ungrouped_class_groups == NULL))
-            {
-              val = n_cols * max_width;
-              if (val >= lowest_range)
-                {
-                  /* Overlaps old range */
-                  g_assert (array->len > 0);
-                  lowest_range = n_cols * grouping_limit;
-                  g_array_index(array, int, array->len-1) = lowest_range;
-                }
-              else
-                {
-                  /* Full new range */
-                  g_array_insert_val (array, array->len, val);
-                  val = n_cols * grouping_limit;
-                  g_array_insert_val (array, array->len, val);
-                  lowest_range = val;
-                }
-
-              last_n_cols = n_cols;
-            }
-        }
-      else
-        {
-          if (n_rows != last_n_cols &&
-              (tasklist->priv->grouping == WNCK_TASKLIST_AUTO_GROUP ||
-               ungrouped_class_groups == NULL))
-            {
-              val = n_rows * max_height;
-              if (val >= lowest_range)
-                {
-                  /* Overlaps old range */
-                  g_assert (array->len > 0);
-                  lowest_range = n_rows * grouping_limit;
-                  g_array_index (array, int, array->len-1) = lowest_range;
-                }
-              else
-                {
-                  /* Full new range */
-                  g_array_insert_val (array, array->len, val);
-                  val = n_rows * grouping_limit;
-                  g_array_insert_val (array, array->len, val);
-                  lowest_range = val;
-                }
-
-              last_n_cols = n_rows;
-            }
-        }
-    }
-
-  g_list_free (ungrouped_class_groups);
-
-  /* Always let you go down to a zero size: */
-  if (array->len > 0)
-    {
-      g_array_index(array, int, array->len-1) = 0;
-    }
-  else
-    {
-      val = 0;
-      g_array_insert_val (array, 0, val);
-      g_array_insert_val (array, 0, val);
-    }
-
-  if (tasklist->priv->size_hints)
-    g_free (tasklist->priv->size_hints);
-
-  tasklist->priv->size_hints_len = array->len;
-  tasklist->priv->size_hints = (int *)g_array_free (array, FALSE);
-}
-
 static int
 get_n_buttons (WnckTasklist *self)
 {
@@ -2123,36 +1903,6 @@ wnck_tasklist_get_preferred_height_for_width (GtkWidget *widget,
                       width,
                       minimum_height,
                       natural_height);
-}
-
-/**
- * wnck_tasklist_get_size_hint_list:
- * @tasklist: a #WnckTasklist.
- * @n_elements: return location for the number of elements in the array
- * returned by this function. This number should always be pair.
- *
- * Since a #WnckTasklist does not have a fixed size (#WnckWindow can be grouped
- * when needed, for example), the standard size request mechanism in GTK+ is
- * not enough to announce what sizes can be used by @tasklist. The size hints
- * mechanism is a solution for this. See panel_applet_set_size_hints() for more
- * information.
- *
- * Return value: a list of size hints that can be used to allocate an
- * appropriate size for @tasklist.
- *
- * Deprecated: 3.42: Use minimum and natural size instead.
- */
-const int *
-wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
-				  int           *n_elements)
-{
-  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), NULL);
-  g_return_val_if_fail (n_elements != NULL, NULL);
-
-  wnck_tasklist_update_size_hints (tasklist);
-
-  *n_elements = tasklist->priv->size_hints_len;
-  return tasklist->priv->size_hints;
 }
 
 static void
@@ -2765,26 +2515,6 @@ wnck_tasklist_scroll_event (GtkWidget      *widget,
     wnck_tasklist_activate_task_window (window->data, event->time);
 
   return TRUE;
-}
-
-/**
- * wnck_tasklist_new:
- *
- * Creates a new #WnckTasklist. The #WnckTasklist will list #WnckWindow of the
- * #WnckScreen it is on.
- *
- * Return value: a newly created #WnckTasklist.
- */
-GtkWidget*
-wnck_tasklist_new (void)
-{
-  WnckTasklist *tasklist;
-
-  tasklist = g_object_new (WNCK_TYPE_TASKLIST,
-                           "handle", _wnck_get_handle (),
-                           NULL);
-
-  return GTK_WIDGET (tasklist);
 }
 
 /**

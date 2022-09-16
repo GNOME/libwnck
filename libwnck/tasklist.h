@@ -87,14 +87,7 @@ typedef enum {
 
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
-G_DEPRECATED_FOR(wnck_tasklist_new_with_handle)
-GtkWidget *wnck_tasklist_new (void);
-
 GtkWidget *wnck_tasklist_new_with_handle (WnckHandle *handle);
-
-G_DEPRECATED
-const int *wnck_tasklist_get_size_hint_list (WnckTasklist  *tasklist,
-					      int           *n_elements);
 
 void wnck_tasklist_set_grouping (WnckTasklist             *tasklist,
 				 WnckTasklistGroupingType  grouping);
@@ -118,34 +111,6 @@ void     wnck_tasklist_set_tooltips_enabled (WnckTasklist *self,
                                              gboolean      tooltips_enabled);
 
 gboolean wnck_tasklist_get_tooltips_enabled (WnckTasklist *self);
-
-/**
- * WnckLoadIconFunction:
- * @icon_name: an icon name as in the Icon field in a .desktop file for the
- * icon to load.
- * @size: the desired icon size.
- * @flags: not defined to do anything yet.
- * @data: data passed to the function, set when the #WnckLoadIconFunction has
- * been set for the #WnckTasklist.
- *
- * Specifies the type of function passed to wnck_tasklist_set_icon_loader().
- *
- * Returns: it should return a <classname>GdkPixbuf</classname> of @icon_name
- * at size @size, or %NULL if no icon for @icon_name at size @size could be
- * loaded.
- *
- * Since: 2.2
- */
-typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
-                                            int           size,
-                                            unsigned int  flags,
-                                            void         *data);
-
-G_DEPRECATED
-void wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
-                                    WnckLoadIconFunction  load_icon_func,
-                                    void                 *data,
-                                    GDestroyNotify        free_data_func);
 
 G_END_DECLS
 
