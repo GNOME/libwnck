@@ -77,6 +77,9 @@ invalidate_icons (WnckHandle *self)
   Display *xdisplay;
   int i;
 
+  if (self->screens == NULL)
+    return;
+
   xdisplay = _wnck_get_default_display ();
 
   for (i = 0; i < ScreenCount (xdisplay); ++i)
