@@ -26,6 +26,8 @@ G_BEGIN_DECLS
 
 WnckClientType   _wnck_handle_get_client_type            (WnckHandle     *self);
 
+gboolean         _wnck_handle_has_xres                   (WnckHandle     *self);
+
 gsize            _wnck_handle_get_default_icon_size      (WnckHandle     *self);
 
 gsize            _wnck_handle_get_default_mini_icon_size (WnckHandle     *self);
