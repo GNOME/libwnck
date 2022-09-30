@@ -510,7 +510,7 @@ _wnck_window_create (Window      xwindow,
     _wnck_get_session_id (xscreen, window->priv->xwindow);
 
   window->priv->pid =
-    _wnck_get_pid (xscreen, window->priv->xwindow);
+    _wnck_get_pid (screen, window->priv->xwindow);
 
   window->priv->x = 0;
   window->priv->y = 0;

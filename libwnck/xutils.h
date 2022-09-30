@@ -123,8 +123,8 @@ void _wnck_change_viewport (Screen *screen,
 
 char*  _wnck_get_session_id     (Screen *screen,
                                  Window xwindow);
-int    _wnck_get_pid            (Screen *screen,
-                                 Window  xwindow);
+int    _wnck_get_pid            (WnckScreen *screen,
+                                 Window      xwindow);
 char*  _wnck_get_name           (Screen *screen,
                                  Window  xwindow);
 char*  _wnck_get_icon_name      (Screen *screen,

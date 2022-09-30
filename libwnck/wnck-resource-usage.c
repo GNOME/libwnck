@@ -126,10 +126,10 @@ wnck_gulong_equal (gconstpointer a,
 }
 
 static gulong
-wnck_check_window_for_pid (Screen *screen,
-                           Window  win,
-                           XID     match_xid,
-                           XID     mask)
+wnck_check_window_for_pid (WnckScreen *screen,
+                           Window      win,
+                           XID         match_xid,
+                           XID         mask)
 {
   if ((win & ~mask) == match_xid)
     return _wnck_get_pid (screen, win);
@@ -138,13 +138,13 @@ wnck_check_window_for_pid (Screen *screen,
 }
 
 static void
-wnck_find_pid_for_resource_r (Display *xdisplay,
-                              Screen  *screen,
-                              Window   win_top,
-                              XID      match_xid,
-                              XID      mask,
-                              gulong  *xid,
-                              gulong  *pid)
+wnck_find_pid_for_resource_r (Display    *xdisplay,
+                              WnckScreen *screen,
+                              Window      win_top,
+                              XID         match_xid,
+                              XID         mask,
+                              gulong     *xid,
+                              gulong     *pid)
 {
   Status   qtres;
   int      err;
@@ -250,10 +250,10 @@ wnck_pid_read_resource_usage_fill_cache (struct xresclient_state *state)
 
   for (i = 0; i < ScreenCount (state->xdisplay); i++)
     {
-      Screen *screen;
+      WnckScreen *screen;
       Window  root;
 
-      screen = ScreenOfDisplay (state->xdisplay, i);
+      screen = wnck_handle_get_screen (_wnck_get_handle (), i);
       root = RootWindow (state->xdisplay, i);
 
       if (root == None)
