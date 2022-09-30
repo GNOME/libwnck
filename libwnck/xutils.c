@@ -1156,6 +1156,9 @@ xres_get_pid (WnckScreen *screen,
   long client_id_count = 0;
   XResClientIdValue *client_ids = NULL;
 
+  if (!_wnck_handle_has_xres (wnck_screen_get_handle (screen)))
+    return -1;
+
   xscreen = _wnck_screen_get_xscreen (screen);
 
   client_spec.client = xwindow;
