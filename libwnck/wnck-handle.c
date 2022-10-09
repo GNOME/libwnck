@@ -614,6 +614,34 @@ _wnck_handle_remove_application (WnckHandle *self,
   g_hash_table_remove (self->app_hash, xwindow);
 }
 
+WnckApplication *
+_wnck_handle_get_application_from_res_class (WnckHandle *self,
+                                             const char *res_class)
+{
+  GHashTableIter iter;
+  gpointer value;
+
+  if (res_class == NULL || *res_class == '\0')
+    return NULL;
+
+  g_hash_table_iter_init (&iter, self->app_hash);
+  while (g_hash_table_iter_next (&iter, NULL, &value))
+    {
+      WnckApplication *app;
+      GList *windows;
+      const char *window_res_class;
+
+      app = WNCK_APPLICATION (value);
+
+      windows = wnck_application_get_windows (app);
+      window_res_class = wnck_window_get_class_group_name (windows->data);
+
+      if (g_strcmp0 (res_class, window_res_class) == 0)
+        return app;
+    }
+
+  return NULL;
+}
 
 /**
  * wnck_handle_get_application:

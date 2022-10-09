@@ -1388,8 +1388,8 @@ update_client_list (WnckScreen *screen)
         {
           Window leader;
           WnckApplication *app;
-	  const char *res_class;
-	  WnckClassGroup *class_group;
+          const char *res_class;
+          WnckClassGroup *class_group;
 
           window = _wnck_window_create (mapping[i],
                                         screen,
@@ -1397,11 +1397,16 @@ update_client_list (WnckScreen *screen)
 
           created = g_list_prepend (created, window);
 
-	  /* Application */
-
           leader = wnck_window_get_group_leader (window);
+          res_class = wnck_window_get_class_group_name (window);
 
+          /* Application */
           app = wnck_handle_get_application (screen->priv->handle, leader);
+
+          if (app == NULL)
+            app = _wnck_handle_get_application_from_res_class (screen->priv->handle,
+                                                               res_class);
+
           if (app == NULL)
             {
               app = _wnck_application_create (leader, screen);
@@ -1411,8 +1416,6 @@ update_client_list (WnckScreen *screen)
           _wnck_application_add_window (app, window);
 
 	  /* Class group */
-
-	  res_class = wnck_window_get_class_group_name (window);
 
 	  class_group = wnck_handle_get_class_group (screen->priv->handle, res_class);
 	  if (class_group == NULL)
