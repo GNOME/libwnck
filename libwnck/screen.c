@@ -1409,7 +1409,11 @@ update_client_list (WnckScreen *screen)
 
           if (app == NULL)
             {
-              app = _wnck_application_create (leader, screen);
+              gboolean has_group_leader;
+
+              has_group_leader = _wnck_window_get_has_group_leader (window);
+
+              app = _wnck_application_create (leader, has_group_leader, screen);
               created_apps = g_list_prepend (created_apps, app);
             }
 
