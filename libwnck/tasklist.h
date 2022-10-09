@@ -114,6 +114,11 @@ void wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
                                        gboolean      scroll_enabled);
 gboolean wnck_tasklist_get_scroll_enabled (WnckTasklist *tasklist);
 
+void     wnck_tasklist_set_tooltips_enabled (WnckTasklist *self,
+                                             gboolean      tooltips_enabled);
+
+gboolean wnck_tasklist_get_tooltips_enabled (WnckTasklist *self);
+
 /**
  * WnckLoadIconFunction:
  * @icon_name: an icon name as in the Icon field in a .desktop file for the

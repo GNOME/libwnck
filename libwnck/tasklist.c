@@ -111,7 +111,7 @@ struct _WnckButton
 {
   GtkToggleButton  parent;
 
-  WnckHandle      *handle;
+  WnckTasklist    *tasklist;
 
   GtkWidget       *image;
   gboolean         show_image;
@@ -249,6 +249,7 @@ struct _WnckTasklistPrivate
   guint drag_start_time;
 
   gboolean scroll_enabled;
+  gboolean tooltips_enabled;
 };
 
 enum
@@ -256,6 +257,8 @@ enum
   PROP_0,
 
   PROP_HANDLE,
+
+  PROP_TOOLTIPS_ENABLED,
 
   LAST_PROP
 };
@@ -488,6 +491,7 @@ wnck_button_size_allocate (GtkWidget     *widget,
                            GtkAllocation *allocation)
 {
   WnckButton *self;
+  WnckHandle *handle;
   int min_width;
   int min_image_width;
 
@@ -496,10 +500,12 @@ wnck_button_size_allocate (GtkWidget     *widget,
   GTK_WIDGET_CLASS (wnck_button_parent_class)->size_allocate (widget,
                                                               allocation);
 
+  handle = self->tasklist->priv->handle;
+
   min_width = get_css_width (widget);
   min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
-  min_image_width = _wnck_handle_get_default_mini_icon_size (self->handle) +
+  min_image_width = _wnck_handle_get_default_mini_icon_size (handle) +
                     min_width +
                     2 * TASKLIST_BUTTON_PADDING;
 
@@ -576,6 +582,27 @@ wnck_button_get_preferred_width (GtkWidget *widget,
                    char_width * TASKLIST_TEXT_MAX_WIDTH;
 }
 
+static gboolean
+wnck_button_query_tooltip (GtkWidget  *widget,
+                           gint        x,
+                           gint        y,
+                           gboolean    keyboard_tip,
+                           GtkTooltip *tooltip)
+{
+  WnckButton *self;
+
+  self = WNCK_BUTTON (widget);
+
+  if (!self->tasklist->priv->tooltips_enabled)
+    return FALSE;
+
+  return GTK_WIDGET_CLASS (wnck_button_parent_class)->query_tooltip (widget,
+                                                                     x,
+                                                                     y,
+                                                                     keyboard_tip,
+                                                                     tooltip);
+}
+
 static void
 wnck_button_class_init (WnckButtonClass *self_class)
 {
@@ -589,6 +616,7 @@ wnck_button_class_init (WnckButtonClass *self_class)
 
   widget_class->size_allocate = wnck_button_size_allocate;
   widget_class->get_preferred_width = wnck_button_get_preferred_width;
+  widget_class->query_tooltip = wnck_button_query_tooltip;
 }
 
 static void
@@ -624,16 +652,16 @@ wnck_button_init (WnckButton *self)
 }
 
 static GtkWidget *
-wnck_button_new (void)
+wnck_button_new (WnckTasklist *tasklist)
 {
-  return g_object_new (WNCK_TYPE_BUTTON, NULL);
-}
+  WnckButton *self;
 
-static void
-wnck_button_set_handle (WnckButton *self,
-                        WnckHandle *handle)
-{
-  self->handle = handle;
+  g_return_val_if_fail (WNCK_IS_TASKLIST (tasklist), NULL);
+
+  self = g_object_new (WNCK_TYPE_BUTTON, NULL);
+  self->tasklist = tasklist;
+
+  return GTK_WIDGET (self);
 }
 
 static void
@@ -914,6 +942,7 @@ wnck_tasklist_init (WnckTasklist *tasklist)
   tasklist->priv->relief = GTK_RELIEF_NORMAL;
   tasklist->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   tasklist->priv->scroll_enabled = TRUE;
+  tasklist->priv->tooltips_enabled = TRUE;
 
   atk_obj = gtk_widget_get_accessible (widget);
   atk_object_set_name (atk_obj, _("Window List"));
@@ -966,6 +995,10 @@ wnck_tasklist_get_property (GObject    *object,
         g_value_set_object (value, self->priv->handle);
         break;
 
+      case PROP_TOOLTIPS_ENABLED:
+        g_value_set_boolean (value, self->priv->tooltips_enabled);
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -989,6 +1022,10 @@ wnck_tasklist_set_property (GObject      *object,
         self->priv->handle = g_value_dup_object (value);
         break;
 
+      case PROP_TOOLTIPS_ENABLED:
+        wnck_tasklist_set_tooltips_enabled (self, g_value_get_boolean (value));
+        break;
+
       default:
         G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
         break;
@@ -1007,6 +1044,15 @@ install_properties (GObjectClass *object_class)
                          G_PARAM_READWRITE |
                          G_PARAM_EXPLICIT_NOTIFY |
                          G_PARAM_STATIC_STRINGS);
+
+  tasklist_properties[PROP_TOOLTIPS_ENABLED] =
+    g_param_spec_boolean ("tooltips-enabled",
+                          "tooltips-enabled",
+                          "tooltips-enabled",
+                          TRUE,
+                          G_PARAM_READWRITE |
+                          G_PARAM_EXPLICIT_NOTIFY |
+                          G_PARAM_STATIC_STRINGS);
 
   g_object_class_install_properties (object_class,
                                      LAST_PROP,
@@ -1905,14 +1951,13 @@ get_n_buttons (WnckTasklist *self)
 }
 
 static void
-get_minimum_button_size (WnckHandle *handle,
-                         int        *minimum_width,
-                         int        *minimum_height)
+get_minimum_button_size (WnckTasklist *self,
+                         int          *minimum_width,
+                         int          *minimum_height)
 {
   GtkWidget *button;
 
-  button = wnck_button_new ();
-  wnck_button_set_handle (WNCK_BUTTON (button), handle);
+  button = wnck_button_new (self);
   gtk_widget_show (button);
 
   if (minimum_width != NULL)
@@ -1949,7 +1994,7 @@ get_preferred_size (WnckTasklist   *self,
     {
       int min_button_width;
 
-      get_minimum_button_size (self->priv->handle, &min_button_width, NULL);
+      get_minimum_button_size (self, &min_button_width, NULL);
 
       if (self->priv->orientation == GTK_ORIENTATION_HORIZONTAL)
         {
@@ -3573,9 +3618,12 @@ wnck_task_popup_menu (WnckTask *task,
       if (wnck_task_get_needs_attention (win_task))
         _make_gtk_label_bold (GTK_LABEL (gtk_bin_get_child (GTK_BIN (menu_item))));
 
-      text = wnck_task_get_text (win_task, FALSE, FALSE);
-      gtk_widget_set_tooltip_text (menu_item, text);
-      g_free (text);
+      if (task->tasklist->priv->tooltips_enabled)
+        {
+          text = wnck_task_get_text (win_task, FALSE, FALSE);
+          gtk_widget_set_tooltip_text (menu_item, text);
+          g_free (text);
+        }
 
       pixbuf = wnck_task_get_icon (win_task);
       if (pixbuf)
@@ -4454,9 +4502,7 @@ wnck_task_create_widgets (WnckTask *task, GtkReliefStyle relief)
     { (gchar *) "application/x-wnck-window-id", 0, 0 }
   };
 
-  task->button = wnck_button_new ();
-  wnck_button_set_handle (WNCK_BUTTON (task->button),
-                          task->tasklist->priv->handle);
+  task->button = wnck_button_new (task->tasklist);
 
   gtk_button_set_relief (GTK_BUTTON (task->button), relief);
 
@@ -5065,3 +5111,44 @@ wnck_tasklist_check_end_sequence (WnckTasklist   *tasklist,
 }
 
 #endif /* HAVE_STARTUP_NOTIFICATION */
+
+/**
+ * wnck_tasklist_set_tooltips_enabled:
+ * @self: a #WnckTasklist.
+ * @tooltips_enabled: a boolean.
+ *
+ * Sets whether tooltips are enabled on the @tasklist.
+ *
+ * Since: 43.1
+ */
+void
+wnck_tasklist_set_tooltips_enabled (WnckTasklist *self,
+                                    gboolean      tooltips_enabled)
+{
+  g_return_if_fail (WNCK_IS_TASKLIST (self));
+
+  if (self->priv->tooltips_enabled == tooltips_enabled)
+    return;
+
+  self->priv->tooltips_enabled = tooltips_enabled;
+
+  g_object_notify_by_pspec (G_OBJECT (self),
+                            tasklist_properties[PROP_TOOLTIPS_ENABLED]);
+
+}
+
+/**
+ * wnck_tasklist_get_tooltips_enabled:
+ * @self: a #WnckTasklist.
+ *
+ * Returns whether tooltips are enabled on the @tasklist.
+ *
+ * Since: 43.1
+ */
+gboolean
+wnck_tasklist_get_tooltips_enabled (WnckTasklist *self)
+{
+  g_return_val_if_fail (WNCK_IS_TASKLIST (self), TRUE);
+
+  return self->priv->tooltips_enabled;
+}
