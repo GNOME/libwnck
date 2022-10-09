@@ -46,6 +46,9 @@ void             _wnck_handle_insert_application         (WnckHandle      *self,
 void             _wnck_handle_remove_application         (WnckHandle      *self,
                                                           gpointer         xwindow);
 
+WnckApplication *_wnck_handle_get_application_from_res_class (WnckHandle  *self,
+                                                              const char  *res_class);
+
 void             _wnck_handle_insert_window              (WnckHandle      *self,
                                                           gpointer         xwindow,
                                                           WnckWindow      *window);
