@@ -61,6 +61,8 @@ const char* _wnck_window_get_startup_id (WnckWindow *window);
 time_t      _wnck_window_get_needs_attention_time (WnckWindow *window);
 time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);
 
+gboolean    _wnck_window_get_has_group_leader (WnckWindow *window);
+
 WnckWorkspace* _wnck_workspace_create  (int            number, 
                                         WnckScreen    *screen);
 void           _wnck_workspace_destroy (WnckWorkspace *space);
@@ -82,6 +84,7 @@ void _wnck_application_remove_window (WnckApplication *app,
                                       WnckWindow      *window);
 
 WnckApplication* _wnck_application_create  (Window           xwindow,
+                                            gboolean         has_group_leader,
                                             WnckScreen      *screen);
 void             _wnck_application_destroy (WnckApplication *app);
 void             _wnck_application_load_icons (WnckApplication *app);

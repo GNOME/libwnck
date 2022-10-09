@@ -499,6 +499,7 @@ wnck_application_get_startup_id (WnckApplication *app)
 /* xwindow is a group leader */
 WnckApplication*
 _wnck_application_create (Window      xwindow,
+                          gboolean    has_group_leader,
                           WnckScreen *screen)
 {
   WnckHandle      *handle;
@@ -516,7 +517,8 @@ _wnck_application_create (Window      xwindow,
   application->priv->xwindow = xwindow;
   application->priv->screen = screen;
 
-  application->priv->name = _wnck_get_name (xscreen, xwindow);
+  if (has_group_leader)
+    application->priv->name = _wnck_get_name (xscreen, xwindow);
 
   if (application->priv->name == NULL)
     application->priv->name = _wnck_get_res_class_utf8 (xscreen, xwindow);
