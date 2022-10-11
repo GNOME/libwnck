@@ -590,11 +590,31 @@ wnck_button_query_tooltip (GtkWidget  *widget,
                            GtkTooltip *tooltip)
 {
   WnckButton *self;
+  GtkLabel *label;
+  char *tooltip_text;
 
   self = WNCK_BUTTON (widget);
 
   if (!self->tasklist->priv->tooltips_enabled)
     return FALSE;
+
+  label = GTK_LABEL (self->label);
+  tooltip_text = gtk_widget_get_tooltip_text (widget);
+
+  if (g_strcmp0 (gtk_label_get_text (label), tooltip_text) == 0)
+    {
+      PangoLayout *layout;
+
+      layout = gtk_label_get_layout (label);
+
+      if (!pango_layout_is_ellipsized (layout))
+        {
+          g_free (tooltip_text);
+          return FALSE;
+        }
+    }
+
+  g_free (tooltip_text);
 
   return GTK_WIDGET_CLASS (wnck_button_parent_class)->query_tooltip (widget,
                                                                      x,
