@@ -525,6 +525,8 @@ wnck_selector_drag_data_get (GtkWidget          *widget,
 			  8, (guchar *)&xid, sizeof (gulong));
 }
 
+#define SELECTOR_MAX_WIDTH 50
+
 static GtkWidget *
 wnck_selector_item_new (WnckSelector *selector,
                         const gchar *label, WnckWindow *window)
@@ -535,6 +537,8 @@ wnck_selector_item_new (WnckSelector *selector,
   };
 
   item = wnck_image_menu_item_new_with_label (label);
+  _wnck_image_menu_item_set_max_chars (WNCK_IMAGE_MENU_ITEM (item),
+                                       SELECTOR_MAX_WIDTH);
 
   if (window != NULL)
     {

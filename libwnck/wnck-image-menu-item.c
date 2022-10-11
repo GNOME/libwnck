@@ -237,3 +237,10 @@ wnck_image_menu_item_make_label_normal (WnckImageMenuItem *item)
 {
   _make_gtk_label_normal (GTK_LABEL (item->accel_label));
 }
+
+void
+_wnck_image_menu_item_set_max_chars (WnckImageMenuItem *self,
+                                     int                n_chars)
+{
+  gtk_label_set_max_width_chars (GTK_LABEL (self->accel_label), n_chars);
+}
