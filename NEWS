@@ -1,3 +1,25 @@
+============
+Version 43.1
+============
+
+  Notes
+
+  * Next major release will have API breaking changes! Library will be
+    split into two smaller libraries - UI parts will be moved to new
+    library and main library will no longer depend on GTK. Also deprecated
+    API will be removed!
+
+  Fixes
+
+  * Return correct number of application windows. (#146)
+  * Avoid showing pointless tooltips. (#115)
+  * Do not remove underscores form window titles. (#142)
+  * Do not crash if XRes 1.2 is not available. (#154)
+
+  Translators
+
+  * Sabri Ünal (tr)
+
 ==============
 Version 43.0
 ==============
