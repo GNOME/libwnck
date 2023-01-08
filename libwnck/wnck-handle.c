@@ -185,6 +185,10 @@ init_xres (WnckHandle *self)
   int minor;
 
   xdisplay = _wnck_get_default_display ();
+
+  if (xdisplay == NULL)
+    return;
+
   event_base = error_base = major = minor = 0;
 
   if (XResQueryExtension (xdisplay, &event_base, &error_base) &&
