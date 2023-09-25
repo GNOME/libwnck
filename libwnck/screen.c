@@ -71,8 +71,6 @@ struct _WnckScreenPrivate
   Window xroot;
   Screen *xscreen;
 
-  int orig_event_mask;
-
   /* in map order */
   GList *mapped_windows;
   /* in stacking order */
@@ -449,11 +447,6 @@ wnck_screen_finalize (GObject *object)
 
   screen = WNCK_SCREEN (object);
 
-  _wnck_select_input (screen->priv->xscreen,
-                      screen->priv->xroot,
-                      screen->priv->orig_event_mask,
-                      FALSE);
-
   unqueue_update (screen);
 
   for (tmp = screen->priv->stacked_windows; tmp; tmp = tmp->next)
@@ -510,10 +503,10 @@ _wnck_screen_construct (WnckScreen *screen,
 
   screen->priv->bg_pixmap = None;
 
-  screen->priv->orig_event_mask = _wnck_select_input (screen->priv->xscreen,
-                                                      screen->priv->xroot,
-                                                      PropertyChangeMask,
-                                                      TRUE);
+  _wnck_select_input (screen->priv->xscreen,
+                      screen->priv->xroot,
+                      PropertyChangeMask,
+                      TRUE);
 
   screen->priv->need_update_workspace_list = TRUE;
   screen->priv->need_update_stack_list = TRUE;
