@@ -75,7 +75,6 @@ struct _WnckWindowPrivate
   gboolean has_group_leader;
   Window group_leader;
   Window transient_for;
-  int orig_event_mask;
   GdkRectangle icon_geometry;
   char *name;
   char *icon_name;
@@ -390,11 +389,6 @@ wnck_window_finalize (GObject *object)
 
   window = WNCK_WINDOW (object);
 
-  _wnck_select_input (WNCK_SCREEN_XSCREEN (window->priv->screen),
-                      window->priv->xwindow,
-                      window->priv->orig_event_mask,
-                      FALSE);
-
   unqueue_update (window);
 
   if (window->priv->app)
@@ -482,10 +476,10 @@ _wnck_window_create (Window      xwindow,
    * that's why we select the union of the mask we want for Application
    * and the one we want for window
    */
-  window->priv->orig_event_mask =_wnck_select_input (xscreen,
-                                                     window->priv->xwindow,
-                                                     WNCK_APP_WINDOW_EVENT_MASK,
-                                                     TRUE);
+  _wnck_select_input (xscreen,
+                      window->priv->xwindow,
+                      WNCK_APP_WINDOW_EVENT_MASK,
+                      TRUE);
 
   /* Default the group leader to the window itself; it is set in
    * update_wmhints() if a different group leader is specified.
