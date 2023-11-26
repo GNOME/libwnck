@@ -7,8 +7,8 @@
   <name xml:lang="en">libwnck</name>
   <shortdesc xml:lang="en">Library to manage X windows and workspaces (via pagers, tasklists, etc.)</shortdesc>
   <description xml:lang="en">Library to manage X windows and workspaces (via pagers, tasklists, etc.)</description>
-  <mailing-list rdf:resource="http://mail.gnome.org/mailman/listinfo/desktop-devel-list" />
-  <download-page rdf:resource="http://download.gnome.org/sources/libwnck/" />
+  <developer-forum rdf:resource="https://discourse.gnome.org/c/platform/" />
+  <download-page rdf:resource="https://download.gnome.org/sources/libwnck/" />
   <bug-database rdf:resource="https://gitlab.gnome.org/GNOME/libwnck/issues" />
 
   <category rdf:resource="http://api.gnome.org/doap-extensions#core" />
