@@ -572,6 +572,8 @@ _wnck_class_group_remove_window (WnckClassGroup *class_group,
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (wnck_window_get_class_group (window) == class_group);
 
+  g_object_weak_unref (G_OBJECT (window), window_weak_notify_cb, class_group);
+
   class_group->priv->windows = g_list_remove (class_group->priv->windows,
                                               window);
   _wnck_window_set_class_group (window, NULL);
