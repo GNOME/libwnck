@@ -1504,6 +1504,9 @@ wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
  * Sets a function to be used for loading icons.
  *
  * Since: 2.2
+ *
+ * Deprecated: 43.2: Icon loader is included in libwnck.
+ * load_icon_func will be ignored.
  **/
 void
 wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
@@ -3925,6 +3928,55 @@ wnck_task_scale_icon (gsize      mini_icon_size,
   return pixbuf;
 }
 
+static GdkPixbuf *
+load_icon_by_name (const char *icon_name,
+                   int         size)
+{
+  GdkPixbuf *pixbuf;
+  char *icon_no_extension;
+  char *p;
+
+  if (icon_name == NULL || strcmp (icon_name, "") == 0)
+    return NULL;
+
+  if (g_path_is_absolute (icon_name))
+    {
+      if (g_file_test (icon_name, G_FILE_TEST_EXISTS))
+        {
+          return gdk_pixbuf_new_from_file_at_size (icon_name,
+                                                   size, size,
+                                                   NULL);
+        }
+      else
+        {
+          char *basename;
+
+          basename = g_path_get_basename (icon_name);
+          pixbuf = load_icon_by_name (basename, size);
+          g_free (basename);
+
+          return pixbuf;
+        }
+    }
+
+  /* This is needed because some .desktop files have an icon name *and*
+   * an extension as icon */
+  icon_no_extension = g_strdup (icon_name);
+  p = strrchr (icon_no_extension, '.');
+  if (p &&
+      (strcmp (p, ".png") == 0 ||
+       strcmp (p, ".xpm") == 0 ||
+       strcmp (p, ".svg") == 0))
+    {
+      *p = 0;
+    }
+
+  pixbuf = gtk_icon_theme_load_icon (gtk_icon_theme_get_default (),
+                                     icon_no_extension, size, 0, NULL);
+  g_free (icon_no_extension);
+
+  return pixbuf;
+}
 
 static GdkPixbuf *
 wnck_task_get_icon (WnckTask *task)
@@ -3957,25 +4009,19 @@ wnck_task_get_icon (WnckTask *task)
 
     case WNCK_TASK_STARTUP_SEQUENCE:
 #ifdef HAVE_STARTUP_NOTIFICATION
-      if (task->tasklist->priv->icon_loader != NULL)
+      const char *icon_name;
+
+      icon_name = sn_startup_sequence_get_icon_name (task->startup_sequence);
+      if (icon_name != NULL)
         {
-          const char *icon;
+          GdkPixbuf *loaded;
 
-          icon = sn_startup_sequence_get_icon_name (task->startup_sequence);
-          if (icon != NULL)
+          loaded = load_icon_by_name (icon_name, mini_icon_size);
+
+          if (loaded != NULL)
             {
-              GdkPixbuf *loaded;
-
-              loaded =  (* task->tasklist->priv->icon_loader) (icon,
-                                                               mini_icon_size,
-                                                               0,
-                                                               task->tasklist->priv->icon_loader_data);
-
-              if (loaded != NULL)
-                {
-                  pixbuf = wnck_task_scale_icon (mini_icon_size, loaded, FALSE);
-                  g_object_unref (G_OBJECT (loaded));
-                }
+              pixbuf = wnck_task_scale_icon (mini_icon_size, loaded, FALSE);
+              g_object_unref (G_OBJECT (loaded));
             }
         }
 
