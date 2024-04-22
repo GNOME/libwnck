@@ -141,6 +141,7 @@ typedef GdkPixbuf* (*WnckLoadIconFunction) (const char   *icon_name,
                                             unsigned int  flags,
                                             void         *data);
 
+G_DEPRECATED
 void wnck_tasklist_set_icon_loader (WnckTasklist         *tasklist,
                                     WnckLoadIconFunction  load_icon_func,
                                     void                 *data,
