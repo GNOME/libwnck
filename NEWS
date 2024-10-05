@@ -1,3 +1,23 @@
+============
+Version 43.1
+============
+
+  Fixes
+
+  * Return correct number of application windows. (#146)
+  * Avoid showing pointless tooltips. (#115)
+  * Do not remove underscores form window titles. (#142)
+  * Do not crash if XRes 1.2 is not available. (#154)
+  * Do not crash if display is not available. (#157)
+
+  Translators
+
+  * Danial Behzadi (fa)
+  * Jordi Mas (ca)
+  * Sabri Ünal (tr)
+  * Vasil Pupkin (be)
+  * Yaron Shahrabani (he)
+
 ==============
 Version 43.0
 ==============
