@@ -1,4 +1,5 @@
 gnome = import('gnome')
+pkgconfig = import('pkgconfig')
 
 libwnck_includedir = join_paths(PACKAGE_NAME, meson.project_name())
 
@@ -128,6 +129,38 @@ libwnck_lib = shared_library(LIBNAME,
   soversion: LIBWNCK_SOVERSION,
   link_depends: mapfile,
   install: true,
+)
+
+libwnck_requires_private = [
+  X11_PACKAGE,
+  'pango',
+  'cairo',
+]
+
+if conf.has('HAVE_' + STARTUP_NOTIFICATION_PACKAGE.to_upper().underscorify())
+  libwnck_requires_private += STARTUP_NOTIFICATION_PACKAGE
+endif
+
+if conf.has('HAVE_' + XRES_PACKAGE.to_upper().underscorify())
+  libwnck_requires_private += XRES_PACKAGE
+endif
+
+pkgconfig.generate(
+  libraries: libwnck_lib,
+  name: 'libwnck',
+  description: 'Window Navigator Construction Kit library',
+  version: meson.project_version(),
+  filebase: PACKAGE_NAME,
+  subdirs: PACKAGE_NAME,
+  requires: [
+    'glib-2.0',
+    'gobject-2.0',
+    'gtk+-3.0'
+  ],
+  requires_private: libwnck_requires_private,
+  variables: [
+    'exec_prefix=${prefix}'
+  ]
 )
 
 introspection = get_option('introspection')

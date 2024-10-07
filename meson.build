@@ -1,7 +1,7 @@
 project('libwnck',
   'c',
   version: '43.1',
-  meson_version: '>= 0.50.0')
+  meson_version: '>= 0.54.0')
 
 LIBWNCK_SOVERSION = 0
 
@@ -68,29 +68,6 @@ conf.set_quoted('VERSION', meson.project_version())
 configure_file(input: 'config.h.meson',
   output : 'config.h',
   configuration : conf)
-
-pc_conf = configuration_data()
-pc_conf.set('prefix', get_option('prefix'))
-pc_conf.set('exec_prefix', '${prefix}')
-pc_conf.set('libdir', '${exec_prefix}' / get_option('libdir'))
-pc_conf.set('includedir', '${prefix}' / get_option('includedir'))
-if conf.has('HAVE_' + STARTUP_NOTIFICATION_PACKAGE.to_upper().underscorify())
-  pc_conf.set('STARTUP_NOTIFICATION_PACKAGE', STARTUP_NOTIFICATION_PACKAGE)
-endif
-pc_conf.set('X11_PACKAGE', X11_PACKAGE)
-if conf.has('HAVE_' + XRES_PACKAGE.to_upper().underscorify())
-  pc_conf.set('XRES_PACKAGE', XRES_PACKAGE)
-endif
-pc_conf.set('VERSION', meson.project_version())
-
-foreach pc: [PACKAGE_NAME, PACKAGE_NAME + '-uninstalled']
-  configure_file(input: pc + '.pc.in',
-    output: pc + '.pc',
-    configuration: pc_conf,
-    install: not pc.contains('-uninstalled'),
-    install_dir: join_paths(libdir, 'pkgconfig'),
-  )
-endforeach
 
 subdir('libwnck')
 subdir('po')
