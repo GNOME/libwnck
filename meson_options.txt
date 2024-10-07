@@ -4,7 +4,7 @@ option('deprecation_flags',
   description: 'Use *_DISABLE_DEPRECATED flags')
 option('install_tools',
   type: 'boolean',
-  value: true,
+  value: false,
   description: 'Install wnck-based tools')
 option('startup_notification',
   type: 'feature',
