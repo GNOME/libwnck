@@ -24,15 +24,33 @@
 #error "Only <libwnck/libwnck.h> can be included directly."
 #endif
 
-#ifndef WNCK_UTIL_H
-#define WNCK_UTIL_H
+#ifndef WNCK_MISC_H
+#define WNCK_MISC_H
 
-#include <libwnck/misc.h>
-#include <libwnck/icons.h>
-#include <libwnck/resource.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
+/**
+ * WnckClientType:
+ * @WNCK_CLIENT_TYPE_APPLICATION: the libwnck user is a normal application.
+ * @WNCK_CLIENT_TYPE_PAGER: the libwnck user is an utility application dealing
+ * with window management, like pagers and taskbars.
+ *
+ * Type describing the role of the libwnck user.
+ *
+ * Since: 2.14
+ */
+typedef enum {
+  WNCK_CLIENT_TYPE_APPLICATION = 1,
+  WNCK_CLIENT_TYPE_PAGER = 2
+} WnckClientType;
+
+G_DEPRECATED_FOR(wnck_handle_new)
+void wnck_set_client_type (WnckClientType ewmh_sourceindication_client_type);
+
+void wnck_shutdown (void);
+
 G_END_DECLS
 
-#endif /* WNCK_UTIL_H */
+#endif /* WNCK_MISC_H */

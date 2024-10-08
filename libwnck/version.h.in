@@ -30,6 +30,7 @@
 
 /**
  * SECTION:version
+ * @title: Version Information
  * @Short_description: variables and functions to check the libwnck version
  * @stability: Unstable
  *

@@ -24,15 +24,22 @@
 #error "Only <libwnck/libwnck.h> can be included directly."
 #endif
 
-#ifndef WNCK_UTIL_H
-#define WNCK_UTIL_H
+#ifndef WNCK_ICONS_H
+#define WNCK_ICONS_H
 
-#include <libwnck/misc.h>
-#include <libwnck/icons.h>
-#include <libwnck/resource.h>
+#include <gtk/gtk.h>
 
 G_BEGIN_DECLS
 
+#define WNCK_DEFAULT_ICON_SIZE 32
+#define WNCK_DEFAULT_MINI_ICON_SIZE 16
+
+G_DEPRECATED_FOR(wnck_handle_set_default_icon_size)
+void wnck_set_default_icon_size      (gsize size);
+
+G_DEPRECATED_FOR(wnck_handle_set_default_mini_icon_size)
+void wnck_set_default_mini_icon_size (gsize size);
+
 G_END_DECLS
 
-#endif /* WNCK_UTIL_H */
+#endif /* WNCK_ICONS_H */

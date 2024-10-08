@@ -11,6 +11,7 @@ gnome.gtkdoc(meson.project_name(),
   ignore_headers: ['wnck-enum-types.h'],
   scan_args: [
     '--rebuild-types',
+    '--rebuild-sections',
     '--deprecated-guards=WNCK_DISABLE_DEPRECATED'
   ],
   install: true,
