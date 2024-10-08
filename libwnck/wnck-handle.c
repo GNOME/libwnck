@@ -21,6 +21,7 @@
 
 /**
  * SECTION: wnck-handle
+ * @title: WnckHandle
  * @short_description: an object representing a handle.
  *
  * This is the main entry point into the libwnck library.
@@ -40,6 +41,12 @@
 #include "wnck-enum-types.h"
 #include "xutils.h"
 
+/**
+ * WnckHandle:
+ *
+ * The #WnckHandle struct contains only private fields and should not be
+ * directly accessed.
+ */
 struct _WnckHandle
 {
   GObject          parent;

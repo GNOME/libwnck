@@ -140,6 +140,7 @@ Wnck.Shutdown()
 
   <part id="core">
     <title>Libwnck Core Window Management Support</title>
+    <xi:include href="xml/wnck-handle.xml"/>
     <xi:include href="xml/window.xml"/>
     <xi:include href="xml/class-group.xml"/>
     <xi:include href="xml/application.xml"/>
