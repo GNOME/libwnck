@@ -31,6 +31,7 @@
 
 /**
  * SECTION:resource
+ * @title: Resource Usage of X Clients
  * @short_description: reading resource usage of X clients.
  * @see_also: wnck_window_get_xid(), wnck_application_get_xid(), wnck_window_get_pid(), wnck_application_get_pid()
  * @stability: Unstable
@@ -42,6 +43,7 @@
 
 /**
  * SECTION:misc
+ * @title: Miscellaneous Functions
  * @short_description: other additional features.
  * @stability: Unstable
  *
@@ -51,6 +53,7 @@
 
 /**
  * SECTION:icons
+ * @title: Icons Functions
  * @short_description: icons related functions.
  * @stability: Unstable
  *

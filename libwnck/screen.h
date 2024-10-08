@@ -154,6 +154,7 @@ struct _WnckWorkspaceLayout
 };
 #endif /* WNCK_DISABLE_DEPRECATED */
 
+#ifndef __GTK_DOC_IGNORE__
 /**
  * WnckLayoutOrientation:
  * @WNCK_LAYOUT_ORIENTATION_HORIZONTAL: the #WnckWorkspace are laid out in
@@ -191,6 +192,7 @@ typedef enum
   WNCK_LAYOUT_CORNER_BOTTOMRIGHT,
   WNCK_LAYOUT_CORNER_BOTTOMLEFT
 } _WnckLayoutCorner;
+#endif /* __GTK_DOC_IGNORE__ */
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
