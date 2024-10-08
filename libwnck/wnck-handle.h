@@ -44,8 +44,12 @@ WnckScreen      *wnck_handle_get_screen_for_root        (WnckHandle        *self
 void             wnck_handle_set_default_icon_size      (WnckHandle        *self,
                                                          gsize              icon_size);
 
+gsize            wnck_handle_get_default_icon_size      (WnckHandle        *self);
+
 void             wnck_handle_set_default_mini_icon_size (WnckHandle        *self,
                                                          gsize              icon_size);
+
+gsize            wnck_handle_get_default_mini_icon_size (WnckHandle        *self);
 
 WnckClassGroup  *wnck_handle_get_class_group            (WnckHandle        *self,
                                                          const char        *id);

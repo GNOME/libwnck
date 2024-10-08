@@ -168,6 +168,19 @@ _wnck_get_handle (void)
 }
 
 /**
+ * wnck_get_handle:
+ *
+ * ...
+ *
+ * Returns: (transfer none):  #WnckHandle.
+ */
+WnckHandle *
+wnck_get_handle (void)
+{
+  return _wnck_get_handle ();
+}
+
+/**
  * wnck_set_default_icon_size:
  * @size: the default size for windows and application standard icons.
  *
@@ -198,13 +211,13 @@ wnck_set_default_mini_icon_size (gsize size)
 }
 
 /**
- * _make_gtk_label_bold:
+ * make_gtk_label_bold:
  * @label: The label.
  *
  * Switches the font of label to a bold equivalent.
  **/
 void
-_make_gtk_label_bold (GtkLabel *label)
+wnck_make_gtk_label_bold (GtkLabel *label)
 {
   GtkStyleContext *context;
 
@@ -215,7 +228,7 @@ _make_gtk_label_bold (GtkLabel *label)
 }
 
 void
-_make_gtk_label_normal (GtkLabel *label)
+wnck_make_gtk_label_normal (GtkLabel *label)
 {
   GtkStyleContext *context;
 
@@ -299,4 +312,103 @@ _wnck_ensure_fallback_style (void)
   g_object_unref (provider);
 
   css_loaded = TRUE;
+}
+
+static GdkPixbuf *
+wnck_selector_get_default_window_icon (void)
+{
+  static GdkPixbuf *retval = NULL;
+
+  if (retval)
+    return retval;
+
+  retval = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
+
+  g_assert (retval);
+
+  return retval;
+}
+
+static GdkPixbuf *
+wnck_selector_dimm_icon (GdkPixbuf *pixbuf)
+{
+  int x, y, pixel_stride, row_stride;
+  guchar *row, *pixels;
+  int w, h;
+  GdkPixbuf *dimmed;
+
+  w = gdk_pixbuf_get_width (pixbuf);
+  h = gdk_pixbuf_get_height (pixbuf);
+
+  if (gdk_pixbuf_get_has_alpha (pixbuf))
+    dimmed = gdk_pixbuf_copy (pixbuf);
+  else
+    dimmed = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
+
+  pixel_stride = 4;
+
+  row = gdk_pixbuf_get_pixels (dimmed);
+  row_stride = gdk_pixbuf_get_rowstride (dimmed);
+
+  for (y = 0; y < h; y++)
+    {
+      pixels = row;
+      for (x = 0; x < w; x++)
+        {
+          pixels[3] /= 2;
+          pixels += pixel_stride;
+        }
+      row += row_stride;
+    }
+
+  return dimmed;
+}
+
+void
+wnck_selector_set_window_icon (GtkWidget  *image,
+                               WnckWindow *window)
+{
+  GdkPixbuf *pixbuf, *freeme, *freeme2;
+  int width, height;
+  int icon_size = -1;
+
+  pixbuf = NULL;
+  freeme = NULL;
+  freeme2 = NULL;
+
+  if (window)
+    pixbuf = wnck_window_get_mini_icon (window);
+
+  if (!pixbuf)
+    pixbuf = wnck_selector_get_default_window_icon ();
+
+  if (icon_size == -1)
+    gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
+
+  width = gdk_pixbuf_get_width (pixbuf);
+  height = gdk_pixbuf_get_height (pixbuf);
+
+  if (icon_size != -1 && (width > icon_size || height > icon_size))
+    {
+      double scale;
+
+      scale = ((double) icon_size) / MAX (width, height);
+
+      pixbuf = gdk_pixbuf_scale_simple (pixbuf, width * scale,
+                                        height * scale, GDK_INTERP_BILINEAR);
+      freeme = pixbuf;
+    }
+
+  if (window && wnck_window_is_minimized (window))
+    {
+      pixbuf = wnck_selector_dimm_icon (pixbuf);
+      freeme2 = pixbuf;
+    }
+
+  gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
+
+  if (freeme)
+    g_object_unref (freeme);
+  if (freeme2)
+    g_object_unref (freeme2);
 }

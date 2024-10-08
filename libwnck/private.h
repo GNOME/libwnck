@@ -53,13 +53,7 @@ void        _wnck_window_destroy (WnckWindow *window);
 
 void        _wnck_window_load_icons (WnckWindow *window);
 
-char*       _wnck_window_get_name_for_display (WnckWindow *window,
-                                               gboolean    use_icon_name,
-                                               gboolean    use_state_decorations);
-const char* _wnck_window_get_startup_id (WnckWindow *window);
-
 time_t      _wnck_window_get_needs_attention_time (WnckWindow *window);
-time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);
 
 gboolean    _wnck_window_get_has_group_leader (WnckWindow *window);
 
@@ -72,11 +66,6 @@ void _wnck_window_set_application    (WnckWindow      *window,
 
 void _wnck_window_set_class_group (WnckWindow     *window,
 				   WnckClassGroup *class_group);
-
-/* this one is in pager.c since it needs code from there to draw the icon */
-void _wnck_window_set_as_drag_icon (WnckWindow     *window,
-                                    GdkDragContext *context,
-                                    GtkWidget      *drag_source);
 
 void _wnck_application_add_window    (WnckApplication *app,
                                       WnckWindow      *window);
@@ -132,12 +121,6 @@ WnckWorkspace* _wnck_pager_get_workspace        (WnckPager     *pager,
 void           _wnck_pager_get_workspace_rect   (WnckPager     *pager,
                                                  int            i,
                                                  GdkRectangle  *rect);
-
-void           _make_gtk_label_bold   (GtkLabel *label);
-void           _make_gtk_label_normal (GtkLabel *label);
-
-void           _wnck_selector_set_window_icon   (GtkWidget     *image,
-                                                 WnckWindow    *window);
 
 void           _wnck_ensure_fallback_style      (void);
 

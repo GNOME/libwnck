@@ -41,7 +41,7 @@ void       wnck_image_menu_item_make_label_bold            (WnckImageMenuItem *i
 
 void       wnck_image_menu_item_make_label_normal          (WnckImageMenuItem *item);
 
-void       _wnck_image_menu_item_set_max_chars             (WnckImageMenuItem *self,
+void       wnck_image_menu_item_set_max_chars              (WnckImageMenuItem *self,
                                                             int                n_chars);
 
 G_END_DECLS

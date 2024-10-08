@@ -1,6 +1,6 @@
 /* vim: set sw=2 et: */
 
-#include <libwnck/libwnck.h>
+#include <libwnck/libwnck-gtk3.h>
 #include <gtk/gtk.h>
 
 static gboolean skip_tasklist = FALSE;

@@ -19,7 +19,7 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
+#if !defined (__LIBWNCK_GTK3_H_INSIDE__) && !defined (WNCK_COMPILATION)
 #error "Only <libwnck/libwnck.h> can be included directly."
 #endif
 
@@ -27,7 +27,7 @@
 #define WNCK_TASKLIST_H
 
 #include <gtk/gtk.h>
-#include <libwnck/screen.h>
+#include <libwnck/libwnck.h>
 
 G_BEGIN_DECLS
 

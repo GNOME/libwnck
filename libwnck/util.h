@@ -30,8 +30,17 @@
 #include <libwnck/misc.h>
 #include <libwnck/icons.h>
 #include <libwnck/resource.h>
+#include <libwnck/window.h>
 
 G_BEGIN_DECLS
+
+WnckHandle *wnck_get_handle (void);
+
+void wnck_selector_set_window_icon (GtkWidget  *image,
+                                    WnckWindow *window);
+
+void wnck_make_gtk_label_bold   (GtkLabel *label);
+void wnck_make_gtk_label_normal (GtkLabel *label);
 
 G_END_DECLS
 

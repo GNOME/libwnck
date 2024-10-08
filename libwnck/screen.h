@@ -154,7 +154,6 @@ struct _WnckWorkspaceLayout
 };
 #endif /* WNCK_DISABLE_DEPRECATED */
 
-#ifndef __GTK_DOC_IGNORE__
 /**
  * WnckLayoutOrientation:
  * @WNCK_LAYOUT_ORIENTATION_HORIZONTAL: the #WnckWorkspace are laid out in
@@ -169,7 +168,7 @@ typedef enum
 {
   WNCK_LAYOUT_ORIENTATION_HORIZONTAL,
   WNCK_LAYOUT_ORIENTATION_VERTICAL
-} _WnckLayoutOrientation;
+} WnckLayoutOrientation;
 
 /**
  * WnckLayoutCorner:
@@ -191,8 +190,7 @@ typedef enum
   WNCK_LAYOUT_CORNER_TOPRIGHT,
   WNCK_LAYOUT_CORNER_BOTTOMRIGHT,
   WNCK_LAYOUT_CORNER_BOTTOMLEFT
-} _WnckLayoutCorner;
-#endif /* __GTK_DOC_IGNORE__ */
+} WnckLayoutCorner;
 
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
@@ -232,11 +230,11 @@ void           wnck_screen_toggle_showing_desktop   (WnckScreen *screen,
 void           wnck_screen_move_viewport            (WnckScreen *screen,
                                                      int         x,
                                                      int         y);
-void           _wnck_screen_get_workspace_layout     (WnckScreen             *screen,
-                                                      _WnckLayoutOrientation *orientation,
-                                                      int                    *rows,
-                                                      int                    *columns,
-                                                      _WnckLayoutCorner      *starting_corner);
+void           wnck_screen_get_workspace_layout     (WnckScreen            *screen,
+                                                     WnckLayoutOrientation *orientation,
+                                                     int                   *rows,
+                                                     int                   *columns,
+                                                     WnckLayoutCorner      *starting_corner);
 int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                                      int         current_token,
                                                      int         rows,

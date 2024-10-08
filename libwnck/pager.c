@@ -39,6 +39,7 @@
  * SECTION:pager
  * @short_description: a pager widget, showing the content of workspaces.
  * @see_also: #WnckScreen
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * A #WnckPager shows a miniature view of the workspaces, representing managed
@@ -384,14 +385,15 @@ _wnck_pager_set_screen (WnckPager *pager)
 
   if (!wnck_pager_set_layout_hint (pager))
     {
-      _WnckLayoutOrientation orientation;
+      WnckLayoutOrientation orientation;
 
       /* we couldn't set the layout on the screen. This means someone else owns
        * it. Let's at least show the correct layout. */
-      _wnck_screen_get_workspace_layout (pager->priv->screen,
-                                         &orientation,
-                                         &pager->priv->n_rows,
-                                         NULL, NULL);
+      wnck_screen_get_workspace_layout (pager->priv->screen,
+                                        &orientation,
+                                        &pager->priv->n_rows,
+                                        NULL,
+                                        NULL);
 
       /* test in this order to default to horizontal in case there was in issue
        * when fetching the layout */
@@ -1907,9 +1909,9 @@ wnck_drag_clean_up (WnckWindow     *window,
  * Sets the given @window as the drag icon for @context.
  **/
 void
-_wnck_window_set_as_drag_icon (WnckWindow     *window,
-                               GdkDragContext *context,
-                               GtkWidget      *drag_source)
+wnck_window_set_as_drag_icon (WnckWindow     *window,
+                              GdkDragContext *context,
+                              GtkWidget      *drag_source)
 {
   g_return_if_fail (WNCK_IS_WINDOW (window));
   g_return_if_fail (GDK_IS_DRAG_CONTEXT (context));
@@ -1963,9 +1965,9 @@ wnck_pager_motion (GtkWidget        *widget,
 
       pager->priv->dragging = TRUE;
       pager->priv->prelight_dnd = TRUE;
-      _wnck_window_set_as_drag_icon (pager->priv->drag_window,
-				     context,
-				     GTK_WIDGET (pager));
+      wnck_window_set_as_drag_icon (pager->priv->drag_window,
+				    context,
+				    GTK_WIDGET (pager));
     }
 
   wnck_pager_check_prelight (pager, x, y, pager->priv->prelight_dnd);
@@ -2278,7 +2280,7 @@ wnck_pager_new (void)
   WnckPager *pager;
 
   pager = g_object_new (WNCK_TYPE_PAGER,
-                        "handle", _wnck_get_handle (),
+                        "handle", wnck_get_handle (),
                         NULL);
 
   return GTK_WIDGET (pager);

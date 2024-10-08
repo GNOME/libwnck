@@ -648,10 +648,10 @@ _wnck_read_icons (WnckScreen     *screen,
   if (icon_cache->want_fallback &&
       icon_cache->origin < USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (iconp,
-                                ideal_size,
-                                mini_iconp,
-                                ideal_mini_size);
+      wnck_get_fallback_icons (iconp,
+                               ideal_size,
+                               mini_iconp,
+                               ideal_mini_size);
 
       replace_cache (icon_cache, USING_FALLBACK_ICON,
                      *iconp, *mini_iconp);

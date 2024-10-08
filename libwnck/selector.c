@@ -41,6 +41,7 @@
  * @short_description: a window selector widget, showing the list of windows as
  * a menu.
  * @see_also: #WnckTasklist
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * The #WnckSelector represents client windows on a screen as a menu, where
@@ -135,109 +136,10 @@ wnck_selector_get_screen (WnckSelector *selector)
                                  gdk_x11_screen_get_screen_number (screen));
 }
 
-static GdkPixbuf *
-wnck_selector_get_default_window_icon (void)
-{
-  static GdkPixbuf *retval = NULL;
-
-  if (retval)
-    return retval;
-
-  retval = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
-
-  g_assert (retval);
-
-  return retval;
-}
-
-static GdkPixbuf *
-wnck_selector_dimm_icon (GdkPixbuf *pixbuf)
-{
-  int x, y, pixel_stride, row_stride;
-  guchar *row, *pixels;
-  int w, h;
-  GdkPixbuf *dimmed;
-
-  w = gdk_pixbuf_get_width (pixbuf);
-  h = gdk_pixbuf_get_height (pixbuf);
-
-  if (gdk_pixbuf_get_has_alpha (pixbuf))
-    dimmed = gdk_pixbuf_copy (pixbuf);
-  else
-    dimmed = gdk_pixbuf_add_alpha (pixbuf, FALSE, 0, 0, 0);
-
-  pixel_stride = 4;
-
-  row = gdk_pixbuf_get_pixels (dimmed);
-  row_stride = gdk_pixbuf_get_rowstride (dimmed);
-
-  for (y = 0; y < h; y++)
-    {
-      pixels = row;
-      for (x = 0; x < w; x++)
-        {
-          pixels[3] /= 2;
-          pixels += pixel_stride;
-        }
-      row += row_stride;
-    }
-
-  return dimmed;
-}
-
-void
-_wnck_selector_set_window_icon (GtkWidget  *image,
-                                WnckWindow *window)
-{
-  GdkPixbuf *pixbuf, *freeme, *freeme2;
-  int width, height;
-  int icon_size = -1;
-
-  pixbuf = NULL;
-  freeme = NULL;
-  freeme2 = NULL;
-
-  if (window)
-    pixbuf = wnck_window_get_mini_icon (window);
-
-  if (!pixbuf)
-    pixbuf = wnck_selector_get_default_window_icon ();
-
-  if (icon_size == -1)
-    gtk_icon_size_lookup (GTK_ICON_SIZE_MENU, NULL, &icon_size);
-
-  width = gdk_pixbuf_get_width (pixbuf);
-  height = gdk_pixbuf_get_height (pixbuf);
-
-  if (icon_size != -1 && (width > icon_size || height > icon_size))
-    {
-      double scale;
-
-      scale = ((double) icon_size) / MAX (width, height);
-
-      pixbuf = gdk_pixbuf_scale_simple (pixbuf, width * scale,
-                                        height * scale, GDK_INTERP_BILINEAR);
-      freeme = pixbuf;
-    }
-
-  if (window && wnck_window_is_minimized (window))
-    {
-      pixbuf = wnck_selector_dimm_icon (pixbuf);
-      freeme2 = pixbuf;
-    }
-
-  gtk_image_set_from_pixbuf (GTK_IMAGE (image), pixbuf);
-
-  if (freeme)
-    g_object_unref (freeme);
-  if (freeme2)
-    g_object_unref (freeme2);
-}
-
 static void
 wnck_selector_set_active_window (WnckSelector *selector, WnckWindow *window)
 {
-  _wnck_selector_set_window_icon (selector->priv->image, window);
+  wnck_selector_set_window_icon (selector->priv->image, window);
   selector->priv->icon_window = window;
 }
 
@@ -370,7 +272,7 @@ wnck_selector_window_name_changed (WnckWindow *window,
   item = g_hash_table_lookup (selector->priv->window_hash, window);
   if (item != NULL)
     {
-      window_name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
+      window_name = wnck_window_get_name_for_display (window, FALSE, TRUE);
       gtk_menu_item_set_label (GTK_MENU_ITEM (item), window_name);
       g_free (window_name);
     }
@@ -424,7 +326,7 @@ wnck_selector_window_state_changed (WnckWindow *window,
   if (changed_mask &
       (WNCK_WINDOW_STATE_MINIMIZED | WNCK_WINDOW_STATE_SHADED))
     {
-      window_name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
+      window_name = wnck_window_get_name_for_display (window, FALSE, TRUE);
       gtk_menu_item_set_label (GTK_MENU_ITEM (item), window_name);
       g_free (window_name);
     }
@@ -506,7 +408,7 @@ wnck_selector_drag_begin (GtkWidget          *widget,
     }
 
   if (widget)
-    _wnck_window_set_as_drag_icon (window, context, widget);
+    wnck_window_set_as_drag_icon (window, context, widget);
 }
 
 static void
@@ -537,8 +439,8 @@ wnck_selector_item_new (WnckSelector *selector,
   };
 
   item = wnck_image_menu_item_new_with_label (label);
-  _wnck_image_menu_item_set_max_chars (WNCK_IMAGE_MENU_ITEM (item),
-                                       SELECTOR_MAX_WIDTH);
+  wnck_image_menu_item_set_max_chars (WNCK_IMAGE_MENU_ITEM (item),
+                                      SELECTOR_MAX_WIDTH);
 
   if (window != NULL)
     {
@@ -645,7 +547,7 @@ wnck_selector_create_window (WnckSelector *selector, WnckWindow *window)
   GtkWidget *item;
   char *name;
 
-  name = _wnck_window_get_name_for_display (window, FALSE, TRUE);
+  name = wnck_window_get_name_for_display (window, FALSE, TRUE);
 
   item = wnck_selector_item_new (selector, name, window);
   g_free (name);
@@ -1360,7 +1262,7 @@ wnck_selector_new (void)
   WnckSelector *selector;
 
   selector = g_object_new (WNCK_TYPE_SELECTOR,
-                           "handle", _wnck_get_handle (),
+                           "handle", wnck_get_handle (),
                            NULL);
 
   return GTK_WIDGET (selector);

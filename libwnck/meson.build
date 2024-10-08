@@ -31,18 +31,14 @@ version_data.set('WNCK_MICRO_VERSION', micro_version)
 
 headers = [
   'libwnck.h',
-  'pager.h',
   'application.h',
   'class-group.h',
   'screen.h',
-  'selector.h',
-  'tasklist.h',
   'icons.h',
   'misc.h',
   'resource.h',
   'util.h',
   'window.h',
-  'window-action-menu.h',
   'wnck-handle.h',
   'workspace.h',
 ]
@@ -55,19 +51,13 @@ headers += configure_file(
 sources = [
   'application.c',
   'class-group.c',
-  'pager.c',
   'screen.c',
-  'selector.c',
-  'tasklist.c',
   'util.c',
-  'window-action-menu.c',
   'window.c',
   'wnck-handle-private.h',
   'wnck-handle.c',
   'wnck-icon-cache-private.h',
   'wnck-icon-cache.c',
-  'wnck-image-menu-item-private.h',
-  'wnck-image-menu-item.c',
   'wnck-resource-usage-private.h',
   'wnck-resource-usage.c',
   'workspace.c',
@@ -111,6 +101,11 @@ libwnck_ldflags = [
   '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfile),
 ]
 
+gtk3_mapfile ='libwnck-gtk3-4.map'
+libwnck_gtk3_ldflags = [
+  '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), gtk3_mapfile),
+]
+
 if get_option('deprecation_flags')
   foreach domain: ['G', 'ATK', 'GDK', 'GDK_PIXBUF', 'GTK', 'WNCK']
     libwnck_cflags += '-D@0@_DISABLE_DEPRECATED'.format(domain)
@@ -126,7 +121,7 @@ libwnck_dep = declare_dependency(
 
 libwnck_lib = shared_library(LIBNAME,
   dependencies: libwnck_dep,
-  sources: sources + a11y_sources + enum_types + resources,
+  sources: sources + enum_types + resources,
   version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
   soversion: LIBWNCK_SOVERSION,
   link_args: libwnck_ldflags,
@@ -169,7 +164,7 @@ pkgconfig.generate(
 introspection = get_option('introspection')
 if not introspection.disabled()
   find_program('g-ir-scanner', required: introspection.enabled())
-  gnome.generate_gir(libwnck_lib,
+  libwnck_gir = gnome.generate_gir(libwnck_lib,
     sources: headers + sources + enum_types,
     namespace: 'Wnck',
     nsversion: MODULE_VERSION,
@@ -188,9 +183,6 @@ progs = [
 
 test_progs = [
   'test-wnck',
-  'test-tasklist',
-  'test-selector',
-  'test-pager',
   'test-urgent',
   'test-shutdown',
   'test-icon-cache',
@@ -203,4 +195,89 @@ foreach prog: progs + test_progs
     link_with: libwnck_lib,
     install: progs.contains(prog) and get_option('install_tools'),
     install_dir: bindir)
+endforeach
+
+gtk3_headers = [
+  'libwnck-gtk3.h',
+  'selector.h',
+  'tasklist.h',
+  'pager.h',
+  'window-action-menu.h',
+]
+
+gtk3_sources = [
+  'selector.c',
+  'pager.c',
+  'tasklist.c',
+  'window-action-menu.c',
+  'wnck-image-menu-item-private.h',
+  'wnck-image-menu-item.c',
+]
+
+gtk3_enum_types = gnome.mkenums_simple('wnck-gtk3-enum-types',
+  sources : gtk3_headers,
+  install_header: true,
+  install_dir: join_paths(includedir, libwnck_includedir)
+)
+
+install_headers(gtk3_headers, subdir: 'libwnck-4.0/libwnck')
+
+libwnck_gtk3 = shared_library('wnck-gtk3',
+  dependencies: libwnck_dep,
+  sources: gtk3_sources + a11y_sources + gtk3_enum_types,
+  version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
+  soversion: LIBWNCK_SOVERSION,
+  link_args: libwnck_gtk3_ldflags,
+  link_depends: gtk3_mapfile,
+  link_with: libwnck_lib,
+  install: true,
+)
+
+pkgconfig.generate(libwnck_gtk3,
+  version: meson.project_version(),
+  description: 'Window Navigator Construction Kit library',
+  name: 'libwnck-gtk3',
+  filebase: 'libwnck-gtk3-4.0',
+  subdirs: 'libwnck-4.0',
+  requires: [
+    'gtk+-3.0',
+    'libwnck-4.0'
+  ],
+)
+
+libwnck_gtk3_dep = declare_dependency(
+  compile_args: libwnck_cflags,
+  sources: gtk3_headers + [gtk3_enum_types[1]],
+  dependencies: libwnck_dep,
+  link_with: libwnck_gtk3,
+)
+
+if not introspection.disabled()
+  gnome.generate_gir(libwnck_gtk3,
+    sources: gtk3_headers + gtk3_sources + gtk3_enum_types,
+    namespace: 'WnckGtk3',
+    nsversion: MODULE_VERSION,
+    export_packages: PACKAGE_NAME,
+    symbol_prefix: 'wnck',
+    identifier_prefix: 'Wnck',
+    link_with: [libwnck_gtk3],
+    includes: [libwnck_gir[0], 'GObject-2.0', 'GdkPixbuf-2.0', 'Gtk-3.0'],
+    header: 'libwnck/libwnck-gtk3.h',
+    install: true
+  )
+endif
+
+gtk3_test_progs = [
+  'test-selector',
+  'test-tasklist',
+  'test-pager',
+]
+
+foreach prog: gtk3_test_progs
+  executable(prog, [prog + '.c'],
+    include_directories: default_includes,
+    dependencies: libwnck_gtk3_dep,
+    link_with: [libwnck_gtk3, libwnck_lib],
+    install: false
+  )
 endforeach

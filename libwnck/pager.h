@@ -19,7 +19,7 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#if !defined (__LIBWNCK_H_INSIDE__) && !defined (WNCK_COMPILATION)
+#if !defined (__LIBWNCK_GTK3_H_INSIDE__) && !defined (WNCK_COMPILATION)
 #error "Only <libwnck/libwnck.h> can be included directly."
 #endif
 
@@ -27,7 +27,7 @@
 #define WNCK_PAGER_H
 
 #include <gtk/gtk.h>
-#include <libwnck/screen.h>
+#include <libwnck/libwnck.h>
 
 G_BEGIN_DECLS
 
@@ -122,6 +122,11 @@ void       wnck_pager_set_shadow_type    (WnckPager            *pager,
 void       wnck_pager_set_wrap_on_scroll (WnckPager            *pager,
                                           gboolean              wrap_on_scroll);
 gboolean   wnck_pager_get_wrap_on_scroll (WnckPager            *pager);
+
+/* this one is in pager.c since it needs code from there to draw the icon */
+void wnck_window_set_as_drag_icon (WnckWindow     *window,
+                                   GdkDragContext *context,
+                                   GtkWidget      *drag_source);
 
 G_END_DECLS
 

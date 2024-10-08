@@ -448,10 +448,10 @@ set_icon (WnckClassGroup *class_group)
 
       handle = wnck_screen_get_handle (class_group->priv->screen);
 
-      _wnck_get_fallback_icons (&icon,
-                                _wnck_handle_get_default_icon_size (handle),
-                                &mini_icon,
-                                _wnck_handle_get_default_mini_icon_size (handle));
+      wnck_get_fallback_icons (&icon,
+                               wnck_handle_get_default_icon_size (handle),
+                               &mini_icon,
+                               wnck_handle_get_default_mini_icon_size (handle));
       icons_reffed = TRUE;
     }
 

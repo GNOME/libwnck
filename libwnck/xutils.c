@@ -1523,10 +1523,10 @@ default_icon_at_size (int size)
 }
 
 void
-_wnck_get_fallback_icons (GdkPixbuf **iconp,
-                          int         ideal_size,
-                          GdkPixbuf **mini_iconp,
-                          int         ideal_mini_size)
+wnck_get_fallback_icons (GdkPixbuf **iconp,
+                         int         ideal_size,
+                         GdkPixbuf **mini_iconp,
+                         int         ideal_mini_size)
 {
   if (iconp)
     *iconp = default_icon_at_size (ideal_size);
