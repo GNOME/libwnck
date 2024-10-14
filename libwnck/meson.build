@@ -121,7 +121,6 @@ libwnck_dep = declare_dependency(
   dependencies: LIBWNCK_DEPS,
   compile_args: libwnck_cflags,
   sources: headers + [enum_types[1]],
-  link_args: libwnck_ldflags,
 )
 
 libwnck_lib = shared_library(LIBNAME,
@@ -129,6 +128,7 @@ libwnck_lib = shared_library(LIBNAME,
   sources: sources + a11y_sources + enum_types + resources,
   version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
   soversion: LIBWNCK_SOVERSION,
+  link_args: libwnck_ldflags,
   link_depends: mapfile,
   install: true,
 )
