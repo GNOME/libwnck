@@ -411,6 +411,8 @@ wnck_window_finalize (GObject *object)
   window->priv->session_id = NULL;
   g_free (window->priv->session_id_utf8);
   window->priv->session_id_utf8 = NULL;
+  g_free (window->priv->role);
+  window->priv->role = NULL;
 
   if (window->priv->icon)
     g_object_unref (G_OBJECT (window->priv->icon));
