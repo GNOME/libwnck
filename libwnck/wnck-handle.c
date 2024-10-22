@@ -571,7 +571,6 @@ wnck_handle_get_default_mini_icon_size (WnckHandle *self)
   return self->default_mini_icon_size;
 }
 
-
 void
 _wnck_handle_insert_class_group (WnckHandle     *self,
                                  const char     *id,
