@@ -39,6 +39,7 @@
  * SECTION:pager
  * @short_description: a pager widget, showing the content of workspaces.
  * @see_also: #WnckScreen
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * A #WnckPager shows a miniature view of the workspaces, representing managed

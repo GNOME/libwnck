@@ -4,8 +4,8 @@ gnome.gtkdoc(meson.project_name(),
   main_sgml: meson.project_name() + '-docs.sgml',
   src_dir: include_directories('../libwnck'),
   dependencies: declare_dependency(
-    dependencies: libwnck_dep,
-    link_with: libwnck_lib
+    dependencies: [libwnck_dep, libwnck_gtk3_dep],
+    link_with: [libwnck_lib, libwnck_gtk3]
   ),
   gobject_typesfile: meson.project_name() + '.types',
   ignore_headers: [
@@ -16,6 +16,9 @@ gnome.gtkdoc(meson.project_name(),
     'wnck-image-menu-item-private.h',
     'workspace-accessible.h',
     'workspace-accessible-factory.h'
+  ],
+  mkdb_args: [
+    '--default-includes=libwnck/libwnck.h'
   ],
   scan_args: [
     '--rebuild-types',

@@ -44,6 +44,7 @@
  * @short_description: a tasklist widget, showing the list of windows as a list
  * of buttons.
  * @see_also: #WnckScreen, #WnckSelector
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * The #WnckTasklist represents client windows on a screen as a list of buttons
@@ -3689,6 +3690,31 @@ load_icon_by_name (const char *icon_name,
 }
 
 static GdkPixbuf *
+get_fallback_icon (int size)
+{
+  GdkPixbuf *base;
+
+  base = gdk_pixbuf_new_from_resource ("/org/gnome/libwnck/default_icon.png", NULL);
+
+  g_assert (base);
+
+  if (gdk_pixbuf_get_width (base) == size &&
+      gdk_pixbuf_get_height (base) == size)
+    {
+      return base;
+    }
+  else
+    {
+      GdkPixbuf *scaled;
+
+      scaled = gdk_pixbuf_scale_simple (base, size, size, GDK_INTERP_BILINEAR);
+      g_object_unref (G_OBJECT (base));
+
+      return scaled;
+    }
+}
+
+static GdkPixbuf *
 wnck_task_get_icon (WnckTask *task)
 {
   WnckWindowState state;
@@ -3735,7 +3761,7 @@ wnck_task_get_icon (WnckTask *task)
         }
 
       if (pixbuf == NULL)
-        pixbuf = _wnck_get_fallback_icon (mini_icon_size);
+        pixbuf = get_fallback_icon (mini_icon_size);
       break;
 
     default:
@@ -3766,7 +3792,7 @@ wnck_task_get_needs_attention (WnckTask *task)
 	  if (wnck_window_or_transient_needs_attention (win_task->window))
 	    {
 	      needs_attention = TRUE;
-              task->start_needs_attention = MAX (task->start_needs_attention, _wnck_window_or_transient_get_needs_attention_time (win_task->window));
+              task->start_needs_attention = MAX (task->start_needs_attention, wnck_window_or_transient_get_needs_attention_time (win_task->window));
 	      break;
 	    }
 
@@ -3777,7 +3803,7 @@ wnck_task_get_needs_attention (WnckTask *task)
     case WNCK_TASK_WINDOW:
       needs_attention =
 	wnck_window_or_transient_needs_attention (task->window);
-      task->start_needs_attention = _wnck_window_or_transient_get_needs_attention_time (task->window);
+      task->start_needs_attention = wnck_window_or_transient_get_needs_attention_time (task->window);
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:

@@ -557,6 +557,9 @@ gboolean wnck_window_is_in_viewport          (WnckWindow    *window,
 WNCK_EXPORT
 const char* wnck_window_get_startup_id (WnckWindow *window);
 
+WNCK_EXPORT
+time_t wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);
+
 G_END_DECLS
 
 #endif /* WNCK_WINDOW_H */

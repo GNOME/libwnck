@@ -1,3 +1,4 @@
+
 /* libwnck header */
 /* vim: set sw=2 et: */
 
@@ -18,26 +19,20 @@
  * License along with this library; if not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef WNCK_LIB_H
-#define WNCK_LIB_H
+#ifndef WNCK_GTK3_LIB_H
+#define WNCK_GTK3_LIB_H
 
-#define __LIBWNCK_H_INSIDE__
+#define __LIBWNCK_GTK3_H_INSIDE__
 
-#include <libwnck/wnck-handle.h>
+#include <libwnck/libwnck.h>
 
-#include <libwnck/window.h>
-#include <libwnck/application.h>
-#include <libwnck/class-group.h>
-#include <libwnck/workspace.h>
-#include <libwnck/screen.h>
+#include <libwnck/wnck-gtk3-enum-types.h>
 
-#include <libwnck/util.h>
+#include <libwnck/pager.h>
+#include <libwnck/selector.h>
+#include <libwnck/tasklist.h>
+#include <libwnck/window-action-menu.h>
 
-#include <libwnck/version.h>
+#undef __LIBWNCK_GTK3_H_INSIDE__
 
-#include <libwnck/wnck-enum-types.h>
-#include <libwnck/wnck-macros.h>
-
-#undef __LIBWNCK_H_INSIDE__
-
-#endif /* WNCK_LIB_H */
+#endif /* WNCK_GTK3_LIB_H */

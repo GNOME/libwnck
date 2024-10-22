@@ -658,34 +658,6 @@ wnck_window_get_icon_name (WnckWindow *window)
     return FALLBACK_NAME;
 }
 
-char *
-_wnck_window_get_name_for_display (WnckWindow *window,
-                                   gboolean    use_icon_name,
-                                   gboolean    use_state_decorations)
-{
-  const char *name;
-
-  g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
-
-  if (use_icon_name && wnck_window_has_icon_name (window))
-    name = wnck_window_get_icon_name (window);
-  else
-    name = wnck_window_get_name (window);
-
-  if (use_state_decorations)
-    {
-      if (window->priv->is_shaded)
-        return g_strdup_printf ("=%s=", name);
-      else if (window->priv->is_minimized)
-        return g_strdup_printf ("[%s]", name);
-      else
-        return g_strdup (name);
-    }
-  else
-    return g_strdup (name);
-}
-
-
 /**
  * wnck_window_get_application:
  * @window: a #WnckWindow.
@@ -1072,7 +1044,7 @@ transient_needs_attention (WnckWindow *window)
 }
 
 time_t
-_wnck_window_or_transient_get_needs_attention_time (WnckWindow *window)
+wnck_window_or_transient_get_needs_attention_time (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), 0);
 
