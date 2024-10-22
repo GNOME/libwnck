@@ -41,6 +41,7 @@
 #include <libwnck/version.h>
 
 #include <libwnck/wnck-enum-types.h>
+#include <libwnck/wnck-macros.h>
 
 #undef __LIBWNCK_H_INSIDE__
 

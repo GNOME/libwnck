@@ -28,6 +28,7 @@
 
 #include <gtk/gtk.h>
 #include <libwnck/screen.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -100,24 +101,41 @@ typedef enum {
   WNCK_PAGER_SCROLL_NONE
 } WnckPagerScrollMode;
 
+WNCK_EXPORT
 GType      wnck_pager_get_type           (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 GtkWidget* wnck_pager_new_with_handle    (WnckHandle           *handle);
 
+WNCK_EXPORT
 gboolean   wnck_pager_set_orientation    (WnckPager            *pager,
                                           GtkOrientation        orientation);
+
+WNCK_EXPORT
 gboolean   wnck_pager_set_n_rows         (WnckPager            *pager,
                                           int                   n_rows);
+
+WNCK_EXPORT
 void       wnck_pager_set_display_mode   (WnckPager            *pager,
                                           WnckPagerDisplayMode  mode);
+
+WNCK_EXPORT
 void       wnck_pager_set_scroll_mode    (WnckPager            *pager,
                                           WnckPagerScrollMode   scroll_mode);
+
+WNCK_EXPORT
 void       wnck_pager_set_show_all       (WnckPager            *pager,
                                           gboolean              show_all_workspaces);
+
+WNCK_EXPORT
 void       wnck_pager_set_shadow_type    (WnckPager            *pager,
                                           GtkShadowType         shadow_type);
+
+WNCK_EXPORT
 void       wnck_pager_set_wrap_on_scroll (WnckPager            *pager,
                                           gboolean              wrap_on_scroll);
+
+WNCK_EXPORT
 gboolean   wnck_pager_get_wrap_on_scroll (WnckPager            *pager);
 
 G_END_DECLS

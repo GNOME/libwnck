@@ -28,6 +28,7 @@
 
 #include <gtk/gtk.h>
 #include <libwnck/wnck-handle.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 #define WNCK_TYPE_SELECTOR              (wnck_selector_get_type ())
@@ -63,8 +64,10 @@ struct _WnckSelectorClass
   void (* pad4) (void);
 };
 
+WNCK_EXPORT
 GtkWidget *wnck_selector_new_with_handle (WnckHandle *handle);
 
+WNCK_EXPORT
 GType      wnck_selector_get_type        (void) G_GNUC_CONST;
 
 G_END_DECLS

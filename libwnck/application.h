@@ -29,6 +29,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libwnck/screen.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -72,11 +73,16 @@ struct _WnckApplicationClass
   void (* pad4) (void);
 };
 
+WNCK_EXPORT
 GType wnck_application_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 gulong wnck_application_get_xid (WnckApplication *app);
 
+WNCK_EXPORT
 GList* wnck_application_get_windows   (WnckApplication *app);
+
+WNCK_EXPORT
 int    wnck_application_get_n_windows (WnckApplication *app);
 
 /* application_get_name, application_get_pid, etc.; prefer to read
@@ -84,12 +90,25 @@ int    wnck_application_get_n_windows (WnckApplication *app);
  * prop is the same for all windows in the app, return the values for
  * the window. Failing that, they make stuff up.
  */
+WNCK_EXPORT
 const char* wnck_application_get_name      (WnckApplication *app);
+
+WNCK_EXPORT
 const char* wnck_application_get_icon_name (WnckApplication *app);
+
+WNCK_EXPORT
 int         wnck_application_get_pid       (WnckApplication *app);
+
+WNCK_EXPORT
 GdkPixbuf*  wnck_application_get_icon      (WnckApplication *app);
+
+WNCK_EXPORT
 GdkPixbuf*  wnck_application_get_mini_icon (WnckApplication *app);
+
+WNCK_EXPORT
 gboolean    wnck_application_get_icon_is_fallback (WnckApplication *app);
+
+WNCK_EXPORT
 const char* wnck_application_get_startup_id (WnckApplication *app);
 
 G_END_DECLS

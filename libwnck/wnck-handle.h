@@ -25,34 +25,46 @@
 #include <glib-object.h>
 #include <libwnck/screen.h>
 #include <libwnck/util.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
 #define WNCK_TYPE_HANDLE (wnck_handle_get_type ())
+
+WNCK_EXPORT
 G_DECLARE_FINAL_TYPE (WnckHandle, wnck_handle, WNCK, HANDLE, GObject)
 
+WNCK_EXPORT
 WnckHandle      *wnck_handle_new                        (WnckClientType     client_type);
 
+WNCK_EXPORT
 WnckScreen      *wnck_handle_get_default_screen         (WnckHandle        *self);
 
+WNCK_EXPORT
 WnckScreen      *wnck_handle_get_screen                 (WnckHandle        *self,
                                                          int                index);
 
+WNCK_EXPORT
 WnckScreen      *wnck_handle_get_screen_for_root        (WnckHandle        *self,
                                                          gulong             root_window_id);
 
+WNCK_EXPORT
 void             wnck_handle_set_default_icon_size      (WnckHandle        *self,
                                                          gsize              icon_size);
 
+WNCK_EXPORT
 void             wnck_handle_set_default_mini_icon_size (WnckHandle        *self,
                                                          gsize              icon_size);
 
+WNCK_EXPORT
 WnckClassGroup  *wnck_handle_get_class_group            (WnckHandle        *self,
                                                          const char        *id);
 
+WNCK_EXPORT
 WnckApplication *wnck_handle_get_application            (WnckHandle        *self,
                                                          gulong             xwindow);
 
+WNCK_EXPORT
 WnckWindow      *wnck_handle_get_window                 (WnckHandle        *self,
                                                          gulong             xwindow);
 

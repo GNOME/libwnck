@@ -26,6 +26,7 @@
 #ifndef WNCK_WINDOW_ACTION_MENU_H
 #define WNCK_WINDOW_ACTION_MENU_H
 
+#include <libwnck/wnck-macros.h>
 #include <libwnck/window.h>
 #include <gtk/gtk.h>
 
@@ -66,8 +67,10 @@ struct _WnckActionMenuClass
   void (* pad4) (void);
 };
 
+WNCK_EXPORT
 GType wnck_action_menu_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 GtkWidget* wnck_action_menu_new (WnckWindow *window);
 
 G_END_DECLS

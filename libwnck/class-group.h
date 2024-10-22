@@ -30,6 +30,7 @@
 #include <glib-object.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include <libwnck/screen.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -70,14 +71,22 @@ struct _WnckClassGroupClass
   void (* pad4) (void);
 };
 
+WNCK_EXPORT
 GType wnck_class_group_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 GList *wnck_class_group_get_windows (WnckClassGroup *class_group);
+
+WNCK_EXPORT
 const char * wnck_class_group_get_id (WnckClassGroup *class_group);
 
+WNCK_EXPORT
 const char * wnck_class_group_get_name (WnckClassGroup *class_group);
 
+WNCK_EXPORT
 GdkPixbuf *wnck_class_group_get_icon (WnckClassGroup *class_group);
+
+WNCK_EXPORT
 GdkPixbuf *wnck_class_group_get_mini_icon (WnckClassGroup *class_group);
 
 G_END_DECLS

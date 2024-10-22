@@ -1,10 +1,8 @@
-/* util header */
+/* libwnck header */
 /* vim: set sw=2 et: */
 
 /*
  * Copyright (C) 2001 Havoc Pennington
- * Copyright (C) 2003 Red Hat, Inc.
- * Copyright (C) 2006-2007 Vincent Untz
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Library General Public
@@ -24,32 +22,9 @@
 #error "Only <libwnck/libwnck.h> can be included directly."
 #endif
 
-#ifndef WNCK_MISC_H
-#define WNCK_MISC_H
+#ifndef WNCK_MACROS_H
+#define WNCK_MACROS_H
 
-#include <gtk/gtk.h>
-#include <libwnck/wnck-macros.h>
+#define WNCK_EXPORT __attribute__ ((visibility ("default"))) extern
 
-G_BEGIN_DECLS
-
-/**
- * WnckClientType:
- * @WNCK_CLIENT_TYPE_APPLICATION: the libwnck user is a normal application.
- * @WNCK_CLIENT_TYPE_PAGER: the libwnck user is an utility application dealing
- * with window management, like pagers and taskbars.
- *
- * Type describing the role of the libwnck user.
- *
- * Since: 2.14
- */
-typedef enum {
-  WNCK_CLIENT_TYPE_APPLICATION = 1,
-  WNCK_CLIENT_TYPE_PAGER = 2
-} WnckClientType;
-
-WNCK_EXPORT
-void wnck_shutdown (void);
-
-G_END_DECLS
-
-#endif /* WNCK_MISC_H */
+#endif

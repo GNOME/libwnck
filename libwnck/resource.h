@@ -28,6 +28,7 @@
 #define WNCK_RESOURCE_H
 
 #include <gtk/gtk.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -85,10 +86,12 @@ struct _WnckResourceUsage
   unsigned long pad9;
 };
 
+WNCK_EXPORT
 void wnck_xid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             xid,
                                    WnckResourceUsage *usage);
 
+WNCK_EXPORT
 void wnck_pid_read_resource_usage (GdkDisplay        *gdk_display,
                                    gulong             pid,
                                    WnckResourceUsage *usage);

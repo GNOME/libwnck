@@ -43,6 +43,7 @@ headers = [
   'window.h',
   'window-action-menu.h',
   'wnck-handle.h',
+  'wnck-macros.h',
   'workspace.h',
 ]
 
@@ -61,13 +62,9 @@ sources = [
   'util.c',
   'window-action-menu.c',
   'window.c',
-  'wnck-handle-private.h',
   'wnck-handle.c',
-  'wnck-icon-cache-private.h',
   'wnck-icon-cache.c',
-  'wnck-image-menu-item-private.h',
   'wnck-image-menu-item.c',
-  'wnck-resource-usage-private.h',
   'wnck-resource-usage.c',
   'workspace.c',
   'xutils.c',
@@ -86,6 +83,8 @@ a11y_sources = [
 
 enum_types = gnome.mkenums_simple('wnck-enum-types',
   sources : headers,
+  decorator: 'WNCK_EXPORT',
+  header_prefix: '#include <libwnck/wnck-macros.h>',
   install_header: true,
   install_dir: join_paths(includedir, libwnck_includedir)
 )
@@ -103,11 +102,6 @@ libwnck_cflags = [
   '-DWNCK_LOCALEDIR="@0@"'.format(localedir),
   '-DWNCK_COMPILATION',
   '-DSN_API_NOT_YET_FROZEN=1'
-]
-
-mapfile = MODULE_NAME + '.map'
-libwnck_ldflags = [
-  '-Wl,--version-script,@0@/@1@'.format(meson.current_source_dir(), mapfile),
 ]
 
 if get_option('deprecation_flags')
@@ -128,8 +122,7 @@ libwnck_lib = shared_library(LIBNAME,
   sources: sources + a11y_sources + enum_types + resources,
   version: '@0@.@1@.@2@'.format(LIBWNCK_SOVERSION, LIBWNCK_CURRENT, LIBWNCK_REVISION),
   soversion: LIBWNCK_SOVERSION,
-  link_args: libwnck_ldflags,
-  link_depends: mapfile,
+  gnu_symbol_visibility: 'hidden',
   install: true,
 )
 

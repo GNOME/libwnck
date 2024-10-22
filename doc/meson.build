@@ -8,7 +8,14 @@ gnome.gtkdoc(meson.project_name(),
     link_with: libwnck_lib
   ),
   gobject_typesfile: meson.project_name() + '.types',
-  ignore_headers: ['wnck-enum-types.h'],
+  ignore_headers: [
+    'pager-accessible.h',
+    'pager-accessible-factory.h',
+    'wnck-enum-types.h',
+    'wnck-image-menu-item-private.h',
+    'workspace-accessible.h',
+    'workspace-accessible-factory.h'
+  ],
   scan_args: [
     '--rebuild-types',
     '--rebuild-sections'

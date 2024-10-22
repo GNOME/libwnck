@@ -28,6 +28,7 @@
 
 #include <gtk/gtk.h>
 #include <libwnck/screen.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -85,31 +86,52 @@ typedef enum {
   WNCK_TASKLIST_ALWAYS_GROUP
 } WnckTasklistGroupingType;
 
+WNCK_EXPORT
 GType wnck_tasklist_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 GtkWidget *wnck_tasklist_new_with_handle (WnckHandle *handle);
 
+WNCK_EXPORT
 void wnck_tasklist_set_grouping (WnckTasklist             *tasklist,
 				 WnckTasklistGroupingType  grouping);
+
+WNCK_EXPORT
 void wnck_tasklist_set_switch_workspace_on_unminimize (WnckTasklist  *tasklist,
 						       gboolean       switch_workspace_on_unminimize);
+
+WNCK_EXPORT
 void wnck_tasklist_set_middle_click_close (WnckTasklist  *tasklist,
 					   gboolean       middle_click_close);
+
+WNCK_EXPORT
 void wnck_tasklist_set_grouping_limit (WnckTasklist *tasklist,
 				       gint          limit);
+
+WNCK_EXPORT
 void wnck_tasklist_set_include_all_workspaces (WnckTasklist *tasklist,
 					       gboolean      include_all_workspaces);
+
+WNCK_EXPORT
 void wnck_tasklist_set_button_relief (WnckTasklist *tasklist,
                                       GtkReliefStyle relief);
+
+WNCK_EXPORT
 void wnck_tasklist_set_orientation (WnckTasklist *tasklist,
                                     GtkOrientation orient);
+
+WNCK_EXPORT
 void wnck_tasklist_set_scroll_enabled (WnckTasklist *tasklist,
                                        gboolean      scroll_enabled);
+
+WNCK_EXPORT
 gboolean wnck_tasklist_get_scroll_enabled (WnckTasklist *tasklist);
 
+WNCK_EXPORT
 void     wnck_tasklist_set_tooltips_enabled (WnckTasklist *self,
                                              gboolean      tooltips_enabled);
 
+WNCK_EXPORT
 gboolean wnck_tasklist_get_tooltips_enabled (WnckTasklist *self);
 
 G_END_DECLS

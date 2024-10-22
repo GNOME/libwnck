@@ -27,6 +27,7 @@
 #define WNCK_SCREEN_H
 
 #include <glib-object.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -131,7 +132,7 @@ struct _WnckScreenClass
  * Type defining the orientation of the layout of #WnckWorkspace. See
  * wnck_pager_set_orientation() for more information.
  */
-typedef enum
+typedef enum /*< skip >*/
 {
   WNCK_LAYOUT_ORIENTATION_HORIZONTAL,
   WNCK_LAYOUT_ORIENTATION_VERTICAL
@@ -151,7 +152,7 @@ typedef enum
  * Type defining the starting corner of the layout of #WnckWorkspace, i.e. the
  * corner containing the first #WnckWorkspace.
  */
-typedef enum
+typedef enum /*< skip >*/
 {
   WNCK_LAYOUT_CORNER_TOPLEFT,
   WNCK_LAYOUT_CORNER_TOPRIGHT,
@@ -160,32 +161,71 @@ typedef enum
 } _WnckLayoutCorner;
 #endif /* __GTK_DOC_IGNORE__ */
 
+WNCK_EXPORT
 GType wnck_screen_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 WnckHandle*    wnck_screen_get_handle               (WnckScreen *screen);
 
+WNCK_EXPORT
 int            wnck_screen_get_number               (WnckScreen *screen);
+
+WNCK_EXPORT
 WnckWorkspace* wnck_screen_get_workspace            (WnckScreen *screen,
                                                      int         workspace);
+
+WNCK_EXPORT
 WnckWorkspace* wnck_screen_get_active_workspace     (WnckScreen *screen);
+
+WNCK_EXPORT
 GList*         wnck_screen_get_workspaces           (WnckScreen *screen);
+
+WNCK_EXPORT
 WnckWindow*    wnck_screen_get_active_window        (WnckScreen *screen);
+
+WNCK_EXPORT
 WnckWindow*    wnck_screen_get_previously_active_window (WnckScreen *screen);
+
+WNCK_EXPORT
 GList*         wnck_screen_get_windows              (WnckScreen *screen);
+
+WNCK_EXPORT
 GList*         wnck_screen_get_windows_stacked      (WnckScreen *screen);
+
+WNCK_EXPORT
 void           wnck_screen_force_update             (WnckScreen *screen);
+
+WNCK_EXPORT
 int            wnck_screen_get_workspace_count      (WnckScreen *screen);
+
+WNCK_EXPORT
 void           wnck_screen_change_workspace_count   (WnckScreen *screen,
                                                      int         count);
+
+WNCK_EXPORT
 const char*    wnck_screen_get_window_manager_name  (WnckScreen *screen);
+
+WNCK_EXPORT
 gboolean       wnck_screen_net_wm_supports          (WnckScreen *screen,
                                                      const char *atom);
+
+WNCK_EXPORT
 gulong         wnck_screen_get_background_pixmap    (WnckScreen *screen);
+
+WNCK_EXPORT
 int            wnck_screen_get_width                (WnckScreen *screen);
+
+WNCK_EXPORT
 int            wnck_screen_get_height               (WnckScreen *screen);
+
+WNCK_EXPORT
 gboolean       wnck_screen_get_showing_desktop      (WnckScreen *screen);
+
+WNCK_EXPORT
 void           wnck_screen_toggle_showing_desktop   (WnckScreen *screen,
                                                      gboolean    show);
+
+WNCK_EXPORT
 void           wnck_screen_move_viewport            (WnckScreen *screen,
                                                      int         x,
                                                      int         y);
@@ -194,10 +234,14 @@ void           _wnck_screen_get_workspace_layout     (WnckScreen             *sc
                                                       int                    *rows,
                                                       int                    *columns,
                                                       _WnckLayoutCorner      *starting_corner);
+
+WNCK_EXPORT
 int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,
                                                      int         current_token,
                                                      int         rows,
                                                      int         columns);
+
+WNCK_EXPORT
 void           wnck_screen_release_workspace_layout (WnckScreen *screen,
                                                      int         current_token);
 

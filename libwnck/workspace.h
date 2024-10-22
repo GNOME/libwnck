@@ -28,6 +28,7 @@
 
 #include <glib-object.h>
 #include <libwnck/screen.h>
+#include <libwnck/wnck-macros.h>
 
 G_BEGIN_DECLS
 
@@ -90,24 +91,48 @@ typedef enum
   WNCK_MOTION_RIGHT = -4
 } WnckMotionDirection;
 
+WNCK_EXPORT
 GType wnck_workspace_get_type (void) G_GNUC_CONST;
 
+WNCK_EXPORT
 int         wnck_workspace_get_number     (WnckWorkspace *space);
+
+WNCK_EXPORT
 const char* wnck_workspace_get_name       (WnckWorkspace *space);
+
+WNCK_EXPORT
 void        wnck_workspace_change_name    (WnckWorkspace *space,
                                            const char    *name);
+
+WNCK_EXPORT
 WnckScreen* wnck_workspace_get_screen     (WnckWorkspace *space);
+
+WNCK_EXPORT
 void        wnck_workspace_activate       (WnckWorkspace *space,
                                            guint32        timestamp);
+
+WNCK_EXPORT
 int         wnck_workspace_get_width      (WnckWorkspace *space);
+
+WNCK_EXPORT
 int         wnck_workspace_get_height     (WnckWorkspace *space);
+
+WNCK_EXPORT
 int         wnck_workspace_get_viewport_x (WnckWorkspace *space);
+
+WNCK_EXPORT
 int         wnck_workspace_get_viewport_y (WnckWorkspace *space);
+
+WNCK_EXPORT
 gboolean    wnck_workspace_is_virtual     (WnckWorkspace *space);
 
-
+WNCK_EXPORT
 int wnck_workspace_get_layout_row          (WnckWorkspace       *space);
+
+WNCK_EXPORT
 int wnck_workspace_get_layout_column       (WnckWorkspace       *space);
+
+WNCK_EXPORT
 WnckWorkspace* wnck_workspace_get_neighbor (WnckWorkspace       *space,
                                             WnckMotionDirection  direction);
 
