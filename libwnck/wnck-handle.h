@@ -53,8 +53,14 @@ void             wnck_handle_set_default_icon_size      (WnckHandle        *self
                                                          gsize              icon_size);
 
 WNCK_EXPORT
+gsize            wnck_handle_get_default_icon_size      (WnckHandle        *self);
+
+WNCK_EXPORT
 void             wnck_handle_set_default_mini_icon_size (WnckHandle        *self,
                                                          gsize              icon_size);
+
+WNCK_EXPORT
+gsize            wnck_handle_get_default_mini_icon_size (WnckHandle        *self);
 
 WNCK_EXPORT
 WnckClassGroup  *wnck_handle_get_class_group            (WnckHandle        *self,

@@ -498,7 +498,7 @@ wnck_button_size_allocate (GtkWidget     *widget,
   min_width = get_css_width (widget);
   min_width += get_css_width (gtk_bin_get_child (GTK_BIN (widget)));
 
-  min_image_width = _wnck_handle_get_default_mini_icon_size (handle) +
+  min_image_width = wnck_handle_get_default_mini_icon_size (handle) +
                     min_width +
                     2 * TASKLIST_BUTTON_PADDING;
 
@@ -3719,7 +3719,7 @@ wnck_task_get_icon (WnckTask *task)
   pixbuf = NULL;
 
   handle = task->tasklist->priv->handle;
-  mini_icon_size = _wnck_handle_get_default_mini_icon_size (handle);
+  mini_icon_size = wnck_handle_get_default_mini_icon_size (handle);
 
   switch (task->type)
     {

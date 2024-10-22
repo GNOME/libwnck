@@ -534,7 +534,7 @@ wnck_handle_set_default_icon_size (WnckHandle *self,
 }
 
 gsize
-_wnck_handle_get_default_icon_size (WnckHandle *self)
+wnck_handle_get_default_icon_size (WnckHandle *self)
 {
   g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_ICON_SIZE);
 
@@ -564,7 +564,7 @@ wnck_handle_set_default_mini_icon_size (WnckHandle *self,
 }
 
 gsize
-_wnck_handle_get_default_mini_icon_size (WnckHandle *self)
+wnck_handle_get_default_mini_icon_size (WnckHandle *self)
 {
   g_return_val_if_fail (WNCK_IS_HANDLE (self), WNCK_DEFAULT_MINI_ICON_SIZE);
 
