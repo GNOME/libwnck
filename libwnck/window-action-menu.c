@@ -32,6 +32,7 @@
  * SECTION:window-action-menu
  * @short_description: a menu widget, used to manipulate a window.
  * @see_also: #WnckWindow
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * A #WnckActionMenu is a menu containing items to manipulate a window.

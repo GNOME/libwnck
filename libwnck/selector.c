@@ -41,6 +41,7 @@
  * @short_description: a window selector widget, showing the list of windows as
  * a menu.
  * @see_also: #WnckTasklist
+ * @include: libwnck/libwnck-gtk3.h
  * @stability: Unstable
  *
  * The #WnckSelector represents client windows on a screen as a menu, where
