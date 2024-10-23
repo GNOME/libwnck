@@ -3482,7 +3482,7 @@ wnck_task_popup_menu (WnckTask *task,
     }
 
   gtk_menu_set_screen (GTK_MENU (menu),
-		       _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
+                       gtk_widget_get_screen (GTK_WIDGET (task->tasklist)));
 
   gtk_widget_show (menu);
   gtk_menu_popup_at_widget (GTK_MENU (menu), task->button,
@@ -4195,7 +4195,7 @@ wnck_task_button_press_event (GtkWidget	      *widget,
                                      (void**) &task->action_menu);
 
           gtk_menu_set_screen (GTK_MENU (task->action_menu),
-                               _wnck_screen_get_gdk_screen (task->tasklist->priv->screen));
+                               gtk_widget_get_screen (GTK_WIDGET (task->tasklist)));
 
           gtk_widget_show (task->action_menu);
           gtk_menu_popup_at_widget (GTK_MENU (task->action_menu), task->button,
