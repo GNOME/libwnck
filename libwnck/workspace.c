@@ -424,16 +424,19 @@ wnck_workspace_is_virtual (WnckWorkspace *space)
 int
 wnck_workspace_get_layout_row (WnckWorkspace *space)
 {
-  _WnckLayoutOrientation orientation;
-  _WnckLayoutCorner corner;
+  WnckLayoutOrientation orientation;
+  WnckLayoutCorner corner;
   int n_rows;
   int n_cols;
   int row;
 
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
 
-  _wnck_screen_get_workspace_layout (space->priv->screen,
-                                     &orientation, &n_rows, &n_cols, &corner);
+  wnck_screen_get_workspace_layout (space->priv->screen,
+                                    &orientation,
+                                    &n_rows,
+                                    &n_cols,
+                                    &corner);
 
   if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
     row = space->priv->number / n_cols;
@@ -464,16 +467,19 @@ wnck_workspace_get_layout_row (WnckWorkspace *space)
 int
 wnck_workspace_get_layout_column (WnckWorkspace *space)
 {
-  _WnckLayoutOrientation orientation;
-  _WnckLayoutCorner corner;
+  WnckLayoutOrientation orientation;
+  WnckLayoutCorner corner;
   int n_rows;
   int n_cols;
   int col;
 
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), -1);
 
-  _wnck_screen_get_workspace_layout (space->priv->screen,
-                                     &orientation, &n_rows, &n_cols, &corner);
+  wnck_screen_get_workspace_layout (space->priv->screen,
+                                    &orientation,
+                                    &n_rows,
+                                    &n_cols,
+                                    &corner);
 
   if (orientation == WNCK_LAYOUT_ORIENTATION_HORIZONTAL)
     col = space->priv->number % n_cols;
@@ -505,8 +511,8 @@ WnckWorkspace*
 wnck_workspace_get_neighbor (WnckWorkspace       *space,
                              WnckMotionDirection  direction)
 {
-  _WnckLayoutOrientation orientation;
-  _WnckLayoutCorner corner;
+  WnckLayoutOrientation orientation;
+  WnckLayoutCorner corner;
   int n_rows;
   int n_cols;
   int row;
@@ -516,8 +522,11 @@ wnck_workspace_get_neighbor (WnckWorkspace       *space,
 
   g_return_val_if_fail (WNCK_IS_WORKSPACE (space), NULL);
 
-  _wnck_screen_get_workspace_layout (space->priv->screen,
-                                     &orientation, &n_rows, &n_cols, &corner);
+  wnck_screen_get_workspace_layout (space->priv->screen,
+                                    &orientation,
+                                    &n_rows,
+                                    &n_cols,
+                                    &corner);
 
   row = wnck_workspace_get_layout_row (space);
   col = wnck_workspace_get_layout_column (space);

@@ -104,7 +104,7 @@ struct _WnckScreenPrivate
   guint showing_desktop : 1;
 
   guint vertical_workspaces : 1;
-  _WnckLayoutCorner starting_corner;
+  WnckLayoutCorner starting_corner;
   gint rows_of_workspaces;
   gint columns_of_workspaces;
 
@@ -2146,11 +2146,11 @@ _wnck_screen_get_xscreen (WnckScreen *screen)
  * to make it really better, use a WnckScreenLayout struct.
  */
 void
-_wnck_screen_get_workspace_layout (WnckScreen             *screen,
-                                   _WnckLayoutOrientation *orientation,
-                                   int                    *rows,
-                                   int                    *columns,
-                                   _WnckLayoutCorner      *starting_corner)
+wnck_screen_get_workspace_layout (WnckScreen            *screen,
+                                  WnckLayoutOrientation *orientation,
+                                  int                   *rows,
+                                  int                   *columns,
+                                  WnckLayoutCorner      *starting_corner)
 {
   g_return_if_fail (WNCK_IS_SCREEN (screen));
 

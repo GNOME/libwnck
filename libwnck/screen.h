@@ -121,7 +121,6 @@ struct _WnckScreenClass
   void (* pad6) (void);
 };
 
-#ifndef __GTK_DOC_IGNORE__
 /**
  * WnckLayoutOrientation:
  * @WNCK_LAYOUT_ORIENTATION_HORIZONTAL: the #WnckWorkspace are laid out in
@@ -132,11 +131,11 @@ struct _WnckScreenClass
  * Type defining the orientation of the layout of #WnckWorkspace. See
  * wnck_pager_set_orientation() for more information.
  */
-typedef enum /*< skip >*/
+typedef enum
 {
   WNCK_LAYOUT_ORIENTATION_HORIZONTAL,
   WNCK_LAYOUT_ORIENTATION_VERTICAL
-} _WnckLayoutOrientation;
+} WnckLayoutOrientation;
 
 /**
  * WnckLayoutCorner:
@@ -152,14 +151,13 @@ typedef enum /*< skip >*/
  * Type defining the starting corner of the layout of #WnckWorkspace, i.e. the
  * corner containing the first #WnckWorkspace.
  */
-typedef enum /*< skip >*/
+typedef enum
 {
   WNCK_LAYOUT_CORNER_TOPLEFT,
   WNCK_LAYOUT_CORNER_TOPRIGHT,
   WNCK_LAYOUT_CORNER_BOTTOMRIGHT,
   WNCK_LAYOUT_CORNER_BOTTOMLEFT
-} _WnckLayoutCorner;
-#endif /* __GTK_DOC_IGNORE__ */
+} WnckLayoutCorner;
 
 WNCK_EXPORT
 GType wnck_screen_get_type (void) G_GNUC_CONST;
@@ -229,11 +227,13 @@ WNCK_EXPORT
 void           wnck_screen_move_viewport            (WnckScreen *screen,
                                                      int         x,
                                                      int         y);
-void           _wnck_screen_get_workspace_layout     (WnckScreen             *screen,
-                                                      _WnckLayoutOrientation *orientation,
-                                                      int                    *rows,
-                                                      int                    *columns,
-                                                      _WnckLayoutCorner      *starting_corner);
+
+WNCK_EXPORT
+void           wnck_screen_get_workspace_layout     (WnckScreen            *screen,
+                                                     WnckLayoutOrientation *orientation,
+                                                     int                   *rows,
+                                                     int                   *columns,
+                                                     WnckLayoutCorner      *starting_corner);
 
 WNCK_EXPORT
 int            wnck_screen_try_set_workspace_layout (WnckScreen *screen,

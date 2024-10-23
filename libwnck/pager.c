@@ -384,14 +384,15 @@ _wnck_pager_set_screen (WnckPager *pager)
 
   if (!wnck_pager_set_layout_hint (pager))
     {
-      _WnckLayoutOrientation orientation;
+      WnckLayoutOrientation orientation;
 
       /* we couldn't set the layout on the screen. This means someone else owns
        * it. Let's at least show the correct layout. */
-      _wnck_screen_get_workspace_layout (pager->priv->screen,
-                                         &orientation,
-                                         &pager->priv->n_rows,
-                                         NULL, NULL);
+      wnck_screen_get_workspace_layout (pager->priv->screen,
+                                        &orientation,
+                                        &pager->priv->n_rows,
+                                        NULL,
+                                        NULL);
 
       /* test in this order to default to horizontal in case there was in issue
        * when fetching the layout */
