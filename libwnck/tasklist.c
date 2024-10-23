@@ -2620,7 +2620,7 @@ tasklist_include_window_impl (WnckTasklist *tasklist,
 
       /* Don't include the window if its center point is not on the same monitor */
 
-      display = gdk_display_get_default ();
+      display = gtk_widget_get_display (GTK_WIDGET (tasklist));
       monitor = gdk_display_get_monitor_at_point (display, x + w / 2, y + h / 2);
 
       if (monitor != tasklist->priv->monitor)
@@ -2704,7 +2704,7 @@ wnck_tasklist_update_lists (WnckTasklist *tasklist)
           GdkDisplay *display;
           GdkMonitor *monitor;
 
-          display = gdk_display_get_default ();
+          display = gtk_widget_get_display (GTK_WIDGET (tasklist));
           monitor = gdk_display_get_monitor_at_window (display, tasklist_window);
 
           if (monitor != tasklist->priv->monitor)
@@ -3034,7 +3034,7 @@ wnck_tasklist_window_changed_geometry (WnckWindow   *window,
           GdkDisplay *display;
           GdkMonitor *monitor;
 
-          display = gdk_display_get_default ();
+          display = gtk_widget_get_display (GTK_WIDGET (tasklist));
           monitor = gdk_display_get_monitor_at_window (display, tasklist_window);
 
           monitor_changed = (monitor != tasklist->priv->monitor);
