@@ -652,7 +652,7 @@ _wnck_application_process_property_notify (WnckApplication *app,
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_WM_ICON") ||
            xevent->xproperty.atom ==
-           _wnck_atom_get ("WM_NORMAL_HINTS"))
+           _wnck_atom_get ("WM_HINTS"))
     {
       _wnck_icon_cache_property_changed (app->priv->icon_cache,
                                          xevent->xproperty.atom);
