@@ -26,6 +26,7 @@
 #include <math.h>
 #include <string.h>
 #include <stdio.h>
+#include <gdk/gdkx.h>
 #include <glib/gi18n-lib.h>
 #include "tasklist.h"
 #include "window.h"
@@ -2084,14 +2085,24 @@ static void
 sn_error_trap_push (SnDisplay *display,
                     Display   *xdisplay)
 {
-  _wnck_error_trap_push (xdisplay);
+  GdkDisplay *gdk_display;
+
+  gdk_display = gdk_x11_lookup_xdisplay (xdisplay);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_push (gdk_display);
 }
 
 static void
 sn_error_trap_pop (SnDisplay *display,
                    Display   *xdisplay)
 {
-  _wnck_error_trap_pop (xdisplay);
+  GdkDisplay *gdk_display;
+
+  gdk_display = gdk_x11_lookup_xdisplay (xdisplay);
+  g_assert (gdk_display != NULL);
+
+  gdk_x11_display_error_trap_pop_ignored (gdk_display);
 }
 
 static void
