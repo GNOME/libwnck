@@ -36,9 +36,7 @@
 #include "xutils.h"
 #include "private.h"
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 #include <libsn/sn.h>
-#endif
 
 /**
  * SECTION:tasklist
@@ -141,9 +139,7 @@ struct _WnckTask
 
   WnckClassGroup *class_group;
   WnckWindow *window;
-#ifdef HAVE_STARTUP_NOTIFICATION
   SnStartupSequence *startup_sequence;
-#endif
 
   gdouble grouping_score;
 
@@ -228,11 +224,9 @@ struct _WnckTasklistPrivate
 
   guint idle_callback_tag;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   SnDisplay *sn_display;
   SnMonitorContext *sn_context;
   guint startup_sequence_timeout;
-#endif
 
   GdkMonitor *monitor;
   GdkRectangle monitor_geometry;
@@ -279,10 +273,8 @@ static WnckTask *wnck_task_new_from_window      (WnckTasklist    *tasklist,
 						 WnckWindow      *window);
 static WnckTask *wnck_task_new_from_class_group (WnckTasklist    *tasklist,
 						 WnckClassGroup  *class_group);
-#ifdef HAVE_STARTUP_NOTIFICATION
 static WnckTask *wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
                                                       SnStartupSequence *sequence);
-#endif
 static gboolean wnck_task_get_needs_attention (WnckTask *task);
 
 
@@ -381,12 +373,10 @@ static void     wnck_tasklist_update_icon_geometries   (WnckTasklist *tasklist,
 static void     wnck_tasklist_connect_screen           (WnckTasklist *tasklist);
 static void     wnck_tasklist_disconnect_screen        (WnckTasklist *tasklist);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 static void     wnck_tasklist_sn_event                 (SnMonitorEvent *event,
                                                         void           *user_data);
 static void     wnck_tasklist_check_end_sequence       (WnckTasklist   *tasklist,
                                                         WnckWindow     *window);
-#endif
 
 /*
  * Keep track of all tasklist instances so we can decide
@@ -819,13 +809,11 @@ wnck_task_finalize (GObject *object)
       task->button = NULL;
     }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   if (task->startup_sequence)
     {
       sn_startup_sequence_unref (task->startup_sequence);
       task->startup_sequence = NULL;
     }
-#endif
 
   g_list_free (task->windows);
   task->windows = NULL;
@@ -909,7 +897,6 @@ event_filter_cb (GdkXEvent *gdkxevent,
                  GdkEvent  *event,
                  gpointer   data)
 {
-#ifdef HAVE_STARTUP_NOTIFICATION
   WnckTasklist *self;
   XEvent *xevent = gdkxevent;
 
@@ -927,7 +914,6 @@ event_filter_cb (GdkXEvent *gdkxevent,
       default:
         break;
     }
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
   return GDK_FILTER_CONTINUE;
 }
@@ -983,14 +969,12 @@ wnck_tasklist_get_request_mode (GtkWidget *widget)
   return GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT;
 }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 static gboolean
 sn_utf8_validator (const char *str,
                    int         max_len)
 {
   return g_utf8_validate (str, max_len, NULL);
 }
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
 static void
 wnck_tasklist_get_property (GObject    *object,
@@ -1199,9 +1183,7 @@ wnck_tasklist_class_init (WnckTasklistClass *klass)
 
   install_properties (object_class);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   sn_set_utf8_validator (sn_utf8_validator);
-#endif /* HAVE_STARTUP_NOTIFICATION */
 }
 
 static void
@@ -2097,7 +2079,6 @@ foreach_tasklist (WnckTasklist *tasklist,
   wnck_tasklist_update_lists (tasklist);
 }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 static void
 sn_error_trap_push (SnDisplay *display,
                     Display   *xdisplay)
@@ -2111,7 +2092,6 @@ sn_error_trap_pop (SnDisplay *display,
 {
   _wnck_error_trap_pop (xdisplay);
 }
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
 static void
 wnck_tasklist_realize (GtkWidget *widget)
@@ -2132,7 +2112,6 @@ wnck_tasklist_realize (GtkWidget *widget)
 
   g_assert (tasklist->priv->screen != NULL);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   tasklist->priv->sn_display = sn_display_new (gdk_x11_display_get_xdisplay (gdkdisplay),
                                                sn_error_trap_push,
                                                sn_error_trap_pop);
@@ -2143,7 +2122,6 @@ wnck_tasklist_realize (GtkWidget *widget)
                             wnck_tasklist_sn_event,
                             tasklist,
                             NULL);
-#endif
 
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->realize) (widget);
 
@@ -2165,13 +2143,11 @@ wnck_tasklist_unrealize (GtkWidget *widget)
   wnck_tasklist_disconnect_screen (tasklist);
   tasklist->priv->screen = NULL;
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   sn_display_unref (tasklist->priv->sn_display);
   tasklist->priv->sn_display = NULL;
 
   sn_monitor_context_unref (tasklist->priv->sn_context);
   tasklist->priv->sn_context = NULL;
-#endif
 
   (* GTK_WIDGET_CLASS (wnck_tasklist_parent_class)->unrealize) (widget);
 
@@ -2377,13 +2353,11 @@ wnck_tasklist_disconnect_screen (WnckTasklist *tasklist)
 
   g_assert (i == N_SCREEN_CONNECTIONS);
 
-#ifdef HAVE_STARTUP_NOTIFICATION
   if (tasklist->priv->startup_sequence_timeout != 0)
     {
       g_source_remove (tasklist->priv->startup_sequence_timeout);
       tasklist->priv->startup_sequence_timeout = 0;
     }
-#endif
 }
 
 static gboolean
@@ -3088,9 +3062,7 @@ wnck_tasklist_window_added (WnckScreen   *screen,
 			    WnckWindow   *win,
 			    WnckTasklist *tasklist)
 {
-#ifdef HAVE_STARTUP_NOTIFICATION
   wnck_tasklist_check_end_sequence (tasklist, win);
-#endif
 
   wnck_tasklist_connect_window (tasklist, win);
 
@@ -3551,7 +3523,6 @@ wnck_task_get_text (WnckTask *task,
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
-#ifdef HAVE_STARTUP_NOTIFICATION
       name = sn_startup_sequence_get_description (task->startup_sequence);
       if (name == NULL)
         name = sn_startup_sequence_get_name (task->startup_sequence);
@@ -3559,9 +3530,6 @@ wnck_task_get_text (WnckTask *task,
         name = sn_startup_sequence_get_binary_name (task->startup_sequence);
 
       return g_strdup (name);
-#else
-      return NULL;
-#endif
       break;
 
     default:
@@ -3738,7 +3706,6 @@ wnck_task_get_icon (WnckTask *task)
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
-#ifdef HAVE_STARTUP_NOTIFICATION
       const char *icon_name;
 
       icon_name = sn_startup_sequence_get_icon_name (task->startup_sequence);
@@ -3760,7 +3727,6 @@ wnck_task_get_icon (WnckTask *task)
           _wnck_get_fallback_icons (NULL, 0,
                                     &pixbuf, mini_icon_size);
         }
-#endif
       break;
 
     default:
@@ -4649,7 +4615,6 @@ static void
 remove_startup_sequences_for_window (WnckTasklist *tasklist,
                                      WnckWindow   *window)
 {
-#ifdef HAVE_STARTUP_NOTIFICATION
   const char *win_id;
   GList *tmp;
 
@@ -4673,9 +4638,6 @@ remove_startup_sequences_for_window (WnckTasklist *tasklist,
 
       tmp = next;
     }
-#else
-  ; /* nothing */
-#endif
 }
 
 static WnckTask *
@@ -4715,7 +4677,6 @@ wnck_task_new_from_class_group (WnckTasklist   *tasklist,
   return task;
 }
 
-#ifdef HAVE_STARTUP_NOTIFICATION
 static WnckTask*
 wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
                                      SnStartupSequence *sequence)
@@ -4905,8 +4866,6 @@ wnck_tasklist_check_end_sequence (WnckTasklist   *tasklist,
       tmp = tmp->next;
     }
 }
-
-#endif /* HAVE_STARTUP_NOTIFICATION */
 
 /**
  * wnck_tasklist_set_tooltips_enabled:

@@ -6,10 +6,6 @@ option('install_tools',
   type: 'boolean',
   value: false,
   description: 'Install wnck-based tools')
-option('startup_notification',
-  type: 'feature',
-  value: 'auto',
-  description: 'Use Startup notification')
 option('introspection',
   type: 'feature',
   value: 'enabled',

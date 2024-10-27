@@ -7,13 +7,6 @@
 /* Define if the GNU gettext() function is already present or preinstalled. */
 #mesondefine HAVE_GETTEXT
 
-/* Define if you have libstartup-notification */
-#mesondefine HAVE_LIBSTARTUP_NOTIFICATION_1_0
-
-#ifdef HAVE_LIBSTARTUP_NOTIFICATION_1_0
-#define HAVE_STARTUP_NOTIFICATION 1
-#endif
-
 /* Define if you have the XRes library */
 #mesondefine HAVE_XRES
 

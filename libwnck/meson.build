@@ -127,14 +127,11 @@ libwnck_lib = shared_library(LIBNAME,
 )
 
 libwnck_requires_private = [
+  STARTUP_NOTIFICATION_PACKAGE,
   X11_PACKAGE,
   'pango',
   'cairo',
 ]
-
-if conf.has('HAVE_' + STARTUP_NOTIFICATION_PACKAGE.to_upper().underscorify())
-  libwnck_requires_private += STARTUP_NOTIFICATION_PACKAGE
-endif
 
 if conf.has('HAVE_' + XRES_PACKAGE.to_upper().underscorify())
   libwnck_requires_private += XRES_PACKAGE

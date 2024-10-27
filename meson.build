@@ -43,7 +43,7 @@ pkg_deps = [
   {'name': 'glib-2.0', 'version': '>= 2.44' },
   {'name': 'gobject-2.0', 'version': '>= 2.13.0' },
   {'name': 'gtk+-3.0', 'version': '>= 3.22.0' },
-  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4', 'required': get_option('startup_notification')},
+  {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4' },
   {'name': X11_PACKAGE },
   {'name': XRES_PACKAGE, 'version': '>= 1.2', 'required': false},
 ]
