@@ -140,6 +140,7 @@ struct _WnckTask
   WnckClassGroup *class_group;
   WnckWindow *window;
   SnStartupSequence *startup_sequence;
+  int64_t startup_time;
 
   gdouble grouping_score;
 
@@ -4690,6 +4691,7 @@ wnck_task_new_from_startup_sequence (WnckTasklist      *tasklist,
   task->class_group = NULL;
   task->startup_sequence = sequence;
   sn_startup_sequence_ref (task->startup_sequence);
+  task->startup_time = g_get_real_time ();
   task->tasklist = tasklist;
 
   wnck_task_create_widgets (task, tasklist->priv->relief);
@@ -4710,7 +4712,6 @@ sequence_timeout_callback (void *user_data)
   WnckTasklist *tasklist = user_data;
   GList *tmp;
   gint64 now;
-  long tv_sec, tv_usec;
   double elapsed;
 
   now = g_get_real_time ();
@@ -4721,10 +4722,7 @@ sequence_timeout_callback (void *user_data)
     {
       WnckTask *task = WNCK_TASK (tmp->data);
 
-      sn_startup_sequence_get_last_active_time (task->startup_sequence,
-                                                &tv_sec, &tv_usec);
-
-      elapsed = (now - (tv_sec * G_USEC_PER_SEC + tv_usec)) / 1000.0;
+      elapsed = (now - task->startup_time) / 1000.0;
 
       if (elapsed > STARTUP_TIMEOUT)
         {
