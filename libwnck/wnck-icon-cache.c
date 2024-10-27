@@ -47,8 +47,8 @@ struct _WnckIconCache
   WnckScreen *screen;
 
   IconOrigin origin;
-  Pixmap prev_pixmap;
-  Pixmap prev_mask;
+  Pixmap pixmap;
+  Pixmap mask;
   GdkPixbuf *icon;
   GdkPixbuf *mini_icon;
   guint want_fallback : 1;
@@ -481,7 +481,8 @@ _wnck_icon_cache_new (Window      xwindow,
   icon_cache->screen = screen;
 
   icon_cache->origin = USING_NO_ICON;
-  icon_cache->prev_pixmap = None;
+  icon_cache->pixmap = None;
+  icon_cache->mask = None;
   icon_cache->icon = NULL;
   icon_cache->mini_icon = NULL;
   icon_cache->want_fallback = TRUE;
@@ -493,17 +494,51 @@ _wnck_icon_cache_new (Window      xwindow,
 
 void
 _wnck_icon_cache_property_changed (WnckIconCache *icon_cache,
-                                   Atom           atom)
+                                   Atom           atom,
+                                   XWMHints      *hints)
 {
   if (atom == _wnck_atom_get ("_NET_WM_ICON"))
     icon_cache->net_wm_icon_dirty = TRUE;
   else if (atom == _wnck_atom_get ("WM_HINTS"))
-    icon_cache->wm_hints_dirty = TRUE;
+    {
+      if (hints != NULL)
+        {
+          Pixmap pixmap;
+          Pixmap mask;
+
+          pixmap = None;
+          mask = None;
+
+          if (hints->flags & IconPixmapHint)
+            pixmap = hints->icon_pixmap;
+
+          if (hints->flags & IconMaskHint)
+            mask = hints->icon_mask;
+
+          /* We won't update if pixmap is unchanged;
+           * avoids a get_from_drawable() on every geometry
+           * hints change
+           */
+          if (icon_cache->pixmap == pixmap &&
+              icon_cache->mask == mask)
+            return;
+
+          icon_cache->pixmap = pixmap;
+          icon_cache->mask = mask;
+        }
+      else
+        {
+          icon_cache->pixmap = None;
+          icon_cache->mask = None;
+        }
+
+      icon_cache->wm_hints_dirty = TRUE;
+    }
 
   if (!_wnck_icon_cache_get_icon_invalidated (icon_cache))
     return;
 
-  clear_icon_cache (icon_cache, FALSE);
+  clear_icon_cache (icon_cache, TRUE);
   emit_invalidated (icon_cache);
 }
 
@@ -546,16 +581,11 @@ _wnck_read_icon (WnckIconCache *icon_cache,
                  int            ideal_size)
 {
   Screen *xscreen;
-  Display *display;
   GdkPixbuf *icon;
   guchar *pixdata;
   int w, h;
-  Pixmap pixmap;
-  Pixmap mask;
-  XWMHints *hints;
 
   xscreen = _wnck_screen_get_xscreen (icon_cache->screen);
-  display = DisplayOfScreen (xscreen);
 
   icon = NULL;
   pixdata = NULL;
@@ -593,41 +623,16 @@ _wnck_read_icon (WnckIconCache *icon_cache,
     {
       icon_cache->wm_hints_dirty = FALSE;
 
-      _wnck_error_trap_push (display);
-      hints = XGetWMHints (display, icon_cache->xwindow);
-      _wnck_error_trap_pop (display);
-      pixmap = None;
-      mask = None;
-      if (hints)
+      if (icon_cache->pixmap != None &&
+          try_pixmap_and_mask (xscreen,
+                               icon_cache->pixmap,
+                               icon_cache->mask,
+                               &icon,
+                               ideal_size))
         {
-          if (hints->flags & IconPixmapHint)
-            pixmap = hints->icon_pixmap;
-          if (hints->flags & IconMaskHint)
-            mask = hints->icon_mask;
+          icon_cache->origin = USING_WM_HINTS;
 
-          XFree (hints);
-          hints = NULL;
-        }
-
-      /* We won't update if pixmap is unchanged;
-       * avoids a get_from_drawable() on every geometry
-       * hints change
-       */
-      if (((pixmap != icon_cache->prev_pixmap ||
-            mask != icon_cache->prev_mask) &&
-           pixmap != None) ||
-          (icon_cache->origin == USING_WM_HINTS &&
-           pixmap != None))
-        {
-          if (try_pixmap_and_mask (xscreen, pixmap, mask, &icon, ideal_size))
-            {
-              icon_cache->prev_pixmap = pixmap;
-              icon_cache->prev_mask = mask;
-
-              icon_cache->origin = USING_WM_HINTS;
-
-              return icon;
-            }
+          return icon;
         }
     }
 

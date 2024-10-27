@@ -2561,7 +2561,8 @@ _wnck_window_process_property_notify (WnckWindow *window,
            _wnck_atom_get ("_NET_WM_ICON"))
     {
       _wnck_icon_cache_property_changed (window->priv->icon_cache,
-                                         xevent->xproperty.atom);
+                                         xevent->xproperty.atom,
+                                         NULL);
     }
   else if (xevent->xproperty.atom ==
   	   _wnck_atom_get ("WM_HINTS"))
@@ -3132,10 +3133,9 @@ update_wmhints (WnckWindow *window)
 
   if (hints)
     {
-      if ((hints->flags & IconPixmapHint) ||
-          (hints->flags & IconMaskHint))
-        _wnck_icon_cache_property_changed (window->priv->icon_cache,
-                                           _wnck_atom_get ("WM_HINTS"));
+      _wnck_icon_cache_property_changed (window->priv->icon_cache,
+                                         _wnck_atom_get ("WM_HINTS"),
+                                         hints);
 
       if (hints->flags & WindowGroupHint)
         {

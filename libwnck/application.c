@@ -580,12 +580,29 @@ _wnck_application_process_property_notify (WnckApplication *app,
       /* FIXME */
     }
   else if (xevent->xproperty.atom ==
-           _wnck_atom_get ("_NET_WM_ICON") ||
-           xevent->xproperty.atom ==
-           _wnck_atom_get ("WM_HINTS"))
+           _wnck_atom_get ("_NET_WM_ICON"))
     {
       _wnck_icon_cache_property_changed (app->priv->icon_cache,
-                                         xevent->xproperty.atom);
+                                         xevent->xproperty.atom,
+                                         NULL);
+    }
+  else if (xevent->xproperty.atom ==
+           _wnck_atom_get ("WM_HINTS"))
+    {
+      XWMHints *hints;
+
+      _wnck_error_trap_push (xevent->xany.display);
+      hints = XGetWMHints (xevent->xany.display, app->priv->xwindow);
+      _wnck_error_trap_pop (xevent->xany.display);
+
+      if (hints != NULL)
+        {
+          _wnck_icon_cache_property_changed (app->priv->icon_cache,
+                                             xevent->xproperty.atom,
+                                             hints);
+
+          XFree (hints);
+        }
     }
   else if (xevent->xproperty.atom ==
            _wnck_atom_get ("_NET_STARTUP_ID"))
