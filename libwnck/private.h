@@ -56,7 +56,6 @@ void        _wnck_window_load_icons (WnckWindow *window);
 char*       _wnck_window_get_name_for_display (WnckWindow *window,
                                                gboolean    use_icon_name,
                                                gboolean    use_state_decorations);
-const char* _wnck_window_get_startup_id (WnckWindow *window);
 
 time_t      _wnck_window_get_needs_attention_time (WnckWindow *window);
 time_t      _wnck_window_or_transient_get_needs_attention_time (WnckWindow *window);

@@ -4619,7 +4619,7 @@ remove_startup_sequences_for_window (WnckTasklist *tasklist,
   const char *win_id;
   GList *tmp;
 
-  win_id = _wnck_window_get_startup_id (window);
+  win_id = wnck_window_get_startup_id (window);
   if (win_id == NULL)
     return;
 

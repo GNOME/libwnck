@@ -554,6 +554,9 @@ WNCK_EXPORT
 gboolean wnck_window_is_in_viewport          (WnckWindow    *window,
                                               WnckWorkspace *workspace);
 
+WNCK_EXPORT
+const char* wnck_window_get_startup_id (WnckWindow *window);
+
 G_END_DECLS
 
 #endif /* WNCK_WINDOW_H */

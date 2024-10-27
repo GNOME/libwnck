@@ -1150,8 +1150,17 @@ wnck_window_is_maximized_vertically   (WnckWindow *window)
   return window->priv->is_maximized_vert;
 }
 
+/**
+ * wnck_window_get_startup_id:
+ * @window: a #WnckWindow.
+ *
+ * Gets the startup sequence ID used for startup notification of @window.
+ *
+ * Return value: the startup sequence ID used for startup notification of
+ * @window, or %NULL if none is available.
+ */
 const char*
-_wnck_window_get_startup_id (WnckWindow *window)
+wnck_window_get_startup_id (WnckWindow *window)
 {
   g_return_val_if_fail (WNCK_IS_WINDOW (window), NULL);
 
