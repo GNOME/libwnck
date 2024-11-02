@@ -46,6 +46,7 @@ pkg_deps = [
   {'name': STARTUP_NOTIFICATION_PACKAGE, 'version': '>= 0.4' },
   {'name': X11_PACKAGE },
   {'name': XRES_PACKAGE, 'version': '>= 1.2', 'required': false},
+  {'name': 'xi', 'required': true},
 ]
 
 foreach p: pkg_deps
