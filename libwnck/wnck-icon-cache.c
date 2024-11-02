@@ -640,10 +640,7 @@ _wnck_read_icon (WnckIconCache *icon_cache,
        icon_cache->origin < USING_FALLBACK_ICON) ||
       icon_cache->origin == USING_FALLBACK_ICON)
     {
-      _wnck_get_fallback_icons (&icon,
-                                ideal_size,
-                                NULL,
-                                0);
+      icon = _wnck_get_fallback_icon (ideal_size);
 
       icon_cache->origin = USING_FALLBACK_ICON;
 

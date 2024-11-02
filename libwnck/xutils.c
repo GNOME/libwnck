@@ -1497,8 +1497,8 @@ _wnck_gdk_pixbuf_get_from_pixmap (Screen *screen,
   return retval;
 }
 
-static GdkPixbuf*
-default_icon_at_size (int size)
+GdkPixbuf *
+_wnck_get_fallback_icon (int size)
 {
   GdkPixbuf *base;
 
@@ -1520,19 +1520,6 @@ default_icon_at_size (int size)
 
       return scaled;
     }
-}
-
-void
-_wnck_get_fallback_icons (GdkPixbuf **iconp,
-                          int         ideal_size,
-                          GdkPixbuf **mini_iconp,
-                          int         ideal_mini_size)
-{
-  if (iconp)
-    *iconp = default_icon_at_size (ideal_size);
-
-  if (mini_iconp)
-    *mini_iconp = default_icon_at_size (ideal_mini_size);
 }
 
 void

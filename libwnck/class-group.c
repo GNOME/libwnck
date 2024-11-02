@@ -121,10 +121,7 @@ get_icon_internal (WnckClassGroup  *self,
     }
   else
     {
-      _wnck_get_fallback_icons (ret_icon,
-                                icon_size,
-                                NULL,
-                                0);
+      *ret_icon = _wnck_get_fallback_icon (icon_size);
     }
 }
 
