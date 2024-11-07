@@ -513,9 +513,12 @@ _wnck_get_atom_list (Screen  *screen,
       return FALSE;
     }
 
-  *atoms = g_new (Atom, nitems);
-  memcpy (*atoms, data, sizeof (Atom) * nitems);
-  *len = nitems;
+  if (nitems != 0)
+    {
+      *atoms = g_new (Atom, nitems);
+      memcpy (*atoms, data, sizeof (Atom) * nitems);
+      *len = nitems;
+    }
 
   XFree (data);
 
