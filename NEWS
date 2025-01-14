@@ -1,4 +1,14 @@
 ============
+Version 43.2
+============
+
+  Fixes
+
+  * Add WnckHandle to the docs. (#158)
+  * Add missing build dependency. (#149)
+  * Do not restore original event mask. (#159)
+
+============
 Version 43.1
 ============
 
