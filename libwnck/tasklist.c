@@ -3695,6 +3695,7 @@ wnck_task_get_icon (WnckTask *task)
   GdkPixbuf *pixbuf;
   WnckHandle *handle;
   gsize mini_icon_size;
+  const char *icon_name;
 
   pixbuf = NULL;
 
@@ -3718,8 +3719,6 @@ wnck_task_get_icon (WnckTask *task)
       break;
 
     case WNCK_TASK_STARTUP_SEQUENCE:
-      const char *icon_name;
-
       icon_name = sn_startup_sequence_get_icon_name (task->startup_sequence);
       if (icon_name != NULL)
         {
