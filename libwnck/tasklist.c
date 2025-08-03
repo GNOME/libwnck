@@ -3986,6 +3986,10 @@ wnck_task_get_icon (WnckTask *task)
   WnckHandle *handle;
   gsize mini_icon_size;
 
+#ifdef HAVE_STARTUP_NOTIFICATION
+  const char *icon_name;
+#endif
+
   pixbuf = NULL;
 
   handle = task->tasklist->priv->handle;
@@ -4009,8 +4013,6 @@ wnck_task_get_icon (WnckTask *task)
 
     case WNCK_TASK_STARTUP_SEQUENCE:
 #ifdef HAVE_STARTUP_NOTIFICATION
-      const char *icon_name;
-
       icon_name = sn_startup_sequence_get_icon_name (task->startup_sequence);
       if (icon_name != NULL)
         {
