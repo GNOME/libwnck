@@ -3193,7 +3193,7 @@ update_wmhints (WnckWindow *window)
 
       if (hints->flags & WindowGroupHint)
         {
-          window->priv->group_leader = TRUE;
+          window->priv->has_group_leader = TRUE;
           window->priv->group_leader = hints->window_group;
         }
 
