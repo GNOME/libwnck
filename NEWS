@@ -1,4 +1,13 @@
 ============
+Version 43.3
+============
+
+  Fixes
+
+  * Fix clang warnings. (!66, !68)
+  * Fix regression with class group and application names. (#166)
+
+============
 Version 43.2
 ============
 
