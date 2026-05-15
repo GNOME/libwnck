@@ -1829,7 +1829,7 @@ _wnck_try_desktop_layout_manager (Screen *xscreen,
   root = RootWindowOfScreen (xscreen);
   number = XScreenNumberOfScreen (xscreen);
 
-  sprintf (buffer, "_NET_DESKTOP_LAYOUT_S%d", number);
+  snprintf (buffer, sizeof (buffer), "_NET_DESKTOP_LAYOUT_S%d", number);
   selection_atom = _wnck_atom_get (buffer);
 
   owner = XGetSelectionOwner (display, selection_atom);
