@@ -46,7 +46,7 @@ struct _WnckPagerAccessibleClass
   GtkAccessibleClass parent_class;
 };
 
-GType wnck_pager_accessible_get_type (void) G_GNUC_CONST;
+GType wnck_pager_accessible_get_type (void);
 
 AtkObject* wnck_pager_accessible_new (GtkWidget *widget); 
 

@@ -72,7 +72,7 @@ struct _WnckClassGroupClass
 };
 
 WNCK_EXPORT
-GType wnck_class_group_get_type (void) G_GNUC_CONST;
+GType wnck_class_group_get_type (void);
 
 WNCK_EXPORT
 GList *wnck_class_group_get_windows (WnckClassGroup *class_group);

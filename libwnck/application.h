@@ -74,7 +74,7 @@ struct _WnckApplicationClass
 };
 
 WNCK_EXPORT
-GType wnck_application_get_type (void) G_GNUC_CONST;
+GType wnck_application_get_type (void);
 
 WNCK_EXPORT
 gulong wnck_application_get_xid (WnckApplication *app);

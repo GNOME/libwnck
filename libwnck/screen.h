@@ -160,7 +160,7 @@ typedef enum
 } WnckLayoutCorner;
 
 WNCK_EXPORT
-GType wnck_screen_get_type (void) G_GNUC_CONST;
+GType wnck_screen_get_type (void);
 
 WNCK_EXPORT
 WnckHandle*    wnck_screen_get_handle               (WnckScreen *screen);

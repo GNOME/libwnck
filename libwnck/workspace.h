@@ -92,7 +92,7 @@ typedef enum
 } WnckMotionDirection;
 
 WNCK_EXPORT
-GType wnck_workspace_get_type (void) G_GNUC_CONST;
+GType wnck_workspace_get_type (void);
 
 WNCK_EXPORT
 int         wnck_workspace_get_number     (WnckWorkspace *space);

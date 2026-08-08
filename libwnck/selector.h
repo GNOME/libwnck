@@ -68,7 +68,7 @@ WNCK_EXPORT
 GtkWidget *wnck_selector_new_with_handle (WnckHandle *handle);
 
 WNCK_EXPORT
-GType      wnck_selector_get_type        (void) G_GNUC_CONST;
+GType      wnck_selector_get_type        (void);
 
 G_END_DECLS
 

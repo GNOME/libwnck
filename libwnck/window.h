@@ -288,7 +288,7 @@ struct _WnckWindowClass
 };
 
 WNCK_EXPORT
-GType wnck_window_get_type (void) G_GNUC_CONST;
+GType wnck_window_get_type (void);
 
 WNCK_EXPORT
 WnckScreen* wnck_window_get_screen    (WnckWindow *window);

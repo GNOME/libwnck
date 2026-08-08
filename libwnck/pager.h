@@ -102,7 +102,7 @@ typedef enum {
 } WnckPagerScrollMode;
 
 WNCK_EXPORT
-GType      wnck_pager_get_type           (void) G_GNUC_CONST;
+GType      wnck_pager_get_type           (void);
 
 WNCK_EXPORT
 GtkWidget* wnck_pager_new_with_handle    (WnckHandle           *handle);

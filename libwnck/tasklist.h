@@ -87,7 +87,7 @@ typedef enum {
 } WnckTasklistGroupingType;
 
 WNCK_EXPORT
-GType wnck_tasklist_get_type (void) G_GNUC_CONST;
+GType wnck_tasklist_get_type (void);
 
 WNCK_EXPORT
 GtkWidget *wnck_tasklist_new_with_handle (WnckHandle *handle);
