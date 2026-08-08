@@ -43,7 +43,7 @@ struct _WnckPagerAccessibleFactoryClass
   AtkObjectFactoryClass parent_class;
 };
 
-GType wnck_pager_accessible_factory_get_type (void) G_GNUC_CONST;
+GType wnck_pager_accessible_factory_get_type (void);
 
 AtkObjectFactory* wnck_pager_accessible_factory_new (void);
 

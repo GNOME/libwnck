@@ -85,7 +85,7 @@ typedef enum {
   WNCK_TASKLIST_ALWAYS_GROUP
 } WnckTasklistGroupingType;
 
-GType wnck_tasklist_get_type (void) G_GNUC_CONST;
+GType wnck_tasklist_get_type (void);
 
 G_DEPRECATED_FOR(wnck_tasklist_new_with_handle)
 GtkWidget *wnck_tasklist_new (void);

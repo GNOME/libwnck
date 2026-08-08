@@ -194,7 +194,7 @@ typedef enum
 } _WnckLayoutCorner;
 #endif /* __GTK_DOC_IGNORE__ */
 
-GType wnck_screen_get_type (void) G_GNUC_CONST;
+GType wnck_screen_get_type (void);
 
 G_DEPRECATED_FOR(wnck_handle_get_default_screen)
 WnckScreen*    wnck_screen_get_default              (void);

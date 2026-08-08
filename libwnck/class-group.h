@@ -70,7 +70,7 @@ struct _WnckClassGroupClass
   void (* pad4) (void);
 };
 
-GType wnck_class_group_get_type (void) G_GNUC_CONST;
+GType wnck_class_group_get_type (void);
 
 G_DEPRECATED_FOR(wnck_handle_get_class_group)
 WnckClassGroup *wnck_class_group_get (const char *id);

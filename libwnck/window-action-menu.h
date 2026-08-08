@@ -66,7 +66,7 @@ struct _WnckActionMenuClass
   void (* pad4) (void);
 };
 
-GType wnck_action_menu_get_type (void) G_GNUC_CONST;
+GType wnck_action_menu_get_type (void);
 
 GtkWidget* wnck_action_menu_new (WnckWindow *window);
 

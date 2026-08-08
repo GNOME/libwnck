@@ -100,7 +100,7 @@ typedef enum {
   WNCK_PAGER_SCROLL_NONE
 } WnckPagerScrollMode;
 
-GType      wnck_pager_get_type           (void) G_GNUC_CONST;
+GType      wnck_pager_get_type           (void);
 
 G_DEPRECATED_FOR(wnck_pager_new_with_handle)
 GtkWidget* wnck_pager_new                (void);

@@ -90,7 +90,7 @@ typedef enum
   WNCK_MOTION_RIGHT = -4
 } WnckMotionDirection;
 
-GType wnck_workspace_get_type (void) G_GNUC_CONST;
+GType wnck_workspace_get_type (void);
 
 int         wnck_workspace_get_number     (WnckWorkspace *space);
 const char* wnck_workspace_get_name       (WnckWorkspace *space);

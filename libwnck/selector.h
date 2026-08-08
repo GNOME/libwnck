@@ -68,7 +68,7 @@ GtkWidget *wnck_selector_new             (void);
 
 GtkWidget *wnck_selector_new_with_handle (WnckHandle *handle);
 
-GType      wnck_selector_get_type        (void) G_GNUC_CONST;
+GType      wnck_selector_get_type        (void);
 
 G_END_DECLS
 

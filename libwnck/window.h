@@ -286,7 +286,7 @@ struct _WnckWindowClass
   void (* pad1) (void);
 };
 
-GType wnck_window_get_type (void) G_GNUC_CONST;
+GType wnck_window_get_type (void);
 
 G_DEPRECATED_FOR(wnck_handle_get_window)
 WnckWindow* wnck_window_get (gulong xwindow);
